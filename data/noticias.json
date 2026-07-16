@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-07-16T20:30:40+00:00",
+  "feeds_ok": 0,
+  "feeds_total": 4,
+  "modo": "referencias_oficiales",
+  "warnings": [
+    "Feed no disponible: INEGI (https://www.inegi.org.mx/rss/comunicados.xml).",
+    "Feed no disponible: Banco de México (https://www.banxico.org.mx/rss/rss.xml).",
+    "Feed no disponible: Secretaría de Economía (gob.mx) (https://www.gob.mx/se/articulos.rss).",
+    "Feed no disponible: Diario Oficial de la Federación (https://www.dof.gob.mx/indicadores.rss).",
+    "Ningún RSS oficial respondió; se muestran referencias oficiales perennes (sin fabricar noticias)."
+  ],
+  "nota": "Sección piloto basada en RSS oficiales. Distingue hecho confirmado / posible implicación / interpretación. No afirma causalidad. Si un feed falla, se omite sin afectar el dashboard.",
+  "items": [
+    {
+      "titulo": "Calendario de difusión de información estadística — INEGI",
+      "enlace": "https://www.inegi.org.mx/calendario/",
+      "fuente": "INEGI",
+      "categoria": "Calendario",
+      "indicador": "Varios",
+      "porque": "Fechas oficiales de publicación de PIB, IGAE, INPC, ENOE y balanza comercial.",
+      "tipo": "referencia_oficial"
+    },
+    {
+      "titulo": "Anuncios de política monetaria — Banco de México",
+      "enlace": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/anuncios-politica-monetaria-t.html",
+      "fuente": "Banco de México",
+      "categoria": "Política monetaria",
+      "indicador": "TASA",
+      "porque": "Decisiones de tasa objetivo que afectan al costo del crédito y al tipo de cambio.",
+      "tipo": "referencia_oficial"
+    },
+    {
+      "titulo": "Sala de prensa / comunicados — INEGI",
+      "enlace": "https://www.inegi.org.mx/app/saladeprensa/",
+      "fuente": "INEGI",
+      "categoria": "Comunicados",
+      "indicador": "Varios",
+      "porque": "Comunicados con los resultados de cada indicador al momento de su publicación.",
+      "tipo": "referencia_oficial"
+    },
+    {
+      "titulo": "Prensa — Secretaría de Economía (gob.mx)",
+      "enlace": "https://www.gob.mx/se/prensa",
+      "fuente": "Secretaría de Economía",
+      "categoria": "Comercio e inversión",
+      "indicador": "IED / BALANZA",
+      "porque": "Comunicados oficiales sobre comercio exterior, inversión extranjera y política industrial.",
+      "tipo": "referencia_oficial"
+    },
+    {
+      "titulo": "Diario Oficial de la Federación",
+      "enlace": "https://www.dof.gob.mx/",
+      "fuente": "DOF",
+      "categoria": "Regulatorio",
+      "indicador": "Entorno",
+      "porque": "Publicación de disposiciones oficiales relevantes para el entorno económico y comercial.",
+      "tipo": "referencia_oficial"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "_comment": "Mapa de indicadores -> series de las fuentes oficiales. Los IDs de INEGI (BIE) deben confirmarse contra el catálogo oficial al cargar INEGI_TOKEN; se dejan como null cuando no están confirmados para NO consultar una serie equivocada. Los IDs de Banxico (SIE) son públicos y estables.",
+  "banxico": {
+    "TIPOCAMBIO": { "serie": "SF43718", "nombre": "Tipo de cambio FIX (pesos por dólar)", "frecuencia": "Diaria->mensual", "unidad": "Pesos por dólar" },
+    "TASA": { "serie": "SF61745", "nombre": "Tasa objetivo de Banco de México", "frecuencia": "Diaria->mensual", "unidad": "Porcentaje" }
+  },
+  "inegi": {
+    "_endpoint": "https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/{ids}/es/0700/false/BIE/2.0/{token}?type=json",
+    "PIB": { "serie": null, "confirmar": true },
+    "IGAE": { "serie": null, "confirmar": true },
+    "IMAI": { "serie": null, "confirmar": true },
+    "CONSUMO": { "serie": null, "confirmar": true },
+    "DESOCUP": { "serie": null, "confirmar": true },
+    "INPC": { "serie": null, "confirmar": true },
+    "BALANZA": { "serie": null, "confirmar": true },
+    "PRODIND": {
+      "_comment": "Producción industrial desglosada (IMAI por sectores) para V2.",
+      "manufacturas": null, "construccion": null, "mineria": null, "energia": null,
+      "confirmar": true
+    }
+  },
+  "worldbank": {
+    "_endpoint": "https://api.worldbank.org/v2/country/MEX/indicator/{id}?format=json&per_page=500",
+    "PIB_ANUAL": "NY.GDP.MKTP.KD",
+    "INFLACION_ANUAL": "FP.CPI.TOTL.ZG",
+    "DESEMPLEO_ANUAL": "SL.UEM.TOTL.ZS"
+  }
+}

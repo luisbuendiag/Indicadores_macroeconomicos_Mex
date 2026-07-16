@@ -1,0 +1,1481 @@
+{
+  "meta": {
+    "generated_at": "2026-07-16T20:32:41+00:00",
+    "base_year": 2018,
+    "default_window": "since_2018",
+    "windows": [
+      "12m",
+      "24m",
+      "since_2018",
+      "max"
+    ],
+    "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza."
+  },
+  "order": [
+    "PIB",
+    "PIBSEC",
+    "IGAE",
+    "IMAI",
+    "BALANZA",
+    "IED",
+    "DESOCUP",
+    "INPC",
+    "CONSUMO"
+  ],
+  "indicators": {
+    "PIB": {
+      "key": "PIB",
+      "nombre": "Producto Interno Bruto",
+      "descripcion": "La suma de los valores de mercado de todos los servicios y bienes finales, producidos por los recursos de la economía que residen en el país. Es un concepto de valor agregado, por lo que se contabilizan los bienes finales que se producen para consumo y no los intermedios para el uso de otro bien final.",
+      "frecuencia": "Trimestral",
+      "unidad": "Millones de pesos (a precios de 2018)",
+      "ajuste_estacional": "Serie original",
+      "grupo": "actividad",
+      "publicacion": "Aproximadamente 50 días después de haber concluido el trimestre",
+      "proximo": "Finales de junio (oportuno); finales de agosto (definitivo)",
+      "notas": [
+        "R = Cifras revisadas",
+        "P = Cifras preliminares"
+      ],
+      "fuente": {
+        "nombre": "INEGI",
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3#D733671_600917",
+        "metodo": "INEGI BIE API"
+      },
+      "columns": [
+        {
+          "label": "PIB (millones de pesos)",
+          "index": 0,
+          "fmt": "num"
+        },
+        {
+          "label": "Var. Anual (%)",
+          "index": 1,
+          "fmt": "pct-frac"
+        }
+      ],
+      "observations": [
+        {
+          "period": "1T-21",
+          "values": [
+            22841359.7,
+            0.019
+          ]
+        },
+        {
+          "period": "2T-21",
+          "values": [
+            23623455.1,
+            0.051
+          ]
+        },
+        {
+          "period": "3T-21",
+          "values": [
+            23204796.8,
+            0.22699999999999998
+          ]
+        },
+        {
+          "period": "4T-21",
+          "values": [
+            23949712.9,
+            -0.026000000000000002
+          ]
+        },
+        {
+          "period": "1T-22",
+          "values": [
+            23440574.5,
+            0.02623376225715668
+          ]
+        },
+        {
+          "period": "2T-22",
+          "values": [
+            24310024.3,
+            0.029063030665653855
+          ]
+        },
+        {
+          "period": "3T-22",
+          "values": [
+            24289379.5,
+            0.046739590497081984
+          ]
+        },
+        {
+          "period": "4T-22",
+          "values": [
+            25052395.8,
+            0.04604159158834853
+          ]
+        },
+        {
+          "period": "1T-23 R",
+          "values": [
+            24330982.5,
+            0.03798575841219254
+          ]
+        },
+        {
+          "period": "2T-23 R",
+          "values": [
+            25108268.2,
+            0.03283599761765754
+          ]
+        },
+        {
+          "period": "3T-23 R",
+          "values": [
+            25094793.1,
+            0.033159085023147794
+          ]
+        },
+        {
+          "period": "4T-23 R",
+          "values": [
+            25590082.6,
+            0.021462490226184405
+          ]
+        },
+        {
+          "period": "1T-24 R",
+          "values": [
+            24761655.5,
+            0.017700600458695037
+          ]
+        },
+        {
+          "period": "2T-24 R",
+          "values": [
+            25655479,
+            0.02179404790649797
+          ]
+        },
+        {
+          "period": "3T-24 R",
+          "values": [
+            25475446.4,
+            0.015168616791664036
+          ]
+        },
+        {
+          "period": "4T-24 R",
+          "values": [
+            25693293,
+            0.004033218712627296
+          ]
+        },
+        {
+          "period": "1T-25 R",
+          "values": [
+            24913610.3,
+            0.006136697927971779
+          ]
+        },
+        {
+          "period": "2T-25 R",
+          "values": [
+            25618678.8,
+            -0.001434399256392771
+          ]
+        },
+        {
+          "period": "3T-25 R",
+          "values": [
+            25422850.2,
+            -0.002064584038064199
+          ]
+        },
+        {
+          "period": "4T-25 R",
+          "values": [
+            26135644.7,
+            0.017216621473938654
+          ]
+        },
+        {
+          "period": "1T-26 P",
+          "values": [
+            24973976.1,
+            0.002423004906679571
+          ]
+        }
+      ],
+      "last_observation": "1T-26 P",
+      "last_updated": "2026-07-16",
+      "last_checked": "2026-07-16",
+      "source_origin": "legacy_dashboard"
+    },
+    "PIBSEC": {
+      "key": "PIBSEC",
+      "nombre": "Producto Interno Bruto por actividad económica",
+      "descripcion": "Permite analizar la contribución específica de cada sector al valor agregado total de la economía mexicana. Es fundamental para entender la estructura productiva del país y cómo evoluciona con el tiempo.",
+      "frecuencia": "Trimestral",
+      "unidad": "Millones de pesos (a precios de 2018)",
+      "ajuste_estacional": "Serie original",
+      "grupo": "actividad",
+      "publicacion": "Aproximadamente 50 días después de haber concluido el trimestre",
+      "proximo": "Finales de junio (oportuno); finales de agosto (definitivo)",
+      "notas": [
+        "R = Cifras revisadas",
+        "P = Cifras preliminares"
+      ],
+      "fuente": {
+        "nombre": "INEGI",
+        "link": "https://www.inegi.org.mx/temas/pib/#informacion_general",
+        "metodo": "INEGI BIE API"
+      },
+      "columns": [
+        {
+          "label": "Primarias",
+          "index": 0,
+          "fmt": "num"
+        },
+        {
+          "label": "Secundarias",
+          "index": 1,
+          "fmt": "num"
+        },
+        {
+          "label": "Terciarias",
+          "index": 2,
+          "fmt": "num"
+        },
+        {
+          "label": "Var. Trim. Ter. (%)",
+          "index": 3,
+          "fmt": "pct-frac"
+        }
+      ],
+      "observations": [
+        {
+          "period": "1T-23 P",
+          "values": [
+            835925.6,
+            7884149.8,
+            14688940.9,
+            0.006
+          ]
+        },
+        {
+          "period": "2T-23 P",
+          "values": [
+            836799.6,
+            7943263.3,
+            14820043.5,
+            0.008
+          ]
+        },
+        {
+          "period": "3T-23 P",
+          "values": [
+            819095.7,
+            8016288.3,
+            14946803,
+            0.008
+          ]
+        },
+        {
+          "period": "4T-23 P",
+          "values": [
+            831686.6,
+            8010952.1,
+            14960367.9,
+            0
+          ]
+        },
+        {
+          "period": "1T-24 P",
+          "values": [
+            827043,
+            7940140.6,
+            15131051.2,
+            0.006
+          ]
+        },
+        {
+          "period": "2T-24 P",
+          "values": [
+            842252.6,
+            7876382,
+            15155060,
+            0
+          ]
+        },
+        {
+          "period": "3T-24 P",
+          "values": [
+            871472.5,
+            7979123.7,
+            15281727.3,
+            0.011000000000000001
+          ]
+        },
+        {
+          "period": "4T-24 P",
+          "values": [
+            813692.8,
+            7807342.1,
+            15253152.9,
+            -0.011000000000000001
+          ]
+        },
+        {
+          "period": "1T-25 P",
+          "values": [
+            854504.32127079,
+            7833621.03455699,
+            15316101.403228,
+            0.006
+          ]
+        },
+        {
+          "period": "2T-25 P",
+          "values": [
+            836772.665548799,
+            7849205.98397336,
+            15394411.489658,
+            0.003
+          ]
+        },
+        {
+          "period": "3T-25 P",
+          "values": [
+            859287.643962977,
+            7780913.07920474,
+            15435842.6920738,
+            -0.001
+          ]
+        },
+        {
+          "period": "4T-25 P",
+          "values": [
+            871755.018658648,
+            7829888.17418644,
+            15548365.8219927,
+            0.006999999999999999
+          ]
+        },
+        {
+          "period": "1T-26 P",
+          "values": [
+            856921.087012258,
+            7750175.3189237,
+            15490105.2001774,
+            -0.006
+          ]
+        }
+      ],
+      "last_observation": "1T-26 P",
+      "last_updated": "2026-07-16",
+      "last_checked": "2026-07-16",
+      "source_origin": "legacy_dashboard"
+    },
+    "IGAE": {
+      "key": "IGAE",
+      "nombre": "Indicador Global de Actividad Económica (IGAE)",
+      "descripcion": "Se le conoce como una aproximación al PIB mensual, permitiendo conocer la tendencia de la economía en el corto plazo. Sigue la evolución del sector real de la economía con un diseño similar al PIB, pero con menos información detallada.",
+      "frecuencia": "Mensual",
+      "unidad": "Índice base 2018=100",
+      "ajuste_estacional": "Serie original",
+      "grupo": "actividad",
+      "publicacion": "Aproximadamente 55 días después de haber concluido el mes",
+      "proximo": "Finales de junio ",
+      "notas": [
+        "R = cifras revisadas",
+        "P = cifras preliminares",
+        "Índice base 2018 = 100"
+      ],
+      "fuente": {
+        "nombre": "INEGI",
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3#D733671_600917",
+        "metodo": "INEGI BIE API"
+      },
+      "columns": [
+        {
+          "label": "Índice de volumen físico",
+          "index": 0,
+          "fmt": "idx"
+        },
+        {
+          "label": "Act. Secundarias (índice)",
+          "index": 1,
+          "fmt": "idx"
+        },
+        {
+          "label": "Act. Terciarias (índice)",
+          "index": 2,
+          "fmt": "idx"
+        }
+      ],
+      "observations": [
+        {
+          "period": "May 25 R",
+          "values": [
+            104.977621139718,
+            104.4,
+            106.8
+          ]
+        },
+        {
+          "period": "Jun 25 R",
+          "values": [
+            105.036749181744,
+            100.87,
+            107
+          ]
+        },
+        {
+          "period": "Jul 25 R",
+          "values": [
+            104.454057193007,
+            101.58,
+            106.9
+          ]
+        },
+        {
+          "period": "Ago 25 R",
+          "values": [
+            104.964729362259,
+            101.39,
+            107.4
+          ]
+        },
+        {
+          "period": "Sep 25 R",
+          "values": [
+            104.52708789217,
+            99.56,
+            107
+          ]
+        },
+        {
+          "period": "Oct 25 R",
+          "values": [
+            105.575132119142,
+            104.81,
+            108.2
+          ]
+        },
+        {
+          "period": "Nov 25 R",
+          "values": [
+            105.476142839221,
+            101.45,
+            107.8
+          ]
+        },
+        {
+          "period": "Dic 25 R",
+          "values": [
+            105.869089017849,
+            98.38,
+            108
+          ]
+        },
+        {
+          "period": "Ene 26 R",
+          "values": [
+            104.772484415695,
+            96.62,
+            107.4
+          ]
+        },
+        {
+          "period": "Feb 26 R",
+          "values": [
+            105.072620201876,
+            95.8,
+            107.5
+          ]
+        },
+        {
+          "period": "Mar 26 P",
+          "values": [
+            105.660228515201,
+            102.75,
+            108.5
+          ]
+        },
+        {
+          "period": "Abr 26 P",
+          "values": [
+            106.927124418255,
+            102.52,
+            109.2
+          ]
+        }
+      ],
+      "last_observation": "Abr 26 P",
+      "last_updated": "2026-07-16",
+      "last_checked": "2026-07-16",
+      "source_origin": "legacy_dashboard"
+    },
+    "IMAI": {
+      "key": "IMAI",
+      "nombre": "Indicador Mensual de Actividad Industrial (IMAI)",
+      "descripcion": "Proporciona una visión sobre el comportamiento de la producción industrial en el corto plazo.  El IMAI se divide en cuatro grandes sectores de actividad económica, de acuerdo con el SCIAN: Minería, Construcción, Industrias manufactureras y energía eléctrica, agua y gas.",
+      "frecuencia": "Mensual",
+      "unidad": "Índice base 2018=100",
+      "ajuste_estacional": "Serie original",
+      "grupo": "industria",
+      "publicacion": null,
+      "proximo": null,
+      "notas": [
+        "P = cifras preliminares",
+        "Índice base 2018 = 100"
+      ],
+      "fuente": {
+        "nombre": "INEGI",
+        "link": "https://www.inegi.org.mx/temas/imai/",
+        "metodo": "INEGI BIE API"
+      },
+      "columns": [
+        {
+          "label": "Índice de volumen físico",
+          "index": 0,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. mensual (%)",
+          "index": 1,
+          "fmt": "pct-frac"
+        }
+      ],
+      "observations": [
+        {
+          "period": "May 25 P",
+          "values": [
+            101.6,
+            0.0009
+          ]
+        },
+        {
+          "period": "Jun 25 P",
+          "values": [
+            101.2,
+            -0.00393700787401563
+          ]
+        },
+        {
+          "period": "Jul 25 P",
+          "values": [
+            100.2,
+            -0.00988142292490124
+          ]
+        },
+        {
+          "period": "Ago 25 P",
+          "values": [
+            100,
+            -0.001996007984031989
+          ]
+        },
+        {
+          "period": "Sep 25 P",
+          "values": [
+            99.9,
+            -0.0009999999999998899
+          ]
+        },
+        {
+          "period": "Oct 25 P",
+          "values": [
+            100.7,
+            0.00800800800800805
+          ]
+        },
+        {
+          "period": "Nov 25 P",
+          "values": [
+            101.3,
+            0.005958291956305706
+          ]
+        },
+        {
+          "period": "Dic 25 P",
+          "values": [
+            100.4,
+            -0.008884501480750151
+          ]
+        },
+        {
+          "period": "Ene 26 P",
+          "values": [
+            100.8,
+            0.003984063745019917
+          ]
+        },
+        {
+          "period": "Feb 26 P",
+          "values": [
+            null,
+            0.03627834150198428
+          ]
+        },
+        {
+          "period": "Mar 26 P",
+          "values": [
+            100.3,
+            -0.03979496367986446
+          ]
+        },
+        {
+          "period": "Abr 26 P",
+          "values": [
+            102.4,
+            0.020937188434696052
+          ]
+        }
+      ],
+      "last_observation": "Abr 26 P",
+      "last_updated": "2026-07-16",
+      "last_checked": "2026-07-16",
+      "source_origin": "legacy_dashboard",
+      "data_quality": [
+        {
+          "period": "Feb 26 P",
+          "column": 0,
+          "status": "revision",
+          "reason": "Valor idéntico al de Consumo Privado (104.4568568234) en el mismo mes: duplicado sospechoso entre series no relacionadas. Pendiente de verificación contra INEGI (BIE) una vez cargado INEGI_TOKEN."
+        },
+        {
+          "period": "Feb 26 P",
+          "column": 0,
+          "status": "revision",
+          "reason": "Valor idéntico al de Consumo Privado (104.4568568234) en el mismo mes: duplicado sospechoso entre series no relacionadas. Pendiente de verificación contra INEGI (BIE) una vez cargado INEGI_TOKEN."
+        }
+      ]
+    },
+    "CONSUMO": {
+      "key": "CONSUMO",
+      "nombre": "Indicador Mensual de Consumo Privado",
+      "descripcion": "Mide el gasto realizado por los hogares y las instituciones sin fines de lucro que les sirven, tanto para la adquisición de bienes como de servicios.",
+      "frecuencia": "Mensual",
+      "unidad": "Índice base 2018=100",
+      "ajuste_estacional": "Serie original",
+      "grupo": "mercado_interno",
+      "publicacion": "Aproximadamente 21 días después de haber concluido el mes",
+      "proximo": null,
+      "notas": [
+        "R = Cifras revisadas",
+        "P = Cifras preliminares",
+        "Índice base 2018 = 100"
+      ],
+      "fuente": {
+        "nombre": "INEGI",
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3#D733671_600917",
+        "metodo": "INEGI BIE API"
+      },
+      "columns": [
+        {
+          "label": "Índice de volumen físico",
+          "index": 0,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. mensual (%)",
+          "index": 1,
+          "fmt": "pct-frac"
+        }
+      ],
+      "observations": [
+        {
+          "period": "Abr 25 R",
+          "values": [
+            110.1915640022,
+            null
+          ]
+        },
+        {
+          "period": "May 25 R",
+          "values": [
+            112.1104060481,
+            0.017413692811018677
+          ]
+        },
+        {
+          "period": "Jun 25 R",
+          "values": [
+            109.886652307,
+            -0.019835391017546722
+          ]
+        },
+        {
+          "period": "Jul 25 R",
+          "values": [
+            113.9981602839,
+            0.03741589984389848
+          ]
+        },
+        {
+          "period": "Ago 25 R",
+          "values": [
+            114.2930377275,
+            0.0025866859856829016
+          ]
+        },
+        {
+          "period": "Sep 25 R",
+          "values": [
+            113.141670895,
+            -0.01007381425319287
+          ]
+        },
+        {
+          "period": "Oct 25 R",
+          "values": [
+            117.4042949687,
+            0.037675102727233734
+          ]
+        },
+        {
+          "period": "Nov 25 R",
+          "values": [
+            113.8299222248,
+            -0.030444991342547745
+          ]
+        },
+        {
+          "period": "Dic 25 R",
+          "values": [
+            116.8438878273,
+            0.026477797257453917
+          ]
+        },
+        {
+          "period": "Ene 26 R",
+          "values": [
+            110.519200852,
+            -0.05412937803514495
+          ]
+        },
+        {
+          "period": "Feb 26 R",
+          "values": [
+            null,
+            -0.05485331039190455
+          ]
+        },
+        {
+          "period": "Mar 26 P",
+          "values": [
+            113.5132947678,
+            0.0867002724360284
+          ]
+        }
+      ],
+      "last_observation": "Mar 26 P",
+      "last_updated": "2026-07-16",
+      "last_checked": "2026-07-16",
+      "source_origin": "legacy_dashboard",
+      "data_quality": [
+        {
+          "period": "Feb 26 R",
+          "column": 0,
+          "status": "revision",
+          "reason": "Valor idéntico al de IMAI (104.4568568234) en el mismo mes: duplicado sospechoso entre series no relacionadas. Pendiente de verificación contra INEGI (BIE) una vez cargado INEGI_TOKEN."
+        },
+        {
+          "period": "Feb 26 R",
+          "column": 0,
+          "status": "revision",
+          "reason": "Valor idéntico al de IMAI (104.4568568234) en el mismo mes: duplicado sospechoso entre series no relacionadas. Pendiente de verificación contra INEGI (BIE) una vez cargado INEGI_TOKEN."
+        }
+      ]
+    },
+    "IED": {
+      "key": "IED",
+      "nombre": "Inversión Extranjera Directa (IED)",
+      "descripcion": "Registra el valor de las inversiones realizadas por empresas y personas extranjeras en el país, con el objetivo de obtener un interés duradero en empresas residentes en México. Se compone de nuevas inversiones, reinversión de utilidades y cuentas entre compañías.",
+      "frecuencia": "Trimestral",
+      "unidad": "Millones de dólares",
+      "ajuste_estacional": "No aplica",
+      "grupo": "inversion",
+      "publicacion": "Aproximadamente 45 días posteriores al cierre del trimestre",
+      "proximo": "Mediados de agosto",
+      "notas": [
+        "Cifras en millones de dólares"
+      ],
+      "fuente": {
+        "nombre": "Registro Nacional de Inversiones Extranjeras (RNIE). Secretaría de Economía",
+        "link": "",
+        "metodo": "Descarga oficial RNIE / DataMéxico"
+      },
+      "columns": [
+        {
+          "label": "IED total",
+          "index": 0,
+          "fmt": "usd"
+        },
+        {
+          "label": "Nuevas Inversiones",
+          "index": 1,
+          "fmt": "usd"
+        },
+        {
+          "label": "Reinversión de utilidades",
+          "index": 2,
+          "fmt": "usd"
+        },
+        {
+          "label": "Cuentas entre compañías",
+          "index": 3,
+          "fmt": "usd"
+        }
+      ],
+      "observations": [
+        {
+          "period": "1T-21",
+          "values": [
+            11864.03046282,
+            2209.41801316,
+            7025.2112565499965,
+            2629.401193109997
+          ]
+        },
+        {
+          "period": "2T-21",
+          "values": [
+            18433.46954255985,
+            6025.000693990005,
+            8658.214019469988,
+            3750.254829099993
+          ]
+        },
+        {
+          "period": "3T-21",
+          "values": [
+            24831.724270920065,
+            9544.62750515,
+            9999.422711059975,
+            5287.674054709976
+          ]
+        },
+        {
+          "period": "4T-21",
+          "values": [
+            31621.20435087015,
+            13825.301669439956,
+            12213.01206093998,
+            5582.890620490009
+          ]
+        },
+        {
+          "period": "1T-22",
+          "values": [
+            19427.457786730047,
+            8792.209679979997,
+            9259.124450750005,
+            1376.1236559999968
+          ]
+        },
+        {
+          "period": "2T-22",
+          "values": [
+            27511.623732829947,
+            11836.527790140002,
+            11655.60546753999,
+            4019.4904751499985
+          ]
+        },
+        {
+          "period": "3T-22",
+          "values": [
+            32147.38886485986,
+            14519.885829040022,
+            14052.151391029991,
+            3575.3516447900115
+          ]
+        },
+        {
+          "period": "4T-22",
+          "values": [
+            35291.61835650035,
+            16993.097777980158,
+            16027.790410173762,
+            2270.730168346636
+          ]
+        },
+        {
+          "period": "1T-23",
+          "values": [
+            18635.69179056182,
+            931.6891732793321,
+            16704.7085712238,
+            999.2940460586948
+          ]
+        },
+        {
+          "period": "2T-23",
+          "values": [
+            29040.823874591104,
+            2135.168038952664,
+            22608.62151171782,
+            4297.034323920598
+          ]
+        },
+        {
+          "period": "3T-23",
+          "values": [
+            32926.43680025823,
+            2806.241495010777,
+            24905.191435293553,
+            5215.003869953881
+          ]
+        },
+        {
+          "period": "4T-23",
+          "values": [
+            36058.04377568115,
+            4817.437436025721,
+            26630.612710594727,
+            4609.993629060474
+          ]
+        },
+        {
+          "period": "1T-24",
+          "values": [
+            20312.65875078067,
+            599.3244456864041,
+            19614.77618673003,
+            98.5581183642047
+          ]
+        },
+        {
+          "period": "2T-24",
+          "values": [
+            31096.32510957158,
+            909.3070721249387,
+            30287.603011614978,
+            -100.58497416839889
+          ]
+        },
+        {
+          "period": "3T-24",
+          "values": [
+            35737.48954061164,
+            2060.3689516581985,
+            30744.83932329829,
+            2932.2812656551187
+          ]
+        },
+        {
+          "period": "4T-24",
+          "values": [
+            36872.42195115965,
+            3168.543654846584,
+            28710.3148665372,
+            4993.563429775793
+          ]
+        },
+        {
+          "period": "1T-25",
+          "values": [
+            21373.193105502167,
+            1586.3962848710341,
+            16646.993088795327,
+            3139.80373183581
+          ]
+        },
+        {
+          "period": "2T-25",
+          "values": [
+            34264.56746296593,
+            3148.538441297729,
+            28914.108630111772,
+            2201.9203915563307
+          ]
+        },
+        {
+          "period": "3T-25",
+          "values": [
+            40905.61371637016,
+            6563.38012553143,
+            27748.842164331676,
+            6593.391426507059
+          ]
+        },
+        {
+          "period": "4T-25",
+          "values": [
+            40870.76932803365,
+            7377.426584413343,
+            27649.339908233083,
+            5844.002835387397
+          ]
+        },
+        {
+          "period": "1T-26",
+          "values": [
+            23590.622045545126,
+            1705.2271007425254,
+            22221.505971855015,
+            -336.1110270523728
+          ]
+        }
+      ],
+      "last_observation": "1T-26",
+      "last_updated": "2026-07-16",
+      "last_checked": "2026-07-16",
+      "source_origin": "legacy_dashboard"
+    },
+    "DESOCUP": {
+      "key": "DESOCUP",
+      "nombre": "Tasa de desocupación nacional",
+      "descripcion": "Mide la proporción de la fuerza de trabajo que se encuentra sin empleo pero en búsqueda activa del mismo. Personas desocupadas: son personas de 15 años o más que no trabajaron en la semana de referencia, estaban disponibles para trabajar y realizaron actividades de búsqueda de empleo en las semanas previas.",
+      "frecuencia": "Mensual",
+      "unidad": "Porcentaje de la PEA",
+      "ajuste_estacional": "Serie original",
+      "grupo": "mercado_interno",
+      "publicacion": "Aproximadamente 25-30 días después de haber concluido el mes",
+      "proximo": null,
+      "notas": [
+        "* Cifras oportunas"
+      ],
+      "fuente": {
+        "nombre": "INEGI — Encuesta Nacional de Ocupación y Empleo (ENOE/ENOEN)",
+        "link": "https://www.inegi.org.mx/temas/empleo/",
+        "metodo": "INEGI BIE API"
+      },
+      "columns": [
+        {
+          "label": "Porcentaje",
+          "index": 0,
+          "fmt": "pct-frac"
+        }
+      ],
+      "observations": [
+        {
+          "period": "Jun 25",
+          "values": [
+            0.026
+          ]
+        },
+        {
+          "period": "Jul 25",
+          "values": [
+            0.026
+          ]
+        },
+        {
+          "period": "Ago 25",
+          "values": [
+            0.027
+          ]
+        },
+        {
+          "period": "Sep 25",
+          "values": [
+            0.027
+          ]
+        },
+        {
+          "period": "Oct 25",
+          "values": [
+            0.026
+          ]
+        },
+        {
+          "period": "Nov 25",
+          "values": [
+            0.027
+          ]
+        },
+        {
+          "period": "Dic 25",
+          "values": [
+            0.026
+          ]
+        },
+        {
+          "period": "Ene 26",
+          "values": [
+            0.026
+          ]
+        },
+        {
+          "period": "Feb 26",
+          "values": [
+            0.027
+          ]
+        },
+        {
+          "period": "Mar 26",
+          "values": [
+            0.028
+          ]
+        },
+        {
+          "period": "Abr 26",
+          "values": [
+            0.026
+          ]
+        },
+        {
+          "period": "May 26",
+          "values": [
+            0.027
+          ]
+        }
+      ],
+      "last_observation": "May 26",
+      "last_updated": "2026-07-16",
+      "last_checked": "2026-07-16",
+      "source_origin": "legacy_dashboard"
+    },
+    "INPC": {
+      "key": "INPC",
+      "nombre": "Índice Nacional de Precios al Consumidor (INPC)",
+      "descripcion": "Mide la trayectoria agregada de los precios de una canasta de bienes y servicios representativa del consumo de las familias mexicanas. Su objetivo principal es cuantificar la inflación, definida como el aumento sostenido y generalizado de los precios a lo largo del tiempo.",
+      "frecuencia": "Mensual",
+      "unidad": "Variación anual (%)",
+      "ajuste_estacional": "No aplica",
+      "grupo": "precios",
+      "publicacion": null,
+      "proximo": null,
+      "notas": [
+        "Variación anual (%)"
+      ],
+      "fuente": {
+        "nombre": "INEGI",
+        "link": "https://www.inegi.org.mx/temas/inpc/",
+        "metodo": "INEGI BIE API"
+      },
+      "columns": [
+        {
+          "label": "Inflación",
+          "index": 0,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Subyacente",
+          "index": 1,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "No subyacente",
+          "index": 2,
+          "fmt": "pct-raw"
+        }
+      ],
+      "observations": [
+        {
+          "period": "Jun 25",
+          "values": [
+            4.32,
+            4.24,
+            4.33
+          ]
+        },
+        {
+          "period": "Jul 25",
+          "values": [
+            3.51,
+            4.23,
+            1.14
+          ]
+        },
+        {
+          "period": "Ago 25",
+          "values": [
+            3.57,
+            4.23,
+            1.38
+          ]
+        },
+        {
+          "period": "Sep 25",
+          "values": [
+            3.76,
+            4.28,
+            2.02
+          ]
+        },
+        {
+          "period": "Oct 25",
+          "values": [
+            3.57,
+            4.28,
+            1.18
+          ]
+        },
+        {
+          "period": "Nov 25",
+          "values": [
+            3.8,
+            4.43,
+            1.73
+          ]
+        },
+        {
+          "period": "Dic 25",
+          "values": [
+            3.69,
+            4.33,
+            1.61
+          ]
+        },
+        {
+          "period": "Ene 26",
+          "values": [
+            3.79,
+            4.52,
+            1.39
+          ]
+        },
+        {
+          "period": "Feb 26",
+          "values": [
+            4.02,
+            4.5,
+            2.44
+          ]
+        },
+        {
+          "period": "Mar 26",
+          "values": [
+            4.59,
+            4.45,
+            5.05
+          ]
+        },
+        {
+          "period": "Abr 26",
+          "values": [
+            4.45,
+            4.26,
+            5.08
+          ]
+        },
+        {
+          "period": "May 26",
+          "values": [
+            3.94,
+            4.19,
+            3.1
+          ]
+        }
+      ],
+      "last_observation": "May 26",
+      "last_updated": "2026-07-16",
+      "last_checked": "2026-07-16",
+      "source_origin": "legacy_dashboard"
+    },
+    "BALANZA": {
+      "key": "BALANZA",
+      "nombre": "Balanza comercial de mercancías de México",
+      "descripcion": "Es un indicador que registra el valor monetario de las transacciones de bienes físicos entre residentes y no residentes del país, desglosado en exportaciones e importaciones.",
+      "frecuencia": "Mensual",
+      "unidad": "Millones de dólares",
+      "ajuste_estacional": "Serie original",
+      "grupo": "comercio_exterior",
+      "publicacion": "Aproximadamente 30 a 45 días posteriores al cierre del mes",
+      "proximo": "26 de junio",
+      "notas": [
+        "Cifras en millones de dólares",
+        "O = Cifra oportuna"
+      ],
+      "fuente": {
+        "nombre": "INEGI",
+        "link": "https://www.inegi.org.mx/temas/balanza/#informacion_general",
+        "metodo": "INEGI BIE API"
+      },
+      "columns": [
+        {
+          "label": "Exportaciones",
+          "index": 0,
+          "fmt": "usd"
+        },
+        {
+          "label": "Importaciones",
+          "index": 1,
+          "fmt": "usd"
+        }
+      ],
+      "observations": [
+        {
+          "period": "May 24",
+          "values": [
+            55754.041,
+            54863.065
+          ]
+        },
+        {
+          "period": "Jun 24",
+          "values": [
+            48824.268,
+            51230.591
+          ]
+        },
+        {
+          "period": "Jul 24",
+          "values": [
+            54550.711,
+            55771.222
+          ]
+        },
+        {
+          "period": "Ago 24",
+          "values": [
+            51902.528,
+            57747.196
+          ]
+        },
+        {
+          "period": "Sep 24",
+          "values": [
+            49629.743,
+            51120.789
+          ]
+        },
+        {
+          "period": "Oct 24",
+          "values": [
+            57897.71,
+            58109.034
+          ]
+        },
+        {
+          "period": "Nov 24",
+          "values": [
+            52264.794,
+            52971.031
+          ]
+        },
+        {
+          "period": "Dic 24",
+          "values": [
+            51754.359,
+            49905.838
+          ]
+        },
+        {
+          "period": "Ene 25",
+          "values": [
+            44398.267,
+            49611.476
+          ]
+        },
+        {
+          "period": "Feb 25",
+          "values": [
+            49098.535,
+            47444.307
+          ]
+        },
+        {
+          "period": "Mar 25",
+          "values": [
+            55404.972,
+            52115.201
+          ]
+        },
+        {
+          "period": "Abr 25",
+          "values": [
+            54347.764,
+            54392.226
+          ]
+        },
+        {
+          "period": "May 25",
+          "values": [
+            55476.735,
+            54244.911
+          ]
+        },
+        {
+          "period": "Jun 25",
+          "values": [
+            54001.827,
+            53487.398
+          ]
+        },
+        {
+          "period": "Jul 25",
+          "values": [
+            56707.774,
+            56724.468
+          ]
+        },
+        {
+          "period": "Ago 25",
+          "values": [
+            55718.184,
+            57662.068
+          ]
+        },
+        {
+          "period": "Sep 25",
+          "values": [
+            56487.938,
+            58887.475
+          ]
+        },
+        {
+          "period": "Oct 25",
+          "values": [
+            66132.551,
+            65526.483
+          ]
+        },
+        {
+          "period": "Nov 25",
+          "values": [
+            56411.894,
+            55749.102
+          ]
+        },
+        {
+          "period": "Dic 25",
+          "values": [
+            60650.727,
+            58221.107
+          ]
+        },
+        {
+          "period": "Ene 26",
+          "values": [
+            48007.823,
+            54488.877
+          ]
+        },
+        {
+          "period": "Feb 26",
+          "values": [
+            56851.119,
+            57313.897
+          ]
+        },
+        {
+          "period": "Mar 26",
+          "values": [
+            70727.019,
+            64795.021
+          ]
+        },
+        {
+          "period": "Abr 26",
+          "values": [
+            72041.829,
+            67521.798
+          ]
+        },
+        {
+          "period": "May 26 O",
+          "values": [
+            69544.491,
+            67285.323
+          ]
+        }
+      ],
+      "last_observation": "May 26 O",
+      "last_updated": "2026-07-16",
+      "last_checked": "2026-07-16",
+      "source_origin": "legacy_dashboard"
+    }
+  }
+}
