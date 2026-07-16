@@ -1,0 +1,20 @@
+# Entorno / secretos
+.env
+*.env
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+
+# Respaldos rotados del pipeline (se conserva last_valid.json)
+data/_backup/
+data/_candidate.json
+
+# Sistema
+.DS_Store
+Thumbs.db

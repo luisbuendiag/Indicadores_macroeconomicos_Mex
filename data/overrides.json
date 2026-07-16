@@ -1,0 +1,25 @@
+{
+  "_comment": "Correcciones/anotaciones de calidad de datos aplicadas por el pipeline. No inventar cifras: cuando no exista verificación oficial, marcar 'status':'revision' y 'value':null para no propagar un dato sospechoso como correcto.",
+  "overrides": [
+    {
+      "indicator": "IMAI",
+      "period": "Feb 26 P",
+      "column": 0,
+      "status": "revision",
+      "value": null,
+      "reason": "Valor idéntico al de Consumo Privado (104.4568568234) en el mismo mes: duplicado sospechoso entre series no relacionadas. Pendiente de verificación contra INEGI (BIE) una vez cargado INEGI_TOKEN.",
+      "source_checked": null,
+      "date_flagged": "2026-07-16"
+    },
+    {
+      "indicator": "CONSUMO",
+      "period": "Feb 26 R",
+      "column": 0,
+      "status": "revision",
+      "value": null,
+      "reason": "Valor idéntico al de IMAI (104.4568568234) en el mismo mes: duplicado sospechoso entre series no relacionadas. Pendiente de verificación contra INEGI (BIE) una vez cargado INEGI_TOKEN.",
+      "source_checked": null,
+      "date_flagged": "2026-07-16"
+    }
+  ]
+}

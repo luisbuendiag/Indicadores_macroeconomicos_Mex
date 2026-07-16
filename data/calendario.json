@@ -1,0 +1,14 @@
+{
+  "_comment": "Calendario indicativo de publicaciones. Debe validarse cada año contra el calendario oficial de difusión de INEGI y Banxico. El frontend también usa el campo 'proximo' de cada indicador como respaldo.",
+  "generated_at": "2026-07-16",
+  "items": [
+    { "indicador": "Balanza comercial", "institucion": "INEGI", "periodo": "Mensual", "frecuencia": "Mensual", "fecha_esperada": "26 de cada mes (aprox.)" },
+    { "indicador": "INPC (Inflación)", "institucion": "INEGI", "periodo": "Mensual y quincenal", "frecuencia": "Mensual/Quincenal", "fecha_esperada": "9 y 24 de cada mes (aprox.)" },
+    { "indicador": "IGAE", "institucion": "INEGI", "periodo": "Mensual", "frecuencia": "Mensual", "fecha_esperada": "~55 días tras el cierre del mes" },
+    { "indicador": "IMAI (Producción industrial)", "institucion": "INEGI", "periodo": "Mensual", "frecuencia": "Mensual", "fecha_esperada": "~40 días tras el cierre del mes" },
+    { "indicador": "Tasa de desocupación (ENOE)", "institucion": "INEGI", "periodo": "Mensual", "frecuencia": "Mensual", "fecha_esperada": "Fin de mes" },
+    { "indicador": "PIB", "institucion": "INEGI", "periodo": "Trimestral", "frecuencia": "Trimestral", "fecha_esperada": "~50 días tras el cierre del trimestre" },
+    { "indicador": "IED", "institucion": "Secretaría de Economía (RNIE)", "periodo": "Trimestral", "frecuencia": "Trimestral", "fecha_esperada": "Mediados del segundo mes tras el trimestre" },
+    { "indicador": "Tasa objetivo", "institucion": "Banco de México", "periodo": "Reuniones programadas", "frecuencia": "8 anuncios/año", "fecha_esperada": "Según calendario de Junta de Gobierno" }
+  ]
+}
