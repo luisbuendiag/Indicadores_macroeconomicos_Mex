@@ -91,8 +91,9 @@ def add_resumen(wb, payload, manifest):
                 cell.fill = BAND_FILL
         r += 1
     ws["A" + str(r + 1)] = ("Nota: cifras oficiales sujetas a revisión. Análisis por reglas deterministas; "
-                            "no se atribuye causalidad. La fuente de la tasa de desocupación es INEGI/ENOE "
-                            "(la OCDE se usa sólo como comparativo internacional).")
+                            "no se atribuye causalidad. La fuente de la tasa de desocupación es INEGI/ENOE. "
+                            "Los indicadores en estado 'pendiente de token' o 'dato de respaldo' no se "
+                            "presentan como actualización automática (ver 'Control de actualizaciones').")
     ws["A" + str(r + 1)].font = MUT
     ws["A" + str(r + 1)].alignment = WRAP
     ws.merge_cells(start_row=r + 1, start_column=1, end_row=r + 2, end_column=7)
@@ -138,8 +139,10 @@ def add_control(wb, payload, manifest, log):
     ws["A2"] = (f"Última corrida del pipeline: {log.get('finished_at', '—')} · "
                 f"resultado: {log.get('result', '—')} · modo: {log.get('mode', '—')}")
     ws["A2"].font = MUT
-    headers = ["Indicador", "Última observación", "Fecha de consulta", "Actualización archivo",
-               "Estatus", "Revisión detectada", "Observaciones de calidad"]
+    headers = ["Indicador", "Clasificación", "Estado", "Origen del dato", "Requiere token",
+               "Serie confirmada", "Última observación", "Periodo de referencia",
+               "Fecha de publicación", "Fecha de consulta", "Actualización archivo",
+               "Revisión detectada", "Observaciones de calidad"]
     r0 = 4
     for i, h in enumerate(headers, start=1):
         ws.cell(row=r0, column=i, value=h)
@@ -151,8 +154,10 @@ def add_control(wb, payload, manifest, log):
         m = rows.get(key)
         if not m:
             continue
-        vals = [m["indicador"], m["ultima_observacion"], m["fecha_consulta"],
-                m["fecha_actualizacion_archivo"], m["estatus"],
+        vals = [m["indicador"], m.get("clasificacion"), m.get("estado"), m.get("origen_dato"),
+                m.get("requiere_token") or "—", "Sí" if m.get("serie_confirmada") else "No",
+                m["ultima_observacion"], m.get("periodo_referencia"), m.get("fecha_publicacion"),
+                m["fecha_consulta"], m["fecha_actualizacion_archivo"],
                 "Sí" if m["revision_detectada"] else "No", m["observaciones"]]
         for i, v in enumerate(vals, start=1):
             cell = ws.cell(row=r, column=i, value=v)
@@ -170,7 +175,55 @@ def add_control(wb, payload, manifest, log):
     for w in log.get("warnings", []):
         r += 1
         ws.cell(row=r, column=1, value="• " + w).font = MUT
-    _autow(ws, [40, 20, 16, 18, 30, 16, 50])
+    _autow(ws, [40, 15, 26, 14, 14, 15, 18, 18, 26, 16, 18, 16, 50])
+
+
+# Hojas de datos a crear para indicadores nuevos que no existen en el libro base.
+NEW_SHEETS = {
+    "IMFBCF": "Formación bruta capital fijo",
+    "IOAE": "IOAE",
+    "EMIM": "EMIM (Manufactura)",
+}
+
+
+def add_indicator_sheets(wb, payload):
+    """Crea hojas de datos para los indicadores principales nuevos. Si aún no
+    tienen observaciones (scaffold pendiente de token), la hoja queda con los
+    encabezados y una nota honesta, sin cifras inventadas."""
+    for key, sheet_name in NEW_SHEETS.items():
+        ind = payload["indicators"].get(key)
+        if not ind or sheet_name in wb.sheetnames:
+            continue
+        ws = wb.create_sheet(sheet_name)
+        ws.sheet_view.showGridLines = False
+        ws["A1"] = ind.get("nombre")
+        ws["A1"].font = TITLE
+        ws["A2"] = (f"Fuente: {ind.get('fuente', {}).get('nombre', '—')} · "
+                    f"Frecuencia: {ind.get('frecuencia', '—')} · Unidad: {ind.get('unidad', '—')} · "
+                    f"Estado: {ind.get('estado', '—')}")
+        ws["A2"].font = MUT
+        cols = ind.get("columns", [])
+        headers = ["Periodo"] + [c["label"] for c in cols]
+        r0 = 4
+        for i, h in enumerate(headers, start=1):
+            ws.cell(row=r0, column=i, value=h)
+        _style_header(ws, r0, len(headers))
+        obs = ind.get("observations", []) or []
+        if not obs:
+            note = ("Sin observaciones cargadas todavía. "
+                    f"Se activará al configurar {ind.get('requiere_token', 'el token')}_TOKEN "
+                    "y confirmar la serie oficial. No se muestran cifras estimadas ni inventadas.")
+            ws.cell(row=r0 + 1, column=1, value=note).font = MUT
+            ws.merge_cells(start_row=r0 + 1, start_column=1, end_row=r0 + 2, end_column=max(2, len(headers)))
+            ws.cell(row=r0 + 1, column=1).alignment = WRAP
+        else:
+            r = r0 + 1
+            for o in obs:
+                ws.cell(row=r, column=1, value=o["period"]).font = TXT
+                for i, v in enumerate(o["values"], start=2):
+                    ws.cell(row=r, column=i, value=v).font = TXT
+                r += 1
+        _autow(ws, [16] + [22] * len(cols))
 
 
 def main():
@@ -190,6 +243,10 @@ def main():
     for name in ("Resumen ejecutivo", "Metodología y fuentes", "Control de actualizaciones"):
         if name in wb.sheetnames:
             wb.remove(wb[name])
+    for name in NEW_SHEETS.values():
+        if name in wb.sheetnames:
+            wb.remove(wb[name])
+    add_indicator_sheets(wb, payload)
     add_metodologia(wb, payload)
     add_control(wb, payload, manifest, log)
     add_resumen(wb, payload, manifest)  # queda como primera hoja (índice 0)

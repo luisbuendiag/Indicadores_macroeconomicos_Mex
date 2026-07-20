@@ -24,10 +24,19 @@ def test_meta_and_order(payload):
     assert isinstance(payload.get("order"), list) and payload["order"]
 
 
+PENDING_STATES = {"pendiente de token", "pendiente de confirmar serie",
+                  "no disponible", "error de fuente"}
+
+
 def test_indicators_shape(payload):
     for key, ind in payload["indicators"].items():
         assert ind["columns"], f"{key} sin columnas"
-        assert ind["observations"], f"{key} sin observaciones"
+        # Los scaffolds (indicadores a la espera de token/serie) pueden no tener
+        # observaciones todavía; no deben inventarse cifras.
+        if not ind["observations"]:
+            assert ind.get("estado") in PENDING_STATES or ind.get("origen_dato") == "pendiente", \
+                f"{key} sin observaciones y sin estado pendiente declarado"
+            continue
         for o in ind["observations"]:
             assert PERIOD_RE.match(o["period"]), f"{key}: periodo inválido {o['period']}"
             assert len(o["values"]) == len(ind["columns"]), f"{key}: columnas/valores desalineados"

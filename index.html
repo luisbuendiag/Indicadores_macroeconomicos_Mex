@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Indicadores Macroeconómicos de México · Tablero Ejecutivo</title>
-  <meta name="description" content="Tablero ejecutivo de indicadores macroeconómicos de México con datos oficiales de INEGI, Banco de México y Secretaría de Economía.">
+  <title>Indicadores macroeconómicos de México</title>
+  <meta name="description" content="Seguimiento de los principales indicadores macroeconómicos de México con información oficial de INEGI y Banco de México.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
@@ -14,20 +14,26 @@
   <a class="skip-link" href="#main">Saltar al contenido</a>
   <div class="wrap">
     <header class="site-header">
-      <div class="eyebrow">Tablero macroeconómico · México</div>
-      <h1>Indicadores macroeconómicos de México</h1>
-      <p class="lede">Herramienta ejecutiva de consulta para la Secretaría de Economía. Panorama de la economía mexicana con datos oficiales, análisis por reglas y descarga del Excel actualizado.</p>
-      <div class="header-meta">
-        <div class="meta-pill"><span class="k">Última actualización</span><span class="v" id="meta-update">—</span></div>
-        <div class="meta-pill"><span class="k">Periodo de referencia</span><span class="v" id="meta-period">—</span></div>
-        <div class="header-actions">
-          <button class="btn btn-primary" id="btn-excel" type="button"><span aria-hidden="true">↓</span> Descargar Excel actualizado</button>
-          <button class="btn btn-ghost" id="btn-print" type="button"><span aria-hidden="true">🖨</span> Imprimir / PDF</button>
+      <div class="header-top">
+        <div class="header-title">
+          <div class="eyebrow">Indicadores macroeconómicos · México</div>
+          <h1>Indicadores macroeconómicos de México</h1>
+          <p class="lede">Seguimiento de los principales indicadores macroeconómicos de México con información oficial.</p>
+        </div>
+        <div class="header-side">
+          <div class="meta-pill"><span class="k">Última actualización</span><span class="v" id="meta-update">—</span></div>
+          <div class="meta-pill"><span class="k">Periodo de referencia</span><span class="v" id="meta-period">—</span></div>
+          <button class="btn btn-primary" id="btn-excel" type="button"><span aria-hidden="true">↓</span> Descargar Excel</button>
         </div>
       </div>
     </header>
 
-    <nav class="tabs" id="tabs" role="tablist" aria-label="Secciones del tablero"></nav>
+    <nav class="tabs" id="tabs" role="tablist" aria-label="Indicadores y secciones"></nav>
+
+    <div class="print-header" aria-hidden="true">
+      <div class="ph-org">Indicadores macroeconómicos de México</div>
+      <div class="ph-sub">Ficha de indicador · información oficial (INEGI / Banco de México)</div>
+    </div>
 
     <main id="main">
       <div id="status">Cargando indicadores…</div>
@@ -35,9 +41,13 @@
     </main>
 
     <footer class="site-footer">
-      <div><strong>Fuentes:</strong> INEGI (SCNM, IGAE, IMAI, INPC, ENOE, Balanza comercial, Consumo privado), Banco de México (SIE) y Secretaría de Economía (RNIE). Comparativo internacional: OCDE.</div>
-      <div class="mono">Las fechas de actualización siguen el calendario de difusión de cada indicador. Cifras sujetas a revisión oficial. Elaborado para consulta ejecutiva; no constituye asesoría de inversión.</div>
+      <div><strong>Fuentes:</strong> INEGI (SCNM, IGAE, IMAI, INPC, ENOE, Balanza comercial, IMCP, IMFBCF, IOAE, EMIM), Secretaría de Economía (RNIE) y Banco de México (indicadores complementarios).</div>
+      <div class="mono">Las fechas de actualización siguen el calendario de difusión de cada indicador. Cifras sujetas a revisión oficial.</div>
     </footer>
+
+    <div class="print-footer" aria-hidden="true">
+      Elaborado con información oficial. Documento de consulta; no constituye asesoría de inversión.
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
