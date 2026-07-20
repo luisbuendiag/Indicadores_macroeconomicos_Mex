@@ -1,0 +1,124 @@
+{
+  "_comment": "Perfil V3 de indicadores. Define el orden principal/complementario, el token requerido por fuente y los scaffolds (indicadores sin observaciones cargadas todavía). El pipeline (build_data.py -> lib_data.apply_profile) usa este archivo para asignar estados honestos sin inventar cifras.",
+  "principal": ["PIB", "PIBSEC", "IGAE", "IMAI", "BALANZA", "DESOCUP", "INPC", "CONSUMO", "IMFBCF", "IOAE", "EMIM"],
+  "complementario": ["IED", "TIPOCAMBIO", "TASA", "RESERVAS"],
+  "profile": {
+    "PIB": { "requiere_token": "INEGI", "serie_confirmada": false, "clasificacion": "principal" },
+    "PIBSEC": { "requiere_token": "INEGI", "serie_confirmada": false, "clasificacion": "principal" },
+    "IGAE": { "requiere_token": "INEGI", "serie_confirmada": false, "clasificacion": "principal" },
+    "IMAI": { "requiere_token": "INEGI", "serie_confirmada": false, "clasificacion": "principal" },
+    "BALANZA": { "requiere_token": "INEGI", "serie_confirmada": false, "clasificacion": "principal" },
+    "DESOCUP": { "requiere_token": "INEGI", "serie_confirmada": false, "clasificacion": "principal" },
+    "INPC": { "requiere_token": "INEGI", "serie_confirmada": false, "clasificacion": "principal" },
+    "CONSUMO": { "requiere_token": "INEGI", "serie_confirmada": false, "clasificacion": "principal" },
+    "IED": { "requiere_token": null, "serie_confirmada": false, "clasificacion": "complementario" }
+  },
+  "scaffolds": {
+    "IMFBCF": {
+      "nombre": "Indicador Mensual de la Formación Bruta de Capital Fijo",
+      "descripcion": "Mide la evolución mensual de la inversión fija bruta (maquinaria y equipo, y construcción) en la economía. Es un indicador adelantado de la capacidad productiva futura.",
+      "frecuencia": "Mensual",
+      "unidad": "Índice base 2018=100",
+      "ajuste_estacional": "Serie original",
+      "grupo": "inversion",
+      "publicacion": "Aproximadamente 55 días tras el cierre del mes",
+      "proximo": "Por confirmar con el calendario oficial de difusión",
+      "requiere_token": "INEGI",
+      "serie_confirmada": false,
+      "clasificacion": "principal",
+      "fuente": { "nombre": "INEGI", "link": "https://www.inegi.org.mx/temas/inversionfija/", "metodo": "INEGI BIE API", "serie": null },
+      "columns": [
+        { "label": "Índice (inversión)", "index": 0, "fmt": "idx" },
+        { "label": "Var. mensual (%)", "index": 1, "fmt": "pct-frac" }
+      ]
+    },
+    "IOAE": {
+      "nombre": "Indicador Oportuno de la Actividad Económica",
+      "descripcion": "Estimación anticipada (nowcast) de la variación mensual del IGAE, con un intervalo de confianza. Ofrece una lectura temprana de la actividad económica antes de la cifra definitiva.",
+      "frecuencia": "Mensual",
+      "unidad": "Variación mensual estimada (%)",
+      "ajuste_estacional": "Serie desestacionalizada",
+      "grupo": "actividad",
+      "publicacion": "Fin de mes del periodo estimado",
+      "proximo": "Por confirmar con el calendario oficial de difusión",
+      "requiere_token": "INEGI",
+      "serie_confirmada": false,
+      "clasificacion": "principal",
+      "fuente": { "nombre": "INEGI", "link": "https://www.inegi.org.mx/investigacion/ioae/", "metodo": "INEGI (comunicado / BIE)", "serie": null },
+      "columns": [
+        { "label": "Estimación puntual (%)", "index": 0, "fmt": "pct-raw" },
+        { "label": "Límite inferior (%)", "index": 1, "fmt": "pct-raw" },
+        { "label": "Límite superior (%)", "index": 2, "fmt": "pct-raw" }
+      ]
+    },
+    "EMIM": {
+      "nombre": "Encuesta Mensual de la Industria Manufacturera",
+      "descripcion": "Registra la evolución mensual de la producción, el personal ocupado, las horas trabajadas y las remuneraciones del sector manufacturero.",
+      "frecuencia": "Mensual",
+      "unidad": "Índice",
+      "ajuste_estacional": "Serie original",
+      "grupo": "industria",
+      "publicacion": "Aproximadamente 40 días tras el cierre del mes",
+      "proximo": "Por confirmar con el calendario oficial de difusión",
+      "requiere_token": "INEGI",
+      "serie_confirmada": false,
+      "clasificacion": "principal",
+      "fuente": { "nombre": "INEGI", "link": "https://www.inegi.org.mx/programas/emim/", "metodo": "INEGI BIE API", "serie": null },
+      "columns": [
+        { "label": "Producción (índice)", "index": 0, "fmt": "idx" },
+        { "label": "Var. mensual (%)", "index": 1, "fmt": "pct-frac" }
+      ]
+    },
+    "TIPOCAMBIO": {
+      "nombre": "Tipo de cambio FIX",
+      "descripcion": "Tipo de cambio de referencia (peso por dólar) determinado por el Banco de México, utilizado para solventar obligaciones denominadas en dólares.",
+      "frecuencia": "Diaria",
+      "unidad": "Pesos por dólar",
+      "ajuste_estacional": "No aplica",
+      "grupo": "financiero",
+      "publicacion": "Días hábiles",
+      "proximo": "Siguiente día hábil",
+      "requiere_token": "BANXICO",
+      "serie_confirmada": false,
+      "clasificacion": "complementario",
+      "fuente": { "nombre": "Banco de México", "link": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do", "metodo": "Banxico SIE API", "serie": null },
+      "columns": [
+        { "label": "Tipo de cambio FIX", "index": 0, "fmt": "fx" }
+      ]
+    },
+    "TASA": {
+      "nombre": "Tasa de interés objetivo",
+      "descripcion": "Objetivo para la Tasa de Interés Interbancaria a un día fijado por la Junta de Gobierno del Banco de México como principal instrumento de política monetaria.",
+      "frecuencia": "Por reunión",
+      "unidad": "Porcentaje anual",
+      "ajuste_estacional": "No aplica",
+      "grupo": "financiero",
+      "publicacion": "Días de anuncio de política monetaria",
+      "proximo": "Siguiente reunión programada",
+      "requiere_token": "BANXICO",
+      "serie_confirmada": false,
+      "clasificacion": "complementario",
+      "fuente": { "nombre": "Banco de México", "link": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html", "metodo": "Banxico SIE API", "serie": null },
+      "columns": [
+        { "label": "Tasa objetivo (%)", "index": 0, "fmt": "pct-raw" }
+      ]
+    },
+    "RESERVAS": {
+      "nombre": "Reservas internacionales",
+      "descripcion": "Activos internacionales del Banco de México disponibles para atender obligaciones y estabilizar el mercado cambiario.",
+      "frecuencia": "Semanal",
+      "unidad": "Millones de dólares",
+      "ajuste_estacional": "No aplica",
+      "grupo": "financiero",
+      "publicacion": "Semanal (martes)",
+      "proximo": "Siguiente publicación semanal",
+      "requiere_token": "BANXICO",
+      "serie_confirmada": false,
+      "clasificacion": "complementario",
+      "fuente": { "nombre": "Banco de México", "link": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/", "metodo": "Banxico SIE API", "serie": null },
+      "columns": [
+        { "label": "Reservas internacionales", "index": 0, "fmt": "usd" }
+      ]
+    }
+  }
+}

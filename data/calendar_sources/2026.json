@@ -1,0 +1,164 @@
+{
+  "year": 2026,
+  "fuente": "Calendario de publicaciones económicas 2026 (INEGI). Fechas oficiales de difusión.",
+  "actualizado": "2026-07-16",
+  "entries": [
+    {
+      "clave": "PIB",
+      "indicador": "PIB — Estimación oportuna",
+      "producto": "Estimación Oportuna del Producto Interno Bruto Trimestral (EOPIBT)",
+      "institucion": "INEGI",
+      "frecuencia": "Trimestral",
+      "publicaciones": [
+        { "fecha": "30 de julio de 2026", "periodo": "2° trimestre 2026" },
+        { "fecha": "30 de octubre de 2026", "periodo": "3er trimestre 2026" }
+      ]
+    },
+    {
+      "clave": "PIBSEC",
+      "indicador": "PIB Sectorial",
+      "producto": "PIB trimestral por actividad económica, precios constantes",
+      "institucion": "INEGI",
+      "frecuencia": "Trimestral",
+      "publicaciones": [
+        { "fecha": "24 de agosto de 2026", "periodo": "2° trimestre 2026" },
+        { "fecha": "23 de noviembre de 2026", "periodo": "3er trimestre 2026" }
+      ]
+    },
+    {
+      "clave": "IGAE",
+      "indicador": "IGAE",
+      "producto": "Indicador Global de la Actividad Económica (IGAE)",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "publicaciones": [
+        { "fecha": "23 de julio de 2026", "periodo": "Mayo 2026" },
+        { "fecha": "24 de agosto de 2026", "periodo": "Junio 2026" },
+        { "fecha": "24 de septiembre de 2026", "periodo": "Julio 2026" },
+        { "fecha": "23 de octubre de 2026", "periodo": "Agosto 2026" },
+        { "fecha": "23 de noviembre de 2026", "periodo": "Septiembre 2026" },
+        { "fecha": "23 de diciembre de 2026", "periodo": "Octubre 2026" }
+      ]
+    },
+    {
+      "clave": "IMAI",
+      "indicador": "IMAI",
+      "producto": "Indicador Mensual de la Actividad Industrial (IMAI)",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "publicaciones": [
+        { "fecha": "10 de julio de 2026", "periodo": "Mayo 2026" },
+        { "fecha": "11 de agosto de 2026", "periodo": "Junio 2026" },
+        { "fecha": "11 de septiembre de 2026", "periodo": "Julio 2026" },
+        { "fecha": "12 de octubre de 2026", "periodo": "Agosto 2026" },
+        { "fecha": "11 de noviembre de 2026", "periodo": "Septiembre 2026" },
+        { "fecha": "11 de diciembre de 2026", "periodo": "Octubre 2026" }
+      ]
+    },
+    {
+      "clave": "BALANZA",
+      "indicador": "Balanza comercial",
+      "producto": "Balanza Comercial de Mercancías de México, información oportuna",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "publicaciones": [
+        { "fecha": "27 de julio de 2026", "periodo": "Junio 2026" },
+        { "fecha": "27 de agosto de 2026", "periodo": "Julio 2026" },
+        { "fecha": "28 de septiembre de 2026", "periodo": "Agosto 2026" },
+        { "fecha": "27 de octubre de 2026", "periodo": "Septiembre 2026" },
+        { "fecha": "27 de noviembre de 2026", "periodo": "Octubre 2026" },
+        { "fecha": "23 de diciembre de 2026", "periodo": "Noviembre 2026" }
+      ]
+    },
+    {
+      "clave": "DESOCUP",
+      "indicador": "Tasa de desocupación",
+      "producto": "ENOE / Indicadores de Ocupación y Empleo",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "publicaciones": [
+        { "fecha": "24 de julio de 2026", "periodo": "Junio 2026" },
+        { "fecha": "25 de agosto de 2026", "periodo": "Julio 2026" },
+        { "fecha": "25 de septiembre de 2026", "periodo": "Agosto 2026" },
+        { "fecha": "22 de octubre de 2026", "periodo": "Septiembre 2026" },
+        { "fecha": "26 de noviembre de 2026", "periodo": "Octubre 2026" },
+        { "fecha": "24 de diciembre de 2026", "periodo": "Noviembre 2026" }
+      ]
+    },
+    {
+      "clave": "INPC",
+      "indicador": "INPC / Inflación",
+      "producto": "Índice Nacional de Precios al Consumidor, 2ª quincena y mensual",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "publicaciones": [
+        { "fecha": "09 de julio de 2026", "periodo": "Junio 2026" },
+        { "fecha": "07 de agosto de 2026", "periodo": "Julio 2026" },
+        { "fecha": "09 de septiembre de 2026", "periodo": "Agosto 2026" },
+        { "fecha": "08 de octubre de 2026", "periodo": "Septiembre 2026" },
+        { "fecha": "09 de noviembre de 2026", "periodo": "Octubre 2026" },
+        { "fecha": "09 de diciembre de 2026", "periodo": "Noviembre 2026" }
+      ]
+    },
+    {
+      "clave": "CONSUMO",
+      "indicador": "Consumo privado",
+      "producto": "Indicador Mensual del Consumo Privado (IMCP)",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "publicaciones": [
+        { "fecha": "06 de julio de 2026", "periodo": "Abril 2026" },
+        { "fecha": "05 de agosto de 2026", "periodo": "Mayo 2026" },
+        { "fecha": "04 de septiembre de 2026", "periodo": "Junio 2026" },
+        { "fecha": "05 de octubre de 2026", "periodo": "Julio 2026" },
+        { "fecha": "05 de noviembre de 2026", "periodo": "Agosto 2026" },
+        { "fecha": "04 de diciembre de 2026", "periodo": "Septiembre 2026" }
+      ]
+    },
+    {
+      "clave": "IMFBCF",
+      "indicador": "IMFBCF",
+      "producto": "Indicador Mensual de la Formación Bruta de Capital Fijo (IMFBCF)",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "publicaciones": [
+        { "fecha": "06 de julio de 2026", "periodo": "Abril 2026" },
+        { "fecha": "05 de agosto de 2026", "periodo": "Mayo 2026" },
+        { "fecha": "04 de septiembre de 2026", "periodo": "Junio 2026" },
+        { "fecha": "05 de octubre de 2026", "periodo": "Julio 2026" },
+        { "fecha": "05 de noviembre de 2026", "periodo": "Agosto 2026" },
+        { "fecha": "04 de diciembre de 2026", "periodo": "Septiembre 2026" }
+      ]
+    },
+    {
+      "clave": "IOAE",
+      "indicador": "IOAE",
+      "producto": "Indicador Oportuno de la Actividad Económica (IOAE)",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "publicaciones": [
+        { "fecha": "21 de julio de 2026", "periodo": "Junio 2026" },
+        { "fecha": "20 de agosto de 2026", "periodo": "Julio 2026" },
+        { "fecha": "22 de septiembre de 2026", "periodo": "Agosto 2026" },
+        { "fecha": "20 de octubre de 2026", "periodo": "Septiembre 2026" },
+        { "fecha": "19 de noviembre de 2026", "periodo": "Octubre 2026" },
+        { "fecha": "18 de diciembre de 2026", "periodo": "Noviembre 2026" }
+      ]
+    },
+    {
+      "clave": "EMIM",
+      "indicador": "EMIM",
+      "producto": "Encuesta Mensual de la Industria Manufacturera (EMIM) — Indicadores del Sector Manufacturero",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "publicaciones": [
+        { "fecha": "16 de julio de 2026", "periodo": "Mayo 2026" },
+        { "fecha": "17 de agosto de 2026", "periodo": "Junio 2026" },
+        { "fecha": "17 de septiembre de 2026", "periodo": "Julio 2026" },
+        { "fecha": "16 de octubre de 2026", "periodo": "Agosto 2026" },
+        { "fecha": "17 de noviembre de 2026", "periodo": "Septiembre 2026" },
+        { "fecha": "16 de diciembre de 2026", "periodo": "Octubre 2026" }
+      ]
+    }
+  ]
+}

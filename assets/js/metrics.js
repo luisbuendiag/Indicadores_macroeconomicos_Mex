@@ -88,16 +88,17 @@ export function computeKPI(ind) {
   const varInfo = computeVar(ind, cfg, vals, lastI, prevI);
   let maxI = idxs[0], minI = idxs[0];
   idxs.forEach((i) => { if (vals[i] > vals[maxI]) maxI = i; if (vals[i] < vals[minI]) minI = i; });
-  // Semáforo: verde/ámbar/rojo según signo de variación y "goodSign".
-  let semaforo = "neutral";
-  if (varInfo.mag != null && cfg.goodSign !== 0) {
-    const good = cfg.goodSign > 0 ? varInfo.mag > 0.05 : varInfo.mag < -0.05;
-    const bad = cfg.goodSign > 0 ? varInfo.mag < -0.05 : varInfo.mag > 0.05;
-    semaforo = good ? "bueno" : (bad ? "malo" : "estable");
-  } else if (varInfo.mag != null) {
-    semaforo = "estable";
-  }
+  // Evaluación del movimiento SOLO cuando es económicamente claro.
+  // assess: "growth" (subir favorable) | "unemployment" (bajar favorable) | "neutral".
+  const assess = cfg.assess || (cfg.goodSign > 0 ? "growth" : cfg.goodSign < 0 ? "unemployment" : "neutral");
+  const dir = varInfo.mag == null ? "flat" : (varInfo.mag > 0.05 ? "up" : (varInfo.mag < -0.05 ? "down" : "flat"));
+  let assessment = "neutral"; // favorable | adverso | neutral
+  if (varInfo.mag != null && assess === "growth") assessment = dir === "up" ? "favorable" : (dir === "down" ? "adverso" : "neutral");
+  else if (varInfo.mag != null && assess === "unemployment") assessment = dir === "down" ? "favorable" : (dir === "up" ? "adverso" : "neutral");
+  // semáforo derivado (para el punto de color): favorable=bueno, adverso=malo, resto=neutral/estable.
+  let semaforo = assessment === "favorable" ? "bueno" : (assessment === "adverso" ? "malo" : (varInfo.mag == null ? "neutral" : "estable"));
   return {
+    assessment, dir,
     ultimoFmt: fmtVal(ultimo, cfg.valFmt), ultimoRaw: ultimo, ultimoP: P[lastI],
     varText: varInfo.text, varMag: varInfo.mag, pos: varInfo.pos,
     varColor: varInfo.pos ? COLORS.GREEN : COLORS.CRIMSON,
@@ -126,6 +127,23 @@ function varAt(ind, cfg, vals, idx) {
   if (cfg.varMode === "pp-prev") { const b = vals[idx - 1]; if (a == null || b == null) return null; let d = a - b; if (cfg.valFmt === "pct-frac") d *= 100; return d; }
   if (cfg.varMode === "abs-prev") { const b = vals[idx - 1]; if (a == null || b == null) return null; return a - b; }
   return null;
+}
+
+// Variación anual (interanual) del nivel de la serie primaria, para la matriz.
+// Devuelve {text,pos,mag} o null si no es aplicable/insuficiente historia.
+export function annualVar(ind, k) {
+  const cfg = KPICFG[ind.key];
+  // No se calcula variación anual del nivel cuando: (a) el valor ya es una tasa,
+  // (b) la variación primaria ya es interanual (evita duplicar), o
+  // (c) la interanual del saldo no tiene lectura económica clara.
+  if (["INPC", "TASA", "DESOCUP", "IOAE", "PIB", "IED", "BALANZA"].includes(ind.key)) return null;
+  const vals = k.series;
+  const lag = ind.frecuencia === "Trimestral" ? 4 : 12;
+  const cur = vals[k.lastI];
+  const base = vals[k.lastI - lag];
+  if (cur == null || base == null || base === 0) return null;
+  const d = (cur - base) / Math.abs(base) * 100;
+  return { mag: d, pos: d >= 0, text: (d >= 0 ? "+" : "") + d.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%" };
 }
 
 // Genera 2-3 bullets de análisis determinista, auditables.
@@ -204,7 +222,7 @@ export function analysis(ind, k) {
     const sup = k.ultimoRaw >= 0;
     extra = ` El saldo del último mes corresponde a un ${sup ? "superávit comercial, con exportaciones por encima de las importaciones" : "déficit comercial, con importaciones por encima de las exportaciones"}.`;
   } else if (ind.key === "DESOCUP") {
-    extra = " En perspectiva, la tasa se mantiene en niveles históricamente bajos para la economía mexicana y por debajo del promedio de desempleo de la OCDE (4.9%), lo que ubica a México entre las economías con menor tasa de desocupación del organismo.";
+    extra = " La tasa se mantiene en niveles históricamente bajos para la economía mexicana. Su lectura debe acompañarse de la población ocupada y de las condiciones de informalidad, que la tasa de desocupación por sí sola no captura.";
   }
   return [b1, b2 + extra];
 }

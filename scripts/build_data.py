@@ -68,6 +68,9 @@ def run(offline: bool = False) -> int:
     # Overrides de calidad
     log["changes"].extend(L.apply_overrides(payload))
 
+    # Perfil V3: scaffolds, orden principal/complementario y estados honestos.
+    log["changes"].extend(L.apply_profile(payload))
+
     payload["meta"]["generated_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
 
     # Validación con datos candidatos en memoria (archivo temporal)

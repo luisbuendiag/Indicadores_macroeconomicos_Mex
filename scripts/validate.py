@@ -51,10 +51,18 @@ def validate(payload: dict):
     errors, warnings = [], []
     inds = payload["indicators"]
 
+    # Estados en los que un indicador PUEDE no tener observaciones todavía
+    # (scaffolds a la espera de token/serie). No bloquean la publicación.
+    PENDING_STATES = {"pendiente de token", "pendiente de confirmar serie",
+                      "no disponible", "error de fuente"}
+
     # 1) Estructura y fechas
     for key, ind in inds.items():
         if not ind.get("observations"):
-            errors.append(f"[{key}] sin observaciones.")
+            if ind.get("estado") in PENDING_STATES or ind.get("origen_dato") == "pendiente":
+                warnings.append(f"[{key}] sin observaciones (estado: {ind.get('estado', 'no disponible')}).")
+            else:
+                errors.append(f"[{key}] sin observaciones.")
             continue
         for o in ind["observations"]:
             if not PERIOD_RE.match(o["period"] or ""):

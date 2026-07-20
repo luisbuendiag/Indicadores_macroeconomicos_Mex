@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-20T15:02:56+00:00",
+    "generated_at": "2026-07-20T15:14:35+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -17,10 +17,16 @@
     "IGAE",
     "IMAI",
     "BALANZA",
-    "IED",
     "DESOCUP",
     "INPC",
-    "CONSUMO"
+    "CONSUMO",
+    "IMFBCF",
+    "IOAE",
+    "EMIM",
+    "IED",
+    "TIPOCAMBIO",
+    "TASA",
+    "RESERVAS"
   ],
   "indicators": {
     "PIB": {
@@ -206,7 +212,15 @@
       "last_observation": "1T-26 P",
       "last_updated": "2026-07-16",
       "last_checked": "2026-07-16",
-      "source_origin": "legacy_dashboard"
+      "source_origin": "legacy_dashboard",
+      "requiere_token": "INEGI",
+      "serie_confirmada": false,
+      "clasificacion": "principal",
+      "estado": "dato de respaldo vigente",
+      "origen_dato": "respaldo",
+      "fecha_publicacion": "Aproximadamente 50 días después de haber concluido el trimestre",
+      "periodo_referencia": "1T-26 P",
+      "fecha_consulta": "2026-07-16"
     },
     "PIBSEC": {
       "key": "PIBSEC",
@@ -371,7 +385,15 @@
       "last_observation": "1T-26 P",
       "last_updated": "2026-07-16",
       "last_checked": "2026-07-16",
-      "source_origin": "legacy_dashboard"
+      "source_origin": "legacy_dashboard",
+      "requiere_token": "INEGI",
+      "serie_confirmada": false,
+      "clasificacion": "principal",
+      "estado": "dato de respaldo vigente",
+      "origen_dato": "respaldo",
+      "fecha_publicacion": "Aproximadamente 50 días después de haber concluido el trimestre",
+      "periodo_referencia": "1T-26 P",
+      "fecha_consulta": "2026-07-16"
     },
     "IGAE": {
       "key": "IGAE",
@@ -511,7 +533,15 @@
       "last_observation": "Abr 26 P",
       "last_updated": "2026-07-16",
       "last_checked": "2026-07-16",
-      "source_origin": "legacy_dashboard"
+      "source_origin": "legacy_dashboard",
+      "requiere_token": "INEGI",
+      "serie_confirmada": false,
+      "clasificacion": "principal",
+      "estado": "dato de respaldo vigente",
+      "origen_dato": "respaldo",
+      "fecha_publicacion": "Aproximadamente 55 días después de haber concluido el mes",
+      "periodo_referencia": "Abr 26 P",
+      "fecha_consulta": "2026-07-16"
     },
     "IMAI": {
       "key": "IMAI",
@@ -640,38 +670,16 @@
           "column": 0,
           "status": "revision",
           "reason": "Valor idéntico al de Consumo Privado (104.4568568234) en el mismo mes: duplicado sospechoso entre series no relacionadas. Pendiente de verificación contra INEGI (BIE) una vez cargado INEGI_TOKEN."
-        },
-        {
-          "period": "Feb 26 P",
-          "column": 0,
-          "status": "revision",
-          "reason": "Valor idéntico al de Consumo Privado (104.4568568234) en el mismo mes: duplicado sospechoso entre series no relacionadas. Pendiente de verificación contra INEGI (BIE) una vez cargado INEGI_TOKEN."
-        },
-        {
-          "period": "Feb 26 P",
-          "column": 0,
-          "status": "revision",
-          "reason": "Valor idéntico al de Consumo Privado (104.4568568234) en el mismo mes: duplicado sospechoso entre series no relacionadas. Pendiente de verificación contra INEGI (BIE) una vez cargado INEGI_TOKEN."
-        },
-        {
-          "period": "Feb 26 P",
-          "column": 0,
-          "status": "revision",
-          "reason": "Valor idéntico al de Consumo Privado (104.4568568234) en el mismo mes: duplicado sospechoso entre series no relacionadas. Pendiente de verificación contra INEGI (BIE) una vez cargado INEGI_TOKEN."
-        },
-        {
-          "period": "Feb 26 P",
-          "column": 0,
-          "status": "revision",
-          "reason": "Valor idéntico al de Consumo Privado (104.4568568234) en el mismo mes: duplicado sospechoso entre series no relacionadas. Pendiente de verificación contra INEGI (BIE) una vez cargado INEGI_TOKEN."
-        },
-        {
-          "period": "Feb 26 P",
-          "column": 0,
-          "status": "revision",
-          "reason": "Valor idéntico al de Consumo Privado (104.4568568234) en el mismo mes: duplicado sospechoso entre series no relacionadas. Pendiente de verificación contra INEGI (BIE) una vez cargado INEGI_TOKEN."
         }
-      ]
+      ],
+      "requiere_token": "INEGI",
+      "serie_confirmada": false,
+      "clasificacion": "principal",
+      "estado": "dato en revisión",
+      "origen_dato": "respaldo",
+      "fecha_publicacion": null,
+      "periodo_referencia": "Abr 26 P",
+      "fecha_consulta": "2026-07-16"
     },
     "CONSUMO": {
       "key": "CONSUMO",
@@ -801,38 +809,16 @@
           "column": 0,
           "status": "revision",
           "reason": "Valor idéntico al de IMAI (104.4568568234) en el mismo mes: duplicado sospechoso entre series no relacionadas. Pendiente de verificación contra INEGI (BIE) una vez cargado INEGI_TOKEN."
-        },
-        {
-          "period": "Feb 26 R",
-          "column": 0,
-          "status": "revision",
-          "reason": "Valor idéntico al de IMAI (104.4568568234) en el mismo mes: duplicado sospechoso entre series no relacionadas. Pendiente de verificación contra INEGI (BIE) una vez cargado INEGI_TOKEN."
-        },
-        {
-          "period": "Feb 26 R",
-          "column": 0,
-          "status": "revision",
-          "reason": "Valor idéntico al de IMAI (104.4568568234) en el mismo mes: duplicado sospechoso entre series no relacionadas. Pendiente de verificación contra INEGI (BIE) una vez cargado INEGI_TOKEN."
-        },
-        {
-          "period": "Feb 26 R",
-          "column": 0,
-          "status": "revision",
-          "reason": "Valor idéntico al de IMAI (104.4568568234) en el mismo mes: duplicado sospechoso entre series no relacionadas. Pendiente de verificación contra INEGI (BIE) una vez cargado INEGI_TOKEN."
-        },
-        {
-          "period": "Feb 26 R",
-          "column": 0,
-          "status": "revision",
-          "reason": "Valor idéntico al de IMAI (104.4568568234) en el mismo mes: duplicado sospechoso entre series no relacionadas. Pendiente de verificación contra INEGI (BIE) una vez cargado INEGI_TOKEN."
-        },
-        {
-          "period": "Feb 26 R",
-          "column": 0,
-          "status": "revision",
-          "reason": "Valor idéntico al de IMAI (104.4568568234) en el mismo mes: duplicado sospechoso entre series no relacionadas. Pendiente de verificación contra INEGI (BIE) una vez cargado INEGI_TOKEN."
         }
-      ]
+      ],
+      "requiere_token": "INEGI",
+      "serie_confirmada": false,
+      "clasificacion": "principal",
+      "estado": "dato en revisión",
+      "origen_dato": "respaldo",
+      "fecha_publicacion": "Aproximadamente 21 días después de haber concluido el mes",
+      "periodo_referencia": "Mar 26 P",
+      "fecha_consulta": "2026-07-16"
     },
     "IED": {
       "key": "IED",
@@ -1068,7 +1054,15 @@
       "last_observation": "1T-26",
       "last_updated": "2026-07-16",
       "last_checked": "2026-07-16",
-      "source_origin": "legacy_dashboard"
+      "source_origin": "legacy_dashboard",
+      "requiere_token": null,
+      "serie_confirmada": false,
+      "clasificacion": "complementario",
+      "estado": "dato de respaldo vigente",
+      "origen_dato": "respaldo",
+      "fecha_publicacion": "Aproximadamente 45 días posteriores al cierre del trimestre",
+      "periodo_referencia": "1T-26",
+      "fecha_consulta": "2026-07-16"
     },
     "DESOCUP": {
       "key": "DESOCUP",
@@ -1172,7 +1166,15 @@
       "last_observation": "May 26",
       "last_updated": "2026-07-16",
       "last_checked": "2026-07-16",
-      "source_origin": "legacy_dashboard"
+      "source_origin": "legacy_dashboard",
+      "requiere_token": "INEGI",
+      "serie_confirmada": false,
+      "clasificacion": "principal",
+      "estado": "dato de respaldo vigente",
+      "origen_dato": "respaldo",
+      "fecha_publicacion": "Aproximadamente 25-30 días después de haber concluido el mes",
+      "periodo_referencia": "May 26",
+      "fecha_consulta": "2026-07-16"
     },
     "INPC": {
       "key": "INPC",
@@ -1310,7 +1312,15 @@
       "last_observation": "May 26",
       "last_updated": "2026-07-16",
       "last_checked": "2026-07-16",
-      "source_origin": "legacy_dashboard"
+      "source_origin": "legacy_dashboard",
+      "requiere_token": "INEGI",
+      "serie_confirmada": false,
+      "clasificacion": "principal",
+      "estado": "dato de respaldo vigente",
+      "origen_dato": "respaldo",
+      "fecha_publicacion": null,
+      "periodo_referencia": "May 26",
+      "fecha_consulta": "2026-07-16"
     },
     "BALANZA": {
       "key": "BALANZA",
@@ -1523,7 +1533,251 @@
       "last_observation": "May 26 O",
       "last_updated": "2026-07-16",
       "last_checked": "2026-07-16",
-      "source_origin": "legacy_dashboard"
+      "source_origin": "legacy_dashboard",
+      "requiere_token": "INEGI",
+      "serie_confirmada": false,
+      "clasificacion": "principal",
+      "estado": "dato de respaldo vigente",
+      "origen_dato": "respaldo",
+      "fecha_publicacion": "Aproximadamente 30 a 45 días posteriores al cierre del mes",
+      "periodo_referencia": "May 26 O",
+      "fecha_consulta": "2026-07-16"
+    },
+    "IMFBCF": {
+      "key": "IMFBCF",
+      "nombre": "Indicador Mensual de la Formación Bruta de Capital Fijo",
+      "descripcion": "Mide la evolución mensual de la inversión fija bruta (maquinaria y equipo, y construcción) en la economía. Es un indicador adelantado de la capacidad productiva futura.",
+      "frecuencia": "Mensual",
+      "unidad": "Índice base 2018=100",
+      "ajuste_estacional": "Serie original",
+      "grupo": "inversion",
+      "publicacion": "Aproximadamente 55 días tras el cierre del mes",
+      "proximo": "Por confirmar con el calendario oficial de difusión",
+      "fuente": {
+        "nombre": "INEGI",
+        "link": "https://www.inegi.org.mx/temas/inversionfija/",
+        "metodo": "INEGI BIE API",
+        "serie": null
+      },
+      "columns": [
+        {
+          "label": "Índice (inversión)",
+          "index": 0,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. mensual (%)",
+          "index": 1,
+          "fmt": "pct-frac"
+        }
+      ],
+      "observations": [],
+      "last_observation": null,
+      "last_updated": null,
+      "last_checked": null,
+      "requiere_token": "INEGI",
+      "serie_confirmada": false,
+      "clasificacion": "principal",
+      "estado": "pendiente de token",
+      "origen_dato": "pendiente",
+      "fecha_publicacion": "Aproximadamente 55 días tras el cierre del mes",
+      "periodo_referencia": null,
+      "fecha_consulta": null
+    },
+    "IOAE": {
+      "key": "IOAE",
+      "nombre": "Indicador Oportuno de la Actividad Económica",
+      "descripcion": "Estimación anticipada (nowcast) de la variación mensual del IGAE, con un intervalo de confianza. Ofrece una lectura temprana de la actividad económica antes de la cifra definitiva.",
+      "frecuencia": "Mensual",
+      "unidad": "Variación mensual estimada (%)",
+      "ajuste_estacional": "Serie desestacionalizada",
+      "grupo": "actividad",
+      "publicacion": "Fin de mes del periodo estimado",
+      "proximo": "Por confirmar con el calendario oficial de difusión",
+      "fuente": {
+        "nombre": "INEGI",
+        "link": "https://www.inegi.org.mx/investigacion/ioae/",
+        "metodo": "INEGI (comunicado / BIE)",
+        "serie": null
+      },
+      "columns": [
+        {
+          "label": "Estimación puntual (%)",
+          "index": 0,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Límite inferior (%)",
+          "index": 1,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Límite superior (%)",
+          "index": 2,
+          "fmt": "pct-raw"
+        }
+      ],
+      "observations": [],
+      "last_observation": null,
+      "last_updated": null,
+      "last_checked": null,
+      "requiere_token": "INEGI",
+      "serie_confirmada": false,
+      "clasificacion": "principal",
+      "estado": "pendiente de token",
+      "origen_dato": "pendiente",
+      "fecha_publicacion": "Fin de mes del periodo estimado",
+      "periodo_referencia": null,
+      "fecha_consulta": null
+    },
+    "EMIM": {
+      "key": "EMIM",
+      "nombre": "Encuesta Mensual de la Industria Manufacturera",
+      "descripcion": "Registra la evolución mensual de la producción, el personal ocupado, las horas trabajadas y las remuneraciones del sector manufacturero.",
+      "frecuencia": "Mensual",
+      "unidad": "Índice",
+      "ajuste_estacional": "Serie original",
+      "grupo": "industria",
+      "publicacion": "Aproximadamente 40 días tras el cierre del mes",
+      "proximo": "Por confirmar con el calendario oficial de difusión",
+      "fuente": {
+        "nombre": "INEGI",
+        "link": "https://www.inegi.org.mx/programas/emim/",
+        "metodo": "INEGI BIE API",
+        "serie": null
+      },
+      "columns": [
+        {
+          "label": "Producción (índice)",
+          "index": 0,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. mensual (%)",
+          "index": 1,
+          "fmt": "pct-frac"
+        }
+      ],
+      "observations": [],
+      "last_observation": null,
+      "last_updated": null,
+      "last_checked": null,
+      "requiere_token": "INEGI",
+      "serie_confirmada": false,
+      "clasificacion": "principal",
+      "estado": "pendiente de token",
+      "origen_dato": "pendiente",
+      "fecha_publicacion": "Aproximadamente 40 días tras el cierre del mes",
+      "periodo_referencia": null,
+      "fecha_consulta": null
+    },
+    "TIPOCAMBIO": {
+      "key": "TIPOCAMBIO",
+      "nombre": "Tipo de cambio FIX",
+      "descripcion": "Tipo de cambio de referencia (peso por dólar) determinado por el Banco de México, utilizado para solventar obligaciones denominadas en dólares.",
+      "frecuencia": "Diaria",
+      "unidad": "Pesos por dólar",
+      "ajuste_estacional": "No aplica",
+      "grupo": "financiero",
+      "publicacion": "Días hábiles",
+      "proximo": "Siguiente día hábil",
+      "fuente": {
+        "nombre": "Banco de México",
+        "link": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
+        "metodo": "Banxico SIE API",
+        "serie": null
+      },
+      "columns": [
+        {
+          "label": "Tipo de cambio FIX",
+          "index": 0,
+          "fmt": "fx"
+        }
+      ],
+      "observations": [],
+      "last_observation": null,
+      "last_updated": null,
+      "last_checked": null,
+      "requiere_token": "BANXICO",
+      "serie_confirmada": false,
+      "clasificacion": "complementario",
+      "estado": "pendiente de token",
+      "origen_dato": "pendiente",
+      "fecha_publicacion": "Días hábiles",
+      "periodo_referencia": null,
+      "fecha_consulta": null
+    },
+    "TASA": {
+      "key": "TASA",
+      "nombre": "Tasa de interés objetivo",
+      "descripcion": "Objetivo para la Tasa de Interés Interbancaria a un día fijado por la Junta de Gobierno del Banco de México como principal instrumento de política monetaria.",
+      "frecuencia": "Por reunión",
+      "unidad": "Porcentaje anual",
+      "ajuste_estacional": "No aplica",
+      "grupo": "financiero",
+      "publicacion": "Días de anuncio de política monetaria",
+      "proximo": "Siguiente reunión programada",
+      "fuente": {
+        "nombre": "Banco de México",
+        "link": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
+        "metodo": "Banxico SIE API",
+        "serie": null
+      },
+      "columns": [
+        {
+          "label": "Tasa objetivo (%)",
+          "index": 0,
+          "fmt": "pct-raw"
+        }
+      ],
+      "observations": [],
+      "last_observation": null,
+      "last_updated": null,
+      "last_checked": null,
+      "requiere_token": "BANXICO",
+      "serie_confirmada": false,
+      "clasificacion": "complementario",
+      "estado": "pendiente de token",
+      "origen_dato": "pendiente",
+      "fecha_publicacion": "Días de anuncio de política monetaria",
+      "periodo_referencia": null,
+      "fecha_consulta": null
+    },
+    "RESERVAS": {
+      "key": "RESERVAS",
+      "nombre": "Reservas internacionales",
+      "descripcion": "Activos internacionales del Banco de México disponibles para atender obligaciones y estabilizar el mercado cambiario.",
+      "frecuencia": "Semanal",
+      "unidad": "Millones de dólares",
+      "ajuste_estacional": "No aplica",
+      "grupo": "financiero",
+      "publicacion": "Semanal (martes)",
+      "proximo": "Siguiente publicación semanal",
+      "fuente": {
+        "nombre": "Banco de México",
+        "link": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+        "metodo": "Banxico SIE API",
+        "serie": null
+      },
+      "columns": [
+        {
+          "label": "Reservas internacionales",
+          "index": 0,
+          "fmt": "usd"
+        }
+      ],
+      "observations": [],
+      "last_observation": null,
+      "last_updated": null,
+      "last_checked": null,
+      "requiere_token": "BANXICO",
+      "serie_confirmada": false,
+      "clasificacion": "complementario",
+      "estado": "pendiente de token",
+      "origen_dato": "pendiente",
+      "fecha_publicacion": "Semanal (martes)",
+      "periodo_referencia": null,
+      "fecha_consulta": null
     }
   }
 }
