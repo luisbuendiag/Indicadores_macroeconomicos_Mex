@@ -259,10 +259,14 @@ tbody tr:last-child td { font-weight: 600; color: var(--dkgreen); }
   .print-header { display: block; border-bottom: 1.5pt solid var(--dkgreen); padding-bottom: 4pt; margin-bottom: 8pt; }
   .print-header .ph-org { font-family: var(--serif); font-size: 13pt; font-weight: 600; color: var(--dkgreen); }
   .print-header .ph-sub { font-size: 8.5pt; color: #444; }
-  .print-footer { display: block; position: fixed; bottom: 0; left: 0; right: 0; font-size: 8pt; color: #555; border-top: .5pt solid #999; padding-top: 3pt; text-align: center; }
+  .print-footer { display: block; position: fixed; bottom: 0; left: 0; right: 0; font-size: 8pt; color: #555; background: #fff; border-top: .5pt solid #999; padding-top: 3pt; text-align: center; }
+  #main { padding-bottom: 22pt; }
   .panel { border: none; box-shadow: none; padding: 0; margin: 0; }
-  .chart-box { height: 275px; page-break-inside: avoid; }
-  .ficha-block, .breakdown, .table-wrap { page-break-inside: avoid; }
+  /* Igual que en pantalla (400px) para que el canvas de ECharts no se recorte */
+  .chart-box { height: 400px; margin-bottom: 10pt; page-break-inside: avoid; }
+  .ficha-block, .breakdown { page-break-inside: avoid; }
+  /* Las tablas se imprimen completas (sin scroll interno) */
+  .table-wrap { max-height: none !important; overflow: visible !important; border: none !important; }
   .block-sub { font-size: 11pt; color: var(--dkgreen); margin: 8pt 0 3pt; }
   .prose { font-size: 10pt; line-height: 1.15; text-align: left; margin: 0 0 5pt; }
   .notes { font-size: 8pt; }

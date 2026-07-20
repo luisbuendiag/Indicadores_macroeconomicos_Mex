@@ -2,7 +2,7 @@
 
 Parte del Excel base (data/source/Indicadores_base.xlsx), conserva sus hojas
 originales SIN alterarlas innecesariamente y agrega tres hojas nuevas:
-  - "Resumen ejecutivo"
+  - "Síntesis de coyuntura"
   - "Metodología y fuentes"
   - "Control de actualizaciones"
 
@@ -60,9 +60,9 @@ def _autow(ws, widths):
 
 
 def add_resumen(wb, payload, manifest):
-    ws = wb.create_sheet("Resumen ejecutivo", 0)
+    ws = wb.create_sheet("Síntesis de coyuntura", 0)
     ws.sheet_view.showGridLines = False
-    ws["A1"] = "Indicadores macroeconómicos de México — Resumen ejecutivo"
+    ws["A1"] = "Indicadores macroeconómicos de México — Síntesis de coyuntura"
     ws["A1"].font = TITLE
     ws["A2"] = f"Generado: {datetime.now(timezone.utc).strftime('%d/%m/%Y %H:%M UTC')}"
     ws["A2"].font = MUT
@@ -131,7 +131,17 @@ def add_metodologia(wb, payload):
     _autow(ws, [40, 34, 12, 26, 18, 14, 26, 40])
 
 
-def add_control(wb, payload, manifest, log):
+def _next_pub_map(calendar):
+    """clave -> primera publicación con estatus 'próximo' (fecha y periodo)."""
+    out = {}
+    items = sorted((calendar or {}).get("items", []), key=lambda x: x.get("fecha_iso", ""))
+    for it in items:
+        if it.get("estatus") == "próximo" and it.get("clave") not in out:
+            out[it["clave"]] = it
+    return out
+
+
+def add_control(wb, payload, manifest, log, calendar=None):
     ws = wb.create_sheet("Control de actualizaciones")
     ws.sheet_view.showGridLines = False
     ws["A1"] = "Control de actualizaciones"
@@ -141,8 +151,9 @@ def add_control(wb, payload, manifest, log):
     ws["A2"].font = MUT
     headers = ["Indicador", "Clasificación", "Estado", "Origen del dato", "Requiere token",
                "Serie confirmada", "Última observación", "Periodo de referencia",
-               "Fecha de publicación", "Fecha de consulta", "Actualización archivo",
-               "Revisión detectada", "Observaciones de calidad"]
+               "Fecha de publicación", "Próxima publicación (calendario)", "Fecha de consulta",
+               "Actualización archivo", "Revisión detectada", "Observaciones de calidad"]
+    nextpub = _next_pub_map(calendar)
     r0 = 4
     for i, h in enumerate(headers, start=1):
         ws.cell(row=r0, column=i, value=h)
@@ -154,10 +165,12 @@ def add_control(wb, payload, manifest, log):
         m = rows.get(key)
         if not m:
             continue
+        np = nextpub.get(key)
+        np_txt = f"{np['fecha_publicacion']} · {np['periodo_referencia']}" if np else "—"
         vals = [m["indicador"], m.get("clasificacion"), m.get("estado"), m.get("origen_dato"),
                 m.get("requiere_token") or "—", "Sí" if m.get("serie_confirmada") else "No",
                 m["ultima_observacion"], m.get("periodo_referencia"), m.get("fecha_publicacion"),
-                m["fecha_consulta"], m["fecha_actualizacion_archivo"],
+                np_txt, m["fecha_consulta"], m["fecha_actualizacion_archivo"],
                 "Sí" if m["revision_detectada"] else "No", m["observaciones"]]
         for i, v in enumerate(vals, start=1):
             cell = ws.cell(row=r, column=i, value=v)
@@ -175,7 +188,7 @@ def add_control(wb, payload, manifest, log):
     for w in log.get("warnings", []):
         r += 1
         ws.cell(row=r, column=1, value="• " + w).font = MUT
-    _autow(ws, [40, 15, 26, 14, 14, 15, 18, 18, 26, 16, 18, 16, 50])
+    _autow(ws, [40, 15, 26, 14, 14, 15, 18, 18, 26, 28, 16, 18, 16, 50])
 
 
 # Hojas de datos a crear para indicadores nuevos que no existen en el libro base.
@@ -239,8 +252,11 @@ def main():
         wb = openpyxl.Workbook()
         wb.remove(wb.active)
 
+    cal_path = L.DATA_DIR / "calendario_publicaciones.json"
+    calendar = json.loads(cal_path.read_text(encoding="utf-8")) if cal_path.exists() else {}
+
     # No alterar las hojas originales: sólo agregamos hojas nuevas.
-    for name in ("Resumen ejecutivo", "Metodología y fuentes", "Control de actualizaciones"):
+    for name in ("Resumen ejecutivo", "Síntesis de coyuntura", "Metodología y fuentes", "Control de actualizaciones"):
         if name in wb.sheetnames:
             wb.remove(wb[name])
     for name in NEW_SHEETS.values():
@@ -248,7 +264,7 @@ def main():
             wb.remove(wb[name])
     add_indicator_sheets(wb, payload)
     add_metodologia(wb, payload)
-    add_control(wb, payload, manifest, log)
+    add_control(wb, payload, manifest, log, calendar)
     add_resumen(wb, payload, manifest)  # queda como primera hoja (índice 0)
 
     wb.save(OUT_XLSX)

@@ -11,8 +11,13 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from datetime import date
 from pathlib import Path
+
+
+def _under_pytest() -> bool:
+    return "pytest" in sys.modules
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
@@ -96,10 +101,10 @@ def build(as_of: date) -> dict:
     }
 
 
-def main() -> int:
+def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--as-of", help="Fecha de referencia YYYY-MM-DD (default: última actualización de datos)")
-    args = ap.parse_args()
+    args = ap.parse_args(argv if argv is not None else [] if _under_pytest() else None)
     as_of = date.fromisoformat(args.as_of) if args.as_of else data_as_of()
     cal = build(as_of)
     OUT_FILE.write_text(json.dumps(cal, ensure_ascii=False, indent=2) + "\n", "utf-8")

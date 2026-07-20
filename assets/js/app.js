@@ -291,13 +291,14 @@ function assessColor(assessment) {
 // Encabezado institucional de la ficha para impresión (solo print).
 function fichaPrintHead(ind, k) {
   const np = nextPublication(ind.key);
+  const per = (k && k.ultimoP) || ind.periodo_referencia || ind.last_observation || "—";
   const head = el("div", { class: "ficha-print-head print-only" });
   head.append(el("div", { class: "fph-bar" },
     el("div", { class: "fph-title" }, ind.nombre),
-    el("div", { class: "fph-sub" }, `${SIGLA[ind.key]} · ${k.ultimoP}`)));
+    el("div", { class: "fph-sub" }, `${SIGLA[ind.key]} · ${per}`)));
   const src = ind.fuente?.nombre || "INEGI";
   const meta = [
-    `Periodo de referencia: ${ind.periodo_referencia || k.ultimoP || "—"}`,
+    `Periodo de referencia: ${ind.periodo_referencia || per}`,
     `Fecha de publicación: ${ind.fecha_publicacion || "—"}`,
     `Fuente: ${src}`,
     ESTADOS[ind.estado] ? `Estado: ${ESTADOS[ind.estado].short}` : null,
@@ -352,6 +353,7 @@ function renderIndicatorView(key) {
   panel.append(fichaHeader(ind));
 
   if (!hasData(ind)) {
+    panel.append(fichaPrintHead(ind, null));
     panel.append(el("div", { class: "notice" }, `Este indicador todavía no tiene observaciones cargadas. Estado: ${ind.estado}. ${ind.requiere_token ? `Se activará al configurar ${ind.requiere_token}_TOKEN y confirmar la serie oficial.` : "Se incorporará con el pipeline."} No se muestran cifras estimadas ni inventadas.`));
     if (ind.fuente?.link) panel.append(el("p", {}, el("a", { href: ind.fuente.link, target: "_blank", rel: "noopener" }, "Consultar fuente oficial ↗")));
     sec.append(panel);
@@ -393,10 +395,11 @@ function renderIndicatorView(key) {
   const bullets = analysis(ind, k);
   syn.append(el("p", { class: "prose" }, bullets[0]));
   if (bullets[1]) { syn.append(el("h3", { class: "block-sub" }, "Principales resultados")); syn.append(el("p", { class: "prose" }, bullets[1])); }
-  panel.append(syn);
 
   // Segunda página en impresión: análisis, desglose y tabla de datos.
+  // En pantalla el análisis va tras la gráfica; en impresión se agrupa en la 2ª página.
   const page2 = el("div", { class: "ficha-page2" });
+  page2.append(syn);
 
   // Desglose (breakdown) por componentes cuando aplica
   const bd = breakdown(ind, k);
