@@ -34,6 +34,23 @@ const getInd = (key) => state.data.indicators[key];
 const principalInds = () => PRINCIPAL.map(getInd).filter(Boolean);
 const hasData = (ind) => ind && ind.observations && ind.observations.length > 0;
 
+// ---------------- Calendario (fechas oficiales) ----------------
+const calItems = () => (state.calendario && state.calendario.items) || [];
+// Próxima publicación (estatus "próximo") de un indicador, por clave.
+function nextPublication(key) {
+  const up = calItems()
+    .filter((c) => c.clave === key && c.estatus === "próximo")
+    .sort((a, b) => (a.fecha_iso || "").localeCompare(b.fecha_iso || ""));
+  return up[0] || null;
+}
+// Próximas N publicaciones globales (una lista ordenada por fecha).
+function upcomingPublications(n = 8) {
+  return calItems()
+    .filter((c) => c.estatus === "próximo" || c.estatus === "pendiente")
+    .sort((a, b) => (a.fecha_iso || "").localeCompare(b.fecha_iso || ""))
+    .slice(0, n);
+}
+
 function estadoBadge(ind) {
   const est = ind.estado || "no disponible";
   const cfg = ESTADOS[est] || { cls: "na", short: est };
@@ -72,9 +89,11 @@ function setView(id) {
   document.querySelectorAll(".tab").forEach((t) => t.setAttribute("aria-selected", String(t.id === `tab-${id}`)));
   document.querySelectorAll(".view").forEach((s) => s.classList.toggle("active", s.id === `view-${id}`));
   document.body.setAttribute("data-view", id);
+  if (`#${id}` !== window.location.hash) { try { history.replaceState(null, "", `#${id}`); } catch (e) { /* file:// */ } }
   requestAnimationFrame(() => resizeVisibleCharts());
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
+const validView = (id) => VIEWS.some((v) => v.id === id);
 
 // ---------------- Panorama (home) ----------------
 function sparkline(k) {
@@ -191,10 +210,13 @@ function renderPanorama() {
   const next = el("div", { class: "panel" });
   next.append(el("h3", {}, "Próximos datos por publicarse"));
   const nlist = el("div", {});
-  const cal = state.calendario;
-  const upcoming = (cal && cal.items ? cal.items : []).filter((c) => c.estatus === "próximo" || c.estatus === "pendiente").slice(0, 8);
+  const upcoming = upcomingPublications(8);
   if (upcoming.length) {
-    upcoming.forEach((c) => nlist.append(el("div", { class: "cal-item" }, el("span", { class: "date" }, c.fecha_publicacion || c.fecha || "—"), el("span", {}, `${c.indicador} · ${c.periodo_referencia || c.periodo || ""}`))));
+    upcoming.forEach((c) => {
+      const row = el("div", { class: "cal-item" }, el("span", { class: "date" }, c.fecha_publicacion || "—"), el("span", {}, `${c.indicador} · ${c.periodo_referencia || ""}`));
+      if (c.clave && getInd(c.clave)) { row.classList.add("clickable"); row.setAttribute("role", "link"); row.addEventListener("click", () => setView(c.clave)); }
+      nlist.append(row);
+    });
   } else {
     principalInds().forEach((ind) => { if (ind.proximo) nlist.append(el("div", { class: "cal-item" }, el("span", { class: "date" }, ind.proximo), el("span", {}, `${LABELS[ind.key]} · ${ind.fuente?.nombre || ""}`))); });
     if (!nlist.children.length) nlist.append(el("div", { class: "muted" }, "Sin fechas confirmadas. Ver Calendario de publicaciones."));
@@ -251,10 +273,74 @@ function fichaHeader(ind) {
     ["Fecha de actualización", ind.last_updated || "—"],
     ["Fuente", ind.fuente?.nombre || "—"],
   ];
+  const np = nextPublication(ind.key);
+  if (np) rows.push(["Próxima publicación", `${np.fecha_publicacion} · ${np.periodo_referencia}`]);
   rows.forEach(([k, v]) => meta.append(el("div", { class: "fh-item" }, el("span", { class: "k" }, k), el("span", { class: "v" }, v))));
   meta.append(el("div", { class: "fh-item" }, el("span", { class: "k" }, "Estado de actualización"), el("span", { class: "v" }, estadoBadge(ind))));
   head.append(left, meta);
   return head;
+}
+
+// ---------------- Impresión: lenguaje visual tipo "Nota" (EMIM) ----------------
+const arrow = (mag) => (mag == null ? "■" : (mag > 0.0001 ? "▲" : (mag < -0.0001 ? "▼" : "■")));
+// Color por evaluación económica (no clasifica dirección como buena/mala salvo lectura clara).
+function assessColor(assessment) {
+  return assessment === "favorable" ? "#1e6b4f" : (assessment === "adverso" ? "#9b2247" : "#6b6f68");
+}
+
+// Encabezado institucional de la ficha para impresión (solo print).
+function fichaPrintHead(ind, k) {
+  const np = nextPublication(ind.key);
+  const head = el("div", { class: "ficha-print-head print-only" });
+  head.append(el("div", { class: "fph-bar" },
+    el("div", { class: "fph-title" }, ind.nombre),
+    el("div", { class: "fph-sub" }, `${SIGLA[ind.key]} · ${k.ultimoP}`)));
+  const src = ind.fuente?.nombre || "INEGI";
+  const meta = [
+    `Periodo de referencia: ${ind.periodo_referencia || k.ultimoP || "—"}`,
+    `Fecha de publicación: ${ind.fecha_publicacion || "—"}`,
+    `Fuente: ${src}`,
+    ESTADOS[ind.estado] ? `Estado: ${ESTADOS[ind.estado].short}` : null,
+    np ? `Próxima publicación: ${np.fecha_publicacion}` : null,
+  ].filter(Boolean).join("  |  ");
+  head.append(el("div", { class: "fph-meta" }, meta));
+  return head;
+}
+
+// Bloques principales de variación con flechas (▲/▼), estilo Nota.
+function fichaVarBlocks(ind, k, cfg, yoy) {
+  const wrap = el("div", { class: "print-varblocks print-only" });
+  const block = (lbl, text, mag, note, assessment) => {
+    const color = assessment != null ? assessColor(assessment) : (mag == null ? "#6b6f68" : (mag >= 0 ? "#1e6b4f" : "#9b2247"));
+    return el("div", { class: "pvb" },
+      el("div", { class: "pvb-lbl" }, lbl),
+      el("div", { class: "pvb-val", style: `color:${color}` }, `${arrow(mag)} ${text}`),
+      el("div", { class: "pvb-note" }, note));
+  };
+  wrap.append(block(cfg.varLabel, k.varText, k.varMag, cfg.comp || "", k.assessment));
+  if (yoy) wrap.append(block("Variación anual", yoy.text, yoy.mag, "Frente al mismo periodo del año previo", null));
+  wrap.append(block("Cifra actual", k.ultimoFmt, null, `Periodo: ${k.ultimoP}`, null));
+  return wrap;
+}
+
+// Tabla comparativa adaptada al indicador (solo print).
+function fichaCompareTable(ind, k, cfg, yoy) {
+  const box = el("div", { class: "ficha-block print-only print-compare" });
+  box.append(el("h3", { class: "block-sub" }, "Cuadro comparativo"));
+  const rows = [
+    ["Cifra actual", k.ultimoP, k.ultimoFmt],
+    [cfg.varLabel, cfg.comp || "—", k.varText],
+  ];
+  if (yoy) rows.push(["Variación anual", "Año previo", yoy.text]);
+  rows.push(["Máximo de la serie", k.maxP, k.maxFmt]);
+  rows.push(["Mínimo de la serie", k.minP, k.minFmt]);
+  const table = el("table");
+  table.append(el("thead", {}, el("tr", {}, el("th", {}, "Concepto"), el("th", {}, "Referencia"), el("th", {}, "Valor"))));
+  const tb = el("tbody");
+  rows.forEach(([a, b, c]) => tb.append(el("tr", {}, el("td", {}, a), el("td", {}, b), el("td", {}, c))));
+  table.append(tb);
+  box.append(el("div", { class: "table-wrap", style: "max-height:none;border:none" }, table));
+  return box;
 }
 
 function renderIndicatorView(key) {
@@ -277,6 +363,10 @@ function renderIndicatorView(key) {
   const yoy = annualVar(ind, k);
   const winId = state.windows[ind.key] || state.data.meta?.default_window || "since_2018";
 
+  // Encabezado institucional + bloques de variación (impresión, estilo Nota).
+  panel.append(fichaPrintHead(ind, k));
+  panel.append(fichaVarBlocks(ind, k, cfg, yoy));
+
   // KPIs
   const mini = el("div", { class: "mini-kpis" },
     el("div", { class: "mini dark" }, el("div", { class: "lbl" }, "Cifra actual"), el("div", { class: "num" }, k.ultimoFmt), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),
@@ -294,6 +384,9 @@ function renderIndicatorView(key) {
   panel.append(el("div", { class: "chart-caption" }, CAPTIONS[ind.key] || ""));
   panel.append(el("div", { class: "chart-box", id: `chart-${ind.key}`, role: "img", "aria-label": `Gráfica de ${ind.nombre}` }));
 
+  // Cuadro comparativo (impresión, estilo Nota) — página 1.
+  panel.append(fichaCompareTable(ind, k, cfg, yoy));
+
   // Síntesis / Principales resultados (sin etiquetas HECHO/INTERPRETACIÓN)
   const syn = el("div", { class: "ficha-block" });
   syn.append(el("h3", { class: "block-sub" }, "Evolución reciente"));
@@ -302,21 +395,27 @@ function renderIndicatorView(key) {
   if (bullets[1]) { syn.append(el("h3", { class: "block-sub" }, "Principales resultados")); syn.append(el("p", { class: "prose" }, bullets[1])); }
   panel.append(syn);
 
+  // Segunda página en impresión: análisis, desglose y tabla de datos.
+  const page2 = el("div", { class: "ficha-page2" });
+
   // Desglose (breakdown) por componentes cuando aplica
   const bd = breakdown(ind, k);
-  if (bd) panel.append(bd);
+  if (bd) page2.append(bd);
 
   // Tabla
   const tbl = el("div", { class: "ficha-block" });
   tbl.append(el("h3", { class: "block-sub" }, "Tabla de datos"));
   tbl.append(renderTable(ind, k));
-  panel.append(tbl);
+  page2.append(tbl);
+  panel.append(page2);
 
   // Fuente y notas
   const src = el("div", { class: "notes" });
   if (ind.notas && ind.notas.length) src.append(el("div", {}, ind.notas.join("  ·  ")));
   src.append(el("div", {}, `Fuente: ${ind.fuente?.nombre || "—"} · Unidad: ${ind.unidad || "—"} · Ajuste: ${ind.ajuste_estacional || "—"}`, ind.fuente?.link ? el("span", {}, " · ", el("a", { href: ind.fuente.link, target: "_blank", rel: "noopener" }, "serie oficial ↗")) : null));
-  if (ind.proximo || ind.fecha_publicacion) src.append(el("div", {}, `Próxima publicación: ${ind.proximo || ind.fecha_publicacion}`));
+  const np = nextPublication(ind.key);
+  if (np) src.append(el("div", {}, `Próxima publicación: ${np.fecha_publicacion} · ${np.periodo_referencia} (${np.institucion})`));
+  else if (ind.proximo || ind.fecha_publicacion) src.append(el("div", {}, `Próxima publicación: ${ind.proximo || ind.fecha_publicacion}`));
   panel.append(src);
 
   sec.append(panel);
@@ -381,45 +480,167 @@ function renderEntorno() {
 }
 
 // ---------------- Calendar ----------------
+const MES_NOMBRES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+const DIA_CORTOS = ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"];
+// Color por indicador (para la vista mensual), derivado de la clave.
+function calColor(clave) {
+  const map = {
+    PIB: "#002f2a", PIBSEC: "#1e5b4f", IGAE: "#0f7b6c", IMAI: "#a57f2c",
+    BALANZA: "#9b2247", DESOCUP: "#611232", INPC: "#8a6d1f", CONSUMO: "#2d6a9f",
+    IMFBCF: "#5a3e8e", IOAE: "#3a7d44", EMIM: "#b5651d",
+  };
+  return map[clave] || "#5c5f6a";
+}
+
+const calState = { filter: "", mode: "mensual" };
+
 function renderCalendar() {
   const sec = $("#view-calendario");
   sec.innerHTML = "";
   sec.append(el("div", { class: "section-title" }, "Calendario de publicaciones"));
   const cal = state.calendario;
   if (!cal || !cal.items || !cal.items.length) {
-    sec.append(el("div", { class: "notice" }, "El calendario oficial 2026 (fechas exactas) se integra a partir del PDF de la INEGI/Banxico. Mientras tanto se muestran las próximas fechas indicativas de cada indicador."));
+    sec.append(el("div", { class: "notice" }, "El calendario oficial (fechas exactas) se integra a partir de data/calendario_publicaciones.json. Mientras tanto se muestran las próximas fechas indicativas de cada indicador."));
     const panel = el("div", { class: "panel" });
     principalInds().forEach((ind) => { if (ind.proximo || ind.fecha_publicacion) panel.append(el("div", { class: "cal-item" }, el("span", { class: "date" }, ind.proximo || ind.fecha_publicacion), el("span", {}, `${LABELS[ind.key]} · ${ind.fuente?.nombre || ""} · ${ind.frecuencia || ""}`))); });
     sec.append(panel);
     return;
   }
-  sec.append(el("div", { class: "section-sub" }, `Fuente: ${cal.fuente || "Calendario oficial de difusión"} · actualizado el ${cal.actualizado || cal.generated_at || "—"}.`));
-  // filtro
-  const filterWrap = el("div", { class: "cal-filter no-print" });
-  const sel = el("select", { onchange: () => drawCalTable(sel.value) }, el("option", { value: "" }, "Todos los indicadores"));
-  [...new Set(cal.items.map((c) => c.indicador))].forEach((n) => sel.append(el("option", { value: n }, n)));
-  filterWrap.append(el("span", {}, "Filtrar: "), sel);
-  sec.append(filterWrap);
-  const tableHost = el("div", { id: "cal-table-host" });
-  sec.append(tableHost);
-  drawCalTable("");
+  sec.append(el("div", { class: "section-sub" }, `Fuente: ${cal.fuente || "Calendario oficial de difusión"} · actualizado el ${cal.actualizado || cal.generated_at || "—"}${cal.as_of ? ` · vigencia al ${cal.as_of}` : ""}.`));
+
+  // Próxima publicación destacada + próximos 30 días.
+  sec.append(renderCalHighlights());
+
+  // Controles: filtro + toggle de vista.
+  const controls = el("div", { class: "cal-controls no-print" });
+  const sel = el("select", { onchange: () => { calState.filter = sel.value; drawCalBody(); } }, el("option", { value: "" }, "Todos los indicadores"));
+  [...new Set(cal.items.map((c) => c.indicador))].forEach((n) => sel.append(el("option", { value: n, selected: n === calState.filter ? "" : null }, n)));
+  const filterWrap = el("span", { class: "cal-filter" }, el("span", {}, "Filtrar: "), sel);
+  const toggle = el("div", { class: "cal-view-toggle", role: "group", "aria-label": "Vista del calendario" });
+  [["mensual", "Vista mensual"], ["tabla", "Vista tabular"]].forEach(([m, lbl]) => {
+    toggle.append(el("button", { class: "win-btn", type: "button", "aria-pressed": String(calState.mode === m), onclick: () => { calState.mode = m; renderCalendar(); } }, lbl));
+  });
+  controls.append(filterWrap, toggle);
+  sec.append(controls);
+
+  sec.append(el("div", { id: "cal-body" }));
+  drawCalBody();
+}
+
+function renderCalHighlights() {
+  const wrap = el("div", { class: "cal-highlights" });
+  const soon = upcomingPublications(50);
+  const nextOne = soon[0];
+  const hero = el("div", { class: "panel cal-hero" });
+  if (nextOne) {
+    hero.append(el("div", { class: "cal-hero-lbl" }, "Próximo dato por publicarse"));
+    hero.append(el("div", { class: "cal-hero-date" }, nextOne.fecha_publicacion));
+    hero.append(el("div", { class: "cal-hero-ind" }, `${nextOne.indicador} · ${nextOne.periodo_referencia}`));
+    hero.append(el("div", { class: "cal-hero-src" }, `${nextOne.producto} — ${nextOne.institucion}`));
+  } else {
+    hero.append(el("div", { class: "muted" }, "Sin próximas publicaciones registradas."));
+  }
+  // Próximos 30 días respecto a la fecha de vigencia del calendario.
+  const asOf = state.calendario.as_of;
+  const days30 = el("div", { class: "panel" });
+  days30.append(el("h3", {}, "Próximos 30 días"));
+  let list30 = soon;
+  if (asOf) {
+    const lim = new Date(asOf + "T00:00:00"); lim.setDate(lim.getDate() + 30);
+    const limIso = lim.toISOString().slice(0, 10);
+    list30 = soon.filter((c) => c.fecha_iso && c.fecha_iso <= limIso);
+  }
+  list30 = list30.slice(0, 12);
+  if (list30.length) {
+    list30.forEach((c) => {
+      const row = el("div", { class: "cal-item clickable", role: "link", onclick: () => c.clave && getInd(c.clave) && setView(c.clave) },
+        el("span", { class: "date" }, c.fecha_publicacion), el("span", {}, `${c.indicador} · ${c.periodo_referencia}`));
+      days30.append(row);
+    });
+  } else {
+    days30.append(el("div", { class: "muted" }, "Sin publicaciones en los próximos 30 días."));
+  }
+  wrap.append(hero, days30);
+  return wrap;
+}
+
+function drawCalBody() {
+  const host = document.getElementById("cal-body");
+  if (!host) return;
+  host.innerHTML = "";
+  if (calState.mode === "tabla") drawCalTable(host);
+  else drawCalMonths(host);
 }
 
 function statusChip(st) { return el("span", { class: `cal-status ${st}` }, st || "—"); }
-function drawCalTable(filter) {
-  const host = document.getElementById("cal-table-host");
-  if (!host) return;
-  host.innerHTML = "";
-  const items = (state.calendario.items || []).filter((c) => !filter || c.indicador === filter);
+
+function drawCalTable(host) {
+  const items = calItems().filter((c) => !calState.filter || c.indicador === calState.filter);
   const table = el("table");
-  table.append(el("thead", {}, el("tr", {}, ...["Fecha", "Indicador", "Producto", "Periodo", "Frecuencia", "Institución", "Estatus"].map((h) => el("th", {}, h)))));
+  table.append(el("thead", {}, el("tr", {}, ...["Fecha", "Indicador", "Producto", "Periodo de referencia", "Frecuencia", "Institución", "Estatus"].map((h) => el("th", {}, h)))));
   const tb = el("tbody");
-  items.forEach((c) => tb.append(el("tr", {},
-    el("td", {}, c.fecha_publicacion || "—"), el("td", {}, c.indicador || "—"), el("td", {}, c.producto || "—"),
-    el("td", {}, c.periodo_referencia || "—"), el("td", {}, c.frecuencia || "—"), el("td", {}, c.institucion || "—"),
-    el("td", {}, statusChip(c.estatus)))));
+  items.forEach((c) => {
+    const tr = el("tr", { class: c.clave && getInd(c.clave) ? "clickable" : "" },
+      el("td", {}, c.fecha_publicacion || "—"), el("td", {}, c.indicador || "—"), el("td", {}, c.producto || "—"),
+      el("td", {}, c.periodo_referencia || "—"), el("td", {}, c.frecuencia || "—"), el("td", {}, c.institucion || "—"),
+      el("td", {}, statusChip(c.estatus)));
+    if (c.clave && getInd(c.clave)) tr.addEventListener("click", () => setView(c.clave));
+    tb.append(tr);
+  });
   table.append(tb);
   host.append(el("div", { class: "panel", style: "padding:0;overflow:hidden" }, el("div", { class: "table-wrap", style: "max-height:none;border:none" }, table)));
+}
+
+function drawCalMonths(host) {
+  const items = calItems().filter((c) => !calState.filter || c.indicador === calState.filter);
+  if (!items.length) { host.append(el("div", { class: "panel muted" }, "Sin publicaciones para el filtro seleccionado.")); return; }
+  // Agrupa por (año, mes).
+  const byMonth = new Map();
+  items.forEach((c) => { const key = `${c.anio}-${String(c.mes).padStart(2, "0")}`; if (!byMonth.has(key)) byMonth.set(key, []); byMonth.get(key).push(c); });
+  const keys = [...byMonth.keys()].sort();
+
+  // Leyenda de colores por indicador (solo indicadores presentes).
+  const claves = [...new Set(items.map((c) => c.clave))];
+  const legend = el("div", { class: "cal-legend" });
+  claves.forEach((cl) => legend.append(el("span", { class: "cal-leg-item" }, el("span", { class: "cal-leg-dot", style: `background:${calColor(cl)}` }), (SIGLA[cl] || cl))));
+  host.append(legend);
+
+  const grid = el("div", { class: "cal-months" });
+  keys.forEach((key) => {
+    const [y, m] = key.split("-").map(Number);
+    grid.append(monthCard(y, m, byMonth.get(key)));
+  });
+  host.append(grid);
+}
+
+function monthCard(year, month, pubs) {
+  const card = el("div", { class: "panel cal-month" });
+  card.append(el("div", { class: "cal-month-title" }, `${MES_NOMBRES[month - 1]} ${year}`));
+  const byDay = new Map();
+  pubs.forEach((p) => { const d = new Date(p.fecha_iso + "T00:00:00").getDate(); if (!byDay.has(d)) byDay.set(d, []); byDay.get(d).push(p); });
+  const table = el("table", { class: "cal-grid" });
+  table.append(el("thead", {}, el("tr", {}, ...DIA_CORTOS.map((d) => el("th", {}, d)))));
+  const first = new Date(year, month - 1, 1);
+  const startDow = first.getDay();
+  const daysIn = new Date(year, month, 0).getDate();
+  const tb = el("tbody");
+  let day = 1 - startDow;
+  while (day <= daysIn) {
+    const tr = el("tr", {});
+    for (let i = 0; i < 7; i++, day++) {
+      if (day < 1 || day > daysIn) { tr.append(el("td", { class: "cal-cell empty" })); continue; }
+      const cell = el("td", { class: "cal-cell" }, el("div", { class: "cal-daynum" }, String(day)));
+      (byDay.get(day) || []).forEach((p) => {
+        const chip = el("div", { class: "cal-chip", style: `background:${calColor(p.clave)}`, title: `${p.indicador} · ${p.periodo_referencia}`, onclick: () => p.clave && getInd(p.clave) && setView(p.clave) }, SIGLA[p.clave] || p.clave);
+        cell.append(chip);
+      });
+      tr.append(cell);
+    }
+    tb.append(tr);
+  }
+  table.append(tb);
+  card.append(el("div", { class: "table-wrap", style: "max-height:none;border:none;overflow:visible" }, table));
+  return card;
 }
 
 // ---------------- Methodology ----------------
@@ -500,6 +721,25 @@ function renderAll() {
 
 function downloadExcel() { window.location.href = "downloads/Indicadores_Macroeconomicos_Mexico_Actualizado.xlsx"; }
 
+// Pie de página institucional dinámico para impresión de fichas.
+function updatePrintFooter() {
+  const foot = document.querySelector(".print-footer");
+  if (!foot) return;
+  const ind = getInd(state.active);
+  if (ind && PRINCIPAL.includes(state.active)) {
+    const np = nextPublication(state.active);
+    const parts = [
+      `${ind.nombre} (${SIGLA[state.active]})`,
+      `Fuente: ${ind.fuente?.nombre || "INEGI"}`,
+      np ? `Próxima publicación: ${np.fecha_publicacion}` : null,
+      "Documento de consulta; no constituye asesoría de inversión.",
+    ].filter(Boolean);
+    foot.textContent = parts.join("  ·  ");
+  } else {
+    foot.textContent = "Elaborado con información oficial. Documento de consulta; no constituye asesoría de inversión.";
+  }
+}
+
 async function init() {
   try {
     state.data = await loadJSON("data/indicadores.json");
@@ -515,7 +755,10 @@ async function init() {
   renderNav();
   buildViewShells();
   renderAll();
-  setView(state.active);
+  const initial = (window.location.hash || "").replace(/^#/, "");
+  setView(validView(initial) ? initial : state.active);
+  window.addEventListener("hashchange", () => { const h = (window.location.hash || "").replace(/^#/, ""); if (validView(h) && h !== state.active) setView(h); });
+  window.addEventListener("beforeprint", updatePrintFooter);
   window.addEventListener("resize", () => resizeVisibleCharts());
   $("#btn-excel").addEventListener("click", downloadExcel);
 }

@@ -130,6 +130,30 @@ a { color: var(--green); }
 .cal-status.publicado { background: #e1efe8; color: #1e6b4f; }
 .cal-status\.próximo, .cal-status.próximo { background: #fbf1da; color: #8a6d1f; }
 .cal-status.pendiente { background: #eef0f2; color: #5c5f6a; }
+.cal-item.clickable, tr.clickable { cursor: pointer; }
+.cal-item.clickable:hover { background: var(--paper, #faf8f1); }
+tr.clickable:hover td { background: #f4f1e6; }
+
+/* Calendario V3: controles, destacados y vistas */
+.cal-controls { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; margin: 12px 0; }
+.cal-view-toggle { display: inline-flex; gap: 6px; }
+.cal-highlights { display: grid; grid-template-columns: 1fr 1.4fr; gap: 16px; margin-bottom: 6px; }
+.cal-hero { background: var(--dkgreen, #002f2a); color: #f0ece1; }
+.cal-hero-lbl { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; opacity: .85; }
+.cal-hero-date { font-family: var(--serif); font-size: 26px; font-weight: 600; margin: 4px 0; }
+.cal-hero-ind { font-size: 15px; font-weight: 600; }
+.cal-hero-src { font-size: 12px; opacity: .8; margin-top: 4px; }
+.cal-legend { display: flex; flex-wrap: wrap; gap: 12px; margin: 6px 0 14px; font-size: 12px; }
+.cal-leg-item { display: inline-flex; align-items: center; gap: 6px; }
+.cal-leg-dot { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+.cal-months { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
+.cal-month-title { font-family: var(--serif); font-size: 16px; font-weight: 600; color: var(--dkgreen); text-transform: capitalize; margin-bottom: 8px; }
+table.cal-grid { width: 100%; table-layout: fixed; border-collapse: collapse; }
+table.cal-grid th { font-family: var(--mono); font-size: 10px; text-transform: uppercase; color: var(--muted); text-align: center; padding: 4px 0; }
+td.cal-cell { border: 1px solid var(--line-soft); height: 58px; vertical-align: top; padding: 3px; }
+td.cal-cell.empty { background: #f6f4ec; }
+.cal-daynum { font-family: var(--mono); font-size: 10px; color: #6b6f68; }
+.cal-chip { font-family: var(--mono); font-size: 9px; color: #fff; border-radius: 4px; padding: 1px 4px; margin-top: 2px; cursor: pointer; line-height: 1.3; }
 
 /* ---------- Ficha de indicador ---------- */
 .ind-toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 14px; }
@@ -198,6 +222,7 @@ tbody tr:last-child td { font-weight: 600; color: var(--dkgreen); }
 
 /* ---------- Print helpers (pantalla: ocultos) ---------- */
 .print-header, .print-footer { display: none; }
+.print-only { display: none; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
@@ -219,12 +244,14 @@ tbody tr:last-child td { font-weight: 600; color: var(--dkgreen); }
 /* ---------- Impresión: SOLO la ficha activa (Imprimir ficha) ---------- */
 @media print {
   @page { size: letter portrait; margin: 14mm 14mm 16mm; }
-  html, body { background: #fff; font-family: 'Noto Sans', system-ui, sans-serif; font-size: 10pt; line-height: 1.0; }
+  html, body { background: #fff; font-family: 'Noto Sans', system-ui, sans-serif; font-size: 10pt; line-height: 1.0; color: #1a1a1a; }
   .wrap { max-width: none; padding: 0; }
-  .tabs, .site-header .header-side, .ind-toolbar, .win-toggle, .no-print, .site-footer, .skip-link, .alert-discreet { display: none !important; }
-  .site-header { border-bottom: 2px solid var(--dkgreen); }
-  .site-header h1 { font-size: 15pt; }
-  .site-header .lede { display: none; }
+  .tabs, .site-header .header-side, .ind-toolbar, .win-toggle, .no-print, .site-footer, .skip-link, .alert-discreet, .chart-caption { display: none !important; }
+  /* En impresión, la ficha usa su propio encabezado institucional (.ficha-print-head) */
+  .site-header { display: none !important; }
+  .print-only { display: block !important; }
+  /* Se ocultan los bloques de pantalla que duplican los de impresión */
+  .ficha-head, .mini-kpis { display: none !important; }
   /* Solo la vista activa se imprime; el panorama nunca se imprime como ficha */
   .view { display: none !important; }
   .view.active { display: block !important; }
@@ -234,13 +261,32 @@ tbody tr:last-child td { font-weight: 600; color: var(--dkgreen); }
   .print-header .ph-sub { font-size: 8.5pt; color: #444; }
   .print-footer { display: block; position: fixed; bottom: 0; left: 0; right: 0; font-size: 8pt; color: #555; border-top: .5pt solid #999; padding-top: 3pt; text-align: center; }
   .panel { border: none; box-shadow: none; padding: 0; margin: 0; }
-  .chart-box { height: 300px; page-break-inside: avoid; }
-  .ficha-block, .mini-kpis, .breakdown, .fh-meta, .table-wrap { page-break-inside: avoid; }
-  .block-sub { font-size: 11pt; }
-  .prose { font-size: 10pt; text-align: left; }
+  .chart-box { height: 275px; page-break-inside: avoid; }
+  .ficha-block, .breakdown, .table-wrap { page-break-inside: avoid; }
+  .block-sub { font-size: 11pt; color: var(--dkgreen); margin: 8pt 0 3pt; }
+  .prose { font-size: 10pt; line-height: 1.15; text-align: left; margin: 0 0 5pt; }
   .notes { font-size: 8pt; }
   table { font-size: 8.5pt; }
   th, td { padding: 3pt 6pt; }
-  .mini .num { font-size: 14pt; }
   a { color: #000; text-decoration: none; }
+
+  /* Encabezado institucional de la ficha (estilo Nota) */
+  .ficha-print-head { margin-bottom: 8pt; }
+  .ficha-print-head .fph-bar { background: var(--dkgreen); color: #f0ece1; padding: 6pt 9pt; border-left: 4pt solid var(--gold, #a57f2c); }
+  .ficha-print-head .fph-title { font-family: var(--serif); font-size: 14pt; font-weight: 600; line-height: 1.1; }
+  .ficha-print-head .fph-sub { font-family: var(--mono); font-size: 9pt; opacity: .9; margin-top: 1pt; }
+  .ficha-print-head .fph-meta { font-size: 8pt; color: #444; padding: 4pt 2pt 0; border-bottom: .5pt solid #bbb; }
+
+  /* Bloques principales de variación (▲/▼) */
+  .print-varblocks { display: flex; gap: 8pt; margin: 8pt 0; page-break-inside: avoid; }
+  .print-varblocks .pvb { flex: 1; border: .75pt solid #cbcbcb; border-top: 2.5pt solid var(--dkgreen); padding: 5pt 7pt; }
+  .print-varblocks .pvb-lbl { font-family: var(--mono); font-size: 7.5pt; text-transform: uppercase; letter-spacing: .04em; color: #555; }
+  .print-varblocks .pvb-val { font-size: 17pt; font-weight: 700; line-height: 1.1; margin: 2pt 0; }
+  .print-varblocks .pvb-note { font-size: 7.5pt; color: #555; }
+
+  .print-compare table { width: 100%; }
+  .print-compare th { background: #eef0ec; text-align: left; }
+
+  /* Segunda página: análisis y desglose */
+  .ficha-page2 { page-break-before: always; }
 }
