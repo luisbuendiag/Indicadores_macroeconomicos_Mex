@@ -1,6 +1,55 @@
 {
-  "generated_at": "2026-07-20T15:01:54+00:00",
+  "generated_at": "2026-07-21T14:55:29+00:00",
   "series": {
+    "PIB_ANUAL": {
+      "indicator_id": "NY.GDP.MKTP.KD",
+      "observations": [
+        {
+          "year": 2015,
+          "value": 1213294467653.78
+        },
+        {
+          "year": 2016,
+          "value": 1234800029897.25
+        },
+        {
+          "year": 2017,
+          "value": 1257912134548.83
+        },
+        {
+          "year": 2018,
+          "value": 1282719194726.5
+        },
+        {
+          "year": 2019,
+          "value": 1277682078136.65
+        },
+        {
+          "year": 2020,
+          "value": 1170944075330.45
+        },
+        {
+          "year": 2021,
+          "value": 1241768434190.09
+        },
+        {
+          "year": 2022,
+          "value": 1287835026633.04
+        },
+        {
+          "year": 2023,
+          "value": 1327845439047.71
+        },
+        {
+          "year": 2024,
+          "value": 1345779005031.98
+        },
+        {
+          "year": 2025,
+          "value": 1353338023059.52
+        }
+      ]
+    },
     "INFLACION_ANUAL": {
       "indicator_id": "FP.CPI.TOTL.ZG",
       "observations": [
