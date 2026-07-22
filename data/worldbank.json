@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T14:55:29+00:00",
+  "generated_at": "2026-07-22T14:55:56+00:00",
   "series": {
     "PIB_ANUAL": {
       "indicator_id": "NY.GDP.MKTP.KD",
@@ -96,6 +96,55 @@
         {
           "year": 2025,
           "value": 3.80668650726485
+        }
+      ]
+    },
+    "DESEMPLEO_ANUAL": {
+      "indicator_id": "SL.UEM.TOTL.ZS",
+      "observations": [
+        {
+          "year": 2015,
+          "value": 4.311
+        },
+        {
+          "year": 2016,
+          "value": 3.853
+        },
+        {
+          "year": 2017,
+          "value": 3.419
+        },
+        {
+          "year": 2018,
+          "value": 3.275
+        },
+        {
+          "year": 2019,
+          "value": 3.477
+        },
+        {
+          "year": 2020,
+          "value": 4.44
+        },
+        {
+          "year": 2021,
+          "value": 4.019
+        },
+        {
+          "year": 2022,
+          "value": 3.256
+        },
+        {
+          "year": 2023,
+          "value": 2.765
+        },
+        {
+          "year": 2024,
+          "value": 2.678
+        },
+        {
+          "year": 2025,
+          "value": 2.673
         }
       ]
     }
