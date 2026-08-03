@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-03T04:28:50+00:00",
+    "generated_at": "2026-08-03T15:31:48+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -211,8 +211,8 @@
         }
       ],
       "last_observation": "1T-26 P",
-      "last_updated": "2026-08-02",
-      "last_checked": "2026-08-02",
+      "last_updated": "2026-08-03",
+      "last_checked": "2026-08-03",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -221,7 +221,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "Aproximadamente 50 días después de haber concluido el trimestre",
       "periodo_referencia": "1T-26 P",
-      "fecha_consulta": "2026-08-02"
+      "fecha_consulta": "2026-08-03"
     },
     "PIBSEC": {
       "key": "PIBSEC",
@@ -541,8 +541,8 @@
         }
       ],
       "last_observation": "May 26",
-      "last_updated": "2026-08-02",
-      "last_checked": "2026-08-02",
+      "last_updated": "2026-08-03",
+      "last_checked": "2026-08-03",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -551,7 +551,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "Aproximadamente 55 días después de haber concluido el mes",
       "periodo_referencia": "May 26",
-      "fecha_consulta": "2026-08-02"
+      "fecha_consulta": "2026-08-03"
     },
     "IMAI": {
       "key": "IMAI",
@@ -652,7 +652,7 @@
         {
           "period": "Feb 26 P",
           "values": [
-            null,
+            100.824971,
             0.004237
           ]
         },
@@ -679,8 +679,8 @@
         }
       ],
       "last_observation": "May 26",
-      "last_updated": "2026-08-02",
-      "last_checked": "2026-08-02",
+      "last_updated": "2026-08-03",
+      "last_checked": "2026-08-03",
       "source_origin": "api",
       "data_quality": [
         {
@@ -697,7 +697,7 @@
       "origen_dato": "api",
       "fecha_publicacion": null,
       "periodo_referencia": "May 26",
-      "fecha_consulta": "2026-08-02"
+      "fecha_consulta": "2026-08-03"
     },
     "CONSUMO": {
       "key": "CONSUMO",
@@ -716,8 +716,9 @@
       ],
       "fuente": {
         "nombre": "INEGI",
-        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3#D733671_600917",
-        "metodo": "INEGI BIE API"
+        "link": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_07.pdf",
+        "metodo": "INEGI boletín PDF",
+        "serie": "CONSUMO_pdf"
       },
       "columns": [
         {
@@ -735,92 +736,99 @@
         {
           "period": "Abr 25 R",
           "values": [
-            110.1915640022,
-            null
+            111.6,
+            0.011
           ]
         },
         {
           "period": "May 25 R",
           "values": [
-            112.1104060481,
-            0.017413692811018677
+            110.1,
+            -0.01
           ]
         },
         {
           "period": "Jun 25 R",
           "values": [
-            109.886652307,
-            -0.019835391017546722
+            111.5,
+            0.008
           ]
         },
         {
           "period": "Jul 25 R",
           "values": [
-            113.9981602839,
-            0.03741589984389848
+            111.2,
+            -0.003
           ]
         },
         {
           "period": "Ago 25 R",
           "values": [
-            114.2930377275,
-            0.0025866859856829016
+            112.1,
+            0.006
           ]
         },
         {
           "period": "Sep 25 R",
           "values": [
-            113.141670895,
-            -0.01007381425319287
+            112.4,
+            0.0
           ]
         },
         {
           "period": "Oct 25 R",
           "values": [
-            117.4042949687,
-            0.037675102727233734
+            113.5,
+            0.008
           ]
         },
         {
           "period": "Nov 25 R",
           "values": [
-            113.8299222248,
-            -0.030444991342547745
+            112.9,
+            -0.005
           ]
         },
         {
           "period": "Dic 25 R",
           "values": [
-            116.8438878273,
-            0.026477797257453917
+            114.4,
+            0.012
           ]
         },
         {
           "period": "Ene 26 R",
           "values": [
-            110.519200852,
-            -0.05412937803514495
+            112.1,
+            -0.016
           ]
         },
         {
           "period": "Feb 26 R",
           "values": [
-            null,
-            -0.05485331039190455
+            111.4,
+            -0.005
           ]
         },
         {
           "period": "Mar 26 P",
           "values": [
-            113.5132947678,
-            0.0867002724360284
+            113.6,
+            0.012
+          ]
+        },
+        {
+          "period": "Abr 26",
+          "values": [
+            113.7,
+            0.001
           ]
         }
       ],
-      "last_observation": "Mar 26 P",
-      "last_updated": "2026-07-16",
-      "last_checked": "2026-07-16",
-      "source_origin": "legacy_dashboard",
+      "last_observation": "Abr 26",
+      "last_updated": "2026-08-03",
+      "last_checked": "2026-08-03",
+      "source_origin": "api",
       "data_quality": [
         {
           "period": "Feb 26 R",
@@ -830,13 +838,13 @@
         }
       ],
       "requiere_token": "INEGI",
-      "serie_confirmada": false,
+      "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "dato en revisión",
-      "origen_dato": "respaldo",
+      "estado": "actualizado automáticamente",
+      "origen_dato": "api",
       "fecha_publicacion": "Aproximadamente 21 días después de haber concluido el mes",
-      "periodo_referencia": "Mar 26 P",
-      "fecha_consulta": "2026-07-16"
+      "periodo_referencia": "Abr 26",
+      "fecha_consulta": "2026-08-03"
     },
     "IED": {
       "key": "IED",
@@ -1189,8 +1197,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-08-02",
-      "last_checked": "2026-08-02",
+      "last_updated": "2026-08-03",
+      "last_checked": "2026-08-03",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -1199,7 +1207,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "Aproximadamente 25-30 días después de haber concluido el mes",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-08-02"
+      "fecha_consulta": "2026-08-03"
     },
     "INPC": {
       "key": "INPC",
@@ -1344,8 +1352,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-08-02",
-      "last_checked": "2026-08-02",
+      "last_updated": "2026-08-03",
+      "last_checked": "2026-08-03",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -1354,7 +1362,7 @@
       "origen_dato": "api",
       "fecha_publicacion": null,
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-08-02"
+      "fecha_consulta": "2026-08-03"
     },
     "BALANZA": {
       "key": "BALANZA",
@@ -1573,8 +1581,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-08-02",
-      "last_checked": "2026-08-02",
+      "last_updated": "2026-08-03",
+      "last_checked": "2026-08-03",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -1583,7 +1591,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "Aproximadamente 30 a 45 días posteriores al cierre del mes",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-08-02"
+      "fecha_consulta": "2026-08-03"
     },
     "IMFBCF": {
       "key": "IMFBCF",
@@ -1597,9 +1605,9 @@
       "proximo": "Por confirmar con el calendario oficial de difusión",
       "fuente": {
         "nombre": "INEGI",
-        "link": "https://www.inegi.org.mx/temas/inversionfija/",
-        "metodo": "INEGI BIE API",
-        "serie": null
+        "link": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_07.pdf",
+        "metodo": "INEGI boletín PDF",
+        "serie": "IMFBCF_pdf"
       },
       "columns": [
         {
@@ -1613,18 +1621,153 @@
           "fmt": "pct-frac"
         }
       ],
-      "observations": [],
-      "last_observation": null,
-      "last_updated": null,
-      "last_checked": null,
+      "observations": [
+        {
+          "period": "Oct 24",
+          "values": [
+            113.1,
+            0.001
+          ]
+        },
+        {
+          "period": "Nov 24",
+          "values": [
+            113.7,
+            0.001
+          ]
+        },
+        {
+          "period": "Dic 24",
+          "values": [
+            109.7,
+            -0.026
+          ]
+        },
+        {
+          "period": "Ene 25",
+          "values": [
+            107.4,
+            -0.015
+          ]
+        },
+        {
+          "period": "Feb 25",
+          "values": [
+            107.3,
+            0.001
+          ]
+        },
+        {
+          "period": "Mar 25",
+          "values": [
+            107.9,
+            0.003
+          ]
+        },
+        {
+          "period": "Abr 25",
+          "values": [
+            105.6,
+            -0.017
+          ]
+        },
+        {
+          "period": "May 25",
+          "values": [
+            106.8,
+            0.009
+          ]
+        },
+        {
+          "period": "Jun 25",
+          "values": [
+            105.6,
+            -0.014
+          ]
+        },
+        {
+          "period": "Jul 25",
+          "values": [
+            107.5,
+            0.016
+          ]
+        },
+        {
+          "period": "Ago 25",
+          "values": [
+            103.9,
+            -0.027
+          ]
+        },
+        {
+          "period": "Sep 25",
+          "values": [
+            101.0,
+            -0.003
+          ]
+        },
+        {
+          "period": "Oct 25",
+          "values": [
+            102.2,
+            0.009
+          ]
+        },
+        {
+          "period": "Nov 25",
+          "values": [
+            102.8,
+            0.004
+          ]
+        },
+        {
+          "period": "Dic 25",
+          "values": [
+            103.6,
+            0.005
+          ]
+        },
+        {
+          "period": "Ene 26",
+          "values": [
+            102.3,
+            -0.011
+          ]
+        },
+        {
+          "period": "Feb 26",
+          "values": [
+            101.1,
+            -0.008
+          ]
+        },
+        {
+          "period": "Mar 26",
+          "values": [
+            102.0,
+            0.004
+          ]
+        },
+        {
+          "period": "Abr 26",
+          "values": [
+            107.4,
+            0.04
+          ]
+        }
+      ],
+      "last_observation": "Abr 26",
+      "last_updated": "2026-08-03",
+      "last_checked": "2026-08-03",
       "requiere_token": "INEGI",
-      "serie_confirmada": false,
+      "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "pendiente de confirmar serie",
-      "origen_dato": "pendiente",
+      "estado": "actualizado automáticamente",
+      "origen_dato": "api",
       "fecha_publicacion": "Aproximadamente 55 días tras el cierre del mes",
-      "periodo_referencia": null,
-      "fecha_consulta": null
+      "periodo_referencia": "Abr 26",
+      "fecha_consulta": "2026-08-03",
+      "source_origin": "api"
     },
     "IOAE": {
       "key": "IOAE",
@@ -1638,9 +1781,9 @@
       "proximo": "Por confirmar con el calendario oficial de difusión",
       "fuente": {
         "nombre": "INEGI",
-        "link": "https://www.inegi.org.mx/investigacion/ioae/",
-        "metodo": "INEGI (comunicado / BIE)",
-        "serie": null
+        "link": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_07.pdf",
+        "metodo": "INEGI boletín PDF",
+        "serie": "IOAE_pdf"
       },
       "columns": [
         {
@@ -1659,18 +1802,180 @@
           "fmt": "pct-raw"
         }
       ],
-      "observations": [],
-      "last_observation": null,
-      "last_updated": null,
-      "last_checked": null,
+      "observations": [
+        {
+          "period": "Nov 24",
+          "values": [
+            0.2,
+            -0.9,
+            1.3
+          ]
+        },
+        {
+          "period": "Dic 24",
+          "values": [
+            -0.3,
+            -1.2,
+            0.7
+          ]
+        },
+        {
+          "period": "Ene 25",
+          "values": [
+            0.1,
+            -1.0,
+            1.2
+          ]
+        },
+        {
+          "period": "Feb 25",
+          "values": [
+            1.1,
+            0.1,
+            2.2
+          ]
+        },
+        {
+          "period": "Mar 25",
+          "values": [
+            -0.2,
+            -1.2,
+            0.7
+          ]
+        },
+        {
+          "period": "Abr 25",
+          "values": [
+            -0.3,
+            -1.3,
+            0.8
+          ]
+        },
+        {
+          "period": "May 25",
+          "values": [
+            0.3,
+            -0.7,
+            1.4
+          ]
+        },
+        {
+          "period": "Jun 25",
+          "values": [
+            0.2,
+            -0.8,
+            1.1
+          ]
+        },
+        {
+          "period": "Jul 25",
+          "values": [
+            -0.5,
+            -1.6,
+            0.6
+          ]
+        },
+        {
+          "period": "Ago 25",
+          "values": [
+            0.1,
+            -1.0,
+            1.2
+          ]
+        },
+        {
+          "period": "Sep 25",
+          "values": [
+            -0.5,
+            -1.4,
+            0.5
+          ]
+        },
+        {
+          "period": "Oct 25",
+          "values": [
+            0.5,
+            -0.6,
+            1.6
+          ]
+        },
+        {
+          "period": "Nov 25",
+          "values": [
+            0.1,
+            -1.0,
+            1.2
+          ]
+        },
+        {
+          "period": "Dic 25",
+          "values": [
+            0.2,
+            -0.7,
+            1.2
+          ]
+        },
+        {
+          "period": "Ene 26",
+          "values": [
+            -0.2,
+            -1.3,
+            0.9
+          ]
+        },
+        {
+          "period": "Feb 26",
+          "values": [
+            0.5,
+            -0.6,
+            1.6
+          ]
+        },
+        {
+          "period": "Mar 26",
+          "values": [
+            0.1,
+            -0.9,
+            1.0
+          ]
+        },
+        {
+          "period": "Abr 26",
+          "values": [
+            1.0,
+            -0.1,
+            2.1
+          ]
+        },
+        {
+          "period": "May 26",
+          "values": [
+            -0.3,
+            -1.4,
+            0.8
+          ]
+        },
+        {
+          "period": "Jun 26",
+          "values": [
+            0.2,
+            -1.0,
+            1.3
+          ]
+        }
+      ],
+      "last_observation": "Jun 26",
+      "last_updated": "2026-08-03",
+      "last_checked": "2026-08-03",
       "requiere_token": "INEGI",
-      "serie_confirmada": false,
+      "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "pendiente de confirmar serie",
-      "origen_dato": "pendiente",
+      "estado": "actualizado automáticamente",
+      "origen_dato": "api",
       "fecha_publicacion": "Fin de mes del periodo estimado",
-      "periodo_referencia": null,
-      "fecha_consulta": null
+      "periodo_referencia": "Jun 26",
+      "fecha_consulta": "2026-08-03",
+      "source_origin": "api"
     },
     "EMIM": {
       "key": "EMIM",
@@ -1684,9 +1989,9 @@
       "proximo": "Por confirmar con el calendario oficial de difusión",
       "fuente": {
         "nombre": "INEGI",
-        "link": "https://www.inegi.org.mx/programas/emim/",
-        "metodo": "INEGI BIE API",
-        "serie": null
+        "link": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_07.pdf",
+        "metodo": "INEGI boletín PDF",
+        "serie": "EMIM_pdf"
       },
       "columns": [
         {
@@ -1700,18 +2005,118 @@
           "fmt": "pct-frac"
         }
       ],
-      "observations": [],
-      "last_observation": null,
-      "last_updated": null,
-      "last_checked": null,
+      "observations": [
+        {
+          "period": "Nov 24",
+          "values": [
+            null,
+            0.011
+          ]
+        },
+        {
+          "period": "Dic 24",
+          "values": [
+            null,
+            -0.015
+          ]
+        },
+        {
+          "period": "Feb 25",
+          "values": [
+            null,
+            -0.003
+          ]
+        },
+        {
+          "period": "Mar 25",
+          "values": [
+            null,
+            -0.007
+          ]
+        },
+        {
+          "period": "Abr 25",
+          "values": [
+            null,
+            -0.001
+          ]
+        },
+        {
+          "period": "May 25",
+          "values": [
+            null,
+            0.01
+          ]
+        },
+        {
+          "period": "Jul 25",
+          "values": [
+            null,
+            -0.002
+          ]
+        },
+        {
+          "period": "Sep 25",
+          "values": [
+            null,
+            0.002
+          ]
+        },
+        {
+          "period": "Oct 25",
+          "values": [
+            null,
+            0.003
+          ]
+        },
+        {
+          "period": "Dic 25",
+          "values": [
+            null,
+            -0.001
+          ]
+        },
+        {
+          "period": "Feb 26",
+          "values": [
+            null,
+            -0.003
+          ]
+        },
+        {
+          "period": "Mar 26",
+          "values": [
+            null,
+            0.0
+          ]
+        },
+        {
+          "period": "Abr 26",
+          "values": [
+            null,
+            0.005
+          ]
+        },
+        {
+          "period": "May 26",
+          "values": [
+            null,
+            -0.006
+          ]
+        }
+      ],
+      "last_observation": "May 26",
+      "last_updated": "2026-08-03",
+      "last_checked": "2026-08-03",
       "requiere_token": "INEGI",
       "serie_confirmada": false,
       "clasificacion": "principal",
-      "estado": "pendiente de confirmar serie",
-      "origen_dato": "pendiente",
+      "estado": "dato de respaldo vigente",
+      "origen_dato": "respaldo",
       "fecha_publicacion": "Aproximadamente 40 días tras el cierre del mes",
-      "periodo_referencia": null,
-      "fecha_consulta": null
+      "periodo_referencia": "May 26",
+      "fecha_consulta": "2026-08-03",
+      "source_origin": "api"
     },
     "TIPOCAMBIO": {
       "key": "TIPOCAMBIO",

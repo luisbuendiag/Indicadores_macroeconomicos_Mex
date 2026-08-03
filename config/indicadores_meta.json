@@ -10,9 +10,9 @@
     "BALANZA": { "requiere_token": "INEGI", "serie_confirmada": true, "clasificacion": "principal", "nombre": "Balanza comercial" },
     "DESOCUP": { "requiere_token": "INEGI", "serie_confirmada": true, "clasificacion": "principal", "nombre": "Tasa de desocupación" },
     "INPC": { "requiere_token": "INEGI", "serie_confirmada": true, "clasificacion": "principal", "nombre": "Índice de Precios al Consumidor" },
-    "CONSUMO": { "requiere_token": "INEGI", "serie_confirmada": false, "clasificacion": "principal", "nombre": "Indicador mensual del consumo privado" },
-    "IMFBCF": { "requiere_token": "INEGI", "serie_confirmada": false, "clasificacion": "principal", "nombre": "Indicador Mensual de la Formación Bruta de Capital Fijo" },
-    "IOAE": { "requiere_token": "INEGI", "serie_confirmada": false, "clasificacion": "principal", "nombre": "Indicador Oportuno de la Actividad Económica" },
+    "CONSUMO": { "requiere_token": "INEGI", "serie_confirmada": true, "clasificacion": "principal", "nombre": "Indicador mensual del consumo privado" },
+    "IMFBCF": { "requiere_token": "INEGI", "serie_confirmada": true, "clasificacion": "principal", "nombre": "Indicador Mensual de la Formación Bruta de Capital Fijo" },
+    "IOAE": { "requiere_token": "INEGI", "serie_confirmada": true, "clasificacion": "principal", "nombre": "Indicador Oportuno de la Actividad Económica" },
     "EMIM": { "requiere_token": "INEGI", "serie_confirmada": false, "clasificacion": "principal", "nombre": "Encuesta Mensual de la Industria Manufacturera" },
     "IED": { "requiere_token": null, "serie_confirmada": false, "clasificacion": "complementario" }
   },

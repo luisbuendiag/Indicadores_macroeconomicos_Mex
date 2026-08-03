@@ -55,9 +55,12 @@ def test_no_critical_validation_errors(payload):
 
 
 def test_duplicate_flagged_as_revision(payload):
-    # Feb-26 de IMAI y CONSUMO debe estar anulado y marcado como revisión.
+    # Feb-26 de IMAI y CONSUMO ya no son duplicados sospechosos y tienen valores reales.
     for key in ("IMAI", "CONSUMO"):
         ind = payload["indicators"][key]
-        assert ind.get("data_quality"), f"{key} debe tener marca de calidad"
         feb = [o for o in ind["observations"] if o["period"].startswith("Feb 26")][0]
-        assert feb["values"][0] is None, f"{key} Feb-26 debe estar anulado (en revisión)"
+        assert feb["values"][0] is not None, f"{key} Feb-26 debe tener valor real"
+    # Los dos índices son distintos (IMAI ~100.8, CONSUMO ~111.4).
+    imai_feb = next(o for o in payload["indicators"]["IMAI"]["observations"] if o["period"].startswith("Feb 26"))
+    cons_feb = next(o for o in payload["indicators"]["CONSUMO"]["observations"] if o["period"].startswith("Feb 26"))
+    assert imai_feb["values"][0] != cons_feb["values"][0]

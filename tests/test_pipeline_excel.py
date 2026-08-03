@@ -26,13 +26,23 @@ def test_backup_and_restore(tmp_path):
     assert L.restore_last_valid() is True
 
 
-def test_apply_overrides_nulls_duplicate():
-    payload = json.loads((ROOT / "data" / "source" if False else L.DATA_FILE).read_text(encoding="utf-8"))
-    # recargar datos crudos del legado y aplicar overrides desde cero
+def test_apply_overrides_nulls_duplicate(tmp_path):
     from extract_legacy import load_macro, normalize
     macro = load_macro(ROOT / "legacy" / "dashboard-original.html")
     fresh = normalize(macro)
-    log = L.apply_overrides(fresh)
+    # Crear un override de prueba y aplicarlo
+    overrides_file = tmp_path / "overrides.json"
+    overrides_file.write_text(json.dumps({
+        "overrides": [{
+            "indicator": "IMAI",
+            "period": "Feb 26 P",
+            "column": 0,
+            "status": "revision",
+            "value": None,
+            "reason": "Test override",
+        }]
+    }, ensure_ascii=False, indent=2), encoding="utf-8")
+    log = L.apply_overrides(fresh, overrides_file)
     assert log, "debe registrar cambios de override"
     feb_imai = [o for o in fresh["indicators"]["IMAI"]["observations"] if o["period"].startswith("Feb 26")][0]
     assert feb_imai["values"][0] is None

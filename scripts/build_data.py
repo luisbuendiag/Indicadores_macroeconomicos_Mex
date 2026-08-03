@@ -21,7 +21,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import lib_data as L
-from sources import banxico, inegi, worldbank
+from sources import banxico, inegi, inegi_bulletin, worldbank
 import validate as V
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -87,7 +87,7 @@ def apply_inegi_total(payload: dict, key: str, item: dict, prev_last: str | None
     ind["source_origin"] = "api"
     fuente = dict(ind.get("fuente", {}))
     fuente["serie"] = item["serie"]
-    fuente["metodo"] = "INEGI BIE API"
+    fuente["metodo"] = item.get("metodo", "INEGI BIE API")
     if item.get("link"):
         fuente["link"] = item["link"]
     ind["fuente"] = fuente
@@ -115,7 +115,9 @@ def run(offline: bool = False) -> int:
     prev_obs = {k: v.get("last_observation") for k, v in payload.get("indicators", {}).items()}
 
     if not offline:
-        for name, mod in (("banxico", banxico), ("inegi", inegi), ("worldbank", worldbank)):
+        # inegi_bulletin se ejecuta primero para evitar throttling del sitio de prensa
+        # después de las llamadas masivas al BIE.
+        for name, mod in (("inegi_bulletin", inegi_bulletin), ("banxico", banxico), ("inegi", inegi), ("worldbank", worldbank)):
             log["network_calls"] = True
             try:
                 res = mod.fetch(config)
@@ -130,7 +132,7 @@ def run(offline: bool = False) -> int:
                 continue
             if res.ok:
                 for key, ind in res.data.items():
-                    if name == "inegi":
+                    if name in ("inegi", "inegi_bulletin"):
                         items = ind if isinstance(ind, list) else [ind]
                         consultas = []
                         for it in items:
