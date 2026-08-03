@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-31T15:13:20+00:00",
+    "generated_at": "2026-08-03T15:37:44+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -540,8 +540,8 @@
         }
       ],
       "last_observation": "May 26",
-      "last_updated": "2026-07-31",
-      "last_checked": "2026-07-31",
+      "last_updated": "2026-08-03",
+      "last_checked": "2026-08-03",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -550,7 +550,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "Aproximadamente 55 días después de haber concluido el mes",
       "periodo_referencia": "May 26",
-      "fecha_consulta": "2026-07-31"
+      "fecha_consulta": "2026-08-03"
     },
     "IMAI": {
       "key": "IMAI",
