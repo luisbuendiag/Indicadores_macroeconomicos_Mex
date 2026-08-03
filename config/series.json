@@ -36,13 +36,53 @@
         "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=605598#D737375"
       }
     ],
-    "PIBSEC": {
-      "_nota": "Desagregación sectorial del PIB (actividades primarias, secundarias, terciarias y variación trimestral de terciarias). Series aún en proceso de confirmación.",
-      "primarias": { "serie": null, "confirmar": true },
-      "secundarias": { "serie": null, "confirmar": true },
-      "terciarias": { "serie": null, "confirmar": true },
-      "var_trim_terciarias": { "serie": null, "confirmar": true }
-    },
+    "PIBSEC": [
+      {
+        "_nota": "Desagregación sectorial del PIB a precios constantes de 2018, serie original (PIBT 2018).",
+        "serie": "735882",
+        "confirmar": false,
+        "nombre": "Actividades primarias",
+        "descripcion_serie": "Agricultura, cría y explotación de animales, aprovechamiento forestal y pesca; valor agregado a precios constantes de 2018, serie original",
+        "frecuencia": "Trimestral",
+        "unidad": "Millones de pesos (a precios de 2018)",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 0,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=600259#D735882"
+      },
+      {
+        "serie": "735883",
+        "confirmar": false,
+        "nombre": "Actividades secundarias",
+        "descripcion_serie": "Minería, energía, construcción e industrias manufactureras; valor agregado a precios constantes de 2018, serie original",
+        "frecuencia": "Trimestral",
+        "unidad": "Millones de pesos (a precios de 2018)",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 1,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=600261#D735883"
+      },
+      {
+        "serie": "735888",
+        "confirmar": false,
+        "nombre": "Actividades terciarias",
+        "descripcion_serie": "Valor agregado a precios constantes de 2018, serie original",
+        "frecuencia": "Trimestral",
+        "unidad": "Millones de pesos (a precios de 2018)",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 2,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=600267#D735888"
+      },
+      {
+        "_nota": "La variación trimestral desestacionalizada de terciarias NO está disponible como serie BIE independiente. Se completa desde el boletín PIBT (pib_Pconst) con el parser de inegi_bulletin.",
+        "serie": null,
+        "confirmar": true
+      }
+    ],
     "IGAE": {
       "serie": "737121",
       "confirmar": false,
@@ -177,11 +217,27 @@
       "serie": null,
       "confirmar": true
     },
-    "EMIM": {
-      "_nota": "Encuesta Mensual de la Industria Manufacturera. Serie pendiente de confirmar.",
-      "serie": null,
-      "confirmar": true
-    },
+    "EMIM": [
+      {
+        "_nota": "Índice de volumen físico de la producción, total manufacturas (EMIM 2018).",
+        "serie": "796224",
+        "confirmar": false,
+        "nombre": "Volumen físico de la producción",
+        "descripcion_serie": "Total de industrias manufactureras, índice base 2018=100, serie original",
+        "frecuencia": "Mensual",
+        "unidad": "Índice base 2018=100",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 0,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=562444#D796224"
+      },
+      {
+        "_nota": "La variación mensual desestacionalizada de la producción NO tiene un ID BIE confirmado. Se obtiene del boletín EMIM (parser de inegi_bulletin).",
+        "serie": null,
+        "confirmar": true
+      }
+    ],
     "PRODIND": {
       "_comment": "Producción industrial desglosada (IMAI por sectores) para V2.",
       "manufacturas": null,

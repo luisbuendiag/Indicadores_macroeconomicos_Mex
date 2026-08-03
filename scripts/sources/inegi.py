@@ -44,7 +44,8 @@ def ym_to_label(ym: str, freq: int | str | None = None) -> str:
     mi = int(month)
     yy = int(year)
     if str(freq) == "4":
-        return f"{mi}T-{_two_digit_year(yy)}"
+        q = (mi - 1) // 3 + 1
+        return f"{q}T-{_two_digit_year(yy)}"
     return f"{MESES[mi - 1]} {_two_digit_year(yy)}"
 
 
