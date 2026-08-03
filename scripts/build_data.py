@@ -76,7 +76,8 @@ def apply_inegi_total(payload: dict, key: str, item: dict, prev_last: str | None
             vals = [None] * ncol
             if 0 <= tcol < ncol:
                 vals[tcol] = round(o["value"], 6)
-            rows.append((ym, {"period": inegi.ym_to_label(ym), "values": vals}))
+            period_label = o.get("period") or inegi.ym_to_label(ym, item.get("freq"))
+            rows.append((ym, {"period": period_label, "values": vals}))
 
     rows.sort(key=lambda t: t[0])
     ind["observations"] = [o for _, o in rows]
@@ -130,11 +131,20 @@ def run(offline: bool = False) -> int:
             if res.ok:
                 for key, ind in res.data.items():
                     if name == "inegi":
-                        consulta = apply_inegi_total(payload, key, ind, prev_obs.get(key))
-                        if consulta is None:
-                            log["warnings"].append(
-                                f"INEGI {key}: sin indicador base para fusionar; se omite.")
-                            continue
+                        items = ind if isinstance(ind, list) else [ind]
+                        consultas = []
+                        for it in items:
+                            consulta = apply_inegi_total(payload, key, it, prev_obs.get(key))
+                            if consulta is None:
+                                log["warnings"].append(
+                                    f"INEGI {key}: sin indicador base para fusionar; se omite.")
+                                continue
+                            consultas.append(consulta)
+                            log["consultas"].append(consulta)
+                            log["changes"].append(
+                                f"{name}: actualizado {key} (última obs {consulta['ultima_observacion']}"
+                                + (", dato nuevo" if consulta['dato_nuevo'] else ", sin cambio de periodo") + ")")
+                        continue
                     else:
                         api_meta = ind.pop("api_meta", {})
                         merge_indicator(payload, key, ind)

@@ -1,11 +1,11 @@
 {
-  "started_at": "2026-08-03T15:37:44+00:00",
+  "started_at": "2026-08-03T03:31:44+00:00",
   "mode": "offline",
   "network_calls": false,
   "warnings": [
-    "[IMFBCF] sin observaciones (estado: pendiente de token).",
-    "[IOAE] sin observaciones (estado: pendiente de token).",
-    "[EMIM] sin observaciones (estado: pendiente de token).",
+    "[IMFBCF] sin observaciones (estado: pendiente de confirmar serie).",
+    "[IOAE] sin observaciones (estado: pendiente de confirmar serie).",
+    "[EMIM] sin observaciones (estado: pendiente de confirmar serie).",
     "[TIPOCAMBIO] sin observaciones (estado: pendiente de token).",
     "[TASA] sin observaciones (estado: pendiente de token).",
     "[RESERVAS] sin observaciones (estado: pendiente de token)."
@@ -17,5 +17,5 @@
   "consultas": [],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-08-03T15:37:44+00:00"
+  "finished_at": "2026-08-03T03:31:44+00:00"
 }
