@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-04T15:21:26+00:00",
+    "generated_at": "2026-08-04T16:20:24+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -2120,91 +2120,1343 @@
     },
     "TIPOCAMBIO": {
       "key": "TIPOCAMBIO",
-      "nombre": "Tipo de cambio FIX",
+      "nombre": "Tipo de cambio FIX (pesos por dólar)",
       "descripcion": "Tipo de cambio de referencia (peso por dólar) determinado por el Banco de México, utilizado para solventar obligaciones denominadas en dólares.",
-      "frecuencia": "Diaria",
+      "frecuencia": "Diaria->mensual",
       "unidad": "Pesos por dólar",
       "ajuste_estacional": "No aplica",
       "grupo": "financiero",
       "publicacion": "Días hábiles",
       "proximo": "Siguiente día hábil",
       "fuente": {
-        "nombre": "Banco de México",
+        "nombre": "Banco de México (SIE)",
+        "serie": "SF43718",
         "link": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
-        "metodo": "Banxico SIE API",
-        "serie": null
+        "metodo": "Banxico SIE API"
       },
       "columns": [
         {
-          "label": "Tipo de cambio FIX",
+          "label": "Tipo de cambio FIX (pesos por dólar)",
           "index": 0,
           "fmt": "fx"
         }
       ],
-      "observations": [],
-      "last_observation": null,
-      "last_updated": null,
-      "last_checked": null,
+      "observations": [
+        {
+          "period": "Ene 18",
+          "values": [
+            18.6069
+          ]
+        },
+        {
+          "period": "Feb 18",
+          "values": [
+            18.8331
+          ]
+        },
+        {
+          "period": "Mar 18",
+          "values": [
+            18.2709
+          ]
+        },
+        {
+          "period": "Abr 18",
+          "values": [
+            18.7878
+          ]
+        },
+        {
+          "period": "May 18",
+          "values": [
+            19.9759
+          ]
+        },
+        {
+          "period": "Jun 18",
+          "values": [
+            19.6912
+          ]
+        },
+        {
+          "period": "Jul 18",
+          "values": [
+            18.6457
+          ]
+        },
+        {
+          "period": "Ago 18",
+          "values": [
+            19.1792
+          ]
+        },
+        {
+          "period": "Sep 18",
+          "values": [
+            18.7231
+          ]
+        },
+        {
+          "period": "Oct 18",
+          "values": [
+            20.3177
+          ]
+        },
+        {
+          "period": "Nov 18",
+          "values": [
+            20.3455
+          ]
+        },
+        {
+          "period": "Dic 18",
+          "values": [
+            19.6512
+          ]
+        },
+        {
+          "period": "Ene 19",
+          "values": [
+            19.0388
+          ]
+        },
+        {
+          "period": "Feb 19",
+          "values": [
+            19.2607
+          ]
+        },
+        {
+          "period": "Mar 19",
+          "values": [
+            19.3779
+          ]
+        },
+        {
+          "period": "Abr 19",
+          "values": [
+            19.0099
+          ]
+        },
+        {
+          "period": "May 19",
+          "values": [
+            19.6426
+          ]
+        },
+        {
+          "period": "Jun 19",
+          "values": [
+            19.2087
+          ]
+        },
+        {
+          "period": "Jul 19",
+          "values": [
+            18.9929
+          ]
+        },
+        {
+          "period": "Ago 19",
+          "values": [
+            20.0696
+          ]
+        },
+        {
+          "period": "Sep 19",
+          "values": [
+            19.7345
+          ]
+        },
+        {
+          "period": "Oct 19",
+          "values": [
+            19.1948
+          ]
+        },
+        {
+          "period": "Nov 19",
+          "values": [
+            19.5352
+          ]
+        },
+        {
+          "period": "Dic 19",
+          "values": [
+            18.8642
+          ]
+        },
+        {
+          "period": "Ene 20",
+          "values": [
+            18.9082
+          ]
+        },
+        {
+          "period": "Feb 20",
+          "values": [
+            19.776
+          ]
+        },
+        {
+          "period": "Mar 20",
+          "values": [
+            23.4847
+          ]
+        },
+        {
+          "period": "Abr 20",
+          "values": [
+            23.9283
+          ]
+        },
+        {
+          "period": "May 20",
+          "values": [
+            22.1778
+          ]
+        },
+        {
+          "period": "Jun 20",
+          "values": [
+            23.0893
+          ]
+        },
+        {
+          "period": "Jul 20",
+          "values": [
+            22.2012
+          ]
+        },
+        {
+          "period": "Ago 20",
+          "values": [
+            21.888
+          ]
+        },
+        {
+          "period": "Sep 20",
+          "values": [
+            22.1438
+          ]
+        },
+        {
+          "period": "Oct 20",
+          "values": [
+            21.2508
+          ]
+        },
+        {
+          "period": "Nov 20",
+          "values": [
+            20.1398
+          ]
+        },
+        {
+          "period": "Dic 20",
+          "values": [
+            19.9087
+          ]
+        },
+        {
+          "period": "Ene 21",
+          "values": [
+            20.2248
+          ]
+        },
+        {
+          "period": "Feb 21",
+          "values": [
+            20.939
+          ]
+        },
+        {
+          "period": "Mar 21",
+          "values": [
+            20.44
+          ]
+        },
+        {
+          "period": "Abr 21",
+          "values": [
+            20.1822
+          ]
+        },
+        {
+          "period": "May 21",
+          "values": [
+            19.9213
+          ]
+        },
+        {
+          "period": "Jun 21",
+          "values": [
+            19.9062
+          ]
+        },
+        {
+          "period": "Jul 21",
+          "values": [
+            19.8455
+          ]
+        },
+        {
+          "period": "Ago 21",
+          "values": [
+            20.0605
+          ]
+        },
+        {
+          "period": "Sep 21",
+          "values": [
+            20.5623
+          ]
+        },
+        {
+          "period": "Oct 21",
+          "values": [
+            20.5297
+          ]
+        },
+        {
+          "period": "Nov 21",
+          "values": [
+            21.4453
+          ]
+        },
+        {
+          "period": "Dic 21",
+          "values": [
+            20.4672
+          ]
+        },
+        {
+          "period": "Ene 22",
+          "values": [
+            20.6352
+          ]
+        },
+        {
+          "period": "Feb 22",
+          "values": [
+            20.4257
+          ]
+        },
+        {
+          "period": "Mar 22",
+          "values": [
+            19.9112
+          ]
+        },
+        {
+          "period": "Abr 22",
+          "values": [
+            20.3728
+          ]
+        },
+        {
+          "period": "May 22",
+          "values": [
+            19.694
+          ]
+        },
+        {
+          "period": "Jun 22",
+          "values": [
+            20.1335
+          ]
+        },
+        {
+          "period": "Jul 22",
+          "values": [
+            20.3485
+          ]
+        },
+        {
+          "period": "Ago 22",
+          "values": [
+            20.0962
+          ]
+        },
+        {
+          "period": "Sep 22",
+          "values": [
+            20.0925
+          ]
+        },
+        {
+          "period": "Oct 22",
+          "values": [
+            19.8245
+          ]
+        },
+        {
+          "period": "Nov 22",
+          "values": [
+            19.3965
+          ]
+        },
+        {
+          "period": "Dic 22",
+          "values": [
+            19.4715
+          ]
+        },
+        {
+          "period": "Ene 23",
+          "values": [
+            18.7937
+          ]
+        },
+        {
+          "period": "Feb 23",
+          "values": [
+            18.3448
+          ]
+        },
+        {
+          "period": "Mar 23",
+          "values": [
+            18.0415
+          ]
+        },
+        {
+          "period": "Abr 23",
+          "values": [
+            17.9975
+          ]
+        },
+        {
+          "period": "May 23",
+          "values": [
+            17.7418
+          ]
+        },
+        {
+          "period": "Jun 23",
+          "values": [
+            17.1358
+          ]
+        },
+        {
+          "period": "Jul 23",
+          "values": [
+            16.7303
+          ]
+        },
+        {
+          "period": "Ago 23",
+          "values": [
+            16.917
+          ]
+        },
+        {
+          "period": "Sep 23",
+          "values": [
+            17.4127
+          ]
+        },
+        {
+          "period": "Oct 23",
+          "values": [
+            18.0368
+          ]
+        },
+        {
+          "period": "Nov 23",
+          "values": [
+            17.373
+          ]
+        },
+        {
+          "period": "Dic 23",
+          "values": [
+            16.919
+          ]
+        },
+        {
+          "period": "Ene 24",
+          "values": [
+            17.1633
+          ]
+        },
+        {
+          "period": "Feb 24",
+          "values": [
+            17.0633
+          ]
+        },
+        {
+          "period": "Mar 24",
+          "values": [
+            16.5323
+          ]
+        },
+        {
+          "period": "Abr 24",
+          "values": [
+            17.0958
+          ]
+        },
+        {
+          "period": "May 24",
+          "values": [
+            17.0177
+          ]
+        },
+        {
+          "period": "Jun 24",
+          "values": [
+            18.2478
+          ]
+        },
+        {
+          "period": "Jul 24",
+          "values": [
+            18.597
+          ]
+        },
+        {
+          "period": "Ago 24",
+          "values": [
+            19.6535
+          ]
+        },
+        {
+          "period": "Sep 24",
+          "values": [
+            19.644
+          ]
+        },
+        {
+          "period": "Oct 24",
+          "values": [
+            20.0378
+          ]
+        },
+        {
+          "period": "Nov 24",
+          "values": [
+            20.3212
+          ]
+        },
+        {
+          "period": "Dic 24",
+          "values": [
+            20.7862
+          ]
+        },
+        {
+          "period": "Ene 25",
+          "values": [
+            20.6068
+          ]
+        },
+        {
+          "period": "Feb 25",
+          "values": [
+            20.508
+          ]
+        },
+        {
+          "period": "Mar 25",
+          "values": [
+            20.438
+          ]
+        },
+        {
+          "period": "Abr 25",
+          "values": [
+            19.6095
+          ]
+        },
+        {
+          "period": "May 25",
+          "values": [
+            19.3858
+          ]
+        },
+        {
+          "period": "Jun 25",
+          "values": [
+            18.8332
+          ]
+        },
+        {
+          "period": "Jul 25",
+          "values": [
+            18.7963
+          ]
+        },
+        {
+          "period": "Ago 25",
+          "values": [
+            18.644
+          ]
+        },
+        {
+          "period": "Sep 25",
+          "values": [
+            18.3342
+          ]
+        },
+        {
+          "period": "Oct 25",
+          "values": [
+            18.5725
+          ]
+        },
+        {
+          "period": "Nov 25",
+          "values": [
+            18.3075
+          ]
+        },
+        {
+          "period": "Dic 25",
+          "values": [
+            18.0012
+          ]
+        },
+        {
+          "period": "Ene 26",
+          "values": [
+            17.331
+          ]
+        },
+        {
+          "period": "Feb 26",
+          "values": [
+            17.2193
+          ]
+        },
+        {
+          "period": "Mar 26",
+          "values": [
+            18.0033
+          ]
+        },
+        {
+          "period": "Abr 26",
+          "values": [
+            17.5118
+          ]
+        },
+        {
+          "period": "May 26",
+          "values": [
+            17.3505
+          ]
+        },
+        {
+          "period": "Jun 26",
+          "values": [
+            17.4693
+          ]
+        },
+        {
+          "period": "Jul 26",
+          "values": [
+            17.3288
+          ]
+        },
+        {
+          "period": "Ago 26",
+          "values": [
+            17.3317
+          ]
+        }
+      ],
+      "last_observation": "Ago 26",
+      "last_updated": "2026-08-04",
+      "last_checked": "2026-08-04",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
-      "estado": "no disponible",
-      "origen_dato": "pendiente",
+      "estado": "actualizado automáticamente",
+      "origen_dato": "api",
       "fecha_publicacion": "Días hábiles",
-      "periodo_referencia": null,
-      "fecha_consulta": null
+      "periodo_referencia": "Ago 26",
+      "fecha_consulta": "2026-08-04",
+      "source_origin": "api"
     },
     "TASA": {
       "key": "TASA",
-      "nombre": "Tasa de interés objetivo",
+      "nombre": "Tasa objetivo de Banco de México",
       "descripcion": "Objetivo para la Tasa de Interés Interbancaria a un día fijado por la Junta de Gobierno del Banco de México como principal instrumento de política monetaria.",
-      "frecuencia": "Por reunión",
+      "frecuencia": "Diaria->mensual",
       "unidad": "Porcentaje anual",
       "ajuste_estacional": "No aplica",
       "grupo": "financiero",
       "publicacion": "Días de anuncio de política monetaria",
       "proximo": "Siguiente reunión programada",
       "fuente": {
-        "nombre": "Banco de México",
+        "nombre": "Banco de México (SIE)",
+        "serie": "SF61745",
         "link": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
-        "metodo": "Banxico SIE API",
-        "serie": null
+        "metodo": "Banxico SIE API"
       },
       "columns": [
         {
-          "label": "Tasa objetivo (%)",
+          "label": "Tasa objetivo de Banco de México",
           "index": 0,
           "fmt": "pct-raw"
         }
       ],
-      "observations": [],
-      "last_observation": null,
-      "last_updated": null,
-      "last_checked": null,
+      "observations": [
+        {
+          "period": "Ene 18",
+          "values": [
+            7.25
+          ]
+        },
+        {
+          "period": "Feb 18",
+          "values": [
+            7.5
+          ]
+        },
+        {
+          "period": "Mar 18",
+          "values": [
+            7.5
+          ]
+        },
+        {
+          "period": "Abr 18",
+          "values": [
+            7.5
+          ]
+        },
+        {
+          "period": "May 18",
+          "values": [
+            7.5
+          ]
+        },
+        {
+          "period": "Jun 18",
+          "values": [
+            7.75
+          ]
+        },
+        {
+          "period": "Jul 18",
+          "values": [
+            7.75
+          ]
+        },
+        {
+          "period": "Ago 18",
+          "values": [
+            7.75
+          ]
+        },
+        {
+          "period": "Sep 18",
+          "values": [
+            7.75
+          ]
+        },
+        {
+          "period": "Oct 18",
+          "values": [
+            7.75
+          ]
+        },
+        {
+          "period": "Nov 18",
+          "values": [
+            8.0
+          ]
+        },
+        {
+          "period": "Dic 18",
+          "values": [
+            8.25
+          ]
+        },
+        {
+          "period": "Ene 19",
+          "values": [
+            8.25
+          ]
+        },
+        {
+          "period": "Feb 19",
+          "values": [
+            8.25
+          ]
+        },
+        {
+          "period": "Mar 19",
+          "values": [
+            8.25
+          ]
+        },
+        {
+          "period": "Abr 19",
+          "values": [
+            8.25
+          ]
+        },
+        {
+          "period": "May 19",
+          "values": [
+            8.25
+          ]
+        },
+        {
+          "period": "Jun 19",
+          "values": [
+            8.25
+          ]
+        },
+        {
+          "period": "Jul 19",
+          "values": [
+            8.25
+          ]
+        },
+        {
+          "period": "Ago 19",
+          "values": [
+            8.0
+          ]
+        },
+        {
+          "period": "Sep 19",
+          "values": [
+            7.75
+          ]
+        },
+        {
+          "period": "Oct 19",
+          "values": [
+            7.75
+          ]
+        },
+        {
+          "period": "Nov 19",
+          "values": [
+            7.5
+          ]
+        },
+        {
+          "period": "Dic 19",
+          "values": [
+            7.25
+          ]
+        },
+        {
+          "period": "Ene 20",
+          "values": [
+            7.25
+          ]
+        },
+        {
+          "period": "Feb 20",
+          "values": [
+            7.0
+          ]
+        },
+        {
+          "period": "Mar 20",
+          "values": [
+            6.5
+          ]
+        },
+        {
+          "period": "Abr 20",
+          "values": [
+            6.0
+          ]
+        },
+        {
+          "period": "May 20",
+          "values": [
+            5.5
+          ]
+        },
+        {
+          "period": "Jun 20",
+          "values": [
+            5.0
+          ]
+        },
+        {
+          "period": "Jul 20",
+          "values": [
+            5.0
+          ]
+        },
+        {
+          "period": "Ago 20",
+          "values": [
+            4.5
+          ]
+        },
+        {
+          "period": "Sep 20",
+          "values": [
+            4.25
+          ]
+        },
+        {
+          "period": "Oct 20",
+          "values": [
+            4.25
+          ]
+        },
+        {
+          "period": "Nov 20",
+          "values": [
+            4.25
+          ]
+        },
+        {
+          "period": "Dic 20",
+          "values": [
+            4.25
+          ]
+        },
+        {
+          "period": "Ene 21",
+          "values": [
+            4.25
+          ]
+        },
+        {
+          "period": "Feb 21",
+          "values": [
+            4.0
+          ]
+        },
+        {
+          "period": "Mar 21",
+          "values": [
+            4.0
+          ]
+        },
+        {
+          "period": "Abr 21",
+          "values": [
+            4.0
+          ]
+        },
+        {
+          "period": "May 21",
+          "values": [
+            4.0
+          ]
+        },
+        {
+          "period": "Jun 21",
+          "values": [
+            4.25
+          ]
+        },
+        {
+          "period": "Jul 21",
+          "values": [
+            4.25
+          ]
+        },
+        {
+          "period": "Ago 21",
+          "values": [
+            4.5
+          ]
+        },
+        {
+          "period": "Sep 21",
+          "values": [
+            4.5
+          ]
+        },
+        {
+          "period": "Oct 21",
+          "values": [
+            4.75
+          ]
+        },
+        {
+          "period": "Nov 21",
+          "values": [
+            5.0
+          ]
+        },
+        {
+          "period": "Dic 21",
+          "values": [
+            5.5
+          ]
+        },
+        {
+          "period": "Ene 22",
+          "values": [
+            5.5
+          ]
+        },
+        {
+          "period": "Feb 22",
+          "values": [
+            6.0
+          ]
+        },
+        {
+          "period": "Mar 22",
+          "values": [
+            6.5
+          ]
+        },
+        {
+          "period": "Abr 22",
+          "values": [
+            6.5
+          ]
+        },
+        {
+          "period": "May 22",
+          "values": [
+            7.0
+          ]
+        },
+        {
+          "period": "Jun 22",
+          "values": [
+            7.75
+          ]
+        },
+        {
+          "period": "Jul 22",
+          "values": [
+            7.75
+          ]
+        },
+        {
+          "period": "Ago 22",
+          "values": [
+            8.5
+          ]
+        },
+        {
+          "period": "Sep 22",
+          "values": [
+            9.25
+          ]
+        },
+        {
+          "period": "Oct 22",
+          "values": [
+            9.25
+          ]
+        },
+        {
+          "period": "Nov 22",
+          "values": [
+            10.0
+          ]
+        },
+        {
+          "period": "Dic 22",
+          "values": [
+            10.5
+          ]
+        },
+        {
+          "period": "Ene 23",
+          "values": [
+            10.5
+          ]
+        },
+        {
+          "period": "Feb 23",
+          "values": [
+            11.0
+          ]
+        },
+        {
+          "period": "Mar 23",
+          "values": [
+            11.25
+          ]
+        },
+        {
+          "period": "Abr 23",
+          "values": [
+            11.25
+          ]
+        },
+        {
+          "period": "May 23",
+          "values": [
+            11.25
+          ]
+        },
+        {
+          "period": "Jun 23",
+          "values": [
+            11.25
+          ]
+        },
+        {
+          "period": "Jul 23",
+          "values": [
+            11.25
+          ]
+        },
+        {
+          "period": "Ago 23",
+          "values": [
+            11.25
+          ]
+        },
+        {
+          "period": "Sep 23",
+          "values": [
+            11.25
+          ]
+        },
+        {
+          "period": "Oct 23",
+          "values": [
+            11.25
+          ]
+        },
+        {
+          "period": "Nov 23",
+          "values": [
+            11.25
+          ]
+        },
+        {
+          "period": "Dic 23",
+          "values": [
+            11.25
+          ]
+        },
+        {
+          "period": "Ene 24",
+          "values": [
+            11.25
+          ]
+        },
+        {
+          "period": "Feb 24",
+          "values": [
+            11.25
+          ]
+        },
+        {
+          "period": "Mar 24",
+          "values": [
+            11.0
+          ]
+        },
+        {
+          "period": "Abr 24",
+          "values": [
+            11.0
+          ]
+        },
+        {
+          "period": "May 24",
+          "values": [
+            11.0
+          ]
+        },
+        {
+          "period": "Jun 24",
+          "values": [
+            11.0
+          ]
+        },
+        {
+          "period": "Jul 24",
+          "values": [
+            11.0
+          ]
+        },
+        {
+          "period": "Ago 24",
+          "values": [
+            10.75
+          ]
+        },
+        {
+          "period": "Sep 24",
+          "values": [
+            10.5
+          ]
+        },
+        {
+          "period": "Oct 24",
+          "values": [
+            10.5
+          ]
+        },
+        {
+          "period": "Nov 24",
+          "values": [
+            10.25
+          ]
+        },
+        {
+          "period": "Dic 24",
+          "values": [
+            10.0
+          ]
+        },
+        {
+          "period": "Ene 25",
+          "values": [
+            10.0
+          ]
+        },
+        {
+          "period": "Feb 25",
+          "values": [
+            9.5
+          ]
+        },
+        {
+          "period": "Mar 25",
+          "values": [
+            9.0
+          ]
+        },
+        {
+          "period": "Abr 25",
+          "values": [
+            9.0
+          ]
+        },
+        {
+          "period": "May 25",
+          "values": [
+            8.5
+          ]
+        },
+        {
+          "period": "Jun 25",
+          "values": [
+            8.0
+          ]
+        },
+        {
+          "period": "Jul 25",
+          "values": [
+            8.0
+          ]
+        },
+        {
+          "period": "Ago 25",
+          "values": [
+            7.75
+          ]
+        },
+        {
+          "period": "Sep 25",
+          "values": [
+            7.5
+          ]
+        },
+        {
+          "period": "Oct 25",
+          "values": [
+            7.5
+          ]
+        },
+        {
+          "period": "Nov 25",
+          "values": [
+            7.25
+          ]
+        },
+        {
+          "period": "Dic 25",
+          "values": [
+            7.0
+          ]
+        },
+        {
+          "period": "Ene 26",
+          "values": [
+            7.0
+          ]
+        },
+        {
+          "period": "Feb 26",
+          "values": [
+            7.0
+          ]
+        },
+        {
+          "period": "Mar 26",
+          "values": [
+            6.75
+          ]
+        },
+        {
+          "period": "Abr 26",
+          "values": [
+            6.75
+          ]
+        },
+        {
+          "period": "May 26",
+          "values": [
+            6.5
+          ]
+        },
+        {
+          "period": "Jun 26",
+          "values": [
+            6.5
+          ]
+        },
+        {
+          "period": "Jul 26",
+          "values": [
+            6.5
+          ]
+        },
+        {
+          "period": "Ago 26",
+          "values": [
+            6.5
+          ]
+        }
+      ],
+      "last_observation": "Ago 26",
+      "last_updated": "2026-08-04",
+      "last_checked": "2026-08-04",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
-      "estado": "no disponible",
-      "origen_dato": "pendiente",
+      "estado": "actualizado automáticamente",
+      "origen_dato": "api",
       "fecha_publicacion": "Días de anuncio de política monetaria",
-      "periodo_referencia": null,
-      "fecha_consulta": null
+      "periodo_referencia": "Ago 26",
+      "fecha_consulta": "2026-08-04",
+      "source_origin": "api"
     },
     "RESERVAS": {
       "key": "RESERVAS",
       "nombre": "Reservas internacionales",
       "descripcion": "Activos internacionales del Banco de México disponibles para atender obligaciones y estabilizar el mercado cambiario.",
-      "frecuencia": "Semanal",
+      "frecuencia": "Semanal->mensual",
       "unidad": "Millones de dólares",
       "ajuste_estacional": "No aplica",
       "grupo": "financiero",
       "publicacion": "Semanal (martes)",
       "proximo": "Siguiente publicación semanal",
       "fuente": {
-        "nombre": "Banco de México",
+        "nombre": "Banco de México (SIE)",
+        "serie": "SF43707",
         "link": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
-        "metodo": "Banxico SIE API",
-        "serie": null
+        "metodo": "Banxico SIE API"
       },
       "columns": [
         {
@@ -2213,18 +3465,638 @@
           "fmt": "usd"
         }
       ],
-      "observations": [],
-      "last_observation": null,
-      "last_updated": null,
-      "last_checked": null,
+      "observations": [
+        {
+          "period": "Ene 18",
+          "values": [
+            173194.6
+          ]
+        },
+        {
+          "period": "Feb 18",
+          "values": [
+            172910.3
+          ]
+        },
+        {
+          "period": "Mar 18",
+          "values": [
+            173231.6
+          ]
+        },
+        {
+          "period": "Abr 18",
+          "values": [
+            173068.4
+          ]
+        },
+        {
+          "period": "May 18",
+          "values": [
+            173118.0
+          ]
+        },
+        {
+          "period": "Jun 18",
+          "values": [
+            173211.4
+          ]
+        },
+        {
+          "period": "Jul 18",
+          "values": [
+            173238.1
+          ]
+        },
+        {
+          "period": "Ago 18",
+          "values": [
+            173606.1
+          ]
+        },
+        {
+          "period": "Sep 18",
+          "values": [
+            173566.1
+          ]
+        },
+        {
+          "period": "Oct 18",
+          "values": [
+            173582.4
+          ]
+        },
+        {
+          "period": "Nov 18",
+          "values": [
+            173775.3
+          ]
+        },
+        {
+          "period": "Dic 18",
+          "values": [
+            174609.1
+          ]
+        },
+        {
+          "period": "Ene 19",
+          "values": [
+            175155.9
+          ]
+        },
+        {
+          "period": "Feb 19",
+          "values": [
+            175693.9
+          ]
+        },
+        {
+          "period": "Mar 19",
+          "values": [
+            176648.6
+          ]
+        },
+        {
+          "period": "Abr 19",
+          "values": [
+            176660.7
+          ]
+        },
+        {
+          "period": "May 19",
+          "values": [
+            177855.9
+          ]
+        },
+        {
+          "period": "Jun 19",
+          "values": [
+            178867.6
+          ]
+        },
+        {
+          "period": "Jul 19",
+          "values": [
+            178920.9
+          ]
+        },
+        {
+          "period": "Ago 19",
+          "values": [
+            180377.0
+          ]
+        },
+        {
+          "period": "Sep 19",
+          "values": [
+            180212.6
+          ]
+        },
+        {
+          "period": "Oct 19",
+          "values": [
+            180432.5
+          ]
+        },
+        {
+          "period": "Nov 19",
+          "values": [
+            180597.3
+          ]
+        },
+        {
+          "period": "Dic 19",
+          "values": [
+            180749.5
+          ]
+        },
+        {
+          "period": "Ene 20",
+          "values": [
+            182796.4
+          ]
+        },
+        {
+          "period": "Feb 20",
+          "values": [
+            184249.6
+          ]
+        },
+        {
+          "period": "Mar 20",
+          "values": [
+            185508.5
+          ]
+        },
+        {
+          "period": "Abr 20",
+          "values": [
+            186655.4
+          ]
+        },
+        {
+          "period": "May 20",
+          "values": [
+            187315.6
+          ]
+        },
+        {
+          "period": "Jun 20",
+          "values": [
+            188941.5
+          ]
+        },
+        {
+          "period": "Jul 20",
+          "values": [
+            192605.6
+          ]
+        },
+        {
+          "period": "Ago 20",
+          "values": [
+            193267.1
+          ]
+        },
+        {
+          "period": "Sep 20",
+          "values": [
+            193883.1
+          ]
+        },
+        {
+          "period": "Oct 20",
+          "values": [
+            194351.1
+          ]
+        },
+        {
+          "period": "Nov 20",
+          "values": [
+            194287.8
+          ]
+        },
+        {
+          "period": "Dic 20",
+          "values": [
+            195667.2
+          ]
+        },
+        {
+          "period": "Ene 21",
+          "values": [
+            195946.1
+          ]
+        },
+        {
+          "period": "Feb 21",
+          "values": [
+            195269.5
+          ]
+        },
+        {
+          "period": "Mar 21",
+          "values": [
+            194774.2
+          ]
+        },
+        {
+          "period": "Abr 21",
+          "values": [
+            195267.6
+          ]
+        },
+        {
+          "period": "May 21",
+          "values": [
+            194168.7
+          ]
+        },
+        {
+          "period": "Jun 21",
+          "values": [
+            192886.0
+          ]
+        },
+        {
+          "period": "Jul 21",
+          "values": [
+            193423.7
+          ]
+        },
+        {
+          "period": "Ago 21",
+          "values": [
+            205391.4
+          ]
+        },
+        {
+          "period": "Sep 21",
+          "values": [
+            198216.0
+          ]
+        },
+        {
+          "period": "Oct 21",
+          "values": [
+            198850.4
+          ]
+        },
+        {
+          "period": "Nov 21",
+          "values": [
+            199310.1
+          ]
+        },
+        {
+          "period": "Dic 21",
+          "values": [
+            202399.2
+          ]
+        },
+        {
+          "period": "Ene 22",
+          "values": [
+            201583.4
+          ]
+        },
+        {
+          "period": "Feb 22",
+          "values": [
+            201399.1
+          ]
+        },
+        {
+          "period": "Mar 22",
+          "values": [
+            200530.4
+          ]
+        },
+        {
+          "period": "Abr 22",
+          "values": [
+            199174.6
+          ]
+        },
+        {
+          "period": "May 22",
+          "values": [
+            199558.0
+          ]
+        },
+        {
+          "period": "Jun 22",
+          "values": [
+            198506.7
+          ]
+        },
+        {
+          "period": "Jul 22",
+          "values": [
+            199479.8
+          ]
+        },
+        {
+          "period": "Ago 22",
+          "values": [
+            198761.0
+          ]
+        },
+        {
+          "period": "Sep 22",
+          "values": [
+            196917.5
+          ]
+        },
+        {
+          "period": "Oct 22",
+          "values": [
+            196890.2
+          ]
+        },
+        {
+          "period": "Nov 22",
+          "values": [
+            198043.8
+          ]
+        },
+        {
+          "period": "Dic 22",
+          "values": [
+            199094.2
+          ]
+        },
+        {
+          "period": "Ene 23",
+          "values": [
+            200994.5
+          ]
+        },
+        {
+          "period": "Feb 23",
+          "values": [
+            200083.2
+          ]
+        },
+        {
+          "period": "Mar 23",
+          "values": [
+            202337.6
+          ]
+        },
+        {
+          "period": "Abr 23",
+          "values": [
+            203104.0
+          ]
+        },
+        {
+          "period": "May 23",
+          "values": [
+            202511.8
+          ]
+        },
+        {
+          "period": "Jun 23",
+          "values": [
+            203209.3
+          ]
+        },
+        {
+          "period": "Jul 23",
+          "values": [
+            204099.1
+          ]
+        },
+        {
+          "period": "Ago 23",
+          "values": [
+            203719.4
+          ]
+        },
+        {
+          "period": "Sep 23",
+          "values": [
+            203767.6
+          ]
+        },
+        {
+          "period": "Oct 23",
+          "values": [
+            204220.4
+          ]
+        },
+        {
+          "period": "Nov 23",
+          "values": [
+            206277.6
+          ]
+        },
+        {
+          "period": "Dic 23",
+          "values": [
+            212761.9
+          ]
+        },
+        {
+          "period": "Ene 24",
+          "values": [
+            212886.7
+          ]
+        },
+        {
+          "period": "Feb 24",
+          "values": [
+            213478.8
+          ]
+        },
+        {
+          "period": "Mar 24",
+          "values": [
+            217193.8
+          ]
+        },
+        {
+          "period": "Abr 24",
+          "values": [
+            217247.8
+          ]
+        },
+        {
+          "period": "May 24",
+          "values": [
+            218726.3
+          ]
+        },
+        {
+          "period": "Jun 24",
+          "values": [
+            219996.9
+          ]
+        },
+        {
+          "period": "Jul 24",
+          "values": [
+            221725.3
+          ]
+        },
+        {
+          "period": "Ago 24",
+          "values": [
+            224777.9
+          ]
+        },
+        {
+          "period": "Sep 24",
+          "values": [
+            226845.8
+          ]
+        },
+        {
+          "period": "Oct 24",
+          "values": [
+            226066.9
+          ]
+        },
+        {
+          "period": "Nov 24",
+          "values": [
+            228392.2
+          ]
+        },
+        {
+          "period": "Dic 24",
+          "values": [
+            228789.4
+          ]
+        },
+        {
+          "period": "Ene 25",
+          "values": [
+            230764.0
+          ]
+        },
+        {
+          "period": "Feb 25",
+          "values": [
+            234346.8
+          ]
+        },
+        {
+          "period": "Mar 25",
+          "values": [
+            237006.1
+          ]
+        },
+        {
+          "period": "Abr 25",
+          "values": [
+            239137.9
+          ]
+        },
+        {
+          "period": "May 25",
+          "values": [
+            239981.6
+          ]
+        },
+        {
+          "period": "Jun 25",
+          "values": [
+            241480.1
+          ]
+        },
+        {
+          "period": "Jul 25",
+          "values": [
+            242343.9
+          ]
+        },
+        {
+          "period": "Ago 25",
+          "values": [
+            244399.0
+          ]
+        },
+        {
+          "period": "Sep 25",
+          "values": [
+            246831.7
+          ]
+        },
+        {
+          "period": "Oct 25",
+          "values": [
+            248852.0
+          ]
+        },
+        {
+          "period": "Nov 25",
+          "values": [
+            250205.9
+          ]
+        },
+        {
+          "period": "Dic 25",
+          "values": [
+            252129.6
+          ]
+        },
+        {
+          "period": "Ene 26",
+          "values": [
+            255605.2
+          ]
+        },
+        {
+          "period": "Feb 26",
+          "values": [
+            257815.2
+          ]
+        },
+        {
+          "period": "Mar 26",
+          "values": [
+            254070.3
+          ]
+        },
+        {
+          "period": "Abr 26",
+          "values": [
+            256263.9
+          ]
+        },
+        {
+          "period": "May 26",
+          "values": [
+            256599.9
+          ]
+        },
+        {
+          "period": "Jun 26",
+          "values": [
+            255180.7
+          ]
+        },
+        {
+          "period": "Jul 26",
+          "values": [
+            255498.1
+          ]
+        }
+      ],
+      "last_observation": "Jul 26",
+      "last_updated": "2026-08-04",
+      "last_checked": "2026-08-04",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
-      "estado": "no disponible",
-      "origen_dato": "pendiente",
+      "estado": "actualizado automáticamente",
+      "origen_dato": "api",
       "fecha_publicacion": "Semanal (martes)",
-      "periodo_referencia": null,
-      "fecha_consulta": null
+      "periodo_referencia": "Jul 26",
+      "fecha_consulta": "2026-08-04",
+      "source_origin": "api"
     }
   }
 }
