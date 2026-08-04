@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-04T16:20:24+00:00",
+    "generated_at": "2026-08-04T20:06:32+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -35,7 +35,7 @@
       "descripcion": "La suma de los valores de mercado de todos los servicios y bienes finales, producidos por los recursos de la economía que residen en el país. Es un concepto de valor agregado, por lo que se contabilizan los bienes finales que se producen para consumo y no los intermedios para el uso de otro bien final.",
       "frecuencia": "Trimestral",
       "unidad": "Millones de pesos (a precios de 2018)",
-      "ajuste_estacional": "Serie original",
+      "ajuste_estacional": "Serie original; la variación trimestral y anual proviene de la serie desestacionalizada publicada por el INEGI",
       "grupo": "actividad",
       "publicacion": "Aproximadamente 50 días después de haber concluido el trimestre",
       "proximo": "Finales de junio (oportuno); finales de agosto (definitivo)",
@@ -59,6 +59,16 @@
           "label": "Var. Anual (%)",
           "index": 1,
           "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. Trim. Desest. (%)",
+          "index": 2,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. Anual Desest. (%)",
+          "index": 3,
+          "fmt": "pct-frac"
         }
       ],
       "observations": [
@@ -66,147 +76,189 @@
           "period": "1T-21",
           "values": [
             22841359.685,
-            -0.025955
+            -0.025955,
+            null,
+            null
           ]
         },
         {
           "period": "2T-21",
           "values": [
             23623455.056,
-            0.227018
+            0.227018,
+            null,
+            null
           ]
         },
         {
           "period": "3T-21",
           "values": [
             23204796.817,
-            0.051313
+            0.051313,
+            null,
+            null
           ]
         },
         {
           "period": "4T-21",
           "values": [
             23949712.898,
-            0.018929
+            0.018929,
+            null,
+            null
           ]
         },
         {
           "period": "1T-22",
           "values": [
             23440574.466,
-            0.026234
+            0.026234,
+            null,
+            null
           ]
         },
         {
           "period": "2T-22",
           "values": [
             24310024.252,
-            0.029063
+            0.029063,
+            null,
+            null
           ]
         },
         {
           "period": "3T-22",
           "values": [
             24289379.479,
-            0.04674
+            0.04674,
+            null,
+            null
           ]
         },
         {
           "period": "4T-22",
           "values": [
             25052395.779,
-            0.046042
+            0.046042,
+            null,
+            null
           ]
         },
         {
           "period": "1T-23 R",
           "values": [
             24330982.536,
-            0.037986
+            0.037986,
+            null,
+            null
           ]
         },
         {
           "period": "2T-23 R",
           "values": [
             25108268.25,
-            0.032836
+            0.032836,
+            null,
+            null
           ]
         },
         {
           "period": "3T-23 R",
           "values": [
             25094793.141,
-            0.033159
+            0.033159,
+            null,
+            null
           ]
         },
         {
           "period": "4T-23 R",
           "values": [
             25590082.607,
-            0.021462
+            0.021462,
+            null,
+            null
           ]
         },
         {
           "period": "1T-24 R",
           "values": [
             24761655.524,
-            0.017701
+            0.017701,
+            null,
+            null
           ]
         },
         {
           "period": "2T-24 R",
           "values": [
             25655479.047,
-            0.021794
+            0.021794,
+            null,
+            null
           ]
         },
         {
           "period": "3T-24 R",
           "values": [
             25475446.445,
-            0.015169
+            0.015169,
+            null,
+            null
           ]
         },
         {
           "period": "4T-24 R",
           "values": [
             25693292.983,
-            0.004033
+            0.004033,
+            null,
+            null
           ]
         },
         {
           "period": "1T-25 R",
           "values": [
             24913610.281,
-            0.006137
+            0.006137,
+            null,
+            null
           ]
         },
         {
           "period": "2T-25 R",
           "values": [
             25618678.767,
-            -0.001434
+            -0.001434,
+            null,
+            null
           ]
         },
         {
           "period": "3T-25 R",
           "values": [
             25422850.191,
-            -0.002065
+            -0.002065,
+            null,
+            null
           ]
         },
         {
           "period": "4T-25 R",
           "values": [
             26135644.696,
-            0.017217
+            0.017217,
+            0.006,
+            0.012
           ]
         },
         {
           "period": "1T-26 P",
           "values": [
             24973976.071,
-            0.002423
+            0.002423,
+            -0.006,
+            0.004
           ]
         }
       ],
@@ -229,7 +281,7 @@
       "descripcion": "Permite analizar la contribución específica de cada sector al valor agregado total de la economía mexicana. Es fundamental para entender la estructura productiva del país y cómo evoluciona con el tiempo.",
       "frecuencia": "Trimestral",
       "unidad": "Millones de pesos (a precios de 2018)",
-      "ajuste_estacional": "Serie original",
+      "ajuste_estacional": "Serie original; la variación trimestral y anual de terciarias proviene de la serie desestacionalizada publicada por el INEGI",
       "grupo": "actividad",
       "publicacion": "Aproximadamente 50 días después de haber concluido el trimestre",
       "proximo": "Finales de junio (oportuno); finales de agosto (definitivo)",
@@ -263,6 +315,11 @@
           "label": "Var. Trim. Ter. (%)",
           "index": 3,
           "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. Anual Ter. (%)",
+          "index": 4,
+          "fmt": "pct-frac"
         }
       ],
       "observations": [
@@ -272,7 +329,8 @@
             767720.639,
             7800352.717,
             14382920.096,
-            0.006
+            0.006,
+            null
           ]
         },
         {
@@ -281,7 +339,8 @@
             866388.559,
             7964375.032,
             14833956.646,
-            0.008
+            0.008,
+            null
           ]
         },
         {
@@ -290,7 +349,8 @@
             730201.127,
             8061173.693,
             14924452.582,
-            0.008
+            0.008,
+            null
           ]
         },
         {
@@ -299,7 +359,8 @@
             958911.8,
             8024213.122,
             15251937.656,
-            0
+            0,
+            null
           ]
         },
         {
@@ -308,7 +369,8 @@
             763337.702,
             7795986.431,
             14792896.131,
-            0.006
+            0.006,
+            null
           ]
         },
         {
@@ -317,7 +379,8 @@
             866987.775,
             8011179.29,
             15297892.114,
-            0
+            0,
+            null
           ]
         },
         {
@@ -326,7 +389,8 @@
             783638.959,
             8020904.247,
             15272671.829,
-            0.011000000000000001
+            0.011000000000000001,
+            null
           ]
         },
         {
@@ -335,7 +399,8 @@
             930282.979,
             7832811.484,
             15559800.994,
-            -0.011000000000000001
+            -0.011000000000000001,
+            null
           ]
         },
         {
@@ -344,7 +409,8 @@
             794706.899,
             7715395.565,
             14984362.696,
-            -0.001
+            -0.001,
+            0.011
           ]
         },
         {
@@ -353,7 +419,8 @@
             856980.339,
             7888924.88,
             15388336.602,
-            0.003
+            0.003,
+            null
           ]
         },
         {
@@ -362,7 +429,8 @@
             777766.167,
             7812449.734,
             15433943.462,
-            -0.001
+            -0.001,
+            null
           ]
         },
         {
@@ -371,7 +439,8 @@
             993973.972,
             7867045.889,
             15877667.814,
-            0.008
+            0.008,
+            0.018
           ]
         },
         {
@@ -380,7 +449,8 @@
             797675.498,
             7621773.386,
             15134329.955,
-            -0.004
+            -0.004,
+            0.011
           ]
         }
       ],
@@ -403,7 +473,7 @@
       "descripcion": "Se le conoce como una aproximación al PIB mensual, permitiendo conocer la tendencia de la economía en el corto plazo. Sigue la evolución del sector real de la economía con un diseño similar al PIB, pero con menos información detallada.",
       "frecuencia": "Mensual",
       "unidad": "Índice base 2018=100",
-      "ajuste_estacional": "Serie original",
+      "ajuste_estacional": "Serie original; la variación mensual y anual proviene de la serie desestacionalizada publicada por el INEGI",
       "grupo": "actividad",
       "publicacion": "Aproximadamente 55 días después de haber concluido el mes",
       "proximo": "Finales de junio ",
@@ -433,6 +503,16 @@
           "label": "Act. Terciarias (índice)",
           "index": 2,
           "fmt": "idx"
+        },
+        {
+          "label": "Var. Mensual Desest. (%)",
+          "index": 3,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. Anual Desest. (%)",
+          "index": 4,
+          "fmt": "pct-frac"
         }
       ],
       "observations": [
@@ -441,7 +521,9 @@
           "values": [
             107.407876,
             104.4,
-            106.8
+            106.8,
+            0.0,
+            0.004
           ]
         },
         {
@@ -449,7 +531,9 @@
           "values": [
             104.50353,
             100.87,
-            107
+            107,
+            0.002,
+            0.009
           ]
         },
         {
@@ -457,7 +541,9 @@
           "values": [
             105.661466,
             101.58,
-            106.9
+            106.9,
+            -0.009,
+            -0.012
           ]
         },
         {
@@ -465,7 +551,9 @@
           "values": [
             104.822875,
             101.39,
-            107.4
+            107.4,
+            0.006,
+            0.0
           ]
         },
         {
@@ -473,7 +561,9 @@
           "values": [
             103.226895,
             99.56,
-            107
+            107,
+            -0.006,
+            -0.006
           ]
         },
         {
@@ -481,7 +571,9 @@
           "values": [
             107.920791,
             104.81,
-            108.2
+            108.2,
+            0.01,
+            0.016
           ]
         },
         {
@@ -489,7 +581,9 @@
           "values": [
             107.829456,
             101.45,
-            107.8
+            107.8,
+            -0.002,
+            0.011
           ]
         },
         {
@@ -497,7 +591,9 @@
           "values": [
             107.41679,
             98.38,
-            108
+            108,
+            0.004,
+            0.024
           ]
         },
         {
@@ -505,7 +601,9 @@
           "values": [
             100.928378,
             96.62,
-            107.4
+            107.4,
+            -0.009,
+            0.005
           ]
         },
         {
@@ -513,7 +611,9 @@
           "values": [
             100.121986,
             95.8,
-            107.5
+            107.5,
+            0.001,
+            -0.003
           ]
         },
         {
@@ -521,7 +621,9 @@
           "values": [
             106.956932,
             102.75,
-            108.5
+            108.5,
+            0.004,
+            0.005
           ]
         },
         {
@@ -529,7 +631,9 @@
           "values": [
             106.675953,
             102.52,
-            109.2
+            109.2,
+            0.012,
+            0.022
           ]
         },
         {
@@ -537,7 +641,9 @@
           "values": [
             108.595752,
             null,
-            null
+            null,
+            -0.003,
+            0.02
           ]
         }
       ],
@@ -683,14 +789,7 @@
       "last_updated": "2026-08-04",
       "last_checked": "2026-08-04",
       "source_origin": "api",
-      "data_quality": [
-        {
-          "period": "Feb 26 P",
-          "column": 0,
-          "status": "revision",
-          "reason": "Valor idéntico al de Consumo Privado (104.4568568234) en el mismo mes: duplicado sospechoso entre series no relacionadas. Pendiente de verificación contra INEGI (BIE) una vez cargado INEGI_TOKEN."
-        }
-      ],
+      "data_quality": [],
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -706,7 +805,7 @@
       "descripcion": "Mide el gasto realizado por los hogares y las instituciones sin fines de lucro que les sirven, tanto para la adquisición de bienes como de servicios.",
       "frecuencia": "Mensual",
       "unidad": "Índice base 2018=100",
-      "ajuste_estacional": "Serie original",
+      "ajuste_estacional": "Serie desestacionalizada; índice y variaciones oficiales del boletín del INEGI",
       "grupo": "mercado_interno",
       "publicacion": "Aproximadamente 21 días después de haber concluido el mes",
       "proximo": null,
@@ -731,6 +830,11 @@
           "label": "Var. mensual (%)",
           "index": 1,
           "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual (%)",
+          "index": 2,
+          "fmt": "pct-frac"
         }
       ],
       "observations": [
@@ -738,91 +842,104 @@
           "period": "Abr 25 R",
           "values": [
             111.6,
-            0.011
+            0.011,
+            0.007
           ]
         },
         {
           "period": "May 25 R",
           "values": [
             110.1,
-            -0.01
+            -0.01,
+            -0.009
           ]
         },
         {
           "period": "Jun 25 R",
           "values": [
             111.5,
-            0.008
+            0.008,
+            0.011
           ]
         },
         {
           "period": "Jul 25 R",
           "values": [
             111.2,
-            -0.003
+            -0.003,
+            -0.001
           ]
         },
         {
           "period": "Ago 25 R",
           "values": [
             112.1,
-            0.006
+            0.006,
+            0.009
           ]
         },
         {
           "period": "Sep 25 R",
           "values": [
             112.4,
-            0.0
+            0.0,
+            0.021
           ]
         },
         {
           "period": "Oct 25 R",
           "values": [
             113.5,
-            0.008
+            0.008,
+            0.041
           ]
         },
         {
           "period": "Nov 25 R",
           "values": [
             112.9,
-            -0.005
+            -0.005,
+            0.028
           ]
         },
         {
           "period": "Dic 25 R",
           "values": [
             114.4,
-            0.012
+            0.012,
+            0.056
           ]
         },
         {
           "period": "Ene 26 R",
           "values": [
             112.1,
-            -0.016
+            -0.016,
+            0.027
           ]
         },
         {
           "period": "Feb 26 R",
           "values": [
             111.4,
-            -0.005
+            -0.005,
+            0.009
           ]
         },
         {
           "period": "Mar 26 P",
           "values": [
             113.6,
-            0.012
+            0.012,
+            0.031
           ]
         },
         {
           "period": "Abr 26",
           "values": [
             113.7,
-            0.001
+            0.001,
+            0.021
           ]
         }
       ],
@@ -830,14 +947,7 @@
       "last_updated": "2026-08-04",
       "last_checked": "2026-08-04",
       "source_origin": "api",
-      "data_quality": [
-        {
-          "period": "Feb 26 R",
-          "column": 0,
-          "status": "revision",
-          "reason": "Valor idéntico al de IMAI (104.4568568234) en el mismo mes: duplicado sospechoso entre series no relacionadas. Pendiente de verificación contra INEGI (BIE) una vez cargado INEGI_TOKEN."
-        }
-      ],
+      "data_quality": [],
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -1600,7 +1710,7 @@
       "descripcion": "Mide la evolución mensual de la inversión fija bruta (maquinaria y equipo, y construcción) en la economía. Es un indicador adelantado de la capacidad productiva futura.",
       "frecuencia": "Mensual",
       "unidad": "Índice base 2018=100",
-      "ajuste_estacional": "Serie original",
+      "ajuste_estacional": "Serie desestacionalizada; índice y variaciones oficiales del boletín del INEGI",
       "grupo": "inversion",
       "publicacion": "Aproximadamente 55 días tras el cierre del mes",
       "proximo": "Por confirmar con el calendario oficial de difusión",
@@ -1620,6 +1730,11 @@
           "label": "Var. mensual (%)",
           "index": 1,
           "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual (%)",
+          "index": 2,
+          "fmt": "pct-frac"
         }
       ],
       "observations": [
@@ -1627,133 +1742,152 @@
           "period": "Oct 24",
           "values": [
             113.1,
-            0.001
+            0.001,
+            null
           ]
         },
         {
           "period": "Nov 24",
           "values": [
             113.7,
-            0.001
+            0.001,
+            -0.003
           ]
         },
         {
           "period": "Dic 24",
           "values": [
             109.7,
-            -0.026
+            -0.026,
+            -0.041
           ]
         },
         {
           "period": "Ene 25",
           "values": [
             107.4,
-            -0.015
+            -0.015,
+            -0.059
           ]
         },
         {
           "period": "Feb 25",
           "values": [
             107.3,
-            0.001
+            0.001,
+            -0.06
           ]
         },
         {
           "period": "Mar 25",
           "values": [
             107.9,
-            0.003
+            0.003,
+            -0.047
           ]
         },
         {
           "period": "Abr 25",
           "values": [
             105.6,
-            -0.017
+            -0.017,
+            -0.077
           ]
         },
         {
           "period": "May 25",
           "values": [
             106.8,
-            0.009
+            0.009,
+            -0.067
           ]
         },
         {
           "period": "Jun 25",
           "values": [
             105.6,
-            -0.014
+            -0.014,
+            -0.068
           ]
         },
         {
           "period": "Jul 25",
           "values": [
             107.5,
-            0.016
+            0.016,
+            -0.072
           ]
         },
         {
           "period": "Ago 25",
           "values": [
             103.9,
-            -0.027
+            -0.027,
+            -0.089
           ]
         },
         {
           "period": "Sep 25",
           "values": [
             101.0,
-            -0.003
+            -0.003,
+            -0.084
           ]
         },
         {
           "period": "Oct 25",
           "values": [
             102.2,
-            0.009
+            0.009,
+            -0.058
           ]
         },
         {
           "period": "Nov 25",
           "values": [
             102.8,
-            0.004
+            0.004,
+            -0.057
           ]
         },
         {
           "period": "Dic 25",
           "values": [
             103.6,
-            0.005
+            0.005,
+            -0.016
           ]
         },
         {
           "period": "Ene 26",
           "values": [
             102.3,
-            -0.011
+            -0.011,
+            -0.022
           ]
         },
         {
           "period": "Feb 26",
           "values": [
             101.1,
-            -0.008
+            -0.008,
+            -0.036
           ]
         },
         {
           "period": "Mar 26",
           "values": [
             102.0,
-            0.004
+            0.004,
+            -0.031
           ]
         },
         {
           "period": "Abr 26",
           "values": [
             107.4,
-            0.04
+            0.04,
+            0.051
           ]
         }
       ],
@@ -2763,7 +2897,7 @@
         {
           "period": "Ago 26",
           "values": [
-            17.3317
+            17.2717
           ]
         }
       ],

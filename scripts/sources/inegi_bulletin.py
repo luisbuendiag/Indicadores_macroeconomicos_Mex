@@ -6,8 +6,14 @@ han podido confirmar en el catálogo BIE-BISE):
 
   - IOAE: Indicador Oportuno de la Actividad Económica (estimación puntual y
     límites del intervalo de confianza del IGAE).
-  - CONSUMO (IMCP): Indicador Mensual del Consumo Privado (índice y var. mensual).
-  - IMFBCF: Indicador Mensual de la Formación Bruta de Capital Fijo (índice y var. mensual).
+  - IGAE: Indicador Global de la Actividad Económica (var. mensual y var. anual
+    oficiales desde el boletín; el nivel se conserva de la serie BIE).
+  - CONSUMO (IMCP): Indicador Mensual del Consumo Privado (índice, var. mensual
+    y var. anual).
+  - IMFBCF: Indicador Mensual de la Formación Bruta de Capital Fijo (índice,
+    var. mensual y var. anual).
+  - PIBT: Producto Interno Bruto Trimestral a precios constantes (var. trimestral
+    y var. anual desestacionalizadas del PIB y actividades terciarias).
   - EMIM: Encuesta Mensual de la Industria Manufacturera (producción, personal,
     horas, remuneraciones) – parseo parcial desde el boletín.
 
@@ -44,6 +50,7 @@ BULLETIN_URLS = {
     "CONSUMO": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/imcp/imcpmi{year}_{mm}.pdf",
     "IMFBCF": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/ifb/imfbcf{year}_{mm}.pdf",
     "EMIM": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/emim/emim{year}_{mm}.pdf",
+    "IGAE": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/igae/igae{year}_{mm}.pdf",
     "PIBT": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/pibt/pib_Pconst{year}_{mm}.pdf",
 }
 
@@ -298,7 +305,14 @@ def _parse_ioae(pdf_bytes: bytes, pub_date: tuple[int, int, int] | None) -> dict
 
 
 def _parse_imcp_imfbcf(kind: str, pdf_bytes: bytes, pub_date: tuple[int, int, int] | None) -> dict[str, list[dict]] | None:
-    """Extrae índice y variación mensual del primer cuadro de la portada."""
+    """Extrae índice, variación mensual y variación anual de la portada.
+
+    Funciona para CONSUMO, IMFBCF y IGAE. El boletín expone tres cuadros
+    compactos: índice, variación mensual y variación anual. Sólo se retorna
+    el índice cuando tiene sentido para el indicador (CONSUMO/IMFBCF). Para
+    IGAE el nivel proviene de la serie BIE, por lo que se ignoran los índices
+    desestacionalizados del boletín.
+    """
     pub_year, pub_month, _ = pub_date or (None, None, None)
     if pub_year is None:
         return None
@@ -321,30 +335,43 @@ def _parse_imcp_imfbcf(kind: str, pdf_bytes: bytes, pub_date: tuple[int, int, in
     ym = f"{year:04d}-{month:02d}"
     period = inegi.ym_to_label(ym, 8)
 
-    index_table = mensual_table = None
+    index_table = mensual_table = anual_table = None
     for table in tables:
         flat = " ".join(c for row in table for c in (row or []) if c).replace("\n", " ")
         if kind == "CONSUMO" and ("Consumo" in flat and "privado" in flat and "índice 2018" in flat):
             index_table = table
         if kind == "IMFBCF" and ("Inversión" in flat and "índice 2018" in flat):
             index_table = table
+        if kind == "IGAE" and ("IGAE" in flat and "índice 2018" in flat):
+            index_table = table
         if "Variación" in flat and "mensual" in flat:
             mensual_table = table
-        if index_table and mensual_table:
+        if "Variación" in flat and "anual" in flat:
+            anual_table = table
+        if (index_table or kind == "IGAE") and mensual_table and anual_table:
             break
 
-    if index_table is None or mensual_table is None:
+    out: dict[str, list[dict]] = {}
+
+    if mensual_table is None or anual_table is None:
         return None
 
-    index_value = next((_parse_index(c) for row in index_table for c in row if _parse_index(c) is not None), None)
     mensual_value = next((_parse_pct(c) for row in mensual_table for c in row if _parse_pct(c) is not None), None)
-    if index_value is None or mensual_value is None:
+    anual_value = next((_parse_pct(c) for row in anual_table for c in row if _parse_pct(c) is not None), None)
+    if mensual_value is None or anual_value is None:
         return None
 
-    return {
-        "index": [{"ym": ym, "value": index_value, "period": period}],
-        "mensual": [{"ym": ym, "value": mensual_value / 100.0, "period": period}],
-    }
+    if kind in ("CONSUMO", "IMFBCF"):
+        if index_table is None:
+            return None
+        index_value = next((_parse_index(c) for row in index_table for c in row if _parse_index(c) is not None), None)
+        if index_value is None:
+            return None
+        out["index"] = [{"ym": ym, "value": index_value, "period": period}]
+
+    out["mensual"] = [{"ym": ym, "value": mensual_value / 100.0, "period": period}]
+    out["anual"] = [{"ym": ym, "value": anual_value / 100.0, "period": period}]
+    return out
 
 
 def _parse_emim(pdf_bytes: bytes, pub_date: tuple[int, int, int] | None) -> dict[str, list[dict]] | None:
@@ -535,7 +562,16 @@ def _build_item(indicator: str, target_column: int, api_total: list[dict], serie
 
 
 def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dict]:
-    """Descubre y parsea los últimos boletines de un indicador."""
+    """Descubre y parsea los últimos boletines de un indicador.
+
+    Mapeo de columnas:
+      - CONSUMO:  0 = índice, 1 = var. mensual, 2 = var. anual.
+      - IMFBCF:   0 = índice, 1 = var. mensual, 2 = var. anual.
+      - IGAE:     3 = var. mensual, 4 = var. anual (el nivel se conserva de BIE).
+      - PIBT:     PIB col 2 = qoq, col 3 = yoy;
+                  PIBSEC col 3 = qoq terciarias, col 4 = yoy terciarias.
+      - IOAE/EMIM: sin cambios.
+    """
     this_year = 2026
     # PIBT es trimestral: publicaciones en febrero, mayo, agosto y noviembre.
     months = (2, 5, 8, 11) if kind == "PIBT" else None
@@ -544,7 +580,7 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
         return []
 
     results = []
-    seen_yms = set()
+    seen: set[tuple[str, int, str]] = set()
     for year, mm, url in issues[:max_bulletins]:
         try:
             pdf = _req(url)
@@ -561,22 +597,19 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
                 continue
             for sub, col in (("point", 0), ("lower", 1), ("upper", 2)):
                 for o in parsed[sub]:
-                    if o["ym"] not in seen_yms:
-                        # conservar y reagrupar después
+                    if ("IOAE", col, o["ym"]) not in seen:
                         results.append(("IOAE", sub, col, o, url))
-            for o in parsed["point"]:
-                seen_yms.add(o["ym"])
+                        seen.add(("IOAE", col, o["ym"]))
 
         elif kind in ("CONSUMO", "IMFBCF"):
             parsed = _parse_imcp_imfbcf(kind, pdf, pub_date)
             if not parsed:
                 continue
-            for sub, col in (("index", 0), ("mensual", 1)):
+            for sub, col in (("index", 0), ("mensual", 1), ("anual", 2)):
                 for o in parsed[sub]:
-                    if o["ym"] not in seen_yms:
+                    if (kind, col, o["ym"]) not in seen:
                         results.append((kind, sub, col, o, url))
-            for o in parsed["index"]:
-                seen_yms.add(o["ym"])
+                        seen.add((kind, col, o["ym"]))
 
         elif kind == "EMIM":
             parsed = _parse_emim(pdf, pub_date)
@@ -584,20 +617,42 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
                 continue
             for sub, col in (("index", 0), ("mensual", 1)):
                 for o in parsed.get(sub, []):
-                    if o["ym"] not in seen_yms:
+                    if ("EMIM", col, o["ym"]) not in seen:
                         results.append(("EMIM", sub, col, o, url))
-            for o in parsed.get("index", []):
-                seen_yms.add(o["ym"])
+                        seen.add(("EMIM", col, o["ym"]))
+
+        elif kind == "IGAE":
+            parsed = _parse_imcp_imfbcf(kind, pdf, pub_date)
+            if not parsed:
+                continue
+            for sub, col in (("mensual", 3), ("anual", 4)):
+                for o in parsed[sub]:
+                    if ("IGAE", col, o["ym"]) not in seen:
+                        results.append(("IGAE", sub, col, o, url))
+                        seen.add(("IGAE", col, o["ym"]))
 
         elif kind == "PIBT":
             parsed = _parse_pibt(pdf, pub_date)
             if not parsed:
                 continue
-            # La variación trimestral desestacionalizada de terciarias -> PIBSEC col 3.
-            o = parsed.get("qoq", {}).get("Actividades terciarias")
-            if o and o["ym"] not in seen_yms:
-                results.append(("PIBSEC", "qoq_ter", 3, o, url))
-                seen_yms.add(o["ym"])
+            # PIB total: qoq en col 2, yoy en col 3.
+            o_qoq = parsed.get("qoq", {}).get("PIB")
+            o_yoy = parsed.get("yoy", {}).get("PIB")
+            if o_qoq and ("PIB", 2, o_qoq["ym"]) not in seen:
+                results.append(("PIB", "qoq", 2, o_qoq, url))
+                seen.add(("PIB", 2, o_qoq["ym"]))
+            if o_yoy and ("PIB", 3, o_yoy["ym"]) not in seen:
+                results.append(("PIB", "yoy", 3, o_yoy, url))
+                seen.add(("PIB", 3, o_yoy["ym"]))
+            # Terciarias: qoq en col 3, yoy en col 4.
+            o_qoq = parsed.get("qoq", {}).get("Actividades terciarias")
+            o_yoy = parsed.get("yoy", {}).get("Actividades terciarias")
+            if o_qoq and ("PIBSEC", 3, o_qoq["ym"]) not in seen:
+                results.append(("PIBSEC", "qoq_ter", 3, o_qoq, url))
+                seen.add(("PIBSEC", 3, o_qoq["ym"]))
+            if o_yoy and ("PIBSEC", 4, o_yoy["ym"]) not in seen:
+                results.append(("PIBSEC", "yoy_ter", 4, o_yoy, url))
+                seen.add(("PIBSEC", 4, o_yoy["ym"]))
 
     # Agrupar por indicador y columna
     grouped: dict[str, dict[int, list[dict]]] = {}
@@ -610,7 +665,7 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
             rows = sorted(cols[col], key=lambda x: x[0]["ym"])
             api_total = [r[0] for r in rows]
             link = rows[-1][1]
-            freq = 4 if indicator == "PIBSEC" else 8
+            freq = 4 if indicator in ("PIB", "PIBSEC") else 8
             out.append(_build_item(indicator, col, api_total, f"{indicator}_pdf", link, freq=freq))
     return out
 
@@ -623,7 +678,7 @@ def fetch(config: dict | None = None, start_year: int = 2024, max_bulletins: int
         return SourceResult(False, warnings=warnings)
 
     data: dict[str, list[dict]] = {}
-    for kind in ("IOAE", "CONSUMO", "IMFBCF", "EMIM", "PIBT"):
+    for kind in ("IOAE", "IGAE", "CONSUMO", "IMFBCF", "EMIM", "PIBT"):
         try:
             items = _fetch_kind(kind, start_year, max_bulletins)
             for it in (items or []):

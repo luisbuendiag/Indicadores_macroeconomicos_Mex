@@ -132,7 +132,7 @@ function panoramaCard(ind) {
     sparkline(k),
     el("div", { class: "mc-deltas" },
       el("div", { class: `mc-delta ${deltaCls}` }, el("span", { class: "d-val" }, k.varText), el("span", { class: "d-lbl" }, cfg.varLabel)),
-      yoy ? el("div", { class: "mc-delta neutral" }, el("span", { class: "d-val" }, yoy.text), el("span", { class: "d-lbl" }, "Var. anual")) : null),
+      yoy ? el("div", { class: "mc-delta neutral" }, el("span", { class: "d-val" }, yoy.text), el("span", { class: "d-lbl" }, yoy.label || "Var. anual")) : null),
   );
   return card;
 }
@@ -409,7 +409,7 @@ function renderIndicatorView(key) {
   const mini = el("div", { class: "mini-kpis" },
     el("div", { class: "mini dark" }, el("div", { class: "lbl" }, "Cifra actual"), el("div", { class: "num" }, k.ultimoFmt), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),
     el("div", { class: "mini" }, el("div", { class: "lbl" }, cfg.varLabel), el("div", { class: "num", style: `color:${k.varColor}` }, k.varText), el("div", { class: "sub" }, cfg.comp)),
-    yoy ? el("div", { class: "mini" }, el("div", { class: "lbl" }, "Variación anual"), el("div", { class: "num", style: `color:${yoy.pos ? COLORS.GREEN : COLORS.CRIMSON}` }, yoy.text), el("div", { class: "sub" }, "Frente al mismo periodo del año previo")) : null,
+    yoy ? el("div", { class: "mini" }, el("div", { class: "lbl" }, yoy.label || "Variación anual"), el("div", { class: "num", style: `color:${yoy.pos ? COLORS.GREEN : COLORS.CRIMSON}` }, yoy.text), el("div", { class: "sub" }, "Frente al periodo de referencia")) : null,
     el("div", { class: "mini" }, el("div", { class: "lbl" }, "Máximo de la serie"), el("div", { class: "num", style: `color:${COLORS.GREEN}` }, k.maxFmt), el("div", { class: "sub" }, `Periodo: ${k.maxP}`)),
     el("div", { class: "mini" }, el("div", { class: "lbl" }, "Mínimo de la serie"), el("div", { class: "num", style: `color:${COLORS.CRIMSON}` }, k.minFmt), el("div", { class: "sub" }, `Periodo: ${k.minP}`)),
   );

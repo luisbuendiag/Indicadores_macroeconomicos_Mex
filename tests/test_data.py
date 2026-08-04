@@ -64,3 +64,34 @@ def test_duplicate_flagged_as_revision(payload):
     imai_feb = next(o for o in payload["indicators"]["IMAI"]["observations"] if o["period"].startswith("Feb 26"))
     cons_feb = next(o for o in payload["indicators"]["CONSUMO"]["observations"] if o["period"].startswith("Feb 26"))
     assert imai_feb["values"][0] != cons_feb["values"][0]
+
+
+# Regresión: variaciones oficiales del boletín INEGI.
+# Se comparan con los valores públicados en los boletines más recientes.
+@pytest.mark.parametrize("key,monthly_col,annual_col,expected_monthly,expected_annual", [
+    ("CONSUMO", 1, 2, 0.001, 0.021),
+    ("IMFBCF", 1, 2, 0.04, 0.051),
+    ("IGAE", 3, 4, -0.003, 0.02),
+])
+def test_bulletin_variations_monthly_and_annual(payload, key, monthly_col, annual_col, expected_monthly, expected_annual):
+    ind = payload["indicators"][key]
+    last = ind["observations"][-1]
+    assert last["values"][monthly_col] == pytest.approx(expected_monthly, abs=1e-4)
+    assert last["values"][annual_col] == pytest.approx(expected_annual, abs=1e-4)
+
+
+def test_pib_bulletin_variations(payload):
+    pib = payload["indicators"]["PIB"]
+    last = pib["observations"][-1]
+    # Trimestral desestacionalizada y anual desestacionalizada del PIBT.
+    assert last["values"][2] == pytest.approx(-0.006, abs=1e-4)
+    assert last["values"][3] == pytest.approx(0.004, abs=1e-4)
+    # El nivel debe conservarse de la serie BIE.
+    assert last["values"][0] == pytest.approx(24973976.071, abs=1e-3)
+
+
+def test_pibsec_terciarias_bulletin_variations(payload):
+    pibsec = payload["indicators"]["PIBSEC"]
+    last = pibsec["observations"][-1]
+    assert last["values"][3] == pytest.approx(-0.004, abs=1e-4)
+    assert last["values"][4] == pytest.approx(0.011, abs=1e-4)
