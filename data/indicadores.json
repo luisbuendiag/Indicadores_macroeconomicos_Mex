@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-04T15:15:58+00:00",
+    "generated_at": "2026-08-04T15:21:26+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -827,8 +827,8 @@
         }
       ],
       "last_observation": "Abr 26",
-      "last_updated": "2026-08-03",
-      "last_checked": "2026-08-03",
+      "last_updated": "2026-08-04",
+      "last_checked": "2026-08-04",
       "source_origin": "api",
       "data_quality": [
         {
@@ -845,7 +845,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "Aproximadamente 21 días después de haber concluido el mes",
       "periodo_referencia": "Abr 26",
-      "fecha_consulta": "2026-08-03"
+      "fecha_consulta": "2026-08-04"
     },
     "IED": {
       "key": "IED",
@@ -1758,8 +1758,8 @@
         }
       ],
       "last_observation": "Abr 26",
-      "last_updated": "2026-08-03",
-      "last_checked": "2026-08-03",
+      "last_updated": "2026-08-04",
+      "last_checked": "2026-08-04",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -1767,7 +1767,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "Aproximadamente 55 días tras el cierre del mes",
       "periodo_referencia": "Abr 26",
-      "fecha_consulta": "2026-08-03",
+      "fecha_consulta": "2026-08-04",
       "source_origin": "api"
     },
     "IOAE": {
@@ -1966,8 +1966,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-08-03",
-      "last_checked": "2026-08-03",
+      "last_updated": "2026-08-04",
+      "last_checked": "2026-08-04",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -1975,7 +1975,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "Fin de mes del periodo estimado",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-08-03",
+      "fecha_consulta": "2026-08-04",
       "source_origin": "api"
     },
     "EMIM": {
@@ -2146,9 +2146,9 @@
       "last_updated": null,
       "last_checked": null,
       "requiere_token": "BANXICO",
-      "serie_confirmada": false,
+      "serie_confirmada": true,
       "clasificacion": "complementario",
-      "estado": "pendiente de token",
+      "estado": "no disponible",
       "origen_dato": "pendiente",
       "fecha_publicacion": "Días hábiles",
       "periodo_referencia": null,
@@ -2182,9 +2182,9 @@
       "last_updated": null,
       "last_checked": null,
       "requiere_token": "BANXICO",
-      "serie_confirmada": false,
+      "serie_confirmada": true,
       "clasificacion": "complementario",
-      "estado": "pendiente de token",
+      "estado": "no disponible",
       "origen_dato": "pendiente",
       "fecha_publicacion": "Días de anuncio de política monetaria",
       "periodo_referencia": null,
@@ -2218,9 +2218,9 @@
       "last_updated": null,
       "last_checked": null,
       "requiere_token": "BANXICO",
-      "serie_confirmada": false,
+      "serie_confirmada": true,
       "clasificacion": "complementario",
-      "estado": "pendiente de token",
+      "estado": "no disponible",
       "origen_dato": "pendiente",
       "fecha_publicacion": "Semanal (martes)",
       "periodo_referencia": null,

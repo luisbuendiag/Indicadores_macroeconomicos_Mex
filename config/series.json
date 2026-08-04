@@ -1,8 +1,11 @@
 {
   "_comment": "Mapa de indicadores -> series de las fuentes oficiales. Los IDs de INEGI (BIE) deben confirmarse contra el catálogo oficial al cargar INEGI_TOKEN; se dejan como null cuando no están confirmados para NO consultar una serie equivocada. Los IDs de Banxico (SIE) son públicos y estables.",
   "banxico": {
-    "TIPOCAMBIO": { "serie": "SF43718", "nombre": "Tipo de cambio FIX (pesos por dólar)", "frecuencia": "Diaria->mensual", "unidad": "Pesos por dólar" },
-    "TASA": { "serie": "SF61745", "nombre": "Tasa objetivo de Banco de México", "frecuencia": "Diaria->mensual", "unidad": "Porcentaje" }
+    "_endpoint": "https://www.banxico.org.mx/SieAPIRest/service/v1/series/{series}/datos/{start}/{end}?token={token}",
+    "_nota": "Token gratuito en https://www.banxico.org.mx/SieAPIRest/service/v1/token. Las series SF43718, SF61745 y SF43707 son las claves oficiales del SIE para tipo de cambio FIX, tasa objetivo y reservas internacionales.",
+    "TIPOCAMBIO": { "serie": "SF43718", "nombre": "Tipo de cambio FIX (pesos por dólar)", "frecuencia": "Diaria->mensual", "unidad": "Pesos por dólar", "link": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do" },
+    "TASA": { "serie": "SF61745", "nombre": "Tasa objetivo de Banco de México", "frecuencia": "Diaria->mensual", "unidad": "Porcentaje anual", "link": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html" },
+    "RESERVAS": { "serie": "SF43707", "nombre": "Reservas internacionales", "frecuencia": "Semanal->mensual", "unidad": "Millones de dólares", "link": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/" }
   },
   "inegi": {
     "_endpoint": "https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/{ids}/es/{geo}/false/{db}/2.0/{token}?type=json",
