@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-03T22:33:27+00:00",
+  "generated_at": "2026-08-04T00:50:46+00:00",
   "indicadores": [
     {
       "indicador": "Producto Interno Bruto",
@@ -30,7 +30,7 @@
       "clave": "PIBSEC",
       "clasificacion": "principal",
       "fuente": "INEGI",
-      "serie": "735882, 735883, 735888",
+      "serie": "735888",
       "frecuencia": "Trimestral",
       "unidad": "Millones de pesos (a precios de 2018)",
       "ajuste_estacional": "Serie original",
@@ -39,7 +39,7 @@
       "fecha_publicacion": "Aproximadamente 50 días después de haber concluido el trimestre",
       "fecha_consulta": "2026-08-03",
       "fecha_actualizacion_archivo": "2026-08-03",
-      "metodo_actualizacion": "INEGI BIE API / boletín PIBT",
+      "metodo_actualizacion": "INEGI BIE API",
       "estado": "actualizado automáticamente",
       "origen_dato": "api",
       "requiere_token": "INEGI",
@@ -255,7 +255,7 @@
       "fecha_publicacion": "Aproximadamente 40 días tras el cierre del mes",
       "fecha_consulta": "2026-08-03",
       "fecha_actualizacion_archivo": "2026-08-03",
-      "metodo_actualizacion": "INEGI BIE API / boletín PDF",
+      "metodo_actualizacion": "INEGI BIE API",
       "estado": "actualizado automáticamente",
       "origen_dato": "api",
       "requiere_token": "INEGI",

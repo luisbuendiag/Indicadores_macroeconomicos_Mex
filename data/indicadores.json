@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-03T22:33:27+00:00",
+    "generated_at": "2026-08-04T00:50:46+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -239,9 +239,9 @@
       ],
       "fuente": {
         "nombre": "INEGI",
-        "link": "https://www.inegi.org.mx/temas/pib/",
-        "metodo": "INEGI BIE API / boletín PIBT",
-        "serie": "735882, 735883, 735888"
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=600267#D735888",
+        "metodo": "INEGI BIE API",
+        "serie": "735888"
       },
       "columns": [
         {
@@ -1990,7 +1990,7 @@
       "fuente": {
         "nombre": "INEGI",
         "link": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=562444#D796224",
-        "metodo": "INEGI BIE API / boletín PDF",
+        "metodo": "INEGI BIE API",
         "serie": "796224"
       },
       "columns": [
