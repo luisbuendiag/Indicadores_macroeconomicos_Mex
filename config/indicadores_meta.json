@@ -82,9 +82,9 @@
       "publicacion": "Días hábiles",
       "proximo": "Siguiente día hábil",
       "requiere_token": "BANXICO",
-      "serie_confirmada": false,
+      "serie_confirmada": true,
       "clasificacion": "complementario",
-      "fuente": { "nombre": "Banco de México", "link": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do", "metodo": "Banxico SIE API", "serie": null },
+      "fuente": { "nombre": "Banco de México", "link": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do", "metodo": "Banxico SIE API", "serie": "SF43718" },
       "columns": [
         { "label": "Tipo de cambio FIX", "index": 0, "fmt": "fx" }
       ]
@@ -99,9 +99,9 @@
       "publicacion": "Días de anuncio de política monetaria",
       "proximo": "Siguiente reunión programada",
       "requiere_token": "BANXICO",
-      "serie_confirmada": false,
+      "serie_confirmada": true,
       "clasificacion": "complementario",
-      "fuente": { "nombre": "Banco de México", "link": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html", "metodo": "Banxico SIE API", "serie": null },
+      "fuente": { "nombre": "Banco de México", "link": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html", "metodo": "Banxico SIE API", "serie": "SF61745" },
       "columns": [
         { "label": "Tasa objetivo (%)", "index": 0, "fmt": "pct-raw" }
       ]
@@ -111,14 +111,14 @@
       "descripcion": "Activos internacionales del Banco de México disponibles para atender obligaciones y estabilizar el mercado cambiario.",
       "frecuencia": "Semanal",
       "unidad": "Millones de dólares",
-      "ajuste_estacional": "No aplica",
+      "ajuste_estacional": "No aplica; se toma el último dato semanal de cada mes",
       "grupo": "financiero",
       "publicacion": "Semanal (martes)",
       "proximo": "Siguiente publicación semanal",
       "requiere_token": "BANXICO",
-      "serie_confirmada": false,
+      "serie_confirmada": true,
       "clasificacion": "complementario",
-      "fuente": { "nombre": "Banco de México", "link": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/", "metodo": "Banxico SIE API", "serie": null },
+      "fuente": { "nombre": "Banco de México", "link": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/", "metodo": "Banxico SIE API", "serie": "SF43707" },
       "columns": [
         { "label": "Reservas internacionales", "index": 0, "fmt": "usd" }
       ]
