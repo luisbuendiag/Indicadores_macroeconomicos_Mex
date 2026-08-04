@@ -214,7 +214,8 @@ export function analysis(ind, k) {
   let read;
   if (cfg.grupo === "growth" && ORIG) {
     if (ind.frecuencia === "Trimestral") {
-      read = `El crecimiento anual fue ${magAdj || "marginal"}. La comparación entre trimestres debe considerar el comportamiento estacional de la serie original.`;
+      const label = cfg.varLabel.toLowerCase().includes("anual") ? "crecimiento anual" : "variación trimestral";
+      read = `El ${label} fue ${magAdj || "marginal"}. La comparación entre trimestres debe considerar el comportamiento estacional de la serie original.`;
     } else {
       const verb = curVar == null ? "se mantuvo sin cambio" : (curVar > 0.05 ? "aumentó" : (curVar < -0.05 ? "disminuyó" : "se mantuvo prácticamente sin cambio"));
       read = `La variación mensual publicada por el INEGI muestra que el indicador ${verb} respecto del mes previo. El nivel mostrado es la serie original; la variación mensual se calcula sobre cifras desestacionalizadas.`;
