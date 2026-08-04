@@ -80,16 +80,18 @@ def validate(payload: dict):
     #    Recolecta (indicador, periodo, valor) de las series primarias y detecta
     #    valores idénticos con muchos decimales compartidos entre indicadores.
     value_index = defaultdict(list)
+    # 3) Duplicados exactos entre series NO relacionadas (col 0 / serie primaria).
+    #    Se compara con 4 decimales y se ignora valores redondeados a <= 4 decimales
+    #    para evitar falsos positivos con índices enteros o a un solo decimal.
     for key, ind in inds.items():
         for o in ind["observations"]:
-            for col, v in enumerate(o["values"]):
-                if isinstance(v, (int, float)) and abs(v) > 5 and (abs(v - round(v)) > 1e-6):
-                    # sólo valores "de alta precisión" (con decimales significativos)
-                    value_index[round(v, 6)].append((key, o["period"], col))
+            v = primary_series(ind)[ind["observations"].index(o)]
+            if isinstance(v, (int, float)) and abs(v) > 5 and (abs(v - round(v, 4)) > 1e-6):
+                value_index[round(v, 4)].append((key, o["period"], 0))
     for v, hits in value_index.items():
         distinct_inds = {h[0] for h in hits}
         if len(distinct_inds) > 1:
-            desc = "; ".join(f"{k} {p} (col {c})" for k, p, c in hits)
+            desc = "; ".join(f"{k} {p}" for k, p, _ in hits)
             errors.append(f"Valor idéntico sospechoso {v} compartido entre series no relacionadas: {desc}.")
 
     # 4) Nulos inesperados en el último dato de la serie primaria

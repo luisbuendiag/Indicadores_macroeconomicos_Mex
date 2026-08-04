@@ -7,7 +7,82 @@
   "inegi": {
     "_endpoint": "https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/{ids}/es/{geo}/false/{db}/2.0/{token}?type=json",
     "_nota": "La base de datos actualizada del BIE se consulta con db='BIE-BISE' y geografía nacional geo='00'. La clave de la versión actualizada del BIE se obtiene del Constructor de Consultas oficial (Conjunto de datos = BIE).",
-    "PIB": { "serie": null, "confirmar": true },
+    "PIB": [
+      {
+        "serie": "737372",
+        "confirmar": false,
+        "nombre": "Producto Interno Bruto",
+        "descripcion_serie": "Total, a precios de mercado, millones de pesos a precios constantes de 2018, serie original",
+        "frecuencia": "Trimestral",
+        "unidad": "Millones de pesos (a precios de 2018)",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 0,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=605594#D737372"
+      },
+      {
+        "serie": "737375",
+        "confirmar": false,
+        "nombre": "Producto Interno Bruto, variación anual",
+        "descripcion_serie": "Variación anual respecto al mismo trimestre del año anterior (%)",
+        "frecuencia": "Trimestral",
+        "unidad": "Porcentaje",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 1,
+        "factor": 0.01,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=605598#D737375"
+      }
+    ],
+    "PIBSEC": [
+      {
+        "_nota": "Desagregación sectorial del PIB a precios constantes de 2018, serie original (PIBT 2018).",
+        "serie": "735882",
+        "confirmar": false,
+        "nombre": "Actividades primarias",
+        "descripcion_serie": "Agricultura, cría y explotación de animales, aprovechamiento forestal y pesca; valor agregado a precios constantes de 2018, serie original",
+        "frecuencia": "Trimestral",
+        "unidad": "Millones de pesos (a precios de 2018)",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 0,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=600259#D735882"
+      },
+      {
+        "serie": "735883",
+        "confirmar": false,
+        "nombre": "Actividades secundarias",
+        "descripcion_serie": "Minería, energía, construcción e industrias manufactureras; valor agregado a precios constantes de 2018, serie original",
+        "frecuencia": "Trimestral",
+        "unidad": "Millones de pesos (a precios de 2018)",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 1,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=600261#D735883"
+      },
+      {
+        "serie": "735888",
+        "confirmar": false,
+        "nombre": "Actividades terciarias",
+        "descripcion_serie": "Valor agregado a precios constantes de 2018, serie original",
+        "frecuencia": "Trimestral",
+        "unidad": "Millones de pesos (a precios de 2018)",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 2,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=600267#D735888"
+      },
+      {
+        "_nota": "La variación trimestral desestacionalizada de terciarias NO está disponible como serie BIE independiente. Se completa desde el boletín PIBT (pib_Pconst) con el parser de inegi_bulletin.",
+        "serie": null,
+        "confirmar": true
+      }
+    ],
     "IGAE": {
       "serie": "737121",
       "confirmar": false,
@@ -19,16 +94,156 @@
       "db": "BIE-BISE",
       "geo": "00",
       "columna_objetivo": 0,
-      "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=1090#D737121"
+      "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603589#D737121"
     },
-    "IMAI": { "serie": null, "confirmar": true },
-    "CONSUMO": { "serie": null, "confirmar": true },
-    "DESOCUP": { "serie": null, "confirmar": true },
-    "INPC": { "serie": null, "confirmar": true },
-    "BALANZA": { "serie": null, "confirmar": true },
+    "IMAI": [
+      {
+        "serie": "737233",
+        "confirmar": false,
+        "nombre": "Indicador Mensual de la Actividad Industrial",
+        "descripcion_serie": "Índice de volumen físico (2018=100)",
+        "frecuencia": "Mensual",
+        "unidad": "Índice base 2018=100",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 0,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603729#D737233"
+      },
+      {
+        "serie": "737234",
+        "confirmar": false,
+        "nombre": "Indicador Mensual de la Actividad Industrial, variación mensual",
+        "descripcion_serie": "Variación mensual respecto al mes inmediato anterior (%)",
+        "frecuencia": "Mensual",
+        "unidad": "Porcentaje",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 1,
+        "factor": 0.01,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603729#D737234"
+      }
+    ],
+    "CONSUMO": {
+      "serie": null,
+      "confirmar": true,
+      "nota": "Búsqueda en el catálogo del BIE arrojó 'Bad Request'/'Page Not Found' con los términos habituales (consumo privado, gasto de consumo). Se requiere identificar la serie oficial correcta."
+    },
+    "DESOCUP": {
+      "serie": "444603",
+      "confirmar": false,
+      "nombre": "Tasa de desocupación",
+      "descripcion_serie": "Tasa de desocupación nacional (%)",
+      "frecuencia": "Mensual",
+      "unidad": "Porcentaje",
+      "tipo_serie": "Serie original",
+      "db": "BIE-BISE",
+      "geo": "00",
+      "columna_objetivo": 0,
+      "factor": 0.01,
+      "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=4#D444603"
+    },
+    "INPC": [
+      {
+        "serie": "334360",
+        "confirmar": false,
+        "nombre": "Índice de Precios al Consumidor",
+        "descripcion_serie": "Índice general de precios al consumidor (2018=100), serie usada para calcular variación anual",
+        "frecuencia": "Mensual",
+        "unidad": "Índice base 2018=100",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 0,
+        "transform": "yoy",
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=682416#D334360"
+      },
+      {
+        "serie": "334452",
+        "confirmar": false,
+        "nombre": "Índice de Precios al Consumidor Subyacente",
+        "descripcion_serie": "Índice subyacente de precios al consumidor (2018=100), serie usada para calcular variación anual",
+        "frecuencia": "Mensual",
+        "unidad": "Índice base 2018=100",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 1,
+        "transform": "yoy",
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=682416#D334452"
+      },
+      {
+        "_nota": "La tercera columna (No subyacente) no tiene serie confirmada en el catálogo. Se conservan los datos de respaldo mientras se localiza el ID oficial.",
+        "serie": null,
+        "confirmar": true
+      }
+    ],
+    "BALANZA": [
+      {
+        "serie": "33223",
+        "confirmar": false,
+        "nombre": "Exportaciones",
+        "descripcion_serie": "Exportaciones totales (millones de dólares)",
+        "frecuencia": "Mensual",
+        "unidad": "Millones de dólares",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 0,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=36695#D33223"
+      },
+      {
+        "serie": "33226",
+        "confirmar": false,
+        "nombre": "Importaciones",
+        "descripcion_serie": "Importaciones totales (millones de dólares)",
+        "frecuencia": "Mensual",
+        "unidad": "Millones de dólares",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 1,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=36695#D33226"
+      }
+    ],
+    "IMFBCF": {
+      "_nota": "Indicador Mensual de la Formación Bruta de Capital Fijo. Serie pendiente de confirmar.",
+      "serie": null,
+      "confirmar": true
+    },
+    "IOAE": {
+      "_nota": "Indicador Oportuno de la Actividad Económica. Serie pendiente de confirmar.",
+      "serie": null,
+      "confirmar": true
+    },
+    "EMIM": [
+      {
+        "_nota": "Índice de volumen físico de la producción, total manufacturas (EMIM 2018).",
+        "serie": "796224",
+        "confirmar": false,
+        "nombre": "Volumen físico de la producción",
+        "descripcion_serie": "Total de industrias manufactureras, índice base 2018=100, serie original",
+        "frecuencia": "Mensual",
+        "unidad": "Índice base 2018=100",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 0,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=562444#D796224"
+      },
+      {
+        "_nota": "La variación mensual desestacionalizada de la producción NO tiene un ID BIE confirmado. Se obtiene del boletín EMIM (parser de inegi_bulletin).",
+        "serie": null,
+        "confirmar": true
+      }
+    ],
     "PRODIND": {
       "_comment": "Producción industrial desglosada (IMAI por sectores) para V2.",
-      "manufacturas": null, "construccion": null, "mineria": null, "energia": null,
+      "manufacturas": null,
+      "construccion": null,
+      "mineria": null,
+      "energia": null,
       "confirmar": true
     }
   },

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-03T15:37:44+00:00",
+    "generated_at": "2026-08-04T00:50:46+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -45,8 +45,9 @@
       ],
       "fuente": {
         "nombre": "INEGI",
-        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3#D733671_600917",
-        "metodo": "INEGI BIE API"
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=605598#D737375",
+        "metodo": "INEGI BIE API",
+        "serie": "737375"
       },
       "columns": [
         {
@@ -64,167 +65,167 @@
         {
           "period": "1T-21",
           "values": [
-            22841359.7,
-            0.019
+            22841359.685,
+            -0.025955
           ]
         },
         {
           "period": "2T-21",
           "values": [
-            23623455.1,
-            0.051
+            23623455.056,
+            0.227018
           ]
         },
         {
           "period": "3T-21",
           "values": [
-            23204796.8,
-            0.22699999999999998
+            23204796.817,
+            0.051313
           ]
         },
         {
           "period": "4T-21",
           "values": [
-            23949712.9,
-            -0.026000000000000002
+            23949712.898,
+            0.018929
           ]
         },
         {
           "period": "1T-22",
           "values": [
-            23440574.5,
-            0.02623376225715668
+            23440574.466,
+            0.026234
           ]
         },
         {
           "period": "2T-22",
           "values": [
-            24310024.3,
-            0.029063030665653855
+            24310024.252,
+            0.029063
           ]
         },
         {
           "period": "3T-22",
           "values": [
-            24289379.5,
-            0.046739590497081984
+            24289379.479,
+            0.04674
           ]
         },
         {
           "period": "4T-22",
           "values": [
-            25052395.8,
-            0.04604159158834853
+            25052395.779,
+            0.046042
           ]
         },
         {
           "period": "1T-23 R",
           "values": [
-            24330982.5,
-            0.03798575841219254
+            24330982.536,
+            0.037986
           ]
         },
         {
           "period": "2T-23 R",
           "values": [
-            25108268.2,
-            0.03283599761765754
+            25108268.25,
+            0.032836
           ]
         },
         {
           "period": "3T-23 R",
           "values": [
-            25094793.1,
-            0.033159085023147794
+            25094793.141,
+            0.033159
           ]
         },
         {
           "period": "4T-23 R",
           "values": [
-            25590082.6,
-            0.021462490226184405
+            25590082.607,
+            0.021462
           ]
         },
         {
           "period": "1T-24 R",
           "values": [
-            24761655.5,
-            0.017700600458695037
+            24761655.524,
+            0.017701
           ]
         },
         {
           "period": "2T-24 R",
           "values": [
-            25655479,
-            0.02179404790649797
+            25655479.047,
+            0.021794
           ]
         },
         {
           "period": "3T-24 R",
           "values": [
-            25475446.4,
-            0.015168616791664036
+            25475446.445,
+            0.015169
           ]
         },
         {
           "period": "4T-24 R",
           "values": [
-            25693293,
-            0.004033218712627296
+            25693292.983,
+            0.004033
           ]
         },
         {
           "period": "1T-25 R",
           "values": [
-            24913610.3,
-            0.006136697927971779
+            24913610.281,
+            0.006137
           ]
         },
         {
           "period": "2T-25 R",
           "values": [
-            25618678.8,
-            -0.001434399256392771
+            25618678.767,
+            -0.001434
           ]
         },
         {
           "period": "3T-25 R",
           "values": [
-            25422850.2,
-            -0.002064584038064199
+            25422850.191,
+            -0.002065
           ]
         },
         {
           "period": "4T-25 R",
           "values": [
-            26135644.7,
-            0.017216621473938654
+            26135644.696,
+            0.017217
           ]
         },
         {
           "period": "1T-26 P",
           "values": [
-            24973976.1,
-            0.002423004906679571
+            24973976.071,
+            0.002423
           ]
         }
       ],
       "last_observation": "1T-26 P",
-      "last_updated": "2026-07-16",
-      "last_checked": "2026-07-16",
-      "source_origin": "legacy_dashboard",
+      "last_updated": "2026-08-03",
+      "last_checked": "2026-08-03",
+      "source_origin": "api",
       "requiere_token": "INEGI",
-      "serie_confirmada": false,
+      "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "dato de respaldo vigente",
-      "origen_dato": "respaldo",
+      "estado": "actualizado automáticamente",
+      "origen_dato": "api",
       "fecha_publicacion": "Aproximadamente 50 días después de haber concluido el trimestre",
       "periodo_referencia": "1T-26 P",
-      "fecha_consulta": "2026-07-16"
+      "fecha_consulta": "2026-08-03"
     },
     "PIBSEC": {
       "key": "PIBSEC",
-      "nombre": "Producto Interno Bruto por actividad económica",
+      "nombre": "Producto Interno Bruto por sector de actividad",
       "descripcion": "Permite analizar la contribución específica de cada sector al valor agregado total de la economía mexicana. Es fundamental para entender la estructura productiva del país y cómo evoluciona con el tiempo.",
       "frecuencia": "Trimestral",
       "unidad": "Millones de pesos (a precios de 2018)",
@@ -238,8 +239,9 @@
       ],
       "fuente": {
         "nombre": "INEGI",
-        "link": "https://www.inegi.org.mx/temas/pib/#informacion_general",
-        "metodo": "INEGI BIE API"
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=600267#D735888",
+        "metodo": "INEGI BIE API",
+        "serie": "735888"
       },
       "columns": [
         {
@@ -267,133 +269,133 @@
         {
           "period": "1T-23 P",
           "values": [
-            835925.6,
-            7884149.8,
-            14688940.9,
+            767720.639,
+            7800352.717,
+            14382920.096,
             0.006
           ]
         },
         {
           "period": "2T-23 P",
           "values": [
-            836799.6,
-            7943263.3,
-            14820043.5,
+            866388.559,
+            7964375.032,
+            14833956.646,
             0.008
           ]
         },
         {
           "period": "3T-23 P",
           "values": [
-            819095.7,
-            8016288.3,
-            14946803,
+            730201.127,
+            8061173.693,
+            14924452.582,
             0.008
           ]
         },
         {
           "period": "4T-23 P",
           "values": [
-            831686.6,
-            8010952.1,
-            14960367.9,
+            958911.8,
+            8024213.122,
+            15251937.656,
             0
           ]
         },
         {
           "period": "1T-24 P",
           "values": [
-            827043,
-            7940140.6,
-            15131051.2,
+            763337.702,
+            7795986.431,
+            14792896.131,
             0.006
           ]
         },
         {
           "period": "2T-24 P",
           "values": [
-            842252.6,
-            7876382,
-            15155060,
+            866987.775,
+            8011179.29,
+            15297892.114,
             0
           ]
         },
         {
           "period": "3T-24 P",
           "values": [
-            871472.5,
-            7979123.7,
-            15281727.3,
+            783638.959,
+            8020904.247,
+            15272671.829,
             0.011000000000000001
           ]
         },
         {
           "period": "4T-24 P",
           "values": [
-            813692.8,
-            7807342.1,
-            15253152.9,
+            930282.979,
+            7832811.484,
+            15559800.994,
             -0.011000000000000001
           ]
         },
         {
           "period": "1T-25 P",
           "values": [
-            854504.32127079,
-            7833621.03455699,
-            15316101.403228,
-            0.006
+            794706.899,
+            7715395.565,
+            14984362.696,
+            -0.001
           ]
         },
         {
           "period": "2T-25 P",
           "values": [
-            836772.665548799,
-            7849205.98397336,
-            15394411.489658,
+            856980.339,
+            7888924.88,
+            15388336.602,
             0.003
           ]
         },
         {
           "period": "3T-25 P",
           "values": [
-            859287.643962977,
-            7780913.07920474,
-            15435842.6920738,
+            777766.167,
+            7812449.734,
+            15433943.462,
             -0.001
           ]
         },
         {
           "period": "4T-25 P",
           "values": [
-            871755.018658648,
-            7829888.17418644,
-            15548365.8219927,
-            0.006999999999999999
+            993973.972,
+            7867045.889,
+            15877667.814,
+            0.008
           ]
         },
         {
           "period": "1T-26 P",
           "values": [
-            856921.087012258,
-            7750175.3189237,
-            15490105.2001774,
-            -0.006
+            797675.498,
+            7621773.386,
+            15134329.955,
+            -0.004
           ]
         }
       ],
       "last_observation": "1T-26 P",
-      "last_updated": "2026-07-16",
-      "last_checked": "2026-07-16",
-      "source_origin": "legacy_dashboard",
+      "last_updated": "2026-08-03",
+      "last_checked": "2026-08-03",
+      "source_origin": "api",
       "requiere_token": "INEGI",
-      "serie_confirmada": false,
+      "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "dato de respaldo vigente",
-      "origen_dato": "respaldo",
+      "estado": "actualizado automáticamente",
+      "origen_dato": "api",
       "fecha_publicacion": "Aproximadamente 50 días después de haber concluido el trimestre",
       "periodo_referencia": "1T-26 P",
-      "fecha_consulta": "2026-07-16"
+      "fecha_consulta": "2026-08-03"
     },
     "IGAE": {
       "key": "IGAE",
@@ -412,7 +414,7 @@
       ],
       "fuente": {
         "nombre": "INEGI",
-        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=1090#D737121",
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603589#D737121",
         "metodo": "INEGI BIE API",
         "serie": "737121"
       },
@@ -554,7 +556,7 @@
     },
     "IMAI": {
       "key": "IMAI",
-      "nombre": "Indicador Mensual de Actividad Industrial (IMAI)",
+      "nombre": "Indicador Mensual de la Actividad Industrial",
       "descripcion": "Proporciona una visión sobre el comportamiento de la producción industrial en el corto plazo.  El IMAI se divide en cuatro grandes sectores de actividad económica, de acuerdo con el SCIAN: Minería, Construcción, Industrias manufactureras y energía eléctrica, agua y gas.",
       "frecuencia": "Mensual",
       "unidad": "Índice base 2018=100",
@@ -568,8 +570,9 @@
       ],
       "fuente": {
         "nombre": "INEGI",
-        "link": "https://www.inegi.org.mx/temas/imai/",
-        "metodo": "INEGI BIE API"
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603729#D737234",
+        "metodo": "INEGI BIE API",
+        "serie": "737234"
       },
       "columns": [
         {
@@ -587,92 +590,99 @@
         {
           "period": "May 25 P",
           "values": [
-            101.6,
-            0.0009
+            101.579489,
+            0.009628
           ]
         },
         {
           "period": "Jun 25 P",
           "values": [
-            101.2,
-            -0.00393700787401563
+            101.250003,
+            -0.003244
           ]
         },
         {
           "period": "Jul 25 P",
           "values": [
-            100.2,
-            -0.00988142292490124
+            100.232315,
+            -0.010051
           ]
         },
         {
           "period": "Ago 25 P",
           "values": [
-            100,
-            -0.001996007984031989
+            100.042784,
+            -0.001891
           ]
         },
         {
           "period": "Sep 25 P",
           "values": [
-            99.9,
-            -0.0009999999999998899
+            99.896912,
+            -0.001458
           ]
         },
         {
           "period": "Oct 25 P",
           "values": [
-            100.7,
-            0.00800800800800805
+            100.714133,
+            0.008181
           ]
         },
         {
           "period": "Nov 25 P",
           "values": [
-            101.3,
-            0.005958291956305706
+            101.317257,
+            0.005988
           ]
         },
         {
           "period": "Dic 25 P",
           "values": [
-            100.4,
-            -0.008884501480750151
+            101.430223,
+            0.001115
           ]
         },
         {
           "period": "Ene 26 P",
           "values": [
-            100.8,
-            0.003984063745019917
+            100.399604,
+            -0.010161
           ]
         },
         {
           "period": "Feb 26 P",
           "values": [
-            null,
-            0.03627834150198428
+            100.824971,
+            0.004237
           ]
         },
         {
           "period": "Mar 26 P",
           "values": [
-            100.3,
-            -0.03979496367986446
+            100.297622,
+            -0.00523
           ]
         },
         {
           "period": "Abr 26 P",
           "values": [
-            102.4,
-            0.020937188434696052
+            102.419928,
+            0.02116
+          ]
+        },
+        {
+          "period": "May 26",
+          "values": [
+            101.629971,
+            -0.007713
           ]
         }
       ],
-      "last_observation": "Abr 26 P",
-      "last_updated": "2026-07-16",
-      "last_checked": "2026-07-16",
-      "source_origin": "legacy_dashboard",
+      "last_observation": "May 26",
+      "last_updated": "2026-08-03",
+      "last_checked": "2026-08-03",
+      "source_origin": "api",
       "data_quality": [
         {
           "period": "Feb 26 P",
@@ -682,17 +692,17 @@
         }
       ],
       "requiere_token": "INEGI",
-      "serie_confirmada": false,
+      "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "dato en revisión",
-      "origen_dato": "respaldo",
+      "estado": "actualizado automáticamente",
+      "origen_dato": "api",
       "fecha_publicacion": null,
-      "periodo_referencia": "Abr 26 P",
-      "fecha_consulta": "2026-07-16"
+      "periodo_referencia": "May 26",
+      "fecha_consulta": "2026-08-03"
     },
     "CONSUMO": {
       "key": "CONSUMO",
-      "nombre": "Indicador Mensual de Consumo Privado",
+      "nombre": "Indicador mensual del consumo privado",
       "descripcion": "Mide el gasto realizado por los hogares y las instituciones sin fines de lucro que les sirven, tanto para la adquisición de bienes como de servicios.",
       "frecuencia": "Mensual",
       "unidad": "Índice base 2018=100",
@@ -707,8 +717,9 @@
       ],
       "fuente": {
         "nombre": "INEGI",
-        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3#D733671_600917",
-        "metodo": "INEGI BIE API"
+        "link": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_07.pdf",
+        "metodo": "INEGI boletín PDF",
+        "serie": "CONSUMO_pdf"
       },
       "columns": [
         {
@@ -726,92 +737,99 @@
         {
           "period": "Abr 25 R",
           "values": [
-            110.1915640022,
-            null
+            111.6,
+            0.011
           ]
         },
         {
           "period": "May 25 R",
           "values": [
-            112.1104060481,
-            0.017413692811018677
+            110.1,
+            -0.01
           ]
         },
         {
           "period": "Jun 25 R",
           "values": [
-            109.886652307,
-            -0.019835391017546722
+            111.5,
+            0.008
           ]
         },
         {
           "period": "Jul 25 R",
           "values": [
-            113.9981602839,
-            0.03741589984389848
+            111.2,
+            -0.003
           ]
         },
         {
           "period": "Ago 25 R",
           "values": [
-            114.2930377275,
-            0.0025866859856829016
+            112.1,
+            0.006
           ]
         },
         {
           "period": "Sep 25 R",
           "values": [
-            113.141670895,
-            -0.01007381425319287
+            112.4,
+            0.0
           ]
         },
         {
           "period": "Oct 25 R",
           "values": [
-            117.4042949687,
-            0.037675102727233734
+            113.5,
+            0.008
           ]
         },
         {
           "period": "Nov 25 R",
           "values": [
-            113.8299222248,
-            -0.030444991342547745
+            112.9,
+            -0.005
           ]
         },
         {
           "period": "Dic 25 R",
           "values": [
-            116.8438878273,
-            0.026477797257453917
+            114.4,
+            0.012
           ]
         },
         {
           "period": "Ene 26 R",
           "values": [
-            110.519200852,
-            -0.05412937803514495
+            112.1,
+            -0.016
           ]
         },
         {
           "period": "Feb 26 R",
           "values": [
-            null,
-            -0.05485331039190455
+            111.4,
+            -0.005
           ]
         },
         {
           "period": "Mar 26 P",
           "values": [
-            113.5132947678,
-            0.0867002724360284
+            113.6,
+            0.012
+          ]
+        },
+        {
+          "period": "Abr 26",
+          "values": [
+            113.7,
+            0.001
           ]
         }
       ],
-      "last_observation": "Mar 26 P",
-      "last_updated": "2026-07-16",
-      "last_checked": "2026-07-16",
-      "source_origin": "legacy_dashboard",
+      "last_observation": "Abr 26",
+      "last_updated": "2026-08-03",
+      "last_checked": "2026-08-03",
+      "source_origin": "api",
       "data_quality": [
         {
           "period": "Feb 26 R",
@@ -821,13 +839,13 @@
         }
       ],
       "requiere_token": "INEGI",
-      "serie_confirmada": false,
+      "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "dato en revisión",
-      "origen_dato": "respaldo",
+      "estado": "actualizado automáticamente",
+      "origen_dato": "api",
       "fecha_publicacion": "Aproximadamente 21 días después de haber concluido el mes",
-      "periodo_referencia": "Mar 26 P",
-      "fecha_consulta": "2026-07-16"
+      "periodo_referencia": "Abr 26",
+      "fecha_consulta": "2026-08-03"
     },
     "IED": {
       "key": "IED",
@@ -1075,7 +1093,7 @@
     },
     "DESOCUP": {
       "key": "DESOCUP",
-      "nombre": "Tasa de desocupación nacional",
+      "nombre": "Tasa de desocupación",
       "descripcion": "Mide la proporción de la fuerza de trabajo que se encuentra sin empleo pero en búsqueda activa del mismo. Personas desocupadas: son personas de 15 años o más que no trabajaron en la semana de referencia, estaban disponibles para trabajar y realizaron actividades de búsqueda de empleo en las semanas previas.",
       "frecuencia": "Mensual",
       "unidad": "Porcentaje de la PEA",
@@ -1088,8 +1106,9 @@
       ],
       "fuente": {
         "nombre": "INEGI — Encuesta Nacional de Ocupación y Empleo (ENOE/ENOEN)",
-        "link": "https://www.inegi.org.mx/temas/empleo/",
-        "metodo": "INEGI BIE API"
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=4#D444603",
+        "metodo": "INEGI BIE API",
+        "serie": "444603"
       },
       "columns": [
         {
@@ -1102,92 +1121,98 @@
         {
           "period": "Jun 25",
           "values": [
-            0.026
+            0.026871
           ]
         },
         {
           "period": "Jul 25",
           "values": [
-            0.026
+            0.027728
           ]
         },
         {
           "period": "Ago 25",
           "values": [
-            0.027
+            0.029322
           ]
         },
         {
           "period": "Sep 25",
           "values": [
-            0.027
+            0.029789
           ]
         },
         {
           "period": "Oct 25",
           "values": [
-            0.026
+            0.026085
           ]
         },
         {
           "period": "Nov 25",
           "values": [
-            0.027
+            0.026636
           ]
         },
         {
           "period": "Dic 25",
           "values": [
-            0.026
+            0.023889
           ]
         },
         {
           "period": "Ene 26",
           "values": [
-            0.026
+            0.027033
           ]
         },
         {
           "period": "Feb 26",
           "values": [
-            0.027
+            0.025862
           ]
         },
         {
           "period": "Mar 26",
           "values": [
-            0.028
+            0.024232
           ]
         },
         {
           "period": "Abr 26",
           "values": [
-            0.026
+            0.024558
           ]
         },
         {
           "period": "May 26",
           "values": [
-            0.027
+            0.027619
+          ]
+        },
+        {
+          "period": "Jun 26",
+          "values": [
+            0.028985
           ]
         }
       ],
-      "last_observation": "May 26",
-      "last_updated": "2026-07-16",
-      "last_checked": "2026-07-16",
-      "source_origin": "legacy_dashboard",
+      "last_observation": "Jun 26",
+      "last_updated": "2026-08-03",
+      "last_checked": "2026-08-03",
+      "source_origin": "api",
       "requiere_token": "INEGI",
-      "serie_confirmada": false,
+      "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "dato de respaldo vigente",
-      "origen_dato": "respaldo",
+      "estado": "actualizado automáticamente",
+      "origen_dato": "api",
       "fecha_publicacion": "Aproximadamente 25-30 días después de haber concluido el mes",
-      "periodo_referencia": "May 26",
-      "fecha_consulta": "2026-07-16"
+      "periodo_referencia": "Jun 26",
+      "fecha_consulta": "2026-08-03"
     },
     "INPC": {
       "key": "INPC",
-      "nombre": "Índice Nacional de Precios al Consumidor (INPC)",
+      "nombre": "Índice de Precios al Consumidor",
       "descripcion": "Mide la trayectoria agregada de los precios de una canasta de bienes y servicios representativa del consumo de las familias mexicanas. Su objetivo principal es cuantificar la inflación, definida como el aumento sostenido y generalizado de los precios a lo largo del tiempo.",
       "frecuencia": "Mensual",
       "unidad": "Variación anual (%)",
@@ -1200,8 +1225,9 @@
       ],
       "fuente": {
         "nombre": "INEGI",
-        "link": "https://www.inegi.org.mx/temas/inpc/",
-        "metodo": "INEGI BIE API"
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=682416#D334452",
+        "metodo": "INEGI BIE API",
+        "serie": "334452"
       },
       "columns": [
         {
@@ -1224,116 +1250,124 @@
         {
           "period": "Jun 25",
           "values": [
-            4.32,
-            4.24,
+            4.317429,
+            4.240509,
             4.33
           ]
         },
         {
           "period": "Jul 25",
           "values": [
-            3.51,
-            4.23,
+            3.512423,
+            4.231043,
             1.14
           ]
         },
         {
           "period": "Ago 25",
           "values": [
-            3.57,
-            4.23,
+            3.568777,
+            4.227038,
             1.38
           ]
         },
         {
           "period": "Sep 25",
           "values": [
-            3.76,
-            4.28,
+            3.760288,
+            4.277929,
             2.02
           ]
         },
         {
           "period": "Oct 25",
           "values": [
-            3.57,
-            4.28,
+            3.566521,
+            4.28375,
             1.18
           ]
         },
         {
           "period": "Nov 25",
           "values": [
-            3.8,
-            4.43,
+            3.799191,
+            4.430588,
             1.73
           ]
         },
         {
           "period": "Dic 25",
           "values": [
-            3.69,
-            4.33,
+            3.691944,
+            4.325358,
             1.61
           ]
         },
         {
           "period": "Ene 26",
           "values": [
-            3.79,
-            4.52,
+            3.791301,
+            4.51917,
             1.39
           ]
         },
         {
           "period": "Feb 26",
           "values": [
-            4.02,
-            4.5,
+            4.023038,
+            4.497411,
             2.44
           ]
         },
         {
           "period": "Mar 26",
           "values": [
-            4.59,
-            4.45,
+            4.586774,
+            4.449385,
             5.05
           ]
         },
         {
           "period": "Abr 26",
           "values": [
-            4.45,
-            4.26,
+            4.448503,
+            4.261182,
             5.08
           ]
         },
         {
           "period": "May 26",
           "values": [
-            3.94,
-            4.19,
+            3.938948,
+            4.186559,
             3.1
+          ]
+        },
+        {
+          "period": "Jun 26",
+          "values": [
+            3.365977,
+            4.03192,
+            null
           ]
         }
       ],
-      "last_observation": "May 26",
-      "last_updated": "2026-07-16",
-      "last_checked": "2026-07-16",
-      "source_origin": "legacy_dashboard",
+      "last_observation": "Jun 26",
+      "last_updated": "2026-08-03",
+      "last_checked": "2026-08-03",
+      "source_origin": "api",
       "requiere_token": "INEGI",
-      "serie_confirmada": false,
+      "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "dato de respaldo vigente",
-      "origen_dato": "respaldo",
+      "estado": "actualizado automáticamente",
+      "origen_dato": "api",
       "fecha_publicacion": null,
-      "periodo_referencia": "May 26",
-      "fecha_consulta": "2026-07-16"
+      "periodo_referencia": "Jun 26",
+      "fecha_consulta": "2026-08-03"
     },
     "BALANZA": {
       "key": "BALANZA",
-      "nombre": "Balanza comercial de mercancías de México",
+      "nombre": "Balanza comercial",
       "descripcion": "Es un indicador que registra el valor monetario de las transacciones de bienes físicos entre residentes y no residentes del país, desglosado en exportaciones e importaciones.",
       "frecuencia": "Mensual",
       "unidad": "Millones de dólares",
@@ -1347,8 +1381,9 @@
       ],
       "fuente": {
         "nombre": "INEGI",
-        "link": "https://www.inegi.org.mx/temas/balanza/#informacion_general",
-        "metodo": "INEGI BIE API"
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=36695#D33226",
+        "metodo": "INEGI BIE API",
+        "serie": "33226"
       },
       "columns": [
         {
@@ -1537,20 +1572,27 @@
             69544.491,
             67285.323
           ]
+        },
+        {
+          "period": "Jun 26",
+          "values": [
+            72551.015,
+            68461.119
+          ]
         }
       ],
-      "last_observation": "May 26 O",
-      "last_updated": "2026-07-16",
-      "last_checked": "2026-07-16",
-      "source_origin": "legacy_dashboard",
+      "last_observation": "Jun 26",
+      "last_updated": "2026-08-03",
+      "last_checked": "2026-08-03",
+      "source_origin": "api",
       "requiere_token": "INEGI",
-      "serie_confirmada": false,
+      "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "dato de respaldo vigente",
-      "origen_dato": "respaldo",
+      "estado": "actualizado automáticamente",
+      "origen_dato": "api",
       "fecha_publicacion": "Aproximadamente 30 a 45 días posteriores al cierre del mes",
-      "periodo_referencia": "May 26 O",
-      "fecha_consulta": "2026-07-16"
+      "periodo_referencia": "Jun 26",
+      "fecha_consulta": "2026-08-03"
     },
     "IMFBCF": {
       "key": "IMFBCF",
@@ -1564,9 +1606,9 @@
       "proximo": "Por confirmar con el calendario oficial de difusión",
       "fuente": {
         "nombre": "INEGI",
-        "link": "https://www.inegi.org.mx/temas/inversionfija/",
-        "metodo": "INEGI BIE API",
-        "serie": null
+        "link": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_07.pdf",
+        "metodo": "INEGI boletín PDF",
+        "serie": "IMFBCF_pdf"
       },
       "columns": [
         {
@@ -1580,18 +1622,153 @@
           "fmt": "pct-frac"
         }
       ],
-      "observations": [],
-      "last_observation": null,
-      "last_updated": null,
-      "last_checked": null,
+      "observations": [
+        {
+          "period": "Oct 24",
+          "values": [
+            113.1,
+            0.001
+          ]
+        },
+        {
+          "period": "Nov 24",
+          "values": [
+            113.7,
+            0.001
+          ]
+        },
+        {
+          "period": "Dic 24",
+          "values": [
+            109.7,
+            -0.026
+          ]
+        },
+        {
+          "period": "Ene 25",
+          "values": [
+            107.4,
+            -0.015
+          ]
+        },
+        {
+          "period": "Feb 25",
+          "values": [
+            107.3,
+            0.001
+          ]
+        },
+        {
+          "period": "Mar 25",
+          "values": [
+            107.9,
+            0.003
+          ]
+        },
+        {
+          "period": "Abr 25",
+          "values": [
+            105.6,
+            -0.017
+          ]
+        },
+        {
+          "period": "May 25",
+          "values": [
+            106.8,
+            0.009
+          ]
+        },
+        {
+          "period": "Jun 25",
+          "values": [
+            105.6,
+            -0.014
+          ]
+        },
+        {
+          "period": "Jul 25",
+          "values": [
+            107.5,
+            0.016
+          ]
+        },
+        {
+          "period": "Ago 25",
+          "values": [
+            103.9,
+            -0.027
+          ]
+        },
+        {
+          "period": "Sep 25",
+          "values": [
+            101.0,
+            -0.003
+          ]
+        },
+        {
+          "period": "Oct 25",
+          "values": [
+            102.2,
+            0.009
+          ]
+        },
+        {
+          "period": "Nov 25",
+          "values": [
+            102.8,
+            0.004
+          ]
+        },
+        {
+          "period": "Dic 25",
+          "values": [
+            103.6,
+            0.005
+          ]
+        },
+        {
+          "period": "Ene 26",
+          "values": [
+            102.3,
+            -0.011
+          ]
+        },
+        {
+          "period": "Feb 26",
+          "values": [
+            101.1,
+            -0.008
+          ]
+        },
+        {
+          "period": "Mar 26",
+          "values": [
+            102.0,
+            0.004
+          ]
+        },
+        {
+          "period": "Abr 26",
+          "values": [
+            107.4,
+            0.04
+          ]
+        }
+      ],
+      "last_observation": "Abr 26",
+      "last_updated": "2026-08-03",
+      "last_checked": "2026-08-03",
       "requiere_token": "INEGI",
-      "serie_confirmada": false,
+      "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "pendiente de token",
-      "origen_dato": "pendiente",
+      "estado": "actualizado automáticamente",
+      "origen_dato": "api",
       "fecha_publicacion": "Aproximadamente 55 días tras el cierre del mes",
-      "periodo_referencia": null,
-      "fecha_consulta": null
+      "periodo_referencia": "Abr 26",
+      "fecha_consulta": "2026-08-03",
+      "source_origin": "api"
     },
     "IOAE": {
       "key": "IOAE",
@@ -1605,9 +1782,9 @@
       "proximo": "Por confirmar con el calendario oficial de difusión",
       "fuente": {
         "nombre": "INEGI",
-        "link": "https://www.inegi.org.mx/investigacion/ioae/",
-        "metodo": "INEGI (comunicado / BIE)",
-        "serie": null
+        "link": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_07.pdf",
+        "metodo": "INEGI boletín PDF",
+        "serie": "IOAE_pdf"
       },
       "columns": [
         {
@@ -1626,34 +1803,195 @@
           "fmt": "pct-raw"
         }
       ],
-      "observations": [],
-      "last_observation": null,
-      "last_updated": null,
-      "last_checked": null,
+      "observations": [
+        {
+          "period": "Nov 24",
+          "values": [
+            0.2,
+            -0.9,
+            1.3
+          ]
+        },
+        {
+          "period": "Dic 24",
+          "values": [
+            -0.3,
+            -1.2,
+            0.7
+          ]
+        },
+        {
+          "period": "Ene 25",
+          "values": [
+            0.1,
+            -1.0,
+            1.2
+          ]
+        },
+        {
+          "period": "Feb 25",
+          "values": [
+            1.1,
+            0.1,
+            2.2
+          ]
+        },
+        {
+          "period": "Mar 25",
+          "values": [
+            -0.2,
+            -1.2,
+            0.7
+          ]
+        },
+        {
+          "period": "Abr 25",
+          "values": [
+            -0.3,
+            -1.3,
+            0.8
+          ]
+        },
+        {
+          "period": "May 25",
+          "values": [
+            0.3,
+            -0.7,
+            1.4
+          ]
+        },
+        {
+          "period": "Jun 25",
+          "values": [
+            0.2,
+            -0.8,
+            1.1
+          ]
+        },
+        {
+          "period": "Jul 25",
+          "values": [
+            -0.5,
+            -1.6,
+            0.6
+          ]
+        },
+        {
+          "period": "Ago 25",
+          "values": [
+            0.1,
+            -1.0,
+            1.2
+          ]
+        },
+        {
+          "period": "Sep 25",
+          "values": [
+            -0.5,
+            -1.4,
+            0.5
+          ]
+        },
+        {
+          "period": "Oct 25",
+          "values": [
+            0.5,
+            -0.6,
+            1.6
+          ]
+        },
+        {
+          "period": "Nov 25",
+          "values": [
+            0.1,
+            -1.0,
+            1.2
+          ]
+        },
+        {
+          "period": "Dic 25",
+          "values": [
+            0.2,
+            -0.7,
+            1.2
+          ]
+        },
+        {
+          "period": "Ene 26",
+          "values": [
+            -0.2,
+            -1.3,
+            0.9
+          ]
+        },
+        {
+          "period": "Feb 26",
+          "values": [
+            0.5,
+            -0.6,
+            1.6
+          ]
+        },
+        {
+          "period": "Mar 26",
+          "values": [
+            0.1,
+            -0.9,
+            1.0
+          ]
+        },
+        {
+          "period": "Abr 26",
+          "values": [
+            1.0,
+            -0.1,
+            2.1
+          ]
+        },
+        {
+          "period": "May 26",
+          "values": [
+            -0.3,
+            -1.4,
+            0.8
+          ]
+        },
+        {
+          "period": "Jun 26",
+          "values": [
+            0.2,
+            -1.0,
+            1.3
+          ]
+        }
+      ],
+      "last_observation": "Jun 26",
+      "last_updated": "2026-08-03",
+      "last_checked": "2026-08-03",
       "requiere_token": "INEGI",
-      "serie_confirmada": false,
+      "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "pendiente de token",
-      "origen_dato": "pendiente",
+      "estado": "actualizado automáticamente",
+      "origen_dato": "api",
       "fecha_publicacion": "Fin de mes del periodo estimado",
-      "periodo_referencia": null,
-      "fecha_consulta": null
+      "periodo_referencia": "Jun 26",
+      "fecha_consulta": "2026-08-03",
+      "source_origin": "api"
     },
     "EMIM": {
       "key": "EMIM",
       "nombre": "Encuesta Mensual de la Industria Manufacturera",
       "descripcion": "Registra la evolución mensual de la producción, el personal ocupado, las horas trabajadas y las remuneraciones del sector manufacturero.",
       "frecuencia": "Mensual",
-      "unidad": "Índice",
-      "ajuste_estacional": "Serie original",
+      "unidad": "Índice base 2018=100",
+      "ajuste_estacional": "Serie original; variación mensual desestacionalizada",
       "grupo": "industria",
       "publicacion": "Aproximadamente 40 días tras el cierre del mes",
-      "proximo": "Por confirmar con el calendario oficial de difusión",
       "fuente": {
         "nombre": "INEGI",
-        "link": "https://www.inegi.org.mx/programas/emim/",
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=562444#D796224",
         "metodo": "INEGI BIE API",
-        "serie": null
+        "serie": "796224"
       },
       "columns": [
         {
@@ -1667,18 +2005,118 @@
           "fmt": "pct-frac"
         }
       ],
-      "observations": [],
-      "last_observation": null,
-      "last_updated": null,
-      "last_checked": null,
+      "observations": [
+        {
+          "period": "Nov 24",
+          "values": [
+            107.7,
+            0.011
+          ]
+        },
+        {
+          "period": "Dic 24",
+          "values": [
+            99.2,
+            -0.015
+          ]
+        },
+        {
+          "period": "Feb 25",
+          "values": [
+            106.0,
+            0.026
+          ]
+        },
+        {
+          "period": "Mar 25",
+          "values": [
+            113.5,
+            -0.02
+          ]
+        },
+        {
+          "period": "Abr 25",
+          "values": [
+            108.9,
+            -0.001
+          ]
+        },
+        {
+          "period": "May 25",
+          "values": [
+            112.1,
+            0.01
+          ]
+        },
+        {
+          "period": "Jul 25",
+          "values": [
+            110.2,
+            -0.027
+          ]
+        },
+        {
+          "period": "Sep 25",
+          "values": [
+            109.1,
+            0.002
+          ]
+        },
+        {
+          "period": "Oct 25",
+          "values": [
+            112.9,
+            0.003
+          ]
+        },
+        {
+          "period": "Dic 25",
+          "values": [
+            103.5,
+            -0.001
+          ]
+        },
+        {
+          "period": "Feb 26",
+          "values": [
+            107.1,
+            0.034
+          ]
+        },
+        {
+          "period": "Mar 26",
+          "values": [
+            115.4,
+            -0.011
+          ]
+        },
+        {
+          "period": "Abr 26",
+          "values": [
+            111.2,
+            0.005
+          ]
+        },
+        {
+          "period": "May 26",
+          "values": [
+            110.4,
+            -0.006
+          ]
+        }
+      ],
+      "last_observation": "May 26",
+      "last_updated": "2026-08-03",
+      "last_checked": "2026-08-03",
       "requiere_token": "INEGI",
-      "serie_confirmada": false,
+      "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "pendiente de token",
-      "origen_dato": "pendiente",
+      "estado": "actualizado automáticamente",
+      "origen_dato": "api",
       "fecha_publicacion": "Aproximadamente 40 días tras el cierre del mes",
-      "periodo_referencia": null,
-      "fecha_consulta": null
+      "periodo_referencia": "May 26",
+      "fecha_consulta": "2026-08-03",
+      "source_origin": "api"
     },
     "TIPOCAMBIO": {
       "key": "TIPOCAMBIO",
