@@ -130,21 +130,33 @@ function varAt(ind, cfg, vals, idx) {
   return null;
 }
 
-// Variación anual (interanual) del nivel de la serie primaria, para la matriz.
-// Devuelve {text,pos,mag} o null si no es aplicable/insuficiente historia.
+// Variación anual (u otra secundaria, p. ej. trimestral para PIB) para la matriz.
+// Devuelve {text,pos,mag,label} o null si no es aplicable/insuficiente historia.
 export function annualVar(ind, k) {
   const cfg = KPICFG[ind.key];
+  // Si hay una columna oficial (yoyCol), se usa directamente.
+  if (cfg.yoyCol != null) {
+    const raw = valAt(ind, k.lastI, cfg.yoyCol);
+    if (raw == null) return null;
+    const mag = cfg.yoyFmt === "pct-frac" ? raw * 100 : raw;
+    return {
+      mag,
+      pos: raw >= 0,
+      text: (raw > 0 ? "+" : "") + fmtVal(raw, cfg.yoyFmt),
+      label: cfg.yoyLabel || "Var. anual",
+    };
+  }
   // No se calcula variación anual del nivel cuando: (a) el valor ya es una tasa,
   // (b) la variación primaria ya es interanual (evita duplicar), o
   // (c) la interanual del saldo no tiene lectura económica clara.
-  if (["INPC", "TASA", "DESOCUP", "IOAE", "PIB", "IED", "BALANZA"].includes(ind.key)) return null;
+  if (["INPC", "TASA", "DESOCUP", "IOAE", "IED", "BALANZA"].includes(ind.key)) return null;
   const vals = k.series;
   const lag = ind.frecuencia === "Trimestral" ? 4 : 12;
   const cur = vals[k.lastI];
   const base = vals[k.lastI - lag];
   if (cur == null || base == null || base === 0) return null;
   const d = (cur - base) / Math.abs(base) * 100;
-  return { mag: d, pos: d >= 0, text: (d >= 0 ? "+" : "") + d.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%" };
+  return { mag: d, pos: d >= 0, text: (d >= 0 ? "+" : "") + d.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%", label: "Var. anual" };
 }
 
 // Genera 2-3 bullets de análisis determinista, auditables.
@@ -202,10 +214,11 @@ export function analysis(ind, k) {
   let read;
   if (cfg.grupo === "growth" && ORIG) {
     if (ind.frecuencia === "Trimestral") {
-      read = `El crecimiento anual fue ${magAdj || "marginal"}. La comparación entre trimestres debe considerar el comportamiento estacional de la serie original.`;
+      const label = cfg.varLabel.toLowerCase().includes("anual") ? "crecimiento anual" : "variación trimestral";
+      read = `El ${label} fue ${magAdj || "marginal"}. La comparación entre trimestres debe considerar el comportamiento estacional de la serie original.`;
     } else {
       const verb = curVar == null ? "se mantuvo sin cambio" : (curVar > 0.05 ? "aumentó" : (curVar < -0.05 ? "disminuyó" : "se mantuvo prácticamente sin cambio"));
-      read = `El índice original ${verb} respecto del mes previo. Esta comparación incorpora efectos estacionales y debe complementarse con la serie desestacionalizada.`;
+      read = `La variación mensual publicada por el INEGI muestra que el indicador ${verb} respecto del mes previo. El nivel mostrado es la serie original; la variación mensual se calcula sobre cifras desestacionalizadas.`;
     }
   } else if (cfg.grupo === "inpc") {
     const verb = curVar == null ? "se mantuvo" : (curVar > 0.001 ? "aumentó" : (curVar < -0.001 ? "disminuyó" : "no cambió"));
