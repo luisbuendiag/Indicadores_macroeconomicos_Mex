@@ -262,12 +262,19 @@ def add_resumen(wb, payload, manifest):
         ind = payload["indicators"].get(key)
         if not ind:
             continue
-        obs = ind["observations"]
-        last = obs[-1] if obs else {"values": [None]}
-        val = last["values"][0] if last["values"] else None
-        var = last["values"][1] if len(last.get("values", [])) > 1 else None
+        kpi = (ind.get("metrics") or {}).get("kpi")
+        if kpi:
+            periodo = kpi.get("ultimoP") or ind.get("last_observation")
+            val = kpi.get("ultimoFmt")
+            var = kpi.get("varText")
+        else:
+            obs = ind["observations"]
+            last = obs[-1] if obs else {"values": [None]}
+            val = last["values"][0] if last["values"] else None
+            var = last["values"][1] if len(last.get("values", [])) > 1 else None
+            periodo = ind.get("last_observation")
         row_vals = [ind.get("nombre"), ind.get("fuente", {}).get("nombre"), ind.get("frecuencia"),
-                    ind.get("last_observation"), val, var, ind.get("unidad")]
+                    periodo, val, var, ind.get("unidad")]
         for i, v in enumerate(row_vals, start=1):
             cell = ws.cell(row=r, column=i, value=v)
             cell.font = TXT

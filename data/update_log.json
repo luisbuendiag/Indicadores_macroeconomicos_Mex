@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-08-05T17:00:42+00:00",
+  "started_at": "2026-08-05T17:06:20+00:00",
   "mode": "offline",
   "network_calls": false,
   "warnings": [
@@ -25,10 +25,10 @@
     "frescura: TIPOCAMBIO -> PUBLICACIÓN PENDIENTE",
     "frescura: TASA -> PUBLICACIÓN PENDIENTE",
     "frescura: RESERVAS -> PUBLICACIÓN PENDIENTE",
-    "meta: last_update_ct=2026-08-05T11:00:42-06:00"
+    "meta: last_update_ct=2026-08-05T11:06:20-06:00"
   ],
   "consultas": [],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-08-05T17:00:42+00:00"
+  "finished_at": "2026-08-05T17:06:20+00:00"
 }

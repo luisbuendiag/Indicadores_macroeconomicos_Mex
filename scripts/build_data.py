@@ -250,8 +250,11 @@ def apply_freshness_and_meta(payload: dict, log: dict, as_of: date | None = None
     lib_kpicfg.build_cfg(force=True)
     metrics = lib_metrics.compute_all_metrics(payload)
     (L.DATA_DIR / "metrics.json").write_text(
-        json.dumps({"generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-                    "indicators": metrics}, ensure_ascii=False, indent=2) + "\n",
+        json.dumps({
+            "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            "last_update_ct": payload.get("meta", {}).get("last_update_ct") or payload.get("meta", {}).get("generated_at"),
+            "indicators": metrics,
+        }, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
     for key, m in metrics.items():
