@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-05T17:06:20+00:00",
-  "last_update_ct": "2026-08-05T11:06:19-06:00",
+  "generated_at": "2026-08-10T17:10:14+00:00",
+  "last_update_ct": "2026-08-10T11:08:48-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -16,30 +16,30 @@
         "varLabel": "Var. anual",
         "maxFmt": "26.14 billones de pesos de 2018",
         "maxRaw": 26135644.696,
-        "maxP": "4T-25 R",
+        "maxP": "2T-25 R",
         "minFmt": "22.84 billones de pesos de 2018",
         "minRaw": 22841359.685,
         "minP": "1T-21",
         "lastI": 20,
         "series": [
           22841359.685,
-          23623455.056,
+          23949712.898,
           23204796.817,
           23949712.898,
           23440574.466,
-          24310024.252,
+          25052395.779,
           24289379.479,
           25052395.779,
           24330982.536,
-          25108268.25,
+          25590082.607,
           25094793.141,
           25590082.607,
           24761655.524,
-          25655479.047,
+          25693292.983,
           25475446.445,
           25693292.983,
           24913610.281,
-          25618678.767,
+          26135644.696,
           25422850.191,
           26135644.696,
           24973976.071
@@ -73,12 +73,12 @@
       },
       "analysis": [
         "En el primer trimestre de 2026, el PIB se ubicó en 24.97 billones de pesos de 2018 (a precios de 2018), con un crecimiento anual de +0.40% frente al mismo trimestre del año anterior. El crecimiento anual fue marginal. La comparación entre trimestres debe considerar el comportamiento estacional de la serie original.",
-        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 26.14 billones de pesos de 2018 (cuarto trimestre de 2025) y un mínimo de 22.84 billones de pesos de 2018 (primer trimestre de 2021). El resultado más reciente se ubicó por encima del promedio del periodo mostrado. El último dato fue inferior al del inicio del periodo mostrado. Esta comparación se realiza sobre la serie original, que incorpora efectos estacionales."
+        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 26.14 billones de pesos de 2018 (segundo trimestre de 2025) y un mínimo de 22.84 billones de pesos de 2018 (primer trimestre de 2021). El resultado más reciente se ubicó por encima del promedio del periodo mostrado. El último dato fue inferior al del inicio del periodo mostrado. Esta comparación se realiza sobre la serie original, que incorpora efectos estacionales."
       ],
       "resumen": [
         "En primer trimestre de 2026, el PIB se ubicó en 24.97 billones de pesos de 2018 (a precios de 2018). El valor de var. anual fue de +0.4% frente al mismo trimestre del año anterior.",
         "La var. trimestral se situó en -0.6%, lo que refleja la comparación contra primer trimestre de 2026 del año previo.",
-        "En la serie mostrada, el indicador oscila entre un máximo de 26.14 billones de pesos de 2018 (cuarto trimestre de 2025) y un mínimo de 22.84 billones de pesos de 2018 (primer trimestre de 2021). El último dato se ubica dentro del rango observado en el periodo mostrado.",
+        "En la serie mostrada, el indicador oscila entre un máximo de 26.14 billones de pesos de 2018 (segundo trimestre de 2025) y un mínimo de 22.84 billones de pesos de 2018 (primer trimestre de 2021). El último dato se ubica dentro del rango observado en el periodo mostrado.",
         "La variación se clasifica como favorable según la lectura económica del indicador."
       ],
       "annualVar": {
@@ -102,22 +102,22 @@
         "varLabel": "Trim. terciarias",
         "maxFmt": "24,738,688",
         "maxRaw": 24738687.674999997,
-        "maxP": "4T-25 P",
+        "maxP": "2T-25 P",
         "minFmt": "22,950,993",
         "minRaw": 22950993.452,
         "minP": "1T-23 P",
         "lastI": 12,
         "series": [
           22950993.452,
-          23664720.237,
+          24235062.578,
           23715827.402000003,
           24235062.578,
           23352220.264,
-          24176059.178999998,
+          24322895.457000002,
           24077215.035,
           24322895.457000002,
           23494465.16,
-          24134241.821000002,
+          24738687.674999997,
           24024159.362999998,
           24738687.674999997,
           23553778.839
@@ -143,12 +143,12 @@
       },
       "analysis": [
         "En el primer trimestre de 2026, el PIB total por actividad económica se ubicó en 23.55 billones de pesos (a precios de 2018), con una variación trimestral en las actividades terciarias de -0.40% frente al trimestre anterior. El variación trimestral fue marginal. La comparación entre trimestres debe considerar el comportamiento estacional de la serie original.",
-        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 24.74 billones de pesos (cuarto trimestre de 2025) y un mínimo de 22.95 billones de pesos (primer trimestre de 2023). El resultado más reciente se ubicó por debajo del promedio del periodo mostrado. El último dato fue inferior al del inicio del periodo mostrado. Esta comparación se realiza sobre la serie original, que incorpora efectos estacionales."
+        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 24.74 billones de pesos (segundo trimestre de 2025) y un mínimo de 22.95 billones de pesos (primer trimestre de 2023). El resultado más reciente se ubicó por debajo del promedio del periodo mostrado. El último dato fue inferior al del inicio del periodo mostrado. Esta comparación se realiza sobre la serie original, que incorpora efectos estacionales."
       ],
       "resumen": [
         "En primer trimestre de 2026, el PIB total por actividad económica se ubicó en 23.55 billones de pesos (a precios de 2018). El valor de trim. terciarias fue de -0.4% frente al trimestre anterior.",
         "La anual terciarias se situó en +1.1%, lo que refleja la comparación contra primer trimestre de 2026 del año previo.",
-        "En la serie mostrada, el indicador oscila entre un máximo de 24.74 billones de pesos (cuarto trimestre de 2025) y un mínimo de 22.95 billones de pesos (primer trimestre de 2023). El último dato se ubica dentro del rango observado en el periodo mostrado.",
+        "En la serie mostrada, el indicador oscila entre un máximo de 24.74 billones de pesos (segundo trimestre de 2025) y un mínimo de 22.95 billones de pesos (primer trimestre de 2023). El último dato se ubica dentro del rango observado en el periodo mostrado.",
         "La variación se clasifica como adversa según la lectura económica del indicador."
       ],
       "annualVar": {
@@ -302,9 +302,9 @@
       "kpi": {
         "assessment": "favorable",
         "dir": "up",
-        "ultimoFmt": "113.7",
-        "ultimoRaw": 113.7,
-        "ultimoP": "Abr 26",
+        "ultimoFmt": "114.0",
+        "ultimoRaw": 114.0,
+        "ultimoP": "May 26",
         "varText": "+0.1%",
         "varMag": 0.1,
         "pos": true,
@@ -316,7 +316,7 @@
         "minFmt": "110.1",
         "minRaw": 110.1,
         "minP": "May 25 R",
-        "lastI": 12,
+        "lastI": 13,
         "series": [
           111.6,
           110.1,
@@ -330,7 +330,8 @@
           112.1,
           111.4,
           113.6,
-          113.7
+          113.7,
+          114.0
         ],
         "periods": [
           "Abr 25 R",
@@ -345,26 +346,27 @@
           "Ene 26 R",
           "Feb 26 R",
           "Mar 26 P",
-          "Abr 26"
+          "Abr 26",
+          "May 26"
         ],
         "semaforo": "bueno",
-        "yoyText": "+2.1%",
+        "yoyText": "+2.6%",
         "yoyLabel": "Var. anual"
       },
       "analysis": [
-        "En abril de 2026, el consumo privado se ubicó en 113.7 puntos (índice base 2018=100), con una variación mensual de +0.10% frente al mes previo. La variación mensual publicada por el INEGI muestra que el indicador aumentó respecto del mes previo. El nivel mostrado es la serie original; la variación mensual se calcula sobre cifras desestacionalizadas.",
+        "En mayo de 2026, el consumo privado se ubicó en 114.0 puntos (índice base 2018=100), con una variación mensual de +0.10% frente al mes previo. La variación mensual publicada por el INEGI muestra que el indicador aumentó respecto del mes previo. El nivel mostrado es la serie original; la variación mensual se calcula sobre cifras desestacionalizadas.",
         "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 114.4 puntos (diciembre de 2025) y un mínimo de 110.1 puntos (mayo de 2025). El resultado más reciente se ubicó por encima del promedio del periodo mostrado. El último dato fue superior al del inicio del periodo mostrado. Esta comparación se realiza sobre la serie original, que incorpora efectos estacionales."
       ],
       "resumen": [
-        "En abril de 2026, el consumo privado se ubicó en 113.7 puntos (índice base 2018=100). El valor de var. mensual fue de +0.1% frente al mes previo.",
-        "La var. anual se situó en +2.1%, lo que refleja la comparación contra abril de 2026 del año previo.",
+        "En mayo de 2026, el consumo privado se ubicó en 114.0 puntos (índice base 2018=100). El valor de var. mensual fue de +0.1% frente al mes previo.",
+        "La var. anual se situó en +2.6%, lo que refleja la comparación contra mayo de 2026 del año previo.",
         "En la serie mostrada, el indicador oscila entre un máximo de 114.4 puntos (diciembre de 2025) y un mínimo de 110.1 puntos (mayo de 2025). El último dato se ubica dentro del rango observado en el periodo mostrado.",
         "La variación se clasifica como favorable según la lectura económica del indicador."
       ],
       "annualVar": {
-        "mag": 2.1,
+        "mag": 2.6,
         "pos": true,
-        "text": "+2.1%",
+        "text": "+2.6%",
         "label": "Var. anual"
       }
     },
@@ -516,21 +518,21 @@
       "kpi": {
         "assessment": "neutral",
         "dir": "down",
-        "ultimoFmt": "3.4%",
-        "ultimoRaw": 3.365977,
-        "ultimoP": "Jun 26",
-        "varText": "-0.6 puntos porcentuales",
-        "varMag": -0.5729709999999999,
+        "ultimoFmt": "3.1%",
+        "ultimoRaw": 3.11763,
+        "ultimoP": "Jul 26",
+        "varText": "-0.2 puntos porcentuales",
+        "varMag": -0.24834699999999987,
         "pos": false,
         "varColor": "#9b2247",
         "varLabel": "Cambio de la inflación anual respecto al mes previo",
         "maxFmt": "4.6%",
         "maxRaw": 4.586774,
         "maxP": "Mar 26",
-        "minFmt": "3.4%",
-        "minRaw": 3.365977,
-        "minP": "Jun 26",
-        "lastI": 12,
+        "minFmt": "3.1%",
+        "minRaw": 3.11763,
+        "minP": "Jul 26",
+        "lastI": 13,
         "series": [
           4.317429,
           3.512423,
@@ -544,7 +546,8 @@
           4.586774,
           4.448503,
           3.938948,
-          3.365977
+          3.365977,
+          3.11763
         ],
         "periods": [
           "Jun 25",
@@ -559,19 +562,20 @@
           "Mar 26",
           "Abr 26",
           "May 26",
-          "Jun 26"
+          "Jun 26",
+          "Jul 26"
         ],
         "semaforo": "estable",
         "yoyText": "—",
         "yoyLabel": "—"
       },
       "analysis": [
-        "En junio de 2026, la inflación general anual se ubicó en 3.4%, con una variación de -0.6 puntos porcentuales frente al mes previo. La inflación anual disminuyó respecto del mes previo. Se ubicó por debajo del promedio del periodo mostrado (3.9%).",
-        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 4.6% (marzo de 2026) y un mínimo de 3.4% (junio de 2026). El resultado más reciente se ubicó por debajo del promedio del periodo mostrado y fue el registro más bajo de la serie mostrada. El último dato fue inferior al del inicio del periodo mostrado. Con ello, la inflación se mantiene dentro del intervalo de variabilidad del Banco de México (3 % ±1 punto), aunque todavía por encima de la meta puntual de 3 %."
+        "En julio de 2026, la inflación general anual se ubicó en 3.1%, con una variación de -0.2 puntos porcentuales frente al mes previo. La inflación anual disminuyó respecto del mes previo. Se ubicó por debajo del promedio del periodo mostrado (3.8%).",
+        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 4.6% (marzo de 2026) y un mínimo de 3.1% (julio de 2026). El resultado más reciente se ubicó por debajo del promedio del periodo mostrado y fue el registro más bajo de la serie mostrada. El último dato fue inferior al del inicio del periodo mostrado. Con ello, la inflación se mantiene dentro del intervalo de variabilidad del Banco de México (3 % ±1 punto), aunque todavía por encima de la meta puntual de 3 %."
       ],
       "resumen": [
-        "En junio de 2026, la inflación general anual se ubicó en 3.4%. El valor de cambio de la inflación anual respecto al mes previo fue de -0.6 puntos porcentuales frente al mes previo.",
-        "En la serie mostrada, el indicador oscila entre un máximo de 4.6% (marzo de 2026) y un mínimo de 3.4% (junio de 2026). El último dato coincide con el mínimo de la serie mostrada.",
+        "En julio de 2026, la inflación general anual se ubicó en 3.1%. El valor de cambio de la inflación anual respecto al mes previo fue de -0.2 puntos porcentuales frente al mes previo.",
+        "En la serie mostrada, el indicador oscila entre un máximo de 4.6% (marzo de 2026) y un mínimo de 3.1% (julio de 2026). El último dato coincide con el mínimo de la serie mostrada.",
         "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
       ],
       "annualVar": null
@@ -668,15 +672,15 @@
     },
     "IMFBCF": {
       "kpi": {
-        "assessment": "favorable",
-        "dir": "up",
-        "ultimoFmt": "107.4",
-        "ultimoRaw": 107.4,
-        "ultimoP": "Abr 26",
-        "varText": "+4.0%",
-        "varMag": 4.0,
-        "pos": true,
-        "varColor": "#1e5b4f",
+        "assessment": "adverso",
+        "dir": "down",
+        "ultimoFmt": "107.1",
+        "ultimoRaw": 107.1,
+        "ultimoP": "May 26",
+        "varText": "-0.4%",
+        "varMag": -0.4,
+        "pos": false,
+        "varColor": "#9b2247",
         "varLabel": "Var. mensual",
         "maxFmt": "113.7",
         "maxRaw": 113.7,
@@ -684,7 +688,7 @@
         "minFmt": "101.0",
         "minRaw": 101.0,
         "minP": "Sep 25",
-        "lastI": 18,
+        "lastI": 19,
         "series": [
           113.1,
           113.7,
@@ -704,7 +708,8 @@
           102.3,
           101.1,
           102.0,
-          107.4
+          107.4,
+          107.1
         ],
         "periods": [
           "Oct 24",
@@ -725,26 +730,27 @@
           "Ene 26",
           "Feb 26",
           "Mar 26",
-          "Abr 26"
+          "Abr 26",
+          "May 26"
         ],
-        "semaforo": "bueno",
-        "yoyText": "+5.1%",
+        "semaforo": "malo",
+        "yoyText": "+2.4%",
         "yoyLabel": "Var. anual"
       },
       "analysis": [
-        "En abril de 2026, la formación bruta de capital fijo se ubicó en 107.4 (índice base 2018=100), con una variación mensual elevada de +4.00% frente al mes previo. Este resultado refleja una marcada aceleración respecto a marzo de 2026 (+0.40%), y deja al indicador por encima del promedio del periodo mostrado de 105.83684210526314.",
+        "En mayo de 2026, la formación bruta de capital fijo se ubicó en 107.1 (índice base 2018=100), con una variación mensual marginal de -0.40% frente al mes previo. Este resultado refleja una contracción respecto a abril de 2026 (+4.00%), y deja al indicador por encima del promedio del periodo mostrado de 105.9.",
         "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 113.7 (noviembre de 2024) y un mínimo de 101.0 (septiembre de 2025). El resultado más reciente se ubicó por encima del promedio del periodo mostrado. El último dato fue superior al del inicio del periodo mostrado."
       ],
       "resumen": [
-        "En abril de 2026, la formación bruta de capital fijo se ubicó en 107.4 (índice base 2018=100). El valor de var. mensual fue de +4.0% frente al mes previo.",
-        "La var. anual se situó en +5.1%, lo que refleja la comparación contra abril de 2026 del año previo.",
+        "En mayo de 2026, la formación bruta de capital fijo se ubicó en 107.1 (índice base 2018=100). El valor de var. mensual fue de -0.4% frente al mes previo.",
+        "La var. anual se situó en +2.4%, lo que refleja la comparación contra mayo de 2026 del año previo.",
         "En la serie mostrada, el indicador oscila entre un máximo de 113.7 (noviembre de 2024) y un mínimo de 101.0 (septiembre de 2025). El último dato se ubica dentro del rango observado en el periodo mostrado.",
-        "La variación se clasifica como favorable según la lectura económica del indicador."
+        "La variación se clasifica como adversa según la lectura económica del indicador."
       ],
       "annualVar": {
-        "mag": 5.1,
+        "mag": 2.4,
         "pos": true,
-        "text": "+5.1%",
+        "text": "+2.4%",
         "label": "Var. anual"
       }
     },
@@ -908,11 +914,11 @@
       "kpi": {
         "assessment": "neutral",
         "dir": "down",
-        "ultimoFmt": "$17.27",
-        "ultimoRaw": 17.2717,
+        "ultimoFmt": "$17.14",
+        "ultimoRaw": 17.1387,
         "ultimoP": "Ago 26",
-        "varText": "-0.3%",
-        "varMag": -0.32950925626703476,
+        "varText": "-1.1%",
+        "varMag": -1.0970176815474877,
         "pos": false,
         "varColor": "#9b2247",
         "varLabel": "Variación vs. periodo previo",
@@ -1027,7 +1033,7 @@
           17.3505,
           17.4693,
           17.3288,
-          17.2717
+          17.1387
         ],
         "periods": [
           "Ene 18",
@@ -1136,23 +1142,23 @@
           "Ago 26"
         ],
         "semaforo": "estable",
-        "yoyText": "-7.4%",
+        "yoyText": "-8.1%",
         "yoyLabel": "Var. anual"
       },
       "analysis": [
-        "En agosto de 2026, el tipo de cambio FIX se ubicó en $17.27 (pesos por dólar), con una variación de -0.33% frente al periodo previo. Este resultado refleja una apreciación del peso respecto a julio de 2026 (-0.80%), y deja al indicador por debajo del promedio del periodo mostrado de $19.33.",
-        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de $23.93 (abril de 2020) y un mínimo de $16.53 (marzo de 2024). El resultado más reciente se ubicó por debajo del promedio del periodo mostrado. El último dato se mantuvo cercano al del inicio del periodo mostrado."
+        "En agosto de 2026, el tipo de cambio FIX se ubicó en $17.14 (pesos por dólar), con una variación de -1.10% frente al periodo previo. Este resultado refleja una apreciación del peso respecto a julio de 2026 (-0.80%), y deja al indicador por debajo del promedio del periodo mostrado de $19.32.",
+        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de $23.93 (abril de 2020) y un mínimo de $16.53 (marzo de 2024). El resultado más reciente se ubicó por debajo del promedio del periodo mostrado. El último dato fue inferior al del inicio del periodo mostrado."
       ],
       "resumen": [
-        "En agosto de 2026, el tipo de cambio FIX se ubicó en $17.27 (pesos por dólar). El valor de variación vs. periodo previo fue de -0.3% frente al periodo previo.",
-        "La var. anual se situó en -7.4%, lo que refleja la comparación contra agosto de 2026 del año previo.",
+        "En agosto de 2026, el tipo de cambio FIX se ubicó en $17.14 (pesos por dólar). El valor de variación vs. periodo previo fue de -1.1% frente al periodo previo.",
+        "La var. anual se situó en -8.1%, lo que refleja la comparación contra agosto de 2026 del año previo.",
         "En la serie mostrada, el indicador oscila entre un máximo de $23.93 (abril de 2020) y un mínimo de $16.53 (marzo de 2024). El último dato se ubica dentro del rango observado en el periodo mostrado.",
         "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
       ],
       "annualVar": {
-        "mag": -7.3605449474361695,
+        "mag": -8.07391117785882,
         "pos": false,
-        "text": "-7.4%",
+        "text": "-8.1%",
         "label": "Var. anual"
       }
     },

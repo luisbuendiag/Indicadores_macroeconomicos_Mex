@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-05T17:06:20+00:00",
+    "generated_at": "2026-08-10T17:10:14+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,10 +10,10 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-08-05T11:06:20-06:00",
+    "last_update_ct": "2026-08-10T11:10:14-06:00",
     "periodo_referencia_reciente": {
-      "period": "Jun 26",
-      "period_long": "Jun 26"
+      "period": "Jul 26",
+      "period_long": "Jul 26"
     }
   },
   "order": [
@@ -89,8 +89,8 @@
         {
           "period": "2T-21",
           "values": [
-            23623455.056,
-            0.227018,
+            23949712.898,
+            0.018929,
             null,
             null
           ]
@@ -125,8 +125,8 @@
         {
           "period": "2T-22",
           "values": [
-            24310024.252,
-            0.029063,
+            25052395.779,
+            0.046042,
             null,
             null
           ]
@@ -161,8 +161,8 @@
         {
           "period": "2T-23 R",
           "values": [
-            25108268.25,
-            0.032836,
+            25590082.607,
+            0.021462,
             null,
             null
           ]
@@ -197,8 +197,8 @@
         {
           "period": "2T-24 R",
           "values": [
-            25655479.047,
-            0.021794,
+            25693292.983,
+            0.004033,
             null,
             null
           ]
@@ -233,10 +233,10 @@
         {
           "period": "2T-25 R",
           "values": [
-            25618678.767,
-            -0.001434,
-            null,
-            null
+            26135644.696,
+            0.017217,
+            0.006,
+            0.012
           ]
         },
         {
@@ -244,8 +244,8 @@
           "values": [
             25422850.191,
             -0.002065,
-            null,
-            null
+            -0.003,
+            -0.002
           ]
         },
         {
@@ -253,8 +253,8 @@
           "values": [
             26135644.696,
             0.017217,
-            0.006,
-            0.012
+            0.009,
+            0.018
           ]
         },
         {
@@ -268,8 +268,8 @@
         }
       ],
       "last_observation": "1T-26 P",
-      "last_updated": "2026-08-05",
-      "last_checked": "2026-08-05",
+      "last_updated": "2026-08-10",
+      "last_checked": "2026-08-10",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -278,7 +278,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "30 de julio de 2026",
       "periodo_referencia": "1T-26 P",
-      "fecha_consulta": "2026-08-05",
+      "fecha_consulta": "2026-08-10",
       "metrics": {
         "kpi": {
           "assessment": "favorable",
@@ -293,30 +293,30 @@
           "varLabel": "Var. anual",
           "maxFmt": "26.14 billones de pesos de 2018",
           "maxRaw": 26135644.696,
-          "maxP": "4T-25 R",
+          "maxP": "2T-25 R",
           "minFmt": "22.84 billones de pesos de 2018",
           "minRaw": 22841359.685,
           "minP": "1T-21",
           "lastI": 20,
           "series": [
             22841359.685,
-            23623455.056,
+            23949712.898,
             23204796.817,
             23949712.898,
             23440574.466,
-            24310024.252,
+            25052395.779,
             24289379.479,
             25052395.779,
             24330982.536,
-            25108268.25,
+            25590082.607,
             25094793.141,
             25590082.607,
             24761655.524,
-            25655479.047,
+            25693292.983,
             25475446.445,
             25693292.983,
             24913610.281,
-            25618678.767,
+            26135644.696,
             25422850.191,
             26135644.696,
             24973976.071
@@ -357,7 +357,7 @@
         "resumen": [
           "En primer trimestre de 2026, el PIB se ubicó en 24.97 billones de pesos de 2018 (a precios de 2018). El valor de var. anual fue de +0.4% frente al mismo trimestre del año anterior.",
           "La var. trimestral se situó en -0.6%, lo que refleja la comparación contra primer trimestre de 2026 del año previo.",
-          "En la serie mostrada, el indicador oscila entre un máximo de 26.14 billones de pesos de 2018 (cuarto trimestre de 2025) y un mínimo de 22.84 billones de pesos de 2018 (primer trimestre de 2021). El último dato se ubica dentro del rango observado en el periodo mostrado.",
+          "En la serie mostrada, el indicador oscila entre un máximo de 26.14 billones de pesos de 2018 (segundo trimestre de 2025) y un mínimo de 22.84 billones de pesos de 2018 (primer trimestre de 2021). El último dato se ubica dentro del rango observado en el periodo mostrado.",
           "La variación se clasifica como favorable según la lectura económica del indicador."
         ]
       },
@@ -369,11 +369,12 @@
       },
       "motivo_frescura": "El calendario indica que ya se publicó 2° trimestre 2026, pero el dashboard aún muestra 1T-26.",
       "url_boletin_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=605598#D737375",
-      "xlsx_disponible": true,
-      "url_excel_individual": "downloads/indicadores/PIB/PIB_datos.xlsx",
-      "xlsx_causa": null,
+      "xlsx_disponible": false,
+      "url_excel_individual": null,
+      "xlsx_causa": "Producto en fase piloto; próximamente disponible",
       "nota_disponible": false,
-      "nota_causa": "Estado del indicador: REZAGADO. La nota solo se genera para indicadores ACTUALIZADO."
+      "nota_causa": "Falta plantilla aprobada",
+      "url_nota_individual": null
     },
     "PIBSEC": {
       "key": "PIBSEC",
@@ -436,9 +437,9 @@
         {
           "period": "2T-23 P",
           "values": [
-            866388.559,
-            7964375.032,
-            14833956.646,
+            958911.8,
+            8024213.122,
+            15251937.656,
             0.008,
             null
           ]
@@ -476,9 +477,9 @@
         {
           "period": "2T-24 P",
           "values": [
-            866987.775,
-            8011179.29,
-            15297892.114,
+            930282.979,
+            7832811.484,
+            15559800.994,
             0,
             null
           ]
@@ -499,8 +500,8 @@
             930282.979,
             7832811.484,
             15559800.994,
-            -0.011000000000000001,
-            null
+            0.002,
+            0.021
           ]
         },
         {
@@ -516,11 +517,11 @@
         {
           "period": "2T-25 P",
           "values": [
-            856980.339,
-            7888924.88,
-            15388336.602,
-            0.003,
-            null
+            993973.972,
+            7867045.889,
+            15877667.814,
+            0.008,
+            0.018
           ]
         },
         {
@@ -529,8 +530,8 @@
             777766.167,
             7812449.734,
             15433943.462,
-            -0.001,
-            null
+            0.002,
+            0.01
           ]
         },
         {
@@ -539,8 +540,8 @@
             993973.972,
             7867045.889,
             15877667.814,
-            0.008,
-            0.018
+            0.009,
+            0.021
           ]
         },
         {
@@ -555,8 +556,8 @@
         }
       ],
       "last_observation": "1T-26 P",
-      "last_updated": "2026-08-05",
-      "last_checked": "2026-08-05",
+      "last_updated": "2026-08-10",
+      "last_checked": "2026-08-10",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -565,7 +566,7 @@
       "origen_dato": "api",
       "fecha_publicacion": null,
       "periodo_referencia": "1T-26 P",
-      "fecha_consulta": "2026-08-05",
+      "fecha_consulta": "2026-08-10",
       "metrics": {
         "kpi": {
           "assessment": "adverso",
@@ -580,22 +581,22 @@
           "varLabel": "Trim. terciarias",
           "maxFmt": "24,738,688",
           "maxRaw": 24738687.674999997,
-          "maxP": "4T-25 P",
+          "maxP": "2T-25 P",
           "minFmt": "22,950,993",
           "minRaw": 22950993.452,
           "minP": "1T-23 P",
           "lastI": 12,
           "series": [
             22950993.452,
-            23664720.237,
+            24235062.578,
             23715827.402000003,
             24235062.578,
             23352220.264,
-            24176059.178999998,
+            24322895.457000002,
             24077215.035,
             24322895.457000002,
             23494465.16,
-            24134241.821000002,
+            24738687.674999997,
             24024159.362999998,
             24738687.674999997,
             23553778.839
@@ -628,7 +629,7 @@
         "resumen": [
           "En primer trimestre de 2026, el PIB total por actividad económica se ubicó en 23.55 billones de pesos (a precios de 2018). El valor de trim. terciarias fue de -0.4% frente al trimestre anterior.",
           "La anual terciarias se situó en +1.1%, lo que refleja la comparación contra primer trimestre de 2026 del año previo.",
-          "En la serie mostrada, el indicador oscila entre un máximo de 24.74 billones de pesos (cuarto trimestre de 2025) y un mínimo de 22.95 billones de pesos (primer trimestre de 2023). El último dato se ubica dentro del rango observado en el periodo mostrado.",
+          "En la serie mostrada, el indicador oscila entre un máximo de 24.74 billones de pesos (segundo trimestre de 2025) y un mínimo de 22.95 billones de pesos (primer trimestre de 2023). El último dato se ubica dentro del rango observado en el periodo mostrado.",
           "La variación se clasifica como adversa según la lectura económica del indicador."
         ]
       },
@@ -640,11 +641,12 @@
       },
       "motivo_frescura": "No hay publicación oficial registrada en el calendario aún.",
       "url_boletin_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=600267#D735888",
-      "xlsx_disponible": true,
-      "url_excel_individual": "downloads/indicadores/PIBSEC/PIBSEC_datos.xlsx",
-      "xlsx_causa": null,
+      "xlsx_disponible": false,
+      "url_excel_individual": null,
+      "xlsx_causa": "Producto en fase piloto; próximamente disponible",
       "nota_disponible": false,
-      "nota_causa": "Estado del indicador: PUBLICACIÓN PENDIENTE. La nota solo se genera para indicadores ACTUALIZADO."
+      "nota_causa": "Falta plantilla aprobada",
+      "url_nota_individual": null
     },
     "IGAE": {
       "key": "IGAE",
@@ -827,8 +829,8 @@
         }
       ],
       "last_observation": "May 26",
-      "last_updated": "2026-08-05",
-      "last_checked": "2026-08-05",
+      "last_updated": "2026-08-10",
+      "last_checked": "2026-08-10",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -837,7 +839,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "23 de julio de 2026",
       "periodo_referencia": "May 26",
-      "fecha_consulta": "2026-08-05",
+      "fecha_consulta": "2026-08-10",
       "metrics": {
         "kpi": {
           "assessment": "adverso",
@@ -915,9 +917,9 @@
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/IGAE/IGAE_datos.xlsx",
       "xlsx_causa": null,
-      "nota_disponible": true,
-      "nota_causa": null,
-      "url_nota_individual": "downloads/indicadores/IGAE/IGAE_nota.docx"
+      "nota_disponible": false,
+      "nota_causa": "Falta plantilla aprobada",
+      "url_nota_individual": null
     },
     "IMAI": {
       "key": "IMAI",
@@ -1045,8 +1047,8 @@
         }
       ],
       "last_observation": "May 26",
-      "last_updated": "2026-08-05",
-      "last_checked": "2026-08-05",
+      "last_updated": "2026-08-10",
+      "last_checked": "2026-08-10",
       "source_origin": "api",
       "data_quality": [],
       "requiere_token": "INEGI",
@@ -1056,7 +1058,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "10 de julio de 2026",
       "periodo_referencia": "May 26",
-      "fecha_consulta": "2026-08-05",
+      "fecha_consulta": "2026-08-10",
       "metrics": {
         "kpi": {
           "assessment": "adverso",
@@ -1131,12 +1133,12 @@
       },
       "motivo_frescura": "El periodo cargado (May 26) coincide con el último periodo oficial publicado (Mayo 2026).",
       "url_boletin_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603729#D737234",
-      "xlsx_disponible": true,
-      "url_excel_individual": "downloads/indicadores/IMAI/IMAI_datos.xlsx",
-      "xlsx_causa": null,
-      "nota_disponible": true,
-      "nota_causa": null,
-      "url_nota_individual": "downloads/indicadores/IMAI/IMAI_nota.docx"
+      "xlsx_disponible": false,
+      "url_excel_individual": null,
+      "xlsx_causa": "Producto en fase piloto; próximamente disponible",
+      "nota_disponible": false,
+      "nota_causa": "Falta plantilla aprobada",
+      "url_nota_individual": null
     },
     "CONSUMO": {
       "key": "CONSUMO",
@@ -1155,7 +1157,7 @@
       ],
       "fuente": {
         "nombre": "INEGI",
-        "link": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_07.pdf",
+        "link": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_08.pdf",
         "metodo": "INEGI boletín PDF",
         "serie": "CONSUMO_pdf"
       },
@@ -1280,28 +1282,36 @@
             0.001,
             0.021
           ]
+        },
+        {
+          "period": "May 26",
+          "values": [
+            114.0,
+            0.001,
+            0.026
+          ]
         }
       ],
-      "last_observation": "Abr 26",
-      "last_updated": "2026-08-04",
-      "last_checked": "2026-08-04",
+      "last_observation": "May 26",
+      "last_updated": "2026-08-10",
+      "last_checked": "2026-08-10",
       "source_origin": "api",
       "data_quality": [],
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "REZAGADO",
+      "estado": "ACTUALIZADO",
       "origen_dato": "api",
       "fecha_publicacion": "05 de agosto de 2026",
-      "periodo_referencia": "Abr 26",
-      "fecha_consulta": "2026-08-04",
+      "periodo_referencia": "May 26",
+      "fecha_consulta": "2026-08-10",
       "metrics": {
         "kpi": {
           "assessment": "favorable",
           "dir": "up",
-          "ultimoFmt": "113.7",
-          "ultimoRaw": 113.7,
-          "ultimoP": "Abr 26",
+          "ultimoFmt": "114.0",
+          "ultimoRaw": 114.0,
+          "ultimoP": "May 26",
           "varText": "+0.1%",
           "varMag": 0.1,
           "pos": true,
@@ -1313,7 +1323,7 @@
           "minFmt": "110.1",
           "minRaw": 110.1,
           "minP": "May 25 R",
-          "lastI": 12,
+          "lastI": 13,
           "series": [
             111.6,
             110.1,
@@ -1327,7 +1337,8 @@
             112.1,
             111.4,
             113.6,
-            113.7
+            113.7,
+            114.0
           ],
           "periods": [
             "Abr 25 R",
@@ -1342,21 +1353,22 @@
             "Ene 26 R",
             "Feb 26 R",
             "Mar 26 P",
-            "Abr 26"
+            "Abr 26",
+            "May 26"
           ],
           "semaforo": "bueno",
-          "yoyText": "+2.1%",
+          "yoyText": "+2.6%",
           "yoyLabel": "Var. anual"
         },
         "yoy": {
-          "mag": 2.1,
+          "mag": 2.6,
           "pos": true,
-          "text": "+2.1%",
+          "text": "+2.6%",
           "label": "Var. anual"
         },
         "resumen": [
-          "En abril de 2026, el consumo privado se ubicó en 113.7 puntos (índice base 2018=100). El valor de var. mensual fue de +0.1% frente al mes previo.",
-          "La var. anual se situó en +2.1%, lo que refleja la comparación contra abril de 2026 del año previo.",
+          "En mayo de 2026, el consumo privado se ubicó en 114.0 puntos (índice base 2018=100). El valor de var. mensual fue de +0.1% frente al mes previo.",
+          "La var. anual se situó en +2.6%, lo que refleja la comparación contra mayo de 2026 del año previo.",
           "En la serie mostrada, el indicador oscila entre un máximo de 114.4 puntos (diciembre de 2025) y un mínimo de 110.1 puntos (mayo de 2025). El último dato se ubica dentro del rango observado en el periodo mostrado.",
           "La variación se clasifica como favorable según la lectura económica del indicador."
         ]
@@ -1367,13 +1379,14 @@
         "fecha_publicacion": "04 de septiembre de 2026",
         "periodo_referencia": "Junio 2026"
       },
-      "motivo_frescura": "El calendario indica que ya se publicó Mayo 2026, pero el dashboard aún muestra Abr 26.",
-      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_07.pdf",
-      "xlsx_disponible": true,
-      "url_excel_individual": "downloads/indicadores/CONSUMO/CONSUMO_datos.xlsx",
-      "xlsx_causa": null,
+      "motivo_frescura": "El periodo cargado (May 26) coincide con el último periodo oficial publicado (Mayo 2026).",
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_08.pdf",
+      "xlsx_disponible": false,
+      "url_excel_individual": null,
+      "xlsx_causa": "Producto en fase piloto; próximamente disponible",
       "nota_disponible": false,
-      "nota_causa": "Estado del indicador: REZAGADO. La nota solo se genera para indicadores ACTUALIZADO."
+      "nota_causa": "Falta plantilla aprobada",
+      "url_nota_individual": null
     },
     "IED": {
       "key": "IED",
@@ -1699,11 +1712,12 @@
       "proxima_publicacion": null,
       "motivo_frescura": "No hay publicación oficial registrada en el calendario aún.",
       "url_boletin_oficial": "",
-      "xlsx_disponible": true,
-      "xlsx_causa": null,
-      "url_excel_individual": "downloads/indicadores/IED/IED_datos.xlsx",
+      "xlsx_disponible": false,
+      "xlsx_causa": "Producto en fase piloto; próximamente disponible",
+      "url_excel_individual": null,
       "nota_disponible": false,
-      "nota_causa": "Estado del indicador: PUBLICACIÓN PENDIENTE. La nota solo se genera para indicadores ACTUALIZADO."
+      "nota_causa": "Falta plantilla aprobada",
+      "url_nota_individual": null
     },
     "DESOCUP": {
       "key": "DESOCUP",
@@ -1812,8 +1826,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-08-05",
-      "last_checked": "2026-08-05",
+      "last_updated": "2026-08-10",
+      "last_checked": "2026-08-10",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -1822,7 +1836,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "24 de julio de 2026",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-08-05",
+      "fecha_consulta": "2026-08-10",
       "metrics": {
         "kpi": {
           "assessment": "adverso",
@@ -1891,12 +1905,12 @@
       },
       "motivo_frescura": "El periodo cargado (Jun 26) coincide con el último periodo oficial publicado (Junio 2026).",
       "url_boletin_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=4#D444603",
-      "xlsx_disponible": true,
-      "url_excel_individual": "downloads/indicadores/DESOCUP/DESOCUP_datos.xlsx",
-      "xlsx_causa": null,
-      "nota_disponible": true,
-      "nota_causa": null,
-      "url_nota_individual": "downloads/indicadores/DESOCUP/DESOCUP_nota.docx"
+      "xlsx_disponible": false,
+      "url_excel_individual": null,
+      "xlsx_causa": "Producto en fase piloto; próximamente disponible",
+      "nota_disponible": false,
+      "nota_causa": "Falta plantilla aprobada",
+      "url_nota_individual": null
     },
     "INPC": {
       "key": "INPC",
@@ -2038,39 +2052,47 @@
             4.03192,
             null
           ]
+        },
+        {
+          "period": "Jul 26",
+          "values": [
+            3.11763,
+            3.948334,
+            null
+          ]
         }
       ],
-      "last_observation": "Jun 26",
-      "last_updated": "2026-08-05",
-      "last_checked": "2026-08-05",
+      "last_observation": "Jul 26",
+      "last_updated": "2026-08-10",
+      "last_checked": "2026-08-10",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
-      "fecha_publicacion": "09 de julio de 2026",
-      "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-08-05",
+      "fecha_publicacion": "07 de agosto de 2026",
+      "periodo_referencia": "Jul 26",
+      "fecha_consulta": "2026-08-10",
       "metrics": {
         "kpi": {
           "assessment": "neutral",
           "dir": "down",
-          "ultimoFmt": "3.4%",
-          "ultimoRaw": 3.365977,
-          "ultimoP": "Jun 26",
-          "varText": "-0.6 puntos porcentuales",
-          "varMag": -0.5729709999999999,
+          "ultimoFmt": "3.1%",
+          "ultimoRaw": 3.11763,
+          "ultimoP": "Jul 26",
+          "varText": "-0.2 puntos porcentuales",
+          "varMag": -0.24834699999999987,
           "pos": false,
           "varColor": "#9b2247",
           "varLabel": "Cambio de la inflación anual respecto al mes previo",
           "maxFmt": "4.6%",
           "maxRaw": 4.586774,
           "maxP": "Mar 26",
-          "minFmt": "3.4%",
-          "minRaw": 3.365977,
-          "minP": "Jun 26",
-          "lastI": 12,
+          "minFmt": "3.1%",
+          "minRaw": 3.11763,
+          "minP": "Jul 26",
+          "lastI": 13,
           "series": [
             4.317429,
             3.512423,
@@ -2084,7 +2106,8 @@
             4.586774,
             4.448503,
             3.938948,
-            3.365977
+            3.365977,
+            3.11763
           ],
           "periods": [
             "Jun 25",
@@ -2099,7 +2122,8 @@
             "Mar 26",
             "Abr 26",
             "May 26",
-            "Jun 26"
+            "Jun 26",
+            "Jul 26"
           ],
           "semaforo": "estable",
           "yoyText": "—",
@@ -2107,25 +2131,25 @@
         },
         "yoy": null,
         "resumen": [
-          "En junio de 2026, la inflación general anual se ubicó en 3.4%. El valor de cambio de la inflación anual respecto al mes previo fue de -0.6 puntos porcentuales frente al mes previo.",
-          "En la serie mostrada, el indicador oscila entre un máximo de 4.6% (marzo de 2026) y un mínimo de 3.4% (junio de 2026). El último dato coincide con el mínimo de la serie mostrada.",
+          "En julio de 2026, la inflación general anual se ubicó en 3.1%. El valor de cambio de la inflación anual respecto al mes previo fue de -0.2 puntos porcentuales frente al mes previo.",
+          "En la serie mostrada, el indicador oscila entre un máximo de 4.6% (marzo de 2026) y un mínimo de 3.1% (julio de 2026). El último dato coincide con el mínimo de la serie mostrada.",
           "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
         ]
       },
-      "periodo_referencia_oficial": "Junio 2026",
-      "fecha_publicacion_oficial": "09 de julio de 2026",
+      "periodo_referencia_oficial": "Julio 2026",
+      "fecha_publicacion_oficial": "07 de agosto de 2026",
       "proxima_publicacion": {
-        "fecha_publicacion": "07 de agosto de 2026",
-        "periodo_referencia": "Julio 2026"
+        "fecha_publicacion": "09 de septiembre de 2026",
+        "periodo_referencia": "Agosto 2026"
       },
-      "motivo_frescura": "El periodo cargado (Jun 26) coincide con el último periodo oficial publicado (Junio 2026).",
+      "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo oficial publicado (Julio 2026).",
       "url_boletin_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=682416#D334452",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/INPC/INPC_datos.xlsx",
       "xlsx_causa": null,
-      "nota_disponible": true,
-      "nota_causa": null,
-      "url_nota_individual": "downloads/indicadores/INPC/INPC_nota.docx"
+      "nota_disponible": false,
+      "nota_causa": "Falta plantilla aprobada",
+      "url_nota_individual": null
     },
     "BALANZA": {
       "key": "BALANZA",
@@ -2344,8 +2368,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-08-05",
-      "last_checked": "2026-08-05",
+      "last_updated": "2026-08-10",
+      "last_checked": "2026-08-10",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -2354,7 +2378,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "27 de julio de 2026",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-08-05",
+      "fecha_consulta": "2026-08-10",
       "metrics": {
         "kpi": {
           "assessment": "neutral",
@@ -2449,12 +2473,12 @@
       },
       "motivo_frescura": "El periodo cargado (Jun 26) coincide con el último periodo oficial publicado (Junio 2026).",
       "url_boletin_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=36695#D33226",
-      "xlsx_disponible": true,
-      "url_excel_individual": "downloads/indicadores/BALANZA/BALANZA_datos.xlsx",
-      "xlsx_causa": null,
-      "nota_disponible": true,
-      "nota_causa": null,
-      "url_nota_individual": "downloads/indicadores/BALANZA/BALANZA_nota.docx"
+      "xlsx_disponible": false,
+      "url_excel_individual": null,
+      "xlsx_causa": "Producto en fase piloto; próximamente disponible",
+      "nota_disponible": false,
+      "nota_causa": "Falta plantilla aprobada",
+      "url_nota_individual": null
     },
     "IMFBCF": {
       "key": "IMFBCF",
@@ -2468,7 +2492,7 @@
       "proximo": "Por confirmar con el calendario oficial de difusión",
       "fuente": {
         "nombre": "INEGI",
-        "link": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_07.pdf",
+        "link": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_08.pdf",
         "metodo": "INEGI boletín PDF",
         "serie": "IMFBCF_pdf"
       },
@@ -2641,31 +2665,39 @@
             0.04,
             0.051
           ]
+        },
+        {
+          "period": "May 26",
+          "values": [
+            107.1,
+            -0.004,
+            0.024
+          ]
         }
       ],
-      "last_observation": "Abr 26",
-      "last_updated": "2026-08-04",
-      "last_checked": "2026-08-04",
+      "last_observation": "May 26",
+      "last_updated": "2026-08-10",
+      "last_checked": "2026-08-10",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "REZAGADO",
+      "estado": "ACTUALIZADO",
       "origen_dato": "api",
       "fecha_publicacion": "05 de agosto de 2026",
-      "periodo_referencia": "Abr 26",
-      "fecha_consulta": "2026-08-04",
+      "periodo_referencia": "May 26",
+      "fecha_consulta": "2026-08-10",
       "source_origin": "api",
       "metrics": {
         "kpi": {
-          "assessment": "favorable",
-          "dir": "up",
-          "ultimoFmt": "107.4",
-          "ultimoRaw": 107.4,
-          "ultimoP": "Abr 26",
-          "varText": "+4.0%",
-          "varMag": 4.0,
-          "pos": true,
-          "varColor": "#1e5b4f",
+          "assessment": "adverso",
+          "dir": "down",
+          "ultimoFmt": "107.1",
+          "ultimoRaw": 107.1,
+          "ultimoP": "May 26",
+          "varText": "-0.4%",
+          "varMag": -0.4,
+          "pos": false,
+          "varColor": "#9b2247",
           "varLabel": "Var. mensual",
           "maxFmt": "113.7",
           "maxRaw": 113.7,
@@ -2673,7 +2705,7 @@
           "minFmt": "101.0",
           "minRaw": 101.0,
           "minP": "Sep 25",
-          "lastI": 18,
+          "lastI": 19,
           "series": [
             113.1,
             113.7,
@@ -2693,7 +2725,8 @@
             102.3,
             101.1,
             102.0,
-            107.4
+            107.4,
+            107.1
           ],
           "periods": [
             "Oct 24",
@@ -2714,23 +2747,24 @@
             "Ene 26",
             "Feb 26",
             "Mar 26",
-            "Abr 26"
+            "Abr 26",
+            "May 26"
           ],
-          "semaforo": "bueno",
-          "yoyText": "+5.1%",
+          "semaforo": "malo",
+          "yoyText": "+2.4%",
           "yoyLabel": "Var. anual"
         },
         "yoy": {
-          "mag": 5.1,
+          "mag": 2.4,
           "pos": true,
-          "text": "+5.1%",
+          "text": "+2.4%",
           "label": "Var. anual"
         },
         "resumen": [
-          "En abril de 2026, la formación bruta de capital fijo se ubicó en 107.4 (índice base 2018=100). El valor de var. mensual fue de +4.0% frente al mes previo.",
-          "La var. anual se situó en +5.1%, lo que refleja la comparación contra abril de 2026 del año previo.",
+          "En mayo de 2026, la formación bruta de capital fijo se ubicó en 107.1 (índice base 2018=100). El valor de var. mensual fue de -0.4% frente al mes previo.",
+          "La var. anual se situó en +2.4%, lo que refleja la comparación contra mayo de 2026 del año previo.",
           "En la serie mostrada, el indicador oscila entre un máximo de 113.7 (noviembre de 2024) y un mínimo de 101.0 (septiembre de 2025). El último dato se ubica dentro del rango observado en el periodo mostrado.",
-          "La variación se clasifica como favorable según la lectura económica del indicador."
+          "La variación se clasifica como adversa según la lectura económica del indicador."
         ]
       },
       "periodo_referencia_oficial": "Mayo 2026",
@@ -2739,13 +2773,14 @@
         "fecha_publicacion": "04 de septiembre de 2026",
         "periodo_referencia": "Junio 2026"
       },
-      "motivo_frescura": "El calendario indica que ya se publicó Mayo 2026, pero el dashboard aún muestra Abr 26.",
-      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_07.pdf",
-      "xlsx_disponible": true,
-      "url_excel_individual": "downloads/indicadores/IMFBCF/IMFBCF_datos.xlsx",
-      "xlsx_causa": null,
+      "motivo_frescura": "El periodo cargado (May 26) coincide con el último periodo oficial publicado (Mayo 2026).",
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_08.pdf",
+      "xlsx_disponible": false,
+      "url_excel_individual": null,
+      "xlsx_causa": "Producto en fase piloto; próximamente disponible",
       "nota_disponible": false,
-      "nota_causa": "Estado del indicador: REZAGADO. La nota solo se genera para indicadores ACTUALIZADO."
+      "nota_causa": "Falta plantilla aprobada",
+      "url_nota_individual": null
     },
     "IOAE": {
       "key": "IOAE",
@@ -2968,8 +3003,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-08-04",
-      "last_checked": "2026-08-04",
+      "last_updated": "2026-08-10",
+      "last_checked": "2026-08-10",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -2977,7 +3012,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "21 de julio de 2026",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-08-04",
+      "fecha_consulta": "2026-08-10",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -3067,12 +3102,12 @@
       },
       "motivo_frescura": "El periodo cargado (Jun 26) coincide con el último periodo oficial publicado (Junio 2026).",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_07.pdf",
-      "xlsx_disponible": true,
-      "url_excel_individual": "downloads/indicadores/IOAE/IOAE_datos.xlsx",
-      "xlsx_causa": null,
-      "nota_disponible": true,
-      "nota_causa": null,
-      "url_nota_individual": "downloads/indicadores/IOAE/IOAE_nota.docx"
+      "xlsx_disponible": false,
+      "url_excel_individual": null,
+      "xlsx_causa": "Producto en fase piloto; próximamente disponible",
+      "nota_disponible": false,
+      "nota_causa": "Falta plantilla aprobada",
+      "url_nota_individual": null
     },
     "EMIM": {
       "key": "EMIM",
@@ -3202,8 +3237,8 @@
         }
       ],
       "last_observation": "May 26",
-      "last_updated": "2026-08-05",
-      "last_checked": "2026-08-05",
+      "last_updated": "2026-08-10",
+      "last_checked": "2026-08-10",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -3211,7 +3246,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "16 de julio de 2026",
       "periodo_referencia": "May 26",
-      "fecha_consulta": "2026-08-05",
+      "fecha_consulta": "2026-08-10",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -3289,12 +3324,12 @@
       },
       "motivo_frescura": "El periodo cargado (May 26) coincide con el último periodo oficial publicado (Mayo 2026).",
       "url_boletin_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=562444#D796224",
-      "xlsx_disponible": true,
-      "url_excel_individual": "downloads/indicadores/EMIM/EMIM_datos.xlsx",
-      "xlsx_causa": null,
-      "nota_disponible": true,
-      "nota_causa": null,
-      "url_nota_individual": "downloads/indicadores/EMIM/EMIM_nota.docx"
+      "xlsx_disponible": false,
+      "url_excel_individual": null,
+      "xlsx_causa": "Producto en fase piloto; próximamente disponible",
+      "nota_disponible": false,
+      "nota_causa": "Falta plantilla aprobada",
+      "url_nota_individual": null
     },
     "TIPOCAMBIO": {
       "key": "TIPOCAMBIO",
@@ -3941,13 +3976,13 @@
         {
           "period": "Ago 26",
           "values": [
-            17.2717
+            17.1387
           ]
         }
       ],
       "last_observation": "Ago 26",
-      "last_updated": "2026-08-05",
-      "last_checked": "2026-08-05",
+      "last_updated": "2026-08-10",
+      "last_checked": "2026-08-10",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
@@ -3955,17 +3990,17 @@
       "origen_dato": "api",
       "fecha_publicacion": null,
       "periodo_referencia": "Ago 26",
-      "fecha_consulta": "2026-08-05",
+      "fecha_consulta": "2026-08-10",
       "source_origin": "api",
       "metrics": {
         "kpi": {
           "assessment": "neutral",
           "dir": "down",
-          "ultimoFmt": "$17.27",
-          "ultimoRaw": 17.2717,
+          "ultimoFmt": "$17.14",
+          "ultimoRaw": 17.1387,
           "ultimoP": "Ago 26",
-          "varText": "-0.3%",
-          "varMag": -0.32950925626703476,
+          "varText": "-1.1%",
+          "varMag": -1.0970176815474877,
           "pos": false,
           "varColor": "#9b2247",
           "varLabel": "Variación vs. periodo previo",
@@ -4080,7 +4115,7 @@
             17.3505,
             17.4693,
             17.3288,
-            17.2717
+            17.1387
           ],
           "periods": [
             "Ene 18",
@@ -4189,18 +4224,18 @@
             "Ago 26"
           ],
           "semaforo": "estable",
-          "yoyText": "-7.4%",
+          "yoyText": "-8.1%",
           "yoyLabel": "Var. anual"
         },
         "yoy": {
-          "mag": -7.3605449474361695,
+          "mag": -8.07391117785882,
           "pos": false,
-          "text": "-7.4%",
+          "text": "-8.1%",
           "label": "Var. anual"
         },
         "resumen": [
-          "En agosto de 2026, el tipo de cambio FIX se ubicó en $17.27 (pesos por dólar). El valor de variación vs. periodo previo fue de -0.3% frente al periodo previo.",
-          "La var. anual se situó en -7.4%, lo que refleja la comparación contra agosto de 2026 del año previo.",
+          "En agosto de 2026, el tipo de cambio FIX se ubicó en $17.14 (pesos por dólar). El valor de variación vs. periodo previo fue de -1.1% frente al periodo previo.",
+          "La var. anual se situó en -8.1%, lo que refleja la comparación contra agosto de 2026 del año previo.",
           "En la serie mostrada, el indicador oscila entre un máximo de $23.93 (abril de 2020) y un mínimo de $16.53 (marzo de 2024). El último dato se ubica dentro del rango observado en el periodo mostrado.",
           "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
         ]
@@ -4210,11 +4245,12 @@
       "proxima_publicacion": null,
       "motivo_frescura": "No hay publicación oficial registrada en el calendario aún.",
       "url_boletin_oficial": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
-      "xlsx_disponible": true,
-      "url_excel_individual": "downloads/indicadores/TIPOCAMBIO/TIPOCAMBIO_datos.xlsx",
-      "xlsx_causa": null,
+      "xlsx_disponible": false,
+      "url_excel_individual": null,
+      "xlsx_causa": "Producto en fase piloto; próximamente disponible",
       "nota_disponible": false,
-      "nota_causa": "Estado del indicador: PUBLICACIÓN PENDIENTE. La nota solo se genera para indicadores ACTUALIZADO."
+      "nota_causa": "Falta plantilla aprobada",
+      "url_nota_individual": null
     },
     "TASA": {
       "key": "TASA",
@@ -4866,8 +4902,8 @@
         }
       ],
       "last_observation": "Ago 26",
-      "last_updated": "2026-08-05",
-      "last_checked": "2026-08-05",
+      "last_updated": "2026-08-10",
+      "last_checked": "2026-08-10",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
@@ -4875,7 +4911,7 @@
       "origen_dato": "api",
       "fecha_publicacion": null,
       "periodo_referencia": "Ago 26",
-      "fecha_consulta": "2026-08-05",
+      "fecha_consulta": "2026-08-10",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -5124,11 +5160,12 @@
       "proxima_publicacion": null,
       "motivo_frescura": "No hay publicación oficial registrada en el calendario aún.",
       "url_boletin_oficial": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
-      "xlsx_disponible": true,
-      "url_excel_individual": "downloads/indicadores/TASA/TASA_datos.xlsx",
-      "xlsx_causa": null,
+      "xlsx_disponible": false,
+      "url_excel_individual": null,
+      "xlsx_causa": "Producto en fase piloto; próximamente disponible",
       "nota_disponible": false,
-      "nota_causa": "Estado del indicador: PUBLICACIÓN PENDIENTE. La nota solo se genera para indicadores ACTUALIZADO."
+      "nota_causa": "Falta plantilla aprobada",
+      "url_nota_individual": null
     },
     "RESERVAS": {
       "key": "RESERVAS",
@@ -5774,8 +5811,8 @@
         }
       ],
       "last_observation": "Jul 26",
-      "last_updated": "2026-08-05",
-      "last_checked": "2026-08-05",
+      "last_updated": "2026-08-10",
+      "last_checked": "2026-08-10",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
@@ -5783,7 +5820,7 @@
       "origen_dato": "api",
       "fecha_publicacion": null,
       "periodo_referencia": "Jul 26",
-      "fecha_consulta": "2026-08-05",
+      "fecha_consulta": "2026-08-10",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -6036,11 +6073,12 @@
       "proxima_publicacion": null,
       "motivo_frescura": "No hay publicación oficial registrada en el calendario aún.",
       "url_boletin_oficial": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
-      "xlsx_disponible": true,
-      "url_excel_individual": "downloads/indicadores/RESERVAS/RESERVAS_datos.xlsx",
-      "xlsx_causa": null,
+      "xlsx_disponible": false,
+      "url_excel_individual": null,
+      "xlsx_causa": "Producto en fase piloto; próximamente disponible",
       "nota_disponible": false,
-      "nota_causa": "Estado del indicador: PUBLICACIÓN PENDIENTE. La nota solo se genera para indicadores ACTUALIZADO."
+      "nota_causa": "Falta plantilla aprobada",
+      "url_nota_individual": null
     }
   }
 }

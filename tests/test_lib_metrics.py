@@ -40,10 +40,10 @@ def test_inpc_kpi():
     payload = _payload()
     metrics = M.compute_all_metrics(payload)
     kpi = metrics["INPC"]["kpi"]
-    assert kpi["ultimoP"] == "Jun 26"
-    assert kpi["ultimoFmt"] == "3.4%"
-    assert kpi["varText"] == "-0.6 puntos porcentuales"
-    assert round(kpi["varMag"], 4) == -0.5730
+    assert kpi["ultimoP"] == "Jul 26"
+    assert kpi["ultimoFmt"] == "3.1%"
+    assert kpi["varText"] == "-0.2 puntos porcentuales"
+    assert round(kpi["varMag"], 4) == -0.2483
     assert kpi["yoyText"] == "—"
     assert kpi["assessment"] == "neutral"
     assert kpi["semaforo"] == "estable"
@@ -55,7 +55,7 @@ def test_inpc_analysis():
     a = metrics["INPC"]["analysis"]
     assert len(a) == 2
     assert "inflación general anual" in a[0]
-    assert "-0.6 puntos porcentuales" in a[0]
+    assert "-0.2 puntos porcentuales" in a[0]
     assert "Banco de México" in a[1]
 
 

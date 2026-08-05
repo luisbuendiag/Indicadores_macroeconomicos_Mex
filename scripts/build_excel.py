@@ -12,7 +12,9 @@ rangos internos del propio libro.
 """
 from __future__ import annotations
 
+import argparse
 import json
+import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
 
@@ -48,6 +50,7 @@ BORDER = Border(left=THIN, right=THIN, top=THIN, bottom=THIN)
 WRAP = Alignment(wrap_text=True, vertical="top")
 
 IND_DIR = ROOT / "downloads" / "indicadores"
+PILOT_KEYS = ["IGAE", "INPC"]
 
 
 def _period_date(period: str) -> date | None:
@@ -205,15 +208,27 @@ def _build_individual_workbook(ind: dict, cfg: dict, kpicfg: dict, out_path: Pat
     wb.save(out_path)
 
 
-def build_individual_files(payload: dict):
-    """Genera un archivo Excel por indicador y actualiza flags en el payload."""
+def build_individual_files(payload: dict, pilot: list[str] | None = None):
+    """Genera un archivo Excel por indicador y actualiza flags en el payload.
+
+    Si `pilot` se provee, solo genera archivos para esas claves y marca los
+    demás como no disponibles para no dejar enlaces rotos en el repositorio.
+    """
     kpicfg = get_cfg("KPICFG")
     IND_DIR.mkdir(parents=True, exist_ok=True)
+    pilot_set = set(pilot) if pilot else None
     for key, ind in payload["indicators"].items():
         cfg = kpicfg.get(key)
         out_dir = IND_DIR / key
-        out_dir.mkdir(parents=True, exist_ok=True)
         out_path = out_dir / f"{key}_datos.xlsx"
+        if pilot_set and key not in pilot_set:
+            ind["xlsx_disponible"] = False
+            ind["xlsx_causa"] = "Producto en fase piloto; próximamente disponible"
+            ind["url_excel_individual"] = None
+            if out_path.exists():
+                out_path.unlink()
+            continue
+        out_dir.mkdir(parents=True, exist_ok=True)
         if not ind.get("observations") or not cfg:
             ind["xlsx_disponible"] = False
             ind["xlsx_causa"] = "Sin observaciones o sin configuración de métricas"
@@ -432,6 +447,14 @@ def add_indicator_sheets(wb, payload):
 
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--pilot", action="store_true", help="Genera archivos individuales solo para IGAE e INPC")
+    # Al ser importado por pytest, evita que los argumentos de pytest (-q) lleguen aquí.
+    if "pytest" in sys.modules:
+        args = ap.parse_args([])
+    else:
+        args = ap.parse_args()
+
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     payload = L.load_data()
     manifest = json.loads((L.DATA_DIR / "manifest.json").read_text(encoding="utf-8"))
@@ -463,7 +486,7 @@ def main():
     print(f"OK: {OUT_XLSX.relative_to(ROOT)} ({OUT_XLSX.stat().st_size} bytes) · hojas: {wb.sheetnames}")
 
     # Archivos individuales por indicador (actualiza flags en indicadores.json).
-    build_individual_files(payload)
+    build_individual_files(payload, pilot=PILOT_KEYS if args.pilot else None)
     (L.DATA_DIR / "indicadores.json").write_text(
         json.dumps(payload, ensure_ascii=False, indent=2, default=str) + "\n",
         encoding="utf-8",

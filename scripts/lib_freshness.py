@@ -124,18 +124,36 @@ def latest_expected(calendar: list[dict], key: str, as_of: date | None = None) -
     return min(items, key=lambda i: i["fecha_iso"])
 
 
-def source_had_error(key: str, update_log: dict | None = None) -> bool:
-    """Revisa si el pipeline reportó error para el indicador."""
+def source_had_error(key: str, update_log: dict | None = None, manifest_row: dict | None = None) -> bool:
+    """Revisa si el pipeline reportó un error real para el indicador.
+
+    No marca como error los mensajes informativos de consulta (p. ej.
+    'INEGI IGAE: 101 observaciones...'), solo aquellos con palabras clave de
+    fallo o mensajes críticos.
+    """
     if update_log is None:
         update_log = _load_json(UPDATE_LOG_FILE)
-    txt = f"{key}:" if not key.endswith(":") else key
     warnings = [w for w in update_log.get("warnings", []) if isinstance(w, str)]
     critical = [c for c in update_log.get("critical", []) if isinstance(c, str)]
     all_msgs = warnings + critical
+
+    error_kw = ("error", "excepción", "falló", "sin observaciones", "sin indicador base", "sin indicador")
+    source_name = (manifest_row.get("fuente") or "").lower().replace(" ", "") if manifest_row else ""
+
     for msg in all_msgs:
-        if txt in msg or key in msg:
+        lower = msg.lower()
+        # Advertencias explícitas del indicador.
+        if msg.startswith(f"{key}:") and any(k in lower for k in error_kw):
             return True
-    return False
+        # Advertencias de INEGI por indicador.
+        if msg.startswith(f"INEGI {key}:") and any(k in lower for k in error_kw):
+            return True
+        # Fallos a nivel de módulo/fuente que afectan al indicador.
+        if any(k in lower for k in ("excepción", "falló")):
+            for token in (source_name, "inegi", "banxico", "worldbank"):
+                if token and token in lower:
+                    return True
+    return bool(critical)
 
 
 def compute_state(
@@ -176,7 +194,7 @@ def compute_state(
     official_ym = _period_to_ym(official_period) if official_period else None
 
     # Error de fuente si el pipeline falló explícitamente para este indicador.
-    had_error = source_had_error(key, update_log)
+    had_error = source_had_error(key, update_log, manifest_row)
 
     # Calcular comparación cuando tenemos ambos periodos.
     compara = None

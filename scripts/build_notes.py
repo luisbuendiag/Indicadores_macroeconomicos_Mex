@@ -195,6 +195,20 @@ def build_notes(payload: dict, pilot: list[str] | None = None) -> dict[str, Path
     kpicfg = get_cfg("KPICFG")
     keys = pilot if pilot else list(payload["indicators"].keys())
     generated: dict[str, Path] = {}
+
+    if not PLANTILLA.exists():
+        for key in keys:
+            ind = payload["indicators"][key]
+            ind["nota_disponible"] = False
+            ind["nota_causa"] = "Falta plantilla aprobada"
+            ind["url_nota_individual"] = None
+            # Elimina notas improvisadas anteriores si existen.
+            out_path = NOTES_DIR / key / f"{key}_nota.docx"
+            if out_path.exists():
+                out_path.unlink()
+        print("Aviso: no existe data/source/plantilla_nota.docx; las notas quedan deshabilitadas.")
+        return generated
+
     NOTES_DIR.mkdir(parents=True, exist_ok=True)
     for key in keys:
         ind = payload["indicators"][key]
