@@ -49,9 +49,10 @@
       "clasificacion": "principal",
       "fuente": { "nombre": "INEGI", "link": "https://www.inegi.org.mx/investigacion/ioae/", "metodo": "INEGI (comunicado / BIE)", "serie": null },
       "columns": [
-        { "label": "Estimación puntual (%)", "index": 0, "fmt": "pct-raw" },
-        { "label": "Límite inferior (%)", "index": 1, "fmt": "pct-raw" },
-        { "label": "Límite superior (%)", "index": 2, "fmt": "pct-raw" }
+        { "label": "Estimación mensual (%)", "index": 0, "fmt": "pct-raw" },
+        { "label": "Estimación anual (%)", "index": 1, "fmt": "pct-raw" },
+        { "label": "Límite inferior (%)", "index": 2, "fmt": "pct-raw" },
+        { "label": "Límite superior (%)", "index": 3, "fmt": "pct-raw" }
       ]
     },
     "EMIM": {

@@ -62,7 +62,30 @@ def test_exactly_eleven_principal_indicators():
 
 
 def test_pib_prose_uses_billones_not_dollar():
-    assert '" billones de pesos"' in METRICS
-    m = re.search(r'if \(k === "PIB" \|\| k === "PIBSEC"\) return ([^;]+);', METRICS)
+    assert '" billones de pesos' in METRICS
+    m = re.search(r'if \(k === "PIB"\) return ([^;]+);', METRICS)
     assert m
     assert "$" not in m.group(1)
+    assert "2018" in m.group(1)
+
+
+def test_ioae_uses_mensual_and_anual_not_pp():
+    m = re.search(r'IOAE:\s*\{[^}]*\}', CONFIG)
+    assert m, "no se encontró la configuración de IOAE"
+    ioae = m.group(0)
+    assert 'varLabel: "Estimación mensual"' in ioae
+    assert 'yoyLabel: "Estimación anual"' in ioae
+    assert 'varMode:' not in ioae or 'varMode: ""' in ioae
+    assert "pp-prev" not in ioae
+    assert "puntos porcentuales" not in ioae
+
+
+def test_pibsec_card_labels_short_for_side_by_side():
+    m = re.search(r'PIBSEC:\s*\{[^}]*\}', CONFIG)
+    assert m, "no se encontró la configuración de PIBSEC"
+    pibsec = m.group(0)
+    assert "Trim." in pibsec and "Anual" in pibsec
+    # El CSS permite que las etiquetas largas se ajusten sin desbordar.
+    css = (ROOT / "assets" / "css" / "styles.css").read_text(encoding="utf-8")
+    assert "mc-deltas { display: flex; gap: 14px; flex-wrap: nowrap;" in css
+    assert "word-break: break-word" in css
