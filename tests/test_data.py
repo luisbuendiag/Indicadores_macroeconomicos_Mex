@@ -24,8 +24,7 @@ def test_meta_and_order(payload):
     assert isinstance(payload.get("order"), list) and payload["order"]
 
 
-PENDING_STATES = {"pendiente de token", "pendiente de confirmar serie",
-                  "no disponible", "error de fuente"}
+PENDING_STATES = {"PUBLICACIÓN PENDIENTE", "ERROR DE FUENTE"}
 
 
 def test_indicators_shape(payload):

@@ -176,9 +176,10 @@ def apply_profile(payload: dict, meta_file: Path = META_FILE) -> list[str]:
         else:
             estado, origen = EST_NA, "pendiente"
 
-        ind["estado"] = estado
+        # El estado final lo determina lib_freshness en build_data.py.
+        ind["estado"] = None
         ind["origen_dato"] = origen
-        ind["fecha_publicacion"] = ind.get("publicacion")
+        ind["fecha_publicacion"] = None
         ind["periodo_referencia"] = ind.get("last_observation")
         ind["fecha_consulta"] = ind.get("last_checked")
 

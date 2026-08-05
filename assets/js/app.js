@@ -57,18 +57,68 @@ function estadoBadge(ind) {
   return el("span", { class: `state-badge ${cfg.cls}`, title: est }, cfg.short);
 }
 
-// ---------------- Header ----------------
-function latestInfo() {
-  let latest = null, refPeriod = null;
-  principalInds().forEach((ind) => { if (hasData(ind) && ind.last_updated && (!latest || ind.last_updated > latest)) latest = ind.last_updated; });
-  const monthly = principalInds().filter((i) => hasData(i) && i.frecuencia === "Mensual");
-  if (monthly.length) refPeriod = monthly.map((i) => i.last_observation).filter(Boolean).sort().slice(-1)[0];
-  return { latest, refPeriod };
+// ---------------- Productos por indicador ----------------
+function xlsxUrl(ind) { return ind.url_excel_individual || `downloads/indicadores/${ind.key}/${ind.key}_datos.xlsx`; }
+function notaUrl(ind) { return ind.url_nota_individual || `downloads/indicadores/${ind.key}/${ind.key}_nota.docx`; }
+
+function openBoletin(url) {
+  if (url) window.open(url, "_blank", "noopener,noreferrer");
 }
+
+function downloadProduct(url, fallbackName) {
+  if (!url) return;
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = fallbackName || url.split("/").pop();
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+
+function openCalendarioFiltro(ind) {
+  calState.filter = ind.nombre;
+  setView("calendario");
+}
+
+function productBtn(label, icon, enabled, title, onClick) {
+  const cls = enabled ? "btn btn-ghost" : "btn btn-ghost disabled";
+  return el("button", { class: cls, type: "button", title: title || label, disabled: !enabled, onclick: onClick },
+    el("span", { "aria-hidden": "true" }, icon), label);
+}
+
+function productToolbar(ind) {
+  const bar = el("div", { class: "product-bar" });
+  const xlsxReady = !!ind.xlsx_disponible;
+  const notaReady = !!ind.nota_disponible;
+  const notaTitle = ind.nota_causa || (notaReady ? "Descargar nota DOCX" : "Nota DOCX no disponible");
+  const xlsxTitle = ind.xlsx_causa || (xlsxReady ? "Descargar Excel individual" : "Excel individual no disponible");
+  const boletinUrl = ind.url_boletin_oficial || (ind.fuente && ind.fuente.link) || null;
+  const boletinTitle = boletinUrl ? "Abrir boletín / fuente oficial" : "URL de boletín no disponible";
+  const calTitle = `Ver calendario de publicaciones de ${ind.nombre}`;
+
+  bar.append(
+    productBtn("CALENDARIO", "", true, calTitle, () => openCalendarioFiltro(ind)),
+    productBtn("BOLETÍN", "", !!boletinUrl, boletinTitle, () => openBoletin(boletinUrl)),
+    productBtn("NOTA", "", notaReady, notaTitle, () => downloadProduct(notaUrl(ind), `${ind.key}_nota.docx`)),
+    productBtn("EXCEL", "", xlsxReady, xlsxTitle, () => downloadProduct(xlsxUrl(ind), `${ind.key}_datos.xlsx`))
+  );
+  return bar;
+}
+
+// ---------------- Header ----------------
 function renderHeader() {
-  const { latest, refPeriod } = latestInfo();
-  $("#meta-update").textContent = latest ? new Date(latest + "T00:00:00").toLocaleDateString("es-MX", { day: "2-digit", month: "long", year: "numeric" }) : "—";
-  $("#meta-period").textContent = refPeriod ? perLong(refPeriod) : "—";
+  const meta = state.data.meta || {};
+  const lastUpdate = meta.last_update_ct;
+  const ref = meta.periodo_referencia_reciente;
+  if (lastUpdate) {
+    const d = new Date(lastUpdate);
+    $("#meta-update").textContent = d.toLocaleDateString("es-MX", { timeZone: "America/Mexico_City", day: "2-digit", month: "long", year: "numeric" });
+    $("#meta-update").setAttribute("title", d.toLocaleString("es-MX", { timeZone: "America/Mexico_City" }));
+  } else {
+    $("#meta-update").textContent = "—";
+    $("#meta-update").removeAttribute("title");
+  }
+  $("#meta-period").textContent = ref ? ref.period_long : "—";
 }
 
 // ---------------- Navigation ----------------
@@ -114,7 +164,8 @@ function sparkline(k) {
 }
 
 function panoramaCard(ind) {
-  const k = computeKPI(ind);
+  const metrics = ind.metrics || {};
+  const k = metrics.kpi || computeKPI(ind);
   if (!k) {
     return el("button", { class: "matrix-card na", type: "button", onclick: () => setView(ind.key) },
       el("div", { class: "mc-top" }, el("div", { class: "mc-name" }, LABELS[ind.key]), estadoBadge(ind)),
@@ -122,7 +173,7 @@ function panoramaCard(ind) {
       el("div", { class: "mc-value muted" }, "Sin dato disponible"),
       el("div", { class: "mc-sub" }, "Se activará al cargar la fuente oficial."));
   }
-  const yoy = annualVar(ind, k);
+  const yoy = metrics.yoy || annualVar(ind, k);
   const cfg = KPICFG[ind.key];
   const deltaCls = k.assessment === "favorable" ? "up" : (k.assessment === "adverso" ? "down" : "flat");
   const card = el("button", { class: "matrix-card", type: "button", onclick: () => setView(ind.key) },
@@ -172,19 +223,20 @@ function coyunturaBullets() {
 function renderPanorama() {
   const sec = $("#view-panorama");
   sec.innerHTML = "";
-  const { latest, refPeriod } = latestInfo();
+  const meta = state.data.meta || {};
+  const ref = meta.periodo_referencia_reciente;
   sec.append(el("div", { class: "section-title" }, "Panorama macroeconómico"));
-  sec.append(el("div", { class: "section-sub" }, `Actualizado el ${latest ? new Date(latest + "T00:00:00").toLocaleDateString("es-MX") : "—"} · periodo de referencia: ${refPeriod ? perLong(refPeriod) : "—"}. Selecciona un indicador para ver su ficha.`));
+  sec.append(el("div", { class: "section-sub" }, `Actualizado el ${meta.last_update_ct ? new Date(meta.last_update_ct).toLocaleDateString("es-MX", { timeZone: "America/Mexico_City" }) : "—"} · periodo de referencia: ${ref ? ref.period_long : "—"}. Selecciona un indicador para ver su ficha.`));
 
-  // Alerta discreta de estado global (respaldo / pendiente / revisión).
-  const conRespaldo = principalInds().filter((i) => i.origen_dato === "respaldo");
-  const pendientes = principalInds().filter((i) => (i.estado || "").startsWith("pendiente") || i.estado === "no disponible");
-  const revision = principalInds().filter((i) => i.estado === "dato en revisión" || (i.data_quality && i.data_quality.length));
-  if (conRespaldo.length || pendientes.length || revision.length) {
+  // Alerta discreta de estado global (rezagos y errores de fuente).
+  const rezagados = principalInds().filter((i) => i.estado === "REZAGADO");
+  const errores = principalInds().filter((i) => i.estado === "ERROR DE FUENTE");
+  const pendientes = principalInds().filter((i) => i.estado === "PUBLICACIÓN PENDIENTE");
+  if (rezagados.length || errores.length || pendientes.length) {
     const parts = [];
-    if (conRespaldo.length) parts.push(`${conRespaldo.length} indicador(es) muestran el último dato validado (dato de respaldo; sin token de la fuente conectado)`);
-    if (pendientes.length) parts.push(`${pendientes.length} pendiente(s) de token o de datos`);
-    if (revision.length) parts.push(`${revision.length} con celdas en revisión`);
+    if (rezagados.length) parts.push(`${rezagados.length} indicador(es) REZAGADO(s)`);
+    if (errores.length) parts.push(`${errores.length} indicador(es) con ERROR DE FUENTE`);
+    if (pendientes.length) parts.push(`${pendientes.length} con publicación pendiente`);
     sec.append(el("div", { class: "alert-discreet" }, el("span", { class: "ad-dot" }), `Estado de los datos: ${parts.join("; ")}. Detalle en “Fuentes y metodología”.`));
   }
 
@@ -193,17 +245,9 @@ function renderPanorama() {
   principalInds().forEach((ind) => grid.append(panoramaCard(ind)));
   sec.append(grid);
 
-  // Síntesis de coyuntura.
-  const syn = el("div", { class: "panel" });
-  syn.append(el("h3", {}, "Síntesis de coyuntura"));
-  const ul = el("ul", { class: "summary-list" });
-  coyunturaBullets().forEach((b) => ul.append(el("li", {}, el("span", { class: "mark" }), el("span", {}, b))));
-  syn.append(ul);
-  sec.append(syn);
-
+  // Paneles laterales: movimientos y próximos datos.
   const cols = el("div", { class: "panorama-cols" });
 
-  // Avances / Retrocesos / Señales.
   const { avances, retrocesos, senales } = classifyPanorama();
   const movBox = el("div", { class: "panel" });
   movBox.append(el("h3", {}, "Movimientos del periodo"));
@@ -215,7 +259,6 @@ function renderPanorama() {
   movBox.append(movGrid);
   cols.append(movBox);
 
-  // Próximos datos.
   const next = el("div", { class: "panel" });
   next.append(el("h3", {}, "Próximos datos por publicarse"));
   const nlist = el("div", {});
@@ -233,17 +276,6 @@ function renderPanorama() {
   next.append(nlist);
   cols.append(next);
   sec.append(cols);
-
-  // Accesos secundarios (incluye Entorno financiero para no dejarlo huérfano
-  // tras retirar la barra de indicadores).
-  const accesos = el("nav", { class: "accesos", "aria-label": "Accesos secundarios" });
-  [
-    ["entorno", "Entorno financiero"],
-    ["calendario", "Calendario de publicaciones"],
-    ["metodologia", "Fuentes y metodología"],
-    ["descargas", "Descargas"],
-  ].forEach(([id, label]) => accesos.append(el("a", { class: "acceso-link", href: `#${id}`, onclick: (e) => { e.preventDefault(); setView(id); } }, label)));
-  sec.append(accesos);
 }
 
 function movList(title, items, cls) {
@@ -261,15 +293,15 @@ function indicatorToolbar(key) {
   const idx = PRINCIPAL.indexOf(key);
   const prev = idx > 0 ? PRINCIPAL[idx - 1] : null;
   const next = idx >= 0 && idx < PRINCIPAL.length - 1 ? PRINCIPAL[idx + 1] : null;
-  const bar = el("div", { class: "ind-toolbar" });
-  bar.append(el("button", { class: "btn btn-ghost", type: "button", onclick: () => setView("panorama") }, "← Volver al panorama"));
-  if (prev) bar.append(el("button", { class: "btn btn-ghost", type: "button", onclick: () => setView(prev) }, `‹ ${LABELS[prev]}`));
-  if (next) bar.append(el("button", { class: "btn btn-ghost", type: "button", onclick: () => setView(next) }, `${LABELS[next]} ›`));
-  bar.append(el("span", { class: "tb-spacer" }));
-  bar.append(el("button", { class: "btn btn-ghost", type: "button", onclick: () => setView("calendario") }, "Calendario"));
-  bar.append(el("button", { class: "btn btn-ghost", type: "button", onclick: () => window.print() }, "Imprimir ficha"));
-  bar.append(el("button", { class: "btn btn-primary", type: "button", onclick: downloadExcel }, "Descargar Excel"));
-  return bar;
+  const ind = getInd(key);
+  const wrap = el("div", { class: "ind-toolbar-wrap" });
+  const nav = el("div", { class: "ind-nav" });
+  nav.append(el("a", { class: "nav-link", href: "#panorama", onclick: (e) => { e.preventDefault(); setView("panorama"); } }, "← Volver al panorama"));
+  if (prev) nav.append(el("a", { class: "nav-link", href: `#${prev}`, onclick: (e) => { e.preventDefault(); setView(prev); } }, `‹ ${LABELS[prev]}`));
+  if (next) nav.append(el("a", { class: "nav-link", href: `#${next}`, onclick: (e) => { e.preventDefault(); setView(next); } }, `${LABELS[next]} ›`));
+  wrap.append(nav);
+  if (ind) wrap.append(productToolbar(ind));
+  return wrap;
 }
 
 // Fecha exacta de publicación del dato (solo si no es una descripción de rezago).
@@ -304,10 +336,10 @@ function fichaHeader(ind) {
     ["Periodo de referencia", ind.periodo_referencia || ind.last_observation || "—"],
     ["Fecha de publicación del dato", fechaPubDato(ind) || "no disponible en la base actual"],
     ["Rezago habitual", rezagoHabitual(ind) || "—"],
-    ["Fecha de actualización del archivo", ind.last_updated || "—"],
+    ["Fecha de consulta de la fuente", ind.fecha_consulta || ind.last_updated || "—"],
     ["Fuente oficial", ind.fuente?.nombre || "—"],
   ];
-  const np = nextPublication(ind.key);
+  const np = ind.proxima_publicacion || nextPublication(ind.key);
   if (np) rows.push(["Próxima publicación", `${np.fecha_publicacion} · ${np.periodo_referencia}`]);
   rows.forEach(([k, v]) => meta.append(el("div", { class: "fh-item" }, el("span", { class: "k" }, k), el("span", { class: "v" }, v))));
   meta.append(el("div", { class: "fh-item" }, el("span", { class: "k" }, "Estado de actualización"), el("span", { class: "v" }, estadoBadge(ind))));
@@ -396,9 +428,11 @@ function renderIndicatorView(key) {
     return;
   }
 
-  const k = computeKPI(ind);
+  const metrics = ind.metrics || {};
+  const k = metrics.kpi || computeKPI(ind);
   const cfg = KPICFG[ind.key];
-  const yoy = annualVar(ind, k);
+  const yoy = metrics.yoy || annualVar(ind, k);
+  const resumen = metrics.resumen || [];
   const winId = state.windows[ind.key] || state.data.meta?.default_window || "since_2018";
 
   // Encabezado institucional + bloques de variación (impresión, estilo Nota).
@@ -425,15 +459,14 @@ function renderIndicatorView(key) {
   // Cuadro comparativo (impresión, estilo Nota) — página 1.
   panel.append(fichaCompareTable(ind, k, cfg, yoy));
 
-  // Síntesis / Principales resultados (sin etiquetas HECHO/INTERPRETACIÓN)
+  // Síntesis / Principales resultados: fuente única Python (lib_metrics).
   const syn = el("div", { class: "ficha-block" });
   syn.append(el("h3", { class: "block-sub" }, "Evolución reciente"));
-  const bullets = analysis(ind, k);
-  syn.append(el("p", { class: "prose" }, bullets[0]));
-  const results = bullets[1]
+  resumen.forEach((b) => syn.append(el("p", { class: "prose" }, b)));
+  const results = resumen.length > 1
     ? el("div", { class: "ficha-block print-highlight" },
         el("h3", { class: "block-sub" }, "Principales resultados"),
-        el("p", { class: "prose" }, bullets[1]))
+        ...resumen.slice(0, 2).map((b) => el("p", { class: "prose" }, b)))
     : null;
 
   // Segunda página en impresión: análisis, desglose y tabla de datos.
@@ -457,9 +490,9 @@ function renderIndicatorView(key) {
   const src = el("div", { class: "notes" });
   if (ind.notas && ind.notas.length) src.append(el("div", {}, ind.notas.join("  ·  ")));
   src.append(el("div", {}, `Fuente: ${ind.fuente?.nombre || "—"} · Unidad: ${ind.unidad || "—"} · Ajuste: ${ind.ajuste_estacional || "—"}`, ind.fuente?.link ? el("span", {}, " · ", el("a", { href: ind.fuente.link, target: "_blank", rel: "noopener" }, "serie oficial ↗")) : null));
-  const np = nextPublication(ind.key);
-  if (np) src.append(el("div", {}, `Próxima publicación: ${np.fecha_publicacion} · ${np.periodo_referencia} (${np.institucion})`));
-  else if (ind.proximo || ind.fecha_publicacion) src.append(el("div", {}, `Próxima publicación: ${ind.proximo || ind.fecha_publicacion}`));
+  const np = ind.proxima_publicacion || nextPublication(ind.key);
+  if (np) src.append(el("div", {}, `Próxima publicación: ${np.fecha_publicacion} · ${np.periodo_referencia}${np.institucion ? " (" + np.institucion + ")" : ""}`));
+  else if (ind.proximo) src.append(el("div", {}, `Próxima publicación: ${ind.proximo}`));
   panel.append(src);
 
   sec.append(panel);

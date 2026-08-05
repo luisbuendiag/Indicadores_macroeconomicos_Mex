@@ -21,6 +21,9 @@ from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.utils import get_column_letter
 
 import lib_data as L
+from lib_kpicfg import get_cfg
+from lib_metrics import annual_var, compute_var, fmt_val, primary_series
+from sources import inegi
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_XLSX = ROOT / "data" / "source" / "Indicadores_base.xlsx"
@@ -43,6 +46,188 @@ BAND_FILL = PatternFill("solid", fgColor=PAPER)
 THIN = Side(style="thin", color=LINE)
 BORDER = Border(left=THIN, right=THIN, top=THIN, bottom=THIN)
 WRAP = Alignment(wrap_text=True, vertical="top")
+
+IND_DIR = ROOT / "downloads" / "indicadores"
+
+
+def _period_date(period: str) -> date | None:
+    """Convierte una etiqueta de periodo (ej. 'Abr 26 P', '1T-26') en una fecha de inicio."""
+    ym = inegi.label_to_ym(period)
+    if not ym:
+        return None
+    return date.fromisoformat(ym + "-01")
+
+
+def _caracter_dato(period: str) -> str:
+    p = period.strip()
+    if p.endswith(" P"):
+        return "Preliminar"
+    if p.endswith(" R"):
+        return "Revisado"
+    return "Definitivo"
+
+
+def _xl_fmt(fmt: str) -> str:
+    """Formato numérico de Excel según el descriptor de config."""
+    if fmt == "num" or fmt == "usd":
+        return "#,##0"
+    if fmt == "bill":
+        return "#,##0.00"
+    if fmt in ("idx", "pct-raw", "pct-frac"):
+        return "#,##0.0"
+    if fmt == "fx":
+        return "$#,##0.00"
+    return "#,##0.0"
+
+
+def _prev_valid_i(idxs: list[int], i: int) -> int | None:
+    """Devuelve el índice válido inmediatamente anterior a i."""
+    for j in range(i - 1, -1, -1):
+        if j in idxs:
+            return j
+    return None
+
+
+def _bucket_variation(var_info: dict | None, yoy_info: dict | None, freq: str, cfg: dict) -> dict[str, str]:
+    """Asigna var_text e yoy_text a las columnas mensual/trimestral/anual."""
+    buckets = {"mensual": None, "trimestral": None, "anual": None}
+    freq_l = (freq or "").lower()
+
+    def place(info, label):
+        if not info or not info.get("text") or info["text"] == "—":
+            return
+        lbl = (label or "").lower()
+        if "anual" in lbl and "trimestral" not in lbl:
+            buckets["anual"] = info["text"]
+        elif "trimestral" in lbl:
+            buckets["trimestral"] = info["text"]
+        elif "mensual" in lbl or "mes" in lbl:
+            buckets["mensual"] = info["text"]
+        elif "semanal" in lbl or "semana" in lbl:
+            # Agrupación mensual: conservamos la lectura del periodo en la columna mensual.
+            if "mensual" in freq_l:
+                buckets["mensual"] = info["text"]
+        elif "diaria" in lbl or "diario" in lbl:
+            if "mensual" in freq_l:
+                buckets["mensual"] = info["text"]
+        elif freq_l.startswith("trimestral"):
+            buckets["trimestral"] = info["text"]
+        elif "mensual" in freq_l:
+            buckets["mensual"] = info["text"]
+
+    # Variación principal
+    if cfg.get("varCol") is not None:
+        place(var_info, cfg.get("varLabel"))
+    elif cfg.get("varMode") == "pct-yoy":
+        if var_info and var_info.get("text"):
+            buckets["anual"] = var_info["text"]
+    elif "trimestral" in freq_l:
+        buckets["trimestral"] = var_info["text"] if var_info and var_info.get("text") and var_info["text"] != "—" else None
+    elif "mensual" in freq_l or "semanal" in freq_l or "diaria" in freq_l or "diario" in freq_l:
+        buckets["mensual"] = var_info["text"] if var_info and var_info.get("text") and var_info["text"] != "—" else None
+
+    # Variación secundaria (anual / trimestral)
+    if yoy_info:
+        place(yoy_info, cfg.get("yoyLabel"))
+    return buckets
+
+
+def _build_individual_workbook(ind: dict, cfg: dict, kpicfg: dict, out_path: Path):
+    """Genera un Excel con una sola hoja visible por indicador."""
+    wb = openpyxl.Workbook()
+    wb.remove(wb.active)
+    ws = wb.create_sheet(ind["key"])
+    ws.sheet_view.showGridLines = False
+
+    # Encabezado institucional
+    ws["A1"] = ind.get("nombre", ind["key"])
+    ws["A1"].font = TITLE
+    ws["A2"] = (f"Fuente: {ind.get('fuente', {}).get('nombre', '—')} · "
+                f"Frecuencia: {ind.get('frecuencia', '—')} · "
+                f"Unidad: {ind.get('unidad', '—')}")
+    ws["A2"].font = MUT
+    ws["A3"] = (f"URL del boletín / serie: {ind.get('url_boletin_oficial') or ind.get('fuente', {}).get('link') or '—'} · "
+                f"Fecha de publicación: {ind.get('fecha_publicacion') or '—'}")
+    ws["A3"].font = MUT
+
+    # Tabla
+    headers = ["Periodo", "Fecha", "Nivel", "Variación mensual", "Variación trimestral", "Variación anual",
+               "Unidad", "Ajuste estacional", "Carácter del dato", "Fuente", "URL del boletín", "Fecha de publicación"]
+    r0 = 5
+    for i, h in enumerate(headers, start=1):
+        ws.cell(row=r0, column=i, value=h)
+    _style_header(ws, r0, len(headers))
+
+    obs = ind.get("observations", [])
+    vals = primary_series(ind, cfg)
+    idxs = [i for i, v in enumerate(vals) if v is not None]
+
+    r = r0 + 1
+    for i, o in enumerate(obs):
+        period = o["period"]
+        nivel = vals[i]
+        prev_i = _prev_valid_i(idxs, i)
+        var_info = compute_var(ind, cfg, vals, i, prev_i) if i > 0 and prev_i is not None else None
+        yoy_info = annual_var(ind, {"lastI": i, "series": vals}, kpicfg) if vals[i] is not None and i > 0 else None
+        buckets = _bucket_variation(var_info, yoy_info, ind.get("frecuencia"), cfg)
+
+        d = _period_date(period)
+        row = [
+            ("period", period),
+            ("fecha", d),
+            ("nivel", nivel),
+            ("vm", buckets["mensual"] or "—"),
+            ("vt", buckets["trimestral"] or "—"),
+            ("va", buckets["anual"] or "—"),
+            ("unidad", ind.get("unidad", "—")),
+            ("ajuste", ind.get("ajuste_estacional", "—")),
+            ("caracter", _caracter_dato(period)),
+            ("fuente", ind.get("fuente", {}).get("nombre", "—")),
+            ("url", ind.get("url_boletin_oficial") or ind.get("fuente", {}).get("link") or "—"),
+            ("fp", ind.get("fecha_publicacion") or "—"),
+        ]
+        for j, (tag, v) in enumerate(row, start=1):
+            cell = ws.cell(row=r, column=j, value=v)
+            cell.font = TXT
+            cell.border = BORDER
+            if tag == "nivel":
+                cell.number_format = _xl_fmt(cfg.get("valFmt"))
+            elif tag == "fecha" and d:
+                cell.number_format = "yyyy-mm-dd"
+            if r % 2 == 0:
+                cell.fill = BAND_FILL
+        r += 1
+
+    ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=len(headers))
+    ws.merge_cells(start_row=2, start_column=1, end_row=2, end_column=len(headers))
+    ws.merge_cells(start_row=3, start_column=1, end_row=3, end_column=len(headers))
+    _autow(ws, [16, 13, 18, 16, 18, 18, 38, 18, 16, 28, 55, 22])
+    wb.save(out_path)
+
+
+def build_individual_files(payload: dict):
+    """Genera un archivo Excel por indicador y actualiza flags en el payload."""
+    kpicfg = get_cfg("KPICFG")
+    IND_DIR.mkdir(parents=True, exist_ok=True)
+    for key, ind in payload["indicators"].items():
+        cfg = kpicfg.get(key)
+        out_dir = IND_DIR / key
+        out_dir.mkdir(parents=True, exist_ok=True)
+        out_path = out_dir / f"{key}_datos.xlsx"
+        if not ind.get("observations") or not cfg:
+            ind["xlsx_disponible"] = False
+            ind["xlsx_causa"] = "Sin observaciones o sin configuración de métricas"
+            ind["url_excel_individual"] = None
+            continue
+        try:
+            _build_individual_workbook(ind, cfg, kpicfg, out_path)
+            ind["xlsx_disponible"] = True
+            ind["url_excel_individual"] = str(out_path.relative_to(ROOT))
+            ind["xlsx_causa"] = None
+        except Exception as e:
+            ind["xlsx_disponible"] = False
+            ind["xlsx_causa"] = f"Error al generar Excel: {e}"
+            ind["url_excel_individual"] = None
 
 
 def _style_header(ws, row, ncols):
@@ -269,6 +454,14 @@ def main():
 
     wb.save(OUT_XLSX)
     print(f"OK: {OUT_XLSX.relative_to(ROOT)} ({OUT_XLSX.stat().st_size} bytes) · hojas: {wb.sheetnames}")
+
+    # Archivos individuales por indicador (actualiza flags en indicadores.json).
+    build_individual_files(payload)
+    (L.DATA_DIR / "indicadores.json").write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2, default=str) + "\n",
+        encoding="utf-8",
+    )
+    print(f"OK: archivos individuales generados en {IND_DIR.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

@@ -17,10 +17,15 @@ from __future__ import annotations
 
 import argparse
 import json
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
+import build_calendar
 import lib_data as L
+import lib_freshness
+import lib_kpicfg
+import lib_metrics
 from sources import banxico, inegi, inegi_bulletin, worldbank
 import validate as V
 
@@ -170,8 +175,11 @@ def run(offline: bool = False) -> int:
     # Overrides de calidad
     log["changes"].extend(L.apply_overrides(payload))
 
-    # Perfil V3: scaffolds, orden principal/complementario y estados honestos.
+    # Perfil V3: scaffolds, orden principal/complementario y metadatos base.
     log["changes"].extend(L.apply_profile(payload))
+
+    # Frescura, calendario, métricas compartidas y metadatos temporales.
+    log["changes"].extend(apply_freshness_and_meta(payload, log))
 
     payload["meta"]["generated_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
 
@@ -204,6 +212,94 @@ def run(offline: bool = False) -> int:
     _write_log(log)
     print(f"OK: datos publicados. {len(log['changes'])} cambios, {len(warnings)} advertencias.")
     return 0
+
+
+def _periodo_referencia_reciente(payload: dict) -> dict:
+    """Periodo de referencia más reciente entre indicadores principales (cronológico)."""
+    from sources import inegi
+    principal = lib_kpicfg.get_cfg("PRINCIPAL")
+    candidates = []
+    for key in principal:
+        ind = payload["indicators"].get(key)
+        if not ind or not ind.get("last_observation"):
+            continue
+        ym = inegi.label_to_ym(ind["last_observation"])
+        if ym:
+            candidates.append((ym, ind["last_observation"]))
+    if not candidates:
+        return None
+    candidates.sort()
+    return {"period": candidates[-1][1], "period_long": inegi.ym_to_label(candidates[-1][0])}
+
+
+def apply_freshness_and_meta(payload: dict, log: dict, as_of: date | None = None) -> list[str]:
+    """Aplica frescura (estados ACTUALIZADO/PENDIENTE/REZAGADO/ERROR), escribe el
+    calendario, calcula métricas y actualiza metadatos temporales."""
+    changes: list[str] = []
+    if as_of is None:
+        as_of = date.today()
+
+    # Calendario oficial con la fecha de referencia del pipeline.
+    cal = build_calendar.build(as_of=as_of)
+    (L.DATA_DIR / "calendario_publicaciones.json").write_text(
+        json.dumps(cal, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    changes.append(f"calendario: regenerado con as_of={as_of.isoformat()}")
+
+    # Métricas compartidas para dashboard, Excel, Word, JSON y CSV.
+    lib_kpicfg.build_cfg(force=True)
+    metrics = lib_metrics.compute_all_metrics(payload)
+    (L.DATA_DIR / "metrics.json").write_text(
+        json.dumps({"generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+                    "indicators": metrics}, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    for key, m in metrics.items():
+        payload["indicators"][key]["metrics"] = {
+            "kpi": m["kpi"],
+            "yoy": m["annualVar"],
+            "resumen": m["resumen"],
+        }
+    changes.append("métricas: data/metrics.json regenerado")
+
+    # Frescura por indicador.
+    manifest_rows = {key: {
+        "clave": key,
+        "fuente": ind.get("fuente", {}).get("nombre"),
+        "serie": ind.get("fuente", {}).get("serie"),
+    } for key, ind in payload["indicators"].items()}
+    diag = lib_freshness.diagnose_all(
+        payload["indicators"],
+        manifest_rows=manifest_rows,
+        update_log=log,
+        calendar=cal["items"],
+        as_of=as_of,
+    )
+    for key, info in diag.items():
+        ind = payload["indicators"][key]
+        ind["estado"] = info["estado"]
+        ind["periodo_referencia_oficial"] = info["periodo_oficial"]
+        ind["fecha_publicacion_oficial"] = info["fecha_publicacion_oficial"]
+        ind["proxima_publicacion"] = info["proxima_publicacion"] and {
+            "fecha_publicacion": info["proxima_publicacion"],
+            "periodo_referencia": info["periodo_proximo"],
+        }
+        ind["motivo_frescura"] = info["motivo"]
+        ind["url_boletin_oficial"] = ind.get("fuente", {}).get("link")
+        ind["fecha_publicacion"] = info["fecha_publicacion_oficial"]
+        changes.append(f"frescura: {key} -> {info['estado']}")
+        if info["estado"] == lib_freshness.ESTADOS["REZAGADO"]:
+            log["warnings"].append(f"{key}: REZAGADO – {info['motivo']}")
+        if info["estado"] == lib_freshness.ESTADOS["ERROR_FUENTE"]:
+            log["warnings"].append(f"{key}: ERROR DE FUENTE – {info['motivo']}")
+
+    # Metadatos temporales y de referencia.
+    now_ct = datetime.now(ZoneInfo("America/Mexico_City"))
+    payload["meta"] = payload.get("meta", {})
+    payload["meta"]["last_update_ct"] = now_ct.isoformat(timespec="seconds")
+    payload["meta"]["periodo_referencia_reciente"] = _periodo_referencia_reciente(payload)
+    changes.append(f"meta: last_update_ct={payload['meta']['last_update_ct']}")
+    return changes
 
 
 def build_summary(payload: dict) -> None:

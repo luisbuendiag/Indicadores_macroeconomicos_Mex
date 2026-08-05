@@ -53,8 +53,7 @@ def validate(payload: dict):
 
     # Estados en los que un indicador PUEDE no tener observaciones todavía
     # (scaffolds a la espera de token/serie). No bloquean la publicación.
-    PENDING_STATES = {"pendiente de token", "pendiente de confirmar serie",
-                      "no disponible", "error de fuente"}
+    PENDING_STATES = {"PUBLICACIÓN PENDIENTE", "ERROR DE FUENTE"}
 
     # 1) Estructura y fechas
     for key, ind in inds.items():
