@@ -214,21 +214,69 @@ def _ioae_month_year(pdf_bytes: bytes, ref_month: int, pub_year: int, pub_month:
 
 
 def _parse_ioae(pdf_bytes: bytes, pub_date: tuple[int, int, int] | None) -> dict[str, list[dict]] | None:
-    """Extrae la estimación puntual e intervalo de confianza del IGAE (tasa mensual)."""
+    """Extrae la variación mensual y anual del IGAE y su intervalo de confianza.
+
+    El boletín incluye:
+      - Página 1: un cuadro resumen con 'anual' y 'mensual' para el IGAE.
+      - Página 2: un cuadro Nowcast con la estimación mensual y los límites
+        inferior/superior del intervalo de confianza.
+    Se descartan las filas de actividades secundarias/terciarias y el cuadro de
+    niveles (índices) para no mezclar conceptos.
+    """
     pub_year, pub_month, _ = pub_date or (None, None, None)
     if pub_year is None:
         return None
 
-    tables = _pdf_page_tables(pdf_bytes, 1)
+    tables = _pdf_page_tables(pdf_bytes, 0) + _pdf_page_tables(pdf_bytes, 1)
+    ref_month: int | None = None
+    anual: float | None = None
+    mensual: float | None = None
+    lower: float | None = None
+    upper: float | None = None
+
+    # 1) Cuadro resumen (anual / mensual)
     for table in tables:
-        # Formato 2024-2026: encabezado con 'Concepto' y 'Nowcast'
+        for i, row in enumerate(table):
+            cells = [c.strip() if c else "" for c in row]
+            if len(cells) < 2:
+                continue
+            if not ("anual" in cells[0].lower() and "mensual" in cells[1].lower()):
+                continue
+            if i + 1 >= len(table):
+                continue
+            val_row = table[i + 1]
+            if len(val_row) < 2:
+                continue
+            anual_val = _parse_pct(val_row[0])
+            mensual_val = _parse_pct(val_row[1])
+            if anual_val is None or mensual_val is None:
+                continue
+            anual = anual_val
+            mensual = mensual_val
+            # Buscar el mes de referencia en las filas anteriores
+            for j in range(i, -1, -1):
+                for c in table[j]:
+                    if c and c.lower() in MES:
+                        ref_month = MES[c.lower()]
+                        break
+                if ref_month:
+                    break
+            break
+        if mensual is not None:
+            break
+
+    # 2) Cuadro Nowcast (mensual + intervalo de confianza)
+    # El boletín incluye un cuadro Nowcast anual y otro mensual con el mismo
+    # encabezado; seleccionamos la fila de IGAE cuyo punto coincida con la
+    # variación mensual del resumen, y descartamos el cuadro de niveles.
+    best_match: tuple[float, float, float, int, str] | None = None
+    for table in tables:
         if not table or len(table) < 3:
             continue
         header = [c.strip() if c else "" for c in table[0]]
         if not any("Concepto" in h for h in header) or not any("Nowcast" in h for h in header):
             continue
 
-        values = []
         current_concept = ""
         for row in table:
             cells = [c.strip() if c else "" for c in row]
@@ -238,70 +286,90 @@ def _parse_ioae(pdf_bytes: bytes, pub_date: tuple[int, int, int] | None) -> dict
                 current_concept = cells[0]
             if current_concept != "IGAE":
                 continue
-            # Localizar el mes y los tres valores
-            month_text = next((c for c in cells[1:] if c.lower() in MES), "")
+            month_text = next((c for c in cells if c.lower() in MES), "")
             if not month_text:
                 continue
             nums = [_parse_pct(c) for c in cells if _parse_pct(c) is not None]
             if len(nums) < 3:
                 continue
-            year, month = _ioae_month_year(pdf_bytes, MES[month_text.lower()], pub_year, pub_month)
-            ym = f"{year:04d}-{month:02d}"
-            values.append({
-                "ym": ym,
-                "period": inegi.ym_to_label(ym, 8),
-                "point": nums[0],
-                "lower": nums[1],
-                "upper": nums[2],
-            })
-
-        if values:
-            values.sort(key=lambda x: x["ym"])
-            return {
-                "point": [{"ym": v["ym"], "value": v["point"], "period": v["period"]} for v in values],
-                "lower": [{"ym": v["ym"], "value": v["lower"], "period": v["period"]} for v in values],
-                "upper": [{"ym": v["ym"], "value": v["upper"], "period": v["period"]} for v in values],
-            }
-
-    # Formato antiguo (2023 aprox) – tabla compacta
-    for table in tables:
-        if not table or len(table) < 3:
-            continue
-        header = [c.strip() if c else "" for c in table[0]]
-        if "Mes de" in header[0] or "referencia" in header[0]:
-            row = table[-1]
-            months = [m.strip() for m in re.findall(r"(\d{4}/\d{1,2})", row[0])]
-            if not months:
+            # Descartar cuadro de niveles (índices ~100)
+            if abs(nums[0]) > 20:
                 continue
-            # Los índices de columnas para IGAE inferior/nowcast/superior
-            # header[1..3] = IGAE Inferior/Nowcast/Superior
-            igae_vals = []
-            for i, raw in enumerate(row[1:4]):
-                parts = [p.strip() for p in (raw or "").split("\n") if p.strip()]
-                igae_vals.append(parts)
-            if len(igae_vals) < 3 or not all(igae_vals):
+            ref_m = MES[month_text.lower()]
+            point, lo, hi = nums[0], nums[1], nums[2]
+            # Si tenemos la variación mensual del resumen, preferimos coincidencia exacta
+            if mensual is not None:
+                if round(point, 1) == round(mensual, 1):
+                    lower, upper = lo, hi
+                    if ref_month is None:
+                        ref_month = ref_m
+                    break
+            else:
+                # Sin resumen, elegir el IGAE con menor punto (mensual vs. anual)
+                if best_match is None or abs(point) < abs(best_match[0]):
+                    best_match = (point, lo, hi, ref_m, month_text)
+        if mensual is not None and lower is not None:
+            break
+
+    if best_match and lower is None:
+        point, lo, hi, ref_m, _ = best_match
+        if mensual is None:
+            mensual = point
+        lower, upper = lo, hi
+        if ref_month is None:
+            ref_month = ref_m
+
+    # 3) Formato antiguo (2024 aprox): una sola tabla con múltiples periodos
+    # y las columnas IGAE (Inferior, Nowcast, Superior) para variaciones anuales
+    # y mensuales en una misma fila.
+    if mensual is None or anual is None or lower is None:
+        for table in tables:
+            if not table or len(table) < 3:
                 continue
-            out = {"point": [], "lower": [], "upper": []}
-            for idx, month_ref in enumerate(months):
-                y, m = month_ref.split("/")
-                year, month = int(y), int(m)
-                # Si el mes ya pasó y la publicación es de inicio de año, puede pertenecer al año anterior
-                ym = f"{year:04d}-{month:02d}"
-                period = inegi.ym_to_label(ym, 8)
-                vals = []
-                for col in igae_vals:
-                    val = col[idx] if idx < len(col) else None
-                    if val is None:
-                        vals.append(None)
-                    else:
-                        vals.append(_parse_pct(val) if "." in val or val.replace("-", "").isdigit() else _parse_index(val))
-                if all(v is not None for v in vals[:3]):
-                    out["point"].append({"ym": ym, "value": vals[1], "period": period})
-                    out["lower"].append({"ym": ym, "value": vals[0], "period": period})
-                    out["upper"].append({"ym": ym, "value": vals[2], "period": period})
-            if out["point"]:
-                return out
-    return None
+            header = [c.strip() if c else "" for c in table[0]]
+            if not any("Periodo" in h and "referencia" in h for h in header):
+                continue
+            subheader = [c.strip() if c else "" for c in table[1]]
+            is_annual = any("Nowcast1/" in h for h in subheader)
+            data_row = table[2]
+            if len(data_row) < 4:
+                continue
+            periods = [p.strip() for p in data_row[0].replace("\r", "\n").split("\n") if p.strip()]
+            parts = []
+            for col in (1, 2, 3):
+                raw = (data_row[col] or "").replace("\r", "\n").split("\n")
+                parts.append([_parse_pct(p.strip().replace("*", "")) for p in raw if p.strip()])
+            if not all(parts) or not all(len(v) == len(periods) for v in parts):
+                continue
+            idx = len(periods) - 1
+            m = re.search(r"([a-zA-Záéíóúñ]+)\s+de\s+(\d{4})", periods[idx], re.IGNORECASE)
+            if not m:
+                continue
+            ref_m = MES.get(m.group(1).lower())
+            if ref_m is None:
+                continue
+            point, lo, hi = parts[1][idx], parts[0][idx], parts[2][idx]
+            if point is None or lo is None or hi is None:
+                continue
+            if is_annual:
+                anual = point
+            else:
+                mensual = point
+                lower, upper = lo, hi
+            ref_month = ref_m
+
+    if mensual is None or anual is None:
+        return None
+
+    year, month = _ioae_month_year(pdf_bytes, ref_month or pub_month - 1, pub_year, pub_month)
+    ym = f"{year:04d}-{month:02d}"
+    period = inegi.ym_to_label(ym, 8)
+    return {
+        "mensual": [{"ym": ym, "value": mensual, "period": period}],
+        "anual": [{"ym": ym, "value": anual, "period": period}],
+        "lower": [{"ym": ym, "value": lower, "period": period}],
+        "upper": [{"ym": ym, "value": upper, "period": period}],
+    }
 
 
 def _parse_imcp_imfbcf(kind: str, pdf_bytes: bytes, pub_date: tuple[int, int, int] | None) -> dict[str, list[dict]] | None:
@@ -595,7 +663,7 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
             parsed = _parse_ioae(pdf, pub_date)
             if not parsed:
                 continue
-            for sub, col in (("point", 0), ("lower", 1), ("upper", 2)):
+            for sub, col in (("mensual", 0), ("anual", 1), ("lower", 2), ("upper", 3)):
                 for o in parsed[sub]:
                     if ("IOAE", col, o["ym"]) not in seen:
                         results.append(("IOAE", sub, col, o, url))

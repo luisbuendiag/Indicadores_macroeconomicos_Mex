@@ -28,7 +28,8 @@ function proseVal(ind, v) {
   if (v == null) return "—";
   const k = ind.key;
   const money = (x, u) => (x < 0 ? "−$" : "$") + Math.abs(Math.round(x)).toLocaleString("es-MX") + " " + u;
-  if (k === "PIB" || k === "PIBSEC") return (v / 1e6).toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " billones de pesos";
+  if (k === "PIB") return (v / 1e6).toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " billones de pesos de 2018";
+  if (k === "PIBSEC") return (v / 1e6).toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " billones de pesos";
   if (k === "IED" || k === "BALANZA") return money(v, "millones de dólares");
   if (k === "IGAE" || k === "IMAI" || k === "CONSUMO") return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + " puntos";
   if (k === "DESOCUP") return (v * 100).toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
@@ -149,7 +150,7 @@ export function annualVar(ind, k) {
   // No se calcula variación anual del nivel cuando: (a) el valor ya es una tasa,
   // (b) la variación primaria ya es interanual (evita duplicar), o
   // (c) la interanual del saldo no tiene lectura económica clara.
-  if (["INPC", "TASA", "DESOCUP", "IOAE", "IED", "BALANZA"].includes(ind.key)) return null;
+  if (["INPC", "TASA", "DESOCUP", "IED", "BALANZA"].includes(ind.key)) return null;
   const vals = k.series;
   const lag = ind.frecuencia === "Trimestral" ? 4 : 12;
   const cur = vals[k.lastI];

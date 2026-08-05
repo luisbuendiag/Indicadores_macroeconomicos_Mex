@@ -72,6 +72,7 @@ def test_duplicate_flagged_as_revision(payload):
     ("CONSUMO", 1, 2, 0.001, 0.021),
     ("IMFBCF", 1, 2, 0.04, 0.051),
     ("IGAE", 3, 4, -0.003, 0.02),
+    ("IOAE", 0, 1, 0.2, 1.7),
 ])
 def test_bulletin_variations_monthly_and_annual(payload, key, monthly_col, annual_col, expected_monthly, expected_annual):
     ind = payload["indicators"][key]
@@ -95,3 +96,20 @@ def test_pibsec_terciarias_bulletin_variations(payload):
     last = pibsec["observations"][-1]
     assert last["values"][3] == pytest.approx(-0.004, abs=1e-4)
     assert last["values"][4] == pytest.approx(0.011, abs=1e-4)
+
+
+def test_ioae_jun_2026_and_no_secondary_total(payload):
+    """El IOAE de Jun 26 debe reflejar la estimación mensual y anual del IGAE,
+    no la variación de actividades secundarias."""
+    ioae = payload["indicators"]["IOAE"]
+    last = next(o for o in ioae["observations"] if o["period"] == "Jun 26")
+    # Variación mensual y anual oficiales del IGAE, no la secundaria (0.5%).
+    assert last["values"][0] == pytest.approx(0.2, abs=1e-4)
+    assert last["values"][1] == pytest.approx(1.7, abs=1e-4)
+    assert last["values"][0] != pytest.approx(0.5, abs=1e-4)
+
+
+def test_pib_label_includes_2018(payload):
+    """El PIB real debe estar explícitamente a precios constantes de 2018."""
+    pib = payload["indicators"]["PIB"]
+    assert "2018" in pib["unidad"]
