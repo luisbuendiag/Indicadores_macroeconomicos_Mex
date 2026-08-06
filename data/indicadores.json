@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-05T15:08:07+00:00",
+    "generated_at": "2026-08-06T15:07:06+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -263,8 +263,8 @@
         }
       ],
       "last_observation": "1T-26 P",
-      "last_updated": "2026-08-05",
-      "last_checked": "2026-08-05",
+      "last_updated": "2026-08-06",
+      "last_checked": "2026-08-06",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -273,7 +273,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "Aproximadamente 50 días después de haber concluido el trimestre",
       "periodo_referencia": "1T-26 P",
-      "fecha_consulta": "2026-08-05"
+      "fecha_consulta": "2026-08-06"
     },
     "PIBSEC": {
       "key": "PIBSEC",
@@ -455,8 +455,8 @@
         }
       ],
       "last_observation": "1T-26 P",
-      "last_updated": "2026-08-05",
-      "last_checked": "2026-08-05",
+      "last_updated": "2026-08-06",
+      "last_checked": "2026-08-06",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -465,7 +465,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "Aproximadamente 50 días después de haber concluido el trimestre",
       "periodo_referencia": "1T-26 P",
-      "fecha_consulta": "2026-08-05"
+      "fecha_consulta": "2026-08-06"
     },
     "IGAE": {
       "key": "IGAE",
@@ -648,8 +648,8 @@
         }
       ],
       "last_observation": "May 26",
-      "last_updated": "2026-08-05",
-      "last_checked": "2026-08-05",
+      "last_updated": "2026-08-06",
+      "last_checked": "2026-08-06",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -658,7 +658,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "Aproximadamente 55 días después de haber concluido el mes",
       "periodo_referencia": "May 26",
-      "fecha_consulta": "2026-08-05"
+      "fecha_consulta": "2026-08-06"
     },
     "IMAI": {
       "key": "IMAI",
@@ -786,8 +786,8 @@
         }
       ],
       "last_observation": "May 26",
-      "last_updated": "2026-08-05",
-      "last_checked": "2026-08-05",
+      "last_updated": "2026-08-06",
+      "last_checked": "2026-08-06",
       "source_origin": "api",
       "data_quality": [],
       "requiere_token": "INEGI",
@@ -797,7 +797,7 @@
       "origen_dato": "api",
       "fecha_publicacion": null,
       "periodo_referencia": "May 26",
-      "fecha_consulta": "2026-08-05"
+      "fecha_consulta": "2026-08-06"
     },
     "CONSUMO": {
       "key": "CONSUMO",
@@ -1308,8 +1308,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-08-05",
-      "last_checked": "2026-08-05",
+      "last_updated": "2026-08-06",
+      "last_checked": "2026-08-06",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -1318,7 +1318,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "Aproximadamente 25-30 días después de haber concluido el mes",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-08-05"
+      "fecha_consulta": "2026-08-06"
     },
     "INPC": {
       "key": "INPC",
@@ -1463,8 +1463,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-08-05",
-      "last_checked": "2026-08-05",
+      "last_updated": "2026-08-06",
+      "last_checked": "2026-08-06",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -1473,7 +1473,7 @@
       "origen_dato": "api",
       "fecha_publicacion": null,
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-08-05"
+      "fecha_consulta": "2026-08-06"
     },
     "BALANZA": {
       "key": "BALANZA",
@@ -1692,8 +1692,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-08-05",
-      "last_checked": "2026-08-05",
+      "last_updated": "2026-08-06",
+      "last_checked": "2026-08-06",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -1702,7 +1702,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "Aproximadamente 30 a 45 días posteriores al cierre del mes",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-08-05"
+      "fecha_consulta": "2026-08-06"
     },
     "IMFBCF": {
       "key": "IMFBCF",
@@ -2265,8 +2265,8 @@
         }
       ],
       "last_observation": "May 26",
-      "last_updated": "2026-08-05",
-      "last_checked": "2026-08-05",
+      "last_updated": "2026-08-06",
+      "last_checked": "2026-08-06",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -2274,7 +2274,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "Aproximadamente 40 días tras el cierre del mes",
       "periodo_referencia": "May 26",
-      "fecha_consulta": "2026-08-05",
+      "fecha_consulta": "2026-08-06",
       "source_origin": "api"
     },
     "TIPOCAMBIO": {
@@ -2922,13 +2922,13 @@
         {
           "period": "Ago 26",
           "values": [
-            17.2717
+            17.2317
           ]
         }
       ],
       "last_observation": "Ago 26",
-      "last_updated": "2026-08-05",
-      "last_checked": "2026-08-05",
+      "last_updated": "2026-08-06",
+      "last_checked": "2026-08-06",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
@@ -2936,7 +2936,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "Días hábiles",
       "periodo_referencia": "Ago 26",
-      "fecha_consulta": "2026-08-05",
+      "fecha_consulta": "2026-08-06",
       "source_origin": "api"
     },
     "TASA": {
@@ -3589,8 +3589,8 @@
         }
       ],
       "last_observation": "Ago 26",
-      "last_updated": "2026-08-05",
-      "last_checked": "2026-08-05",
+      "last_updated": "2026-08-06",
+      "last_checked": "2026-08-06",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
@@ -3598,7 +3598,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "Días de anuncio de política monetaria",
       "periodo_referencia": "Ago 26",
-      "fecha_consulta": "2026-08-05",
+      "fecha_consulta": "2026-08-06",
       "source_origin": "api"
     },
     "RESERVAS": {
@@ -4245,8 +4245,8 @@
         }
       ],
       "last_observation": "Jul 26",
-      "last_updated": "2026-08-05",
-      "last_checked": "2026-08-05",
+      "last_updated": "2026-08-06",
+      "last_checked": "2026-08-06",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
@@ -4254,7 +4254,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "Semanal (martes)",
       "periodo_referencia": "Jul 26",
-      "fecha_consulta": "2026-08-05",
+      "fecha_consulta": "2026-08-06",
       "source_origin": "api"
     }
   }
