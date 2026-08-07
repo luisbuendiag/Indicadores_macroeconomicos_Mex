@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-08-06T15:07:06+00:00",
+  "started_at": "2026-08-07T14:06:58+00:00",
   "mode": "offline",
   "network_calls": false,
   "warnings": [],
@@ -7,5 +7,5 @@
   "consultas": [],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-08-06T15:07:06+00:00"
+  "finished_at": "2026-08-07T14:06:58+00:00"
 }
