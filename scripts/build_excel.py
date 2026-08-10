@@ -398,12 +398,16 @@ def add_control(wb, payload, manifest, log, calendar=None):
     _autow(ws, [40, 15, 26, 14, 14, 15, 18, 18, 26, 28, 16, 18, 16, 50])
 
 
-# Hojas de datos a crear para indicadores nuevos que no existen en el libro base.
+# Hojas de datos a crear (o recrear) para indicadores principales.
 NEW_SHEETS = {
     "IMFBCF": "Formación bruta capital fijo",
     "IOAE": "IOAE",
     "EMIM": "EMIM (Manufactura)",
+    "BCMM": "Balanza comercial",
 }
+
+# Hojas heredadas del libro base que ya no corresponden al perfil V3.
+LEGACY_SHEETS = ["Exportaciones"]
 
 
 def add_indicator_sheets(wb, payload):
@@ -470,11 +474,14 @@ def main():
     cal_path = L.DATA_DIR / "calendario_publicaciones.json"
     calendar = json.loads(cal_path.read_text(encoding="utf-8")) if cal_path.exists() else {}
 
-    # No alterar las hojas originales: sólo agregamos hojas nuevas.
+    # No alterar las hojas originales, salvo las que se recrean o quedaron obsoletas.
     for name in ("Resumen ejecutivo", "Síntesis de coyuntura", "Metodología y fuentes", "Control de actualizaciones"):
         if name in wb.sheetnames:
             wb.remove(wb[name])
     for name in NEW_SHEETS.values():
+        if name in wb.sheetnames:
+            wb.remove(wb[name])
+    for name in LEGACY_SHEETS:
         if name in wb.sheetnames:
             wb.remove(wb[name])
     add_indicator_sheets(wb, payload)

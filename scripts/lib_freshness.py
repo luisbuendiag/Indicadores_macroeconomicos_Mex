@@ -195,6 +195,14 @@ def expected_period_from_frequency(
     if not f:
         return None, None
 
+    # Si la serie se agrega y muestra como mensual (Diaria->mensual,
+    # Semanal->mensual), el valor del mes en curso sólo estará disponible
+    # cuando el mes termine; mientras tanto el mes esperado es el anterior.
+    if (frecuencia or "").lower().replace(" ", "").endswith("->mensual"):
+        prev = _prev_month(as_of)
+        ym = f"{prev.year}-{prev.month:02d}"
+        return ym, _ym_to_period(ym, frecuencia)
+
     if f in ("diaria",):
         # Series diarias: se espera el mes actual desde el primer día hábil.
         first_biz = _first_business_day(as_of.year, as_of.month)

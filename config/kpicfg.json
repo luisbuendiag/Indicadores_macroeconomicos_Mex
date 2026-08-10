@@ -177,21 +177,6 @@
       "comp": "frente al mes previo",
       "goodSign": 0
     },
-    "BALANZA": {
-      "derived": "saldo",
-      "valFmt": "usd",
-      "varMode": "abs-prev",
-      "varLabel": "Variación del saldo (mensual)",
-      "noun": "saldo de la balanza comercial",
-      "art": "el",
-      "grupo": "balanza",
-      "assess": "neutral",
-      "ctx": "",
-      "vw": "variación del saldo",
-      "vg": "f",
-      "comp": "frente al mes previo",
-      "goodSign": 0
-    },
     "IED": {
       "valCol": 0,
       "valFmt": "usd",
@@ -254,9 +239,10 @@
     },
     "EMOE": {
       "valCol": 0,
-      "valFmt": "num",
-      "varMode": "pct-prev",
-      "varLabel": "Variación mensual",
+      "valFmt": "idx",
+      "varCol": 1,
+      "varFmt": "idx",
+      "varLabel": "Var. mensual",
       "noun": "confianza empresarial",
       "art": "la",
       "grupo": "opinion",
@@ -268,7 +254,7 @@
       "goodSign": 0
     },
     "BCMM": {
-      "valCol": 2,
+      "derived": "saldo",
       "valFmt": "usd",
       "varMode": "abs-prev",
       "varLabel": "Variación mensual del saldo",
@@ -299,7 +285,7 @@
     "PIBSEC",
     "IGAE",
     "IMAI",
-    "BALANZA",
+    "BCMM",
     "DESOCUP",
     "INPC",
     "CONSUMO",
@@ -312,15 +298,14 @@
     "TIPOCAMBIO",
     "TASA",
     "RESERVAS",
-    "EMOE",
-    "BCMM"
+    "EMOE"
   ],
   "LABELS": {
     "PIB": "PIB",
     "PIBSEC": "PIB por actividad económica",
     "IGAE": "IGAE",
     "IMAI": "IMAI",
-    "BALANZA": "Balanza comercial",
+    "BCMM": "Balanza comercial",
     "DESOCUP": "Tasa de desocupación",
     "INPC": "INPC",
     "CONSUMO": "Consumo privado",
@@ -331,15 +316,14 @@
     "TIPOCAMBIO": "Tipo de cambio FIX",
     "TASA": "Tasa objetivo Banxico",
     "RESERVAS": "Reservas internacionales",
-    "EMOE": "EMOE",
-    "BCMM": "BCMM"
+    "EMOE": "Confianza empresarial (EMOE)"
   },
   "SIGLA": {
     "PIB": "PIB",
     "PIBSEC": "PIB por actividad económica",
     "IGAE": "IGAE",
     "IMAI": "IMAI",
-    "BALANZA": "Balanza comercial",
+    "BCMM": "Balanza comercial",
     "DESOCUP": "Tasa de desocupación",
     "INPC": "INPC",
     "CONSUMO": "IMCP",
@@ -350,8 +334,7 @@
     "TIPOCAMBIO": "Tipo de cambio FIX",
     "TASA": "Tasa objetivo",
     "RESERVAS": "Reservas int.",
-    "EMOE": "EMOE",
-    "BCMM": "BCMM"
+    "EMOE": "EMOE"
   },
   "CAPTIONS": {
     "PIB": "PIB a precios constantes (barras verdes, eje izquierdo) y su variación anual (línea oro, eje derecho).",
@@ -365,11 +348,10 @@
     "IED": "Componentes de la IED en barras apiladas y la IED total (línea punteada). Cifras en millones de dólares.",
     "DESOCUP": "Tasa de desocupación mensual de México como porcentaje de la población económicamente activa.",
     "INPC": "Inflación general, subyacente y no subyacente (variación anual en porcentaje).",
-    "BALANZA": "Exportaciones e importaciones (barras) y el saldo comercial (línea, eje derecho). Cifras en millones de dólares.",
     "TIPOCAMBIO": "Tipo de cambio FIX (pesos por dólar).",
     "TASA": "Tasa de interés objetivo del Banco de México (%).",
     "RESERVAS": "Reservas internacionales netas (millones de dólares).",
-    "EMOE": "Indicadores de confianza y expectativas empresariales (puntos).",
+    "EMOE": "Confianza empresarial (EMOE) y su variación mensual (puntos).",
     "BCMM": "Exportaciones, importaciones y saldo de la balanza comercial de mercancías (millones de dólares)."
   },
   "ESTADOS": {

@@ -200,34 +200,6 @@
         "confirmar": true
       }
     ],
-    "BALANZA": [
-      {
-        "serie": "33223",
-        "confirmar": false,
-        "nombre": "Exportaciones",
-        "descripcion_serie": "Exportaciones totales (millones de dólares)",
-        "frecuencia": "Mensual",
-        "unidad": "Millones de dólares",
-        "tipo_serie": "Serie original",
-        "db": "BIE-BISE",
-        "geo": "00",
-        "columna_objetivo": 0,
-        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=36695#D33223"
-      },
-      {
-        "serie": "33226",
-        "confirmar": false,
-        "nombre": "Importaciones",
-        "descripcion_serie": "Importaciones totales (millones de dólares)",
-        "frecuencia": "Mensual",
-        "unidad": "Millones de dólares",
-        "tipo_serie": "Serie original",
-        "db": "BIE-BISE",
-        "geo": "00",
-        "columna_objetivo": 1,
-        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=36695#D33226"
-      }
-    ],
     "IMFBCF": {
       "_nota": "Indicador Mensual de la Formación Bruta de Capital Fijo. Serie pendiente de confirmar.",
       "serie": null,
@@ -278,16 +250,67 @@
       "energia": null,
       "confirmar": true
     },
-    "EMOE": {
-      "_nota": "Indicador de Confianza Empresarial / IGOE a partir de la EMOE. ID de serie BIE por confirmar.",
-      "serie": null,
-      "confirmar": true
-    },
-    "BCMM": {
-      "_nota": "Balanza Comercial de Mercancías de México (revisada): exportaciones, importaciones y saldo. IDs de series BIE por confirmar.",
-      "serie": null,
-      "confirmar": true
-    }
+    "EMOE": [
+      {
+        "_nota": "Indicador de Confianza Empresarial, cifras originales, serie de la EMOE.",
+        "serie": "701401",
+        "confirmar": false,
+        "nombre": "Confianza empresarial",
+        "descripcion_serie": "Indicador de confianza empresarial, cifras originales",
+        "frecuencia": "Mensual",
+        "unidad": "Puntos",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 0,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=682416#D701401"
+      },
+      {
+        "_nota": "Diferencia mensual en puntos del indicador de confianza empresarial (derivado de la serie 701401).",
+        "serie": "701401",
+        "confirmar": false,
+        "nombre": "Var. mensual",
+        "descripcion_serie": "Diferencia respecto al mes previo (puntos)",
+        "frecuencia": "Mensual",
+        "unidad": "Puntos",
+        "tipo_serie": "Derivado",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 1,
+        "transform": "mom_abs",
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=682416#D701401"
+      }
+    ],
+    "BCMM": [
+      {
+        "_nota": "Balanza Comercial de Mercancías de México (revisada): exportaciones totales (millones de dólares).",
+        "serie": "33223",
+        "confirmar": false,
+        "nombre": "Exportaciones",
+        "descripcion_serie": "Exportaciones totales (millones de dólares)",
+        "frecuencia": "Mensual",
+        "unidad": "Millones de dólares",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 0,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=36695#D33223"
+      },
+      {
+        "_nota": "Balanza Comercial de Mercancías de México (revisada): importaciones totales (millones de dólares).",
+        "serie": "33226",
+        "confirmar": false,
+        "nombre": "Importaciones",
+        "descripcion_serie": "Importaciones totales (millones de dólares)",
+        "frecuencia": "Mensual",
+        "unidad": "Millones de dólares",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 1,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=36695#D33226"
+      }
+    ]
   },
   "worldbank": {
     "_endpoint": "https://api.worldbank.org/v2/country/MEX/indicator/{id}?format=json&per_page=500",

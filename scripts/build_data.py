@@ -44,14 +44,22 @@ def merge_indicator(payload: dict, key: str, new_ind: dict) -> None:
         order.append(key)
 
 
+def _quarter_start(ym: str) -> str:
+    """Devuelve el primer mes del trimestre al que pertenece ym."""
+    year, month = map(int, ym.split("-"))
+    q = (month - 1) // 3
+    month = q * 3 + 1
+    return f"{year:04d}-{month:02d}"
+
+
 def apply_inegi_total(payload: dict, key: str, item: dict, prev_last: str | None) -> dict | None:
     """Fusiona una serie del INEGI sobre UNA columna del indicador existente.
 
     Actualiza sólo la columna objetivo (p. ej. el índice total del IGAE) con las
     observaciones oficiales de la API, conservando el resto de columnas/desgloses
-    de respaldo. Agrega los periodos nuevos que la API tenga por encima del último
-    periodo mostrado. Devuelve el registro de consulta para el update_log, o None
-    si el indicador no existe en la capa de datos.
+    de respaldo. Agrega los periodos nuevos que la API tenga. Devuelve el registro
+    de consulta para el update_log, o None si el indicador no existe en la capa de
+    datos.
     """
     ind = payload["indicators"].get(key)
     if ind is None:
@@ -61,31 +69,40 @@ def apply_inegi_total(payload: dict, key: str, item: dict, prev_last: str | None
     ncol = len(ind.get("columns") or []) or (tcol + 1)
     api_by_ym = {o["ym"]: o["value"] for o in item["api_total"]}
 
-    rows: list[tuple[str, dict]] = []
-    existing_yms: list[str] = []
+    # Para series trimestrales, la API de INEGI puede devolver observaciones con
+    # TIME_PERIOD en cada mes del trimestre; las colapsamos al primer mes.
+    is_quarter = item.get("freq") == 4 or "trimest" in (ind.get("frecuencia") or "").lower()
+
+    def _key(ym: str) -> str:
+        return _quarter_start(ym) if is_quarter else ym
+
+    # Fusionar por ym (o primer mes del trimestre) para evitar duplicados.
+    rows_by_ym: dict[str, dict] = {}
     for o in ind.get("observations", []):
         ym = inegi.label_to_ym(o.get("period", ""))
+        if ym is None:
+            continue
+        key = _key(ym)
         vals = list(o.get("values", []))
         while len(vals) < ncol:
             vals.append(None)
-        if ym is not None and ym in api_by_ym and 0 <= tcol < ncol:
-            vals[tcol] = round(api_by_ym[ym], 6)
-        rows.append((ym or o.get("period", ""), {**o, "values": vals}))
-        if ym is not None:
-            existing_yms.append(ym)
+        rows_by_ym[key] = {"period": o.get("period", ""), "values": vals}
 
-    existing_ym_set = set(existing_yms)
+    # Actualizar la columna objetivo y agregar nuevos periodos.
     for o in item["api_total"]:
-        ym = o["ym"]
-        if ym in existing_ym_set:
+        if o.get("value") is None:
             continue
-        vals = [None] * ncol
+        key = _key(o["ym"])
+        if key in rows_by_ym:
+            vals = rows_by_ym[key]["values"]
+        else:
+            vals = [None] * ncol
+            period_label = o.get("period") or inegi.ym_to_label(key, item.get("freq"))
+            rows_by_ym[key] = {"period": period_label, "values": vals}
         if 0 <= tcol < ncol:
             vals[tcol] = round(o["value"], 6)
-        period_label = o.get("period") or inegi.ym_to_label(ym, item.get("freq"))
-        rows.append((ym, {"period": period_label, "values": vals}))
 
-    rows.sort(key=lambda t: t[0])
+    rows = sorted(rows_by_ym.items(), key=lambda t: t[0])
     ind["observations"] = [o for _, o in rows]
     ind["last_observation"] = ind["observations"][-1]["period"]
     ind["last_updated"] = L.today_iso()
@@ -266,6 +283,18 @@ def apply_freshness_and_meta(payload: dict, log: dict, as_of: date | None = None
         }
     changes.append("métricas: data/metrics.json regenerado")
 
+    # Rellenar columnas derivadas (saldo, total) en las observaciones para que
+    # Excel, CSV y el frontend compartan el mismo valor sin recalcularlo.
+    full_cfg = lib_kpicfg.get_cfg()
+    kpicfg = full_cfg.get("KPICFG", {})
+    for key, ind in payload["indicators"].items():
+        cfg = kpicfg.get(key, {})
+        if cfg.get("derived") == "saldo":
+            for o in ind.get("observations", []):
+                vals = o.get("values", [])
+                if len(vals) >= 3 and vals[2] is None and vals[0] is not None and vals[1] is not None:
+                    vals[2] = round(vals[0] - vals[1], 6)
+
     # Frescura por indicador.
     manifest_rows = {key: {
         "clave": key,
@@ -289,7 +318,17 @@ def apply_freshness_and_meta(payload: dict, log: dict, as_of: date | None = None
             "fecha_publicacion": info["proxima_publicacion"],
             "periodo_referencia": info["periodo_proximo"],
         }
-        ind["motivo_frescura"] = info["motivo"]
+        motivo = info["motivo"]
+        # Si el periodo vigente tiene componentes marcados como revisión/pendiente,
+        # reflejarlo explícitamente en el motivo de frescura para no confundir estado.
+        for q in ind.get("data_quality", []):
+            if q.get("status") in ("revisión", "pendiente") and q.get("period") == ind.get("last_observation"):
+                col_idx = q.get("column")
+                col_label = None
+                if isinstance(col_idx, int) and 0 <= col_idx < len(ind.get("columns", [])):
+                    col_label = ind["columns"][col_idx].get("label")
+                motivo += f" Nota: {col_label or f'componente {col_idx}'} del último periodo está pendiente de publicación ({q.get('reason', 'sin detalle')})."
+        ind["motivo_frescura"] = motivo
         ind["url_boletin_oficial"] = ind.get("fuente", {}).get("link")
         ind["fecha_publicacion"] = info["fecha_publicacion_oficial"]
         changes.append(f"frescura: {key} -> {info['estado']}")

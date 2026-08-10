@@ -1,11 +1,11 @@
 name: Actualizar datos (pipeline)
 
-# Actualiza la capa de datos y regenera productos. Modo de respaldo: si la
-# validación crítica falla, el pipeline conserva la última versión válida.
+# Actualiza la capa de datos y regenera productos. Si la validación crítica
+# falla, el workflow se detiene y no se despliega.
 #
-# Horarios (UTC -> America/Mexico_City):
-#   15:00 UTC  = 09:00 CST / 10:00 CDT  (matutino, después de boletines INEGI)
-#   22:00 UTC  = 16:00 CST / 17:00 CDT  (vespertino, para publicaciones tardías)
+# Horarios (UTC -> America/Mexico_City, UTC-6):
+#   15:00 UTC  = 09:00 hora Ciudad de México (matutino, después de boletines INEGI)
+#   22:00 UTC  = 16:00 hora Ciudad de México (vespertino, para publicaciones tardías)
 # INEGI publica normalmente antes de las 08:00-09:00 CT; Banxico lo hace en
 # días hábiles por la mañana. La segunda corrida captura retrasos ocasionales.
 #
@@ -21,6 +21,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: update-data
@@ -55,7 +57,7 @@ jobs:
         run: python scripts/build_notes.py
 
       - name: Validar (estricto para el reporte de CI)
-        run: python scripts/validate.py || true
+        run: python scripts/validate.py
 
       - name: Ejecutar pruebas
         run: python -m pytest -q
@@ -71,3 +73,21 @@ jobs:
             git commit -m "chore(data): actualización automática del pipeline [skip ci]"
             git push
           fi
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Empaquetar sitio para GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
+
+  deploy:
+    needs: update
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

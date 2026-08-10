@@ -5,7 +5,7 @@
     "PIBSEC",
     "IGAE",
     "IMAI",
-    "BALANZA",
+    "BCMM",
     "DESOCUP",
     "INPC",
     "CONSUMO",
@@ -18,8 +18,7 @@
     "TIPOCAMBIO",
     "TASA",
     "RESERVAS",
-    "EMOE",
-    "BCMM"
+    "EMOE"
   ],
   "profile": {
     "PIB": {
@@ -45,12 +44,6 @@
       "serie_confirmada": true,
       "clasificacion": "principal",
       "nombre": "Indicador Mensual de la Actividad Industrial"
-    },
-    "BALANZA": {
-      "requiere_token": "INEGI",
-      "serie_confirmada": true,
-      "clasificacion": "principal",
-      "nombre": "Balanza comercial"
     },
     "DESOCUP": {
       "requiere_token": "INEGI",
@@ -95,14 +88,14 @@
     },
     "EMOE": {
       "requiere_token": "INEGI",
-      "serie_confirmada": false,
+      "serie_confirmada": true,
       "clasificacion": "complementario",
-      "nombre": "Encuesta Mensual de Opinión Empresarial"
+      "nombre": "Confianza empresarial (EMOE)"
     },
     "BCMM": {
       "requiere_token": "INEGI",
-      "serie_confirmada": false,
-      "clasificacion": "complementario",
+      "serie_confirmada": true,
+      "clasificacion": "principal",
       "nombre": "Balanza Comercial de Mercancías de México"
     }
   },
@@ -289,33 +282,33 @@
       ]
     },
     "EMOE": {
-      "nombre": "Encuesta Mensual de Opinión Empresarial",
-      "descripcion": "Indicadores de confianza empresarial y agregados de tendencia y expectativas, elaborados a partir de la opinión de directivos de empresas manufactureras, constructoras, comerciales y de servicios.",
+      "nombre": "Confianza empresarial (EMOE)",
+      "descripcion": "Indicador de confianza empresarial de la Encuesta Mensual de Opinión Empresarial (EMOE), elaborado a partir de la opinión de directivos de empresas manufactureras, constructoras, comerciales y de servicios.",
       "frecuencia": "Mensual",
       "unidad": "Puntos",
       "ajuste_estacional": "Serie desestacionalizada",
       "grupo": "opinion",
       "publicacion": "Días 1-4 del mes siguiente",
-      "proximo": "Serie BIE por confirmar",
+      "proximo": "Primeros días de septiembre de 2026",
       "requiere_token": "INEGI",
-      "serie_confirmada": false,
+      "serie_confirmada": true,
       "clasificacion": "complementario",
       "fuente": {
         "nombre": "INEGI",
-        "link": "https://www.inegi.org.mx/temas/emoe/",
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=682416#D701401",
         "metodo": "INEGI BIE API",
-        "serie": null
+        "serie": "701401"
       },
       "columns": [
         {
           "label": "Confianza empresarial (puntos)",
           "index": 0,
-          "fmt": "num"
+          "fmt": "idx"
         },
         {
           "label": "Var. mensual (puntos)",
           "index": 1,
-          "fmt": "num"
+          "fmt": "idx"
         }
       ]
     },
@@ -327,15 +320,15 @@
       "ajuste_estacional": "Serie original",
       "grupo": "sector_externo",
       "publicacion": "Días 20-27 del mes siguiente",
-      "proximo": "Serie BIE por confirmar",
+      "proximo": "27 de agosto de 2026",
       "requiere_token": "INEGI",
-      "serie_confirmada": false,
+      "serie_confirmada": true,
       "clasificacion": "complementario",
       "fuente": {
         "nombre": "INEGI",
-        "link": "https://www.inegi.org.mx/temas/balanza/",
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=36695#D33223",
         "metodo": "INEGI BIE API",
-        "serie": null
+        "serie": "33223"
       },
       "columns": [
         {

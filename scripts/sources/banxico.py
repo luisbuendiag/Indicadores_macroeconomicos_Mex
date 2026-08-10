@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import os
 from collections import OrderedDict
+import calendar
 from datetime import datetime
 
 from .base import SourceResult, http_get_json
@@ -25,8 +26,13 @@ FMT = {
 }
 
 
-def _monthly_last(datos, factor: float = 1.0) -> list[dict]:
-    """Agrega observaciones diarias/semanales al último valor de cada mes."""
+def _monthly_last(datos, factor: float = 1.0, end: str | None = None) -> list[dict]:
+    """Agrega observaciones diarias/semanales al último valor de cada mes.
+
+    Si la consulta termina antes del último día del mes en curso, se omite ese
+    mes incompleto; de esa forma el dashboard no muestra un "último dato mensual"
+    parcial basado en la semana/día más reciente.
+    """
     by_month: OrderedDict[tuple[int, int], float] = OrderedDict()
     for d in datos:
         try:
@@ -36,6 +42,19 @@ def _monthly_last(datos, factor: float = 1.0) -> list[dict]:
             continue
         key = (dt.year, dt.month)
         by_month[key] = val  # el último recorrido gana (datos vienen ordenados asc)
+
+    # Descartar el mes en curso si la consulta no llega a su último día.
+    if end and by_month:
+        try:
+            end_dt = datetime.strptime(end, "%Y-%m-%d").date()
+            last_year, last_month = next(reversed(by_month))
+            if (last_year, last_month) == (end_dt.year, end_dt.month):
+                last_day = calendar.monthrange(end_dt.year, end_dt.month)[1]
+                if end_dt.day < last_day:
+                    by_month.popitem(last=True)
+        except (ValueError, TypeError):
+            pass
+
     obs = []
     for (y, m), v in by_month.items():
         period = f"{MESES_ABBR[m - 1]} {str(y)[2:]}"
@@ -69,7 +88,7 @@ def fetch(config: dict, start: str = "2018-01-01", end: str | None = None) -> So
             continue
 
         factor = float(meta.get("factor", 1.0))
-        obs = _monthly_last(datos, factor)
+        obs = _monthly_last(datos, factor, end)
         if not obs:
             warns.append(f"Banxico {key}: sin observaciones mensuales.")
             continue

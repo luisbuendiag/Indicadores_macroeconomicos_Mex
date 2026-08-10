@@ -14,10 +14,10 @@ export const COLORS = {
 };
 
 // Los 11 indicadores principales (definición oficial de esta fase).
-export const PRINCIPAL = ["PIB", "PIBSEC", "IGAE", "IMAI", "BALANZA", "DESOCUP", "INPC", "CONSUMO", "IMFBCF", "IOAE", "EMIM"];
+export const PRINCIPAL = ["PIB", "PIBSEC", "IGAE", "IMAI", "BCMM", "DESOCUP", "INPC", "CONSUMO", "IMFBCF", "IOAE", "EMIM"];
 
 // Indicadores complementarios (no compiten en la navegación principal).
-export const COMPLEMENTARIOS = ["IED", "TIPOCAMBIO", "TASA", "RESERVAS", "EMOE", "BCMM"];
+export const COMPLEMENTARIOS = ["IED", "TIPOCAMBIO", "TASA", "RESERVAS", "EMOE"];
 
 // Orden lógico completo (principal + complementario).
 export const ORDER = [...PRINCIPAL, ...COMPLEMENTARIOS];
@@ -25,19 +25,19 @@ export const ORDER = [...PRINCIPAL, ...COMPLEMENTARIOS];
 // Etiqueta corta para navegación y tarjetas.
 export const LABELS = {
   PIB: "PIB", PIBSEC: "PIB por actividad económica", IGAE: "IGAE", IMAI: "IMAI",
-  BALANZA: "Balanza comercial", DESOCUP: "Tasa de desocupación", INPC: "INPC",
+  BCMM: "Balanza comercial", DESOCUP: "Tasa de desocupación", INPC: "INPC",
   CONSUMO: "Consumo privado", IMFBCF: "Formación bruta de capital fijo",
   IOAE: "IOAE", EMIM: "EMIM",
   IED: "IED", TIPOCAMBIO: "Tipo de cambio FIX", TASA: "Tasa objetivo Banxico",
-  RESERVAS: "Reservas internacionales", EMOE: "EMOE", BCMM: "BCMM",
+  RESERVAS: "Reservas internacionales", EMOE: "Confianza empresarial (EMOE)",
 };
 
 // Sigla oficial.
 export const SIGLA = {
   PIB: "PIB", PIBSEC: "PIB por actividad económica", IGAE: "IGAE", IMAI: "IMAI",
-  BALANZA: "Balanza comercial", DESOCUP: "Tasa de desocupación", INPC: "INPC",
+  BCMM: "Balanza comercial", DESOCUP: "Tasa de desocupación", INPC: "INPC",
   CONSUMO: "IMCP", IMFBCF: "IMFBCF", IOAE: "IOAE", EMIM: "EMIM",
-  IED: "IED", TIPOCAMBIO: "Tipo de cambio FIX", TASA: "Tasa objetivo", RESERVAS: "Reservas int.", EMOE: "EMOE", BCMM: "BCMM",
+  IED: "IED", TIPOCAMBIO: "Tipo de cambio FIX", TASA: "Tasa objetivo", RESERVAS: "Reservas int.", EMOE: "EMOE",
 };
 
 // Configuración de KPI y semántica de variación por indicador.
@@ -54,13 +54,12 @@ export const KPICFG = {
   EMIM: { valCol: 0, valFmt: "idx", varCol: 1, varFmt: "pct-frac", varLabel: "Variación mensual", noun: "producción manufacturera", art: "la", grupo: "growth", assess: "growth", ctx: " (índice)", vw: "variación mensual", vg: "f", comp: "frente al mes previo", goodSign: 1 },
   DESOCUP: { valCol: 0, valFmt: "pct-frac", varMode: "pp-prev", varLabel: "Variación vs. mes anterior", noun: "tasa de desocupación", art: "la", grupo: "desoc", assess: "unemployment", ctx: "", vw: "variación", vg: "f", comp: "frente al mes previo", goodSign: -1 },
   INPC: { valCol: 0, valFmt: "pct-raw", varMode: "pp-prev", ppLong: true, varLabel: "Cambio de la inflación anual respecto al mes previo", noun: "inflación general anual", art: "la", grupo: "inpc", assess: "neutral", ctx: "", vw: "variación", vg: "f", comp: "frente al mes previo", goodSign: 0 },
-  BALANZA: { derived: "saldo", valFmt: "usd", varMode: "abs-prev", varLabel: "Variación del saldo (mensual)", noun: "saldo de la balanza comercial", art: "el", grupo: "balanza", assess: "neutral", ctx: "", vw: "variación del saldo", vg: "f", comp: "frente al mes previo", goodSign: 0 },
   IED: { valCol: 0, valFmt: "usd", varMode: "pct-yoy", varLabel: "Var. anual (vs. mismo trim. año previo)", noun: "IED total", art: "la", grupo: "growth", assess: "growth", ctx: "", vw: "variación anual", vg: "f", comp: "frente al mismo trimestre del año anterior", goodSign: 1 },
   TIPOCAMBIO: { valCol: 0, valFmt: "fx", varMode: "pct-prev", varLabel: "Variación vs. periodo previo", noun: "tipo de cambio FIX", art: "el", grupo: "fx", assess: "neutral", ctx: " (pesos por dólar)", vw: "variación", vg: "f", comp: "frente al periodo previo", goodSign: 0 },
   TASA: { valCol: 0, valFmt: "pct-raw", varMode: "pp-prev", varLabel: "Variación vs. periodo previo", noun: "tasa objetivo", art: "la", grupo: "tasa", assess: "neutral", ctx: "", vw: "variación", vg: "f", comp: "frente al periodo previo", goodSign: 0 },
   RESERVAS: { valCol: 0, valFmt: "usd", varMode: "abs-prev", varLabel: "Variación semanal", noun: "reservas internacionales", art: "las", grupo: "growth", assess: "neutral", ctx: "", vw: "variación", vg: "f", comp: "frente al periodo previo", goodSign: 0 },
-  EMOE: { valCol: 0, valFmt: "num", varMode: "pct-prev", varLabel: "Variación mensual", noun: "confianza empresarial", art: "la", grupo: "opinion", assess: "neutral", ctx: "", vw: "variación", vg: "f", comp: "frente al mes previo", goodSign: 0 },
-  BCMM: { valCol: 2, valFmt: "usd", varMode: "abs-prev", varLabel: "Variación mensual del saldo", noun: "saldo comercial", art: "el", grupo: "balanza", assess: "neutral", ctx: "", vw: "variación del saldo", vg: "f", comp: "frente al mes previo", goodSign: 0 },
+  EMOE: { valCol: 0, valFmt: "idx", varCol: 1, varFmt: "idx", varLabel: "Var. mensual", noun: "confianza empresarial", art: "la", grupo: "opinion", assess: "neutral", ctx: "", vw: "variación", vg: "f", comp: "frente al mes previo", goodSign: 0 },
+  BCMM: { derived: "saldo", valFmt: "usd", varMode: "abs-prev", varLabel: "Variación mensual del saldo", noun: "saldo comercial", art: "el", grupo: "balanza", assess: "neutral", ctx: "", vw: "variación del saldo", vg: "f", comp: "frente al mes previo", goodSign: 0 },
 };
 
 export const CAPTIONS = {
@@ -75,12 +74,11 @@ export const CAPTIONS = {
   IED: "Componentes de la IED en barras apiladas y la IED total (línea punteada). Cifras en millones de dólares.",
   DESOCUP: "Tasa de desocupación mensual de México como porcentaje de la población económicamente activa.",
   INPC: "Inflación general, subyacente y no subyacente (variación anual en porcentaje).",
-  BALANZA: "Exportaciones e importaciones (barras) y el saldo comercial (línea, eje derecho). Cifras en millones de dólares.",
   TIPOCAMBIO: "Tipo de cambio FIX (pesos por dólar).",
   TASA: "Tasa de interés objetivo del Banco de México (%).",
   RESERVAS: "Reservas internacionales netas (millones de dólares).",
-  EMOE: "Indicadores de confianza y expectativas empresariales (puntos).",
-  BCMM: "Exportaciones, importaciones y saldo de la balanza comercial de mercancías (millones de dólares).",
+  EMOE: "Confianza empresarial (EMOE) y su variación mensual (puntos).",
+  BCMM: "Exportaciones, importaciones y saldo de la balanza comercial de mercancías (millones de dólares)."
 };
 
 // Vistas de navegación. type: "home" | "indicator" | "group" | "page".
