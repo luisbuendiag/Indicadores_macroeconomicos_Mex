@@ -1,12 +1,23 @@
 name: Actualizar datos (pipeline)
 
-# Actualiza la capa de datos y regenera el Excel. Modo de respaldo: si la
+# Actualiza la capa de datos y regenera productos. Modo de respaldo: si la
 # validación crítica falla, el pipeline conserva la última versión válida.
+#
+# Horarios (UTC -> America/Mexico_City):
+#   15:00 UTC  = 09:00 CST / 10:00 CDT  (matutino, después de boletines INEGI)
+#   22:00 UTC  = 16:00 CST / 17:00 CDT  (vespertino, para publicaciones tardías)
+# INEGI publica normalmente antes de las 08:00-09:00 CT; Banxico lo hace en
+# días hábiles por la mañana. La segunda corrida captura retrasos ocasionales.
+#
+# Si una fuente no ha publicado aún, build_data.py usa el dato ya cargado y
+# marca el estado correspondiente (PUBLICACIÓN PENDIENTE / REZAGADO). Si el
+# dato aparece más tarde ese mismo día, la siguiente ejecución programada lo
+# captura; no se hace polling continuo.
 on:
   workflow_dispatch: {}
   schedule:
-    # Días hábiles 13:00 UTC (~7:00 CT). Ajustable.
-    - cron: "0 13 * * 1-5"
+    - cron: "0 15 * * 1-5"
+    - cron: "0 22 * * 1-5"
 
 permissions:
   contents: write
@@ -39,6 +50,9 @@ jobs:
 
       - name: Regenerar Excel
         run: python scripts/build_excel.py
+
+      - name: Regenerar notas (no-op mientras falte plantilla aprobada)
+        run: python scripts/build_notes.py
 
       - name: Validar (estricto para el reporte de CI)
         run: python scripts/validate.py || true

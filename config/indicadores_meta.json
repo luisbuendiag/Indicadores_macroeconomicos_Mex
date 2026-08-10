@@ -1,20 +1,110 @@
 {
   "_comment": "Perfil V3 de indicadores. Define el orden principal/complementario, el token requerido por fuente y los scaffolds (indicadores sin observaciones cargadas todavía). El pipeline (build_data.py -> lib_data.apply_profile) usa este archivo para asignar estados honestos sin inventar cifras.",
-  "principal": ["PIB", "PIBSEC", "IGAE", "IMAI", "BALANZA", "DESOCUP", "INPC", "CONSUMO", "IMFBCF", "IOAE", "EMIM"],
-  "complementario": ["IED", "TIPOCAMBIO", "TASA", "RESERVAS"],
+  "principal": [
+    "PIB",
+    "PIBSEC",
+    "IGAE",
+    "IMAI",
+    "BALANZA",
+    "DESOCUP",
+    "INPC",
+    "CONSUMO",
+    "IMFBCF",
+    "IOAE",
+    "EMIM"
+  ],
+  "complementario": [
+    "IED",
+    "TIPOCAMBIO",
+    "TASA",
+    "RESERVAS",
+    "EMOE",
+    "BCMM"
+  ],
   "profile": {
-    "PIB": { "requiere_token": "INEGI", "serie_confirmada": true, "clasificacion": "principal", "nombre": "Producto Interno Bruto" },
-    "PIBSEC": { "requiere_token": "INEGI", "serie_confirmada": true, "clasificacion": "principal", "nombre": "Producto Interno Bruto por sector de actividad" },
-    "IGAE": { "requiere_token": "INEGI", "serie_confirmada": true, "clasificacion": "principal", "nombre": "Indicador Global de la Actividad Económica" },
-    "IMAI": { "requiere_token": "INEGI", "serie_confirmada": true, "clasificacion": "principal", "nombre": "Indicador Mensual de la Actividad Industrial" },
-    "BALANZA": { "requiere_token": "INEGI", "serie_confirmada": true, "clasificacion": "principal", "nombre": "Balanza comercial" },
-    "DESOCUP": { "requiere_token": "INEGI", "serie_confirmada": true, "clasificacion": "principal", "nombre": "Tasa de desocupación" },
-    "INPC": { "requiere_token": "INEGI", "serie_confirmada": true, "clasificacion": "principal", "nombre": "Índice de Precios al Consumidor" },
-    "CONSUMO": { "requiere_token": "INEGI", "serie_confirmada": true, "clasificacion": "principal", "nombre": "Indicador mensual del consumo privado" },
-    "IMFBCF": { "requiere_token": "INEGI", "serie_confirmada": true, "clasificacion": "principal", "nombre": "Indicador Mensual de la Formación Bruta de Capital Fijo" },
-    "IOAE": { "requiere_token": "INEGI", "serie_confirmada": true, "clasificacion": "principal", "nombre": "Indicador Oportuno de la Actividad Económica" },
-    "EMIM": { "requiere_token": "INEGI", "serie_confirmada": true, "clasificacion": "principal", "nombre": "Encuesta Mensual de la Industria Manufacturera" },
-    "IED": { "requiere_token": null, "serie_confirmada": false, "clasificacion": "complementario" }
+    "PIB": {
+      "requiere_token": "INEGI",
+      "serie_confirmada": true,
+      "clasificacion": "principal",
+      "nombre": "Producto Interno Bruto"
+    },
+    "PIBSEC": {
+      "requiere_token": "INEGI",
+      "serie_confirmada": true,
+      "clasificacion": "principal",
+      "nombre": "Producto Interno Bruto por sector de actividad"
+    },
+    "IGAE": {
+      "requiere_token": "INEGI",
+      "serie_confirmada": true,
+      "clasificacion": "principal",
+      "nombre": "Indicador Global de la Actividad Económica"
+    },
+    "IMAI": {
+      "requiere_token": "INEGI",
+      "serie_confirmada": true,
+      "clasificacion": "principal",
+      "nombre": "Indicador Mensual de la Actividad Industrial"
+    },
+    "BALANZA": {
+      "requiere_token": "INEGI",
+      "serie_confirmada": true,
+      "clasificacion": "principal",
+      "nombre": "Balanza comercial"
+    },
+    "DESOCUP": {
+      "requiere_token": "INEGI",
+      "serie_confirmada": true,
+      "clasificacion": "principal",
+      "nombre": "Tasa de desocupación"
+    },
+    "INPC": {
+      "requiere_token": "INEGI",
+      "serie_confirmada": true,
+      "clasificacion": "principal",
+      "nombre": "Índice de Precios al Consumidor"
+    },
+    "CONSUMO": {
+      "requiere_token": "INEGI",
+      "serie_confirmada": true,
+      "clasificacion": "principal",
+      "nombre": "Indicador mensual del consumo privado"
+    },
+    "IMFBCF": {
+      "requiere_token": "INEGI",
+      "serie_confirmada": true,
+      "clasificacion": "principal",
+      "nombre": "Indicador Mensual de la Formación Bruta de Capital Fijo"
+    },
+    "IOAE": {
+      "requiere_token": "INEGI",
+      "serie_confirmada": true,
+      "clasificacion": "principal",
+      "nombre": "Indicador Oportuno de la Actividad Económica"
+    },
+    "EMIM": {
+      "requiere_token": "INEGI",
+      "serie_confirmada": true,
+      "clasificacion": "principal",
+      "nombre": "Encuesta Mensual de la Industria Manufacturera"
+    },
+    "IED": {
+      "requiere_token": null,
+      "serie_confirmada": false,
+      "clasificacion": "complementario"
+    },
+    "EMOE": {
+      "requiere_token": "INEGI",
+      "serie_confirmada": false,
+      "clasificacion": "complementario",
+      "nombre": "Encuesta Mensual de Opinión Empresarial"
+    },
+    "BCMM": {
+      "requiere_token": "INEGI",
+      "serie_confirmada": false,
+      "clasificacion": "complementario",
+      "nombre": "Balanza Comercial de Mercancías de México"
+    }
   },
   "scaffolds": {
     "IMFBCF": {
@@ -29,10 +119,23 @@
       "requiere_token": "INEGI",
       "serie_confirmada": false,
       "clasificacion": "principal",
-      "fuente": { "nombre": "INEGI", "link": "https://www.inegi.org.mx/temas/inversionfija/", "metodo": "INEGI BIE API", "serie": null },
+      "fuente": {
+        "nombre": "INEGI",
+        "link": "https://www.inegi.org.mx/temas/inversionfija/",
+        "metodo": "INEGI BIE API",
+        "serie": null
+      },
       "columns": [
-        { "label": "Índice (inversión)", "index": 0, "fmt": "idx" },
-        { "label": "Var. mensual (%)", "index": 1, "fmt": "pct-frac" }
+        {
+          "label": "Índice (inversión)",
+          "index": 0,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. mensual (%)",
+          "index": 1,
+          "fmt": "pct-frac"
+        }
       ]
     },
     "IOAE": {
@@ -47,12 +150,33 @@
       "requiere_token": "INEGI",
       "serie_confirmada": false,
       "clasificacion": "principal",
-      "fuente": { "nombre": "INEGI", "link": "https://www.inegi.org.mx/investigacion/ioae/", "metodo": "INEGI (comunicado / BIE)", "serie": null },
+      "fuente": {
+        "nombre": "INEGI",
+        "link": "https://www.inegi.org.mx/investigacion/ioae/",
+        "metodo": "INEGI (comunicado / BIE)",
+        "serie": null
+      },
       "columns": [
-        { "label": "Estimación mensual (%)", "index": 0, "fmt": "pct-raw" },
-        { "label": "Estimación anual (%)", "index": 1, "fmt": "pct-raw" },
-        { "label": "Límite inferior (%)", "index": 2, "fmt": "pct-raw" },
-        { "label": "Límite superior (%)", "index": 3, "fmt": "pct-raw" }
+        {
+          "label": "Estimación mensual (%)",
+          "index": 0,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Estimación anual (%)",
+          "index": 1,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Límite inferior (%)",
+          "index": 2,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Límite superior (%)",
+          "index": 3,
+          "fmt": "pct-raw"
+        }
       ]
     },
     "EMIM": {
@@ -67,10 +191,23 @@
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
-      "fuente": { "nombre": "INEGI", "link": "https://www.inegi.org.mx/programas/emim/", "metodo": "INEGI BIE API / boletín PDF", "serie": "796224" },
+      "fuente": {
+        "nombre": "INEGI",
+        "link": "https://www.inegi.org.mx/programas/emim/",
+        "metodo": "INEGI BIE API / boletín PDF",
+        "serie": "796224"
+      },
       "columns": [
-        { "label": "Producción (índice)", "index": 0, "fmt": "idx" },
-        { "label": "Var. mensual (%)", "index": 1, "fmt": "pct-frac" }
+        {
+          "label": "Producción (índice)",
+          "index": 0,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. mensual (%)",
+          "index": 1,
+          "fmt": "pct-frac"
+        }
       ]
     },
     "TIPOCAMBIO": {
@@ -85,9 +222,18 @@
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
-      "fuente": { "nombre": "Banco de México", "link": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do", "metodo": "Banxico SIE API", "serie": "SF43718" },
+      "fuente": {
+        "nombre": "Banco de México",
+        "link": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
+        "metodo": "Banxico SIE API",
+        "serie": "SF43718"
+      },
       "columns": [
-        { "label": "Tipo de cambio FIX", "index": 0, "fmt": "fx" }
+        {
+          "label": "Tipo de cambio FIX",
+          "index": 0,
+          "fmt": "fx"
+        }
       ]
     },
     "TASA": {
@@ -102,9 +248,18 @@
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
-      "fuente": { "nombre": "Banco de México", "link": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html", "metodo": "Banxico SIE API", "serie": "SF61745" },
+      "fuente": {
+        "nombre": "Banco de México",
+        "link": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
+        "metodo": "Banxico SIE API",
+        "serie": "SF61745"
+      },
       "columns": [
-        { "label": "Tasa objetivo (%)", "index": 0, "fmt": "pct-raw" }
+        {
+          "label": "Tasa objetivo (%)",
+          "index": 0,
+          "fmt": "pct-raw"
+        }
       ]
     },
     "RESERVAS": {
@@ -119,9 +274,85 @@
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
-      "fuente": { "nombre": "Banco de México", "link": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/", "metodo": "Banxico SIE API", "serie": "SF43707" },
+      "fuente": {
+        "nombre": "Banco de México",
+        "link": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+        "metodo": "Banxico SIE API",
+        "serie": "SF43707"
+      },
       "columns": [
-        { "label": "Reservas internacionales", "index": 0, "fmt": "usd" }
+        {
+          "label": "Reservas internacionales",
+          "index": 0,
+          "fmt": "usd"
+        }
+      ]
+    },
+    "EMOE": {
+      "nombre": "Encuesta Mensual de Opinión Empresarial",
+      "descripcion": "Indicadores de confianza empresarial y agregados de tendencia y expectativas, elaborados a partir de la opinión de directivos de empresas manufactureras, constructoras, comerciales y de servicios.",
+      "frecuencia": "Mensual",
+      "unidad": "Puntos",
+      "ajuste_estacional": "Serie desestacionalizada",
+      "grupo": "opinion",
+      "publicacion": "Días 1-4 del mes siguiente",
+      "proximo": "Serie BIE por confirmar",
+      "requiere_token": "INEGI",
+      "serie_confirmada": false,
+      "clasificacion": "complementario",
+      "fuente": {
+        "nombre": "INEGI",
+        "link": "https://www.inegi.org.mx/temas/emoe/",
+        "metodo": "INEGI BIE API",
+        "serie": null
+      },
+      "columns": [
+        {
+          "label": "Confianza empresarial (puntos)",
+          "index": 0,
+          "fmt": "num"
+        },
+        {
+          "label": "Var. mensual (puntos)",
+          "index": 1,
+          "fmt": "num"
+        }
+      ]
+    },
+    "BCMM": {
+      "nombre": "Balanza Comercial de Mercancías de México",
+      "descripcion": "Valor de exportaciones e importaciones de mercancías. Serie revisada que complementa la información oportuna de la balanza comercial.",
+      "frecuencia": "Mensual",
+      "unidad": "Millones de dólares",
+      "ajuste_estacional": "Serie original",
+      "grupo": "sector_externo",
+      "publicacion": "Días 20-27 del mes siguiente",
+      "proximo": "Serie BIE por confirmar",
+      "requiere_token": "INEGI",
+      "serie_confirmada": false,
+      "clasificacion": "complementario",
+      "fuente": {
+        "nombre": "INEGI",
+        "link": "https://www.inegi.org.mx/temas/balanza/",
+        "metodo": "INEGI BIE API",
+        "serie": null
+      },
+      "columns": [
+        {
+          "label": "Exportaciones",
+          "index": 0,
+          "fmt": "usd"
+        },
+        {
+          "label": "Importaciones",
+          "index": 1,
+          "fmt": "usd"
+        },
+        {
+          "label": "Saldo",
+          "index": 2,
+          "fmt": "usd"
+        }
       ]
     }
   }

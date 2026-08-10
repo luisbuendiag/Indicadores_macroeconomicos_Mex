@@ -33,7 +33,7 @@ def test_igae_analysis():
     assert "108.6 puntos" in a[0]
     assert "-0.30%" in a[0]
     assert "108.6 puntos (mayo de 2026)" in a[1]
-    assert "100.1 puntos (febrero de 2026)" in a[1]
+    assert "76.3 puntos (abril de 2020)" in a[1]
 
 
 def test_inpc_kpi():

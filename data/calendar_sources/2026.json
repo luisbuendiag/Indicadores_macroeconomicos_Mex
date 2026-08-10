@@ -10,8 +10,14 @@
       "institucion": "INEGI",
       "frecuencia": "Trimestral",
       "publicaciones": [
-        { "fecha": "30 de julio de 2026", "periodo": "2° trimestre 2026" },
-        { "fecha": "30 de octubre de 2026", "periodo": "3er trimestre 2026" }
+        {
+          "fecha": "30 de julio de 2026",
+          "periodo": "2° trimestre 2026"
+        },
+        {
+          "fecha": "30 de octubre de 2026",
+          "periodo": "3er trimestre 2026"
+        }
       ]
     },
     {
@@ -21,8 +27,14 @@
       "institucion": "INEGI",
       "frecuencia": "Trimestral",
       "publicaciones": [
-        { "fecha": "24 de agosto de 2026", "periodo": "2° trimestre 2026" },
-        { "fecha": "23 de noviembre de 2026", "periodo": "3er trimestre 2026" }
+        {
+          "fecha": "24 de agosto de 2026",
+          "periodo": "2° trimestre 2026"
+        },
+        {
+          "fecha": "23 de noviembre de 2026",
+          "periodo": "3er trimestre 2026"
+        }
       ]
     },
     {
@@ -32,12 +44,30 @@
       "institucion": "INEGI",
       "frecuencia": "Mensual",
       "publicaciones": [
-        { "fecha": "23 de julio de 2026", "periodo": "Mayo 2026" },
-        { "fecha": "24 de agosto de 2026", "periodo": "Junio 2026" },
-        { "fecha": "24 de septiembre de 2026", "periodo": "Julio 2026" },
-        { "fecha": "23 de octubre de 2026", "periodo": "Agosto 2026" },
-        { "fecha": "23 de noviembre de 2026", "periodo": "Septiembre 2026" },
-        { "fecha": "23 de diciembre de 2026", "periodo": "Octubre 2026" }
+        {
+          "fecha": "23 de julio de 2026",
+          "periodo": "Mayo 2026"
+        },
+        {
+          "fecha": "24 de agosto de 2026",
+          "periodo": "Junio 2026"
+        },
+        {
+          "fecha": "24 de septiembre de 2026",
+          "periodo": "Julio 2026"
+        },
+        {
+          "fecha": "23 de octubre de 2026",
+          "periodo": "Agosto 2026"
+        },
+        {
+          "fecha": "23 de noviembre de 2026",
+          "periodo": "Septiembre 2026"
+        },
+        {
+          "fecha": "23 de diciembre de 2026",
+          "periodo": "Octubre 2026"
+        }
       ]
     },
     {
@@ -47,12 +77,30 @@
       "institucion": "INEGI",
       "frecuencia": "Mensual",
       "publicaciones": [
-        { "fecha": "10 de julio de 2026", "periodo": "Mayo 2026" },
-        { "fecha": "11 de agosto de 2026", "periodo": "Junio 2026" },
-        { "fecha": "11 de septiembre de 2026", "periodo": "Julio 2026" },
-        { "fecha": "12 de octubre de 2026", "periodo": "Agosto 2026" },
-        { "fecha": "11 de noviembre de 2026", "periodo": "Septiembre 2026" },
-        { "fecha": "11 de diciembre de 2026", "periodo": "Octubre 2026" }
+        {
+          "fecha": "10 de julio de 2026",
+          "periodo": "Mayo 2026"
+        },
+        {
+          "fecha": "11 de agosto de 2026",
+          "periodo": "Junio 2026"
+        },
+        {
+          "fecha": "11 de septiembre de 2026",
+          "periodo": "Julio 2026"
+        },
+        {
+          "fecha": "12 de octubre de 2026",
+          "periodo": "Agosto 2026"
+        },
+        {
+          "fecha": "11 de noviembre de 2026",
+          "periodo": "Septiembre 2026"
+        },
+        {
+          "fecha": "11 de diciembre de 2026",
+          "periodo": "Octubre 2026"
+        }
       ]
     },
     {
@@ -62,12 +110,30 @@
       "institucion": "INEGI",
       "frecuencia": "Mensual",
       "publicaciones": [
-        { "fecha": "27 de julio de 2026", "periodo": "Junio 2026" },
-        { "fecha": "27 de agosto de 2026", "periodo": "Julio 2026" },
-        { "fecha": "28 de septiembre de 2026", "periodo": "Agosto 2026" },
-        { "fecha": "27 de octubre de 2026", "periodo": "Septiembre 2026" },
-        { "fecha": "27 de noviembre de 2026", "periodo": "Octubre 2026" },
-        { "fecha": "23 de diciembre de 2026", "periodo": "Noviembre 2026" }
+        {
+          "fecha": "27 de julio de 2026",
+          "periodo": "Junio 2026"
+        },
+        {
+          "fecha": "27 de agosto de 2026",
+          "periodo": "Julio 2026"
+        },
+        {
+          "fecha": "28 de septiembre de 2026",
+          "periodo": "Agosto 2026"
+        },
+        {
+          "fecha": "27 de octubre de 2026",
+          "periodo": "Septiembre 2026"
+        },
+        {
+          "fecha": "27 de noviembre de 2026",
+          "periodo": "Octubre 2026"
+        },
+        {
+          "fecha": "23 de diciembre de 2026",
+          "periodo": "Noviembre 2026"
+        }
       ]
     },
     {
@@ -77,12 +143,30 @@
       "institucion": "INEGI",
       "frecuencia": "Mensual",
       "publicaciones": [
-        { "fecha": "24 de julio de 2026", "periodo": "Junio 2026" },
-        { "fecha": "25 de agosto de 2026", "periodo": "Julio 2026" },
-        { "fecha": "25 de septiembre de 2026", "periodo": "Agosto 2026" },
-        { "fecha": "22 de octubre de 2026", "periodo": "Septiembre 2026" },
-        { "fecha": "26 de noviembre de 2026", "periodo": "Octubre 2026" },
-        { "fecha": "24 de diciembre de 2026", "periodo": "Noviembre 2026" }
+        {
+          "fecha": "24 de julio de 2026",
+          "periodo": "Junio 2026"
+        },
+        {
+          "fecha": "25 de agosto de 2026",
+          "periodo": "Julio 2026"
+        },
+        {
+          "fecha": "25 de septiembre de 2026",
+          "periodo": "Agosto 2026"
+        },
+        {
+          "fecha": "22 de octubre de 2026",
+          "periodo": "Septiembre 2026"
+        },
+        {
+          "fecha": "26 de noviembre de 2026",
+          "periodo": "Octubre 2026"
+        },
+        {
+          "fecha": "24 de diciembre de 2026",
+          "periodo": "Noviembre 2026"
+        }
       ]
     },
     {
@@ -92,12 +176,30 @@
       "institucion": "INEGI",
       "frecuencia": "Mensual",
       "publicaciones": [
-        { "fecha": "09 de julio de 2026", "periodo": "Junio 2026" },
-        { "fecha": "07 de agosto de 2026", "periodo": "Julio 2026" },
-        { "fecha": "09 de septiembre de 2026", "periodo": "Agosto 2026" },
-        { "fecha": "08 de octubre de 2026", "periodo": "Septiembre 2026" },
-        { "fecha": "09 de noviembre de 2026", "periodo": "Octubre 2026" },
-        { "fecha": "09 de diciembre de 2026", "periodo": "Noviembre 2026" }
+        {
+          "fecha": "09 de julio de 2026",
+          "periodo": "Junio 2026"
+        },
+        {
+          "fecha": "07 de agosto de 2026",
+          "periodo": "Julio 2026"
+        },
+        {
+          "fecha": "09 de septiembre de 2026",
+          "periodo": "Agosto 2026"
+        },
+        {
+          "fecha": "08 de octubre de 2026",
+          "periodo": "Septiembre 2026"
+        },
+        {
+          "fecha": "09 de noviembre de 2026",
+          "periodo": "Octubre 2026"
+        },
+        {
+          "fecha": "09 de diciembre de 2026",
+          "periodo": "Noviembre 2026"
+        }
       ]
     },
     {
@@ -107,12 +209,30 @@
       "institucion": "INEGI",
       "frecuencia": "Mensual",
       "publicaciones": [
-        { "fecha": "06 de julio de 2026", "periodo": "Abril 2026" },
-        { "fecha": "05 de agosto de 2026", "periodo": "Mayo 2026" },
-        { "fecha": "04 de septiembre de 2026", "periodo": "Junio 2026" },
-        { "fecha": "05 de octubre de 2026", "periodo": "Julio 2026" },
-        { "fecha": "05 de noviembre de 2026", "periodo": "Agosto 2026" },
-        { "fecha": "04 de diciembre de 2026", "periodo": "Septiembre 2026" }
+        {
+          "fecha": "06 de julio de 2026",
+          "periodo": "Abril 2026"
+        },
+        {
+          "fecha": "05 de agosto de 2026",
+          "periodo": "Mayo 2026"
+        },
+        {
+          "fecha": "04 de septiembre de 2026",
+          "periodo": "Junio 2026"
+        },
+        {
+          "fecha": "05 de octubre de 2026",
+          "periodo": "Julio 2026"
+        },
+        {
+          "fecha": "05 de noviembre de 2026",
+          "periodo": "Agosto 2026"
+        },
+        {
+          "fecha": "04 de diciembre de 2026",
+          "periodo": "Septiembre 2026"
+        }
       ]
     },
     {
@@ -122,12 +242,30 @@
       "institucion": "INEGI",
       "frecuencia": "Mensual",
       "publicaciones": [
-        { "fecha": "06 de julio de 2026", "periodo": "Abril 2026" },
-        { "fecha": "05 de agosto de 2026", "periodo": "Mayo 2026" },
-        { "fecha": "04 de septiembre de 2026", "periodo": "Junio 2026" },
-        { "fecha": "05 de octubre de 2026", "periodo": "Julio 2026" },
-        { "fecha": "05 de noviembre de 2026", "periodo": "Agosto 2026" },
-        { "fecha": "04 de diciembre de 2026", "periodo": "Septiembre 2026" }
+        {
+          "fecha": "06 de julio de 2026",
+          "periodo": "Abril 2026"
+        },
+        {
+          "fecha": "05 de agosto de 2026",
+          "periodo": "Mayo 2026"
+        },
+        {
+          "fecha": "04 de septiembre de 2026",
+          "periodo": "Junio 2026"
+        },
+        {
+          "fecha": "05 de octubre de 2026",
+          "periodo": "Julio 2026"
+        },
+        {
+          "fecha": "05 de noviembre de 2026",
+          "periodo": "Agosto 2026"
+        },
+        {
+          "fecha": "04 de diciembre de 2026",
+          "periodo": "Septiembre 2026"
+        }
       ]
     },
     {
@@ -137,12 +275,30 @@
       "institucion": "INEGI",
       "frecuencia": "Mensual",
       "publicaciones": [
-        { "fecha": "21 de julio de 2026", "periodo": "Junio 2026" },
-        { "fecha": "20 de agosto de 2026", "periodo": "Julio 2026" },
-        { "fecha": "22 de septiembre de 2026", "periodo": "Agosto 2026" },
-        { "fecha": "20 de octubre de 2026", "periodo": "Septiembre 2026" },
-        { "fecha": "19 de noviembre de 2026", "periodo": "Octubre 2026" },
-        { "fecha": "18 de diciembre de 2026", "periodo": "Noviembre 2026" }
+        {
+          "fecha": "21 de julio de 2026",
+          "periodo": "Junio 2026"
+        },
+        {
+          "fecha": "20 de agosto de 2026",
+          "periodo": "Julio 2026"
+        },
+        {
+          "fecha": "22 de septiembre de 2026",
+          "periodo": "Agosto 2026"
+        },
+        {
+          "fecha": "20 de octubre de 2026",
+          "periodo": "Septiembre 2026"
+        },
+        {
+          "fecha": "19 de noviembre de 2026",
+          "periodo": "Octubre 2026"
+        },
+        {
+          "fecha": "18 de diciembre de 2026",
+          "periodo": "Noviembre 2026"
+        }
       ]
     },
     {
@@ -152,12 +308,144 @@
       "institucion": "INEGI",
       "frecuencia": "Mensual",
       "publicaciones": [
-        { "fecha": "16 de julio de 2026", "periodo": "Mayo 2026" },
-        { "fecha": "17 de agosto de 2026", "periodo": "Junio 2026" },
-        { "fecha": "17 de septiembre de 2026", "periodo": "Julio 2026" },
-        { "fecha": "16 de octubre de 2026", "periodo": "Agosto 2026" },
-        { "fecha": "17 de noviembre de 2026", "periodo": "Septiembre 2026" },
-        { "fecha": "16 de diciembre de 2026", "periodo": "Octubre 2026" }
+        {
+          "fecha": "16 de julio de 2026",
+          "periodo": "Mayo 2026"
+        },
+        {
+          "fecha": "17 de agosto de 2026",
+          "periodo": "Junio 2026"
+        },
+        {
+          "fecha": "17 de septiembre de 2026",
+          "periodo": "Julio 2026"
+        },
+        {
+          "fecha": "16 de octubre de 2026",
+          "periodo": "Agosto 2026"
+        },
+        {
+          "fecha": "17 de noviembre de 2026",
+          "periodo": "Septiembre 2026"
+        },
+        {
+          "fecha": "16 de diciembre de 2026",
+          "periodo": "Octubre 2026"
+        }
+      ]
+    },
+    {
+      "clave": "EMOE",
+      "indicador": "Encuesta Mensual de Opinión Empresarial",
+      "producto": "EMOE — Indicadores de Confianza Empresarial y Agregados de Tendencia y Expectativas Empresariales",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "publicaciones": [
+        {
+          "fecha": "2 de enero de 2026",
+          "periodo": "Diciembre 2025"
+        },
+        {
+          "fecha": "3 de febrero de 2026",
+          "periodo": "Enero 2026"
+        },
+        {
+          "fecha": "2 de marzo de 2026",
+          "periodo": "Febrero 2026"
+        },
+        {
+          "fecha": "1 de abril de 2026",
+          "periodo": "Marzo 2026"
+        },
+        {
+          "fecha": "4 de mayo de 2026",
+          "periodo": "Abril 2026"
+        },
+        {
+          "fecha": "1 de junio de 2026",
+          "periodo": "Mayo 2026"
+        },
+        {
+          "fecha": "1 de julio de 2026",
+          "periodo": "Junio 2026"
+        },
+        {
+          "fecha": "3 de agosto de 2026",
+          "periodo": "Julio 2026"
+        },
+        {
+          "fecha": "1 de septiembre de 2026",
+          "periodo": "Agosto 2026"
+        },
+        {
+          "fecha": "1 de octubre de 2026",
+          "periodo": "Septiembre 2026"
+        },
+        {
+          "fecha": "3 de noviembre de 2026",
+          "periodo": "Octubre 2026"
+        },
+        {
+          "fecha": "1 de diciembre de 2026",
+          "periodo": "Noviembre 2026"
+        }
+      ]
+    },
+    {
+      "clave": "BCMM",
+      "indicador": "Balanza Comercial de Mercancías de México",
+      "producto": "BCMM — información revisada",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "publicaciones": [
+        {
+          "fecha": "27 de enero de 2026",
+          "periodo": "Diciembre 2025"
+        },
+        {
+          "fecha": "27 de febrero de 2026",
+          "periodo": "Enero 2026"
+        },
+        {
+          "fecha": "27 de marzo de 2026",
+          "periodo": "Febrero 2026"
+        },
+        {
+          "fecha": "27 de abril de 2026",
+          "periodo": "Marzo 2026"
+        },
+        {
+          "fecha": "25 de mayo de 2026",
+          "periodo": "Abril 2026"
+        },
+        {
+          "fecha": "26 de junio de 2026",
+          "periodo": "Mayo 2026"
+        },
+        {
+          "fecha": "27 de julio de 2026",
+          "periodo": "Junio 2026"
+        },
+        {
+          "fecha": "27 de agosto de 2026",
+          "periodo": "Julio 2026"
+        },
+        {
+          "fecha": "28 de septiembre de 2026",
+          "periodo": "Agosto 2026"
+        },
+        {
+          "fecha": "27 de octubre de 2026",
+          "periodo": "Septiembre 2026"
+        },
+        {
+          "fecha": "27 de noviembre de 2026",
+          "periodo": "Octubre 2026"
+        },
+        {
+          "fecha": "23 de diciembre de 2026",
+          "periodo": "Noviembre 2026"
+        }
       ]
     }
   ]

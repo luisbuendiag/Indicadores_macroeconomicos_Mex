@@ -251,6 +251,36 @@
       "vg": "f",
       "comp": "frente al periodo previo",
       "goodSign": 0
+    },
+    "EMOE": {
+      "valCol": 0,
+      "valFmt": "num",
+      "varMode": "pct-prev",
+      "varLabel": "Variación mensual",
+      "noun": "confianza empresarial",
+      "art": "la",
+      "grupo": "opinion",
+      "assess": "neutral",
+      "ctx": "",
+      "vw": "variación",
+      "vg": "f",
+      "comp": "frente al mes previo",
+      "goodSign": 0
+    },
+    "BCMM": {
+      "valCol": 2,
+      "valFmt": "usd",
+      "varMode": "abs-prev",
+      "varLabel": "Variación mensual del saldo",
+      "noun": "saldo comercial",
+      "art": "el",
+      "grupo": "balanza",
+      "assess": "neutral",
+      "ctx": "",
+      "vw": "variación del saldo",
+      "vg": "f",
+      "comp": "frente al mes previo",
+      "goodSign": 0
     }
   },
   "COLORS": {
@@ -281,7 +311,9 @@
     "IED",
     "TIPOCAMBIO",
     "TASA",
-    "RESERVAS"
+    "RESERVAS",
+    "EMOE",
+    "BCMM"
   ],
   "LABELS": {
     "PIB": "PIB",
@@ -298,7 +330,9 @@
     "IED": "IED",
     "TIPOCAMBIO": "Tipo de cambio FIX",
     "TASA": "Tasa objetivo Banxico",
-    "RESERVAS": "Reservas internacionales"
+    "RESERVAS": "Reservas internacionales",
+    "EMOE": "EMOE",
+    "BCMM": "BCMM"
   },
   "SIGLA": {
     "PIB": "PIB",
@@ -315,7 +349,9 @@
     "IED": "IED",
     "TIPOCAMBIO": "Tipo de cambio FIX",
     "TASA": "Tasa objetivo",
-    "RESERVAS": "Reservas int."
+    "RESERVAS": "Reservas int.",
+    "EMOE": "EMOE",
+    "BCMM": "BCMM"
   },
   "CAPTIONS": {
     "PIB": "PIB a precios constantes (barras verdes, eje izquierdo) y su variación anual (línea oro, eje derecho).",
@@ -332,7 +368,9 @@
     "BALANZA": "Exportaciones e importaciones (barras) y el saldo comercial (línea, eje derecho). Cifras en millones de dólares.",
     "TIPOCAMBIO": "Tipo de cambio FIX (pesos por dólar).",
     "TASA": "Tasa de interés objetivo del Banco de México (%).",
-    "RESERVAS": "Reservas internacionales netas (millones de dólares)."
+    "RESERVAS": "Reservas internacionales netas (millones de dólares).",
+    "EMOE": "Indicadores de confianza y expectativas empresariales (puntos).",
+    "BCMM": "Exportaciones, importaciones y saldo de la balanza comercial de mercancías (millones de dólares)."
   },
   "ESTADOS": {
     "ACTUALIZADO": {

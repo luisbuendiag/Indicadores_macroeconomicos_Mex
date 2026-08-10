@@ -190,8 +190,8 @@ def _fetch_one(spec: dict, token: str, start_year: int) -> dict | None:
 
     # Para transformaciones yoy/mom/qoq necesitamos observaciones previas.
     transform = spec.get("transform")
-    if transform in ("yoy", "qoq"):
-        # extendemos el inicio un año/trimestre atrás
+    if transform in ("yoy", "qoq", "mom"):
+        # extendemos el inicio un año atrás para tener el periodo previo
         start = max(1, start_year - 1)
     else:
         start = start_year

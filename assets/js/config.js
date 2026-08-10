@@ -17,7 +17,7 @@ export const COLORS = {
 export const PRINCIPAL = ["PIB", "PIBSEC", "IGAE", "IMAI", "BALANZA", "DESOCUP", "INPC", "CONSUMO", "IMFBCF", "IOAE", "EMIM"];
 
 // Indicadores complementarios (no compiten en la navegación principal).
-export const COMPLEMENTARIOS = ["IED", "TIPOCAMBIO", "TASA", "RESERVAS"];
+export const COMPLEMENTARIOS = ["IED", "TIPOCAMBIO", "TASA", "RESERVAS", "EMOE", "BCMM"];
 
 // Orden lógico completo (principal + complementario).
 export const ORDER = [...PRINCIPAL, ...COMPLEMENTARIOS];
@@ -29,7 +29,7 @@ export const LABELS = {
   CONSUMO: "Consumo privado", IMFBCF: "Formación bruta de capital fijo",
   IOAE: "IOAE", EMIM: "EMIM",
   IED: "IED", TIPOCAMBIO: "Tipo de cambio FIX", TASA: "Tasa objetivo Banxico",
-  RESERVAS: "Reservas internacionales",
+  RESERVAS: "Reservas internacionales", EMOE: "EMOE", BCMM: "BCMM",
 };
 
 // Sigla oficial.
@@ -37,7 +37,7 @@ export const SIGLA = {
   PIB: "PIB", PIBSEC: "PIB por actividad económica", IGAE: "IGAE", IMAI: "IMAI",
   BALANZA: "Balanza comercial", DESOCUP: "Tasa de desocupación", INPC: "INPC",
   CONSUMO: "IMCP", IMFBCF: "IMFBCF", IOAE: "IOAE", EMIM: "EMIM",
-  IED: "IED", TIPOCAMBIO: "Tipo de cambio FIX", TASA: "Tasa objetivo", RESERVAS: "Reservas int.",
+  IED: "IED", TIPOCAMBIO: "Tipo de cambio FIX", TASA: "Tasa objetivo", RESERVAS: "Reservas int.", EMOE: "EMOE", BCMM: "BCMM",
 };
 
 // Configuración de KPI y semántica de variación por indicador.
@@ -59,6 +59,8 @@ export const KPICFG = {
   TIPOCAMBIO: { valCol: 0, valFmt: "fx", varMode: "pct-prev", varLabel: "Variación vs. periodo previo", noun: "tipo de cambio FIX", art: "el", grupo: "fx", assess: "neutral", ctx: " (pesos por dólar)", vw: "variación", vg: "f", comp: "frente al periodo previo", goodSign: 0 },
   TASA: { valCol: 0, valFmt: "pct-raw", varMode: "pp-prev", varLabel: "Variación vs. periodo previo", noun: "tasa objetivo", art: "la", grupo: "tasa", assess: "neutral", ctx: "", vw: "variación", vg: "f", comp: "frente al periodo previo", goodSign: 0 },
   RESERVAS: { valCol: 0, valFmt: "usd", varMode: "abs-prev", varLabel: "Variación semanal", noun: "reservas internacionales", art: "las", grupo: "growth", assess: "neutral", ctx: "", vw: "variación", vg: "f", comp: "frente al periodo previo", goodSign: 0 },
+  EMOE: { valCol: 0, valFmt: "num", varMode: "pct-prev", varLabel: "Variación mensual", noun: "confianza empresarial", art: "la", grupo: "opinion", assess: "neutral", ctx: "", vw: "variación", vg: "f", comp: "frente al mes previo", goodSign: 0 },
+  BCMM: { valCol: 2, valFmt: "usd", varMode: "abs-prev", varLabel: "Variación mensual del saldo", noun: "saldo comercial", art: "el", grupo: "balanza", assess: "neutral", ctx: "", vw: "variación del saldo", vg: "f", comp: "frente al mes previo", goodSign: 0 },
 };
 
 export const CAPTIONS = {
@@ -77,6 +79,8 @@ export const CAPTIONS = {
   TIPOCAMBIO: "Tipo de cambio FIX (pesos por dólar).",
   TASA: "Tasa de interés objetivo del Banco de México (%).",
   RESERVAS: "Reservas internacionales netas (millones de dólares).",
+  EMOE: "Indicadores de confianza y expectativas empresariales (puntos).",
+  BCMM: "Exportaciones, importaciones y saldo de la balanza comercial de mercancías (millones de dólares).",
 };
 
 // Vistas de navegación. type: "home" | "indicator" | "group" | "page".
@@ -91,10 +95,11 @@ export const VIEWS = [
 
 // Ventanas temporales de visualización.
 export const WINDOWS = [
-  { id: "12m", label: "Últimos 12 meses", months: 12 },
-  { id: "24m", label: "Últimos 24 meses", months: 24 },
-  { id: "since_2018", label: "Desde 2018", from: new Date(2018, 0, 1) },
-  { id: "max", label: "Máximo disponible", months: null },
+  { id: "3m", label: "3 meses", months: 3 },
+  { id: "6m", label: "6 meses", months: 6 },
+  { id: "1a", label: "1 año", months: 12 },
+  { id: "5a", label: "5 años", months: 60 },
+  { id: "max", label: "Máximo", months: null },
 ];
 
 // Estados de actualización permitidos (para presentación y mapeo de estilos).

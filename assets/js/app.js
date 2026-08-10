@@ -1,7 +1,7 @@
 // Orquestador del tablero macroeconómico V3 (navegación por indicador).
 import { ORDER, PRINCIPAL, COMPLEMENTARIOS, LABELS, SIGLA, CAPTIONS, WINDOWS, COLORS, KPICFG, VIEWS, ESTADOS } from "./config.js";
 import { computeKPI, analysis, annualVar } from "./metrics.js";
-import { buildOption } from "./charts.js";
+import { buildOption, rangeStats, applyWindow } from "./charts.js";
 import { fmtVal, perLong } from "./format.js";
 
 const state = {
@@ -453,8 +453,11 @@ function renderIndicatorView(key) {
   const wt = el("div", { class: "win-toggle no-print", role: "group", "aria-label": "Ventana temporal" });
   WINDOWS.forEach((w) => wt.append(el("button", { class: "win-btn", type: "button", "aria-pressed": String(w.id === winId), onclick: () => { state.windows[ind.key] = w.id; mountChart(ind); wt.querySelectorAll(".win-btn").forEach((b, i) => b.setAttribute("aria-pressed", String(WINDOWS[i].id === w.id))); } }, w.label)));
   panel.append(wt);
-  panel.append(el("div", { class: "chart-caption" }, CAPTIONS[ind.key] || ""));
-  panel.append(el("div", { class: "chart-box", id: `chart-${ind.key}`, role: "img", "aria-label": `Gráfica de ${ind.nombre}` }));
+  panel.append(el("div", { class: "chart-caption", id: `caption-${ind.key}` }, `${CAPTIONS[ind.key] || ""} Datos hasta ${ind.last_observation || "—"}.`.trim()));
+  const chartMain = el("div", { class: "chart-main" });
+  chartMain.append(el("div", { class: "chart-box", id: `chart-${ind.key}`, role: "img", "aria-label": `Gráfica de ${ind.nombre}` }));
+  chartMain.append(el("div", { class: "range-wrap", id: `range-${ind.key}` }));
+  panel.append(chartMain);
 
   // Cuadro comparativo (impresión, estilo Nota) — página 1.
   panel.append(fichaCompareTable(ind, k, cfg, yoy));
@@ -564,7 +567,7 @@ function calColor(clave) {
   const map = {
     PIB: "#002f2a", PIBSEC: "#1e5b4f", IGAE: "#0f7b6c", IMAI: "#a57f2c",
     BALANZA: "#9b2247", DESOCUP: "#611232", INPC: "#8a6d1f", CONSUMO: "#2d6a9f",
-    IMFBCF: "#5a3e8e", IOAE: "#3a7d44", EMIM: "#b5651d",
+    IMFBCF: "#5a3e8e", IOAE: "#3a7d44", EMIM: "#b5651d", EMOE: "#4a7c59", BCMM: "#8b4c6b",
   };
   return map[clave] || "#5c5f6a";
 }
@@ -766,14 +769,55 @@ function renderDownloads() {
   sec.append(grid);
 }
 
+// ---------------- Rango visible ----------------
+function buildRangeCard(ind, winId) {
+  const obs = applyWindow(ind, winId);
+  const st = rangeStats(ind, obs);
+  const wrap = el("div", { class: "range-card" });
+  const table = el("table", { class: "range-table" });
+  const thead = el("thead", {}, el("tr", {},
+    el("th", {}, "Periodo"),
+    el("th", {}, "Último"),
+    el("th", {}, "Máximo"),
+    el("th", {}, "Mínimo")
+  ));
+  const tbody = el("tbody");
+  if (st) {
+    tbody.append(el("tr", {},
+      el("td", { class: "range-period" }, st.lastP),
+      el("td", { class: "range-last" }, st.lastV),
+      el("td", { class: "range-max" }, `${st.maxV} (${st.maxP})`),
+      el("td", { class: "range-min" }, `${st.minV} (${st.minP})`)
+    ));
+  } else {
+    tbody.append(el("tr", {}, el("td", { colspan: 4, class: "muted" }, "Sin observaciones en el rango")));
+  }
+  table.append(thead, tbody);
+  wrap.append(table);
+  return wrap;
+}
+
 // ---------------- Charts lifecycle ----------------
 function mountChart(ind) {
   const dom = document.getElementById(`chart-${ind.key}`);
   if (!dom || typeof echarts === "undefined" || !hasData(ind)) return;
   let chart = state.charts[ind.key];
   if (!chart) { chart = echarts.init(dom, null, { renderer: "canvas" }); state.charts[ind.key] = chart; }
-  const winId = state.windows[ind.key] || state.data.meta?.default_window || "since_2018";
+  const winId = state.windows[ind.key] || state.data.meta?.default_window || "5a";
   chart.setOption(buildOption(ind, winId), true);
+
+  // Actualiza tarjeta de rango visible y leyenda del periodo.
+  const rangeCard = document.getElementById(`range-${ind.key}`);
+  if (rangeCard) {
+    rangeCard.innerHTML = "";
+    rangeCard.append(buildRangeCard(ind, winId));
+  }
+  const cap = document.getElementById(`caption-${ind.key}`);
+  if (cap) {
+    const obs = applyWindow(ind, winId);
+    const last = obs.length ? obs[obs.length - 1].period : (ind.last_observation || "—");
+    cap.textContent = `${CAPTIONS[ind.key] || ""} Datos hasta ${last}.`.trim();
+  }
 }
 function mountAllCharts() { ORDER.map(getInd).filter(Boolean).forEach((ind) => { if (KPICFG[ind.key] && hasData(ind)) mountChart(ind); }); }
 function resizeVisibleCharts() { Object.entries(state.charts).forEach(([key, c]) => { const dom = document.getElementById(`chart-${key}`); if (dom && dom.offsetParent !== null) c.resize(); }); }

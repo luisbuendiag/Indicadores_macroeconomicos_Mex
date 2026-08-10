@@ -74,15 +74,16 @@ def apply_inegi_total(payload: dict, key: str, item: dict, prev_last: str | None
         if ym is not None:
             existing_yms.append(ym)
 
-    max_ym = max(existing_yms, default=None)
+    existing_ym_set = set(existing_yms)
     for o in item["api_total"]:
         ym = o["ym"]
-        if max_ym is None or ym > max_ym:
-            vals = [None] * ncol
-            if 0 <= tcol < ncol:
-                vals[tcol] = round(o["value"], 6)
-            period_label = o.get("period") or inegi.ym_to_label(ym, item.get("freq"))
-            rows.append((ym, {"period": period_label, "values": vals}))
+        if ym in existing_ym_set:
+            continue
+        vals = [None] * ncol
+        if 0 <= tcol < ncol:
+            vals[tcol] = round(o["value"], 6)
+        period_label = o.get("period") or inegi.ym_to_label(ym, item.get("freq"))
+        rows.append((ym, {"period": period_label, "values": vals}))
 
     rows.sort(key=lambda t: t[0])
     ind["observations"] = [o for _, o in rows]
@@ -270,6 +271,7 @@ def apply_freshness_and_meta(payload: dict, log: dict, as_of: date | None = None
         "clave": key,
         "fuente": ind.get("fuente", {}).get("nombre"),
         "serie": ind.get("fuente", {}).get("serie"),
+        "frecuencia": ind.get("frecuencia"),
     } for key, ind in payload["indicators"].items()}
     diag = lib_freshness.diagnose_all(
         payload["indicators"],
