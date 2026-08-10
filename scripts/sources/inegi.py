@@ -55,7 +55,7 @@ def label_to_ym(period: str) -> str | None:
     Devuelve None si no reconoce el formato.
     """
     per = (period or "").strip()
-    # Trimestral: "1T-25 R" -> 2025-01
+    # Trimestral: "1T-25 R" -> 2025-01, "2T-26" -> 2026-04 (mes inicial)
     m_trim = per.split()
     if m_trim and m_trim[0] and "T-" in m_trim[0]:
         q_part, yy = m_trim[0].split("T-")
@@ -63,7 +63,8 @@ def label_to_ym(period: str) -> str | None:
             q = int(q_part)
             y = int(yy)
             if 1 <= q <= 4:
-                return f"{2000 + y:04d}-{q:02d}"
+                month = (q - 1) * 3 + 1
+                return f"{2000 + y:04d}-{month:02d}"
         except ValueError:
             pass
     # Mensual: "Abr 26 P"

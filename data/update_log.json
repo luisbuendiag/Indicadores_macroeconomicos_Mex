@@ -1,11 +1,32 @@
 {
-  "started_at": "2026-08-10T14:13:35+00:00",
+  "started_at": "2026-08-10T17:10:14+00:00",
   "mode": "offline",
   "network_calls": false,
-  "warnings": [],
-  "changes": [],
+  "warnings": [
+    "PIB: REZAGADO – El calendario indica que ya se publicó 2° trimestre 2026, pero el dashboard aún muestra 1T-26."
+  ],
+  "changes": [
+    "calendario: regenerado con as_of=2026-08-10",
+    "métricas: data/metrics.json regenerado",
+    "frescura: PIB -> REZAGADO",
+    "frescura: PIBSEC -> PUBLICACIÓN PENDIENTE",
+    "frescura: IGAE -> ACTUALIZADO",
+    "frescura: IMAI -> ACTUALIZADO",
+    "frescura: CONSUMO -> ACTUALIZADO",
+    "frescura: IED -> PUBLICACIÓN PENDIENTE",
+    "frescura: DESOCUP -> ACTUALIZADO",
+    "frescura: INPC -> ACTUALIZADO",
+    "frescura: BALANZA -> ACTUALIZADO",
+    "frescura: IMFBCF -> ACTUALIZADO",
+    "frescura: IOAE -> ACTUALIZADO",
+    "frescura: EMIM -> ACTUALIZADO",
+    "frescura: TIPOCAMBIO -> PUBLICACIÓN PENDIENTE",
+    "frescura: TASA -> PUBLICACIÓN PENDIENTE",
+    "frescura: RESERVAS -> PUBLICACIÓN PENDIENTE",
+    "meta: last_update_ct=2026-08-10T11:10:14-06:00"
+  ],
   "consultas": [],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-08-10T14:13:35+00:00"
+  "finished_at": "2026-08-10T17:10:14+00:00"
 }

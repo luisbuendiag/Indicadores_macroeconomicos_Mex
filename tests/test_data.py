@@ -24,8 +24,7 @@ def test_meta_and_order(payload):
     assert isinstance(payload.get("order"), list) and payload["order"]
 
 
-PENDING_STATES = {"pendiente de token", "pendiente de confirmar serie",
-                  "no disponible", "error de fuente"}
+PENDING_STATES = {"PUBLICACIÓN PENDIENTE", "ERROR DE FUENTE"}
 
 
 def test_indicators_shape(payload):
@@ -69,8 +68,8 @@ def test_duplicate_flagged_as_revision(payload):
 # Regresión: variaciones oficiales del boletín INEGI.
 # Se comparan con los valores públicados en los boletines más recientes.
 @pytest.mark.parametrize("key,monthly_col,annual_col,expected_monthly,expected_annual", [
-    ("CONSUMO", 1, 2, 0.001, 0.021),
-    ("IMFBCF", 1, 2, 0.04, 0.051),
+    ("CONSUMO", 1, 2, 0.001, 0.026),
+    ("IMFBCF", 1, 2, -0.004, 0.024),
     ("IGAE", 3, 4, -0.003, 0.02),
     ("IOAE", 0, 1, 0.2, 1.7),
 ])

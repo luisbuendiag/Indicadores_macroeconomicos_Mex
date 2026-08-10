@@ -83,7 +83,7 @@ export const CAPTIONS = {
 export const VIEWS = [
   { id: "panorama", type: "home", label: "Panorama macroeconómico" },
   ...PRINCIPAL.map((k) => ({ id: k, type: "indicator", key: k, label: LABELS[k] })),
-  { id: "entorno", type: "group", label: "Entorno financiero", indicators: COMPLEMENTARIOS, secondary: true },
+  { id: "entorno", type: "page", label: "Entorno financiero", indicators: COMPLEMENTARIOS, secondary: true },
   { id: "calendario", type: "page", label: "Calendario de publicaciones", secondary: true },
   { id: "metodologia", type: "page", label: "Fuentes y metodología", secondary: true },
   { id: "descargas", type: "page", label: "Descargas", secondary: true },
@@ -99,12 +99,8 @@ export const WINDOWS = [
 
 // Estados de actualización permitidos (para presentación y mapeo de estilos).
 export const ESTADOS = {
-  "actualizado automáticamente": { cls: "ok", short: "Actualizado" },
-  "dato de respaldo vigente": { cls: "backup", short: "Dato de respaldo" },
-  "pendiente de token": { cls: "pending", short: "Pendiente de token" },
-  "pendiente de confirmar serie": { cls: "pending", short: "Serie por confirmar" },
-  "error de fuente": { cls: "error", short: "Error de fuente" },
-  "dato en revisión": { cls: "review", short: "En revisión" },
-  "actualización parcial": { cls: "partial", short: "Actualización parcial" },
-  "no disponible": { cls: "na", short: "No disponible" },
+  "ACTUALIZADO": { cls: "ok", short: "Actualizado" },
+  "PUBLICACIÓN PENDIENTE": { cls: "pending", short: "Publicación pendiente" },
+  "REZAGADO": { cls: "lag", short: "Rezagado" },
+  "ERROR DE FUENTE": { cls: "error", short: "Error de fuente" },
 };
