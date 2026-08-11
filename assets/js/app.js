@@ -36,17 +36,19 @@ const hasData = (ind) => ind && ind.observations && ind.observations.length > 0;
 
 // ---------------- Calendario (fechas oficiales) ----------------
 const calItems = () => (state.calendario && state.calendario.items) || [];
-// Próxima publicación (estatus "próximo") de un indicador, por clave.
+// Próxima publicación de un indicador (próximo, no anunciada o evento futuro).
 function nextPublication(key) {
+  const asOf = state.data.calendario?.as_of;
+  const asOfD = asOf ? new Date(asOf + "T00:00:00") : new Date();
   const up = calItems()
-    .filter((c) => c.clave === key && c.estatus === "próximo")
+    .filter((c) => c.clave === key && (["próximo", "no_anunciada"].includes(c.estatus) || (c.estatus === "evento" && c.fecha_iso && new Date(c.fecha_iso + "T00:00:00") > asOfD)))
     .sort((a, b) => (a.fecha_iso || "").localeCompare(b.fecha_iso || ""));
   return up[0] || null;
 }
 // Próximas N publicaciones globales (una lista ordenada por fecha).
 function upcomingPublications(n = 8) {
   return calItems()
-    .filter((c) => c.estatus === "próximo" || c.estatus === "pendiente")
+    .filter((c) => ["próximo", "pendiente", "no_anunciada", "evento"].includes(c.estatus))
     .sort((a, b) => (a.fecha_iso || "").localeCompare(b.fecha_iso || ""))
     .slice(0, n);
 }
@@ -164,14 +166,31 @@ function statusLabel(st) {
   if (st === "publicado") return "Publicado";
   if (st === "próximo") return "Próxima publicación";
   if (st === "pendiente") return "Pendiente";
+  if (st === "no_anunciada") return "Fecha oficial no anunciada";
+  if (st === "evento") return "Decisión / anuncio";
+  if (st === "regla") return "Regla de publicación";
   return st || "—";
 }
 
 function buildCalendarioPanel(ind) {
-  const all = calItems().filter((c) => c.clave === ind.key).sort((a, b) => (b.fecha_iso || "").localeCompare(a.fecha_iso || ""));
-  const latest = all.find((c) => c.estatus === "publicado");
-  const next = all.find((c) => c.estatus === "próximo");
-  const pending = all.filter((c) => c.estatus === "pendiente").sort((a, b) => (a.fecha_iso || "").localeCompare(b.fecha_iso || ""));
+  const cal = state.data.calendario || {};
+  const asOfIso = cal.as_of;
+  const asOf = asOfIso ? new Date(asOfIso + "T00:00:00") : new Date();
+
+  let all = calItems().filter((c) => c.clave === ind.key)
+    .filter((c) => c.estatus !== "regla")
+    .sort((a, b) => (b.fecha_iso || "").localeCompare(a.fecha_iso || ""));
+
+  const rule = calItems().find((c) => c.clave === ind.key && c.estatus === "regla");
+
+  const isFuture = (c) => c.fecha_iso && new Date(c.fecha_iso + "T00:00:00") > asOf;
+
+  // Para decisiones/eventos (TASA) la fecha del propio evento es la publicación.
+  const latest = all.find((c) => c.estatus === "publicado" ||
+    (c.estatus === "evento" && !isFuture(c)));
+  const nextCandidates = all.filter((c) => ["próximo", "no_anunciada"].includes(c.estatus) ||
+    (c.estatus === "evento" && isFuture(c)));
+  const next = nextCandidates.sort((a, b) => (a.fecha_iso || "").localeCompare(b.fecha_iso || ""))[0];
 
   const wrap = el("div", { class: "ind-cal" });
 
@@ -180,51 +199,70 @@ function buildCalendarioPanel(ind) {
   hero.append(el("div", { class: "cal-hero-lbl" }, ind.nombre));
   if (latest) {
     hero.append(el("div", { class: "cal-hero-date" }, latest.fecha_publicacion));
-    hero.append(el("div", {}, `Última publicación: ${latest.periodo_referencia} · ${statusLabel(latest.estatus)}`));
+    if (latest.estatus === "evento") {
+      hero.append(el("div", {}, `Última decisión: ${latest.periodo_referencia} · ${statusLabel(latest.estatus)}`));
+    } else {
+      hero.append(el("div", {}, `Última publicación: ${latest.periodo_referencia} · ${statusLabel(latest.estatus)}`));
+    }
+    if (latest.url_boletin) {
+      hero.append(el("a", { href: latest.url_boletin, target: "_blank", rel: "noopener" }, `Comunicado / boletín oficial ↗`));
+    }
   }
   if (next) {
-    hero.append(el("div", { class: "cal-hero-ind" }, `Próxima publicación: ${next.fecha_publicacion} · ${next.periodo_referencia}`));
-    hero.append(el("div", { class: "cal-hero-src" }, `${next.producto} — ${next.institucion}`));
+    if (next.estatus === "no_anunciada") {
+      hero.append(el("div", { class: "cal-hero-ind" }, `Próxima publicación: ${next.periodo_referencia}`));
+      hero.append(el("div", { class: "cal-hero-src" }, next.comentario || "Próxima fecha oficial no anunciada"));
+    } else if (next.estatus === "evento") {
+      hero.append(el("div", { class: "cal-hero-ind" }, `Próxima decisión: ${next.fecha_publicacion} · ${next.periodo_referencia}`));
+      hero.append(el("div", { class: "cal-hero-src" }, `${next.producto} — ${next.institucion}`));
+    } else {
+      hero.append(el("div", { class: "cal-hero-ind" }, `Próxima publicación: ${next.fecha_publicacion} · ${next.periodo_referencia}`));
+      hero.append(el("div", { class: "cal-hero-src" }, `${next.producto} — ${next.institucion}`));
+    }
   } else if (!latest) {
     hero.append(el("div", { class: "muted" }, "Sin fechas registradas para este indicador."));
-    if (ind.frecuencia) hero.append(el("div", { class: "cal-hero-src" }, `Frecuencia: ${ind.frecuencia} · Fuente: ${ind.fuente?.nombre || "—"}`));
-    const url = ind.url_boletin_oficial || (ind.fuente && ind.fuente.link) || null;
-    if (url) hero.append(el("a", { href: url, target: "_blank", rel: "noopener" }, "Consultar fuente oficial ↗"));
+  }
+
+  // Regla de publicación (FIX, etc.)
+  if (rule || ind.regla_publicacion) {
+    hero.append(el("div", { class: "cal-hero-rule" }, `Frecuencia: ${ind.frecuencia_original || ind.frecuencia} · ${rule?.regla_publicacion || ind.regla_publicacion}`));
+  }
+  if (ind.fecha_ultima_observacion) {
+    hero.append(el("div", { class: "cal-hero-src" }, `Última observación disponible: ${ind.fecha_ultima_observacion}`));
+  }
+  const url = ind.url_fuente_oficial || ind.url_boletin_oficial || (ind.fuente && ind.fuente.link) || null;
+  if (url) {
+    hero.append(el("a", { href: url, target: "_blank", rel: "noopener" }, "Consultar fuente oficial ↗"));
   }
   wrap.append(hero);
 
   // Histórico reciente
   const histWrap = el("div", { class: "panel cal-hist" });
-  histWrap.append(el("h3", {}, "Histórico de publicaciones"));
+  histWrap.append(el("h3", {}, "Histórico reciente"));
   if (all.length) {
     const ul = el("ul", { class: "cal-list" });
     all.slice(0, 12).forEach((c) => {
       const li = el("li", {},
-        el("span", { class: "cal-list-date" }, c.fecha_publicacion),
+        el("span", { class: "cal-list-date" }, c.fecha_publicacion || "—"),
         el("span", {}, ` · ${c.periodo_referencia} · ${statusLabel(c.estatus)}`)
       );
       ul.append(li);
+    });
+    histWrap.append(ul);
+  } else if (ind.observations_original) {
+    const recent = [...ind.observations_original].reverse().slice(0, 12);
+    const ul = el("ul", { class: "cal-list" });
+    recent.forEach((o) => {
+      ul.append(el("li", {},
+        el("span", { class: "cal-list-date" }, o.period),
+        el("span", {}, ` · Valor: ${o.values[0]}`)
+      ));
     });
     histWrap.append(ul);
   } else {
     histWrap.append(el("div", { class: "muted" }, "No hay publicaciones registradas."));
   }
   wrap.append(histWrap);
-
-  // Pendientes
-  if (pending.length) {
-    const pendWrap = el("div", { class: "panel cal-pending" });
-    pendWrap.append(el("h3", {}, "Publicaciones pendientes"));
-    const ul = el("ul", { class: "cal-list" });
-    pending.slice(0, 6).forEach((c) => {
-      ul.append(el("li", {},
-        el("span", { class: "cal-list-date" }, c.fecha_publicacion),
-        el("span", {}, ` · ${c.periodo_referencia} · ${statusLabel(c.estatus)}`)
-      ));
-    });
-    pendWrap.append(ul);
-    wrap.append(pendWrap);
-  }
 
   return wrap;
 }
@@ -265,7 +303,11 @@ function setView(id) {
   document.querySelectorAll(".view").forEach((s) => s.classList.toggle("active", s.id === `view-${id}`));
   document.body.setAttribute("data-view", id);
   if (`#${id}` !== window.location.hash) { try { history.replaceState(null, "", `#${id}`); } catch (e) { /* file:// */ } }
-  requestAnimationFrame(() => resizeVisibleCharts());
+  requestAnimationFrame(() => {
+    const ind = getInd(id);
+    if (ind) mountChart(ind);
+    resizeVisibleCharts();
+  });
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 const validView = (id) => VIEWS.some((v) => v.id === id);
@@ -474,6 +516,8 @@ function fichaHeader(ind) {
     pubDato ? ["Fecha de publicación del dato", pubDato] : null,
     rez ? ["Rezago habitual", rez] : null,
     ind.frecuencia ? ["Frecuencia", ind.frecuencia] : null,
+    ind.frecuencia_original ? ["Frecuencia original", ind.frecuencia_original] : null,
+    ind.fecha_ultima_observacion ? ["Última observación original", ind.fecha_ultima_observacion] : null,
     ["Fecha de consulta de la fuente", ind.fecha_consulta || ind.last_updated || "—"],
     ["Fuente oficial", ind.fuente?.nombre || "—"],
   ].filter(Boolean);
@@ -931,6 +975,8 @@ function buildRangeCard(ind, winId) {
 function mountChart(ind) {
   const dom = document.getElementById(`chart-${ind.key}`);
   if (!dom || typeof echarts === "undefined" || !hasData(ind)) return;
+  // Usa granularidad original cuando la ficha del indicador es la vista activa.
+  ind._useOriginal = (state.active === ind.key) && !!(ind.observations_original && ind.observations_original.length);
   let chart = state.charts[ind.key];
   if (!chart) { chart = echarts.init(dom, null, { renderer: "canvas" }); state.charts[ind.key] = chart; }
   const winId = state.windows[ind.key] || state.data.meta?.default_window || "5a";

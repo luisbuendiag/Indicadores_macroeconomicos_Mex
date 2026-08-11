@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "started_at": "2026-08-11T15:45:46+00:00",
+=======
+  "started_at": "2026-08-11T15:44:21+00:00",
+>>>>>>> 65fb385 (Pipeline, frontend y tests: frescura, calendarios y granularidad.)
   "mode": "offline",
   "network_calls": false,
   "warnings": [
@@ -28,10 +32,18 @@
     "frescura: RESERVAS -> ACTUALIZADO",
     "frescura: EMOE -> ACTUALIZADO",
     "frescura: BCMM -> ACTUALIZADO",
+<<<<<<< HEAD
     "meta: last_update_ct=2026-08-11T09:45:46-06:00"
+=======
+    "meta: last_update_ct=2026-08-11T09:44:21-06:00"
+>>>>>>> 65fb385 (Pipeline, frontend y tests: frescura, calendarios y granularidad.)
   ],
   "consultas": [],
   "critical": [],
   "result": "OK",
+<<<<<<< HEAD
   "finished_at": "2026-08-11T15:45:46+00:00"
+=======
+  "finished_at": "2026-08-11T15:44:21+00:00"
+>>>>>>> 65fb385 (Pipeline, frontend y tests: frescura, calendarios y granularidad.)
 }

@@ -26,6 +26,19 @@ FMT = {
 }
 
 
+def _raw_observations(datos, factor: float = 1.0) -> list[dict]:
+    """Conserva observaciones diarias/semanales originales con periodo ISO."""
+    obs = []
+    for d in datos:
+        try:
+            dt = datetime.strptime(d["fecha"], "%d/%m/%Y")
+            val = float(d["dato"].replace(",", "")) * factor
+        except (ValueError, KeyError, TypeError):
+            continue
+        obs.append({"period": dt.strftime("%Y-%m-%d"), "values": [round(val, 6)]})
+    return obs
+
+
 def _monthly_last(datos, factor: float = 1.0, end: str | None = None) -> list[dict]:
     """Agrega observaciones diarias/semanales al último valor de cada mes.
 
@@ -93,15 +106,31 @@ def fetch(config: dict, start: str = "2018-01-01", end: str | None = None) -> So
             warns.append(f"Banxico {key}: sin observaciones mensuales.")
             continue
 
+        raw = _raw_observations(datos, factor)
+        if not raw:
+            warns.append(f"Banxico {key}: sin observaciones originales.")
+            continue
+
         last = obs[-1]
+        last_raw = raw[-1]
+        frecuencia_meta = (meta.get("frecuencia") or "").lower()
+        frecuencia_original = "Diaria"
+        if "semanal" in frecuencia_meta:
+            frecuencia_original = "Semanal"
+        elif "diaria" in frecuencia_meta or key in ("TIPOCAMBIO", "TASA"):
+            frecuencia_original = "Diaria"
+
         out[key] = {
             "key": key,
             "nombre": meta.get("nombre"),
             "frecuencia": meta.get("frecuencia", "Mensual"),
+            "frecuencia_original": frecuencia_original,
             "unidad": meta.get("unidad"),
             "columns": [{"label": meta.get("nombre"), "index": 0, "fmt": FMT.get(key, "num")}],
             "observations": obs,
+            "observations_original": raw,
             "last_observation": last["period"],
+            "fecha_ultima_observacion": last_raw["period"],
             "fuente": {
                 "nombre": "Banco de México (SIE)",
                 "serie": serie,
@@ -110,9 +139,12 @@ def fetch(config: dict, start: str = "2018-01-01", end: str | None = None) -> So
             },
             "api_meta": {
                 "serie": serie,
-                "n_obs": len(obs),
+                "n_obs_mensual": len(obs),
+                "n_obs_original": len(raw),
                 "ultimo_valor": last["values"][0],
+                "ultimo_valor_original": last_raw["values"][0],
                 "ultima_observacion": last["period"],
+                "ultima_observacion_original": last_raw["period"],
                 "ultima_ym": None,
             },
         }

@@ -15,7 +15,8 @@ function addMonths(d, n) {
 
 export function applyWindow(ind, windowId) {
   const win = WINDOWS.find((w) => w.id === windowId) || WINDOWS[2];
-  let obs = ind.observations || [];
+  const base = ind._useOriginal && ind.observations_original?.length ? ind.observations_original : (ind.observations || []);
+  let obs = base;
   if (!obs.length || win.id === "max") return obs;
   if (win.months) {
     const lastD = periodToDate(obs[obs.length - 1].period);
@@ -29,7 +30,7 @@ export function applyWindow(ind, windowId) {
     }
   } else if (win.from) {
     obs = obs.filter((o) => { const d = periodToDate(o.period); return !d || d >= win.from; });
-    if (!obs.length) obs = ind.observations;
+    if (!obs.length) obs = base;
   }
   return obs;
 }
