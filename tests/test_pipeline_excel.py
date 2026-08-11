@@ -57,8 +57,10 @@ def test_excel_has_new_sheets(tmp_path):
     for req in ("Síntesis de coyuntura", "Metodología y fuentes", "Control de actualizaciones"):
         assert req in wb.sheetnames
     assert "Resumen ejecutivo" not in wb.sheetnames
-    # se conservan exactamente 16 hojas
-    assert len(wb.sheetnames) == 16
+    # La hoja "Exportaciones" quedó obsoleta; BCMM se presenta como "Balanza comercial".
+    assert "Exportaciones" not in wb.sheetnames
+    # se conservan exactamente 15 hojas (11 principales + BCMM + 3 nuevas)
+    assert len(wb.sheetnames) == 15
     # hojas originales conservadas
     for orig in ("PIB", "IGAE", "Balanza comercial", "INPC (Inflación)"):
         assert orig in wb.sheetnames

@@ -155,6 +155,20 @@ def apply_profile(payload: dict, meta_file: Path = META_FILE) -> list[str]:
             log.append(f"nombre override {key}: {ind.get('nombre')} -> {prof['nombre']}")
             ind["nombre"] = prof["nombre"]
 
+    # Sincroniza columnas desde los scaffolds cuando la estructura coincide.
+    for key, sc in meta.get("scaffolds", {}).items():
+        ind = inds.get(key)
+        if not ind or not sc.get("columns"):
+            continue
+        if len(ind.get("columns", [])) == len(sc["columns"]):
+            for c, sc_c in zip(ind["columns"], sc["columns"]):
+                if sc_c.get("label") and c.get("label") != sc_c["label"]:
+                    c["label"] = sc_c["label"]
+                    log.append(f"columna label {key} col{sc_c.get('index')}: {c.get('label')} -> {sc_c['label']}")
+                if sc_c.get("fmt") and c.get("fmt") != sc_c["fmt"]:
+                    c["fmt"] = sc_c["fmt"]
+                    log.append(f"columna fmt {key} col{sc_c.get('index')}: {c.get('fmt')} -> {sc_c['fmt']}")
+
     # 3) Estado honesto por indicador.
     for key, ind in inds.items():
         token = ind.get("requiere_token")
@@ -184,6 +198,12 @@ def apply_profile(payload: dict, meta_file: Path = META_FILE) -> list[str]:
         ind["fecha_consulta"] = ind.get("last_checked")
 
     # 4) Orden: principales (según perfil) y luego complementarios.
+    # Eliminar indicadores obsoletos que ya no están en el perfil.
+    permitidos = set(meta.get("principal", [])) | set(meta.get("complementario", [])) | set(meta.get("scaffolds", {}).keys())
+    for key in list(inds.keys()):
+        if key not in permitidos:
+            del inds[key]
+            log.append(f"indicador removido del perfil: {key}")
     principal = [k for k in meta.get("principal", []) if k in inds]
     complementario = [k for k in meta.get("complementario", []) if k in inds]
     rest = [k for k in inds if k not in principal and k not in complementario]

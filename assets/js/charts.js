@@ -1,23 +1,57 @@
 // Construcción de gráficas con ECharts, replicando la identidad visual sobria.
-import { COLORS, WINDOWS } from "./config.js";
+import { COLORS, WINDOWS, KPICFG } from "./config.js";
 import { periodToDate } from "./format.js";
+import { primarySeriesForObs } from "./metrics.js";
+import { fmtVal } from "./format.js";
 
 // Homologación institucional: principal=verde, secundaria=guinda,
 // tercera=dorado, referencia/promedio/límites=gris, alerta negativa=guinda oscuro.
 const G = COLORS.GREEN, SEC = COLORS.CRIMSON, Go = COLORS.GOLD, REF = COLORS.GRAY, INK = COLORS.INK;
 
 // Filtra las observaciones de un indicador según la ventana temporal.
+function addMonths(d, n) {
+  return new Date(d.getFullYear(), d.getMonth() + n, 1);
+}
+
 export function applyWindow(ind, windowId) {
   const win = WINDOWS.find((w) => w.id === windowId) || WINDOWS[2];
-  let obs = ind.observations;
-  if (win.id === "max") return obs;
+  let obs = ind.observations || [];
+  if (!obs.length || win.id === "max") return obs;
   if (win.months) {
-    obs = obs.slice(-win.months);
+    const lastD = periodToDate(obs[obs.length - 1].period);
+    if (lastD) {
+      const fromD = addMonths(lastD, -win.months);
+      const filtered = obs.filter((o) => { const d = periodToDate(o.period); return d && d >= fromD; });
+      if (filtered.length) obs = filtered;
+      else obs = obs.slice(-win.months);
+    } else {
+      obs = obs.slice(-win.months);
+    }
   } else if (win.from) {
     obs = obs.filter((o) => { const d = periodToDate(o.period); return !d || d >= win.from; });
-    if (!obs.length) obs = ind.observations; // resguardo: no dejar vacío
+    if (!obs.length) obs = ind.observations;
   }
   return obs;
+}
+
+// Estadísticas del rango visible para la serie primaria.
+export function rangeStats(ind, obs) {
+  const cfg = KPICFG[ind.key] || null;
+  const series = primarySeriesForObs(obs, ind.key);
+  const idxs = series.map((v, i) => (v == null ? -1 : i)).filter((i) => i >= 0);
+  if (!idxs.length) return null;
+  const lastI = idxs[idxs.length - 1];
+  let maxI = idxs[0], minI = idxs[0];
+  idxs.forEach((i) => { if (series[i] > series[maxI]) maxI = i; if (series[i] < series[minI]) minI = i; });
+  const valFmt = cfg ? cfg.valFmt : (ind.columns && ind.columns[0] ? ind.columns[0].fmt : "num");
+  return {
+    lastP: obs[lastI].period,
+    lastV: fmtVal(series[lastI], valFmt),
+    maxP: obs[maxI].period,
+    maxV: fmtVal(series[maxI], valFmt),
+    minP: obs[minI].period,
+    minV: fmtVal(series[minI], valFmt),
+  };
 }
 
 // Devuelve una especificación neutral a partir del indicador (obs filtradas).
@@ -42,6 +76,8 @@ function chartSpec(ind, obs) {
     case "RESERVAS": return { periods: P, lines: [{ name: "Reservas internacionales", values: col(0), color: G }], leftName: "Millones de dólares", leftFmt: "compact" };
     case "TIPOCAMBIO": return { periods: P, lines: [{ name: "Tipo de cambio FIX", values: col(0), color: G }], leftName: "Pesos por dólar", leftFmt: "idx" };
     case "TASA": return { periods: P, lines: [{ name: "Tasa objetivo (%)", values: col(0), color: G }], leftName: "Porcentaje (%)", leftFmt: "pct" };
+    case "EMOE": return { periods: P, lines: [{ name: "Confianza empresarial", values: col(0), color: G }, { name: "Var. mensual (puntos)", values: col(1).map((v) => v == null ? null : v), color: SEC, axis: "right" }], leftName: "Puntos", rightName: "Var. mensual", leftFmt: "idx", rightFmt: "idx" };
+    case "BCMM": return { periods: P, bars: [{ name: "Exportaciones", values: col(0), color: G }, { name: "Importaciones", values: col(1), color: SEC }], lines: [{ name: "Saldo (X − M)", values: saldo, color: Go, axis: "right" }], leftName: "Millones de dólares", rightName: "Saldo (mdd)", leftFmt: "compact", rightFmt: "compact" };
     default: return { periods: P, lines: [{ name: ind.nombre, values: col(0), color: G }], leftName: "", leftFmt: "num" };
   }
 }
@@ -74,11 +110,14 @@ export function buildOption(ind, windowId) {
   const lines = spec.lines || [];
   const hasRight = [...bars, ...lines].some((s) => s.axis === "right");
 
+  const leftHasBars = bars.some((b) => b.axis !== "right");
+  const rightHasBars = bars.some((b) => b.axis === "right");
   const yAxis = [{
     type: "value", name: spec.leftName, nameLocation: "middle", nameGap: 52,
     nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 11, fontWeight: 500 },
     axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 11, formatter: axisFormatter(spec.leftFmt) },
     splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false },
+    scale: !leftHasBars,
   }];
   if (hasRight) {
     yAxis.push({
@@ -86,6 +125,7 @@ export function buildOption(ind, windowId) {
       nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 11, fontWeight: 500 },
       axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 11, formatter: axisFormatter(spec.rightFmt) },
       splitLine: { show: false }, axisLine: { show: false }, axisTick: { show: false },
+      scale: !rightHasBars,
     });
   }
 
@@ -99,14 +139,23 @@ export function buildOption(ind, windowId) {
       _fmt: b.axis === "right" ? rightFmt : leftFmt,
     });
   });
+  function refLine(fmt) {
+    if (fmt === "pct") return { yAxis: 0, name: "Cero", lineStyle: { color: COLORS.GRAY, type: "dashed", width: 1 }, label: { show: false } };
+    if (fmt === "idx") return { yAxis: 100, name: "Base 100", lineStyle: { color: COLORS.GRAY, type: "dashed", width: 1 }, label: { show: false } };
+    return null;
+  }
   lines.forEach((l) => {
-    series.push({
+    const fmt = l.axis === "right" ? rightFmt : leftFmt;
+    const ref = refLine(fmt);
+    const s = {
       name: l.name, type: "line", data: l.values, yAxisIndex: l.axis === "right" ? 1 : 0,
       smooth: false, symbol: "circle", symbolSize: 5, connectNulls: false,
       lineStyle: { color: l.color, width: 2.4, type: l.dash ? "dashed" : "solid" },
       itemStyle: { color: l.color }, emphasis: { focus: "series" },
-      _fmt: l.axis === "right" ? rightFmt : leftFmt,
-    });
+      _fmt: fmt,
+    };
+    if (ref) s.markLine = { symbol: "none", data: [ref], animation: false };
+    series.push(s);
   });
 
   // markPoint de máximo/mínimo sobre la primera serie de barras o línea principal.

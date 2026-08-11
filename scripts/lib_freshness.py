@@ -13,9 +13,10 @@ almacenado, el calendario y el resultado del pipeline (``update_log``).
 """
 from __future__ import annotations
 
+import calendar
 import json
 import re
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -124,6 +125,156 @@ def latest_expected(calendar: list[dict], key: str, as_of: date | None = None) -
     return min(items, key=lambda i: i["fecha_iso"])
 
 
+def _first_business_day(year: int, month: int) -> date:
+    """Primer día hábil (lunes-viernes) del mes, ignorando días festivos."""
+    d = date(year, month, 1)
+    while d.weekday() >= 5:
+        d += timedelta(days=1)
+    return d
+
+
+def _first_friday(year: int, month: int) -> date:
+    d = date(year, month, 1)
+    while d.weekday() != 4:
+        d += timedelta(days=1)
+    return d
+
+
+def _prev_month(d: date) -> date:
+    if d.month == 1:
+        return date(d.year - 1, 12, 1)
+    return date(d.year, d.month - 1, 1)
+
+
+def _prev_quarter(d: date, offset_months: int = 3) -> date:
+    """Resta `offset_months` meses y devuelve el primer mes de ese trimestre."""
+    year = d.year
+    month = d.month - offset_months
+    while month <= 0:
+        month += 12
+        year -= 1
+    q = (month - 1) // 3
+    month = q * 3 + 1
+    return date(year, month, 1)
+
+
+def _quarter_after(d: date, months_after: int = 2) -> date:
+    """Devuelve el trimestre de `d + months_after` meses."""
+    year = d.year
+    month = d.month + months_after
+    while month > 12:
+        month -= 12
+        year += 1
+    q = (month - 1) // 3
+    month = q * 3 + 1
+    return date(year, month, 1)
+
+
+def _ym_to_period(ym: str, frecuencia: str | None = None) -> str | None:
+    """Convierte '2026-07' al periodo del dashboard ('Jul 26' o '1T-26')."""
+    if not ym:
+        return None
+    try:
+        y, m = map(int, ym.split("-"))
+    except Exception:
+        return None
+    if frecuencia and "trimest" in frecuencia.lower():
+        q = (m - 1) // 3 + 1
+        return f"{q}T-{y % 100}"
+    return f"{inegi.MESES[m - 1].capitalize()} {y % 100}"
+
+
+def expected_period_from_frequency(
+    frecuencia: str | None, as_of: date
+) -> tuple[str | None, str | None]:
+    """Periodo esperado para series sin calendario oficial.
+
+    Devuelve (periodo_ym, periodo_label) o (None, None) si no se puede inferir.
+    """
+    f = (frecuencia or "").lower().replace(" ", "").replace("->mensual", "")
+    if not f:
+        return None, None
+
+    # Si la serie se agrega y muestra como mensual (Diaria->mensual,
+    # Semanal->mensual), el valor del mes en curso sólo estará disponible
+    # cuando el mes termine; mientras tanto el mes esperado es el anterior.
+    if (frecuencia or "").lower().replace(" ", "").endswith("->mensual"):
+        prev = _prev_month(as_of)
+        ym = f"{prev.year}-{prev.month:02d}"
+        return ym, _ym_to_period(ym, frecuencia)
+
+    if f in ("diaria",):
+        # Series diarias: se espera el mes actual desde el primer día hábil.
+        first_biz = _first_business_day(as_of.year, as_of.month)
+        if as_of >= first_biz:
+            ym = f"{as_of.year}-{as_of.month:02d}"
+        else:
+            prev = _prev_month(as_of)
+            ym = f"{prev.year}-{prev.month:02d}"
+        return ym, _ym_to_period(ym, frecuencia)
+
+    if f in ("semanal",):
+        # Series semanales: se espera el mes actual desde el primer viernes.
+        first_fri = _first_friday(as_of.year, as_of.month)
+        if as_of >= first_fri:
+            ym = f"{as_of.year}-{as_of.month:02d}"
+        else:
+            prev = _prev_month(as_of)
+            ym = f"{prev.year}-{prev.month:02d}"
+        return ym, _ym_to_period(ym, frecuencia)
+
+    if f == "mensual":
+        # Sin calendario mensual, se espera el mes anterior (publicación con lag).
+        prev = _prev_month(as_of)
+        ym = f"{prev.year}-{prev.month:02d}"
+        return ym, _ym_to_period(ym, frecuencia)
+
+    if f == "trimestral":
+        # Sin calendario trimestral, se espera el trimestre recién cerrado
+        # ~60 días después de su último día. Ej. Q2 (termina 30 de junio):
+        # antes de ~finales de agosto se espera Q1; después se espera Q2.
+        q_end = _prev_quarter(as_of, 3)  # trimestre que acaba de cerrar
+        last_q_month = q_end.month + 2
+        last_q_day = calendar.monthrange(q_end.year, last_q_month)[1]
+        q_end_date = date(q_end.year, last_q_month, last_q_day)
+        days_since_q_end = (as_of - q_end_date).days
+        if days_since_q_end >= 60:
+            ym = f"{q_end.year}-{q_end.month:02d}"
+        else:
+            prev = _prev_quarter(q_end, 3)
+            ym = f"{prev.year}-{prev.month:02d}"
+        return ym, _ym_to_period(ym, frecuencia)
+
+    return None, None
+
+
+def _prev_period(ym: str, frecuencia: str | None) -> str | None:
+    """Devuelve el periodo inmediatamente anterior a `ym` según la frecuencia."""
+    try:
+        y, m = map(int, ym.split("-"))
+    except Exception:
+        return None
+    f = (frecuencia or "").lower().replace(" ", "")
+    if "trimest" in f:
+        q = (m - 1) // 3
+        if q == 0:
+            return f"{y - 1}-10"  # Q4 del año anterior
+        return f"{y}-{(q - 1) * 3 + 1:02d}"  # mes de inicio del trimestre anterior
+    # Mensual, diaria o semanal -> mes anterior.
+    if m == 1:
+        return f"{y - 1}-12"
+    return f"{y}-{m - 1:02d}"
+
+
+def _mexico_city_today() -> date:
+    """Fecha de hoy en America/Mexico_City."""
+    try:
+        from zoneinfo import ZoneInfo
+        return datetime.now(ZoneInfo("America/Mexico_City")).date()
+    except Exception:
+        return date.today()
+
+
 def source_had_error(key: str, update_log: dict | None = None, manifest_row: dict | None = None) -> bool:
     """Revisa si el pipeline reportó un error real para el indicador.
 
@@ -177,7 +328,7 @@ def compute_state(
       - motivo
     """
     if as_of is None:
-        as_of = date.today()
+        as_of = _mexico_city_today()
     if calendar is None:
         calendar = load_calendar()
     if update_log is None:
@@ -196,11 +347,48 @@ def compute_state(
     # Error de fuente si el pipeline falló explícitamente para este indicador.
     had_error = source_had_error(key, update_log, manifest_row)
 
+    freq = (row or {}).get("frecuencia") or (manifest_row or {}).get("frecuencia")
+
+    # Si no hay publicado en el calendario pero hay una próxima publicación:
+    #  - Si el dashboard ya alcanzó la próxima publicación, es ACTUALIZADO.
+    #  - Si aún no llega su fecha y el dashboard está exactamente un periodo
+    #    antes, es ACTUALIZADO (la próxima publicación aún no se espera).
+    #  - Si aún no llega su fecha pero el dashboard está más atrasado, es
+    #    PENDIENTE (se espera una publicación intermedia no registrada).
+    #  - Si la fecha ya pasó y el dashboard no alcanzó el periodo, es REZAGADO.
+    if not pub and prox:
+        prox_ym = _period_to_ym(prox.get("periodo_referencia"))
+        prox_date = date.fromisoformat(prox["fecha_iso"]) if prox.get("fecha_iso") else None
+        prox_due = prox_date and as_of >= prox_date
+        if prox_ym and dashboard_ym:
+            if dashboard_ym == prox_ym:
+                official_period = prox.get("periodo_referencia")
+                official_ym = prox_ym
+                pub = prox  # tratar como publicado para metadata
+            elif dashboard_ym > prox_ym and prox_due:
+                # El dashboard está más adelantado que el calendario próximo.
+                official_period = dashboard_period_clean
+                official_ym = dashboard_ym
+            elif not prox_due and dashboard_ym == _prev_period(prox_ym, freq):
+                # La próxima publicación no vence aún; el dashboard está un
+                # periodo atrás, que es el último disponible.
+                official_period = dashboard_period_clean
+                official_ym = dashboard_ym
+
+    # Si sigue sin haber periodo oficial, inferirlo de la frecuencia (Banxico,
+    # series sin calendario, etc.).
+    fallback_ym = None
+    fallback_label = None
+    if not official_ym and freq:
+        fallback_ym, fallback_label = expected_period_from_frequency(freq, as_of)
+        if fallback_ym:
+            official_ym = fallback_ym
+            official_period = fallback_label
+
     # Calcular comparación cuando tenemos ambos periodos.
     compara = None
     if dashboard_ym and official_ym:
         compara = (dashboard_ym > official_ym) - (dashboard_ym < official_ym)
-        # equivalente a cmp: -1, 0, 1
 
     if had_error:
         estado = ESTADOS["ERROR_FUENTE"]
@@ -211,26 +399,29 @@ def compute_state(
     elif not official_ym:
         estado = ESTADOS["PUBLICACION_PENDIENTE"]
         motivo = "No hay publicación oficial registrada en el calendario aún."
+    elif not dashboard_ym and not (manifest_row or {}).get("serie") and (manifest_row or {}).get("fuente"):
+        estado = ESTADOS["PUBLICACION_PENDIENTE"]
+        motivo = "No hay datos cargados; falta confirmar el ID de serie oficial."
     elif not dashboard_ym:
         estado = ESTADOS["ERROR_FUENTE"]
         motivo = "El dashboard no tiene periodo de referencia."
     elif compara == -1:
         estado = ESTADOS["REZAGADO"]
         motivo = (
-            f"El calendario indica que ya se publicó {official_period}, "
+            f"El periodo esperado es {official_period}, "
             f"pero el dashboard aún muestra {dashboard_period_clean}."
         )
     elif compara == 0:
         estado = ESTADOS["ACTUALIZADO"]
         motivo = (
             f"El periodo cargado ({dashboard_period_clean}) coincide con el último "
-            f"periodo oficial publicado ({official_period})."
+            f"periodo esperado ({official_period})."
         )
-    else:  # compara == 1: el dashboard está más adelantado que el calendario
+    else:  # compara == 1: el dashboard está más adelantado que el esperado
         estado = ESTADOS["ACTUALIZADO"]
         motivo = (
             f"El dashboard tiene {dashboard_period_clean}, que está adelantado "
-            f"al calendario ({official_period}); se recomienda revisar el calendario."
+            f"al periodo esperado ({official_period}); se recomienda revisar el calendario."
         )
 
     # Si está actualizado pero no hay datos (observations vacío), pasa a pendiente/error.

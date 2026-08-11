@@ -3,9 +3,27 @@
   "banxico": {
     "_endpoint": "https://www.banxico.org.mx/SieAPIRest/service/v1/series/{series}/datos/{start}/{end}?token={token}",
     "_nota": "Token gratuito en https://www.banxico.org.mx/SieAPIRest/service/v1/token. Las series SF43718, SF61745 y SF43707 son las claves oficiales del SIE para tipo de cambio FIX, tasa objetivo y reservas internacionales.",
-    "TIPOCAMBIO": { "serie": "SF43718", "nombre": "Tipo de cambio FIX (pesos por dólar)", "frecuencia": "Diaria->mensual", "unidad": "Pesos por dólar", "link": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do" },
-    "TASA": { "serie": "SF61745", "nombre": "Tasa objetivo de Banco de México", "frecuencia": "Diaria->mensual", "unidad": "Porcentaje anual", "link": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html" },
-    "RESERVAS": { "serie": "SF43707", "nombre": "Reservas internacionales", "frecuencia": "Semanal->mensual", "unidad": "Millones de dólares", "link": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/" }
+    "TIPOCAMBIO": {
+      "serie": "SF43718",
+      "nombre": "Tipo de cambio FIX (pesos por dólar)",
+      "frecuencia": "Diaria->mensual",
+      "unidad": "Pesos por dólar",
+      "link": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do"
+    },
+    "TASA": {
+      "serie": "SF61745",
+      "nombre": "Tasa objetivo de Banco de México",
+      "frecuencia": "Diaria->mensual",
+      "unidad": "Porcentaje anual",
+      "link": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html"
+    },
+    "RESERVAS": {
+      "serie": "SF43707",
+      "nombre": "Reservas internacionales",
+      "frecuencia": "Semanal->mensual",
+      "unidad": "Millones de dólares",
+      "link": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/"
+    }
   },
   "inegi": {
     "_endpoint": "https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/{ids}/es/{geo}/false/{db}/2.0/{token}?type=json",
@@ -182,34 +200,6 @@
         "confirmar": true
       }
     ],
-    "BALANZA": [
-      {
-        "serie": "33223",
-        "confirmar": false,
-        "nombre": "Exportaciones",
-        "descripcion_serie": "Exportaciones totales (millones de dólares)",
-        "frecuencia": "Mensual",
-        "unidad": "Millones de dólares",
-        "tipo_serie": "Serie original",
-        "db": "BIE-BISE",
-        "geo": "00",
-        "columna_objetivo": 0,
-        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=36695#D33223"
-      },
-      {
-        "serie": "33226",
-        "confirmar": false,
-        "nombre": "Importaciones",
-        "descripcion_serie": "Importaciones totales (millones de dólares)",
-        "frecuencia": "Mensual",
-        "unidad": "Millones de dólares",
-        "tipo_serie": "Serie original",
-        "db": "BIE-BISE",
-        "geo": "00",
-        "columna_objetivo": 1,
-        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=36695#D33226"
-      }
-    ],
     "IMFBCF": {
       "_nota": "Indicador Mensual de la Formación Bruta de Capital Fijo. Serie pendiente de confirmar.",
       "serie": null,
@@ -236,9 +226,20 @@
         "link": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=562444#D796224"
       },
       {
-        "_nota": "La variación mensual desestacionalizada de la producción NO tiene un ID BIE confirmado. Se obtiene del boletín EMIM (parser de inegi_bulletin).",
-        "serie": null,
-        "confirmar": true
+        "_nota": "Variación mensual del volumen de la producción, calculada a partir del índice EMIM 2018 (no es la cifra desestacionalizada oficial; reemplazar cuando se confirme el ID BIE).",
+        "serie": "796224",
+        "confirmar": false,
+        "nombre": "Variación mensual",
+        "descripcion_serie": "Variación mensual respecto al mes inmediato anterior (%)",
+        "frecuencia": "Mensual",
+        "unidad": "Porcentaje",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 1,
+        "transform": "mom",
+        "factor": 0.01,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=562444#D796224"
       }
     ],
     "PRODIND": {
@@ -248,7 +249,68 @@
       "mineria": null,
       "energia": null,
       "confirmar": true
-    }
+    },
+    "EMOE": [
+      {
+        "_nota": "Indicador de Confianza Empresarial, cifras originales, serie de la EMOE.",
+        "serie": "701401",
+        "confirmar": false,
+        "nombre": "Confianza empresarial",
+        "descripcion_serie": "Indicador de confianza empresarial, cifras originales",
+        "frecuencia": "Mensual",
+        "unidad": "Puntos",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 0,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=682416#D701401"
+      },
+      {
+        "_nota": "Diferencia mensual en puntos del indicador de confianza empresarial (derivado de la serie 701401).",
+        "serie": "701401",
+        "confirmar": false,
+        "nombre": "Var. mensual",
+        "descripcion_serie": "Diferencia respecto al mes previo (puntos)",
+        "frecuencia": "Mensual",
+        "unidad": "Puntos",
+        "tipo_serie": "Derivado",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 1,
+        "transform": "mom_abs",
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=682416#D701401"
+      }
+    ],
+    "BCMM": [
+      {
+        "_nota": "Balanza Comercial de Mercancías de México (revisada): exportaciones totales (millones de dólares).",
+        "serie": "33223",
+        "confirmar": false,
+        "nombre": "Exportaciones",
+        "descripcion_serie": "Exportaciones totales (millones de dólares)",
+        "frecuencia": "Mensual",
+        "unidad": "Millones de dólares",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 0,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=36695#D33223"
+      },
+      {
+        "_nota": "Balanza Comercial de Mercancías de México (revisada): importaciones totales (millones de dólares).",
+        "serie": "33226",
+        "confirmar": false,
+        "nombre": "Importaciones",
+        "descripcion_serie": "Importaciones totales (millones de dólares)",
+        "frecuencia": "Mensual",
+        "unidad": "Millones de dólares",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 1,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=36695#D33226"
+      }
+    ]
   },
   "worldbank": {
     "_endpoint": "https://api.worldbank.org/v2/country/MEX/indicator/{id}?format=json&per_page=500",

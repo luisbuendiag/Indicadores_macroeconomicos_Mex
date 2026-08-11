@@ -52,6 +52,7 @@ BULLETIN_URLS = {
     "EMIM": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/emim/emim{year}_{mm}.pdf",
     "IGAE": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/igae/igae{year}_{mm}.pdf",
     "PIBT": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/pibt/pib_Pconst{year}_{mm}.pdf",
+    "EOPIBT": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/pibo/pib_eo{year}_{mm}.pdf",
 }
 
 MES = {
@@ -607,6 +608,116 @@ def _parse_pibt(pdf_bytes: bytes, pub_date: tuple[int, int, int] | None) -> dict
     return out
 
 
+def _parse_eopibt(pdf_bytes: bytes, pub_date: tuple[int, int, int] | None) -> dict[str, dict[str, dict]] | None:
+    """Extrae la variación del boletín de Estimación Oportuna del PIBT (EOPIBT).
+
+    El boletín 'pib_eo{year}_{mm}.pdf' publica cifras preliminares con:
+      - Cuadro 1 (página 2): variación trimestral (qoq) y anual desestacionalizada
+        (yoy) del PIB oportuno.
+      - Cuadro 2 (página 3): variación anual original del PIB.
+    No contiene nivel del PIB; por eso se marca la columna 0 del periodo nuevo
+    como pendiente en el pipeline.
+    """
+    if pub_date is None:
+        return None
+
+    qmap = {
+        "primer": 1, "1er": 1, "1o": 1, "1": 1,
+        "segundo": 2, "2o": 2, "2": 2,
+        "tercero": 3, "3er": 3, "3o": 3, "3": 3,
+        "cuarto": 4, "4o": 4, "4": 4,
+    }
+
+    # La portada y el cuerpo contienen la referencia al trimestre.
+    text = "\n".join(
+        _pdf_page_text(pdf_bytes, i) for i in range(min(3, len(pdfplumber.open(BytesIO(pdf_bytes)).pages)))
+    )
+    ref = re.search(r"al\s+(.+?)\s+trimestre\s+de\s+(\d{4})", text, re.IGNORECASE)
+    if not ref:
+        return None
+    qraw = ref.group(1).strip().lower().replace("°", "").replace(".", "")
+    qraw = re.sub(r"(\d)(er|o)$", r"\1", qraw)
+    quarter = qmap.get(qraw)
+    if quarter is None:
+        return None
+    year = int(ref.group(2))
+    month = (quarter - 1) * 3 + 1
+    ym = f"{year:04d}-{month:02d}"
+    period = inegi.ym_to_label(ym, 4) + " P"
+
+    # Cuadro 1 (página 2): qoq y yoy desestacionalizada.
+    qoq: float | None = None
+    yoy_desest: float | None = None
+    for table in _pdf_page_tables(pdf_bytes, 1):
+        for row in table:
+            cells = [(c or "").strip() for c in row]
+            if not cells:
+                continue
+            if "Producto Interno Bruto Oportuno" in cells[0] and len(cells) >= 3:
+                qoq = _parse_pct(cells[1])
+                yoy_desest = _parse_pct(cells[2])
+                break
+        if qoq is not None or yoy_desest is not None:
+            break
+
+    # Cuadro 2 (página 3): variación anual original.
+    yoy_orig: float | None = None
+    for table in _pdf_page_tables(pdf_bytes, 2):
+        # localizar la fila "PIB" y sus tres renglones de encabezado
+        pib_row: list[str] | None = None
+        header_start = -1
+        for i, row in enumerate(table):
+            cells = [(c or "").strip() for c in row]
+            if not any(cells):
+                continue
+            if "PIB y actividades" in cells[0]:
+                # El encabezado de año inicia en la fila inmediata anterior.
+                header_start = max(0, i - 1)
+            if cells[0] == "PIB":
+                pib_row = cells
+                break
+        if not pib_row or header_start < 0:
+            continue
+        header_rows = table[header_start:header_start + 3]
+        if not header_rows:
+            continue
+
+        # Encontrar el inicio del grupo 2026 en el encabezado
+        year_col: int | None = None
+        for hrow in header_rows:
+            for j, cell in enumerate(hrow):
+                if cell and re.search(r"\b2026\b", str(cell)):
+                    year_col = j
+                    break
+            if year_col is not None:
+                break
+        if year_col is None:
+            continue
+
+        for j in range(year_col, len(pib_row)):
+            if j >= len(header_rows[0]):
+                continue
+            sub = " ".join((hrow[j] or "") for hrow in header_rows)
+            sub = re.sub(r"\b\d{4}\s*/?", "", sub).strip()
+            # "1.er", "2.°", "3.er", "4.°", "2.°2/", etc.
+            # "1.er", "2.°", "3.er", "4.°", "2.°2/", etc.
+            m = re.search(r"(\d+)[\.\s]*(?:°|er|o|do|ndo)", sub, re.IGNORECASE)
+            if m and int(m.group(1)) == quarter:
+                yoy_orig = _parse_pct(pib_row[j])
+                break
+        if yoy_orig is not None:
+            break
+
+    out: dict[str, dict[str, dict]] = {}
+    if qoq is not None:
+        out.setdefault("qoq", {})["PIB"] = {"ym": ym, "value": qoq / 100.0, "period": period}
+    if yoy_desest is not None:
+        out.setdefault("yoy", {})["PIB"] = {"ym": ym, "value": yoy_desest / 100.0, "period": period}
+    if yoy_orig is not None:
+        out.setdefault("yoy_orig", {})["PIB"] = {"ym": ym, "value": yoy_orig / 100.0, "period": period}
+    return out
+
+
 def _build_item(indicator: str, target_column: int, api_total: list[dict], serie: str, link: str,
                 ultimo_valor: float | None = None, freq: int = 8) -> dict:
     if not api_total:
@@ -642,7 +753,13 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
     """
     this_year = 2026
     # PIBT es trimestral: publicaciones en febrero, mayo, agosto y noviembre.
-    months = (2, 5, 8, 11) if kind == "PIBT" else None
+    # EOPIBT es trimestral: publicaciones en enero, abril, julio y octubre.
+    if kind == "PIBT":
+        months = (2, 5, 8, 11)
+    elif kind == "EOPIBT":
+        months = (1, 4, 7, 10)
+    else:
+        months = None
     issues = _available_issues(kind, start_year, this_year, max_count=max_bulletins, months=months)
     if not issues:
         return []
@@ -722,6 +839,26 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
                 results.append(("PIBSEC", "yoy_ter", 4, o_yoy, url))
                 seen.add(("PIBSEC", 4, o_yoy["ym"]))
 
+        elif kind == "EOPIBT":
+            parsed = _parse_eopibt(pdf, pub_date)
+            if not parsed:
+                continue
+            # PIB oportuno: variación anual original (col 1),
+            # variación trimestral desestacionalizada (col 2) y
+            # variación anual desestacionalizada (col 3).
+            o_yoy_orig = parsed.get("yoy_orig", {}).get("PIB")
+            o_qoq = parsed.get("qoq", {}).get("PIB")
+            o_yoy = parsed.get("yoy", {}).get("PIB")
+            if o_yoy_orig and ("PIB", 1, o_yoy_orig["ym"]) not in seen:
+                results.append(("PIB", "yoy_orig", 1, o_yoy_orig, url))
+                seen.add(("PIB", 1, o_yoy_orig["ym"]))
+            if o_qoq and ("PIB", 2, o_qoq["ym"]) not in seen:
+                results.append(("PIB", "qoq", 2, o_qoq, url))
+                seen.add(("PIB", 2, o_qoq["ym"]))
+            if o_yoy and ("PIB", 3, o_yoy["ym"]) not in seen:
+                results.append(("PIB", "yoy", 3, o_yoy, url))
+                seen.add(("PIB", 3, o_yoy["ym"]))
+
     # Agrupar por indicador y columna
     grouped: dict[str, dict[int, list[dict]]] = {}
     for indicator, sub, col, o, url in results:
@@ -746,9 +883,12 @@ def fetch(config: dict | None = None, start_year: int = 2024, max_bulletins: int
         return SourceResult(False, warnings=warnings)
 
     data: dict[str, list[dict]] = {}
-    for kind in ("IOAE", "IGAE", "CONSUMO", "IMFBCF", "EMIM", "PIBT"):
+    for kind in ("IOAE", "IGAE", "CONSUMO", "IMFBCF", "EMIM", "PIBT", "EOPIBT"):
+        # EOPIBT es la estimación preliminar de un solo trimestre; no se
+        # desea sobrescriber histórico con estimaciones oportunas pasadas.
+        kind_max = 1 if kind == "EOPIBT" else max_bulletins
         try:
-            items = _fetch_kind(kind, start_year, max_bulletins)
+            items = _fetch_kind(kind, start_year, kind_max)
             for it in (items or []):
                 key = it.get("key") or kind
                 data.setdefault(key, []).append(it)

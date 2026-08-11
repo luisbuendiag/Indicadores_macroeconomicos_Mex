@@ -46,11 +46,14 @@ def test_publication_date_and_lag_separated():
 
 
 def test_balance_saldo_vs_variacion_distinct():
-    m = re.search(r"BALANZA:\s*\{[^}]*\}", CONFIG)
+    # BCMM reemplaza a la antigua ficha BALANZA.
+    assert "BALANZA" not in CONFIG
+    assert "BCMM" in CONFIG
+    m = re.search(r"BCMM:\s*\{[^}]*\}", CONFIG)
     assert m
     bal = m.group(0)
     assert 'derived: "saldo"' in bal
-    assert "Variación del saldo" in bal
+    assert "Variación mensual del saldo" in bal
     assert "Saldo (X − M)" in APP
 
 

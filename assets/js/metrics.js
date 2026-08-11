@@ -9,9 +9,8 @@ function valAt(ind, i, col) {
   return o ? (o.values[col] ?? null) : null;
 }
 
-export function primarySeries(ind) {
-  const cfg = KPICFG[ind.key];
-  const obs = ind.observations;
+export function primarySeriesForObs(obs, key) {
+  const cfg = KPICFG[key];
   if (cfg.derived === "total") {
     return obs.map((o) => {
       const [a, b, c] = o.values;
@@ -22,6 +21,10 @@ export function primarySeries(ind) {
     return obs.map((o) => (o.values[0] != null && o.values[1] != null) ? o.values[0] - o.values[1] : null);
   }
   return obs.map((o) => o.values[cfg.valCol] ?? null);
+}
+
+export function primarySeries(ind) {
+  return primarySeriesForObs(ind.observations, ind.key);
 }
 
 function proseVal(ind, v) {

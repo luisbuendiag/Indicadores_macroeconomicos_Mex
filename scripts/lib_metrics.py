@@ -115,6 +115,12 @@ def _var_val_fmt(mag: float | None, cfg: dict) -> str:
         d = 1 if cfg.get("ppLong") else 2
         unit = " puntos porcentuales" if cfg.get("ppLong") else " pp"
         return s + F._to_fixed(mag, d, d) + unit
+    # Si no hay varMode, respetar el formato numérico del valor.
+    vfmt = cfg.get("varFmt") or cfg.get("valFmt")
+    if vfmt == "num":
+        return s + F._to_fixed(mag, 2, 2)
+    if vfmt in ("pct-raw", "pct-frac"):
+        return s + F._to_fixed(mag, 2, 2) + "%"
     return s + F._to_fixed(mag, 2, 2) + "%"
 
 

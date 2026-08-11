@@ -1,32 +1,36 @@
 {
-  "started_at": "2026-08-10T17:30:39+00:00",
+  "started_at": "2026-08-11T03:06:20+00:00",
   "mode": "offline",
   "network_calls": false,
   "warnings": [
-    "PIB: REZAGADO – El calendario indica que ya se publicó 2° trimestre 2026, pero el dashboard aún muestra 1T-26."
+    "[PIB] el último dato de la serie primaria es nulo.",
+    "[IMAI] valor fuera de rango plausible en Abr 20: 69.864321 (esperado (70, 130)).",
+    "[IMAI] valor fuera de rango plausible en May 20: 69.771418 (esperado (70, 130))."
   ],
   "changes": [
+    "PIB 2T-26 P col0: None -> None (revisión)",
     "calendario: regenerado con as_of=2026-08-10",
     "métricas: data/metrics.json regenerado",
-    "frescura: PIB -> REZAGADO",
-    "frescura: PIBSEC -> PUBLICACIÓN PENDIENTE",
+    "frescura: PIB -> ACTUALIZADO",
+    "frescura: PIBSEC -> ACTUALIZADO",
     "frescura: IGAE -> ACTUALIZADO",
     "frescura: IMAI -> ACTUALIZADO",
     "frescura: CONSUMO -> ACTUALIZADO",
-    "frescura: IED -> PUBLICACIÓN PENDIENTE",
+    "frescura: IED -> ACTUALIZADO",
     "frescura: DESOCUP -> ACTUALIZADO",
     "frescura: INPC -> ACTUALIZADO",
-    "frescura: BALANZA -> ACTUALIZADO",
     "frescura: IMFBCF -> ACTUALIZADO",
     "frescura: IOAE -> ACTUALIZADO",
     "frescura: EMIM -> ACTUALIZADO",
-    "frescura: TIPOCAMBIO -> PUBLICACIÓN PENDIENTE",
-    "frescura: TASA -> PUBLICACIÓN PENDIENTE",
-    "frescura: RESERVAS -> PUBLICACIÓN PENDIENTE",
-    "meta: last_update_ct=2026-08-10T11:30:39-06:00"
+    "frescura: TIPOCAMBIO -> ACTUALIZADO",
+    "frescura: TASA -> ACTUALIZADO",
+    "frescura: RESERVAS -> ACTUALIZADO",
+    "frescura: EMOE -> ACTUALIZADO",
+    "frescura: BCMM -> ACTUALIZADO",
+    "meta: last_update_ct=2026-08-10T21:06:20-06:00"
   ],
   "consultas": [],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-08-10T17:30:39+00:00"
+  "finished_at": "2026-08-11T03:06:20+00:00"
 }

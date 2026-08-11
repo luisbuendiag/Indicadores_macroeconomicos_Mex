@@ -83,11 +83,18 @@ def test_bulletin_variations_monthly_and_annual(payload, key, monthly_col, annua
 def test_pib_bulletin_variations(payload):
     pib = payload["indicators"]["PIB"]
     last = pib["observations"][-1]
-    # Trimestral desestacionalizada y anual desestacionalizada del PIBT.
-    assert last["values"][2] == pytest.approx(-0.006, abs=1e-4)
-    assert last["values"][3] == pytest.approx(0.004, abs=1e-4)
-    # El nivel debe conservarse de la serie BIE.
-    assert last["values"][0] == pytest.approx(24973976.071, abs=1e-3)
+    penult = pib["observations"][-2]
+    # Última fila: estimación oportuna 2T-26 (nivel aún no publicado, variaciones sí).
+    assert last["period"] == "2T-26 P"
+    assert last["values"][0] is None  # nivel no disponible en EOPIBT
+    assert last["values"][1] == pytest.approx(0.022, abs=1e-3)
+    assert last["values"][2] == pytest.approx(0.015, abs=1e-4)
+    assert last["values"][3] == pytest.approx(0.021, abs=1e-4)
+    # Penúltima fila: 1T-26 con nivel de la serie BIE y variaciones del PIBT.
+    assert penult["period"] == "1T-26 P"
+    assert penult["values"][0] == pytest.approx(24973976.071, abs=1e-3)
+    assert penult["values"][2] == pytest.approx(-0.006, abs=1e-4)
+    assert penult["values"][3] == pytest.approx(0.004, abs=1e-4)
 
 
 def test_pibsec_terciarias_bulletin_variations(payload):
