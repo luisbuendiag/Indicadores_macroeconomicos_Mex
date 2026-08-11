@@ -84,7 +84,7 @@ export const CAPTIONS = {
 // Vistas de navegación. type: "home" | "indicator" | "group" | "page".
 export const VIEWS = [
   { id: "panorama", type: "home", label: "Panorama macroeconómico" },
-  ...PRINCIPAL.map((k) => ({ id: k, type: "indicator", key: k, label: LABELS[k] })),
+  ...ORDER.map((k) => ({ id: k, type: "indicator", key: k, label: LABELS[k] })),
   { id: "entorno", type: "page", label: "Entorno financiero", indicators: COMPLEMENTARIOS, secondary: true },
   { id: "calendario", type: "page", label: "Calendario de publicaciones", secondary: true },
   { id: "metodologia", type: "page", label: "Fuentes y metodología", secondary: true },

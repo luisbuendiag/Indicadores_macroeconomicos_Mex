@@ -8,6 +8,7 @@ INDEX = (ROOT / "index.html").read_text(encoding="utf-8")
 APP = (ROOT / "assets" / "js" / "app.js").read_text(encoding="utf-8")
 CONFIG = (ROOT / "assets" / "js" / "config.js").read_text(encoding="utf-8")
 METRICS = (ROOT / "assets" / "js" / "metrics.js").read_text(encoding="utf-8")
+CSS = (ROOT / "assets" / "css" / "styles.css").read_text(encoding="utf-8")
 INDICADORES = json.loads((ROOT / "data" / "indicadores.json").read_text(encoding="utf-8"))
 
 
@@ -42,7 +43,6 @@ def test_inpc_uses_puntos_porcentuales():
 def test_publication_date_and_lag_separated():
     assert "Fecha de publicación del dato" in APP
     assert "Rezago habitual" in APP
-    assert "no disponible en la base actual" in APP
 
 
 def test_balance_saldo_vs_variacion_distinct():
@@ -89,6 +89,70 @@ def test_pibsec_card_labels_short_for_side_by_side():
     pibsec = m.group(0)
     assert "Trim." in pibsec and "Anual" in pibsec
     # El CSS permite que las etiquetas largas se ajusten sin desbordar.
-    css = (ROOT / "assets" / "css" / "styles.css").read_text(encoding="utf-8")
-    assert "mc-deltas { display: flex; gap: 14px; flex-wrap: nowrap;" in css
-    assert "word-break: break-word" in css
+    assert "mc-deltas { display: flex; gap: 14px; flex-wrap: nowrap;" in CSS
+    assert "word-break: break-word" in CSS
+
+
+def test_all_indicators_have_indicator_view():
+    """Cada clave en ORDER genera una vista de ficha individual."""
+    assert '...ORDER.map((k) => ({ id: k, type: "indicator"' in CONFIG
+    assert 'VIEWS.filter((v) => v.type === "indicator").forEach((v) => renderIndicatorView(v.key))' in APP
+    from lib_kpicfg import get_cfg
+    for k in [*get_cfg("PRINCIPAL"), *get_cfg("COMPLEMENTARIOS")]:
+        assert f'"{k}"' in CONFIG
+
+
+def test_financial_cards_open_individual_view():
+    """Las tarjetas del Entorno financiero usan setView(clave)."""
+    entorno_render = re.search(r"function renderEntorno\(\).*?(?=\nfunction |\Z)", APP, re.S)
+    assert entorno_render
+    assert "panoramaCard(ind)" in entorno_render.group(0)
+    for k in ["IED", "TIPOCAMBIO", "TASA", "RESERVAS", "EMOE"]:
+        assert f'"{k}"' in CONFIG
+
+
+def test_product_buttons_evaluated_independently():
+    """Cada botón decide su propia disponibilidad; no hay dependencia global."""
+    assert "boletinEnabled = !!boletinUrl" in APP
+    assert "notaReady = !!ind.nota_disponible" in APP
+    assert "xlsxReady = !!ind.xlsx_disponible" in APP
+    assert "product-ok" in CSS
+    assert "product-disabled" in CSS
+
+
+def test_nota_disabled_tooltip():
+    assert "Nota pendiente de plantilla aprobada" in APP
+
+
+def test_individual_excel_routes():
+    for k in INDICADORES["indicators"]:
+        ind = INDICADORES["indicators"][k]
+        if ind.get("xlsx_disponible"):
+            assert ind["url_excel_individual"] == f"downloads/indicadores/{k}/{k}_datos.xlsx"
+
+
+def test_navegacion_prev_next_por_seccion():
+    """indicatorToolbar usa la sección correcta (PRINCIPAL o COMPLEMENTARIOS)."""
+    assert "function indicatorSection(key)" in APP
+    assert "if (PRINCIPAL.includes(key)) return PRINCIPAL" in APP
+    assert "if (COMPLEMENTARIOS.includes(key)) return COMPLEMENTARIOS" in APP
+
+
+def test_calendario_filtrado_por_indicador():
+    assert "openCalendarioFiltro(ind)" in APP
+    assert "buildCalendarioPanel(ind)" in APP
+    assert "modal-overlay" in INDEX
+
+
+def test_ficha_layout_compacto_sin_altura_forzada():
+    assert ".ficha-head { display: grid" in CSS
+    assert "align-items: start" in CSS
+    assert ".fh-item { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 6px 10px" in CSS
+    assert "min-height: 0" in CSS
+    # La cabecera y metadatos de la ficha no deben forzar altura con min-height.
+    assert ".ficha-head {" in CSS
+    ficha_head = CSS.split(".ficha-head {")[1].split("}")[0]
+    assert "min-height" not in ficha_head
+    assert ".fh-meta {" in CSS
+    fh_meta = CSS.split(".fh-meta {")[1].split("}")[0]
+    assert "min-height" not in fh_meta

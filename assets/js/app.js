@@ -76,33 +76,157 @@ function downloadProduct(url, fallbackName) {
 }
 
 function openCalendarioFiltro(ind) {
-  calState.filter = ind.nombre;
-  setView("calendario");
+  openModal(`Calendario de publicaciones · ${ind.nombre}`, buildCalendarioPanel(ind));
 }
 
 function productBtn(label, icon, enabled, title, onClick) {
-  const cls = enabled ? "btn btn-ghost" : "btn btn-ghost disabled";
-  return el("button", { class: cls, type: "button", title: title || label, disabled: !enabled, onclick: onClick },
-    el("span", { "aria-hidden": "true" }, icon), label);
+  const cls = enabled ? "btn btn-ghost product-ok" : "btn btn-ghost product-disabled";
+  return el("button", {
+    class: cls, type: "button", title: title || label,
+    disabled: !enabled, "aria-disabled": String(!enabled),
+    onclick: (e) => { if (enabled) onClick(e); }
+  }, el("span", { "aria-hidden": "true" }, icon), label);
 }
 
 function productToolbar(ind) {
   const bar = el("div", { class: "product-bar" });
-  const xlsxReady = !!ind.xlsx_disponible;
-  const notaReady = !!ind.nota_disponible;
-  const notaTitle = ind.nota_causa || (notaReady ? "Descargar nota DOCX" : "Nota DOCX no disponible");
-  const xlsxTitle = ind.xlsx_causa || (xlsxReady ? "Descargar Excel individual" : "Excel individual no disponible");
-  const boletinUrl = ind.url_boletin_oficial || (ind.fuente && ind.fuente.link) || null;
-  const boletinTitle = boletinUrl ? "Abrir boletín / fuente oficial" : "URL de boletín no disponible";
+
+  // Calendario: siempre disponible (abre modal con fechas del indicador).
   const calTitle = `Ver calendario de publicaciones de ${ind.nombre}`;
+
+  // Boletín: basado en url_boletin_oficial o fuente.link.
+  const boletinUrl = ind.url_boletin_oficial || (ind.fuente && ind.fuente.link) || null;
+  const boletinEnabled = !!boletinUrl;
+  const boletinTitle = boletinEnabled
+    ? "Abrir boletín / fuente oficial en nueva pestaña"
+    : "Boletín oficial no identificado";
+
+  // Nota: solo si existe el DOCX generado.
+  const notaReady = !!ind.nota_disponible;
+  const notaTitle = notaReady
+    ? "Descargar nota DOCX"
+    : (ind.nota_causa || "Nota pendiente de plantilla aprobada");
+
+  // Excel: solo si se generó el archivo individual.
+  const xlsxReady = !!ind.xlsx_disponible;
+  const xlsxTitle = xlsxReady
+    ? "Descargar Excel individual"
+    : (ind.xlsx_causa || "Excel individual no disponible");
 
   bar.append(
     productBtn("CALENDARIO", "", true, calTitle, () => openCalendarioFiltro(ind)),
-    productBtn("BOLETÍN", "", !!boletinUrl, boletinTitle, () => openBoletin(boletinUrl)),
+    productBtn("BOLETÍN", "", boletinEnabled, boletinTitle, () => openBoletin(boletinUrl)),
     productBtn("NOTA", "", notaReady, notaTitle, () => downloadProduct(notaUrl(ind), `${ind.key}_nota.docx`)),
     productBtn("EXCEL", "", xlsxReady, xlsxTitle, () => downloadProduct(xlsxUrl(ind), `${ind.key}_datos.xlsx`))
   );
   return bar;
+}
+
+// ---------------- Modal de calendario individual ----------------
+let modal = null;
+function ensureModal() {
+  if (modal) return modal;
+  const overlay = $("#modal-overlay");
+  if (!overlay) return null;
+  const close = () => closeModal();
+  overlay.hidden = false;
+  $("#modal-close").addEventListener("click", close);
+  $("#modal-backdrop").addEventListener("click", close);
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+  modal = {
+    overlay,
+    title: $("#modal-title"),
+    body: $("#modal-body"),
+  };
+  return modal;
+}
+function openModal(title, bodyContent) {
+  const m = ensureModal();
+  if (!m) return;
+  m.title.textContent = title;
+  m.body.innerHTML = "";
+  m.body.append(bodyContent);
+  m.overlay.classList.add("active");
+  m.overlay.setAttribute("aria-hidden", "false");
+  m.overlay.hidden = false;
+  document.body.style.overflow = "hidden";
+  requestAnimationFrame(() => m.body.querySelector("button, [href]")?.focus());
+}
+function closeModal() {
+  if (!modal) return;
+  modal.overlay.classList.remove("active");
+  modal.overlay.setAttribute("aria-hidden", "true");
+  modal.overlay.hidden = true;
+  document.body.style.overflow = "";
+}
+
+function statusLabel(st) {
+  if (st === "publicado") return "Publicado";
+  if (st === "próximo") return "Próxima publicación";
+  if (st === "pendiente") return "Pendiente";
+  return st || "—";
+}
+
+function buildCalendarioPanel(ind) {
+  const all = calItems().filter((c) => c.clave === ind.key).sort((a, b) => (b.fecha_iso || "").localeCompare(a.fecha_iso || ""));
+  const latest = all.find((c) => c.estatus === "publicado");
+  const next = all.find((c) => c.estatus === "próximo");
+  const pending = all.filter((c) => c.estatus === "pendiente").sort((a, b) => (a.fecha_iso || "").localeCompare(b.fecha_iso || ""));
+
+  const wrap = el("div", { class: "ind-cal" });
+
+  // Resumen
+  const hero = el("div", { class: "cal-hero" });
+  hero.append(el("div", { class: "cal-hero-lbl" }, ind.nombre));
+  if (latest) {
+    hero.append(el("div", { class: "cal-hero-date" }, latest.fecha_publicacion));
+    hero.append(el("div", {}, `Última publicación: ${latest.periodo_referencia} · ${statusLabel(latest.estatus)}`));
+  }
+  if (next) {
+    hero.append(el("div", { class: "cal-hero-ind" }, `Próxima publicación: ${next.fecha_publicacion} · ${next.periodo_referencia}`));
+    hero.append(el("div", { class: "cal-hero-src" }, `${next.producto} — ${next.institucion}`));
+  } else if (!latest) {
+    hero.append(el("div", { class: "muted" }, "Sin fechas registradas para este indicador."));
+    if (ind.frecuencia) hero.append(el("div", { class: "cal-hero-src" }, `Frecuencia: ${ind.frecuencia} · Fuente: ${ind.fuente?.nombre || "—"}`));
+    const url = ind.url_boletin_oficial || (ind.fuente && ind.fuente.link) || null;
+    if (url) hero.append(el("a", { href: url, target: "_blank", rel: "noopener" }, "Consultar fuente oficial ↗"));
+  }
+  wrap.append(hero);
+
+  // Histórico reciente
+  const histWrap = el("div", { class: "panel cal-hist" });
+  histWrap.append(el("h3", {}, "Histórico de publicaciones"));
+  if (all.length) {
+    const ul = el("ul", { class: "cal-list" });
+    all.slice(0, 12).forEach((c) => {
+      const li = el("li", {},
+        el("span", { class: "cal-list-date" }, c.fecha_publicacion),
+        el("span", {}, ` · ${c.periodo_referencia} · ${statusLabel(c.estatus)}`)
+      );
+      ul.append(li);
+    });
+    histWrap.append(ul);
+  } else {
+    histWrap.append(el("div", { class: "muted" }, "No hay publicaciones registradas."));
+  }
+  wrap.append(histWrap);
+
+  // Pendientes
+  if (pending.length) {
+    const pendWrap = el("div", { class: "panel cal-pending" });
+    pendWrap.append(el("h3", {}, "Publicaciones pendientes"));
+    const ul = el("ul", { class: "cal-list" });
+    pending.slice(0, 6).forEach((c) => {
+      ul.append(el("li", {},
+        el("span", { class: "cal-list-date" }, c.fecha_publicacion),
+        el("span", {}, ` · ${c.periodo_referencia} · ${statusLabel(c.estatus)}`)
+      ));
+    });
+    pendWrap.append(ul);
+    wrap.append(pendWrap);
+  }
+
+  return wrap;
 }
 
 // ---------------- Header ----------------
@@ -289,14 +413,24 @@ function movList(title, items, cls) {
 }
 
 // ---------------- Indicator view ----------------
+function indicatorSection(key) {
+  if (PRINCIPAL.includes(key)) return PRINCIPAL;
+  if (COMPLEMENTARIOS.includes(key)) return COMPLEMENTARIOS;
+  return ORDER;
+}
+
 function indicatorToolbar(key) {
-  const idx = PRINCIPAL.indexOf(key);
-  const prev = idx > 0 ? PRINCIPAL[idx - 1] : null;
-  const next = idx >= 0 && idx < PRINCIPAL.length - 1 ? PRINCIPAL[idx + 1] : null;
+  const section = indicatorSection(key);
+  const idx = section.indexOf(key);
+  const prev = idx > 0 ? section[idx - 1] : null;
+  const next = idx >= 0 && idx < section.length - 1 ? section[idx + 1] : null;
+  const isFinancial = COMPLEMENTARIOS.includes(key);
+  const backTarget = isFinancial ? "entorno" : "panorama";
+  const backLabel = isFinancial ? "← Volver al entorno" : "← Volver al panorama";
   const ind = getInd(key);
   const wrap = el("div", { class: "ind-toolbar-wrap" });
   const nav = el("div", { class: "ind-nav" });
-  nav.append(el("a", { class: "nav-link", href: "#panorama", onclick: (e) => { e.preventDefault(); setView("panorama"); } }, "← Volver al panorama"));
+  nav.append(el("a", { class: "nav-link", href: `#${backTarget}`, onclick: (e) => { e.preventDefault(); setView(backTarget); } }, backLabel));
   if (prev) nav.append(el("a", { class: "nav-link", href: `#${prev}`, onclick: (e) => { e.preventDefault(); setView(prev); } }, `‹ ${LABELS[prev]}`));
   if (next) nav.append(el("a", { class: "nav-link", href: `#${next}`, onclick: (e) => { e.preventDefault(); setView(next); } }, `${LABELS[next]} ›`));
   wrap.append(nav);
@@ -327,18 +461,22 @@ function componentStatusTable(title, components) {
 
 function fichaHeader(ind) {
   const head = el("div", { class: "ficha-head" });
+  const desc = [ind.descripcion || "", ind.frecuencia ? `Frecuencia: ${ind.frecuencia}.` : ""].filter(Boolean).join(" ").trim();
   const left = el("div", {},
     el("div", { class: "fh-sigla" }, SIGLA[ind.key]),
     el("h2", { class: "fh-name" }, ind.nombre),
-    el("p", { class: "fh-desc" }, ind.descripcion || ""));
+    el("p", { class: "fh-desc" }, desc || ind.descripcion || ""));
   const meta = el("div", { class: "fh-meta" });
+  const pubDato = fechaPubDato(ind);
+  const rez = rezagoHabitual(ind);
   const rows = [
     ["Periodo de referencia", ind.periodo_referencia || ind.last_observation || "—"],
-    ["Fecha de publicación del dato", fechaPubDato(ind) || "no disponible en la base actual"],
-    ["Rezago habitual", rezagoHabitual(ind) || "—"],
+    pubDato ? ["Fecha de publicación del dato", pubDato] : null,
+    rez ? ["Rezago habitual", rez] : null,
+    ind.frecuencia ? ["Frecuencia", ind.frecuencia] : null,
     ["Fecha de consulta de la fuente", ind.fecha_consulta || ind.last_updated || "—"],
     ["Fuente oficial", ind.fuente?.nombre || "—"],
-  ];
+  ].filter(Boolean);
   const np = ind.proxima_publicacion || nextPublication(ind.key);
   if (np) rows.push(["Próxima publicación", `${np.fecha_publicacion} · ${np.periodo_referencia}`]);
   rows.forEach(([k, v]) => meta.append(el("div", { class: "fh-item" }, el("span", { class: "k" }, k), el("span", { class: "v" }, v))));
@@ -545,18 +683,10 @@ function renderEntorno() {
   const sec = $("#view-entorno");
   sec.innerHTML = "";
   sec.append(el("div", { class: "section-title" }, "Entorno financiero"));
-  sec.append(el("div", { class: "section-sub" }, "Indicadores complementarios (Banco de México y otros). No forman parte de los 11 principales; se activan al configurar los tokens correspondientes."));
+  sec.append(el("div", { class: "section-sub" }, "Indicadores complementarios (Banco de México y otros). Haz clic en cualquier tarjeta para abrir su ficha individual."));
   const grid = el("div", { class: "matrix" });
   COMPLEMENTARIOS.map(getInd).filter(Boolean).forEach((ind) => grid.append(panoramaCard(ind)));
   sec.append(grid);
-  const withData = COMPLEMENTARIOS.map(getInd).filter((i) => hasData(i));
-  withData.forEach((ind) => {
-    const p = el("div", { class: "panel" });
-    p.append(el("h3", {}, ind.nombre));
-    p.append(el("div", { class: "chart-caption" }, CAPTIONS[ind.key] || ""));
-    p.append(el("div", { class: "chart-box", id: `chart-${ind.key}` }));
-    sec.append(p);
-  });
 }
 
 // ---------------- Calendar ----------------
@@ -831,7 +961,7 @@ function buildViewShells() {
 
 function renderAll() {
   renderPanorama();
-  PRINCIPAL.forEach((k) => renderIndicatorView(k));
+  VIEWS.filter((v) => v.type === "indicator").forEach((v) => renderIndicatorView(v.key));
   renderEntorno();
   renderCalendar();
   renderMethodology();
@@ -847,7 +977,7 @@ function updatePrintFooter() {
   const foot = document.querySelector(".print-footer");
   if (!foot) return;
   const ind = getInd(state.active);
-  if (ind && PRINCIPAL.includes(state.active)) {
+  if (ind && ORDER.includes(state.active)) {
     const np = nextPublication(state.active);
     const sg = SIGLA[state.active];
     const nombreSigla = ind.nombre.includes(`(${sg})`) ? ind.nombre : `${ind.nombre} (${sg})`;

@@ -71,8 +71,10 @@ function computeVar(ind, cfg, vals, lastI, prevI) {
   if (cfg.varMode === "pp-prev" && prevI != null && vals[prevI] != null) {
     let d = cur - vals[prevI];
     if (cfg.valFmt === "pct-frac") d *= 100;
+    const mag = d;
+    if (Math.abs(mag) < 0.0001) return { mag: 0, text: "Sin cambio", pos: true, label: cfg.varLabel };
     const unit = cfg.ppLong ? " puntos porcentuales" : " pp";
-    return { mag: d, text: (d >= 0 ? "+" : "") + d.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + unit, pos: d >= 0 };
+    return { mag, text: (d >= 0 ? "+" : "") + d.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + unit, pos: d >= 0 };
   }
   if (cfg.varMode === "abs-prev" && prevI != null && vals[prevI] != null) {
     const d = cur - vals[prevI];
