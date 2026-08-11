@@ -63,8 +63,20 @@ function estadoBadge(ind) {
 function xlsxUrl(ind) { return ind.url_excel_individual || `downloads/indicadores/${ind.key}/${ind.key}_datos.xlsx`; }
 function notaUrl(ind) { return ind.url_nota_individual || `downloads/indicadores/${ind.key}/${ind.key}_nota.docx`; }
 
+function openExternalLink(url) {
+  if (!url) return;
+  const a = document.createElement("a");
+  a.href = url;
+  a.target = "_blank";
+  a.rel = "noopener noreferrer";
+  a.style.display = "none";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+
 function openBoletin(url) {
-  if (url) window.open(url, "_blank", "noopener,noreferrer");
+  openExternalLink(url);
 }
 
 function downloadProduct(url, fallbackName) {
@@ -72,6 +84,7 @@ function downloadProduct(url, fallbackName) {
   const a = document.createElement("a");
   a.href = url;
   a.download = fallbackName || url.split("/").pop();
+  a.rel = "noopener noreferrer";
   document.body.appendChild(a);
   a.click();
   a.remove();
@@ -81,45 +94,67 @@ function openCalendarioFiltro(ind) {
   openModal(`Calendario de publicaciones · ${ind.nombre}`, buildCalendarioPanel(ind));
 }
 
-function productBtn(label, icon, enabled, title, onClick) {
+// El calendario está disponible si hay items del calendario para la clave,
+// una regla de publicación o una próxima publicación conocida.
+function calendarioDisponible(ind) {
+  if (!ind) return false;
+  if (ind.regla_publicacion) return true;
+  if (ind.proxima_publicacion) return true;
+  if (ind.observations_original && ind.observations_original.length) return true;
+  return calItems().some((c) => c && c.clave === ind.key && (c.fecha_publicacion || c.regla_publicacion));
+}
+
+function productBtn(label, icon, enabled, title, onClick, kind) {
   const cls = enabled ? "btn btn-ghost product-ok" : "btn btn-ghost product-disabled";
-  return el("button", {
-    class: cls, type: "button", title: title || label,
-    disabled: !enabled, "aria-disabled": String(!enabled),
-    onclick: (e) => { if (enabled) onClick(e); }
-  }, el("span", { "aria-hidden": "true" }, icon), label);
+  const attrs = {
+    class: cls,
+    type: "button",
+    title: title || label,
+    "data-product": kind || label.toLowerCase(),
+    "aria-disabled": enabled ? undefined : "true",
+  };
+  if (!enabled) {
+    attrs.tabindex = "-1";
+    attrs.onclick = () => {};
+  } else {
+    attrs.onclick = (e) => onClick(e);
+  }
+  return el("button", attrs, el("span", { "aria-hidden": "true" }, icon), label);
 }
 
 function productToolbar(ind) {
-  const bar = el("div", { class: "product-bar" });
+  const bar = el("div", { class: "product-bar", "data-key": ind.key });
 
-  // Calendario: siempre disponible (abre modal con fechas del indicador).
-  const calTitle = `Ver calendario de publicaciones de ${ind.nombre}`;
+  // Calendario: activo si hay información de calendario o regla de publicación.
+  const calEnabled = calendarioDisponible(ind);
+  const calTitle = calEnabled
+    ? `Ver calendario de publicaciones de ${ind.nombre}`
+    : "Sin calendario o regla de publicación";
 
-  // Boletín: basado en url_boletin_oficial o fuente.link.
-  const boletinUrl = ind.url_boletin_oficial || (ind.fuente && ind.fuente.link) || null;
+  // Boletín: url_boletin_oficial primero; url_fuente_oficial como fallback, luego fuente.link.
+  const boletinUrl = ind.url_boletin_oficial || ind.url_fuente_oficial || (ind.fuente && ind.fuente.link) || null;
   const boletinEnabled = !!boletinUrl;
   const boletinTitle = boletinEnabled
-    ? "Abrir boletín / fuente oficial en nueva pestaña"
-    : "Boletín oficial no identificado";
+    ? "Abrir último boletín / fuente oficial"
+    : "Boletín / fuente oficial no identificado";
 
-  // Nota: solo si existe el DOCX generado.
+  // Nota: deshabilitada mientras no exista plantilla aprobada.
   const notaReady = !!ind.nota_disponible;
   const notaTitle = notaReady
     ? "Descargar nota DOCX"
     : (ind.nota_causa || "Nota pendiente de plantilla aprobada");
 
-  // Excel: solo si se generó el archivo individual.
+  // Excel: activo si se generó el archivo individual.
   const xlsxReady = !!ind.xlsx_disponible;
   const xlsxTitle = xlsxReady
     ? "Descargar Excel individual"
-    : (ind.xlsx_causa || "Excel individual no disponible");
+    : (ind.xlsx_causa || "Excel individual no generado");
 
   bar.append(
-    productBtn("CALENDARIO", "", true, calTitle, () => openCalendarioFiltro(ind)),
-    productBtn("BOLETÍN", "", boletinEnabled, boletinTitle, () => openBoletin(boletinUrl)),
-    productBtn("NOTA", "", notaReady, notaTitle, () => downloadProduct(notaUrl(ind), `${ind.key}_nota.docx`)),
-    productBtn("EXCEL", "", xlsxReady, xlsxTitle, () => downloadProduct(xlsxUrl(ind), `${ind.key}_datos.xlsx`))
+    productBtn("CALENDARIO", "", calEnabled, calTitle, () => openCalendarioFiltro(ind), "calendario"),
+    productBtn("BOLETÍN", "", boletinEnabled, boletinTitle, () => openBoletin(boletinUrl), "boletin"),
+    productBtn("NOTA", "", notaReady, notaTitle, () => downloadProduct(notaUrl(ind), `${ind.key}_nota.docx`), "nota"),
+    productBtn("EXCEL", "", xlsxReady, xlsxTitle, () => downloadProduct(xlsxUrl(ind), `${ind.key}_datos.xlsx`), "excel")
   );
   return bar;
 }
