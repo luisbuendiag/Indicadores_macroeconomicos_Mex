@@ -1,9 +1,13 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
   "generated_at": "2026-08-11T15:45:46+00:00",
 =======
   "generated_at": "2026-08-11T15:44:21+00:00",
 >>>>>>> 65fb385 (Pipeline, frontend y tests: frescura, calendarios y granularidad.)
+=======
+  "generated_at": "2026-08-11T15:45:04+00:00",
+>>>>>>> fd05385 (Regenera datos y artefactos con calendarios y metadatos finales.)
   "last_update": "2026-08-11",
   "indicadores": 16
 }
