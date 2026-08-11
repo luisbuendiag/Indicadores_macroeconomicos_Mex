@@ -1,0 +1,30 @@
+{
+  "year": 2026,
+  "fuente": "Secretaría de Economía / Dirección General de Inversión Extranjera",
+  "actualizado": "2026-08-11",
+  "entries": [
+    {
+      "clave": "IED",
+      "indicador": "Inversión Extranjera Directa",
+      "producto": "Flujos de inversión extranjera directa",
+      "institucion": "Secretaría de Economía",
+      "frecuencia": "Trimestral",
+      "regla_publicacion": "Publicación trimestral de flujos de IED. La fecha exacta de la siguiente publicación se anuncia por la Secretaría de Economía.",
+      "publicaciones": [
+        {
+          "fecha": "23 de febrero de 2026",
+          "periodo": "4T 2025",
+          "url": "https://ventanillaunica.economia.gob.mx/media/20260223_IED_4T%202025.pdf"
+        },
+        {
+          "fecha": "26 de mayo de 2026",
+          "periodo": "1T 2026",
+          "url": "https://www.presidenta.gob.mx/boletines/inversion-extranjera-aumenta-10-4-por-ciento-en-primer-trimestre-2026-presidenta-sheinbaum"
+        }
+      ],
+      "proxima_periodo": "2T 2026",
+      "proxima_no_anunciada": true,
+      "proxima_comentario": "Próxima fecha oficial no anunciada"
+    }
+  ]
+}
