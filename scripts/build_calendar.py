@@ -73,23 +73,71 @@ def build(as_of: date) -> dict:
         if src.get("actualizado"):
             actualizado = max(actualizado, src["actualizado"]) if actualizado else src["actualizado"]
         for e in src.get("entries", []):
+            regla = e.get("regla_publicacion")
+            es_evento = e.get("tipo") == "evento"
+            usar_frescura = e.get("usar_para_frescura", True)
             for pub in e.get("publicaciones", []):
                 d = parse_fecha(pub["fecha"])
+                item = {
+                    "clave": e["clave"],
+                    "indicador": e["indicador"],
+                    "producto": e["producto"],
+                    "institucion": e["institucion"],
+                    "frecuencia": e["frecuencia"],
+                    "regla_publicacion": regla,
+                    "usar_para_frescura": usar_frescura,
+                    "fecha_publicacion": pub["fecha"],
+                    "fecha_iso": d.isoformat(),
+                    "anio": d.year,
+                    "mes": d.month,
+                    "periodo_referencia": pub["periodo"],
+                    "estatus": "evento" if es_evento else ("publicado" if d <= as_of else "próximo"),
+                    "url_boletin": pub.get("url"),
+                }
+                if pub.get("comentario"):
+                    item["comentario"] = pub["comentario"]
+                if pub.get("url"):
+                    item["url_boletin"] = pub["url"]
+                items.append(item)
+
+            # Regla sin fechas (ej. FIX diario)
+            if not e.get("publicaciones") and e.get("regla_publicacion"):
                 items.append({
                     "clave": e["clave"],
                     "indicador": e["indicador"],
                     "producto": e["producto"],
                     "institucion": e["institucion"],
                     "frecuencia": e["frecuencia"],
-                    "fecha_publicacion": pub["fecha"],
-                    "fecha_iso": d.isoformat(),
-                    "anio": d.year,
-                    "mes": d.month,
-                    "periodo_referencia": pub["periodo"],
-                    "estatus": "publicado" if d <= as_of else "próximo",
+                    "regla_publicacion": regla,
+                    "usar_para_frescura": usar_frescura,
+                    "fecha_publicacion": None,
+                    "fecha_iso": None,
+                    "periodo_referencia": e.get("proxima_periodo") or "Por determinar",
+                    "estatus": "regla",
                 })
 
-    items.sort(key=lambda x: (x["fecha_iso"], x["indicador"]))
+            # Próxima fecha no anunciada
+            if e.get("proxima_no_anunciada"):
+                items.append({
+                    "clave": e["clave"],
+                    "indicador": e["indicador"],
+                    "producto": e["producto"],
+                    "institucion": e["institucion"],
+                    "frecuencia": e["frecuencia"],
+                    "regla_publicacion": regla,
+                    "usar_para_frescura": usar_frescura,
+                    "fecha_publicacion": e.get("proxima_fecha") or "Por anunciar",
+                    "fecha_iso": "9999-12-31" if not e.get("proxima_fecha") else parse_fecha(e["proxima_fecha"]).isoformat(),
+                    "periodo_referencia": e.get("proxima_periodo") or "Próximo periodo",
+                    "estatus": "no_anunciada",
+                    "comentario": e.get("proxima_comentario", "Próxima fecha oficial no anunciada"),
+                })
+
+    def _sort_key(x):
+        iso = x.get("fecha_iso")
+        return (iso or "", 0 if iso else 1, x["indicador"])
+
+    items.sort(key=_sort_key)
 
     return {
         "_comment": "Generado por scripts/build_calendar.py a partir de data/calendar_sources/. No editar a mano.",

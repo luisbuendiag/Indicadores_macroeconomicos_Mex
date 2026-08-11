@@ -73,12 +73,13 @@ def test_calendar_build_and_schema():
     assert cal["items"], "el calendario debe tener publicaciones"
     required = {"clave", "indicador", "producto", "fecha_publicacion", "fecha_iso",
                 "periodo_referencia", "frecuencia", "institucion", "estatus"}
+    valid_statuses = {"publicado", "próximo", "pendiente", "no_anunciada", "evento", "regla"}
     for it in cal["items"]:
         assert required <= set(it), f"faltan campos en {it}"
-        assert it["estatus"] in ("publicado", "próximo", "pendiente")
-    # fechas exactas (no provisionales) y ordenadas
-    isos = [it["fecha_iso"] for it in cal["items"]]
-    assert isos == sorted(isos)
+        assert it["estatus"] in valid_statuses
+    # fechas exactas ordenadas; items sin fecha (reglas) se dejan al final
+    isos = [it["fecha_iso"] or "" for it in cal["items"]]
+    assert isos == sorted(isos, key=lambda x: (x or "", 0 if x else 1))
 
 
 def test_control_sheet_reflects_calendar():

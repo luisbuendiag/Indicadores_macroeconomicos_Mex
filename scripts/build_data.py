@@ -329,8 +329,15 @@ def apply_freshness_and_meta(payload: dict, log: dict, as_of: date | None = None
                     col_label = ind["columns"][col_idx].get("label")
                 motivo += f" Nota: {col_label or f'componente {col_idx}'} del último periodo está pendiente de publicación ({q.get('reason', 'sin detalle')})."
         ind["motivo_frescura"] = motivo
-        ind["url_boletin_oficial"] = ind.get("fuente", {}).get("link")
+        ind["url_fuente_oficial"] = ind.get("fuente", {}).get("link") or info.get("url_boletin")
+        ind["url_boletin_oficial"] = info.get("url_boletin") or ind.get("fuente", {}).get("link")
         ind["fecha_publicacion"] = info["fecha_publicacion_oficial"]
+        ind["fecha_ultima_publicacion"] = info.get("fecha_publicacion_oficial")
+        ind["regla_publicacion"] = info.get("regla_publicacion")
+        if info.get("proxima_publicacion_tipo") and ind.get("proxima_publicacion"):
+            ind["proxima_publicacion"]["tipo"] = info["proxima_publicacion_tipo"]
+        elif info.get("proxima_publicacion_tipo") and (info.get("proxima_publicacion") or info.get("periodo_proximo")):
+            ind["proxima_publicacion"] = {"tipo": info["proxima_publicacion_tipo"], "fecha_publicacion": info.get("proxima_publicacion"), "periodo_referencia": info.get("periodo_proximo")}
         changes.append(f"frescura: {key} -> {info['estado']}")
         if info["estado"] == lib_freshness.ESTADOS["REZAGADO"]:
             log["warnings"].append(f"{key}: REZAGADO – {info['motivo']}")

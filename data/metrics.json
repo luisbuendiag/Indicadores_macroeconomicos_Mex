@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-11T15:45:46+00:00",
-  "last_update_ct": "2026-08-11T09:45:41-06:00",
+  "generated_at": "2026-08-11T18:44:46+00:00",
+  "last_update_ct": "2026-08-11T12:44:29-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -440,15 +440,15 @@
     },
     "IMAI": {
       "kpi": {
-        "assessment": "adverso",
-        "dir": "down",
-        "ultimoFmt": "101.6",
-        "ultimoRaw": 101.629971,
-        "ultimoP": "May 26",
-        "varText": "-0.8%",
-        "varMag": -0.7713,
-        "pos": false,
-        "varColor": "#9b2247",
+        "assessment": "favorable",
+        "dir": "up",
+        "ultimoFmt": "102.0",
+        "ultimoRaw": 102.0,
+        "ultimoP": "Jun 26",
+        "varText": "+0.2%",
+        "varMag": 0.2,
+        "pos": true,
+        "varColor": "#1e5b4f",
         "varLabel": "Variación mensual",
         "maxFmt": "104.8",
         "maxRaw": 104.817918,
@@ -456,7 +456,7 @@
         "minFmt": "69.8",
         "minRaw": 69.771418,
         "minP": "May 20",
-        "lastI": 100,
+        "lastI": 101,
         "series": [
           99.840849,
           100.271051,
@@ -558,7 +558,8 @@
           100.824971,
           100.297622,
           102.419928,
-          101.629971
+          101.629971,
+          102.0
         ],
         "periods": [
           "Ene 18",
@@ -661,26 +662,27 @@
           "Feb 26 P",
           "Mar 26 P",
           "Abr 26 P",
-          "May 26"
+          "May 26",
+          "Jun 26"
         ],
-        "semaforo": "malo",
-        "yoyText": "+0.0%",
+        "semaforo": "bueno",
+        "yoyText": "+0.7%",
         "yoyLabel": "Var. anual"
       },
       "analysis": [
-        "En mayo de 2026, el IMAI se ubicó en 101.6 puntos (índice base 2018=100), con una variación mensual de -0.77% frente al mes previo. La variación mensual publicada por el INEGI muestra que el indicador disminuyó respecto del mes previo. El nivel mostrado es la serie original; la variación mensual se calcula sobre cifras desestacionalizadas.",
-        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 104.8 puntos (octubre de 2023) y un mínimo de 69.8 puntos (mayo de 2020). El resultado más reciente se ubicó por encima del promedio del periodo mostrado. El último dato se mantuvo cercano al del inicio del periodo mostrado."
+        "En junio de 2026, el IMAI se ubicó en 102.0 puntos (índice base 2018=100), con una variación mensual de +0.20% frente al mes previo. La variación mensual publicada por el INEGI muestra que el indicador aumentó respecto del mes previo. El nivel mostrado es la serie original; la variación mensual se calcula sobre cifras desestacionalizadas.",
+        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 104.8 puntos (octubre de 2023) y un mínimo de 69.8 puntos (mayo de 2020). El resultado más reciente se ubicó por encima del promedio del periodo mostrado. El último dato fue superior al del inicio del periodo mostrado. Esta comparación se realiza sobre la serie original, que incorpora efectos estacionales."
       ],
       "resumen": [
-        "En mayo de 2026, el IMAI se ubicó en 101.6 puntos (índice base 2018=100). El valor de variación mensual fue de -0.8% frente al mes previo.",
-        "La var. anual se situó en +0.0%, lo que refleja la comparación contra mayo de 2026 del año previo.",
+        "En junio de 2026, el IMAI se ubicó en 102.0 puntos (índice base 2018=100). El valor de variación mensual fue de +0.2% frente al mes previo.",
+        "La var. anual se situó en +0.7%, lo que refleja la comparación contra junio de 2026 del año previo.",
         "En la serie mostrada, el indicador oscila entre un máximo de 104.8 puntos (octubre de 2023) y un mínimo de 69.8 puntos (mayo de 2020). El último dato se ubica dentro del rango observado en el periodo mostrado.",
-        "La variación se clasifica como adversa según la lectura económica del indicador."
+        "La variación se clasifica como favorable según la lectura económica del indicador."
       ],
       "annualVar": {
-        "mag": 0.04969704070868319,
+        "mag": 0.7407377558299858,
         "pos": true,
-        "text": "+0.0%",
+        "text": "+0.7%",
         "label": "Var. anual"
       }
     },

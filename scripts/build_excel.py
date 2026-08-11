@@ -339,11 +339,14 @@ def add_metodologia(wb, payload):
 
 
 def _next_pub_map(calendar):
-    """clave -> primera publicación con estatus 'próximo' (fecha y periodo)."""
+    """clave -> primera publicación próxima, no anunciada o evento futuro."""
     out = {}
-    items = sorted((calendar or {}).get("items", []), key=lambda x: x.get("fecha_iso", ""))
+    def _sort_key(x):
+        iso = x.get("fecha_iso")
+        return (iso or "", 0 if iso else 1)
+    items = sorted((calendar or {}).get("items", []), key=_sort_key)
     for it in items:
-        if it.get("estatus") == "próximo" and it.get("clave") not in out:
+        if it.get("estatus") in ("próximo", "no_anunciada", "evento") and it.get("clave") not in out:
             out[it["clave"]] = it
     return out
 

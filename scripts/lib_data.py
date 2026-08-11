@@ -154,6 +154,25 @@ def apply_profile(payload: dict, meta_file: Path = META_FILE) -> list[str]:
         if prof.get("nombre") and prof["nombre"] != ind.get("nombre"):
             log.append(f"nombre override {key}: {ind.get('nombre')} -> {prof['nombre']}")
             ind["nombre"] = prof["nombre"]
+        if prof.get("fuente"):
+            ind_fuente = dict(ind.get("fuente", {}))
+            for fk, fv in prof["fuente"].items():
+                if fv:
+                    ind_fuente[fk] = fv
+            ind["fuente"] = ind_fuente
+        if prof.get("columns"):
+            old_n = len(ind.get("columns", []))
+            new_n = len(prof["columns"])
+            if new_n >= old_n:
+                ind["columns"] = prof["columns"]
+                log.append(f"columnas override {key}: {new_n} columnas")
+                if new_n > old_n:
+                    for o in ind.get("observations", []):
+                        vals = list(o.get("values", []))
+                        while len(vals) < new_n:
+                            vals.append(None)
+                        o["values"] = vals
+                    log.append(f"columnas padding {key}: {new_n - old_n} columnas nuevas")
 
     # Sincroniza columnas desde los scaffolds cuando la estructura coincide.
     for key, sc in meta.get("scaffolds", {}).items():

@@ -1,21 +1,21 @@
 {
-  "started_at": "2026-08-11T15:45:46+00:00",
+  "started_at": "2026-08-11T18:44:46+00:00",
   "mode": "offline",
   "network_calls": false,
   "warnings": [
-    "IMAI: REZAGADO – El periodo esperado es Junio 2026, pero el dashboard aún muestra May 26.",
     "[PIB] el último dato de la serie primaria es nulo.",
     "[IMAI] valor fuera de rango plausible en Abr 20: 69.864321 (esperado (70, 130)).",
     "[IMAI] valor fuera de rango plausible en May 20: 69.771418 (esperado (70, 130))."
   ],
   "changes": [
     "PIB 2T-26 P col0: None -> None (revisión)",
+    "columnas override IMAI: 3 columnas",
     "calendario: regenerado con as_of=2026-08-11",
     "métricas: data/metrics.json regenerado",
     "frescura: PIB -> ACTUALIZADO",
     "frescura: PIBSEC -> ACTUALIZADO",
     "frescura: IGAE -> ACTUALIZADO",
-    "frescura: IMAI -> REZAGADO",
+    "frescura: IMAI -> ACTUALIZADO",
     "frescura: CONSUMO -> ACTUALIZADO",
     "frescura: IED -> ACTUALIZADO",
     "frescura: DESOCUP -> ACTUALIZADO",
@@ -28,10 +28,10 @@
     "frescura: RESERVAS -> ACTUALIZADO",
     "frescura: EMOE -> ACTUALIZADO",
     "frescura: BCMM -> ACTUALIZADO",
-    "meta: last_update_ct=2026-08-11T09:45:46-06:00"
+    "meta: last_update_ct=2026-08-11T12:44:46-06:00"
   ],
   "consultas": [],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-08-11T15:45:46+00:00"
+  "finished_at": "2026-08-11T18:44:46+00:00"
 }

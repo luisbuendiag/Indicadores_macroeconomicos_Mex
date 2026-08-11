@@ -38,6 +38,12 @@ export function isTrim(p) { return /^[1-4]T-/.test(p || ""); }
 
 export function perLong(p) {
   if (!p) return "";
+  // Fechas ISO: 2026-08-07 -> 7 de agosto de 2026
+  const iso = p.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (iso) {
+    const d = new Date(parseInt(iso[1], 10), parseInt(iso[2], 10) - 1, parseInt(iso[3], 10));
+    return d.toLocaleDateString("es-MX", { timeZone: "UTC", day: "numeric", month: "long", year: "numeric" });
+  }
   const q = p.match(/^([1-4])T-(\d{2})/);
   if (q) return `${ORD[q[1]]} trimestre de 20${q[2]}`;
   const mo = p.match(/^([A-Za-zÁÉÍÓÚáéíóú]{3})\s*(\d{2})/);
@@ -51,6 +57,9 @@ export function respFrase(p) { return (isTrim(p) ? "al " : "a ") + perLong(p); }
 // Convierte un periodo a una fecha aproximada (para filtrar ventanas temporales).
 export function periodToDate(p) {
   if (!p) return null;
+  // Fechas ISO (diarias/semanales) de series originales de Banxico.
+  const iso = p.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (iso) return new Date(parseInt(iso[1], 10), parseInt(iso[2], 10) - 1, parseInt(iso[3], 10));
   const q = p.match(/^([1-4])T-(\d{2})/);
   if (q) { const month = (parseInt(q[1], 10) - 1) * 3; return new Date(2000 + parseInt(q[2], 10), month, 1); }
   const mo = p.match(/^([A-Za-zÁÉÍÓÚáéíóú]{3})\s*(\d{2})/);

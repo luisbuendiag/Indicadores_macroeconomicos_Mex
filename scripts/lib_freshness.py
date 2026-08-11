@@ -80,8 +80,38 @@ def _period_to_ym(period: str | None) -> str | None:
                 month = (q - 1) * 3 + 1
                 return f"{y}-{month:02d}"
 
+        # Trimestral corto: '2T 2026', '4T-2025'
+        qm2 = re.match(r"^(\d)T[-\s]?(\d{4})$", p, re.IGNORECASE)
+        if qm2:
+            q = int(qm2.group(1))
+            y = int(qm2.group(2))
+            if 1 <= q <= 4:
+                month = (q - 1) * 3 + 1
+                return f"{y}-{month:02d}"
+
     # Formatos del dashboard: 'May 26', 'May 26 P', '1T-26', '1T-26 R'
     return inegi.label_to_ym(p)
+
+
+def _period_to_ym_flexible(period: str | None) -> str | None:
+    """Versión permisiva que también entiende fechas ISO o españolas."""
+    ym = _period_to_ym(period)
+    if ym:
+        return ym
+    p = (period or "").strip()
+    # ISO
+    try:
+        d = date.fromisoformat(p)
+        return f"{d.year}-{d.month:02d}"
+    except (ValueError, TypeError):
+        pass
+    # '7 de agosto de 2026'
+    m = re.match(r"^(\d{1,2})\s+de\s+([A-Za-zÁÉÍÓÚáéíóúñÑ]+)\s+de\s+(\d{4})$", p, re.IGNORECASE)
+    if m:
+        mi = _month_from_name(m.group(2))
+        if mi:
+            return f"{int(m.group(3))}-{mi:02d}"
+    return None
 
 
 def _clean_period(period: str | None) -> str:
@@ -307,6 +337,74 @@ def source_had_error(key: str, update_log: dict | None = None, manifest_row: dic
     return bool(critical)
 
 
+def _obs_ym_set(ind: dict | None) -> set[str]:
+    """Conjunto de periodos presentes en las observaciones del indicador."""
+    out: set[str] = set()
+    if not ind:
+        return out
+    for o in ind.get("observations", []) or []:
+        p = _clean_period(o.get("period"))
+        ym = _period_to_ym_flexible(p)
+        if ym:
+            out.add(ym)
+    # También considera la granularidad original si existe.
+    for o in ind.get("observations_original", []) or []:
+        p = _clean_period(o.get("period"))
+        ym = _period_to_ym_flexible(p)
+        if ym:
+            out.add(ym)
+    return out
+
+
+def _resolve_pub_prox(
+    calendar: list[dict],
+    key: str,
+    ind: dict | None,
+    as_of: date,
+) -> tuple[dict | None, dict | None]:
+    """Determina la última publicación confirmada por los datos y la siguiente
+    publicación pendiente, sin depender únicamente de la fecha del calendario.
+
+    - `pub` es el ítem del calendario con fecha <= as_of cuyo periodo de
+      referencia efectivamente está en las observaciones del indicador.
+    - `prox` es el siguiente ítem del calendario (por fecha) cuyo periodo no
+      esté en los datos. Puede ser futuro o vencido (si la publicación aún no
+      ocurre).
+    """
+    obs_yms = _obs_ym_set(ind)
+    items = [i for i in calendar if i.get("clave") == key]
+    if not items:
+        return None, None
+    items.sort(key=lambda i: i.get("fecha_iso") or "")
+
+    # Estados con semántica de publicación real (no decisiones/eventos/reglas).
+    data_statuses = {"publicado", "próximo", "no_anunciada"}
+
+    items = [i for i in items if i.get("usar_para_frescura", True)]
+
+    pub = None
+    if obs_yms:
+        for it in reversed(items):
+            if it.get("estatus") not in data_statuses:
+                continue
+            if not it.get("fecha_iso"):
+                continue
+            if date.fromisoformat(it["fecha_iso"]) <= as_of:
+                if _period_to_ym_flexible(it.get("periodo_referencia")) in obs_yms:
+                    pub = it
+                    break
+
+    prox = None
+    start_idx = items.index(pub) + 1 if pub else 0
+    for it in items[start_idx:]:
+        if it.get("estatus") not in data_statuses:
+            continue
+        if _period_to_ym_flexible(it.get("periodo_referencia")) not in obs_yms:
+            prox = it
+            break
+    return pub, prox
+
+
 def compute_state(
     key: str,
     dashboard_period: str | None,
@@ -314,6 +412,7 @@ def compute_state(
     update_log: dict | None = None,
     calendar: list[dict] | None = None,
     as_of: date | None = None,
+    ind: dict | None = None,
 ) -> dict[str, Any]:
     """Determina el estado de frescura de un indicador.
 
@@ -338,8 +437,7 @@ def compute_state(
     dashboard_period_clean = _clean_period(dashboard_period)
     dashboard_ym = _period_to_ym(dashboard_period_clean)
 
-    pub = latest_published(calendar, key, as_of=as_of)
-    prox = latest_expected(calendar, key, as_of=as_of)
+    pub, prox = _resolve_pub_prox(calendar, key, ind, as_of)
 
     official_period = pub.get("periodo_referencia") if pub else None
     official_ym = _period_to_ym(official_period) if official_period else None
@@ -379,11 +477,13 @@ def compute_state(
     # series sin calendario, etc.).
     fallback_ym = None
     fallback_label = None
+    used_fallback = False
     if not official_ym and freq:
         fallback_ym, fallback_label = expected_period_from_frequency(freq, as_of)
         if fallback_ym:
             official_ym = fallback_ym
             official_period = fallback_label
+            used_fallback = True
 
     # Calcular comparación cuando tenemos ambos periodos.
     compara = None
@@ -429,6 +529,15 @@ def compute_state(
         estado = ESTADOS["PUBLICACION_PENDIENTE"]
         motivo = "No hay datos cargados; la publicación está pendiente."
 
+    if prox and prox.get("estatus") == "no_anunciada":
+        prox_tipo = "no_anunciada"
+    elif used_fallback:
+        prox_tipo = "calculada"
+    elif prox:
+        prox_tipo = "oficial"
+    else:
+        prox_tipo = None
+
     return {
         "estado": estado,
         "periodo_dashboard": dashboard_period_clean,
@@ -437,6 +546,9 @@ def compute_state(
         "fecha_iso_publicacion": pub.get("fecha_iso") if pub else None,
         "proxima_publicacion": prox.get("fecha_publicacion") if prox else None,
         "periodo_proximo": prox.get("periodo_referencia") if prox else None,
+        "proxima_publicacion_tipo": prox_tipo,
+        "url_boletin": pub.get("url_boletin") if pub else None,
+        "regla_publicacion": (prox or pub or {}).get("regla_publicacion"),
         "motivo": motivo,
     }
 
@@ -463,6 +575,7 @@ def diagnose_all(
             update_log=update_log,
             calendar=calendar,
             as_of=as_of,
+            ind=ind,
         )
     return result
 
