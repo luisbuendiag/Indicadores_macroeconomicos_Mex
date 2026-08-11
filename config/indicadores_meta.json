@@ -43,7 +43,12 @@
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
-      "nombre": "Indicador Mensual de la Actividad Industrial"
+      "nombre": "Indicador Mensual de la Actividad Industrial",
+      "columns": [
+        {"label": "Índice de volumen físico", "index": 0, "fmt": "idx"},
+        {"label": "Var. mensual (%)", "index": 1, "fmt": "pct-frac"},
+        {"label": "Var. anual (%)", "index": 2, "fmt": "pct-frac"}
+      ]
     },
     "DESOCUP": {
       "requiere_token": "INEGI",
@@ -84,7 +89,12 @@
     "IED": {
       "requiere_token": null,
       "serie_confirmada": false,
-      "clasificacion": "complementario"
+      "clasificacion": "complementario",
+      "fuente": {
+        "nombre": "Secretaría de Economía / Dirección General de Inversión Extranjera",
+        "link": "https://www.proyectosmexico.gob.mx/cifra-record-de-inversion-extranjera-directa-1t-2026/",
+        "metodo": "Comunicado oficial SE / DGIE"
+      }
     },
     "EMOE": {
       "requiere_token": "INEGI",

@@ -51,6 +51,7 @@ BULLETIN_URLS = {
     "IMFBCF": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/ifb/imfbcf{year}_{mm}.pdf",
     "EMIM": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/emim/emim{year}_{mm}.pdf",
     "IGAE": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/igae/igae{year}_{mm}.pdf",
+    "IMAI": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/imai/imai{year}_{mm}.pdf",
     "PIBT": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/pibt/pib_Pconst{year}_{mm}.pdf",
     "EOPIBT": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/pibo/pib_eo{year}_{mm}.pdf",
 }
@@ -413,6 +414,8 @@ def _parse_imcp_imfbcf(kind: str, pdf_bytes: bytes, pub_date: tuple[int, int, in
             index_table = table
         if kind == "IGAE" and ("IGAE" in flat and "índice 2018" in flat):
             index_table = table
+        if kind == "IMAI" and ("Actividad industrial" in flat and "índice 2018" in flat):
+            index_table = table
         if "Variación" in flat and "mensual" in flat:
             mensual_table = table
         if "Variación" in flat and "anual" in flat:
@@ -430,7 +433,7 @@ def _parse_imcp_imfbcf(kind: str, pdf_bytes: bytes, pub_date: tuple[int, int, in
     if mensual_value is None or anual_value is None:
         return None
 
-    if kind in ("CONSUMO", "IMFBCF"):
+    if kind in ("CONSUMO", "IMFBCF", "IMAI"):
         if index_table is None:
             return None
         index_value = next((_parse_index(c) for row in index_table for c in row if _parse_index(c) is not None), None)
@@ -786,7 +789,7 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
                         results.append(("IOAE", sub, col, o, url))
                         seen.add(("IOAE", col, o["ym"]))
 
-        elif kind in ("CONSUMO", "IMFBCF"):
+        elif kind in ("CONSUMO", "IMFBCF", "IMAI"):
             parsed = _parse_imcp_imfbcf(kind, pdf, pub_date)
             if not parsed:
                 continue
@@ -883,7 +886,7 @@ def fetch(config: dict | None = None, start_year: int = 2024, max_bulletins: int
         return SourceResult(False, warnings=warnings)
 
     data: dict[str, list[dict]] = {}
-    for kind in ("IOAE", "IGAE", "CONSUMO", "IMFBCF", "EMIM", "PIBT", "EOPIBT"):
+    for kind in ("IOAE", "IGAE", "CONSUMO", "IMFBCF", "IMAI", "EMIM", "PIBT", "EOPIBT"):
         # EOPIBT es la estimación preliminar de un solo trimestre; no se
         # desea sobrescriber histórico con estimaciones oportunas pasadas.
         kind_max = 1 if kind == "EOPIBT" else max_bulletins

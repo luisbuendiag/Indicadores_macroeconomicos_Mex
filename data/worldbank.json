@@ -1,9 +1,13 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
   "generated_at": "2026-08-11T15:45:23+00:00",
 =======
   "generated_at": "2026-08-11T15:31:56+00:00",
 >>>>>>> 65fb385 (Pipeline, frontend y tests: frescura, calendarios y granularidad.)
+=======
+  "generated_at": "2026-08-11T18:00:52+00:00",
+>>>>>>> c01a14d (Corrige IMAI jun-26 y fuente primaria IED 1T-26; validación online.)
   "series": {
     "PIB_ANUAL": {
       "indicator_id": "NY.GDP.MKTP.KD",
