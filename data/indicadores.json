@@ -1,18 +1,6 @@
 {
   "meta": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "generated_at": "2026-08-11T15:45:46+00:00",
-=======
-    "generated_at": "2026-08-11T15:44:21+00:00",
->>>>>>> 65fb385 (Pipeline, frontend y tests: frescura, calendarios y granularidad.)
-=======
-    "generated_at": "2026-08-11T15:45:04+00:00",
->>>>>>> fd05385 (Regenera datos y artefactos con calendarios y metadatos finales.)
-=======
-    "generated_at": "2026-08-11T18:05:44+00:00",
->>>>>>> c01a14d (Corrige IMAI jun-26 y fuente primaria IED 1T-26; validación online.)
+    "generated_at": "2026-08-11T18:35:17+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -22,19 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "last_update_ct": "2026-08-11T09:45:46-06:00",
-=======
-    "last_update_ct": "2026-08-11T09:44:21-06:00",
->>>>>>> 65fb385 (Pipeline, frontend y tests: frescura, calendarios y granularidad.)
-=======
-    "last_update_ct": "2026-08-11T09:45:04-06:00",
->>>>>>> fd05385 (Regenera datos y artefactos con calendarios y metadatos finales.)
-=======
-    "last_update_ct": "2026-08-11T12:05:44-06:00",
->>>>>>> c01a14d (Corrige IMAI jun-26 y fuente primaria IED 1T-26; validación online.)
+    "last_update_ct": "2026-08-11T12:35:17-06:00",
     "periodo_referencia_reciente": {
       "period": "Jul 26",
       "period_long": "Jul 26"
@@ -2934,7 +2910,7 @@
           "values": [
             100.345389,
             0.002447,
-            -0.028
+            null
           ]
         },
         {
@@ -2942,7 +2918,7 @@
           "values": [
             102.121506,
             0.0177,
-            0.004
+            null
           ]
         },
         {
@@ -2950,7 +2926,7 @@
           "values": [
             101.691373,
             -0.004212,
-            -0.013
+            null
           ]
         },
         {
@@ -2958,7 +2934,7 @@
           "values": [
             100.610819,
             -0.010626,
-            -0.007
+            null
           ]
         },
         {
@@ -2966,7 +2942,7 @@
           "values": [
             101.579489,
             0.009628,
-            -0.004
+            null
           ]
         },
         {
@@ -2974,7 +2950,7 @@
           "values": [
             101.250003,
             -0.003244,
-            -0.008
+            null
           ]
         },
         {
@@ -2982,7 +2958,7 @@
           "values": [
             100.232315,
             -0.010051,
-            -0.028
+            null
           ]
         },
         {
@@ -2990,7 +2966,7 @@
           "values": [
             100.042784,
             -0.001891,
-            -0.027
+            null
           ]
         },
         {
@@ -2998,7 +2974,7 @@
           "values": [
             99.896912,
             -0.001458,
-            -0.033
+            null
           ]
         },
         {
@@ -3006,7 +2982,7 @@
           "values": [
             100.714133,
             0.008181,
-            -0.007
+            null
           ]
         },
         {
@@ -3014,7 +2990,7 @@
           "values": [
             101.317257,
             0.005988,
-            -0.001
+            null
           ]
         },
         {
@@ -3022,7 +2998,7 @@
           "values": [
             101.430223,
             0.001115,
-            0.015
+            null
           ]
         },
         {
@@ -3030,7 +3006,7 @@
           "values": [
             100.399604,
             -0.010161,
-            -0.001
+            null
           ]
         },
         {
@@ -3038,7 +3014,7 @@
           "values": [
             100.824971,
             0.004237,
-            -0.013
+            null
           ]
         },
         {
@@ -3046,7 +3022,7 @@
           "values": [
             100.297622,
             -0.00523,
-            -0.015
+            null
           ]
         },
         {
@@ -3054,7 +3030,7 @@
           "values": [
             102.419928,
             0.02116,
-            0.018
+            null
           ]
         },
         {
@@ -3062,7 +3038,7 @@
           "values": [
             101.629971,
             -0.007713,
-            0.0
+            null
           ]
         },
         {
@@ -3070,7 +3046,7 @@
           "values": [
             102.0,
             0.002,
-            0.008
+            null
           ]
         }
       ],
@@ -3082,14 +3058,10 @@
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "REZAGADO",
+      "estado": "ACTUALIZADO",
       "origen_dato": "api",
       "fecha_publicacion": "11 de agosto de 2026",
-<<<<<<< HEAD
-      "periodo_referencia": "May 26",
-=======
       "periodo_referencia": "Jun 26",
->>>>>>> c01a14d (Corrige IMAI jun-26 y fuente primaria IED 1T-26; validación online.)
       "fecha_consulta": "2026-08-11",
       "metrics": {
         "kpi": {
@@ -3338,27 +3310,12 @@
       "periodo_referencia_oficial": "Junio 2026",
       "fecha_publicacion_oficial": "11 de agosto de 2026",
       "proxima_publicacion": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        "fecha_publicacion": "11 de septiembre de 2026",
-        "periodo_referencia": "Julio 2026"
-=======
-        "fecha_publicacion": "11 de agosto de 2026",
-        "periodo_referencia": "Junio 2026",
-=======
         "fecha_publicacion": "11 de septiembre de 2026",
         "periodo_referencia": "Julio 2026",
->>>>>>> c01a14d (Corrige IMAI jun-26 y fuente primaria IED 1T-26; validación online.)
         "tipo": "oficial"
->>>>>>> 65fb385 (Pipeline, frontend y tests: frescura, calendarios y granularidad.)
       },
-<<<<<<< HEAD
-      "motivo_frescura": "El periodo esperado es Junio 2026, pero el dashboard aún muestra May 26.",
-      "url_boletin_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603729#D737234",
-=======
       "motivo_frescura": "El periodo cargado (Jun 26) coincide con el último periodo esperado (Junio 2026).",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_08.pdf",
->>>>>>> c01a14d (Corrige IMAI jun-26 y fuente primaria IED 1T-26; validación online.)
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/IMAI/IMAI_datos.xlsx",
       "xlsx_causa": null,

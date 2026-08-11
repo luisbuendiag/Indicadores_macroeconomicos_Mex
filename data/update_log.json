@@ -1,21 +1,8 @@
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  "started_at": "2026-08-11T15:45:46+00:00",
-=======
-  "started_at": "2026-08-11T15:44:21+00:00",
->>>>>>> 65fb385 (Pipeline, frontend y tests: frescura, calendarios y granularidad.)
-=======
-  "started_at": "2026-08-11T15:45:04+00:00",
->>>>>>> fd05385 (Regenera datos y artefactos con calendarios y metadatos finales.)
-=======
-  "started_at": "2026-08-11T18:05:44+00:00",
->>>>>>> c01a14d (Corrige IMAI jun-26 y fuente primaria IED 1T-26; validación online.)
+  "started_at": "2026-08-11T18:35:17+00:00",
   "mode": "offline",
   "network_calls": false,
   "warnings": [
-    "IMAI: REZAGADO – El periodo esperado es Junio 2026, pero el dashboard aún muestra May 26.",
     "[PIB] el último dato de la serie primaria es nulo.",
     "[IMAI] valor fuera de rango plausible en Abr 20: 69.864321 (esperado (70, 130)).",
     "[IMAI] valor fuera de rango plausible en May 20: 69.771418 (esperado (70, 130))."
@@ -28,7 +15,7 @@
     "frescura: PIB -> ACTUALIZADO",
     "frescura: PIBSEC -> ACTUALIZADO",
     "frescura: IGAE -> ACTUALIZADO",
-    "frescura: IMAI -> REZAGADO",
+    "frescura: IMAI -> ACTUALIZADO",
     "frescura: CONSUMO -> ACTUALIZADO",
     "frescura: IED -> ACTUALIZADO",
     "frescura: DESOCUP -> ACTUALIZADO",
@@ -41,34 +28,10 @@
     "frescura: RESERVAS -> ACTUALIZADO",
     "frescura: EMOE -> ACTUALIZADO",
     "frescura: BCMM -> ACTUALIZADO",
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "meta: last_update_ct=2026-08-11T09:45:46-06:00"
-=======
-    "meta: last_update_ct=2026-08-11T09:44:21-06:00"
->>>>>>> 65fb385 (Pipeline, frontend y tests: frescura, calendarios y granularidad.)
-=======
-    "meta: last_update_ct=2026-08-11T09:45:04-06:00"
->>>>>>> fd05385 (Regenera datos y artefactos con calendarios y metadatos finales.)
-=======
-    "meta: last_update_ct=2026-08-11T12:05:44-06:00"
->>>>>>> c01a14d (Corrige IMAI jun-26 y fuente primaria IED 1T-26; validación online.)
+    "meta: last_update_ct=2026-08-11T12:35:17-06:00"
   ],
   "consultas": [],
   "critical": [],
   "result": "OK",
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  "finished_at": "2026-08-11T15:45:46+00:00"
-=======
-  "finished_at": "2026-08-11T15:44:21+00:00"
->>>>>>> 65fb385 (Pipeline, frontend y tests: frescura, calendarios y granularidad.)
-=======
-  "finished_at": "2026-08-11T15:45:04+00:00"
->>>>>>> fd05385 (Regenera datos y artefactos con calendarios y metadatos finales.)
-=======
-  "finished_at": "2026-08-11T18:05:44+00:00"
->>>>>>> c01a14d (Corrige IMAI jun-26 y fuente primaria IED 1T-26; validación online.)
+  "finished_at": "2026-08-11T18:35:17+00:00"
 }

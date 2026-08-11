@@ -1,17 +1,5 @@
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  "generated_at": "2026-08-11T15:45:46+00:00",
-=======
-  "generated_at": "2026-08-11T15:44:21+00:00",
->>>>>>> 65fb385 (Pipeline, frontend y tests: frescura, calendarios y granularidad.)
-=======
-  "generated_at": "2026-08-11T15:45:04+00:00",
->>>>>>> fd05385 (Regenera datos y artefactos con calendarios y metadatos finales.)
-=======
-  "generated_at": "2026-08-11T18:05:44+00:00",
->>>>>>> c01a14d (Corrige IMAI jun-26 y fuente primaria IED 1T-26; validación online.)
+  "generated_at": "2026-08-11T18:35:17+00:00",
   "last_update": "2026-08-11",
   "indicadores": 16
 }

@@ -1,17 +1,5 @@
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  "generated_at": "2026-08-11T15:45:46+00:00",
-=======
-  "generated_at": "2026-08-11T15:44:21+00:00",
->>>>>>> 65fb385 (Pipeline, frontend y tests: frescura, calendarios y granularidad.)
-=======
-  "generated_at": "2026-08-11T15:45:04+00:00",
->>>>>>> fd05385 (Regenera datos y artefactos con calendarios y metadatos finales.)
-=======
-  "generated_at": "2026-08-11T18:05:44+00:00",
->>>>>>> c01a14d (Corrige IMAI jun-26 y fuente primaria IED 1T-26; validación online.)
+  "generated_at": "2026-08-11T18:35:17+00:00",
   "indicadores": [
     {
       "indicador": "Producto Interno Bruto",
@@ -94,23 +82,13 @@
       "frecuencia": "Mensual",
       "unidad": "Índice base 2018=100",
       "ajuste_estacional": "Serie original",
-<<<<<<< HEAD
-      "ultima_observacion": "May 26",
-      "periodo_referencia": "May 26",
-<<<<<<< HEAD
-      "fecha_publicacion": "11 de agosto de 2026",
-=======
-      "fecha_publicacion": "10 de julio de 2026",
->>>>>>> 65fb385 (Pipeline, frontend y tests: frescura, calendarios y granularidad.)
-=======
       "ultima_observacion": "Jun 26",
       "periodo_referencia": "Jun 26",
       "fecha_publicacion": "11 de agosto de 2026",
->>>>>>> c01a14d (Corrige IMAI jun-26 y fuente primaria IED 1T-26; validación online.)
       "fecha_consulta": "2026-08-11",
       "fecha_actualizacion_archivo": "2026-08-11",
       "metodo_actualizacion": "INEGI BIE API",
-      "estado": "REZAGADO",
+      "estado": "ACTUALIZADO",
       "origen_dato": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
