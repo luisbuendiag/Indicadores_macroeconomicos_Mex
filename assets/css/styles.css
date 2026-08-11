@@ -163,12 +163,56 @@ td.cal-cell.empty { background: var(--soft); }
 .ind-nav .nav-link { color: var(--dkgreen); text-decoration: none; font-weight: 600; white-space: nowrap; }
 .ind-nav .nav-link:hover { text-decoration: underline; }
 .product-bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-.product-bar .btn { font-size: 12px; padding: 6px 11px; transition: background .15s, color .15s, border-color .15s; }
-.product-bar .product-ok { background: #fff; color: var(--dkgreen); border-color: var(--line); }
-.product-bar .product-ok:hover { background: var(--dkgreen); color: #fff; border-color: var(--dkgreen); }
-.product-bar .product-ok:disabled { opacity: 1; cursor: not-allowed; background: #f5f5f5; color: #8a8d86; border-color: var(--line); }
-.product-bar .product-disabled { opacity: .75; cursor: not-allowed; background: #f8f8f8; color: #9ca39a; border-color: #ddd; }
-.product-bar .product-disabled:hover { background: #f8f8f8; color: #9ca39a; }
+.product-bar .btn {
+  font-size: 12px;
+  padding: 6px 11px;
+  transition: background .15s, color .15s, border-color .15s, box-shadow .15s;
+  border-radius: var(--radius);
+}
+
+/* Botón activo: verde institucional oscuro sobre fondo claro, borde visible y cursor pointer. */
+.product-bar .product-ok {
+  background: #fff;
+  color: var(--dkgreen);
+  border: 1px solid var(--dkgreen);
+  cursor: pointer;
+  opacity: 1;
+  box-shadow: none;
+}
+.product-bar .product-ok:hover {
+  background: var(--dkgreen);
+  color: #fff;
+  border-color: var(--dkgreen);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .12);
+}
+.product-bar .product-ok:focus-visible {
+  outline: 2px solid var(--dkgreen);
+  outline-offset: 2px;
+}
+
+/* Botón deshabilitado: gris, sin opacidad reducida, cursor not-allowed y contraste suficiente. */
+.product-bar .product-disabled {
+  background: #ebedf0;
+  color: #6b737a;
+  border: 1px solid #cdd0d5;
+  cursor: not-allowed;
+  opacity: 1;
+  box-shadow: none;
+}
+.product-bar .product-disabled:hover {
+  background: #ebedf0;
+  color: #6b737a;
+  border-color: #cdd0d5;
+}
+
+/* Ningún botón activo debe verse como deshabilitado, ni viceversa. */
+.product-bar .product-ok[aria-disabled="true"],
+.product-bar .product-ok:disabled {
+  background: #ebedf0;
+  color: #6b737a;
+  border-color: #cdd0d5;
+  cursor: not-allowed;
+}
 
 .ficha-head { display: grid; grid-template-columns: minmax(0, 1.95fr) minmax(0, 1fr); gap: 18px; align-items: start; border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-bottom: 12px; }
 .fh-sigla { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); font-weight: 600; line-height: 1.2; }
