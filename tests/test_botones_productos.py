@@ -108,10 +108,39 @@ def test_ima_test_case_buttons():
     assert imai["url_boletin_oficial"].endswith("imai2026_08.pdf")
     assert imai.get("xlsx_disponible")
     assert imai.get("url_excel_individual") == "downloads/indicadores/IMAI/IMAI_datos.xlsx"
-    assert not imai.get("nota_disponible")
+    assert imai.get("nota_disponible")
+    assert imai.get("url_nota_individual") == "downloads/indicadores/IMAI/IMAI_nota.docx"
+    nota_path = ROOT / "downloads" / "indicadores" / "IMAI" / "IMAI_nota.docx"
+    assert nota_path.exists(), f"Falta nota IMAI: {nota_path}"
     # Calendario IMAI existe.
     cal = json.loads((ROOT / "data" / "calendario_publicaciones.json").read_text(encoding="utf-8"))
     assert any(c and c.get("clave") == "IMAI" for c in cal["items"])
+
+
+def test_inegi_indicators_have_specific_pdf_bulletin():
+    """Los indicadores INEGI deben apuntar al boletín oficial específico en saladeprensa."""
+    for k in ["IMAI", "IGAE", "INPC", "BCMM", "DESOCUP", "CONSUMO", "IMFBCF", "IOAE", "EMIM", "EMOE", "PIB"]:
+        ind = INDICADORES["indicators"][k]
+        url = ind.get("url_boletin_oficial")
+        assert url, f"{k} no tiene url_boletin_oficial"
+        assert ".inegi.org.mx/" in url, f"{k}: dominio no oficial: {url}"
+        if k in ("IMAI", "IGAE", "INPC", "BCMM", "DESOCUP", "IOAE", "EMIM", "EMOE"):
+            assert "contenidos/saladeprensa/boletines" in url, f"{k}: no es boletín PDF: {url}"
+
+
+def test_nota_files_exist_for_all_available():
+    for k, ind in INDICADORES["indicators"].items():
+        if ind.get("nota_disponible"):
+            path = ROOT / "downloads" / "indicadores" / k / f"{k}_nota.docx"
+            assert path.exists(), f"Falta nota de {k}: {path}"
+
+
+def test_boletin_inegi_fallback_when_no_specific_url():
+    """Si un indicador INEGI no tiene url_boletin_oficial, el fallback es el calendario."""
+    src = product_toolbar_source()
+    assert 'https://www.inegi.org.mx/app/saladeprensa/calendario/' in src
+    assert 'esInegi = (ind.fuente && (ind.fuente.nombre || "").includes("INEGI"))' in src
+    assert 'boletinUrl = ind.url_boletin_oficial || ind.url_fuente_oficial || (ind.fuente && ind.fuente.link) || null' in src
 
 
 def test_financial_indicators_have_products():

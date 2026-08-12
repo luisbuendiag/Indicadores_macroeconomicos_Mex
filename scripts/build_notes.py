@@ -1,213 +1,154 @@
-"""Genera notas individuales (.docx) por indicador.
+"""Genera notas individuales (.docx) por indicador a partir de machotes aprobados.
 
-- Usa plantilla si existe en data/source/plantilla_nota.docx; si no, crea un docx mínimo.
-- Solo genera notas para indicadores con datos validados.
-- Incorpora portada, resumen, gráfica, tabla reciente, metodología, fuente y enlace.
+- Busca el machote en data/source/notas_machote/{CLAVE}_machote.docx.
+- Extrae el periodo que cubre el machote y lo compara con el último periodo validado.
+- Si coinciden y el indicador está ACTUALIZADO, copia el machote a
+  downloads/indicadores/{CLAVE}/{CLAVE}_nota.docx, sin modificar el machote.
+- Si no hay machote, el periodo no coincide o el indicador no está actualizado,
+  deja el botón NOTA deshabilitado con la causa correspondiente.
 """
 from __future__ import annotations
 
 import argparse
-import io
 import json
-from datetime import date, datetime, timezone
+import re
+from datetime import datetime, timezone
 from pathlib import Path
 
-import matplotlib
-matplotlib.use("Agg")  # noqa: E402
-import matplotlib.dates as mdates
-import matplotlib.pyplot as plt
 from docx import Document
-from docx.enum.text import WD_ALIGN_PARAGRAPH
-from docx.oxml.ns import qn
-from docx.shared import Inches, Pt, RGBColor
 
 import lib_data as L
-from lib_kpicfg import get_cfg
-from lib_metrics import annual_var, compute_var, fmt_val, primary_series
 from sources import inegi
 
 ROOT = Path(__file__).resolve().parents[1]
-PLANTILLA = ROOT / "data" / "source" / "plantilla_nota.docx"
+MACHOTES_DIR = ROOT / "data" / "source" / "notas_machote"
 NOTES_DIR = ROOT / "downloads" / "indicadores"
 
+_MES = {
+    "enero": 1, "febrero": 2, "marzo": 3, "abril": 4, "mayo": 5, "junio": 6,
+    "julio": 7, "agosto": 8, "septiembre": 9, "octubre": 10, "noviembre": 11, "diciembre": 12,
+    "ene": 1, "feb": 2, "mar": 3, "abr": 4, "may": 5, "jun": 6,
+    "jul": 7, "ago": 8, "sep": 9, "oct": 10, "nov": 11, "dic": 12,
+}
 
-def _period_to_date(period: str):
+
+def _doc_text(doc: Document) -> str:
+    """Extrae todo el texto de un documento Word (párrafos + tablas)."""
+    parts: list[str] = []
+    for para in doc.paragraphs:
+        if para.text:
+            parts.append(para.text)
+    for table in doc.tables:
+        for row in table.rows:
+            for cell in row.cells:
+                if cell.text:
+                    parts.append(cell.text)
+    return "\n".join(parts)
+
+
+def _extract_periods_from_text(text: str, trimestral: bool = False) -> list[tuple[int, int]]:
+    """Busca periodos mensuales o trimestrales en el texto del machote.
+
+    Devuelve una lista de (año, mes) candidatos.  Para rangos como
+    "ene-jun 2026" o "enero-junio 2026" se usa el mes final.
+
+    Cuando trimestral=True, sólo se buscan patrones trimestrales para evitar
+    confundir la fecha de publicación con el periodo de referencia.
+    """
+    found: list[tuple[int, int]] = []
+    text = text.lower()
+
+    # Elimina líneas de publicación que suelen contener meses-año
+    # y no corresponden al periodo de referencia.
+    text = re.sub(r".*boletín de?l? indicador del.*", "", text)
+    text = re.sub(r".*próxima publicación.*", "", text)
+
+    if trimestral:
+        # Trimestral: 1T-2026, 1T 2026, 1T-26
+        for m in re.finditer(r"\b([1-4])t[\s\-]+(\d{2,4})\b", text, re.IGNORECASE):
+            try:
+                q = int(m.group(1))
+                y = int(m.group(2))
+                if y < 100:
+                    y = 2000 + y
+                found.append((y, (q - 1) * 3 + 1))
+            except (KeyError, ValueError):
+                pass
+        return found
+
+    # Mes completo o abreviado + "de" + año
+    for m in re.finditer(
+        r"\b(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre|ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic)\s+de\s+(\d{4})\b",
+        text,
+    ):
+        try:
+            found.append((int(m.group(2)), _MES[m.group(1)]))
+        except KeyError:
+            pass
+
+    # Rango tipo "ene-jun 2026" o "enero-junio 2026"; usamos el mes final.
+    rango_pat = re.compile(
+        r"\b(?:enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre|ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic)\s*[-–]\s*(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre|ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic)\s+(\d{4})\b"
+    )
+    for m in rango_pat.finditer(text):
+        try:
+            found.append((int(m.group(2)), _MES[m.group(1)]))
+        except KeyError:
+            pass
+
+    return found
+
+
+def _machote_periods(machote_path: Path, trimestral: bool = False) -> list[tuple[int, int]]:
+    try:
+        doc = Document(str(machote_path))
+        text = _doc_text(doc)
+    except Exception:
+        return []
+    return _extract_periods_from_text(text, trimestral=trimestral)
+
+
+def _current_period_to_ym(period: str | None) -> tuple[int, int] | None:
+    if not period:
+        return None
     ym = inegi.label_to_ym(period)
     if not ym:
         return None
-    return datetime.strptime(ym, "%Y-%m").date()
+    y, m = map(int, ym.split("-"))
+    return y, m
 
 
-def _prev_valid_i(idxs: list[int], i: int) -> int | None:
-    for j in range(i - 1, -1, -1):
-        if j in idxs:
-            return j
-    return None
+def _current_period_label(period: str | None) -> str:
+    return period or "—"
 
 
-def _set_run_font(run, size: int = 11, bold: bool = False, color: RGBColor | None = None):
-    run.font.size = Pt(size)
-    run.font.bold = bold
-    if color:
-        run.font.color.rgb = color
+def _note_period(out_path: Path, trimestral: bool = False) -> tuple[int, int] | None:
+    """Lee el periodo de una nota ya generada para decidir si regenerar."""
+    if not out_path.exists():
+        return None
+    try:
+        doc = Document(str(out_path))
+        periods = _extract_periods_from_text(_doc_text(doc), trimestral=trimestral)
+        return periods[-1] if periods else None
+    except Exception:
+        return None
 
 
-def _add_heading(doc: Document, text: str, level: int = 1):
-    p = doc.add_heading(text, level=level)
-    for run in p.runs:
-        run.font.name = "Calibri"
-        run._element.rPr.rFonts.set(qn("w:eastAsia"), "Calibri")
-    return p
-
-
-def _add_para(doc: Document, text: str, bold: bool = False, align=None):
-    p = doc.add_paragraph()
-    if align:
-        p.alignment = align
-    run = p.add_run(text)
-    run.font.name = "Calibri"
-    run._element.rPr.rFonts.set(qn("w:eastAsia"), "Calibri")
-    _set_run_font(run, size=11, bold=bold)
-    return p
-
-
-def _portada(doc: Document, ind: dict, kpi: dict | None):
-    _add_para(doc, "NOTA DE INDICADOR", bold=True, align=WD_ALIGN_PARAGRAPH.CENTER)
-    _add_para(doc, ind.get("nombre", ind["key"]), bold=True, align=WD_ALIGN_PARAGRAPH.CENTER)
-    _add_para(doc, f"Clave: {ind['key']}", align=WD_ALIGN_PARAGRAPH.CENTER)
-    _add_para(doc, "")
-    meta = [
-        ("Periodo de referencia", kpi["ultimoP"] if kpi else (ind.get("last_observation") or "—")),
-        ("Fecha de publicación", ind.get("fecha_publicacion") or "—"),
-        ("Fuente", ind.get("fuente", {}).get("nombre", "—")),
-        ("Unidad", ind.get("unidad", "—")),
-        ("Ajuste estacional", ind.get("ajuste_estacional", "—")),
-    ]
-    for k, v in meta:
-        _add_para(doc, f"{k}: {v}")
-    doc.add_page_break()
-
-
-def _add_resumen(doc: Document, resumen: list[str]):
-    _add_heading(doc, "Resumen ejecutivo", level=1)
-    for b in resumen:
-        _add_para(doc, f"• {b}")
-
-
-def _add_grafica(doc: Document, ind: dict, kpi: dict, cfg: dict) -> bool:
-    if not kpi:
-        return False
-    periods = kpi["periods"]
-    series = kpi["series"]
-    fechas = [_period_to_date(p) for p in periods]
-    x = [d for d, v in zip(fechas, series) if d and v is not None]
-    y = [v for v, d in zip(series, fechas) if d and v is not None]
-    if len(x) < 2:
-        return False
-
-    fig, ax = plt.subplots(figsize=(6, 3.2))
-    ax.plot(x, y, color="#1e5b4f", linewidth=1.8, marker="o", markersize=3)
-    ax.set_title(f"{ind['nombre']} — evolución del nivel", fontsize=11)
-    ax.set_ylabel(cfg.get("varLabel", "Nivel"), fontsize=9)
-    ax.grid(True, linestyle="--", alpha=0.4)
-    if (max(x) - min(x)).days > 180:
-        ax.xaxis.set_major_locator(mdates.YearLocator())
-        ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
-    else:
-        ax.xaxis.set_major_locator(mdates.MonthLocator(interval=3))
-        ax.xaxis.set_major_formatter(mdates.DateFormatter("%b-%y"))
-    fig.tight_layout()
-    buf = io.BytesIO()
-    fig.savefig(buf, format="png", dpi=150, bbox_inches="tight")
-    buf.seek(0)
-    plt.close(fig)
-
-    _add_heading(doc, "Gráfica", level=1)
-    p = doc.add_paragraph()
-    p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    run = p.add_run()
-    run.add_picture(buf, width=Inches(6))
-    return True
-
-
-def _add_tabla_reciente(doc: Document, ind: dict, kpi: dict, cfg: dict):
-    _add_heading(doc, "Datos recientes", level=1)
-    obs = ind.get("observations", [])
-    vals = primary_series(ind, cfg)
-    idxs = [i for i, v in enumerate(vals) if v is not None]
-    table = doc.add_table(rows=1, cols=4)
-    table.style = "Table Grid"
-    hdr = table.rows[0].cells
-    hdr[0].text = "Periodo"
-    hdr[1].text = "Nivel"
-    hdr[2].text = "Variación mensual / trimestral"
-    hdr[3].text = "Variación anual"
-    for cell in hdr:
-        for run in cell.paragraphs[0].runs:
-            run.bold = True
-    start = max(0, len(obs) - 12)
-    for i in range(start, len(obs)):
-        period = obs[i]["period"]
-        prev_i = _prev_valid_i(idxs, i)
-        var_info = compute_var(ind, cfg, vals, i, prev_i) if i > 0 and prev_i is not None else None
-        yoy_info = annual_var(ind, {"lastI": i, "series": vals}, get_cfg("KPICFG")) if vals[i] is not None and i > 0 else None
-        row_cells = table.add_row().cells
-        row_cells[0].text = period
-        row_cells[1].text = fmt_val(vals[i], cfg.get("valFmt")) if vals[i] is not None else "—"
-        row_cells[2].text = var_info["text"] if var_info and var_info.get("text") else "—"
-        row_cells[3].text = yoy_info["text"] if yoy_info and yoy_info.get("text") else "—"
-    doc.add_paragraph()
-
-
-def _add_metodologia(doc: Document, ind: dict):
-    _add_heading(doc, "Metodología y fuente", level=1)
-    _add_para(doc, ind.get("descripcion") or ind.get("nombre"))
-    _add_para(doc, f"Fuente: {ind.get('fuente', {}).get('nombre', '—')}")
-    if ind.get("fuente", {}).get("link"):
-        _add_para(doc, f"Enlace: {ind['fuente']['link']}")
-    if ind.get("notas"):
-        _add_para(doc, "Notas: " + " ".join(ind["notas"]))
-    _add_para(doc, f"Generado el {datetime.now(timezone.utc).strftime('%d de %B de %Y a las %H:%M UTC')}.")
-
-
-def _build_note(ind: dict, kpicfg: dict) -> tuple[Document, bool]:
-    if PLANTILLA.exists():
-        doc = Document(str(PLANTILLA))
-    else:
-        doc = Document()
-        doc.styles["Normal"].font.name = "Calibri"
-        doc.styles["Normal"].font.size = Pt(11)
-
-    metrics = ind.get("metrics", {})
-    kpi = metrics.get("kpi")
-    resumen = metrics.get("resumen", [])
-    cfg = kpicfg.get(ind["key"])
-    _portada(doc, ind, kpi)
-    if kpi and resumen:
-        _add_resumen(doc, resumen)
-        _add_tabla_reciente(doc, ind, kpi, cfg)
-        _add_grafica(doc, ind, kpi, cfg)
-    _add_metodologia(doc, ind)
-    return doc, True
+def _make_nota_metadata(ind: dict, machote_path: Path, out_path: Path, matched: bool) -> dict:
+    return {
+        "nota_disponible": matched,
+        "nota_causa": None if matched else "Periodo del machote no coincide con periodo validado",
+        "url_nota_individual": str(out_path.relative_to(ROOT)) if matched and out_path.exists() else None,
+        "nota_periodo": ind.get("last_observation"),
+        "nota_fecha_generacion": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "nota_estado": "GENERADA" if matched else "SIN_MACHOTE",
+        "nota_machote_usado": str(machote_path.relative_to(ROOT)) if matched else None,
+    }
 
 
 def build_notes(payload: dict, pilot: list[str] | None = None) -> dict[str, Path]:
-    kpicfg = get_cfg("KPICFG")
     keys = pilot if pilot else list(payload["indicators"].keys())
     generated: dict[str, Path] = {}
-
-    if not PLANTILLA.exists():
-        for key in keys:
-            ind = payload["indicators"][key]
-            ind["nota_disponible"] = False
-            ind["nota_causa"] = "Falta plantilla aprobada"
-            ind["url_nota_individual"] = None
-            # Elimina notas improvisadas anteriores si existen.
-            out_path = NOTES_DIR / key / f"{key}_nota.docx"
-            if out_path.exists():
-                out_path.unlink()
-        print("Aviso: no existe data/source/plantilla_nota.docx; las notas quedan deshabilitadas.")
-        return generated
 
     NOTES_DIR.mkdir(parents=True, exist_ok=True)
     for key in keys:
@@ -215,52 +156,102 @@ def build_notes(payload: dict, pilot: list[str] | None = None) -> dict[str, Path
         out_dir = NOTES_DIR / key
         out_dir.mkdir(parents=True, exist_ok=True)
         out_path = out_dir / f"{key}_nota.docx"
+        machote_path = MACHOTES_DIR / f"{key}_machote.docx"
+
+        # Reset básico
+        for k in ("nota_disponible", "nota_causa", "url_nota_individual", "nota_periodo",
+                  "nota_fecha_generacion", "nota_estado", "nota_machote_usado"):
+            ind.pop(k, None)
+
+        if not machote_path.exists():
+            ind.update(_make_nota_metadata(ind, machote_path, out_path, False))
+            ind["nota_causa"] = "Falta machote aprobado"
+            ind["nota_estado"] = "SIN_MACHOTE"
+            if out_path.exists():
+                # No borramos una nota previa válida si aún existe, solo deshabilitamos el botón.
+                pass
+            continue
 
         if not ind.get("observations"):
-            ind["nota_disponible"] = False
+            ind.update(_make_nota_metadata(ind, machote_path, out_path, False))
             ind["nota_causa"] = "Sin observaciones"
             continue
+
         if ind.get("estado") not in ("ACTUALIZADO",):
-            ind["nota_disponible"] = False
+            ind.update(_make_nota_metadata(ind, machote_path, out_path, False))
             ind["nota_causa"] = f"Estado del indicador: {ind.get('estado')}. La nota solo se genera para indicadores ACTUALIZADO."
-            continue
-        if not ind.get("metrics"):
-            ind["nota_disponible"] = False
-            ind["nota_causa"] = "Sin métricas calculadas"
+            # Conserva la nota previa si existe, no la sobrescribe.
+            if out_path.exists():
+                ind["url_nota_individual"] = str(out_path.relative_to(ROOT))
             continue
 
-        try:
-            doc, _ = _build_note(ind, kpicfg)
-            doc.save(str(out_path))
+        current_ym = _current_period_to_ym(ind.get("last_observation"))
+        trimestral = "T-" in (ind.get("last_observation") or "")
+        machote_periods = _machote_periods(machote_path, trimestral=trimestral)
+        existing_ym = _note_period(out_path, trimestral=trimestral)
+
+        if not current_ym:
+            ind.update(_make_nota_metadata(ind, machote_path, out_path, False))
+            ind["nota_causa"] = "No se pudo determinar el periodo validado"
+            continue
+
+        match = current_ym in machote_periods
+
+        if not match:
+            # Si no coincide el periodo del machote con el dato validado, NO generamos.
+            # Si la nota previa sigue siendo válida para su propio periodo, la conservamos.
+            ind.update(_make_nota_metadata(ind, machote_path, out_path, False))
+            ind["nota_causa"] = (
+                f"Machote cubre {machote_periods} pero el periodo validado es {_current_period_label(ind.get('last_observation'))}. "
+                "No se genera nota hasta contar con machote correspondiente."
+            )
+            if out_path.exists():
+                ind["url_nota_individual"] = str(out_path.relative_to(ROOT))
+            continue
+
+        # Si ya existe una nota para el mismo periodo, no regenerar innecesariamente.
+        if out_path.exists() and existing_ym == current_ym and ind.get("nota_disponible"):
             ind["nota_disponible"] = True
             ind["nota_causa"] = None
             ind["url_nota_individual"] = str(out_path.relative_to(ROOT))
+            ind["nota_periodo"] = ind.get("last_observation")
+            ind["nota_fecha_generacion"] = datetime.fromtimestamp(out_path.stat().st_mtime, tz=timezone.utc).isoformat(timespec="seconds")
+            ind["nota_estado"] = "GENERADA"
+            ind["nota_machote_usado"] = str(machote_path.relative_to(ROOT))
+            generated[key] = out_path
+            continue
+
+        # Generar nota: copiar el machote y registrar metadatos.
+        try:
+            from shutil import copyfile
+            copyfile(machote_path, out_path)
+            ind.update(_make_nota_metadata(ind, machote_path, out_path, True))
+            ind["nota_estado"] = "GENERADA"
             generated[key] = out_path
         except Exception as e:
-            ind["nota_disponible"] = False
+            ind.update(_make_nota_metadata(ind, machote_path, out_path, False))
             ind["nota_causa"] = f"Error al generar nota: {e}"
-            ind["url_nota_individual"] = None
+
     return generated
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--pilot", action="store_true", help="Solo IGAE e INPC")
+    ap.add_argument("--pilot", action="store_true", help="Solo indicadores con machote")
     args = ap.parse_args()
 
     payload = L.load_data()
-    pilot = ["IGAE", "INPC"] if args.pilot else None
-    generated = build_notes(payload, pilot=pilot)
+    generated = build_notes(payload)
     (L.DATA_DIR / "indicadores.json").write_text(
         json.dumps(payload, ensure_ascii=False, indent=2, default=str) + "\n",
         encoding="utf-8",
     )
     if generated:
         print(f"OK: {len(generated)} notas generadas:")
-        for key, path in generated.items():
-            print(f"  {key}: {path.relative_to(ROOT)}")
+        for key, path in sorted(generated.items()):
+            print(f"  - {key}: {path}")
     else:
-        print("No se generaron notas; revisar causas en nota_causa.")
+        print("Aviso: no se generaron notas.")
 
 
 if __name__ == "__main__":

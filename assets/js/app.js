@@ -131,12 +131,18 @@ function productToolbar(ind) {
     ? `Ver calendario de publicaciones de ${ind.nombre}`
     : "Sin calendario o regla de publicación";
 
-  // Boletín: url_boletin_oficial primero; url_fuente_oficial como fallback, luego fuente.link.
-  const boletinUrl = ind.url_boletin_oficial || ind.url_fuente_oficial || (ind.fuente && ind.fuente.link) || null;
+  // Boletín: prioridad 1 = url_boletin_oficial; 2 = url_fuente_oficial; 3 = fuente.link;
+  // Para INEGI sin boletín específico, fallback al calendario de Sala de Prensa.
+  const esInegi = (ind.fuente && (ind.fuente.nombre || "").includes("INEGI"));
+  let boletinUrl = ind.url_boletin_oficial || ind.url_fuente_oficial || (ind.fuente && ind.fuente.link) || null;
+  let boletinTitle = "Abrir último boletín oficial";
+  if (!boletinUrl && esInegi) {
+    boletinUrl = "https://www.inegi.org.mx/app/saladeprensa/calendario/";
+    boletinTitle = "Abrir publicaciones oficiales del INEGI";
+  } else if (!boletinUrl) {
+    boletinTitle = "Boletín / fuente oficial no identificado";
+  }
   const boletinEnabled = !!boletinUrl;
-  const boletinTitle = boletinEnabled
-    ? "Abrir último boletín / fuente oficial"
-    : "Boletín / fuente oficial no identificado";
 
   // Nota: deshabilitada mientras no exista plantilla aprobada.
   const notaReady = !!ind.nota_disponible;

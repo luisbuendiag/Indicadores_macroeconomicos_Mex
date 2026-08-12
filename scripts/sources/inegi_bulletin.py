@@ -54,6 +54,26 @@ BULLETIN_URLS = {
     "IMAI": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/imai/imai{year}_{mm}.pdf",
     "PIBT": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/pibt/pib_Pconst{year}_{mm}.pdf",
     "EOPIBT": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/pibo/pib_eo{year}_{mm}.pdf",
+    "INPC": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/inpc/inpc_2q{year}_{mm}.pdf",
+    "EMOE": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/ee/ee{year}_{mm}.pdf",
+    "IOOE": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/iooe/IOE{year}_{mm}.pdf",
+    "BCMM": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/comext_o/balcom_o{year}_{mm}.pdf",
+}
+
+# Mapeo de claves del dashboard a los productos de boletines.
+KEY_TO_KIND = {
+    "PIB": "EOPIBT",
+    "PIBSEC": "EOPIBT",
+    "IGAE": "IGAE",
+    "IMAI": "IMAI",
+    "BCMM": "BCMM",
+    "DESOCUP": "IOOE",
+    "INPC": "INPC",
+    "CONSUMO": "CONSUMO",
+    "IMFBCF": "IMFBCF",
+    "IOAE": "IOAE",
+    "EMIM": "EMIM",
+    "EMOE": "EMOE",
 }
 
 MES = {
@@ -900,3 +920,82 @@ def fetch(config: dict | None = None, start_year: int = 2024, max_bulletins: int
 
     ok = bool(data)
     return SourceResult(ok, data=data, warnings=warnings)
+
+
+def discover_bulletin_url(key: str, period: str | None, start_year: int = 2024,
+                          max_search: int = 18) -> dict | None:
+    """Descubre la URL del boletín oficial del INEGI para un periodo validado.
+
+    No extrae datos de series; solo valida existencia, dominio oficial,
+    indicador correcto y periodo de referencia.  Útil para alimentar
+    `url_boletin_oficial` independientemente de si los valores vienen del BIE.
+    """
+    if not period:
+        return None
+    ym = inegi.label_to_ym(period)
+    if not ym:
+        return None
+    kind = KEY_TO_KIND.get(key)
+    if not kind or kind not in BULLETIN_URLS:
+        return None
+    year, month = int(ym.split("-")[0]), int(ym.split("-")[1])
+    this_year = 2026
+    issues: list[tuple[int, int, str]] = []
+    for y in range(this_year, start_year - 1, -1):
+        for m in range(12, 0, -1):
+            if len(issues) >= max_search:
+                break
+            url = BULLETIN_URLS[kind].format(year=y, mm=f"{m:02d}")
+            if _head_ok(url):
+                issues.append((y, m, url))
+
+    ref_label = inegi.ym_to_label(ym, freq=8)
+    for y, m, url in issues:
+        try:
+            text, _ = _pdf_text_first_page(_req(url))
+        except Exception:  # noqa: BLE001
+            continue
+        if not text:
+            continue
+        # Validación de dominio/URL ya está implícita en BULLETIN_URLS.
+        # Validación de indicador correcto.
+        titulo = text[:300].upper()
+        productos = {
+            "INPC": ("ÍNDICE NACIONAL DE PRECIOS", "INPC"),
+            "EMOE": ("ENCUESTA MENSUAL DE OPINIÓN EMPRESARIAL", "EMOE"),
+            "IOOE": ("ENCUESTA NACIONAL DE OCUPACIÓN", "ENOE"),
+            "BCMM": ("BALANZA COMERCIAL", "BCMM"),
+            "IGAE": ("INDICADOR GLOBAL", "IGAE"),
+            "IMAI": ("INDICADOR MENSUAL DE LA ACTIVIDAD INDUSTRIAL", "IMAI"),
+            "CONSUMO": ("INDICADOR MENSUAL DEL CONSUMO PRIVADO", "IMCP"),
+            "IMFBCF": ("INDICADOR MENSUAL DE LA FORMACIÓN BRUTA", "IMFBCF"),
+            "IOAE": ("INDICADOR OPORTUNO", "IOAE"),
+            "EMIM": ("ENCUESTA MENSUAL DE LA INDUSTRIA MANUFACTURERA", "EMIM"),
+            "PIBT": ("PRODUCTO INTERNO BRUTO", "PIB"),
+            "EOPIBT": ("PRODUCTO INTERNO BRUTO", "PIB"),
+        }
+        ok_producto = True
+        if kind in productos:
+            nombre, sigla = productos[kind]
+            ok_producto = nombre in titulo or sigla in titulo
+        if not ok_producto:
+            continue
+        # Validación de periodo de referencia.
+        data_month = _extract_data_month(text)
+        if data_month:
+            data_ym = f"{data_month[0]:04d}-{data_month[1]:02d}"
+            if inegi.ym_to_label(data_ym, freq=8) == ref_label:
+                pub = _extract_pub_date(text)
+                num = None
+                nm = re.search(r"BOLETÍN DE INDICADOR\s+(\d+/\d+)", text)
+                if nm:
+                    num = nm.group(1)
+                return {
+                    "url": url,
+                    "periodo": ref_label,
+                    "fecha_publicacion": f"{pub[2]} de {list(MES.keys())[pub[1]-1]} de {pub[0]}" if pub else None,
+                    "numero_boletin": num,
+                    "tipo_documento": "PDF",
+                    "metodo": f"INEGI descubrimiento automático ({kind})",
+                }
+    return None

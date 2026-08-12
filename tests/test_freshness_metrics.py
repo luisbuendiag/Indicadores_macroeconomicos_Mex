@@ -94,13 +94,18 @@ def test_individual_excel_exists_and_has_columns(payload):
             assert col in headers, f"{key} falta columna {col}"
 
 
-def test_individual_note_disabled_for_pilot(payload):
-    # Mientras no exista plantilla aprobada, NOTA debe quedar deshabilitado.
-    assert not (ROOT / "data" / "source" / "plantilla_nota.docx").exists(), "si ahora hay plantilla aprobada, actualiza este test"
+def test_individual_note_state_for_pilot(payload):
+    # NOTA se habilita solo cuando hay un machote aprobado cuyo periodo coincide
+    # con el dato validado y el indicador está ACTUALIZADO.
     for key in ("IGAE", "INPC"):
         ind = payload["indicators"][key]
-        assert not ind.get("nota_disponible"), f"{key} nota no debería estar disponible sin plantilla"
-        assert "Falta plantilla" in (ind.get("nota_causa") or ""), f"{key} causa incorrecta: {ind.get('nota_causa')}"
+        if ind.get("nota_disponible"):
+            assert ind.get("url_nota_individual"), f"{key} nota disponible sin URL"
+            path = ROOT / ind["url_nota_individual"]
+            assert path.exists(), f"Falta archivo de nota de {key}: {path}"
+            assert ind.get("nota_causa") is None
+        else:
+            assert ind.get("nota_causa"), f"{key} nota deshabilitada sin causa"
 
 
 def test_historical_data_not_truncated(payload):
@@ -118,6 +123,7 @@ def test_pilot_product_flags(payload):
         ind = payload["indicators"][key]
         assert ind.get("xlsx_disponible")
         assert ind.get("url_boletin_oficial")
-        # NOTA se habilitará cuando se apruebe data/source/plantilla_nota.docx.
-        assert not ind.get("nota_disponible")
-        assert "Falta plantilla" in (ind.get("nota_causa") or "")
+        # NOTA depende de machote con periodo coincidente; si no está disponible,
+        # debe tener una causa explícita.
+        if not ind.get("nota_disponible"):
+            assert ind.get("nota_causa"), f"{key} nota deshabilitada sin causa"

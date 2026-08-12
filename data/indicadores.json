@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-11T20:21:57+00:00",
+    "generated_at": "2026-08-12T00:23:15+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-08-11T14:21:57-06:00",
+    "last_update_ct": "2026-08-11T18:23:15-06:00",
     "periodo_referencia_reciente": {
       "period": "Jul 26",
       "period_long": "Jul 26"
@@ -447,13 +447,10 @@
         "tipo": "oficial"
       },
       "motivo_frescura": "El periodo cargado (2T-26) coincide con el último periodo esperado (2° trimestre 2026). Nota: PIB (millones de pesos) del último periodo está pendiente de publicación (Nivel del PIB no publicado en la Estimación Oportuna del PIB Trimestral (EOPIBT) del 30 de julio de 2026. Se actualizará con el PIBT definitivo del 24 de agosto de 2026. Las variaciones (original anual 2.2%, trimestral desestacionalizada 1.5%, anual desestacionalizada 2.1%) sí están confirmadas.).",
-      "url_boletin_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=605598#D737375",
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_07.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/PIB/PIB_datos.xlsx",
       "xlsx_causa": null,
-      "nota_disponible": false,
-      "nota_causa": "Falta plantilla aprobada",
-      "url_nota_individual": null,
       "data_quality": [
         {
           "period": "2T-26 P",
@@ -464,7 +461,14 @@
       ],
       "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=605598#D737375",
       "fecha_ultima_publicacion": "30 de julio de 2026",
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "nota_disponible": false,
+      "nota_causa": "Machote cubre [(2026, 1), (2026, 1)] pero el periodo validado es 2T-26 P. No se genera nota hasta contar con machote correspondiente.",
+      "url_nota_individual": "downloads/indicadores/PIB/PIB_nota.docx",
+      "nota_periodo": "2T-26 P",
+      "nota_fecha_generacion": "2026-08-12T00:22:17+00:00",
+      "nota_estado": "SIN_MACHOTE",
+      "nota_machote_usado": null
     },
     "PIBSEC": {
       "key": "PIBSEC",
@@ -851,16 +855,20 @@
         "tipo": "oficial"
       },
       "motivo_frescura": "El periodo cargado (1T-26) coincide con el último periodo esperado (1T-26).",
-      "url_boletin_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=600267#D735888",
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_05.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/PIBSEC/PIBSEC_datos.xlsx",
       "xlsx_causa": null,
-      "nota_disponible": false,
-      "nota_causa": "Falta plantilla aprobada",
-      "url_nota_individual": null,
       "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=600267#D735888",
       "fecha_ultima_publicacion": null,
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "nota_disponible": false,
+      "nota_causa": "Falta machote aprobado",
+      "url_nota_individual": null,
+      "nota_periodo": "1T-26 P",
+      "nota_fecha_generacion": "2026-08-12T00:22:17+00:00",
+      "nota_estado": "SIN_MACHOTE",
+      "nota_machote_usado": null
     },
     "IGAE": {
       "key": "IGAE",
@@ -2184,16 +2192,20 @@
         "tipo": "oficial"
       },
       "motivo_frescura": "El periodo cargado (May 26) coincide con el último periodo esperado (Mayo 2026).",
-      "url_boletin_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603589#D737121",
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_07.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/IGAE/IGAE_datos.xlsx",
       "xlsx_causa": null,
-      "nota_disponible": false,
-      "nota_causa": "Falta plantilla aprobada",
-      "url_nota_individual": null,
       "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603589#D737121",
       "fecha_ultima_publicacion": "23 de julio de 2026",
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "nota_disponible": false,
+      "nota_causa": "Machote cubre [(2025, 10), (2026, 4), (2025, 10), (2026, 6), (2026, 6), (2026, 4)] pero el periodo validado es May 26. No se genera nota hasta contar con machote correspondiente.",
+      "url_nota_individual": null,
+      "nota_periodo": "May 26",
+      "nota_fecha_generacion": "2026-08-12T00:22:17+00:00",
+      "nota_estado": "SIN_MACHOTE",
+      "nota_machote_usado": null
     },
     "IMAI": {
       "key": "IMAI",
@@ -3319,12 +3331,16 @@
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/IMAI/IMAI_datos.xlsx",
       "xlsx_causa": null,
-      "nota_disponible": false,
-      "nota_causa": "Falta plantilla aprobada",
-      "url_nota_individual": null,
       "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603729#D737234",
       "fecha_ultima_publicacion": "11 de agosto de 2026",
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "nota_disponible": true,
+      "nota_causa": null,
+      "url_nota_individual": "downloads/indicadores/IMAI/IMAI_nota.docx",
+      "nota_periodo": "Jun 26",
+      "nota_fecha_generacion": "2026-08-12T00:22:17+00:00",
+      "nota_estado": "GENERADA",
+      "nota_machote_usado": "data/source/notas_machote/IMAI_machote.docx"
     },
     "CONSUMO": {
       "key": "CONSUMO",
@@ -3631,12 +3647,16 @@
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/CONSUMO/CONSUMO_datos.xlsx",
       "xlsx_causa": null,
-      "nota_disponible": false,
-      "nota_causa": "Falta plantilla aprobada",
-      "url_nota_individual": null,
       "url_fuente_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_08.pdf",
       "fecha_ultima_publicacion": "05 de agosto de 2026",
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "nota_disponible": true,
+      "nota_causa": null,
+      "url_nota_individual": "downloads/indicadores/CONSUMO/CONSUMO_nota.docx",
+      "nota_periodo": "May 26",
+      "nota_fecha_generacion": "2026-08-12T00:22:17+00:00",
+      "nota_estado": "GENERADA",
+      "nota_machote_usado": "data/source/notas_machote/CONSUMO_machote.docx"
     },
     "IED": {
       "key": "IED",
@@ -3969,12 +3989,16 @@
       "xlsx_disponible": true,
       "xlsx_causa": null,
       "url_excel_individual": "downloads/indicadores/IED/IED_datos.xlsx",
-      "nota_disponible": false,
-      "nota_causa": "Falta plantilla aprobada",
-      "url_nota_individual": null,
       "url_fuente_oficial": "https://www.proyectosmexico.gob.mx/cifra-record-de-inversion-extranjera-directa-1t-2026/",
       "fecha_ultima_publicacion": "26 de mayo de 2026",
-      "regla_publicacion": "Publicación trimestral de flujos de IED. La fecha exacta de la siguiente publicación se anuncia por la Secretaría de Economía."
+      "regla_publicacion": "Publicación trimestral de flujos de IED. La fecha exacta de la siguiente publicación se anuncia por la Secretaría de Economía.",
+      "nota_disponible": false,
+      "nota_causa": "Falta machote aprobado",
+      "url_nota_individual": null,
+      "nota_periodo": "1T-26",
+      "nota_fecha_generacion": "2026-08-12T00:22:17+00:00",
+      "nota_estado": "SIN_MACHOTE",
+      "nota_machote_usado": null
     },
     "DESOCUP": {
       "key": "DESOCUP",
@@ -4874,16 +4898,23 @@
         "tipo": "oficial"
       },
       "motivo_frescura": "El periodo cargado (Jun 26) coincide con el último periodo esperado (Junio 2026).",
-      "url_boletin_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=4#D444603",
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_07.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/DESOCUP/DESOCUP_datos.xlsx",
       "xlsx_causa": null,
-      "nota_disponible": false,
-      "nota_causa": "Falta plantilla aprobada",
-      "url_nota_individual": null,
       "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=4#D444603",
       "fecha_ultima_publicacion": "24 de julio de 2026",
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "periodo_boletin": "Jun 26",
+      "numero_boletin": "435/26",
+      "tipo_documento": "PDF",
+      "nota_disponible": true,
+      "nota_causa": null,
+      "url_nota_individual": "downloads/indicadores/DESOCUP/DESOCUP_nota.docx",
+      "nota_periodo": "Jun 26",
+      "nota_fecha_generacion": "2026-08-12T00:22:17+00:00",
+      "nota_estado": "GENERADA",
+      "nota_machote_usado": "data/source/notas_machote/DESOCUP_machote.docx"
     },
     "INPC": {
       "key": "INPC",
@@ -6007,16 +6038,23 @@
         "tipo": "oficial"
       },
       "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo esperado (Julio 2026).",
-      "url_boletin_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=682416#D334452",
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_08.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/INPC/INPC_datos.xlsx",
       "xlsx_causa": null,
-      "nota_disponible": false,
-      "nota_causa": "Falta plantilla aprobada",
-      "url_nota_individual": null,
       "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=682416#D334452",
       "fecha_ultima_publicacion": "07 de agosto de 2026",
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "periodo_boletin": "Jul 26",
+      "numero_boletin": "481/26",
+      "tipo_documento": "PDF",
+      "nota_disponible": true,
+      "nota_causa": null,
+      "url_nota_individual": "downloads/indicadores/INPC/INPC_nota.docx",
+      "nota_periodo": "Jul 26",
+      "nota_fecha_generacion": "2026-08-12T00:22:18+00:00",
+      "nota_estado": "GENERADA",
+      "nota_machote_usado": "data/source/notas_machote/INPC_machote.docx"
     },
     "IMFBCF": {
       "key": "IMFBCF",
@@ -6317,12 +6355,16 @@
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/IMFBCF/IMFBCF_datos.xlsx",
       "xlsx_causa": null,
-      "nota_disponible": false,
-      "nota_causa": "Falta plantilla aprobada",
-      "url_nota_individual": null,
       "url_fuente_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_08.pdf",
       "fecha_ultima_publicacion": "05 de agosto de 2026",
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "nota_disponible": false,
+      "nota_causa": "Machote cubre [(2026, 4), (2026, 7), (2026, 7), (2026, 4), (2026, 4), (2026, 4), (2026, 4)] pero el periodo validado es May 26. No se genera nota hasta contar con machote correspondiente.",
+      "url_nota_individual": null,
+      "nota_periodo": "May 26",
+      "nota_fecha_generacion": "2026-08-12T00:22:18+00:00",
+      "nota_estado": "SIN_MACHOTE",
+      "nota_machote_usado": null
     },
     "IOAE": {
       "key": "IOAE",
@@ -6725,12 +6767,16 @@
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/IOAE/IOAE_datos.xlsx",
       "xlsx_causa": null,
-      "nota_disponible": false,
-      "nota_causa": "Falta plantilla aprobada",
-      "url_nota_individual": null,
       "url_fuente_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_07.pdf",
       "fecha_ultima_publicacion": "21 de julio de 2026",
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "nota_disponible": true,
+      "nota_causa": null,
+      "url_nota_individual": "downloads/indicadores/IOAE/IOAE_nota.docx",
+      "nota_periodo": "Jun 26",
+      "nota_fecha_generacion": "2026-08-12T00:22:18+00:00",
+      "nota_estado": "GENERADA",
+      "nota_machote_usado": "data/source/notas_machote/IOAE_machote.docx"
     },
     "EMIM": {
       "key": "EMIM",
@@ -7730,16 +7776,20 @@
         "tipo": "oficial"
       },
       "motivo_frescura": "El periodo cargado (May 26) coincide con el último periodo esperado (Mayo 2026).",
-      "url_boletin_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=562444#D796224",
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_07.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/EMIM/EMIM_datos.xlsx",
       "xlsx_causa": null,
-      "nota_disponible": false,
-      "nota_causa": "Falta plantilla aprobada",
-      "url_nota_individual": null,
       "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=562444#D796224",
       "fecha_ultima_publicacion": "16 de julio de 2026",
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "nota_disponible": true,
+      "nota_causa": null,
+      "url_nota_individual": "downloads/indicadores/EMIM/EMIM_nota.docx",
+      "nota_periodo": "May 26",
+      "nota_fecha_generacion": "2026-08-12T00:22:18+00:00",
+      "nota_estado": "GENERADA",
+      "nota_machote_usado": "data/source/notas_machote/EMIM_machote.docx"
     },
     "TIPOCAMBIO": {
       "key": "TIPOCAMBIO",
@@ -8650,9 +8700,6 @@
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/TIPOCAMBIO/TIPOCAMBIO_datos.xlsx",
       "xlsx_causa": null,
-      "nota_disponible": false,
-      "nota_causa": "Falta plantilla aprobada",
-      "url_nota_individual": null,
       "frecuencia_original": "Diaria",
       "observations_original": [
         {
@@ -21649,7 +21696,14 @@
       "fecha_ultima_observacion": "2026-08-11",
       "url_fuente_oficial": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
       "fecha_ultima_publicacion": null,
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "nota_disponible": false,
+      "nota_causa": "Falta machote aprobado",
+      "url_nota_individual": null,
+      "nota_periodo": "Jul 26",
+      "nota_fecha_generacion": "2026-08-12T00:22:18+00:00",
+      "nota_estado": "SIN_MACHOTE",
+      "nota_machote_usado": null
     },
     "TASA": {
       "key": "TASA",
@@ -22554,9 +22608,6 @@
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/TASA/TASA_datos.xlsx",
       "xlsx_causa": null,
-      "nota_disponible": false,
-      "nota_causa": "Falta plantilla aprobada",
-      "url_nota_individual": null,
       "frecuencia_original": "Diaria",
       "observations_original": [
         {
@@ -41361,7 +41412,14 @@
       "fecha_ultima_observacion": "2026-08-11",
       "url_fuente_oficial": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
       "fecha_ultima_publicacion": null,
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "nota_disponible": false,
+      "nota_causa": "Falta machote aprobado",
+      "url_nota_individual": null,
+      "nota_periodo": "Jul 26",
+      "nota_fecha_generacion": "2026-08-12T00:22:18+00:00",
+      "nota_estado": "SIN_MACHOTE",
+      "nota_machote_usado": null
     },
     "RESERVAS": {
       "key": "RESERVAS",
@@ -42272,9 +42330,6 @@
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/RESERVAS/RESERVAS_datos.xlsx",
       "xlsx_causa": null,
-      "nota_disponible": false,
-      "nota_causa": "Falta plantilla aprobada",
-      "url_nota_individual": null,
       "frecuencia_original": "Semanal",
       "observations_original": [
         {
@@ -44975,7 +45030,14 @@
       "fecha_ultima_observacion": "2026-08-07",
       "url_fuente_oficial": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
       "fecha_ultima_publicacion": null,
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "nota_disponible": false,
+      "nota_causa": "Falta machote aprobado",
+      "url_nota_individual": null,
+      "nota_periodo": "Jul 26",
+      "nota_fecha_generacion": "2026-08-12T00:22:18+00:00",
+      "nota_estado": "SIN_MACHOTE",
+      "nota_machote_usado": null
     },
     "EMOE": {
       "key": "EMOE",
@@ -45993,17 +46055,24 @@
         "tipo": "oficial"
       },
       "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo esperado (Julio 2026).",
-      "url_boletin_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=682416#D701401",
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ee/ee2026_08.pdf",
       "xlsx_disponible": true,
       "xlsx_causa": null,
       "url_excel_individual": "downloads/indicadores/EMOE/EMOE_datos.xlsx",
-      "nota_disponible": false,
-      "nota_causa": "Falta plantilla aprobada",
-      "url_nota_individual": null,
       "source_origin": "api",
       "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=682416#D701401",
       "fecha_ultima_publicacion": "3 de agosto de 2026",
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "periodo_boletin": "Jul 26",
+      "numero_boletin": "474/26",
+      "tipo_documento": "PDF",
+      "nota_disponible": true,
+      "nota_causa": null,
+      "url_nota_individual": "downloads/indicadores/EMOE/EMOE_nota.docx",
+      "nota_periodo": "Jul 26",
+      "nota_fecha_generacion": "2026-08-12T00:22:18+00:00",
+      "nota_estado": "GENERADA",
+      "nota_machote_usado": "data/source/notas_machote/EMOE_machote.docx"
     },
     "BCMM": {
       "key": "BCMM",
@@ -47119,17 +47188,24 @@
         "tipo": "oficial"
       },
       "motivo_frescura": "El periodo cargado (Jun 26) coincide con el último periodo esperado (Junio 2026).",
-      "url_boletin_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=36695#D33226",
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_07.pdf",
       "xlsx_disponible": true,
       "xlsx_causa": null,
       "url_excel_individual": "downloads/indicadores/BCMM/BCMM_datos.xlsx",
-      "nota_disponible": false,
-      "nota_causa": "Falta plantilla aprobada",
-      "url_nota_individual": null,
       "source_origin": "api",
       "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=36695#D33226",
       "fecha_ultima_publicacion": "27 de julio de 2026",
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "periodo_boletin": "Jun 26",
+      "numero_boletin": "436/26",
+      "tipo_documento": "PDF",
+      "nota_disponible": true,
+      "nota_causa": null,
+      "url_nota_individual": "downloads/indicadores/BCMM/BCMM_nota.docx",
+      "nota_periodo": "Jun 26",
+      "nota_fecha_generacion": "2026-08-12T00:22:18+00:00",
+      "nota_estado": "GENERADA",
+      "nota_machote_usado": "data/source/notas_machote/BCMM_machote.docx"
     }
   }
 }
