@@ -45,9 +45,14 @@ def test_calendar_enabled_only_with_data():
     assert "const calEnabled = calendarioDisponible(ind)" in src
 
 
-def test_boletin_prefiere_url_boletin_oficial_y_url_fuente_oficial_fallback():
+def test_boletin_prefiere_url_boletin_oficial_y_calendario_inegi_y_bie_solo_tecnico():
     src = product_toolbar_source()
-    assert "ind.url_boletin_oficial || ind.url_fuente_oficial || (ind.fuente && ind.fuente.link)" in src
+    # INEGI: boletín específico -> calendario de Sala de Prensa -> BIE solo si falta todo lo anterior.
+    assert "CALENDARIO_PRENSA" in src
+    assert "https://www.inegi.org.mx/app/saladeprensa/calendario/" in src
+    assert "ind.url_boletin_oficial || CALENDARIO_PRENSA" in src
+    # La URL fuente/BIE debe quedar como último fallback, no como primera alternativa.
+    assert "ind.url_fuente_oficial" in src
 
 
 def test_boletin_opens_external_with_rel():
