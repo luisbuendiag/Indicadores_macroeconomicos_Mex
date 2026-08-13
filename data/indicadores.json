@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-13T15:45:53+00:00",
+    "generated_at": "2026-08-13T22:29:59+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-08-13T09:45:53-06:00",
+    "last_update_ct": "2026-08-13T16:29:59-06:00",
     "periodo_referencia_reciente": {
       "period": "Jul 26",
       "period_long": "Jul 26"
@@ -21650,9 +21650,15 @@
           "values": [
             17.0627
           ]
+        },
+        {
+          "period": "2026-08-13",
+          "values": [
+            17.053
+          ]
         }
       ],
-      "fecha_ultima_observacion": "2026-08-12",
+      "fecha_ultima_observacion": "2026-08-13",
       "url_fuente_oficial": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
       "fecha_ultima_publicacion": null,
       "regla_publicacion": null
