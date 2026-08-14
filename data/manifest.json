@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-14T15:41:12+00:00",
+  "generated_at": "2026-08-14T22:11:55+00:00",
   "indicadores": [
     {
       "indicador": "Producto Interno Bruto",
@@ -78,7 +78,7 @@
       "clave": "IMAI",
       "clasificacion": "principal",
       "fuente": "INEGI",
-      "serie": "737233",
+      "serie": "737234",
       "frecuencia": "Mensual",
       "unidad": "Índice base 2018=100",
       "ajuste_estacional": "Serie original",

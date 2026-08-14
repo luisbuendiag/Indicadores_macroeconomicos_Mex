@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-14T15:41:12+00:00",
+    "generated_at": "2026-08-14T22:11:55+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-08-14T09:41:12-06:00",
+    "last_update_ct": "2026-08-14T16:11:55-06:00",
     "periodo_referencia_reciente": {
       "period": "Jul 26",
       "period_long": "Jul 26"
@@ -2211,9 +2211,9 @@
       ],
       "fuente": {
         "nombre": "INEGI",
-        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603729#D737233",
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603729#D737234",
         "metodo": "INEGI BIE API",
-        "serie": "737233"
+        "serie": "737234"
       },
       "columns": [
         {
@@ -3322,7 +3322,7 @@
       "nota_disponible": false,
       "nota_causa": "Falta plantilla aprobada",
       "url_nota_individual": null,
-      "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603729#D737233",
+      "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603729#D737234",
       "fecha_ultima_publicacion": "11 de agosto de 2026",
       "regla_publicacion": null
     },
@@ -21656,9 +21656,15 @@
           "values": [
             17.053
           ]
+        },
+        {
+          "period": "2026-08-14",
+          "values": [
+            17.0218
+          ]
         }
       ],
-      "fecha_ultima_observacion": "2026-08-13",
+      "fecha_ultima_observacion": "2026-08-14",
       "url_fuente_oficial": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
       "fecha_ultima_publicacion": null,
       "regla_publicacion": null
