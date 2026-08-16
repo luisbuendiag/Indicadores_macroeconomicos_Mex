@@ -1,0 +1,250 @@
+{
+  "descripcion": "Mapeo de productos INEGI asociados a cada indicador del dashboard.",
+  "fecha_generacion": "2026-08-17T15:59:50.521250+00:00",
+  "indicadores": [
+    {
+      "clave_dashboard": "PIB",
+      "nombre_dashboard": "Producto Interno Bruto",
+      "fuente_inegi_serie": "737375",
+      "metodo_inegi": "INEGI BIE API",
+      "producto_inegi_detectado": "EOPIBT",
+      "nombre_producto_inegi": "Estimación Oportuna del Producto Interno Bruto Trimestral (EOPIBT)",
+      "alias_oficiales": [
+        "PRODUCTO INTERNO BRUTO",
+        "PIB",
+        "ESTIMACIÓN OPORTUNA"
+      ],
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_07.pdf",
+      "periodo_boletin": "2T-26",
+      "numero_boletin": "470/26",
+      "fecha_publicacion": "30 de julio de 2026",
+      "tipo_documento": "PDF",
+      "last_observation": "2T-26 P",
+      "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=605598#D737375",
+      "boletin_validado": true
+    },
+    {
+      "clave_dashboard": "PIBSEC",
+      "nombre_dashboard": "Producto Interno Bruto por sector de actividad",
+      "fuente_inegi_serie": "735888",
+      "metodo_inegi": "INEGI BIE API",
+      "producto_inegi_detectado": "PIBT",
+      "nombre_producto_inegi": "Producto Interno Bruto por sector de actividad (PIBT)",
+      "alias_oficiales": [
+        "PRODUCTO INTERNO BRUTO",
+        "PIB"
+      ],
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_05.pdf",
+      "periodo_boletin": "1T-26",
+      "numero_boletin": "295/26",
+      "fecha_publicacion": "22 de mayo de 2026",
+      "tipo_documento": "PDF",
+      "last_observation": "1T-26 P",
+      "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=600267#D735888",
+      "boletin_validado": true
+    },
+    {
+      "clave_dashboard": "IGAE",
+      "nombre_dashboard": "Indicador Global de la Actividad Económica",
+      "fuente_inegi_serie": "737121",
+      "metodo_inegi": "INEGI BIE API",
+      "producto_inegi_detectado": "IGAE",
+      "nombre_producto_inegi": "Indicador Global de la Actividad Económica",
+      "alias_oficiales": [
+        "INDICADOR GLOBAL",
+        "IGAE"
+      ],
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_07.pdf",
+      "periodo_boletin": "May 26",
+      "numero_boletin": "432/26",
+      "fecha_publicacion": "23 de julio de 2026",
+      "tipo_documento": "PDF",
+      "last_observation": "May 26",
+      "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603589#D737121",
+      "boletin_validado": true
+    },
+    {
+      "clave_dashboard": "IMAI",
+      "nombre_dashboard": "Indicador Mensual de la Actividad Industrial",
+      "fuente_inegi_serie": "737234",
+      "metodo_inegi": "INEGI BIE API",
+      "producto_inegi_detectado": "IMAI",
+      "nombre_producto_inegi": "Indicador Mensual de la Actividad Industrial",
+      "alias_oficiales": [
+        "INDICADOR MENSUAL DE LA ACTIVIDAD INDUSTRIAL",
+        "IMAI"
+      ],
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_08.pdf",
+      "periodo_boletin": "Jun 26",
+      "numero_boletin": "485/26",
+      "fecha_publicacion": "11 de agosto de 2026",
+      "tipo_documento": "PDF",
+      "last_observation": "Jun 26",
+      "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603729#D737234",
+      "boletin_validado": true
+    },
+    {
+      "clave_dashboard": "BCMM",
+      "nombre_dashboard": "Balanza Comercial de Mercancías de México",
+      "fuente_inegi_serie": "33226",
+      "metodo_inegi": "INEGI BIE API",
+      "producto_inegi_detectado": "BCMM",
+      "nombre_producto_inegi": "Balanza Comercial de Mercancías de México",
+      "alias_oficiales": [
+        "BALANZA COMERCIAL",
+        "BCMM"
+      ],
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_07.pdf",
+      "periodo_boletin": "Jun 26",
+      "numero_boletin": "436/26",
+      "fecha_publicacion": "27 de julio de 2026",
+      "tipo_documento": "PDF",
+      "last_observation": "Jun 26",
+      "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=36695#D33226",
+      "boletin_validado": true
+    },
+    {
+      "clave_dashboard": "DESOCUP",
+      "nombre_dashboard": "Tasa de desocupación",
+      "fuente_inegi_serie": "444603",
+      "metodo_inegi": "INEGI BIE API",
+      "producto_inegi_detectado": "IOOE",
+      "nombre_producto_inegi": "Indicadores de Ocupación y Empleo (ENOE / IOOE)",
+      "alias_oficiales": [
+        "ENCUESTA NACIONAL DE OCUPACIÓN",
+        "ENOE",
+        "IOOE",
+        "DESOCUPACIÓN"
+      ],
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_07.pdf",
+      "periodo_boletin": "Jun 26",
+      "numero_boletin": "435/26",
+      "fecha_publicacion": "24 de julio de 2026",
+      "tipo_documento": "PDF",
+      "last_observation": "Jun 26",
+      "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=4#D444603",
+      "boletin_validado": true
+    },
+    {
+      "clave_dashboard": "INPC",
+      "nombre_dashboard": "Índice de Precios al Consumidor",
+      "fuente_inegi_serie": "334452",
+      "metodo_inegi": "INEGI BIE API",
+      "producto_inegi_detectado": "INPC",
+      "nombre_producto_inegi": "Índice Nacional de Precios al Consumidor",
+      "alias_oficiales": [
+        "ÍNDICE NACIONAL DE PRECIOS",
+        "INPC"
+      ],
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_08.pdf",
+      "periodo_boletin": "Jul 26",
+      "numero_boletin": "481/26",
+      "fecha_publicacion": "7 de agosto de 2026",
+      "tipo_documento": "PDF",
+      "last_observation": "Jul 26",
+      "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=682416#D334452",
+      "boletin_validado": true
+    },
+    {
+      "clave_dashboard": "CONSUMO",
+      "nombre_dashboard": "Indicador mensual del consumo privado",
+      "fuente_inegi_serie": "CONSUMO_pdf",
+      "metodo_inegi": "INEGI boletín PDF",
+      "producto_inegi_detectado": "CONSUMO",
+      "nombre_producto_inegi": "Indicador Mensual del Consumo Privado",
+      "alias_oficiales": [
+        "INDICADOR MENSUAL DEL CONSUMO PRIVADO",
+        "IMCP"
+      ],
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_08.pdf",
+      "periodo_boletin": "May 26",
+      "numero_boletin": "478/26",
+      "fecha_publicacion": "5 de agosto de 2026",
+      "tipo_documento": "PDF",
+      "last_observation": "May 26",
+      "url_fuente_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_08.pdf",
+      "boletin_validado": true
+    },
+    {
+      "clave_dashboard": "IMFBCF",
+      "nombre_dashboard": "Indicador Mensual de la Formación Bruta de Capital Fijo",
+      "fuente_inegi_serie": "IMFBCF_pdf",
+      "metodo_inegi": "INEGI boletín PDF",
+      "producto_inegi_detectado": "IMFBCF",
+      "nombre_producto_inegi": "Indicador Mensual de la Formación Bruta de Capital Fijo",
+      "alias_oficiales": [
+        "INDICADOR MENSUAL DE LA FORMACIÓN BRUTA",
+        "IMFBCF"
+      ],
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_08.pdf",
+      "periodo_boletin": "May 26",
+      "numero_boletin": "479/26",
+      "fecha_publicacion": "5 de agosto de 2026",
+      "tipo_documento": "PDF",
+      "last_observation": "May 26",
+      "url_fuente_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_08.pdf",
+      "boletin_validado": true
+    },
+    {
+      "clave_dashboard": "IOAE",
+      "nombre_dashboard": "Indicador Oportuno de la Actividad Económica",
+      "fuente_inegi_serie": "IOAE_pdf",
+      "metodo_inegi": "INEGI boletín PDF",
+      "producto_inegi_detectado": "IOAE",
+      "nombre_producto_inegi": "Indicador Oportuno de la Actividad Económica",
+      "alias_oficiales": [
+        "INDICADOR OPORTUNO",
+        "IOAE",
+        "IGAE"
+      ],
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_07.pdf",
+      "periodo_boletin": "Jun 26",
+      "numero_boletin": "428/26",
+      "fecha_publicacion": "21 de julio de 2026",
+      "tipo_documento": "PDF",
+      "last_observation": "Jun 26",
+      "url_fuente_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_07.pdf",
+      "boletin_validado": true
+    },
+    {
+      "clave_dashboard": "EMIM",
+      "nombre_dashboard": "Encuesta Mensual de la Industria Manufacturera",
+      "fuente_inegi_serie": "796224",
+      "metodo_inegi": "INEGI BIE API",
+      "producto_inegi_detectado": "EMIM",
+      "nombre_producto_inegi": "Encuesta Mensual de la Industria Manufacturera",
+      "alias_oficiales": [
+        "ENCUESTA MENSUAL DE LA INDUSTRIA MANUFACTURERA",
+        "EMIM"
+      ],
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_08.pdf",
+      "periodo_boletin": "Jun 26",
+      "numero_boletin": "490/26",
+      "fecha_publicacion": "17 de agosto de 2026",
+      "tipo_documento": "PDF",
+      "last_observation": "Jun 26",
+      "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=562444#D796224",
+      "boletin_validado": true
+    },
+    {
+      "clave_dashboard": "EMOE",
+      "nombre_dashboard": "Confianza empresarial (EMOE)",
+      "fuente_inegi_serie": "701401",
+      "metodo_inegi": "INEGI BIE API",
+      "producto_inegi_detectado": "EMOE",
+      "nombre_producto_inegi": "Encuesta Mensual de Opinión Empresarial",
+      "alias_oficiales": [
+        "ENCUESTA MENSUAL DE OPINIÓN EMPRESARIAL",
+        "EMOE"
+      ],
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ee/ee2026_08.pdf",
+      "periodo_boletin": "Jul 26",
+      "numero_boletin": "474/26",
+      "fecha_publicacion": "3 de agosto de 2026",
+      "tipo_documento": "PDF",
+      "last_observation": "Jul 26",
+      "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=682416#D701401",
+      "boletin_validado": true
+    }
+  ]
+}

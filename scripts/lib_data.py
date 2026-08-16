@@ -212,7 +212,10 @@ def apply_profile(payload: dict, meta_file: Path = META_FILE) -> list[str]:
         # El estado final lo determina lib_freshness en build_data.py.
         ind["estado"] = None
         ind["origen_dato"] = origen
-        ind["fecha_publicacion"] = None
+        # Preservar la fecha de publicación ya validada por el boletín oficial; si no,
+        # apply_freshness_and_meta la completará con el calendario o descubrimiento.
+        if not ind.get("fecha_publicacion"):
+            ind["fecha_publicacion"] = None
         ind["periodo_referencia"] = ind.get("last_observation")
         ind["fecha_consulta"] = ind.get("last_checked")
 

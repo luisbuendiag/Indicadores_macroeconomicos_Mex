@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-17T15:13:08+00:00",
+    "generated_at": "2026-08-17T15:59:35+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-08-17T09:13:08-06:00",
+    "last_update_ct": "2026-08-17T09:59:35-06:00",
     "periodo_referencia_reciente": {
       "period": "Jul 26",
       "period_long": "Jul 26"
@@ -447,7 +447,7 @@
         "tipo": "oficial"
       },
       "motivo_frescura": "El periodo cargado (2T-26) coincide con el último periodo esperado (2° trimestre 2026). Nota: PIB (millones de pesos) del último periodo está pendiente de publicación (Nivel del PIB no publicado en la Estimación Oportuna del PIB Trimestral (EOPIBT) del 30 de julio de 2026. Se actualizará con el PIBT definitivo del 24 de agosto de 2026. Las variaciones (original anual 2.2%, trimestral desestacionalizada 1.5%, anual desestacionalizada 2.1%) sí están confirmadas.).",
-      "url_boletin_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=605598#D737375",
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_07.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/PIB/PIB_datos.xlsx",
       "xlsx_causa": null,
@@ -464,7 +464,12 @@
       ],
       "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=605598#D737375",
       "fecha_ultima_publicacion": "30 de julio de 2026",
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "periodo_boletin": "2T-26",
+      "numero_boletin": "470/26",
+      "tipo_documento": "PDF",
+      "producto_boletin": "Estimación Oportuna del Producto Interno Bruto Trimestral (EOPIBT)",
+      "boletin_validado": true
     },
     "PIBSEC": {
       "key": "PIBSEC",
@@ -754,7 +759,7 @@
       "clasificacion": "principal",
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
-      "fecha_publicacion": null,
+      "fecha_publicacion": "22 de mayo de 2026",
       "periodo_referencia": "1T-26 P",
       "fecha_consulta": "2026-08-17",
       "metrics": {
@@ -851,7 +856,7 @@
         "tipo": "oficial"
       },
       "motivo_frescura": "El periodo cargado (1T-26) coincide con el último periodo esperado (1T-26).",
-      "url_boletin_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=600267#D735888",
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_05.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/PIBSEC/PIBSEC_datos.xlsx",
       "xlsx_causa": null,
@@ -860,7 +865,12 @@
       "url_nota_individual": null,
       "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=600267#D735888",
       "fecha_ultima_publicacion": null,
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "periodo_boletin": "1T-26",
+      "numero_boletin": "295/26",
+      "tipo_documento": "PDF",
+      "producto_boletin": "Producto Interno Bruto por sector de actividad (PIBT)",
+      "boletin_validado": true
     },
     "IGAE": {
       "key": "IGAE",
@@ -2184,7 +2194,7 @@
         "tipo": "oficial"
       },
       "motivo_frescura": "El periodo cargado (May 26) coincide con el último periodo esperado (Mayo 2026).",
-      "url_boletin_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603589#D737121",
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_07.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/IGAE/IGAE_datos.xlsx",
       "xlsx_causa": null,
@@ -2193,7 +2203,12 @@
       "url_nota_individual": null,
       "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603589#D737121",
       "fecha_ultima_publicacion": "23 de julio de 2026",
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "periodo_boletin": "May 26",
+      "numero_boletin": "432/26",
+      "tipo_documento": "PDF",
+      "producto_boletin": "Indicador Global de la Actividad Económica",
+      "boletin_validado": true
     },
     "IMAI": {
       "key": "IMAI",
@@ -3324,7 +3339,12 @@
       "url_nota_individual": null,
       "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603729#D737234",
       "fecha_ultima_publicacion": "11 de agosto de 2026",
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "periodo_boletin": "Jun 26",
+      "numero_boletin": "485/26",
+      "tipo_documento": "PDF",
+      "producto_boletin": "Indicador Mensual de la Actividad Industrial",
+      "boletin_validado": true
     },
     "CONSUMO": {
       "key": "CONSUMO",
@@ -3527,8 +3547,8 @@
         }
       ],
       "last_observation": "May 26",
-      "last_updated": "2026-08-11",
-      "last_checked": "2026-08-11",
+      "last_updated": "2026-08-17",
+      "last_checked": "2026-08-17",
       "source_origin": "api",
       "data_quality": [],
       "requiere_token": "INEGI",
@@ -3536,9 +3556,9 @@
       "clasificacion": "principal",
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
-      "fecha_publicacion": "05 de agosto de 2026",
+      "fecha_publicacion": "5 de agosto de 2026",
       "periodo_referencia": "May 26",
-      "fecha_consulta": "2026-08-11",
+      "fecha_consulta": "2026-08-17",
       "metrics": {
         "kpi": {
           "assessment": "favorable",
@@ -3636,7 +3656,12 @@
       "url_nota_individual": null,
       "url_fuente_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_08.pdf",
       "fecha_ultima_publicacion": "05 de agosto de 2026",
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "periodo_boletin": "May 26",
+      "numero_boletin": "478/26",
+      "tipo_documento": "PDF",
+      "producto_boletin": "Indicador Mensual del Consumo Privado",
+      "boletin_validado": true
     },
     "IED": {
       "key": "IED",
@@ -4874,7 +4899,7 @@
         "tipo": "oficial"
       },
       "motivo_frescura": "El periodo cargado (Jun 26) coincide con el último periodo esperado (Junio 2026).",
-      "url_boletin_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=4#D444603",
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_07.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/DESOCUP/DESOCUP_datos.xlsx",
       "xlsx_causa": null,
@@ -4883,7 +4908,12 @@
       "url_nota_individual": null,
       "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=4#D444603",
       "fecha_ultima_publicacion": "24 de julio de 2026",
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "periodo_boletin": "Jun 26",
+      "numero_boletin": "435/26",
+      "tipo_documento": "PDF",
+      "producto_boletin": "Indicadores de Ocupación y Empleo (ENOE / IOOE)",
+      "boletin_validado": true
     },
     "INPC": {
       "key": "INPC",
@@ -5756,7 +5786,7 @@
       "clasificacion": "principal",
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
-      "fecha_publicacion": "07 de agosto de 2026",
+      "fecha_publicacion": "7 de agosto de 2026",
       "periodo_referencia": "Jul 26",
       "fecha_consulta": "2026-08-17",
       "metrics": {
@@ -6007,7 +6037,7 @@
         "tipo": "oficial"
       },
       "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo esperado (Julio 2026).",
-      "url_boletin_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=682416#D334452",
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_08.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/INPC/INPC_datos.xlsx",
       "xlsx_causa": null,
@@ -6016,7 +6046,12 @@
       "url_nota_individual": null,
       "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=682416#D334452",
       "fecha_ultima_publicacion": "07 de agosto de 2026",
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "periodo_boletin": "Jul 26",
+      "numero_boletin": "481/26",
+      "tipo_documento": "PDF",
+      "producto_boletin": "Índice Nacional de Precios al Consumidor",
+      "boletin_validado": true
     },
     "IMFBCF": {
       "key": "IMFBCF",
@@ -6214,16 +6249,16 @@
         }
       ],
       "last_observation": "May 26",
-      "last_updated": "2026-08-11",
-      "last_checked": "2026-08-11",
+      "last_updated": "2026-08-17",
+      "last_checked": "2026-08-17",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
-      "fecha_publicacion": "05 de agosto de 2026",
+      "fecha_publicacion": "5 de agosto de 2026",
       "periodo_referencia": "May 26",
-      "fecha_consulta": "2026-08-11",
+      "fecha_consulta": "2026-08-17",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -6322,7 +6357,12 @@
       "url_nota_individual": null,
       "url_fuente_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_08.pdf",
       "fecha_ultima_publicacion": "05 de agosto de 2026",
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "periodo_boletin": "May 26",
+      "numero_boletin": "479/26",
+      "tipo_documento": "PDF",
+      "producto_boletin": "Indicador Mensual de la Formación Bruta de Capital Fijo",
+      "boletin_validado": true
     },
     "IOAE": {
       "key": "IOAE",
@@ -6608,8 +6648,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-08-11",
-      "last_checked": "2026-08-11",
+      "last_updated": "2026-08-17",
+      "last_checked": "2026-08-17",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -6617,7 +6657,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "21 de julio de 2026",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-08-11",
+      "fecha_consulta": "2026-08-17",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -6730,7 +6770,12 @@
       "url_nota_individual": null,
       "url_fuente_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_07.pdf",
       "fecha_ultima_publicacion": "21 de julio de 2026",
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "periodo_boletin": "Jun 26",
+      "numero_boletin": "428/26",
+      "tipo_documento": "PDF",
+      "producto_boletin": "Indicador Oportuno de la Actividad Económica",
+      "boletin_validado": true
     },
     "EMIM": {
       "key": "EMIM",
@@ -7739,7 +7784,7 @@
         "tipo": "oficial"
       },
       "motivo_frescura": "El periodo cargado (Jun 26) coincide con el último periodo esperado (Junio 2026).",
-      "url_boletin_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=562444#D796224",
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_08.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/EMIM/EMIM_datos.xlsx",
       "xlsx_causa": null,
@@ -7748,7 +7793,12 @@
       "url_nota_individual": null,
       "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=562444#D796224",
       "fecha_ultima_publicacion": "17 de agosto de 2026",
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "periodo_boletin": "Jun 26",
+      "numero_boletin": "490/26",
+      "tipo_documento": "PDF",
+      "producto_boletin": "Encuesta Mensual de la Industria Manufacturera",
+      "boletin_validado": true
     },
     "TIPOCAMBIO": {
       "key": "TIPOCAMBIO",
@@ -46056,7 +46106,7 @@
         "tipo": "oficial"
       },
       "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo esperado (Julio 2026).",
-      "url_boletin_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=682416#D701401",
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ee/ee2026_08.pdf",
       "xlsx_disponible": true,
       "xlsx_causa": null,
       "url_excel_individual": "downloads/indicadores/EMOE/EMOE_datos.xlsx",
@@ -46066,7 +46116,12 @@
       "source_origin": "api",
       "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=682416#D701401",
       "fecha_ultima_publicacion": "3 de agosto de 2026",
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "periodo_boletin": "Jul 26",
+      "numero_boletin": "474/26",
+      "tipo_documento": "PDF",
+      "producto_boletin": "Encuesta Mensual de Opinión Empresarial",
+      "boletin_validado": true
     },
     "BCMM": {
       "key": "BCMM",
@@ -47182,7 +47237,7 @@
         "tipo": "oficial"
       },
       "motivo_frescura": "El periodo cargado (Jun 26) coincide con el último periodo esperado (Junio 2026).",
-      "url_boletin_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=36695#D33226",
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_07.pdf",
       "xlsx_disponible": true,
       "xlsx_causa": null,
       "url_excel_individual": "downloads/indicadores/BCMM/BCMM_datos.xlsx",
@@ -47192,7 +47247,12 @@
       "source_origin": "api",
       "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=36695#D33226",
       "fecha_ultima_publicacion": "27 de julio de 2026",
-      "regla_publicacion": null
+      "regla_publicacion": null,
+      "periodo_boletin": "Jun 26",
+      "numero_boletin": "436/26",
+      "tipo_documento": "PDF",
+      "producto_boletin": "Balanza Comercial de Mercancías de México",
+      "boletin_validado": true
     }
   }
 }

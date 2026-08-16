@@ -131,12 +131,27 @@ function productToolbar(ind) {
     ? `Ver calendario de publicaciones de ${ind.nombre}`
     : "Sin calendario o regla de publicación";
 
-  // Boletín: url_boletin_oficial primero; url_fuente_oficial como fallback, luego fuente.link.
-  const boletinUrl = ind.url_boletin_oficial || ind.url_fuente_oficial || (ind.fuente && ind.fuente.link) || null;
+  // Boletín: prioridad 1 = url_boletin_oficial; 2 = calendario Sala de Prensa INEGI;
+  // 3 = url_fuente_oficial/BIE solo como último respaldo técnico. Así el botón
+  // BOLETÍN no lleva normalmente al BIE, que es fuente de datos, no Sala de Prensa.
+  const esInegi = (ind.fuente && (ind.fuente.nombre || "").includes("INEGI"));
+  const CALENDARIO_PRENSA = "https://www.inegi.org.mx/app/saladeprensa/calendario/";
+  let boletinUrl = null;
+  let boletinTitle = "Abrir último boletín oficial";
+  if (esInegi) {
+    boletinUrl = ind.url_boletin_oficial || CALENDARIO_PRENSA || ind.url_fuente_oficial || (ind.fuente && ind.fuente.link) || null;
+    if (boletinUrl === CALENDARIO_PRENSA) {
+      boletinTitle = "Abrir publicaciones oficiales del INEGI";
+    } else if (!boletinUrl) {
+      boletinTitle = "Boletín / fuente oficial no identificado";
+    }
+  } else {
+    boletinUrl = ind.url_boletin_oficial || ind.url_fuente_oficial || (ind.fuente && ind.fuente.link) || null;
+    if (!boletinUrl) {
+      boletinTitle = "Boletín / fuente oficial no identificado";
+    }
+  }
   const boletinEnabled = !!boletinUrl;
-  const boletinTitle = boletinEnabled
-    ? "Abrir último boletín / fuente oficial"
-    : "Boletín / fuente oficial no identificado";
 
   // Nota: deshabilitada mientras no exista plantilla aprobada.
   const notaReady = !!ind.nota_disponible;
