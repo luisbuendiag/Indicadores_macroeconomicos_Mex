@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-14T22:11:54+00:00",
-  "last_update_ct": "2026-08-14T16:11:48-06:00",
+  "generated_at": "2026-08-17T15:13:08+00:00",
+  "last_update_ct": "2026-08-17T09:13:03-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -1520,15 +1520,15 @@
     },
     "EMIM": {
       "kpi": {
-        "assessment": "adverso",
-        "dir": "down",
-        "ultimoFmt": "110.4",
-        "ultimoRaw": 110.4,
-        "ultimoP": "May 26",
-        "varText": "-0.7%",
-        "varMag": -0.7194,
-        "pos": false,
-        "varColor": "#9b2247",
+        "assessment": "favorable",
+        "dir": "up",
+        "ultimoFmt": "110.7",
+        "ultimoRaw": 110.7,
+        "ultimoP": "Jun 26",
+        "varText": "+0.3%",
+        "varMag": 0.2717,
+        "pos": true,
+        "varColor": "#1e5b4f",
         "varLabel": "Variación mensual",
         "maxFmt": "115.5",
         "maxRaw": 115.5,
@@ -1536,7 +1536,7 @@
         "minFmt": "64.0",
         "minRaw": 64.0,
         "minP": "Abr 20",
-        "lastI": 100,
+        "lastI": 101,
         "series": [
           97.4,
           94.4,
@@ -1638,7 +1638,8 @@
           107.1,
           115.4,
           111.2,
-          110.4
+          110.4,
+          110.7
         ],
         "periods": [
           "Ene 18",
@@ -1741,26 +1742,27 @@
           "Feb 26",
           "Mar 26",
           "Abr 26",
-          "May 26"
+          "May 26",
+          "Jun 26"
         ],
-        "semaforo": "malo",
-        "yoyText": "-1.5%",
+        "semaforo": "bueno",
+        "yoyText": "-1.1%",
         "yoyLabel": "Var. anual"
       },
       "analysis": [
-        "En mayo de 2026, la producción manufacturera se ubicó en 110.4 (índice), con una variación mensual moderada de -0.72% frente al mes previo. Este resultado refleja una contracción respecto a abril de 2026 (-3.64%), y deja al indicador por encima del promedio del periodo mostrado de 103.20693069306934.",
-        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 115.5 (marzo de 2023) y un mínimo de 64.0 (abril de 2020). El resultado más reciente se ubicó por encima del promedio del periodo mostrado. El último dato fue superior al del inicio del periodo mostrado."
+        "En junio de 2026, la producción manufacturera se ubicó en 110.7 (índice), con una variación mensual marginal de +0.27% frente al mes previo. Este resultado refleja una ligera aceleración respecto a mayo de 2026 (-0.72%), y deja al indicador por encima del promedio del periodo mostrado de 103.28039215686279.",
+        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 115.5 (marzo de 2023) y un mínimo de 64.0 (abril de 2020). El resultado más reciente se ubicó por encima del promedio del periodo mostrado. El último dato fue inferior al del inicio del periodo mostrado."
       ],
       "resumen": [
-        "En mayo de 2026, la producción manufacturera se ubicó en 110.4 (índice). El valor de variación mensual fue de -0.7% frente al mes previo.",
-        "La var. anual se situó en -1.5%, lo que refleja la comparación contra mayo de 2026 del año previo.",
+        "En junio de 2026, la producción manufacturera se ubicó en 110.7 (índice). El valor de variación mensual fue de +0.3% frente al mes previo.",
+        "La var. anual se situó en -1.1%, lo que refleja la comparación contra junio de 2026 del año previo.",
         "En la serie mostrada, el indicador oscila entre un máximo de 115.5 (marzo de 2023) y un mínimo de 64.0 (abril de 2020). El último dato se ubica dentro del rango observado en el periodo mostrado.",
-        "La variación se clasifica como adversa según la lectura económica del indicador."
+        "La variación se clasifica como favorable según la lectura económica del indicador."
       ],
       "annualVar": {
-        "mag": -1.5165031222123002,
+        "mag": -1.0723860589812357,
         "pos": false,
-        "text": "-1.5%",
+        "text": "-1.1%",
         "label": "Var. anual"
       }
     },

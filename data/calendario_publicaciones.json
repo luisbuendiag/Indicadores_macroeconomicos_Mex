@@ -2,7 +2,7 @@
   "_comment": "Generado por scripts/build_calendar.py a partir de data/calendar_sources/. No editar a mano.",
   "fuente": "Banco de México | Calendario de publicaciones económicas 2026 (INEGI). Fechas oficiales de difusión. | Secretaría de Economía / Dirección General de Inversión Extranjera",
   "actualizado": "2026-08-11",
-  "as_of": "2026-08-14",
+  "as_of": "2026-08-17",
   "anios": [
     2026
   ],
@@ -1121,7 +1121,7 @@
       "anio": 2026,
       "mes": 8,
       "periodo_referencia": "Junio 2026",
-      "estatus": "próximo",
+      "estatus": "publicado",
       "url_boletin": null
     },
     {
