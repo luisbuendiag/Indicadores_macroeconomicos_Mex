@@ -45,9 +45,14 @@ def test_calendar_enabled_only_with_data():
     assert "const calEnabled = calendarioDisponible(ind)" in src
 
 
-def test_boletin_prefiere_url_boletin_oficial_y_url_fuente_oficial_fallback():
+def test_boletin_prefiere_url_boletin_oficial_y_calendario_inegi_y_bie_solo_tecnico():
     src = product_toolbar_source()
-    assert "ind.url_boletin_oficial || ind.url_fuente_oficial || (ind.fuente && ind.fuente.link)" in src
+    # INEGI: boletín específico -> calendario de Sala de Prensa -> BIE solo si falta todo lo anterior.
+    assert "CALENDARIO_PRENSA" in src
+    assert "https://www.inegi.org.mx/app/saladeprensa/calendario/" in src
+    assert "ind.url_boletin_oficial || CALENDARIO_PRENSA" in src
+    # La URL fuente/BIE debe quedar como último fallback, no como primera alternativa.
+    assert "ind.url_fuente_oficial" in src
 
 
 def test_boletin_opens_external_with_rel():
@@ -108,10 +113,35 @@ def test_ima_test_case_buttons():
     assert imai["url_boletin_oficial"].endswith("imai2026_08.pdf")
     assert imai.get("xlsx_disponible")
     assert imai.get("url_excel_individual") == "downloads/indicadores/IMAI/IMAI_datos.xlsx"
-    assert not imai.get("nota_disponible")
     # Calendario IMAI existe.
     cal = json.loads((ROOT / "data" / "calendario_publicaciones.json").read_text(encoding="utf-8"))
     assert any(c and c.get("clave") == "IMAI" for c in cal["items"])
+
+
+def test_inegi_indicators_have_specific_pdf_bulletin():
+    """Los indicadores INEGI deben apuntar al boletín oficial específico en saladeprensa."""
+    for k in ["IMAI", "IGAE", "INPC", "BCMM", "DESOCUP", "CONSUMO", "IMFBCF", "IOAE", "EMIM", "EMOE", "PIB", "PIBSEC"]:
+        ind = INDICADORES["indicators"][k]
+        url = ind.get("url_boletin_oficial")
+        assert url, f"{k} no tiene url_boletin_oficial"
+        assert ".inegi.org.mx/" in url, f"{k}: dominio no oficial: {url}"
+        if k in ("IMAI", "IGAE", "INPC", "BCMM", "DESOCUP", "IOAE", "EMIM", "EMOE"):
+            assert "contenidos/saladeprensa/boletines" in url, f"{k}: no es boletín PDF: {url}"
+
+
+def test_nota_files_exist_for_all_available():
+    for k, ind in INDICADORES["indicators"].items():
+        if ind.get("nota_disponible"):
+            path = ROOT / "downloads" / "indicadores" / k / f"{k}_nota.docx"
+            assert path.exists(), f"Falta nota de {k}: {path}"
+
+
+def test_boletin_inegi_fallback_when_no_specific_url():
+    """Si un indicador INEGI no tiene url_boletin_oficial, el fallback es el calendario."""
+    src = product_toolbar_source()
+    assert 'https://www.inegi.org.mx/app/saladeprensa/calendario/' in src
+    assert 'esInegi = (ind.fuente && (ind.fuente.nombre || "").includes("INEGI"))' in src
+    assert 'boletinUrl = ind.url_boletin_oficial || ind.url_fuente_oficial || (ind.fuente && ind.fuente.link) || null' in src
 
 
 def test_financial_indicators_have_products():

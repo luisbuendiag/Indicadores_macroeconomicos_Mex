@@ -82,23 +82,23 @@ def apply_inegi_total(payload: dict, key: str, item: dict, prev_last: str | None
         ym = inegi.label_to_ym(o.get("period", ""))
         if ym is None:
             continue
-        key = _key(ym)
+        ym_key = _key(ym)
         vals = list(o.get("values", []))
         while len(vals) < ncol:
             vals.append(None)
-        rows_by_ym[key] = {"period": o.get("period", ""), "values": vals}
+        rows_by_ym[ym_key] = {"period": o.get("period", ""), "values": vals}
 
     # Actualizar la columna objetivo y agregar nuevos periodos.
     for o in item["api_total"]:
         if o.get("value") is None:
             continue
-        key = _key(o["ym"])
-        if key in rows_by_ym:
-            vals = rows_by_ym[key]["values"]
+        ym_key = _key(o["ym"])
+        if ym_key in rows_by_ym:
+            vals = rows_by_ym[ym_key]["values"]
         else:
             vals = [None] * ncol
-            period_label = o.get("period") or inegi.ym_to_label(key, item.get("freq"))
-            rows_by_ym[key] = {"period": period_label, "values": vals}
+            period_label = o.get("period") or inegi.ym_to_label(ym_key, item.get("freq"))
+            rows_by_ym[ym_key] = {"period": period_label, "values": vals}
         if 0 <= tcol < ncol:
             vals[tcol] = round(o["value"], 6)
 
@@ -113,6 +113,14 @@ def apply_inegi_total(payload: dict, key: str, item: dict, prev_last: str | None
     fuente["metodo"] = item.get("metodo", "INEGI BIE API")
     if item.get("link"):
         fuente["link"] = item["link"]
+        # Solo url_boletin_oficial proviene de boletines de prensa, no de la API BIE.
+        if "saladeprensa/boletines" in item["link"] or item.get("metodo") == "INEGI boletín PDF":
+            ind["url_boletin_oficial"] = item["link"]
+            # Conserva metadatos del boletín validado por el parser de Sala de Prensa.
+            for meta_key in ("periodo_boletin", "numero_boletin", "fecha_publicacion",
+                             "tipo_documento", "producto_boletin", "boletin_validado"):
+                if item.get(meta_key) is not None:
+                    ind[meta_key] = item[meta_key]
     ind["fuente"] = fuente
 
     meta = item.get("api_meta", {})
@@ -136,6 +144,11 @@ def run(offline: bool = False) -> int:
     config = json.loads(CONFIG.read_text(encoding="utf-8"))
     payload = L.load_data()
     prev_obs = {k: v.get("last_observation") for k, v in payload.get("indicators", {}).items()}
+
+    # Limpiar banderas de validación previas para permitir revalidar boletines
+    # con el periodo actual en cada ejecución.
+    for ind in payload.get("indicators", {}).values():
+        ind.pop("boletin_validado", None)
 
     if not offline:
         # inegi_bulletin se ejecuta primero para evitar throttling del sitio de prensa
@@ -330,8 +343,28 @@ def apply_freshness_and_meta(payload: dict, log: dict, as_of: date | None = None
                 motivo += f" Nota: {col_label or f'componente {col_idx}'} del último periodo está pendiente de publicación ({q.get('reason', 'sin detalle')})."
         ind["motivo_frescura"] = motivo
         ind["url_fuente_oficial"] = ind.get("fuente", {}).get("link") or info.get("url_boletin")
-        ind["url_boletin_oficial"] = info.get("url_boletin") or ind.get("fuente", {}).get("link")
-        ind["fecha_publicacion"] = info["fecha_publicacion_oficial"]
+        ind["url_boletin_oficial"] = ind.get("url_boletin_oficial") or info.get("url_boletin") or ind.get("fuente", {}).get("link")
+        ind["fecha_publicacion"] = ind.get("fecha_publicacion") or info["fecha_publicacion_oficial"]
+
+        # Descubrimiento automático del boletín oficial en el sitio de prensa del INEGI
+        # cuando aún no se tiene una URL directa a un PDF de boletín.
+        es_inegi = (ind.get("fuente", {}).get("nombre") or "").upper().startswith("INEGI")
+        url_actual = ind.get("url_boletin_oficial") or ""
+        if es_inegi and ("saladeprensa/boletines" not in url_actual or not ind.get("url_boletin_oficial") or not ind.get("boletin_validado")):
+            try:
+                desc = inegi_bulletin.discover_bulletin_url(key, ind.get("last_observation"))
+                if desc:
+                    ind["url_boletin_oficial"] = desc["url"]
+                    if desc.get("fecha_publicacion"):
+                        ind["fecha_publicacion"] = desc["fecha_publicacion"]
+                    ind["periodo_boletin"] = desc.get("periodo")
+                    ind["numero_boletin"] = desc.get("numero_boletin")
+                    ind["tipo_documento"] = desc.get("tipo_documento")
+                    ind["producto_boletin"] = desc.get("producto_boletin")
+                    ind["boletin_validado"] = True
+                    changes.append(f"boletín: {key} descubierto {desc['url']}")
+            except Exception as e:  # noqa: BLE001
+                log["warnings"].append(f"discover_bulletin {key}: {e}")
         ind["fecha_ultima_publicacion"] = info.get("fecha_publicacion_oficial")
         ind["regla_publicacion"] = info.get("regla_publicacion")
         if info.get("proxima_publicacion_tipo") and ind.get("proxima_publicacion"):

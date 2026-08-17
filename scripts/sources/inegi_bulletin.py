@@ -54,6 +54,58 @@ BULLETIN_URLS = {
     "IMAI": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/imai/imai{year}_{mm}.pdf",
     "PIBT": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/pibt/pib_Pconst{year}_{mm}.pdf",
     "EOPIBT": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/pibo/pib_eo{year}_{mm}.pdf",
+    "INPC": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/inpc/inpc_2q{year}_{mm}.pdf",
+    "EMOE": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/ee/ee{year}_{mm}.pdf",
+    "IOOE": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/iooe/IOE{year}_{mm}.pdf",
+    "BCMM": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/comext_o/balcom_o{year}_{mm}.pdf",
+}
+
+# Mapeo de claves del dashboard a los productos de boletines.
+KEY_TO_KIND = {
+    "PIB": "EOPIBT",
+    "PIBSEC": "PIBT",
+    "IGAE": "IGAE",
+    "IMAI": "IMAI",
+    "BCMM": "BCMM",
+    "DESOCUP": "IOOE",
+    "INPC": "INPC",
+    "CONSUMO": "CONSUMO",
+    "IMFBCF": "IMFBCF",
+    "IOAE": "IOAE",
+    "EMIM": "EMIM",
+    "EMOE": "EMOE",
+}
+
+# Nombres oficiales del producto de Sala de Prensa, para el mapeo.
+PRODUCTO_NOMBRE = {
+    "PIB": "Estimación Oportuna del Producto Interno Bruto Trimestral (EOPIBT)",
+    "PIBSEC": "Producto Interno Bruto por sector de actividad (PIBT)",
+    "IGAE": "Indicador Global de la Actividad Económica",
+    "IMAI": "Indicador Mensual de la Actividad Industrial",
+    "BCMM": "Balanza Comercial de Mercancías de México",
+    "DESOCUP": "Indicadores de Ocupación y Empleo (ENOE / IOOE)",
+    "INPC": "Índice Nacional de Precios al Consumidor",
+    "CONSUMO": "Indicador Mensual del Consumo Privado",
+    "IMFBCF": "Indicador Mensual de la Formación Bruta de Capital Fijo",
+    "IOAE": "Indicador Oportuno de la Actividad Económica",
+    "EMIM": "Encuesta Mensual de la Industria Manufacturera",
+    "EMOE": "Encuesta Mensual de Opinión Empresarial",
+}
+
+# Alias de producto para la validación por contenido.
+PRODUCTO_ALIASES = {
+    "INPC": ("ÍNDICE NACIONAL DE PRECIOS", "INPC"),
+    "EMOE": ("ENCUESTA MENSUAL DE OPINIÓN EMPRESARIAL", "EMOE"),
+    "IOOE": ("ENCUESTA NACIONAL DE OCUPACIÓN", "ENOE", "IOOE", "DESOCUPACIÓN"),
+    "BCMM": ("BALANZA COMERCIAL", "BCMM"),
+    "IGAE": ("INDICADOR GLOBAL", "IGAE"),
+    "IMAI": ("INDICADOR MENSUAL DE LA ACTIVIDAD INDUSTRIAL", "IMAI"),
+    "CONSUMO": ("INDICADOR MENSUAL DEL CONSUMO PRIVADO", "IMCP"),
+    "IMFBCF": ("INDICADOR MENSUAL DE LA FORMACIÓN BRUTA", "IMFBCF"),
+    "IOAE": ("INDICADOR OPORTUNO", "IOAE", "IGAE"),
+    "EMIM": ("ENCUESTA MENSUAL DE LA INDUSTRIA MANUFACTURERA", "EMIM"),
+    "PIBT": ("PRODUCTO INTERNO BRUTO", "PIB"),
+    "EOPIBT": ("PRODUCTO INTERNO BRUTO", "PIB", "ESTIMACIÓN OPORTUNA"),
 }
 
 MES = {
@@ -62,6 +114,11 @@ MES = {
     "ene": 1, "feb": 2, "mar": 3, "abr": 4, "may": 5, "jun": 6,
     "jul": 7, "ago": 8, "sep": 9, "oct": 10, "nov": 11, "dic": 12,
 }
+
+MESES_NOMBRE = [
+    "enero", "febrero", "marzo", "abril", "mayo", "junio",
+    "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre",
+]
 
 
 def _req(url: str, timeout: int = 60) -> bytes:
@@ -115,6 +172,31 @@ def _month_year(pub_year: int, pub_month: int, ref_month: int) -> tuple[int, int
     return pub_year - 1, ref_month
 
 
+def _format_pub_date(pub_date: tuple[int, int, int] | None) -> str | None:
+    """Convierte (año, mes, día) a texto legible."""
+    if not pub_date:
+        return None
+    year, month, day = pub_date
+    if 1 <= month <= 12:
+        return f"{day} de {MESES_NOMBRE[month - 1]} de {year}"
+    return None
+
+
+def _extract_bulletin_number(text: str) -> str | None:
+    m = re.search(r"BOLETÍN DE INDICADOR\s+(\d+(?:/\d+)?)", text, re.IGNORECASE)
+    if m:
+        return m.group(1)
+    return None
+
+
+def _extract_bulletin_meta(text: str, pub_date: tuple[int, int, int] | None) -> dict:
+    return {
+        "numero_boletin": _extract_bulletin_number(text),
+        "fecha_publicacion": _format_pub_date(pub_date),
+        "tipo_documento": "PDF",
+    }
+
+
 def _parse_pct(text) -> float | None:
     if not isinstance(text, str):
         return None
@@ -142,6 +224,58 @@ def _parse_index(text) -> float | None:
 def _extract_data_month(text: str) -> tuple[int, int] | None:
     """Busca la frase 'en <mes> de <año>' del periodo de referencia (excluye la fecha de publicación)."""
     m = re.search(r"en\s+([a-zA-Záéíóúñ]+)\s+de\s+(\d{4})", text, re.IGNORECASE)
+    if m:
+        try:
+            return int(m.group(2)), MES[m.group(1).lower()]
+        except KeyError:
+            pass
+    return None
+
+
+def _body_text(text: str) -> str:
+    """Descarta la portada (título, número de boletín, fecha de publicación,
+    página y próxima publicación) y conserva el cuerpo donde aparece el periodo
+    de referencia."""
+    # Eliminar todo antes de "Página 1/N" y, si existe, la línea de próxima publicación.
+    m = re.search(r"Página\s+1/\d+\s*\n", text)
+    if m:
+        body = text[m.end():]
+    else:
+        body = text
+    m = re.search(r"Próxima publicación[\s:].*?\n", body)
+    if m:
+        body = body[m.end():]
+    return body.strip()
+
+
+def _extract_ref_period(text: str) -> tuple[int, int] | None:
+    """Extrae el periodo de referencia del boletín.
+
+    Busca expresiones mensuales (con preposiciones variadas) y trimestrales en
+    el cuerpo del boletín, evitando la fecha de publicación de la portada.
+    Para trimestrales devuelve el mes de inicio del trimestre.
+    """
+    body = _body_text(text)
+
+    # Trimestral: primer/segundo/tercer/cuarto trimestre de <año>
+    trim_map = {"primer": 1, "segundo": 2, "tercer": 3, "cuarto": 4}
+    m = re.search(r"\b(primer|segundo|tercer|cuarto)\s+trimestre\s+de\s+(\d{4})\b", body, re.IGNORECASE)
+    if m:
+        q = trim_map[m.group(1).lower()]
+        year = int(m.group(2))
+        month = (q - 1) * 3 + 1
+        return year, month
+
+    # Mensual: en/para/al/durante <mes> de <año>
+    m = re.search(r"(?:en|para|al|durante)\s+([a-zA-Záéíóúñ]+)\s+de\s+(\d{4})(?:\D|$)", body, re.IGNORECASE)
+    if m:
+        try:
+            return int(m.group(2)), MES[m.group(1).lower()]
+        except KeyError:
+            pass
+
+    # Fallback: <mes> de <año> con asegura de no estar en una nota al pie (ej. "mayo de 20261/")
+    m = re.search(r"\b(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)\s+de\s+(\d{4})(?:\D|$)", body, re.IGNORECASE)
     if m:
         try:
             return int(m.group(2)), MES[m.group(1).lower()]
@@ -722,10 +856,15 @@ def _parse_eopibt(pdf_bytes: bytes, pub_date: tuple[int, int, int] | None) -> di
 
 
 def _build_item(indicator: str, target_column: int, api_total: list[dict], serie: str, link: str,
-                ultimo_valor: float | None = None, freq: int = 8) -> dict:
+                url_meta: dict[str, tuple[str, tuple[int, int, int] | None]] | None = None,
+                ultimo_valor: float | None = None, freq: int = 8, kind: str = "") -> dict:
     if not api_total:
         raise ValueError(f"{indicator} col{target_column}: sin observaciones")
     last = api_total[-1]
+    text, pub_date = "", None
+    if url_meta and link in url_meta:
+        text, pub_date = url_meta[link]
+    meta = _extract_bulletin_meta(text, pub_date)
     return {
         "key": indicator,
         "target_column": target_column,
@@ -734,6 +873,13 @@ def _build_item(indicator: str, target_column: int, api_total: list[dict], serie
         "link": link,
         "metodo": "INEGI boletín PDF",
         "freq": freq,
+        "url_boletin_oficial": link,
+        "periodo_boletin": last.get("period", last["ym"]),
+        "numero_boletin": meta["numero_boletin"],
+        "fecha_publicacion": meta["fecha_publicacion"],
+        "tipo_documento": meta["tipo_documento"],
+        "producto_boletin": PRODUCTO_NOMBRE.get(indicator, kind),
+        "boletin_validado": True,
         "api_meta": {
             "serie": serie, "freq": freq, "unit": None,
             "lastupdate": None, "n_obs": len(api_total),
@@ -768,6 +914,7 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
         return []
 
     results = []
+    url_meta: dict[str, tuple[str, tuple[int, int, int] | None]] = {}
     seen: set[tuple[str, int, str]] = set()
     for year, mm, url in issues[:max_bulletins]:
         try:
@@ -776,6 +923,7 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
             pub_date = _extract_pub_date(text)
             if not pub_date:
                 continue
+            url_meta[url] = (text, pub_date)
         except Exception as e:  # noqa: BLE001
             continue
 
@@ -874,7 +1022,8 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
             api_total = [r[0] for r in rows]
             link = rows[-1][1]
             freq = 4 if indicator in ("PIB", "PIBSEC") else 8
-            out.append(_build_item(indicator, col, api_total, f"{indicator}_pdf", link, freq=freq))
+            out.append(_build_item(indicator, col, api_total, f"{indicator}_pdf", link,
+                                   url_meta=url_meta, freq=freq, kind=kind))
     return out
 
 
@@ -900,3 +1049,67 @@ def fetch(config: dict | None = None, start_year: int = 2024, max_bulletins: int
 
     ok = bool(data)
     return SourceResult(ok, data=data, warnings=warnings)
+
+
+def discover_bulletin_url(key: str, period: str | None, start_year: int = 2024,
+                          max_search: int = 18) -> dict | None:
+    """Descubre la URL del boletín oficial del INEGI para un periodo validado.
+
+    No extrae datos de series; solo valida existencia, dominio oficial,
+    indicador correcto y periodo de referencia.  Útil para alimentar
+    `url_boletin_oficial` independientemente de si los valores vienen del BIE.
+    """
+    if not period:
+        return None
+    ym = inegi.label_to_ym(period)
+    if not ym:
+        return None
+    kind = KEY_TO_KIND.get(key)
+    if not kind or kind not in BULLETIN_URLS:
+        return None
+    # PIB/PIBSEC son trimestrales; el resto mensuales.
+    freq = 4 if key in ("PIB", "PIBSEC") else 8
+    year, month = int(ym.split("-")[0]), int(ym.split("-")[1])
+    this_year = 2026
+    issues: list[tuple[int, int, str]] = []
+    for y in range(this_year, start_year - 1, -1):
+        for m in range(12, 0, -1):
+            if len(issues) >= max_search:
+                break
+            url = BULLETIN_URLS[kind].format(year=y, mm=f"{m:02d}")
+            if _head_ok(url):
+                issues.append((y, m, url))
+
+    ref_label = inegi.ym_to_label(ym, freq=freq)
+    for y, m, url in issues:
+        try:
+            text, _ = _pdf_text_first_page(_req(url))
+        except Exception:  # noqa: BLE001
+            continue
+        if not text:
+            continue
+        # Validación de dominio/URL ya está implícita en BULLETIN_URLS.
+        # Validación de indicador correcto.
+        titulo = text[:500].upper()
+        ok_producto = True
+        if kind in PRODUCTO_ALIASES:
+            ok_producto = any(alias in titulo for alias in PRODUCTO_ALIASES[kind])
+        if not ok_producto:
+            continue
+        # Validación de periodo de referencia.
+        data_ym = _extract_ref_period(text)
+        if data_ym:
+            data_label = inegi.ym_to_label(f"{data_ym[0]:04d}-{data_ym[1]:02d}", freq=freq)
+            if data_label == ref_label or ref_label.startswith(data_label):
+                pub = _extract_pub_date(text)
+                meta = _extract_bulletin_meta(text, pub)
+                return {
+                    "url": url,
+                    "periodo": ref_label,
+                    "fecha_publicacion": meta["fecha_publicacion"],
+                    "numero_boletin": meta["numero_boletin"],
+                    "tipo_documento": "PDF",
+                    "producto_boletin": PRODUCTO_NOMBRE.get(key, PRODUCTO_NOMBRE.get(kind, kind)),
+                    "metodo": f"INEGI descubrimiento automático ({kind})",
+                }
+    return None
