@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-18T15:28:46+00:00",
+    "generated_at": "2026-08-18T21:04:58+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-08-18T09:28:46-06:00",
+    "last_update_ct": "2026-08-18T15:04:58-06:00",
     "periodo_referencia_reciente": {
       "period": "Jul 26",
       "period_long": "Jul 26"
@@ -21717,9 +21717,15 @@
           "values": [
             17.0245
           ]
+        },
+        {
+          "period": "2026-08-18",
+          "values": [
+            17.0638
+          ]
         }
       ],
-      "fecha_ultima_observacion": "2026-08-17",
+      "fecha_ultima_observacion": "2026-08-18",
       "url_fuente_oficial": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
       "fecha_ultima_publicacion": null,
       "regla_publicacion": null
@@ -45085,9 +45091,15 @@
           "values": [
             257087.4
           ]
+        },
+        {
+          "period": "2026-08-14",
+          "values": [
+            257416.8
+          ]
         }
       ],
-      "fecha_ultima_observacion": "2026-08-07",
+      "fecha_ultima_observacion": "2026-08-14",
       "url_fuente_oficial": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
       "fecha_ultima_publicacion": null,
       "regla_publicacion": null
