@@ -4,10 +4,11 @@ name: Actualizar datos (pipeline)
 # falla, el workflow se detiene y no se despliega.
 #
 # Horarios (UTC -> America/Mexico_City, UTC-6):
-#   15:00 UTC  = 09:00 hora Ciudad de México (matutino, después de boletines INEGI)
-#   22:00 UTC  = 16:00 hora Ciudad de México (vespertino, para publicaciones tardías)
+#   07:00 UTC  = 01:00 hora Ciudad de México (madrugada, boletines medianoche)
+#   13:00 UTC  = 07:00 hora Ciudad de México (matutino, inicio de jornada)
+#   19:00 UTC  = 13:00 hora Ciudad de México (mediodía, publicaciones de la mañana)
 # INEGI publica normalmente antes de las 08:00-09:00 CT; Banxico lo hace en
-# días hábiles por la mañana. La segunda corrida captura retrasos ocasionales.
+# días hábiles por la mañana. Las corridas adicionales capturan retrasos ocasionales.
 #
 # Si una fuente no ha publicado aún, build_data.py usa el dato ya cargado y
 # marca el estado correspondiente (PUBLICACIÓN PENDIENTE / REZAGADO). Si el
@@ -16,8 +17,9 @@ name: Actualizar datos (pipeline)
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: "0 15 * * 1-5"
-    - cron: "0 22 * * 1-5"
+    - cron: "0 7 * * 1-5"
+    - cron: "0 13 * * 1-5"
+    - cron: "0 19 * * 1-5"
 
 permissions:
   contents: write
