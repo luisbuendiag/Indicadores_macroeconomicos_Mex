@@ -214,6 +214,7 @@ def _fetch_one(spec: dict, token: str, start_year: int) -> dict | None:
 
     last = obs[-1]
     return {
+        "pibt": spec.get("pibt", False),
         "target_column": int(spec.get("columna_objetivo", 0)),
         "api_total": obs,
         "serie": serie_id,

@@ -189,3 +189,30 @@ def test_pib_resumen_uses_consistent_percentages(payload):
     assert "330%" not in sector_bullet
     assert "160%" not in sector_bullet
     assert "150%" not in sector_bullet
+
+
+def test_pib_historial_ampliado(payload):
+    """La ficha del PIB oportuno expone el historial y los filtros de ventana."""
+    pib = payload["indicators"]["PIB"]
+    wins = pib.get("windows", [])
+    assert wins
+    assert {w["id"] for w in wins} == {"1a", "2a", "3a", "5a", "max"}
+    assert pib["observations"]
+    # El periodo inicial es la primera observación publicada en el boletín.
+    assert pib["observations"][0]["period"]
+
+
+def test_pibt_nivel_tradicional_separado(payload):
+    """El nivel tradicional del PIB (PIBT) se conserva como objeto independiente."""
+    pib = payload["indicators"]["PIB"]
+    assert "pibt" in pib
+    pibt = pib["pibt"]
+    assert pibt["observations"]
+    assert pibt["columns"]
+    assert pibt["columns"][0]["fmt"] == "bill"
+    last = pibt["observations"][-1]
+    assert last["values"][0] is not None
+    assert last["period"]
+    # El último nivel disponible está en millones de pesos a precios de 2018.
+    assert last["values"][0] > 1_000_000
+    assert "INEGI" in (pibt.get("fuente", {}).get("nombre") or "")

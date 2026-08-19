@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-19T20:18:21+00:00",
+    "generated_at": "2026-08-19T21:56:49+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-08-19T14:18:21-06:00",
+    "last_update_ct": "2026-08-19T15:56:49-06:00",
     "periodo_referencia_reciente": {
       "period": "Jul 26",
       "period_long": "Jul 26"
@@ -284,6 +284,224 @@
           "qoq": 0.015,
           "yoy": 0.025
         }
+      },
+      "pibt": {
+        "observations": [
+          {
+            "period": "1T-18",
+            "values": [
+              23568391.999
+            ]
+          },
+          {
+            "period": "1T-18",
+            "values": [
+              24395736.063
+            ]
+          },
+          {
+            "period": "1T-18",
+            "values": [
+              24137287.71
+            ]
+          },
+          {
+            "period": "2T-18",
+            "values": [
+              24605265.729
+            ]
+          },
+          {
+            "period": "1T-19",
+            "values": [
+              23790581.652
+            ]
+          },
+          {
+            "period": "1T-19",
+            "values": [
+              24154792.378
+            ]
+          },
+          {
+            "period": "1T-19",
+            "values": [
+              24024906.35
+            ]
+          },
+          {
+            "period": "2T-19",
+            "values": [
+              24356643.155
+            ]
+          },
+          {
+            "period": "1T-20",
+            "values": [
+              23449993.643
+            ]
+          },
+          {
+            "period": "1T-20",
+            "values": [
+              19252739.685
+            ]
+          },
+          {
+            "period": "1T-20",
+            "values": [
+              22072209.167
+            ]
+          },
+          {
+            "period": "2T-20",
+            "values": [
+              23504796.547
+            ]
+          },
+          {
+            "period": "1T-21",
+            "values": [
+              22841359.685
+            ]
+          },
+          {
+            "period": "1T-21",
+            "values": [
+              23623455.056
+            ]
+          },
+          {
+            "period": "1T-21",
+            "values": [
+              23204796.817
+            ]
+          },
+          {
+            "period": "2T-21",
+            "values": [
+              23949712.898
+            ]
+          },
+          {
+            "period": "1T-22",
+            "values": [
+              23440574.466
+            ]
+          },
+          {
+            "period": "1T-22",
+            "values": [
+              24310024.252
+            ]
+          },
+          {
+            "period": "1T-22",
+            "values": [
+              24289379.479
+            ]
+          },
+          {
+            "period": "2T-22",
+            "values": [
+              25052395.779
+            ]
+          },
+          {
+            "period": "1T-23",
+            "values": [
+              24330982.536
+            ]
+          },
+          {
+            "period": "1T-23",
+            "values": [
+              25108268.25
+            ]
+          },
+          {
+            "period": "1T-23",
+            "values": [
+              25094793.141
+            ]
+          },
+          {
+            "period": "2T-23",
+            "values": [
+              25590082.607
+            ]
+          },
+          {
+            "period": "1T-24",
+            "values": [
+              24761655.524
+            ]
+          },
+          {
+            "period": "1T-24",
+            "values": [
+              25655479.047
+            ]
+          },
+          {
+            "period": "1T-24",
+            "values": [
+              25475446.445
+            ]
+          },
+          {
+            "period": "2T-24",
+            "values": [
+              25693292.983
+            ]
+          },
+          {
+            "period": "1T-25",
+            "values": [
+              24913610.281
+            ]
+          },
+          {
+            "period": "1T-25",
+            "values": [
+              25618678.767
+            ]
+          },
+          {
+            "period": "1T-25",
+            "values": [
+              25422850.191
+            ]
+          },
+          {
+            "period": "2T-25",
+            "values": [
+              26135644.696
+            ]
+          },
+          {
+            "period": "1T-26",
+            "values": [
+              24973976.071
+            ]
+          }
+        ],
+        "columns": [
+          {
+            "label": "PIB",
+            "index": 0,
+            "fmt": "bill"
+          }
+        ],
+        "fuente": {
+          "nombre": "INEGI",
+          "metodo": "INEGI BIE API",
+          "serie": "737372",
+          "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=605594#D737372"
+        },
+        "frecuencia": "Trimestral",
+        "unidad": "Millones de pesos (a precios de 2018)",
+        "ajuste_estacional": "Serie original"
       },
       "boletin_validado": true
     },

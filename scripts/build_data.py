@@ -52,6 +52,43 @@ def _quarter_start(ym: str) -> str:
     return f"{year:04d}-{month:02d}"
 
 
+def apply_pibt_source(payload: dict, key: str, item: dict, prev_last: str | None) -> dict | None:
+    """Crea/actualiza el objeto 'pibt' del indicador PIB con el nivel tradicional."""
+    ind = payload["indicators"].get(key)
+    if ind is None:
+        return None
+
+    observations = []
+    for o in item.get("api_total", []):
+        period = o.get("period") or inegi.ym_to_label(o["ym"], item.get("freq"))
+        if period and o.get("value") is not None:
+            observations.append({"period": period, "values": [round(o["value"], 6)]})
+
+    ind["pibt"] = {
+        "observations": observations,
+        "columns": [{"label": "PIB", "index": 0, "fmt": "bill"}],
+        "fuente": {
+            "nombre": "INEGI",
+            "metodo": item.get("metodo", "INEGI BIE API"),
+            "serie": item.get("serie"),
+            "link": item.get("link"),
+        },
+        "frecuencia": ind.get("frecuencia", "Trimestral"),
+        "unidad": "Millones de pesos (a precios de 2018)",
+        "ajuste_estacional": "Serie original",
+    }
+
+    meta = item.get("api_meta", {})
+    last = ind["pibt"]["observations"][-1]["period"] if ind["pibt"]["observations"] else None
+    return {
+        "fuente": "inegi", "indicador": key, "serie": item["serie"],
+        "observaciones": meta.get("n_obs"), "ultima_observacion": last,
+        "ultimo_valor": meta.get("ultimo_valor"), "observacion_previa": prev_last,
+        "actualizacion_fuente": meta.get("lastupdate"),
+        "dato_nuevo": last != prev_last, "resultado": "consulta válida (pibt)",
+    }
+
+
 def apply_inegi_total(payload: dict, key: str, item: dict, prev_last: str | None) -> dict | None:
     """Fusiona una serie del INEGI sobre UNA columna del indicador existente.
 
@@ -61,6 +98,8 @@ def apply_inegi_total(payload: dict, key: str, item: dict, prev_last: str | None
     de consulta para el update_log, o None si el indicador no existe en la capa de
     datos.
     """
+    if item.get("pibt"):
+        return apply_pibt_source(payload, key, item, prev_last)
     ind = payload["indicators"].get(key)
     if ind is None:
         return None

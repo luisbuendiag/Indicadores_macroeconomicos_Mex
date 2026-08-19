@@ -167,3 +167,25 @@ def test_pib_sector_breakdown_title_and_format():
     # Se usa un helper que aplica pct-frac (multiplica por 100) para evitar 330%.
     assert 'const signedPct' in APP
     assert 'signedPct(s.qoq)' in APP
+
+
+def test_pib_historial_ampliado_ui():
+    """La ficha del PIB incluye el historial y los conteos por filtro."""
+    assert '"Historial del indicador"' in APP
+    assert '"Observaciones por filtro"' in APP
+    assert "Periodo inicial" in APP
+    assert "Total de observaciones" in APP
+    assert 'applyWindow(ind, w.id)' in APP
+    assert 'pibHistoryBlock' in APP
+    assert '.pib-history' in CSS
+
+
+def test_pibt_nivel_tradicional_ui():
+    """El nivel tradicional del PIB se presenta en una tarjeta y gráfica independientes."""
+    assert '"Nivel tradicional del PIB"' in APP
+    assert '"Último nivel disponible"' in APP
+    assert 'pibtBlock' in APP
+    assert 'mountPibtChart' in APP
+    assert '"chart-pibt"' in APP
+    assert '.pibt-block' in CSS
+    assert '.pibt-chart' in CSS
