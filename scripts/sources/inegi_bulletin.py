@@ -745,15 +745,88 @@ def _parse_pibt(pdf_bytes: bytes, pub_date: tuple[int, int, int] | None) -> dict
     return out
 
 
-def _parse_eopibt(pdf_bytes: bytes, pub_date: tuple[int, int, int] | None) -> dict[str, dict[str, dict]] | None:
+def _extract_proxima_publicacion(text: str) -> str | None:
+    m = re.search(
+        r"Próxima publicación:\s*(\d{1,2}\s+de\s+[a-zA-Záéíóúñ]+\s+de\s+\d{4})",
+        text,
+        re.IGNORECASE,
+    )
+    if not m:
+        return None
+    return m.group(1).lower().replace("  ", " ")
+
+
+def _parse_eopibt_yoy_orig(pdf_bytes: bytes, year: int, quarter: int) -> float | None:
+    """Extrae la variación anual con cifras originales del Cuadro 2 (página 3)."""
+    for table in _pdf_page_tables(pdf_bytes, 2):
+        pib_row: list[str] | None = None
+        header_start = -1
+        for i, row in enumerate(table):
+            cells = [(c or "").strip() for c in row]
+            if not any(cells):
+                continue
+            if "PIB y actividades" in cells[0]:
+                header_start = max(0, i - 1)
+            if cells[0] == "PIB":
+                pib_row = cells
+                break
+        if not pib_row or header_start < 0:
+            continue
+        header_rows = table[header_start:header_start + 3]
+        if not header_rows:
+            continue
+
+        ncols = max(len(r) for r in header_rows)
+
+        # Localizar la primera columna del año de referencia en la primera fila de encabezado.
+        top_row = header_rows[0]
+        year_col: int | None = None
+        for j, cell in enumerate(top_row):
+            if cell and re.search(rf"\b{year}", str(cell)):
+                year_col = j
+                break
+        if year_col is None:
+            continue
+
+        # El grupo del año se extiende hasta la siguiente columna que inicie otro año.
+        def _year_in_cell(cell):
+            m = re.search(r"\b(\d{4})", str(cell or ""))
+            return int(m.group(1)) if m else None
+
+        group_end = ncols
+        for j in range(year_col + 1, ncols):
+            if j < len(top_row) and top_row[j]:
+                ycell = _year_in_cell(top_row[j])
+                if ycell is not None and ycell != year:
+                    group_end = j
+                    break
+
+        col_info: list[str] = []
+        for j in range(ncols):
+            parts = []
+            for hrow in header_rows:
+                if j < len(hrow):
+                    parts.append(str(hrow[j] or ""))
+            col_info.append(" ".join(parts))
+
+        for j in range(year_col, min(group_end, len(pib_row))):
+            m = re.search(r"(\d+)[\.\s]*(?:°|er|o|do|ndo)", col_info[j], re.IGNORECASE)
+            if m and int(m.group(1)) == quarter:
+                val = _parse_pct(pib_row[j])
+                if val is not None:
+                    return val
+    return None
+
+
+def _parse_eopibt(pdf_bytes: bytes, pub_date: tuple[int, int, int] | None) -> dict[str, Any] | None:
     """Extrae la variación del boletín de Estimación Oportuna del PIBT (EOPIBT).
 
     El boletín 'pib_eo{year}_{mm}.pdf' publica cifras preliminares con:
-      - Cuadro 1 (página 2): variación trimestral (qoq) y anual desestacionalizada
-        (yoy) del PIB oportuno.
+      - Cuadro 1 (página 2): variación trimestral (qoq), anual desestacionalizada
+        (yoy) y acumulado del PIB oportuno.
       - Cuadro 2 (página 3): variación anual original del PIB.
-    No contiene nivel del PIB; por eso se marca la columna 0 del periodo nuevo
-    como pendiente en el pipeline.
+      - Portada: próxima publicación y desglose por actividad económica.
+    No contiene nivel del PIB.
     """
     if pub_date is None:
         return None
@@ -761,14 +834,14 @@ def _parse_eopibt(pdf_bytes: bytes, pub_date: tuple[int, int, int] | None) -> di
     qmap = {
         "primer": 1, "1er": 1, "1o": 1, "1": 1,
         "segundo": 2, "2o": 2, "2": 2,
-        "tercero": 3, "3er": 3, "3o": 3, "3": 3,
+        "tercero": 3, "tercer": 3, "3er": 3, "3o": 3, "3": 3,
         "cuarto": 4, "4o": 4, "4": 4,
     }
 
-    # La portada y el cuerpo contienen la referencia al trimestre.
-    text = "\n".join(
-        _pdf_page_text(pdf_bytes, i) for i in range(min(3, len(pdfplumber.open(BytesIO(pdf_bytes)).pages)))
-    )
+    text = _pdf_text_first_page(pdf_bytes)[0]
+    for i in (1, 2):
+        text += "\n" + _pdf_page_text(pdf_bytes, i)
+
     ref = re.search(r"al\s+(.+?)\s+trimestre\s+de\s+(\d{4})", text, re.IGNORECASE)
     if not ref:
         return None
@@ -782,82 +855,72 @@ def _parse_eopibt(pdf_bytes: bytes, pub_date: tuple[int, int, int] | None) -> di
     ym = f"{year:04d}-{month:02d}"
     period = inegi.ym_to_label(ym, 4) + " P"
 
-    # Cuadro 1 (página 2): qoq y yoy desestacionalizada.
+    proxima = _extract_proxima_publicacion(text)
+
+    # Cuadro 1 (página 2): qoq, yoy desestacionalizada, acumulado y sectores.
     qoq: float | None = None
     yoy_desest: float | None = None
+    ytd: float | None = None
+    ytd_label: str | None = None
+    sectores: dict[str, dict[str, float | None]] = {}
     for table in _pdf_page_tables(pdf_bytes, 1):
+        data_idx = -1
+        for i, row in enumerate(table):
+            cells = [(c or "").strip() for c in row]
+            if cells and "Producto Interno Bruto Oportuno" in re.sub(r"\s+", " ", cells[0]):
+                data_idx = i
+                break
+        main_header: list[str] = []
+        if data_idx >= 2:
+            main_header = [(c or "").strip() for c in table[data_idx - 2]]
         for row in table:
             cells = [(c or "").strip() for c in row]
             if not cells:
                 continue
-            if "Producto Interno Bruto Oportuno" in cells[0] and len(cells) >= 3:
+            label = re.sub(r"\s+", " ", cells[0]).strip()
+            if "Producto Interno Bruto Oportuno" in label and len(cells) >= 3:
                 qoq = _parse_pct(cells[1])
                 yoy_desest = _parse_pct(cells[2])
-                break
+                if len(cells) >= 4:
+                    ytd = _parse_pct(cells[3])
+                    if main_header and len(main_header) > 3:
+                        ytd_label = re.sub(r"\s+", " ", main_header[3] or "").strip().lower()
+                continue
+            if label == "Actividades primarias":
+                if len(cells) >= 3:
+                    sectores["primarias"] = {"qoq": _parse_pct(cells[1]), "yoy": _parse_pct(cells[2])}
+            elif label == "Actividades secundarias":
+                if len(cells) >= 3:
+                    sectores["secundarias"] = {"qoq": _parse_pct(cells[1]), "yoy": _parse_pct(cells[2])}
+            elif label == "Actividades terciarias":
+                if len(cells) >= 3:
+                    sectores["terciarias"] = {"qoq": _parse_pct(cells[1]), "yoy": _parse_pct(cells[2])}
         if qoq is not None or yoy_desest is not None:
             break
 
     # Cuadro 2 (página 3): variación anual original.
-    yoy_orig: float | None = None
-    for table in _pdf_page_tables(pdf_bytes, 2):
-        # localizar la fila "PIB" y sus tres renglones de encabezado
-        pib_row: list[str] | None = None
-        header_start = -1
-        for i, row in enumerate(table):
-            cells = [(c or "").strip() for c in row]
-            if not any(cells):
-                continue
-            if "PIB y actividades" in cells[0]:
-                # El encabezado de año inicia en la fila inmediata anterior.
-                header_start = max(0, i - 1)
-            if cells[0] == "PIB":
-                pib_row = cells
-                break
-        if not pib_row or header_start < 0:
-            continue
-        header_rows = table[header_start:header_start + 3]
-        if not header_rows:
-            continue
+    yoy_orig = _parse_eopibt_yoy_orig(pdf_bytes, year, quarter)
 
-        # Encontrar el inicio del grupo 2026 en el encabezado
-        year_col: int | None = None
-        for hrow in header_rows:
-            for j, cell in enumerate(hrow):
-                if cell and re.search(r"\b2026\b", str(cell)):
-                    year_col = j
-                    break
-            if year_col is not None:
-                break
-        if year_col is None:
-            continue
-
-        for j in range(year_col, len(pib_row)):
-            if j >= len(header_rows[0]):
-                continue
-            sub = " ".join((hrow[j] or "") for hrow in header_rows)
-            sub = re.sub(r"\b\d{4}\s*/?", "", sub).strip()
-            # "1.er", "2.°", "3.er", "4.°", "2.°2/", etc.
-            # "1.er", "2.°", "3.er", "4.°", "2.°2/", etc.
-            m = re.search(r"(\d+)[\.\s]*(?:°|er|o|do|ndo)", sub, re.IGNORECASE)
-            if m and int(m.group(1)) == quarter:
-                yoy_orig = _parse_pct(pib_row[j])
-                break
-        if yoy_orig is not None:
-            break
-
-    out: dict[str, dict[str, dict]] = {}
+    out: dict[str, Any] = {}
     if qoq is not None:
         out.setdefault("qoq", {})["PIB"] = {"ym": ym, "value": qoq / 100.0, "period": period}
     if yoy_desest is not None:
         out.setdefault("yoy", {})["PIB"] = {"ym": ym, "value": yoy_desest / 100.0, "period": period}
     if yoy_orig is not None:
         out.setdefault("yoy_orig", {})["PIB"] = {"ym": ym, "value": yoy_orig / 100.0, "period": period}
-    return out
+    if ytd is not None:
+        out.setdefault("ytd", {})["PIB"] = {"ym": ym, "value": ytd / 100.0, "period": period, "label": ytd_label or "acumulado"}
+    if sectores:
+        out["sectores"] = sectores
+    if proxima:
+        out["proxima_publicacion"] = proxima
+    return out if out else None
 
 
 def _build_item(indicator: str, target_column: int, api_total: list[dict], serie: str, link: str,
                 url_meta: dict[str, tuple[str, tuple[int, int, int] | None]] | None = None,
-                ultimo_valor: float | None = None, freq: int = 8, kind: str = "") -> dict:
+                ultimo_valor: float | None = None, freq: int = 8, kind: str = "",
+                extra: dict | None = None) -> dict:
     if not api_total:
         raise ValueError(f"{indicator} col{target_column}: sin observaciones")
     last = api_total[-1]
@@ -865,7 +928,7 @@ def _build_item(indicator: str, target_column: int, api_total: list[dict], serie
     if url_meta and link in url_meta:
         text, pub_date = url_meta[link]
     meta = _extract_bulletin_meta(text, pub_date)
-    return {
+    item = {
         "key": indicator,
         "target_column": target_column,
         "api_total": api_total,
@@ -887,6 +950,9 @@ def _build_item(indicator: str, target_column: int, api_total: list[dict], serie
             "ultima_ym": last["ym"], "ultima_observacion": last.get("period", last["ym"]),
         },
     }
+    if extra:
+        item.update(extra)
+    return item
 
 
 def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dict]:
@@ -915,6 +981,7 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
 
     results = []
     url_meta: dict[str, tuple[str, tuple[int, int, int] | None]] = {}
+    parsed_by_url: dict[str, dict] = {}
     seen: set[tuple[str, int, str]] = set()
     for year, mm, url in issues[:max_bulletins]:
         try:
@@ -994,21 +1061,36 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
             parsed = _parse_eopibt(pdf, pub_date)
             if not parsed:
                 continue
-            # PIB oportuno: variación anual original (col 1),
-            # variación trimestral desestacionalizada (col 2) y
-            # variación anual desestacionalizada (col 3).
-            o_yoy_orig = parsed.get("yoy_orig", {}).get("PIB")
+            # PIB oportuno:
+            #   col 0 = variación trimestral desestacionalizada (qoq)
+            #   col 1 = variación anual desestacionalizada (yoy)
+            #   col 2 = variación anual original (yoy_orig)
+            #   col 3 = acumulado / año
             o_qoq = parsed.get("qoq", {}).get("PIB")
             o_yoy = parsed.get("yoy", {}).get("PIB")
-            if o_yoy_orig and ("PIB", 1, o_yoy_orig["ym"]) not in seen:
-                results.append(("PIB", "yoy_orig", 1, o_yoy_orig, url))
-                seen.add(("PIB", 1, o_yoy_orig["ym"]))
-            if o_qoq and ("PIB", 2, o_qoq["ym"]) not in seen:
-                results.append(("PIB", "qoq", 2, o_qoq, url))
-                seen.add(("PIB", 2, o_qoq["ym"]))
-            if o_yoy and ("PIB", 3, o_yoy["ym"]) not in seen:
-                results.append(("PIB", "yoy", 3, o_yoy, url))
-                seen.add(("PIB", 3, o_yoy["ym"]))
+            o_yoy_orig = parsed.get("yoy_orig", {}).get("PIB")
+            o_ytd = parsed.get("ytd", {}).get("PIB")
+            if o_qoq and ("PIB", 0, o_qoq["ym"]) not in seen:
+                results.append(("PIB", "qoq", 0, o_qoq, url))
+                seen.add(("PIB", 0, o_qoq["ym"]))
+            if o_yoy and ("PIB", 1, o_yoy["ym"]) not in seen:
+                results.append(("PIB", "yoy", 1, o_yoy, url))
+                seen.add(("PIB", 1, o_yoy["ym"]))
+            if o_yoy_orig and ("PIB", 2, o_yoy_orig["ym"]) not in seen:
+                results.append(("PIB", "yoy_orig", 2, o_yoy_orig, url))
+                seen.add(("PIB", 2, o_yoy_orig["ym"]))
+            if o_ytd and ("PIB", 3, o_ytd["ym"]) not in seen:
+                results.append(("PIB", "ytd", 3, o_ytd, url))
+                seen.add(("PIB", 3, o_ytd["ym"]))
+            # Guardar metadatos adicionales (próxima publicación y sectores)
+            # para agregarlos al item que use el boletín más reciente.
+            extra = {}
+            if "proxima_publicacion" in parsed:
+                extra["proxima_publicacion"] = parsed["proxima_publicacion"]
+            if "sectores" in parsed:
+                extra["sectores"] = parsed["sectores"]
+            if extra:
+                parsed_by_url[url] = extra
 
     # Agrupar por indicador y columna
     grouped: dict[str, dict[int, list[dict]]] = {}
@@ -1022,8 +1104,9 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
             api_total = [r[0] for r in rows]
             link = rows[-1][1]
             freq = 4 if indicator in ("PIB", "PIBSEC") else 8
+            extra = parsed_by_url.get(link)
             out.append(_build_item(indicator, col, api_total, f"{indicator}_pdf", link,
-                                   url_meta=url_meta, freq=freq, kind=kind))
+                                   url_meta=url_meta, freq=freq, kind=kind, extra=extra))
     return out
 
 
@@ -1036,11 +1119,10 @@ def fetch(config: dict | None = None, start_year: int = 2024, max_bulletins: int
 
     data: dict[str, list[dict]] = {}
     for kind in ("IOAE", "IGAE", "CONSUMO", "IMFBCF", "IMAI", "EMIM", "PIBT", "EOPIBT"):
-        # EOPIBT es la estimación preliminar de un solo trimestre; no se
-        # desea sobrescriber histórico con estimaciones oportunas pasadas.
-        kind_max = 1 if kind == "EOPIBT" else max_bulletins
+        # EOPIBT ahora conserva histórico disponible para una serie coherente
+        # de variaciones (qoq, yoy, yoy_orig, acumulado).
         try:
-            items = _fetch_kind(kind, start_year, kind_max)
+            items = _fetch_kind(kind, start_year, max_bulletins)
             for it in (items or []):
                 key = it.get("key") or kind
                 data.setdefault(key, []).append(it)

@@ -28,35 +28,7 @@
   "inegi": {
     "_endpoint": "https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/{ids}/es/{geo}/false/{db}/2.0/{token}?type=json",
     "_nota": "La base de datos actualizada del BIE se consulta con db='BIE-BISE' y geografía nacional geo='00'. La clave de la versión actualizada del BIE se obtiene del Constructor de Consultas oficial (Conjunto de datos = BIE).",
-    "PIB": [
-      {
-        "serie": "737372",
-        "confirmar": false,
-        "nombre": "Producto Interno Bruto",
-        "descripcion_serie": "Total, a precios de mercado, millones de pesos a precios constantes de 2018, serie original",
-        "frecuencia": "Trimestral",
-        "unidad": "Millones de pesos (a precios de 2018)",
-        "tipo_serie": "Serie original",
-        "db": "BIE-BISE",
-        "geo": "00",
-        "columna_objetivo": 0,
-        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=605594#D737372"
-      },
-      {
-        "serie": "737375",
-        "confirmar": false,
-        "nombre": "Producto Interno Bruto, variación anual",
-        "descripcion_serie": "Variación anual respecto al mismo trimestre del año anterior (%)",
-        "frecuencia": "Trimestral",
-        "unidad": "Porcentaje",
-        "tipo_serie": "Serie original",
-        "db": "BIE-BISE",
-        "geo": "00",
-        "columna_objetivo": 1,
-        "factor": 0.01,
-        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=605598#D737375"
-      }
-    ],
+    "PIB": [],
     "PIBSEC": [
       {
         "_nota": "Desagregación sectorial del PIB a precios constantes de 2018, serie original (PIBT 2018).",

@@ -25,7 +25,7 @@ PERIOD_RE = re.compile(r"^([1-4]T-\d{2}|[A-Za-zÁÉÍÓÚáéíóú]{3}\s*\d{2})
 
 # Rangos plausibles por indicador (columna 0 de la serie primaria).
 RANGES = {
-    "PIB": (15_000_000, 35_000_000),
+    "PIB": (-0.5, 0.5),
     "PIBSEC": (15_000_000, 35_000_000),
     "IGAE": (70, 130),
     "IMAI": (70, 130),

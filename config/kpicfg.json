@@ -2,21 +2,21 @@
   "KPICFG": {
     "PIB": {
       "valCol": 0,
-      "valFmt": "bill",
-      "varCol": 3,
+      "valFmt": "pct-frac",
+      "varCol": 1,
       "varFmt": "pct-frac",
-      "varLabel": "Var. anual",
+      "varLabel": "Var. anual desest.",
       "yoyCol": 2,
       "yoyFmt": "pct-frac",
-      "yoyLabel": "Var. trimestral",
-      "noun": "PIB",
+      "yoyLabel": "Var. anual original",
+      "noun": "PIB oportuno",
       "art": "el",
       "grupo": "growth",
       "assess": "growth",
-      "ctx": " (a precios de 2018)",
-      "vw": "crecimiento anual",
-      "vg": "m",
-      "comp": "frente al mismo trimestre del año anterior",
+      "ctx": "",
+      "vw": "variación trimestral desestacionalizada",
+      "vg": "f",
+      "comp": "frente al trimestre anterior",
       "goodSign": 1
     },
     "PIBSEC": {
@@ -319,7 +319,7 @@
     "EMOE": "Confianza empresarial (EMOE)"
   },
   "SIGLA": {
-    "PIB": "PIB",
+    "PIB": "PIB OPORTUNO",
     "PIBSEC": "PIB por actividad económica",
     "IGAE": "IGAE",
     "IMAI": "IMAI",
@@ -337,7 +337,7 @@
     "EMOE": "EMOE"
   },
   "CAPTIONS": {
-    "PIB": "PIB a precios constantes (barras verdes, eje izquierdo) y su variación anual (línea oro, eje derecho).",
+    "PIB": "Variación trimestral desestacionalizada del PIB oportuno (barras) y su variación anual desestacionalizada (línea). Ambas en porcentaje.",
     "PIBSEC": "Composición del PIB por actividad económica en barras apiladas y variación trimestral de terciarias (línea, eje derecho).",
     "IGAE": "Índice global de volumen físico (línea verde) con el desglose de actividades secundarias (línea oro) y terciarias (línea verde azulado), en índice base 2018=100.",
     "IMAI": "Índice de volumen físico industrial (línea verde, eje izquierdo) y variación mensual (línea oro, eje derecho).",

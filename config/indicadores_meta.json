@@ -25,7 +25,43 @@
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
-      "nombre": "Producto Interno Bruto"
+      "nombre": "Estimación Oportuna del Producto Interno Bruto Trimestral",
+      "sigla": "PIB OPORTUNO",
+      "descripcion": "Ofrece una primera estimación de la evolución real de la economía aproximadamente 30 días después de concluir cada trimestre. Utiliza información estadística disponible y modelos econométricos para estimar los datos faltantes; posteriormente puede revisarse con la publicación tradicional del PIB.",
+      "frecuencia": "Trimestral",
+      "unidad": "Porcentaje",
+      "ajuste_estacional": "Cifras desestacionalizadas y originales",
+      "grupo": "growth",
+      "publicacion": "30 días después del cierre del trimestre",
+      "columns": [
+        {
+          "label": "Var. trimestral (%)",
+          "index": 0,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual desest. (%)",
+          "index": 1,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual original (%)",
+          "index": 2,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado (%)",
+          "index": 3,
+          "fmt": "pct-frac"
+        }
+      ],
+      "windows": [
+        {"id": "1a", "label": "1 año", "months": 12},
+        {"id": "2a", "label": "2 años", "months": 24},
+        {"id": "3a", "label": "3 años", "months": 36},
+        {"id": "5a", "label": "5 años", "months": 60},
+        {"id": "max", "label": "Máximo", "months": null}
+      ]
     },
     "PIBSEC": {
       "requiere_token": "INEGI",

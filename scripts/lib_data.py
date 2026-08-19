@@ -174,6 +174,12 @@ def apply_profile(payload: dict, meta_file: Path = META_FILE) -> list[str]:
                         o["values"] = vals
                     log.append(f"columnas padding {key}: {new_n - old_n} columnas nuevas")
 
+        # Sincroniza metadatos de perfil adicionales (descripción, frecuencia, etc.).
+        for field in ("descripcion", "frecuencia", "unidad", "ajuste_estacional",
+                      "grupo", "publicacion", "proximo", "sigla", "windows"):
+            if prof.get(field) is not None and prof.get(field) != ind.get(field):
+                ind[field] = prof[field]
+
     # Sincroniza columnas desde los scaffolds cuando la estructura coincide.
     for key, sc in meta.get("scaffolds", {}).items():
         ind = inds.get(key)

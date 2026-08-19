@@ -84,16 +84,17 @@ def test_pib_bulletin_variations(payload):
     pib = payload["indicators"]["PIB"]
     last = pib["observations"][-1]
     penult = pib["observations"][-2]
-    # Última fila: estimación oportuna 2T-26 (nivel aún no publicado, variaciones sí).
+    # Última fila: estimación oportuna 2T-26 (variaciones, no nivel).
     assert last["period"] == "2T-26 P"
-    assert last["values"][0] is None  # nivel no disponible en EOPIBT
-    assert last["values"][1] == pytest.approx(0.022, abs=1e-3)
-    assert last["values"][2] == pytest.approx(0.015, abs=1e-4)
-    assert last["values"][3] == pytest.approx(0.021, abs=1e-4)
-    # Penúltima fila: 1T-26 con nivel de la serie BIE y variaciones del PIBT.
+    assert last["values"][0] == pytest.approx(0.015, abs=1e-4)  # qoq
+    assert last["values"][1] == pytest.approx(0.021, abs=1e-4)  # yoy desest
+    assert last["values"][2] == pytest.approx(0.022, abs=1e-4)  # yoy orig
+    assert last["values"][3] == pytest.approx(0.012, abs=1e-4)  # acumulado
+    # Penúltima fila: 1T-26.
     assert penult["period"] == "1T-26 P"
-    assert penult["values"][0] == pytest.approx(24973976.071, abs=1e-3)
-    assert penult["values"][2] == pytest.approx(-0.006, abs=1e-4)
+    assert penult["values"][0] == pytest.approx(-0.008, abs=1e-4)
+    assert penult["values"][1] == pytest.approx(0.002, abs=1e-4)
+    assert penult["values"][2] == pytest.approx(0.001, abs=1e-4)
     assert penult["values"][3] == pytest.approx(0.004, abs=1e-4)
 
 
@@ -116,6 +117,51 @@ def test_ioae_jun_2026_and_no_secondary_total(payload):
 
 
 def test_pib_label_includes_2018(payload):
-    """El PIB real debe estar explícitamente a precios constantes de 2018."""
+    """El PIB oportuno se expresa en variaciones porcentuales."""
     pib = payload["indicators"]["PIB"]
-    assert "2018" in pib["unidad"]
+    assert pib["unidad"] == "Porcentaje"
+    assert pib["nombre"] == "Estimación Oportuna del Producto Interno Bruto Trimestral"
+
+
+def test_pib_eopibt_dashboard(payload):
+    """Validación integral de la ficha PIB Oportuno (EOPIBT)."""
+    pib = payload["indicators"]["PIB"]
+    metrics = pib.get("metrics", {})
+    kpi = metrics.get("kpi", {})
+    resumen = metrics.get("resumen", [])
+
+    # Título y unidad correctos
+    assert pib["nombre"] == "Estimación Oportuna del Producto Interno Bruto Trimestral"
+    assert pib["unidad"] == "Porcentaje"
+
+    # Último periodo y KPIs del boletín 470/26
+    assert kpi["ultimoP"] == "2T-26 P"
+    assert kpi["qoqText"] == "+1.5%"
+    assert kpi["yoyDesestText"] == "+2.1%"
+    assert kpi["yoyOrigText"] == "+2.2%"
+    assert kpi["ytdText"] == "+1.2%"
+
+    # No se muestra un nivel en billones como cifra actual
+    assert "billones" not in kpi["ultimoFmt"]
+    assert "millones" not in kpi["ultimoFmt"]
+
+    # No se muestra máximo/mínimo de la serie como nivel
+    assert "billones" not in (kpi.get("maxFmt") or "")
+    assert "millones" not in (kpi.get("maxFmt") or "")
+
+    # Una sola sección de lectura (resumen consolidado)
+    assert len(resumen) >= 3
+    assert any("PIB oportuno" in b for b in resumen)
+    assert any("acumulado" in b.lower() for b in resumen)
+
+    # Filtros de ventana acordes a la frecuencia trimestral
+    assert pib.get("windows")
+    assert all(w["id"] in {"1a", "2a", "3a", "5a", "max"} for w in pib["windows"])
+
+    # Los gráficos deben ser de variaciones (%), sin interpolar nulos
+    assert pib["columns"][0]["fmt"] == "pct-frac"
+    assert pib["columns"][1]["fmt"] == "pct-frac"
+
+    # El boletín PDF se conserva como fuente oficial
+    assert pib.get("url_boletin_oficial")
+    assert "pib_eo2026_07.pdf" in pib["url_boletin_oficial"]

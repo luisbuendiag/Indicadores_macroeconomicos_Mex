@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-19T15:28:17+00:00",
+    "generated_at": "2026-08-19T17:19:32+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-08-19T09:28:17-06:00",
+    "last_update_ct": "2026-08-19T11:19:32-06:00",
     "periodo_referencia_reciente": {
       "period": "Jul 26",
       "period_long": "Jul 26"
@@ -37,13 +37,13 @@
   "indicators": {
     "PIB": {
       "key": "PIB",
-      "nombre": "Producto Interno Bruto",
-      "descripcion": "La suma de los valores de mercado de todos los servicios y bienes finales, producidos por los recursos de la economía que residen en el país. Es un concepto de valor agregado, por lo que se contabilizan los bienes finales que se producen para consumo y no los intermedios para el uso de otro bien final.",
+      "nombre": "Estimación Oportuna del Producto Interno Bruto Trimestral",
+      "descripcion": "Ofrece una primera estimación de la evolución real de la economía aproximadamente 30 días después de concluir cada trimestre. Utiliza información estadística disponible y modelos econométricos para estimar los datos faltantes; posteriormente puede revisarse con la publicación tradicional del PIB.",
       "frecuencia": "Trimestral",
-      "unidad": "Millones de pesos (a precios de 2018)",
-      "ajuste_estacional": "Serie original; la variación trimestral y anual proviene de la serie desestacionalizada publicada por el INEGI",
-      "grupo": "actividad",
-      "publicacion": "Aproximadamente 50 días después de haber concluido el trimestre",
+      "unidad": "Porcentaje",
+      "ajuste_estacional": "Cifras desestacionalizadas y originales",
+      "grupo": "growth",
+      "publicacion": "30 días después del cierre del trimestre",
       "proximo": "Finales de junio (oportuno); finales de agosto (definitivo)",
       "notas": [
         "R = Cifras revisadas",
@@ -51,283 +51,94 @@
       ],
       "fuente": {
         "nombre": "INEGI",
-        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=605598#D737375",
-        "metodo": "INEGI BIE API",
-        "serie": "737375"
+        "link": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_07.pdf",
+        "metodo": "INEGI boletín PDF",
+        "serie": "PIB_pdf"
       },
       "columns": [
         {
-          "label": "PIB (millones de pesos)",
+          "label": "Var. trimestral (%)",
           "index": 0,
-          "fmt": "num"
+          "fmt": "pct-frac"
         },
         {
-          "label": "Var. Anual (%)",
+          "label": "Var. anual desest. (%)",
           "index": 1,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. Trim. Desest. (%)",
+          "label": "Var. anual original (%)",
           "index": 2,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. Anual Desest. (%)",
+          "label": "Acumulado (%)",
           "index": 3,
           "fmt": "pct-frac"
         }
       ],
       "observations": [
         {
-          "period": "1T-18",
+          "period": "4T-24 P",
           "values": [
-            24137287.71,
-            0.0275,
             null,
-            null
-          ]
-        },
-        {
-          "period": "2T-18",
-          "values": [
-            24605265.729,
-            0.011365,
             null,
-            null
-          ]
-        },
-        {
-          "period": "1T-19",
-          "values": [
-            24024906.35,
-            -0.004656,
-            null,
-            null
-          ]
-        },
-        {
-          "period": "2T-19",
-          "values": [
-            24356643.155,
-            -0.010104,
-            null,
-            null
-          ]
-        },
-        {
-          "period": "1T-20",
-          "values": [
-            22072209.167,
-            -0.081278,
-            null,
-            null
-          ]
-        },
-        {
-          "period": "2T-20",
-          "values": [
-            23504796.547,
-            -0.034974,
-            null,
-            null
-          ]
-        },
-        {
-          "period": "1T-21",
-          "values": [
-            23204796.817,
-            0.051313,
-            null,
-            null
-          ]
-        },
-        {
-          "period": "2T-21",
-          "values": [
-            23949712.898,
-            0.018929,
-            null,
-            null
-          ]
-        },
-        {
-          "period": "3T-21",
-          "values": [
-            23204796.817,
-            0.051313,
-            null,
-            null
-          ]
-        },
-        {
-          "period": "4T-21",
-          "values": [
-            23949712.898,
-            0.018929,
-            null,
-            null
-          ]
-        },
-        {
-          "period": "1T-22",
-          "values": [
-            24289379.479,
-            0.04674,
-            null,
-            null
-          ]
-        },
-        {
-          "period": "2T-22",
-          "values": [
-            25052395.779,
-            0.046042,
-            null,
-            null
-          ]
-        },
-        {
-          "period": "3T-22",
-          "values": [
-            24289379.479,
-            0.04674,
-            null,
-            null
-          ]
-        },
-        {
-          "period": "4T-22",
-          "values": [
-            25052395.779,
-            0.046042,
-            null,
-            null
-          ]
-        },
-        {
-          "period": "1T-23",
-          "values": [
-            25094793.141,
-            0.033159,
-            null,
-            null
-          ]
-        },
-        {
-          "period": "2T-23 R",
-          "values": [
-            25590082.607,
-            0.021462,
-            null,
-            null
-          ]
-        },
-        {
-          "period": "3T-23 R",
-          "values": [
-            25094793.141,
-            0.033159,
-            null,
-            null
-          ]
-        },
-        {
-          "period": "4T-23 R",
-          "values": [
-            25590082.607,
-            0.021462,
-            null,
-            null
-          ]
-        },
-        {
-          "period": "1T-24",
-          "values": [
-            25475446.445,
-            0.015169,
-            null,
-            null
-          ]
-        },
-        {
-          "period": "2T-24 R",
-          "values": [
-            25693292.983,
-            0.004033,
-            null,
-            null
-          ]
-        },
-        {
-          "period": "3T-24 R",
-          "values": [
-            25475446.445,
-            0.015169,
-            null,
-            null
-          ]
-        },
-        {
-          "period": "4T-24 R",
-          "values": [
-            25693292.983,
-            0.004033,
-            null,
-            null
-          ]
-        },
-        {
-          "period": "1T-25",
-          "values": [
-            25422850.191,
-            -0.002065,
-            null,
-            null
-          ]
-        },
-        {
-          "period": "2T-25 R",
-          "values": [
-            26135644.696,
-            0.017217,
             0.006,
-            0.012
+            null
           ]
         },
         {
-          "period": "3T-25 R",
+          "period": "1T-25 P",
           "values": [
-            25422850.191,
-            -0.002065,
+            0.002,
+            0.006,
+            0.008,
+            null
+          ]
+        },
+        {
+          "period": "2T-25 P",
+          "values": [
+            0.007,
+            0.012,
+            0.001,
+            0.009
+          ]
+        },
+        {
+          "period": "3T-25 P",
+          "values": [
             -0.003,
-            -0.002
+            -0.003,
+            -0.002,
+            0.005
           ]
         },
         {
-          "period": "4T-25 R",
+          "period": "4T-25 P",
           "values": [
-            26135644.696,
-            0.017217,
-            0.009,
-            0.018
+            0.008,
+            0.016,
+            0.016,
+            0.007
           ]
         },
         {
           "period": "1T-26 P",
           "values": [
-            24973976.071,
-            0.002423,
-            -0.006,
+            -0.008,
+            0.002,
+            0.001,
             0.004
           ]
         },
         {
           "period": "2T-26 P",
           "values": [
-            null,
-            0.022,
             0.015,
-            0.021
+            0.021,
+            0.022,
+            0.012
           ]
         }
       ],
@@ -343,102 +154,6 @@
       "fecha_publicacion": "30 de julio de 2026",
       "periodo_referencia": "2T-26 P",
       "fecha_consulta": "2026-08-19",
-      "metrics": {
-        "kpi": {
-          "assessment": "favorable",
-          "dir": "up",
-          "ultimoFmt": "24.97 billones de pesos de 2018",
-          "ultimoRaw": 24973976.071,
-          "ultimoP": "1T-26 P",
-          "varText": "+0.4%",
-          "varMag": 0.4,
-          "pos": true,
-          "varColor": "#1e5b4f",
-          "varLabel": "Var. anual",
-          "maxFmt": "26.14 billones de pesos de 2018",
-          "maxRaw": 26135644.696,
-          "maxP": "2T-25 R",
-          "minFmt": "22.07 billones de pesos de 2018",
-          "minRaw": 22072209.167,
-          "minP": "1T-20",
-          "lastI": 26,
-          "series": [
-            24137287.71,
-            24605265.729,
-            24024906.35,
-            24356643.155,
-            22072209.167,
-            23504796.547,
-            23204796.817,
-            23949712.898,
-            23204796.817,
-            23949712.898,
-            24289379.479,
-            25052395.779,
-            24289379.479,
-            25052395.779,
-            25094793.141,
-            25590082.607,
-            25094793.141,
-            25590082.607,
-            25475446.445,
-            25693292.983,
-            25475446.445,
-            25693292.983,
-            25422850.191,
-            26135644.696,
-            25422850.191,
-            26135644.696,
-            24973976.071,
-            null
-          ],
-          "periods": [
-            "1T-18",
-            "2T-18",
-            "1T-19",
-            "2T-19",
-            "1T-20",
-            "2T-20",
-            "1T-21",
-            "2T-21",
-            "3T-21",
-            "4T-21",
-            "1T-22",
-            "2T-22",
-            "3T-22",
-            "4T-22",
-            "1T-23",
-            "2T-23 R",
-            "3T-23 R",
-            "4T-23 R",
-            "1T-24",
-            "2T-24 R",
-            "3T-24 R",
-            "4T-24 R",
-            "1T-25",
-            "2T-25 R",
-            "3T-25 R",
-            "4T-25 R",
-            "1T-26 P",
-            "2T-26 P"
-          ],
-          "semaforo": "bueno",
-          "yoyText": "-0.6%",
-          "yoyLabel": "Var. trimestral"
-        },
-        "yoy": {
-          "mag": -0.6,
-          "pos": false,
-          "text": "-0.6%",
-          "label": "Var. trimestral"
-        },
-        "resumen": [
-          "En primer trimestre de 2026, el PIB se ubicó en 24.97 billones de pesos de 2018 (a precios de 2018). El valor de var. anual fue de +0.4% frente al mismo trimestre del año anterior.",
-          "La var. trimestral se situó en -0.6%, lo que refleja la comparación contra primer trimestre de 2026 del año previo.",
-          "En la serie mostrada, el indicador oscila entre un máximo de 26.14 billones de pesos de 2018 (segundo trimestre de 2025) y un mínimo de 22.07 billones de pesos de 2018 (primer trimestre de 2020). El último dato se ubica dentro del rango observado en el periodo mostrado.",
-          "La variación se clasifica como favorable según la lectura económica del indicador."
-        ]
-      },
       "periodo_referencia_oficial": "2° trimestre 2026",
       "fecha_publicacion_oficial": "30 de julio de 2026",
       "proxima_publicacion": {
@@ -446,7 +161,7 @@
         "periodo_referencia": "3er trimestre 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (2T-26) coincide con el último periodo esperado (2° trimestre 2026). Nota: PIB (millones de pesos) del último periodo está pendiente de publicación (Nivel del PIB no publicado en la Estimación Oportuna del PIB Trimestral (EOPIBT) del 30 de julio de 2026. Se actualizará con el PIBT definitivo del 24 de agosto de 2026. Las variaciones (original anual 2.2%, trimestral desestacionalizada 1.5%, anual desestacionalizada 2.1%) sí están confirmadas.).",
+      "motivo_frescura": "El periodo cargado (2T-26) coincide con el último periodo esperado (2° trimestre 2026).",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_07.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/PIB/PIB_datos.xlsx",
@@ -454,21 +169,123 @@
       "nota_disponible": false,
       "nota_causa": "Falta plantilla aprobada",
       "url_nota_individual": null,
-      "data_quality": [
-        {
-          "period": "2T-26 P",
-          "column": 0,
-          "status": "revisión",
-          "reason": "Nivel del PIB no publicado en la Estimación Oportuna del PIB Trimestral (EOPIBT) del 30 de julio de 2026. Se actualizará con el PIBT definitivo del 24 de agosto de 2026. Las variaciones (original anual 2.2%, trimestral desestacionalizada 1.5%, anual desestacionalizada 2.1%) sí están confirmadas."
-        }
-      ],
-      "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=605598#D737375",
+      "data_quality": [],
+      "url_fuente_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_07.pdf",
       "fecha_ultima_publicacion": "30 de julio de 2026",
       "regla_publicacion": null,
       "periodo_boletin": "2T-26",
       "numero_boletin": "470/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Estimación Oportuna del Producto Interno Bruto Trimestral (EOPIBT)"
+      "producto_boletin": "Estimación Oportuna del Producto Interno Bruto Trimestral (EOPIBT)",
+      "sigla": "PIB OPORTUNO",
+      "windows": [
+        {
+          "id": "1a",
+          "label": "1 año",
+          "months": 12
+        },
+        {
+          "id": "2a",
+          "label": "2 años",
+          "months": 24
+        },
+        {
+          "id": "3a",
+          "label": "3 años",
+          "months": 36
+        },
+        {
+          "id": "5a",
+          "label": "5 años",
+          "months": 60
+        },
+        {
+          "id": "max",
+          "label": "Máximo",
+          "months": null
+        }
+      ],
+      "metrics": {
+        "kpi": {
+          "assessment": "favorable",
+          "dir": "up",
+          "ultimoFmt": "+1.5%",
+          "ultimoRaw": 0.015,
+          "ultimoP": "2T-26 P",
+          "varText": "+2.1%",
+          "varMag": 2.1,
+          "pos": true,
+          "varColor": "#1e5b4f",
+          "varLabel": "Var. anual desest.",
+          "maxFmt": "1.5%",
+          "maxRaw": 0.015,
+          "maxP": "2T-26 P",
+          "minFmt": "-0.8%",
+          "minRaw": -0.008,
+          "minP": "1T-26 P",
+          "lastI": 6,
+          "series": [
+            null,
+            0.002,
+            0.007,
+            -0.003,
+            0.008,
+            -0.008,
+            0.015
+          ],
+          "periods": [
+            "4T-24 P",
+            "1T-25 P",
+            "2T-25 P",
+            "3T-25 P",
+            "4T-25 P",
+            "1T-26 P",
+            "2T-26 P"
+          ],
+          "semaforo": "bueno",
+          "qoqRaw": 0.015,
+          "qoqText": "+1.5%",
+          "qoqLabel": "Var. trimestral",
+          "yoyDesestRaw": 0.021,
+          "yoyDesestText": "+2.1%",
+          "yoyDesestLabel": "Var. anual desest.",
+          "yoyOrigRaw": 0.022,
+          "yoyOrigText": "+2.2%",
+          "yoyOrigLabel": "Var. anual original",
+          "ytdRaw": 0.012,
+          "ytdText": "+1.2%",
+          "ytdLabel": "Acumulado enero–junio",
+          "yoyText": "+2.2%",
+          "yoyLabel": "Var. anual original"
+        },
+        "yoy": {
+          "mag": 2.1999999999999997,
+          "pos": true,
+          "text": "+2.2%",
+          "label": "Var. anual original"
+        },
+        "resumen": [
+          "En segundo trimestre de 2026, el PIB oportuno creció +1.5% en variación trimestral desestacionalizada respecto a primer trimestre de 2026 y +2.1% en variación anual desestacionalizada respecto a segundo trimestre de 2025. La variación anual con cifras originales fue +2.2%.",
+          "El acumulado enero–junio de 2026 creció +1.2% frente al mismo periodo de 2025.",
+          "Por actividad económica, las variaciones trimestrales fueron: primarias +3.3%, secundarias +1.6%, terciarias +1.5%.",
+          "La próxima publicación está prevista para el 30 de octubre de 2026 (3er trimestre 2026)."
+        ]
+      },
+      "sectores": {
+        "primarias": {
+          "qoq": 3.3,
+          "yoy": 7.3
+        },
+        "secundarias": {
+          "qoq": 1.6,
+          "yoy": 0.8
+        },
+        "terciarias": {
+          "qoq": 1.5,
+          "yoy": 2.5
+        }
+      },
+      "boletin_validado": true
     },
     "PIBSEC": {
       "key": "PIBSEC",
@@ -629,7 +446,7 @@
           ]
         },
         {
-          "period": "2T-23 P",
+          "period": "2T-23",
           "values": [
             958911.8,
             8024213.122,
@@ -669,7 +486,7 @@
           ]
         },
         {
-          "period": "2T-24 P",
+          "period": "2T-24",
           "values": [
             930282.979,
             7832811.484,
@@ -689,7 +506,7 @@
           ]
         },
         {
-          "period": "4T-24 P",
+          "period": "4T-24",
           "values": [
             930282.979,
             7832811.484,
@@ -709,7 +526,7 @@
           ]
         },
         {
-          "period": "2T-25 P",
+          "period": "2T-25",
           "values": [
             993973.972,
             7867045.889,
@@ -719,7 +536,7 @@
           ]
         },
         {
-          "period": "3T-25 P",
+          "period": "3T-25",
           "values": [
             777766.167,
             7812449.734,
@@ -729,7 +546,7 @@
           ]
         },
         {
-          "period": "4T-25 P",
+          "period": "4T-25",
           "values": [
             993973.972,
             7867045.889,
@@ -739,7 +556,7 @@
           ]
         },
         {
-          "period": "1T-26 P",
+          "period": "1T-26",
           "values": [
             797675.498,
             7621773.386,
@@ -749,7 +566,7 @@
           ]
         }
       ],
-      "last_observation": "1T-26 P",
+      "last_observation": "1T-26",
       "last_updated": "2026-08-19",
       "last_checked": "2026-08-19",
       "source_origin": "api",
@@ -759,7 +576,7 @@
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
       "fecha_publicacion": "22 de mayo de 2026",
-      "periodo_referencia": "1T-26 P",
+      "periodo_referencia": "1T-26",
       "fecha_consulta": "2026-08-19",
       "metrics": {
         "kpi": {
@@ -767,7 +584,7 @@
           "dir": "down",
           "ultimoFmt": "23,553,779",
           "ultimoRaw": 23553778.839,
-          "ultimoP": "1T-26 P",
+          "ultimoP": "1T-26",
           "varText": "-0.4%",
           "varMag": -0.4,
           "pos": false,
@@ -775,7 +592,7 @@
           "varLabel": "Trim. terciarias",
           "maxFmt": "24,738,688",
           "maxRaw": 24738687.674999997,
-          "maxP": "2T-25 P",
+          "maxP": "2T-25",
           "minFmt": "20,954,771",
           "minRaw": 20954770.625,
           "minP": "1T-20",
@@ -817,18 +634,18 @@
             "1T-22",
             "2T-22",
             "1T-23",
-            "2T-23 P",
+            "2T-23",
             "3T-23 P",
             "4T-23 P",
             "1T-24",
-            "2T-24 P",
+            "2T-24",
             "3T-24 P",
-            "4T-24 P",
+            "4T-24",
             "1T-25",
-            "2T-25 P",
-            "3T-25 P",
-            "4T-25 P",
-            "1T-26 P"
+            "2T-25",
+            "3T-25",
+            "4T-25",
+            "1T-26"
           ],
           "semaforo": "malo",
           "yoyText": "+1.1%",
@@ -868,7 +685,8 @@
       "periodo_boletin": "1T-26",
       "numero_boletin": "295/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Producto Interno Bruto por sector de actividad (PIBT)"
+      "producto_boletin": "Producto Interno Bruto por sector de actividad (PIBT)",
+      "boletin_validado": true
     },
     "IGAE": {
       "key": "IGAE",
@@ -1800,7 +1618,7 @@
           ]
         },
         {
-          "period": "May 25 R",
+          "period": "May 25",
           "values": [
             107.407876,
             104.4,
@@ -1810,7 +1628,7 @@
           ]
         },
         {
-          "period": "Jun 25 R",
+          "period": "Jun 25",
           "values": [
             104.50353,
             100.87,
@@ -1820,7 +1638,7 @@
           ]
         },
         {
-          "period": "Jul 25 R",
+          "period": "Jul 25",
           "values": [
             105.661466,
             101.58,
@@ -1830,7 +1648,7 @@
           ]
         },
         {
-          "period": "Ago 25 R",
+          "period": "Ago 25",
           "values": [
             104.822875,
             101.39,
@@ -1840,7 +1658,7 @@
           ]
         },
         {
-          "period": "Sep 25 R",
+          "period": "Sep 25",
           "values": [
             103.226895,
             99.56,
@@ -1850,7 +1668,7 @@
           ]
         },
         {
-          "period": "Oct 25 R",
+          "period": "Oct 25",
           "values": [
             107.920791,
             104.81,
@@ -1860,7 +1678,7 @@
           ]
         },
         {
-          "period": "Nov 25 R",
+          "period": "Nov 25",
           "values": [
             107.829456,
             101.45,
@@ -1870,7 +1688,7 @@
           ]
         },
         {
-          "period": "Dic 25 R",
+          "period": "Dic 25",
           "values": [
             107.41679,
             98.38,
@@ -1880,7 +1698,7 @@
           ]
         },
         {
-          "period": "Ene 26 R",
+          "period": "Ene 26",
           "values": [
             100.928378,
             96.62,
@@ -1890,7 +1708,7 @@
           ]
         },
         {
-          "period": "Feb 26 R",
+          "period": "Feb 26",
           "values": [
             100.121986,
             95.8,
@@ -1900,7 +1718,7 @@
           ]
         },
         {
-          "period": "Mar 26 P",
+          "period": "Mar 26",
           "values": [
             106.956932,
             102.75,
@@ -1910,7 +1728,7 @@
           ]
         },
         {
-          "period": "Abr 26 P",
+          "period": "Abr 26",
           "values": [
             106.675953,
             102.52,
@@ -2153,18 +1971,18 @@
             "Feb 25",
             "Mar 25",
             "Abr 25",
-            "May 25 R",
-            "Jun 25 R",
-            "Jul 25 R",
-            "Ago 25 R",
-            "Sep 25 R",
-            "Oct 25 R",
-            "Nov 25 R",
-            "Dic 25 R",
-            "Ene 26 R",
-            "Feb 26 R",
-            "Mar 26 P",
-            "Abr 26 P",
+            "May 25",
+            "Jun 25",
+            "Jul 25",
+            "Ago 25",
+            "Sep 25",
+            "Oct 25",
+            "Nov 25",
+            "Dic 25",
+            "Ene 26",
+            "Feb 26",
+            "Mar 26",
+            "Abr 26",
             "May 26"
           ],
           "semaforo": "malo",
@@ -2205,7 +2023,8 @@
       "periodo_boletin": "May 26",
       "numero_boletin": "432/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Indicador Global de la Actividad Económica"
+      "producto_boletin": "Indicador Global de la Actividad Económica",
+      "boletin_validado": true
     },
     "IMAI": {
       "key": "IMAI",
@@ -2950,7 +2769,7 @@
           ]
         },
         {
-          "period": "May 25 P",
+          "period": "May 25",
           "values": [
             101.579489,
             0.009628,
@@ -2958,7 +2777,7 @@
           ]
         },
         {
-          "period": "Jun 25 P",
+          "period": "Jun 25",
           "values": [
             101.250003,
             -0.003244,
@@ -2966,7 +2785,7 @@
           ]
         },
         {
-          "period": "Jul 25 P",
+          "period": "Jul 25",
           "values": [
             100.232315,
             -0.010051,
@@ -2974,7 +2793,7 @@
           ]
         },
         {
-          "period": "Ago 25 P",
+          "period": "Ago 25",
           "values": [
             100.042784,
             -0.001891,
@@ -2982,7 +2801,7 @@
           ]
         },
         {
-          "period": "Sep 25 P",
+          "period": "Sep 25",
           "values": [
             99.896912,
             -0.001458,
@@ -2990,7 +2809,7 @@
           ]
         },
         {
-          "period": "Oct 25 P",
+          "period": "Oct 25",
           "values": [
             100.714133,
             0.008181,
@@ -2998,7 +2817,7 @@
           ]
         },
         {
-          "period": "Nov 25 P",
+          "period": "Nov 25",
           "values": [
             101.317257,
             0.005988,
@@ -3006,7 +2825,7 @@
           ]
         },
         {
-          "period": "Dic 25 P",
+          "period": "Dic 25",
           "values": [
             101.430223,
             0.001115,
@@ -3014,7 +2833,7 @@
           ]
         },
         {
-          "period": "Ene 26 P",
+          "period": "Ene 26",
           "values": [
             100.399604,
             -0.010161,
@@ -3022,7 +2841,7 @@
           ]
         },
         {
-          "period": "Feb 26 P",
+          "period": "Feb 26",
           "values": [
             100.824971,
             0.004237,
@@ -3030,7 +2849,7 @@
           ]
         },
         {
-          "period": "Mar 26 P",
+          "period": "Mar 26",
           "values": [
             100.297622,
             -0.00523,
@@ -3038,7 +2857,7 @@
           ]
         },
         {
-          "period": "Abr 26 P",
+          "period": "Abr 26",
           "values": [
             102.419928,
             0.02116,
@@ -3287,18 +3106,18 @@
             "Feb 25",
             "Mar 25",
             "Abr 25",
-            "May 25 P",
-            "Jun 25 P",
-            "Jul 25 P",
-            "Ago 25 P",
-            "Sep 25 P",
-            "Oct 25 P",
-            "Nov 25 P",
-            "Dic 25 P",
-            "Ene 26 P",
-            "Feb 26 P",
-            "Mar 26 P",
-            "Abr 26 P",
+            "May 25",
+            "Jun 25",
+            "Jul 25",
+            "Ago 25",
+            "Sep 25",
+            "Oct 25",
+            "Nov 25",
+            "Dic 25",
+            "Ene 26",
+            "Feb 26",
+            "Mar 26",
+            "Abr 26",
             "May 26",
             "Jun 26"
           ],
@@ -3340,7 +3159,8 @@
       "periodo_boletin": "Jun 26",
       "numero_boletin": "485/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Indicador Mensual de la Actividad Industrial"
+      "producto_boletin": "Indicador Mensual de la Actividad Industrial",
+      "boletin_validado": true
     },
     "CONSUMO": {
       "key": "CONSUMO",
@@ -3430,7 +3250,7 @@
           ]
         },
         {
-          "period": "Abr 25 R",
+          "period": "Abr 25",
           "values": [
             111.6,
             0.011,
@@ -3438,7 +3258,7 @@
           ]
         },
         {
-          "period": "May 25 R",
+          "period": "May 25",
           "values": [
             110.1,
             -0.01,
@@ -3446,7 +3266,7 @@
           ]
         },
         {
-          "period": "Jun 25 R",
+          "period": "Jun 25",
           "values": [
             111.5,
             0.008,
@@ -3454,7 +3274,7 @@
           ]
         },
         {
-          "period": "Jul 25 R",
+          "period": "Jul 25",
           "values": [
             111.2,
             -0.003,
@@ -3462,7 +3282,7 @@
           ]
         },
         {
-          "period": "Ago 25 R",
+          "period": "Ago 25",
           "values": [
             112.1,
             0.006,
@@ -3470,7 +3290,7 @@
           ]
         },
         {
-          "period": "Sep 25 R",
+          "period": "Sep 25",
           "values": [
             112.4,
             0.0,
@@ -3478,7 +3298,7 @@
           ]
         },
         {
-          "period": "Oct 25 R",
+          "period": "Oct 25",
           "values": [
             113.5,
             0.008,
@@ -3486,7 +3306,7 @@
           ]
         },
         {
-          "period": "Nov 25 R",
+          "period": "Nov 25",
           "values": [
             112.9,
             -0.005,
@@ -3494,7 +3314,7 @@
           ]
         },
         {
-          "period": "Dic 25 R",
+          "period": "Dic 25",
           "values": [
             114.4,
             0.012,
@@ -3502,7 +3322,7 @@
           ]
         },
         {
-          "period": "Ene 26 R",
+          "period": "Ene 26",
           "values": [
             112.1,
             -0.016,
@@ -3510,7 +3330,7 @@
           ]
         },
         {
-          "period": "Feb 26 R",
+          "period": "Feb 26",
           "values": [
             111.4,
             -0.005,
@@ -3518,7 +3338,7 @@
           ]
         },
         {
-          "period": "Mar 26 P",
+          "period": "Mar 26",
           "values": [
             113.6,
             0.012,
@@ -3543,8 +3363,8 @@
         }
       ],
       "last_observation": "May 26",
-      "last_updated": "2026-08-17",
-      "last_checked": "2026-08-17",
+      "last_updated": "2026-08-19",
+      "last_checked": "2026-08-19",
       "source_origin": "api",
       "data_quality": [],
       "requiere_token": "INEGI",
@@ -3554,7 +3374,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "5 de agosto de 2026",
       "periodo_referencia": "May 26",
-      "fecha_consulta": "2026-08-17",
+      "fecha_consulta": "2026-08-19",
       "metrics": {
         "kpi": {
           "assessment": "favorable",
@@ -3569,7 +3389,7 @@
           "varLabel": "Var. mensual",
           "maxFmt": "114.4",
           "maxRaw": 114.4,
-          "maxP": "Dic 25 R",
+          "maxP": "Dic 25",
           "minFmt": "108.6",
           "minRaw": 108.6,
           "minP": "Ene 25",
@@ -3603,18 +3423,18 @@
             "Ene 25",
             "Feb 25",
             "Mar 25",
-            "Abr 25 R",
-            "May 25 R",
-            "Jun 25 R",
-            "Jul 25 R",
-            "Ago 25 R",
-            "Sep 25 R",
-            "Oct 25 R",
-            "Nov 25 R",
-            "Dic 25 R",
-            "Ene 26 R",
-            "Feb 26 R",
-            "Mar 26 P",
+            "Abr 25",
+            "May 25",
+            "Jun 25",
+            "Jul 25",
+            "Ago 25",
+            "Sep 25",
+            "Oct 25",
+            "Nov 25",
+            "Dic 25",
+            "Ene 26",
+            "Feb 26",
+            "Mar 26",
             "Abr 26",
             "May 26"
           ],
@@ -3656,7 +3476,8 @@
       "periodo_boletin": "May 26",
       "numero_boletin": "478/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Indicador Mensual del Consumo Privado"
+      "producto_boletin": "Indicador Mensual del Consumo Privado",
+      "boletin_validado": true
     },
     "IED": {
       "key": "IED",
@@ -4907,7 +4728,8 @@
       "periodo_boletin": "Jun 26",
       "numero_boletin": "435/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Indicadores de Ocupación y Empleo (ENOE / IOOE)"
+      "producto_boletin": "Indicadores de Ocupación y Empleo (ENOE / IOOE)",
+      "boletin_validado": true
     },
     "INPC": {
       "key": "INPC",
@@ -6044,7 +5866,8 @@
       "periodo_boletin": "Jul 26",
       "numero_boletin": "481/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Índice Nacional de Precios al Consumidor"
+      "producto_boletin": "Índice Nacional de Precios al Consumidor",
+      "boletin_validado": true
     },
     "IMFBCF": {
       "key": "IMFBCF",
@@ -6242,8 +6065,8 @@
         }
       ],
       "last_observation": "May 26",
-      "last_updated": "2026-08-17",
-      "last_checked": "2026-08-17",
+      "last_updated": "2026-08-19",
+      "last_checked": "2026-08-19",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -6251,7 +6074,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "5 de agosto de 2026",
       "periodo_referencia": "May 26",
-      "fecha_consulta": "2026-08-17",
+      "fecha_consulta": "2026-08-19",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -6354,7 +6177,8 @@
       "periodo_boletin": "May 26",
       "numero_boletin": "479/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Indicador Mensual de la Formación Bruta de Capital Fijo"
+      "producto_boletin": "Indicador Mensual de la Formación Bruta de Capital Fijo",
+      "boletin_validado": true
     },
     "IOAE": {
       "key": "IOAE",
@@ -6640,8 +6464,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-08-17",
-      "last_checked": "2026-08-17",
+      "last_updated": "2026-08-19",
+      "last_checked": "2026-08-19",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -6649,7 +6473,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "21 de julio de 2026",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-08-17",
+      "fecha_consulta": "2026-08-19",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -6766,7 +6590,8 @@
       "periodo_boletin": "Jun 26",
       "numero_boletin": "428/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Indicador Oportuno de la Actividad Económica"
+      "producto_boletin": "Indicador Oportuno de la Actividad Económica",
+      "boletin_validado": true
     },
     "EMIM": {
       "key": "EMIM",
@@ -7788,7 +7613,8 @@
       "periodo_boletin": "Jun 26",
       "numero_boletin": "490/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Encuesta Mensual de la Industria Manufacturera"
+      "producto_boletin": "Encuesta Mensual de la Industria Manufacturera",
+      "boletin_validado": true
     },
     "TIPOCAMBIO": {
       "key": "TIPOCAMBIO",
@@ -46140,7 +45966,8 @@
       "periodo_boletin": "Jul 26",
       "numero_boletin": "474/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Encuesta Mensual de Opinión Empresarial"
+      "producto_boletin": "Encuesta Mensual de Opinión Empresarial",
+      "boletin_validado": true
     },
     "BCMM": {
       "key": "BCMM",
@@ -47270,7 +47097,8 @@
       "periodo_boletin": "Jun 26",
       "numero_boletin": "436/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Balanza Comercial de Mercancías de México"
+      "producto_boletin": "Balanza Comercial de Mercancías de México",
+      "boletin_validado": true
     }
   }
 }

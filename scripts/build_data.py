@@ -93,11 +93,14 @@ def apply_inegi_total(payload: dict, key: str, item: dict, prev_last: str | None
         if o.get("value") is None:
             continue
         ym_key = _key(o["ym"])
+        period_label = o.get("period") or inegi.ym_to_label(ym_key, item.get("freq"))
         if ym_key in rows_by_ym:
             vals = rows_by_ym[ym_key]["values"]
+            # Conserva la etiqueta de periodo más reciente/representativa.
+            if period_label:
+                rows_by_ym[ym_key]["period"] = period_label
         else:
             vals = [None] * ncol
-            period_label = o.get("period") or inegi.ym_to_label(ym_key, item.get("freq"))
             rows_by_ym[ym_key] = {"period": period_label, "values": vals}
         if 0 <= tcol < ncol:
             vals[tcol] = round(o["value"], 6)
@@ -118,7 +121,8 @@ def apply_inegi_total(payload: dict, key: str, item: dict, prev_last: str | None
             ind["url_boletin_oficial"] = item["link"]
             # Conserva metadatos del boletín validado por el parser de Sala de Prensa.
             for meta_key in ("periodo_boletin", "numero_boletin", "fecha_publicacion",
-                             "tipo_documento", "producto_boletin", "boletin_validado"):
+                             "tipo_documento", "producto_boletin", "boletin_validado",
+                             "proxima_publicacion", "sectores"):
                 if item.get(meta_key) is not None:
                     ind[meta_key] = item[meta_key]
     ind["fuente"] = fuente

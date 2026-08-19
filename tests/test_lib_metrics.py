@@ -76,7 +76,9 @@ def test_pib_yoy_trimestral():
     payload = _payload()
     metrics = M.compute_all_metrics(payload)
     kpi = metrics["PIB"]["kpi"]
-    assert kpi["ultimoFmt"] == "24.97 billones de pesos de 2018"
-    assert kpi["varText"] == "+0.4%"
-    assert kpi["yoyText"] == "-0.6%"
-    assert kpi["yoyLabel"] == "Var. trimestral"
+    assert kpi["ultimoFmt"] == "+1.5%"
+    assert kpi["varText"] == "+2.1%"
+    assert kpi["varLabel"] == "Var. anual desest."
+    assert kpi["yoyText"] == "+2.2%"
+    assert kpi["yoyLabel"] == "Var. anual original"
+    assert kpi["ytdText"] == "+1.2%"
