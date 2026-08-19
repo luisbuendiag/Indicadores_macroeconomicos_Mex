@@ -744,23 +744,19 @@ def _eopibt_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
         # El acumulado se compara contra el mismo periodo del año previo.
         bullets.append(f"El {kpi['ytdLabel'].lower()} de {year} creció {kpi['ytdText']} frente al mismo periodo de {year - 1}.")
 
-    def _pct_raw(v):
-        if v is None:
-            return "—"
-        s = "+" if v > 0 else ""
-        return s + F._to_fixed(v, 1, 1) + "%"
-
     sectores = ind.get("sectores")
     if sectores and qoq is not None:
-        sp = []
-        if "primarias" in sectores:
-            sp.append(f"primarias {_pct_raw(sectores['primarias'].get('qoq'))}")
-        if "secundarias" in sectores:
-            sp.append(f"secundarias {_pct_raw(sectores['secundarias'].get('qoq'))}")
-        if "terciarias" in sectores:
-            sp.append(f"terciarias {_pct_raw(sectores['terciarias'].get('qoq'))}")
-        if sp:
-            bullets.append(f"Por actividad económica, las variaciones trimestrales fueron: {', '.join(sp)}.")
+        parts = []
+        for name in ("primarias", "secundarias", "terciarias"):
+            if name in sectores:
+                parts.append(f"{name} {_pct(sectores[name].get('qoq'))}")
+        if parts:
+            qoq_vals = [sectores[n].get("qoq") for n in ("primarias", "secundarias", "terciarias") if n in sectores]
+            all_grew = all(v is not None and v > 0 for v in qoq_vals)
+            if all_grew:
+                bullets.append(f"Avance generalizado: las tres grandes actividades crecieron frente al trimestre anterior: {', '.join(parts)}.")
+            else:
+                bullets.append(f"Por actividad económica, las variaciones trimestrales fueron: {', '.join(parts)}.")
 
     prox = ind.get("proxima_publicacion")
     if isinstance(prox, dict) and prox.get("fecha_publicacion"):

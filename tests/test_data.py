@@ -165,3 +165,27 @@ def test_pib_eopibt_dashboard(payload):
     # El boletín PDF se conserva como fuente oficial
     assert pib.get("url_boletin_oficial")
     assert "pib_eo2026_07.pdf" in pib["url_boletin_oficial"]
+
+
+def test_pib_sector_scaling(payload):
+    """Las variaciones por actividad se almacenan como fracción y se presentan como 3.3%, no 330%."""
+    pib = payload["indicators"]["PIB"]
+    sectores = pib.get("sectores", {})
+    assert pytest.approx(sectores["primarias"]["qoq"], abs=1e-4) == 0.033
+    assert pytest.approx(sectores["secundarias"]["qoq"], abs=1e-4) == 0.016
+    assert pytest.approx(sectores["terciarias"]["qoq"], abs=1e-4) == 0.015
+    # Los valores anuales también se almacenan en escala fraccionaria.
+    assert sectores["primarias"].get("yoy") is None or pytest.approx(sectores["primarias"]["yoy"], abs=1e-4) == 0.073
+
+
+def test_pib_resumen_uses_consistent_percentages(payload):
+    pib = payload["indicators"]["PIB"]
+    resumen = pib.get("metrics", {}).get("resumen", [])
+    sector_bullet = next((b for b in resumen if "Avance generalizado" in b or "actividad económica" in b), "")
+    assert sector_bullet
+    assert "+3.3%" in sector_bullet
+    assert "+1.6%" in sector_bullet
+    assert "+1.5%" in sector_bullet
+    assert "330%" not in sector_bullet
+    assert "160%" not in sector_bullet
+    assert "150%" not in sector_bullet

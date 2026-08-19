@@ -22,6 +22,8 @@ const el = (tag, attrs = {}, ...kids) => {
   return n;
 };
 
+const signedPct = (v) => v == null ? "—" : (v > 0 ? "+" : "") + fmtVal(v, "pct-frac");
+
 async function loadJSON(path, optional = false) {
   try {
     const r = await fetch(path, { cache: "no-store" });
@@ -751,14 +753,28 @@ function renderIndicatorView(key) {
 function breakdown(ind, k) {
   const last = ind.observations[k.lastI];
   if (!last) return null;
+  if (ind.key === "PIB" && ind.sectores) {
+    const box = el("div", { class: "ficha-block pib-sectors" });
+    box.append(el("h3", { class: "block-sub" }, "Variación trimestral por actividad económica"));
+    box.append(el("p", { class: "prose", style: "font-size:12.5px;color:var(--muted);margin-top:-4px;margin-bottom:12px;text-align:left;" }, "Cambio real respecto al trimestre inmediato anterior, cifras desestacionalizadas."));
+    const grid = el("div", { class: "breakdown" });
+    const order = [["primarias", "Actividades primarias"], ["secundarias", "Actividades secundarias"], ["terciarias", "Actividades terciarias"]];
+    order.forEach(([key, label]) => {
+      const s = ind.sectores[key];
+      if (!s || s.qoq == null) return;
+      const color = s.qoq >= 0 ? COLORS.GREEN : COLORS.CRIMSON;
+      const annual = s.yoy != null ? el("div", { class: "bd-annual", style: "font-size:11px;color:var(--muted);margin-top:3px;" }, `${signedPct(s.yoy)} anual`) : null;
+      grid.append(el("div", { class: "bd-item" },
+        el("div", { class: "bd-lbl" }, label),
+        el("div", { class: "bd-val", style: `color:${color}` }, signedPct(s.qoq)),
+        el("div", { class: "bd-sub", style: "font-size:11px;color:var(--muted);margin-top:4px;" }, "vs. trimestre anterior"),
+        annual,
+      ));
+    });
+    box.append(grid);
+    return box;
+  }
   const rowsFor = () => {
-    if (ind.key === "PIB" && ind.sectores) {
-      return [
-        ["Actividades primarias", ind.sectores.primarias?.qoq, "pct-frac"],
-        ["Actividades secundarias", ind.sectores.secundarias?.qoq, "pct-frac"],
-        ["Actividades terciarias", ind.sectores.terciarias?.qoq, "pct-frac"],
-      ];
-    }
     if (ind.key === "PIBSEC") return [["Primarias", last.values[0], "num"], ["Secundarias", last.values[1], "num"], ["Terciarias", last.values[2], "num"]];
     if (ind.key === "IGAE") return [["Índice global", last.values[0], "idx"], ["Actividades secundarias", last.values[1], "idx"], ["Actividades terciarias", last.values[2], "idx"]];
     if (ind.key === "IED") return [["Nuevas inversiones", last.values[1], "usd"], ["Reinversión de utilidades", last.values[2], "usd"], ["Cuentas entre compañías", last.values[3], "usd"]];

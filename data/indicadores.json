@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-19T17:19:32+00:00",
+    "generated_at": "2026-08-19T20:18:21+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-08-19T11:19:32-06:00",
+    "last_update_ct": "2026-08-19T14:18:21-06:00",
     "periodo_referencia_reciente": {
       "period": "Jul 26",
       "period_long": "Jul 26"
@@ -267,22 +267,22 @@
         "resumen": [
           "En segundo trimestre de 2026, el PIB oportuno creció +1.5% en variación trimestral desestacionalizada respecto a primer trimestre de 2026 y +2.1% en variación anual desestacionalizada respecto a segundo trimestre de 2025. La variación anual con cifras originales fue +2.2%.",
           "El acumulado enero–junio de 2026 creció +1.2% frente al mismo periodo de 2025.",
-          "Por actividad económica, las variaciones trimestrales fueron: primarias +3.3%, secundarias +1.6%, terciarias +1.5%.",
+          "Avance generalizado: las tres grandes actividades crecieron frente al trimestre anterior: primarias +3.3%, secundarias +1.6%, terciarias +1.5%.",
           "La próxima publicación está prevista para el 30 de octubre de 2026 (3er trimestre 2026)."
         ]
       },
       "sectores": {
         "primarias": {
-          "qoq": 3.3,
-          "yoy": 7.3
+          "qoq": 0.033,
+          "yoy": 0.073
         },
         "secundarias": {
-          "qoq": 1.6,
-          "yoy": 0.8
+          "qoq": 0.016,
+          "yoy": 0.008
         },
         "terciarias": {
-          "qoq": 1.5,
-          "yoy": 2.5
+          "qoq": 0.015,
+          "yoy": 0.025
         }
       },
       "boletin_validado": true
@@ -21549,9 +21549,15 @@
           "values": [
             17.0638
           ]
+        },
+        {
+          "period": "2026-08-19",
+          "values": [
+            16.9593
+          ]
         }
       ],
-      "fecha_ultima_observacion": "2026-08-18",
+      "fecha_ultima_observacion": "2026-08-19",
       "url_fuente_oficial": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
       "fecha_ultima_publicacion": null,
       "regla_publicacion": null

@@ -157,3 +157,13 @@ def test_ficha_layout_compacto_sin_altura_forzada():
     assert ".fh-meta {" in CSS
     fh_meta = CSS.split(".fh-meta {")[1].split("}")[0]
     assert "min-height" not in fh_meta
+
+
+def test_pib_sector_breakdown_title_and_format():
+    """El desglose PIB muestra variaciones trimestrales, no niveles."""
+    assert '"Variación trimestral por actividad económica"' in APP
+    assert '"Cambio real respecto al trimestre inmediato anterior, cifras desestacionalizadas."' in APP
+    assert '"vs. trimestre anterior"' in APP
+    # Se usa un helper que aplica pct-frac (multiplica por 100) para evitar 330%.
+    assert 'const signedPct' in APP
+    assert 'signedPct(s.qoq)' in APP

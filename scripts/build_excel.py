@@ -72,11 +72,17 @@ def _caracter_dato(period: str) -> str:
 
 def _xl_fmt(fmt: str) -> str:
     """Formato numérico de Excel según el descriptor de config."""
+    # Variaciones fraccionarias (0.015 = 1.5%) se muestran con % nativo de Excel.
+    # Valores ya en puntos porcentuales (4.5) usan % literal para no multiplicar.
     if fmt == "num" or fmt == "usd":
         return "#,##0"
     if fmt == "bill":
         return "#,##0.00"
-    if fmt in ("idx", "pct-raw", "pct-frac"):
+    if fmt == "pct-frac":
+        return "0.0%"
+    if fmt == "pct-raw":
+        return '0.0"%"'
+    if fmt == "idx":
         return "#,##0.0"
     if fmt == "fx":
         return "$#,##0.00"
@@ -403,6 +409,8 @@ def add_control(wb, payload, manifest, log, calendar=None):
 
 # Hojas de datos a crear (o recrear) para indicadores principales.
 NEW_SHEETS = {
+    "PIB": "PIB",
+    "PIBSEC": "PIB Sectorial",
     "IMFBCF": "Formación bruta capital fijo",
     "IOAE": "IOAE",
     "EMIM": "EMIM (Manufactura)",
@@ -414,13 +422,15 @@ LEGACY_SHEETS = ["Exportaciones"]
 
 
 def add_indicator_sheets(wb, payload):
-    """Crea hojas de datos para los indicadores principales nuevos. Si aún no
+    """Crea o recrea hojas de datos para los indicadores principales. Si aún no
     tienen observaciones (scaffold pendiente de token), la hoja queda con los
     encabezados y una nota honesta, sin cifras inventadas."""
     for key, sheet_name in NEW_SHEETS.items():
         ind = payload["indicators"].get(key)
-        if not ind or sheet_name in wb.sheetnames:
+        if not ind:
             continue
+        if sheet_name in wb.sheetnames:
+            wb.remove(wb[sheet_name])
         ws = wb.create_sheet(sheet_name)
         ws.sheet_view.showGridLines = False
         ws["A1"] = ind.get("nombre")
@@ -448,7 +458,10 @@ def add_indicator_sheets(wb, payload):
             for o in obs:
                 ws.cell(row=r, column=1, value=o["period"]).font = TXT
                 for i, v in enumerate(o["values"], start=2):
-                    ws.cell(row=r, column=i, value=v).font = TXT
+                    cell = ws.cell(row=r, column=i, value=v)
+                    cell.font = TXT
+                    if i - 2 < len(cols):
+                        cell.number_format = _xl_fmt(cols[i - 2].get("fmt", "num"))
                 r += 1
         _autow(ws, [16] + [22] * len(cols))
 

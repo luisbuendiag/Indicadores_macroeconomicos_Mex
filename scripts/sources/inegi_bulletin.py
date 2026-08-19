@@ -888,13 +888,19 @@ def _parse_eopibt(pdf_bytes: bytes, pub_date: tuple[int, int, int] | None) -> di
                 continue
             if label == "Actividades primarias":
                 if len(cells) >= 3:
-                    sectores["primarias"] = {"qoq": _parse_pct(cells[1]), "yoy": _parse_pct(cells[2])}
+                    q = _parse_pct(cells[1])
+                    y = _parse_pct(cells[2])
+                    sectores["primarias"] = {"qoq": q / 100.0 if q is not None else None, "yoy": y / 100.0 if y is not None else None}
             elif label == "Actividades secundarias":
                 if len(cells) >= 3:
-                    sectores["secundarias"] = {"qoq": _parse_pct(cells[1]), "yoy": _parse_pct(cells[2])}
+                    q = _parse_pct(cells[1])
+                    y = _parse_pct(cells[2])
+                    sectores["secundarias"] = {"qoq": q / 100.0 if q is not None else None, "yoy": y / 100.0 if y is not None else None}
             elif label == "Actividades terciarias":
                 if len(cells) >= 3:
-                    sectores["terciarias"] = {"qoq": _parse_pct(cells[1]), "yoy": _parse_pct(cells[2])}
+                    q = _parse_pct(cells[1])
+                    y = _parse_pct(cells[2])
+                    sectores["terciarias"] = {"qoq": q / 100.0 if q is not None else None, "yoy": y / 100.0 if y is not None else None}
         if qoq is not None or yoy_desest is not None:
             break
 
