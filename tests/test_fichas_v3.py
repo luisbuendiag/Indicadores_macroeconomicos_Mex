@@ -64,12 +64,13 @@ def test_exactly_eleven_principal_indicators():
     assert len(claves) == 11, claves
 
 
-def test_pib_prose_uses_billones_not_dollar():
-    assert '" billones de pesos' in METRICS
+def test_pib_prose_uses_percentage_not_billions_for_variations():
     m = re.search(r'if \(k === "PIB"\) return ([^;]+);', METRICS)
     assert m
+    # Las variaciones del PIB oportuno se presentan en porcentaje;
+    # el nivel histórico en billones se conserva como respaldo.
+    assert ("* 100" in m.group(1) or "%" in m.group(1))
     assert "$" not in m.group(1)
-    assert "2018" in m.group(1)
 
 
 def test_ioae_uses_mensual_and_anual_not_pp():

@@ -34,7 +34,7 @@ export const LABELS = {
 
 // Sigla oficial.
 export const SIGLA = {
-  PIB: "PIB", PIBSEC: "PIB por actividad económica", IGAE: "IGAE", IMAI: "IMAI",
+  PIB: "PIB OPORTUNO", PIBSEC: "PIB por actividad económica", IGAE: "IGAE", IMAI: "IMAI",
   BCMM: "Balanza comercial", DESOCUP: "Tasa de desocupación", INPC: "INPC",
   CONSUMO: "IMCP", IMFBCF: "IMFBCF", IOAE: "IOAE", EMIM: "EMIM",
   IED: "IED", TIPOCAMBIO: "Tipo de cambio FIX", TASA: "Tasa objetivo", RESERVAS: "Reservas int.", EMOE: "EMOE",
@@ -44,7 +44,7 @@ export const SIGLA = {
 // assess: cómo se evalúa el movimiento — "growth" (subir es favorable),
 // "unemployment" (bajar es favorable), "neutral" (no se etiqueta avance/retroceso).
 export const KPICFG = {
-  PIB: { valCol: 0, valFmt: "bill", varCol: 3, varFmt: "pct-frac", varLabel: "Var. anual", yoyCol: 2, yoyFmt: "pct-frac", yoyLabel: "Var. trimestral", noun: "PIB", art: "el", grupo: "growth", assess: "growth", ctx: " (a precios de 2018)", vw: "crecimiento anual", vg: "m", comp: "frente al mismo trimestre del año anterior", goodSign: 1 },
+  PIB: { valCol: 0, valFmt: "pct-frac", varCol: 1, varFmt: "pct-frac", varLabel: "Var. anual desest.", yoyCol: 2, yoyFmt: "pct-frac", yoyLabel: "Var. anual original", noun: "PIB oportuno", art: "el", grupo: "growth", assess: "growth", ctx: "", vw: "variación trimestral desestacionalizada", vg: "f", comp: "frente al trimestre anterior", goodSign: 1 },
   PIBSEC: { derived: "total", valFmt: "num", varCol: 3, varFmt: "pct-frac", varLabel: "Trim. terciarias", yoyCol: 4, yoyFmt: "pct-frac", yoyLabel: "Anual terciarias", noun: "PIB total por actividad económica", art: "el", grupo: "growth", assess: "growth", ctx: " (a precios de 2018)", vw: "variación trimestral en las actividades terciarias", vg: "f", comp: "frente al trimestre anterior", goodSign: 1 },
   IGAE: { valCol: 0, valFmt: "idx", varCol: 3, varFmt: "pct-frac", varLabel: "Var. mensual", yoyCol: 4, yoyFmt: "pct-frac", yoyLabel: "Var. anual", noun: "IGAE", art: "el", grupo: "growth", assess: "growth", ctx: " (índice base 2018=100)", vw: "variación mensual", vg: "f", comp: "frente al mes previo", goodSign: 1 },
   IMAI: { valCol: 0, valFmt: "idx", varCol: 1, varFmt: "pct-frac", varLabel: "Variación mensual", noun: "IMAI", art: "el", grupo: "growth", assess: "growth", ctx: " (índice base 2018=100)", vw: "variación mensual", vg: "f", comp: "frente al mes previo", goodSign: 1 },
@@ -63,7 +63,7 @@ export const KPICFG = {
 };
 
 export const CAPTIONS = {
-  PIB: "PIB a precios constantes (barras verdes, eje izquierdo) y su variación anual (línea oro, eje derecho).",
+  PIB: "Variación trimestral desestacionalizada del PIB oportuno (barras) y su variación anual desestacionalizada (línea). Ambas en porcentaje.",
   PIBSEC: "Composición del PIB por actividad económica en barras apiladas y variación trimestral de terciarias (línea, eje derecho).",
   IGAE: "Índice global de volumen físico (línea verde) con el desglose de actividades secundarias (línea oro) y terciarias (línea verde azulado), en índice base 2018=100.",
   IMAI: "Índice de volumen físico industrial (línea verde, eje izquierdo) y variación mensual (línea oro, eje derecho).",

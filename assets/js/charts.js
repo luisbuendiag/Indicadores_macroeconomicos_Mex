@@ -14,7 +14,8 @@ function addMonths(d, n) {
 }
 
 export function applyWindow(ind, windowId) {
-  const win = WINDOWS.find((w) => w.id === windowId) || WINDOWS[2];
+  const wins = ind.windows || WINDOWS;
+  const win = wins.find((w) => w.id === windowId) || wins[wins.length - 1];
   const base = ind._useOriginal && ind.observations_original?.length ? ind.observations_original : (ind.observations || []);
   let obs = base;
   if (!obs.length || win.id === "max") return obs;
@@ -62,7 +63,7 @@ function chartSpec(ind, obs) {
   const totalSec = obs.map((o) => { const [a, b, c] = o.values; return (a == null && b == null && c == null) ? null : (a || 0) + (b || 0) + (c || 0); });
   const saldo = obs.map((o) => (o.values[0] != null && o.values[1] != null) ? o.values[0] - o.values[1] : null);
   switch (ind.key) {
-    case "PIB": return { periods: P, bars: [{ name: "PIB (millones de pesos)", values: col(0), color: G }], lines: [{ name: "Var. anual (%)", values: col(3).map((v) => v == null ? null : v * 100), color: SEC, axis: "right" }], leftName: "Millones de pesos", rightName: "Var. anual (%)", leftFmt: "compact", rightFmt: "pct" };
+    case "PIB": return { periods: P, bars: [{ name: "Var. trimestral (%)", values: col(0).map((v) => v == null ? null : v * 100), color: G }], lines: [{ name: "Var. anual desest. (%)", values: col(1).map((v) => v == null ? null : v * 100), color: Go }], leftName: "Variación (%)", leftFmt: "pct" };
     case "PIBSEC": return { periods: P, stack: "pib", bars: [{ name: "Primarias", values: col(0), color: G }, { name: "Secundarias", values: col(1), color: SEC }, { name: "Terciarias", values: col(2), color: Go }], lines: [{ name: "Var. trim. terciarias (%)", values: col(3).map((v) => v == null ? null : v * 100), color: REF, axis: "right" }], leftName: "Millones de pesos", rightName: "Var. trim. (%)", leftFmt: "compact", rightFmt: "pct" };
     case "IGAE": return { periods: P, lines: [{ name: "Índice global", values: col(0), color: G }, { name: "Act. secundarias", values: col(1), color: SEC }, { name: "Act. terciarias", values: col(2), color: Go }], leftName: "Índice (2018=100)", leftFmt: "idx" };
     case "IMAI": return { periods: P, lines: [{ name: "Índice de volumen físico", values: col(0), color: G }, { name: "Var. mensual (%)", values: col(1).map((v) => v == null ? null : v * 100), color: SEC, axis: "right" }, { name: "Var. anual (%)", values: col(2).map((v) => v == null ? null : v * 100), color: Go, axis: "right" }], leftName: "Índice (2018=100)", rightName: "Var. (%)", leftFmt: "idx", rightFmt: "pct" };
@@ -133,12 +134,17 @@ export function buildOption(ind, windowId) {
   const series = [];
   const leftFmt = spec.leftFmt, rightFmt = spec.rightFmt;
   bars.forEach((b) => {
-    series.push({
+    const fmt = b.axis === "right" ? rightFmt : leftFmt;
+    const s = {
       name: b.name, type: "bar", data: b.values, itemStyle: { color: b.color },
       stack: spec.stack && bars.length > 1 ? spec.stack : undefined,
       yAxisIndex: b.axis === "right" ? 1 : 0, barMaxWidth: 34, emphasis: { focus: "series" },
-      _fmt: b.axis === "right" ? rightFmt : leftFmt,
-    });
+      _fmt: fmt,
+    };
+    if (fmt === "pct") {
+      s.markLine = { symbol: "none", data: [{ yAxis: 0, name: "Cero", lineStyle: { color: COLORS.GRAY, type: "dashed", width: 1 }, label: { show: false } }], animation: false };
+    }
+    series.push(s);
   });
   function refLine(fmt) {
     if (fmt === "pct") return { yAxis: 0, name: "Cero", lineStyle: { color: COLORS.GRAY, type: "dashed", width: 1 }, label: { show: false } };

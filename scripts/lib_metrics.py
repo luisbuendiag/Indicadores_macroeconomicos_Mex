@@ -14,6 +14,7 @@ import json
 import math
 from datetime import datetime, timezone
 from pathlib import Path
+import re
 from typing import Any
 
 import lib_format as F
@@ -63,6 +64,10 @@ def prose_val(key: str, v: float | int | None) -> str:
     if v is None:
         return "—"
     if key == "PIB":
+        # El PIB oportuno publica variaciones, no nivel. Si el valor es una fracción,
+        # se presenta como porcentaje; el nivel histórico se conserva como respaldo.
+        if abs(v) < 1:
+            return F._to_fixed(v * 100, 1, 1) + "%"
         return F._to_fixed(v / 1e6, 2, 2) + " billones de pesos de 2018"
     if key == "PIBSEC":
         return F._to_fixed(v / 1e6, 2, 2) + " billones de pesos"
@@ -631,6 +636,157 @@ def resumen(ind: dict, kpi: dict, yoy: dict | None, kpicfg: dict | None = None) 
     return bullets
 
 
+def _eopibt_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
+    """KPI y resumen específico para el PIB oportuno (EOPIBT).
+
+    El PIB oportuno publica variaciones, no nivel. Se exponen cuatro KPIs:
+    variación trimestral, anual desestacionalizada, anual original y acumulado,
+    junto con un resumen ejecutivo que evita repetir las mismas cifras.
+    """
+    cfg = kpicfg.get(ind["key"])
+    if not cfg:
+        return None
+    kpi = compute_kpi(ind, kpicfg)
+    if not kpi:
+        return None
+    yoy = annual_var(ind, kpi, kpicfg)
+    obs = ind.get("observations", [])
+    if not obs:
+        return None
+    last_i = kpi["lastI"]
+    prev_i = kpi["lastI"] - 1 if kpi["lastI"] > 0 else None
+
+    qoq = _val_at(ind, last_i, 0)
+    yoy_desest = _val_at(ind, last_i, 1)
+    yoy_orig = _val_at(ind, last_i, 2)
+    ytd = _val_at(ind, last_i, 3)
+    prev_qoq = _val_at(ind, prev_i, 0) if prev_i is not None else None
+    prev_yoy_desest = _val_at(ind, prev_i, 1) if prev_i is not None else None
+
+    def _pct(v):
+        if v is None:
+            return "—"
+        s = "+" if v > 0 else ""
+        return s + F.fmt_val(v, "pct-frac")
+
+    def _delta(v, prev):
+        if v is None or prev is None:
+            return None
+        return v - prev
+
+    def _delta_text(v, prev):
+        d = _delta(v, prev)
+        if d is None:
+            return None
+        if d > 0:
+            return f"aceleró {d * 100:.1f} p.p."
+        if d < 0:
+            return f"desaceleró {-d * 100:.1f} p.p."
+        return "se mantuvo sin cambio"
+
+    # Campos amigables para el frontend.
+    kpi["qoqRaw"] = qoq
+    kpi["qoqText"] = _pct(qoq)
+    kpi["qoqLabel"] = "Var. trimestral"
+    kpi["yoyDesestRaw"] = yoy_desest
+    kpi["yoyDesestText"] = _pct(yoy_desest)
+    kpi["yoyDesestLabel"] = "Var. anual desest."
+    kpi["yoyOrigRaw"] = yoy_orig
+    kpi["yoyOrigText"] = _pct(yoy_orig)
+    kpi["yoyOrigLabel"] = "Var. anual original"
+    kpi["ytdRaw"] = ytd
+    kpi["ytdText"] = _pct(ytd)
+    kpi["ytdLabel"] = "Acumulado"
+
+    # Usar variación trimestral como "cifra actual" en tarjetas y matriz.
+    kpi["ultimoFmt"] = kpi["qoqText"]
+    kpi["varText"] = kpi["yoyDesestText"]
+    kpi["varLabel"] = kpi["yoyDesestLabel"]
+    if yoy:
+        kpi["yoyText"] = kpi["yoyOrigText"]
+        kpi["yoyLabel"] = kpi["yoyOrigLabel"]
+
+    per = kpi["ultimoP"] or ""
+    m = re.match(r"(\d)T-(\d{2})", per)
+    if m:
+        q = int(m.group(1))
+        year = 2000 + int(m.group(2))
+        same_q_prev_year = f"{q}T-{year - 1 - 2000:02d}"
+        prev_q_num = q - 1 if q > 1 else 4
+        prev_q_year = year if q > 1 else year - 1
+        prev_q = f"{prev_q_num}T-{prev_q_year - 2000:02d}"
+        ytd_labels = {
+            1: "Acumulado enero–marzo",
+            2: "Acumulado enero–junio",
+            3: "Acumulado enero–septiembre",
+            4: "Acumulado enero–diciembre",
+        }
+        kpi["ytdLabel"] = ytd_labels.get(q, "Acumulado")
+    else:
+        prev_q = None
+        same_q_prev_year = None
+
+    # Resumen ejecutivo (3–4 bullets).
+    bullets = []
+    if qoq is not None and yoy_desest is not None:
+        per_long = F.per_long(per)
+        prev_q_long = F.per_long(prev_q) if prev_q else "el trimestre previo"
+        same_q_long = F.per_long(same_q_prev_year) if same_q_prev_year else "el mismo trimestre del año previo"
+        b = f"En {per_long}, el PIB oportuno creció {kpi['qoqText']} en variación trimestral desestacionalizada respecto a {prev_q_long}"
+        b += f" y {kpi['yoyDesestText']} en variación anual desestacionalizada respecto a {same_q_long}."
+        if yoy_orig is not None:
+            b += f" La variación anual con cifras originales fue {kpi['yoyOrigText']}."
+        bullets.append(b)
+    elif qoq is not None:
+        bullets.append(f"En {F.per_long(per)}, la variación trimestral desestacionalizada del PIB oportuno fue {kpi['qoqText']}.")
+
+    if ytd is not None and same_q_prev_year:
+        # El acumulado se compara contra el mismo periodo del año previo.
+        bullets.append(f"El {kpi['ytdLabel'].lower()} de {year} creció {kpi['ytdText']} frente al mismo periodo de {year - 1}.")
+
+    def _pct_raw(v):
+        if v is None:
+            return "—"
+        s = "+" if v > 0 else ""
+        return s + F._to_fixed(v, 1, 1) + "%"
+
+    sectores = ind.get("sectores")
+    if sectores and qoq is not None:
+        sp = []
+        if "primarias" in sectores:
+            sp.append(f"primarias {_pct_raw(sectores['primarias'].get('qoq'))}")
+        if "secundarias" in sectores:
+            sp.append(f"secundarias {_pct_raw(sectores['secundarias'].get('qoq'))}")
+        if "terciarias" in sectores:
+            sp.append(f"terciarias {_pct_raw(sectores['terciarias'].get('qoq'))}")
+        if sp:
+            bullets.append(f"Por actividad económica, las variaciones trimestrales fueron: {', '.join(sp)}.")
+
+    prox = ind.get("proxima_publicacion")
+    if isinstance(prox, dict) and prox.get("fecha_publicacion"):
+        bullets.append(f"La próxima publicación está prevista para el {prox.get('fecha_publicacion')} ({prox.get('periodo_referencia')}).")
+    elif isinstance(prox, str):
+        next_period = None
+        if m:
+            q_next = q + 1 if q < 4 else 1
+            y_next = year if q < 4 else year + 1
+            next_period = F.per_long(f"{q_next}T-{y_next - 2000:02d}")
+        if next_period:
+            bullets.append(f"La próxima publicación está prevista para el {prox} ({next_period}).")
+        else:
+            bullets.append(f"La próxima publicación está prevista para el {prox}.")
+    elif ind.get("proximo"):
+        bullets.append(f"La próxima publicación está prevista para {ind['proximo']}.")
+
+    return {
+        "kpi": kpi,
+        "yoy": yoy,
+        "annualVar": yoy,
+        "resumen": bullets,
+        "analysis": bullets[:1],
+    }
+
+
 def compute_all_metrics(payload: dict | None = None, kpicfg: dict | None = None) -> dict[str, dict[str, Any]]:
     """Calcula kpi, analysis y annualVar para todos los indicadores."""
     if payload is None:
@@ -640,6 +796,11 @@ def compute_all_metrics(payload: dict | None = None, kpicfg: dict | None = None)
 
     out: dict[str, dict[str, Any]] = {}
     for key, ind in payload.get("indicators", {}).items():
+        if key == "PIB":
+            eopibt = _eopibt_metrics(ind, kpicfg)
+            if eopibt:
+                out[key] = eopibt
+                continue
         kpi = compute_kpi(ind, kpicfg)
         yoy = annual_var(ind, kpi, kpicfg) if kpi else None
         bullets = resumen(ind, kpi, yoy, kpicfg) if kpi else []

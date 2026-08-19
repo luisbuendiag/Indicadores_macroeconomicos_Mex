@@ -1,37 +1,48 @@
 {
-  "started_at": "2026-08-19T14:40:43+00:00",
+  "started_at": "2026-08-19T17:17:11+00:00",
   "mode": "offline",
   "network_calls": false,
   "warnings": [
-    "[PIB] el último dato de la serie primaria es nulo.",
     "[IMAI] valor fuera de rango plausible en Abr 20: 69.864321 (esperado (70, 130)).",
     "[IMAI] valor fuera de rango plausible en May 20: 69.771418 (esperado (70, 130))."
   ],
   "changes": [
-    "PIB 2T-26 P col0: None -> None (revisión)",
+    "columnas override PIB: 4 columnas",
     "columnas override IMAI: 3 columnas",
     "calendario: regenerado con as_of=2026-08-19",
     "métricas: data/metrics.json regenerado",
+    "boletín: PIB descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_07.pdf",
     "frescura: PIB -> ACTUALIZADO",
+    "boletín: PIBSEC descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_05.pdf",
     "frescura: PIBSEC -> ACTUALIZADO",
+    "boletín: IGAE descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_07.pdf",
     "frescura: IGAE -> ACTUALIZADO",
+    "boletín: IMAI descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_08.pdf",
     "frescura: IMAI -> ACTUALIZADO",
+    "boletín: CONSUMO descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_08.pdf",
     "frescura: CONSUMO -> ACTUALIZADO",
     "frescura: IED -> ACTUALIZADO",
+    "boletín: DESOCUP descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_07.pdf",
     "frescura: DESOCUP -> ACTUALIZADO",
+    "boletín: INPC descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_08.pdf",
     "frescura: INPC -> ACTUALIZADO",
+    "boletín: IMFBCF descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_08.pdf",
     "frescura: IMFBCF -> ACTUALIZADO",
+    "boletín: IOAE descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_07.pdf",
     "frescura: IOAE -> ACTUALIZADO",
+    "boletín: EMIM descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_08.pdf",
     "frescura: EMIM -> ACTUALIZADO",
     "frescura: TIPOCAMBIO -> ACTUALIZADO",
     "frescura: TASA -> ACTUALIZADO",
     "frescura: RESERVAS -> ACTUALIZADO",
+    "boletín: EMOE descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ee/ee2026_08.pdf",
     "frescura: EMOE -> ACTUALIZADO",
+    "boletín: BCMM descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_07.pdf",
     "frescura: BCMM -> ACTUALIZADO",
-    "meta: last_update_ct=2026-08-19T09:28:17-06:00"
+    "meta: last_update_ct=2026-08-19T11:19:32-06:00"
   ],
   "consultas": [],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-08-19T15:28:17+00:00"
+  "finished_at": "2026-08-19T17:19:32+00:00"
 }

@@ -1,13 +1,4 @@
 {
   "_comment": "Correcciones/anotaciones de calidad de datos aplicadas por el pipeline. No inventar cifras: cuando no exista verificación oficial, marcar 'status':'revision' y 'value':null para no propagar un dato sospechoso como correcto.",
-  "overrides": [
-    {
-      "indicator": "PIB",
-      "period": "2T-26 P",
-      "column": 0,
-      "value": null,
-      "status": "revisión",
-      "reason": "Nivel del PIB no publicado en la Estimación Oportuna del PIB Trimestral (EOPIBT) del 30 de julio de 2026. Se actualizará con el PIBT definitivo del 24 de agosto de 2026. Las variaciones (original anual 2.2%, trimestral desestacionalizada 1.5%, anual desestacionalizada 2.1%) sí están confirmadas."
-    }
-  ]
+  "overrides": []
 }

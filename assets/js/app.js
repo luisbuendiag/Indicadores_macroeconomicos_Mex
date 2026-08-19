@@ -665,25 +665,40 @@ function renderIndicatorView(key) {
   const cfg = KPICFG[ind.key];
   const yoy = metrics.yoy || annualVar(ind, k);
   const resumen = metrics.resumen || [];
-  const winId = state.windows[ind.key] || state.data.meta?.default_window || "since_2018";
+  const wins = ind.windows || WINDOWS;
+  const winId = state.windows[ind.key] || wins[wins.length - 1]?.id || "max";
 
   // Encabezado institucional + bloques de variación (impresión, estilo Nota).
   panel.append(fichaPrintHead(ind, k));
   panel.append(fichaVarBlocks(ind, k, cfg, yoy));
 
   // KPIs
-  const mini = el("div", { class: "mini-kpis" },
-    el("div", { class: "mini dark" }, el("div", { class: "lbl" }, "Cifra actual"), el("div", { class: "num" }, k.ultimoFmt), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),
-    el("div", { class: "mini" }, el("div", { class: "lbl" }, cfg.varLabel), el("div", { class: "num", style: `color:${k.varColor}` }, k.varText), el("div", { class: "sub" }, cfg.comp)),
-    yoy ? el("div", { class: "mini" }, el("div", { class: "lbl" }, yoy.label || "Variación anual"), el("div", { class: "num", style: `color:${yoy.pos ? COLORS.GREEN : COLORS.CRIMSON}` }, yoy.text), el("div", { class: "sub" }, "Frente al periodo de referencia")) : null,
-    el("div", { class: "mini" }, el("div", { class: "lbl" }, "Máximo de la serie"), el("div", { class: "num", style: `color:${COLORS.GREEN}` }, k.maxFmt), el("div", { class: "sub" }, `Periodo: ${k.maxP}`)),
-    el("div", { class: "mini" }, el("div", { class: "lbl" }, "Mínimo de la serie"), el("div", { class: "num", style: `color:${COLORS.CRIMSON}` }, k.minFmt), el("div", { class: "sub" }, `Periodo: ${k.minP}`)),
-  );
+  let mini;
+  if (ind.key === "PIB") {
+    const qoqColor = (k.qoqRaw >= 0 ? COLORS.GREEN : COLORS.CRIMSON);
+    mini = el("div", { class: "mini-kpis" },
+      el("div", { class: "mini dark" }, el("div", { class: "lbl" }, k.qoqLabel), el("div", { class: "num", style: `color:${qoqColor}` }, k.qoqText), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),
+      el("div", { class: "mini" }, el("div", { class: "lbl" }, k.yoyDesestLabel), el("div", { class: "num", style: `color:${k.yoyDesestRaw >= 0 ? COLORS.GREEN : COLORS.CRIMSON}` }, k.yoyDesestText), el("div", { class: "sub" }, "Frente al mismo trimestre del año previo")),
+      el("div", { class: "mini" }, el("div", { class: "lbl" }, k.yoyOrigLabel), el("div", { class: "num", style: `color:${k.yoyOrigRaw >= 0 ? COLORS.GREEN : COLORS.CRIMSON}` }, k.yoyOrigText), el("div", { class: "sub" }, "Cifras originales")),
+      k.ytdRaw != null ? el("div", { class: "mini" }, el("div", { class: "lbl" }, k.ytdLabel), el("div", { class: "num", style: `color:${k.ytdRaw >= 0 ? COLORS.GREEN : COLORS.CRIMSON}` }, k.ytdText), el("div", { class: "sub" }, "Variación acumulada")) : null,
+      ind.proxima_publicacion && typeof ind.proxima_publicacion === "object"
+        ? el("div", { class: "mini" }, el("div", { class: "lbl" }, "Próxima publicación"), el("div", { class: "num" }, ind.proxima_publicacion.fecha_publicacion), el("div", { class: "sub" }, ind.proxima_publicacion.periodo_referencia))
+        : null,
+    );
+  } else {
+    mini = el("div", { class: "mini-kpis" },
+      el("div", { class: "mini dark" }, el("div", { class: "lbl" }, "Cifra actual"), el("div", { class: "num" }, k.ultimoFmt), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),
+      el("div", { class: "mini" }, el("div", { class: "lbl" }, cfg.varLabel), el("div", { class: "num", style: `color:${k.varColor}` }, k.varText), el("div", { class: "sub" }, cfg.comp)),
+      yoy ? el("div", { class: "mini" }, el("div", { class: "lbl" }, yoy.label || "Variación anual"), el("div", { class: "num", style: `color:${yoy.pos ? COLORS.GREEN : COLORS.CRIMSON}` }, yoy.text), el("div", { class: "sub" }, "Frente al periodo de referencia")) : null,
+      el("div", { class: "mini" }, el("div", { class: "lbl" }, "Máximo de la serie"), el("div", { class: "num", style: `color:${COLORS.GREEN}` }, k.maxFmt), el("div", { class: "sub" }, `Periodo: ${k.maxP}`)),
+      el("div", { class: "mini" }, el("div", { class: "lbl" }, "Mínimo de la serie"), el("div", { class: "num", style: `color:${COLORS.CRIMSON}` }, k.minFmt), el("div", { class: "sub" }, `Periodo: ${k.minP}`)),
+    );
+  }
   panel.append(mini);
 
   // window toggle + chart
   const wt = el("div", { class: "win-toggle no-print", role: "group", "aria-label": "Ventana temporal" });
-  WINDOWS.forEach((w) => wt.append(el("button", { class: "win-btn", type: "button", "aria-pressed": String(w.id === winId), onclick: () => { state.windows[ind.key] = w.id; mountChart(ind); wt.querySelectorAll(".win-btn").forEach((b, i) => b.setAttribute("aria-pressed", String(WINDOWS[i].id === w.id))); } }, w.label)));
+  wins.forEach((w) => wt.append(el("button", { class: "win-btn", type: "button", "aria-pressed": String(w.id === winId), onclick: () => { state.windows[ind.key] = w.id; mountChart(ind); wt.querySelectorAll(".win-btn").forEach((b, i) => b.setAttribute("aria-pressed", String((ind.windows || WINDOWS)[i].id === w.id))); } }, w.label)));
   panel.append(wt);
   panel.append(el("div", { class: "chart-caption", id: `caption-${ind.key}` }, `${CAPTIONS[ind.key] || ""} Datos hasta ${ind.last_observation || "—"}.`.trim()));
   const chartMain = el("div", { class: "chart-main" });
@@ -696,9 +711,9 @@ function renderIndicatorView(key) {
 
   // Síntesis / Principales resultados: fuente única Python (lib_metrics).
   const syn = el("div", { class: "ficha-block" });
-  syn.append(el("h3", { class: "block-sub" }, "Evolución reciente"));
+  syn.append(el("h3", { class: "block-sub" }, ind.key === "PIB" ? "Lectura del indicador" : "Evolución reciente"));
   resumen.forEach((b) => syn.append(el("p", { class: "prose" }, b)));
-  const results = resumen.length > 1
+  const results = (resumen.length > 1 && ind.key !== "PIB")
     ? el("div", { class: "ficha-block print-highlight" },
         el("h3", { class: "block-sub" }, "Principales resultados"),
         ...resumen.slice(0, 2).map((b) => el("p", { class: "prose" }, b)))
@@ -737,6 +752,13 @@ function breakdown(ind, k) {
   const last = ind.observations[k.lastI];
   if (!last) return null;
   const rowsFor = () => {
+    if (ind.key === "PIB" && ind.sectores) {
+      return [
+        ["Actividades primarias", ind.sectores.primarias?.qoq, "pct-frac"],
+        ["Actividades secundarias", ind.sectores.secundarias?.qoq, "pct-frac"],
+        ["Actividades terciarias", ind.sectores.terciarias?.qoq, "pct-frac"],
+      ];
+    }
     if (ind.key === "PIBSEC") return [["Primarias", last.values[0], "num"], ["Secundarias", last.values[1], "num"], ["Terciarias", last.values[2], "num"]];
     if (ind.key === "IGAE") return [["Índice global", last.values[0], "idx"], ["Actividades secundarias", last.values[1], "idx"], ["Actividades terciarias", last.values[2], "idx"]];
     if (ind.key === "IED") return [["Nuevas inversiones", last.values[1], "usd"], ["Reinversión de utilidades", last.values[2], "usd"], ["Cuentas entre compañías", last.values[3], "usd"]];
@@ -760,8 +782,11 @@ function renderTable(ind, k) {
   table.append(el("thead", {}, el("tr", {}, el("th", {}, "Periodo"), ...ind.columns.map((c) => el("th", {}, c.label)))));
   const series = k ? k.series : [];
   const idxs = series.map((v, i) => (v == null ? -1 : i)).filter((i) => i >= 0);
-  let maxI = idxs[0], minI = idxs[0];
-  idxs.forEach((i) => { if (series[i] > series[maxI]) maxI = i; if (series[i] < series[minI]) minI = i; });
+  let maxI = -1, minI = -1;
+  if (ind.key !== "PIB" && idxs.length) {
+    maxI = idxs[0]; minI = idxs[0];
+    idxs.forEach((i) => { if (series[i] > series[maxI]) maxI = i; if (series[i] < series[minI]) minI = i; });
+  }
   const tbody = el("tbody");
   ind.observations.forEach((o, ri) => {
     const cls = ri === maxI ? "max" : (ri === minI ? "min" : "");
