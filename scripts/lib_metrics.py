@@ -726,63 +726,61 @@ def _eopibt_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
         prev_q = None
         same_q_prev_year = None
 
-    # Resumen ejecutivo (3–4 bullets).
-    bullets = []
-    if qoq is not None and yoy_desest is not None:
-        per_long = F.per_long(per)
-        prev_q_long = F.per_long(prev_q) if prev_q else "el trimestre previo"
-        same_q_long = F.per_long(same_q_prev_year) if same_q_prev_year else "el mismo trimestre del año previo"
-        b = f"En {per_long}, el PIB oportuno creció {kpi['qoqText']} en variación trimestral desestacionalizada respecto a {prev_q_long}"
-        b += f" y {kpi['yoyDesestText']} en variación anual desestacionalizada respecto a {same_q_long}."
-        if yoy_orig is not None:
-            b += f" La variación anual con cifras originales fue {kpi['yoyOrigText']}."
-        bullets.append(b)
-    elif qoq is not None:
-        bullets.append(f"En {F.per_long(per)}, la variación trimestral desestacionalizada del PIB oportuno fue {kpi['qoqText']}.")
-
-    if ytd is not None and same_q_prev_year:
-        # El acumulado se compara contra el mismo periodo del año previo.
-        bullets.append(f"El {kpi['ytdLabel'].lower()} de {year} creció {kpi['ytdText']} frente al mismo periodo de {year - 1}.")
-
-    def _pct_raw(v):
+    def _trend_verb(v):
         if v is None:
-            return "—"
-        s = "+" if v > 0 else ""
-        return s + F._to_fixed(v, 1, 1) + "%"
+            return "registró"
+        if v > 0:
+            return "creció"
+        if v < 0:
+            return "disminuyó"
+        return "se mantuvo sin cambio"
 
+    # Resumen ejecutivo (máximo 4 bullets), sin frases genéricas ni próxima publicación.
+    bullets = []
+    per_long = F.per_long(per)
+    prev_q_long = F.per_long(prev_q) if prev_q else "el trimestre previo"
+    same_q_long = F.per_long(same_q_prev_year) if same_q_prev_year else "el mismo trimestre del año previo"
+
+    # 1. Aceleración trimestral.
+    if qoq is not None:
+        b1 = f"En {per_long}, el PIB oportuno {_trend_verb(qoq)} {kpi['qoqText']} respecto a {prev_q_long}"
+        if prev_qoq is not None:
+            b1 += f"; {_delta_text(qoq, prev_qoq)} respecto al trimestre previo"
+        b1 += "."
+        bullets.append(b1)
+
+    # 2. Crecimiento anual.
+    if yoy_desest is not None:
+        b2 = f"La variación anual desestacionalizada fue {kpi['yoyDesestText']}"
+        if yoy_orig is not None:
+            b2 += f" y la anual original {kpi['yoyOrigText']}"
+        b2 += f" respecto a {same_q_long}."
+        bullets.append(b2)
+
+    # 3. Avance generalizado.
     sectores = ind.get("sectores")
     if sectores and qoq is not None:
-        sp = []
-        if "primarias" in sectores:
-            sp.append(f"primarias {_pct_raw(sectores['primarias'].get('qoq'))}")
-        if "secundarias" in sectores:
-            sp.append(f"secundarias {_pct_raw(sectores['secundarias'].get('qoq'))}")
-        if "terciarias" in sectores:
-            sp.append(f"terciarias {_pct_raw(sectores['terciarias'].get('qoq'))}")
-        if sp:
-            bullets.append(f"Por actividad económica, las variaciones trimestrales fueron: {', '.join(sp)}.")
+        parts = []
+        for name in ("primarias", "secundarias", "terciarias"):
+            if name in sectores:
+                parts.append(f"{name} {_pct(sectores[name].get('qoq'))}")
+        if parts:
+            qoq_vals = [sectores[n].get("qoq") for n in ("primarias", "secundarias", "terciarias") if n in sectores]
+            all_grew = all(v is not None and v > 0 for v in qoq_vals)
+            if all_grew:
+                bullets.append(f"Avance generalizado: las tres grandes actividades crecieron — {', '.join(parts)}.")
+            else:
+                bullets.append(f"El avance por actividad fue mixto — {', '.join(parts)}.")
 
-    prox = ind.get("proxima_publicacion")
-    if isinstance(prox, dict) and prox.get("fecha_publicacion"):
-        bullets.append(f"La próxima publicación está prevista para el {prox.get('fecha_publicacion')} ({prox.get('periodo_referencia')}).")
-    elif isinstance(prox, str):
-        next_period = None
-        if m:
-            q_next = q + 1 if q < 4 else 1
-            y_next = year if q < 4 else year + 1
-            next_period = F.per_long(f"{q_next}T-{y_next - 2000:02d}")
-        if next_period:
-            bullets.append(f"La próxima publicación está prevista para el {prox} ({next_period}).")
-        else:
-            bullets.append(f"La próxima publicación está prevista para el {prox}.")
-    elif ind.get("proximo"):
-        bullets.append(f"La próxima publicación está prevista para {ind['proximo']}.")
+    # 4. Balance acumulado.
+    if ytd is not None and same_q_prev_year:
+        bullets.append(f"El {kpi['ytdLabel'].lower()} de {year} {_trend_verb(ytd)} {kpi['ytdText']} frente al mismo periodo de {year - 1}.")
 
     return {
         "kpi": kpi,
         "yoy": yoy,
         "annualVar": yoy,
-        "resumen": bullets,
+        "resumen": bullets[:4],
         "analysis": bullets[:1],
     }
 

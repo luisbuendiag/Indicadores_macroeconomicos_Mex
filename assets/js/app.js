@@ -9,6 +9,8 @@ const state = {
   active: "panorama", windows: {}, charts: {}, openTables: {},
 };
 
+const FONT = "'Noto Sans', system-ui, sans-serif";
+
 const $ = (sel, root = document) => root.querySelector(sel);
 const el = (tag, attrs = {}, ...kids) => {
   const n = document.createElement(tag);
@@ -21,6 +23,8 @@ const el = (tag, attrs = {}, ...kids) => {
   for (const kid of kids) { if (kid == null) continue; n.append(kid.nodeType ? kid : document.createTextNode(kid)); }
   return n;
 };
+
+const signedPct = (v) => v == null ? "—" : (v > 0 ? "+" : "") + fmtVal(v, "pct-frac");
 
 async function loadJSON(path, optional = false) {
   try {
@@ -712,7 +716,13 @@ function renderIndicatorView(key) {
   // Síntesis / Principales resultados: fuente única Python (lib_metrics).
   const syn = el("div", { class: "ficha-block" });
   syn.append(el("h3", { class: "block-sub" }, ind.key === "PIB" ? "Lectura del indicador" : "Evolución reciente"));
-  resumen.forEach((b) => syn.append(el("p", { class: "prose" }, b)));
+  if (ind.key === "PIB") {
+    const ul = el("ul", { class: "reading-bullets" });
+    resumen.slice(0, 4).forEach((b) => ul.append(el("li", {}, b)));
+    syn.append(ul);
+  } else {
+    resumen.forEach((b) => syn.append(el("p", { class: "prose" }, b)));
+  }
   const results = (resumen.length > 1 && ind.key !== "PIB")
     ? el("div", { class: "ficha-block print-highlight" },
         el("h3", { class: "block-sub" }, "Principales resultados"),
@@ -734,6 +744,14 @@ function renderIndicatorView(key) {
   tbl.append(el("h3", { class: "block-sub" }, "Tabla de datos"));
   tbl.append(renderTable(ind, k));
   page2.append(tbl);
+
+  // Bloques exclusivos de la ficha del PIB Oportuno.
+  if (ind.key === "PIB") {
+    page2.append(pibHistoryBlock(ind));
+    const pibt = pibtBlock(ind);
+    if (pibt) page2.append(pibt);
+  }
+
   panel.append(page2);
 
   // Fuente y notas
@@ -751,14 +769,28 @@ function renderIndicatorView(key) {
 function breakdown(ind, k) {
   const last = ind.observations[k.lastI];
   if (!last) return null;
+  if (ind.key === "PIB" && ind.sectores) {
+    const box = el("div", { class: "ficha-block pib-sectors" });
+    box.append(el("h3", { class: "block-sub" }, "Variación trimestral por actividad económica"));
+    box.append(el("p", { class: "prose", style: "font-size:12.5px;color:var(--muted);margin-top:-4px;margin-bottom:12px;text-align:left;" }, "Cambio real respecto al trimestre inmediato anterior, cifras desestacionalizadas."));
+    const grid = el("div", { class: "breakdown" });
+    const order = [["primarias", "Actividades primarias"], ["secundarias", "Actividades secundarias"], ["terciarias", "Actividades terciarias"]];
+    order.forEach(([key, label]) => {
+      const s = ind.sectores[key];
+      if (!s || s.qoq == null) return;
+      const color = s.qoq >= 0 ? COLORS.GREEN : COLORS.CRIMSON;
+      const annual = s.yoy != null ? el("div", { class: "bd-annual", style: "font-size:11px;color:var(--muted);margin-top:3px;" }, `${signedPct(s.yoy)} anual`) : null;
+      grid.append(el("div", { class: "bd-item" },
+        el("div", { class: "bd-lbl" }, label),
+        el("div", { class: "bd-val", style: `color:${color}` }, signedPct(s.qoq)),
+        el("div", { class: "bd-sub", style: "font-size:11px;color:var(--muted);margin-top:4px;" }, "vs. trimestre anterior"),
+        annual,
+      ));
+    });
+    box.append(grid);
+    return box;
+  }
   const rowsFor = () => {
-    if (ind.key === "PIB" && ind.sectores) {
-      return [
-        ["Actividades primarias", ind.sectores.primarias?.qoq, "pct-frac"],
-        ["Actividades secundarias", ind.sectores.secundarias?.qoq, "pct-frac"],
-        ["Actividades terciarias", ind.sectores.terciarias?.qoq, "pct-frac"],
-      ];
-    }
     if (ind.key === "PIBSEC") return [["Primarias", last.values[0], "num"], ["Secundarias", last.values[1], "num"], ["Terciarias", last.values[2], "num"]];
     if (ind.key === "IGAE") return [["Índice global", last.values[0], "idx"], ["Actividades secundarias", last.values[1], "idx"], ["Actividades terciarias", last.values[2], "idx"]];
     if (ind.key === "IED") return [["Nuevas inversiones", last.values[1], "usd"], ["Reinversión de utilidades", last.values[2], "usd"], ["Cuentas entre compañías", last.values[3], "usd"]];
@@ -774,6 +806,138 @@ function breakdown(ind, k) {
   rows.forEach(([lbl, val, fmt]) => g.append(el("div", { class: "bd-item" }, el("div", { class: "bd-lbl" }, lbl), el("div", { class: "bd-val" }, fmtVal(val, fmt)))));
   box.append(g);
   return box;
+}
+
+// ---------------- Bloques exclusivos de la ficha del PIB ----------------
+function pibHistoryBlock(ind) {
+  const start = (ind.observations[0] && ind.observations[0].period) || "—";
+  const end = (ind.observations[ind.observations.length - 1] && ind.observations[ind.observations.length - 1].period) || "—";
+  const total = ind.observations.length;
+  const box = el("div", { class: "ficha-block" });
+  box.append(el("h3", { class: "block-sub" }, "Historial del indicador"));
+  const grid = el("div", { class: "pib-history" });
+  grid.append(el("div", { class: "ph-item" },
+    el("div", { class: "ph-lbl" }, "Periodo inicial"),
+    el("div", { class: "ph-val" }, start)));
+  grid.append(el("div", { class: "ph-item" },
+    el("div", { class: "ph-lbl" }, "Periodo final"),
+    el("div", { class: "ph-val" }, end)));
+  grid.append(el("div", { class: "ph-item" },
+    el("div", { class: "ph-lbl" }, "Observaciones"),
+    el("div", { class: "ph-val" }, String(total))));
+  box.append(grid);
+  return box;
+}
+
+function pibtBlock(ind) {
+  const pibt = ind.pibt;
+  if (!pibt || !pibt.observations || !pibt.observations.length) return null;
+  const obs = pibt.observations.filter((o) => o.values[0] != null);
+  if (!obs.length) return null;
+  const last = obs[obs.length - 1];
+  const src = pibt.fuente || {};
+
+  const box = el("div", { class: "ficha-block pibt-block" });
+  box.append(el("h3", { class: "block-sub" }, "Nivel tradicional del PIB"));
+
+  const head = el("div", { class: "pibt-head" });
+  head.append(el("div", { class: "pibt-main" },
+    el("div", { class: "pibt-lbl" }, "Último nivel disponible"),
+    el("div", { class: "pibt-val" }, fmtVal(last.values[0], "bill")),
+    el("div", { class: "pibt-sub" }, `Periodo: ${last.period}`)));
+
+  const meta = el("div", { class: "pibt-meta" });
+  [
+    ["Fuente", src.nombre || "INEGI"],
+    ["Serie", src.serie || "—"],
+    ["Frecuencia", pibt.frecuencia || "Trimestral"],
+    ["Unidad", pibt.unidad || "Millones de pesos (a precios de 2018)"],
+  ].forEach(([k, v]) => {
+    meta.append(el("div", { class: "pibt-meta-row" },
+      el("span", { class: "k" }, k),
+      el("span", { class: "v" }, v)));
+  });
+  head.append(meta);
+  box.append(head);
+
+  const chartWrap = el("div", { class: "chart-main pibt-chart" });
+  chartWrap.append(el("div", {
+    class: "chart-box",
+    id: "chart-pibt",
+    role: "img",
+    "aria-label": "Nivel del PIB a precios constantes de 2018",
+  }));
+  box.append(chartWrap);
+  return box;
+}
+
+function mountPibtChart(pibt) {
+  const dom = document.getElementById("chart-pibt");
+  if (!dom || typeof echarts === "undefined") return;
+  let chart = state.charts.pibt;
+  if (!chart) {
+    chart = echarts.init(dom, null, { renderer: "canvas" });
+    state.charts.pibt = chart;
+  }
+  const obs = (pibt.observations || []).filter((o) => o.values[0] != null);
+  const periods = obs.map((o) => o.period);
+  const values = obs.map((o) => o.values[0]);
+  chart.setOption({
+    animation: false,
+    color: [COLORS.GREEN],
+    grid: { left: 62, right: 18, top: 30, bottom: 44 },
+    legend: { show: false },
+    tooltip: {
+      trigger: "axis",
+      backgroundColor: "#fff",
+      borderColor: "#ddd7c6",
+      borderWidth: 1,
+      textStyle: { color: COLORS.INK, fontFamily: FONT, fontSize: 12 },
+      extraCssText: "box-shadow:0 5px 16px rgba(0,0,0,.13);border-radius:9px;",
+      formatter: (params) => {
+        if (!params || !params.length) return "";
+        const p = params[0];
+        return `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">Nivel del PIB</span>`
+          + `<span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${fmtVal(p.value, "bill")}</span></div>`;
+      },
+    },
+    toolbox: {
+      right: 4, top: 2, itemSize: 14,
+      feature: { saveAsImage: { title: "Guardar imagen", name: "PIBT", pixelRatio: 2, backgroundColor: "#fff" } },
+      iconStyle: { borderColor: "#8a8d86" },
+    },
+    xAxis: {
+      type: "category",
+      data: periods,
+      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: periods.length > 16 ? 9 : 10, rotate: periods.length > 16 ? 42 : 0, interval: periods.length > 24 ? "auto" : 0 },
+      axisLine: { lineStyle: { color: "#c9c2b2" } },
+      axisTick: { show: false },
+    },
+    yAxis: {
+      type: "value",
+      name: "Billones de pesos de 2018",
+      nameLocation: "middle",
+      nameGap: 42,
+      nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 11, fontWeight: 500 },
+      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 11, formatter: (v) => (v / 1e6).toLocaleString("es-MX", { notation: "compact", maximumFractionDigits: 1 }) },
+      splitLine: { lineStyle: { color: "#ece7da" } },
+      axisLine: { show: false },
+      axisTick: { show: false },
+      scale: false,
+    },
+    series: [{
+      name: "Nivel del PIB",
+      type: "line",
+      data: values,
+      smooth: false,
+      symbol: "circle",
+      symbolSize: 4,
+      lineStyle: { color: COLORS.GREEN, width: 2.4 },
+      itemStyle: { color: COLORS.GREEN },
+      areaStyle: { color: "rgba(30,91,79,0.08)" },
+    }],
+  }, true);
 }
 
 function renderTable(ind, k) {
@@ -1056,6 +1220,9 @@ function mountChart(ind) {
   if (!chart) { chart = echarts.init(dom, null, { renderer: "canvas" }); state.charts[ind.key] = chart; }
   const winId = state.windows[ind.key] || state.data.meta?.default_window || "5a";
   chart.setOption(buildOption(ind, winId), true);
+
+  // Gráfica independiente del nivel tradicional del PIB (PIBT).
+  if (ind.key === "PIB" && ind.pibt) mountPibtChart(ind.pibt);
 
   // Actualiza tarjeta de rango visible y leyenda del periodo.
   const rangeCard = document.getElementById(`range-${ind.key}`);

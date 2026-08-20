@@ -72,11 +72,17 @@ def _caracter_dato(period: str) -> str:
 
 def _xl_fmt(fmt: str) -> str:
     """Formato numérico de Excel según el descriptor de config."""
+    # Variaciones fraccionarias (0.015 = 1.5%) se muestran con % nativo de Excel.
+    # Valores ya en puntos porcentuales (4.5) usan % literal para no multiplicar.
     if fmt == "num" or fmt == "usd":
         return "#,##0"
     if fmt == "bill":
         return "#,##0.00"
-    if fmt in ("idx", "pct-raw", "pct-frac"):
+    if fmt == "pct-frac":
+        return "0.0%"
+    if fmt == "pct-raw":
+        return '0.0"%"'
+    if fmt == "idx":
         return "#,##0.0"
     if fmt == "fx":
         return "$#,##0.00"
@@ -133,6 +139,14 @@ def _bucket_variation(var_info: dict | None, yoy_info: dict | None, freq: str, c
     if yoy_info:
         place(yoy_info, cfg.get("yoyLabel"))
     return buckets
+
+
+def _build_pib_workbook(ind: dict, out_path: Path):
+    """Genera el Excel individual de PIB con dos hojas: PIB oportuno y Nivel PIB."""
+    wb = openpyxl.Workbook()
+    wb.remove(wb.active)
+    add_pib_sheets(wb, {"indicators": {"PIB": ind}})
+    wb.save(out_path)
 
 
 def _build_individual_workbook(ind: dict, cfg: dict, kpicfg: dict, out_path: Path):
@@ -235,7 +249,10 @@ def build_individual_files(payload: dict, pilot: list[str] | None = None):
             ind["url_excel_individual"] = None
             continue
         try:
-            _build_individual_workbook(ind, cfg, kpicfg, out_path)
+            if key == "PIB":
+                _build_pib_workbook(ind, out_path)
+            else:
+                _build_individual_workbook(ind, cfg, kpicfg, out_path)
             ind["xlsx_disponible"] = True
             ind["url_excel_individual"] = str(out_path.relative_to(ROOT))
             ind["xlsx_causa"] = None
@@ -403,6 +420,7 @@ def add_control(wb, payload, manifest, log, calendar=None):
 
 # Hojas de datos a crear (o recrear) para indicadores principales.
 NEW_SHEETS = {
+    "PIBSEC": "PIB Sectorial",
     "IMFBCF": "Formación bruta capital fijo",
     "IOAE": "IOAE",
     "EMIM": "EMIM (Manufactura)",
@@ -410,17 +428,19 @@ NEW_SHEETS = {
 }
 
 # Hojas heredadas del libro base que ya no corresponden al perfil V3.
-LEGACY_SHEETS = ["Exportaciones"]
+LEGACY_SHEETS = ["Exportaciones", "PIB"]
 
 
 def add_indicator_sheets(wb, payload):
-    """Crea hojas de datos para los indicadores principales nuevos. Si aún no
+    """Crea o recrea hojas de datos para los indicadores principales. Si aún no
     tienen observaciones (scaffold pendiente de token), la hoja queda con los
     encabezados y una nota honesta, sin cifras inventadas."""
     for key, sheet_name in NEW_SHEETS.items():
         ind = payload["indicators"].get(key)
-        if not ind or sheet_name in wb.sheetnames:
+        if not ind:
             continue
+        if sheet_name in wb.sheetnames:
+            wb.remove(wb[sheet_name])
         ws = wb.create_sheet(sheet_name)
         ws.sheet_view.showGridLines = False
         ws["A1"] = ind.get("nombre")
@@ -448,9 +468,107 @@ def add_indicator_sheets(wb, payload):
             for o in obs:
                 ws.cell(row=r, column=1, value=o["period"]).font = TXT
                 for i, v in enumerate(o["values"], start=2):
-                    ws.cell(row=r, column=i, value=v).font = TXT
+                    cell = ws.cell(row=r, column=i, value=v)
+                    cell.font = TXT
+                    if i - 2 < len(cols):
+                        cell.number_format = _xl_fmt(cols[i - 2].get("fmt", "num"))
                 r += 1
         _autow(ws, [16] + [22] * len(cols))
+
+
+def add_pib_sheets(wb, payload):
+    """Crea las hojas separadas PIB oportuno (EOPIBT) y Nivel PIB (PIBT)."""
+    ind = payload["indicators"].get("PIB")
+    if not ind:
+        return
+    for name in ("PIB oportuno", "Nivel PIB"):
+        if name in wb.sheetnames:
+            wb.remove(wb[name])
+
+    # Hoja 1: PIB oportuno (variaciones)
+    ws = wb.create_sheet("PIB oportuno")
+    ws.sheet_view.showGridLines = False
+    ws["A1"] = ind.get("nombre")
+    ws["A1"].font = TITLE
+    ws["A2"] = (f"Fuente: {ind.get('fuente', {}).get('nombre', '—')} · "
+                f"Frecuencia: {ind.get('frecuencia', '—')} · Unidad: {ind.get('unidad', '—')} · "
+                f"Estado: {ind.get('estado', '—')}")
+    ws["A2"].font = MUT
+
+    cols = [
+        {"label": "Var. trimestral desest. (%)", "fmt": "pct-frac"},
+        {"label": "Var. anual desest. (%)", "fmt": "pct-frac"},
+        {"label": "Var. anual original (%)", "fmt": "pct-frac"},
+        {"label": "Acumulado (%)", "fmt": "pct-frac"},
+    ]
+    headers = ["Periodo", "Fecha"] + [c["label"] for c in cols] + ["Carácter", "Fuente", "URL boletín", "Fecha publicación"]
+    r0 = 4
+    for i, h in enumerate(headers, start=1):
+        ws.cell(row=r0, column=i, value=h)
+    _style_header(ws, r0, len(headers))
+
+    obs = ind.get("observations", [])
+    r = r0 + 1
+    for o in obs:
+        d = _period_date(o["period"])
+        ws.cell(row=r, column=1, value=o["period"]).font = TXT
+        ws.cell(row=r, column=2, value=d).font = TXT
+        if d:
+            ws.cell(row=r, column=2).number_format = "yyyy-mm-dd"
+        for i, v in enumerate(o["values"], start=3):
+            cell = ws.cell(row=r, column=i, value=v)
+            cell.font = TXT
+            cell.number_format = _xl_fmt(cols[i - 3].get("fmt", "num"))
+        ws.cell(row=r, column=7, value=_caracter_dato(o["period"])).font = TXT
+        ws.cell(row=r, column=8, value=ind.get("fuente", {}).get("nombre", "—")).font = TXT
+        ws.cell(row=r, column=9, value=ind.get("url_boletin_oficial") or ind.get("fuente", {}).get("link") or "—").font = TXT
+        ws.cell(row=r, column=10, value=ind.get("fecha_publicacion") or "—").font = TXT
+        if r % 2 == 0:
+            for c in range(1, len(headers) + 1):
+                ws.cell(row=r, column=c).fill = BAND_FILL
+        r += 1
+    _autow(ws, [16, 13, 24, 22, 24, 18, 14, 28, 55, 22])
+
+    # Hoja 2: Nivel PIB
+    pibt = ind.get("pibt")
+    ws2 = wb.create_sheet("Nivel PIB")
+    ws2.sheet_view.showGridLines = False
+    if pibt:
+        ws2["A1"] = "PIB trimestral a precios constantes de 2018"
+        ws2["A1"].font = TITLE
+        ws2["A2"] = (f"Fuente: {pibt.get('fuente', {}).get('nombre', '—')} · "
+                     f"Serie: {pibt.get('fuente', {}).get('serie', '—')} · "
+                     f"Frecuencia: {pibt.get('frecuencia', '—')} · "
+                     f"Unidad: {pibt.get('unidad', '—')}")
+        ws2["A2"].font = MUT
+        pibt_cols = ["Periodo", "Fecha", "Nivel", "Unidad", "Carácter", "Fuente", "Serie"]
+        r0 = 4
+        for i, h in enumerate(pibt_cols, start=1):
+            ws2.cell(row=r0, column=i, value=h)
+        _style_header(ws2, r0, len(pibt_cols))
+        pibt_obs = pibt.get("observations", [])
+        r = r0 + 1
+        for o in pibt_obs:
+            d = _period_date(o["period"])
+            ws2.cell(row=r, column=1, value=o["period"]).font = TXT
+            ws2.cell(row=r, column=2, value=d).font = TXT
+            if d:
+                ws2.cell(row=r, column=2).number_format = "yyyy-mm-dd"
+            ws2.cell(row=r, column=3, value=o["values"][0]).number_format = _xl_fmt("bill")
+            ws2.cell(row=r, column=4, value=pibt.get("unidad", "—")).font = TXT
+            ws2.cell(row=r, column=5, value=_caracter_dato(o["period"])).font = TXT
+            ws2.cell(row=r, column=6, value=pibt.get("fuente", {}).get("nombre", "—")).font = TXT
+            ws2.cell(row=r, column=7, value=pibt.get("fuente", {}).get("serie", "—")).font = TXT
+            if r % 2 == 0:
+                for c in range(1, len(pibt_cols) + 1):
+                    ws2.cell(row=r, column=c).fill = BAND_FILL
+            r += 1
+        _autow(ws2, [16, 13, 18, 40, 14, 18, 18])
+    else:
+        ws2["A1"] = "Nivel PIB"
+        ws2["A1"].font = TITLE
+        ws2["A2"] = "Sin datos de nivel PIBT disponibles todavía."
+        ws2["A2"].font = MUT
 
 
 def main():
@@ -487,6 +605,7 @@ def main():
     for name in LEGACY_SHEETS:
         if name in wb.sheetnames:
             wb.remove(wb[name])
+    add_pib_sheets(wb, payload)
     add_indicator_sheets(wb, payload)
     add_metodologia(wb, payload)
     add_control(wb, payload, manifest, log, calendar)

@@ -157,3 +157,34 @@ def test_ficha_layout_compacto_sin_altura_forzada():
     assert ".fh-meta {" in CSS
     fh_meta = CSS.split(".fh-meta {")[1].split("}")[0]
     assert "min-height" not in fh_meta
+
+
+def test_pib_sector_breakdown_title_and_format():
+    """El desglose PIB muestra variaciones trimestrales, no niveles."""
+    assert '"Variación trimestral por actividad económica"' in APP
+    assert '"Cambio real respecto al trimestre inmediato anterior, cifras desestacionalizadas."' in APP
+    assert '"vs. trimestre anterior"' in APP
+    # Se usa un helper que aplica pct-frac (multiplica por 100) para evitar 330%.
+    assert 'const signedPct' in APP
+    assert 'signedPct(s.qoq)' in APP
+
+
+def test_pib_historial_ampliado_ui():
+    """La ficha del PIB incluye el historial compacto."""
+    assert '"Historial del indicador"' in APP
+    assert "Periodo inicial" in APP
+    assert "Periodo final" in APP
+    assert "Observaciones" in APP
+    assert 'pibHistoryBlock' in APP
+    assert '.pib-history' in CSS
+
+
+def test_pibt_nivel_tradicional_ui():
+    """El nivel tradicional del PIB se presenta en una tarjeta y gráfica independientes."""
+    assert '"Nivel tradicional del PIB"' in APP
+    assert '"Último nivel disponible"' in APP
+    assert 'pibtBlock' in APP
+    assert 'mountPibtChart' in APP
+    assert '"chart-pibt"' in APP
+    assert '.pibt-block' in CSS
+    assert '.pibt-chart' in CSS

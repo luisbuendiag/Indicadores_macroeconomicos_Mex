@@ -56,11 +56,11 @@
         }
       ],
       "windows": [
-        {"id": "1a", "label": "1 año", "months": 12},
-        {"id": "2a", "label": "2 años", "months": 24},
-        {"id": "3a", "label": "3 años", "months": 36},
-        {"id": "5a", "label": "5 años", "months": 60},
-        {"id": "max", "label": "Máximo", "months": null}
+        {"id": "1a", "label": "1 año", "count": 4},
+        {"id": "2a", "label": "2 años", "count": 8},
+        {"id": "3a", "label": "3 años", "count": 12},
+        {"id": "5a", "label": "5 años", "count": 20},
+        {"id": "max", "label": "Máximo", "count": null}
       ]
     },
     "PIBSEC": {

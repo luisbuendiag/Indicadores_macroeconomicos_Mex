@@ -19,6 +19,13 @@ export function applyWindow(ind, windowId) {
   const base = ind._useOriginal && ind.observations_original?.length ? ind.observations_original : (ind.observations || []);
   let obs = base;
   if (!obs.length || win.id === "max") return obs;
+  if (win.count != null) {
+    // Para series trimestrales (PIB/EOPIBT) se prefiere un número fijo
+    // de observaciones: 1 año = 4 trimestres, 2 años = 8, etc.
+    const n = win.count;
+    if (n >= 0 && n < obs.length) obs = obs.slice(-n);
+    return obs;
+  }
   if (win.months) {
     const lastD = periodToDate(obs[obs.length - 1].period);
     if (lastD) {
