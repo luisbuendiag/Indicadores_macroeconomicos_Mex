@@ -67,7 +67,35 @@
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
-      "nombre": "Producto Interno Bruto por sector de actividad"
+      "nombre": "PIB trimestral por grandes actividades económicas",
+      "sigla": "PIB POR ACTIVIDAD",
+      "descripcion": "PIB trimestral a precios constantes de 2018 desagregado por actividades económicas: total, primarias, secundarias y terciarias. Incluye niveles absolutos, variación trimestral desestacionalizada y variación anual desestacionalizada.",
+      "frecuencia": "Trimestral",
+      "unidad": "Millones de pesos (a precios de 2018)",
+      "ajuste_estacional": "Cifras desestacionalizadas y originales",
+      "grupo": "growth",
+      "publicacion": "30 días después del cierre del trimestre",
+      "columns": [
+        {"label": "Nivel Primarias", "index": 0, "fmt": "num"},
+        {"label": "Nivel Secundarias", "index": 1, "fmt": "num"},
+        {"label": "Nivel Terciarias", "index": 2, "fmt": "num"},
+        {"label": "Var. trim. Terciarias (%)", "index": 3, "fmt": "pct-frac"},
+        {"label": "Var. anual Terciarias (%)", "index": 4, "fmt": "pct-frac"},
+        {"label": "Nivel PIB", "index": 5, "fmt": "num"},
+        {"label": "Var. trim. PIB (%)", "index": 6, "fmt": "pct-frac"},
+        {"label": "Var. anual PIB (%)", "index": 7, "fmt": "pct-frac"},
+        {"label": "Var. trim. Primarias (%)", "index": 8, "fmt": "pct-frac"},
+        {"label": "Var. anual Primarias (%)", "index": 9, "fmt": "pct-frac"},
+        {"label": "Var. trim. Secundarias (%)", "index": 10, "fmt": "pct-frac"},
+        {"label": "Var. anual Secundarias (%)", "index": 11, "fmt": "pct-frac"}
+      ],
+      "windows": [
+        {"id": "1a", "label": "1 año", "count": 4},
+        {"id": "2a", "label": "2 años", "count": 8},
+        {"id": "3a", "label": "3 años", "count": 12},
+        {"id": "5a", "label": "5 años", "count": 20},
+        {"id": "max", "label": "Máximo", "count": null}
+      ]
     },
     "IGAE": {
       "requiere_token": "INEGI",

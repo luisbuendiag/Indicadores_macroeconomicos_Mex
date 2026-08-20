@@ -47,6 +47,20 @@
     ],
     "PIBSEC": [
       {
+        "_nota": "Nivel del PIB total a precios de mercado, serie original. Se usa como referencia del PIB agregado, separado del valor agregado por actividad.",
+        "serie": "737372",
+        "confirmar": false,
+        "nombre": "Producto Interno Bruto",
+        "descripcion_serie": "Total, a precios de mercado, millones de pesos a precios constantes de 2018, serie original",
+        "frecuencia": "Trimestral",
+        "unidad": "Millones de pesos (a precios de 2018)",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 5,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=605594#D737372"
+      },
+      {
         "_nota": "Desagregación sectorial del PIB a precios constantes de 2018, serie original (PIBT 2018).",
         "serie": "735882",
         "confirmar": false,
@@ -87,7 +101,7 @@
         "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=600267#D735888"
       },
       {
-        "_nota": "La variación trimestral desestacionalizada de terciarias NO está disponible como serie BIE independiente. Se completa desde el boletín PIBT (pib_Pconst) con el parser de inegi_bulletin.",
+        "_nota": "Las variaciones trimestrales y anuales desestacionalizadas de PIB total y actividades NO están disponibles como series BIE independientes. Se completan desde el boletín PIBT (pib_Pconst) con el parser de inegi_bulletin.",
         "serie": null,
         "confirmar": true
       }

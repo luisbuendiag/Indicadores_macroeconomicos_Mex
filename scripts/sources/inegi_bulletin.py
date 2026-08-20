@@ -768,7 +768,79 @@ def _parse_pibt(pdf_bytes: bytes, pub_date: tuple[int, int, int] | None) -> dict
             out["qoq"][label] = {"ym": ym, "value": vals["qoq"] / 100.0, "period": period}
         if "yoy" in vals:
             out["yoy"][label] = {"ym": ym, "value": vals["yoy"] / 100.0, "period": period}
+
+    # Cuadro 2: variación anual por sectores de actividad (1T-26 y revisión).
+    out["subsectores"] = _parse_pibt_subsectores(pdf_bytes)
     return out
+
+
+def _parse_pibt_subsectores(pdf_bytes: bytes) -> dict[str, float] | None:
+    """Extrae la variación anual al 1er trimestre de 2026 del Cuadro 2 (página 4).
+
+    Devuelve un diccionario {nombre_del_sector: fracción} con la variación anual
+    real publicada para el trimestre más reciente.  El Cuadro 2 presenta
+    histórico anual y trimestral; la última columna numérica de cada fila
+    corresponde al 1er trimestre del año de referencia.
+    """
+    if pdfplumber is None:
+        return None
+    try:
+        tables = _pdf_page_tables(pdf_bytes, 3)
+    except Exception:  # noqa: BLE001
+        return None
+    if not tables:
+        return None
+
+    # Cabecera del Cuadro 2 ocupa las primeras filas; buscamos las filas de datos.
+    data: dict[str, float] = {}
+    for table in tables:
+        if not table or len(table) < 7:
+            continue
+        # Localiza la primera fila de datos (comienza con "PIB total").
+        start = 0
+        for i, r in enumerate(table):
+            first = (r[0] or "").strip().lower().replace("\n", " ")
+            if first.startswith("pib total"):
+                start = i
+                break
+        if start == 0:
+            continue
+        # Procesa las filas a partir del bloque de datos.
+        label_parts: list[str] = []
+        pending: str | None = None
+        for r in table[start:]:
+            first = (r[0] or "").strip().replace("\n", " ")
+            values = [v for v in r[1:] if v not in (None, "")]
+            if values:
+                if first:
+                    _store_pibt_subsector(data, label_parts, pending)
+                    label_parts = [first]
+                    try:
+                        data[first] = float(values[-1]) / 100.0
+                    except (ValueError, TypeError):
+                        pass
+                    label_parts = []
+                    pending = None
+                else:
+                    pending = values[-1]
+            else:
+                if first:
+                    label_parts.append(first)
+        _store_pibt_subsector(data, label_parts, pending)
+        if data:
+            break
+    return data or None
+
+
+def _store_pibt_subsector(data: dict[str, float], label_parts: list[str], pending: str | None) -> None:
+    if pending is not None and label_parts:
+        label = " ".join(label_parts).strip()
+        if not label:
+            return
+        try:
+            data[label] = float(pending) / 100.0
+        except (ValueError, TypeError):
+            pass
 
 
 def _extract_proxima_publicacion(text: str) -> str | None:
@@ -1165,8 +1237,9 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
       - CONSUMO:  0 = índice, 1 = var. mensual, 2 = var. anual.
       - IMFBCF:   0 = índice, 1 = var. mensual, 2 = var. anual.
       - IGAE:     3 = var. mensual, 4 = var. anual (el nivel se conserva de BIE).
-      - PIBT:     PIB col 2 = qoq, col 3 = yoy;
-                  PIBSEC col 3 = qoq terciarias, col 4 = yoy terciarias.
+      - PIBT:     PIBSEC col 3/4 = qoq/yoy terciarias;
+                  col 5 = nivel PIB (BIE); col 6/7 = qoq/yoy PIB total;
+                  col 8/9 = qoq/yoy primarias; col 10/11 = qoq/yoy secundarias.
       - IOAE/EMIM: sin cambios.
     """
     this_year = 2026
@@ -1245,24 +1318,28 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
             parsed = _parse_pibt(pdf, pub_date)
             if not parsed:
                 continue
-            # PIB total: qoq en col 2, yoy en col 3.
-            o_qoq = parsed.get("qoq", {}).get("PIB")
-            o_yoy = parsed.get("yoy", {}).get("PIB")
-            if o_qoq and ("PIB", 2, o_qoq["ym"]) not in seen:
-                results.append(("PIB", "qoq", 2, o_qoq, url))
-                seen.add(("PIB", 2, o_qoq["ym"]))
-            if o_yoy and ("PIB", 3, o_yoy["ym"]) not in seen:
-                results.append(("PIB", "yoy", 3, o_yoy, url))
-                seen.add(("PIB", 3, o_yoy["ym"]))
-            # Terciarias: qoq en col 3, yoy en col 4.
-            o_qoq = parsed.get("qoq", {}).get("Actividades terciarias")
-            o_yoy = parsed.get("yoy", {}).get("Actividades terciarias")
-            if o_qoq and ("PIBSEC", 3, o_qoq["ym"]) not in seen:
-                results.append(("PIBSEC", "qoq_ter", 3, o_qoq, url))
-                seen.add(("PIBSEC", 3, o_qoq["ym"]))
-            if o_yoy and ("PIBSEC", 4, o_yoy["ym"]) not in seen:
-                results.append(("PIBSEC", "yoy_ter", 4, o_yoy, url))
-                seen.add(("PIBSEC", 4, o_yoy["ym"]))
+            # Mapeo de columnas para PIBSEC: 12 columnas.
+            # 0-2 niveles de actividades (BIE); 3-4 variaciones terciarias;
+            # 5 nivel PIB (BIE); 6-7 variaciones PIB total;
+            # 8-9 variaciones primarias; 10-11 variaciones secundarias.
+            pibt_map = {
+                ("qoq", "PIB", 6),
+                ("yoy", "PIB", 7),
+                ("qoq", "Actividades primarias", 8),
+                ("yoy", "Actividades primarias", 9),
+                ("qoq", "Actividades secundarias", 10),
+                ("yoy", "Actividades secundarias", 11),
+                ("qoq", "Actividades terciarias", 3),
+                ("yoy", "Actividades terciarias", 4),
+            }
+            for sub, label, col in pibt_map:
+                o = parsed.get(sub, {}).get(label)
+                if o and ("PIBSEC", col, o["ym"]) not in seen:
+                    results.append(("PIBSEC", f"{sub}_{label}", col, o, url))
+                    seen.add(("PIBSEC", col, o["ym"]))
+            # Guarda los subsectores del Cuadro 2 (último boletín procesado).
+            if "subsectores" in parsed:
+                parsed_by_url[url] = {"subsectores": parsed["subsectores"]}
 
         elif kind == "EOPIBT":
             parsed = _parse_eopibt(pdf, pub_date)

@@ -785,6 +785,137 @@ def _eopibt_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     }
 
 
+def _pibsec_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
+    """KPI y resumen específico para PIB por actividades económicas (PIBSEC).
+
+    Expone el nivel del PIB total y las variaciones trimestrales/anuales del
+    PIB y de cada gran actividad, evitando mostrar máximos/mínimos como KPIs.
+    """
+    cfg = kpicfg.get(ind["key"])
+    if not cfg:
+        return None
+    kpi = compute_kpi(ind, kpicfg)
+    if not kpi:
+        return None
+    yoy = annual_var(ind, kpi, kpicfg)
+    obs = ind.get("observations", [])
+    if not obs:
+        return None
+    last_i = kpi["lastI"]
+
+    def _pct(v):
+        if v is None:
+            return "—"
+        s = "+" if v > 0 else ""
+        return s + F.fmt_val(v, "pct-frac")
+
+    def _nivel(v):
+        if v is None:
+            return "—"
+        return F.fmt_val(v, "bill")
+
+    col_cards = [
+        ("PIB", 5, 6, 7),
+        ("Actividades primarias", 0, 8, 9),
+        ("Actividades secundarias", 1, 10, 11),
+        ("Actividades terciarias", 2, 3, 4),
+    ]
+    cards = []
+    for name, nivel_col, qoq_col, yoy_col in col_cards:
+        nivel = _val_at(ind, last_i, nivel_col)
+        qoq = _val_at(ind, last_i, qoq_col)
+        y = _val_at(ind, last_i, yoy_col)
+        short = name.split()[-1] if name != "PIB" else name
+        cards.append({
+            "name": short,
+            "full": name,
+            "nivelRaw": nivel,
+            "nivelText": _nivel(nivel),
+            "qoqRaw": qoq,
+            "qoqText": _pct(qoq),
+            "yoyRaw": y,
+            "yoyText": _pct(y),
+        })
+
+    pib_card = cards[0]
+    per = kpi["ultimoP"]
+    per_long = F.per_long(per)
+
+    # Resumen ejecutivo (máximo 4 bullets).
+    bullets = []
+    bullets.append(
+        f"En {per_long}, el {ind.get('nombre')} se ubicó en {pib_card['nivelText']}. "
+        f"La variación trimestral fue {pib_card['qoqText']} y la anual {pib_card['yoyText']} "
+        "frente al mismo trimestre del año previo."
+    )
+
+    qoq_parts = [
+        f"{c['name']} {c['qoqText']}" for c in cards[1:] if c['qoqRaw'] is not None
+    ]
+    if qoq_parts:
+        bullets.append(
+            f"El desempeño por actividad a tasa trimestral fue: {', '.join(qoq_parts)}."
+        )
+
+    yoy_parts = [
+        f"{c['name']} {c['yoyText']}" for c in cards[1:] if c['yoyRaw'] is not None
+    ]
+    if yoy_parts:
+        # Si hay contracciones, el verbo se adapta.
+        verbs = ["contrajo" if c['yoyRaw'] and c['yoyRaw'] < 0 else "creció" for c in cards[1:]]
+        # Frase: "Las actividades terciarias crecieron..., las primarias... y las secundarias contrajeron..."
+        parts = []
+        for c in cards[1:]:
+            if c['yoyRaw'] is None:
+                continue
+            verb = "contrajo" if c['yoyRaw'] < 0 else "creció"
+            parts.append(f"{c['name']} {verb} {c['yoyText']}")
+        if parts:
+            bullets.append(
+                "A tasa anual, " + ", ".join(parts[:-1]) +
+                (f" y {parts[-1]}" if len(parts) > 1 else parts[0]) + "."
+            )
+
+    subsectores = ind.get("subsectores") or {}
+    # Filtra agregados (PIB y las 3 grandes actividades) y toma los 14 sectores.
+    sectores = {
+        k: v for k, v in subsectores.items()
+        if not k.lower().startswith("pib") and "actividades" not in k.lower()
+    }
+    if sectores:
+        top = sorted(sectores.items(), key=lambda x: x[1], reverse=True)[:3]
+        bottom = sorted(sectores.items(), key=lambda x: x[1])[:3]
+
+        def _short_sector(label):
+            # Quita código numérico inicial y toma el primer fragmento.
+            s = re.sub(r"^[\d\-]+\s+", "", label)
+            s = s.split(",")[0].split(" y ")[0]
+            # Limita longitud sin romper palabras.
+            words = s.split()
+            if len(words) > 8:
+                s = " ".join(words[:8]) + "..."
+            return s.strip()
+
+        top_txt = ", ".join(f"{_short_sector(k)} ({_pct(v)})" for k, v in top)
+        bot_txt = ", ".join(f"{_short_sector(k)} ({_pct(v)})" for k, v in bottom)
+        bullets.append(
+            f"A nivel subsectorial, los mayores dinamismos anuales fueron {top_txt}; "
+            f"los mayores retrocesos: {bot_txt}."
+        )
+
+    kpi["cards"] = cards
+    if yoy:
+        kpi["yoyText"] = yoy["text"]
+        kpi["yoyLabel"] = yoy["label"]
+    return {
+        "kpi": kpi,
+        "yoy": yoy,
+        "annualVar": yoy,
+        "resumen": bullets[:4],
+        "analysis": bullets[:1],
+    }
+
+
 def compute_all_metrics(payload: dict | None = None, kpicfg: dict | None = None) -> dict[str, dict[str, Any]]:
     """Calcula kpi, analysis y annualVar para todos los indicadores."""
     if payload is None:
@@ -798,6 +929,11 @@ def compute_all_metrics(payload: dict | None = None, kpicfg: dict | None = None)
             eopibt = _eopibt_metrics(ind, kpicfg)
             if eopibt:
                 out[key] = eopibt
+                continue
+        if key == "PIBSEC":
+            pibsec = _pibsec_metrics(ind, kpicfg)
+            if pibsec:
+                out[key] = pibsec
                 continue
         kpi = compute_kpi(ind, kpicfg)
         yoy = annual_var(ind, kpi, kpicfg) if kpi else None

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-20T16:04:54+00:00",
+    "generated_at": "2026-08-20T17:07:26+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-08-20T10:04:54-06:00",
+    "last_update_ct": "2026-08-20T11:07:26-06:00",
     "periodo_referencia_reciente": {
       "period": "Jul 26",
       "period_long": "Jul 26"
@@ -936,13 +936,13 @@
     },
     "PIBSEC": {
       "key": "PIBSEC",
-      "nombre": "Producto Interno Bruto por sector de actividad",
-      "descripcion": "Permite analizar la contribución específica de cada sector al valor agregado total de la economía mexicana. Es fundamental para entender la estructura productiva del país y cómo evoluciona con el tiempo.",
+      "nombre": "PIB trimestral por grandes actividades económicas",
+      "descripcion": "PIB trimestral a precios constantes de 2018 desagregado por actividades económicas: total, primarias, secundarias y terciarias. Incluye niveles absolutos, variación trimestral desestacionalizada y variación anual desestacionalizada.",
       "frecuencia": "Trimestral",
       "unidad": "Millones de pesos (a precios de 2018)",
-      "ajuste_estacional": "Serie original; la variación trimestral y anual de terciarias proviene de la serie desestacionalizada publicada por el INEGI",
-      "grupo": "actividad",
-      "publicacion": "Aproximadamente 50 días después de haber concluido el trimestre",
+      "ajuste_estacional": "Cifras desestacionalizadas y originales",
+      "grupo": "growth",
+      "publicacion": "30 días después del cierre del trimestre",
       "proximo": "Finales de junio (oportuno); finales de agosto (definitivo)",
       "notas": [
         "R = Cifras revisadas",
@@ -956,28 +956,63 @@
       },
       "columns": [
         {
-          "label": "Primarias",
+          "label": "Nivel Primarias",
           "index": 0,
           "fmt": "num"
         },
         {
-          "label": "Secundarias",
+          "label": "Nivel Secundarias",
           "index": 1,
           "fmt": "num"
         },
         {
-          "label": "Terciarias",
+          "label": "Nivel Terciarias",
           "index": 2,
           "fmt": "num"
         },
         {
-          "label": "Var. Trim. Ter. (%)",
+          "label": "Var. trim. Terciarias (%)",
           "index": 3,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. Anual Ter. (%)",
+          "label": "Var. anual Terciarias (%)",
           "index": 4,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Nivel PIB",
+          "index": 5,
+          "fmt": "num"
+        },
+        {
+          "label": "Var. trim. PIB (%)",
+          "index": 6,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual PIB (%)",
+          "index": 7,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. trim. Primarias (%)",
+          "index": 8,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual Primarias (%)",
+          "index": 9,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. trim. Secundarias (%)",
+          "index": 10,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual Secundarias (%)",
+          "index": 11,
           "fmt": "pct-frac"
         }
       ],
@@ -989,6 +1024,13 @@
             7866374.716,
             14313691.858,
             null,
+            null,
+            24137287.71,
+            null,
+            null,
+            null,
+            null,
+            null,
             null
           ]
         },
@@ -998,6 +1040,13 @@
             927335.203,
             7679579.898,
             14753228.779,
+            null,
+            null,
+            24605265.729,
+            null,
+            null,
+            null,
+            null,
             null,
             null
           ]
@@ -1009,6 +1058,13 @@
             7729308.418,
             14322078.244,
             null,
+            null,
+            24024906.35,
+            null,
+            null,
+            null,
+            null,
+            null,
             null
           ]
         },
@@ -1018,6 +1074,13 @@
             913457.081,
             7444610.529,
             14754773.247,
+            null,
+            null,
+            24356643.155,
+            null,
+            null,
+            null,
+            null,
             null,
             null
           ]
@@ -1029,6 +1092,13 @@
             7169315.544,
             13054858.82,
             null,
+            null,
+            22072209.167,
+            null,
+            null,
+            null,
+            null,
+            null,
             null
           ]
         },
@@ -1038,6 +1108,13 @@
             928349.759,
             7385109.781,
             14047810.598,
+            null,
+            null,
+            23504796.547,
+            null,
+            null,
+            null,
+            null,
             null,
             null
           ]
@@ -1049,6 +1126,13 @@
             7417983.192,
             13810362.579,
             null,
+            null,
+            23204796.817,
+            null,
+            null,
+            null,
+            null,
+            null,
             null
           ]
         },
@@ -1058,6 +1142,13 @@
             958456.619,
             7447531.382,
             14278012.522,
+            null,
+            null,
+            23949712.898,
+            null,
+            null,
+            null,
+            null,
             null,
             null
           ]
@@ -1069,6 +1160,13 @@
             7805875.067,
             14421864.812,
             null,
+            null,
+            24289379.479,
+            null,
+            null,
+            null,
+            null,
+            null,
             null
           ]
         },
@@ -1078,6 +1176,13 @@
             1002685.71,
             7826990.042,
             14899941.441,
+            null,
+            null,
+            25052395.779,
+            null,
+            null,
+            null,
+            null,
             null,
             null
           ]
@@ -1089,6 +1194,13 @@
             8061173.693,
             14924452.582,
             null,
+            null,
+            25094793.141,
+            null,
+            null,
+            null,
+            null,
+            null,
             null
           ]
         },
@@ -1099,6 +1211,13 @@
             8024213.122,
             15251937.656,
             0.008,
+            null,
+            25590082.607,
+            null,
+            null,
+            null,
+            null,
+            null,
             null
           ]
         },
@@ -1109,6 +1228,13 @@
             8061173.693,
             14924452.582,
             0.008,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
             null
           ]
         },
@@ -1119,6 +1245,13 @@
             8024213.122,
             15251937.656,
             0,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
             null
           ]
         },
@@ -1128,6 +1261,13 @@
             783638.959,
             8020904.247,
             15272671.829,
+            null,
+            null,
+            25475446.445,
+            null,
+            null,
+            null,
+            null,
             null,
             null
           ]
@@ -1139,6 +1279,13 @@
             7832811.484,
             15559800.994,
             0,
+            null,
+            25693292.983,
+            null,
+            null,
+            null,
+            null,
+            null,
             null
           ]
         },
@@ -1149,6 +1296,13 @@
             8020904.247,
             15272671.829,
             0.011000000000000001,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
             null
           ]
         },
@@ -1159,7 +1313,14 @@
             7832811.484,
             15559800.994,
             0.002,
-            0.021
+            0.021,
+            null,
+            null,
+            null,
+            -0.085,
+            -0.041,
+            -0.015,
+            -0.02
           ]
         },
         {
@@ -1169,7 +1330,14 @@
             7812449.734,
             15433943.462,
             -0.001,
-            0.011
+            0.011,
+            25422850.191,
+            null,
+            null,
+            0.078,
+            0.067,
+            -0.001,
+            -0.013
           ]
         },
         {
@@ -1179,7 +1347,14 @@
             7867045.889,
             15877667.814,
             0.008,
-            0.018
+            0.018,
+            26135644.696,
+            0.006,
+            0.012,
+            -0.024,
+            0.026,
+            0.007,
+            -0.003
           ]
         },
         {
@@ -1189,7 +1364,14 @@
             7812449.734,
             15433943.462,
             0.002,
-            0.01
+            0.01,
+            null,
+            -0.003,
+            -0.002,
+            0.035,
+            0.029,
+            -0.015,
+            -0.027
           ]
         },
         {
@@ -1199,7 +1381,14 @@
             7867045.889,
             15877667.814,
             0.009,
-            0.021
+            0.021,
+            null,
+            0.009,
+            0.018,
+            -0.014,
+            0.078,
+            0.009,
+            0.003
           ]
         },
         {
@@ -1209,7 +1398,14 @@
             7621773.386,
             15134329.955,
             -0.004,
-            0.011
+            0.011,
+            24973976.071,
+            -0.006,
+            0.004,
+            -0.017,
+            0.003,
+            -0.01,
+            -0.011
           ]
         }
       ],
@@ -1229,45 +1425,45 @@
         "kpi": {
           "assessment": "adverso",
           "dir": "down",
-          "ultimoFmt": "23,553,779",
-          "ultimoRaw": 23553778.839,
+          "ultimoFmt": "24.97 billones de pesos de 2018",
+          "ultimoRaw": 24973976.071,
           "ultimoP": "1T-26",
-          "varText": "-0.4%",
-          "varMag": -0.4,
+          "varText": "-0.6%",
+          "varMag": -0.6,
           "pos": false,
           "varColor": "#9b2247",
-          "varLabel": "Trim. terciarias",
-          "maxFmt": "24,738,688",
-          "maxRaw": 24738687.674999997,
+          "varLabel": "Var. trim. PIB",
+          "maxFmt": "26.14 billones de pesos de 2018",
+          "maxRaw": 26135644.696,
           "maxP": "2T-25",
-          "minFmt": "20,954,771",
-          "minRaw": 20954770.625,
+          "minFmt": "22.07 billones de pesos de 2018",
+          "minRaw": 22072209.167,
           "minP": "1T-20",
           "lastI": 22,
           "series": [
-            22858744.711999997,
-            23360143.88,
-            22742275.475,
-            23112840.857,
-            20954770.625,
-            22361270.138,
-            21948798.946,
-            22684000.523000002,
-            22953021.897,
-            23729617.193,
-            23715827.402000003,
-            24235062.578,
-            23715827.402000003,
-            24235062.578,
-            24077215.035,
-            24322895.457000002,
-            24077215.035,
-            24322895.457000002,
-            24024159.362999998,
-            24738687.674999997,
-            24024159.362999998,
-            24738687.674999997,
-            23553778.839
+            24137287.71,
+            24605265.729,
+            24024906.35,
+            24356643.155,
+            22072209.167,
+            23504796.547,
+            23204796.817,
+            23949712.898,
+            24289379.479,
+            25052395.779,
+            25094793.141,
+            25590082.607,
+            null,
+            null,
+            25475446.445,
+            25693292.983,
+            null,
+            null,
+            25422850.191,
+            26135644.696,
+            null,
+            null,
+            24973976.071
           ],
           "periods": [
             "1T-18",
@@ -1295,20 +1491,62 @@
             "1T-26"
           ],
           "semaforo": "malo",
-          "yoyText": "+1.1%",
-          "yoyLabel": "Anual terciarias"
+          "cards": [
+            {
+              "name": "PIB",
+              "full": "PIB",
+              "nivelRaw": 24973976.071,
+              "nivelText": "24.97 billones de pesos de 2018",
+              "qoqRaw": -0.006,
+              "qoqText": "-0.6%",
+              "yoyRaw": 0.004,
+              "yoyText": "+0.4%"
+            },
+            {
+              "name": "primarias",
+              "full": "Actividades primarias",
+              "nivelRaw": 797675.498,
+              "nivelText": "0.80 billones de pesos de 2018",
+              "qoqRaw": -0.017,
+              "qoqText": "-1.7%",
+              "yoyRaw": 0.003,
+              "yoyText": "+0.3%"
+            },
+            {
+              "name": "secundarias",
+              "full": "Actividades secundarias",
+              "nivelRaw": 7621773.386,
+              "nivelText": "7.62 billones de pesos de 2018",
+              "qoqRaw": -0.01,
+              "qoqText": "-1.0%",
+              "yoyRaw": -0.011,
+              "yoyText": "-1.1%"
+            },
+            {
+              "name": "terciarias",
+              "full": "Actividades terciarias",
+              "nivelRaw": 15134329.955,
+              "nivelText": "15.13 billones de pesos de 2018",
+              "qoqRaw": -0.004,
+              "qoqText": "-0.4%",
+              "yoyRaw": 0.011,
+              "yoyText": "+1.1%"
+            }
+          ],
+          "yoyText": "+0.4%",
+          "yoyLabel": "Var. anual PIB"
         },
         "yoy": {
-          "mag": 1.0999999999999999,
+          "mag": 0.4,
           "pos": true,
-          "text": "+1.1%",
-          "label": "Anual terciarias"
+          "text": "+0.4%",
+          "label": "Var. anual PIB"
         },
         "resumen": [
-          "En primer trimestre de 2026, el PIB total por actividad económica se ubicó en 23.55 billones de pesos (a precios de 2018). El valor de trim. terciarias fue de -0.4% frente al trimestre anterior.",
-          "La anual terciarias se situó en +1.1%, lo que refleja la comparación contra primer trimestre de 2026 del año previo.",
-          "En la serie mostrada, el indicador oscila entre un máximo de 24.74 billones de pesos (segundo trimestre de 2025) y un mínimo de 20.95 billones de pesos (primer trimestre de 2020). El último dato se ubica dentro del rango observado en el periodo mostrado.",
-          "La variación se clasifica como adversa según la lectura económica del indicador."
+          "En primer trimestre de 2026, el PIB trimestral por grandes actividades económicas se ubicó en 24.97 billones de pesos de 2018. La variación trimestral fue -0.6% y la anual +0.4% frente al mismo trimestre del año previo.",
+          "El desempeño por actividad a tasa trimestral fue: primarias -1.7%, secundarias -1.0%, terciarias -0.4%.",
+          "A tasa anual, primarias creció +0.3%, secundarias contrajo -1.1% y terciarias creció +1.1%.",
+          "A nivel subsectorial, los mayores dinamismos anuales fueron Servicios de salud (+3.3%), Minería (+2.6%), Servicios de esparcimiento culturales (+2.3%); los mayores retrocesos: Servicios profesionales (-3.4%), Servicios de alojamiento temporal (-2.9%), Industrias manufactureras (-2.0%)."
         ]
       },
       "periodo_referencia_oficial": "1T-26",
@@ -1333,6 +1571,60 @@
       "numero_boletin": "295/26",
       "tipo_documento": "PDF",
       "producto_boletin": "Producto Interno Bruto por sector de actividad (PIBT)",
+      "sigla": "PIB POR ACTIVIDAD",
+      "windows": [
+        {
+          "id": "1a",
+          "label": "1 año",
+          "count": 4
+        },
+        {
+          "id": "2a",
+          "label": "2 años",
+          "count": 8
+        },
+        {
+          "id": "3a",
+          "label": "3 años",
+          "count": 12
+        },
+        {
+          "id": "5a",
+          "label": "5 años",
+          "count": 20
+        },
+        {
+          "id": "max",
+          "label": "Máximo",
+          "count": null
+        }
+      ],
+      "subsectores": {
+        "PIB total a precios de mercado": 0.002,
+        "Actividades primarias": 0.004,
+        "11 Agricultura, cría y explotación de animales, aprovechamiento forestal, pesca y caza": 0.004,
+        "Actividades secundarias": -0.012,
+        "21 Minería": 0.026000000000000002,
+        "22 Generación, transmisión, distribución y comercialización de energía eléctrica, suministro de agua y de gas natural por ductos al consumidor final": -0.002,
+        "23 Construcción": -0.006999999999999999,
+        "31-33 Industrias manufactureras": -0.02,
+        "Actividades terciarias": 0.01,
+        "43 Comercio al por mayor": 0.019,
+        "46 Comercio al por menor": 0.008,
+        "48-49 Transportes, correos y almacenamiento": 0.004,
+        "51 Información en medios masivos": 0.006999999999999999,
+        "52 Servicios financieros y de seguros": 0.021,
+        "53 Servicios inmobiliarios y de alquiler de bienes muebles e intangibles": 0.01,
+        "54 Servicios profesionales, científicos y técnicos": -0.034,
+        "55 Corporativos": -0.008,
+        "56 Servicios de apoyo a los negocios y manejo de residuos, y servicios de remediación": -0.011000000000000001,
+        "61 Servicios educativos": 0.004,
+        "62 Servicios de salud y de asistencia social": 0.033,
+        "71 Servicios de esparcimiento culturales y deportivos, y otros servicios recreativos": 0.023,
+        "72 Servicios de alojamiento temporal y de preparación de alimentos y bebidas": -0.028999999999999998,
+        "81 Otros servicios excepto actividades gubernamentales": 0.002,
+        "93 Actividades legislativas, gubernamentales, de impartición de justicia y de organismos internacionales y extraterritoriales": 0.053
+      },
       "boletin_validado": true
     },
     "IGAE": {

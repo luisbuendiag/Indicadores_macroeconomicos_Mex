@@ -71,7 +71,26 @@ function chartSpec(ind, obs) {
   const saldo = obs.map((o) => (o.values[0] != null && o.values[1] != null) ? o.values[0] - o.values[1] : null);
   switch (ind.key) {
     case "PIB": return { periods: P, bars: [{ name: "Var. trimestral (%)", values: col(0).map((v) => v == null ? null : v * 100), color: G }], lines: [{ name: "Var. anual desest. (%)", values: col(1).map((v) => v == null ? null : v * 100), color: Go }], leftName: "Variación (%)", leftFmt: "pct" };
-    case "PIBSEC": return { periods: P, stack: "pib", bars: [{ name: "Primarias", values: col(0), color: G }, { name: "Secundarias", values: col(1), color: SEC }, { name: "Terciarias", values: col(2), color: Go }], lines: [{ name: "Var. trim. terciarias (%)", values: col(3).map((v) => v == null ? null : v * 100), color: REF, axis: "right" }], leftName: "Millones de pesos", rightName: "Var. trim. (%)", leftFmt: "compact", rightFmt: "pct" };
+    case "PIBSEC": return {
+      periods: P,
+      stack: "pib",
+      bars: [
+        { name: "Primarias", values: col(0), color: G },
+        { name: "Secundarias", values: col(1), color: SEC },
+        { name: "Terciarias", values: col(2), color: Go },
+      ],
+      lines: [
+        { name: "PIB total", values: col(5), color: INK },
+        { name: "Var. trim. PIB (%)", values: col(6).map((v) => v == null ? null : v * 100), color: INK, dash: true, axis: "right" },
+        { name: "Var. trim. Primarias (%)", values: col(8).map((v) => v == null ? null : v * 100), color: G, dash: true, axis: "right" },
+        { name: "Var. trim. Secundarias (%)", values: col(10).map((v) => v == null ? null : v * 100), color: SEC, dash: true, axis: "right" },
+        { name: "Var. trim. Terciarias (%)", values: col(3).map((v) => v == null ? null : v * 100), color: Go, dash: true, axis: "right" },
+      ],
+      leftName: "Millones de pesos",
+      rightName: "Variación trimestral (%)",
+      leftFmt: "compact",
+      rightFmt: "pct",
+    };
     case "IGAE": return { periods: P, lines: [{ name: "Índice global", values: col(0), color: G }, { name: "Act. secundarias", values: col(1), color: SEC }, { name: "Act. terciarias", values: col(2), color: Go }], leftName: "Índice (2018=100)", leftFmt: "idx" };
     case "IMAI": return { periods: P, lines: [{ name: "Índice de volumen físico", values: col(0), color: G }, { name: "Var. mensual (%)", values: col(1).map((v) => v == null ? null : v * 100), color: SEC, axis: "right" }, { name: "Var. anual (%)", values: col(2).map((v) => v == null ? null : v * 100), color: Go, axis: "right" }], leftName: "Índice (2018=100)", rightName: "Var. (%)", leftFmt: "idx", rightFmt: "pct" };
     case "CONSUMO": return { periods: P, lines: [{ name: "Índice de volumen físico", values: col(0), color: G }, { name: "Var. mensual (%)", values: col(1).map((v) => v == null ? null : v * 100), color: SEC, axis: "right" }], leftName: "Índice (2018=100)", rightName: "Var. mensual (%)", leftFmt: "idx", rightFmt: "pct" };

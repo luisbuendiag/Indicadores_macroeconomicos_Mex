@@ -689,6 +689,14 @@ function renderIndicatorView(key) {
         ? el("div", { class: "mini" }, el("div", { class: "lbl" }, "Próxima publicación"), el("div", { class: "num" }, ind.proxima_publicacion.fecha_publicacion), el("div", { class: "sub" }, ind.proxima_publicacion.periodo_referencia))
         : null,
     );
+  } else if (ind.key === "PIBSEC" && k.cards) {
+    mini = el("div", { class: "mini-kpis" },
+      ...k.cards.map((c, i) => el("div", { class: `mini${i === 0 ? " dark" : ""}` },
+        el("div", { class: "lbl" }, c.name),
+        el("div", { class: "num" }, c.nivelText),
+        el("div", { class: "sub" }, `${c.qoqText} trim. · ${c.yoyText} anual`)
+      ))
+    );
   } else {
     mini = el("div", { class: "mini-kpis" },
       el("div", { class: "mini dark" }, el("div", { class: "lbl" }, "Cifra actual"), el("div", { class: "num" }, k.ultimoFmt), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),
@@ -711,19 +719,21 @@ function renderIndicatorView(key) {
   panel.append(chartMain);
 
   // Cuadro comparativo (impresión, estilo Nota) — página 1.
-  panel.append(fichaCompareTable(ind, k, cfg, yoy));
+  if (ind.key !== "PIBSEC") {
+    panel.append(fichaCompareTable(ind, k, cfg, yoy));
+  }
 
   // Síntesis / Principales resultados: fuente única Python (lib_metrics).
   const syn = el("div", { class: "ficha-block" });
-  syn.append(el("h3", { class: "block-sub" }, ind.key === "PIB" ? "Lectura del indicador" : "Evolución reciente"));
-  if (ind.key === "PIB") {
+  syn.append(el("h3", { class: "block-sub" }, (ind.key === "PIB" || ind.key === "PIBSEC") ? "Lectura del indicador" : "Evolución reciente"));
+  if (ind.key === "PIB" || ind.key === "PIBSEC") {
     const ul = el("ul", { class: "reading-bullets" });
     resumen.slice(0, 4).forEach((b) => ul.append(el("li", {}, b)));
     syn.append(ul);
   } else {
     resumen.forEach((b) => syn.append(el("p", { class: "prose" }, b)));
   }
-  const results = (resumen.length > 1 && ind.key !== "PIB")
+  const results = (resumen.length > 1 && ind.key !== "PIB" && ind.key !== "PIBSEC")
     ? el("div", { class: "ficha-block print-highlight" },
         el("h3", { class: "block-sub" }, "Principales resultados"),
         ...resumen.slice(0, 2).map((b) => el("p", { class: "prose" }, b)))
@@ -736,7 +746,7 @@ function renderIndicatorView(key) {
   if (results) page2.append(results);
 
   // Desglose (breakdown) por componentes cuando aplica
-  const bd = breakdown(ind, k);
+  const bd = (ind.key === "PIBSEC") ? pibsecActivityBlock(ind, k) : breakdown(ind, k);
   if (bd) page2.append(bd);
 
   // Tabla
@@ -809,6 +819,49 @@ function breakdown(ind, k) {
 }
 
 // ---------------- Bloques exclusivos de la ficha del PIB ----------------
+function pibsecActivityBlock(ind, k) {
+  const box = el("div", { class: "ficha-block pibsec-activity" });
+  const subsectores = ind.subsectores || {};
+  const hasSubs = Object.keys(subsectores).some((s) => !s.toLowerCase().startsWith("pib") && !s.toLowerCase().includes("actividades"));
+  box.append(el("h3", { class: "block-sub" }, hasSubs ? "Variación anual por subsector" : "Desempeño por actividad"));
+
+  if (hasSubs) {
+    const table = el("table");
+    table.append(el("thead", {}, el("tr", {}, el("th", {}, "Subsector"), el("th", { style: "text-align:right" }, "Var. anual"))));
+    const tb = el("tbody");
+    const entries = Object.entries(subsectores)
+      .filter(([label]) => !label.toLowerCase().startsWith("pib") && !label.toLowerCase().includes("actividades"))
+      .sort((a, b) => b[1] - a[1]);
+    entries.forEach(([label, v]) => {
+      const color = v >= 0 ? COLORS.GREEN : COLORS.CRIMSON;
+      const short = label.replace(/^\d+\s+/, "").split(",")[0].split(" y ")[0];
+      tb.append(el("tr", {},
+        el("td", {}, short),
+        el("td", { style: `color:${color};text-align:right;font-family:var(--mono)` }, signedPct(v))
+      ));
+    });
+    table.append(tb);
+    box.append(el("div", { class: "table-wrap" }, table));
+    return box;
+  }
+
+  if (!k.cards) return null;
+  const grid = el("div", { class: "breakdown" });
+  k.cards.forEach((c) => {
+    const qoqColor = (c.qoqRaw != null ? (c.qoqRaw >= 0 ? COLORS.GREEN : COLORS.CRIMSON) : COLORS.GRAY);
+    const yoyColor = (c.yoyRaw != null ? (c.yoyRaw >= 0 ? COLORS.GREEN : COLORS.CRIMSON) : COLORS.GRAY);
+    grid.append(el("div", { class: "bd-item" },
+      el("div", { class: "bd-lbl" }, c.full),
+      el("div", { class: "bd-val" }, c.nivelText),
+      el("div", { class: "bd-sub" }, `Trim. `, el("span", { style: `color:${qoqColor}` }, c.qoqText)),
+      el("div", { class: "bd-sub" }, `Anual `, el("span", { style: `color:${yoyColor}` }, c.yoyText))
+    ));
+  });
+  box.append(grid);
+  return box;
+}
+
+
 function pibHistoryBlock(ind) {
   const start = (ind.observations[0] && ind.observations[0].period) || "—";
   const end = (ind.observations[ind.observations.length - 1] && ind.observations[ind.observations.length - 1].period) || "—";

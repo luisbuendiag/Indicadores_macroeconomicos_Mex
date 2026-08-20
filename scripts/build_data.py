@@ -89,6 +89,49 @@ def apply_pibt_source(payload: dict, key: str, item: dict, prev_last: str | None
     }
 
 
+def sync_pibsec_pibt(payload: dict) -> list[str]:
+    """Copia el nivel del PIB total (objeto 'pibt' de PIB) a la columna 5 de PIBSEC.
+
+    Permite que PIBSEC muestre el nivel oficial del PIB junto al valor agregado por
+    actividades, sin duplicar series BIE.
+    """
+    changes: list[str] = []
+    pib = payload["indicators"].get("PIB")
+    pibsec = payload["indicators"].get("PIBSEC")
+    if not pib or not pibsec:
+        return changes
+    pibt = pib.get("pibt")
+    if not pibt or not pibt.get("observations"):
+        return changes
+
+    # Último valor por periodo en pibt (puede haber revisiones duplicadas).
+    pibt_values: dict[str, float] = {}
+    for o in pibt["observations"]:
+        v = o.get("values", [None])[0]
+        if v is not None:
+            pibt_values[o["period"]] = v
+
+    if not pibt_values:
+        return changes
+
+    by_period: dict[str, dict] = {o["period"]: o for o in pibsec.get("observations", [])}
+    updated = 0
+    for period, value in pibt_values.items():
+        o = by_period.get(period)
+        if not o:
+            continue
+        vals = list(o.get("values", []))
+        while len(vals) < 12:
+            vals.append(None)
+        if vals[5] != value:
+            vals[5] = value
+            o["values"] = vals
+            updated += 1
+    if updated:
+        changes.append(f"pibsec: nivel PIB copiado desde PIB.pibt ({updated} observaciones)")
+    return changes
+
+
 def apply_inegi_total(payload: dict, key: str, item: dict, prev_last: str | None) -> dict | None:
     """Fusiona una serie del INEGI sobre UNA columna del indicador existente.
 
@@ -161,7 +204,7 @@ def apply_inegi_total(payload: dict, key: str, item: dict, prev_last: str | None
             # Conserva metadatos del boletín validado por el parser de Sala de Prensa.
             for meta_key in ("periodo_boletin", "numero_boletin", "fecha_publicacion",
                              "tipo_documento", "producto_boletin", "boletin_validado",
-                             "proxima_publicacion", "sectores"):
+                             "proxima_publicacion", "sectores", "subsectores"):
                 if item.get(meta_key) is not None:
                     ind[meta_key] = item[meta_key]
     ind["fuente"] = fuente
@@ -251,6 +294,9 @@ def run(offline: bool = False) -> int:
 
     # Perfil V3: scaffolds, orden principal/complementario y metadatos base.
     log["changes"].extend(L.apply_profile(payload))
+
+    # Nivel del PIB total en PIBSEC (desde el objeto 'pibt' del PIB).
+    log["changes"].extend(sync_pibsec_pibt(payload))
 
     # Frescura, calendario, métricas compartidas y metadatos temporales.
     log["changes"].extend(apply_freshness_and_meta(payload, log))
