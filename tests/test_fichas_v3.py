@@ -170,12 +170,11 @@ def test_pib_sector_breakdown_title_and_format():
 
 
 def test_pib_historial_ampliado_ui():
-    """La ficha del PIB incluye el historial y los conteos por filtro."""
+    """La ficha del PIB incluye el historial compacto."""
     assert '"Historial del indicador"' in APP
-    assert '"Observaciones por filtro"' in APP
     assert "Periodo inicial" in APP
-    assert "Total de observaciones" in APP
-    assert 'applyWindow(ind, w.id)' in APP
+    assert "Periodo final" in APP
+    assert "Observaciones" in APP
     assert 'pibHistoryBlock' in APP
     assert '.pib-history' in CSS
 

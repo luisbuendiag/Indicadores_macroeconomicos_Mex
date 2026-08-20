@@ -30,10 +30,12 @@ el origen API para distinguirlo de los respaldos manuales.
 """
 from __future__ import annotations
 
+import csv
 import re
 import time
 import urllib.error
 import urllib.request
+import zipfile
 from io import BytesIO
 from pathlib import Path
 
@@ -53,7 +55,10 @@ BULLETIN_URLS = {
     "IGAE": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/igae/igae{year}_{mm}.pdf",
     "IMAI": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/imai/imai{year}_{mm}.pdf",
     "PIBT": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/pibt/pib_Pconst{year}_{mm}.pdf",
-    "EOPIBT": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/pibo/pib_eo{year}_{mm}.pdf",
+    "EOPIBT": [
+        "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/pibo/pib_eo{year}_{mm}.pdf",
+        "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/pib_eo/pib_eo{year}_{mm}.pdf",
+    ],
     "INPC": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/inpc/inpc_2q{year}_{mm}.pdf",
     "EMOE": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/ee/ee{year}_{mm}.pdf",
     "IOOE": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/iooe/IOE{year}_{mm}.pdf",
@@ -203,6 +208,13 @@ def _parse_pct(text) -> float | None:
     text = text.replace("%", "").replace("▲", "").replace("▼", "").strip()
     if not text:
         return None
+    text = text.replace("(-)", "-")
+    text = text.replace("(", "").replace(")", "")
+    text = text.replace("−", "-")
+    text = text.replace(",", ".")
+    text = re.sub(r"\s+", "", text)
+    if text == "-" or not text:
+        return None
     try:
         return float(text)
     except ValueError:
@@ -285,7 +297,7 @@ def _extract_ref_period(text: str) -> tuple[int, int] | None:
 
 
 def _extract_pub_date(text: str) -> tuple[int, int, int] | None:
-    m = re.search(r"(\d{1,2})\s+de\s+([a-zA-Záéíóúñ]+)\s+de\s+(\d{4})", text)
+    m = re.search(r"(\d{1,2})\s+de\s+([a-zA-Záéíóúñ]+)\s+de\s+(\d{4})", text, re.IGNORECASE)
     if not m:
         return None
     try:
@@ -330,15 +342,29 @@ def _available_issues(kind: str, start_year: int, end_year: int, max_count: int 
     trimestrales como PIBT: febrero, mayo, agosto, noviembre).
     """
     found = []
+    templates = BULLETIN_URLS[kind]
+    if isinstance(templates, str):
+        templates = [templates]
     month_iter = reversed(months) if months is not None else range(12, 0, -1)
     for year in range(end_year, start_year - 1, -1):
         for mm in month_iter:
             if len(found) >= max_count:
                 break
-            time.sleep(0.5)
-            url = BULLETIN_URLS[kind].format(year=year, mm=f"{mm:02d}")
-            if _head_ok(url):
-                found.append((year, mm, url))
+            for url_tmpl in templates:
+                time.sleep(0.5)
+                url = url_tmpl.format(year=year, mm=f"{mm:02d}")
+                if _head_ok(url):
+                    found.append((year, mm, url))
+                    break
+            else:
+                # El boletín de enero de 2023 publicó el 4T-2022 con el año
+                # de referencia en el nombre (pib_eo2022_01.pdf) en lugar del
+                # año de publicación.
+                if kind == "EOPIBT" and mm == 1:
+                    time.sleep(0.5)
+                    url = f"https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/pib_eo/pib_eo{year - 1}_{mm:02d}.pdf"
+                    if _head_ok(url):
+                        found.append((year, mm, url))
         if months is not None:
             month_iter = reversed(months)
     return found
@@ -756,6 +782,171 @@ def _extract_proxima_publicacion(text: str) -> str | None:
     return m.group(1).lower().replace("  ", " ")
 
 
+def _normalize_eopibt_tables(tables: list[list[list[str]]]) -> list[list[str]]:
+    """Aplana y normaliza tablas de pdfplumber, dividiendo celdas multilínea."""
+    if not tables:
+        return []
+    out: list[list[str]] = []
+    for table in tables:
+        for row in table:
+            if not row:
+                continue
+            parts = [((c or "").strip() if c is not None else "").split("\n") for c in row]
+            max_len = max(len(p) for p in parts) if parts else 1
+            for i in range(max_len):
+                new_row = [p[i].strip() if i < len(p) else "" for p in parts]
+                out.append(new_row)
+    return out
+
+
+def _is_eopibt_total_row(first: str) -> bool:
+    if not first:
+        return False
+    is_total = ("pib" in first or "producto interno bruto" in first)
+    is_specific = any(s in first for s in ("total", "oportuno", "bruto"))
+    is_sector = any(s in first for s in ("primarias", "secundarias", "terciarias"))
+    return is_total and is_specific and not is_sector
+
+
+def _is_eopibt_sector_row(first: str) -> str | None:
+    if not first:
+        return None
+    for name in ("primarias", "secundarias", "terciarias"):
+        if name in first:
+            return name
+    return None
+
+
+def _extract_eopibt_ref(text: str) -> tuple[int, int] | None:
+    """Identifica el trimestre y año de referencia del boletín."""
+    qmap = {
+        "primer": 1, "1er": 1, "1o": 1, "1": 1,
+        "segundo": 2, "2o": 2, "2": 2,
+        "tercer": 3, "3er": 3, "3o": 3, "3": 3,
+        "cuarto": 4, "4o": 4, "4": 4,
+    }
+    text_l = text.lower()
+    # Prefiere expresiones tipo "al/durante/en el primer trimestre de 2024".
+    m = re.search(r"(?:al|durante(?: el)?|en(?: el)?)\s+(primer|segundo|tercer|cuarto|\d)(?:o|er|°)?\s*trimestre\s+de\s+(\d{4})", text_l, re.IGNORECASE)
+    if not m:
+        m = re.search(r"(primer|segundo|tercer|cuarto|\d)(?:o|er|°)?\s*trimestre\s+de\s+(\d{4})", text_l, re.IGNORECASE)
+    if not m:
+        return None
+    raw = m.group(1).lower().replace("°", "").replace(".", "")
+    q = qmap.get(raw)
+    if q is None:
+        return None
+    return q, int(m.group(2))
+
+
+def _extract_eopibt_split_tables(tables: list[list[list[str]]]) -> tuple[list[float | None] | None, dict[str, dict[str, float | None]]]:
+    """Respaldar boletines `pibo` 2025+ donde el cuadro de portada se fragmenta en tablas pequeñas."""
+    qoq: float | None = None
+    yoy: float | None = None
+    ytd: float | None = None
+    sectores: dict[str, dict[str, float | None]] = {}
+
+    for table in tables:
+        if not table:
+            continue
+        labels = []
+        for row in table:
+            first = (row[0] or "").strip().lower()
+            if first:
+                labels.append(first)
+        label = None
+        for lab in labels:
+            if _is_eopibt_total_row(lab) or _is_eopibt_sector_row(lab):
+                label = lab
+                break
+        if not label:
+            continue
+
+        vals: list[float] = []
+        for row in reversed(table):
+            if len(row) >= 2:
+                v0 = _parse_pct(row[0])
+                v1 = _parse_pct(row[1])
+                if v0 is not None and v1 is not None:
+                    vals = [v0, v1]
+                    break
+        if len(vals) < 2:
+            continue
+
+        if _is_eopibt_total_row(label):
+            qoq, yoy = vals[0], vals[1]
+        else:
+            sector = _is_eopibt_sector_row(label)
+            if sector:
+                sectores[sector] = {"qoq": vals[0] / 100.0, "yoy": vals[1] / 100.0}
+
+    if qoq is None and yoy is None:
+        return None, {}
+    return [qoq, yoy, ytd], sectores
+
+
+def _extract_eopibt_values(tables: list[list[list[str]]]) -> tuple[list[float | None] | None, dict[str, dict[str, float | None]]]:
+    """Extrae qoq, yoy, acumulado y sectores de las tablas del boletín."""
+    rows = _normalize_eopibt_tables(tables)
+    pib_idx = -1
+    pib_vals: list[float] = []
+    for i, row in enumerate(rows):
+        if _is_eopibt_total_row(row[0].lower()):
+            candidate: list[float] = []
+            for cell in row[1:]:
+                for sub in cell.split("\n"):
+                    v = _parse_pct(sub)
+                    if v is not None:
+                        candidate.append(v)
+            if len(candidate) >= 2:
+                pib_idx = i
+                pib_vals = candidate
+                break
+
+    if pib_idx < 0:
+        return _extract_eopibt_split_tables(tables)
+
+    qoq = pib_vals[0]
+    yoy = pib_vals[1]
+    ytd = pib_vals[2] if len(pib_vals) > 2 else None
+
+    sectores: dict[str, dict[str, float | None]] = {}
+    sector_order = ["primarias", "secundarias", "terciarias"]
+    order_idx = 0
+    for i in range(pib_idx + 1, min(pib_idx + 8, len(rows))):
+        row = rows[i]
+        first = (row[0] or "").strip().lower()
+        if first and not _is_eopibt_total_row(first) and not _is_eopibt_sector_row(first) and not _is_eopibt_total_row("pib " + first):
+            break
+        sector_name = _is_eopibt_sector_row(first)
+        if sector_name is None and first == "" and order_idx < 3:
+            sector_name = sector_order[order_idx]
+            order_idx += 1
+        elif sector_name is None:
+            continue
+        else:
+            while order_idx < 3 and sector_order[order_idx] != sector_name:
+                order_idx += 1
+            if order_idx < 3:
+                order_idx += 1
+
+        svals: list[float] = []
+        for cell in row[1:]:
+            for sub in cell.split("\n"):
+                v = _parse_pct(sub)
+                if v is not None:
+                    svals.append(v)
+        if svals:
+            sectores[sector_name] = {
+                "qoq": svals[0] / 100.0 if len(svals) > 0 and svals[0] is not None else None,
+                "yoy": svals[1] / 100.0 if len(svals) > 1 and svals[1] is not None else None,
+            }
+
+    if qoq is None and yoy is None:
+        return _extract_eopibt_split_tables(tables)
+    return [qoq, yoy, ytd], sectores
+
+
 def _parse_eopibt_yoy_orig(pdf_bytes: bytes, year: int, quarter: int) -> float | None:
     """Extrae la variación anual con cifras originales del Cuadro 2 (página 3)."""
     for table in _pdf_page_tables(pdf_bytes, 2):
@@ -828,81 +1019,41 @@ def _parse_eopibt(pdf_bytes: bytes, pub_date: tuple[int, int, int] | None) -> di
       - Portada: próxima publicación y desglose por actividad económica.
     No contiene nivel del PIB.
     """
-    if pub_date is None:
-        return None
-
-    qmap = {
-        "primer": 1, "1er": 1, "1o": 1, "1": 1,
-        "segundo": 2, "2o": 2, "2": 2,
-        "tercero": 3, "tercer": 3, "3er": 3, "3o": 3, "3": 3,
-        "cuarto": 4, "4o": 4, "4": 4,
-    }
-
     text = _pdf_text_first_page(pdf_bytes)[0]
-    for i in (1, 2):
+    for i in (1, 2, 3):
         text += "\n" + _pdf_page_text(pdf_bytes, i)
 
-    ref = re.search(r"al\s+(.+?)\s+trimestre\s+de\s+(\d{4})", text, re.IGNORECASE)
+    if pub_date is None:
+        pub_date = _extract_pub_date(text)
+
+    ref = _extract_eopibt_ref(text)
     if not ref:
         return None
-    qraw = ref.group(1).strip().lower().replace("°", "").replace(".", "")
-    qraw = re.sub(r"(\d)(er|o)$", r"\1", qraw)
-    quarter = qmap.get(qraw)
-    if quarter is None:
-        return None
-    year = int(ref.group(2))
+    quarter, year = ref
     month = (quarter - 1) * 3 + 1
     ym = f"{year:04d}-{month:02d}"
     period = inegi.ym_to_label(ym, 4) + " P"
 
     proxima = _extract_proxima_publicacion(text)
 
-    # Cuadro 1 (página 2): qoq, yoy desestacionalizada, acumulado y sectores.
+    # Extrae qoq, yoy desestacionalizada, acumulado y sectores de todas las
+    # páginas, ya que el boletín publica el Cuadro 1 en página 1, 2 o 3 según
+    # la época.
     qoq: float | None = None
     yoy_desest: float | None = None
     ytd: float | None = None
-    ytd_label: str | None = None
+    ytd_label: str | None = "acumulado"
     sectores: dict[str, dict[str, float | None]] = {}
-    for table in _pdf_page_tables(pdf_bytes, 1):
-        data_idx = -1
-        for i, row in enumerate(table):
-            cells = [(c or "").strip() for c in row]
-            if cells and "Producto Interno Bruto Oportuno" in re.sub(r"\s+", " ", cells[0]):
-                data_idx = i
-                break
-        main_header: list[str] = []
-        if data_idx >= 2:
-            main_header = [(c or "").strip() for c in table[data_idx - 2]]
-        for row in table:
-            cells = [(c or "").strip() for c in row]
-            if not cells:
-                continue
-            label = re.sub(r"\s+", " ", cells[0]).strip()
-            if "Producto Interno Bruto Oportuno" in label and len(cells) >= 3:
-                qoq = _parse_pct(cells[1])
-                yoy_desest = _parse_pct(cells[2])
-                if len(cells) >= 4:
-                    ytd = _parse_pct(cells[3])
-                    if main_header and len(main_header) > 3:
-                        ytd_label = re.sub(r"\s+", " ", main_header[3] or "").strip().lower()
-                continue
-            if label == "Actividades primarias":
-                if len(cells) >= 3:
-                    q = _parse_pct(cells[1])
-                    y = _parse_pct(cells[2])
-                    sectores["primarias"] = {"qoq": q / 100.0 if q is not None else None, "yoy": y / 100.0 if y is not None else None}
-            elif label == "Actividades secundarias":
-                if len(cells) >= 3:
-                    q = _parse_pct(cells[1])
-                    y = _parse_pct(cells[2])
-                    sectores["secundarias"] = {"qoq": q / 100.0 if q is not None else None, "yoy": y / 100.0 if y is not None else None}
-            elif label == "Actividades terciarias":
-                if len(cells) >= 3:
-                    q = _parse_pct(cells[1])
-                    y = _parse_pct(cells[2])
-                    sectores["terciarias"] = {"qoq": q / 100.0 if q is not None else None, "yoy": y / 100.0 if y is not None else None}
-        if qoq is not None or yoy_desest is not None:
-            break
+
+    tables: list[list[list[str]]] = []
+    for i in range(4):
+        tables.extend(_pdf_page_tables(pdf_bytes, i) or [])
+
+    main_vals, parsed_sectores = _extract_eopibt_values(tables)
+    if main_vals is None:
+        return None
+    qoq, yoy_desest, ytd = main_vals
+    sectores = parsed_sectores
 
     # Cuadro 2 (página 3): variación anual original.
     yoy_orig = _parse_eopibt_yoy_orig(pdf_bytes, year, quarter)
@@ -961,6 +1112,52 @@ def _build_item(indicator: str, target_column: int, api_total: list[dict], serie
     return item
 
 
+def _eopibt_opendata_rows() -> list[tuple[str, int, int, dict, str]]:
+    """Descarga los datos abiertos EOPIBT trimestrales y emite observaciones de respaldo.
+
+    El archivo CSV (Anexo 2) contiene la variación anual original y desestacionalizada
+    del Producto Interno Bruto Oportuno de 2015-T1 a 2023-T2. Se usa únicamente para
+    llenar los trimestres 2015-T1 a 2015-T3 donde no hay boletín, y como respaldo de
+    la serie anual original (col 2) cuando el boletín no publica esa cifra.
+    """
+    url = "https://www.inegi.org.mx/contenidos/programas/pibo/2013/datosabiertos/eopibt_trimestral_csv.zip"
+    try:
+        pdf_bytes = _req(url)
+        with zipfile.ZipFile(BytesIO(pdf_bytes)) as zf:
+            name = next((n for n in zf.namelist() if "anexo2trimestral" in n.lower() and n.endswith(".csv")), None)
+            if not name:
+                return []
+            data = zf.read(name).decode("utf-8-sig")
+    except Exception:  # noqa: BLE001
+        return []
+
+    rows = list(csv.reader(data.splitlines()))
+    if not rows or len(rows) < 2:
+        return []
+    headers = rows[0]
+    desest_idx = next((i for i, r in enumerate(rows) if r and "desestacionalizada" in r[0].lower() and "producto interno bruto" in r[0].lower() and "actividades" not in r[0].lower()), None)
+    orig_idx = next((i for i, r in enumerate(rows) if r and "originales" in r[0].lower() and "producto interno bruto" in r[0].lower() and "actividades" not in r[0].lower()), None)
+    if desest_idx is None or orig_idx is None:
+        return []
+
+    out: list[tuple[str, int, int, dict, str]] = []
+    for col, h in enumerate(headers[1:], start=1):
+        m = re.match(r"(\d{4})\|T(\d)", h)
+        if not m:
+            continue
+        year, quarter = int(m.group(1)), int(m.group(2))
+        month = (quarter - 1) * 3 + 1
+        ym = f"{year:04d}-{month:02d}"
+        period = inegi.ym_to_label(ym, 4) + " P"
+        v_desest = _parse_pct(rows[desest_idx][col])
+        v_orig = _parse_pct(rows[orig_idx][col])
+        if v_desest is not None:
+            out.append(("PIB", "yoy", 1, {"ym": ym, "value": v_desest / 100.0, "period": period}, url))
+        if v_orig is not None:
+            out.append(("PIB", "yoy_orig", 2, {"ym": ym, "value": v_orig / 100.0, "period": period}, url))
+    return out
+
+
 def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dict]:
     """Descubre y parsea los últimos boletines de un indicador.
 
@@ -973,6 +1170,10 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
       - IOAE/EMIM: sin cambios.
     """
     this_year = 2026
+    # EOPIBT requiere histórico desde 2016 para disponer de al menos 5 años.
+    if kind == "EOPIBT":
+        start_year = 2016
+        max_bulletins = max(max_bulletins, 60)
     # PIBT es trimestral: publicaciones en febrero, mayo, agosto y noviembre.
     # EOPIBT es trimestral: publicaciones en enero, abril, julio y octubre.
     if kind == "PIBT":
@@ -1098,6 +1299,15 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
             if extra:
                 parsed_by_url[url] = extra
 
+    if kind == "EOPIBT":
+        # Rellena los trimestres 2015-T1 a 2015-T3 con los datos abiertos oficiales
+        # (la serie publicada hasta 2023-T2) y sirve de respaldo para yoy_orig.
+        for row in _eopibt_opendata_rows():
+            key, sub, col, o, url = row
+            if (key, col, o["ym"]) not in seen:
+                results.append(row)
+                seen.add((key, col, o["ym"]))
+
     # Agrupar por indicador y columna
     grouped: dict[str, dict[int, list[dict]]] = {}
     for indicator, sub, col, o, url in results:
@@ -1160,13 +1370,18 @@ def discover_bulletin_url(key: str, period: str | None, start_year: int = 2024,
     year, month = int(ym.split("-")[0]), int(ym.split("-")[1])
     this_year = 2026
     issues: list[tuple[int, int, str]] = []
+    templates = BULLETIN_URLS[kind]
+    if isinstance(templates, str):
+        templates = [templates]
     for y in range(this_year, start_year - 1, -1):
         for m in range(12, 0, -1):
             if len(issues) >= max_search:
                 break
-            url = BULLETIN_URLS[kind].format(year=y, mm=f"{m:02d}")
-            if _head_ok(url):
-                issues.append((y, m, url))
+            for url_tmpl in templates:
+                url = url_tmpl.format(year=y, mm=f"{m:02d}")
+                if _head_ok(url):
+                    issues.append((y, m, url))
+                    break
 
     ref_label = inegi.ym_to_label(ym, freq=freq)
     for y, m, url in issues:

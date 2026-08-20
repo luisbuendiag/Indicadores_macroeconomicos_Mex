@@ -716,7 +716,13 @@ function renderIndicatorView(key) {
   // Síntesis / Principales resultados: fuente única Python (lib_metrics).
   const syn = el("div", { class: "ficha-block" });
   syn.append(el("h3", { class: "block-sub" }, ind.key === "PIB" ? "Lectura del indicador" : "Evolución reciente"));
-  resumen.forEach((b) => syn.append(el("p", { class: "prose" }, b)));
+  if (ind.key === "PIB") {
+    const ul = el("ul", { class: "reading-bullets" });
+    resumen.slice(0, 4).forEach((b) => ul.append(el("li", {}, b)));
+    syn.append(ul);
+  } else {
+    resumen.forEach((b) => syn.append(el("p", { class: "prose" }, b)));
+  }
   const results = (resumen.length > 1 && ind.key !== "PIB")
     ? el("div", { class: "ficha-block print-highlight" },
         el("h3", { class: "block-sub" }, "Principales resultados"),
@@ -804,8 +810,8 @@ function breakdown(ind, k) {
 
 // ---------------- Bloques exclusivos de la ficha del PIB ----------------
 function pibHistoryBlock(ind) {
-  const wins = ind.windows || WINDOWS;
   const start = (ind.observations[0] && ind.observations[0].period) || "—";
+  const end = (ind.observations[ind.observations.length - 1] && ind.observations[ind.observations.length - 1].period) || "—";
   const total = ind.observations.length;
   const box = el("div", { class: "ficha-block" });
   box.append(el("h3", { class: "block-sub" }, "Historial del indicador"));
@@ -814,20 +820,11 @@ function pibHistoryBlock(ind) {
     el("div", { class: "ph-lbl" }, "Periodo inicial"),
     el("div", { class: "ph-val" }, start)));
   grid.append(el("div", { class: "ph-item" },
-    el("div", { class: "ph-lbl" }, "Total de observaciones"),
+    el("div", { class: "ph-lbl" }, "Periodo final"),
+    el("div", { class: "ph-val" }, end)));
+  grid.append(el("div", { class: "ph-item" },
+    el("div", { class: "ph-lbl" }, "Observaciones"),
     el("div", { class: "ph-val" }, String(total))));
-
-  const filters = el("div", { class: "ph-filters" });
-  filters.append(el("div", { class: "ph-filter-title" }, "Observaciones por filtro"));
-  wins.forEach((w) => {
-    const obs = applyWindow(ind, w.id);
-    const period = obs.length ? `${obs[0].period} – ${obs[obs.length - 1].period}` : "—";
-    filters.append(el("div", { class: "ph-filter" },
-      el("span", { class: "phf-lbl" }, w.label),
-      el("span", { class: "phf-n" }, String(obs.length)),
-      el("span", { class: "phf-r" }, period)));
-  });
-  grid.append(filters);
   box.append(grid);
   return box;
 }

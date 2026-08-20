@@ -2,6 +2,7 @@ import json
 import re
 from pathlib import Path
 
+import openpyxl
 import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -71,7 +72,7 @@ def test_duplicate_flagged_as_revision(payload):
     ("CONSUMO", 1, 2, 0.001, 0.026),
     ("IMFBCF", 1, 2, -0.004, 0.024),
     ("IGAE", 3, 4, -0.003, 0.02),
-    ("IOAE", 0, 1, 0.2, 1.7),
+    ("IOAE", 0, 1, 0.1, 2.7),
 ])
 def test_bulletin_variations_monthly_and_annual(payload, key, monthly_col, annual_col, expected_monthly, expected_annual):
     ind = payload["indicators"][key]
@@ -149,8 +150,10 @@ def test_pib_eopibt_dashboard(payload):
     assert "billones" not in (kpi.get("maxFmt") or "")
     assert "millones" not in (kpi.get("maxFmt") or "")
 
-    # Una sola sección de lectura (resumen consolidado)
-    assert len(resumen) >= 3
+    # Una sola sección de lectura con máximo 4 bullets reales, sin próxima publicación.
+    assert resumen
+    assert len(resumen) <= 4, f"Lectura del indicador debe tener máximo 4 bullets: {resumen}"
+    assert not any("próxima publicación" in b.lower() for b in resumen), resumen
     assert any("PIB oportuno" in b for b in resumen)
     assert any("acumulado" in b.lower() for b in resumen)
 
@@ -197,9 +200,34 @@ def test_pib_historial_ampliado(payload):
     wins = pib.get("windows", [])
     assert wins
     assert {w["id"] for w in wins} == {"1a", "2a", "3a", "5a", "max"}
-    assert pib["observations"]
-    # El periodo inicial es la primera observación publicada en el boletín.
-    assert pib["observations"][0]["period"]
+    obs = pib["observations"]
+    assert obs
+    assert len(obs) == 46, f"EOPIBT debe tener 46 observaciones, tiene {len(obs)}"
+    assert obs[0]["period"] == "1T-15 P"
+    assert obs[-1]["period"] == "2T-26 P"
+
+    # Las ventanas deben estar definidas por número exacto de observaciones.
+    expected = {"1a": 4, "2a": 8, "3a": 12, "5a": 20, "max": 46}
+    counts = {w["id"]: (len(obs) if w["id"] == "max" else w["count"]) for w in wins}
+    assert counts == expected, f"Ventanas incorrectas: {counts}"
+
+    # Simula el slicing que hace applyWindow en el frontend.
+    actual = {
+        "1a": obs[-4:],
+        "2a": obs[-8:],
+        "3a": obs[-12:],
+        "5a": obs[-20:],
+        "max": obs,
+    }
+    for wid, exp in expected.items():
+        assert len(actual[wid]) == exp, f"{wid} debería tener {exp} observaciones"
+
+    # qoq es None solo donde la fuente oficial no lo publica (1T-15 a 3T-15).
+    for o in obs[:3]:
+        assert o["values"][0] is None, f"{o['period']}: qoq no debería estar inventado"
+    # A partir de 4T-15 qoq debe existir.
+    for o in obs[3:]:
+        assert o["values"][0] is not None, f"{o['period']}: qoq no debería ser null"
 
 
 def test_pibt_nivel_tradicional_separado(payload):
@@ -216,3 +244,36 @@ def test_pibt_nivel_tradicional_separado(payload):
     # El último nivel disponible está en millones de pesos a precios de 2018.
     assert last["values"][0] > 1_000_000
     assert "INEGI" in (pibt.get("fuente", {}).get("nombre") or "")
+
+
+def test_pib_excel_separates_oportuno_and_nivel():
+    """El Excel individual de PIB separa inequívocamente EOPIBT y PIBT."""
+    xlsx = ROOT / "downloads" / "indicadores" / "PIB" / "PIB_datos.xlsx"
+    assert xlsx.exists(), xlsx
+    wb = openpyxl.load_workbook(xlsx)
+    assert "PIB oportuno" in wb.sheetnames
+    assert "Nivel PIB" in wb.sheetnames
+    ws = wb["PIB oportuno"]
+    # No debe existir una columna llamada Nivel para almacenar variaciones.
+    headers = [ws.cell(row=4, column=c).value for c in range(1, ws.max_column + 1)]
+    headers = [h for h in headers if isinstance(h, str)]
+    assert any("trimestral" in h.lower() for h in headers)
+    assert any("anual" in h.lower() for h in headers)
+    assert not any(h.strip() == "Nivel" for h in headers)
+    ws2 = wb["Nivel PIB"]
+    headers2 = [ws2.cell(row=4, column=c).value for c in range(1, ws2.max_column + 1)]
+    assert any((h or "").strip() == "Nivel" for h in headers2)
+
+
+def test_pib_no_interpolated_gaps(payload):
+    """Los gaps históricos en qoq no se interpolan ni rellenan con ceros."""
+    pib = payload["indicators"]["PIB"]
+    obs = pib["observations"]
+    # 1T-15 a 3T-15 tienen qoq null por fuente, no cero.
+    for o in obs[:3]:
+        assert o["values"][0] is None, f"{o['period']} qoq debe ser null"
+        assert o["values"][0] != 0
+    # No hay valores qoq = 0.0 inventados en observaciones recientes.
+    for o in obs:
+        if o["values"][0] == 0:
+            assert o["period"] in ("4T-19 P",), f"{o['period']} tiene qoq 0 sospechoso"

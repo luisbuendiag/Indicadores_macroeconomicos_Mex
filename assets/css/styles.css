@@ -242,6 +242,8 @@ td.cal-cell.empty { background: var(--soft); }
 .print-highlight { background: var(--soft); border: 1px solid var(--line); border-left: 3px solid var(--gold, #a57f2c); border-radius: var(--radius); padding: 12px 16px; }
 .block-sub { font-family: var(--serif); font-size: 17px; font-weight: 700; color: var(--dkgreen); margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px solid var(--line-soft); }
 .prose { font-size: 14.5px; line-height: 1.6; color: #2c302b; text-align: justify; }
+.reading-bullets { margin: 0 0 0 20px; padding: 0; font-size: 14.5px; line-height: 1.6; color: #2c302b; }
+.reading-bullets li { margin-bottom: 8px; }
 
 .breakdown { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
 .bd-item { border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; background: var(--soft); }
@@ -359,6 +361,8 @@ tbody tr:last-child td { font-weight: 600; color: var(--dkgreen); }
   .table-wrap { max-height: none !important; overflow: visible !important; border: none !important; }
   .block-sub { font-size: 11pt; color: var(--dkgreen); margin: 8pt 0 3pt; }
   .prose { font-size: 10pt; line-height: 1.15; text-align: left; margin: 0 0 5pt; }
+  .reading-bullets { font-size: 10pt; line-height: 1.15; margin: 0 0 0 16pt; }
+  .reading-bullets li { margin-bottom: 4pt; }
   .notes { font-size: 8pt; }
   table { font-size: 8.5pt; }
   th, td { padding: 3pt 6pt; }
