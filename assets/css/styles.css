@@ -415,6 +415,29 @@ tbody tr:last-child td { font-weight: 600; color: var(--dkgreen); }
   .range-wrap, .chart-main, .pibt-chart { display: none !important; }
 }
 
+/* ---------- PIBT (PIBSEC) specific ---------- */
+.pibsec-charts { display: block; grid-template-columns: 1fr; }
+.pibsec-section { margin-bottom: 18px; }
+.pibsec-section .block-sub { margin-bottom: 10px; }
+.pibsec-levels, .pibsec-variation { height: 420px; }
+.pibsec-sectors { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.pibsec-sector-col { border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; background: var(--soft); }
+.pibsec-sector-title { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 8px; font-weight: 700; }
+.pibsec-sector-item { display: flex; justify-content: space-between; gap: 8px; padding: 5px 0; border-bottom: 1px solid var(--line-soft); font-size: 12px; }
+.pibsec-sector-item:last-child { border-bottom: none; }
+.pibsec-sector-name { color: #3d403b; }
+.pibsec-sector-pct { font-family: var(--mono); font-weight: 600; font-size: 12px; }
+
+@media (max-width: 720px) {
+  .pibsec-sectors { grid-template-columns: 1fr; }
+  .pibsec-levels { height: 360px; }
+  .pibsec-variation { height: 340px; }
+}
+
+@media (max-width: 540px) {
+  .pibsec-levels { height: 560px; }
+}
+
 /* ---------- Modal ---------- */
 .modal-overlay { position: fixed; inset: 0; z-index: 1000; display: none; align-items: flex-start; justify-content: center; padding: 24px 16px; }
 .modal-overlay.active { display: flex; }

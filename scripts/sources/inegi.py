@@ -65,7 +65,8 @@ def label_to_ym(period: str) -> str | None:
             y = int(yy)
             if 1 <= q <= 4:
                 month = (q - 1) * 3 + 1
-                return f"{2000 + y:04d}-{month:02d}"
+                base = 1900 if y >= 93 else 2000
+                return f"{base + y:04d}-{month:02d}"
         except ValueError:
             pass
     # Mensual: "Abr 26 P"
@@ -79,11 +80,17 @@ def label_to_ym(period: str) -> str | None:
         yy = int(parts[1])
     except ValueError:
         return None
-    return f"{2000 + yy:04d}-{mi:02d}"
+    # Heurística para series que comienzan en los noventa (INEGI BIE usa 1993).
+    base = 1900 if yy >= 93 else 2000
+    return f"{base + yy:04d}-{mi:02d}"
 
 
-def _tp_to_ym(time_period: str) -> str | None:
-    """Convierte 'AAAA/MM' del BIE a 'AAAA-MM'."""
+def _tp_to_ym(time_period: str, freq: int | str | None = None) -> str | None:
+    """Convierte 'AAAA/MM' del BIE a 'AAAA-MM'.
+
+    Para series trimestrales (FREQ=4) INEGI usa AAAA/QQ, donde QQ es el
+    número de trimestre (1..4); lo convertimos al mes inicial del trimestre.
+    """
     tp = (time_period or "").strip()
     if "/" not in tp:
         return None
@@ -92,7 +99,14 @@ def _tp_to_ym(time_period: str) -> str | None:
         mi = int(m)
     except ValueError:
         return None
-    if not (1 <= mi <= 12) or len(y) != 4 or not y.isdigit():
+    if len(y) != 4 or not y.isdigit():
+        return None
+    if str(freq) == "4":
+        if not (1 <= mi <= 4):
+            return None
+        month = (mi - 1) * 3 + 1
+        return f"{y}-{month:02d}"
+    if not (1 <= mi <= 12):
         return None
     return f"{y}-{mi:02d}"
 
@@ -165,7 +179,7 @@ def _parse_series(raw: dict) -> tuple[list[dict], dict] | None:
     }
     obs = []
     for o in s.get("OBSERVATIONS") or []:
-        ym = _tp_to_ym(o.get("TIME_PERIOD"))
+        ym = _tp_to_ym(o.get("TIME_PERIOD"), freq)
         val = o.get("OBS_VALUE")
         if ym is None or val in (None, ""):
             continue
@@ -264,8 +278,9 @@ def fetch(config: dict, start_year: int = 2018) -> SourceResult:
         items: list[dict] = []
         for spec in specs:
             serie_id = str(spec["serie"])
+            spec_start = spec.get("start_year", start_year)
             try:
-                item = _fetch_one(spec, token, start_year)
+                item = _fetch_one(spec, token, spec_start)
             except Exception as e:  # noqa: BLE001 - resiliencia del pipeline
                 warnings.append(f"INEGI {key}: error de consulta (serie {serie_id}): {e}")
                 continue

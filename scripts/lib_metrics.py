@@ -815,7 +815,7 @@ def _pibsec_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
         return F.fmt_val(v, "bill")
 
     col_cards = [
-        ("PIB", 5, 6, 7),
+        ("PIB total", 5, 6, 7),
         ("Actividades primarias", 0, 8, 9),
         ("Actividades secundarias", 1, 10, 11),
         ("Actividades terciarias", 2, 3, 4),
@@ -825,7 +825,7 @@ def _pibsec_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
         nivel = _val_at(ind, last_i, nivel_col)
         qoq = _val_at(ind, last_i, qoq_col)
         y = _val_at(ind, last_i, yoy_col)
-        short = name.split()[-1] if name != "PIB" else name
+        short = "PIB" if name == "PIB total" else name.split()[-1]
         cards.append({
             "name": short,
             "full": name,

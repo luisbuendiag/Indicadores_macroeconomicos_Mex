@@ -30,13 +30,13 @@
       "yoyLabel": "Var. anual PIB",
       "qoqLabel": "Trim.",
       "yoyLabelShort": "Anual",
-      "noun": "PIB trimestral por actividades económicas",
+      "noun": "Producto Interno Bruto Trimestral",
       "art": "el",
       "grupo": "growth",
       "assess": "growth",
-      "ctx": " (a precios de 2018)",
+      "ctx": " a precios constantes de 2018",
       "vw": "nivel del PIB y variaciones trimestrales y anuales por actividad económica",
-      "vg": "f",
+      "vg": "m",
       "comp": "frente al trimestre anterior",
       "goodSign": 1
     },
@@ -303,8 +303,8 @@
     "EMOE"
   ],
   "LABELS": {
-    "PIB": "PIB",
-    "PIBSEC": "PIB trimestral por grandes actividades económicas",
+    "PIB": "PIB oportuno",
+    "PIBSEC": "PIB trimestral a precios constantes",
     "IGAE": "IGAE",
     "IMAI": "IMAI",
     "BCMM": "Balanza comercial",
@@ -321,8 +321,8 @@
     "EMOE": "Confianza empresarial (EMOE)"
   },
   "SIGLA": {
-    "PIB": "PIB OPORTUNO",
-    "PIBSEC": "PIB POR ACTIVIDAD",
+    "PIB": "EOPIBT",
+    "PIBSEC": "PIBT",
     "IGAE": "IGAE",
     "IMAI": "IMAI",
     "BCMM": "Balanza comercial",
@@ -340,7 +340,7 @@
   },
   "CAPTIONS": {
     "PIB": "Variación trimestral desestacionalizada del PIB oportuno (barras) y su variación anual desestacionalizada (línea). Ambas en porcentaje.",
-    "PIBSEC": "Nivel del PIB total (línea) y composición por actividad económica (barras apiladas), con variaciones trimestrales de PIB y actividades (líneas, eje derecho). Niveles en millones de pesos a precios de 2018.",
+    "PIBSEC": "Niveles del PIB y las grandes actividades económicas (small multiples, arriba) y variaciones trimestrales y anuales agrupadas (abajo). Las variaciones a partir de 2021 provienen del boletín PIBT; antes se calculan a partir de los niveles originales.",
     "IGAE": "Índice global de volumen físico (línea verde) con el desglose de actividades secundarias (línea oro) y terciarias (línea verde azulado), en índice base 2018=100.",
     "IMAI": "Índice de volumen físico industrial (línea verde, eje izquierdo) y variación mensual (línea oro, eje derecho).",
     "CONSUMO": "Índice de volumen físico del consumo privado (línea verde) y variación mensual (línea oro, eje derecho).",

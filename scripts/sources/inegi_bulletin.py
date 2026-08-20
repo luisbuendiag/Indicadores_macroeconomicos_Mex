@@ -1403,7 +1403,7 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
     return out
 
 
-def fetch(config: dict | None = None, start_year: int = 2024, max_bulletins: int = 18) -> SourceResult:
+def fetch(config: dict | None = None, start_year: int = 2021, max_bulletins: int = 30) -> SourceResult:
     """Consulta los boletines oficiales del INEGI y devuelve un SourceResult."""
     warnings: list[str] = []
     if pdfplumber is None:

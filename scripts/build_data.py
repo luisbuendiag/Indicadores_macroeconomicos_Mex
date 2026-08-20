@@ -132,6 +132,74 @@ def sync_pibsec_pibt(payload: dict) -> list[str]:
     return changes
 
 
+def compute_pibsec_variations(payload: dict) -> list[str]:
+    """Completa qoq/yoy de PIBSEC a partir de niveles.
+
+    Recalcula todas las variaciones trimestrales y anuales a partir de los
+    niveles oficiales del BIE, salvo el periodo más reciente, donde prevalecen
+    las cifras desestacionalizadas del boletín PIBT.
+    """
+    pibsec = payload["indicators"].get("PIBSEC")
+    if not pibsec:
+        return []
+    obs = pibsec.get("observations", [])
+    if not obs:
+        return []
+    last_period = pibsec.get("last_observation")
+    def _official_range(period: str) -> bool:
+        """Periodos con boletín PIBT descargado (2021 en adelante)."""
+        ym = inegi.label_to_ym(period)
+        if not ym:
+            return False
+        return ym >= "2021-01"
+    # nivel_col -> (qoq_col, yoy_col)
+    maps = {
+        0: (8, 9),
+        1: (10, 11),
+        2: (3, 4),
+        5: (6, 7),
+    }
+    updated = 0
+    for i, o in enumerate(obs):
+        vals = list(o.get("values", []))
+        while len(vals) < 12:
+            vals.append(None)
+        # Conservar el boletín oficial en el periodo más reciente.
+        is_last = (o.get("period") == last_period)
+        for lvl_col, (qoq_col, yoy_col) in maps.items():
+            cur = vals[lvl_col]
+            if cur is None:
+                continue
+            use_official = is_last or _official_range(o.get("period", ""))
+            if not use_official:
+                if i > 0:
+                    prev = obs[i - 1].get("values", [])
+                    if lvl_col < len(prev) and prev[lvl_col] not in (None, 0):
+                        vals[qoq_col] = round((cur - prev[lvl_col]) / abs(prev[lvl_col]), 6)
+                        updated += 1
+                if i >= 4:
+                    yoy = obs[i - 4].get("values", [])
+                    if lvl_col < len(yoy) and yoy[lvl_col] not in (None, 0):
+                        vals[yoy_col] = round((cur - yoy[lvl_col]) / abs(yoy[lvl_col]), 6)
+                        updated += 1
+            else:
+                # Conservar el boletín oficial; rellenar sólo vacíos.
+                if i > 0:
+                    prev = obs[i - 1].get("values", [])
+                    if lvl_col < len(prev) and prev[lvl_col] not in (None, 0) and vals[qoq_col] is None:
+                        vals[qoq_col] = round((cur - prev[lvl_col]) / abs(prev[lvl_col]), 6)
+                        updated += 1
+                if i >= 4:
+                    yoy = obs[i - 4].get("values", [])
+                    if lvl_col < len(yoy) and yoy[lvl_col] not in (None, 0) and vals[yoy_col] is None:
+                        vals[yoy_col] = round((cur - yoy[lvl_col]) / abs(yoy[lvl_col]), 6)
+                        updated += 1
+        o["values"] = vals
+    if updated:
+        return [f"pibsec: variaciones calculadas desde niveles ({updated} celdas)"]
+    return []
+
+
 def apply_inegi_total(payload: dict, key: str, item: dict, prev_last: str | None) -> dict | None:
     """Fusiona una serie del INEGI sobre UNA columna del indicador existente.
 
@@ -297,6 +365,9 @@ def run(offline: bool = False) -> int:
 
     # Nivel del PIB total en PIBSEC (desde el objeto 'pibt' del PIB).
     log["changes"].extend(sync_pibsec_pibt(payload))
+
+    # Variaciones calculadas desde niveles para periodos sin boletín oficial.
+    log["changes"].extend(compute_pibsec_variations(payload))
 
     # Frescura, calendario, métricas compartidas y metadatos temporales.
     log["changes"].extend(apply_freshness_and_meta(payload, log))

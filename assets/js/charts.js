@@ -240,3 +240,165 @@ export function buildOption(ind, windowId) {
     series,
   };
 }
+
+// ---------------- PIBT: 4 small multiples (niveles) ----------------
+const PIBSEC_COLORS = { PIB: COLORS.INK, Primarias: G, Secundarias: COLORS.CRIMSON, Terciarias: Go };
+const PIBSEC_LEVELS = [
+  { key: "PIB", col: 5, top: "PIB total" },
+  { key: "Primarias", col: 0, top: "Actividades primarias" },
+  { key: "Secundarias", col: 1, top: "Actividades secundarias" },
+  { key: "Terciarias", col: 2, top: "Actividades terciarias" },
+];
+
+function lastHighlight(series, periods, values, color) {
+  const n = values.length;
+  for (let i = n - 1; i >= 0; i--) {
+    if (values[i] != null) {
+      series.markPoint = {
+        symbol: "circle", symbolSize: 7,
+        itemStyle: { color: COLORS.INK, borderColor: color, borderWidth: 2 },
+        label: {
+          show: true, position: "top", distance: 4, color: "#3d403b",
+          fontFamily: "'IBM Plex Mono',monospace", fontSize: 10,
+          formatter: (p) => {
+            const v = p.value;
+            if (v == null) return "—";
+            return (v / 1e6).toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+          },
+        },
+        data: [{ coord: [periods[i], values[i]] }],
+      };
+      break;
+    }
+  }
+}
+
+export function buildPibsecLevels(obs) {
+  const periods = obs.map((o) => o.period);
+  const grids = [];
+  const xAxes = [];
+  const yAxes = [];
+  const series = [];
+  const titles = [];
+  const rotate = periods.length > 12;
+  PIBSEC_LEVELS.forEach((cfg, i) => {
+    const row = Math.floor(i / 2);
+    const col = i % 2;
+    const left = col === 0 ? "4%" : "54%";
+    const top = row === 0 ? 20 : 225;
+    const height = 165;
+    const width = "42%";
+    grids.push({ left, top, width, height, containLabel: false });
+    xAxes.push({
+      gridIndex: i, type: "category", data: periods, boundaryGap: false,
+      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: rotate ? 8 : 9, rotate: rotate ? 42 : 0, interval: periods.length > 16 ? "auto" : 0 },
+      axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+    });
+    yAxes.push({
+      gridIndex: i, type: "value", name: "Billones de pesos (2018)", nameLocation: "middle", nameGap: 34,
+      nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 10, fontWeight: 500 },
+      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => (v / 1e6).toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 2 }) },
+      splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
+    });
+    const values = obs.map((o) => o.values[cfg.col] ?? null);
+    const s = {
+      name: cfg.top, type: "line", xAxisIndex: i, yAxisIndex: i,
+      data: values, smooth: false, symbol: "circle", symbolSize: 3,
+      lineStyle: { color: PIBSEC_COLORS[cfg.key], width: 2 },
+      itemStyle: { color: PIBSEC_COLORS[cfg.key] },
+      areaStyle: { color: PIBSEC_COLORS[cfg.key], opacity: 0.08 },
+    };
+    lastHighlight(s, periods, values, PIBSEC_COLORS[cfg.key]);
+    series.push(s);
+    titles.push({ text: cfg.top, left, top: top - 18, textStyle: { color: "#3d403b", fontFamily: FONT, fontSize: 12, fontWeight: 600 } });
+  });
+  return {
+    animation: false, color: [G, SEC, Go, COLORS.INK],
+    title: titles, grid: grids, xAxis: xAxes, yAxis: yAxes, series,
+    tooltip: {
+      trigger: "axis", backgroundColor: "#fff", borderColor: "#ddd7c6", borderWidth: 1,
+      textStyle: { color: COLORS.INK, fontFamily: FONT, fontSize: 12 },
+      extraCssText: "box-shadow:0 5px 16px rgba(0,0,0,.13);border-radius:9px;",
+      formatter: (params) => {
+        if (!params || !params.length) return "";
+        const p = params[0];
+        const v = p.value;
+        const val = v == null ? "—" : (v / 1e6).toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " billones de pesos de 2018";
+        return `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${val}</span></div>`;
+      },
+    },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "PIBT-niveles", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+  };
+}
+
+// ---------------- PIBT: variaciones agrupadas (qoq / yoy) ----------------
+const PIBSEC_VAR = [
+  { name: "PIB", qoq: 6, yoy: 7, color: COLORS.INK },
+  { name: "Primarias", qoq: 8, yoy: 9, color: G },
+  { name: "Secundarias", qoq: 10, yoy: 11, color: COLORS.CRIMSON },
+  { name: "Terciarias", qoq: 3, yoy: 4, color: Go },
+];
+
+function pctTip(value, name, color) {
+  if (value == null) return "";
+  const s = value >= 0 ? "+" : "";
+  return `<div style="display:flex;align-items:center;gap:8px;margin:2px 0"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:${color}"></span><span style="flex:1;color:#5c5f5a;font-size:11px">${name}</span><span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${s}${value.toFixed(2)}%</span></div>`;
+}
+
+export function buildPibsecVariations(obs) {
+  const periods = obs.map((o) => o.period);
+  const grids = [
+    { left: "4%", top: 50, width: "44%", height: 180, containLabel: false },
+    { left: "54%", top: 50, width: "44%", height: 180, containLabel: false },
+  ];
+  const xAxis = grids.map((_, i) => ({
+    gridIndex: i, type: "category", data: periods, boundaryGap: true,
+    axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: periods.length > 12 ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: periods.length > 16 ? 42 : 0 },
+    axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+  }));
+  const yAxis = grids.map((_, i) => ({
+    gridIndex: i, type: "value", name: i === 0 ? "Variación trimestral (%)" : "Variación anual (%)", nameLocation: "middle", nameGap: 40,
+    nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 11, fontWeight: 500 },
+    axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toFixed(1) + "%" },
+    splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
+  }));
+  const series = [];
+  PIBSEC_VAR.forEach((cfg, si) => {
+    const qoqData = obs.map((o) => (o.values[cfg.qoq] == null ? null : o.values[cfg.qoq] * 100));
+    const yoyData = obs.map((o) => (o.values[cfg.yoy] == null ? null : o.values[cfg.yoy] * 100));
+    series.push({
+      name: cfg.name, type: "bar", xAxisIndex: 0, yAxisIndex: 0,
+      data: qoqData, itemStyle: { color: cfg.color }, barMaxWidth: 14,
+      emphasis: { focus: "series" },
+      markLine: si === 0 ? { symbol: "none", data: [{ yAxis: 0, lineStyle: { color: COLORS.GRAY, type: "dashed", width: 1 }, label: { show: false } }], animation: false } : undefined,
+    });
+    series.push({
+      name: cfg.name, type: "bar", xAxisIndex: 1, yAxisIndex: 1,
+      data: yoyData, itemStyle: { color: cfg.color }, barMaxWidth: 14,
+      emphasis: { focus: "series" },
+      markLine: si === 0 ? { symbol: "none", data: [{ yAxis: 0, lineStyle: { color: COLORS.GRAY, type: "dashed", width: 1 }, label: { show: false } }], animation: false } : undefined,
+    });
+  });
+  return {
+    animation: false, color: [G, SEC, Go, COLORS.INK],
+    grid: grids, xAxis, yAxis, series,
+    tooltip: {
+      trigger: "axis", backgroundColor: "#fff", borderColor: "#ddd7c6", borderWidth: 1,
+      textStyle: { color: COLORS.INK, fontFamily: FONT, fontSize: 12 },
+      extraCssText: "box-shadow:0 5px 16px rgba(0,0,0,.13);border-radius:9px;",
+      formatter: (params) => {
+        if (!params || !params.length) return "";
+        const p0 = params[0];
+        let html = `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p0.axisValue}</div>`;
+        params.forEach((p) => {
+          const cfg = PIBSEC_VAR.find((c) => c.name === p.seriesName);
+          html += pctTip(p.value, p.seriesName, cfg ? cfg.color : COLORS.GRAY);
+        });
+        return html;
+      },
+    },
+    legend: { top: 10, left: "center", itemWidth: 12, itemHeight: 12, icon: "roundRect", textStyle: { color: "#3d403b", fontFamily: FONT, fontSize: 11 } },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "PIBT-variaciones", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+  };
+}
