@@ -242,6 +242,31 @@ export function buildOption(ind, windowId) {
 }
 
 // ---------------- PIBT: 4 small multiples (niveles) ----------------
+function computeYRange(values, { padding = 0.08, includeZero = false } = {}) {
+  const v = values.filter((x) => x != null && !Number.isNaN(x));
+  if (!v.length) return null;
+  const actualMin = Math.min(...v);
+  const actualMax = Math.max(...v);
+  let min = actualMin, max = actualMax;
+  if (min === max) {
+    const span = Math.max(Math.abs(min), Math.abs(max)) || 1;
+    min -= span * 0.05;
+    max += span * 0.05;
+  } else {
+    const range = max - min;
+    const pad = range * padding;
+    min -= pad;
+    max += pad;
+  }
+  if (includeZero) {
+    if (min > 0) min = 0;
+    if (max < 0) max = 0;
+  } else if (actualMin >= 0) {
+    min = Math.max(0, min);
+  }
+  return { min, max };
+}
+
 const PIBSEC_COLORS = { PIB: COLORS.INK, Primarias: G, Secundarias: COLORS.CRIMSON, Terciarias: Go };
 const PIBSEC_LEVELS = [
   { key: "PIB", col: 5, top: "PIB total" },
@@ -310,6 +335,8 @@ export function buildPibsecLevels(obs) {
     };
     lastHighlight(s, periods, values, PIBSEC_COLORS[cfg.key]);
     series.push(s);
+    const yRange = computeYRange(values, { padding: 0.08, includeZero: false });
+    if (yRange) { yAxes[i].min = yRange.min; yAxes[i].max = yRange.max; yAxes[i].scale = true; }
     titles.push({ text: cfg.top, left, top: top - 18, textStyle: { color: "#3d403b", fontFamily: FONT, fontSize: 12, fontWeight: 600 } });
   });
   return {
@@ -357,16 +384,14 @@ export function buildPibsecVariations(obs) {
     axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: periods.length > 12 ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: periods.length > 16 ? 42 : 0 },
     axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
   }));
-  const yAxis = grids.map((_, i) => ({
-    gridIndex: i, type: "value", name: i === 0 ? "Variación trimestral (%)" : "Variación anual (%)", nameLocation: "middle", nameGap: 40,
-    nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 11, fontWeight: 500 },
-    axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toFixed(1) + "%" },
-    splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
-  }));
+  const qoqAll = [];
+  const yoyAll = [];
   const series = [];
   PIBSEC_VAR.forEach((cfg, si) => {
     const qoqData = obs.map((o) => (o.values[cfg.qoq] == null ? null : o.values[cfg.qoq] * 100));
     const yoyData = obs.map((o) => (o.values[cfg.yoy] == null ? null : o.values[cfg.yoy] * 100));
+    qoqAll.push(...qoqData);
+    yoyAll.push(...yoyData);
     series.push({
       name: cfg.name, type: "bar", xAxisIndex: 0, yAxisIndex: 0,
       data: qoqData, itemStyle: { color: cfg.color }, barMaxWidth: 14,
@@ -379,6 +404,19 @@ export function buildPibsecVariations(obs) {
       emphasis: { focus: "series" },
       markLine: si === 0 ? { symbol: "none", data: [{ yAxis: 0, lineStyle: { color: COLORS.GRAY, type: "dashed", width: 1 }, label: { show: false } }], animation: false } : undefined,
     });
+  });
+  const qoqRange = computeYRange(qoqAll, { padding: 0.12, includeZero: true });
+  const yoyRange = computeYRange(yoyAll, { padding: 0.12, includeZero: true });
+  const yAxis = grids.map((_, i) => {
+    const range = i === 0 ? qoqRange : yoyRange;
+    const ay = {
+      gridIndex: i, type: "value", name: i === 0 ? "Variación trimestral (%)" : "Variación anual (%)", nameLocation: "middle", nameGap: 40,
+      nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 11, fontWeight: 500 },
+      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toFixed(1) + "%" },
+      splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
+    };
+    if (range) { ay.min = range.min; ay.max = range.max; }
+    return ay;
   });
   return {
     animation: false, color: [G, SEC, Go, COLORS.INK],

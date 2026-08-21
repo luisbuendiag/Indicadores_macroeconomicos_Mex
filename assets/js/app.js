@@ -647,6 +647,26 @@ function fichaCompareTable(ind, k, cfg, yoy) {
   return box;
 }
 
+function buildWinToggle(ind, winId) {
+  const wt = el("div", { class: "win-toggle no-print", role: "group", "aria-label": "Ventana temporal" });
+  const wins = ind.windows || WINDOWS;
+  wins.forEach((w) => {
+    const pressed = w.id === winId;
+    wt.append(el("button", {
+      class: "win-btn", type: "button", "aria-pressed": String(pressed),
+      "data-ind": ind.key, "data-win-id": w.id,
+      onclick: () => {
+        state.windows[ind.key] = w.id;
+        mountChart(ind);
+        document.querySelectorAll(`.win-btn[data-ind="${ind.key}"]`).forEach((b) => {
+          b.setAttribute("aria-pressed", String(b.dataset.winId === w.id));
+        });
+      },
+    }, w.label));
+  });
+  return wt;
+}
+
 function renderIndicatorView(key) {
   const sec = document.getElementById(`view-${key}`);
   const ind = getInd(key);
@@ -709,23 +729,23 @@ function renderIndicatorView(key) {
   panel.append(mini);
 
   // window toggle + chart
-  const wt = el("div", { class: "win-toggle no-print", role: "group", "aria-label": "Ventana temporal" });
-  wins.forEach((w) => wt.append(el("button", { class: "win-btn", type: "button", "aria-pressed": String(w.id === winId), onclick: () => { state.windows[ind.key] = w.id; mountChart(ind); wt.querySelectorAll(".win-btn").forEach((b, i) => b.setAttribute("aria-pressed", String((ind.windows || WINDOWS)[i].id === w.id))); } }, w.label)));
-  panel.append(wt);
   panel.append(el("div", { class: "chart-caption", id: `caption-${ind.key}` }, `${CAPTIONS[ind.key] || ""} Datos hasta ${ind.last_observation || "—"}.`.trim()));
   const chartMain = el("div", { class: "chart-main" });
   if (ind.key === "PIBSEC") {
     chartMain.classList.add("pibsec-charts");
     const levels = el("div", { class: "pibsec-section" });
     levels.append(el("h3", { class: "block-sub" }, "Evolución del PIB y grandes actividades económicas"));
+    levels.append(buildWinToggle(ind, winId));
     levels.append(el("div", { class: "chart-box pibsec-levels", id: `chart-${ind.key}-levels`, role: "img", "aria-label": "Niveles del PIB y actividades económicas" }));
     chartMain.append(levels);
     const vars = el("div", { class: "pibsec-section" });
     vars.append(el("h3", { class: "block-sub" }, "Variación trimestral y anual del PIB y actividades económicas"));
+    vars.append(buildWinToggle(ind, winId));
     vars.append(el("div", { class: "chart-box pibsec-variation", id: `chart-${ind.key}-variation`, role: "img", "aria-label": "Variaciones del PIB y actividades económicas" }));
     chartMain.append(vars);
     chartMain.append(el("div", { class: "range-wrap", id: `range-${ind.key}` }));
   } else {
+    chartMain.append(buildWinToggle(ind, winId));
     chartMain.append(el("div", { class: "chart-box", id: `chart-${ind.key}`, role: "img", "aria-label": `Gráfica de ${ind.nombre}` }));
     chartMain.append(el("div", { class: "range-wrap", id: `range-${ind.key}` }));
   }
