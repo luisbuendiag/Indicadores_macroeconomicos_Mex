@@ -1531,8 +1531,7 @@
         "frecuencia": "Trimestral",
         "unidad": "Millones de pesos (a precios de 2018)",
         "ajuste_estacional": "Serie original"
-      },
-      "boletin_validado": true
+      }
     },
     "PIBSEC": {
       "key": "PIBSEC",
@@ -3880,8 +3879,8 @@
         }
       ],
       "last_observation": "1T-26",
-      "last_updated": "2026-08-20",
-      "last_checked": "2026-08-20",
+      "last_updated": "2026-08-21",
+      "last_checked": "2026-08-21",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -3890,7 +3889,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "22 de mayo de 2026",
       "periodo_referencia": "1T-26",
-      "fecha_consulta": "2026-08-20",
+      "fecha_consulta": "2026-08-21",
       "metrics": {
         "kpi": {
           "assessment": "adverso",
@@ -4314,8 +4313,7 @@
         "72 Servicios de alojamiento temporal y de preparación de alimentos y bebidas": -0.028999999999999998,
         "81 Otros servicios excepto actividades gubernamentales": 0.002,
         "93 Actividades legislativas, gubernamentales, de impartición de justicia y de organismos internacionales y extraterritoriales": 0.053
-      },
-      "boletin_validado": true
+      }
     },
     "IGAE": {
       "key": "IGAE",
@@ -10002,8 +10000,8 @@
         }
       ],
       "last_observation": "May 26",
-      "last_updated": "2026-08-20",
-      "last_checked": "2026-08-20",
+      "last_updated": "2026-08-21",
+      "last_checked": "2026-08-21",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -10012,7 +10010,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "23 de julio de 2026",
       "periodo_referencia": "May 26",
-      "fecha_consulta": "2026-08-20",
+      "fecha_consulta": "2026-08-21",
       "metrics": {
         "kpi": {
           "assessment": "adverso",
@@ -11763,8 +11761,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-08-20",
-      "last_checked": "2026-08-20",
+      "last_updated": "2026-08-21",
+      "last_checked": "2026-08-21",
       "source_origin": "api",
       "data_quality": [],
       "requiere_token": "INEGI",
@@ -11774,7 +11772,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "11 de agosto de 2026",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-08-20",
+      "fecha_consulta": "2026-08-21",
       "metrics": {
         "kpi": {
           "assessment": "favorable",
@@ -12040,8 +12038,7 @@
       "periodo_boletin": "Jun 26",
       "numero_boletin": "485/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Indicador Mensual de la Actividad Industrial",
-      "boletin_validado": true
+      "producto_boletin": "Indicador Mensual de la Actividad Industrial"
     },
     "CONSUMO": {
       "key": "CONSUMO",
@@ -12357,8 +12354,7 @@
       "periodo_boletin": "May 26",
       "numero_boletin": "478/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Indicador Mensual del Consumo Privado",
-      "boletin_validado": true
+      "producto_boletin": "Indicador Mensual del Consumo Privado"
     },
     "IED": {
       "key": "IED",
@@ -13339,8 +13335,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-08-20",
-      "last_checked": "2026-08-20",
+      "last_updated": "2026-08-21",
+      "last_checked": "2026-08-21",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -13349,7 +13345,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "24 de julio de 2026",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-08-20",
+      "fecha_consulta": "2026-08-21",
       "metrics": {
         "kpi": {
           "assessment": "adverso",
@@ -13609,8 +13605,7 @@
       "periodo_boletin": "Jun 26",
       "numero_boletin": "435/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Indicadores de Ocupación y Empleo (ENOE / IOOE)",
-      "boletin_validado": true
+      "producto_boletin": "Indicadores de Ocupación y Empleo (ENOE / IOOE)"
     },
     "INPC": {
       "key": "INPC",
@@ -14475,8 +14470,8 @@
         }
       ],
       "last_observation": "Jul 26",
-      "last_updated": "2026-08-20",
-      "last_checked": "2026-08-20",
+      "last_updated": "2026-08-21",
+      "last_checked": "2026-08-21",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -14485,7 +14480,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "7 de agosto de 2026",
       "periodo_referencia": "Jul 26",
-      "fecha_consulta": "2026-08-20",
+      "fecha_consulta": "2026-08-21",
       "metrics": {
         "kpi": {
           "assessment": "neutral",
@@ -14747,8 +14742,7 @@
       "periodo_boletin": "Jul 26",
       "numero_boletin": "481/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Índice Nacional de Precios al Consumidor",
-      "boletin_validado": true
+      "producto_boletin": "Índice Nacional de Precios al Consumidor"
     },
     "IMFBCF": {
       "key": "IMFBCF",
@@ -15058,8 +15052,7 @@
       "periodo_boletin": "May 26",
       "numero_boletin": "479/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Indicador Mensual de la Formación Bruta de Capital Fijo",
-      "boletin_validado": true
+      "producto_boletin": "Indicador Mensual de la Formación Bruta de Capital Fijo"
     },
     "IOAE": {
       "key": "IOAE",
@@ -15493,8 +15486,7 @@
       "periodo_boletin": "Jul 26",
       "numero_boletin": "494/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Indicador Oportuno de la Actividad Económica",
-      "boletin_validado": true
+      "producto_boletin": "Indicador Oportuno de la Actividad Económica"
     },
     "EMIM": {
       "key": "EMIM",
@@ -16240,8 +16232,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-08-20",
-      "last_checked": "2026-08-20",
+      "last_updated": "2026-08-21",
+      "last_checked": "2026-08-21",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -16249,7 +16241,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "17 de agosto de 2026",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-08-20",
+      "fecha_consulta": "2026-08-21",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -16516,8 +16508,7 @@
       "periodo_boletin": "Jun 26",
       "numero_boletin": "490/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Encuesta Mensual de la Industria Manufacturera",
-      "boletin_validado": true
+      "producto_boletin": "Encuesta Mensual de la Industria Manufacturera"
     },
     "TIPOCAMBIO": {
       "key": "TIPOCAMBIO",
@@ -17163,8 +17154,8 @@
         }
       ],
       "last_observation": "Jul 26",
-      "last_updated": "2026-08-20",
-      "last_checked": "2026-08-20",
+      "last_updated": "2026-08-21",
+      "last_checked": "2026-08-21",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
@@ -17172,7 +17163,7 @@
       "origen_dato": "api",
       "fecha_publicacion": null,
       "periodo_referencia": "Jul 26",
-      "fecha_consulta": "2026-08-20",
+      "fecha_consulta": "2026-08-21",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -31115,8 +31106,8 @@
         }
       ],
       "last_observation": "Jul 26",
-      "last_updated": "2026-08-20",
-      "last_checked": "2026-08-20",
+      "last_updated": "2026-08-21",
+      "last_checked": "2026-08-21",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
@@ -31124,7 +31115,7 @@
       "origen_dato": "api",
       "fecha_publicacion": null,
       "periodo_referencia": "Jul 26",
-      "fecha_consulta": "2026-08-20",
+      "fecha_consulta": "2026-08-21",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -50230,9 +50221,15 @@
           "values": [
             6.5
           ]
+        },
+        {
+          "period": "2026-08-21",
+          "values": [
+            6.5
+          ]
         }
       ],
-      "fecha_ultima_observacion": "2026-08-20",
+      "fecha_ultima_observacion": "2026-08-21",
       "url_fuente_oficial": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
       "fecha_ultima_publicacion": null,
       "regla_publicacion": null
@@ -50881,8 +50878,8 @@
         }
       ],
       "last_observation": "Jul 26",
-      "last_updated": "2026-08-20",
-      "last_checked": "2026-08-20",
+      "last_updated": "2026-08-21",
+      "last_checked": "2026-08-21",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
@@ -50890,7 +50887,7 @@
       "origen_dato": "api",
       "fecha_publicacion": null,
       "periodo_referencia": "Jul 26",
-      "fecha_consulta": "2026-08-20",
+      "fecha_consulta": "2026-08-21",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -54609,8 +54606,8 @@
         }
       ],
       "last_observation": "Jul 26",
-      "last_updated": "2026-08-20",
-      "last_checked": "2026-08-20",
+      "last_updated": "2026-08-21",
+      "last_checked": "2026-08-21",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "complementario",
@@ -54618,7 +54615,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "3 de agosto de 2026",
       "periodo_referencia": "Jul 26",
-      "fecha_consulta": "2026-08-20",
+      "fecha_consulta": "2026-08-21",
       "metrics": {
         "kpi": {
           "assessment": "neutral",
@@ -54887,8 +54884,7 @@
       "periodo_boletin": "Jul 26",
       "numero_boletin": "474/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Encuesta Mensual de Opinión Empresarial",
-      "boletin_validado": true
+      "producto_boletin": "Encuesta Mensual de Opinión Empresarial"
     },
     "BCMM": {
       "key": "BCMM",
@@ -55742,8 +55738,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-08-20",
-      "last_checked": "2026-08-20",
+      "last_updated": "2026-08-21",
+      "last_checked": "2026-08-21",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -55751,7 +55747,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "27 de julio de 2026",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-08-20",
+      "fecha_consulta": "2026-08-21",
       "metrics": {
         "kpi": {
           "assessment": "neutral",
@@ -56018,8 +56014,7 @@
       "periodo_boletin": "Jun 26",
       "numero_boletin": "436/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Balanza Comercial de Mercancías de México",
-      "boletin_validado": true
+      "producto_boletin": "Balanza Comercial de Mercancías de México"
     }
   }
 }
