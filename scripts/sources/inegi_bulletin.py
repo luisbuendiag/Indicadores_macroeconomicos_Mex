@@ -1236,7 +1236,7 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
     Mapeo de columnas:
       - CONSUMO:  0 = índice, 1 = var. mensual, 2 = var. anual.
       - IMFBCF:   0 = índice, 1 = var. mensual, 2 = var. anual.
-      - IGAE:     3 = var. mensual, 4 = var. anual (el nivel se conserva de BIE).
+      - IGAE:     1 = var. mensual desestacionalizada (el nivel y la var. anual se calculan desde la serie BIE).
       - PIBT:     PIBSEC col 3/4 = qoq/yoy terciarias;
                   col 5 = nivel PIB (BIE); col 6/7 = qoq/yoy PIB total;
                   col 8/9 = qoq/yoy primarias; col 10/11 = qoq/yoy secundarias.
@@ -1308,7 +1308,9 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
             parsed = _parse_imcp_imfbcf(kind, pdf, pub_date)
             if not parsed:
                 continue
-            for sub, col in (("mensual", 3), ("anual", 4)):
+            # Sólo la variación mensual desestacionalizada del boletín (col 1).
+            # La variación anual original se calcula en build_data.py desde los índices BIE.
+            for sub, col in (("mensual", 1),):
                 for o in parsed[sub]:
                     if ("IGAE", col, o["ym"]) not in seen:
                         results.append(("IGAE", sub, col, o, url))

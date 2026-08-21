@@ -111,19 +111,64 @@
         "confirmar": true
       }
     ],
-    "IGAE": {
-      "serie": "737121",
-      "confirmar": false,
-      "nombre": "Indicador Global de la Actividad Económica",
-      "descripcion_serie": "Total, índice de volumen físico (series originales)",
-      "frecuencia": "Mensual",
-      "unidad": "Índice base 2018=100",
-      "tipo_serie": "Serie original",
-      "db": "BIE-BISE",
-      "geo": "00",
-      "columna_objetivo": 0,
-      "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603589#D737121"
-    },
+    "IGAE": [
+      {
+        "serie": "737121",
+        "confirmar": false,
+        "nombre": "Indicador Global de la Actividad Económica",
+        "descripcion_serie": "Total, índice de volumen físico (series originales)",
+        "frecuencia": "Mensual",
+        "unidad": "Índice base 2018=100",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 0,
+        "start_year": 1993,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603589#D737121"
+      },
+      {
+        "serie": "737122",
+        "confirmar": false,
+        "nombre": "Total de actividades primarias",
+        "descripcion_serie": "Agricultura, cría y explotación de animales, aprovechamiento forestal y pesca; índice de volumen físico",
+        "frecuencia": "Mensual",
+        "unidad": "Índice base 2018=100",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 3,
+        "start_year": 1993,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603589#D737122"
+      },
+      {
+        "serie": "737125",
+        "confirmar": false,
+        "nombre": "Total actividades secundarias",
+        "descripcion_serie": "Minería, energía, construcción e industrias manufactureras; índice de volumen físico",
+        "frecuencia": "Mensual",
+        "unidad": "Índice base 2018=100",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 5,
+        "start_year": 1993,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603589#D737125"
+      },
+      {
+        "serie": "737130",
+        "confirmar": false,
+        "nombre": "Total actividades terciarias",
+        "descripcion_serie": "Comercio y servicios; índice de volumen físico",
+        "frecuencia": "Mensual",
+        "unidad": "Índice base 2018=100",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 7,
+        "start_year": 1993,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603589#D737130"
+      }
+    ],
     "IMAI": [
       {
         "serie": "737233",

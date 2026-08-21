@@ -89,7 +89,7 @@ def test_individual_excel_exists_and_has_columns(payload):
         wb = openpyxl.load_workbook(path)
         ws = wb.active
         headers = [ws.cell(5, c).value for c in range(1, ws.max_column + 1)]
-        required = ["Periodo", "Fecha", "Nivel", "Variación mensual", "Variación trimestral", "Variación anual"]
+        required = ["Periodo", "Fecha"] + [c["label"] for c in ind["columns"]]
         for col in required:
             assert col in headers, f"{key} falta columna {col}"
 

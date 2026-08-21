@@ -1,13 +1,15 @@
 {
-  "started_at": "2026-08-21T01:50:00+00:00",
+  "started_at": "2026-08-21T02:55:16+00:00",
   "mode": "offline",
   "network_calls": false,
   "warnings": [],
   "changes": [
     "columnas override PIB: 4 columnas",
     "columnas override PIBSEC: 12 columnas",
+    "columnas override IGAE: 9 columnas",
     "columnas override IMAI: 3 columnas",
     "pibsec: variaciones calculadas desde niveles (876 celdas)",
+    "IGAE: variaciones anuales calculadas para 1556 celdas",
     "calendario: regenerado con as_of=2026-08-20",
     "métricas: data/metrics.json regenerado",
     "boletín: PIB descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_07.pdf",
@@ -38,10 +40,10 @@
     "frescura: EMOE -> ACTUALIZADO",
     "boletín: BCMM descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_07.pdf",
     "frescura: BCMM -> ACTUALIZADO",
-    "meta: last_update_ct=2026-08-20T19:51:07-06:00"
+    "meta: last_update_ct=2026-08-20T20:56:00-06:00"
   ],
   "consultas": [],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-08-21T01:51:07+00:00"
+  "finished_at": "2026-08-21T02:56:00+00:00"
 }

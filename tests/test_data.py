@@ -71,7 +71,7 @@ def test_duplicate_flagged_as_revision(payload):
 @pytest.mark.parametrize("key,monthly_col,annual_col,expected_monthly,expected_annual", [
     ("CONSUMO", 1, 2, 0.001, 0.026),
     ("IMFBCF", 1, 2, -0.004, 0.024),
-    ("IGAE", 3, 4, -0.003, 0.02),
+    ("IGAE", 1, 2, -0.003, 0.011059),
     ("IOAE", 0, 1, 0.1, 2.7),
 ])
 def test_bulletin_variations_monthly_and_annual(payload, key, monthly_col, annual_col, expected_monthly, expected_annual):

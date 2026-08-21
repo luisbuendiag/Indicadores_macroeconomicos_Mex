@@ -101,7 +101,32 @@
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
-      "nombre": "Indicador Global de la Actividad Económica"
+      "nombre": "Indicador Global de la Actividad Económica",
+      "sigla": "IGAE",
+      "descripcion": "Aproximación mensual de la evolución real de la economía nacional. Publica un índice de volumen físico (base 2018=100) para el agregado y las actividades primarias, secundarias y terciarias, además de su variación mensual desestacionalizada y variación anual original.",
+      "frecuencia": "Mensual",
+      "unidad": "Índice base 2018=100",
+      "ajuste_estacional": "Serie original",
+      "grupo": "growth",
+      "publicacion": "Aproximadamente 30 días después del cierre del mes",
+      "columns": [
+        {"label": "IGAE (índice)", "index": 0, "fmt": "idx"},
+        {"label": "Var. mensual desest. (%)", "index": 1, "fmt": "pct-frac"},
+        {"label": "Var. anual original (%)", "index": 2, "fmt": "pct-frac"},
+        {"label": "Act. primarias (índice)", "index": 3, "fmt": "idx"},
+        {"label": "Var. anual act. primarias (%)", "index": 4, "fmt": "pct-frac"},
+        {"label": "Act. secundarias (índice)", "index": 5, "fmt": "idx"},
+        {"label": "Var. anual act. secundarias (%)", "index": 6, "fmt": "pct-frac"},
+        {"label": "Act. terciarias (índice)", "index": 7, "fmt": "idx"},
+        {"label": "Var. anual act. terciarias (%)", "index": 8, "fmt": "pct-frac"}
+      ],
+      "windows": [
+        {"id": "3m", "label": "3 meses", "count": 3},
+        {"id": "6m", "label": "6 meses", "count": 6},
+        {"id": "1a", "label": "1 año", "count": 12},
+        {"id": "5a", "label": "5 años", "count": 60},
+        {"id": "max", "label": "Máximo", "count": null}
+      ]
     },
     "IMAI": {
       "requiere_token": "INEGI",

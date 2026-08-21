@@ -200,6 +200,118 @@ def compute_pibsec_variations(payload: dict) -> list[str]:
     return []
 
 
+def prepare_igae_for_v3(payload: dict) -> list[str]:
+    """Migra el indicador IGAE al esquema de 9 columnas antes de fusionar fuentes.
+
+    El esquema anterior tenía 5 columnas: índice global, índices de actividades
+    secundarias/terciarias y dos variaciones. El nuevo esquema separa los cuatro
+    componentes (global + primarias + secundarias + terciarias) con su índice y
+    su variación anual. Esta función reordena los valores antiguos y descarta las
+    variaciones (se recalcularán o se obtendrán del boletín).
+    """
+    changes: list[str] = []
+    ind = payload["indicators"].get("IGAE")
+    if not ind:
+        return changes
+
+    # Tomar la definición de columnas del perfil V3.
+    meta = json.loads(L.META_FILE.read_text(encoding="utf-8"))
+    igae_prof = meta.get("profile", {}).get("IGAE", {})
+    new_cols = igae_prof.get("columns")
+    if not new_cols or len(new_cols) != 9:
+        return changes
+
+    old_cols = ind.get("columns", [])
+    old_labels = [c.get("label", "") for c in old_cols]
+    is_old_schema = (
+        len(old_cols) == 5
+        and "Índice de volumen físico" in old_labels[0]
+        and "Act. Secundarias" in old_labels[1]
+        and "Act. Terciarias" in old_labels[2]
+    )
+
+    if is_old_schema:
+        new_obs = []
+        for o in ind.get("observations", []):
+            vals = list(o.get("values", []))
+            nv = [None] * 9
+            if len(vals) > 0:
+                nv[0] = vals[0]  # IGAE global
+            if len(vals) > 1:
+                nv[5] = vals[1]  # act. secundarias
+            if len(vals) > 2:
+                nv[7] = vals[2]  # act. terciarias
+            # Las variaciones antiguas (cols 3 y 4) se descartan.
+            new_obs.append({"period": o["period"], "values": nv})
+        ind["observations"] = new_obs
+        changes.append(
+            f"IGAE: migradas {len(new_obs)} observaciones del esquema antiguo de 5 columnas a 9"
+        )
+
+    ind["columns"] = new_cols
+    if "windows" in igae_prof:
+        ind["windows"] = igae_prof["windows"]
+    return changes
+
+
+def compute_igae_variations(payload: dict) -> list[str]:
+    """Calcula las variaciones anuales originales para IGAE y sus componentes.
+
+    Usa los índices de las columnas 0, 3, 5 y 7 y guarda el resultado en las
+    columnas 2, 4, 6 y 8 respectivamente. La columna 1 (variación mensual
+    desestacionalizada del boletín) se conserva intacta.
+    """
+    changes: list[str] = []
+    ind = payload["indicators"].get("IGAE")
+    if not ind:
+        return changes
+    obs = ind.get("observations")
+    if not obs:
+        return changes
+
+    by_ym: dict[str, dict] = {}
+    for o in obs:
+        ym = inegi.label_to_ym(o.get("period", ""))
+        if ym:
+            by_ym[ym] = o
+
+    src_to_dst = [(0, 2), (3, 4), (5, 6), (7, 8)]
+    updated = 0
+    for o in obs:
+        ym = inegi.label_to_ym(o.get("period", ""))
+        if not ym:
+            continue
+        prev_ym = inegi._ym_minus_months(ym, 12)
+        if not prev_ym or prev_ym not in by_ym:
+            continue
+        prev_o = by_ym[prev_ym]
+
+        vals = list(o.get("values", []))
+        while len(vals) < 9:
+            vals.append(None)
+        prev_vals = list(prev_o.get("values", []))
+        while len(prev_vals) < 9:
+            prev_vals.append(None)
+
+        for src, dst in src_to_dst:
+            cur = vals[src]
+            if cur is None:
+                continue
+            prev = prev_vals[src]
+            if prev is None or prev == 0:
+                continue
+            vals[dst] = round((cur - prev) / abs(prev), 6)
+            updated += 1
+
+        o["values"] = vals
+
+    if updated:
+        changes.append(f"IGAE: variaciones anuales calculadas para {updated} celdas")
+    else:
+        changes.append("IGAE: sin variaciones anuales calculadas (datos insuficientes)")
+    return changes
+
+
 def apply_inegi_total(payload: dict, key: str, item: dict, prev_last: str | None) -> dict | None:
     """Fusiona una serie del INEGI sobre UNA columna del indicador existente.
 
@@ -216,7 +328,7 @@ def apply_inegi_total(payload: dict, key: str, item: dict, prev_last: str | None
         return None
 
     tcol = item["target_column"]
-    ncol = len(ind.get("columns") or []) or (tcol + 1)
+    ncol = max(len(ind.get("columns") or []), tcol + 1)
     api_by_ym = {o["ym"]: o["value"] for o in item["api_total"]}
 
     # Para series trimestrales, la API de INEGI puede devolver observaciones con
@@ -262,19 +374,23 @@ def apply_inegi_total(payload: dict, key: str, item: dict, prev_last: str | None
     ind["last_checked"] = L.today_iso()
     ind["source_origin"] = "api"
     fuente = dict(ind.get("fuente", {}))
-    fuente["serie"] = item["serie"]
-    fuente["metodo"] = item.get("metodo", "INEGI BIE API")
-    if item.get("link"):
+    # Conservar la primera serie BIE como serie principal del indicador
+    # (p. ej. el total de IGAE) y no sobrescribir con componentes o boletines.
+    if item.get("metodo") == "INEGI BIE API" and not fuente.get("serie"):
+        fuente["serie"] = item["serie"]
+    if item.get("metodo") == "INEGI BIE API" and not fuente.get("link") and item.get("link"):
         fuente["link"] = item["link"]
-        # Solo url_boletin_oficial proviene de boletines de prensa, no de la API BIE.
-        if "saladeprensa/boletines" in item["link"] or item.get("metodo") == "INEGI boletín PDF":
-            ind["url_boletin_oficial"] = item["link"]
-            # Conserva metadatos del boletín validado por el parser de Sala de Prensa.
-            for meta_key in ("periodo_boletin", "numero_boletin", "fecha_publicacion",
-                             "tipo_documento", "producto_boletin", "boletin_validado",
-                             "proxima_publicacion", "sectores", "subsectores"):
-                if item.get(meta_key) is not None:
-                    ind[meta_key] = item[meta_key]
+    fuente["metodo"] = item.get("metodo", fuente.get("metodo", "INEGI BIE API"))
+    if item.get("link") and (
+        "saladeprensa/boletines" in item["link"] or item.get("metodo") == "INEGI boletín PDF"
+    ):
+        ind["url_boletin_oficial"] = item["link"]
+        # Conserva metadatos del boletín validado por el parser de Sala de Prensa.
+        for meta_key in ("periodo_boletin", "numero_boletin", "fecha_publicacion",
+                         "tipo_documento", "producto_boletin", "boletin_validado",
+                         "proxima_publicacion", "sectores", "subsectores"):
+            if item.get(meta_key) is not None:
+                ind[meta_key] = item[meta_key]
     ind["fuente"] = fuente
 
     meta = item.get("api_meta", {})
@@ -303,6 +419,9 @@ def run(offline: bool = False) -> int:
     # con el periodo actual en cada ejecución.
     for ind in payload.get("indicators", {}).values():
         ind.pop("boletin_validado", None)
+
+    # Migrar IGAE al esquema de 9 columnas antes de fusionar fuentes.
+    log["changes"].extend(prepare_igae_for_v3(payload))
 
     if not offline:
         # inegi_bulletin se ejecuta primero para evitar throttling del sitio de prensa
@@ -368,6 +487,9 @@ def run(offline: bool = False) -> int:
 
     # Variaciones calculadas desde niveles para periodos sin boletín oficial.
     log["changes"].extend(compute_pibsec_variations(payload))
+
+    # Variaciones anuales originales de IGAE (a partir de los índices BIE).
+    log["changes"].extend(compute_igae_variations(payload))
 
     # Frescura, calendario, métricas compartidas y metadatos temporales.
     log["changes"].extend(apply_freshness_and_meta(payload, log))

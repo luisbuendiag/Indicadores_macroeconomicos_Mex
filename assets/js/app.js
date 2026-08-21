@@ -1,7 +1,7 @@
 // Orquestador del tablero macroeconómico V3 (navegación por indicador).
 import { ORDER, PRINCIPAL, COMPLEMENTARIOS, LABELS, SIGLA, CAPTIONS, WINDOWS, COLORS, KPICFG, VIEWS, ESTADOS } from "./config.js";
 import { computeKPI, analysis, annualVar } from "./metrics.js";
-import { buildOption, rangeStats, applyWindow, buildPibsecLevels, buildPibsecVariations } from "./charts.js";
+import { buildOption, rangeStats, applyWindow, buildPibsecLevels, buildPibsecVariations, buildIgaeLevels, buildIgaeVariations } from "./charts.js";
 import { fmtVal, perLong } from "./format.js";
 
 const state = {
@@ -731,17 +731,17 @@ function renderIndicatorView(key) {
   // window toggle + chart
   panel.append(el("div", { class: "chart-caption", id: `caption-${ind.key}` }, `${CAPTIONS[ind.key] || ""} Datos hasta ${ind.last_observation || "—"}.`.trim()));
   const chartMain = el("div", { class: "chart-main" });
-  if (ind.key === "PIBSEC") {
+  if (ind.key === "PIBSEC" || ind.key === "IGAE") {
     chartMain.classList.add("pibsec-charts");
     const levels = el("div", { class: "pibsec-section" });
-    levels.append(el("h3", { class: "block-sub" }, "Evolución del PIB y grandes actividades económicas"));
+    levels.append(el("h3", { class: "block-sub" }, ind.key === "IGAE" ? "Niveles del IGAE y actividades económicas" : "Evolución del PIB y grandes actividades económicas"));
     levels.append(buildWinToggle(ind, winId));
-    levels.append(el("div", { class: "chart-box pibsec-levels", id: `chart-${ind.key}-levels`, role: "img", "aria-label": "Niveles del PIB y actividades económicas" }));
+    levels.append(el("div", { class: `chart-box pibsec-levels`, id: `chart-${ind.key}-levels`, role: "img", "aria-label": "Niveles del indicador y actividades económicas" }));
     chartMain.append(levels);
     const vars = el("div", { class: "pibsec-section" });
-    vars.append(el("h3", { class: "block-sub" }, "Variación trimestral y anual del PIB y actividades económicas"));
+    vars.append(el("h3", { class: "block-sub" }, ind.key === "IGAE" ? "Variación anual del IGAE y actividades económicas" : "Variación trimestral y anual del PIB y actividades económicas"));
     vars.append(buildWinToggle(ind, winId));
-    vars.append(el("div", { class: "chart-box pibsec-variation", id: `chart-${ind.key}-variation`, role: "img", "aria-label": "Variaciones del PIB y actividades económicas" }));
+    vars.append(el("div", { class: `chart-box pibsec-variation`, id: `chart-${ind.key}-variation`, role: "img", "aria-label": "Variaciones del indicador y actividades económicas" }));
     chartMain.append(vars);
     chartMain.append(el("div", { class: "range-wrap", id: `range-${ind.key}` }));
   } else {
@@ -758,8 +758,8 @@ function renderIndicatorView(key) {
 
   // Síntesis / Principales resultados: fuente única Python (lib_metrics).
   const syn = el("div", { class: "ficha-block" });
-  syn.append(el("h3", { class: "block-sub" }, (ind.key === "PIB" || ind.key === "PIBSEC") ? "Lectura del indicador" : "Evolución reciente"));
-  if (ind.key === "PIB" || ind.key === "PIBSEC") {
+  syn.append(el("h3", { class: "block-sub" }, (ind.key === "PIB" || ind.key === "PIBSEC" || ind.key === "IGAE") ? "Lectura del indicador" : "Evolución reciente"));
+  if (ind.key === "PIB" || ind.key === "PIBSEC" || ind.key === "IGAE") {
     const ul = el("ul", { class: "reading-bullets" });
     resumen.slice(0, 4).forEach((b) => ul.append(el("li", {}, b)));
     syn.append(ul);
@@ -833,9 +833,32 @@ function breakdown(ind, k) {
     box.append(grid);
     return box;
   }
+  if (ind.key === "IGAE" && last) {
+    const box = el("div", { class: "ficha-block pibsec-activity" });
+    box.append(el("h3", { class: "block-sub" }, "Desempeño por actividad"));
+    const grid = el("div", { class: "breakdown" });
+    const comps = [
+      { key: "IGAE", idxCol: 0, yoyCol: 2, label: "IGAE" },
+      { key: "Primarias", idxCol: 3, yoyCol: 4, label: "Actividades primarias" },
+      { key: "Secundarias", idxCol: 5, yoyCol: 6, label: "Actividades secundarias" },
+      { key: "Terciarias", idxCol: 7, yoyCol: 8, label: "Actividades terciarias" },
+    ];
+    comps.forEach((c) => {
+      const idx = last.values[c.idxCol];
+      const yoy = last.values[c.yoyCol];
+      const yoyColor = (yoy != null ? (yoy >= 0 ? COLORS.GREEN : COLORS.CRIMSON) : COLORS.GRAY);
+      grid.append(el("div", { class: "bd-item" },
+        el("div", { class: "bd-lbl" }, c.label),
+        el("div", { class: "bd-val" }, fmtVal(idx, "idx")),
+        el("div", { class: "bd-sub" }, `Anual: `, el("span", { style: `color:${yoyColor}` }, signedPct(yoy)))
+      ));
+    });
+    box.append(grid);
+    return box;
+  }
   const rowsFor = () => {
     if (ind.key === "PIBSEC") return [["Primarias", last.values[0], "num"], ["Secundarias", last.values[1], "num"], ["Terciarias", last.values[2], "num"]];
-    if (ind.key === "IGAE") return [["Índice global", last.values[0], "idx"], ["Actividades secundarias", last.values[1], "idx"], ["Actividades terciarias", last.values[2], "idx"]];
+    if (ind.key === "IGAE") return null;
     if (ind.key === "IED") return [["Nuevas inversiones", last.values[1], "usd"], ["Reinversión de utilidades", last.values[2], "usd"], ["Cuentas entre compañías", last.values[3], "usd"]];
     if (ind.key === "INPC") return [["General", last.values[0], "pct-raw"], ["Subyacente", last.values[1], "pct-raw"], ["No subyacente", last.values[2], "pct-raw"]];
     if (ind.key === "BALANZA") return [["Exportaciones", last.values[0], "usd"], ["Importaciones", last.values[1], "usd"], ["Saldo (X − M)", (last.values[0] != null && last.values[1] != null) ? last.values[0] - last.values[1] : null, "usd"]];
@@ -1326,8 +1349,36 @@ function mountPibsecCharts(ind) {
   }
 }
 
+function mountIgaeCharts(ind) {
+  if (typeof echarts === "undefined" || !hasData(ind)) return;
+  const winId = state.windows[ind.key] || state.data.meta?.default_window || "5a";
+  const obs = applyWindow(ind, winId);
+  const domLevels = document.getElementById(`chart-${ind.key}-levels`);
+  const domVars = document.getElementById(`chart-${ind.key}-variation`);
+  if (!domLevels || !domVars) return;
+  let levelsChart = state.charts[`${ind.key}-levels`];
+  if (!levelsChart) { levelsChart = echarts.init(domLevels, null, { renderer: "canvas" }); state.charts[`${ind.key}-levels`] = levelsChart; }
+  let varChart = state.charts[`${ind.key}-variation`];
+  if (!varChart) { varChart = echarts.init(domVars, null, { renderer: "canvas" }); state.charts[`${ind.key}-variation`] = varChart; }
+  levelsChart.setOption(buildIgaeLevels(obs), true);
+  varChart.setOption(buildIgaeVariations(obs), true);
+
+  // Tarjeta de rango visible.
+  const rangeCard = document.getElementById(`range-${ind.key}`);
+  if (rangeCard) {
+    rangeCard.innerHTML = "";
+    rangeCard.append(buildRangeCard(ind, winId));
+  }
+  const cap = document.getElementById(`caption-${ind.key}`);
+  if (cap) {
+    const last = obs.length ? obs[obs.length - 1].period : (ind.last_observation || "—");
+    cap.textContent = `${CAPTIONS[ind.key] || ""} Datos hasta ${last}.`.trim();
+  }
+}
+
 function mountChart(ind) {
   if (ind.key === "PIBSEC") { mountPibsecCharts(ind); return; }
+  if (ind.key === "IGAE") { mountIgaeCharts(ind); return; }
   const dom = document.getElementById(`chart-${ind.key}`);
   if (!dom || typeof echarts === "undefined" || !hasData(ind)) return;
   // Usa granularidad original cuando la ficha del indicador es la vista activa.

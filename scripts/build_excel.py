@@ -224,58 +224,56 @@ def _build_individual_workbook(ind: dict, cfg: dict, kpicfg: dict, out_path: Pat
                 f"Fecha de publicación: {ind.get('fecha_publicacion') or '—'}")
     ws["A3"].font = MUT
 
-    # Tabla
-    headers = ["Periodo", "Fecha", "Nivel", "Variación mensual", "Variación trimestral", "Variación anual",
-               "Unidad", "Ajuste estacional", "Carácter del dato", "Fuente", "URL del boletín", "Fecha de publicación"]
+    # Tabla con todas las columnas del indicador (evita suponer un número fijo).
+    cols = ind.get("columns", [])
+    headers = ["Periodo", "Fecha"] + [c["label"] for c in cols] + [
+        "Carácter del dato", "Fuente", "URL del boletín", "Fecha de publicación"
+    ]
     r0 = 5
     for i, h in enumerate(headers, start=1):
         ws.cell(row=r0, column=i, value=h)
     _style_header(ws, r0, len(headers))
 
     obs = ind.get("observations", [])
-    vals = primary_series(ind, cfg)
-    idxs = [i for i, v in enumerate(vals) if v is not None]
-
     r = r0 + 1
-    for i, o in enumerate(obs):
+    for o in obs:
         period = o["period"]
-        nivel = vals[i]
-        prev_i = _prev_valid_i(idxs, i)
-        var_info = compute_var(ind, cfg, vals, i, prev_i) if i > 0 and prev_i is not None else None
-        yoy_info = annual_var(ind, {"lastI": i, "series": vals}, kpicfg) if vals[i] is not None and i > 0 else None
-        buckets = _bucket_variation(var_info, yoy_info, ind.get("frecuencia"), cfg)
-
         d = _period_date(period)
-        row = [
-            ("period", period),
-            ("fecha", d),
-            ("nivel", nivel),
-            ("vm", buckets["mensual"] or "—"),
-            ("vt", buckets["trimestral"] or "—"),
-            ("va", buckets["anual"] or "—"),
-            ("unidad", ind.get("unidad", "—")),
-            ("ajuste", ind.get("ajuste_estacional", "—")),
-            ("caracter", _caracter_dato(period)),
-            ("fuente", ind.get("fuente", {}).get("nombre", "—")),
-            ("url", ind.get("url_boletin_oficial") or ind.get("fuente", {}).get("link") or "—"),
-            ("fp", ind.get("fecha_publicacion") or "—"),
+        ws.cell(row=r, column=1, value=period).font = TXT
+        ws.cell(row=r, column=2, value=d).font = TXT
+        if d:
+            ws.cell(row=r, column=2).number_format = "yyyy-mm-dd"
+
+        values = list(o.get("values", []))
+        for j, v in enumerate(values, start=3):
+            if j - 3 < len(cols):
+                cell = ws.cell(row=r, column=j, value=v)
+                cell.font = TXT
+                cell.border = BORDER
+                cell.number_format = _xl_fmt(cols[j - 3].get("fmt", "num"))
+                if r % 2 == 0:
+                    cell.fill = BAND_FILL
+
+        meta_start = 3 + len(cols)
+        meta = [
+            _caracter_dato(period),
+            ind.get("fuente", {}).get("nombre", "—"),
+            ind.get("url_boletin_oficial") or ind.get("fuente", {}).get("link") or "—",
+            ind.get("fecha_publicacion") or "—",
         ]
-        for j, (tag, v) in enumerate(row, start=1):
+        for j, v in enumerate(meta, start=meta_start):
             cell = ws.cell(row=r, column=j, value=v)
             cell.font = TXT
             cell.border = BORDER
-            if tag == "nivel":
-                cell.number_format = _xl_fmt(cfg.get("valFmt"))
-            elif tag == "fecha" and d:
-                cell.number_format = "yyyy-mm-dd"
             if r % 2 == 0:
                 cell.fill = BAND_FILL
+
         r += 1
 
     ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=len(headers))
     ws.merge_cells(start_row=2, start_column=1, end_row=2, end_column=len(headers))
     ws.merge_cells(start_row=3, start_column=1, end_row=3, end_column=len(headers))
-    _autow(ws, [16, 13, 18, 16, 18, 18, 38, 18, 16, 28, 55, 22])
+    _autow(ws, [16, 13] + [22] * len(cols) + [16, 28, 55, 22])
     wb.save(out_path)
 
 

@@ -391,7 +391,7 @@ def analysis(ind: dict, kpi: dict, kpicfg: dict | None = None) -> list[str]:
         mag_adj = "elevado" if g == "m" else "elevada"
 
     ORIG = ("PIB", "PIBSEC", "IGAE", "IMAI", "CONSUMO")
-    big = abs(cur_var - prev_var) if prev_var is not None else a_mag
+    big = abs(cur_var - prev_var) if (cur_var is not None and prev_var is not None) else a_mag
 
     trend = ""
     if cfg.get("grupo") == "growth":
@@ -916,6 +916,60 @@ def _pibsec_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     }
 
 
+def _igae_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
+    """KPI y resumen para IGAE con el esquema V3 de 9 columnas.
+
+    El esquema V3 tiene:
+      - col 0: IGAE (índice)
+      - col 1: Var. mensual desest. (%)  (del boletín INEGI)
+      - col 2: Var. anual original (%)   (calculada)
+      - col 3 / 5 / 7: índices de actividades prim/sec/ter
+      - col 4 / 6 / 8: var. anuales originales de actividades
+
+    El KPI principal usa el índice global (col 0), la variación mensual
+    desestacionalizada (col 1) y la variación anual original (col 2). Los
+    componentes se conservan en las observaciones y en el Excel; el resumen
+    se centra en el agregado para evitar sobrecargar la ficha.
+    """
+    cfg = (kpicfg.get(ind["key"]) or {}).copy()
+    if not cfg:
+        return None
+
+    # Forzar las columnas correctas del esquema V3, independientemente de
+    # la configuración de KPICFG (que puede estar desfasada hasta que el
+    # frontend se actualice en el otro hilo).
+    cfg["valCol"] = 0
+    cfg["valFmt"] = "idx"
+    cfg["varCol"] = 1
+    cfg["varFmt"] = "pct-frac"
+    cfg["varLabel"] = "Var. mensual desest."
+    cfg["yoyCol"] = 2
+    cfg["yoyFmt"] = "pct-frac"
+    cfg["yoyLabel"] = "Var. anual original"
+    cfg["ctx"] = " (índice base 2018=100)"
+    cfg["comp"] = "frente al mes previo"
+    cfg["vw"] = "variación mensual desestacionalizada"
+
+    kpi = compute_kpi(ind, {ind["key"]: cfg})
+    if not kpi:
+        return None
+    yoy = annual_var(ind, kpi, {ind["key"]: cfg})
+    if yoy:
+        kpi["yoyText"] = yoy["text"]
+        kpi["yoyLabel"] = yoy["label"]
+    else:
+        kpi["yoyText"] = "—"
+        kpi["yoyLabel"] = cfg.get("yoyLabel", "Var. anual")
+    bullets = resumen(ind, kpi, yoy, {ind["key"]: cfg})
+    return {
+        "kpi": kpi,
+        "yoy": yoy,
+        "annualVar": yoy,
+        "resumen": bullets,
+        "analysis": analysis(ind, kpi, {ind["key"]: cfg}),
+    }
+
+
 def compute_all_metrics(payload: dict | None = None, kpicfg: dict | None = None) -> dict[str, dict[str, Any]]:
     """Calcula kpi, analysis y annualVar para todos los indicadores."""
     if payload is None:
@@ -934,6 +988,11 @@ def compute_all_metrics(payload: dict | None = None, kpicfg: dict | None = None)
             pibsec = _pibsec_metrics(ind, kpicfg)
             if pibsec:
                 out[key] = pibsec
+                continue
+        if key == "IGAE" and len(ind.get("columns", [])) >= 9:
+            igae = _igae_metrics(ind, kpicfg)
+            if igae:
+                out[key] = igae
                 continue
         kpi = compute_kpi(ind, kpicfg)
         yoy = annual_var(ind, kpi, kpicfg) if kpi else None

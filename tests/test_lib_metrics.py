@@ -19,8 +19,8 @@ def test_igae_kpi():
     assert kpi["ultimoFmt"] == "108.6"
     assert kpi["varText"] == "-0.3%"
     assert kpi["varMag"] == -0.3
-    assert kpi["yoyText"] == "+2.0%"
-    assert kpi["yoyLabel"] == "Var. anual"
+    assert kpi["yoyText"] == "+1.1%"
+    assert kpi["yoyLabel"] == "Var. anual original"
     assert kpi["assessment"] == "adverso"
     assert kpi["semaforo"] == "malo"
 
@@ -33,7 +33,7 @@ def test_igae_analysis():
     assert "108.6 puntos" in a[0]
     assert "-0.30%" in a[0]
     assert "108.6 puntos (mayo de 2026)" in a[1]
-    assert "76.3 puntos (abril de 2020)" in a[1]
+    assert "53.9 puntos (abril de 1995)" in a[1]
 
 
 def test_inpc_kpi():

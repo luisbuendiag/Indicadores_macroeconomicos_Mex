@@ -187,17 +187,23 @@ def is_trim(p: str | None) -> bool:
     return bool(p and TRIM_RE.match(p))
 
 
+def _year_from_yy(yy: str) -> int:
+    y = int(yy)
+    # Heurística coherente con inegi.label_to_ym: años >= 93 son 1900s.
+    return (1900 if y >= 93 else 2000) + y
+
+
 def per_long(p: str | None) -> str:
     if not p:
         return ""
     q = TRIM_RE.match(p)
     if q:
-        return f"{ORD[q.group(1)]} trimestre de 20{q.group(2)}"
+        return f"{ORD[q.group(1)]} trimestre de {_year_from_yy(q.group(2))}"
     mo = MONTH_RE.match(p)
     if mo:
         m = MESES.get(mo.group(1).lower())
         if m:
-            return f"{m} de 20{mo.group(2)}"
+            return f"{m} de {_year_from_yy(mo.group(2))}"
     return p
 
 
@@ -215,11 +221,11 @@ def period_to_date(p: str | None) -> date | None:
     q = TRIM_RE.match(p)
     if q:
         month = (int(q.group(1)) - 1) * 3
-        return date(2000 + int(q.group(2)), month + 1, 1)
+        return date(_year_from_yy(q.group(2)), month + 1, 1)
     mo = MONTH_RE.match(p)
     if mo:
         key = mo.group(1).lower()
         if key in MESES:
             month = list(MESES.keys()).index(key)
-            return date(2000 + int(mo.group(2)), month + 1, 1)
+            return date(_year_from_yy(mo.group(2)), month + 1, 1)
     return None

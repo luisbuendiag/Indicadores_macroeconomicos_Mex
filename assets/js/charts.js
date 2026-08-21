@@ -275,7 +275,8 @@ const PIBSEC_LEVELS = [
   { key: "Terciarias", col: 2, top: "Actividades terciarias" },
 ];
 
-function lastHighlight(series, periods, values, color) {
+function lastHighlight(series, periods, values, color, formatter) {
+  const fmt = formatter || ((v) => (v == null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 })));
   const n = values.length;
   for (let i = n - 1; i >= 0; i--) {
     if (values[i] != null) {
@@ -285,11 +286,7 @@ function lastHighlight(series, periods, values, color) {
         label: {
           show: true, position: "top", distance: 4, color: "#3d403b",
           fontFamily: "'IBM Plex Mono',monospace", fontSize: 10,
-          formatter: (p) => {
-            const v = p.value;
-            if (v == null) return "—";
-            return (v / 1e6).toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-          },
+          formatter: (p) => fmt(p.value),
         },
         data: [{ coord: [periods[i], values[i]] }],
       };
@@ -333,7 +330,7 @@ export function buildPibsecLevels(obs) {
       itemStyle: { color: PIBSEC_COLORS[cfg.key] },
       areaStyle: { color: PIBSEC_COLORS[cfg.key], opacity: 0.08 },
     };
-    lastHighlight(s, periods, values, PIBSEC_COLORS[cfg.key]);
+    lastHighlight(s, periods, values, PIBSEC_COLORS[cfg.key], (v) => v == null ? "—" : (v / 1e6).toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
     series.push(s);
     const yRange = computeYRange(values, { padding: 0.08, includeZero: false });
     if (yRange) { yAxes[i].min = yRange.min; yAxes[i].max = yRange.max; yAxes[i].scale = true; }
@@ -438,5 +435,127 @@ export function buildPibsecVariations(obs) {
     },
     legend: { top: 10, left: "center", itemWidth: 12, itemHeight: 12, icon: "roundRect", textStyle: { color: "#3d403b", fontFamily: FONT, fontSize: 11 } },
     toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "PIBT-variaciones", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+  };
+}
+
+// ---------------- IGAE: small multiples (niveles) ----------------
+const IGAE_COLORS = { IGAE: COLORS.INK, Primarias: G, Secundarias: COLORS.CRIMSON, Terciarias: Go };
+const IGAE_LEVELS = [
+  { key: "IGAE", col: 0, top: "IGAE" },
+  { key: "Primarias", col: 3, top: "Actividades primarias" },
+  { key: "Secundarias", col: 5, top: "Actividades secundarias" },
+  { key: "Terciarias", col: 7, top: "Actividades terciarias" },
+];
+
+export function buildIgaeLevels(obs) {
+  const periods = obs.map((o) => o.period);
+  const grids = [], xAxes = [], yAxes = [], series = [], titles = [];
+  const rotate = periods.length > 12;
+  IGAE_LEVELS.forEach((cfg, i) => {
+    const row = Math.floor(i / 2);
+    const col = i % 2;
+    const left = col === 0 ? "4%" : "54%";
+    const top = row === 0 ? 20 : 225;
+    const height = 165;
+    const width = "42%";
+    grids.push({ left, top, width, height, containLabel: false });
+    xAxes.push({
+      gridIndex: i, type: "category", data: periods, boundaryGap: false,
+      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 },
+      axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+    });
+    yAxes.push({
+      gridIndex: i, type: "value", name: "Índice (2018=100)", nameLocation: "middle", nameGap: 34,
+      nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 10, fontWeight: 500 },
+      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) },
+      splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
+    });
+    const values = obs.map((o) => o.values[cfg.col] ?? null);
+    const s = {
+      name: cfg.top, type: "line", xAxisIndex: i, yAxisIndex: i,
+      data: values, smooth: false, symbol: "circle", symbolSize: 3,
+      lineStyle: { color: IGAE_COLORS[cfg.key], width: 2 },
+      itemStyle: { color: IGAE_COLORS[cfg.key] },
+      areaStyle: { color: IGAE_COLORS[cfg.key], opacity: 0.08 },
+    };
+    lastHighlight(s, periods, values, IGAE_COLORS[cfg.key], (v) => v == null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }));
+    series.push(s);
+    const yRange = computeYRange(values, { padding: 0.08, includeZero: false });
+    if (yRange) { yAxes[i].min = yRange.min; yAxes[i].max = yRange.max; yAxes[i].scale = true; }
+    titles.push({ text: cfg.top, left, top: top - 18, textStyle: { color: "#3d403b", fontFamily: FONT, fontSize: 12, fontWeight: 600 } });
+  });
+  return {
+    animation: false, color: [COLORS.INK, G, COLORS.CRIMSON, Go],
+    title: titles, grid: grids, xAxis: xAxes, yAxis: yAxes, series,
+    tooltip: {
+      trigger: "axis", backgroundColor: "#fff", borderColor: "#ddd7c6", borderWidth: 1,
+      textStyle: { color: COLORS.INK, fontFamily: FONT, fontSize: 12 },
+      extraCssText: "box-shadow:0 5px 16px rgba(0,0,0,.13);border-radius:9px;",
+      formatter: (params) => {
+        if (!params || !params.length) return "";
+        const p = params[0];
+        const v = p.value;
+        const val = v == null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+        return `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${val}</span></div>`;
+      },
+    },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "IGAE-niveles", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+  };
+}
+
+// ---------------- IGAE: variaciones anuales agrupadas ----------------
+const IGAE_VAR = [
+  { name: "IGAE", yoy: 2, color: COLORS.INK },
+  { name: "Primarias", yoy: 4, color: G },
+  { name: "Secundarias", yoy: 6, color: COLORS.CRIMSON },
+  { name: "Terciarias", yoy: 8, color: Go },
+];
+
+export function buildIgaeVariations(obs) {
+  const periods = obs.map((o) => o.period);
+  const yoyAll = [];
+  const series = [];
+  IGAE_VAR.forEach((cfg, si) => {
+    const yoyData = obs.map((o) => (o.values[cfg.yoy] == null ? null : o.values[cfg.yoy] * 100));
+    yoyAll.push(...yoyData);
+    series.push({
+      name: cfg.name, type: "bar",
+      data: yoyData, itemStyle: { color: cfg.color }, barMaxWidth: 14,
+      emphasis: { focus: "series" },
+      markLine: si === 0 ? { symbol: "none", data: [{ yAxis: 0, lineStyle: { color: COLORS.GRAY, type: "dashed", width: 1 }, label: { show: false } }], animation: false } : undefined,
+    });
+  });
+  const yoyRange = computeYRange(yoyAll, { padding: 0.12, includeZero: true });
+  const yAxis = {
+    type: "value", name: "Variación anual (%)", nameLocation: "middle", nameGap: 40,
+    nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 11, fontWeight: 500 },
+    axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toFixed(1) + "%" },
+    splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
+  };
+  if (yoyRange) { yAxis.min = yoyRange.min; yAxis.max = yoyRange.max; }
+  return {
+    animation: false, color: [COLORS.INK, G, COLORS.CRIMSON, Go],
+    grid: { left: "4%", right: "4%", top: 50, height: 240, containLabel: false },
+    xAxis: { type: "category", data: periods, boundaryGap: true, axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: periods.length > 12 ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: periods.length > 16 ? 42 : 0 }, axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false } },
+    yAxis,
+    series,
+    tooltip: {
+      trigger: "axis", backgroundColor: "#fff", borderColor: "#ddd7c6", borderWidth: 1,
+      textStyle: { color: COLORS.INK, fontFamily: FONT, fontSize: 12 },
+      extraCssText: "box-shadow:0 5px 16px rgba(0,0,0,.13);border-radius:9px;",
+      formatter: (params) => {
+        if (!params || !params.length) return "";
+        const p0 = params[0];
+        let html = `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p0.axisValue}</div>`;
+        params.forEach((p) => {
+          const cfg = IGAE_VAR.find((c) => c.name === p.seriesName);
+          html += pctTip(p.value, p.seriesName, cfg ? cfg.color : COLORS.GRAY);
+        });
+        return html;
+      },
+    },
+    legend: { top: 10, left: "center", itemWidth: 12, itemHeight: 12, icon: "roundRect", textStyle: { color: "#3d403b", fontFamily: FONT, fontSize: 11 } },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "IGAE-variaciones", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
   };
 }
