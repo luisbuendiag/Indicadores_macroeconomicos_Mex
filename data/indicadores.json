@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-21T02:56:00+00:00",
+    "generated_at": "2026-08-21T03:01:01+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-08-20T20:56:00-06:00",
+    "last_update_ct": "2026-08-20T21:01:01-06:00",
     "periodo_referencia_reciente": {
       "period": "Jul 26",
       "period_long": "Jul 26"
@@ -4334,9 +4334,9 @@
       ],
       "fuente": {
         "nombre": "INEGI",
-        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603589#D737130",
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603589#D737121",
         "metodo": "INEGI BIE API",
-        "serie": "737130"
+        "serie": "737121"
       },
       "columns": [
         {
@@ -10870,7 +10870,7 @@
       "nota_disponible": false,
       "nota_causa": "Falta plantilla aprobada",
       "url_nota_individual": null,
-      "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603589#D737130",
+      "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603589#D737121",
       "fecha_ultima_publicacion": "23 de julio de 2026",
       "regla_publicacion": null,
       "periodo_boletin": "May 26",

@@ -233,6 +233,7 @@ def _fetch_one(spec: dict, token: str, start_year: int) -> dict | None:
         "api_total": obs,
         "serie": serie_id,
         "link": spec.get("link"),
+        "metodo": "INEGI BIE API",
         "freq": meta.get("freq"),
         "api_meta": {
             "serie": serie_id, "freq": meta.get("freq"), "unit": meta.get("unit"),

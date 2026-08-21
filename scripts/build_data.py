@@ -251,6 +251,30 @@ def prepare_igae_for_v3(payload: dict) -> list[str]:
     ind["columns"] = new_cols
     if "windows" in igae_prof:
         ind["windows"] = igae_prof["windows"]
+
+    # Normalizar la fuente principal al total del IGAE (columna 0 / serie 737121).
+    # Esto corrige datos antiguos o ejecuciones offline donde no se consulta la API.
+    if CONFIG.exists():
+        try:
+            series_cfg = json.loads(CONFIG.read_text(encoding="utf-8"))
+        except Exception:
+            series_cfg = {}
+        igae_specs = series_cfg.get("inegi", {}).get("IGAE", [])
+        total_spec = next(
+            (s for s in igae_specs if s.get("columna_objetivo") == 0), None
+        )
+        if total_spec:
+            fuente = dict(ind.get("fuente", {}))
+            fuente.setdefault("nombre", "INEGI")
+            total_serie = str(total_spec.get("serie", ""))
+            if total_serie and fuente.get("serie") != total_serie:
+                fuente["serie"] = total_serie
+            if total_spec.get("link") and fuente.get("link") != total_spec["link"]:
+                fuente["link"] = total_spec["link"]
+            fuente.setdefault("metodo", "INEGI BIE API")
+            ind["fuente"] = fuente
+            changes.append(f"IGAE: fuente normalizada a serie total {total_serie}")
+
     return changes
 
 
@@ -374,13 +398,15 @@ def apply_inegi_total(payload: dict, key: str, item: dict, prev_last: str | None
     ind["last_checked"] = L.today_iso()
     ind["source_origin"] = "api"
     fuente = dict(ind.get("fuente", {}))
-    # Conservar la primera serie BIE como serie principal del indicador
-    # (p. ej. el total de IGAE) y no sobrescribir con componentes o boletines.
-    if item.get("metodo") == "INEGI BIE API" and not fuente.get("serie"):
+    # La serie/link principales deben corresponder siempre al total del indicador
+    # (columna objetivo 0); los componentes o boletines no los sobrescriben.
+    is_bie = item.get("metodo") == "INEGI BIE API"
+    if is_bie and (tcol == 0 or not fuente.get("serie")):
         fuente["serie"] = item["serie"]
-    if item.get("metodo") == "INEGI BIE API" and not fuente.get("link") and item.get("link"):
+    if is_bie and item.get("link") and (tcol == 0 or not fuente.get("link")):
         fuente["link"] = item["link"]
-    fuente["metodo"] = item.get("metodo", fuente.get("metodo", "INEGI BIE API"))
+    if item.get("metodo"):
+        fuente["metodo"] = item["metodo"]
     if item.get("link") and (
         "saladeprensa/boletines" in item["link"] or item.get("metodo") == "INEGI boletín PDF"
     ):

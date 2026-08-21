@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-21T02:56:00+00:00",
+  "generated_at": "2026-08-21T03:01:01+00:00",
   "indicadores": [
     {
       "indicador": "Estimación Oportuna del Producto Interno Bruto Trimestral",
@@ -54,7 +54,7 @@
       "clave": "IGAE",
       "clasificacion": "principal",
       "fuente": "INEGI",
-      "serie": "737130",
+      "serie": "737121",
       "frecuencia": "Mensual",
       "unidad": "Índice base 2018=100",
       "ajuste_estacional": "Serie original",
