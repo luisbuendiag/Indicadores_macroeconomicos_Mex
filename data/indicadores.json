@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-21T15:41:31+00:00",
+    "generated_at": "2026-08-21T19:24:57+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-08-21T09:41:31-06:00",
+    "last_update_ct": "2026-08-21T13:24:57-06:00",
     "periodo_referencia_reciente": {
       "period": "Jul 26",
       "period_long": "Jul 26"
@@ -10910,12 +10910,12 @@
     "IMAI": {
       "key": "IMAI",
       "nombre": "Indicador Mensual de la Actividad Industrial",
-      "descripcion": "Proporciona una visión sobre el comportamiento de la producción industrial en el corto plazo.  El IMAI se divide en cuatro grandes sectores de actividad económica, de acuerdo con el SCIAN: Minería, Construcción, Industrias manufactureras y energía eléctrica, agua y gas.",
+      "descripcion": "Mide la evolución mensual del volumen físico de la actividad industrial en México (índice base 2018=100). Incluye el agregado y cuatro sectores: minería, generación y suministro de energía eléctrica/agua/gas, construcción e industrias manufactureras. Publica cifras desestacionalizadas para el nivel, la variación mensual y la anual, así como cifras originales para el acumulado ene-mes.",
       "frecuencia": "Mensual",
       "unidad": "Índice base 2018=100",
-      "ajuste_estacional": "Serie original",
-      "grupo": "industria",
-      "publicacion": null,
+      "ajuste_estacional": "Cifras desestacionalizadas y originales",
+      "grupo": "growth",
+      "publicacion": "Aproximadamente 42 días después del cierre del mes",
       "proximo": null,
       "notas": [
         "P = cifras preliminares",
@@ -10929,28 +10929,5794 @@
       },
       "columns": [
         {
-          "label": "Índice de volumen físico",
+          "label": "IMAI (índice desest.)",
           "index": 0,
           "fmt": "idx"
         },
         {
-          "label": "Var. mensual (%)",
+          "label": "Var. mensual desest. (%)",
           "index": 1,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. anual (%)",
+          "label": "Var. anual desest. (%)",
           "index": 2,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "IMAI (índice original)",
+          "index": 3,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual original (%)",
+          "index": 4,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes original (%)",
+          "index": 5,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Minería (índice desest.)",
+          "index": 6,
+          "fmt": "idx"
+        },
+        {
+          "label": "Energía, agua y gas (índice desest.)",
+          "index": 7,
+          "fmt": "idx"
+        },
+        {
+          "label": "Construcción (índice desest.)",
+          "index": 8,
+          "fmt": "idx"
+        },
+        {
+          "label": "Industrias manufactureras (índice desest.)",
+          "index": 9,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual Minería (%)",
+          "index": 10,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual Energía (%)",
+          "index": 11,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual Construcción (%)",
+          "index": 12,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual Manufacturas (%)",
+          "index": 13,
           "fmt": "pct-frac"
         }
       ],
       "observations": [
         {
+          "period": "Ene 93",
+          "values": [
+            63.274082,
+            null,
+            null,
+            63.744353,
+            null,
+            null,
+            103.79392,
+            32.320953,
+            68.128644,
+            56.771233,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Feb 93",
+          "values": [
+            65.756233,
+            null,
+            null,
+            65.129616,
+            null,
+            null,
+            104.82326,
+            32.337311,
+            70.054193,
+            59.070512,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Mar 93",
+          "values": [
+            66.225698,
+            null,
+            null,
+            67.030423,
+            null,
+            null,
+            106.033688,
+            32.150387,
+            70.196731,
+            59.775304,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Abr 93",
+          "values": [
+            65.395033,
+            null,
+            null,
+            64.938782,
+            null,
+            null,
+            106.62369,
+            32.249032,
+            69.174485,
+            59.205015,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "May 93",
+          "values": [
+            65.387692,
+            null,
+            null,
+            64.930468,
+            null,
+            null,
+            106.170952,
+            32.138672,
+            70.665906,
+            58.820439,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jun 93",
+          "values": [
+            64.899476,
+            null,
+            null,
+            62.186002,
+            null,
+            null,
+            107.054688,
+            31.67668,
+            69.201678,
+            58.517139,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jul 93",
+          "values": [
+            65.489081,
+            null,
+            null,
+            64.66871,
+            null,
+            null,
+            106.863793,
+            31.381057,
+            68.802331,
+            59.751625,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ago 93",
+          "values": [
+            65.646241,
+            null,
+            null,
+            66.693362,
+            null,
+            null,
+            106.859046,
+            30.920368,
+            69.605032,
+            59.979373,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Sep 93",
+          "values": [
+            65.495201,
+            null,
+            null,
+            67.316042,
+            null,
+            null,
+            107.621067,
+            30.768493,
+            70.620447,
+            59.610115,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Oct 93",
+          "values": [
+            65.784649,
+            null,
+            null,
+            66.862699,
+            null,
+            null,
+            108.670708,
+            30.115488,
+            70.875218,
+            59.910096,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Nov 93",
+          "values": [
+            65.819916,
+            null,
+            null,
+            65.249736,
+            null,
+            null,
+            108.919026,
+            29.535908,
+            72.811341,
+            59.318257,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Dic 93",
+          "values": [
+            66.826912,
+            null,
+            null,
+            67.295917,
+            null,
+            null,
+            108.900998,
+            29.100593,
+            74.853506,
+            59.916374,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ene 94",
+          "values": [
+            67.298631,
+            null,
+            null,
+            67.80571,
+            null,
+            0.063713,
+            107.688204,
+            28.662112,
+            76.588014,
+            59.773746,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Feb 94",
+          "values": [
+            66.948339,
+            null,
+            null,
+            66.27585,
+            null,
+            0.040408,
+            106.420297,
+            28.042112,
+            79.38587,
+            58.251127,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Mar 94",
+          "values": [
+            67.679096,
+            null,
+            null,
+            68.492065,
+            null,
+            0.034043,
+            106.728908,
+            28.210046,
+            82.247014,
+            59.023484,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Abr 94",
+          "values": [
+            71.101014,
+            null,
+            null,
+            70.498519,
+            null,
+            0.046882,
+            106.629673,
+            28.024148,
+            83.735994,
+            64.343655,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "May 94",
+          "values": [
+            68.39675,
+            null,
+            null,
+            67.890387,
+            null,
+            0.046624,
+            107.255598,
+            27.658493,
+            82.576311,
+            60.395024,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jun 94",
+          "values": [
+            68.3317,
+            null,
+            null,
+            65.747084,
+            null,
+            0.04833,
+            106.603099,
+            27.726328,
+            82.09595,
+            60.811945,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jul 94",
+          "values": [
+            68.221836,
+            null,
+            null,
+            67.4326,
+            null,
+            0.047531,
+            106.83417,
+            28.044521,
+            81.097513,
+            60.763155,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ago 94",
+          "values": [
+            69.026703,
+            null,
+            null,
+            69.935215,
+            null,
+            0.047669,
+            107.109295,
+            28.142443,
+            81.622034,
+            62.033135,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Sep 94",
+          "values": [
+            69.247741,
+            null,
+            null,
+            71.003913,
+            null,
+            0.048486,
+            106.242992,
+            28.586827,
+            80.429911,
+            62.88288,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Oct 94",
+          "values": [
+            68.810143,
+            null,
+            null,
+            69.997188,
+            null,
+            0.048321,
+            107.155062,
+            29.343305,
+            81.289778,
+            61.926574,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Nov 94",
+          "values": [
+            68.599539,
+            null,
+            null,
+            68.245233,
+            null,
+            0.048102,
+            106.157372,
+            30.084505,
+            78.881777,
+            62.526476,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Dic 94",
+          "values": [
+            68.419178,
+            null,
+            null,
+            68.89665,
+            null,
+            0.046021,
+            105.857723,
+            31.131408,
+            77.62149,
+            61.625527,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ene 95",
+          "values": [
+            69.400147,
+            null,
+            null,
+            69.815684,
+            null,
+            0.029643,
+            106.26253,
+            31.763419,
+            67.36764,
+            65.15873,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Feb 95",
+          "values": [
+            63.182384,
+            null,
+            null,
+            62.545067,
+            null,
+            -0.012834,
+            105.013288,
+            32.777697,
+            55.004537,
+            59.770875,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Mar 95",
+          "values": [
+            62.177098,
+            null,
+            null,
+            62.883437,
+            null,
+            -0.036182,
+            105.460854,
+            33.271528,
+            55.004228,
+            58.320944,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Abr 95",
+          "values": [
+            59.569153,
+            null,
+            null,
+            58.899994,
+            null,
+            -0.069315,
+            105.846056,
+            34.321117,
+            55.207287,
+            54.183551,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "May 95",
+          "values": [
+            59.221866,
+            null,
+            null,
+            58.749441,
+            null,
+            -0.082323,
+            105.856602,
+            34.826774,
+            50.055791,
+            54.741021,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jun 95",
+          "values": [
+            59.547047,
+            null,
+            null,
+            57.631099,
+            null,
+            -0.08897,
+            107.004379,
+            35.392626,
+            52.247815,
+            54.636206,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jul 95",
+          "values": [
+            59.998621,
+            null,
+            null,
+            59.493626,
+            null,
+            -0.09306,
+            107.229442,
+            35.696783,
+            51.976068,
+            55.463202,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ago 95",
+          "values": [
+            60.115819,
+            null,
+            null,
+            60.720898,
+            null,
+            -0.098034,
+            109.182703,
+            36.128114,
+            53.571812,
+            55.307317,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Sep 95",
+          "values": [
+            61.091233,
+            null,
+            null,
+            62.389347,
+            null,
+            -0.100723,
+            109.327714,
+            36.659762,
+            55.949203,
+            56.144275,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Oct 95",
+          "values": [
+            58.560436,
+            null,
+            null,
+            59.614825,
+            null,
+            -0.105587,
+            82.31243,
+            36.783114,
+            56.384981,
+            57.185127,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Nov 95",
+          "values": [
+            62.46232,
+            null,
+            null,
+            62.370544,
+            null,
+            -0.10382,
+            105.415824,
+            37.183039,
+            60.129161,
+            57.889884,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Dic 95",
+          "values": [
+            66.727878,
+            null,
+            null,
+            67.126505,
+            null,
+            -0.097273,
+            111.513428,
+            37.194233,
+            66.786361,
+            60.088614,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ene 96",
+          "values": [
+            66.219198,
+            null,
+            null,
+            66.447061,
+            null,
+            -0.04825,
+            113.645368,
+            36.96611,
+            64.37039,
+            59.27705,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Feb 96",
+          "values": [
+            65.784052,
+            null,
+            null,
+            65.208361,
+            null,
+            -0.005329,
+            115.020156,
+            37.244323,
+            61.921656,
+            59.731397,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Mar 96",
+          "values": [
+            66.939641,
+            null,
+            null,
+            67.634416,
+            null,
+            0.020721,
+            114.574538,
+            37.151116,
+            62.821023,
+            61.468516,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Abr 96",
+          "values": [
+            66.366411,
+            null,
+            null,
+            65.349182,
+            null,
+            0.041295,
+            116.140949,
+            36.946021,
+            63.721235,
+            60.269705,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "May 96",
+          "values": [
+            67.422753,
+            null,
+            null,
+            66.941717,
+            null,
+            0.059724,
+            116.142593,
+            37.129978,
+            64.755874,
+            61.498058,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jun 96",
+          "values": [
+            68.557118,
+            null,
+            null,
+            66.700461,
+            null,
+            0.074911,
+            116.54444,
+            37.319636,
+            66.455057,
+            62.761989,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jul 96",
+          "values": [
+            68.35912,
+            null,
+            null,
+            68.067769,
+            null,
+            0.084486,
+            116.6484,
+            37.309869,
+            69.600738,
+            61.837016,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ago 96",
+          "values": [
+            68.393034,
+            null,
+            null,
+            69.092277,
+            null,
+            0.091091,
+            115.164013,
+            37.46592,
+            68.186344,
+            62.529508,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Sep 96",
+          "values": [
+            68.566227,
+            null,
+            null,
+            69.841917,
+            null,
+            0.09429,
+            116.645945,
+            37.110677,
+            67.568254,
+            62.734869,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Oct 96",
+          "values": [
+            69.868715,
+            null,
+            null,
+            71.114807,
+            null,
+            0.103885,
+            117.481516,
+            36.99693,
+            69.858568,
+            64.110288,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Nov 96",
+          "values": [
+            70.626993,
+            null,
+            null,
+            70.501222,
+            null,
+            0.106331,
+            117.598692,
+            38.149826,
+            68.921821,
+            65.37854,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Dic 96",
+          "values": [
+            72.532538,
+            null,
+            null,
+            72.640259,
+            null,
+            0.104143,
+            119.304762,
+            37.182262,
+            73.297259,
+            65.581275,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ene 97",
+          "values": [
+            70.707133,
+            null,
+            null,
+            70.787312,
+            null,
+            0.065319,
+            119.226946,
+            37.93661,
+            68.295161,
+            64.51513,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Feb 97",
+          "values": [
+            71.266161,
+            null,
+            null,
+            70.756403,
+            null,
+            0.075107,
+            121.697828,
+            37.562828,
+            67.787177,
+            65.634657,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Mar 97",
+          "values": [
+            71.711134,
+            null,
+            null,
+            72.476585,
+            null,
+            0.073915,
+            121.083732,
+            38.177318,
+            67.42626,
+            66.422073,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Abr 97",
+          "values": [
+            72.784262,
+            null,
+            null,
+            71.6603,
+            null,
+            0.07951,
+            120.893474,
+            37.279989,
+            71.158229,
+            67.37358,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "May 97",
+          "values": [
+            73.541295,
+            null,
+            null,
+            73.087659,
+            null,
+            0.081994,
+            122.655117,
+            37.271351,
+            72.466812,
+            67.773658,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jun 97",
+          "values": [
+            74.365767,
+            null,
+            null,
+            72.372254,
+            null,
+            0.082503,
+            124.303924,
+            37.012526,
+            72.025149,
+            68.960103,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jul 97",
+          "values": [
+            74.977874,
+            null,
+            null,
+            75.007057,
+            null,
+            0.085341,
+            124.580732,
+            36.975521,
+            72.291165,
+            69.997914,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ago 97",
+          "values": [
+            75.533124,
+            null,
+            null,
+            76.559074,
+            null,
+            0.088274,
+            125.818986,
+            37.125357,
+            74.203781,
+            69.883344,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Sep 97",
+          "values": [
+            75.657795,
+            null,
+            null,
+            77.287219,
+            null,
+            0.090389,
+            126.338822,
+            36.925487,
+            73.169064,
+            70.316944,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Oct 97",
+          "values": [
+            76.580359,
+            null,
+            null,
+            77.727439,
+            null,
+            0.090662,
+            126.590763,
+            36.853717,
+            73.248834,
+            71.743022,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Nov 97",
+          "values": [
+            77.145641,
+            null,
+            null,
+            76.539593,
+            null,
+            0.090188,
+            126.55044,
+            35.945748,
+            72.57066,
+            72.778809,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Dic 97",
+          "values": [
+            77.290869,
+            null,
+            null,
+            76.941372,
+            null,
+            0.087443,
+            125.287313,
+            35.918668,
+            73.093797,
+            72.644683,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ene 98",
+          "values": [
+            78.243049,
+            null,
+            null,
+            78.357612,
+            null,
+            0.106944,
+            125.0086,
+            35.679486,
+            72.036491,
+            74.737722,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Feb 98",
+          "values": [
+            79.467789,
+            null,
+            null,
+            79.059077,
+            null,
+            0.112142,
+            127.966871,
+            35.244268,
+            75.389491,
+            75.249838,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Mar 98",
+          "values": [
+            79.962871,
+            null,
+            null,
+            80.829427,
+            null,
+            0.113194,
+            127.480411,
+            34.80632,
+            76.80613,
+            75.655883,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Abr 98",
+          "values": [
+            79.636789,
+            null,
+            null,
+            78.431303,
+            null,
+            0.108502,
+            128.381576,
+            34.58811,
+            76.39281,
+            75.513583,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "May 98",
+          "values": [
+            79.970488,
+            null,
+            null,
+            79.475035,
+            null,
+            0.104202,
+            128.486644,
+            34.667386,
+            76.448944,
+            75.924164,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jun 98",
+          "values": [
+            79.040944,
+            null,
+            null,
+            76.828734,
+            null,
+            0.097046,
+            126.357173,
+            34.655635,
+            75.457691,
+            75.185459,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jul 98",
+          "values": [
+            79.22332,
+            null,
+            null,
+            79.628409,
+            null,
+            0.091795,
+            126.799683,
+            35.073605,
+            76.655631,
+            75.438892,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ago 98",
+          "values": [
+            79.692225,
+            null,
+            null,
+            81.155268,
+            null,
+            0.087623,
+            126.283501,
+            34.564543,
+            76.591602,
+            76.035822,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Sep 98",
+          "values": [
+            79.524205,
+            null,
+            null,
+            81.806084,
+            null,
+            0.084208,
+            120.871874,
+            34.359599,
+            79.251896,
+            75.636709,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Oct 98",
+          "values": [
+            79.695372,
+            null,
+            null,
+            80.612314,
+            null,
+            0.079247,
+            119.309575,
+            34.466758,
+            78.377537,
+            76.348106,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Nov 98",
+          "values": [
+            79.666148,
+            null,
+            null,
+            78.305561,
+            null,
+            0.073966,
+            128.0135,
+            34.326145,
+            73.534219,
+            76.055742,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Dic 98",
+          "values": [
+            80.371411,
+            null,
+            null,
+            79.519365,
+            null,
+            0.070473,
+            129.030163,
+            35.198088,
+            77.55342,
+            75.963678,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ene 99",
+          "values": [
+            80.322377,
+            null,
+            null,
+            80.644037,
+            null,
+            0.029179,
+            127.524366,
+            36.97011,
+            80.310645,
+            75.224738,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Feb 99",
+          "values": [
+            80.49134,
+            null,
+            null,
+            80.12903,
+            null,
+            0.021322,
+            125.290788,
+            37.325003,
+            79.687682,
+            75.840832,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Mar 99",
+          "values": [
+            80.626754,
+            null,
+            null,
+            81.478349,
+            null,
+            0.016812,
+            126.874983,
+            37.839962,
+            80.807366,
+            75.753515,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Abr 99",
+          "values": [
+            81.339167,
+            null,
+            null,
+            80.15373,
+            null,
+            0.018087,
+            124.04811,
+            38.325603,
+            78.667981,
+            77.835569,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "May 99",
+          "values": [
+            80.628583,
+            null,
+            null,
+            79.939014,
+            null,
+            0.01563,
+            124.391087,
+            38.41759,
+            78.468225,
+            76.844723,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jun 99",
+          "values": [
+            80.274956,
+            null,
+            null,
+            78.028397,
+            null,
+            0.015627,
+            120.758823,
+            38.550261,
+            79.609176,
+            76.601527,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jul 99",
+          "values": [
+            80.442208,
+            null,
+            null,
+            81.208178,
+            null,
+            0.016234,
+            123.300049,
+            39.084818,
+            77.536417,
+            77.507415,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ago 99",
+          "values": [
+            80.681867,
+            null,
+            null,
+            82.451834,
+            null,
+            0.016201,
+            122.184396,
+            38.821113,
+            76.973001,
+            77.642856,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Sep 99",
+          "values": [
+            81.567732,
+            null,
+            null,
+            84.651136,
+            null,
+            0.018325,
+            122.470601,
+            39.37385,
+            77.53966,
+            78.701169,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Oct 99",
+          "values": [
+            81.047271,
+            null,
+            null,
+            81.724433,
+            null,
+            0.017866,
+            123.797244,
+            39.523385,
+            77.518409,
+            77.177476,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Nov 99",
+          "values": [
+            81.735682,
+            null,
+            null,
+            79.805392,
+            null,
+            0.017982,
+            125.415652,
+            39.952979,
+            79.062786,
+            77.681142,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Dic 99",
+          "values": [
+            82.2705,
+            null,
+            null,
+            81.036277,
+            null,
+            0.018073,
+            123.207076,
+            39.946179,
+            80.182294,
+            79.145604,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ene 00",
+          "values": [
+            83.508689,
+            null,
+            null,
+            83.944789,
+            null,
+            0.04093,
+            127.05145,
+            38.794523,
+            80.251481,
+            80.194929,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Feb 00",
+          "values": [
+            84.743813,
+            null,
+            null,
+            84.277539,
+            null,
+            0.046334,
+            124.096901,
+            39.371923,
+            81.895315,
+            81.753034,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Mar 00",
+          "values": [
+            85.206385,
+            null,
+            null,
+            85.952612,
+            null,
+            0.04922,
+            126.870584,
+            39.881742,
+            80.192641,
+            82.859486,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Abr 00",
+          "values": [
+            84.718615,
+            null,
+            null,
+            83.420334,
+            null,
+            0.047115,
+            129.651625,
+            39.523483,
+            80.927137,
+            81.428978,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "May 00",
+          "values": [
+            85.340881,
+            null,
+            null,
+            84.362407,
+            null,
+            0.048748,
+            128.996937,
+            39.519791,
+            81.396195,
+            82.384889,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jun 00",
+          "values": [
+            86.100675,
+            null,
+            null,
+            83.965332,
+            null,
+            0.053189,
+            130.452592,
+            39.290184,
+            79.969604,
+            83.68965,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jul 00",
+          "values": [
+            86.824169,
+            null,
+            null,
+            87.896104,
+            null,
+            0.057406,
+            121.637732,
+            38.559362,
+            78.546273,
+            88.058037,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ago 00",
+          "values": [
+            85.845073,
+            null,
+            null,
+            87.970627,
+            null,
+            0.058626,
+            131.559483,
+            38.518231,
+            79.283643,
+            83.40824,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Sep 00",
+          "values": [
+            85.443037,
+            null,
+            null,
+            89.04765,
+            null,
+            0.057849,
+            132.146526,
+            38.402002,
+            77.299564,
+            83.041873,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Oct 00",
+          "values": [
+            85.291017,
+            null,
+            null,
+            86.117344,
+            null,
+            0.057436,
+            124.909783,
+            37.939331,
+            77.536654,
+            83.770407,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Nov 00",
+          "values": [
+            84.360907,
+            null,
+            null,
+            82.143587,
+            null,
+            0.054914,
+            126.617768,
+            37.211271,
+            76.03185,
+            82.809007,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Dic 00",
+          "values": [
+            82.315331,
+            null,
+            null,
+            80.868574,
+            null,
+            0.050159,
+            127.29855,
+            36.676929,
+            74.382076,
+            80.307,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ene 01",
+          "values": [
+            85.035017,
+            null,
+            null,
+            85.326475,
+            null,
+            0.016459,
+            129.20456,
+            35.829855,
+            73.954791,
+            84.266355,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Feb 01",
+          "values": [
+            84.386254,
+            null,
+            null,
+            83.567734,
+            null,
+            0.003994,
+            132.81843,
+            35.46953,
+            72.326002,
+            83.592212,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Mar 01",
+          "values": [
+            83.343329,
+            null,
+            null,
+            84.001603,
+            null,
+            -0.005032,
+            132.090764,
+            35.020442,
+            73.218438,
+            81.384397,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Abr 01",
+          "values": [
+            82.584184,
+            null,
+            null,
+            81.472442,
+            null,
+            -0.009559,
+            128.616604,
+            35.136217,
+            70.122179,
+            81.707638,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "May 01",
+          "values": [
+            83.156083,
+            null,
+            null,
+            82.103931,
+            null,
+            -0.013,
+            127.805609,
+            34.716869,
+            71.551351,
+            82.315396,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jun 01",
+          "values": [
+            82.937442,
+            null,
+            null,
+            81.284727,
+            null,
+            -0.016141,
+            131.444068,
+            35.138378,
+            72.042741,
+            81.207269,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jul 01",
+          "values": [
+            82.954323,
+            null,
+            null,
+            83.86714,
+            null,
+            -0.020537,
+            131.66911,
+            35.12999,
+            74.432568,
+            80.997868,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ago 01",
+          "values": [
+            82.926392,
+            null,
+            null,
+            85.083279,
+            null,
+            -0.022122,
+            131.300616,
+            36.480094,
+            74.934525,
+            80.27405,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Sep 01",
+          "values": [
+            83.225087,
+            null,
+            null,
+            86.790414,
+            null,
+            -0.022495,
+            130.48867,
+            37.047435,
+            74.21294,
+            80.816259,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Oct 01",
+          "values": [
+            81.595875,
+            null,
+            null,
+            82.71782,
+            null,
+            -0.024201,
+            128.527281,
+            38.355767,
+            72.074023,
+            79.128916,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Nov 01",
+          "values": [
+            82.320591,
+            null,
+            null,
+            80.162174,
+            null,
+            -0.024194,
+            132.206845,
+            39.670536,
+            73.053131,
+            79.076389,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Dic 01",
+          "values": [
+            81.744669,
+            null,
+            null,
+            80.247616,
+            null,
+            -0.022885,
+            133.174468,
+            41.61432,
+            72.9251,
+            77.992416,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ene 02",
+          "values": [
+            80.975683,
+            null,
+            null,
+            80.801214,
+            null,
+            -0.053035,
+            130.103817,
+            40.607418,
+            70.831735,
+            78.278962,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Feb 02",
+          "values": [
+            79.314329,
+            null,
+            null,
+            78.075443,
+            null,
+            -0.059313,
+            129.059642,
+            42.260816,
+            69.568835,
+            76.915861,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Mar 02",
+          "values": [
+            80.217169,
+            null,
+            null,
+            80.834599,
+            null,
+            -0.052134,
+            126.719533,
+            43.16805,
+            68.127853,
+            78.25291,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Abr 02",
+          "values": [
+            81.637495,
+            null,
+            null,
+            81.045864,
+            null,
+            -0.040707,
+            128.857587,
+            44.582316,
+            70.439191,
+            79.064878,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "May 02",
+          "values": [
+            81.022148,
+            null,
+            null,
+            80.062973,
+            null,
+            -0.037583,
+            129.275701,
+            46.365333,
+            70.88472,
+            77.787484,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jun 02",
+          "values": [
+            81.220341,
+            null,
+            null,
+            80.04802,
+            null,
+            -0.03393,
+            128.325054,
+            46.847868,
+            70.664919,
+            78.296572,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jul 02",
+          "values": [
+            81.430789,
+            null,
+            null,
+            82.031332,
+            null,
+            -0.032194,
+            128.368327,
+            47.770081,
+            71.71222,
+            78.642838,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ago 02",
+          "values": [
+            82.372866,
+            null,
+            null,
+            84.437022,
+            null,
+            -0.029055,
+            129.276362,
+            47.939867,
+            72.77938,
+            79.238356,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Sep 02",
+          "values": [
+            82.338512,
+            null,
+            null,
+            85.472835,
+            null,
+            -0.027457,
+            127.750586,
+            48.653586,
+            73.959555,
+            78.883948,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Oct 02",
+          "values": [
+            83.259069,
+            null,
+            null,
+            85.011443,
+            null,
+            -0.021998,
+            134.277497,
+            48.57122,
+            74.024884,
+            79.463093,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Nov 02",
+          "values": [
+            83.295053,
+            null,
+            null,
+            81.092753,
+            null,
+            -0.019058,
+            127.205359,
+            47.444027,
+            74.950732,
+            80.209351,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Dic 02",
+          "values": [
+            82.461607,
+            null,
+            null,
+            80.999311,
+            null,
+            -0.016769,
+            130.656028,
+            49.201968,
+            74.299968,
+            78.395372,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ene 03",
+          "values": [
+            80.811754,
+            null,
+            null,
+            80.22767,
+            null,
+            -0.007098,
+            130.616772,
+            48.209268,
+            74.572562,
+            76.490432,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Feb 03",
+          "values": [
+            82.608401,
+            null,
+            null,
+            80.750325,
+            null,
+            0.013226,
+            132.012905,
+            48.338368,
+            76.447206,
+            78.772791,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Mar 03",
+          "values": [
+            82.068723,
+            null,
+            null,
+            82.816158,
+            null,
+            0.017033,
+            133.051473,
+            48.288747,
+            73.293153,
+            77.895366,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Abr 03",
+          "values": [
+            82.248805,
+            null,
+            null,
+            82.178275,
+            null,
+            0.016259,
+            131.719205,
+            47.779045,
+            74.202283,
+            78.248779,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "May 03",
+          "values": [
+            82.502367,
+            null,
+            null,
+            81.825002,
+            null,
+            0.017408,
+            132.567029,
+            47.858013,
+            72.718706,
+            78.745361,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jun 03",
+          "values": [
+            83.017483,
+            null,
+            null,
+            82.217819,
+            null,
+            0.019022,
+            133.668088,
+            47.514338,
+            73.399193,
+            79.283664,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jul 03",
+          "values": [
+            82.783751,
+            null,
+            null,
+            83.107549,
+            null,
+            0.018162,
+            134.586802,
+            47.105454,
+            74.287304,
+            78.730809,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ago 03",
+          "values": [
+            82.573522,
+            null,
+            null,
+            84.353429,
+            null,
+            0.015664,
+            134.622047,
+            46.876808,
+            73.256085,
+            78.365028,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Sep 03",
+          "values": [
+            82.386812,
+            null,
+            null,
+            85.10644,
+            null,
+            0.013337,
+            134.32322,
+            46.827153,
+            72.164385,
+            78.518408,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Oct 03",
+          "values": [
+            82.965942,
+            null,
+            null,
+            85.070381,
+            null,
+            0.012023,
+            136.963751,
+            46.790948,
+            74.071318,
+            78.736872,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Nov 03",
+          "values": [
+            82.430623,
+            null,
+            null,
+            80.189285,
+            null,
+            0.009933,
+            136.383474,
+            47.442419,
+            71.930568,
+            78.12065,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Dic 03",
+          "values": [
+            83.850546,
+            null,
+            null,
+            82.580523,
+            null,
+            0.010725,
+            136.91562,
+            47.326648,
+            74.212145,
+            79.66514,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ene 04",
+          "values": [
+            84.106371,
+            null,
+            null,
+            83.20038,
+            null,
+            0.037053,
+            135.655526,
+            56.614547,
+            80.198639,
+            78.426358,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Feb 04",
+          "values": [
+            84.226344,
+            null,
+            null,
+            81.790285,
+            null,
+            0.024927,
+            135.024114,
+            57.176656,
+            77.267237,
+            79.122629,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Mar 04",
+          "values": [
+            85.984054,
+            null,
+            null,
+            86.976085,
+            null,
+            0.033523,
+            135.697596,
+            58.67876,
+            79.762791,
+            80.679952,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Abr 04",
+          "values": [
+            85.851864,
+            null,
+            null,
+            86.207303,
+            null,
+            0.037431,
+            137.150195,
+            58.007307,
+            79.620701,
+            80.349263,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "May 04",
+          "values": [
+            85.498345,
+            null,
+            null,
+            85.173146,
+            null,
+            0.038131,
+            136.187728,
+            57.293616,
+            78.507839,
+            80.133782,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jun 04",
+          "values": [
+            86.018635,
+            null,
+            null,
+            85.43545,
+            null,
+            0.0383,
+            136.967978,
+            57.690814,
+            79.517638,
+            80.694166,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jul 04",
+          "values": [
+            85.588806,
+            null,
+            null,
+            85.737543,
+            null,
+            0.037335,
+            134.680729,
+            58.20613,
+            78.213824,
+            80.864285,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ago 04",
+          "values": [
+            85.574137,
+            null,
+            null,
+            87.097093,
+            null,
+            0.036718,
+            134.328931,
+            58.800521,
+            76.725707,
+            81.050122,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Sep 04",
+          "values": [
+            85.671527,
+            null,
+            null,
+            88.113183,
+            null,
+            0.036559,
+            137.288749,
+            58.945955,
+            78.4151,
+            80.411428,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Oct 04",
+          "values": [
+            85.997051,
+            null,
+            null,
+            88.455509,
+            null,
+            0.036891,
+            139.092355,
+            59.301916,
+            78.764794,
+            80.406366,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Nov 04",
+          "values": [
+            86.038272,
+            null,
+            null,
+            83.830872,
+            null,
+            0.037644,
+            136.970067,
+            59.228419,
+            79.711954,
+            80.510072,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Dic 04",
+          "values": [
+            86.286688,
+            null,
+            null,
+            85.01482,
+            null,
+            0.036963,
+            132.502157,
+            60.163294,
+            79.621661,
+            81.634258,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ene 05",
+          "values": [
+            86.500696,
+            null,
+            null,
+            85.348625,
+            null,
+            0.02582,
+            136.076854,
+            61.199057,
+            82.00783,
+            81.012551,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Feb 05",
+          "values": [
+            86.874975,
+            null,
+            null,
+            83.877879,
+            null,
+            0.025673,
+            136.110842,
+            62.136641,
+            80.040592,
+            81.911882,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Mar 05",
+          "values": [
+            86.650853,
+            null,
+            null,
+            87.894259,
+            null,
+            0.020455,
+            134.849187,
+            61.129304,
+            81.382884,
+            81.095669,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Abr 05",
+          "values": [
+            86.947492,
+            null,
+            null,
+            87.432999,
+            null,
+            0.018865,
+            137.463008,
+            61.642198,
+            80.386468,
+            81.496953,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "May 05",
+          "values": [
+            87.732412,
+            null,
+            null,
+            87.818325,
+            null,
+            0.021318,
+            140.075737,
+            62.042582,
+            81.010189,
+            81.629308,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jun 05",
+          "values": [
+            86.656932,
+            null,
+            null,
+            86.159443,
+            null,
+            0.019161,
+            139.286408,
+            63.209116,
+            81.371524,
+            80.362708,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jul 05",
+          "values": [
+            85.380112,
+            null,
+            null,
+            85.521425,
+            null,
+            0.016034,
+            128.431322,
+            63.177955,
+            79.873176,
+            80.760714,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ago 05",
+          "values": [
+            87.599492,
+            null,
+            null,
+            88.869349,
+            null,
+            0.016586,
+            140.081991,
+            62.216274,
+            80.19199,
+            81.947429,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Sep 05",
+          "values": [
+            88.293932,
+            null,
+            null,
+            90.655225,
+            null,
+            0.017989,
+            137.292318,
+            62.56852,
+            81.03163,
+            83.429804,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Oct 05",
+          "values": [
+            88.536532,
+            null,
+            null,
+            91.224165,
+            null,
+            0.019361,
+            134.749201,
+            62.999105,
+            81.023804,
+            84.115883,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Nov 05",
+          "values": [
+            89.842012,
+            null,
+            null,
+            87.754821,
+            null,
+            0.021804,
+            139.074644,
+            63.533948,
+            83.653659,
+            84.697309,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Dic 05",
+          "values": [
+            90.941673,
+            null,
+            null,
+            89.575226,
+            null,
+            0.024439,
+            140.507052,
+            62.367954,
+            84.579028,
+            85.620663,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ene 06",
+          "values": [
+            91.186209,
+            null,
+            null,
+            89.708417,
+            null,
+            0.051082,
+            139.36496,
+            67.719066,
+            84.291729,
+            86.284407,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Feb 06",
+          "values": [
+            90.597574,
+            null,
+            null,
+            87.13692,
+            null,
+            0.045022,
+            137.38304,
+            69.600001,
+            84.443668,
+            85.495606,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Mar 06",
+          "values": [
+            91.450131,
+            null,
+            null,
+            92.884559,
+            null,
+            0.04904,
+            138.542656,
+            69.342453,
+            86.641286,
+            85.786801,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Abr 06",
+          "values": [
+            91.560819,
+            null,
+            null,
+            92.073612,
+            null,
+            0.050064,
+            137.570111,
+            70.199877,
+            87.422593,
+            85.895973,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "May 06",
+          "values": [
+            92.471183,
+            null,
+            null,
+            92.756463,
+            null,
+            0.051317,
+            136.958129,
+            71.167479,
+            88.052448,
+            87.122259,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jun 06",
+          "values": [
+            92.549325,
+            null,
+            null,
+            92.171309,
+            null,
+            0.054384,
+            134.121252,
+            72.113171,
+            88.377514,
+            87.59357,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jul 06",
+          "values": [
+            92.518447,
+            null,
+            null,
+            92.748014,
+            null,
+            0.058648,
+            133.525275,
+            72.419767,
+            88.803383,
+            87.626559,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ago 06",
+          "values": [
+            92.95283,
+            null,
+            null,
+            94.149338,
+            null,
+            0.058746,
+            136.197026,
+            72.976194,
+            91.903927,
+            86.558661,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Sep 06",
+          "values": [
+            92.637928,
+            null,
+            null,
+            94.996825,
+            null,
+            0.05749,
+            136.684607,
+            73.019741,
+            91.290488,
+            86.42415,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Oct 06",
+          "values": [
+            92.649107,
+            null,
+            null,
+            95.926907,
+            null,
+            0.056871,
+            135.838658,
+            73.101479,
+            90.597476,
+            86.644927,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Nov 06",
+          "values": [
+            92.836319,
+            null,
+            null,
+            90.97668,
+            null,
+            0.055033,
+            136.042104,
+            73.780141,
+            90.438096,
+            87.18862,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Dic 06",
+          "values": [
+            91.9223,
+            null,
+            null,
+            90.192399,
+            null,
+            0.050934,
+            128.746791,
+            73.908973,
+            90.394966,
+            86.499452,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ene 07",
+          "values": [
+            92.021355,
+            null,
+            null,
+            90.268193,
+            null,
+            0.00624,
+            135.879041,
+            75.206383,
+            89.344622,
+            86.21724,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Feb 07",
+          "values": [
+            92.717479,
+            null,
+            null,
+            88.86932,
+            null,
+            0.012961,
+            136.504626,
+            74.376885,
+            90.92149,
+            86.219682,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Mar 07",
+          "values": [
+            93.688418,
+            null,
+            null,
+            95.143927,
+            null,
+            0.016874,
+            137.251825,
+            75.606088,
+            91.197738,
+            87.734713,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Abr 07",
+          "values": [
+            93.435996,
+            null,
+            null,
+            93.977331,
+            null,
+            0.017842,
+            137.359438,
+            74.71799,
+            90.942346,
+            87.513111,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "May 07",
+          "values": [
+            93.451471,
+            null,
+            null,
+            93.730998,
+            null,
+            0.016345,
+            135.0509,
+            76.008988,
+            90.508676,
+            87.990239,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jun 07",
+          "values": [
+            93.429072,
+            null,
+            null,
+            93.114086,
+            null,
+            0.015314,
+            137.908777,
+            75.716924,
+            88.731564,
+            87.817091,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jul 07",
+          "values": [
+            93.407853,
+            null,
+            null,
+            93.965397,
+            null,
+            0.014997,
+            136.88262,
+            76.368538,
+            90.560422,
+            87.421063,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ago 07",
+          "values": [
+            92.925552,
+            null,
+            null,
+            93.94918,
+            null,
+            0.012799,
+            125.512626,
+            76.8222,
+            93.512222,
+            87.557094,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Sep 07",
+          "values": [
+            93.482665,
+            null,
+            null,
+            95.694168,
+            null,
+            0.012173,
+            135.349026,
+            77.845095,
+            95.095513,
+            86.355851,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Oct 07",
+          "values": [
+            93.149285,
+            null,
+            null,
+            96.836589,
+            null,
+            0.011894,
+            132.524665,
+            78.419478,
+            96.085484,
+            86.140034,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Nov 07",
+          "values": [
+            92.516612,
+            null,
+            null,
+            90.906246,
+            null,
+            0.010759,
+            130.178509,
+            78.59055,
+            97.030689,
+            85.196087,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Dic 07",
+          "values": [
+            93.097857,
+            null,
+            null,
+            91.25442,
+            null,
+            0.010842,
+            131.191695,
+            79.31193,
+            98.056527,
+            84.965191,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ene 08",
+          "values": [
+            92.898172,
+            null,
+            null,
+            90.989431,
+            null,
+            0.00799,
+            129.978453,
+            79.147585,
+            97.132355,
+            86.148708,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Feb 08",
+          "values": [
+            94.866961,
+            null,
+            null,
+            90.694896,
+            null,
+            0.014217,
+            129.759071,
+            82.257821,
+            99.782423,
+            87.069137,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Mar 08",
+          "values": [
+            92.725163,
+            null,
+            null,
+            94.064344,
+            null,
+            0.005349,
+            128.57739,
+            78.760397,
+            97.083992,
+            85.869293,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Abr 08",
+          "values": [
+            92.758121,
+            null,
+            null,
+            93.358703,
+            null,
+            0.002304,
+            125.560982,
+            79.312424,
+            97.014101,
+            86.542967,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "May 08",
+          "values": [
+            92.872316,
+            null,
+            null,
+            92.999697,
+            null,
+            0.000254,
+            126.74633,
+            79.623555,
+            98.622159,
+            86.054011,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jun 08",
+          "values": [
+            93.912014,
+            null,
+            null,
+            93.631509,
+            null,
+            0.001143,
+            128.180965,
+            78.754103,
+            100.103489,
+            86.764246,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jul 08",
+          "values": [
+            92.182713,
+            null,
+            null,
+            93.02151,
+            null,
+            -0.000476,
+            127.983749,
+            78.130087,
+            99.235663,
+            84.780227,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ago 08",
+          "values": [
+            92.176984,
+            null,
+            null,
+            93.168773,
+            null,
+            -0.001466,
+            127.367407,
+            79.41944,
+            95.110948,
+            85.20438,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Sep 08",
+          "values": [
+            91.419914,
+            null,
+            null,
+            93.202349,
+            null,
+            -0.00427,
+            125.364713,
+            77.764242,
+            93.667208,
+            85.383605,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Oct 08",
+          "values": [
+            91.532337,
+            null,
+            null,
+            95.373915,
+            null,
+            -0.005392,
+            128.688309,
+            78.062897,
+            95.524225,
+            84.540286,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Nov 08",
+          "values": [
+            89.992333,
+            null,
+            null,
+            88.787301,
+            null,
+            -0.006978,
+            128.686077,
+            78.204792,
+            93.087773,
+            82.532982,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Dic 08",
+          "values": [
+            88.984752,
+            null,
+            null,
+            87.267544,
+            null,
+            -0.009976,
+            127.315447,
+            76.823051,
+            92.60885,
+            81.33323,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ene 09",
+          "values": [
+            84.324503,
+            null,
+            null,
+            82.531655,
+            null,
+            -0.092953,
+            125.115579,
+            76.664752,
+            92.60098,
+            74.9279,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Feb 09",
+          "values": [
+            83.963247,
+            null,
+            null,
+            80.087878,
+            null,
+            -0.104934,
+            124.484901,
+            76.99662,
+            89.494735,
+            74.870175,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Mar 09",
+          "values": [
+            83.238049,
+            null,
+            null,
+            84.337949,
+            null,
+            -0.104411,
+            123.831474,
+            77.581766,
+            89.85547,
+            73.976975,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Abr 09",
+          "values": [
+            83.266346,
+            null,
+            null,
+            83.835786,
+            null,
+            -0.103802,
+            124.433796,
+            77.985573,
+            89.069532,
+            74.366118,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "May 09",
+          "values": [
+            83.049685,
+            null,
+            null,
+            83.116965,
+            null,
+            -0.104298,
+            123.647105,
+            77.608205,
+            91.565041,
+            73.143337,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jun 09",
+          "values": [
+            82.854684,
+            null,
+            null,
+            82.525338,
+            null,
+            -0.10671,
+            121.483004,
+            77.797912,
+            90.656049,
+            73.446286,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jul 09",
+          "values": [
+            84.728932,
+            null,
+            null,
+            85.833348,
+            null,
+            -0.10249,
+            123.480191,
+            78.902483,
+            90.650471,
+            76.186966,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ago 09",
+          "values": [
+            84.687113,
+            null,
+            null,
+            85.559402,
+            null,
+            -0.099876,
+            121.503954,
+            79.09846,
+            89.690329,
+            76.3231,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Sep 09",
+          "values": [
+            85.920977,
+            null,
+            null,
+            87.090864,
+            null,
+            -0.096047,
+            123.302648,
+            79.399499,
+            90.704511,
+            77.826628,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Oct 09",
+          "values": [
+            86.359469,
+            null,
+            null,
+            89.793809,
+            null,
+            -0.0922,
+            123.494699,
+            80.065223,
+            87.769583,
+            79.315006,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Nov 09",
+          "values": [
+            87.676279,
+            null,
+            null,
+            87.005731,
+            null,
+            -0.085916,
+            122.749818,
+            79.007104,
+            87.431456,
+            81.572682,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Dic 09",
+          "values": [
+            88.062667,
+            null,
+            null,
+            86.758335,
+            null,
+            -0.079601,
+            123.208276,
+            78.604044,
+            88.392472,
+            82.013309,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ene 10",
+          "values": [
+            87.885944,
+            null,
+            null,
+            85.854706,
+            null,
+            0.040264,
+            125.131589,
+            78.522395,
+            96.767588,
+            78.845159,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Feb 10",
+          "values": [
+            87.491986,
+            null,
+            null,
+            83.417177,
+            null,
+            0.040907,
+            126.155391,
+            77.993347,
+            89.401784,
+            80.528387,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Mar 10",
+          "values": [
+            88.524132,
+            null,
+            null,
+            89.567888,
+            null,
+            0.048115,
+            126.037847,
+            78.759605,
+            91.58954,
+            81.668331,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Abr 10",
+          "values": [
+            89.48898,
+            null,
+            null,
+            89.95921,
+            null,
+            0.054432,
+            127.066848,
+            78.524703,
+            92.629859,
+            82.120529,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "May 10",
+          "values": [
+            88.956657,
+            null,
+            null,
+            89.101266,
+            null,
+            0.057959,
+            127.332775,
+            79.214508,
+            87.712311,
+            82.854312,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jun 10",
+          "values": [
+            88.976946,
+            null,
+            null,
+            88.767181,
+            null,
+            0.060898,
+            126.434871,
+            80.156977,
+            87.589475,
+            82.846056,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jul 10",
+          "values": [
+            88.734397,
+            null,
+            null,
+            90.156119,
+            null,
+            0.059345,
+            125.091597,
+            83.543679,
+            88.665429,
+            82.334006,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ago 10",
+          "values": [
+            89.463161,
+            null,
+            null,
+            90.40249,
+            null,
+            0.058994,
+            126.095242,
+            79.920701,
+            87.334335,
+            83.63891,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Sep 10",
+          "values": [
+            88.967665,
+            null,
+            null,
+            89.713957,
+            null,
+            0.055663,
+            127.16117,
+            81.700661,
+            87.748359,
+            82.668785,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Oct 10",
+          "values": [
+            89.026025,
+            null,
+            null,
+            92.242432,
+            null,
+            0.052644,
+            124.347966,
+            81.532275,
+            89.259035,
+            82.554149,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Nov 10",
+          "values": [
+            88.848323,
+            null,
+            null,
+            88.617497,
+            null,
+            0.049458,
+            123.668492,
+            82.453513,
+            88.057619,
+            82.782029,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Dic 10",
+          "values": [
+            89.674422,
+            null,
+            null,
+            88.538956,
+            null,
+            0.046994,
+            124.492299,
+            83.478213,
+            89.280853,
+            83.656552,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ene 11",
+          "values": [
+            89.813974,
+            null,
+            null,
+            87.507831,
+            null,
+            0.019255,
+            124.938539,
+            83.362928,
+            91.359517,
+            83.117569,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Feb 11",
+          "values": [
+            89.614866,
+            null,
+            null,
+            85.457716,
+            null,
+            0.021821,
+            124.467928,
+            84.111592,
+            88.957873,
+            83.799985,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Mar 11",
+          "values": [
+            90.291594,
+            null,
+            null,
+            91.330876,
+            null,
+            0.021081,
+            125.607116,
+            85.287722,
+            88.13017,
+            84.706364,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Abr 11",
+          "values": [
+            90.208148,
+            null,
+            null,
+            90.257337,
+            null,
+            0.016499,
+            126.175481,
+            85.789206,
+            90.536973,
+            83.598789,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "May 11",
+          "values": [
+            91.001295,
+            null,
+            null,
+            91.471764,
+            null,
+            0.018555,
+            126.125989,
+            85.268578,
+            91.07163,
+            84.603961,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jun 11",
+          "values": [
+            91.842177,
+            null,
+            null,
+            91.850643,
+            null,
+            0.021282,
+            126.964291,
+            86.151697,
+            96.139467,
+            84.452122,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jul 11",
+          "values": [
+            91.642251,
+            null,
+            null,
+            93.427545,
+            null,
+            0.023475,
+            126.519975,
+            85.575257,
+            93.042375,
+            84.966457,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ago 11",
+          "values": [
+            92.072547,
+            null,
+            null,
+            93.029069,
+            null,
+            0.024189,
+            126.759589,
+            85.787817,
+            95.267088,
+            84.926232,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Sep 11",
+          "values": [
+            91.930066,
+            null,
+            null,
+            92.285862,
+            null,
+            0.024693,
+            125.509323,
+            86.161428,
+            93.109319,
+            85.465477,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Oct 11",
+          "values": [
+            93.138074,
+            null,
+            null,
+            96.263656,
+            null,
+            0.026654,
+            128.350625,
+            85.680152,
+            94.731436,
+            86.364472,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Nov 11",
+          "values": [
+            93.965313,
+            null,
+            null,
+            94.102728,
+            null,
+            0.029848,
+            127.822587,
+            85.411235,
+            98.012893,
+            86.883781,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Dic 11",
+          "values": [
+            94.467367,
+            null,
+            null,
+            93.245229,
+            null,
+            0.031783,
+            128.296828,
+            87.843757,
+            97.384425,
+            87.57564,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ene 12",
+          "values": [
+            94.573864,
+            null,
+            null,
+            91.729275,
+            null,
+            0.048241,
+            126.632757,
+            85.742503,
+            94.699739,
+            89.027944,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Feb 12",
+          "values": [
+            94.560682,
+            null,
+            null,
+            90.339941,
+            null,
+            0.052633,
+            127.428716,
+            86.711241,
+            94.7091,
+            88.923087,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Mar 12",
+          "values": [
+            94.657925,
+            null,
+            null,
+            95.807784,
+            null,
+            0.051384,
+            128.166506,
+            86.15631,
+            94.347643,
+            89.10683,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Abr 12",
+          "values": [
+            95.155404,
+            null,
+            null,
+            94.869157,
+            null,
+            0.051311,
+            128.034365,
+            86.677452,
+            95.62547,
+            89.441489,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "May 12",
+          "values": [
+            94.751783,
+            null,
+            null,
+            95.623962,
+            null,
+            0.050097,
+            128.684096,
+            86.764015,
+            95.798984,
+            88.726136,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jun 12",
+          "values": [
+            95.23547,
+            null,
+            null,
+            95.486757,
+            null,
+            0.048302,
+            128.959357,
+            87.11755,
+            94.15714,
+            89.72246,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jul 12",
+          "values": [
+            95.983079,
+            null,
+            null,
+            98.011138,
+            null,
+            0.048415,
+            129.148699,
+            87.178292,
+            98.566595,
+            89.548821,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ago 12",
+          "values": [
+            94.625177,
+            null,
+            null,
+            95.563416,
+            null,
+            0.045695,
+            128.727892,
+            86.387766,
+            95.470848,
+            88.541653,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Sep 12",
+          "values": [
+            95.868149,
+            null,
+            null,
+            96.01706,
+            null,
+            0.0451,
+            128.671301,
+            86.406596,
+            96.962796,
+            89.835376,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Oct 12",
+          "values": [
+            94.03173,
+            null,
+            null,
+            97.211671,
+            null,
+            0.041383,
+            127.86583,
+            87.134466,
+            94.546177,
+            87.918741,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Nov 12",
+          "values": [
+            94.827566,
+            null,
+            null,
+            95.143709,
+            null,
+            0.03855,
+            130.08272,
+            87.671874,
+            95.039837,
+            88.653337,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Dic 12",
+          "values": [
+            94.304647,
+            null,
+            null,
+            92.750031,
+            null,
+            0.034832,
+            128.708793,
+            86.652142,
+            91.113723,
+            89.287078,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ene 13",
+          "values": [
+            94.433411,
+            null,
+            null,
+            91.21599,
+            null,
+            -0.005596,
+            130.990159,
+            88.440646,
+            94.213951,
+            88.109733,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Feb 13",
+          "values": [
+            95.140204,
+            null,
+            null,
+            91.132682,
+            null,
+            0.001535,
+            129.997299,
+            87.984968,
+            95.773191,
+            88.812901,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Mar 13",
+          "values": [
+            94.154122,
+            null,
+            null,
+            95.396733,
+            null,
+            -0.000474,
+            128.697661,
+            86.147637,
+            94.611953,
+            88.024406,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Abr 13",
+          "values": [
+            93.291696,
+            null,
+            null,
+            92.819643,
+            null,
+            -0.005851,
+            128.337017,
+            86.877128,
+            90.111839,
+            88.009638,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "May 13",
+          "values": [
+            94.784236,
+            null,
+            null,
+            95.992028,
+            null,
+            -0.003871,
+            127.843923,
+            88.693223,
+            95.243432,
+            88.92438,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jun 13",
+          "values": [
+            93.833318,
+            null,
+            null,
+            94.143276,
+            null,
+            -0.005598,
+            127.36874,
+            87.921609,
+            90.970347,
+            88.631469,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jul 13",
+          "values": [
+            94.003121,
+            null,
+            null,
+            95.925252,
+            null,
+            -0.007921,
+            127.665196,
+            88.62535,
+            91.672079,
+            88.73613,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ago 13",
+          "values": [
+            94.913441,
+            null,
+            null,
+            95.995985,
+            null,
+            -0.00635,
+            127.807352,
+            88.685696,
+            93.090345,
+            89.663465,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Sep 13",
+          "values": [
+            94.010092,
+            null,
+            null,
+            93.829789,
+            null,
+            -0.008199,
+            127.599649,
+            87.9807,
+            92.547861,
+            88.245357,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Oct 13",
+          "values": [
+            95.010093,
+            null,
+            null,
+            98.502657,
+            null,
+            -0.006002,
+            129.01009,
+            88.273315,
+            93.90307,
+            89.400187,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Nov 13",
+          "values": [
+            94.74647,
+            null,
+            null,
+            95.086812,
+            null,
+            -0.005511,
+            129.85311,
+            89.125312,
+            93.466925,
+            88.925762,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Dic 13",
+          "values": [
+            95.043679,
+            null,
+            null,
+            93.191858,
+            null,
+            -0.004674,
+            130.318299,
+            88.572252,
+            94.826939,
+            88.563136,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ene 14",
+          "values": [
+            95.127986,
+            null,
+            null,
+            91.611662,
+            null,
+            0.004338,
+            127.971701,
+            92.790964,
+            92.038386,
+            89.982993,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Feb 14",
+          "values": [
+            95.460393,
+            null,
+            null,
+            91.715836,
+            null,
+            0.005368,
+            128.105566,
+            92.07598,
+            95.918837,
+            89.532249,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Mar 14",
+          "values": [
+            96.897158,
+            null,
+            null,
+            98.298957,
+            null,
+            0.013973,
+            127.738945,
+            93.49136,
+            95.602136,
+            91.609888,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Abr 14",
+          "values": [
+            97.461014,
+            null,
+            null,
+            97.064099,
+            null,
+            0.021927,
+            128.631648,
+            94.262698,
+            96.606488,
+            92.035857,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "May 14",
+          "values": [
+            97.556034,
+            null,
+            null,
+            98.838566,
+            null,
+            0.023517,
+            128.434824,
+            93.555842,
+            95.439658,
+            92.563014,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jun 14",
+          "values": [
+            97.816018,
+            null,
+            null,
+            98.200004,
+            null,
+            0.026804,
+            126.933538,
+            93.518475,
+            97.154482,
+            92.658654,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jul 14",
+          "values": [
+            97.213359,
+            null,
+            null,
+            98.969687,
+            null,
+            0.027524,
+            126.952847,
+            92.684129,
+            92.895814,
+            93.161778,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ago 14",
+          "values": [
+            96.768291,
+            null,
+            null,
+            97.962589,
+            null,
+            0.026627,
+            126.86812,
+            93.589883,
+            94.955292,
+            91.675144,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Sep 14",
+          "values": [
+            97.402269,
+            null,
+            null,
+            97.059019,
+            null,
+            0.02749,
+            126.294775,
+            93.731251,
+            96.073796,
+            92.274937,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Oct 14",
+          "values": [
+            98.257508,
+            null,
+            null,
+            101.977701,
+            null,
+            0.028302,
+            124.676221,
+            93.75501,
+            99.128179,
+            93.349301,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Nov 14",
+          "values": [
+            98.082293,
+            null,
+            null,
+            98.442788,
+            null,
+            0.028941,
+            124.575961,
+            93.179108,
+            96.81888,
+            93.772834,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Dic 14",
+          "values": [
+            97.887425,
+            null,
+            null,
+            95.759102,
+            null,
+            0.028827,
+            123.629314,
+            94.643583,
+            97.956755,
+            93.262161,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ene 15",
+          "values": [
+            97.510386,
+            null,
+            null,
+            93.995798,
+            null,
+            0.026024,
+            122.24338,
+            94.498076,
+            96.471141,
+            93.361654,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Feb 15",
+          "values": [
+            98.177695,
+            null,
+            null,
+            94.472018,
+            null,
+            0.028039,
+            125.788878,
+            93.555858,
+            93.99862,
+            94.710336,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Mar 15",
+          "values": [
+            97.658799,
+            null,
+            null,
+            99.246182,
+            null,
+            0.021616,
+            122.654367,
+            93.826771,
+            94.623481,
+            93.938803,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Abr 15",
+          "values": [
+            98.742498,
+            null,
+            null,
+            98.23803,
+            null,
+            0.019175,
+            120.014627,
+            94.206512,
+            99.559818,
+            94.963202,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "May 15",
+          "values": [
+            97.870037,
+            null,
+            null,
+            99.039964,
+            null,
+            0.015628,
+            119.148104,
+            92.491628,
+            96.417558,
+            94.52699,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jun 15",
+          "values": [
+            98.344088,
+            null,
+            null,
+            98.823038,
+            null,
+            0.014045,
+            120.398883,
+            92.51022,
+            96.920771,
+            94.981747,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jul 15",
+          "values": [
+            99.434045,
+            null,
+            null,
+            100.958758,
+            null,
+            0.014933,
+            120.474232,
+            93.595582,
+            102.979013,
+            95.013099,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ago 15",
+          "values": [
+            99.76698,
+            null,
+            null,
+            101.384836,
+            null,
+            0.017468,
+            121.170355,
+            95.089696,
+            101.139065,
+            95.730153,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Sep 15",
+          "values": [
+            101.851353,
+            null,
+            null,
+            101.305717,
+            null,
+            0.020402,
+            120.548361,
+            95.56531,
+            105.476608,
+            97.211983,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Oct 15",
+          "values": [
+            99.732629,
+            null,
+            null,
+            103.352959,
+            null,
+            0.019676,
+            120.241791,
+            96.38168,
+            96.490213,
+            97.068921,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Nov 15",
+          "values": [
+            99.004428,
+            null,
+            null,
+            99.320237,
+            null,
+            0.018686,
+            119.006846,
+            96.324651,
+            96.934146,
+            96.033194,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Dic 15",
+          "values": [
+            99.460528,
+            null,
+            null,
+            97.194972,
+            null,
+            0.018383,
+            118.805982,
+            95.768395,
+            97.934744,
+            96.685279,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ene 16",
+          "values": [
+            99.395811,
+            null,
+            null,
+            96.12501,
+            null,
+            0.022652,
+            119.366446,
+            92.30982,
+            99.326229,
+            96.089304,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Feb 16",
+          "values": [
+            99.517239,
+            null,
+            null,
+            95.87012,
+            null,
+            0.018716,
+            120.326211,
+            93.517611,
+            99.520148,
+            96.063941,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Mar 16",
+          "values": [
+            98.75007,
+            null,
+            null,
+            100.511966,
+            null,
+            0.016659,
+            119.065309,
+            93.047337,
+            100.16263,
+            95.100662,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Abr 16",
+          "values": [
+            98.704587,
+            null,
+            null,
+            97.864968,
+            null,
+            0.011452,
+            117.540042,
+            92.862391,
+            99.669244,
+            95.231036,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "May 16",
+          "values": [
+            98.967076,
+            null,
+            null,
+            100.110457,
+            null,
+            0.011321,
+            117.09629,
+            94.336549,
+            100.738654,
+            95.320666,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jun 16",
+          "values": [
+            98.67943,
+            null,
+            null,
+            99.394168,
+            null,
+            0.010383,
+            115.942928,
+            94.299379,
+            99.71564,
+            95.639295,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jul 16",
+          "values": [
+            98.693867,
+            null,
+            null,
+            100.014636,
+            null,
+            0.007473,
+            115.948899,
+            94.905321,
+            98.529973,
+            95.7112,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ago 16",
+          "values": [
+            98.790614,
+            null,
+            null,
+            100.621227,
+            null,
+            0.005538,
+            114.315255,
+            93.769597,
+            99.0099,
+            96.306831,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Sep 16",
+          "values": [
+            99.151913,
+            null,
+            null,
+            98.739676,
+            null,
+            0.002015,
+            114.21304,
+            93.084305,
+            99.824053,
+            96.131036,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Oct 16",
+          "values": [
+            99.100519,
+            null,
+            null,
+            102.263242,
+            null,
+            0.000705,
+            114.604155,
+            94.018076,
+            100.127798,
+            96.329288,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Nov 16",
+          "values": [
+            100.242964,
+            null,
+            null,
+            100.55018,
+            null,
+            0.001769,
+            112.531797,
+            93.839041,
+            104.029613,
+            97.167387,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Dic 16",
+          "values": [
+            99.936465,
+            null,
+            null,
+            97.414281,
+            null,
+            0.001809,
+            111.894049,
+            94.790731,
+            99.660048,
+            98.238607,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ene 17",
+          "values": [
+            100.645729,
+            null,
+            null,
+            97.703331,
+            null,
+            0.016419,
+            111.054114,
+            98.350719,
+            99.325558,
+            99.181726,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Feb 17",
+          "values": [
+            100.194215,
+            null,
+            null,
+            96.541665,
+            null,
+            0.011718,
+            109.782399,
+            97.073813,
+            99.424315,
+            98.829095,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Mar 17",
+          "values": [
+            100.892154,
+            null,
+            null,
+            102.848927,
+            null,
+            0.015681,
+            110.064002,
+            99.853621,
+            100.736469,
+            99.176499,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Abr 17",
+          "values": [
+            99.792772,
+            null,
+            null,
+            98.684888,
+            null,
+            0.01385,
+            110.304201,
+            97.137728,
+            96.454023,
+            99.224413,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "May 17",
+          "values": [
+            99.829613,
+            null,
+            null,
+            100.944573,
+            null,
+            0.012724,
+            110.575909,
+            99.1379,
+            97.421428,
+            98.652424,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jun 17",
+          "values": [
+            99.907718,
+            null,
+            null,
+            100.892276,
+            null,
+            0.01312,
+            109.505174,
+            99.120578,
+            99.779047,
+            98.285458,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Jul 17",
+          "values": [
+            99.12123,
+            null,
+            null,
+            100.303721,
+            null,
+            0.011637,
+            107.793537,
+            96.792745,
+            97.630953,
+            98.271046,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Ago 17",
+          "values": [
+            99.725881,
+            null,
+            null,
+            101.972593,
+            null,
+            0.011865,
+            105.29222,
+            96.951404,
+            100.22233,
+            98.869702,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Sep 17",
+          "values": [
+            98.747491,
+            null,
+            null,
+            98.511337,
+            null,
+            0.010291,
+            98.160591,
+            97.850145,
+            102.571677,
+            97.299751,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Oct 17",
+          "values": [
+            99.86433,
+            null,
+            null,
+            102.541724,
+            null,
+            0.00951,
+            103.860149,
+            94.780497,
+            101.456907,
+            98.989341,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Nov 17",
+          "values": [
+            100.03001,
+            null,
+            null,
+            100.135893,
+            null,
+            0.008255,
+            103.841721,
+            102.121765,
+            98.863267,
+            99.299113,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "Dic 17",
+          "values": [
+            100.737329,
+            null,
+            null,
+            97.831693,
+            null,
+            0.00793,
+            103.784916,
+            98.185238,
+            103.705076,
+            99.279787,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
           "period": "Ene 18",
           "values": [
             99.840849,
             -0.008899,
-            null
+            -0.007997,
+            97.229579,
+            -0.004849,
+            -0.004849,
+            104.95348,
+            100.359691,
+            101.028523,
+            98.507848,
+            -0.054934,
+            0.020427,
+            0.017145,
+            -0.006794
           ]
         },
         {
@@ -10958,7 +16724,18 @@
           "values": [
             100.271051,
             0.004309,
-            null
+            0.000767,
+            96.56475,
+            0.000239,
+            -0.00232,
+            102.462473,
+            101.2,
+            103.588727,
+            98.608104,
+            -0.066677,
+            0.042506,
+            0.041885,
+            -0.002236
           ]
         },
         {
@@ -10966,7 +16743,18 @@
           "values": [
             100.322778,
             0.000516,
-            null
+            -0.005643,
+            102.489648,
+            -0.003493,
+            -0.002726,
+            102.134715,
+            98.137909,
+            101.256964,
+            100.180565,
+            -0.072043,
+            -0.017182,
+            0.005167,
+            0.010124
           ]
         },
         {
@@ -10974,7 +16762,18 @@
           "values": [
             98.990911,
             -0.013276,
-            null
+            -0.008035,
+            98.000861,
+            -0.006931,
+            -0.003775,
+            102.588861,
+            101.594921,
+            99.267487,
+            98.129237,
+            -0.069946,
+            0.045885,
+            0.029169,
+            -0.011037
           ]
         },
         {
@@ -10982,7 +16781,18 @@
           "values": [
             100.66695,
             0.016931,
-            null
+            0.008388,
+            101.85832,
+            0.009052,
+            -0.001168,
+            102.771585,
+            97.2789,
+            101.777035,
+            100.272486,
+            -0.070579,
+            -0.018752,
+            0.044709,
+            0.016422
           ]
         },
         {
@@ -10990,7 +16800,18 @@
           "values": [
             100.49004,
             -0.001757,
-            null
+            0.005829,
+            101.559915,
+            0.006617,
+            0.000146,
+            100.489389,
+            100.027001,
+            100.848369,
+            100.395443,
+            -0.082332,
+            0.009145,
+            0.010717,
+            0.021468
           ]
         },
         {
@@ -10998,7 +16819,18 @@
           "values": [
             100.810098,
             0.003185,
-            null
+            0.017038,
+            101.864751,
+            0.015563,
+            0.002362,
+            99.046777,
+            102.191777,
+            102.882652,
+            100.48142,
+            -0.081144,
+            0.055779,
+            0.053791,
+            0.022493
           ]
         },
         {
@@ -11006,7 +16838,18 @@
           "values": [
             99.980861,
             -0.008226,
-            null
+            0.002557,
+            102.41425,
+            0.004331,
+            0.002613,
+            99.094845,
+            100.348828,
+            97.660203,
+            101.003752,
+            -0.058859,
+            0.035043,
+            -0.025564,
+            0.021584
           ]
         },
         {
@@ -11014,7 +16857,18 @@
           "values": [
             101.074552,
             0.010939,
-            null
+            0.023566,
+            101.030972,
+            0.025577,
+            0.005131,
+            98.799253,
+            100.422206,
+            101.225662,
+            101.473241,
+            0.006506,
+            0.026286,
+            -0.013123,
+            0.042893
           ]
         },
         {
@@ -11022,7 +16876,18 @@
           "values": [
             100.169133,
             -0.008958,
-            null
+            0.003052,
+            102.467781,
+            -0.000721,
+            0.004532,
+            97.439145,
+            98.696501,
+            101.230332,
+            100.514295,
+            -0.061824,
+            0.041317,
+            -0.002233,
+            0.015405
           ]
         },
         {
@@ -11030,7 +16895,18 @@
           "values": [
             99.182526,
             -0.009849,
-            null
+            -0.008472,
+            99.18195,
+            -0.009526,
+            0.003253,
+            95.673113,
+            101.732247,
+            92.43294,
+            101.129111,
+            -0.078664,
+            -0.003814,
+            -0.065043,
+            0.018429
           ]
         },
         {
@@ -11038,7 +16914,18 @@
           "values": [
             98.922071,
             -0.002626,
-            null
+            -0.01802,
+            95.628299,
+            -0.022522,
+            0.00115,
+            95.366737,
+            97.255016,
+            98.782234,
+            99.914046,
+            -0.081112,
+            -0.009474,
+            -0.04747,
+            0.006389
           ]
         },
         {
@@ -11046,7 +16933,18 @@
           "values": [
             99.076626,
             0.001562,
-            null
+            -0.007654,
+            96.720986,
+            -0.005231,
+            -0.005231,
+            92.711874,
+            93.746986,
+            101.756417,
+            99.999206,
+            -0.116638,
+            -0.06589,
+            0.007205,
+            0.015139
           ]
         },
         {
@@ -11054,7 +16952,18 @@
           "values": [
             99.561381,
             0.004893,
-            null
+            -0.007078,
+            95.694535,
+            -0.009012,
+            -0.007115,
+            94.24495,
+            93.853238,
+            99.587063,
+            100.754475,
+            -0.0802,
+            -0.072596,
+            -0.03863,
+            0.021767
           ]
         },
         {
@@ -11062,7 +16971,18 @@
           "values": [
             98.337873,
             -0.012289,
-            null
+            -0.019785,
+            100.70817,
+            -0.017382,
+            -0.010666,
+            94.593921,
+            92.476029,
+            98.019107,
+            99.791527,
+            -0.073832,
+            -0.057693,
+            -0.031977,
+            -0.003883
           ]
         },
         {
@@ -11070,7 +16990,18 @@
           "values": [
             99.340782,
             0.010199,
-            null
+            0.003534,
+            98.986052,
+            0.010053,
+            -0.005517,
+            93.655347,
+            94.089884,
+            100.083488,
+            101.046112,
+            -0.087081,
+            -0.073872,
+            0.00822,
+            0.029725
           ]
         },
         {
@@ -11078,7 +17009,18 @@
           "values": [
             98.426799,
             -0.0092,
-            null
+            -0.022253,
+            99.562795,
+            -0.022536,
+            -0.009011,
+            91.992179,
+            93.36075,
+            95.686518,
+            100.838636,
+            -0.104887,
+            -0.040277,
+            -0.059842,
+            0.005646
           ]
         },
         {
@@ -11086,7 +17028,18 @@
           "values": [
             99.397645,
             0.009864,
-            null
+            -0.010871,
+            100.246949,
+            -0.012928,
+            -0.009676,
+            94.594733,
+            94.803982,
+            98.180584,
+            101.086544,
+            -0.058659,
+            -0.052216,
+            -0.026453,
+            0.006884
           ]
         },
         {
@@ -11094,7 +17047,18 @@
           "values": [
             98.806605,
             -0.005946,
-            null
+            -0.019874,
+            99.648205,
+            -0.02176,
+            -0.011436,
+            94.584949,
+            93.890062,
+            95.815229,
+            101.114034,
+            -0.045048,
+            -0.081237,
+            -0.068694,
+            0.006296
           ]
         },
         {
@@ -11102,7 +17066,18 @@
           "values": [
             98.634236,
             -0.001745,
-            null
+            -0.013469,
+            101.361755,
+            -0.010277,
+            -0.011288,
+            96.168356,
+            95.811233,
+            95.282754,
+            100.755975,
+            -0.029532,
+            -0.045218,
+            -0.024344,
+            -0.002453
           ]
         },
         {
@@ -11110,7 +17085,18 @@
           "values": [
             98.555543,
             -0.000798,
-            null
+            -0.024922,
+            98.230199,
+            -0.027722,
+            -0.013126,
+            95.89006,
+            96.248951,
+            93.011215,
+            101.029596,
+            -0.029446,
+            -0.041557,
+            -0.08115,
+            -0.004372
           ]
         },
         {
@@ -11118,7 +17104,18 @@
           "values": [
             96.51451,
             -0.020709,
-            null
+            -0.036485,
+            98.45496,
+            -0.039162,
+            -0.01578,
+            94.774936,
+            95.447382,
+            91.267904,
+            98.444371,
+            -0.027342,
+            -0.03292,
+            -0.098413,
+            -0.020593
           ]
         },
         {
@@ -11126,7 +17123,18 @@
           "values": [
             96.922496,
             0.004227,
-            null
+            -0.022787,
+            96.901561,
+            -0.022992,
+            -0.016427,
+            96.82395,
+            97.168147,
+            92.2902,
+            97.939647,
+            0.012029,
+            -0.044864,
+            -0.001544,
+            -0.031539
           ]
         },
         {
@@ -11134,7 +17142,18 @@
           "values": [
             96.159253,
             -0.007875,
-            null
+            -0.027929,
+            92.833756,
+            -0.029223,
+            -0.017447,
+            96.481218,
+            95.105197,
+            93.389798,
+            96.971171,
+            0.011686,
+            -0.022105,
+            -0.054589,
+            -0.029454
           ]
         },
         {
@@ -11142,7 +17161,18 @@
           "values": [
             97.320674,
             0.012078,
-            null
+            -0.017723,
+            95.321331,
+            -0.014471,
+            -0.014471,
+            98.428194,
+            95.091774,
+            92.512108,
+            98.591842,
+            0.061657,
+            0.014345,
+            -0.090847,
+            -0.014074
           ]
         },
         {
@@ -11150,7 +17180,18 @@
           "values": [
             96.75405,
             -0.005822,
-            null
+            -0.028197,
+            92.793452,
+            -0.030316,
+            -0.022351,
+            97.447178,
+            97.566898,
+            89.5846,
+            98.27488,
+            0.033978,
+            0.039569,
+            -0.100439,
+            -0.02461
           ]
         },
         {
@@ -11158,7 +17199,18 @@
           "values": [
             93.560802,
             -0.033004,
-            null
+            -0.048578,
+            95.979593,
+            -0.046953,
+            -0.030804,
+            97.14576,
+            94.120085,
+            89.803561,
+            94.132859,
+            0.026977,
+            0.017778,
+            -0.083816,
+            -0.056705
           ]
         },
         {
@@ -11166,7 +17218,18 @@
           "values": [
             69.864321,
             -0.253274,
-            null
+            -0.296721,
+            70.065404,
+            -0.292169,
+            -0.096784,
+            90.152256,
+            93.485472,
+            57.644604,
+            67.923871,
+            -0.037404,
+            -0.006424,
+            -0.424035,
+            -0.327793
           ]
         },
         {
@@ -11174,7 +17237,18 @@
           "values": [
             69.771418,
             -0.00133,
-            null
+            -0.291134,
+            70.696946,
+            -0.289926,
+            -0.135895,
+            86.230525,
+            82.549792,
+            58.938557,
+            68.494628,
+            -0.062632,
+            -0.115798,
+            -0.384045,
+            -0.32075
           ]
         },
         {
@@ -11182,7 +17256,18 @@
           "values": [
             84.88603,
             0.21663,
-            null
+            -0.145996,
+            85.11543,
+            -0.150942,
+            -0.138443,
+            90.996025,
+            84.018763,
+            72.515874,
+            87.129443,
+            -0.038043,
+            -0.113763,
+            -0.261403,
+            -0.138071
           ]
         },
         {
@@ -11190,7 +17275,18 @@
           "values": [
             88.624215,
             0.044038,
-            null
+            -0.103054,
+            89.184849,
+            -0.105003,
+            -0.133625,
+            93.342131,
+            88.105021,
+            72.807082,
+            92.321411,
+            -0.01314,
+            -0.061615,
+            -0.24013,
+            -0.086957
           ]
         },
         {
@@ -11198,7 +17294,18 @@
           "values": [
             91.982553,
             0.037894,
-            null
+            -0.067438,
+            94.707536,
+            -0.065648,
+            -0.124935,
+            94.585356,
+            94.633644,
+            81.09015,
+            94.912982,
+            -0.016461,
+            -0.012291,
+            -0.148952,
+            -0.057992
           ]
         },
         {
@@ -11206,7 +17313,18 @@
           "values": [
             94.268389,
             0.024851,
-            null
+            -0.0435,
+            93.397958,
+            -0.049193,
+            -0.116586,
+            94.602569,
+            91.124088,
+            79.806762,
+            98.863271,
+            -0.013427,
+            -0.053246,
+            -0.141966,
+            -0.021442
           ]
         },
         {
@@ -11214,7 +17332,18 @@
           "values": [
             95.493455,
             0.012996,
-            null
+            -0.010579,
+            97.426258,
+            -0.010448,
+            -0.106027,
+            95.369353,
+            90.633906,
+            83.543374,
+            99.428219,
+            0.006272,
+            -0.050431,
+            -0.084636,
+            0.009994
           ]
         },
         {
@@ -11222,7 +17351,18 @@
           "values": [
             95.868044,
             0.003923,
-            null
+            -0.010879,
+            95.988728,
+            -0.00942,
+            -0.097411,
+            95.004494,
+            88.303719,
+            86.408907,
+            99.476349,
+            -0.018791,
+            -0.091228,
+            -0.063726,
+            0.01569
           ]
         },
         {
@@ -11230,7 +17370,18 @@
           "values": [
             95.407017,
             -0.004809,
-            null
+            -0.007823,
+            92.412383,
+            -0.004539,
+            -0.090101,
+            94.769079,
+            87.429248,
+            83.96427,
+            100.131659,
+            -0.017746,
+            -0.08071,
+            -0.100927,
+            0.032592
           ]
         },
         {
@@ -11238,7 +17389,18 @@
           "values": [
             94.659227,
             -0.007838,
-            null
+            -0.027347,
+            92.881809,
+            -0.025593,
+            -0.025593,
+            93.857962,
+            72.107207,
+            84.438006,
+            99.641892,
+            -0.046432,
+            -0.241709,
+            -0.087276,
+            0.01065
           ]
         },
         {
@@ -11246,7 +17408,18 @@
           "values": [
             93.65984,
             -0.010558,
-            null
+            -0.03198,
+            89.585967,
+            -0.034566,
+            -0.030019,
+            95.95935,
+            69.611863,
+            87.662838,
+            96.777809,
+            -0.015268,
+            -0.286522,
+            -0.021452,
+            -0.015234
           ]
         },
         {
@@ -11254,7 +17427,18 @@
           "values": [
             95.786074,
             0.022702,
-            null
+            0.023784,
+            98.348706,
+            0.024684,
+            -0.011538,
+            96.117996,
+            72.083721,
+            86.596193,
+            100.796118,
+            -0.01058,
+            -0.23413,
+            -0.035715,
+            0.070786
           ]
         },
         {
@@ -11262,7 +17446,18 @@
           "values": [
             95.609086,
             -0.001848,
-            null
+            0.368497,
+            96.257341,
+            0.373821,
+            0.0647,
+            96.019444,
+            70.813299,
+            87.71225,
+            100.167069,
+            0.065081,
+            -0.242521,
+            0.521604,
+            0.474696
           ]
         },
         {
@@ -11270,7 +17465,18 @@
           "values": [
             95.093763,
             -0.00539,
-            null
+            0.362933,
+            96.498638,
+            0.364962,
+            0.114664,
+            96.857495,
+            70.343156,
+            88.121181,
+            99.280751,
+            0.123239,
+            -0.14787,
+            0.495136,
+            0.449468
           ]
         },
         {
@@ -11278,7 +17484,18 @@
           "values": [
             94.926099,
             -0.001763,
-            null
+            0.118277,
+            94.688046,
+            0.112466,
+            0.114297,
+            96.131963,
+            70.435705,
+            85.316439,
+            99.78574,
+            0.056441,
+            -0.161667,
+            0.176521,
+            0.145259
           ]
         },
         {
@@ -11286,7 +17503,18 @@
           "values": [
             95.1312,
             0.002161,
-            null
+            0.073422,
+            95.606727,
+            0.072006,
+            0.108002,
+            97.128792,
+            71.235925,
+            85.120671,
+            99.849475,
+            0.040568,
+            -0.191466,
+            0.169126,
+            0.081542
           ]
         },
         {
@@ -11294,7 +17522,18 @@
           "values": [
             95.482185,
             0.003689,
-            null
+            0.038047,
+            98.407463,
+            0.039067,
+            0.098593,
+            96.442086,
+            68.600554,
+            90.140754,
+            99.701469,
+            0.01963,
+            -0.275093,
+            0.111612,
+            0.050451
           ]
         },
         {
@@ -11302,7 +17541,18 @@
           "values": [
             94.462007,
             -0.010684,
-            null
+            0.002054,
+            93.097458,
+            -0.003217,
+            0.086515,
+            98.167882,
+            67.889929,
+            89.448785,
+            97.806686,
+            0.037687,
+            -0.254973,
+            0.120817,
+            -0.010687
           ]
         },
         {
@@ -11310,7 +17560,18 @@
           "values": [
             95.467436,
             0.010644,
-            null
+            -0.000272,
+            97.610176,
+            0.001888,
+            0.077195,
+            97.802857,
+            69.097427,
+            87.565585,
+            99.831459,
+            0.025517,
+            -0.237621,
+            0.048145,
+            0.004056
           ]
         },
         {
@@ -11318,7 +17579,18 @@
           "values": [
             95.969927,
             0.005263,
-            null
+            0.001063,
+            96.092105,
+            0.001077,
+            0.069745,
+            98.248279,
+            69.013962,
+            86.479101,
+            100.900439,
+            0.034143,
+            -0.218448,
+            0.000812,
+            0.014316
           ]
         },
         {
@@ -11326,7 +17598,18 @@
           "values": [
             97.184878,
             0.01266,
-            null
+            0.018634,
+            94.508755,
+            0.022685,
+            0.065692,
+            97.762356,
+            73.176922,
+            87.356978,
+            102.542339,
+            0.031585,
+            -0.163016,
+            0.040407,
+            0.024075
           ]
         },
         {
@@ -11334,7 +17617,18 @@
           "values": [
             98.407748,
             0.012583,
-            null
+            0.0396,
+            96.760848,
+            0.041763,
+            0.041763,
+            100.67377,
+            70.562334,
+            88.692586,
+            103.28428,
+            0.072618,
+            -0.021425,
+            0.050387,
+            0.036555
           ]
         },
         {
@@ -11342,7 +17636,18 @@
           "values": [
             98.365822,
             -0.000426,
-            null
+            0.050245,
+            93.912953,
+            0.0483,
+            0.044972,
+            96.522377,
+            69.552381,
+            90.117863,
+            103.619318,
+            0.005867,
+            -0.000854,
+            0.028005,
+            0.070693
           ]
         },
         {
@@ -11350,7 +17655,18 @@
           "values": [
             99.291353,
             0.009409,
-            null
+            0.036595,
+            101.974441,
+            0.036866,
+            0.042133,
+            99.415105,
+            71.272851,
+            92.07102,
+            103.865428,
+            0.034303,
+            -0.011249,
+            0.063222,
+            0.030451
           ]
         },
         {
@@ -11358,7 +17674,18 @@
           "values": [
             99.881023,
             0.005939,
-            null
+            0.044681,
+            100.422981,
+            0.043276,
+            0.042425,
+            99.915867,
+            72.714854,
+            93.116979,
+            104.579244,
+            0.04058,
+            0.026853,
+            0.061619,
+            0.044048
           ]
         },
         {
@@ -11366,7 +17693,18 @@
           "values": [
             99.684168,
             -0.001971,
-            null
+            0.048272,
+            101.344699,
+            0.050219,
+            0.044013,
+            99.796398,
+            72.378056,
+            88.81716,
+            105.535127,
+            0.030343,
+            0.028928,
+            0.007898,
+            0.062997
           ]
         },
         {
@@ -11374,7 +17712,18 @@
           "values": [
             99.147328,
             -0.005385,
-            null
+            0.044469,
+            98.553016,
+            0.040818,
+            0.043481,
+            102.303326,
+            70.861441,
+            89.090448,
+            104.287846,
+            0.064197,
+            0.006044,
+            0.044235,
+            0.045118
           ]
         },
         {
@@ -11382,7 +17731,18 @@
           "values": [
             99.824502,
             0.00683,
-            null
+            0.049335,
+            100.348924,
+            0.049601,
+            0.044362,
+            101.175709,
+            72.0779,
+            88.077201,
+            105.603823,
+            0.041665,
+            0.01182,
+            0.034733,
+            0.05763
           ]
         },
         {
@@ -11390,7 +17750,18 @@
           "values": [
             100.255836,
             0.004321,
-            null
+            0.049995,
+            103.148299,
+            0.048176,
+            0.044855,
+            99.927248,
+            70.278969,
+            88.483003,
+            106.824122,
+            0.036137,
+            0.024466,
+            -0.018391,
+            0.07144
           ]
         },
         {
@@ -11398,7 +17769,18 @@
           "values": [
             99.839226,
             -0.004155,
-            null
+            0.056925,
+            98.552407,
+            0.058594,
+            0.04635,
+            99.973998,
+            69.969696,
+            87.931444,
+            106.002521,
+            0.018398,
+            0.030634,
+            -0.016963,
+            0.083796
           ]
         },
         {
@@ -11406,7 +17788,18 @@
           "values": [
             99.865642,
             0.000265,
-            null
+            0.04607,
+            102.482088,
+            0.049912,
+            0.046715,
+            101.609762,
+            68.577884,
+            86.835029,
+            106.497185,
+            0.038924,
+            -0.007519,
+            -0.008343,
+            0.06677
           ]
         },
         {
@@ -11414,7 +17807,18 @@
           "values": [
             100.962623,
             0.010985,
-            null
+            0.052024,
+            101.190246,
+            0.053055,
+            0.047295,
+            102.597897,
+            68.478577,
+            90.623764,
+            106.814615,
+            0.044272,
+            -0.007758,
+            0.047927,
+            0.058614
           ]
         },
         {
@@ -11422,7 +17826,18 @@
           "values": [
             102.383417,
             0.014072,
-            null
+            0.053491,
+            99.630057,
+            0.054189,
+            0.047865,
+            103.300972,
+            69.615985,
+            93.71523,
+            108.002797,
+            0.056654,
+            -0.048662,
+            0.072785,
+            0.053251
           ]
         },
         {
@@ -11430,7 +17845,18 @@
           "values": [
             101.928352,
             -0.004445,
-            null
+            0.035776,
+            99.934424,
+            0.032798,
+            0.032798,
+            101.118316,
+            69.743245,
+            93.191474,
+            107.487117,
+            0.004416,
+            -0.011608,
+            0.050725,
+            0.040692
           ]
         },
         {
@@ -11438,7 +17864,18 @@
           "values": [
             101.614738,
             -0.003077,
-            null
+            0.033029,
+            96.89497,
+            0.031753,
+            0.032283,
+            103.593532,
+            68.810314,
+            93.51595,
+            106.617653,
+            0.073259,
+            -0.010669,
+            0.037707,
+            0.028936
           ]
         },
         {
@@ -11446,7 +17883,18 @@
           "values": [
             101.624389,
             9.5e-05,
-            null
+            0.023497,
+            104.264972,
+            0.022462,
+            0.028861,
+            103.308668,
+            69.473338,
+            95.296796,
+            105.915894,
+            0.039165,
+            -0.025248,
+            0.035036,
+            0.019742
           ]
         },
         {
@@ -11454,7 +17902,18 @@
           "values": [
             102.113348,
             0.004811,
-            null
+            0.02235,
+            102.269351,
+            0.018386,
+            0.026185,
+            103.609164,
+            67.797679,
+            94.155976,
+            107.567987,
+            0.036964,
+            -0.067623,
+            0.011158,
+            0.028579
           ]
         },
         {
@@ -11462,7 +17921,18 @@
           "values": [
             102.603925,
             0.004804,
-            null
+            0.02929,
+            104.563061,
+            0.031757,
+            0.027327,
+            103.550198,
+            68.314607,
+            97.658193,
+            107.275197,
+            0.037615,
+            -0.056142,
+            0.099542,
+            0.016488
           ]
         },
         {
@@ -11470,7 +17940,18 @@
           "values": [
             103.032062,
             0.004173,
-            null
+            0.039181,
+            102.597621,
+            0.04104,
+            0.029606,
+            103.466763,
+            68.935714,
+            101.338418,
+            106.797084,
+            0.011372,
+            -0.027176,
+            0.137478,
+            0.024061
           ]
         },
         {
@@ -11478,7 +17959,18 @@
           "values": [
             102.993711,
             -0.000372,
-            null
+            0.031748,
+            103.624722,
+            0.032644,
+            0.030046,
+            99.889004,
+            68.594511,
+            101.376984,
+            107.496115,
+            -0.012718,
+            -0.048328,
+            0.151001,
+            0.017919
           ]
         },
         {
@@ -11486,7 +17978,18 @@
           "values": [
             103.14479,
             0.001467,
-            null
+            0.028816,
+            105.765476,
+            0.025373,
+            0.029441,
+            99.972809,
+            69.446056,
+            104.144976,
+            106.707213,
+            0.000456,
+            -0.011852,
+            0.177005,
+            -0.001094
           ]
         },
         {
@@ -11494,7 +17997,18 @@
           "values": [
             103.813038,
             0.006479,
-            null
+            0.039802,
+            102.956721,
+            0.04469,
+            0.03112,
+            99.541299,
+            69.247148,
+            105.726058,
+            107.190559,
+            -0.004328,
+            -0.010327,
+            0.202369,
+            0.011208
           ]
         },
         {
@@ -11502,7 +18016,18 @@
           "values": [
             104.817918,
             0.00968,
-            null
+            0.049589,
+            108.027917,
+            0.054115,
+            0.033482,
+            99.691129,
+            68.993646,
+            110.300396,
+            107.503098,
+            -0.018882,
+            0.006063,
+            0.270229,
+            0.009445
           ]
         },
         {
@@ -11510,7 +18035,18 @@
           "values": [
             103.107057,
             -0.016322,
-            null
+            0.02124,
+            103.532319,
+            0.023145,
+            0.03253,
+            97.616531,
+            68.485139,
+            105.860476,
+            106.593874,
+            -0.048552,
+            9.6e-05,
+            0.168132,
+            -0.002067
           ]
         },
         {
@@ -11518,7 +18054,18 @@
           "values": [
             103.036966,
             -0.00068,
-            null
+            0.006383,
+            99.890788,
+            0.002617,
+            0.030043,
+            97.922358,
+            67.684608,
+            105.876631,
+            106.249962,
+            -0.052067,
+            -0.027743,
+            0.12977,
+            -0.01623
           ]
         },
         {
@@ -11526,7 +18073,18 @@
           "values": [
             103.634152,
             0.005796,
-            null
+            0.016735,
+            101.008247,
+            0.010745,
+            0.010745,
+            99.450132,
+            65.25977,
+            108.296858,
+            106.547682,
+            -0.016497,
+            -0.064285,
+            0.16209,
+            -0.00874
           ]
         },
         {
@@ -11534,7 +18092,18 @@
           "values": [
             102.030078,
             -0.015478,
-            null
+            0.004087,
+            97.285864,
+            0.004034,
+            0.007442,
+            98.515531,
+            66.849033,
+            103.106691,
+            105.68044,
+            -0.049019,
+            -0.028503,
+            0.102557,
+            -0.00879
           ]
         },
         {
@@ -11542,7 +18111,18 @@
           "values": [
             102.633837,
             0.005917,
-            null
+            0.009933,
+            105.053923,
+            0.007567,
+            0.007485,
+            95.915197,
+            67.565615,
+            103.590088,
+            107.045509,
+            -0.071567,
+            -0.02746,
+            0.087026,
+            0.010665
           ]
         },
         {
@@ -11550,7 +18130,18 @@
           "values": [
             101.627113,
             -0.009809,
-            null
+            -0.004762,
+            101.618296,
+            -0.006366,
+            0.003973,
+            94.1993,
+            65.66514,
+            104.762692,
+            105.019613,
+            -0.090821,
+            -0.031454,
+            0.11265,
+            -0.023691
           ]
         },
         {
@@ -11558,7 +18149,18 @@
           "values": [
             101.822934,
             0.001927,
-            null
+            -0.007612,
+            104.086031,
+            -0.004562,
+            0.002216,
+            94.387036,
+            68.434036,
+            105.970245,
+            105.144062,
+            -0.08849,
+            0.001748,
+            0.085114,
+            -0.019866
           ]
         },
         {
@@ -11566,7 +18168,18 @@
           "values": [
             102.090292,
             0.002626,
-            null
+            -0.009141,
+            101.985522,
+            -0.005966,
+            0.000841,
+            93.043195,
+            68.297614,
+            103.080808,
+            106.787756,
+            -0.100743,
+            -0.009256,
+            0.017194,
+            -8.7e-05
           ]
         },
         {
@@ -11574,7 +18187,18 @@
           "values": [
             102.762047,
             0.00658,
-            null
+            -0.002249,
+            103.501492,
+            -0.001189,
+            0.000546,
+            93.284469,
+            68.069487,
+            107.613823,
+            106.663174,
+            -0.066119,
+            -0.007654,
+            0.061521,
+            -0.007749
           ]
         },
         {
@@ -11582,7 +18206,18 @@
           "values": [
             102.256141,
             -0.004923,
-            null
+            -0.008616,
+            104.566645,
+            -0.011335,
+            -0.000986,
+            93.883533,
+            68.046518,
+            103.611695,
+            106.81369,
+            -0.060909,
+            -0.020153,
+            -0.005121,
+            0.000998
           ]
         },
         {
@@ -11590,7 +18225,18 @@
           "values": [
             102.885165,
             0.006151,
-            null
+            -0.008938,
+            102.465544,
+            -0.004771,
+            -0.001408,
+            91.572746,
+            67.315989,
+            106.119118,
+            107.587203,
+            -0.080053,
+            -0.027888,
+            0.003718,
+            0.0037
           ]
         },
         {
@@ -11598,7 +18244,18 @@
           "values": [
             101.141931,
             -0.016943,
-            null
+            -0.03507,
+            104.384258,
+            -0.033729,
+            -0.004795,
+            89.897498,
+            67.071542,
+            101.162816,
+            106.494733,
+            -0.09824,
+            -0.027859,
+            -0.082843,
+            -0.00938
           ]
         },
         {
@@ -11606,7 +18263,18 @@
           "values": [
             101.328175,
             0.001841,
-            -0.009
+            -0.017253,
+            102.128836,
+            -0.013556,
+            0.005,
+            90.240287,
+            67.433761,
+            101.405353,
+            106.546214,
+            -0.075563,
+            -0.015352,
+            -0.042085,
+            -0.000447
           ]
         },
         {
@@ -11614,7 +18282,18 @@
           "values": [
             100.100472,
             -0.012116,
-            -0.024
+            -0.028499,
+            96.693405,
+            -0.032009,
+            0.002,
+            89.331476,
+            65.871837,
+            99.372479,
+            105.617951,
+            -0.087732,
+            -0.026783,
+            -0.061431,
+            -0.005948
           ]
         },
         {
@@ -11622,7 +18301,18 @@
           "values": [
             100.345389,
             0.002447,
-            -0.028
+            -0.031734,
+            96.93656,
+            -0.04031,
+            -0.04031,
+            87.793808,
+            66.65467,
+            99.575124,
+            106.093954,
+            -0.117208,
+            0.021375,
+            -0.080535,
+            -0.004258
           ]
         },
         {
@@ -11630,7 +18320,18 @@
           "values": [
             102.121506,
             0.0177,
-            0.004
+            0.000896,
+            97.365709,
+            0.000821,
+            -0.021,
+            88.443059,
+            67.058027,
+            103.318234,
+            107.61252,
+            -0.102242,
+            0.003126,
+            0.002052,
+            0.018282
           ]
         },
         {
@@ -11638,7 +18339,18 @@
           "values": [
             101.691373,
             -0.004212,
-            -0.013
+            -0.009183,
+            103.872805,
+            -0.011243,
+            -0.007,
+            85.651338,
+            66.313156,
+            106.059042,
+            106.67319,
+            -0.10701,
+            -0.018537,
+            0.023834,
+            -0.003478
           ]
         },
         {
@@ -11646,7 +18358,18 @@
           "values": [
             100.610819,
             -0.010626,
-            -0.007
+            -0.01,
+            100.778263,
+            -0.008267,
+            -0.016,
+            87.265948,
+            66.438092,
+            99.505709,
+            106.668341,
+            -0.073603,
+            0.011771,
+            -0.05018,
+            0.015699
           ]
         },
         {
@@ -11654,7 +18377,18 @@
           "values": [
             101.579489,
             0.009628,
-            -0.004
+            -0.002391,
+            104.217311,
+            0.001261,
+            -0.014,
+            86.693153,
+            66.577942,
+            104.706111,
+            106.740626,
+            -0.081514,
+            -0.027122,
+            -0.011929,
+            0.015185
           ]
         },
         {
@@ -11662,7 +18396,18 @@
           "values": [
             101.250003,
             -0.003244,
-            -0.008
+            -0.008231,
+            101.525474,
+            -0.004511,
+            -0.013,
+            85.373726,
+            66.350626,
+            103.917624,
+            106.805561,
+            -0.082429,
+            -0.028507,
+            0.008118,
+            0.000167
           ]
         },
         {
@@ -11670,7 +18415,18 @@
           "values": [
             100.232315,
             -0.010051,
-            -0.028
+            -0.024617,
+            100.937177,
+            -0.024776,
+            -0.015,
+            87.773587,
+            66.296393,
+            103.136075,
+            105.17192,
+            -0.059076,
+            -0.026048,
+            -0.041609,
+            -0.013981
           ]
         },
         {
@@ -11678,7 +18434,18 @@
           "values": [
             100.042784,
             -0.001891,
-            -0.027
+            -0.021645,
+            102.086821,
+            -0.023715,
+            -0.017,
+            88.006893,
+            66.981313,
+            101.273474,
+            105.226029,
+            -0.062595,
+            -0.015654,
+            -0.022567,
+            -0.014864
           ]
         },
         {
@@ -11686,7 +18453,18 @@
           "values": [
             99.896912,
             -0.001458,
-            -0.033
+            -0.029045,
+            99.450334,
+            -0.029427,
+            -0.018,
+            88.641354,
+            67.213663,
+            99.156859,
+            105.478289,
+            -0.032012,
+            -0.00152,
+            -0.065608,
+            -0.019602
           ]
         },
         {
@@ -11694,7 +18472,18 @@
           "values": [
             100.714133,
             0.008181,
-            -0.007
+            -0.00423,
+            103.9888,
+            -0.003788,
+            -0.017,
+            89.28807,
+            68.203249,
+            103.137598,
+            105.202141,
+            -0.006779,
+            0.016873,
+            0.019521,
+            -0.012138
           ]
         },
         {
@@ -11702,7 +18491,18 @@
           "values": [
             101.317257,
             0.005988,
-            -0.001
+            -0.000108,
+            102.368957,
+            0.002351,
+            -0.016,
+            89.285573,
+            68.136033,
+            104.433809,
+            105.749443,
+            -0.01058,
+            0.010414,
+            0.029865,
+            -0.007478
           ]
         },
         {
@@ -11710,7 +18510,18 @@
           "values": [
             101.430223,
             0.001115,
-            0.015
+            0.013284,
+            97.88025,
+            0.012274,
+            -0.013,
+            89.710124,
+            68.389301,
+            105.675997,
+            105.570223,
+            0.004239,
+            0.038218,
+            0.063433,
+            -0.000452
           ]
         },
         {
@@ -11718,7 +18529,18 @@
           "values": [
             100.399604,
             -0.010161,
-            -0.001
+            0.00054,
+            96.433152,
+            -0.005193,
+            -0.005193,
+            88.771655,
+            67.236676,
+            104.089596,
+            104.487321,
+            0.011138,
+            0.008732,
+            0.045337,
+            -0.015143
           ]
         },
         {
@@ -11726,7 +18548,18 @@
           "values": [
             100.824971,
             0.004237,
-            -0.013
+            -0.012696,
+            96.159252,
+            -0.012391,
+            -0.012,
+            89.283087,
+            66.178936,
+            104.267684,
+            105.269501,
+            0.009498,
+            -0.013109,
+            0.00919,
+            -0.021773
           ]
         },
         {
@@ -11734,7 +18567,18 @@
           "values": [
             100.297622,
             -0.00523,
-            -0.015
+            -0.013706,
+            102.297721,
+            -0.015164,
+            -0.012,
+            90.853217,
+            66.487085,
+            101.211801,
+            105.044008,
+            0.060733,
+            0.002623,
+            -0.045703,
+            -0.015273
           ]
         },
         {
@@ -11742,7 +18586,18 @@
           "values": [
             102.419928,
             0.02116,
-            0.018
+            0.017981,
+            103.026723,
+            0.022311,
+            -0.003,
+            90.2476,
+            66.355736,
+            108.113466,
+            106.370282,
+            0.034167,
+            -0.00124,
+            0.086505,
+            -0.002794
           ]
         },
         {
@@ -11750,7 +18605,18 @@
           "values": [
             101.629971,
             -0.007713,
-            0.0
+            0.000497,
+            104.433887,
+            0.002078,
+            -0.004,
+            90.137261,
+            66.055543,
+            104.080053,
+            106.251517,
+            0.039728,
+            -0.007846,
+            -0.005979,
+            -0.004582
           ]
         },
         {
@@ -11758,7 +18624,18 @@
           "values": [
             102.0,
             0.002,
-            0.008
+            0.008,
+            null,
+            0.017,
+            0.0,
+            null,
+            null,
+            null,
+            null,
+            0.07,
+            0.007,
+            0.042,
+            -0.012
           ]
         }
       ],
@@ -11786,15 +18663,315 @@
           "varMag": 0.2,
           "pos": true,
           "varColor": "#1e5b4f",
-          "varLabel": "Variación mensual",
+          "varLabel": "Var. mensual desest.",
           "maxFmt": "104.8",
           "maxRaw": 104.817918,
           "maxP": "Oct 23",
-          "minFmt": "69.8",
-          "minRaw": 69.771418,
-          "minP": "May 20",
-          "lastI": 101,
+          "minFmt": "58.6",
+          "minRaw": 58.560436,
+          "minP": "Oct 95",
+          "lastI": 401,
           "series": [
+            63.274082,
+            65.756233,
+            66.225698,
+            65.395033,
+            65.387692,
+            64.899476,
+            65.489081,
+            65.646241,
+            65.495201,
+            65.784649,
+            65.819916,
+            66.826912,
+            67.298631,
+            66.948339,
+            67.679096,
+            71.101014,
+            68.39675,
+            68.3317,
+            68.221836,
+            69.026703,
+            69.247741,
+            68.810143,
+            68.599539,
+            68.419178,
+            69.400147,
+            63.182384,
+            62.177098,
+            59.569153,
+            59.221866,
+            59.547047,
+            59.998621,
+            60.115819,
+            61.091233,
+            58.560436,
+            62.46232,
+            66.727878,
+            66.219198,
+            65.784052,
+            66.939641,
+            66.366411,
+            67.422753,
+            68.557118,
+            68.35912,
+            68.393034,
+            68.566227,
+            69.868715,
+            70.626993,
+            72.532538,
+            70.707133,
+            71.266161,
+            71.711134,
+            72.784262,
+            73.541295,
+            74.365767,
+            74.977874,
+            75.533124,
+            75.657795,
+            76.580359,
+            77.145641,
+            77.290869,
+            78.243049,
+            79.467789,
+            79.962871,
+            79.636789,
+            79.970488,
+            79.040944,
+            79.22332,
+            79.692225,
+            79.524205,
+            79.695372,
+            79.666148,
+            80.371411,
+            80.322377,
+            80.49134,
+            80.626754,
+            81.339167,
+            80.628583,
+            80.274956,
+            80.442208,
+            80.681867,
+            81.567732,
+            81.047271,
+            81.735682,
+            82.2705,
+            83.508689,
+            84.743813,
+            85.206385,
+            84.718615,
+            85.340881,
+            86.100675,
+            86.824169,
+            85.845073,
+            85.443037,
+            85.291017,
+            84.360907,
+            82.315331,
+            85.035017,
+            84.386254,
+            83.343329,
+            82.584184,
+            83.156083,
+            82.937442,
+            82.954323,
+            82.926392,
+            83.225087,
+            81.595875,
+            82.320591,
+            81.744669,
+            80.975683,
+            79.314329,
+            80.217169,
+            81.637495,
+            81.022148,
+            81.220341,
+            81.430789,
+            82.372866,
+            82.338512,
+            83.259069,
+            83.295053,
+            82.461607,
+            80.811754,
+            82.608401,
+            82.068723,
+            82.248805,
+            82.502367,
+            83.017483,
+            82.783751,
+            82.573522,
+            82.386812,
+            82.965942,
+            82.430623,
+            83.850546,
+            84.106371,
+            84.226344,
+            85.984054,
+            85.851864,
+            85.498345,
+            86.018635,
+            85.588806,
+            85.574137,
+            85.671527,
+            85.997051,
+            86.038272,
+            86.286688,
+            86.500696,
+            86.874975,
+            86.650853,
+            86.947492,
+            87.732412,
+            86.656932,
+            85.380112,
+            87.599492,
+            88.293932,
+            88.536532,
+            89.842012,
+            90.941673,
+            91.186209,
+            90.597574,
+            91.450131,
+            91.560819,
+            92.471183,
+            92.549325,
+            92.518447,
+            92.95283,
+            92.637928,
+            92.649107,
+            92.836319,
+            91.9223,
+            92.021355,
+            92.717479,
+            93.688418,
+            93.435996,
+            93.451471,
+            93.429072,
+            93.407853,
+            92.925552,
+            93.482665,
+            93.149285,
+            92.516612,
+            93.097857,
+            92.898172,
+            94.866961,
+            92.725163,
+            92.758121,
+            92.872316,
+            93.912014,
+            92.182713,
+            92.176984,
+            91.419914,
+            91.532337,
+            89.992333,
+            88.984752,
+            84.324503,
+            83.963247,
+            83.238049,
+            83.266346,
+            83.049685,
+            82.854684,
+            84.728932,
+            84.687113,
+            85.920977,
+            86.359469,
+            87.676279,
+            88.062667,
+            87.885944,
+            87.491986,
+            88.524132,
+            89.48898,
+            88.956657,
+            88.976946,
+            88.734397,
+            89.463161,
+            88.967665,
+            89.026025,
+            88.848323,
+            89.674422,
+            89.813974,
+            89.614866,
+            90.291594,
+            90.208148,
+            91.001295,
+            91.842177,
+            91.642251,
+            92.072547,
+            91.930066,
+            93.138074,
+            93.965313,
+            94.467367,
+            94.573864,
+            94.560682,
+            94.657925,
+            95.155404,
+            94.751783,
+            95.23547,
+            95.983079,
+            94.625177,
+            95.868149,
+            94.03173,
+            94.827566,
+            94.304647,
+            94.433411,
+            95.140204,
+            94.154122,
+            93.291696,
+            94.784236,
+            93.833318,
+            94.003121,
+            94.913441,
+            94.010092,
+            95.010093,
+            94.74647,
+            95.043679,
+            95.127986,
+            95.460393,
+            96.897158,
+            97.461014,
+            97.556034,
+            97.816018,
+            97.213359,
+            96.768291,
+            97.402269,
+            98.257508,
+            98.082293,
+            97.887425,
+            97.510386,
+            98.177695,
+            97.658799,
+            98.742498,
+            97.870037,
+            98.344088,
+            99.434045,
+            99.76698,
+            101.851353,
+            99.732629,
+            99.004428,
+            99.460528,
+            99.395811,
+            99.517239,
+            98.75007,
+            98.704587,
+            98.967076,
+            98.67943,
+            98.693867,
+            98.790614,
+            99.151913,
+            99.100519,
+            100.242964,
+            99.936465,
+            100.645729,
+            100.194215,
+            100.892154,
+            99.792772,
+            99.829613,
+            99.907718,
+            99.12123,
+            99.725881,
+            98.747491,
+            99.86433,
+            100.03001,
+            100.737329,
             99.840849,
             100.271051,
             100.322778,
@@ -11899,6 +19076,306 @@
             102.0
           ],
           "periods": [
+            "Ene 93",
+            "Feb 93",
+            "Mar 93",
+            "Abr 93",
+            "May 93",
+            "Jun 93",
+            "Jul 93",
+            "Ago 93",
+            "Sep 93",
+            "Oct 93",
+            "Nov 93",
+            "Dic 93",
+            "Ene 94",
+            "Feb 94",
+            "Mar 94",
+            "Abr 94",
+            "May 94",
+            "Jun 94",
+            "Jul 94",
+            "Ago 94",
+            "Sep 94",
+            "Oct 94",
+            "Nov 94",
+            "Dic 94",
+            "Ene 95",
+            "Feb 95",
+            "Mar 95",
+            "Abr 95",
+            "May 95",
+            "Jun 95",
+            "Jul 95",
+            "Ago 95",
+            "Sep 95",
+            "Oct 95",
+            "Nov 95",
+            "Dic 95",
+            "Ene 96",
+            "Feb 96",
+            "Mar 96",
+            "Abr 96",
+            "May 96",
+            "Jun 96",
+            "Jul 96",
+            "Ago 96",
+            "Sep 96",
+            "Oct 96",
+            "Nov 96",
+            "Dic 96",
+            "Ene 97",
+            "Feb 97",
+            "Mar 97",
+            "Abr 97",
+            "May 97",
+            "Jun 97",
+            "Jul 97",
+            "Ago 97",
+            "Sep 97",
+            "Oct 97",
+            "Nov 97",
+            "Dic 97",
+            "Ene 98",
+            "Feb 98",
+            "Mar 98",
+            "Abr 98",
+            "May 98",
+            "Jun 98",
+            "Jul 98",
+            "Ago 98",
+            "Sep 98",
+            "Oct 98",
+            "Nov 98",
+            "Dic 98",
+            "Ene 99",
+            "Feb 99",
+            "Mar 99",
+            "Abr 99",
+            "May 99",
+            "Jun 99",
+            "Jul 99",
+            "Ago 99",
+            "Sep 99",
+            "Oct 99",
+            "Nov 99",
+            "Dic 99",
+            "Ene 00",
+            "Feb 00",
+            "Mar 00",
+            "Abr 00",
+            "May 00",
+            "Jun 00",
+            "Jul 00",
+            "Ago 00",
+            "Sep 00",
+            "Oct 00",
+            "Nov 00",
+            "Dic 00",
+            "Ene 01",
+            "Feb 01",
+            "Mar 01",
+            "Abr 01",
+            "May 01",
+            "Jun 01",
+            "Jul 01",
+            "Ago 01",
+            "Sep 01",
+            "Oct 01",
+            "Nov 01",
+            "Dic 01",
+            "Ene 02",
+            "Feb 02",
+            "Mar 02",
+            "Abr 02",
+            "May 02",
+            "Jun 02",
+            "Jul 02",
+            "Ago 02",
+            "Sep 02",
+            "Oct 02",
+            "Nov 02",
+            "Dic 02",
+            "Ene 03",
+            "Feb 03",
+            "Mar 03",
+            "Abr 03",
+            "May 03",
+            "Jun 03",
+            "Jul 03",
+            "Ago 03",
+            "Sep 03",
+            "Oct 03",
+            "Nov 03",
+            "Dic 03",
+            "Ene 04",
+            "Feb 04",
+            "Mar 04",
+            "Abr 04",
+            "May 04",
+            "Jun 04",
+            "Jul 04",
+            "Ago 04",
+            "Sep 04",
+            "Oct 04",
+            "Nov 04",
+            "Dic 04",
+            "Ene 05",
+            "Feb 05",
+            "Mar 05",
+            "Abr 05",
+            "May 05",
+            "Jun 05",
+            "Jul 05",
+            "Ago 05",
+            "Sep 05",
+            "Oct 05",
+            "Nov 05",
+            "Dic 05",
+            "Ene 06",
+            "Feb 06",
+            "Mar 06",
+            "Abr 06",
+            "May 06",
+            "Jun 06",
+            "Jul 06",
+            "Ago 06",
+            "Sep 06",
+            "Oct 06",
+            "Nov 06",
+            "Dic 06",
+            "Ene 07",
+            "Feb 07",
+            "Mar 07",
+            "Abr 07",
+            "May 07",
+            "Jun 07",
+            "Jul 07",
+            "Ago 07",
+            "Sep 07",
+            "Oct 07",
+            "Nov 07",
+            "Dic 07",
+            "Ene 08",
+            "Feb 08",
+            "Mar 08",
+            "Abr 08",
+            "May 08",
+            "Jun 08",
+            "Jul 08",
+            "Ago 08",
+            "Sep 08",
+            "Oct 08",
+            "Nov 08",
+            "Dic 08",
+            "Ene 09",
+            "Feb 09",
+            "Mar 09",
+            "Abr 09",
+            "May 09",
+            "Jun 09",
+            "Jul 09",
+            "Ago 09",
+            "Sep 09",
+            "Oct 09",
+            "Nov 09",
+            "Dic 09",
+            "Ene 10",
+            "Feb 10",
+            "Mar 10",
+            "Abr 10",
+            "May 10",
+            "Jun 10",
+            "Jul 10",
+            "Ago 10",
+            "Sep 10",
+            "Oct 10",
+            "Nov 10",
+            "Dic 10",
+            "Ene 11",
+            "Feb 11",
+            "Mar 11",
+            "Abr 11",
+            "May 11",
+            "Jun 11",
+            "Jul 11",
+            "Ago 11",
+            "Sep 11",
+            "Oct 11",
+            "Nov 11",
+            "Dic 11",
+            "Ene 12",
+            "Feb 12",
+            "Mar 12",
+            "Abr 12",
+            "May 12",
+            "Jun 12",
+            "Jul 12",
+            "Ago 12",
+            "Sep 12",
+            "Oct 12",
+            "Nov 12",
+            "Dic 12",
+            "Ene 13",
+            "Feb 13",
+            "Mar 13",
+            "Abr 13",
+            "May 13",
+            "Jun 13",
+            "Jul 13",
+            "Ago 13",
+            "Sep 13",
+            "Oct 13",
+            "Nov 13",
+            "Dic 13",
+            "Ene 14",
+            "Feb 14",
+            "Mar 14",
+            "Abr 14",
+            "May 14",
+            "Jun 14",
+            "Jul 14",
+            "Ago 14",
+            "Sep 14",
+            "Oct 14",
+            "Nov 14",
+            "Dic 14",
+            "Ene 15",
+            "Feb 15",
+            "Mar 15",
+            "Abr 15",
+            "May 15",
+            "Jun 15",
+            "Jul 15",
+            "Ago 15",
+            "Sep 15",
+            "Oct 15",
+            "Nov 15",
+            "Dic 15",
+            "Ene 16",
+            "Feb 16",
+            "Mar 16",
+            "Abr 16",
+            "May 16",
+            "Jun 16",
+            "Jul 16",
+            "Ago 16",
+            "Sep 16",
+            "Oct 16",
+            "Nov 16",
+            "Dic 16",
+            "Ene 17",
+            "Feb 17",
+            "Mar 17",
+            "Abr 17",
+            "May 17",
+            "Jun 17",
+            "Jul 17",
+            "Ago 17",
+            "Sep 17",
+            "Oct 17",
+            "Nov 17",
+            "Dic 17",
             "Ene 18",
             "Feb 18",
             "Mar 18",
@@ -12003,19 +19480,52 @@
             "Jun 26"
           ],
           "semaforo": "bueno",
-          "yoyText": "+0.7%",
-          "yoyLabel": "Var. anual"
+          "yoyText": "+0.8%",
+          "yoyLabel": "Var. anual desest.",
+          "acumRaw": 0.0,
+          "acumText": "0.0%",
+          "acumLabel": "Acumulado ene-mes",
+          "cards": [
+            {
+              "name": "Minería",
+              "nivelRaw": null,
+              "nivelText": "—",
+              "yoyRaw": 0.07,
+              "yoyText": "7.0%"
+            },
+            {
+              "name": "Energía, agua y gas",
+              "nivelRaw": null,
+              "nivelText": "—",
+              "yoyRaw": 0.007,
+              "yoyText": "0.7%"
+            },
+            {
+              "name": "Construcción",
+              "nivelRaw": null,
+              "nivelText": "—",
+              "yoyRaw": 0.042,
+              "yoyText": "4.2%"
+            },
+            {
+              "name": "Industrias manufactureras",
+              "nivelRaw": null,
+              "nivelText": "—",
+              "yoyRaw": -0.012,
+              "yoyText": "-1.2%"
+            }
+          ]
         },
         "yoy": {
-          "mag": 0.7407377558299858,
+          "mag": 0.8,
           "pos": true,
-          "text": "+0.7%",
-          "label": "Var. anual"
+          "text": "+0.8%",
+          "label": "Var. anual desest."
         },
         "resumen": [
-          "En junio de 2026, el IMAI se ubicó en 102.0 puntos (índice base 2018=100). El valor de variación mensual fue de +0.2% frente al mes previo.",
-          "La var. anual se situó en +0.7%, lo que refleja la comparación contra junio de 2026 del año previo.",
-          "En la serie mostrada, el indicador oscila entre un máximo de 104.8 puntos (octubre de 2023) y un mínimo de 69.8 puntos (mayo de 2020). El último dato se ubica dentro del rango observado en el periodo mostrado.",
+          "En junio de 2026, el Indicador Mensual de la Actividad Industrial se ubicó en 102.0 puntos (índice base 2018=100). El valor de var. mensual desest. fue de +0.2% frente al mes previo.",
+          "La var. anual desest. se situó en +0.8%, lo que refleja la comparación contra junio de 2026 del año previo.",
+          "En la serie mostrada, el indicador oscila entre un máximo de 104.8 puntos (octubre de 2023) y un mínimo de 58.6 puntos (octubre de 1995). El último dato se ubica dentro del rango observado en el periodo mostrado.",
           "La variación se clasifica como favorable según la lectura económica del indicador."
         ]
       },
@@ -12041,6 +19551,34 @@
       "numero_boletin": "485/26",
       "tipo_documento": "PDF",
       "producto_boletin": "Indicador Mensual de la Actividad Industrial",
+      "sigla": "IMAI",
+      "windows": [
+        {
+          "id": "3m",
+          "label": "3 meses",
+          "count": 3
+        },
+        {
+          "id": "6m",
+          "label": "6 meses",
+          "count": 6
+        },
+        {
+          "id": "1a",
+          "label": "1 año",
+          "count": 12
+        },
+        {
+          "id": "5a",
+          "label": "5 años",
+          "count": 60
+        },
+        {
+          "id": "max",
+          "label": "Máximo",
+          "count": null
+        }
+      ],
       "boletin_validado": true
     },
     "CONSUMO": {
@@ -30464,9 +38002,15 @@
           "values": [
             16.9583
           ]
+        },
+        {
+          "period": "2026-08-21",
+          "values": [
+            16.9018
+          ]
         }
       ],
-      "fecha_ultima_observacion": "2026-08-20",
+      "fecha_ultima_observacion": "2026-08-21",
       "url_fuente_oficial": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
       "fecha_ultima_publicacion": null,
       "regla_publicacion": null

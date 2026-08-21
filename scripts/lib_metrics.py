@@ -970,6 +970,105 @@ def _igae_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     }
 
 
+def _imai_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
+    """KPI y resumen para IMAI con el esquema V3 de 14 columnas.
+
+    El esquema V3 tiene:
+      - col 0: IMAI índice desestacionalizado
+      - col 1: Var. mensual desest. (%)
+      - col 2: Var. anual desest. (%)
+      - col 3: IMAI índice original
+      - col 4: Var. anual original (%)
+      - col 5: Acumulado ene-mes original (%)
+      - col 6-9: índices desest. de Minería, Energía, Construcción y Manufacturas
+      - col 10-13: var. anuales desest. de los cuatro sectores
+    """
+    cfg = (kpicfg.get(ind["key"]) or {}).copy()
+    if not cfg:
+        return None
+
+    cfg["valCol"] = 0
+    cfg["valFmt"] = "idx"
+    cfg["varCol"] = 1
+    cfg["varFmt"] = "pct-frac"
+    cfg["varLabel"] = "Var. mensual desest."
+    cfg["yoyCol"] = 2
+    cfg["yoyFmt"] = "pct-frac"
+    cfg["yoyLabel"] = "Var. anual desest."
+    cfg["acumCol"] = 5
+    cfg["acumFmt"] = "pct-frac"
+    cfg["acumLabel"] = "Acumulado ene-mes"
+    cfg["ctx"] = " (índice base 2018=100)"
+    cfg["comp"] = "frente al mes previo"
+    cfg["vw"] = "variación mensual desestacionalizada"
+
+    kpi = compute_kpi(ind, {ind["key"]: cfg})
+    if not kpi:
+        return None
+
+    yoy = annual_var(ind, kpi, {ind["key"]: cfg})
+    if yoy:
+        kpi["yoyText"] = yoy["text"]
+        kpi["yoyLabel"] = yoy["label"]
+    else:
+        kpi["yoyText"] = "—"
+        kpi["yoyLabel"] = cfg.get("yoyLabel", "Var. anual")
+
+    # Acumulado ene-mes (col 5)
+    acum_raw = _val_at(ind, kpi["lastI"], 5)
+    if acum_raw is not None:
+        kpi["acumRaw"] = acum_raw
+        kpi["acumText"] = ("+" if acum_raw > 0 else "") + F.fmt_val(acum_raw, "pct-frac")
+        kpi["acumLabel"] = "Acumulado ene-mes"
+    else:
+        kpi["acumRaw"] = None
+        kpi["acumText"] = "—"
+        kpi["acumLabel"] = "Acumulado ene-mes"
+
+    # Componentes para el resumen.
+    comp_cfg = [
+        {"name": "Minería", "idxCol": 6, "yoyCol": 10},
+        {"name": "Energía, agua y gas", "idxCol": 7, "yoyCol": 11},
+        {"name": "Construcción", "idxCol": 8, "yoyCol": 12},
+        {"name": "Industrias manufactureras", "idxCol": 9, "yoyCol": 13},
+    ]
+    cards = []
+    for c in comp_cfg:
+        idx = _val_at(ind, kpi["lastI"], c["idxCol"])
+        y = _val_at(ind, kpi["lastI"], c["yoyCol"])
+        cards.append({
+            "name": c["name"],
+            "nivelRaw": idx,
+            "nivelText": F.fmt_val(idx, "idx") if idx is not None else "—",
+            "yoyRaw": y,
+            "yoyText": F.fmt_val(y, "pct-frac") if y is not None else "—",
+        })
+    kpi["cards"] = cards
+
+    bullets = resumen(ind, kpi, yoy, {ind["key"]: cfg})
+
+    # Añadir lectura de componentes al resumen (solo si hay datos).
+    comp_parts = [
+        f"{c['name']} {('contrajo' if c['yoyRaw'] is not None and c['yoyRaw'] < 0 else 'creció')} {c['yoyText']}"
+        for c in cards if c["yoyRaw"] is not None
+    ]
+    if comp_parts and yoy:
+        bullets.append(
+            "A tasa anual, " + ", ".join(comp_parts[:-1]) +
+            (f" y {comp_parts[-1]}" if len(comp_parts) > 1 else comp_parts[0]) + "."
+        )
+    if kpi.get("acumText") and kpi["acumText"] != "—":
+        bullets.append(f"El acumulado ene-mes, en cifras originales, fue de {kpi['acumText']}.")
+
+    return {
+        "kpi": kpi,
+        "yoy": yoy,
+        "annualVar": yoy,
+        "resumen": bullets[:4],
+        "analysis": analysis(ind, kpi, {ind["key"]: cfg}),
+    }
+
+
 def compute_all_metrics(payload: dict | None = None, kpicfg: dict | None = None) -> dict[str, dict[str, Any]]:
     """Calcula kpi, analysis y annualVar para todos los indicadores."""
     if payload is None:
@@ -993,6 +1092,11 @@ def compute_all_metrics(payload: dict | None = None, kpicfg: dict | None = None)
             igae = _igae_metrics(ind, kpicfg)
             if igae:
                 out[key] = igae
+                continue
+        if key == "IMAI" and len(ind.get("columns", [])) >= 14:
+            imai = _imai_metrics(ind, kpicfg)
+            if imai:
+                out[key] = imai
                 continue
         kpi = compute_kpi(ind, kpicfg)
         yoy = annual_var(ind, kpi, kpicfg) if kpi else None

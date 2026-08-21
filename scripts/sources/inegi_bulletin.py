@@ -606,6 +606,102 @@ def _parse_imcp_imfbcf(kind: str, pdf_bytes: bytes, pub_date: tuple[int, int, in
     return out
 
 
+def _parse_imai_bulletin(pdf_bytes: bytes, pub_date: tuple[int, int, int] | None) -> dict[str, list[dict]] | None:
+    """Extrae del boletín IMAI: nivel, variaciones, anual original, acumulado y
+    variaciones anuales desestacionalizadas de los cuatro sectores.
+
+    Página 1 (índice 0): resumen + Cuadro 1 con componentes (desest. mensual/anual).
+    Página 4 (índice 3): Cuadro 2 con variaciones anuales y acumuladas en cifras
+    originales.
+    """
+    pub_year, pub_month, _ = pub_date or (None, None, None)
+    if pub_year is None:
+        return None
+
+    text = _pdf_page_text(pdf_bytes, 0) or ""
+    data_year_month = _extract_data_month(text) or _extract_ref_period(text)
+    if data_year_month is None:
+        return None
+    year, month = data_year_month
+    ym = f"{year:04d}-{month:02d}"
+    period = inegi.ym_to_label(ym, 8)
+
+    # 1) Nivel, mensual y anual del agregado desde la portada.
+    page0_tables = _pdf_page_tables(pdf_bytes, 0)
+    index_table = mensual_table = anual_table = None
+    for table in page0_tables:
+        flat = " ".join(c for row in table for c in (row or []) if c).replace("\n", " ")
+        if ("Actividad industrial" in flat and "índice 2018" in flat) or ("industrial" in flat and "índice 2018" in flat):
+            index_table = table
+        if "Variación" in flat and "mensual" in flat:
+            mensual_table = table
+        if "Variación" in flat and "anual" in flat:
+            anual_table = table
+
+    index_value = next((_parse_index(c) for row in (index_table or []) for c in row if _parse_index(c) is not None), None)
+    mensual_value = next((_parse_pct(c) for row in (mensual_table or []) for c in row if _parse_pct(c) is not None), None)
+    anual_value = next((_parse_pct(c) for row in (anual_table or []) for c in row if _parse_pct(c) is not None), None)
+
+    if mensual_value is None or anual_value is None or index_value is None:
+        return None
+
+    out: dict[str, list[dict]] = {
+        "index": [{"ym": ym, "value": index_value, "period": period}],
+        "mensual": [{"ym": ym, "value": mensual_value / 100.0, "period": period}],
+        "anual": [{"ym": ym, "value": anual_value / 100.0, "period": period}],
+    }
+
+    # 2) Componentes del Cuadro 1 (página 2, índice 1).
+    page1_tables = _pdf_page_tables(pdf_bytes, 1)
+    comp_map = {
+        "minería": 10,
+        "energía": 11,
+        "construcción": 12,
+        "manufactureras": 13,
+    }
+    comp_values: dict[str, float] = {}
+    for table in page1_tables:
+        for row in table:
+            # La etiqueta puede estar en la primera o segunda columna por celdas combinadas.
+            label = ""
+            for c in row[:2]:
+                if c:
+                    label = c.strip().lower()
+                    break
+            # La segunda columna de porcentajes es la anual desestacionalizada.
+            pcts = [_parse_pct(c) for c in row[2:] if c and _parse_pct(c) is not None]
+            if len(pcts) >= 2:
+                for key in ("minería", "energía", "construcción", "manufactureras"):
+                    if key in label and key not in comp_values:
+                        comp_values[key] = pcts[-1] / 100.0
+
+    for key, col in comp_map.items():
+        if key in comp_values:
+            out[key] = [{"ym": ym, "value": comp_values[key], "period": period}]
+
+    # 3) Anual original y acumulado del Cuadro 2 (página 4, índice 3).
+    page4_tables = _pdf_page_tables(pdf_bytes, 3)
+    orig_anual = acumulado = None
+    for table in page4_tables:
+        for row in table:
+            label = (row[0] or "").strip().lower() if row and len(row) > 0 else ""
+            if "actividad industrial" in label and "sectores" not in label:
+                nums = [_parse_pct(c) for c in row[1:] if c and _parse_pct(c) is not None]
+                if len(nums) >= 2:
+                    orig_anual = nums[0] / 100.0
+                    acumulado = nums[1] / 100.0
+                    break
+        if orig_anual is not None:
+            break
+
+    if orig_anual is not None:
+        out["original_anual"] = [{"ym": ym, "value": orig_anual, "period": period}]
+    if acumulado is not None:
+        out["acumulado"] = [{"ym": ym, "value": acumulado, "period": period}]
+
+    return out
+
+
 def _parse_emim(pdf_bytes: bytes, pub_date: tuple[int, int, int] | None) -> dict[str, list[dict]] | None:
     """Extrae índice de producción (Cuadro 2) y variación mensual (portada) del boletín EMIM.
 
@@ -1284,7 +1380,28 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
                         results.append(("IOAE", sub, col, o, url))
                         seen.add(("IOAE", col, o["ym"]))
 
-        elif kind in ("CONSUMO", "IMFBCF", "IMAI"):
+        elif kind == "IMAI":
+            parsed = _parse_imai_bulletin(pdf, pub_date)
+            if not parsed:
+                continue
+            col_map = {
+                "index": 0,
+                "mensual": 1,
+                "anual": 2,
+                "original_anual": 4,
+                "acumulado": 5,
+                "minería": 10,
+                "energía": 11,
+                "construcción": 12,
+                "manufactureras": 13,
+            }
+            for sub, col in col_map.items():
+                for o in parsed.get(sub, []):
+                    if ("IMAI", col, o["ym"]) not in seen:
+                        results.append(("IMAI", sub, col, o, url))
+                        seen.add(("IMAI", col, o["ym"]))
+
+        elif kind in ("CONSUMO", "IMFBCF"):
             parsed = _parse_imcp_imfbcf(kind, pdf, pub_date)
             if not parsed:
                 continue

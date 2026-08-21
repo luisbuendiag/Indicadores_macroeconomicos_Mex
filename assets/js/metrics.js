@@ -95,6 +95,21 @@ export function computeKPI(ind) {
   const varInfo = computeVar(ind, cfg, vals, lastI, prevI);
   let maxI = idxs[0], minI = idxs[0];
   idxs.forEach((i) => { if (vals[i] > vals[maxI]) maxI = i; if (vals[i] < vals[minI]) minI = i; });
+  // Variación acumulada (col 5 para IMAI, si existe).
+  let acumInfo = null;
+  if (cfg.acumCol != null) {
+    const raw = valAt(ind, lastI, cfg.acumCol);
+    if (raw != null) {
+      const mag = cfg.acumFmt === "pct-frac" ? raw * 100 : raw;
+      acumInfo = {
+        acumMag: mag,
+        acumText: (raw > 0 ? "+" : "") + fmtVal(raw, cfg.acumFmt),
+        acumPos: raw >= 0,
+        acumLabel: cfg.acumLabel || "Acumulado",
+      };
+    }
+  }
+
   // Evaluación del movimiento SOLO cuando es económicamente claro.
   // assess: "growth" (subir favorable) | "unemployment" (bajar favorable) | "neutral".
   const assess = cfg.assess || (cfg.goodSign > 0 ? "growth" : cfg.goodSign < 0 ? "unemployment" : "neutral");
@@ -104,7 +119,7 @@ export function computeKPI(ind) {
   else if (varInfo.mag != null && assess === "unemployment") assessment = dir === "down" ? "favorable" : (dir === "up" ? "adverso" : "neutral");
   // semáforo derivado (para el punto de color): favorable=bueno, adverso=malo, resto=neutral/estable.
   let semaforo = assessment === "favorable" ? "bueno" : (assessment === "adverso" ? "malo" : (varInfo.mag == null ? "neutral" : "estable"));
-  return {
+  const out = {
     assessment, dir,
     ultimoFmt: fmtVal(ultimo, cfg.valFmt), ultimoRaw: ultimo, ultimoP: P[lastI],
     varText: varInfo.text, varMag: varInfo.mag, pos: varInfo.pos,
@@ -114,6 +129,8 @@ export function computeKPI(ind) {
     minFmt: fmtVal(vals[minI], cfg.valFmt), minRaw: vals[minI], minP: P[minI],
     lastI, series: vals, periods: P, semaforo,
   };
+  if (acumInfo) Object.assign(out, acumInfo);
+  return out;
 }
 
 function varValFmt(mag, cfg) {

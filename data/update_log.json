@@ -1,16 +1,23 @@
 {
-  "started_at": "2026-08-21T15:39:03+00:00",
+  "started_at": "2026-08-21T19:23:46+00:00",
   "mode": "offline",
   "network_calls": false,
-  "warnings": [],
+  "warnings": [
+    "[IMAI] valor fuera de rango plausible en Abr 95: 59.569153 (esperado (60, 130)).",
+    "[IMAI] valor fuera de rango plausible en May 95: 59.221866 (esperado (60, 130)).",
+    "[IMAI] valor fuera de rango plausible en Jun 95: 59.547047 (esperado (60, 130)).",
+    "[IMAI] valor fuera de rango plausible en Jul 95: 59.998621 (esperado (60, 130)).",
+    "[IMAI] valor fuera de rango plausible en Oct 95: 58.560436 (esperado (60, 130))."
+  ],
   "changes": [
     "IGAE: fuente normalizada a serie total 737121",
     "columnas override PIB: 4 columnas",
     "columnas override PIBSEC: 12 columnas",
     "columnas override IGAE: 9 columnas",
-    "columnas override IMAI: 3 columnas",
+    "columnas override IMAI: 14 columnas",
     "pibsec: variaciones calculadas desde niveles (876 celdas)",
     "IGAE: variaciones anuales calculadas para 1556 celdas",
+    "IMAI: esquema de 14 columnas aplicado; acumulado calculado para 0 periodos",
     "calendario: regenerado con as_of=2026-08-21",
     "métricas: data/metrics.json regenerado",
     "boletín: PIB descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_07.pdf",
@@ -41,10 +48,10 @@
     "frescura: EMOE -> ACTUALIZADO",
     "boletín: BCMM descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_07.pdf",
     "frescura: BCMM -> ACTUALIZADO",
-    "meta: last_update_ct=2026-08-21T09:41:31-06:00"
+    "meta: last_update_ct=2026-08-21T13:24:57-06:00"
   ],
   "consultas": [],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-08-21T15:41:31+00:00"
+  "finished_at": "2026-08-21T19:24:57+00:00"
 }

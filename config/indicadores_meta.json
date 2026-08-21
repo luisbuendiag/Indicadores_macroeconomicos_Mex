@@ -133,10 +133,35 @@
       "serie_confirmada": true,
       "clasificacion": "principal",
       "nombre": "Indicador Mensual de la Actividad Industrial",
+      "sigla": "IMAI",
+      "descripcion": "Mide la evolución mensual del volumen físico de la actividad industrial en México (índice base 2018=100). Incluye el agregado y cuatro sectores: minería, generación y suministro de energía eléctrica/agua/gas, construcción e industrias manufactureras. Publica cifras desestacionalizadas para el nivel, la variación mensual y la anual, así como cifras originales para el acumulado ene-mes.",
+      "frecuencia": "Mensual",
+      "unidad": "Índice base 2018=100",
+      "ajuste_estacional": "Cifras desestacionalizadas y originales",
+      "grupo": "growth",
+      "publicacion": "Aproximadamente 42 días después del cierre del mes",
       "columns": [
-        {"label": "Índice de volumen físico", "index": 0, "fmt": "idx"},
-        {"label": "Var. mensual (%)", "index": 1, "fmt": "pct-frac"},
-        {"label": "Var. anual (%)", "index": 2, "fmt": "pct-frac"}
+        {"label": "IMAI (índice desest.)", "index": 0, "fmt": "idx"},
+        {"label": "Var. mensual desest. (%)", "index": 1, "fmt": "pct-frac"},
+        {"label": "Var. anual desest. (%)", "index": 2, "fmt": "pct-frac"},
+        {"label": "IMAI (índice original)", "index": 3, "fmt": "idx"},
+        {"label": "Var. anual original (%)", "index": 4, "fmt": "pct-frac"},
+        {"label": "Acumulado ene-mes original (%)", "index": 5, "fmt": "pct-frac"},
+        {"label": "Minería (índice desest.)", "index": 6, "fmt": "idx"},
+        {"label": "Energía, agua y gas (índice desest.)", "index": 7, "fmt": "idx"},
+        {"label": "Construcción (índice desest.)", "index": 8, "fmt": "idx"},
+        {"label": "Industrias manufactureras (índice desest.)", "index": 9, "fmt": "idx"},
+        {"label": "Var. anual Minería (%)", "index": 10, "fmt": "pct-frac"},
+        {"label": "Var. anual Energía (%)", "index": 11, "fmt": "pct-frac"},
+        {"label": "Var. anual Construcción (%)", "index": 12, "fmt": "pct-frac"},
+        {"label": "Var. anual Manufacturas (%)", "index": 13, "fmt": "pct-frac"}
+      ],
+      "windows": [
+        {"id": "3m", "label": "3 meses", "count": 3},
+        {"id": "6m", "label": "6 meses", "count": 6},
+        {"id": "1a", "label": "1 año", "count": 12},
+        {"id": "5a", "label": "5 años", "count": 60},
+        {"id": "max", "label": "Máximo", "count": null}
       ]
     },
     "DESOCUP": {

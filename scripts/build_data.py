@@ -278,6 +278,80 @@ def prepare_igae_for_v3(payload: dict) -> list[str]:
     return changes
 
 
+
+def compute_imai_metrics(payload: dict) -> list[str]:
+    """Completa el esquema de 14 columnas del IMAI y calcula el acumulado original.
+
+    Las columnas 6-13 llegan directamente del BIE a través de apply_inegi_total.
+    La columna 5 (acumulado ene-mes original) se deriva de la columna 3 (índice
+    original corregido por efectos del calendario) promediando enero-mes actual
+    del año en curso y del año previo.
+    """
+    changes: list[str] = []
+    ind = payload["indicators"].get("IMAI")
+    if not ind:
+        return changes
+    obs = ind.get("observations")
+    if not obs:
+        return changes
+
+    by_ym: dict[str, dict] = {}
+    for o in obs:
+        ym = inegi.label_to_ym(o.get("period", ""))
+        if ym:
+            by_ym[ym] = o
+
+    updated = 0
+    for o in obs:
+        vals = list(o.get("values", []))
+        while len(vals) < 14:
+            vals.append(None)
+
+        ym = inegi.label_to_ym(o.get("period", ""))
+        if not ym:
+            o["values"] = vals
+            continue
+
+        year, month = map(int, ym.split("-"))
+        cur_sum = 0.0
+        cur_n = 0
+        prev_sum = 0.0
+        prev_n = 0
+        # Si ya existe un acumulado oficial (p. ej. del boletín de prensa), no
+        # lo sobrescribe el cálculo aproximado desde los índices BIE.
+        if vals[5] is None:
+            for m in range(1, month + 1):
+                cur_key = f"{year:04d}-{m:02d}"
+                cur_o = by_ym.get(cur_key)
+                if cur_o:
+                    cur_vals = list(cur_o.get("values", []))
+                    if len(cur_vals) > 3 and cur_vals[3] is not None:
+                        cur_sum += float(cur_vals[3])
+                        cur_n += 1
+                prev_key = f"{year - 1:04d}-{m:02d}"
+                prev_o = by_ym.get(prev_key)
+                if prev_o:
+                    prev_vals = list(prev_o.get("values", []))
+                    if len(prev_vals) > 3 and prev_vals[3] is not None:
+                        prev_sum += float(prev_vals[3])
+                        prev_n += 1
+
+            if cur_n > 0 and prev_n > 0 and prev_sum != 0:
+                vals[5] = round((cur_sum / cur_n) / (prev_sum / prev_n) - 1, 6)
+                updated += 1
+
+        o["values"] = vals
+
+    fuente = dict(ind.get("fuente", {}))
+    fuente.setdefault("nombre", "INEGI")
+    fuente["serie"] = "737233"
+    fuente.setdefault("metodo", "INEGI BIE API")
+    ind["fuente"] = fuente
+
+    changes.append(f"IMAI: esquema de 14 columnas aplicado; acumulado calculado para {updated} periodos")
+    return changes
+
+
 def compute_igae_variations(payload: dict) -> list[str]:
     """Calcula las variaciones anuales originales para IGAE y sus componentes.
 
@@ -516,6 +590,9 @@ def run(offline: bool = False) -> int:
 
     # Variaciones anuales originales de IGAE (a partir de los índices BIE).
     log["changes"].extend(compute_igae_variations(payload))
+
+    # IMAI V3: esquema de 14 columnas y acumulado original.
+    log["changes"].extend(compute_imai_metrics(payload))
 
     # Frescura, calendario, métricas compartidas y metadatos temporales.
     log["changes"].extend(apply_freshness_and_meta(payload, log))
