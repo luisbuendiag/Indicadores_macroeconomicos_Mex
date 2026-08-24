@@ -1082,16 +1082,17 @@ def _emim_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     if not cfg:
         return None
 
-    # Forzar el uso del esquema 18-columnas, combinando cifra desestacionalizada
-    # mensual con variación anual original, siguiendo el patrón del IGAE.
+    # Forzar el uso del esquema 18-columnas. La lectura coyuntural prioriza las
+    # cifras desestacionalizadas del boletín oficial; la variación anual original
+    # se conserva como referencia histórica comparable.
     cfg["valCol"] = 0
     cfg["valFmt"] = "idx"
     cfg["varCol"] = 3
     cfg["varFmt"] = "pct-frac"
     cfg["varLabel"] = "Var. mensual desest."
-    cfg["yoyCol"] = 2
+    cfg["yoyCol"] = 4
     cfg["yoyFmt"] = "pct-frac"
-    cfg["yoyLabel"] = "Var. anual original"
+    cfg["yoyLabel"] = "Var. anual desest."
     cfg["ctx"] = " (índice base 2018=100)"
     cfg["comp"] = "frente al mes previo"
     cfg["vw"] = "variación mensual desestacionalizada"
@@ -1175,10 +1176,13 @@ def _emim_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     bullets = []
     b1 = (
         f"En {per_long}, el índice de producción se ubicó en {prod['idxText']} puntos. "
-        f"La variación mensual desestacionalizada fue {prod['desestMomText']} y la anual original {prod['origYoyText']}."
+        f"La variación mensual desestacionalizada fue {prod['desestMomText']}"
     )
     if prod["desestYoyRaw"] is not None:
-        b1 += f" La anual desestacionalizada fue {prod['desestYoyText']}."
+        b1 += f" y la anual desestacionalizada {prod['desestYoyText']}"
+    if prod["origYoyRaw"] is not None:
+        b1 += f" (anual original: {prod['origYoyText']})"
+    b1 += "."
     bullets.append(b1)
 
     # Personal y horas

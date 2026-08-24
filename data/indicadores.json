@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-24T21:42:43+00:00",
+    "generated_at": "2026-08-24T21:58:04+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-08-24T15:42:43-06:00",
+    "last_update_ct": "2026-08-24T15:58:04-06:00",
     "periodo_referencia_reciente": {
       "period": "Jul 26",
       "period_long": "Jul 26"
@@ -29064,8 +29064,8 @@
             "Jun 26"
           ],
           "semaforo": "bueno",
-          "yoyText": "-1.1%",
-          "yoyLabel": "Var. anual original",
+          "yoyText": "-2.4%",
+          "yoyLabel": "Var. anual desest.",
           "cards": [
             {
               "name": "Producción",
@@ -29142,13 +29142,13 @@
           ]
         },
         "yoy": {
-          "mag": -1.0724,
+          "mag": -2.4,
           "pos": false,
-          "text": "-1.1%",
-          "label": "Var. anual original"
+          "text": "-2.4%",
+          "label": "Var. anual desest."
         },
         "resumen": [
-          "En junio de 2026, el índice de producción se ubicó en 110.7 puntos. La variación mensual desestacionalizada fue +0.1% y la anual original -1.1%. La anual desestacionalizada fue -2.4%.",
+          "En junio de 2026, el índice de producción se ubicó en 110.7 puntos. La variación mensual desestacionalizada fue +0.1% y la anual desestacionalizada -2.4% (anual original: -1.1%).",
           "En el lado laboral, el personal ocupado 98.6 puntos (-1.5% anual original, -1.5% desest.) y las horas trabajadas 97.8 puntos (-0.1% anual original, -1.5% desest.).",
           "Las remuneraciones medias reales se ubicaron en 119.7 puntos, con variación anual desestacionalizada de +2.2%.",
           "A nivel subsectorial, los mayores dinamismos anuales fueron Fabricación de equipo de computación (+6.8%), Industria química (+5.1%), Fabricación de maquinaria (+3.8%); los mayores retrocesos: Fabricación de productos derivados del petróleo (-5.0%), Fabricación de insumos textiles (-3.9%), Fabricación de muebles (-3.9%)."
