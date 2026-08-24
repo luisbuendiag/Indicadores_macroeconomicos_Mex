@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-08-21T20:19:34+00:00",
+  "started_at": "2026-08-24T08:52:15+00:00",
   "mode": "offline",
   "network_calls": false,
   "warnings": [],
@@ -11,7 +11,7 @@
     "columnas override IMAI: 3 columnas",
     "pibsec: variaciones calculadas desde niveles (876 celdas)",
     "IGAE: variaciones anuales calculadas para 1556 celdas",
-    "calendario: regenerado con as_of=2026-08-21",
+    "calendario: regenerado con as_of=2026-08-24",
     "métricas: data/metrics.json regenerado",
     "frescura: PIB -> ACTUALIZADO",
     "frescura: PIBSEC -> ACTUALIZADO",
@@ -29,10 +29,10 @@
     "frescura: RESERVAS -> ACTUALIZADO",
     "frescura: EMOE -> ACTUALIZADO",
     "frescura: BCMM -> ACTUALIZADO",
-    "meta: last_update_ct=2026-08-21T15:11:13-06:00"
+    "meta: last_update_ct=2026-08-24T03:45:07-06:00"
   ],
   "consultas": [],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-08-21T21:11:13+00:00"
+  "finished_at": "2026-08-24T09:45:07+00:00"
 }
