@@ -1,14 +1,8 @@
 {
-  "started_at": "2026-08-21T19:23:46+00:00",
+  "started_at": "2026-08-24T17:34:37+00:00",
   "mode": "offline",
   "network_calls": false,
-  "warnings": [
-    "[IMAI] valor fuera de rango plausible en Abr 95: 59.569153 (esperado (60, 130)).",
-    "[IMAI] valor fuera de rango plausible en May 95: 59.221866 (esperado (60, 130)).",
-    "[IMAI] valor fuera de rango plausible en Jun 95: 59.547047 (esperado (60, 130)).",
-    "[IMAI] valor fuera de rango plausible en Jul 95: 59.998621 (esperado (60, 130)).",
-    "[IMAI] valor fuera de rango plausible en Oct 95: 58.560436 (esperado (60, 130))."
-  ],
+  "warnings": [],
   "changes": [
     "IGAE: fuente normalizada a serie total 737121",
     "columnas override PIB: 4 columnas",
@@ -16,15 +10,15 @@
     "columnas override IGAE: 9 columnas",
     "columnas override IMAI: 14 columnas",
     "pibsec: variaciones calculadas desde niveles (876 celdas)",
-    "IGAE: variaciones anuales calculadas para 1556 celdas",
+    "IGAE: variaciones anuales calculadas para 1560 celdas",
     "IMAI: esquema de 14 columnas aplicado; acumulado calculado para 0 periodos",
-    "calendario: regenerado con as_of=2026-08-21",
+    "calendario: regenerado con as_of=2026-08-24",
     "métricas: data/metrics.json regenerado",
     "boletín: PIB descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_07.pdf",
     "frescura: PIB -> ACTUALIZADO",
-    "boletín: PIBSEC descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_05.pdf",
+    "boletín: PIBSEC descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_08.pdf",
     "frescura: PIBSEC -> ACTUALIZADO",
-    "boletín: IGAE descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_07.pdf",
+    "boletín: IGAE descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_08.pdf",
     "frescura: IGAE -> ACTUALIZADO",
     "boletín: IMAI descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_08.pdf",
     "frescura: IMAI -> ACTUALIZADO",
@@ -48,10 +42,10 @@
     "frescura: EMOE -> ACTUALIZADO",
     "boletín: BCMM descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_07.pdf",
     "frescura: BCMM -> ACTUALIZADO",
-    "meta: last_update_ct=2026-08-21T13:24:57-06:00"
+    "meta: last_update_ct=2026-08-24T11:35:54-06:00"
   ],
   "consultas": [],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-08-21T19:24:57+00:00"
+  "finished_at": "2026-08-24T17:35:54+00:00"
 }

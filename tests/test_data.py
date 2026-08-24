@@ -71,7 +71,7 @@ def test_duplicate_flagged_as_revision(payload):
 @pytest.mark.parametrize("key,monthly_col,annual_col,expected_monthly,expected_annual", [
     ("CONSUMO", 1, 2, 0.001, 0.026),
     ("IMFBCF", 1, 2, -0.004, 0.024),
-    ("IGAE", 1, 2, -0.003, 0.011059),
+    ("IGAE", 1, 2, -0.001, 0.028191),
     ("IOAE", 0, 1, 0.1, 2.7),
 ])
 def test_bulletin_variations_monthly_and_annual(payload, key, monthly_col, annual_col, expected_monthly, expected_annual):
@@ -102,8 +102,8 @@ def test_pib_bulletin_variations(payload):
 def test_pibsec_terciarias_bulletin_variations(payload):
     pibsec = payload["indicators"]["PIBSEC"]
     last = pibsec["observations"][-1]
-    assert last["values"][3] == pytest.approx(-0.004, abs=1e-4)
-    assert last["values"][4] == pytest.approx(0.011, abs=1e-4)
+    assert last["values"][3] == pytest.approx(0.014, abs=1e-4)
+    assert last["values"][4] == pytest.approx(0.023, abs=1e-4)
 
 
 def test_ioae_jun_2026_and_no_secondary_total(payload):

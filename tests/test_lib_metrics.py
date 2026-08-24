@@ -15,11 +15,11 @@ def test_igae_kpi():
     payload = _payload()
     metrics = M.compute_all_metrics(payload)
     kpi = metrics["IGAE"]["kpi"]
-    assert kpi["ultimoP"] == "May 26"
-    assert kpi["ultimoFmt"] == "108.6"
-    assert kpi["varText"] == "-0.3%"
-    assert kpi["varMag"] == -0.3
-    assert kpi["yoyText"] == "+1.1%"
+    assert kpi["ultimoP"] == "Jun 26"
+    assert kpi["ultimoFmt"] == "107.4"
+    assert kpi["varText"] == "-0.1%"
+    assert kpi["varMag"] == -0.1
+    assert kpi["yoyText"] == "+2.8%"
     assert kpi["yoyLabel"] == "Var. anual original"
     assert kpi["assessment"] == "adverso"
     assert kpi["semaforo"] == "malo"
@@ -30,9 +30,9 @@ def test_igae_analysis():
     metrics = M.compute_all_metrics(payload)
     a = metrics["IGAE"]["analysis"]
     assert len(a) == 2
-    assert "108.6 puntos" in a[0]
-    assert "-0.30%" in a[0]
-    assert "108.6 puntos (mayo de 2026)" in a[1]
+    assert "107.4 puntos" in a[0]
+    assert "-0.10%" in a[0]
+    assert "108.5 puntos (mayo de 2026)" in a[1]
     assert "53.9 puntos (abril de 1995)" in a[1]
 
 
