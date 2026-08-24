@@ -34,7 +34,7 @@ function proseVal(ind, v) {
   if (k === "PIB") return (Math.abs(v) < 1 ? (v * 100) : (v / 1e6)).toLocaleString("es-MX", { minimumFractionDigits: Math.abs(v) < 1 ? 1 : 2, maximumFractionDigits: Math.abs(v) < 1 ? 1 : 2 }) + (Math.abs(v) < 1 ? "%" : " billones de pesos de 2018");
   if (k === "PIBSEC") return (v / 1e6).toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " billones de pesos";
   if (k === "IED" || k === "BALANZA") return money(v, "millones de dólares");
-  if (k === "IGAE" || k === "IMAI" || k === "CONSUMO") return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + " puntos";
+  if (k === "IGAE" || k === "IMAI" || k === "CONSUMO" || k === "EMIM") return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + " puntos";
   if (k === "DESOCUP") return (v * 100).toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
   if (k === "INPC" || k === "TASA") return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
   if (k === "TIPOCAMBIO") return "$" + v.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -194,7 +194,7 @@ export function analysis(ind, k) {
   const g = cfg.vg;
   const magAdj = (cfg.grupo === "balanza" || cfg.grupo === "inpc" || cfg.grupo === "desoc" || cfg.grupo === "fx" || cfg.grupo === "tasa") ? ""
     : (aMag < 0.5 ? "marginal" : (aMag < 1.5 ? (g === "m" ? "moderado" : "moderada") : (aMag < 4 ? (g === "m" ? "sólido" : "sólida") : (g === "m" ? "elevado" : "elevada"))));
-  const ORIG = ["PIB", "PIBSEC", "IGAE", "IMAI", "CONSUMO"].includes(ind.key);
+  const ORIG = ["PIB", "PIBSEC", "IGAE", "IMAI", "CONSUMO", "EMIM"].includes(ind.key);
   const big = prevVar != null ? Math.abs(curVar - prevVar) : aMag;
   let trend = "";
   if (cfg.grupo === "growth") {

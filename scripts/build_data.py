@@ -352,6 +352,65 @@ def compute_imai_metrics(payload: dict) -> list[str]:
     return changes
 
 
+def compute_emim_metrics(payload: dict) -> list[str]:
+    """Asegura que el indicador EMIM use el esquema de 18 columnas.
+
+    El esquema separa claramente:
+      - cols 0-2, 5-7, 10-12: índices y variaciones originales del BIE.
+      - cols 3-4, 8-9, 13-17: cifras desestacionalizadas y el índice de
+        remuneraciones del boletín oficial.
+
+    Si alguna observación llega con menos de 18 valores, se rellena con None
+    para mantener el orden sin imputar datos.
+    """
+    changes: list[str] = []
+    ind = payload["indicators"].get("EMIM")
+    if not ind:
+        return changes
+
+    try:
+        meta = json.loads(L.META_FILE.read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        return changes
+
+    emim_prof = meta.get("profile", {}).get("EMIM", {})
+    new_cols = emim_prof.get("columns")
+    if not new_cols or len(new_cols) != 18:
+        return changes
+
+    if len(ind.get("columns", [])) != 18:
+        ind["columns"] = new_cols
+        changes.append("EMIM: esquema de 18 columnas aplicado")
+
+    fixed = 0
+    for o in ind.get("observations", []):
+        vals = list(o.get("values", []))
+        if len(vals) < 18:
+            vals.extend([None] * (18 - len(vals)))
+            o["values"] = vals
+            fixed += 1
+
+    if fixed:
+        changes.append(f"EMIM: {fixed} observaciones ajustadas a 18 columnas")
+
+    # Normalizar subsectores: el parser conserva el detalle completo, pero el
+    # frontend y las métricas esperan un dict plano {etiqueta: variación anual
+    # original de la producción}. El detalle queda en subsectores_detalle.
+    subsectores = ind.get("subsectores")
+    if subsectores and isinstance(subsectores, dict):
+        sample = next(iter(subsectores.values()), {})
+        if isinstance(sample, dict):
+            ind["subsectores_detalle"] = subsectores
+            ind["subsectores"] = {
+                f"{code} {info.get('nombre', '')}".strip(): info.get("produccion_anual")
+                for code, info in subsectores.items()
+                if isinstance(info, dict) and info.get("produccion_anual") is not None
+            }
+            changes.append(f"EMIM: {len(ind['subsectores'])} subsectores normalizados")
+
+    return changes
+
+
 def compute_igae_variations(payload: dict) -> list[str]:
     """Calcula las variaciones anuales originales para IGAE y sus componentes.
 
@@ -593,6 +652,9 @@ def run(offline: bool = False) -> int:
 
     # IMAI V3: esquema de 14 columnas y acumulado original.
     log["changes"].extend(compute_imai_metrics(payload))
+
+    # EMIM V2: esquema de 18 columnas con separación original/desestacionalizado.
+    log["changes"].extend(compute_emim_metrics(payload))
 
     # Frescura, calendario, métricas compartidas y metadatos temporales.
     log["changes"].extend(apply_freshness_and_meta(payload, log))

@@ -38,6 +38,7 @@ import urllib.request
 import zipfile
 from io import BytesIO
 from pathlib import Path
+from typing import Any
 
 from . import inegi
 from .base import USER_AGENT, SourceResult
@@ -702,91 +703,297 @@ def _parse_imai_bulletin(pdf_bytes: bytes, pub_date: tuple[int, int, int] | None
     return out
 
 
-def _parse_emim(pdf_bytes: bytes, pub_date: tuple[int, int, int] | None) -> dict[str, list[dict]] | None:
-    """Extrae índice de producción (Cuadro 2) y variación mensual (portada) del boletín EMIM.
+# Regex para el boletín EMIM.
+_EMIM_CUADRO2_CODE_RE = re.compile(r"\b(3\d{2})\b")
+_EMIM_CUADRO2_TOTAL_RE = re.compile(r"\b31[-–]33\b")
+_EMIM_EXCLUDE_CODES = {"318", "319", "320"}
 
-    El boletín 'Indicadores del sector manufacturero' publica:
-      - Portada: variación mensual y anual (cifras desestacionalizadas) del volumen de
-        la producción manufacturera.
-      - Cuadro 2 (cifras originales): índice 2018=100 y variación anual del volumen de
-        la producción, personal ocupado, horas trabajadas y remuneraciones.
 
-    Se retorna el índice original (columna 0) y la variación mensual a tasa desestacionalizada
-    (columna 1), que es el par habitual del panel de coyuntura.
+def _emim_is_num(cell) -> bool:
+    """Verifica si una celda de tabla representa un valor numérico."""
+    if cell is None:
+        return False
+    s = (cell if isinstance(cell, str) else str(cell)).strip()
+    s = s.replace("\u2212", "-").replace(",", ".")
+    s = s.replace("▲", "").replace("▼", "")
+    if not s or s == "-":
+        return False
+    try:
+        float(s)
+        return True
+    except (TypeError, ValueError):
+        return False
+
+
+def _emim_to_float(cell) -> float | None:
+    """Convierte una celda a float, normalizando signos."""
+    if cell is None:
+        return None
+    s = (cell if isinstance(cell, str) else str(cell)).strip()
+    s = s.replace("\u2212", "-").replace(",", ".")
+    s = s.replace("▲", "").replace("▼", "")
+    if not s or s == "-":
+        return None
+    try:
+        return float(s)
+    except (TypeError, ValueError):
+        return None
+
+
+def _emim_parse_pct(cell) -> float | None:
+    """Convierte un porcentaje del boletín a fracción."""
+    v = _parse_pct(cell)
+    return v / 100.0 if v is not None else None
+
+
+def _emim_ref_period(pdf_bytes: bytes) -> tuple[int, int] | None:
+    """Periodo de referencia del boletín (portada o Cuadro 2)."""
+    for page_index in (0, 3):
+        text = _pdf_page_text(pdf_bytes, page_index)
+        if not text:
+            continue
+        data_year_month = _extract_data_month(text)
+        if data_year_month is not None:
+            return data_year_month
+    return None
+
+
+def _emim_ref_period_fallback(pdf_bytes: bytes, pub_year: int,
+                              pub_month: int) -> tuple[int, int] | None:
+    """Usa el primer mes encontrado en la portada y la fecha de publicación."""
+    text = _pdf_page_text(pdf_bytes, 0)
+    if not text:
+        return None
+    months = re.findall(
+        r"(?:enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)",
+        text.lower())
+    if not months:
+        return None
+    month = MES.get(months[0])
+    if month is None:
+        return None
+    return _month_year(pub_year, pub_month, month)
+
+
+def _emim_find_cuadro1_table(tables: list[list[list[str]]]) -> list[list[str]] | None:
+    """Elige la tabla del Cuadro 1 con los indicadores agregados."""
+    for t in tables:
+        for r in t:
+            text = " ".join(c for c in r if c and c.strip()).lower()
+            if "volumen físico de la producción" in text:
+                return t
+    return None
+
+
+def _parse_emim_cuadro1(pdf_bytes: bytes) -> dict[str, dict[str, float]]:
+    """Extrae del Cuadro 1 las variaciones mensuales y anuales desestacionalizadas.
+
+    Retorna {variable: {mensual, anual}} en escala fraccionaria.
+    """
+    tables = _pdf_page_tables(pdf_bytes, 2)
+    table = _emim_find_cuadro1_table(tables)
+    if table is None and tables:
+        # Fallback: buscar en cualquier página con la marca Cuadro 1.
+        for i in (1, 2, 3, 4):
+            for t in _pdf_page_tables(pdf_bytes, i):
+                if any("volumen físico de la producción" in " ".join(c for c in r if c).lower()
+                       for r in t):
+                    table = t
+                    break
+            if table is not None:
+                break
+
+    out: dict[str, dict[str, float]] = {}
+    if not table:
+        return out
+
+    labels = [
+        ("produccion", "volumen físico de la producción"),
+        ("personal", "personal ocupado total"),
+        ("horas", "horas trabajadas por el personal ocupado total"),
+        ("remuneraciones", "remuneraciones medias reales pagadas"),
+    ]
+
+    for r in table:
+        text = " ".join(c for c in r if c and c.strip()).lower()
+        text = re.sub(r"\s+", " ", text).replace("1/", "")
+        nums = [_emim_to_float(c) for c in r if _emim_is_num(c)]
+        if len(nums) < 2:
+            continue
+        for key, pat in sorted(labels, key=lambda x: -len(x[1])):
+            if pat in text and key not in out:
+                out[key] = {"mensual": nums[0] / 100.0, "anual": nums[1] / 100.0}
+                break
+    return out
+
+
+def _emim_pop_code(label: str, nums: list[str]) -> tuple[str | None, str, list[str]]:
+    """Separa el código SCIAN del nombre y los 8 valores del Cuadro 2."""
+    # Total de industrias manufactureras.
+    m = _EMIM_CUADRO2_TOTAL_RE.search(label)
+    if m:
+        code = "31-33"
+        name = re.sub(r"\s+", " ", label[:m.start()] + label[m.end():]).strip()
+        return code, name, nums
+
+    # Código 3 dígitos dentro del nombre.
+    m = _EMIM_CUADRO2_CODE_RE.search(label)
+    if m and m.group(1) not in _EMIM_EXCLUDE_CODES:
+        code = m.group(1)
+        name = re.sub(r"\s+", " ", label[:m.start()] + label[m.end():]).strip()
+        return code, name, nums
+
+    # Código como primer valor numérico.
+    if nums:
+        first = nums[0].strip()
+        if _EMIM_CUADRO2_CODE_RE.match(first) and first not in _EMIM_EXCLUDE_CODES:
+            return first, label, nums[1:]
+
+    return None, label, nums
+
+
+def _parse_emim_cuadro2(pdf_bytes: bytes) -> tuple[dict[str, float] | None, dict[str, dict]]:
+    """Extrae del Cuadro 2 el total y el desglose por subsector.
+
+    Retorna (total, subsectores). total es un dict con los 8 valores agregados;
+    subsectores es {código: {nombre, ...}}. Las variaciones anuales originales
+    se devuelven como fracciones.
+    """
+    tables = _pdf_page_tables(pdf_bytes, 3)
+    if not tables:
+        return None, {}
+
+    table = tables[0]
+    # Buscar la primera fila de datos (la que contiene '31-33' o datos numéricos).
+    start = 0
+    for i, r in enumerate(table):
+        if any("31" in (c or "") and "33" in (c or "") for c in r):
+            start = i
+            break
+        nums = [c for c in r if _emim_is_num(c)]
+        if len(nums) >= 8:
+            start = i
+            break
+
+    total: dict[str, float] | None = None
+    subsectores: dict[str, dict] = {}
+    current: dict | None = None
+
+    for r in table[start:]:
+        texts = [c.strip() for c in r if c and c.strip() and not _emim_is_num(c)]
+        nums = [c for c in r if _emim_is_num(c)]
+        if len(nums) >= 8:
+            if current:
+                label = " ".join(current["parts"]).replace("\n", " ")
+                code, name, vals = _emim_pop_code(label, current["nums"])
+                if code == "31-33" and len(vals) == 8:
+                    total = _emim_build_total(vals)
+                elif code and len(vals) == 8:
+                    subsectores[code] = _emim_build_subsector(code, name, vals)
+            current = {"parts": texts, "nums": nums}
+        elif current and texts:
+            current["parts"].extend(texts)
+
+    if current:
+        label = " ".join(current["parts"]).replace("\n", " ")
+        code, name, vals = _emim_pop_code(label, current["nums"])
+        if code == "31-33" and len(vals) == 8:
+            total = _emim_build_total(vals)
+        elif code and len(vals) == 8:
+            subsectores[code] = _emim_build_subsector(code, name, vals)
+
+    return total, subsectores
+
+
+def _emim_build_total(vals: list[str]) -> dict[str, float]:
+    """Construye el dict del total del Cuadro 2."""
+    v = [_emim_to_float(x) for x in vals]
+    return {
+        "produccion_index": v[0],
+        "produccion_anual_orig": _emim_parse_pct(vals[1]),
+        "personal_index": v[2],
+        "personal_anual_orig": _emim_parse_pct(vals[3]),
+        "horas_index": v[4],
+        "horas_anual_orig": _emim_parse_pct(vals[5]),
+        "remuneraciones_index": v[6],
+        "remuneraciones_anual_orig": _emim_parse_pct(vals[7]),
+    }
+
+
+def _emim_build_subsector(code: str, name: str, vals: list[str]) -> dict:
+    """Construye el dict de un subsector del Cuadro 2."""
+    v = [_emim_to_float(x) for x in vals]
+    return {
+        "nombre": name,
+        "produccion_index": v[0],
+        "produccion_anual": _emim_parse_pct(vals[1]),
+        "personal_index": v[2],
+        "personal_anual": _emim_parse_pct(vals[3]),
+        "horas_index": v[4],
+        "horas_anual": _emim_parse_pct(vals[5]),
+        "remuneraciones_index": v[6],
+        "remuneraciones_anual": _emim_parse_pct(vals[7]),
+    }
+
+
+def _parse_emim(pdf_bytes: bytes, pub_date: tuple[int, int, int] | None) -> dict[str, Any] | None:
+    """Extrae del boletín EMIM las cuatro dimensiones: producción, personal,
+    horas trabajadas y remuneraciones medias reales.
+
+    Fuentes dentro del boletín:
+      - Cuadro 1 (cifras desestacionalizadas): variación mensual y anual
+        oficial de las cuatro variables.
+      - Cuadro 2 (cifras originales): índice 2018=100 y variación anual original
+        de las cuatro variables, desglosado por subsector (311-339, excepto 318-320).
+
+    Se retornan listas de observaciones para las 18 columnas del indicador y un
+    diccionario 'subsectores' con el desglose por subsector.
     """
     pub_year, pub_month, _ = pub_date or (None, None, None)
     if pub_year is None:
         return None
 
-    text, _ = _pdf_text_first_page(pdf_bytes)
-
-    # Descartar boletines antiguos de 'personal/horas/remuneraciones' que no traen producción.
-    if "volumen de la producción manufacturera" not in text.lower():
+    data_year_month = _emim_ref_period(pdf_bytes)
+    if data_year_month is None:
+        data_year_month = _emim_ref_period_fallback(pdf_bytes, pub_year, pub_month)
+    if data_year_month is None:
         return None
 
-    data_year_month = _extract_data_month(text)
-    if data_year_month is None:
-        months = [m.lower() for m in re.findall(
-            r"(?:enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)",
-            text.lower())]
-        month = MES.get(months[0]) if months else None
-        if month is None:
-            return None
-        year, month = _month_year(pub_year, pub_month, month)
-    else:
-        year, month = data_year_month
+    year, month = data_year_month
     ym = f"{year:04d}-{month:02d}"
     period = inegi.ym_to_label(ym, 8)
 
-    # Variación mensual del volumen de la producción (frase principal de la portada).
-    mensual: float | None = None
-    m_head = re.search(
-        r"(Aument[oó]|Disminuy[oó]|No present[oó] variaci[oó]n)\s*([0-9.]+)?\s*%?\s*el volumen de la producci[oó]n manufacturera",
-        text,
-        re.IGNORECASE,
-    )
-    if m_head:
-        verb = m_head.group(1).lower()
-        if "no presentó" in verb:
-            mensual = 0.0
-        else:
-            raw = m_head.group(2)
-            try:
-                sign = -1 if "disminuy" in verb else 1
-                mensual = sign * abs(float(raw)) / 100.0
-            except (TypeError, ValueError):
-                mensual = None
-
-    # Índice de producción 2018=100 y variación anual (Cuadro 2, cifras originales).
-    index_value: float | None = None
-    anual_value: float | None = None
-    for page_index in (3, 4, 5):
-        page_text = _pdf_page_text(pdf_bytes, page_index)
-        if "31-33" not in page_text or "Industrias manufactureras" not in page_text:
-            continue
-        m = re.search(
-            r"31-33\s+Industrias\s+manufactureras\s+(-?\d+(?:\.\d+)?)\s+(-?\d+(?:\.\d+)?)",
-            page_text,
-        )
-        if m:
-            idx, var = float(m.group(1)), float(m.group(2))
-            # El índice debe estar en un rango razonable (2018=100); si es pequeño
-            # o negativo, probablemente la fila solo contiene variaciones porcentuales.
-            if idx > 50:
-                index_value = idx
-                anual_value = var
-                break
-
-    if mensual is None:
+    # Cifras desestacionalizadas oficiales (Cuadro 1).
+    cuadro1 = _parse_emim_cuadro1(pdf_bytes)
+    if not cuadro1:
         return None
 
-    out: dict[str, list[dict]] = {
-        "mensual": [{"ym": ym, "value": mensual, "period": period}],
+    # Cifras originales e índices por subsector (Cuadro 2).
+    total, subsectores = _parse_emim_cuadro2(pdf_bytes)
+
+    def _obs(value: float | None) -> list[dict]:
+        if value is None:
+            return []
+        return [{"ym": ym, "value": value, "period": period}]
+
+    out: dict[str, Any] = {
+        "produccion_index": _obs(total["produccion_index"] if total else None),
+        "produccion_mensual_desest": _obs(cuadro1.get("produccion", {}).get("mensual")),
+        "produccion_anual_desest": _obs(cuadro1.get("produccion", {}).get("anual")),
+        "produccion_anual_orig": _obs(total["produccion_anual_orig"] if total else None),
+        "personal_index": _obs(total["personal_index"] if total else None),
+        "personal_mensual_desest": _obs(cuadro1.get("personal", {}).get("mensual")),
+        "personal_anual_desest": _obs(cuadro1.get("personal", {}).get("anual")),
+        "personal_anual_orig": _obs(total["personal_anual_orig"] if total else None),
+        "horas_index": _obs(total["horas_index"] if total else None),
+        "horas_mensual_desest": _obs(cuadro1.get("horas", {}).get("mensual")),
+        "horas_anual_desest": _obs(cuadro1.get("horas", {}).get("anual")),
+        "horas_anual_orig": _obs(total["horas_anual_orig"] if total else None),
+        "remuneraciones_index": _obs(total["remuneraciones_index"] if total else None),
+        "remuneraciones_mensual_desest": _obs(cuadro1.get("remuneraciones", {}).get("mensual")),
+        "remuneraciones_anual_desest": _obs(cuadro1.get("remuneraciones", {}).get("anual")),
+        "subsectores": subsectores,
     }
-    if index_value is not None:
-        out["index"] = [{"ym": ym, "value": index_value, "period": period}]
-    if anual_value is not None:
-        out["anual"] = [{"ym": ym, "value": anual_value / 100.0, "period": period}]
     return out
 
 
@@ -1415,11 +1622,30 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
             parsed = _parse_emim(pdf, pub_date)
             if not parsed:
                 continue
-            for sub, col in (("index", 0), ("mensual", 1)):
+            emim_col_map = {
+                "produccion_index": 0,
+                "produccion_mensual_desest": 3,
+                "produccion_anual_desest": 4,
+                "produccion_anual_orig": 2,
+                "personal_index": 5,
+                "personal_mensual_desest": 8,
+                "personal_anual_desest": 9,
+                "personal_anual_orig": 7,
+                "horas_index": 10,
+                "horas_mensual_desest": 13,
+                "horas_anual_desest": 14,
+                "horas_anual_orig": 12,
+                "remuneraciones_index": 15,
+                "remuneraciones_mensual_desest": 16,
+                "remuneraciones_anual_desest": 17,
+            }
+            for sub, col in emim_col_map.items():
                 for o in parsed.get(sub, []):
                     if ("EMIM", col, o["ym"]) not in seen:
                         results.append(("EMIM", sub, col, o, url))
                         seen.add(("EMIM", col, o["ym"]))
+            if "subsectores" in parsed:
+                parsed_by_url[url] = {"subsectores": parsed["subsectores"]}
 
         elif kind == "IGAE":
             parsed = _parse_imcp_imfbcf(kind, pdf, pub_date)

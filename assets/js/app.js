@@ -1,7 +1,7 @@
 // Orquestador del tablero macroeconómico V3 (navegación por indicador).
 import { ORDER, PRINCIPAL, COMPLEMENTARIOS, LABELS, SIGLA, CAPTIONS, WINDOWS, COLORS, KPICFG, VIEWS, ESTADOS } from "./config.js";
 import { computeKPI, analysis, annualVar } from "./metrics.js";
-import { buildOption, rangeStats, applyWindow, buildPibsecLevels, buildPibsecVariations, buildIgaeLevels, buildIgaeVariations, buildImaiLevels, buildImaiVariations } from "./charts.js";
+import { buildOption, rangeStats, applyWindow, buildPibsecLevels, buildPibsecVariations, buildIgaeLevels, buildIgaeVariations, buildImaiLevels, buildImaiVariations, buildEmimLevels, buildEmimVariations } from "./charts.js";
 import { fmtVal, perLong } from "./format.js";
 
 const state = {
@@ -717,6 +717,15 @@ function renderIndicatorView(key) {
         el("div", { class: "sub" }, `${c.qoqText} trim. · ${c.yoyText} anual`)
       ))
     );
+  } else if (ind.key === "EMIM" && k.cards) {
+    mini = el("div", { class: "mini-kpis" },
+      ...k.cards.map((c, i) => el("div", { class: `mini${i === 0 ? " dark" : ""}` },
+        el("div", { class: "lbl" }, c.name),
+        el("div", { class: "num" }, c.idxText),
+        el("div", { class: "sub" }, [c.origMomText, c.desestMomText].filter(Boolean).join(" · ")),
+        el("div", { class: "sub" }, [c.origYoyText, c.desestYoyText].filter(Boolean).join(" · "))
+      ))
+    );
   } else {
     mini = el("div", { class: "mini-kpis" },
       el("div", { class: "mini dark" }, el("div", { class: "lbl" }, "Cifra actual"), el("div", { class: "num" }, k.ultimoFmt), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),
@@ -732,17 +741,18 @@ function renderIndicatorView(key) {
   // window toggle + chart
   panel.append(el("div", { class: "chart-caption", id: `caption-${ind.key}` }, `${CAPTIONS[ind.key] || ""} Datos hasta ${ind.last_observation || "—"}.`.trim()));
   const chartMain = el("div", { class: "chart-main" });
-  if (ind.key === "PIBSEC" || ind.key === "IGAE" || ind.key === "IMAI") {
+  const emimMulti = ind.key === "EMIM" && (k.cards || (ind.columns && ind.columns.length > 15));
+  if (ind.key === "PIBSEC" || ind.key === "IGAE" || ind.key === "IMAI" || emimMulti) {
     chartMain.classList.add("pibsec-charts");
     const levels = el("div", { class: "pibsec-section" });
-    levels.append(el("h3", { class: "block-sub" }, ind.key === "IGAE" ? "Niveles del IGAE y actividades económicas" : ind.key === "IMAI" ? "Niveles del IMAI y sectores industriales" : "Evolución del PIB y grandes actividades económicas"));
+    levels.append(el("h3", { class: "block-sub" }, ind.key === "IGAE" ? "Niveles del IGAE y actividades económicas" : ind.key === "IMAI" ? "Niveles del IMAI y sectores industriales" : ind.key === "EMIM" ? "Niveles de la EMIM" : "Evolución del PIB y grandes actividades económicas"));
     levels.append(buildWinToggle(ind, winId));
-    levels.append(el("div", { class: `chart-box ${ind.key === "IMAI" ? "imai-levels" : "pibsec-levels"}`, id: `chart-${ind.key}-levels`, role: "img", "aria-label": "Niveles del indicador y actividades económicas" }));
+    levels.append(el("div", { class: `chart-box ${ind.key === "IMAI" ? "imai-levels" : ind.key === "EMIM" ? "emim-levels" : "pibsec-levels"}`, id: `chart-${ind.key}-levels`, role: "img", "aria-label": "Niveles del indicador y actividades económicas" }));
     chartMain.append(levels);
     const vars = el("div", { class: "pibsec-section" });
-    vars.append(el("h3", { class: "block-sub" }, ind.key === "IGAE" ? "Variación anual del IGAE y actividades económicas" : ind.key === "IMAI" ? "Variación anual del IMAI y sectores industriales" : "Variación trimestral y anual del PIB y actividades económicas"));
+    vars.append(el("h3", { class: "block-sub" }, ind.key === "IGAE" ? "Variación anual del IGAE y actividades económicas" : ind.key === "IMAI" ? "Variación anual del IMAI y sectores industriales" : ind.key === "EMIM" ? "Variaciones anuales originales" : "Variación trimestral y anual del PIB y actividades económicas"));
     vars.append(buildWinToggle(ind, winId));
-    vars.append(el("div", { class: `chart-box pibsec-variation`, id: `chart-${ind.key}-variation`, role: "img", "aria-label": "Variaciones del indicador y actividades económicas" }));
+    vars.append(el("div", { class: `chart-box pibsec-variation ${ind.key === "EMIM" ? "emim-variation" : ""}`, id: `chart-${ind.key}-variation`, role: "img", "aria-label": "Variaciones del indicador y actividades económicas" }));
     chartMain.append(vars);
     chartMain.append(el("div", { class: "range-wrap", id: `range-${ind.key}` }));
   } else {
@@ -879,6 +889,54 @@ function breakdown(ind, k) {
       ));
     });
     box.append(grid);
+    return box;
+  }
+  if (ind.key === "EMIM" && last && (k.cards || (ind.columns && ind.columns.length > 15))) {
+    const box = el("div", { class: "ficha-block pibsec-activity" });
+    box.append(el("h3", { class: "block-sub" }, "Desempeño por variable"));
+    const grid = el("div", { class: "breakdown" });
+    const comps = k.cards || [
+      { name: "Producción", idxCol: 0, yoyCol: 2 },
+      { name: "Personal ocupado", idxCol: 5, yoyCol: 7 },
+      { name: "Horas trabajadas", idxCol: 10, yoyCol: 12 },
+      { name: "Remuneraciones medias reales", idxCol: 15, yoyCol: 17 },
+    ];
+    comps.forEach((c) => {
+      const idxRaw = c.idxRaw != null ? c.idxRaw : last.values[c.idxCol];
+      const yoyRaw = c.origYoyRaw != null ? c.origYoyRaw : (c.desestYoyRaw != null ? c.desestYoyRaw : last.values[c.yoyCol]);
+      const yoyColor = (yoyRaw != null ? (yoyRaw >= 0 ? COLORS.GREEN : COLORS.CRIMSON) : COLORS.GRAY);
+      grid.append(el("div", { class: "bd-item" },
+        el("div", { class: "bd-lbl" }, c.name),
+        el("div", { class: "bd-val" }, fmtVal(idxRaw, "idx")),
+        el("div", { class: "bd-sub" }, `Anual: `, el("span", { style: `color:${yoyColor}` }, signedPct(yoyRaw)))
+      ));
+    });
+    box.append(grid);
+
+    const subsectores = ind.subsectores || ind.sectores;
+    if (subsectores && Object.keys(subsectores).length) {
+      const entries = Object.entries(subsectores)
+        .filter(([label]) => !label.toLowerCase().startsWith("emim") && !label.toLowerCase().includes("manufacturera"))
+        .sort((a, b) => b[1] - a[1]);
+      if (entries.length) {
+        box.append(el("h3", { class: "block-sub", style: "margin-top:18px;" }, "Variación anual por subsector"));
+        const top = entries.slice(0, 3);
+        const bottom = entries.slice(-3);
+        const col = (title, items, color) => el("div", { class: "pibsec-sector-col" },
+          el("div", { class: "pibsec-sector-title", style: `color:${color}` }, title),
+          ...items.map(([label, v]) => {
+            const short = label.replace(/^\d+\s+/, "").split(",")[0].split(" y ")[0];
+            return el("div", { class: "pibsec-sector-item" },
+              el("span", { class: "pibsec-sector-name" }, short),
+              el("span", { class: "pibsec-sector-pct", style: `color:${v >= 0 ? COLORS.GREEN : COLORS.CRIMSON}` }, signedPct(v))
+            );
+          })
+        );
+        const wrap = el("div", { class: "pibsec-sectors" });
+        wrap.append(col("Al alza", top, COLORS.GREEN), col("A la baja", bottom, COLORS.CRIMSON));
+        box.append(wrap);
+      }
+    }
     return box;
   }
   const rowsFor = () => {
@@ -1428,10 +1486,38 @@ function mountImaiCharts(ind) {
   }
 }
 
+function mountEmimCharts(ind) {
+  if (typeof echarts === "undefined" || !hasData(ind)) return;
+  const winId = state.windows[ind.key] || state.data.meta?.default_window || "5a";
+  const obs = applyWindow(ind, winId);
+  const domLevels = document.getElementById(`chart-${ind.key}-levels`);
+  const domVars = document.getElementById(`chart-${ind.key}-variation`);
+  if (!domLevels || !domVars) return;
+  let levelsChart = state.charts[`${ind.key}-levels`];
+  if (!levelsChart) { levelsChart = echarts.init(domLevels, null, { renderer: "canvas" }); state.charts[`${ind.key}-levels`] = levelsChart; }
+  let varChart = state.charts[`${ind.key}-variation`];
+  if (!varChart) { varChart = echarts.init(domVars, null, { renderer: "canvas" }); state.charts[`${ind.key}-variation`] = varChart; }
+  levelsChart.setOption(buildEmimLevels(obs), true);
+  varChart.setOption(buildEmimVariations(obs), true);
+
+  // Tarjeta de rango visible.
+  const rangeCard = document.getElementById(`range-${ind.key}`);
+  if (rangeCard) {
+    rangeCard.innerHTML = "";
+    rangeCard.append(buildRangeCard(ind, winId));
+  }
+  const cap = document.getElementById(`caption-${ind.key}`);
+  if (cap) {
+    const last = obs.length ? obs[obs.length - 1].period : (ind.last_observation || "—");
+    cap.textContent = `${CAPTIONS[ind.key] || ""} Datos hasta ${last}.`.trim();
+  }
+}
+
 function mountChart(ind) {
   if (ind.key === "PIBSEC") { mountPibsecCharts(ind); return; }
   if (ind.key === "IGAE") { mountIgaeCharts(ind); return; }
   if (ind.key === "IMAI") { mountImaiCharts(ind); return; }
+  if (ind.key === "EMIM" && (ind.metrics?.kpi?.cards || (ind.columns && ind.columns.length > 15))) { mountEmimCharts(ind); return; }
   const dom = document.getElementById(`chart-${ind.key}`);
   if (!dom || typeof echarts === "undefined" || !hasData(ind)) return;
   // Usa granularidad original cuando la ficha del indicador es la vista activa.

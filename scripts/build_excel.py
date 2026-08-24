@@ -211,10 +211,14 @@ def _build_individual_workbook(ind: dict, cfg: dict, kpicfg: dict, out_path: Pat
     wb = openpyxl.Workbook()
     wb.remove(wb.active)
     ws = wb.create_sheet(ind["key"])
-    ws.sheet_view.showGridLines = False
+    _write_indicator_sheet(ws, ind)
+    wb.save(out_path)
 
-    # Encabezado institucional
-    ws["A1"] = ind.get("nombre", ind["key"])
+
+def _write_indicator_sheet(ws, ind: dict, sheet_title: str | None = None) -> None:
+    """Escribe la hoja de datos principal de un indicador."""
+    ws.sheet_view.showGridLines = False
+    ws["A1"] = sheet_title or ind.get("nombre", ind["key"])
     ws["A1"].font = TITLE
     ws["A2"] = (f"Fuente: {ind.get('fuente', {}).get('nombre', '—')} · "
                 f"Frecuencia: {ind.get('frecuencia', '—')} · "
@@ -224,7 +228,6 @@ def _build_individual_workbook(ind: dict, cfg: dict, kpicfg: dict, out_path: Pat
                 f"Fecha de publicación: {ind.get('fecha_publicacion') or '—'}")
     ws["A3"].font = MUT
 
-    # Tabla con todas las columnas del indicador (evita suponer un número fijo).
     cols = ind.get("columns", [])
     headers = ["Periodo", "Fecha"] + [c["label"] for c in cols] + [
         "Carácter del dato", "Fuente", "URL del boletín", "Fecha de publicación"
@@ -274,6 +277,84 @@ def _build_individual_workbook(ind: dict, cfg: dict, kpicfg: dict, out_path: Pat
     ws.merge_cells(start_row=2, start_column=1, end_row=2, end_column=len(headers))
     ws.merge_cells(start_row=3, start_column=1, end_row=3, end_column=len(headers))
     _autow(ws, [16, 13] + [22] * len(cols) + [16, 28, 55, 22])
+
+
+def _write_emim_subsector_sheet(ws, ind: dict) -> None:
+    """Escribe la hoja de subsectores del EMIM."""
+    ws.sheet_view.showGridLines = False
+    ws["A1"] = f"{ind.get('nombre', 'EMIM')} — Desempeño por subsector"
+    ws["A1"].font = TITLE
+    ws["A2"] = (f"Fuente: {ind.get('fuente', {}).get('nombre', '—')} · "
+                f"Periodo: {ind.get('last_observation', '—')} · "
+                "Nota: variaciones anuales en cifras originales.")
+    ws["A2"].font = MUT
+
+    headers = ["Código", "Subsector",
+               "Producción índice", "Producción anual (%)",
+               "Personal índice", "Personal anual (%)",
+               "Horas índice", "Horas anual (%)",
+               "Remuneraciones índice", "Remuneraciones anual (%)"]
+    r0 = 4
+    for i, h in enumerate(headers, start=1):
+        ws.cell(row=r0, column=i, value=h)
+    _style_header(ws, r0, len(headers))
+
+    detail = ind.get("subsectores_detalle") or ind.get("subsectores")
+    if not detail:
+        ws.cell(row=r0 + 1, column=1, value="Sin datos de subsectores disponibles.").font = MUT
+        ws.merge_cells(start_row=r0 + 1, start_column=1, end_row=r0 + 1, end_column=len(headers))
+        _autow(ws, [12, 55, 18, 18, 18, 18, 18, 18, 24, 24])
+        return
+
+    sample = next(iter(detail.values()), {})
+    if not isinstance(sample, dict):
+        ws.cell(row=r0 + 1, column=1, value="Sin detalle de subsectores disponible.").font = MUT
+        ws.merge_cells(start_row=r0 + 1, start_column=1, end_row=r0 + 1, end_column=len(headers))
+        _autow(ws, [12, 55, 18, 18, 18, 18, 18, 18, 24, 24])
+        return
+
+    r = r0 + 1
+    for code in sorted(detail.keys(), key=lambda c: int(c) if isinstance(c, str) and c.isdigit() else str(c)):
+        info = detail[code]
+        if not isinstance(info, dict):
+            continue
+        values = [
+            code,
+            info.get("nombre", ""),
+            info.get("produccion_index"),
+            info.get("produccion_anual"),
+            info.get("personal_index"),
+            info.get("personal_anual"),
+            info.get("horas_index"),
+            info.get("horas_anual"),
+            info.get("remuneraciones_index"),
+            info.get("remuneraciones_anual"),
+        ]
+        for i, v in enumerate(values, start=1):
+            cell = ws.cell(row=r, column=i, value=v)
+            cell.font = TXT
+            cell.border = BORDER
+            if i in (3, 5, 7, 9):
+                cell.number_format = _xl_fmt("idx")
+            elif i in (4, 6, 8, 10):
+                cell.number_format = _xl_fmt("pct-frac")
+            if r % 2 == 0:
+                cell.fill = BAND_FILL
+        r += 1
+
+    ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=len(headers))
+    ws.merge_cells(start_row=2, start_column=1, end_row=2, end_column=len(headers))
+    _autow(ws, [12, 55, 18, 18, 18, 18, 18, 18, 24, 24])
+
+
+def build_emim_workbook(ind: dict, out_path: Path) -> None:
+    """Genera el Excel individual de EMIM con dos hojas: Indicadores y Subsectores."""
+    wb = openpyxl.Workbook()
+    wb.remove(wb.active)
+    ws1 = wb.create_sheet("Indicadores")
+    _write_indicator_sheet(ws1, ind, sheet_title=ind.get("nombre", "EMIM"))
+    ws2 = wb.create_sheet("Subsectores")
+    _write_emim_subsector_sheet(ws2, ind)
     wb.save(out_path)
 
 
@@ -308,6 +389,8 @@ def build_individual_files(payload: dict, pilot: list[str] | None = None):
                 _build_pib_workbook(ind, out_path)
             elif key == "PIBSEC":
                 _build_pibsec_workbook(ind, out_path)
+            elif key == "EMIM" and len(ind.get("columns", [])) >= 18:
+                build_emim_workbook(ind, out_path)
             else:
                 _build_individual_workbook(ind, cfg, kpicfg, out_path)
             ind["xlsx_disponible"] = True
@@ -532,6 +615,13 @@ def add_indicator_sheets(wb, payload):
                 r += 1
         _autow(ws, [16] + [22] * len(cols))
 
+        if key == "EMIM" and len(ind.get("columns", [])) >= 18:
+            sub_name = "Subsectores EMIM"
+            if sub_name in wb.sheetnames:
+                wb.remove(wb[sub_name])
+            ws2 = wb.create_sheet(sub_name)
+            _write_emim_subsector_sheet(ws2, ind)
+
 
 def add_pib_sheets(wb, payload):
     """Crea las hojas separadas PIB oportuno (EOPIBT) y Nivel PIB (PIBT)."""
@@ -662,6 +752,8 @@ def main():
     for name in LEGACY_SHEETS:
         if name in wb.sheetnames:
             wb.remove(wb[name])
+    if "Subsectores EMIM" in wb.sheetnames:
+        wb.remove(wb["Subsectores EMIM"])
     add_pib_sheets(wb, payload)
     add_indicator_sheets(wb, payload)
     add_metodologia(wb, payload)

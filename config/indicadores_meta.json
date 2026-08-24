@@ -198,7 +198,47 @@
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
-      "nombre": "Encuesta Mensual de la Industria Manufacturera"
+      "nombre": "Encuesta Mensual de la Industria Manufacturera",
+      "sigla": "EMIM",
+      "descripcion": "Registra la evolución mensual de la producción, el personal ocupado, las horas trabajadas y las remuneraciones medias reales del sector manufacturero. Las cifras originales provienen del BIE; las cifras desestacionalizadas y el índice de remuneraciones del boletín oficial de prensa del INEGI.",
+      "frecuencia": "Mensual",
+      "unidad": "Índice base 2018=100",
+      "ajuste_estacional": "Cifras originales y desestacionalizadas",
+      "grupo": "industria",
+      "publicacion": "Aproximadamente 40 días tras el cierre del mes",
+      "fuente": {
+        "nombre": "INEGI",
+        "link": "https://www.inegi.org.mx/programas/emim/",
+        "metodo": "INEGI BIE API / boletín PDF",
+        "serie": "796224"
+      },
+      "columns": [
+        {"label": "Producción (índice)", "index": 0, "fmt": "idx"},
+        {"label": "Producción var. mensual original (%)", "index": 1, "fmt": "pct-frac"},
+        {"label": "Producción var. anual original (%)", "index": 2, "fmt": "pct-frac"},
+        {"label": "Producción var. mensual desest. (%)", "index": 3, "fmt": "pct-frac"},
+        {"label": "Producción var. anual desest. (%)", "index": 4, "fmt": "pct-frac"},
+        {"label": "Personal ocupado (índice)", "index": 5, "fmt": "idx"},
+        {"label": "Personal var. mensual original (%)", "index": 6, "fmt": "pct-frac"},
+        {"label": "Personal var. anual original (%)", "index": 7, "fmt": "pct-frac"},
+        {"label": "Personal var. mensual desest. (%)", "index": 8, "fmt": "pct-frac"},
+        {"label": "Personal var. anual desest. (%)", "index": 9, "fmt": "pct-frac"},
+        {"label": "Horas trabajadas (índice)", "index": 10, "fmt": "idx"},
+        {"label": "Horas var. mensual original (%)", "index": 11, "fmt": "pct-frac"},
+        {"label": "Horas var. anual original (%)", "index": 12, "fmt": "pct-frac"},
+        {"label": "Horas var. mensual desest. (%)", "index": 13, "fmt": "pct-frac"},
+        {"label": "Horas var. anual desest. (%)", "index": 14, "fmt": "pct-frac"},
+        {"label": "Remuneraciones medias reales (índice)", "index": 15, "fmt": "idx"},
+        {"label": "Remuneraciones var. mensual desest. (%)", "index": 16, "fmt": "pct-frac"},
+        {"label": "Remuneraciones var. anual desest. (%)", "index": 17, "fmt": "pct-frac"}
+      ],
+      "windows": [
+        {"id": "3m", "label": "3 meses", "count": 3},
+        {"id": "6m", "label": "6 meses", "count": 6},
+        {"id": "1a", "label": "1 año", "count": 12},
+        {"id": "5a", "label": "5 años", "count": 60},
+        {"id": "max", "label": "Máximo", "count": null}
+      ]
     },
     "IED": {
       "requiere_token": null,
@@ -298,10 +338,11 @@
     },
     "EMIM": {
       "nombre": "Encuesta Mensual de la Industria Manufacturera",
-      "descripcion": "Registra la evolución mensual de la producción, el personal ocupado, las horas trabajadas y las remuneraciones del sector manufacturero.",
+      "sigla": "EMIM",
+      "descripcion": "Registra la evolución mensual de la producción, el personal ocupado, las horas trabajadas y las remuneraciones medias reales del sector manufacturero.",
       "frecuencia": "Mensual",
       "unidad": "Índice base 2018=100",
-      "ajuste_estacional": "Serie original",
+      "ajuste_estacional": "Cifras originales y desestacionalizadas",
       "grupo": "industria",
       "publicacion": "Aproximadamente 40 días tras el cierre del mes",
       "proximo": "Por confirmar con el calendario oficial de difusión",
@@ -315,16 +356,31 @@
         "serie": "796224"
       },
       "columns": [
-        {
-          "label": "Producción (índice)",
-          "index": 0,
-          "fmt": "idx"
-        },
-        {
-          "label": "Var. mensual (%)",
-          "index": 1,
-          "fmt": "pct-frac"
-        }
+        {"label": "Producción (índice)", "index": 0, "fmt": "idx"},
+        {"label": "Producción var. mensual original (%)", "index": 1, "fmt": "pct-frac"},
+        {"label": "Producción var. anual original (%)", "index": 2, "fmt": "pct-frac"},
+        {"label": "Producción var. mensual desest. (%)", "index": 3, "fmt": "pct-frac"},
+        {"label": "Producción var. anual desest. (%)", "index": 4, "fmt": "pct-frac"},
+        {"label": "Personal ocupado (índice)", "index": 5, "fmt": "idx"},
+        {"label": "Personal var. mensual original (%)", "index": 6, "fmt": "pct-frac"},
+        {"label": "Personal var. anual original (%)", "index": 7, "fmt": "pct-frac"},
+        {"label": "Personal var. mensual desest. (%)", "index": 8, "fmt": "pct-frac"},
+        {"label": "Personal var. anual desest. (%)", "index": 9, "fmt": "pct-frac"},
+        {"label": "Horas trabajadas (índice)", "index": 10, "fmt": "idx"},
+        {"label": "Horas var. mensual original (%)", "index": 11, "fmt": "pct-frac"},
+        {"label": "Horas var. anual original (%)", "index": 12, "fmt": "pct-frac"},
+        {"label": "Horas var. mensual desest. (%)", "index": 13, "fmt": "pct-frac"},
+        {"label": "Horas var. anual desest. (%)", "index": 14, "fmt": "pct-frac"},
+        {"label": "Remuneraciones medias reales (índice)", "index": 15, "fmt": "idx"},
+        {"label": "Remuneraciones var. mensual desest. (%)", "index": 16, "fmt": "pct-frac"},
+        {"label": "Remuneraciones var. anual desest. (%)", "index": 17, "fmt": "pct-frac"}
+      ],
+      "windows": [
+        {"id": "3m", "label": "3 meses", "count": 3},
+        {"id": "6m", "label": "6 meses", "count": 6},
+        {"id": "1a", "label": "1 año", "count": 12},
+        {"id": "5a", "label": "5 años", "count": 60},
+        {"id": "max", "label": "Máximo", "count": null}
       ]
     },
     "TIPOCAMBIO": {

@@ -29,6 +29,7 @@ RANGES = {
     "PIBSEC": (11_000_000, 35_000_000),
     "IGAE": (50, 130),
     "IMAI": (50, 130),
+    "EMIM": (50, 130),
     "CONSUMO": (70, 140),
     "IED": (-5_000, 60_000),
     "DESOCUP": (0.0, 0.20),   # fracción (0-20%)
@@ -74,6 +75,8 @@ def validate(payload: dict):
     for key, ind in inds.items():
         if not ind.get("columns"):
             errors.append(f"[{key}] sin definición de columnas.")
+        if key == "EMIM" and len(ind.get("columns", [])) not in (0, 18):
+            warnings.append(f"[{key}] no tiene el esquema de 18 columnas ({len(ind.get('columns', []))} columnas).")
 
     # 3) Duplicados exactos entre series NO relacionadas (regla del usuario)
     #    Recolecta (indicador, periodo, valor) de las series primarias y detecta

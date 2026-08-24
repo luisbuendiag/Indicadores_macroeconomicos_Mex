@@ -421,6 +421,8 @@ tbody tr:last-child td { font-weight: 600; color: var(--dkgreen); }
 .pibsec-section .block-sub { margin-bottom: 10px; }
 .pibsec-levels, .pibsec-variation { height: 420px; }
 .imai-levels { height: 630px; }
+.emim-levels { height: 420px; }
+.emim-variation { height: 420px; }
 .pibsec-sectors { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .pibsec-sector-col { border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; background: var(--soft); }
 .pibsec-sector-title { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 8px; font-weight: 700; }
@@ -433,11 +435,13 @@ tbody tr:last-child td { font-weight: 600; color: var(--dkgreen); }
   .pibsec-sectors { grid-template-columns: 1fr; }
   .pibsec-levels { height: 360px; }
   .pibsec-variation { height: 340px; }
+  .emim-levels { height: 360px; }
   .imai-levels { height: 520px; }
 }
 
 @media (max-width: 540px) {
   .pibsec-levels { height: 560px; }
+  .emim-levels { height: 560px; }
   .imai-levels { height: 760px; }
 }
 

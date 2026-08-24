@@ -683,3 +683,150 @@ export function buildImaiVariations(obs) {
     toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "IMAI-variaciones", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
   };
 }
+
+// ---------------- EMIM: small multiples (niveles) ----------------
+const EMIM_COLORS = { Produccion: COLORS.INK, Personal: G, Horas: COLORS.CRIMSON, Remuneraciones: Go };
+const EMIM_LEVELS = [
+  { key: "Produccion", col: 0, top: "Producción" },
+  { key: "Personal", col: 5, top: "Personal ocupado" },
+  { key: "Horas", col: 10, top: "Horas trabajadas" },
+  { key: "Remuneraciones", col: 15, top: "Remuneraciones medias reales" },
+];
+
+export function buildEmimLevels(obs) {
+  const periods = obs.map((o) => o.period);
+  const grids = [], xAxes = [], yAxes = [], series = [], titles = [];
+  const rotate = periods.length > 12;
+  EMIM_LEVELS.forEach((cfg, i) => {
+    const row = Math.floor(i / 2);
+    const col = i % 2;
+    const left = col === 0 ? "4%" : "54%";
+    const top = row === 0 ? 20 : 225;
+    const height = 165;
+    const width = "42%";
+    grids.push({ left, top, width, height, containLabel: false });
+    xAxes.push({
+      gridIndex: i, type: "category", data: periods, boundaryGap: false,
+      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 },
+      axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+    });
+    yAxes.push({
+      gridIndex: i, type: "value", name: "Índice (2018=100)", nameLocation: "middle", nameGap: 34,
+      nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 10, fontWeight: 500 },
+      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) },
+      splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
+    });
+    const values = obs.map((o) => (o.values && o.values.length > cfg.col ? o.values[cfg.col] : null));
+    const s = {
+      name: cfg.top, type: "line", xAxisIndex: i, yAxisIndex: i,
+      data: values, smooth: false, symbol: "circle", symbolSize: 3,
+      lineStyle: { color: EMIM_COLORS[cfg.key], width: 2 },
+      itemStyle: { color: EMIM_COLORS[cfg.key] },
+      areaStyle: { color: EMIM_COLORS[cfg.key], opacity: 0.08 },
+    };
+    lastHighlight(s, periods, values, EMIM_COLORS[cfg.key], (v) => v == null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }));
+    series.push(s);
+    const yRange = computeYRange(values, { padding: 0.08, includeZero: false });
+    if (yRange) { yAxes[i].min = yRange.min; yAxes[i].max = yRange.max; yAxes[i].scale = true; }
+    titles.push({ text: cfg.top, left, top: top - 18, textStyle: { color: "#3d403b", fontFamily: FONT, fontSize: 12, fontWeight: 600 } });
+  });
+  return {
+    animation: false, color: [COLORS.INK, G, COLORS.CRIMSON, Go],
+    title: titles, grid: grids, xAxis: xAxes, yAxis: yAxes, series,
+    tooltip: {
+      trigger: "axis", backgroundColor: "#fff", borderColor: "#ddd7c6", borderWidth: 1,
+      textStyle: { color: COLORS.INK, fontFamily: FONT, fontSize: 12 },
+      extraCssText: "box-shadow:0 5px 16px rgba(0,0,0,.13);border-radius:9px;",
+      formatter: (params) => {
+        if (!params || !params.length) return "";
+        const p = params[0];
+        const v = p.value;
+        const val = v == null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+        return `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${val}</span></div>`;
+      },
+    },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "EMIM-niveles", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+  };
+}
+
+// ---------------- EMIM: variaciones anuales (originales + desest del último dato) ----------------
+const EMIM_VAR = [
+  { name: "Producción", orig: 2, desest: 4, color: COLORS.INK },
+  { name: "Personal ocupado", orig: 7, desest: 9, color: G },
+  { name: "Horas trabajadas", orig: 12, desest: 14, color: COLORS.CRIMSON },
+  { name: "Remuneraciones medias reales", orig: null, desest: 17, color: Go },
+];
+
+function lastNonNullIndex(obs, col) {
+  for (let i = obs.length - 1; i >= 0; i--) {
+    if (obs[i].values && obs[i].values[col] != null) return i;
+  }
+  return -1;
+}
+
+export function buildEmimVariations(obs) {
+  const periods = obs.map((o) => o.period);
+  const yoyAll = [];
+  const series = [];
+  EMIM_VAR.forEach((cfg, si) => {
+    if (cfg.orig != null) {
+      const yoyData = obs.map((o) => (o.values && o.values.length > cfg.orig && o.values[cfg.orig] != null ? o.values[cfg.orig] * 100 : null));
+      yoyAll.push(...yoyData);
+      series.push({
+        name: cfg.name, type: "bar",
+        data: yoyData, itemStyle: { color: cfg.color }, barMaxWidth: 12,
+        emphasis: { focus: "series" },
+        markLine: si === 0 ? { symbol: "none", data: [{ yAxis: 0, lineStyle: { color: COLORS.GRAY, type: "dashed", width: 1 }, label: { show: false } }], animation: false } : undefined,
+      });
+    }
+    if (cfg.desest != null) {
+      const lastI = lastNonNullIndex(obs, cfg.desest);
+      const desestData = obs.map((o, i) => {
+        if (i !== lastI) return null;
+        if (!o.values || o.values.length <= cfg.desest || o.values[cfg.desest] == null) return null;
+        return o.values[cfg.desest] * 100;
+      });
+      yoyAll.push(...desestData);
+      series.push({
+        name: `${cfg.name} (desest.)`, type: "line",
+        data: desestData, itemStyle: { color: cfg.color },
+        symbol: "circle", symbolSize: 8, showSymbol: true,
+        lineStyle: { color: cfg.color, type: "dashed", width: 2 },
+        emphasis: { focus: "series" },
+      });
+    }
+  });
+  const yoyRange = computeYRange(yoyAll, { padding: 0.12, includeZero: true });
+  const yAxis = {
+    type: "value", name: "Variación anual (%)", nameLocation: "middle", nameGap: 40,
+    nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 11, fontWeight: 500 },
+    axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toFixed(1) + "%" },
+    splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
+  };
+  if (yoyRange) { yAxis.min = yoyRange.min; yAxis.max = yoyRange.max; }
+  return {
+    animation: false, color: [COLORS.INK, G, COLORS.CRIMSON, Go],
+    grid: { left: "4%", right: "4%", top: 50, height: 240, containLabel: false },
+    xAxis: { type: "category", data: periods, boundaryGap: true, axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: periods.length > 12 ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: periods.length > 16 ? 42 : 0 }, axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false } },
+    yAxis,
+    series,
+    tooltip: {
+      trigger: "axis", backgroundColor: "#fff", borderColor: "#ddd7c6", borderWidth: 1,
+      textStyle: { color: COLORS.INK, fontFamily: FONT, fontSize: 12 },
+      extraCssText: "box-shadow:0 5px 16px rgba(0,0,0,.13);border-radius:9px;",
+      formatter: (params) => {
+        if (!params || !params.length) return "";
+        const p0 = params[0];
+        let html = `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p0.axisValue}</div>`;
+        params.forEach((p) => {
+          const cfg = EMIM_VAR.find((c) => p.seriesName === c.name || p.seriesName === `${c.name} (desest.)`);
+          html += pctTip(p.value, p.seriesName, cfg ? cfg.color : COLORS.GRAY);
+        });
+        return html;
+      },
+    },
+    legend: { top: 10, left: "center", itemWidth: 12, itemHeight: 12, icon: "roundRect", textStyle: { color: "#3d403b", fontFamily: FONT, fontSize: 11 } },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "EMIM-variaciones", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+  };
+}

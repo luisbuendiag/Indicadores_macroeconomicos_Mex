@@ -74,7 +74,7 @@ def prose_val(key: str, v: float | int | None) -> str:
     if key in ("IED", "BALANZA"):
         sign = "−" if v < 0 else ""
         return sign + "$" + F._to_fixed(abs(F._js_round(v)), 0, 0) + " millones de dólares"
-    if key in ("IGAE", "IMAI", "CONSUMO"):
+    if key in ("IGAE", "IMAI", "CONSUMO", "EMIM"):
         return F._to_fixed(v, 1, 1) + " puntos"
     if key == "DESOCUP":
         return F._to_fixed(v * 100, 1, 1) + "%"
@@ -102,8 +102,8 @@ def primary_series(ind: dict, cfg: dict) -> list[float | None]:
     return [o["values"][val_col] if val_col < len(o.get("values", [])) else None for o in obs]
 
 
-def _val_at(ind: dict, i: int, col: int) -> float | None:
-    if i < 0 or i >= len(ind.get("observations", [])):
+def _val_at(ind: dict, i: int, col: int | None) -> float | None:
+    if col is None or i < 0 or i >= len(ind.get("observations", [])):
         return None
     vals = ind["observations"][i].get("values", [])
     return vals[col] if col < len(vals) else None
@@ -390,7 +390,7 @@ def analysis(ind: dict, kpi: dict, kpicfg: dict | None = None) -> list[str]:
     else:
         mag_adj = "elevado" if g == "m" else "elevada"
 
-    ORIG = ("PIB", "PIBSEC", "IGAE", "IMAI", "CONSUMO")
+    ORIG = ("PIB", "PIBSEC", "IGAE", "IMAI", "CONSUMO", "EMIM")
     big = abs(cur_var - prev_var) if (cur_var is not None and prev_var is not None) else a_mag
 
     trend = ""
@@ -1069,6 +1069,180 @@ def _imai_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     }
 
 
+def _emim_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
+    """KPI y resumen para EMIM con el esquema de 18 columnas.
+
+    El esquema tiene:
+      - cols 0-4: Producción (índice, mom orig, yoy orig, mom desest, yoy desest)
+      - cols 5-9: Personal ocupado
+      - cols 10-14: Horas trabajadas
+      - cols 15-17: Remuneraciones medias reales (índice, mom desest, yoy desest)
+    """
+    cfg = (kpicfg.get(ind["key"]) or {}).copy()
+    if not cfg:
+        return None
+
+    # Forzar el uso del esquema 18-columnas, combinando cifra desestacionalizada
+    # mensual con variación anual original, siguiendo el patrón del IGAE.
+    cfg["valCol"] = 0
+    cfg["valFmt"] = "idx"
+    cfg["varCol"] = 3
+    cfg["varFmt"] = "pct-frac"
+    cfg["varLabel"] = "Var. mensual desest."
+    cfg["yoyCol"] = 2
+    cfg["yoyFmt"] = "pct-frac"
+    cfg["yoyLabel"] = "Var. anual original"
+    cfg["ctx"] = " (índice base 2018=100)"
+    cfg["comp"] = "frente al mes previo"
+    cfg["vw"] = "variación mensual desestacionalizada"
+
+    kpi = compute_kpi(ind, {ind["key"]: cfg})
+    if not kpi:
+        return None
+    yoy = annual_var(ind, kpi, {ind["key"]: cfg})
+    if yoy:
+        kpi["yoyText"] = yoy["text"]
+        kpi["yoyLabel"] = yoy["label"]
+    else:
+        kpi["yoyText"] = "—"
+        kpi["yoyLabel"] = cfg.get("yoyLabel", "Var. anual")
+
+    def _pct(v: float | None) -> str:
+        if v is None:
+            return "—"
+        return ("+" if v > 0 else "") + F.fmt_val(v, "pct-frac")
+
+    def _idx(v: float | None) -> str:
+        if v is None:
+            return "—"
+        return F.fmt_val(v, "idx")
+
+    # Cards: una por cada una de las cuatro variables.
+    cards_cfg = [
+        {
+            "name": "Producción",
+            "idxCol": 0, "origMomCol": 1, "origYoyCol": 2,
+            "desestMomCol": 3, "desestYoyCol": 4,
+        },
+        {
+            "name": "Personal ocupado",
+            "idxCol": 5, "origMomCol": 6, "origYoyCol": 7,
+            "desestMomCol": 8, "desestYoyCol": 9,
+        },
+        {
+            "name": "Horas trabajadas",
+            "idxCol": 10, "origMomCol": 11, "origYoyCol": 12,
+            "desestMomCol": 13, "desestYoyCol": 14,
+        },
+        {
+            "name": "Remuneraciones medias reales",
+            "idxCol": 15, "origMomCol": None, "origYoyCol": None,
+            "desestMomCol": 16, "desestYoyCol": 17,
+        },
+    ]
+    last_i = kpi["lastI"]
+    cards = []
+    for c in cards_cfg:
+        idx = _val_at(ind, last_i, c["idxCol"])
+        om = _val_at(ind, last_i, c["origMomCol"])
+        oy = _val_at(ind, last_i, c["origYoyCol"])
+        dm = _val_at(ind, last_i, c["desestMomCol"]) if c["desestMomCol"] is not None else None
+        dy = _val_at(ind, last_i, c["desestYoyCol"]) if c["desestYoyCol"] is not None else None
+        cards.append({
+            "name": c["name"],
+            "idxCol": c["idxCol"],
+            "idxRaw": idx,
+            "idxText": _idx(idx),
+            "origMomCol": c["origMomCol"],
+            "origMomRaw": om,
+            "origMomText": _pct(om),
+            "origYoyCol": c["origYoyCol"],
+            "origYoyRaw": oy,
+            "origYoyText": _pct(oy),
+            "desestMomCol": c["desestMomCol"],
+            "desestMomRaw": dm,
+            "desestMomText": _pct(dm),
+            "desestYoyCol": c["desestYoyCol"],
+            "desestYoyRaw": dy,
+            "desestYoyText": _pct(dy),
+        })
+    kpi["cards"] = cards
+
+    per = kpi["ultimoP"]
+    per_long = F.per_long(per)
+    prod = cards[0]
+
+    bullets = []
+    b1 = (
+        f"En {per_long}, el índice de producción se ubicó en {prod['idxText']} puntos. "
+        f"La variación mensual desestacionalizada fue {prod['desestMomText']} y la anual original {prod['origYoyText']}."
+    )
+    if prod["desestYoyRaw"] is not None:
+        b1 += f" La anual desestacionalizada fue {prod['desestYoyText']}."
+    bullets.append(b1)
+
+    # Personal y horas
+    pers = cards[1]
+    horas = cards[2]
+    parts = []
+    if pers["idxRaw"] is not None:
+        pers_part = f"el personal ocupado {pers['idxText']} puntos ({pers['origYoyText']} anual original"
+        if pers["desestYoyRaw"] is not None:
+            pers_part += f", {pers['desestYoyText']} desest."
+        pers_part += ")"
+        parts.append(pers_part)
+    if horas["idxRaw"] is not None:
+        horas_part = f"las horas trabajadas {horas['idxText']} puntos ({horas['origYoyText']} anual original"
+        if horas["desestYoyRaw"] is not None:
+            horas_part += f", {horas['desestYoyText']} desest."
+        horas_part += ")"
+        parts.append(horas_part)
+    if parts:
+        bullets.append(f"En el lado laboral, {' y '.join(parts)}.")
+
+    rem = cards[3]
+    if rem["idxRaw"] is not None:
+        if rem["origYoyRaw"] is not None:
+            rem_var = f"variación anual original de {rem['origYoyText']}"
+        elif rem["desestYoyRaw"] is not None:
+            rem_var = f"variación anual desestacionalizada de {rem['desestYoyText']}"
+        else:
+            rem_var = "variación anual no disponible"
+        bullets.append(
+            f"Las remuneraciones medias reales se ubicaron en {rem['idxText']} puntos, "
+            f"con {rem_var}."
+        )
+
+    # Subsectores (variación anual original) si están disponibles.
+    subsectores = ind.get("subsectores")
+    if subsectores and isinstance(subsectores, dict) and len(subsectores) > 0:
+        top = sorted(subsectores.items(), key=lambda x: x[1], reverse=True)[:3]
+        bottom = sorted(subsectores.items(), key=lambda x: x[1])[:3]
+
+        def _short_sector(label):
+            s = re.sub(r"^[\d\-]+\s+", "", label)
+            s = s.split(",")[0].split(" y ")[0]
+            words = s.split()
+            if len(words) > 8:
+                s = " ".join(words[:8]) + "..."
+            return s.strip()
+
+        top_txt = ", ".join(f"{_short_sector(k)} ({_pct(v)})" for k, v in top)
+        bot_txt = ", ".join(f"{_short_sector(k)} ({_pct(v)})" for k, v in bottom)
+        bullets.append(
+            f"A nivel subsectorial, los mayores dinamismos anuales fueron {top_txt}; "
+            f"los mayores retrocesos: {bot_txt}."
+        )
+
+    return {
+        "kpi": kpi,
+        "yoy": yoy,
+        "annualVar": yoy,
+        "resumen": bullets[:4],
+        "analysis": analysis(ind, kpi, {ind["key"]: cfg}),
+    }
+
+
 def compute_all_metrics(payload: dict | None = None, kpicfg: dict | None = None) -> dict[str, dict[str, Any]]:
     """Calcula kpi, analysis y annualVar para todos los indicadores."""
     if payload is None:
@@ -1097,6 +1271,11 @@ def compute_all_metrics(payload: dict | None = None, kpicfg: dict | None = None)
             imai = _imai_metrics(ind, kpicfg)
             if imai:
                 out[key] = imai
+                continue
+        if key == "EMIM" and len(ind.get("columns", [])) >= 18:
+            emim = _emim_metrics(ind, kpicfg)
+            if emim:
+                out[key] = emim
                 continue
         kpi = compute_kpi(ind, kpicfg)
         yoy = annual_var(ind, kpi, kpicfg) if kpi else None
