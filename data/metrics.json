@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-25T15:04:56+00:00",
-  "last_update_ct": "2026-08-25T09:04:50-06:00",
+  "generated_at": "2026-08-25T17:16:39+00:00",
+  "last_update_ct": "2026-08-25T11:16:33-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -2206,6 +2206,8 @@
             "name": "Minería",
             "nivelRaw": 91.261193,
             "nivelText": "91.3",
+            "momRaw": 0.006232,
+            "momText": "0.6%",
             "yoyRaw": 0.069598,
             "yoyText": "7.0%"
           },
@@ -2213,6 +2215,8 @@
             "name": "Energía, agua y gas",
             "nivelRaw": 66.77579,
             "nivelText": "66.8",
+            "momRaw": 0.009294,
+            "momText": "0.9%",
             "yoyRaw": 0.006899,
             "yoyText": "0.7%"
           },
@@ -2220,6 +2224,8 @@
             "name": "Construcción",
             "nivelRaw": 107.692988,
             "nivelText": "107.7",
+            "momRaw": 0.029898,
+            "momText": "3.0%",
             "yoyRaw": 0.042371,
             "yoyText": "4.2%"
           },
@@ -2227,6 +2233,8 @@
             "name": "Industrias manufactureras",
             "nivelRaw": 105.629456,
             "nivelText": "105.6",
+            "momRaw": -0.006086,
+            "momText": "-0.6%",
             "yoyRaw": -0.011629,
             "yoyText": "-1.2%"
           }
@@ -2245,15 +2253,12 @@
         "label": "Var. anual desest."
       },
       "resumen": [
-        "En junio de 2026, el Indicador Mensual de la Actividad Industrial se ubicó en 102.0 puntos (índice base 2018=100). El valor de var. mensual desest. fue de +0.2% frente al mes previo.",
-        "La var. anual desest. se situó en +0.8%, lo que refleja la comparación contra junio de 2026 del año previo.",
-        "En la serie mostrada, el indicador oscila entre un máximo de 104.8 puntos (octubre de 2023) y un mínimo de 58.6 puntos (octubre de 1995). El último dato se ubica dentro del rango observado en el periodo mostrado.",
-        "La variación se clasifica como favorable según la lectura económica del indicador."
+        "En junio de 2026, el IMAI se ubicó en 102.0 puntos (índice base 2018=100). La variación mensual desestacionalizada fue de +0.2% respecto al mes previo, por lo que el indicador avanzó.",
+        "A tasa anual, el IMAI avanzó +0.8%.",
+        "El acumulado ene-jun, en cifras originales, fue de 0.0%.",
+        "A tasa anual, Minería (7.0%) y Construcción (4.2%) avanzaron, mientras que Industrias manufactureras (-1.2%) retrocedieron."
       ],
-      "analysis": [
-        "En junio de 2026, el Indicador Mensual de la Actividad Industrial se ubicó en 102.0 puntos (índice base 2018=100), con un variación mensual desestacionalizada de +0.22% frente al mes previo. La variación mensual publicada por el INEGI muestra que el indicador aumentó respecto del mes previo. El nivel mostrado es la serie original; la variación mensual se calcula sobre cifras desestacionalizadas.",
-        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 104.8 puntos (octubre de 2023) y un mínimo de 58.6 puntos (octubre de 1995). El resultado más reciente se ubicó por encima del promedio del periodo mostrado. El último dato fue superior al del inicio del periodo mostrado. Esta comparación se realiza sobre la serie original, que incorpora efectos estacionales."
-      ]
+      "analysis": []
     },
     "CONSUMO": {
       "kpi": {

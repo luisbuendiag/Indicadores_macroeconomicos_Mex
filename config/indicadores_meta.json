@@ -154,7 +154,11 @@
         {"label": "Var. anual Minería (%)", "index": 10, "fmt": "pct-frac"},
         {"label": "Var. anual Energía (%)", "index": 11, "fmt": "pct-frac"},
         {"label": "Var. anual Construcción (%)", "index": 12, "fmt": "pct-frac"},
-        {"label": "Var. anual Manufacturas (%)", "index": 13, "fmt": "pct-frac"}
+        {"label": "Var. anual Manufacturas (%)", "index": 13, "fmt": "pct-frac"},
+        {"label": "Var. mensual Minería (%)", "index": 14, "fmt": "pct-frac"},
+        {"label": "Var. mensual Energía (%)", "index": 15, "fmt": "pct-frac"},
+        {"label": "Var. mensual Construcción (%)", "index": 16, "fmt": "pct-frac"},
+        {"label": "Var. mensual Manufacturas (%)", "index": 17, "fmt": "pct-frac"}
       ],
       "windows": [
         {"id": "3m", "label": "3 meses", "count": 3},

@@ -726,6 +726,13 @@ function renderIndicatorView(key) {
         el("div", { class: "sub" }, [c.origYoyText, c.desestYoyText].filter(Boolean).join(" · "))
       ))
     );
+  } else if (ind.key === "IMAI" && k.cards) {
+    mini = el("div", { class: "mini-kpis" },
+      el("div", { class: "mini dark" }, el("div", { class: "lbl" }, "Cifra actual"), el("div", { class: "num" }, k.ultimoFmt), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),
+      el("div", { class: "mini" }, el("div", { class: "lbl" }, cfg.varLabel), el("div", { class: "num", style: `color:${k.varColor}` }, k.varText), el("div", { class: "sub" }, cfg.comp)),
+      yoy ? el("div", { class: "mini" }, el("div", { class: "lbl" }, yoy.label || "Variación anual"), el("div", { class: "num", style: `color:${yoy.pos ? COLORS.GREEN : COLORS.CRIMSON}` }, yoy.text), el("div", { class: "sub" }, "Frente al periodo de referencia")) : null,
+      k.acumText ? el("div", { class: "mini" }, el("div", { class: "lbl" }, k.acumLabel || "Acumulado"), el("div", { class: "num", style: `color:${k.acumPos ? COLORS.GREEN : COLORS.CRIMSON}` }, k.acumText), el("div", { class: "sub" }, "Acumulado ene-mes, cifras originales")) : null,
+    );
   } else {
     mini = el("div", { class: "mini-kpis" },
       el("div", { class: "mini dark" }, el("div", { class: "lbl" }, "Cifra actual"), el("div", { class: "num" }, k.ultimoFmt), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),
@@ -750,7 +757,7 @@ function renderIndicatorView(key) {
     levels.append(el("div", { class: `chart-box ${ind.key === "IMAI" ? "imai-levels" : ind.key === "EMIM" ? "emim-levels" : "pibsec-levels"}`, id: `chart-${ind.key}-levels`, role: "img", "aria-label": "Niveles del indicador y actividades económicas" }));
     chartMain.append(levels);
     const vars = el("div", { class: "pibsec-section" });
-    vars.append(el("h3", { class: "block-sub" }, ind.key === "IGAE" ? "Variación anual del IGAE y actividades económicas" : ind.key === "IMAI" ? "Variación anual del IMAI y sectores industriales" : ind.key === "EMIM" ? "Variaciones anuales originales" : "Variación trimestral y anual del PIB y actividades económicas"));
+    vars.append(el("h3", { class: "block-sub" }, ind.key === "IGAE" ? "Variación anual del IGAE y actividades económicas" : ind.key === "IMAI" ? "Variaciones mensuales y anuales del IMAI y sectores industriales" : ind.key === "EMIM" ? "Variaciones anuales originales" : "Variación trimestral y anual del PIB y actividades económicas"));
     vars.append(buildWinToggle(ind, winId));
     vars.append(el("div", { class: `chart-box pibsec-variation ${ind.key === "EMIM" ? "emim-variation" : ""}`, id: `chart-${ind.key}-variation`, role: "img", "aria-label": "Variaciones del indicador y actividades económicas" }));
     chartMain.append(vars);
@@ -872,19 +879,22 @@ function breakdown(ind, k) {
     box.append(el("h3", { class: "block-sub" }, "Desempeño por sector industrial"));
     const grid = el("div", { class: "breakdown" });
     const comps = [
-      { idxCol: 0, yoyCol: 2, label: "IMAI" },
-      { idxCol: 6, yoyCol: 10, label: "Minería" },
-      { idxCol: 7, yoyCol: 11, label: "Energía, agua y gas" },
-      { idxCol: 8, yoyCol: 12, label: "Construcción" },
-      { idxCol: 9, yoyCol: 13, label: "Industrias manufactureras" },
+      { idxCol: 0, momCol: 1, yoyCol: 2, label: "IMAI" },
+      { idxCol: 6, momCol: 14, yoyCol: 10, label: "Minería" },
+      { idxCol: 7, momCol: 15, yoyCol: 11, label: "Energía, agua y gas" },
+      { idxCol: 8, momCol: 16, yoyCol: 12, label: "Construcción" },
+      { idxCol: 9, momCol: 17, yoyCol: 13, label: "Industrias manufactureras" },
     ];
     comps.forEach((c) => {
       const idx = last.values[c.idxCol];
+      const mom = last.values[c.momCol];
       const yoy = last.values[c.yoyCol];
+      const momColor = (mom != null ? (mom >= 0 ? COLORS.GREEN : COLORS.CRIMSON) : COLORS.GRAY);
       const yoyColor = (yoy != null ? (yoy >= 0 ? COLORS.GREEN : COLORS.CRIMSON) : COLORS.GRAY);
       grid.append(el("div", { class: "bd-item" },
         el("div", { class: "bd-lbl" }, c.label),
         el("div", { class: "bd-val" }, fmtVal(idx, "idx")),
+        el("div", { class: "bd-sub" }, `Mensual: `, el("span", { style: `color:${momColor}` }, signedPct(mom))),
         el("div", { class: "bd-sub" }, `Anual: `, el("span", { style: `color:${yoyColor}` }, signedPct(yoy)))
       ));
     });

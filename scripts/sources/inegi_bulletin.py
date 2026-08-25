@@ -660,7 +660,8 @@ def _parse_imai_bulletin(pdf_bytes: bytes, pub_date: tuple[int, int, int] | None
         "construcción": 12,
         "manufactureras": 13,
     }
-    comp_values: dict[str, float] = {}
+    comp_values_anual: dict[str, float] = {}
+    comp_values_mensual: dict[str, float] = {}
     for table in page1_tables:
         for row in table:
             # La etiqueta puede estar en la primera o segunda columna por celdas combinadas.
@@ -669,16 +670,21 @@ def _parse_imai_bulletin(pdf_bytes: bytes, pub_date: tuple[int, int, int] | None
                 if c:
                     label = c.strip().lower()
                     break
-            # La segunda columna de porcentajes es la anual desestacionalizada.
+            # Cuadro 1 publica mensual y anual desestacionalizadas; la primera
+            # columna de porcentajes es la mensual y la segunda la anual.
             pcts = [_parse_pct(c) for c in row[2:] if c and _parse_pct(c) is not None]
-            if len(pcts) >= 2:
+            if len(pcts) >= 1:
                 for key in ("minería", "energía", "construcción", "manufactureras"):
-                    if key in label and key not in comp_values:
-                        comp_values[key] = pcts[-1] / 100.0
+                    if key in label and key not in comp_values_mensual:
+                        comp_values_mensual[key] = pcts[0] / 100.0
+                        if len(pcts) >= 2:
+                            comp_values_anual[key] = pcts[-1] / 100.0
 
     for key, col in comp_map.items():
-        if key in comp_values:
-            out[key] = [{"ym": ym, "value": comp_values[key], "period": period}]
+        if key in comp_values_anual:
+            out[key] = [{"ym": ym, "value": comp_values_anual[key], "period": period}]
+        if key in comp_values_mensual:
+            out[f"{key}_mensual"] = [{"ym": ym, "value": comp_values_mensual[key], "period": period}]
 
     # 3) Anual original y acumulado del Cuadro 2 (página 4, índice 3).
     page4_tables = _pdf_page_tables(pdf_bytes, 3)
@@ -1601,6 +1607,10 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
                 "energía": 11,
                 "construcción": 12,
                 "manufactureras": 13,
+                "minería_mensual": 14,
+                "energía_mensual": 15,
+                "construcción_mensual": 16,
+                "manufactureras_mensual": 17,
             }
             for sub, col in col_map.items():
                 for o in parsed.get(sub, []):

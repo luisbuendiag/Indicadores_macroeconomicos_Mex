@@ -66,7 +66,7 @@ export const CAPTIONS = {
   PIB: "Variación trimestral desestacionalizada del PIB oportuno (barras) y su variación anual desestacionalizada (línea). Ambas en porcentaje.",
   PIBSEC: "Niveles del PIB y las grandes actividades económicas (small multiples, arriba) y variaciones trimestrales y anuales agrupadas (abajo). Las variaciones a partir de 2021 provienen del boletín PIBT; antes se calculan a partir de los niveles originales.",
   IGAE: "Niveles del IGAE y actividades primarias, secundarias y terciarias (small multiples, arriba) y variación anual original agrupada (abajo). La variación mensual desestacionalizada proviene del boletín oficial.",
-  IMAI: "Niveles desestacionalizados del IMAI y sus cuatro sectores (small multiples, arriba) y variación anual desestacionalizada agrupada (abajo). Las variaciones del mes más reciente provienen del boletín oficial.",
+  IMAI: "Niveles desestacionalizados del IMAI y sus cuatro sectores (small multiples, arriba) y variaciones mensuales y anuales desestacionalizadas agrupadas (abajo). Las variaciones del mes más reciente provienen del boletín oficial.",
   CONSUMO: "Índice de volumen físico del consumo privado (línea verde) y variación mensual (línea oro, eje derecho).",
   IMFBCF: "Índice de volumen físico de la formación bruta de capital fijo (inversión) y su variación mensual.",
   IOAE: "Estimación oportuna de la actividad económica con su intervalo de confianza, contrastada con el IGAE observado.",

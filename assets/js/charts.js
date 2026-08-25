@@ -627,42 +627,63 @@ export function buildImaiLevels(obs) {
   };
 }
 
-// ---------------- IMAI: variaciones anuales agrupadas ----------------
+// ---------------- IMAI: variaciones mensuales y anuales agrupadas ----------------
 const IMAI_VAR = [
-  { name: "IMAI", yoy: 2, color: COLORS.INK },
-  { name: "Minería", yoy: 10, color: G },
-  { name: "Energía", yoy: 11, color: COLORS.CRIMSON },
-  { name: "Construcción", yoy: 12, color: Go },
-  { name: "Manufacturas", yoy: 13, color: COLORS.GOLD },
+  { name: "IMAI", mom: 1, yoy: 2, color: COLORS.INK },
+  { name: "Minería", mom: 14, yoy: 10, color: G },
+  { name: "Energía", mom: 15, yoy: 11, color: COLORS.CRIMSON },
+  { name: "Construcción", mom: 16, yoy: 12, color: Go },
+  { name: "Manufacturas", mom: 17, yoy: 13, color: COLORS.GOLD },
 ];
 
 export function buildImaiVariations(obs) {
   const periods = obs.map((o) => o.period);
+  const grids = [
+    { left: "4%", top: 50, width: "44%", height: 220, containLabel: false },
+    { left: "54%", top: 50, width: "44%", height: 220, containLabel: false },
+  ];
+  const xAxes = grids.map((_, i) => ({
+    gridIndex: i, type: "category", data: periods, boundaryGap: true,
+    axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: periods.length > 12 ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: periods.length > 16 ? 42 : 0 },
+    axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+  }));
+  const momAll = [];
   const yoyAll = [];
   const series = [];
   IMAI_VAR.forEach((cfg, si) => {
+    const momData = obs.map((o) => (o.values && o.values.length > cfg.mom ? o.values[cfg.mom] : null)).map((v) => v == null ? null : v * 100);
     const yoyData = obs.map((o) => (o.values && o.values.length > cfg.yoy ? o.values[cfg.yoy] : null)).map((v) => v == null ? null : v * 100);
+    momAll.push(...momData);
     yoyAll.push(...yoyData);
     series.push({
-      name: cfg.name, type: "bar",
-      data: yoyData, itemStyle: { color: cfg.color }, barMaxWidth: 12,
+      name: cfg.name, type: "bar", xAxisIndex: 0, yAxisIndex: 0,
+      data: momData, itemStyle: { color: cfg.color }, barMaxWidth: 10,
+      emphasis: { focus: "series" },
+      markLine: si === 0 ? { symbol: "none", data: [{ yAxis: 0, lineStyle: { color: COLORS.GRAY, type: "dashed", width: 1 }, label: { show: false } }], animation: false } : undefined,
+    });
+    series.push({
+      name: cfg.name, type: "bar", xAxisIndex: 1, yAxisIndex: 1,
+      data: yoyData, itemStyle: { color: cfg.color }, barMaxWidth: 10,
       emphasis: { focus: "series" },
       markLine: si === 0 ? { symbol: "none", data: [{ yAxis: 0, lineStyle: { color: COLORS.GRAY, type: "dashed", width: 1 }, label: { show: false } }], animation: false } : undefined,
     });
   });
+  const momRange = computeYRange(momAll, { padding: 0.12, includeZero: true });
   const yoyRange = computeYRange(yoyAll, { padding: 0.12, includeZero: true });
-  const yAxis = {
-    type: "value", name: "Variación anual (%)", nameLocation: "middle", nameGap: 40,
-    nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 11, fontWeight: 500 },
-    axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toFixed(1) + "%" },
-    splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
-  };
-  if (yoyRange) { yAxis.min = yoyRange.min; yAxis.max = yoyRange.max; }
+  const yAxis = grids.map((_, i) => {
+    const range = i === 0 ? momRange : yoyRange;
+    const ay = {
+      gridIndex: i, type: "value", name: i === 0 ? "Variación mensual (%)" : "Variación anual (%)", nameLocation: "middle", nameGap: 40,
+      nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 11, fontWeight: 500 },
+      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toFixed(1) + "%" },
+      splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
+    };
+    if (range) { ay.min = range.min; ay.max = range.max; }
+    return ay;
+  });
   return {
     animation: false, color: [COLORS.INK, G, COLORS.CRIMSON, Go, COLORS.GOLD],
-    grid: { left: "4%", right: "4%", top: 50, height: 240, containLabel: false },
-    xAxis: { type: "category", data: periods, boundaryGap: true, axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: periods.length > 12 ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: periods.length > 16 ? 42 : 0 }, axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false } },
-    yAxis,
+    grid: grids, xAxis: xAxes, yAxis,
     series,
     tooltip: {
       trigger: "axis", backgroundColor: "#fff", borderColor: "#ddd7c6", borderWidth: 1,

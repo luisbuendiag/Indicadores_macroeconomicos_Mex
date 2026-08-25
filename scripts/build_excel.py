@@ -198,6 +198,108 @@ def _build_pibsec_workbook(ind: dict, out_path: Path):
     wb.save(out_path)
 
 
+def _build_imai_workbook(ind: dict, out_path: Path) -> None:
+    """Genera el Excel individual de IMAI con tres hojas: Niveles, Variaciones y Resumen."""
+    wb = openpyxl.Workbook()
+    wb.remove(wb.active)
+
+    title = ind.get("nombre", "IMAI")
+    src = ind.get("fuente", {}).get("nombre", "INEGI")
+    url = ind.get("url_boletin_oficial") or ind.get("fuente", {}).get("link") or "—"
+    pub = ind.get("fecha_publicacion") or "—"
+    header_note = f"Fuente: {src} · Frecuencia: Mensual · Unidad: índice base 2018=100 / % · Boletín: {url} · Fecha de publicación: {pub}"
+
+    def _make_sheet(sheet_name, include_cols, note):
+        ws = wb.create_sheet(sheet_name)
+        ws.sheet_view.showGridLines = False
+        ws["A1"] = f"{title} — {sheet_name}"
+        ws["A1"].font = TITLE
+        ws["A2"] = header_note
+        ws["A2"].font = MUT
+        ws["A3"] = note
+        ws["A3"].font = MUT
+
+        headers = ["Periodo", "Fecha"] + [ind["columns"][c]["label"] for c in include_cols]
+        r0 = 5
+        for i, h in enumerate(headers, start=1):
+            ws.cell(row=r0, column=i, value=h)
+        _style_header(ws, r0, len(headers))
+
+        r = r0 + 1
+        for o in ind.get("observations", []):
+            d = _period_date(o["period"])
+            ws.cell(row=r, column=1, value=o["period"]).font = TXT
+            ws.cell(row=r, column=2, value=d).font = TXT
+            if d:
+                ws.cell(row=r, column=2).number_format = "yyyy-mm-dd"
+            for j, col_i in enumerate(include_cols, start=3):
+                v = o["values"][col_i] if col_i < len(o["values"]) else None
+                cell = ws.cell(row=r, column=j, value=v)
+                cell.font = TXT
+                if v is not None:
+                    cell.number_format = _xl_fmt(ind["columns"][col_i].get("fmt", "num"))
+                if r % 2 == 0:
+                    cell.fill = BAND_FILL
+            r += 1
+        ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=len(headers))
+        ws.merge_cells(start_row=2, start_column=1, end_row=2, end_column=len(headers))
+        ws.merge_cells(start_row=3, start_column=1, end_row=3, end_column=len(headers))
+        _autow(ws, [16, 13] + [24] * len(include_cols))
+
+    _make_sheet(
+        "Niveles", [0, 6, 7, 8, 9],
+        "Los niveles son índices desestacionalizados con base 2018=100."
+    )
+    _make_sheet(
+        "Variaciones",
+        [1, 2, 14, 15, 16, 17, 10, 11, 12, 13],
+        "Las variaciones son porcentajes: mensuales (cols 1 y 14-17) y anuales (cols 2 y 10-13), cifras desestacionalizadas."
+    )
+
+    # Resumen con los KPIs y componentes del último periodo.
+    ws = wb.create_sheet("Resumen")
+    ws.sheet_view.showGridLines = False
+    ws["A1"] = f"{title} — Resumen"
+    ws["A1"].font = TITLE
+    ws["A2"] = header_note
+    ws["A2"].font = MUT
+    ws["A3"] = "Lectura del periodo más reciente. Los porcentajes son cifras desestacionalizadas; el acumulado es original."
+    ws["A3"].font = MUT
+
+    metrics = ind.get("metrics", {})
+    kpi = metrics.get("kpi", {})
+    r0 = 5
+    headers = ["Concepto", "Valor", "Periodo"]
+    for i, h in enumerate(headers, start=1):
+        ws.cell(row=r0, column=i, value=h)
+    _style_header(ws, r0, len(headers))
+
+    rows = []
+    if kpi:
+        rows.append(["Índice", kpi.get("ultimoFmt"), kpi.get("ultimoP")])
+        rows.append(["Var. mensual desest.", kpi.get("varText"), kpi.get("ultimoP")])
+        rows.append(["Var. anual desest.", kpi.get("yoyText"), kpi.get("ultimoP")])
+        rows.append(["Acumulado ene-mes", kpi.get("acumText"), kpi.get("ultimoP")])
+    for c in kpi.get("cards", []):
+        rows.append([c["name"] + " — índice", c.get("nivelText"), kpi.get("ultimoP")])
+        rows.append([c["name"] + " — var. mensual", c.get("momText"), kpi.get("ultimoP")])
+        rows.append([c["name"] + " — var. anual", c.get("yoyText"), kpi.get("ultimoP")])
+
+    r = r0 + 1
+    for row in rows:
+        for j, v in enumerate(row, start=1):
+            cell = ws.cell(row=r, column=j, value=v)
+            cell.font = TXT
+            if r % 2 == 0:
+                cell.fill = BAND_FILL
+        r += 1
+    ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=len(headers))
+    ws.merge_cells(start_row=2, start_column=1, end_row=2, end_column=len(headers))
+    ws.merge_cells(start_row=3, start_column=1, end_row=3, end_column=len(headers))
+    _autow(ws, [40, 24, 20])
+    wb.save(out_path)
+
+
 def _build_pib_workbook(ind: dict, out_path: Path):
     """Genera el Excel individual de PIB con dos hojas: PIB oportuno y Nivel PIB."""
     wb = openpyxl.Workbook()
@@ -391,6 +493,8 @@ def build_individual_files(payload: dict, pilot: list[str] | None = None):
                 _build_pibsec_workbook(ind, out_path)
             elif key == "EMIM" and len(ind.get("columns", [])) >= 18:
                 build_emim_workbook(ind, out_path)
+            elif key == "IMAI" and len(ind.get("columns", [])) >= 18:
+                _build_imai_workbook(ind, out_path)
             else:
                 _build_individual_workbook(ind, cfg, kpicfg, out_path)
             ind["xlsx_disponible"] = True
@@ -565,6 +669,7 @@ NEW_SHEETS = {
     "IOAE": "IOAE",
     "EMIM": "EMIM (Manufactura)",
     "BCMM": "Balanza comercial",
+    "IMAI": "IMAI",
 }
 
 # Hojas heredadas del libro base que ya no corresponden al perfil V3.

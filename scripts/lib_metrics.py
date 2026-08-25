@@ -971,17 +971,14 @@ def _igae_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
 
 
 def _imai_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
-    """KPI y resumen para IMAI con el esquema V3 de 14 columnas.
+    """KPI y resumen para IMAI con el esquema V3 de 18 columnas.
 
-    El esquema V3 tiene:
-      - col 0: IMAI índice desestacionalizado
-      - col 1: Var. mensual desest. (%)
-      - col 2: Var. anual desest. (%)
-      - col 3: IMAI índice original
-      - col 4: Var. anual original (%)
-      - col 5: Acumulado ene-mes original (%)
-      - col 6-9: índices desest. de Minería, Energía, Construcción y Manufacturas
-      - col 10-13: var. anuales desest. de los cuatro sectores
+    Columnas:
+      0-2: IMAI total desestacionalizado (índice, var. mensual, var. anual).
+      3-5: IMAI total original (índice, var. anual, acumulado ene-mes).
+      6-9: índices desest. de Minería, Energía, Construcción y Manufacturas.
+      10-13: var. anual desest. de los cuatro sectores.
+      14-17: var. mensual desest. de los cuatro sectores.
     """
     cfg = (kpicfg.get(ind["key"]) or {}).copy()
     if not cfg:
@@ -1025,47 +1022,82 @@ def _imai_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
         kpi["acumText"] = "—"
         kpi["acumLabel"] = "Acumulado ene-mes"
 
-    # Componentes para el resumen.
+    # Componentes (índice, mensual y anual desestacionalizados).
     comp_cfg = [
-        {"name": "Minería", "idxCol": 6, "yoyCol": 10},
-        {"name": "Energía, agua y gas", "idxCol": 7, "yoyCol": 11},
-        {"name": "Construcción", "idxCol": 8, "yoyCol": 12},
-        {"name": "Industrias manufactureras", "idxCol": 9, "yoyCol": 13},
+        {"name": "Minería", "idxCol": 6, "momCol": 14, "yoyCol": 10},
+        {"name": "Energía, agua y gas", "idxCol": 7, "momCol": 15, "yoyCol": 11},
+        {"name": "Construcción", "idxCol": 8, "momCol": 16, "yoyCol": 12},
+        {"name": "Industrias manufactureras", "idxCol": 9, "momCol": 17, "yoyCol": 13},
     ]
     cards = []
     for c in comp_cfg:
         idx = _val_at(ind, kpi["lastI"], c["idxCol"])
+        mom = _val_at(ind, kpi["lastI"], c["momCol"])
         y = _val_at(ind, kpi["lastI"], c["yoyCol"])
         cards.append({
             "name": c["name"],
             "nivelRaw": idx,
             "nivelText": F.fmt_val(idx, "idx") if idx is not None else "—",
+            "momRaw": mom,
+            "momText": F.fmt_val(mom, "pct-frac") if mom is not None else "—",
             "yoyRaw": y,
             "yoyText": F.fmt_val(y, "pct-frac") if y is not None else "—",
         })
     kpi["cards"] = cards
 
-    bullets = resumen(ind, kpi, yoy, {ind["key"]: cfg})
+    def _verb(mag: float | None) -> str:
+        if mag is None:
+            return "se mantuvo"
+        if mag > 0.05:
+            return "avanzó"
+        if mag < -0.05:
+            return "retrocedió"
+        return "se mantuvo prácticamente sin cambio"
 
-    # Añadir lectura de componentes al resumen (solo si hay datos).
-    comp_parts = [
-        f"{c['name']} {('contrajo' if c['yoyRaw'] is not None and c['yoyRaw'] < 0 else 'creció')} {c['yoyText']}"
-        for c in cards if c["yoyRaw"] is not None
+    def _composition(comp_cards: list[dict]) -> str | None:
+        active = [c for c in comp_cards if c.get("yoyRaw") is not None]
+        if not active:
+            return None
+        pos = [c for c in active if c["yoyRaw"] > 0.0005]
+        neg = [c for c in active if c["yoyRaw"] < -0.0005]
+        pos.sort(key=lambda c: c["yoyRaw"], reverse=True)
+        neg.sort(key=lambda c: c["yoyRaw"])
+        if pos and neg:
+            top = pos[:2]
+            bottom = neg[-2:][::-1]
+            top_txt = " y ".join(f"{c['name']} ({c['yoyText']})" for c in top)
+            bot_txt = " y ".join(f"{c['name']} ({c['yoyText']})" for c in bottom)
+            return f"A tasa anual, {top_txt} avanzaron, mientras que {bot_txt} retrocedieron."
+        if pos:
+            top = pos[:2]
+            top_txt = " y ".join(f"{c['name']} ({c['yoyText']})" for c in top)
+            return f"A tasa anual, todos los componentes avanzaron; destacaron {top_txt}."
+        if neg:
+            bottom = neg[:2]
+            bot_txt = " y ".join(f"{c['name']} ({c['yoyText']})" for c in bottom)
+            return f"A tasa anual, todos los componentes retrocedieron; la caída más contenida fue en {bot_txt}."
+        return "A tasa anual, los componentes se mantuvieron sin cambio significativo."
+
+    period = per_long(kpi["ultimoP"])
+    mes = (kpi["ultimoP"] or "").split()[0].lower() if (kpi["ultimoP"] or "").split() else "mes"
+    bullets = [
+        f"En {period}, el IMAI se ubicó en {prose_val('IMAI', kpi['ultimoRaw'])} (índice base 2018=100). "
+        f"La variación mensual desestacionalizada fue de {kpi['varText']} respecto al mes previo, por lo que el indicador {_verb(kpi['varMag'])}."
     ]
-    if comp_parts and yoy:
-        bullets.append(
-            "A tasa anual, " + ", ".join(comp_parts[:-1]) +
-            (f" y {comp_parts[-1]}" if len(comp_parts) > 1 else comp_parts[0]) + "."
-        )
+    if yoy:
+        bullets.append(f"A tasa anual, el IMAI {_verb(yoy['mag'])} {kpi['yoyText']}.")
     if kpi.get("acumText") and kpi["acumText"] != "—":
-        bullets.append(f"El acumulado ene-mes, en cifras originales, fue de {kpi['acumText']}.")
+        bullets.append(f"El acumulado ene-{mes}, en cifras originales, fue de {kpi['acumText']}.")
+    comp_text = _composition(cards)
+    if comp_text:
+        bullets.append(comp_text)
 
     return {
         "kpi": kpi,
         "yoy": yoy,
         "annualVar": yoy,
         "resumen": bullets[:4],
-        "analysis": analysis(ind, kpi, {ind["key"]: cfg}),
+        "analysis": [],
     }
 
 
@@ -1271,7 +1303,7 @@ def compute_all_metrics(payload: dict | None = None, kpicfg: dict | None = None)
             if igae:
                 out[key] = igae
                 continue
-        if key == "IMAI" and len(ind.get("columns", [])) >= 14:
+        if key == "IMAI" and len(ind.get("columns", [])) >= 18:
             imai = _imai_metrics(ind, kpicfg)
             if imai:
                 out[key] = imai
