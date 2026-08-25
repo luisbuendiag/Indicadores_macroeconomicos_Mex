@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-25T18:26:03+00:00",
+    "generated_at": "2026-08-25T21:16:46+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-08-25T12:26:03-06:00",
+    "last_update_ct": "2026-08-25T15:16:46-06:00",
     "periodo_referencia_reciente": {
       "period": "Jul 26",
       "period_long": "Jul 26"
@@ -1531,8 +1531,7 @@
         "frecuencia": "Trimestral",
         "unidad": "Millones de pesos (a precios de 2018)",
         "ajuste_estacional": "Serie original"
-      },
-      "boletin_validado": true
+      }
     },
     "PIBSEC": {
       "key": "PIBSEC",
@@ -4333,8 +4332,7 @@
         "72 Servicios de alojamiento temporal y de preparación de alimentos y bebidas": -0.027000000000000003,
         "81 Otros servicios excepto actividades gubernamentales": 0.01,
         "93 Actividades legislativas, gubernamentales, de impartición de justicia y de organismos internacionales y extraterritoriales": 0.035
-      },
-      "boletin_validado": true
+      }
     },
     "IGAE": {
       "key": "IGAE",
@@ -10939,8 +10937,7 @@
           "count": null
         }
       ],
-      "sigla": "IGAE",
-      "boletin_validado": true
+      "sigla": "IGAE"
     },
     "IMAI": {
       "key": "IMAI",
@@ -21249,8 +21246,7 @@
           "label": "Máximo",
           "count": null
         }
-      ],
-      "boletin_validado": true
+      ]
     },
     "CONSUMO": {
       "key": "CONSUMO",
@@ -21566,8 +21562,7 @@
       "periodo_boletin": "May 26",
       "numero_boletin": "478/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Indicador Mensual del Consumo Privado",
-      "boletin_validado": true
+      "producto_boletin": "Indicador Mensual del Consumo Privado"
     },
     "IED": {
       "key": "IED",
@@ -22818,8 +22813,7 @@
       "periodo_boletin": "Jun 26",
       "numero_boletin": "435/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Indicadores de Ocupación y Empleo (ENOE / IOOE)",
-      "boletin_validado": true
+      "producto_boletin": "Indicadores de Ocupación y Empleo (ENOE / IOOE)"
     },
     "INPC": {
       "key": "INPC",
@@ -23956,8 +23950,7 @@
       "periodo_boletin": "Jul 26",
       "numero_boletin": "481/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Índice Nacional de Precios al Consumidor",
-      "boletin_validado": true
+      "producto_boletin": "Índice Nacional de Precios al Consumidor"
     },
     "IMFBCF": {
       "key": "IMFBCF",
@@ -24267,8 +24260,7 @@
       "periodo_boletin": "May 26",
       "numero_boletin": "479/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Indicador Mensual de la Formación Bruta de Capital Fijo",
-      "boletin_validado": true
+      "producto_boletin": "Indicador Mensual de la Formación Bruta de Capital Fijo"
     },
     "IOAE": {
       "key": "IOAE",
@@ -24702,8 +24694,7 @@
       "periodo_boletin": "Jul 26",
       "numero_boletin": "494/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Indicador Oportuno de la Actividad Económica",
-      "boletin_validado": true
+      "producto_boletin": "Indicador Oportuno de la Actividad Económica"
     },
     "EMIM": {
       "key": "EMIM",
@@ -31095,8 +31086,7 @@
           "remuneraciones_index": 144.1,
           "remuneraciones_anual": 0.038
         }
-      },
-      "boletin_validado": true
+      }
     },
     "TIPOCAMBIO": {
       "key": "TIPOCAMBIO",
@@ -69520,8 +69510,7 @@
       "periodo_boletin": "Jul 26",
       "numero_boletin": "474/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Encuesta Mensual de Opinión Empresarial",
-      "boletin_validado": true
+      "producto_boletin": "Encuesta Mensual de Opinión Empresarial"
     },
     "BCMM": {
       "key": "BCMM",
@@ -89908,8 +89897,7 @@
           "label": "Máximo",
           "count": null
         }
-      ],
-      "boletin_validado": true
+      ]
     }
   }
 }
