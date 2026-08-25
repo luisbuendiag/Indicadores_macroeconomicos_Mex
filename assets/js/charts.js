@@ -851,3 +851,207 @@ export function buildEmimVariations(obs) {
     toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "EMIM-variaciones", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
   };
 }
+
+// ---------------- BCMM: niveles y componentes ----------------
+const BCMM_LEVELS = [
+  {
+    top: "Exportaciones e importaciones",
+    cols: [
+      { name: "Exportaciones", col: 0, color: COLORS.GREEN },
+      { name: "Importaciones", col: 1, color: COLORS.CRIMSON },
+    ],
+    yName: "Millones de dólares",
+    fmt: (v) => v == null ? "—" : v.toLocaleString("es-MX", { maximumFractionDigits: 0 }),
+  },
+  {
+    top: "Saldo comercial",
+    cols: [{ name: "Saldo", col: 2, color: COLORS.INK }],
+    yName: "Millones de dólares",
+    fmt: (v) => v == null ? "—" : v.toLocaleString("es-MX", { maximumFractionDigits: 0 }),
+    includeZero: true,
+  },
+  {
+    top: "Exportaciones por origen",
+    cols: [
+      { name: "Petroleras", col: 6, color: COLORS.GOLD },
+      { name: "No petroleras", col: 8, color: COLORS.GREEN },
+      { name: "Manufactureras", col: 20, color: G },
+      { name: "Agropecuarias", col: 21, color: Go },
+      { name: "Extractivas", col: 22, color: COLORS.CRIMSON },
+    ],
+    yName: "Millones de dólares",
+    fmt: (v) => v == null ? "—" : v.toLocaleString("es-MX", { maximumFractionDigits: 0 }),
+  },
+  {
+    top: "Importaciones por tipo de bien",
+    cols: [
+      { name: "Consumo", col: 14, color: COLORS.GOLD },
+      { name: "Intermedios", col: 15, color: G },
+      { name: "Capital", col: 16, color: COLORS.CRIMSON },
+    ],
+    yName: "Millones de dólares",
+    fmt: (v) => v == null ? "—" : v.toLocaleString("es-MX", { maximumFractionDigits: 0 }),
+  },
+];
+
+function moneyTip(value, name, color) {
+  if (value == null) return "";
+  const s = value < 0 ? "−" : "";
+  const txt = s + "$" + Math.abs(value).toLocaleString("es-MX", { maximumFractionDigits: 0 }) + " mdd";
+  return `<div style="display:flex;align-items:center;gap:8px;margin:2px 0"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:${color}"></span><span style="flex:1;color:#5c5f5a;font-size:11px">${name}</span><span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${txt}</span></div>`;
+}
+
+export function buildBcmmLevels(obs) {
+  const periods = obs.map((o) => o.period);
+  const grids = [], xAxes = [], yAxes = [], series = [], titles = [];
+  const rotate = periods.length > 12;
+  BCMM_LEVELS.forEach((cfg, i) => {
+    const row = Math.floor(i / 2);
+    const col = i % 2;
+    const left = col === 0 ? "4%" : "54%";
+    const top = row === 0 ? 20 : 260;
+    const height = 190;
+    const width = "42%";
+    grids.push({ left, top, width, height, containLabel: false });
+    xAxes.push({
+      gridIndex: i, type: "category", data: periods, boundaryGap: false,
+      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 },
+      axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+    });
+    yAxes.push({
+      gridIndex: i, type: "value", name: cfg.yName, nameLocation: "middle", nameGap: 36,
+      nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 10, fontWeight: 500 },
+      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toLocaleString("es-MX", { maximumFractionDigits: 0 }) },
+      splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
+    });
+    let allValues = [];
+    cfg.cols.forEach((c) => {
+      const values = obs.map((o) => (o.values && o.values.length > c.col ? o.values[c.col] : null));
+      allValues = allValues.concat(values);
+      const s = {
+        name: c.name, type: "line", xAxisIndex: i, yAxisIndex: i,
+        data: values, smooth: false, symbol: "circle", symbolSize: 3,
+        lineStyle: { color: c.color, width: 2 }, itemStyle: { color: c.color },
+        areaStyle: cfg.cols.length === 1 ? { color: c.color, opacity: 0.08 } : undefined,
+      };
+      lastHighlight(s, periods, values, c.color, cfg.fmt);
+      series.push(s);
+    });
+    const yRange = computeYRange(allValues, { padding: 0.08, includeZero: cfg.includeZero || false });
+    if (yRange) { yAxes[i].min = yRange.min; yAxes[i].max = yRange.max; yAxes[i].scale = true; }
+    titles.push({ text: cfg.top, left, top: top - 18, textStyle: { color: "#3d403b", fontFamily: FONT, fontSize: 12, fontWeight: 600 } });
+  });
+  return {
+    animation: false,
+    color: [COLORS.GREEN, COLORS.CRIMSON, COLORS.INK, COLORS.GOLD, G, Go],
+    title: titles, grid: grids, xAxis: xAxes, yAxis: yAxes, series,
+    tooltip: {
+      trigger: "axis", backgroundColor: "#fff", borderColor: "#ddd7c6", borderWidth: 1,
+      textStyle: { color: COLORS.INK, fontFamily: FONT, fontSize: 12 },
+      extraCssText: "box-shadow:0 5px 16px rgba(0,0,0,.13);border-radius:9px;",
+      formatter: (params) => {
+        if (!params || !params.length) return "";
+        const p0 = params[0];
+        let html = `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p0.axisValue}</div>`;
+        params.forEach((p) => {
+          html += moneyTip(p.value, p.seriesName, p.color);
+        });
+        return html;
+      },
+    },
+    legend: { top: 10, left: "center", itemWidth: 12, itemHeight: 12, icon: "roundRect", textStyle: { color: "#3d403b", fontFamily: FONT, fontSize: 11 } },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "BCMM-niveles", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+  };
+}
+
+// ---------------- BCMM: variaciones anuales ----------------
+const BCMM_VAR = [
+  { top: "Total", cols: [
+    { name: "Exportaciones", col: 3, color: COLORS.GREEN },
+    { name: "Importaciones", col: 4, color: COLORS.CRIMSON },
+    { name: "Saldo", col: 5, color: COLORS.INK },
+  ]},
+  { top: "Exportaciones petrolero / no petrolero", cols: [
+    { name: "Exp. petroleras", col: 10, color: COLORS.GOLD },
+    { name: "Exp. no petroleras", col: 12, color: COLORS.GREEN },
+  ]},
+  { top: "Importaciones petrolero / no petrolero", cols: [
+    { name: "Imp. petroleras", col: 11, color: COLORS.GOLD },
+    { name: "Imp. no petroleras", col: 13, color: COLORS.CRIMSON },
+  ]},
+  { top: "Importaciones por tipo de bien", cols: [
+    { name: "Consumo", col: 17, color: COLORS.GOLD },
+    { name: "Intermedios", col: 18, color: G },
+    { name: "Capital", col: 19, color: COLORS.CRIMSON },
+  ]},
+  { top: "Exportaciones no petroleras por origen", cols: [
+    { name: "Manufactureras", col: 23, color: G },
+    { name: "Agropecuarias", col: 24, color: Go },
+    { name: "Extractivas", col: 25, color: COLORS.CRIMSON },
+  ]},
+];
+
+export function buildBcmmVariations(obs) {
+  const periods = obs.map((o) => o.period);
+  const grids = [], xAxes = [], yAxes = [], series = [], titles = [];
+  const rotate = periods.length > 12;
+  BCMM_VAR.forEach((cfg, i) => {
+    const row = Math.floor(i / 3);
+    const col = i % 3;
+    const left = col === 0 ? "4%" : (col === 1 ? "36%" : "68%");
+    const top = row === 0 ? 40 : 300;
+    const width = "28%";
+    const height = 200;
+    grids.push({ left, top, width, height, containLabel: false });
+    xAxes.push({
+      gridIndex: i, type: "category", data: periods, boundaryGap: true,
+      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 },
+      axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+    });
+    yAxes.push({
+      gridIndex: i, type: "value", name: "Variación anual (%)", nameLocation: "middle", nameGap: 34,
+      nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 10, fontWeight: 500 },
+      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toFixed(1) + "%" },
+      splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
+    });
+    let allValues = [];
+    cfg.cols.forEach((c, ci) => {
+      const values = obs.map((o) => {
+        if (!o.values || o.values.length <= c.col || o.values[c.col] == null) return null;
+        return o.values[c.col] * 100;
+      });
+      allValues = allValues.concat(values);
+      const s = {
+        name: c.name, type: "bar", xAxisIndex: i, yAxisIndex: i,
+        data: values, itemStyle: { color: c.color }, barMaxWidth: 10,
+        emphasis: { focus: "series" },
+        markLine: ci === 0 ? { symbol: "none", data: [{ yAxis: 0, lineStyle: { color: COLORS.GRAY, type: "dashed", width: 1 }, label: { show: false } }], animation: false } : undefined,
+      };
+      series.push(s);
+    });
+    const yRange = computeYRange(allValues, { padding: 0.12, includeZero: true });
+    if (yRange) { yAxes[i].min = yRange.min; yAxes[i].max = yRange.max; }
+    titles.push({ text: cfg.top, left, top: top - 25, textStyle: { color: "#3d403b", fontFamily: FONT, fontSize: 11, fontWeight: 600 } });
+  });
+  return {
+    animation: false,
+    color: [COLORS.GREEN, COLORS.CRIMSON, COLORS.INK, COLORS.GOLD, G, Go],
+    title: titles, grid: grids, xAxis: xAxes, yAxis: yAxes, series,
+    tooltip: {
+      trigger: "axis", backgroundColor: "#fff", borderColor: "#ddd7c6", borderWidth: 1,
+      textStyle: { color: COLORS.INK, fontFamily: FONT, fontSize: 12 },
+      extraCssText: "box-shadow:0 5px 16px rgba(0,0,0,.13);border-radius:9px;",
+      formatter: (params) => {
+        if (!params || !params.length) return "";
+        const p0 = params[0];
+        let html = `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p0.axisValue}</div>`;
+        params.forEach((p) => {
+          html += pctTip(p.value, p.seriesName, p.color);
+        });
+        return html;
+      },
+    },
+    legend: { top: 10, left: "center", itemWidth: 12, itemHeight: 12, icon: "roundRect", textStyle: { color: "#3d403b", fontFamily: FONT, fontSize: 11 } },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "BCMM-variaciones", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+  };
+}

@@ -80,8 +80,12 @@ def label_to_ym(period: str) -> str | None:
         yy = int(parts[1])
     except ValueError:
         return None
-    # Heurística para series que comienzan en los noventa (INEGI BIE usa 1993).
-    base = 1900 if yy >= 93 else 2000
+    # Heurística robusta para años de dos dígitos: se asigna el siglo anterior
+    # cuando el año supera un umbral relativo al año actual (permite series
+    # históricas desde 1980 sin confundir 1992 con 2092).
+    current_yy = datetime.now().year % 100
+    threshold = current_yy + 40
+    base = 1900 if yy > threshold else 2000
     return f"{base + yy:04d}-{mi:02d}"
 
 

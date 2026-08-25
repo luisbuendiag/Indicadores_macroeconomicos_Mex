@@ -267,18 +267,23 @@
       "goodSign": 0
     },
     "BCMM": {
-      "derived": "saldo",
+      "valCol": 2,
       "valFmt": "usd",
-      "varMode": "abs-prev",
+      "varCol": 2,
+      "varFmt": "usd",
       "varLabel": "Variación mensual del saldo",
+      "yoyCol": 5,
+      "yoyFmt": "pct-frac",
+      "yoyLabel": "Var. anual saldo",
+      "derived": "saldo",
       "noun": "saldo comercial",
       "art": "el",
       "grupo": "balanza",
       "assess": "neutral",
       "ctx": "",
-      "vw": "variación del saldo",
-      "vg": "f",
-      "comp": "frente al mes previo",
+      "vw": "variación anual",
+      "vg": "m",
+      "comp": "frente al mismo mes del año anterior",
       "goodSign": 0
     }
   },
@@ -365,7 +370,7 @@
     "TASA": "Tasa de interés objetivo del Banco de México (%).",
     "RESERVAS": "Reservas internacionales netas (millones de dólares).",
     "EMOE": "Confianza empresarial (EMOE) y su variación mensual (puntos).",
-    "BCMM": "Exportaciones, importaciones y saldo de la balanza comercial de mercancías (millones de dólares)."
+    "BCMM": "Exportaciones, importaciones y saldo comercial de mercancías de México (millones de dólares). Incluye desglose petrolero/no petrolero, por tipo de bien importado y composición de las exportaciones no petroleras, además de sus variaciones anuales y acumulados ene-mes."
   },
   "ESTADOS": {
     "ACTUALIZADO": {

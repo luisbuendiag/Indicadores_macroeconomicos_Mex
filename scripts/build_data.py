@@ -563,6 +563,98 @@ def apply_inegi_total(payload: dict, key: str, item: dict, prev_last: str | None
     }
 
 
+def compute_bcmm_metrics(payload: dict) -> list[str]:
+    """Construye el esquema de 29 columnas del BCMM y deriva saldo, variaciones anuales y acumulados."""
+    changes: list[str] = []
+    ind = payload["indicators"].get("BCMM")
+    if not ind:
+        return changes
+    try:
+        meta = json.loads(L.META_FILE.read_text(encoding="utf-8"))
+    except Exception:
+        return changes
+    bcmm_prof = meta.get("profile", {}).get("BCMM", {})
+    new_cols = bcmm_prof.get("columns")
+    if not new_cols or len(new_cols) != 29:
+        return changes
+    if len(ind.get("columns", [])) != 29:
+        ind["columns"] = new_cols
+        changes.append("BCMM: esquema de 29 columnas aplicado")
+    for o in ind.get("observations", []):
+        vals = list(o.get("values", []))
+        if len(vals) < 29:
+            vals.extend([None] * (29 - len(vals)))
+            o["values"] = vals
+    by_ym: dict[str, dict] = {}
+    for o in ind.get("observations", []):
+        ym = inegi.label_to_ym(o.get("period", ""))
+        if ym:
+            by_ym[ym] = o
+    yoy_map = {3: 0, 4: 1, 5: 2, 10: 6, 11: 7, 12: 8, 13: 9, 17: 14, 18: 15, 19: 16, 23: 20, 24: 21, 25: 22}
+    yoy_updated = saldo_updated = acum_updated = 0
+    for o in ind.get("observations", []):
+        vals = list(o.get("values", []))
+        if len(vals) < 29:
+            continue
+        ym = inegi.label_to_ym(o.get("period", ""))
+        if not ym:
+            continue
+        if vals[0] is not None and vals[1] is not None:
+            vals[2] = round(vals[0] - vals[1], 6)
+            saldo_updated += 1
+        prev_ym = inegi._ym_minus_months(ym, 12)
+        prev_o = by_ym.get(prev_ym)
+        if prev_o:
+            prev_vals = list(prev_o.get("values", []))
+            while len(prev_vals) < 29:
+                prev_vals.append(None)
+            for ycol, vcol in yoy_map.items():
+                if vals[ycol] is None and vals[vcol] is not None and prev_vals[vcol] is not None:
+                    d = round((vals[vcol] - prev_vals[vcol]) / abs(prev_vals[vcol]), 6)
+                    if d is not None:
+                        vals[ycol] = d
+                        yoy_updated += 1
+        year, month = map(int, ym.split("-"))
+        acum = [None, None, None]
+        can = True
+        for m in range(1, month + 1):
+            key = f"{year:04d}-{m:02d}"
+            mo = by_ym.get(key)
+            if not mo:
+                can = False
+                break
+            mvals = list(mo.get("values", []))
+            while len(mvals) < 29:
+                mvals.append(None)
+            for i, src in enumerate([0, 1, 2]):
+                if mvals[src] is None:
+                    can = False
+                    break
+                if acum[i] is None:
+                    acum[i] = 0.0
+                acum[i] += mvals[src]
+            if not can:
+                break
+        if can:
+            for i, dst in enumerate([26, 27, 28]):
+                vals[dst] = round(acum[i], 6)
+            acum_updated += 1
+        o["values"] = vals
+    if saldo_updated:
+        changes.append(f"BCMM: saldo derivado para {saldo_updated} periodos")
+    if yoy_updated:
+        changes.append(f"BCMM: variaciones anuales calculadas para {yoy_updated} celdas")
+    if acum_updated:
+        changes.append(f"BCMM: acumulados ene-mes calculados para {acum_updated} periodos")
+    fuente = dict(ind.get("fuente", {}))
+    fuente.setdefault("nombre", "INEGI")
+    fuente.setdefault("metodo", "INEGI BIE API")
+    if not fuente.get("link"):
+        fuente["link"] = "https://www.inegi.org.mx/datos/temas/comercio-exterior/"
+    ind["fuente"] = fuente
+    return changes
+
+
 def run(offline: bool = False) -> int:
     log = {"started_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
            "mode": "offline" if offline else "online",
@@ -655,6 +747,9 @@ def run(offline: bool = False) -> int:
 
     # EMIM V2: esquema de 18 columnas con separación original/desestacionalizado.
     log["changes"].extend(compute_emim_metrics(payload))
+
+    # BCMM: esquema de 29 columnas (totales, componentes, variaciones y acumulados).
+    log["changes"].extend(compute_bcmm_metrics(payload))
 
     # Frescura, calendario, métricas compartidas y metadatos temporales.
     log["changes"].extend(apply_freshness_and_meta(payload, log))

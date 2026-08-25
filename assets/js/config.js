@@ -59,7 +59,7 @@ export const KPICFG = {
   TASA: { valCol: 0, valFmt: "pct-raw", varMode: "pp-prev", varLabel: "Variación vs. periodo previo", noun: "tasa objetivo", art: "la", grupo: "tasa", assess: "neutral", ctx: "", vw: "variación", vg: "f", comp: "frente al periodo previo", goodSign: 0 },
   RESERVAS: { valCol: 0, valFmt: "usd", varMode: "abs-prev", varLabel: "Variación semanal", noun: "reservas internacionales", art: "las", grupo: "growth", assess: "neutral", ctx: "", vw: "variación", vg: "f", comp: "frente al periodo previo", goodSign: 0 },
   EMOE: { valCol: 0, valFmt: "idx", varCol: 1, varFmt: "idx", varLabel: "Var. mensual", noun: "confianza empresarial", art: "la", grupo: "opinion", assess: "neutral", ctx: "", vw: "variación", vg: "f", comp: "frente al mes previo", goodSign: 0 },
-  BCMM: { derived: "saldo", valFmt: "usd", varMode: "abs-prev", varLabel: "Variación mensual del saldo", noun: "saldo comercial", art: "el", grupo: "balanza", assess: "neutral", ctx: "", vw: "variación del saldo", vg: "f", comp: "frente al mes previo", goodSign: 0 },
+  BCMM: { valCol: 2, valFmt: "usd", varCol: 2, varFmt: "usd", varLabel: "Variación mensual del saldo", yoyCol: 5, yoyFmt: "pct-frac", yoyLabel: "Var. anual saldo", derived: "saldo", noun: "saldo comercial", art: "el", grupo: "balanza", assess: "neutral", ctx: "", vw: "variación anual", vg: "m", comp: "frente al mismo mes del año anterior", goodSign: 0 },
 };
 
 export const CAPTIONS = {
@@ -78,7 +78,7 @@ export const CAPTIONS = {
   TASA: "Tasa de interés objetivo del Banco de México (%).",
   RESERVAS: "Reservas internacionales netas (millones de dólares).",
   EMOE: "Confianza empresarial (EMOE) y su variación mensual (puntos).",
-  BCMM: "Exportaciones, importaciones y saldo de la balanza comercial de mercancías (millones de dólares)."
+  BCMM: "Exportaciones, importaciones y saldo comercial de mercancías de México (millones de dólares). Incluye desglose petrolero/no petrolero, por tipo de bien importado y composición de las exportaciones no petroleras, además de sus variaciones anuales y acumulados ene-mes."
 };
 
 // Vistas de navegación. type: "home" | "indicator" | "group" | "page".

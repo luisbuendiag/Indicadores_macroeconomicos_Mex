@@ -71,7 +71,7 @@ def prose_val(key: str, v: float | int | None) -> str:
         return F._to_fixed(v / 1e6, 2, 2) + " billones de pesos de 2018"
     if key == "PIBSEC":
         return F._to_fixed(v / 1e6, 2, 2) + " billones de pesos"
-    if key in ("IED", "BALANZA"):
+    if key in ("IED", "BALANZA", "BCMM"):
         sign = "−" if v < 0 else ""
         return sign + "$" + F._to_fixed(abs(F._js_round(v)), 0, 0) + " millones de dólares"
     if key in ("IGAE", "IMAI", "CONSUMO", "EMIM"):
@@ -1279,6 +1279,178 @@ def _emim_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     }
 
 
+def _pct(v: float | None) -> str:
+    if v is None:
+        return "—"
+    return ("+" if v > 0 else "") + F._to_fixed(v * 100, 1, 1) + "%"
+
+
+def _share(num: float | None, den: float | None) -> float | None:
+    if num is None or den is None or den == 0:
+        return None
+    return round(num / den, 6)
+
+
+def _bcmm_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
+    """KPI y resumen para BCMM con el esquema de 29 columnas.
+
+    4 KPIs principales:
+      - Exportaciones (col 0)
+      - Importaciones (col 1)
+      - Saldo comercial (col 2)
+      - Variación anual de las exportaciones (col 3)
+    """
+    cfg = kpicfg.get(ind["key"]) or {}
+    _, colors = _kpicfg_and_colors()
+    obs = ind.get("observations", [])
+    if not obs:
+        return None
+
+    def val(i: int, col: int) -> float | None:
+        if i < 0 or i >= len(obs):
+            return None
+        vals = obs[i].get("values", [])
+        return vals[col] if col < len(vals) else None
+
+    # Última y penúltima observación con saldo no nulo.
+    idxs = [i for i, o in enumerate(obs) if val(i, 2) is not None]
+    if not idxs:
+        return None
+    last_i = idxs[-1]
+    prev_i = idxs[-2] if len(idxs) >= 2 else None
+    periods = [o["period"] for o in obs]
+
+    e = val(last_i, 0)
+    m = val(last_i, 1)
+    s = val(last_i, 2)
+    y_e = val(last_i, 3)
+    y_m = val(last_i, 4)
+    y_s = val(last_i, 5)
+    e_pet = val(last_i, 6)
+    e_nopet = val(last_i, 8)
+    m_pet = val(last_i, 7)
+    m_nopet = val(last_i, 9)
+    m_con = val(last_i, 14)
+    m_int = val(last_i, 15)
+    m_cap = val(last_i, 16)
+    acum = val(last_i, 26)
+
+    def _bal_text(v: float | None) -> str:
+        if v is None:
+            return "—"
+        return ("superávit" if v >= 0 else "déficit") + " de " + F._to_fixed(abs(F._js_round(v)), 0, 0) + " mdd"
+
+    def _yoy_text(v: float | None) -> str:
+        if v is None:
+            return "—"
+        return ("+" if v > 0 else "") + F._to_fixed(v * 100, 1, 1) + "%"
+
+    def _yoy_color(v: float | None) -> str:
+        if v is None:
+            return colors.get("INK", "#161a1d")
+        return colors.get("GREEN") if v >= 0 else colors.get("CRIMSON")
+
+    def _usd_text(v: float | None) -> str:
+        if v is None:
+            return "—"
+        sgn = "−" if v < 0 else ""
+        return sgn + "$" + F._to_fixed(abs(F._js_round(v)), 0, 0) + " mdd"
+
+    cards = [
+        {"name": "Exportaciones", "raw": e, "text": _usd_text(e), "yoy": y_e, "yoyText": _yoy_text(y_e), "yoyColor": _yoy_color(y_e)},
+        {"name": "Importaciones", "raw": m, "text": _usd_text(m), "yoy": y_m, "yoyText": _yoy_text(y_m), "yoyColor": _yoy_color(y_m)},
+        {"name": "Saldo comercial", "raw": s, "text": _bal_text(s), "yoy": y_s, "yoyText": _yoy_text(y_s), "yoyColor": _yoy_color(y_s)},
+        {"name": "Var. anual exportaciones", "raw": y_e, "text": _yoy_text(y_e), "yoy": y_e, "yoyText": _yoy_text(y_e), "yoyColor": _yoy_color(y_e)},
+    ]
+
+    def _saldo_var_text(v: float | None) -> str:
+        if v is None:
+            return "—"
+        sgn = "+" if v >= 0 else "−"
+        return sgn + "$" + F._to_fixed(abs(F._js_round(v)), 0, 0) + " mdd"
+
+    # Variación respecto al mes previo publicado (mdd; se distingue del déficit/superávit).
+    prev_var = None
+    if prev_i is not None:
+        prev_s = val(prev_i, 2)
+        if s is not None and prev_s is not None:
+            prev_var = round(s - prev_s, 6)
+
+    kpi = {
+        "ultimoRaw": s,
+        "ultimoFmt": _bal_text(s),
+        "ultimoP": periods[last_i],
+        "varText": _saldo_var_text(prev_var),
+        "varMag": prev_var,
+        "varLabel": "Variación mensual del saldo",
+        "pos": prev_var is not None and prev_var >= 0,
+        "varColor": _yoy_color(prev_var),
+        "yoyText": _yoy_text(y_s),
+        "yoyLabel": "Var. anual saldo",
+        "yoyRaw": y_s,
+        "acumText": _usd_text(acum) if acum is not None else "—",
+        "acumLabel": "Acum. ene-mes exportaciones",
+        "acumRaw": acum,
+        "cards": cards,
+        "lastI": last_i,
+        "series": [val(i, 2) for i in range(len(obs))],
+        "periods": periods,
+        "assessment": "neutral",
+        "semaforo": "estable",
+    }
+
+    bullets: list[str] = []
+    p = kpi["ultimoP"]
+
+    # 1. Saldo + var. mensual del saldo + var. anual del saldo.
+    if s is not None:
+        b1 = (
+            f"En {F.en_frase(p)}, el saldo comercial registró un {_bal_text(s)}. "
+            f"La variación mensual del saldo fue de "
+            f"{('+' if (prev_var or 0) > 0 else '')}{F._to_fixed(F._js_round(prev_var or 0), 0, 0)} mdd "
+            f"respecto al mes previo y la anual de {_yoy_text(y_s)}."
+        )
+        bullets.append(b1)
+
+    # 2. Exportaciones e importaciones con yoy.
+    if e is not None and m is not None:
+        bullets.append(
+            f"Las exportaciones se ubicaron en {_usd_text(e)} ({_yoy_text(y_e)}) y "
+            f"las importaciones en {_usd_text(m)} ({_yoy_text(y_m)})."
+        )
+
+    # 3. Composición petrolera / no petrolera.
+    if e and e != 0 and (e_pet is not None or e_nopet is not None):
+        pet_share = _share(e_pet, e)
+        nopet_share = _share(e_nopet, e)
+        parts = []
+        if pet_share is not None:
+            parts.append(f"petroleras {_pct(pet_share)}")
+        if nopet_share is not None:
+            parts.append(f"no petroleras {_pct(nopet_share)}")
+        if parts:
+            bullets.append(f"De las exportaciones totales, {', '.join(parts)} proviene del comercio exterior.")
+
+    # 4. Importaciones por tipo de bien.
+    if m and m != 0 and (m_con is not None or m_int is not None or m_cap is not None):
+        c_share = _share(m_con, m)
+        i_share = _share(m_int, m)
+        k_share = _share(m_cap, m)
+        if c_share is not None and i_share is not None and k_share is not None:
+            bullets.append(
+                f"Las importaciones por tipo de bien se componen de "
+                f"consumo {_pct(c_share)}, intermedios {_pct(i_share)} y capital {_pct(k_share)}."
+            )
+
+    return {
+        "kpi": kpi,
+        "yoy": {"mag": y_s, "pos": y_s is not None and y_s >= 0, "text": _yoy_text(y_s), "label": "Var. anual saldo"} if y_s is not None else None,
+        "annualVar": {"mag": y_s, "pos": y_s is not None and y_s >= 0, "text": _yoy_text(y_s), "label": "Var. anual saldo"} if y_s is not None else None,
+        "resumen": bullets[:4],
+        "analysis": [bullets[0]] if bullets else [],
+    }
+
+
 def compute_all_metrics(payload: dict | None = None, kpicfg: dict | None = None) -> dict[str, dict[str, Any]]:
     """Calcula kpi, analysis y annualVar para todos los indicadores."""
     if payload is None:
@@ -1312,6 +1484,11 @@ def compute_all_metrics(payload: dict | None = None, kpicfg: dict | None = None)
             emim = _emim_metrics(ind, kpicfg)
             if emim:
                 out[key] = emim
+                continue
+        if key == "BCMM" and len(ind.get("columns", [])) >= 29:
+            bcmm = _bcmm_metrics(ind, kpicfg)
+            if bcmm:
+                out[key] = bcmm
                 continue
         kpi = compute_kpi(ind, kpicfg)
         yoy = annual_var(ind, kpi, kpicfg) if kpi else None

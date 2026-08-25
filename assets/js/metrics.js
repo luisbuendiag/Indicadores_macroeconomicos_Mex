@@ -33,7 +33,7 @@ function proseVal(ind, v) {
   const money = (x, u) => (x < 0 ? "−$" : "$") + Math.abs(Math.round(x)).toLocaleString("es-MX") + " " + u;
   if (k === "PIB") return (Math.abs(v) < 1 ? (v * 100) : (v / 1e6)).toLocaleString("es-MX", { minimumFractionDigits: Math.abs(v) < 1 ? 1 : 2, maximumFractionDigits: Math.abs(v) < 1 ? 1 : 2 }) + (Math.abs(v) < 1 ? "%" : " billones de pesos de 2018");
   if (k === "PIBSEC") return (v / 1e6).toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " billones de pesos";
-  if (k === "IED" || k === "BALANZA") return money(v, "millones de dólares");
+  if (k === "IED" || k === "BALANZA" || k === "BCMM") return money(v, "millones de dólares");
   if (k === "IGAE" || k === "IMAI" || k === "CONSUMO" || k === "EMIM") return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + " puntos";
   if (k === "DESOCUP") return (v * 100).toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
   if (k === "INPC" || k === "TASA") return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";

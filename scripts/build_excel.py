@@ -308,6 +308,82 @@ def _build_pib_workbook(ind: dict, out_path: Path):
     wb.save(out_path)
 
 
+def _write_subset_sheet(ws, ind: dict, title: str, subtitle: str, include_indices: list[int]) -> None:
+    """Escribe una hoja con un subconjunto de columnas del indicador."""
+    ws.sheet_view.showGridLines = False
+    ws["A1"] = title
+    ws["A1"].font = TITLE
+    ws["A2"] = subtitle
+    ws["A2"].font = MUT
+    all_cols = ind.get("columns", [])
+    cols = [all_cols[i] for i in include_indices if i < len(all_cols)]
+    headers = ["Periodo", "Fecha"] + [c["label"] for c in cols] + [
+        "Carácter del dato", "Fuente", "URL del boletín", "Fecha de publicación"
+    ]
+    r0 = 4
+    for i, h in enumerate(headers, start=1):
+        ws.cell(row=r0, column=i, value=h)
+    _style_header(ws, r0, len(headers))
+
+    obs = ind.get("observations", [])
+    r = r0 + 1
+    for o in obs:
+        period = o["period"]
+        d = _period_date(period)
+        ws.cell(row=r, column=1, value=period).font = TXT
+        ws.cell(row=r, column=2, value=d).font = TXT
+        if d:
+            ws.cell(row=r, column=2).number_format = "yyyy-mm-dd"
+        values = list(o.get("values", []))
+        for j, idx in enumerate(include_indices, start=3):
+            if idx < len(values) and j - 3 < len(cols):
+                v = values[idx]
+                cell = ws.cell(row=r, column=j, value=v)
+                cell.font = TXT
+                cell.border = BORDER
+                cell.number_format = _xl_fmt(cols[j - 3].get("fmt", "num"))
+                if r % 2 == 0:
+                    cell.fill = BAND_FILL
+        meta_start = 3 + len(cols)
+        meta = [
+            _caracter_dato(period),
+            ind.get("fuente", {}).get("nombre", "—"),
+            ind.get("url_boletin_oficial") or ind.get("fuente", {}).get("link") or "—",
+            ind.get("fecha_publicacion") or "—",
+        ]
+        for j, v in enumerate(meta, start=meta_start):
+            cell = ws.cell(row=r, column=j, value=v)
+            cell.font = TXT
+            cell.border = BORDER
+            if r % 2 == 0:
+                cell.fill = BAND_FILL
+        r += 1
+
+    ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=len(headers))
+    ws.merge_cells(start_row=2, start_column=1, end_row=2, end_column=len(headers))
+    _autow(ws, [16, 13] + [26] * len(cols) + [16, 28, 55, 22])
+
+
+def _build_bcmm_workbook(ind: dict, out_path: Path) -> None:
+    """Genera el Excel individual de BCMM con 4 hojas temáticas."""
+    wb = openpyxl.Workbook()
+    wb.remove(wb.active)
+    src = ind.get("fuente", {}).get("nombre", "INEGI")
+    url = ind.get("url_boletin_oficial") or ind.get("fuente", {}).get("link") or "—"
+    pub = ind.get("fecha_publicacion") or "—"
+    sub = f"Fuente: {src} · Frecuencia: Mensual · Unidad: millones de dólares · Boletín: {url} · Fecha de publicación: {pub}"
+
+    ws1 = wb.create_sheet("Comercio total")
+    _write_subset_sheet(ws1, ind, f"{ind.get('nombre', 'BCMM')} — Comercio total", sub, [0, 1, 2, 26, 27, 28])
+    ws2 = wb.create_sheet("Variaciones anuales")
+    _write_subset_sheet(ws2, ind, f"{ind.get('nombre', 'BCMM')} — Variaciones anuales", sub, [3, 4, 5, 10, 11, 12, 13, 17, 18, 19, 23, 24, 25])
+    ws3 = wb.create_sheet("Petrolero y no petrolero")
+    _write_subset_sheet(ws3, ind, f"{ind.get('nombre', 'BCMM')} — Petrolero y no petrolero", sub, [0, 1, 6, 7, 8, 9, 20, 21, 22])
+    ws4 = wb.create_sheet("Importaciones por tipo")
+    _write_subset_sheet(ws4, ind, f"{ind.get('nombre', 'BCMM')} — Importaciones por tipo de bien", sub, [1, 14, 15, 16, 17, 18, 19])
+    wb.save(out_path)
+
+
 def _build_individual_workbook(ind: dict, cfg: dict, kpicfg: dict, out_path: Path):
     """Genera un Excel con una sola hoja visible por indicador."""
     wb = openpyxl.Workbook()
@@ -495,6 +571,8 @@ def build_individual_files(payload: dict, pilot: list[str] | None = None):
                 build_emim_workbook(ind, out_path)
             elif key == "IMAI" and len(ind.get("columns", [])) >= 18:
                 _build_imai_workbook(ind, out_path)
+            elif key == "BCMM" and len(ind.get("columns", [])) >= 29:
+                _build_bcmm_workbook(ind, out_path)
             else:
                 _build_individual_workbook(ind, cfg, kpicfg, out_path)
             ind["xlsx_disponible"] = True
