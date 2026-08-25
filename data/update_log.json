@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-08-25T08:37:13+00:00",
+  "started_at": "2026-08-25T15:04:56+00:00",
   "mode": "offline",
   "network_calls": false,
   "warnings": [],
@@ -31,10 +31,10 @@
     "frescura: RESERVAS -> ACTUALIZADO",
     "frescura: EMOE -> ACTUALIZADO",
     "frescura: BCMM -> ACTUALIZADO",
-    "meta: last_update_ct=2026-08-25T03:28:39-06:00"
+    "meta: last_update_ct=2026-08-25T09:53:03-06:00"
   ],
   "consultas": [],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-08-25T09:28:39+00:00"
+  "finished_at": "2026-08-25T15:53:03+00:00"
 }
