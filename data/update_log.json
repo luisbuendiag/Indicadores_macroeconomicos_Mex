@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-08-25T20:18:49+00:00",
+  "started_at": "2026-08-26T08:37:09+00:00",
   "mode": "offline",
   "network_calls": false,
   "warnings": [],
@@ -16,7 +16,7 @@
     "IMAI: esquema de 14 columnas aplicado; acumulado calculado para 0 periodos",
     "BCMM: saldo derivado para 558 periodos",
     "BCMM: acumulados ene-mes calculados para 558 periodos",
-    "calendario: regenerado con as_of=2026-08-25",
+    "calendario: regenerado con as_of=2026-08-26",
     "métricas: data/metrics.json regenerado",
     "frescura: PIB -> ACTUALIZADO",
     "frescura: PIBSEC -> ACTUALIZADO",
@@ -34,10 +34,10 @@
     "frescura: RESERVAS -> ACTUALIZADO",
     "frescura: EMOE -> ACTUALIZADO",
     "frescura: BCMM -> ACTUALIZADO",
-    "meta: last_update_ct=2026-08-25T15:16:46-06:00"
+    "meta: last_update_ct=2026-08-26T03:27:55-06:00"
   ],
   "consultas": [],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-08-25T21:16:46+00:00"
+  "finished_at": "2026-08-26T09:27:55+00:00"
 }
