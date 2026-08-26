@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-26T01:17:22+00:00",
+    "generated_at": "2026-08-26T17:18:39+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-08-25T19:17:22-06:00",
+    "last_update_ct": "2026-08-26T11:18:39-06:00",
     "periodo_referencia_reciente": {
       "period": "Jul 26",
       "period_long": "Jul 26"
@@ -494,8 +494,8 @@
         }
       ],
       "last_observation": "2T-26 P",
-      "last_updated": "2026-08-25",
-      "last_checked": "2026-08-25",
+      "last_updated": "2026-08-26",
+      "last_checked": "2026-08-26",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -504,7 +504,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "30 de julio de 2026",
       "periodo_referencia": "2T-26 P",
-      "fecha_consulta": "2026-08-25",
+      "fecha_consulta": "2026-08-26",
       "periodo_referencia_oficial": "2° trimestre 2026",
       "fecha_publicacion_oficial": "30 de julio de 2026",
       "proxima_publicacion": {
@@ -3897,8 +3897,8 @@
         }
       ],
       "last_observation": "2T-26",
-      "last_updated": "2026-08-25",
-      "last_checked": "2026-08-25",
+      "last_updated": "2026-08-26",
+      "last_checked": "2026-08-26",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -3907,7 +3907,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "24 de agosto de 2026",
       "periodo_referencia": "2T-26",
-      "fecha_consulta": "2026-08-25",
+      "fecha_consulta": "2026-08-26",
       "metrics": {
         "kpi": {
           "assessment": "adverso",
@@ -10035,8 +10035,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-08-25",
-      "last_checked": "2026-08-25",
+      "last_updated": "2026-08-26",
+      "last_checked": "2026-08-26",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -10045,7 +10045,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "24 de agosto de 2026",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-08-25",
+      "fecha_consulta": "2026-08-26",
       "metrics": {
         "kpi": {
           "assessment": "adverso",
@@ -20303,8 +20303,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-08-25",
-      "last_checked": "2026-08-25",
+      "last_updated": "2026-08-26",
+      "last_checked": "2026-08-26",
       "source_origin": "api",
       "data_quality": [],
       "requiere_token": "INEGI",
@@ -20314,7 +20314,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "11 de agosto de 2026",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-08-25",
+      "fecha_consulta": "2026-08-26",
       "metrics": {
         "kpi": {
           "assessment": "favorable",
@@ -21453,8 +21453,8 @@
         }
       ],
       "last_observation": "May 26",
-      "last_updated": "2026-08-25",
-      "last_checked": "2026-08-25",
+      "last_updated": "2026-08-26",
+      "last_checked": "2026-08-26",
       "source_origin": "api",
       "data_quality": [],
       "requiere_token": "INEGI",
@@ -21464,7 +21464,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "5 de agosto de 2026",
       "periodo_referencia": "May 26",
-      "fecha_consulta": "2026-08-25",
+      "fecha_consulta": "2026-08-26",
       "metrics": {
         "kpi": {
           "assessment": "favorable",
@@ -21962,21 +21962,22 @@
         {
           "period": "Ene 18",
           "values": [
-            3.3645,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            3.364517,
+            59.046013,
+            56.916034,
+            7.000563,
+            52.253036,
+            52253036.0
+          ],
+          "q_period": "1T-18"
         },
         {
           "period": "Feb 18",
           "values": [
-            3.1736,
-            null,
-            null,
-            null,
+            3.173574,
+            59.209673,
+            56.354829,
+            6.266172,
             null,
             null
           ]
@@ -21984,10 +21985,10 @@
         {
           "period": "Mar 18",
           "values": [
-            2.9372,
-            null,
-            null,
-            null,
+            2.937211,
+            59.113431,
+            56.480453,
+            6.84393,
             null,
             null
           ]
@@ -21995,21 +21996,22 @@
         {
           "period": "Abr 18",
           "values": [
-            3.3865,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            3.386516,
+            59.481548,
+            56.440433,
+            7.11,
+            53.205163,
+            53205163.0
+          ],
+          "q_period": "2T-18"
         },
         {
           "period": "May 18",
           "values": [
-            3.2237,
-            null,
-            null,
-            null,
+            3.223703,
+            60.152678,
+            56.617137,
+            7.102237,
             null,
             null
           ]
@@ -22017,10 +22019,10 @@
         {
           "period": "Jun 18",
           "values": [
-            3.3735,
-            null,
-            null,
-            null,
+            3.373504,
+            59.844343,
+            56.320885,
+            6.693838,
             null,
             null
           ]
@@ -22028,21 +22030,22 @@
         {
           "period": "Jul 18",
           "values": [
-            3.4721,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            3.472051,
+            59.791741,
+            56.753537,
+            7.106279,
+            53.483093,
+            53483093.0
+          ],
+          "q_period": "3T-18"
         },
         {
           "period": "Ago 18",
           "values": [
-            3.4573,
-            null,
-            null,
-            null,
+            3.45726,
+            60.054514,
+            56.695026,
+            7.373657,
             null,
             null
           ]
@@ -22050,10 +22053,10 @@
         {
           "period": "Sep 18",
           "values": [
-            3.5812,
-            null,
-            null,
-            null,
+            3.581227,
+            59.598593,
+            56.155985,
+            6.637874,
             null,
             null
           ]
@@ -22061,21 +22064,22 @@
         {
           "period": "Oct 18",
           "values": [
-            3.2659,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            3.265938,
+            59.420827,
+            55.808527,
+            6.900635,
+            53.705872,
+            53705872.0
+          ],
+          "q_period": "4T-18"
         },
         {
           "period": "Nov 18",
           "values": [
-            3.2485,
-            null,
-            null,
-            null,
+            3.248481,
+            60.027049,
+            57.064916,
+            6.834767,
             null,
             null
           ]
@@ -22083,10 +22087,10 @@
         {
           "period": "Dic 18",
           "values": [
-            3.3584,
-            null,
-            null,
-            null,
+            3.358366,
+            59.522655,
+            56.584476,
+            6.494008,
             null,
             null
           ]
@@ -22094,21 +22098,22 @@
         {
           "period": "Ene 19",
           "values": [
-            3.5633,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            3.563302,
+            59.306168,
+            56.464509,
+            6.80502,
+            53.714758,
+            53714758.0
+          ],
+          "q_period": "1T-19"
         },
         {
           "period": "Feb 19",
           "values": [
-            3.2936,
-            null,
-            null,
-            null,
+            3.293564,
+            59.298864,
+            57.499623,
+            6.315581,
             null,
             null
           ]
@@ -22116,10 +22121,10 @@
         {
           "period": "Mar 19",
           "values": [
-            3.2239,
-            null,
-            null,
-            null,
+            3.223913,
+            60.053019,
+            56.533358,
+            6.804934,
             null,
             null
           ]
@@ -22127,21 +22132,22 @@
         {
           "period": "Abr 19",
           "values": [
-            3.4985,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            3.498489,
+            59.758411,
+            56.24954,
+            7.740641,
+            54.549769,
+            54549769.0
+          ],
+          "q_period": "2T-19"
         },
         {
           "period": "May 19",
           "values": [
-            3.502,
-            null,
-            null,
-            null,
+            3.501957,
+            60.253945,
+            56.034385,
+            7.685463,
             null,
             null
           ]
@@ -22149,10 +22155,10 @@
         {
           "period": "Jun 19",
           "values": [
-            3.5652,
-            null,
-            null,
-            null,
+            3.56515,
+            60.575741,
+            56.232594,
+            7.475064,
             null,
             null
           ]
@@ -22160,21 +22166,22 @@
         {
           "period": "Jul 19",
           "values": [
-            3.7368,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            3.736801,
+            60.54807,
+            56.103232,
+            7.83611,
+            54.848407,
+            54848407.0
+          ],
+          "q_period": "3T-19"
         },
         {
           "period": "Ago 19",
           "values": [
-            3.7067,
-            null,
-            null,
-            null,
+            3.706726,
+            60.477838,
+            56.286051,
+            7.431028,
             null,
             null
           ]
@@ -22182,10 +22189,10 @@
         {
           "period": "Sep 19",
           "values": [
-            3.7809,
-            null,
-            null,
-            null,
+            3.780859,
+            60.169709,
+            56.481424,
+            7.801007,
             null,
             null
           ]
@@ -22193,21 +22200,22 @@
         {
           "period": "Oct 19",
           "values": [
-            3.6914,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            3.691382,
+            60.292051,
+            56.043479,
+            7.706281,
+            55.345261,
+            55345261.0
+          ],
+          "q_period": "4T-19"
         },
         {
           "period": "Nov 19",
           "values": [
-            3.4182,
-            null,
-            null,
-            null,
+            3.418223,
+            60.618629,
+            55.949132,
+            8.162853,
             null,
             null
           ]
@@ -22215,10 +22223,10 @@
         {
           "period": "Dic 19",
           "values": [
-            2.9052,
-            null,
-            null,
-            null,
+            2.905177,
+            60.202267,
+            55.985652,
+            6.937417,
             null,
             null
           ]
@@ -22226,21 +22234,22 @@
         {
           "period": "Ene 20",
           "values": [
-            3.7797,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            3.779704,
+            59.821448,
+            56.090148,
+            7.385867,
+            55.05845,
+            55058450.0
+          ],
+          "q_period": "1T-20"
         },
         {
           "period": "Feb 20",
           "values": [
-            3.5302,
-            null,
-            null,
-            null,
+            3.530188,
+            60.178852,
+            56.106063,
+            8.632665,
             null,
             null
           ]
@@ -22248,10 +22257,10 @@
         {
           "period": "Mar 20",
           "values": [
-            2.909,
-            null,
-            null,
-            null,
+            2.908969,
+            59.807992,
+            55.537911,
+            9.059552,
             null,
             null
           ]
@@ -22259,21 +22268,22 @@
         {
           "period": "Abr 20",
           "values": [
-            4.6864,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            4.686441,
+            47.17972,
+            47.887397,
+            25.40378,
+            44.715068,
+            44715067.666667
+          ],
+          "q_period": "2T-20"
         },
         {
           "period": "May 20",
           "values": [
-            4.1928,
-            null,
-            null,
-            null,
+            4.192756,
+            47.447129,
+            51.836731,
+            29.94159,
             null,
             null
           ]
@@ -22281,10 +22291,10 @@
         {
           "period": "Jun 20",
           "values": [
-            5.4922,
-            null,
-            null,
-            null,
+            5.492159,
+            53.111205,
+            53.027107,
+            20.051608,
             null,
             null
           ]
@@ -22292,21 +22302,22 @@
         {
           "period": "Jul 20",
           "values": [
-            5.3509,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            5.350869,
+            54.992563,
+            54.979852,
+            18.339857,
+            50.810713,
+            50810713.0
+          ],
+          "q_period": "3T-20"
         },
         {
           "period": "Ago 20",
           "values": [
-            5.2575,
-            null,
-            null,
-            null,
+            5.257507,
+            55.123265,
+            55.00344,
+            16.861652,
             null,
             null
           ]
@@ -22314,10 +22325,10 @@
         {
           "period": "Sep 20",
           "values": [
-            5.1285,
-            null,
-            null,
-            null,
+            5.12847,
+            55.688833,
+            54.887539,
+            15.574149,
             null,
             null
           ]
@@ -22325,21 +22336,22 @@
         {
           "period": "Oct 20",
           "values": [
-            4.7085,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            4.708477,
+            57.477385,
+            55.86088,
+            14.889134,
+            53.124071,
+            53124071.0
+          ],
+          "q_period": "4T-20"
         },
         {
           "period": "Nov 20",
           "values": [
-            4.3537,
-            null,
-            null,
-            null,
+            4.353693,
+            56.928332,
+            56.18434,
+            15.803526,
             null,
             null
           ]
@@ -22347,10 +22359,10 @@
         {
           "period": "Dic 20",
           "values": [
-            3.7904,
-            null,
-            null,
-            null,
+            3.790374,
+            56.515036,
+            55.667354,
+            14.117299,
             null,
             null
           ]
@@ -22358,21 +22370,22 @@
         {
           "period": "Ene 21",
           "values": [
-            4.7027,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            4.702677,
+            56.220516,
+            55.529352,
+            14.822931,
+            52.97327,
+            52973270.0
+          ],
+          "q_period": "1T-21"
         },
         {
           "period": "Feb 21",
           "values": [
-            4.3974,
-            null,
-            null,
-            null,
+            4.397394,
+            56.760047,
+            55.336492,
+            13.809624,
             null,
             null
           ]
@@ -22380,10 +22393,10 @@
         {
           "period": "Mar 21",
           "values": [
-            3.8703,
-            null,
-            null,
-            null,
+            3.870291,
+            57.284001,
+            56.660104,
+            13.022864,
             null,
             null
           ]
@@ -22391,21 +22404,22 @@
         {
           "period": "Abr 21",
           "values": [
-            4.6527,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            4.652681,
+            59.053431,
+            55.591673,
+            13.712402,
+            55.242748,
+            55242748.0
+          ],
+          "q_period": "2T-21"
         },
         {
           "period": "May 21",
           "values": [
-            3.9939,
-            null,
-            null,
-            null,
+            3.993946,
+            58.695716,
+            55.538756,
+            12.875162,
             null,
             null
           ]
@@ -22413,10 +22427,10 @@
         {
           "period": "Jun 21",
           "values": [
-            4.0238,
-            null,
-            null,
-            null,
+            4.023772,
+            58.480586,
+            55.373765,
+            12.362639,
             null,
             null
           ]
@@ -22424,21 +22438,22 @@
         {
           "period": "Jul 21",
           "values": [
-            4.3822,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            4.382247,
+            59.914953,
+            56.382507,
+            13.231025,
+            55.83623,
+            55836230.0
+          ],
+          "q_period": "3T-21"
         },
         {
           "period": "Ago 21",
           "values": [
-            4.3263,
-            null,
-            null,
-            null,
+            4.326319,
+            59.391912,
+            56.355957,
+            13.014263,
             null,
             null
           ]
@@ -22446,10 +22461,10 @@
         {
           "period": "Sep 21",
           "values": [
-            4.185,
-            null,
-            null,
-            null,
+            4.184966,
+            58.352771,
+            56.17719,
+            12.278231,
             null,
             null
           ]
@@ -22457,21 +22472,22 @@
         {
           "period": "Oct 21",
           "values": [
-            3.9498,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            3.949786,
+            59.443991,
+            55.611833,
+            11.072339,
+            56.611211,
+            56611211.0
+          ],
+          "q_period": "4T-21"
         },
         {
           "period": "Nov 21",
           "values": [
-            3.6649,
-            null,
-            null,
-            null,
+            3.664898,
+            59.559287,
+            55.638266,
+            10.48903,
             null,
             null
           ]
@@ -22479,10 +22495,10 @@
         {
           "period": "Dic 21",
           "values": [
-            3.5145,
-            null,
-            null,
-            null,
+            3.514471,
+            59.513915,
+            56.487632,
+            10.006155,
             null,
             null
           ]
@@ -22490,21 +22506,22 @@
         {
           "period": "Ene 22",
           "values": [
-            3.7069,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            3.706941,
+            58.334265,
+            54.854561,
+            9.096994,
+            56.079123,
+            56079123.0
+          ],
+          "q_period": "1T-22"
         },
         {
           "period": "Feb 22",
           "values": [
-            3.7412,
-            null,
-            null,
-            null,
+            3.741218,
+            58.704869,
+            54.617147,
+            9.223545,
             null,
             null
           ]
@@ -22512,10 +22529,10 @@
         {
           "period": "Mar 22",
           "values": [
-            2.9701,
-            null,
-            null,
-            null,
+            2.970057,
+            58.838103,
+            55.785997,
+            8.423329,
             null,
             null
           ]
@@ -22523,21 +22540,22 @@
         {
           "period": "Abr 22",
           "values": [
-            3.0341,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            3.034145,
+            60.064497,
+            55.531939,
+            9.023563,
+            57.420677,
+            57420677.0
+          ],
+          "q_period": "2T-22"
         },
         {
           "period": "May 22",
           "values": [
-            3.2705,
-            null,
-            null,
-            null,
+            3.270451,
+            59.606624,
+            55.60542,
+            8.478477,
             null,
             null
           ]
@@ -22545,10 +22563,10 @@
         {
           "period": "Jun 22",
           "values": [
-            3.3487,
-            null,
-            null,
-            null,
+            3.34871,
+            59.80334,
+            55.842268,
+            8.893289,
             null,
             null
           ]
@@ -22556,21 +22574,22 @@
         {
           "period": "Jul 22",
           "values": [
-            3.434,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            3.434004,
+            60.006548,
+            55.411656,
+            8.254404,
+            57.440441,
+            57440441.0
+          ],
+          "q_period": "3T-22"
         },
         {
           "period": "Ago 22",
           "values": [
-            3.5334,
-            null,
-            null,
-            null,
+            3.533439,
+            59.998245,
+            55.456146,
+            7.889792,
             null,
             null
           ]
@@ -22578,10 +22597,10 @@
         {
           "period": "Sep 22",
           "values": [
-            3.3362,
-            null,
-            null,
-            null,
+            3.336178,
+            59.635154,
+            55.580072,
+            7.880164,
             null,
             null
           ]
@@ -22589,21 +22608,22 @@
         {
           "period": "Oct 22",
           "values": [
-            3.3,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            3.299988,
+            60.696801,
+            55.37724,
+            7.468577,
+            58.349353,
+            58349353.0
+          ],
+          "q_period": "4T-22"
         },
         {
           "period": "Nov 22",
           "values": [
-            2.8468,
-            null,
-            null,
-            null,
+            2.846772,
+            60.813189,
+            55.166176,
+            7.587039,
             null,
             null
           ]
@@ -22611,10 +22631,10 @@
         {
           "period": "Dic 22",
           "values": [
-            2.7634,
-            null,
-            null,
-            null,
+            2.763351,
+            59.692965,
+            54.902761,
+            7.257059,
             null,
             null
           ]
@@ -22622,21 +22642,22 @@
         {
           "period": "Ene 23",
           "values": [
-            2.9997,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            2.999661,
+            60.283485,
+            54.815006,
+            7.683689,
+            58.492126,
+            58492126.0
+          ],
+          "q_period": "1T-23"
         },
         {
           "period": "Feb 23",
           "values": [
-            2.7204,
-            null,
-            null,
-            null,
+            2.720432,
+            60.183931,
+            55.494593,
+            7.379471,
             null,
             null
           ]
@@ -22644,10 +22665,10 @@
         {
           "period": "Mar 23",
           "values": [
-            2.3925,
-            null,
-            null,
-            null,
+            2.392541,
+            60.454729,
+            54.98653,
+            6.824846,
             null,
             null
           ]
@@ -22655,21 +22676,22 @@
         {
           "period": "Abr 23",
           "values": [
-            2.8228,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            2.822799,
+            60.356393,
+            54.700335,
+            8.396943,
+            58.52199,
+            58521990.0
+          ],
+          "q_period": "2T-23"
         },
         {
           "period": "May 23",
           "values": [
-            2.9311,
-            null,
-            null,
-            null,
+            2.931125,
+            60.01101,
+            55.169572,
+            8.090506,
             null,
             null
           ]
@@ -22677,10 +22699,10 @@
         {
           "period": "Jun 23",
           "values": [
-            2.652,
-            null,
-            null,
-            null,
+            2.652033,
+            60.115145,
+            55.486488,
+            7.860973,
             null,
             null
           ]
@@ -22688,21 +22710,22 @@
         {
           "period": "Jul 23",
           "values": [
-            3.1299,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            3.12987,
+            60.87252,
+            55.713385,
+            8.064282,
+            59.167472,
+            59167472.0
+          ],
+          "q_period": "3T-23"
         },
         {
           "period": "Ago 23",
           "values": [
-            2.9553,
-            null,
-            null,
-            null,
+            2.955346,
+            60.533479,
+            55.248993,
+            7.908474,
             null,
             null
           ]
@@ -22710,10 +22733,10 @@
         {
           "period": "Sep 23",
           "values": [
-            2.8774,
-            null,
-            null,
-            null,
+            2.877421,
+            60.357718,
+            54.303345,
+            8.170244,
             null,
             null
           ]
@@ -22721,21 +22744,22 @@
         {
           "period": "Oct 23",
           "values": [
-            2.746,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            2.745996,
+            60.459268,
+            55.40583,
+            7.863639,
+            59.403947,
+            59403947.0
+          ],
+          "q_period": "4T-23"
         },
         {
           "period": "Nov 23",
           "values": [
-            2.7127,
-            null,
-            null,
-            null,
+            2.712708,
+            60.959679,
+            54.730362,
+            8.209669,
             null,
             null
           ]
@@ -22743,10 +22767,10 @@
         {
           "period": "Dic 23",
           "values": [
-            2.6138,
-            null,
-            null,
-            null,
+            2.61376,
+            59.866851,
+            53.626856,
+            7.632108,
             null,
             null
           ]
@@ -22754,21 +22778,22 @@
         {
           "period": "Ene 24",
           "values": [
-            2.853,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            2.853024,
+            59.772911,
+            54.11355,
+            7.078092,
+            59.120905,
+            59120905.0
+          ],
+          "q_period": "1T-24"
         },
         {
           "period": "Feb 24",
           "values": [
-            2.454,
-            null,
-            null,
-            null,
+            2.454003,
+            60.17459,
+            54.467561,
+            6.467305,
             null,
             null
           ]
@@ -22776,10 +22801,10 @@
         {
           "period": "Mar 24",
           "values": [
-            2.2821,
-            null,
-            null,
-            null,
+            2.282067,
+            60.169544,
+            54.303549,
+            6.519986,
             null,
             null
           ]
@@ -22787,21 +22812,22 @@
         {
           "period": "Abr 24",
           "values": [
-            2.6107,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            2.610737,
+            60.477015,
+            54.555735,
+            7.735678,
+            59.327161,
+            59327161.0
+          ],
+          "q_period": "2T-24"
         },
         {
           "period": "May 24",
           "values": [
-            2.6218,
-            null,
-            null,
-            null,
+            2.621775,
+            60.535248,
+            54.448946,
+            7.425446,
             null,
             null
           ]
@@ -22809,10 +22835,10 @@
         {
           "period": "Jun 24",
           "values": [
-            2.775,
-            null,
-            null,
-            null,
+            2.775024,
+            59.836994,
+            53.838213,
+            7.501859,
             null,
             null
           ]
@@ -22820,21 +22846,22 @@
         {
           "period": "Jul 24",
           "values": [
-            2.9274,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            2.927401,
+            61.041278,
+            54.516061,
+            8.052058,
+            59.528249,
+            59528249.0
+          ],
+          "q_period": "3T-24"
         },
         {
           "period": "Ago 24",
           "values": [
-            3.0374,
-            null,
-            null,
-            null,
+            3.037372,
+            60.192452,
+            54.303891,
+            7.99311,
             null,
             null
           ]
@@ -22842,10 +22869,10 @@
         {
           "period": "Sep 24",
           "values": [
-            2.9225,
-            null,
-            null,
-            null,
+            2.922514,
+            59.974784,
+            54.240017,
+            8.171984,
             null,
             null
           ]
@@ -22853,21 +22880,22 @@
         {
           "period": "Oct 24",
           "values": [
-            2.5002,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            2.500182,
+            60.230403,
+            54.131321,
+            9.379963,
+            59.487546,
+            59487546.0
+          ],
+          "q_period": "4T-24"
         },
         {
           "period": "Nov 24",
           "values": [
-            2.6388,
-            null,
-            null,
-            null,
+            2.638833,
+            60.045171,
+            54.630964,
+            8.855615,
             null,
             null
           ]
@@ -22875,10 +22903,10 @@
         {
           "period": "Dic 24",
           "values": [
-            2.4323,
-            null,
-            null,
-            null,
+            2.432341,
+            59.320476,
+            53.651825,
+            6.862197,
             null,
             null
           ]
@@ -22886,21 +22914,22 @@
         {
           "period": "Ene 25",
           "values": [
-            2.7,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            2.699951,
+            59.36401,
+            54.136601,
+            6.94748,
+            59.001009,
+            59001009.0
+          ],
+          "q_period": "1T-25"
         },
         {
           "period": "Feb 25",
           "values": [
-            2.5114,
-            null,
-            null,
-            null,
+            2.51142,
+            58.714231,
+            54.510303,
+            6.259252,
             null,
             null
           ]
@@ -22908,10 +22937,10 @@
         {
           "period": "Mar 25",
           "values": [
-            2.2222,
-            null,
-            null,
-            null,
+            2.222196,
+            59.343805,
+            54.337696,
+            6.601645,
             null,
             null
           ]
@@ -22919,21 +22948,22 @@
         {
           "period": "Abr 25",
           "values": [
-            2.5391,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            2.539106,
+            59.369192,
+            54.671184,
+            7.146182,
+            59.44076,
+            59440760.0
+          ],
+          "q_period": "2T-25"
         },
         {
           "period": "May 25",
           "values": [
-            2.7463,
-            null,
-            null,
-            null,
+            2.746314,
+            59.451546,
+            54.920523,
+            7.094072,
             null,
             null
           ]
@@ -22941,10 +22971,10 @@
         {
           "period": "Jun 25",
           "values": [
-            2.6871,
-            null,
-            null,
-            null,
+            2.687124,
+            59.797354,
+            54.768222,
+            7.354796,
             null,
             null
           ]
@@ -22952,21 +22982,22 @@
         {
           "period": "Jul 25",
           "values": [
-            2.7728,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            2.772825,
+            60.176973,
+            56.117157,
+            7.34019,
+            59.533449,
+            59533449.0
+          ],
+          "q_period": "3T-25"
         },
         {
           "period": "Ago 25",
           "values": [
-            2.9322,
-            null,
-            null,
-            null,
+            2.932245,
+            58.824828,
+            54.825008,
+            7.053359,
             null,
             null
           ]
@@ -22974,10 +23005,10 @@
         {
           "period": "Sep 25",
           "values": [
-            2.9789,
-            null,
-            null,
-            null,
+            2.978907,
+            59.568499,
+            54.879891,
+            7.278606,
             null,
             null
           ]
@@ -22985,21 +23016,22 @@
         {
           "period": "Oct 25",
           "values": [
-            2.6085,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            2.608456,
+            59.912373,
+            55.655124,
+            7.528537,
+            59.785854,
+            59785854.0
+          ],
+          "q_period": "4T-25"
         },
         {
           "period": "Nov 25",
           "values": [
-            2.6636,
-            null,
-            null,
-            null,
+            2.663619,
+            58.954439,
+            54.793253,
+            7.189759,
             null,
             null
           ]
@@ -23007,10 +23039,10 @@
         {
           "period": "Dic 25",
           "values": [
-            2.3889,
-            null,
-            null,
-            null,
+            2.388894,
+            59.096571,
+            54.636116,
+            6.205645,
             null,
             null
           ]
@@ -23018,21 +23050,22 @@
         {
           "period": "Ene 26",
           "values": [
-            2.7033,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            2.703262,
+            58.504316,
+            54.861145,
+            6.114657,
+            59.55266,
+            59552660.0
+          ],
+          "q_period": "1T-26"
         },
         {
           "period": "Feb 26",
           "values": [
-            2.5862,
-            null,
-            null,
-            null,
+            2.586177,
+            59.010645,
+            54.764186,
+            6.983543,
             null,
             null
           ]
@@ -23040,10 +23073,10 @@
         {
           "period": "Mar 26",
           "values": [
-            2.4232,
-            null,
-            null,
-            null,
+            2.423162,
+            58.581471,
+            54.847369,
+            6.721879,
             null,
             null
           ]
@@ -23051,21 +23084,22 @@
         {
           "period": "Abr 26",
           "values": [
-            2.4558,
-            null,
-            null,
-            null,
-            null,
-            null
-          ]
+            2.455787,
+            59.134706,
+            55.180276,
+            7.098691,
+            60.040094,
+            60040094.0
+          ],
+          "q_period": "2T-26"
         },
         {
           "period": "May 26",
           "values": [
-            2.7619,
-            null,
-            null,
-            null,
+            2.761933,
+            59.092093,
+            55.225275,
+            6.976081,
             null,
             null
           ]
@@ -23073,18 +23107,18 @@
         {
           "period": "Jun 26",
           "values": [
-            2.8985,
-            null,
-            null,
-            null,
+            2.898523,
+            58.83743,
+            55.019889,
+            6.550443,
             null,
             null
           ]
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-08-25",
-      "last_checked": "2026-08-25",
+      "last_updated": "2026-08-26",
+      "last_checked": "2026-08-26",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -23093,137 +23127,137 @@
       "origen_dato": "api",
       "fecha_publicacion": "24 de julio de 2026",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-08-25",
+      "fecha_consulta": "2026-08-26",
       "metrics": {
         "kpi": {
           "ultimoP": "Jun 26",
-          "ultimoRaw": 2.8985,
+          "ultimoRaw": 2.898523,
           "ultimoFmt": "2.9%",
           "varText": "+0.1 p.p.",
-          "varRaw": 0.1366,
-          "varMag": 0.1366,
+          "varRaw": 0.13659,
+          "varMag": 0.13659,
           "pos": true,
           "varColor": "#1e5b4f",
           "varLabel": "Cambio mensual",
           "yoyText": "+0.2 p.p.",
-          "yoyRaw": 0.2114,
-          "yoyMag": 0.2114,
+          "yoyRaw": 0.211399,
+          "yoyMag": 0.211399,
           "yoyPos": true,
           "yoyColor": "#1e5b4f",
           "yoyLabel": "Cambio anual",
           "assessment": "adverso",
           "dir": "up",
           "semaforo": "malo",
-          "maxRaw": 5.4922,
+          "maxRaw": 5.492159,
           "maxP": "Jun 20",
-          "minRaw": 2.2222,
+          "minRaw": 2.222196,
           "minP": "Mar 25",
           "maxFmt": "5.5%",
           "minFmt": "2.2%",
           "lastI": 101,
           "series": [
-            3.3645,
-            3.1736,
-            2.9372,
-            3.3865,
-            3.2237,
-            3.3735,
-            3.4721,
-            3.4573,
-            3.5812,
-            3.2659,
-            3.2485,
-            3.3584,
-            3.5633,
-            3.2936,
-            3.2239,
-            3.4985,
-            3.502,
-            3.5652,
-            3.7368,
-            3.7067,
-            3.7809,
-            3.6914,
-            3.4182,
-            2.9052,
-            3.7797,
-            3.5302,
-            2.909,
-            4.6864,
-            4.1928,
-            5.4922,
-            5.3509,
-            5.2575,
-            5.1285,
-            4.7085,
-            4.3537,
-            3.7904,
-            4.7027,
-            4.3974,
-            3.8703,
-            4.6527,
-            3.9939,
-            4.0238,
-            4.3822,
-            4.3263,
-            4.185,
-            3.9498,
-            3.6649,
-            3.5145,
-            3.7069,
-            3.7412,
-            2.9701,
-            3.0341,
-            3.2705,
-            3.3487,
-            3.434,
-            3.5334,
-            3.3362,
-            3.3,
-            2.8468,
-            2.7634,
-            2.9997,
-            2.7204,
-            2.3925,
-            2.8228,
-            2.9311,
-            2.652,
-            3.1299,
-            2.9553,
-            2.8774,
-            2.746,
-            2.7127,
-            2.6138,
-            2.853,
-            2.454,
-            2.2821,
-            2.6107,
-            2.6218,
-            2.775,
-            2.9274,
-            3.0374,
-            2.9225,
-            2.5002,
-            2.6388,
-            2.4323,
-            2.7,
-            2.5114,
-            2.2222,
-            2.5391,
-            2.7463,
-            2.6871,
-            2.7728,
-            2.9322,
-            2.9789,
-            2.6085,
-            2.6636,
-            2.3889,
-            2.7033,
-            2.5862,
-            2.4232,
-            2.4558,
-            2.7619,
-            2.8985
+            3.364517,
+            3.173574,
+            2.937211,
+            3.386516,
+            3.223703,
+            3.373504,
+            3.472051,
+            3.45726,
+            3.581227,
+            3.265938,
+            3.248481,
+            3.358366,
+            3.563302,
+            3.293564,
+            3.223913,
+            3.498489,
+            3.501957,
+            3.56515,
+            3.736801,
+            3.706726,
+            3.780859,
+            3.691382,
+            3.418223,
+            2.905177,
+            3.779704,
+            3.530188,
+            2.908969,
+            4.686441,
+            4.192756,
+            5.492159,
+            5.350869,
+            5.257507,
+            5.12847,
+            4.708477,
+            4.353693,
+            3.790374,
+            4.702677,
+            4.397394,
+            3.870291,
+            4.652681,
+            3.993946,
+            4.023772,
+            4.382247,
+            4.326319,
+            4.184966,
+            3.949786,
+            3.664898,
+            3.514471,
+            3.706941,
+            3.741218,
+            2.970057,
+            3.034145,
+            3.270451,
+            3.34871,
+            3.434004,
+            3.533439,
+            3.336178,
+            3.299988,
+            2.846772,
+            2.763351,
+            2.999661,
+            2.720432,
+            2.392541,
+            2.822799,
+            2.931125,
+            2.652033,
+            3.12987,
+            2.955346,
+            2.877421,
+            2.745996,
+            2.712708,
+            2.61376,
+            2.853024,
+            2.454003,
+            2.282067,
+            2.610737,
+            2.621775,
+            2.775024,
+            2.927401,
+            3.037372,
+            2.922514,
+            2.500182,
+            2.638833,
+            2.432341,
+            2.699951,
+            2.51142,
+            2.222196,
+            2.539106,
+            2.746314,
+            2.687124,
+            2.772825,
+            2.932245,
+            2.978907,
+            2.608456,
+            2.663619,
+            2.388894,
+            2.703262,
+            2.586177,
+            2.423162,
+            2.455787,
+            2.761933,
+            2.898523
           ],
           "periods": [
             "Ene 18",
@@ -23334,25 +23368,69 @@
               "name": "Desocupación",
               "art": "la",
               "col": 0,
-              "nivelRaw": 2.8985,
+              "nivelRaw": 2.898523,
               "nivelText": "2.9%",
-              "momRaw": 0.1366,
+              "momRaw": 0.13659,
               "momText": "+0.1 p.p.",
-              "yoyRaw": 0.2114,
+              "yoyRaw": 0.211399,
               "yoyText": "+0.2 p.p.",
+              "ultimoP": "Jun 26"
+            },
+            {
+              "name": "Participación",
+              "art": "la",
+              "col": 1,
+              "nivelRaw": 58.83743,
+              "nivelText": "58.8%",
+              "momRaw": -0.254663,
+              "momText": "-0.3 p.p.",
+              "yoyRaw": -0.959924,
+              "yoyText": "-1.0 p.p.",
+              "ultimoP": "Jun 26"
+            },
+            {
+              "name": "Informalidad",
+              "art": "la",
+              "col": 2,
+              "nivelRaw": 55.019889,
+              "nivelText": "55.0%",
+              "momRaw": -0.205386,
+              "momText": "-0.2 p.p.",
+              "yoyRaw": 0.251667,
+              "yoyText": "+0.3 p.p.",
+              "ultimoP": "Jun 26"
+            },
+            {
+              "name": "Subocupación",
+              "art": "la",
+              "col": 3,
+              "nivelRaw": 6.550443,
+              "nivelText": "6.6%",
+              "momRaw": -0.425638,
+              "momText": "-0.4 p.p.",
+              "yoyRaw": -0.804353,
+              "yoyText": "-0.8 p.p.",
               "ultimoP": "Jun 26"
             }
           ],
-          "poblacion": null
+          "poblacion": {
+            "periodo": "2T-26",
+            "personas": 60040094.0,
+            "millones": 60.040094,
+            "textMillones": "60.0 millones de personas"
+          }
         },
         "yoy": {
-          "mag": 0.2114,
+          "mag": 0.211399,
           "pos": true,
           "text": "+0.2 p.p.",
           "label": "Cambio anual"
         },
         "resumen": [
-          "En junio de 2026, la tasa de desocupación fue 2.9% (+0.1 p.p. respecto al mes anterior; +0.2 p.p. respecto al mismo mes del año previo)."
+          "En junio de 2026, la tasa de desocupación fue 2.9% (+0.1 p.p. respecto al mes anterior; +0.2 p.p. respecto al mismo mes del año previo).",
+          "Las demás tasas laborales se ubicaron: participación 58.8% (-0.3 p.p.), informalidad 55.0% (-0.2 p.p.), subocupación 6.6% (-0.4 p.p.).",
+          "La población ocupada se ubicó en 60.0 millones de personas en el segundo trimestre de 2026 (dato trimestral).",
+          "Respecto al mismo mes del año previo, la participación cambió -1.0 p.p. y la informalidad +0.3 p.p.."
         ]
       },
       "periodo_referencia_oficial": "Junio 2026",
@@ -24270,8 +24348,8 @@
         }
       ],
       "last_observation": "Jul 26",
-      "last_updated": "2026-08-25",
-      "last_checked": "2026-08-25",
+      "last_updated": "2026-08-26",
+      "last_checked": "2026-08-26",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -24280,7 +24358,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "7 de agosto de 2026",
       "periodo_referencia": "Jul 26",
-      "fecha_consulta": "2026-08-25",
+      "fecha_consulta": "2026-08-26",
       "metrics": {
         "kpi": {
           "assessment": "neutral",
@@ -24741,8 +24819,8 @@
         }
       ],
       "last_observation": "May 26",
-      "last_updated": "2026-08-25",
-      "last_checked": "2026-08-25",
+      "last_updated": "2026-08-26",
+      "last_checked": "2026-08-26",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -24750,7 +24828,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "5 de agosto de 2026",
       "periodo_referencia": "May 26",
-      "fecha_consulta": "2026-08-25",
+      "fecha_consulta": "2026-08-26",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -25158,8 +25236,8 @@
         }
       ],
       "last_observation": "Jul 26",
-      "last_updated": "2026-08-25",
-      "last_checked": "2026-08-25",
+      "last_updated": "2026-08-26",
+      "last_checked": "2026-08-26",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -25167,7 +25245,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "20 de agosto de 2026",
       "periodo_referencia": "Jul 26",
-      "fecha_consulta": "2026-08-25",
+      "fecha_consulta": "2026-08-26",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -30783,8 +30861,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-08-25",
-      "last_checked": "2026-08-25",
+      "last_updated": "2026-08-26",
+      "last_checked": "2026-08-26",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -30792,7 +30870,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "17 de agosto de 2026",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-08-25",
+      "fecha_consulta": "2026-08-26",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -32328,8 +32406,8 @@
         }
       ],
       "last_observation": "Jul 26",
-      "last_updated": "2026-08-25",
-      "last_checked": "2026-08-25",
+      "last_updated": "2026-08-26",
+      "last_checked": "2026-08-26",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
@@ -32337,7 +32415,7 @@
       "origen_dato": "api",
       "fecha_publicacion": null,
       "periodo_referencia": "Jul 26",
-      "fecha_consulta": "2026-08-25",
+      "fecha_consulta": "2026-08-26",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -46298,8 +46376,8 @@
         }
       ],
       "last_observation": "Jul 26",
-      "last_updated": "2026-08-25",
-      "last_checked": "2026-08-25",
+      "last_updated": "2026-08-26",
+      "last_checked": "2026-08-26",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
@@ -46307,7 +46385,7 @@
       "origen_dato": "api",
       "fecha_publicacion": null,
       "periodo_referencia": "Jul 26",
-      "fecha_consulta": "2026-08-25",
+      "fecha_consulta": "2026-08-26",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -65443,9 +65521,15 @@
           "values": [
             6.5
           ]
+        },
+        {
+          "period": "2026-08-26",
+          "values": [
+            6.5
+          ]
         }
       ],
-      "fecha_ultima_observacion": "2026-08-25",
+      "fecha_ultima_observacion": "2026-08-26",
       "url_fuente_oficial": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
       "fecha_ultima_publicacion": null,
       "regla_publicacion": null
@@ -66094,8 +66178,8 @@
         }
       ],
       "last_observation": "Jul 26",
-      "last_updated": "2026-08-25",
-      "last_checked": "2026-08-25",
+      "last_updated": "2026-08-26",
+      "last_checked": "2026-08-26",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
@@ -66103,7 +66187,7 @@
       "origen_dato": "api",
       "fecha_publicacion": null,
       "periodo_referencia": "Jul 26",
-      "fecha_consulta": "2026-08-25",
+      "fecha_consulta": "2026-08-26",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -69828,8 +69912,8 @@
         }
       ],
       "last_observation": "Jul 26",
-      "last_updated": "2026-08-25",
-      "last_checked": "2026-08-25",
+      "last_updated": "2026-08-26",
+      "last_checked": "2026-08-26",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "complementario",
@@ -69837,7 +69921,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "3 de agosto de 2026",
       "periodo_referencia": "Jul 26",
-      "fecha_consulta": "2026-08-25",
+      "fecha_consulta": "2026-08-26",
       "metrics": {
         "kpi": {
           "assessment": "neutral",
@@ -89247,8 +89331,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-08-25",
-      "last_checked": "2026-08-25",
+      "last_updated": "2026-08-26",
+      "last_checked": "2026-08-26",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -89256,7 +89340,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "27 de julio de 2026",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-08-25",
+      "fecha_consulta": "2026-08-26",
       "metrics": {
         "kpi": {
           "ultimoRaw": 4089.896,

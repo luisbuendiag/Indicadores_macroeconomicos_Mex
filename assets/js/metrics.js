@@ -162,9 +162,9 @@ function computeDesocupKPI(ind) {
   if (popI != null) {
     const personas = valAt(5, popI);
     const millones = valAt(4, popI);
-    const pPeriod = obs[popI].period;
+    const pPeriod = obs[popI].q_period || quarterLabelFromPeriod(obs[popI].period);
     poblacion = {
-      periodo: quarterLabelFromPeriod(pPeriod),
+      periodo: pPeriod,
       personas,
       millones,
       textMillones: millones != null ? toFixed1(millones) + " millones de personas" : "—",

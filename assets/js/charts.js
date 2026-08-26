@@ -1123,7 +1123,7 @@ export function buildDesocupRates(ind, obs) {
 
 // ---------------- DESOCUP: población ocupada (trimestral) ----------------
 export function buildDesocupPoblacion(ind, obs) {
-  const periods = obs.map((o) => o.period);
+  const periods = obs.map((o) => o.q_period || o.period);
   const rotate = periods.length > 12;
   const values = obs.map((o) => o.values[4] ?? null);
   const yRange = computeYRange(values, { padding: 0.1, includeZero: false });

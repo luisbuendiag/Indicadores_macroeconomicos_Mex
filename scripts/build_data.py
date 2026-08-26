@@ -490,7 +490,7 @@ def apply_inegi_total(payload: dict, key: str, item: dict, prev_last: str | None
 
     # Para series trimestrales, la API de INEGI puede devolver observaciones con
     # TIME_PERIOD en cada mes del trimestre; las colapsamos al primer mes.
-    is_quarter = item.get("freq") == 4 or "trimest" in (ind.get("frecuencia") or "").lower()
+    is_quarter = str(item.get("freq")) == "4"
 
     def _key(ym: str) -> str:
         return _quarter_start(ym) if is_quarter else ym
@@ -720,15 +720,22 @@ def compute_desocup_metrics(payload: dict) -> list[str]:
     # en las observaciones que provienen de series mensuales, dejando los datos
     # trimestrales en el mes que les corresponde (inicio del trimestre).
     updated = 0
+    q_updated = 0
     for o in ind.get("observations", []):
         vals = list(o.get("values", []))
         if vals[5] is not None:
             vals[4] = round(vals[5] / 1_000_000, 6)
             updated += 1
+            ym = inegi.label_to_ym(o.get("period", ""))
+            if ym:
+                o["q_period"] = inegi.ym_to_label(ym, 4)
+                q_updated += 1
         o["values"] = vals
 
     if updated:
         changes.append(f"DESOCUP: población ocupada en millones calculada para {updated} periodos")
+    if q_updated:
+        changes.append(f"DESOCUP: etiquetas trimestrales agregadas a {q_updated} observaciones")
 
     # La frecuencia del indicador sigue siendo mensual para las tasas; la población
     # ocupada se indica como trimestral en metadatos y ficha.
