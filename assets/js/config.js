@@ -25,7 +25,7 @@ export const ORDER = [...PRINCIPAL, ...COMPLEMENTARIOS];
 // Etiqueta corta para navegación y tarjetas.
 export const LABELS = {
   PIB: "PIB oportuno", PIBSEC: "PIB trimestral a precios constantes", IGAE: "IGAE", IMAI: "IMAI",
-  BCMM: "Balanza comercial", DESOCUP: "Tasa de desocupación", INPC: "INPC",
+  BCMM: "Balanza comercial", DESOCUP: "Indicadores de ocupación y empleo", INPC: "INPC",
   CONSUMO: "Consumo privado", IMFBCF: "Formación bruta de capital fijo",
   IOAE: "IOAE", EMIM: "EMIM",
   IED: "IED", TIPOCAMBIO: "Tipo de cambio FIX", TASA: "Tasa objetivo Banxico",
@@ -35,7 +35,7 @@ export const LABELS = {
 // Sigla oficial.
 export const SIGLA = {
   PIB: "EOPIBT", PIBSEC: "PIBT", IGAE: "IGAE", IMAI: "IMAI",
-  BCMM: "Balanza comercial", DESOCUP: "Tasa de desocupación", INPC: "INPC",
+  BCMM: "Balanza comercial", DESOCUP: "ENOE", INPC: "INPC",
   CONSUMO: "IMCP", IMFBCF: "IMFBCF", IOAE: "IOAE", EMIM: "EMIM",
   IED: "IED", TIPOCAMBIO: "Tipo de cambio FIX", TASA: "Tasa objetivo", RESERVAS: "Reservas int.", EMOE: "EMOE",
 };
@@ -52,7 +52,7 @@ export const KPICFG = {
   IMFBCF: { valCol: 0, valFmt: "idx", varCol: 1, varFmt: "pct-frac", varLabel: "Var. mensual", yoyCol: 2, yoyFmt: "pct-frac", yoyLabel: "Var. anual", noun: "formación bruta de capital fijo", art: "la", grupo: "growth", assess: "growth", ctx: " (índice base 2018=100)", vw: "variación mensual", vg: "f", comp: "frente al mes previo", goodSign: 1 },
   IOAE: { valCol: 0, valFmt: "pct-raw", varCol: 0, varFmt: "pct-raw", varLabel: "Estimación mensual", yoyCol: 1, yoyFmt: "pct-raw", yoyLabel: "Estimación anual", noun: "estimación oportuna de la actividad económica", art: "la", grupo: "growth", assess: "growth", ctx: " (variación mensual estimada)", vw: "estimación puntual", vg: "f", comp: "", goodSign: 1 },
   EMIM: { valCol: 0, valFmt: "idx", varCol: 3, varFmt: "pct-frac", varLabel: "Var. mensual desest.", yoyCol: 4, yoyFmt: "pct-frac", yoyLabel: "Var. anual desest.", origMomCol: 1, origYoyCol: 2, noun: "Encuesta Mensual de la Industria Manufacturera", art: "la", grupo: "growth", assess: "growth", ctx: " (índice base 2018=100)", vw: "variación mensual desestacionalizada", vg: "f", comp: "frente al mes previo", goodSign: 1 },
-  DESOCUP: { valCol: 0, valFmt: "pct-frac", varMode: "pp-prev", varLabel: "Variación vs. mes anterior", noun: "tasa de desocupación", art: "la", grupo: "desoc", assess: "unemployment", ctx: "", vw: "variación", vg: "f", comp: "frente al mes previo", goodSign: -1 },
+  DESOCUP: { valCol: 0, valFmt: "pct-raw", varMode: "pp-prev", varLabel: "Cambio mensual", yoyMode: "pp-yoy", yoyLabel: "Cambio anual", noun: "tasa de desocupación", art: "la", grupo: "desoc", assess: "unemployment", ctx: "", vw: "variación", vg: "f", comp: "frente al mes previo", goodSign: -1 },
   INPC: { valCol: 0, valFmt: "pct-raw", varMode: "pp-prev", ppLong: true, varLabel: "Cambio de la inflación anual respecto al mes previo", noun: "inflación general anual", art: "la", grupo: "inpc", assess: "neutral", ctx: "", vw: "variación", vg: "f", comp: "frente al mes previo", goodSign: 0 },
   IED: { valCol: 0, valFmt: "usd", varMode: "pct-yoy", varLabel: "Var. anual (vs. mismo trim. año previo)", noun: "IED total", art: "la", grupo: "growth", assess: "growth", ctx: "", vw: "variación anual", vg: "f", comp: "frente al mismo trimestre del año anterior", goodSign: 1 },
   TIPOCAMBIO: { valCol: 0, valFmt: "fx", varMode: "pct-prev", varLabel: "Variación vs. periodo previo", noun: "tipo de cambio FIX", art: "el", grupo: "fx", assess: "neutral", ctx: " (pesos por dólar)", vw: "variación", vg: "f", comp: "frente al periodo previo", goodSign: 0 },
@@ -72,7 +72,7 @@ export const CAPTIONS = {
   IOAE: "Estimación oportuna de la actividad económica con su intervalo de confianza, contrastada con el IGAE observado.",
   EMIM: "Evolución de la producción, personal ocupado, horas trabajadas y remuneraciones medias reales de la industria manufacturera. Las variaciones históricas son cifras originales calculadas a partir de los índices BIE; las desestacionalizadas provienen del boletín oficial para el mes más reciente.",
   IED: "Componentes de la IED en barras apiladas y la IED total (línea punteada). Cifras en millones de dólares.",
-  DESOCUP: "Tasa de desocupación mensual de México como porcentaje de la población económicamente activa.",
+  DESOCUP: "Indicadores del mercado laboral: tasa de desocupación, participación, informalidad y subocupación (mensuales), más población ocupada (trimestral). Fuente: ENOE/BIE.",
   INPC: "Inflación general, subyacente y no subyacente (variación anual en porcentaje).",
   TIPOCAMBIO: "Tipo de cambio FIX (pesos por dólar).",
   TASA: "Tasa de interés objetivo del Banco de México (%).",

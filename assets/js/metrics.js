@@ -35,7 +35,7 @@ function proseVal(ind, v) {
   if (k === "PIBSEC") return (v / 1e6).toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " billones de pesos";
   if (k === "IED" || k === "BALANZA" || k === "BCMM") return money(v, "millones de dólares");
   if (k === "IGAE" || k === "IMAI" || k === "CONSUMO" || k === "EMIM") return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + " puntos";
-  if (k === "DESOCUP") return (v * 100).toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
+  if (k === "DESOCUP") return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
   if (k === "INPC" || k === "TASA") return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
   if (k === "TIPOCAMBIO") return "$" + v.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   return String(v);
@@ -83,7 +83,162 @@ function computeVar(ind, cfg, vals, lastI, prevI) {
   return { mag: null, text: "—", pos: true };
 }
 
+function toFixed1(v) { return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }); }
+
+function ppText(d) {
+  if (d == null) return "—";
+  if (Math.abs(d) < 0.0001) return "Sin cambio";
+  return (d >= 0 ? "+" : "") + toFixed1(d) + " p.p.";
+}
+
+function quarterLabelFromPeriod(p) {
+  if (!p) return p;
+  const mo = p.match(/^(Ene|Feb|Mar|Abr|May|Jun|Jul|Ago|Sep|Oct|Nov|Dic)\s+(\d{2})$/i);
+  if (!mo) return p;
+  const meses = { ene: 1, feb: 2, mar: 3, abr: 4, may: 5, jun: 6, jul: 7, ago: 8, sep: 9, oct: 10, nov: 11, dic: 12 };
+  const m = meses[mo[1].toLowerCase()];
+  const yy = parseInt(mo[2], 10);
+  const year = (yy >= 93 ? 1900 : 2000) + yy;
+  const q = Math.ceil(m / 3);
+  return `${q}T-${mo[2]}`;
+}
+
+function computeDesocupKPI(ind) {
+  const obs = ind.observations;
+  if (!obs || !obs.length) return null;
+
+  function lastNotNull(col) {
+    for (let i = obs.length - 1; i >= 0; i--) {
+      if (obs[i].values[col] != null) return i;
+    }
+    return null;
+  }
+  function valAt(col, i) { return i == null ? null : (obs[i].values[col] ?? null); }
+
+  const cards = [
+    [0, "Desocupación"],
+    [1, "Participación"],
+    [2, "Informalidad"],
+    [3, "Subocupación"],
+  ].map(([col, name]) => {
+    const lastI = lastNotNull(col);
+    if (lastI == null) return null;
+    const cur = valAt(col, lastI);
+    const prev = valAt(col, lastI - 1);
+    const yoy = valAt(col, lastI - 12);
+    const mom = (cur != null && prev != null) ? round6(cur - prev) : null;
+    const yoyPP = (cur != null && yoy != null) ? round6(cur - yoy) : null;
+    return {
+      name,
+      col,
+      nivelRaw: cur,
+      nivelText: fmtVal(cur, "pct-raw"),
+      momRaw: mom,
+      momText: ppText(mom),
+      yoyRaw: yoyPP,
+      yoyText: ppText(yoyPP),
+      ultimoP: obs[lastI].period,
+    };
+  }).filter(Boolean);
+
+  if (!cards.length) return null;
+
+  const main = cards[0];
+  const lastI = lastNotNull(0) || 0;
+  const series = obs.map((o) => o.values[0] ?? null);
+  const periods = obs.map((o) => o.period);
+  const valid = series.filter((v) => v != null);
+  let maxI = 0, minI = 0;
+  for (let i = 0; i < series.length; i++) {
+    if (series[i] != null) {
+      if (maxI == null || series[i] > series[maxI]) maxI = i;
+      if (minI == null || series[i] < series[minI]) minI = i;
+    }
+  }
+
+  // Población ocupada trimestral
+  const popI = lastNotNull(5);
+  let poblacion = null;
+  if (popI != null) {
+    const personas = valAt(5, popI);
+    const millones = valAt(4, popI);
+    const pPeriod = obs[popI].period;
+    poblacion = {
+      periodo: quarterLabelFromPeriod(pPeriod),
+      personas,
+      millones,
+      textMillones: millones != null ? toFixed1(millones) + " millones de personas" : "—",
+    };
+  }
+
+  const mom = main.momRaw;
+  const yoyPP = main.yoyRaw;
+  let assessment = "neutral";
+  let dir = "flat";
+  if (mom != null) {
+    dir = mom > 0.05 ? "up" : (mom < -0.05 ? "down" : "flat");
+    if (mom < -0.05) assessment = "favorable";
+    else if (mom > 0.05) assessment = "adverso";
+  }
+  const semaforo = assessment === "favorable" ? "bueno" : (assessment === "adverso" ? "malo" : (mom == null ? "neutral" : "estable"));
+
+  const kpi = {
+    assessment, dir, semaforo,
+    ultimoP: main.ultimoP,
+    ultimoRaw: main.nivelRaw,
+    ultimoFmt: main.nivelText,
+    varText: main.momText,
+    varRaw: mom,
+    varMag: mom,
+    pos: mom != null && mom >= 0,
+    varColor: (mom != null && mom >= 0) ? COLORS.GREEN : COLORS.CRIMSON,
+    varLabel: "Cambio mensual",
+    yoyText: main.yoyText,
+    yoyRaw: yoyPP,
+    yoyMag: yoyPP,
+    yoyPos: yoyPP != null && yoyPP >= 0,
+    yoyColor: (yoyPP != null && yoyPP >= 0) ? COLORS.GREEN : COLORS.CRIMSON,
+    yoyLabel: "Cambio anual",
+    maxRaw: valAt(0, maxI),
+    maxP: periods[maxI],
+    minRaw: valAt(0, minI),
+    minP: periods[minI],
+    maxFmt: fmtVal(valAt(0, maxI), "pct-raw"),
+    minFmt: fmtVal(valAt(0, minI), "pct-raw"),
+    lastI,
+    series,
+    periods,
+    cards,
+    poblacion,
+    yoy: { mag: yoyPP, pos: yoyPP != null && yoyPP >= 0, text: ppText(yoyPP), label: "Cambio anual" },
+  };
+
+  // Bullets
+  const bullets = [];
+  const p = main.ultimoP;
+  const qPeriod = poblacion ? poblacion.periodo : "—";
+  const qText = poblacion ? poblacion.textMillones : "—";
+
+  bullets.push(
+    `En ${enFrase(p)}, la tasa de desocupación fue ${main.nivelText} (${main.momText} respecto al mes anterior; ${main.yoyText} respecto al mismo mes del año previo).`
+  );
+
+  const other = cards.slice(1).map((c) => `${c.name.toLowerCase()} ${c.nivelText} (${c.momText})`).join(", ");
+  if (other) bullets.push(`Las demás tasas laborales se ubicaron: ${other}.`);
+
+  if (poblacion) {
+    bullets.push(`La población ocupada se ubicó en ${qText} en ${enFrase(qPeriod)} (dato trimestral).`);
+  }
+
+  kpi.analysis = bullets.slice(0, 4);
+  kpi.resumen = bullets.slice(0, 4);
+  return kpi;
+}
+
+function round6(v) { return Math.round(v * 1_000_000) / 1_000_000; }
+
 export function computeKPI(ind) {
+  if (ind.key === "DESOCUP") return computeDesocupKPI(ind);
   const cfg = KPICFG[ind.key];
   const P = periods(ind);
   const vals = primarySeries(ind);
@@ -156,6 +311,10 @@ function varAt(ind, cfg, vals, idx) {
 // Variación anual (u otra secundaria, p. ej. trimestral para PIB) para la matriz.
 // Devuelve {text,pos,mag,label} o null si no es aplicable/insuficiente historia.
 export function annualVar(ind, k) {
+  if (ind.key === "DESOCUP") {
+    if (k && k.yoy) return k.yoy;
+    return null;
+  }
   const cfg = KPICFG[ind.key];
   // Si hay una columna oficial (yoyCol), se usa directamente.
   if (cfg.yoyCol != null) {
@@ -184,6 +343,11 @@ export function annualVar(ind, k) {
 
 // Genera 2-3 bullets de análisis determinista, auditables.
 export function analysis(ind, k) {
+  if (ind.key === "DESOCUP") {
+    if (k && k.analysis) return k.analysis;
+    const kk = computeDesocupKPI(ind);
+    return kk ? kk.analysis : [];
+  }
   const cfg = KPICFG[ind.key];
   const valid = k.series.filter((v) => v != null);
   const promedio = valid.reduce((a, b) => a + b, 0) / valid.length;

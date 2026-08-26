@@ -1055,3 +1055,112 @@ export function buildBcmmVariations(obs) {
     toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "BCMM-variaciones", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
   };
 }
+
+
+// ---------------- DESOCUP: small multiples de tasas laborales ----------------
+export function buildDesocupRates(ind, obs) {
+  const periods = obs.map((o) => o.period);
+  const rotate = periods.length > 12;
+  const rateCfgs = [
+    { col: 0, name: "Tasa de desocupación", color: COLORS.CRIMSON },
+    { col: 1, name: "Tasa de participación", color: COLORS.GREEN },
+    { col: 2, name: "Tasa de informalidad", color: COLORS.GOLD },
+    { col: 3, name: "Tasa de subocupación", color: COLORS.TEAL },
+  ];
+  const grids = [], xAxes = [], yAxes = [], series = [], titles = [];
+  rateCfgs.forEach((cfg, i) => {
+    const row = Math.floor(i / 2);
+    const col = i % 2;
+    const left = col === 0 ? "4%" : "54%";
+    const top = row === 0 ? 20 : 225;
+    const height = 165;
+    const width = "42%";
+    grids.push({ left, top, width, height, containLabel: false });
+    xAxes.push({
+      gridIndex: i, type: "category", data: periods, boundaryGap: false,
+      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 },
+      axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+    });
+    yAxes.push({
+      gridIndex: i, type: "value", name: "%", nameLocation: "middle", nameGap: 30,
+      nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 10, fontWeight: 500 },
+      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toFixed(1) + "%" },
+      splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
+    });
+    const values = obs.map((o) => o.values[cfg.col] ?? null);
+    const s = {
+      name: cfg.name, type: "line", xAxisIndex: i, yAxisIndex: i,
+      data: values, smooth: false, symbol: "circle", symbolSize: 3,
+      lineStyle: { color: cfg.color, width: 2 },
+      itemStyle: { color: cfg.color },
+      areaStyle: { color: cfg.color, opacity: 0.08 },
+    };
+    lastHighlight(s, periods, values, cfg.color, (v) => v == null ? "—" : v.toFixed(1) + "%");
+    series.push(s);
+    const yRange = computeYRange(values, { padding: 0.08, includeZero: false });
+    if (yRange) { yAxes[i].min = yRange.min; yAxes[i].max = yRange.max; yAxes[i].scale = true; }
+    titles.push({ text: cfg.name, left, top: top - 18, textStyle: { color: "#3d403b", fontFamily: FONT, fontSize: 12, fontWeight: 600 } });
+  });
+  return {
+    animation: false, color: rateCfgs.map((c) => c.color),
+    title: titles, grid: grids, xAxis: xAxes, yAxis: yAxes, series,
+    tooltip: {
+      trigger: "axis", backgroundColor: "#fff", borderColor: "#ddd7c6", borderWidth: 1,
+      textStyle: { color: COLORS.INK, fontFamily: FONT, fontSize: 12 },
+      extraCssText: "box-shadow:0 5px 16px rgba(0,0,0,.13);border-radius:9px;",
+      formatter: (params) => {
+        if (!params || !params.length) return "";
+        const p = params[0];
+        const v = p.value;
+        const val = v == null ? "—" : v.toFixed(1) + "%";
+        return `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${val}</span></div>`;
+      },
+    },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "desocup-rates", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+  };
+}
+
+// ---------------- DESOCUP: población ocupada (trimestral) ----------------
+export function buildDesocupPoblacion(ind, obs) {
+  const periods = obs.map((o) => o.period);
+  const rotate = periods.length > 12;
+  const values = obs.map((o) => o.values[4] ?? null);
+  const yRange = computeYRange(values, { padding: 0.1, includeZero: false });
+  const yAxis = {
+    type: "value", name: "Millones de personas", nameLocation: "middle", nameGap: 40,
+    nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 11, fontWeight: 500 },
+    axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) },
+    splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
+  };
+  if (yRange) { yAxis.min = yRange.min; yAxis.max = yRange.max; yAxis.scale = true; }
+  const s = {
+    name: "Población ocupada", type: "line",
+    data: values, smooth: false, symbol: "circle", symbolSize: 4,
+    lineStyle: { color: COLORS.GREEN, width: 2.5 },
+    itemStyle: { color: COLORS.GREEN },
+    areaStyle: { color: COLORS.GREEN, opacity: 0.08 },
+  };
+  lastHighlight(s, periods, values, COLORS.GREEN, (v) => v == null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + " millones");
+  return {
+    animation: false,
+    grid: { left: "8%", right: "4%", top: 40, height: 220, containLabel: false },
+    xAxis: { type: "category", data: periods, boundaryGap: false, axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 }, axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false } },
+    yAxis,
+    series: [s],
+    tooltip: {
+      trigger: "axis", backgroundColor: "#fff", borderColor: "#ddd7c6", borderWidth: 1,
+      textStyle: { color: COLORS.INK, fontFamily: FONT, fontSize: 12 },
+      extraCssText: "box-shadow:0 5px 16px rgba(0,0,0,.13);border-radius:9px;",
+      formatter: (params) => {
+        if (!params || !params.length) return "";
+        const p = params[0];
+        const v = p.value;
+        const val = v == null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + " millones de personas";
+        return `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">Población ocupada</span><span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${val}</span></div>`;
+      },
+    },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "desocup-poblacion", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+  };
+}

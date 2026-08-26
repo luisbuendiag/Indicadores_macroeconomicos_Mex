@@ -59,6 +59,27 @@ def test_inpc_analysis():
     assert "Banco de México" in a[1]
 
 
+def test_desocup_kpi():
+    payload = _payload()
+    metrics = M.compute_all_metrics(payload)
+    kpi = metrics["DESOCUP"]["kpi"]
+    assert kpi["ultimoFmt"] == "2.9%"
+    assert kpi["varText"] == "+0.1 p.p."
+    assert kpi["yoyText"] == "+0.2 p.p."
+    assert kpi["assessment"] in ("favorable", "adverso", "neutral")
+    assert kpi["semaforo"] in ("bueno", "malo", "estable")
+
+
+def test_desocup_analysis():
+    payload = _payload()
+    metrics = M.compute_all_metrics(payload)
+    a = metrics["DESOCUP"]["resumen"]
+    assert len(a) >= 1
+    assert "tasa de desocupación" in a[0]
+    assert "p.p." in a[0]
+    assert "INEGI/ENOE" not in a[0]
+
+
 def test_format_val():
     from lib_format import fmt_val, per_long, en_frase, period_to_date
     assert fmt_val(108.595752, "idx") == "108.6"

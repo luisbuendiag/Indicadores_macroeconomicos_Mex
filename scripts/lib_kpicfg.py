@@ -32,13 +32,16 @@ def _extract(name: str, src: str) -> str:
 
 def _to_json_like(raw: str) -> str:
     """Convierte un literal de objeto JS a JSON válido (solo para esta config)."""
-    # Pone doble comilla a claves no citadas.
-    def quote_key(match: re.Match) -> str:
-        return f'"{match.group(1)}":'
 
-    # Evita reemplazar dentro de cadenas: la config no contiene : dentro de strings,
-    # y los únicos tokens clave aparecen al inicio de línea o después de { o ,.
-    s = re.sub(r'(?<=[{,\n\s])([A-Za-z_ÁÉÍÓÚáéíóú][A-Za-z0-9_ÁÉÍÓÚáéíóú]*)\s*:', quote_key, raw)
+    def quote_key(m: re.Match) -> str:
+        before = m.group(1) or ""
+        return f'{before}"{m.group(2)}":'
+
+    # Claves al inicio de línea (después de espacios).
+    s = re.sub(r'(^[ \t]*)([A-Za-z_ÁÉÍÓÚáéíóú][A-Za-z0-9_ÁÉÍÓÚáéíóú]*)[ \t]*:', quote_key, raw, flags=re.MULTILINE)
+    # Claves que siguen a '{' o ',' en la misma línea (no reemplaza dentro de cadenas,
+    # pues las claves dentro de strings no están precedidas por { o ,).
+    s = re.sub(r'(?<=\{|\,)([ \t]*)([A-Za-z_ÁÉÍÓÚáéíóú][A-Za-z0-9_ÁÉÍÓÚáéíóú]*)[ \t]*:', quote_key, s)
     # JS permite trailing commas; JSON no.
     s = re.sub(r',\s*}', '}', s)
     s = re.sub(r',\s*]', ']', s)

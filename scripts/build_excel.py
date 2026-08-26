@@ -536,6 +536,27 @@ def build_emim_workbook(ind: dict, out_path: Path) -> None:
     wb.save(out_path)
 
 
+def _build_desocup_workbook(ind: dict, out_path: Path) -> None:
+    """Genera el Excel de DESOCUP con dos hojas: tasas laborales y población ocupada."""
+    wb = openpyxl.Workbook()
+    wb.remove(wb.active)
+    src = ind.get("fuente", {}).get("nombre", "INEGI")
+    url = ind.get("url_boletin_oficial") or ind.get("fuente", {}).get("link") or "—"
+    pub = ind.get("fecha_publicacion") or "—"
+
+    # Tasas laborales mensuales (columnas 0-3).
+    sub_tasas = f"Fuente: {src} · Frecuencia: Mensual · Unidad: porcentaje · Boletín: {url} · Fecha de publicación: {pub}"
+    ws1 = wb.create_sheet("Tasas laborales")
+    _write_subset_sheet(ws1, ind, f"{ind.get('nombre', 'DESOCUP')} — Tasas laborales", sub_tasas, [0, 1, 2, 3])
+
+    # Población ocupada trimestral (columnas 4-5).
+    sub_pob = f"Fuente: {src} · Frecuencia: Trimestral · Unidad: millones de personas · Boletín: {url} · Fecha de publicación: {pub}"
+    ws2 = wb.create_sheet("Población ocupada")
+    _write_subset_sheet(ws2, ind, f"{ind.get('nombre', 'DESOCUP')} — Población ocupada", sub_pob, [4, 5])
+
+    wb.save(out_path)
+
+
 def build_individual_files(payload: dict, pilot: list[str] | None = None):
     """Genera un archivo Excel por indicador y actualiza flags en el payload.
 
@@ -573,6 +594,8 @@ def build_individual_files(payload: dict, pilot: list[str] | None = None):
                 _build_imai_workbook(ind, out_path)
             elif key == "BCMM" and len(ind.get("columns", [])) >= 29:
                 _build_bcmm_workbook(ind, out_path)
+            elif key == "DESOCUP" and len(ind.get("columns", [])) >= 6:
+                _build_desocup_workbook(ind, out_path)
             else:
                 _build_individual_workbook(ind, cfg, kpicfg, out_path)
             ind["xlsx_disponible"] = True
@@ -740,6 +763,30 @@ def add_control(wb, payload, manifest, log, calendar=None):
     _autow(ws, [40, 15, 26, 14, 14, 15, 18, 18, 26, 28, 16, 18, 16, 50])
 
 
+def add_desocup_sheets(wb, payload):
+    """Crea hojas separadas para tasas laborales (mensuales) y población ocupada (trimestral)."""
+    ind = payload["indicators"].get("DESOCUP")
+    if not ind:
+        return
+    for name in ("Tasas laborales", "Población ocupada"):
+        if name in wb.sheetnames:
+            wb.remove(wb[name])
+
+    src = ind.get("fuente", {}).get("nombre", "INEGI")
+    url = ind.get("url_boletin_oficial") or ind.get("fuente", {}).get("link") or "—"
+    pub = ind.get("fecha_publicacion") or "—"
+
+    # Tasas laborales mensuales (columnas 0-3).
+    sub_tasas = f"Fuente: {src} · Frecuencia: Mensual · Unidad: porcentaje · Boletín: {url} · Fecha de publicación: {pub}"
+    ws1 = wb.create_sheet("Tasas laborales")
+    _write_subset_sheet(ws1, ind, f"{ind.get('nombre', 'DESOCUP')} — Tasas laborales", sub_tasas, [0, 1, 2, 3])
+
+    # Población ocupada trimestral (columnas 4-5).
+    sub_pob = f"Fuente: {src} · Frecuencia: Trimestral · Unidad: millones de personas · Boletín: {url} · Fecha de publicación: {pub}"
+    ws2 = wb.create_sheet("Población ocupada")
+    _write_subset_sheet(ws2, ind, f"{ind.get('nombre', 'DESOCUP')} — Población ocupada", sub_pob, [4, 5])
+
+
 # Hojas de datos a crear (o recrear) para indicadores principales.
 NEW_SHEETS = {
     "PIBSEC": "PIB Sectorial",
@@ -751,7 +798,7 @@ NEW_SHEETS = {
 }
 
 # Hojas heredadas del libro base que ya no corresponden al perfil V3.
-LEGACY_SHEETS = ["Exportaciones", "PIB"]
+LEGACY_SHEETS = ["Exportaciones", "PIB", "Tasa de desocupación"]
 
 
 def add_indicator_sheets(wb, payload):
@@ -938,6 +985,7 @@ def main():
     if "Subsectores EMIM" in wb.sheetnames:
         wb.remove(wb["Subsectores EMIM"])
     add_pib_sheets(wb, payload)
+    add_desocup_sheets(wb, payload)
     add_indicator_sheets(wb, payload)
     add_metodologia(wb, payload)
     add_control(wb, payload, manifest, log, calendar)

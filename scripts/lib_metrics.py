@@ -19,6 +19,7 @@ from typing import Any
 
 import lib_format as F
 from lib_kpicfg import get_cfg
+from sources import inegi
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
@@ -77,7 +78,7 @@ def prose_val(key: str, v: float | int | None) -> str:
     if key in ("IGAE", "IMAI", "CONSUMO", "EMIM"):
         return F._to_fixed(v, 1, 1) + " puntos"
     if key == "DESOCUP":
-        return F._to_fixed(v * 100, 1, 1) + "%"
+        return F._to_fixed(v, 1, 1) + "%"
     if key in ("INPC", "TASA"):
         return F._to_fixed(v, 1, 1) + "%"
     if key == "TIPOCAMBIO":
@@ -1451,6 +1452,200 @@ def _bcmm_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     }
 
 
+def _desocup_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
+    """KPI y resumen para DESOCUP con el esquema de 6 columnas.
+
+    Columnas:
+      - 0: Tasa de desocupación (%)
+      - 1: Tasa de participación (%)
+      - 2: Tasa de informalidad laboral 1 (%)
+      - 3: Tasa de subocupación (%)
+      - 4: Población ocupada (millones de personas)
+      - 5: Población ocupada (personas)
+
+    El KPI principal es la tasa de desocupación. Las variaciones se expresan en
+    puntos porcentuales (p.p.) para evitar confundir con variaciones relativas.
+    La población ocupada se presenta como dato trimestral oficial, sin derivar
+    una serie mensual.
+    """
+
+    _, colors = _kpicfg_and_colors()
+
+    def _pp_text(d: float | None) -> str:
+        if d is None:
+            return "—"
+        s = "+" if d > 0 else ""
+        return s + F._to_fixed(d, 1, 1) + " p.p."
+
+    def _last_not_null(col: int) -> int | None:
+        for i in range(len(obs) - 1, -1, -1):
+            vals = obs[i].get("values", [])
+            if col < len(vals) and vals[col] is not None:
+                return i
+        return None
+
+    def _val_at(col: int, i: int) -> float | None:
+        if i is None or i < 0 or i >= len(obs):
+            return None
+        vals = obs[i].get("values", [])
+        return vals[col] if col < len(vals) else None
+
+    obs = ind.get("observations", [])
+    cfg = kpicfg.get(ind["key"]) or kpicfg.get("DESOCUP", {})
+    if not obs:
+        return None
+
+    # --- Tarjetas de las cuatro tasas laborales ---
+    rate_cols = [
+        (0, "Desocupación", "la"),
+        (1, "Participación", "la"),
+        (2, "Informalidad", "la"),
+        (3, "Subocupación", "la"),
+    ]
+    cards: list[dict[str, Any]] = []
+    for col, name, art in rate_cols:
+        last_i = _last_not_null(col)
+        if last_i is None:
+            continue
+        cur = _val_at(col, last_i)
+        prev = _val_at(col, last_i - 1)
+        yoy = _val_at(col, last_i - 12)
+        mom = None
+        if cur is not None and prev is not None:
+            mom = round(cur - prev, 6)
+        yoy_pp = None
+        if cur is not None and yoy is not None:
+            yoy_pp = round(cur - yoy, 6)
+        cards.append({
+            "name": name,
+            "art": art,
+            "col": col,
+            "nivelRaw": cur,
+            "nivelText": F.fmt_val(cur, "pct-raw"),
+            "momRaw": mom,
+            "momText": _pp_text(mom),
+            "yoyRaw": yoy_pp,
+            "yoyText": _pp_text(yoy_pp),
+            "ultimoP": obs[last_i].get("period", ""),
+        })
+
+    if not cards:
+        return None
+
+    main_card = cards[0]
+    last_i = _last_not_null(0) or 0
+    periods = [o.get("period", "") for o in obs]
+    series = [_val_at(0, i) for i in range(len(obs))]
+    valid = [v for v in series if v is not None]
+    max_i = min_i = None
+    if valid:
+        max_i = series.index(max(valid))
+        min_i = series.index(min(valid))
+
+    # --- Población ocupada trimestral (col 4 millones / col 5 personas) ---
+    pop_last_i = _last_not_null(5)
+    poblacion = None
+    if pop_last_i is not None:
+        personas = _val_at(5, pop_last_i)
+        millones = _val_at(4, pop_last_i)
+        p_period = obs[pop_last_i].get("period", "")
+        # Convertir la etiqueta del mes a trimestre (1T-26, etc.)
+        q_period = inegi.ym_to_label(inegi.label_to_ym(p_period) or "", 4) or p_period
+        poblacion = {
+            "periodo": q_period,
+            "personas": personas,
+            "millones": millones,
+            "textMillones": (F._to_fixed(millones, 1, 1) + " millones de personas") if millones is not None else "—",
+        }
+
+    # --- KPI principal (desocupación) ---
+    mom = main_card["momRaw"]
+    yoy_pp = main_card["yoyRaw"]
+    good_sign = cfg.get("goodSign", -1)
+    assess = cfg.get("assess", "unemployment")
+    a_mag = abs(mom) if mom is not None else 0.0
+    dir = "flat" if mom is None else ("up" if mom > 0.05 else ("down" if mom < -0.05 else "flat"))
+    assessment = "neutral"
+    if mom is not None and assess == "unemployment":
+        assessment = "favorable" if mom < -0.05 else ("adverso" if mom > 0.05 else "neutral")
+    elif mom is not None:
+        assessment = "favorable" if (mom > 0.05 and good_sign > 0) or (mom < -0.05 and good_sign < 0) else (
+            "adverso" if (mom > 0.05 and good_sign < 0) or (mom < -0.05 and good_sign > 0) else "neutral"
+        )
+    semaforo = "bueno" if assessment == "favorable" else ("malo" if assessment == "adverso" else (
+        "neutral" if mom is None else "estable"
+    ))
+
+    kpi = {
+        "ultimoP": main_card["ultimoP"],
+        "ultimoRaw": main_card["nivelRaw"],
+        "ultimoFmt": main_card["nivelText"],
+        "varText": main_card["momText"],
+        "varRaw": mom,
+        "varMag": mom,
+        "pos": mom is not None and mom >= 0,
+        "varColor": colors.get("GREEN") if mom is not None and mom >= 0 else colors.get("CRIMSON"),
+        "varLabel": cfg.get("varLabel", "Cambio mensual"),
+        "yoyText": main_card["yoyText"],
+        "yoyRaw": yoy_pp,
+        "yoyMag": yoy_pp,
+        "yoyPos": yoy_pp is not None and yoy_pp >= 0,
+        "yoyColor": colors.get("GREEN") if (yoy_pp is not None and yoy_pp >= 0) else colors.get("CRIMSON"),
+        "yoyLabel": cfg.get("yoyLabel", "Cambio anual"),
+        "assessment": assessment,
+        "dir": dir,
+        "semaforo": semaforo,
+        "maxRaw": _val_at(0, max_i) if max_i is not None else None,
+        "maxP": periods[max_i] if max_i is not None else None,
+        "minRaw": _val_at(0, min_i) if min_i is not None else None,
+        "minP": periods[min_i] if min_i is not None else None,
+        "maxFmt": F.fmt_val(_val_at(0, max_i), "pct-raw") if max_i is not None else "—",
+        "minFmt": F.fmt_val(_val_at(0, min_i), "pct-raw") if min_i is not None else "—",
+        "lastI": last_i,
+        "series": series,
+        "periods": periods,
+        "cards": cards,
+        "poblacion": poblacion,
+    }
+
+    # --- Análisis / resumen (máximo 4 bullets) ---
+    bullets: list[str] = []
+    p = main_card["ultimoP"]
+    q_period = poblacion["periodo"] if poblacion else "—"
+    q_text = poblacion["textMillones"] if poblacion else "—"
+
+    b1 = (
+        f"En {F.en_frase(p)}, la tasa de desocupación fue {main_card['nivelText']} "
+        f"({main_card['momText']} respecto al mes anterior; {main_card['yoyText']} respecto al mismo mes del año previo)."
+    )
+    bullets.append(b1)
+
+    parts = []
+    for c in cards[1:]:
+        parts.append(f"{c['name'].lower()} {c['nivelText']} ({c['momText']})")
+    if parts:
+        bullets.append(f"Las demás tasas laborales se ubicaron: {', '.join(parts)}.")
+
+    if poblacion:
+        bullets.append(
+            f"La población ocupada se ubicó en {q_text} en {F.en_frase(q_period)} (dato trimestral)."
+        )
+
+    if len(cards) > 2 and cards[1]["yoyText"] != "—" and cards[2]["yoyText"] != "—":
+        bullets.append(
+            f"Respecto al mismo mes del año previo, la participación cambió {cards[1]['yoyText']} "
+            f"y la informalidad {cards[2]['yoyText']}."
+        )
+
+    return {
+        "kpi": kpi,
+        "analysis": bullets[:4],
+        "resumen": bullets[:4],
+        "annualVar": {"mag": yoy_pp, "pos": yoy_pp is not None and yoy_pp >= 0, "text": _pp_text(yoy_pp), "label": "Cambio anual"} if yoy_pp is not None else None,
+        "yoy": {"mag": yoy_pp, "pos": yoy_pp is not None and yoy_pp >= 0, "text": _pp_text(yoy_pp), "label": "Cambio anual"} if yoy_pp is not None else None,
+    }
+
+
 def compute_all_metrics(payload: dict | None = None, kpicfg: dict | None = None) -> dict[str, dict[str, Any]]:
     """Calcula kpi, analysis y annualVar para todos los indicadores."""
     if payload is None:
@@ -1489,6 +1684,11 @@ def compute_all_metrics(payload: dict | None = None, kpicfg: dict | None = None)
             bcmm = _bcmm_metrics(ind, kpicfg)
             if bcmm:
                 out[key] = bcmm
+                continue
+        if key == "DESOCUP" and len(ind.get("columns", [])) >= 6:
+            desocup = _desocup_metrics(ind, kpicfg)
+            if desocup:
+                out[key] = desocup
                 continue
         kpi = compute_kpi(ind, kpicfg)
         yoy = annual_var(ind, kpi, kpicfg) if kpi else None

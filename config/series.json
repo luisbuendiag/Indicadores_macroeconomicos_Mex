@@ -431,20 +431,78 @@
       "confirmar": true,
       "nota": "Búsqueda en el catálogo del BIE arrojó 'Bad Request'/'Page Not Found' con los términos habituales (consumo privado, gasto de consumo). Se requiere identificar la serie oficial correcta."
     },
-    "DESOCUP": {
-      "serie": "444603",
-      "confirmar": false,
-      "nombre": "Tasa de desocupación",
-      "descripcion_serie": "Tasa de desocupación nacional (%)",
-      "frecuencia": "Mensual",
-      "unidad": "Porcentaje",
-      "tipo_serie": "Serie original",
-      "db": "BIE-BISE",
-      "geo": "00",
-      "columna_objetivo": 0,
-      "factor": 0.01,
-      "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=4#D444603"
-    },
+    "DESOCUP": [
+      {
+        "serie": "446565",
+        "confirmar": true,
+        "nombre": "Población ocupada",
+        "descripcion_serie": "Población ocupada nacional (personas). Fuente: ENOE, valores trimestrales.",
+        "frecuencia": "Trimestral",
+        "unidad": "Personas",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 5,
+        "factor": 1,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=4#D446565"
+      },
+      {
+        "serie": "444603",
+        "confirmar": true,
+        "nombre": "Tasa de desocupación",
+        "descripcion_serie": "Tasa de desocupación nacional (%). Fuente: ENOE, valores mensuales.",
+        "frecuencia": "Mensual",
+        "unidad": "Porcentaje",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 0,
+        "factor": 1,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=4#D444603"
+      },
+      {
+        "serie": "444602",
+        "confirmar": true,
+        "nombre": "Tasa de participación",
+        "descripcion_serie": "Tasa de participación en la población de 15 años y más (%). Fuente: ENOE, valores mensuales.",
+        "frecuencia": "Mensual",
+        "unidad": "Porcentaje",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 1,
+        "factor": 1,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=4#D444602"
+      },
+      {
+        "serie": "444610",
+        "confirmar": true,
+        "nombre": "Tasa de informalidad laboral 1",
+        "descripcion_serie": "Tasa de informalidad laboral 1 (%). Fuente: ENOE, valores mensuales.",
+        "frecuencia": "Mensual",
+        "unidad": "Porcentaje",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 2,
+        "factor": 1,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=4#D444610"
+      },
+      {
+        "serie": "444607",
+        "confirmar": true,
+        "nombre": "Tasa de subocupación",
+        "descripcion_serie": "Tasa de subocupación (%). Fuente: ENOE, valores mensuales.",
+        "frecuencia": "Mensual",
+        "unidad": "Porcentaje",
+        "tipo_serie": "Serie original",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 3,
+        "factor": 1,
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=4#D444607"
+      }
+    ],
     "INPC": [
       {
         "serie": "334360",

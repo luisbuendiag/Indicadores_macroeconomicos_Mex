@@ -655,6 +655,102 @@ def compute_bcmm_metrics(payload: dict) -> list[str]:
     return changes
 
 
+def compute_desocup_metrics(payload: dict) -> list[str]:
+    """Ordena el esquema de 6 columnas del DESOCUP y mantiene población ocupada trimestral.
+
+    Esquema:
+      - 0: Tasa de desocupación (%).
+      - 1: Tasa de participación (%).
+      - 2: Tasa de informalidad laboral 1 (%).
+      - 3: Tasa de subocupación (%).
+      - 4: Población ocupada (millones de personas) — oficial trimestral.
+      - 5: Población ocupada (personas) — oficial trimestral.
+
+    NO deriva una serie mensual de población ocupada.
+    """
+    changes: list[str] = []
+    ind = payload["indicators"].get("DESOCUP")
+    if not ind:
+        return changes
+
+    try:
+        meta = json.loads(L.META_FILE.read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        return changes
+
+    des_prof = meta.get("profile", {}).get("DESOCUP", {})
+    new_cols = des_prof.get("columns")
+    if not new_cols or len(new_cols) != 6:
+        return changes
+
+    if len(ind.get("columns", [])) != 6:
+        ind["columns"] = new_cols
+        changes.append("DESOCUP: esquema de 6 columnas aplicado")
+
+    fixed = 0
+    for o in ind.get("observations", []):
+        vals = list(o.get("values", []))
+        if len(vals) < 6:
+            vals.extend([None] * (6 - len(vals)))
+            o["values"] = vals
+            fixed += 1
+
+    if fixed:
+        changes.append(f"DESOCUP: {fixed} observaciones ajustadas a 6 columnas")
+
+    # Normaliza las tasas a puntos porcentuales (0-100): si el BIE las entrega
+    # como fracciones (0.029) y todas son menores a 1, las multiplica por 100.
+    # Si ya vienen como porcentaje (2.9), se conservan.
+    norm_updated = 0
+    for col in range(4):
+        cvals = [o["values"][col] for o in ind.get("observations", []) if o["values"][col] is not None]
+        if not cvals or max(cvals) > 1:
+            continue
+        for o in ind.get("observations", []):
+            vals = list(o.get("values", []))
+            if vals[col] is not None:
+                vals[col] = round(vals[col] * 100, 6)
+                o["values"] = vals
+                norm_updated += 1
+
+    if norm_updated:
+        changes.append(f"DESOCUP: {norm_updated} observaciones normalizadas a puntos porcentuales")
+
+    # Copia la población ocupada (personas) a millones y asegura etiquetas mensuales
+    # en las observaciones que provienen de series mensuales, dejando los datos
+    # trimestrales en el mes que les corresponde (inicio del trimestre).
+    updated = 0
+    for o in ind.get("observations", []):
+        vals = list(o.get("values", []))
+        if vals[5] is not None:
+            vals[4] = round(vals[5] / 1_000_000, 6)
+            updated += 1
+        o["values"] = vals
+
+    if updated:
+        changes.append(f"DESOCUP: población ocupada en millones calculada para {updated} periodos")
+
+    # La frecuencia del indicador sigue siendo mensual para las tasas; la población
+    # ocupada se indica como trimestral en metadatos y ficha.
+    ind["frecuencia"] = des_prof.get("frecuencia", "Mensual")
+    ind["unidad"] = des_prof.get("unidad", "Porcentaje")
+    ind["nombre"] = des_prof.get("nombre", "Indicadores de ocupación y empleo")
+    ind["descripcion"] = des_prof.get(
+        "descripcion",
+        "Reúne los principales indicadores de la Encuesta Nacional de Ocupación y Empleo (ENOE).",
+    )
+
+    fuente = dict(ind.get("fuente", {}))
+    fuente.setdefault("nombre", "INEGI")
+    fuente.setdefault("metodo", "INEGI BIE API")
+    if not fuente.get("link"):
+        fuente["link"] = "https://www.inegi.org.mx/datos/temas/mercado-laboral/"
+    fuente["serie"] = "444603, 444602, 444607, 444610, 446565"
+    ind["fuente"] = fuente
+
+    return changes
+
+
 def run(offline: bool = False) -> int:
     log = {"started_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
            "mode": "offline" if offline else "online",
@@ -750,6 +846,9 @@ def run(offline: bool = False) -> int:
 
     # BCMM: esquema de 29 columnas (totales, componentes, variaciones y acumulados).
     log["changes"].extend(compute_bcmm_metrics(payload))
+
+    # DESOCUP: cuatro tasas laborales mensuales y población ocupada trimestral.
+    log["changes"].extend(compute_desocup_metrics(payload))
 
     # Frescura, calendario, métricas compartidas y metadatos temporales.
     log["changes"].extend(apply_freshness_and_meta(payload, log))

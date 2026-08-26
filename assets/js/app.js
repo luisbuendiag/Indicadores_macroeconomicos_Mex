@@ -1,7 +1,7 @@
 // Orquestador del tablero macroeconómico V3 (navegación por indicador).
 import { ORDER, PRINCIPAL, COMPLEMENTARIOS, LABELS, SIGLA, CAPTIONS, WINDOWS, COLORS, KPICFG, VIEWS, ESTADOS } from "./config.js";
 import { computeKPI, analysis, annualVar } from "./metrics.js";
-import { buildOption, rangeStats, applyWindow, buildPibsecLevels, buildPibsecVariations, buildIgaeLevels, buildIgaeVariations, buildImaiLevels, buildImaiVariations, buildEmimLevels, buildEmimVariations, buildBcmmLevels, buildBcmmVariations } from "./charts.js";
+import { buildOption, rangeStats, applyWindow, buildPibsecLevels, buildPibsecVariations, buildIgaeLevels, buildIgaeVariations, buildImaiLevels, buildImaiVariations, buildEmimLevels, buildEmimVariations, buildBcmmLevels, buildBcmmVariations, buildDesocupRates, buildDesocupPoblacion } from "./charts.js";
 import { fmtVal, perLong } from "./format.js";
 
 const state = {
@@ -436,7 +436,7 @@ function coyunturaBullets() {
   const inpc = getInd("INPC");
   if (hasData(inpc)) { const k = computeKPI(inpc); if (k) bullets.push(`La inflación general anual fue de ${fmtVal(k.ultimoRaw, "pct-raw")} en ${k.ultimoP} (variación de ${k.varText} frente al mes previo); su clasificación depende del contexto de política monetaria, no del signo por sí solo.`); }
   const des = getInd("DESOCUP");
-  if (hasData(des)) { const k = computeKPI(des); if (k) bullets.push(`La tasa de desocupación fue de ${fmtVal(k.ultimoRaw, "pct-frac")} de la PEA en ${k.ultimoP}.`); }
+  if (hasData(des)) { const k = computeKPI(des); if (k) bullets.push(`La tasa de desocupación fue de ${k.ultimoFmt} de la PEA en ${k.ultimoP} (${k.varText} mensual; ${k.yoyText} anual).`); }
   return bullets;
 }
 
@@ -647,6 +647,14 @@ function fichaCompareTable(ind, k, cfg, yoy) {
   return box;
 }
 
+const POB_WINDOWS = [
+  { id: "1a", label: "1 año", quarters: 4 },
+  { id: "2a", label: "2 años", quarters: 8 },
+  { id: "3a", label: "3 años", quarters: 12 },
+  { id: "5a", label: "5 años", quarters: 20 },
+  { id: "max", label: "Máximo", quarters: null },
+];
+
 function buildWinToggle(ind, winId) {
   const wt = el("div", { class: "win-toggle no-print", role: "group", "aria-label": "Ventana temporal" });
   const wins = ind.windows || WINDOWS;
@@ -665,6 +673,30 @@ function buildWinToggle(ind, winId) {
     }, w.label));
   });
   return wt;
+}
+
+function buildPobWinToggle(ind) {
+  const wt = el("div", { class: "win-toggle no-print", role: "group", "aria-label": "Ventana de población ocupada" });
+  const winId = state.windows[`${ind.key}_POB`] || "max";
+  POB_WINDOWS.forEach((w) => {
+    const pressed = w.id === winId;
+    wt.append(el("button", {
+      class: "win-btn", type: "button", "aria-pressed": String(pressed),
+      "data-ind": `${ind.key}_POB`, "data-win-id": w.id,
+      onclick: () => {
+        state.windows[`${ind.key}_POB`] = w.id;
+        mountChart(ind);
+      },
+    }, w.label));
+  });
+  return wt;
+}
+
+function applyPobWindow(ind, winId) {
+  const win = POB_WINDOWS.find((w) => w.id === winId) || POB_WINDOWS[POB_WINDOWS.length - 1];
+  const pobObs = (ind.observations || []).filter((o) => (o.values?.[5] ?? null) != null);
+  if (!pobObs.length || win.id === "max" || win.quarters == null) return pobObs;
+  return pobObs.slice(-win.quarters);
 }
 
 function renderIndicatorView(key) {
@@ -741,6 +773,20 @@ function renderIndicatorView(key) {
         c.name !== "Var. anual exportaciones" ? el("div", { class: "sub" }, c.yoyText) : null
       ))
     );
+  } else if (ind.key === "DESOCUP" && k.cards) {
+    mini = el("div", { class: "mini-kpis" },
+      ...k.cards.map((c, i) => el("div", { class: `mini${i === 0 ? " dark" : ""}` },
+        el("div", { class: "lbl" }, c.name),
+        el("div", { class: "num" }, c.nivelText),
+        el("div", { class: "sub" }, `${c.momText} mensual · ${c.yoyText} anual`),
+        el("div", { class: "sub" }, `Periodo: ${c.ultimoP}`)
+      )),
+      k.poblacion ? el("div", { class: "mini" },
+        el("div", { class: "lbl" }, "Población ocupada"),
+        el("div", { class: "num" }, k.poblacion.textMillones),
+        el("div", { class: "sub" }, `Periodo: ${k.poblacion.periodo} (trimestral)`),
+      ) : null,
+    );
   } else {
     mini = el("div", { class: "mini-kpis" },
       el("div", { class: "mini dark" }, el("div", { class: "lbl" }, "Cifra actual"), el("div", { class: "num" }, k.ultimoFmt), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),
@@ -769,6 +815,19 @@ function renderIndicatorView(key) {
     vars.append(buildWinToggle(ind, winId));
     vars.append(el("div", { class: `chart-box pibsec-variation ${ind.key === "EMIM" ? "emim-variation" : ""} ${ind.key === "BCMM" ? "bcmm-variation" : ""}`, id: `chart-${ind.key}-variation`, role: "img", "aria-label": "Variaciones del indicador y actividades económicas" }));
     chartMain.append(vars);
+    chartMain.append(el("div", { class: "range-wrap", id: `range-${ind.key}` }));
+  } else if (ind.key === "DESOCUP") {
+    chartMain.classList.add("pibsec-charts");
+    const rates = el("div", { class: "pibsec-section" });
+    rates.append(el("h3", { class: "block-sub" }, "Indicadores del mercado laboral"));
+    rates.append(buildWinToggle(ind, winId));
+    rates.append(el("div", { class: "chart-box desocup-rates", id: `chart-${ind.key}-rates`, role: "img", "aria-label": "Tasas laborales" }));
+    chartMain.append(rates);
+    const pob = el("div", { class: "pibsec-section" });
+    pob.append(el("h3", { class: "block-sub" }, "Población ocupada"));
+    pob.append(buildPobWinToggle(ind));
+    pob.append(el("div", { class: "chart-box desocup-pob", id: `chart-${ind.key}-pob`, role: "img", "aria-label": "Población ocupada" }));
+    chartMain.append(pob);
     chartMain.append(el("div", { class: "range-wrap", id: `range-${ind.key}` }));
   } else {
     chartMain.append(buildWinToggle(ind, winId));
@@ -1557,10 +1616,43 @@ function mountBcmmCharts(ind) {
   }
 }
 
+function mountDesocupCharts(ind) {
+  if (typeof echarts === "undefined" || !hasData(ind)) return;
+
+  const ratesWinId = state.windows[ind.key] || state.data.meta?.default_window || "5a";
+  const ratesObs = applyWindow(ind, ratesWinId);
+
+  const domRates = document.getElementById(`chart-${ind.key}-rates`);
+  const domPob = document.getElementById(`chart-${ind.key}-pob`);
+  if (!domRates || !domPob) return;
+
+  let ratesChart = state.charts[`${ind.key}-rates`];
+  if (!ratesChart) { ratesChart = echarts.init(domRates, null, { renderer: "canvas" }); state.charts[`${ind.key}-rates`] = ratesChart; }
+  ratesChart.setOption(buildDesocupRates(ind, ratesObs), true);
+
+  let pobChart = state.charts[`${ind.key}-pob`];
+  if (!pobChart) { pobChart = echarts.init(domPob, null, { renderer: "canvas" }); state.charts[`${ind.key}-pob`] = pobChart; }
+  const pobWinId = state.windows[`${ind.key}_POB`] || "max";
+  const pobObs = applyPobWindow(ind, pobWinId);
+  pobChart.setOption(buildDesocupPoblacion(ind, pobObs), true);
+
+  const rangeCard = document.getElementById(`range-${ind.key}`);
+  if (rangeCard) {
+    rangeCard.innerHTML = "";
+    rangeCard.append(buildRangeCard(ind, ratesWinId));
+  }
+  const cap = document.getElementById(`caption-${ind.key}`);
+  if (cap) {
+    const last = ratesObs.length ? ratesObs[ratesObs.length - 1].period : (ind.last_observation || "—");
+    cap.textContent = `${CAPTIONS[ind.key] || ""} Datos hasta ${last}.`.trim();
+  }
+}
+
 function mountChart(ind) {
   if (ind.key === "PIBSEC") { mountPibsecCharts(ind); return; }
   if (ind.key === "IGAE") { mountIgaeCharts(ind); return; }
   if (ind.key === "IMAI") { mountImaiCharts(ind); return; }
+  if (ind.key === "DESOCUP") { mountDesocupCharts(ind); return; }
   if (ind.key === "BCMM" && (ind.metrics?.kpi?.cards || (ind.columns && ind.columns.length > 25))) { mountBcmmCharts(ind); return; }
   if (ind.key === "EMIM" && (ind.metrics?.kpi?.cards || (ind.columns && ind.columns.length > 15))) { mountEmimCharts(ind); return; }
   const dom = document.getElementById(`chart-${ind.key}`);

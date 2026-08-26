@@ -172,7 +172,29 @@
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
-      "nombre": "Tasa de desocupación"
+      "nombre": "Indicadores de ocupación y empleo",
+      "sigla": "ENOE",
+      "descripcion": "Reúne los principales indicadores de la Encuesta Nacional de Ocupación y Empleo (ENOE) para dar seguimiento a la participación laboral, desocupación, subocupación, informalidad y población ocupada en México.",
+      "frecuencia": "Mensual (tasas) / Trimestral (población ocupada)",
+      "unidad": "Porcentaje (tasas) / Millones de personas (población ocupada)",
+      "ajuste_estacional": "Cifras originales",
+      "grupo": "desoc",
+      "publicacion": "Mensual para tasas; trimestral para población ocupada",
+      "columns": [
+        {"label": "Tasa de desocupación (%)", "index": 0, "fmt": "pct-raw"},
+        {"label": "Tasa de participación (%)", "index": 1, "fmt": "pct-raw"},
+        {"label": "Tasa de informalidad laboral 1 (%)", "index": 2, "fmt": "pct-raw"},
+        {"label": "Tasa de subocupación (%)", "index": 3, "fmt": "pct-raw"},
+        {"label": "Población ocupada (millones de personas)", "index": 4, "fmt": "idx"},
+        {"label": "Población ocupada (personas)", "index": 5, "fmt": "num"}
+      ],
+      "windows": [
+        {"id": "3m", "label": "3 meses", "count": 3},
+        {"id": "6m", "label": "6 meses", "count": 6},
+        {"id": "1a", "label": "1 año", "count": 12},
+        {"id": "5a", "label": "5 años", "count": 60},
+        {"id": "max", "label": "Máximo", "count": null}
+      ]
     },
     "INPC": {
       "requiere_token": "INEGI",
