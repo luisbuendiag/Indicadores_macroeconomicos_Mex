@@ -503,41 +503,8 @@
         "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=4#D444607"
       }
     ],
-    "INPC": [
-      {
-        "serie": "334360",
-        "confirmar": false,
-        "nombre": "Índice de Precios al Consumidor",
-        "descripcion_serie": "Índice general de precios al consumidor (2018=100), serie usada para calcular variación anual",
-        "frecuencia": "Mensual",
-        "unidad": "Índice base 2018=100",
-        "tipo_serie": "Serie original",
-        "db": "BIE-BISE",
-        "geo": "00",
-        "columna_objetivo": 0,
-        "transform": "yoy",
-        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=682416#D334360"
-      },
-      {
-        "serie": "334452",
-        "confirmar": false,
-        "nombre": "Índice de Precios al Consumidor Subyacente",
-        "descripcion_serie": "Índice subyacente de precios al consumidor (2018=100), serie usada para calcular variación anual",
-        "frecuencia": "Mensual",
-        "unidad": "Índice base 2018=100",
-        "tipo_serie": "Serie original",
-        "db": "BIE-BISE",
-        "geo": "00",
-        "columna_objetivo": 1,
-        "transform": "yoy",
-        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=682416#D334452"
-      },
-      {
-        "_nota": "La tercera columna (No subyacente) no tiene serie confirmada en el catálogo. Se conservan los datos de respaldo mientras se localiza el ID oficial.",
-        "serie": null,
-        "confirmar": true
-      }
-    ],
+    "INPC": [],
+    "_nota_inpc": "INPC se carga desde scripts/sources/inegi_inpc.py (BIE 334360/334452 + componentes 8655xx + boletines + tabulado CA55_2018A). No se consulta a través del conector INEGI general.",
     "IMFBCF": {
       "_nota": "Indicador Mensual de la Formación Bruta de Capital Fijo. Serie pendiente de confirmar.",
       "serie": null,

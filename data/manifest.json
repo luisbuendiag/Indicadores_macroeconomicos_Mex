@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-26T19:21:03+00:00",
+  "generated_at": "2026-08-26T20:36:44+00:00",
   "indicadores": [
     {
       "indicador": "Estimación Oportuna del Producto Interno Bruto Trimestral",
@@ -150,16 +150,16 @@
       "clave": "INPC",
       "clasificacion": "principal",
       "fuente": "INEGI",
-      "serie": "334360",
+      "serie": "334360, 334452, 865548-865559",
       "frecuencia": "Mensual",
-      "unidad": "Variación anual (%)",
-      "ajuste_estacional": "No aplica",
+      "unidad": "Índice base 2018=100 / Porcentaje",
+      "ajuste_estacional": "Cifras originales",
       "ultima_observacion": "Jul 26",
       "periodo_referencia": "Jul 26",
       "fecha_publicacion": "7 de agosto de 2026",
       "fecha_consulta": "2026-08-26",
       "fecha_actualizacion_archivo": "2026-08-26",
-      "metodo_actualizacion": "INEGI BIE API",
+      "metodo_actualizacion": "INEGI BIE + Tabulado INPC + Boletines INPC",
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
       "requiere_token": "INEGI",

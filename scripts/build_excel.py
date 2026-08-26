@@ -82,6 +82,8 @@ def _xl_fmt(fmt: str) -> str:
         return "0.0%"
     if fmt == "pct-raw":
         return '0.0"%"'
+    if fmt == "pp":
+        return '0.000" p.p."'
     if fmt == "idx":
         return "#,##0.0"
     if fmt == "fx":
@@ -795,10 +797,11 @@ NEW_SHEETS = {
     "EMIM": "EMIM (Manufactura)",
     "BCMM": "Balanza comercial",
     "IMAI": "IMAI",
+    "INPC": "INPC",
 }
 
 # Hojas heredadas del libro base que ya no corresponden al perfil V3.
-LEGACY_SHEETS = ["Exportaciones", "PIB", "Tasa de desocupación"]
+LEGACY_SHEETS = ["Exportaciones", "PIB", "Tasa de desocupación", "INPC (Inflación)"]
 
 
 def add_indicator_sheets(wb, payload):

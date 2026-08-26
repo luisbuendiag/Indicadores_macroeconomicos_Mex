@@ -94,7 +94,11 @@ function chartSpec(ind, obs) {
     case "IGAE": return { periods: P, lines: [{ name: "Índice global", values: col(0), color: G }, { name: "Act. secundarias", values: col(1), color: SEC }, { name: "Act. terciarias", values: col(2), color: Go }], leftName: "Índice (2018=100)", leftFmt: "idx" };
     case "IMAI": return { periods: P, lines: [{ name: "Índice de volumen físico", values: col(0), color: G }, { name: "Var. mensual (%)", values: col(1).map((v) => v == null ? null : v * 100), color: SEC, axis: "right" }, { name: "Var. anual (%)", values: col(2).map((v) => v == null ? null : v * 100), color: Go, axis: "right" }], leftName: "Índice (2018=100)", rightName: "Var. (%)", leftFmt: "idx", rightFmt: "pct" };
     case "CONSUMO": return { periods: P, lines: [{ name: "Índice de volumen físico", values: col(0), color: G }, { name: "Var. mensual (%)", values: col(1).map((v) => v == null ? null : v * 100), color: SEC, axis: "right" }], leftName: "Índice (2018=100)", rightName: "Var. mensual (%)", leftFmt: "idx", rightFmt: "pct" };
-    case "INPC": return { periods: P, lines: [{ name: "Inflación", values: col(0), color: G }, { name: "Subyacente", values: col(1), color: SEC }, { name: "No subyacente", values: col(2), color: Go }], leftName: "Variación anual (%)", leftFmt: "pct" };
+    case "INPC": return { periods: P, lines: [
+      { name: "Inflación general", values: col(2), color: G },
+      { name: "Subyacente", values: col(5), color: SEC },
+      { name: "No subyacente", values: col(11), color: Go }
+    ], leftName: "Inflación anual (%)", leftFmt: "pct" };
     case "DESOCUP": return { periods: P, lines: [{ name: "Tasa de desocupación nacional", values: col(0).map((v) => v == null ? null : v * 100), color: G }], leftName: "Porcentaje (%)", leftFmt: "pct" };
     case "IED": return { periods: P, stack: "ied", bars: [{ name: "Nuevas inversiones", values: col(1), color: G }, { name: "Reinversión de utilidades", values: col(2), color: SEC }, { name: "Cuentas entre compañías", values: col(3), color: Go }], lines: [{ name: "IED total", values: col(0), color: REF, dash: true }], leftName: "Millones de dólares", leftFmt: "compact" };
     case "BALANZA": return { periods: P, bars: [{ name: "Exportaciones", values: col(0), color: G }, { name: "Importaciones", values: col(1), color: SEC }], lines: [{ name: "Saldo (X − M)", values: saldo, color: Go, axis: "right" }], leftName: "Millones de dólares", rightName: "Saldo (mdd)", leftFmt: "compact", rightFmt: "compact" };

@@ -33,7 +33,7 @@ RANGES = {
     "CONSUMO": (70, 140),
     "IED": (-5_000, 60_000),
     "DESOCUP": (0.0, 25.0),   # porcentaje (0-25%)
-    "INPC": (-2, 15),         # porcentaje anual
+    "INPC": (90, 160),        # índice base 2018=100 (serie primaria = col 0)
     "BALANZA": (-30_000, 30_000),
 }
 

@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-26T18:14:36+00:00",
-  "last_update_ct": "2026-08-26T12:14:26-06:00",
+  "generated_at": "2026-08-26T20:35:45+00:00",
+  "last_update_ct": "2026-08-26T14:35:36-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -2746,10 +2746,10 @@
         "assessment": "neutral",
         "dir": "down",
         "ultimoFmt": "3.1%",
-        "ultimoRaw": 3.11763,
+        "ultimoRaw": 3.12,
         "ultimoP": "Jul 26",
-        "varText": "-0.2 puntos porcentuales",
-        "varMag": -0.24834699999999987,
+        "varText": "-0.3 puntos porcentuales",
+        "varMag": -0.25,
         "pos": false,
         "varColor": "#9b2247",
         "varLabel": "Cambio de la inflación anual respecto al mes previo",
@@ -2853,17 +2853,17 @@
           4.317429,
           3.512423,
           3.568777,
-          3.760288,
-          3.566521,
-          3.799191,
-          3.691944,
-          3.791301,
-          4.023038,
-          4.586774,
-          4.448503,
-          3.938948,
-          3.365977,
-          3.11763
+          3.76,
+          3.57,
+          3.8,
+          3.69,
+          3.79,
+          4.02,
+          4.59,
+          4.45,
+          3.94,
+          3.37,
+          3.12
         ],
         "periods": [
           "Ene 18",
@@ -2975,11 +2975,11 @@
         "yoyLabel": "—"
       },
       "analysis": [
-        "En julio de 2026, la inflación general anual se ubicó en 3.1%, con una variación de -0.2 puntos porcentuales frente al mes previo. La inflación anual disminuyó respecto del mes previo. Se ubicó por debajo del promedio del periodo mostrado (4.9%).",
+        "En julio de 2026, la inflación general anual se ubicó en 3.1%, con una variación de -0.3 puntos porcentuales frente al mes previo. La inflación anual disminuyó respecto del mes previo. Se ubicó por debajo del promedio del periodo mostrado (4.9%).",
         "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 8.7% (septiembre de 2022) y un mínimo de 2.1% (abril de 2020). El resultado más reciente se ubicó por debajo del promedio del periodo mostrado. El último dato fue inferior al del inicio del periodo mostrado. Con ello, la inflación se mantiene dentro del intervalo de variabilidad del Banco de México (3 % ±1 punto), aunque todavía por encima de la meta puntual de 3 %."
       ],
       "resumen": [
-        "En julio de 2026, la inflación general anual se ubicó en 3.1%. El valor de cambio de la inflación anual respecto al mes previo fue de -0.2 puntos porcentuales frente al mes previo.",
+        "En julio de 2026, la inflación general anual se ubicó en 3.1%. El valor de cambio de la inflación anual respecto al mes previo fue de -0.3 puntos porcentuales frente al mes previo.",
         "En la serie mostrada, el indicador oscila entre un máximo de 8.7% (septiembre de 2022) y un mínimo de 2.1% (abril de 2020). El último dato se ubica dentro del rango observado en el periodo mostrado.",
         "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
       ],

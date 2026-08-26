@@ -200,7 +200,47 @@
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
-      "nombre": "Índice de Precios al Consumidor"
+      "nombre": "Índice de Precios al Consumidor",
+      "sigla": "INPC",
+      "descripcion": "Mide la evolución de los precios de una canasta representativa de bienes y servicios consumidos por los hogares en México. Incluye el índice general, la inflación subyacente y no subyacente, sus componentes (mercancías, servicios, agropecuarios, energéticos y tarifas) y las incidencias mensuales de subyacente y no subyacente.",
+      "frecuencia": "Mensual",
+      "unidad": "Índice base 2018=100 / Porcentaje",
+      "ajuste_estacional": "Cifras originales",
+      "grupo": "inpc",
+      "publicacion": "Aproximadamente 9-10 días después del cierre del mes",
+      "columns": [
+        {"label": "INPC (índice)", "index": 0, "fmt": "idx"},
+        {"label": "INPC var. mensual (%)", "index": 1, "fmt": "pct-raw"},
+        {"label": "INPC inflación anual (%)", "index": 2, "fmt": "pct-raw"},
+        {"label": "Subyacente (índice)", "index": 3, "fmt": "idx"},
+        {"label": "Subyacente var. mensual (%)", "index": 4, "fmt": "pct-raw"},
+        {"label": "Subyacente inflación anual (%)", "index": 5, "fmt": "pct-raw"},
+        {"label": "Mercancías var. mensual (%)", "index": 6, "fmt": "pct-raw"},
+        {"label": "Mercancías inflación anual (%)", "index": 7, "fmt": "pct-raw"},
+        {"label": "Servicios var. mensual (%)", "index": 8, "fmt": "pct-raw"},
+        {"label": "Servicios inflación anual (%)", "index": 9, "fmt": "pct-raw"},
+        {"label": "No subyacente var. mensual (%)", "index": 10, "fmt": "pct-raw"},
+        {"label": "No subyacente inflación anual (%)", "index": 11, "fmt": "pct-raw"},
+        {"label": "Agropecuarios var. mensual (%)", "index": 12, "fmt": "pct-raw"},
+        {"label": "Agropecuarios inflación anual (%)", "index": 13, "fmt": "pct-raw"},
+        {"label": "Energéticos y tarifas var. mensual (%)", "index": 14, "fmt": "pct-raw"},
+        {"label": "Energéticos y tarifas inflación anual (%)", "index": 15, "fmt": "pct-raw"},
+        {"label": "Incidencia subyacente (p.p.)", "index": 16, "fmt": "pp"},
+        {"label": "Incidencia no subyacente (p.p.)", "index": 17, "fmt": "pp"}
+      ],
+      "fuente": {
+        "nombre": "INEGI",
+        "metodo": "INEGI BIE + Tabulado INPC + Boletines INPC",
+        "serie": "334360, 334452, 865548-865559",
+        "link": "https://www.inegi.org.mx/app/tabulados/inp/default.aspx?nc=ca55_2018a"
+      },
+      "windows": [
+        {"id": "3m", "label": "3 meses", "count": 3},
+        {"id": "6m", "label": "6 meses", "count": 6},
+        {"id": "1a", "label": "1 año", "count": 12},
+        {"id": "5a", "label": "5 años", "count": 60},
+        {"id": "max", "label": "Máximo", "count": null}
+      ]
     },
     "CONSUMO": {
       "requiere_token": "INEGI",
