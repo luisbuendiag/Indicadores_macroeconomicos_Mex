@@ -205,14 +205,29 @@ export function buildOption(ind, windowId) {
     };
   }
 
+  const allValues = (src) => src.flatMap((s) => s.values || []).filter((v) => v != null && !Number.isNaN(v));
+  const leftSources = [...bars, ...lines].filter((s) => s.axis !== "right");
+  const rightSources = [...bars, ...lines].filter((s) => s.axis === "right");
+  const leftVals = allValues(leftSources);
+  const rightVals = allValues(rightSources);
+  if (yAxis[0].scale && leftVals.length) {
+    const yRange = computeYRange(leftVals, { padding: 0.08, includeZero: false });
+    if (yRange) { yAxis[0].min = yRange.min; yAxis[0].max = yRange.max; }
+  }
+  if (yAxis[1] && yAxis[1].scale && rightVals.length) {
+    const yRange = computeYRange(rightVals, { padding: 0.08, includeZero: false });
+    if (yRange) { yAxis[1].min = yRange.min; yAxis[1].max = yRange.max; }
+  }
+
   const rotate = spec.periods.length > 12;
   return {
     color: [G, SEC, Go, REF, COLORS.DKGREEN, COLORS.WINE],
     animation: false,
-    grid: { left: 66, right: hasRight ? 62 : 24, top: 44, bottom: rotate ? 64 : 44, containLabel: false },
+    grid: { left: 66, right: hasRight ? 62 : 24, top: 52, bottom: rotate ? 64 : 44, containLabel: false },
     legend: {
-      top: 6, left: 0, itemWidth: 12, itemHeight: 12, icon: "roundRect",
+      top: 6, left: "center", right: 8, itemWidth: 12, itemHeight: 12, icon: "roundRect",
       textStyle: { color: "#3d403b", fontFamily: FONT, fontSize: 12 },
+      type: "scroll",
     },
     tooltip: {
       trigger: "axis",
