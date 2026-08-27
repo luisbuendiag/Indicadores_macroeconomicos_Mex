@@ -274,7 +274,7 @@
       ],
       "fuente": {
         "nombre": "INEGI",
-        "metodo": "INEGI BIE API",
+        "metodo": "INEGI BIE API (INPP)",
         "serie": "910492, 910491, 910493, 1800001-1801009, 1700003",
         "link": "https://www.inegi.org.mx/programas/inpp/2019a/"
       },
