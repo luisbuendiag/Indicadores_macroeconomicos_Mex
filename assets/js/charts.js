@@ -93,7 +93,7 @@ function chartSpec(ind, obs) {
     };
     case "IGAE": return { periods: P, lines: [{ name: "Índice global", values: col(0), color: G }, { name: "Act. secundarias", values: col(1), color: SEC }, { name: "Act. terciarias", values: col(2), color: Go }], leftName: "Índice (2018=100)", leftFmt: "idx" };
     case "IMAI": return { periods: P, lines: [{ name: "Índice de volumen físico", values: col(0), color: G }, { name: "Var. mensual (%)", values: col(1).map((v) => v == null ? null : v * 100), color: SEC, axis: "right" }, { name: "Var. anual (%)", values: col(2).map((v) => v == null ? null : v * 100), color: Go, axis: "right" }], leftName: "Índice (2018=100)", rightName: "Var. (%)", leftFmt: "idx", rightFmt: "pct" };
-    case "CONSUMO": return { periods: P, lines: [{ name: "Índice de volumen físico", values: col(0), color: G }, { name: "Var. mensual (%)", values: col(1).map((v) => v == null ? null : v * 100), color: SEC, axis: "right" }], leftName: "Índice (2018=100)", rightName: "Var. mensual (%)", leftFmt: "idx", rightFmt: "pct" };
+    case "CONSUMO": return { periods: P, lines: [{ name: "Índice de volumen físico", values: col(0), color: G }, { name: "Var. mensual desest. (%)", values: col(1).map((v) => v == null ? null : v * 100), color: SEC, axis: "right" }, { name: "Var. anual desest. (%)", values: col(2).map((v) => v == null ? null : v * 100), color: Go, axis: "right" }, { name: "Acumulado ene-mes (%)", values: col(4).map((v) => v == null ? null : v * 100), color: REF, axis: "right" }], leftName: "Índice (2018=100)", rightName: "Var. (%)", leftFmt: "idx", rightFmt: "pct" };
     case "INPC": return { periods: P, lines: [
       { name: "Inflación general", values: col(2), color: G },
       { name: "Subyacente", values: col(5), color: SEC },

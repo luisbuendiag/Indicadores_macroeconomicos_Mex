@@ -985,6 +985,42 @@ function breakdown(ind, k) {
     box.append(grid);
     return box;
   }
+  if (ind.key === "CONSUMO" && last) {
+    const box = el("div", { class: "ficha-block pibsec-activity" });
+    box.append(el("h3", { class: "block-sub" }, "Desempeño por origen y durabilidad"));
+    const grid = el("div", { class: "breakdown" });
+    const comps = [
+      { momCol: 5, yoyCol: 6, label: "Nacional" },
+      { momCol: 7, yoyCol: 8, label: "Bienes nacionales" },
+      { momCol: 9, yoyCol: 10, label: "Servicios nacionales" },
+      { momCol: 11, yoyCol: 12, label: "Importado" },
+      { momCol: 13, yoyCol: 14, label: "Bienes importados" },
+      { yoyCol: 25, acumCol: 26, label: "Bienes duraderos nacionales" },
+      { yoyCol: 27, acumCol: 28, label: "Bienes semi duraderos nacionales" },
+      { yoyCol: 29, acumCol: 30, label: "Bienes no duraderos nacionales" },
+      { yoyCol: 31, acumCol: 32, label: "Bienes duraderos importados" },
+      { yoyCol: 33, acumCol: 34, label: "Bienes semi duraderos importados" },
+      { yoyCol: 35, acumCol: 36, label: "Bienes no duraderos importados" },
+    ];
+    comps.forEach((c) => {
+      const mom = c.momCol != null ? last.values[c.momCol] : null;
+      const yoy = last.values[c.yoyCol];
+      const acum = c.acumCol != null ? last.values[c.acumCol] : null;
+      const momColor = (mom != null ? (mom >= 0 ? COLORS.GREEN : COLORS.CRIMSON) : COLORS.GRAY);
+      const yoyColor = (yoy != null ? (yoy >= 0 ? COLORS.GREEN : COLORS.CRIMSON) : COLORS.GRAY);
+      const acumColor = (acum != null ? (acum >= 0 ? COLORS.GREEN : COLORS.CRIMSON) : COLORS.GRAY);
+      const subs = [];
+      if (mom != null) subs.push(el("div", { class: "bd-sub" }, `Mensual desest.: `, el("span", { style: `color:${momColor}` }, signedPct(mom))));
+      subs.push(el("div", { class: "bd-sub" }, `Anual: `, el("span", { style: `color:${yoyColor}` }, signedPct(yoy))));
+      if (acum != null) subs.push(el("div", { class: "bd-sub" }, `Acumulado ene-mes: `, el("span", { style: `color:${acumColor}` }, signedPct(acum))));
+      grid.append(el("div", { class: "bd-item" },
+        el("div", { class: "bd-lbl" }, c.label),
+        ...subs
+      ));
+    });
+    box.append(grid);
+    return box;
+  }
   if (ind.key === "EMIM" && last && (k.cards || (ind.columns && ind.columns.length > 15))) {
     const box = el("div", { class: "ficha-block pibsec-activity" });
     box.append(el("h3", { class: "block-sub" }, "Desempeño por variable"));

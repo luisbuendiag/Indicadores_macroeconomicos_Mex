@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-27T18:15:40+00:00",
-  "last_update_ct": "2026-08-27T12:15:23-06:00",
+  "generated_at": "2026-08-27T22:21:18+00:00",
+  "last_update_ct": "2026-08-27T16:21:01-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -2271,7 +2271,7 @@
         "varMag": 0.1,
         "pos": true,
         "varColor": "#1e5b4f",
-        "varLabel": "Var. mensual",
+        "varLabel": "Var. mensual desest.",
         "maxFmt": "114.4",
         "maxRaw": 114.4,
         "maxP": "Dic 25",
@@ -2325,15 +2325,15 @@
         ],
         "semaforo": "bueno",
         "yoyText": "+2.6%",
-        "yoyLabel": "Var. anual"
+        "yoyLabel": "Var. anual desest."
       },
       "analysis": [
-        "En mayo de 2026, el consumo privado se ubicó en 114.0 puntos (índice base 2018=100), con una variación mensual de +0.10% frente al mes previo. La variación mensual publicada por el INEGI muestra que el indicador aumentó respecto del mes previo. El nivel mostrado es la serie original; la variación mensual se calcula sobre cifras desestacionalizadas.",
+        "En mayo de 2026, el consumo privado se ubicó en 114.0 puntos (índice base 2018=100), con una variación mensual desestacionalizada de +0.10% frente al mes previo. La variación mensual publicada por el INEGI muestra que el indicador aumentó respecto del mes previo. El nivel mostrado es la serie original; la variación mensual se calcula sobre cifras desestacionalizadas.",
         "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 114.4 puntos (diciembre de 2025) y un mínimo de 108.6 puntos (enero de 2025). El resultado más reciente se ubicó por encima del promedio del periodo mostrado. El último dato fue superior al del inicio del periodo mostrado. Esta comparación se realiza sobre la serie original, que incorpora efectos estacionales."
       ],
       "resumen": [
-        "En mayo de 2026, el consumo privado se ubicó en 114.0 puntos (índice base 2018=100). El valor de var. mensual fue de +0.1% frente al mes previo.",
-        "La var. anual se situó en +2.6%, lo que refleja la comparación contra mayo de 2026 del año previo.",
+        "En mayo de 2026, el consumo privado se ubicó en 114.0 puntos (índice base 2018=100). El valor de var. mensual desest. fue de +0.1% frente al mes previo.",
+        "La var. anual desest. se situó en +2.6%, lo que refleja la comparación contra mayo de 2026 del año previo.",
         "En la serie mostrada, el indicador oscila entre un máximo de 114.4 puntos (diciembre de 2025) y un mínimo de 108.6 puntos (enero de 2025). El último dato se ubica dentro del rango observado en el periodo mostrado.",
         "La variación se clasifica como favorable según la lectura económica del indicador."
       ],
@@ -2341,7 +2341,7 @@
         "mag": 2.6,
         "pos": true,
         "text": "+2.6%",
-        "label": "Var. anual"
+        "label": "Var. anual desest."
       }
     },
     "IED": {

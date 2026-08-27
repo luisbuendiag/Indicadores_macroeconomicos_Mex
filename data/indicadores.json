@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-27T18:16:37+00:00",
+    "generated_at": "2026-08-27T22:22:12+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-08-27T12:16:37-06:00",
+    "last_update_ct": "2026-08-27T16:22:12-06:00",
     "periodo_referencia_reciente": {
       "period": "Jul 26",
       "period_long": "Jul 26"
@@ -21255,13 +21255,13 @@
     },
     "CONSUMO": {
       "key": "CONSUMO",
-      "nombre": "Indicador mensual del consumo privado",
-      "descripcion": "Mide el gasto realizado por los hogares y las instituciones sin fines de lucro que les sirven, tanto para la adquisición de bienes como de servicios.",
+      "nombre": "Indicador Mensual del Consumo Privado",
+      "descripcion": "Mide la evolución del gasto realizado por los hogares y las instituciones sin fines de lucro que les sirven, en bienes y servicios de consumo, tanto de origen nacional como importado. Base 2018=100. Frecuencia mensual.",
       "frecuencia": "Mensual",
-      "unidad": "Índice base 2018=100",
-      "ajuste_estacional": "Serie desestacionalizada; índice y variaciones oficiales del boletín del INEGI",
+      "unidad": "Índice base 2018=100 / Porcentaje",
+      "ajuste_estacional": "Cifras desestacionalizadas y originales",
       "grupo": "mercado_interno",
-      "publicacion": "Aproximadamente 21 días después de haber concluido el mes",
+      "publicacion": "Aproximadamente 21 días después de concluir el mes",
       "proximo": null,
       "notas": [
         "R = Cifras revisadas",
@@ -21270,9 +21270,9 @@
       ],
       "fuente": {
         "nombre": "INEGI",
-        "link": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_08.pdf",
-        "metodo": "INEGI boletín PDF",
-        "serie": "CONSUMO_pdf"
+        "link": "https://www.inegi.org.mx/programas/imcp/",
+        "metodo": "INEGI boletín oficial (PDF)",
+        "serie": "imcpmi{year}_{mm}"
       },
       "columns": [
         {
@@ -21281,13 +21281,183 @@
           "fmt": "idx"
         },
         {
-          "label": "Var. mensual (%)",
+          "label": "Var. mensual total (%)",
           "index": 1,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. anual (%)",
+          "label": "Var. anual total (%)",
           "index": 2,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual original total (%)",
+          "index": 3,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes total (%)",
+          "index": 4,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. mensual nacional (%)",
+          "index": 5,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual nacional (%)",
+          "index": 6,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. mensual bienes nacionales (%)",
+          "index": 7,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual bienes nacionales (%)",
+          "index": 8,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. mensual servicios nacionales (%)",
+          "index": 9,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual servicios nacionales (%)",
+          "index": 10,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. mensual importado (%)",
+          "index": 11,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual importado (%)",
+          "index": 12,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. mensual bienes importados (%)",
+          "index": 13,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual bienes importados (%)",
+          "index": 14,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual original nacional (%)",
+          "index": 15,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes nacional (%)",
+          "index": 16,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual original bienes nacionales (%)",
+          "index": 17,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes bienes nacionales (%)",
+          "index": 18,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual original servicios nacionales (%)",
+          "index": 19,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes servicios nacionales (%)",
+          "index": 20,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual original importado (%)",
+          "index": 21,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes importado (%)",
+          "index": 22,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual original bienes importados (%)",
+          "index": 23,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes bienes importados (%)",
+          "index": 24,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual original bienes duraderos nacionales (%)",
+          "index": 25,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes bienes duraderos nacionales (%)",
+          "index": 26,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual original bienes semi duraderos nacionales (%)",
+          "index": 27,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes bienes semi duraderos nacionales (%)",
+          "index": 28,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual original bienes no duraderos nacionales (%)",
+          "index": 29,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes bienes no duraderos nacionales (%)",
+          "index": 30,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual original bienes duraderos importados (%)",
+          "index": 31,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes bienes duraderos importados (%)",
+          "index": 32,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual original bienes semi duraderos importados (%)",
+          "index": 33,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes bienes semi duraderos importados (%)",
+          "index": 34,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual original bienes no duraderos importados (%)",
+          "index": 35,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes bienes no duraderos importados (%)",
+          "index": 36,
           "fmt": "pct-frac"
         }
       ],
@@ -21297,7 +21467,41 @@
           "values": [
             110.5,
             -0.007,
-            0.005
+            0.005,
+            null,
+            null,
+            -0.01,
+            -0.002,
+            -0.015,
+            -0.017,
+            -0.003,
+            0.016,
+            -0.005,
+            0.041,
+            -0.005,
+            0.041,
+            0.007,
+            0.014,
+            -0.001,
+            0.007,
+            0.015,
+            0.022,
+            0.06,
+            0.166,
+            0.06,
+            0.166,
+            0.08,
+            0.1,
+            -0.003,
+            0.002,
+            -0.011,
+            -0.004,
+            0.018,
+            0.179,
+            0.274,
+            0.246,
+            -0.006,
+            0.123
           ]
         },
         {
@@ -21305,7 +21509,41 @@
           "values": [
             111.0,
             0.005,
-            0.007
+            0.007,
+            0.003,
+            0.032,
+            0.004,
+            0.011,
+            0.005,
+            0.008,
+            0.001,
+            0.014,
+            0.017,
+            0.016,
+            0.017,
+            0.016,
+            0.01,
+            0.014,
+            0.007,
+            0.007,
+            0.014,
+            0.021,
+            -0.007,
+            0.148,
+            -0.007,
+            0.148,
+            0.151,
+            0.105,
+            -0.012,
+            0.001,
+            -0.008,
+            -0.005,
+            -0.049,
+            0.154,
+            0.144,
+            0.236,
+            -0.042,
+            0.106
           ]
         },
         {
@@ -21313,7 +21551,41 @@
           "values": [
             109.4,
             -0.011,
-            -0.008
+            -0.008,
+            -0.007,
+            0.028,
+            -0.008,
+            0.001,
+            -0.018,
+            -0.019,
+            0.004,
+            0.023,
+            -0.042,
+            -0.051,
+            -0.042,
+            -0.051,
+            -0.001,
+            0.012,
+            -0.021,
+            0.004,
+            0.023,
+            0.021,
+            -0.015,
+            0.134,
+            -0.015,
+            0.134,
+            0.002,
+            0.096,
+            -0.004,
+            0.001,
+            -0.027,
+            -0.007,
+            -0.155,
+            0.126,
+            0.089,
+            0.223,
+            0.033,
+            0.1
           ]
         },
         {
@@ -21321,7 +21593,41 @@
           "values": [
             108.6,
             -0.003,
-            -0.009
+            -0.009,
+            null,
+            null,
+            -0.003,
+            0.002,
+            -0.004,
+            -0.008,
+            0.002,
+            0.013,
+            -0.001,
+            -0.054,
+            -0.001,
+            -0.054,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
           ]
         },
         {
@@ -21329,7 +21635,41 @@
           "values": [
             110.2,
             0.012,
-            -0.007
+            -0.007,
+            -0.019,
+            -0.016,
+            0.012,
+            0.007,
+            0.021,
+            0.008,
+            0.003,
+            0.01,
+            0.027,
+            -0.053,
+            0.027,
+            -0.053,
+            -0.001,
+            0.0,
+            -0.005,
+            -0.007,
+            0.003,
+            0.009,
+            -0.092,
+            -0.086,
+            -0.092,
+            -0.086,
+            0.1,
+            0.062,
+            0.005,
+            -0.017,
+            -0.022,
+            -0.015,
+            -0.119,
+            -0.127,
+            -0.061,
+            -0.019,
+            -0.09,
+            -0.091
           ]
         },
         {
@@ -21337,7 +21677,41 @@
           "values": [
             110.2,
             -0.002,
-            -0.013
+            -0.013,
+            0.012,
+            -0.006,
+            -0.005,
+            -0.004,
+            -0.005,
+            -0.01,
+            -0.005,
+            0.005,
+            0.004,
+            -0.061,
+            0.004,
+            -0.061,
+            0.016,
+            0.006,
+            0.027,
+            0.005,
+            0.004,
+            0.008,
+            0.016,
+            -0.052,
+            0.016,
+            -0.052,
+            0.054,
+            0.059,
+            0.083,
+            0.017,
+            0.012,
+            -0.006,
+            -0.005,
+            -0.086,
+            0.04,
+            0.0,
+            0.018,
+            -0.054
           ]
         },
         {
@@ -21345,7 +21719,41 @@
           "values": [
             111.6,
             0.011,
-            0.007
+            0.007,
+            -0.017,
+            -0.009,
+            0.015,
+            0.031,
+            0.02,
+            0.045,
+            0.007,
+            0.013,
+            -0.01,
+            -0.083,
+            -0.01,
+            -0.083,
+            0.011,
+            0.007,
+            0.009,
+            0.006,
+            0.013,
+            0.009,
+            -0.143,
+            -0.077,
+            -0.143,
+            -0.077,
+            0.039,
+            0.054,
+            0.012,
+            0.015,
+            0.004,
+            -0.003,
+            -0.188,
+            -0.116,
+            -0.067,
+            -0.017,
+            -0.144,
+            -0.079
           ]
         },
         {
@@ -21353,7 +21761,41 @@
           "values": [
             110.1,
             -0.01,
-            -0.009
+            -0.009,
+            -0.016,
+            -0.011,
+            -0.013,
+            0.003,
+            -0.024,
+            -0.007,
+            -0.001,
+            0.013,
+            0.003,
+            -0.053,
+            0.003,
+            -0.053,
+            -0.004,
+            0.005,
+            -0.019,
+            0.0,
+            0.013,
+            0.01,
+            -0.071,
+            -0.076,
+            -0.071,
+            -0.076,
+            -0.008,
+            0.041,
+            -0.017,
+            0.008,
+            -0.021,
+            -0.007,
+            -0.116,
+            -0.116,
+            -0.128,
+            -0.041,
+            -0.014,
+            -0.066
           ]
         },
         {
@@ -21361,7 +21803,41 @@
           "values": [
             111.5,
             0.008,
-            0.011
+            0.011,
+            0.016,
+            -0.005,
+            0.0,
+            0.005,
+            0.003,
+            -0.007,
+            -0.001,
+            0.017,
+            0.049,
+            0.044,
+            0.049,
+            0.044,
+            0.006,
+            0.007,
+            -0.005,
+            -0.001,
+            0.017,
+            0.015,
+            0.082,
+            -0.053,
+            0.082,
+            -0.053,
+            0.001,
+            0.033,
+            -0.006,
+            0.006,
+            -0.005,
+            -0.007,
+            0.005,
+            -0.102,
+            0.039,
+            -0.028,
+            0.145,
+            -0.032
           ]
         },
         {
@@ -21369,7 +21845,41 @@
           "values": [
             111.2,
             -0.003,
-            -0.001
+            -0.001,
+            0.001,
+            -0.004,
+            -0.005,
+            -0.007,
+            -0.007,
+            -0.021,
+            -0.003,
+            0.007,
+            0.017,
+            0.055,
+            0.017,
+            0.055,
+            -0.007,
+            0.005,
+            -0.02,
+            -0.003,
+            0.007,
+            0.013,
+            0.051,
+            -0.037,
+            0.051,
+            -0.037,
+            -0.079,
+            0.017,
+            -0.007,
+            0.004,
+            -0.014,
+            -0.008,
+            -0.001,
+            -0.087,
+            0.005,
+            -0.023,
+            0.107,
+            -0.011
           ]
         },
         {
@@ -21377,7 +21887,41 @@
           "values": [
             112.1,
             0.006,
-            0.009
+            0.009,
+            0.001,
+            -0.003,
+            0.008,
+            0.003,
+            0.013,
+            0.0,
+            0.002,
+            0.008,
+            0.003,
+            0.044,
+            0.003,
+            0.044,
+            -0.003,
+            0.004,
+            -0.011,
+            -0.004,
+            0.007,
+            0.012,
+            0.008,
+            -0.031,
+            0.008,
+            -0.031,
+            -0.053,
+            0.008,
+            -0.07,
+            -0.006,
+            0.008,
+            -0.006,
+            0.013,
+            -0.074,
+            -0.047,
+            -0.026,
+            0.032,
+            -0.005
           ]
         },
         {
@@ -21385,7 +21929,41 @@
           "values": [
             112.4,
             0.0,
-            0.021
+            0.021,
+            0.036,
+            0.0,
+            0.0,
+            0.005,
+            -0.001,
+            -0.003,
+            0.0,
+            0.013,
+            0.0,
+            0.091,
+            0.0,
+            0.091,
+            0.016,
+            0.005,
+            0.016,
+            -0.001,
+            0.015,
+            0.01,
+            0.148,
+            -0.018,
+            0.148,
+            -0.018,
+            0.012,
+            0.006,
+            -0.066,
+            -0.012,
+            0.036,
+            0.001,
+            0.06,
+            -0.058,
+            -0.001,
+            -0.033,
+            0.31,
+            0.018
           ]
         },
         {
@@ -21393,7 +21971,41 @@
           "values": [
             113.5,
             0.008,
-            0.041
+            0.041,
+            0.042,
+            0.005,
+            0.0,
+            0.012,
+            -0.002,
+            0.003,
+            0.004,
+            0.023,
+            0.066,
+            0.206,
+            0.066,
+            0.206,
+            0.013,
+            0.005,
+            0.006,
+            0.0,
+            0.023,
+            0.012,
+            0.199,
+            0.005,
+            0.199,
+            0.005,
+            -0.032,
+            0.002,
+            -0.048,
+            -0.016,
+            0.023,
+            0.003,
+            0.253,
+            -0.023,
+            -0.031,
+            -0.033,
+            0.303,
+            0.045
           ]
         },
         {
@@ -21401,7 +22013,41 @@
           "values": [
             112.9,
             -0.005,
-            0.028
+            0.028,
+            0.014,
+            0.006,
+            0.001,
+            0.011,
+            0.001,
+            0.001,
+            0.001,
+            0.022,
+            -0.029,
+            0.121,
+            -0.029,
+            0.121,
+            0.001,
+            0.005,
+            -0.015,
+            -0.002,
+            0.019,
+            0.012,
+            0.078,
+            0.012,
+            0.078,
+            0.012,
+            -0.044,
+            -0.003,
+            -0.085,
+            -0.023,
+            0.004,
+            0.003,
+            0.224,
+            -0.001,
+            -0.128,
+            -0.042,
+            0.09,
+            0.049
           ]
         },
         {
@@ -21409,7 +22055,41 @@
           "values": [
             114.4,
             0.012,
-            0.056
+            0.056,
+            0.068,
+            0.011,
+            0.001,
+            0.019,
+            0.001,
+            0.018,
+            0.002,
+            0.022,
+            0.049,
+            0.25,
+            0.049,
+            0.25,
+            0.027,
+            0.007,
+            0.031,
+            0.001,
+            0.022,
+            0.013,
+            0.3,
+            0.033,
+            0.3,
+            0.033,
+            0.084,
+            0.001,
+            -0.028,
+            -0.021,
+            0.035,
+            0.006,
+            0.625,
+            0.041,
+            0.049,
+            -0.034,
+            0.237,
+            0.064
           ]
         },
         {
@@ -21417,7 +22097,41 @@
           "values": [
             112.1,
             -0.016,
-            0.027
+            0.027,
+            null,
+            null,
+            -0.007,
+            0.004,
+            -0.009,
+            0.0,
+            -0.005,
+            0.008,
+            -0.068,
+            0.122,
+            -0.068,
+            0.122,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
           ]
         },
         {
@@ -21425,7 +22139,41 @@
           "values": [
             111.4,
             -0.005,
-            0.009
+            0.009,
+            0.009,
+            0.012,
+            -0.007,
+            -0.015,
+            -0.009,
+            -0.029,
+            -0.003,
+            -0.001,
+            0.019,
+            0.117,
+            0.019,
+            0.117,
+            -0.015,
+            -0.009,
+            -0.03,
+            -0.021,
+            0.0,
+            0.004,
+            0.117,
+            0.102,
+            0.117,
+            0.102,
+            -0.204,
+            -0.122,
+            -0.015,
+            -0.027,
+            -0.004,
+            -0.005,
+            0.02,
+            0.046,
+            -0.035,
+            -0.033,
+            0.259,
+            0.212
           ]
         },
         {
@@ -21433,7 +22181,41 @@
           "values": [
             113.6,
             0.012,
-            0.031
+            0.031,
+            0.038,
+            0.022,
+            0.009,
+            0.002,
+            0.014,
+            -0.002,
+            0.004,
+            0.008,
+            0.016,
+            0.13,
+            0.016,
+            0.13,
+            0.007,
+            -0.004,
+            0.006,
+            -0.011,
+            0.007,
+            0.004,
+            0.169,
+            0.127,
+            0.169,
+            0.127,
+            -0.048,
+            -0.062,
+            -0.039,
+            -0.031,
+            0.024,
+            0.0,
+            0.166,
+            0.09,
+            0.018,
+            -0.015,
+            0.246,
+            0.226
           ]
         },
         {
@@ -21441,7 +22223,41 @@
           "values": [
             113.7,
             0.001,
-            0.021
+            0.021,
+            0.021,
+            0.022,
+            0.006,
+            0.0,
+            0.011,
+            0.0,
+            -0.001,
+            -0.001,
+            -0.015,
+            0.117,
+            -0.015,
+            0.117,
+            0.002,
+            -0.003,
+            0.004,
+            -0.008,
+            0.0,
+            0.003,
+            0.106,
+            0.121,
+            0.106,
+            0.121,
+            -0.035,
+            -0.055,
+            -0.037,
+            -0.033,
+            0.018,
+            0.005,
+            0.111,
+            0.095,
+            -0.03,
+            -0.018,
+            0.17,
+            0.212
           ]
         },
         {
@@ -21449,7 +22265,41 @@
           "values": [
             114.0,
             0.001,
-            0.026
+            0.026,
+            0.015,
+            0.02,
+            0.003,
+            0.012,
+            0.005,
+            0.026,
+            0.002,
+            -0.001,
+            -0.012,
+            0.085,
+            -0.012,
+            0.085,
+            0.006,
+            0.0,
+            0.014,
+            -0.002,
+            -0.003,
+            0.002,
+            0.035,
+            0.104,
+            0.035,
+            0.104,
+            -0.072,
+            -0.059,
+            -0.029,
+            -0.032,
+            0.036,
+            0.012,
+            0.156,
+            0.108,
+            0.005,
+            -0.014,
+            -0.028,
+            0.16
           ]
         }
       ],
@@ -21477,7 +22327,7 @@
           "varMag": 0.1,
           "pos": true,
           "varColor": "#1e5b4f",
-          "varLabel": "Var. mensual",
+          "varLabel": "Var. mensual desest.",
           "maxFmt": "114.4",
           "maxRaw": 114.4,
           "maxP": "Dic 25",
@@ -21531,17 +22381,17 @@
           ],
           "semaforo": "bueno",
           "yoyText": "+2.6%",
-          "yoyLabel": "Var. anual"
+          "yoyLabel": "Var. anual desest."
         },
         "yoy": {
           "mag": 2.6,
           "pos": true,
           "text": "+2.6%",
-          "label": "Var. anual"
+          "label": "Var. anual desest."
         },
         "resumen": [
-          "En mayo de 2026, el consumo privado se ubicó en 114.0 puntos (índice base 2018=100). El valor de var. mensual fue de +0.1% frente al mes previo.",
-          "La var. anual se situó en +2.6%, lo que refleja la comparación contra mayo de 2026 del año previo.",
+          "En mayo de 2026, el consumo privado se ubicó en 114.0 puntos (índice base 2018=100). El valor de var. mensual desest. fue de +0.1% frente al mes previo.",
+          "La var. anual desest. se situó en +2.6%, lo que refleja la comparación contra mayo de 2026 del año previo.",
           "En la serie mostrada, el indicador oscila entre un máximo de 114.4 puntos (diciembre de 2025) y un mínimo de 108.6 puntos (enero de 2025). El último dato se ubica dentro del rango observado en el periodo mostrado.",
           "La variación se clasifica como favorable según la lectura económica del indicador."
         ]
@@ -21561,13 +22411,41 @@
       "nota_disponible": false,
       "nota_causa": "Falta plantilla aprobada",
       "url_nota_individual": null,
-      "url_fuente_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_08.pdf",
+      "url_fuente_oficial": "https://www.inegi.org.mx/programas/imcp/",
       "fecha_ultima_publicacion": "05 de agosto de 2026",
       "regla_publicacion": null,
       "periodo_boletin": "May 26",
       "numero_boletin": "478/26",
       "tipo_documento": "PDF",
       "producto_boletin": "Indicador Mensual del Consumo Privado",
+      "sigla": "IMCP",
+      "windows": [
+        {
+          "id": "3m",
+          "label": "3 meses",
+          "count": 3
+        },
+        {
+          "id": "6m",
+          "label": "6 meses",
+          "count": 6
+        },
+        {
+          "id": "1a",
+          "label": "1 año",
+          "count": 12
+        },
+        {
+          "id": "5a",
+          "label": "5 años",
+          "count": 60
+        },
+        {
+          "id": "max",
+          "label": "Máximo",
+          "count": null
+        }
+      ],
       "boletin_validado": true
     },
     "IED": {
@@ -47393,9 +48271,15 @@
           "values": [
             16.966
           ]
+        },
+        {
+          "period": "2026-08-27",
+          "values": [
+            16.9712
+          ]
         }
       ],
-      "fecha_ultima_observacion": "2026-08-26",
+      "fecha_ultima_observacion": "2026-08-27",
       "url_fuente_oficial": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
       "fecha_ultima_publicacion": null,
       "regla_publicacion": null

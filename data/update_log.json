@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-08-27T18:15:40+00:00",
+  "started_at": "2026-08-27T22:21:17+00:00",
   "mode": "offline",
   "network_calls": false,
   "warnings": [],
@@ -12,6 +12,7 @@
     "columnas override DESOCUP: 6 columnas",
     "columnas override INPC: 18 columnas",
     "columnas override INPP: 15 columnas",
+    "columnas override CONSUMO: 37 columnas",
     "columnas override EMIM: 18 columnas",
     "columnas override BCMM: 29 columnas",
     "pibsec: variaciones calculadas desde niveles (876 celdas)",
@@ -52,10 +53,10 @@
     "boletín: BCMM descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_08.pdf",
     "frescura: BCMM -> ACTUALIZADO",
     "frescura: INPP -> ACTUALIZADO",
-    "meta: last_update_ct=2026-08-27T12:16:37-06:00"
+    "meta: last_update_ct=2026-08-27T16:22:12-06:00"
   ],
   "consultas": [],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-08-27T18:16:38+00:00"
+  "finished_at": "2026-08-27T22:22:13+00:00"
 }

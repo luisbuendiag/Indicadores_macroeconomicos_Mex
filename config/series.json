@@ -429,7 +429,7 @@
     "CONSUMO": {
       "serie": null,
       "confirmar": true,
-      "nota": "Búsqueda en el catálogo del BIE arrojó 'Bad Request'/'Page Not Found' con los términos habituales (consumo privado, gasto de consumo). Se requiere identificar la serie oficial correcta."
+      "nota": "Auditoría BIE/BISE (agosto 2026): el catálogo público solo expone la serie antigua 'Consumo Privado en el Mercado Interior' base 2013 (p.ej. 497619, 497618, 509019, 509016, 509116, 509117, 497617, 509018), con última observación 2023, por lo que no coincide con el IMCP base 2018=100 vigente. El INEGI no publica aún IDs de BIE abiertos para el nuevo IMCP; el dashboard consume los boletines oficiales de prensa (imcpmi{year}_{mm}.pdf) como fuente de verdad."
     },
     "DESOCUP": [
       {

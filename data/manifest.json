@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-27T18:16:38+00:00",
+  "generated_at": "2026-08-27T22:22:13+00:00",
   "indicadores": [
     {
       "indicador": "Estimación Oportuna del Producto Interno Bruto Trimestral",
@@ -194,20 +194,20 @@
       "observaciones": ""
     },
     {
-      "indicador": "Indicador mensual del consumo privado",
+      "indicador": "Indicador Mensual del Consumo Privado",
       "clave": "CONSUMO",
       "clasificacion": "principal",
       "fuente": "INEGI",
-      "serie": "CONSUMO_pdf",
+      "serie": "imcpmi{year}_{mm}",
       "frecuencia": "Mensual",
-      "unidad": "Índice base 2018=100",
-      "ajuste_estacional": "Serie desestacionalizada; índice y variaciones oficiales del boletín del INEGI",
+      "unidad": "Índice base 2018=100 / Porcentaje",
+      "ajuste_estacional": "Cifras desestacionalizadas y originales",
       "ultima_observacion": "May 26",
       "periodo_referencia": "May 26",
       "fecha_publicacion": "5 de agosto de 2026",
       "fecha_consulta": "2026-08-27",
       "fecha_actualizacion_archivo": "2026-08-27",
-      "metodo_actualizacion": "INEGI boletín PDF",
+      "metodo_actualizacion": "INEGI boletín oficial (PDF)",
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
       "requiere_token": "INEGI",

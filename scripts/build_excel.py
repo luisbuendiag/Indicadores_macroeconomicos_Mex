@@ -791,6 +791,7 @@ def add_desocup_sheets(wb, payload):
 
 # Hojas de datos a crear (o recrear) para indicadores principales.
 NEW_SHEETS = {
+    "CONSUMO": "Consumo Privado",
     "PIBSEC": "PIB Sectorial",
     "IMFBCF": "Formación bruta capital fijo",
     "IOAE": "IOAE",

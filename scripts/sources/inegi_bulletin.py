@@ -604,6 +604,123 @@ def _parse_imcp_imfbcf(kind: str, pdf_bytes: bytes, pub_date: tuple[int, int, in
 
     out["mensual"] = [{"ym": ym, "value": mensual_value / 100.0, "period": period}]
     out["anual"] = [{"ym": ym, "value": anual_value / 100.0, "period": period}]
+    if kind == "CONSUMO":
+        out.update(_parse_consumo_components(pdf_bytes, ym, period))
+    return out
+
+
+def _parse_consumo_components(pdf_bytes: bytes, ym: str, period: str) -> dict[str, list[dict]]:
+    """Extrae las variaciones mensuales y anuales por componente del IMCP.
+
+    Página 2 (índice 1): Cuadro 1 con cifras desestacionalizadas.
+    Página 3 (índice 2): Cuadro 2 con cifras originales (anual y acumulado ene-mes).
+    """
+    out: dict[str, list[dict]] = {}
+    text2 = _pdf_page_text(pdf_bytes, 1)
+    text3 = _pdf_page_text(pdf_bytes, 2)
+
+    def _value(v):
+        if v is None:
+            return []
+        return [{"ym": ym, "value": v, "period": period}]
+
+    def _extract_rows(text: str) -> list[tuple[str, float | None, float | None]]:
+        rows: list[tuple[str, float | None, float | None]] = []
+        for line in (text or "").splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            m = re.match(r"^(.+?)\s+(-?\d+\.\d+|NA|−)\s+(-?\d+\.\d+|NA|−)$", line)
+            if not m:
+                continue
+            label = re.sub(r"\d+/$", "", m.group(1).strip()).strip()
+            v1 = _parse_pct(m.group(2))
+            v2 = _parse_pct(m.group(3))
+            rows.append((label, v1, v2))
+        return rows
+
+    p2 = _extract_rows(text2)
+    last_origin = None
+    for label, v_mensual, v_anual in p2:
+        if label in ("Consumo privado",):
+            out.setdefault("total_mensual", _value(v_mensual / 100.0 if v_mensual is not None else None))
+            out.setdefault("total_anual_desest", _value(v_anual / 100.0 if v_anual is not None else None))
+            last_origin = "total"
+        elif label == "Nacional":
+            out.setdefault("nacional_mensual", _value(v_mensual / 100.0 if v_mensual is not None else None))
+            out.setdefault("nacional_anual_desest", _value(v_anual / 100.0 if v_anual is not None else None))
+            last_origin = "nacional"
+        elif label == "Importado":
+            out.setdefault("importado_mensual", _value(v_mensual / 100.0 if v_mensual is not None else None))
+            out.setdefault("importado_anual_desest", _value(v_anual / 100.0 if v_anual is not None else None))
+            last_origin = "importado"
+        elif label == "Bienes":
+            if last_origin == "nacional":
+                out.setdefault("bienes_mensual", _value(v_mensual / 100.0 if v_mensual is not None else None))
+                out.setdefault("bienes_anual_desest", _value(v_anual / 100.0 if v_anual is not None else None))
+            elif last_origin == "importado":
+                out.setdefault("bienes_importados_mensual", _value(v_mensual / 100.0 if v_mensual is not None else None))
+                out.setdefault("bienes_importados_anual_desest", _value(v_anual / 100.0 if v_anual is not None else None))
+        elif label == "Servicios" and last_origin == "nacional":
+            out.setdefault("servicios_mensual", _value(v_mensual / 100.0 if v_mensual is not None else None))
+            out.setdefault("servicios_anual_desest", _value(v_anual / 100.0 if v_anual is not None else None))
+
+    p3 = _extract_rows(text3)
+    last_origin = None
+    last_bienes_origin = None
+    for label, v_anual, v_acum in p3:
+        v_anual_frac = v_anual / 100.0 if v_anual is not None else None
+        v_acum_frac = v_acum / 100.0 if v_acum is not None else None
+        if label == "Consumo privado":
+            out.setdefault("total_anual_original", _value(v_anual_frac))
+            out.setdefault("total_acumulado", _value(v_acum_frac))
+            last_origin = "total"
+            last_bienes_origin = None
+        elif label == "Nacional":
+            out.setdefault("nacional_anual_original", _value(v_anual_frac))
+            out.setdefault("nacional_acumulado", _value(v_acum_frac))
+            last_origin = "nacional"
+            last_bienes_origin = None
+        elif label == "Bienes":
+            if last_origin == "nacional":
+                out.setdefault("bienes_anual_original", _value(v_anual_frac))
+                out.setdefault("bienes_acumulado", _value(v_acum_frac))
+                last_bienes_origin = "nacional"
+            elif last_origin == "importado":
+                out.setdefault("bienes_importados_anual_original", _value(v_anual_frac))
+                out.setdefault("bienes_importados_acumulado", _value(v_acum_frac))
+                last_bienes_origin = "importado"
+        elif label == "Servicios" and last_origin == "nacional":
+            out.setdefault("servicios_anual_original", _value(v_anual_frac))
+            out.setdefault("servicios_acumulado", _value(v_acum_frac))
+            last_bienes_origin = None
+        elif label == "Importado":
+            out.setdefault("importado_anual_original", _value(v_anual_frac))
+            out.setdefault("importado_acumulado", _value(v_acum_frac))
+            last_origin = "importado"
+            last_bienes_origin = None
+        elif label == "Duradero":
+            if last_bienes_origin == "nacional":
+                out.setdefault("duradero_anual_original", _value(v_anual_frac))
+                out.setdefault("duradero_acumulado", _value(v_acum_frac))
+            elif last_bienes_origin == "importado":
+                out.setdefault("duradero_importado_anual_original", _value(v_anual_frac))
+                out.setdefault("duradero_importado_acumulado", _value(v_acum_frac))
+        elif label == "Semi duradero":
+            if last_bienes_origin == "nacional":
+                out.setdefault("semi_duradero_anual_original", _value(v_anual_frac))
+                out.setdefault("semi_duradero_acumulado", _value(v_acum_frac))
+            elif last_bienes_origin == "importado":
+                out.setdefault("semi_duradero_importado_anual_original", _value(v_anual_frac))
+                out.setdefault("semi_duradero_importado_acumulado", _value(v_acum_frac))
+        elif label == "No duradero":
+            if last_bienes_origin == "nacional":
+                out.setdefault("no_duradero_anual_original", _value(v_anual_frac))
+                out.setdefault("no_duradero_acumulado", _value(v_acum_frac))
+            elif last_bienes_origin == "importado":
+                out.setdefault("no_duradero_importado_anual_original", _value(v_anual_frac))
+                out.setdefault("no_duradero_importado_acumulado", _value(v_acum_frac))
+
     return out
 
 
@@ -1618,7 +1735,56 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
                         results.append(("IMAI", sub, col, o, url))
                         seen.add(("IMAI", col, o["ym"]))
 
-        elif kind in ("CONSUMO", "IMFBCF"):
+        elif kind == "CONSUMO":
+            parsed = _parse_imcp_imfbcf(kind, pdf, pub_date)
+            if not parsed:
+                continue
+            consumo_col_map = {
+                "index": 0,
+                "mensual": 1,
+                "anual": 2,
+                "total_anual_original": 3,
+                "total_acumulado": 4,
+                "nacional_mensual": 5,
+                "nacional_anual_desest": 6,
+                "bienes_mensual": 7,
+                "bienes_anual_desest": 8,
+                "servicios_mensual": 9,
+                "servicios_anual_desest": 10,
+                "importado_mensual": 11,
+                "importado_anual_desest": 12,
+                "bienes_importados_mensual": 13,
+                "bienes_importados_anual_desest": 14,
+                "nacional_anual_original": 15,
+                "nacional_acumulado": 16,
+                "bienes_anual_original": 17,
+                "bienes_acumulado": 18,
+                "servicios_anual_original": 19,
+                "servicios_acumulado": 20,
+                "importado_anual_original": 21,
+                "importado_acumulado": 22,
+                "bienes_importados_anual_original": 23,
+                "bienes_importados_acumulado": 24,
+                "duradero_anual_original": 25,
+                "duradero_acumulado": 26,
+                "semi_duradero_anual_original": 27,
+                "semi_duradero_acumulado": 28,
+                "no_duradero_anual_original": 29,
+                "no_duradero_acumulado": 30,
+                "duradero_importado_anual_original": 31,
+                "duradero_importado_acumulado": 32,
+                "semi_duradero_importado_anual_original": 33,
+                "semi_duradero_importado_acumulado": 34,
+                "no_duradero_importado_anual_original": 35,
+                "no_duradero_importado_acumulado": 36,
+            }
+            for sub, col in consumo_col_map.items():
+                for o in parsed.get(sub, []):
+                    if ("CONSUMO", col, o["ym"]) not in seen:
+                        results.append(("CONSUMO", sub, col, o, url))
+                        seen.add(("CONSUMO", col, o["ym"]))
+
+        elif kind == "IMFBCF":
             parsed = _parse_imcp_imfbcf(kind, pdf, pub_date)
             if not parsed:
                 continue
