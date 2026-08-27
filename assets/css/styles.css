@@ -219,7 +219,7 @@ td.cal-cell.empty { background: var(--soft); }
 
 .ficha-head { display: grid; grid-template-columns: minmax(0, 1.95fr) minmax(0, 1fr); gap: 18px; align-items: start; border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-bottom: 12px; }
 .fh-sigla { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); font-weight: 600; line-height: 1.2; }
-.fh-name { font-family: var(--serif); font-size: 23px; font-weight: 700; color: var(--dkgreen); margin: 2px 0 6px; line-height: 1.12; }
+.fh-name { font-family: var(--serif); font-size: 23px; font-weight: 700; color: var(--dkgreen); margin: 2px 0 6px; line-height: 1.15; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-clamp: 2; }
 .fh-desc { font-size: 13px; color: #5c5f5a; line-height: 1.45; margin-bottom: 6px; }
 .fh-meta { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
 .fh-item { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 6px 10px; border-top: 1px solid var(--line-soft); font-size: 12.5px; min-height: 0; }
