@@ -384,26 +384,41 @@ function sparkline(k) {
 }
 
 function panoramaCard(ind) {
+  const cfg = KPICFG[ind.key];
   const metrics = ind.metrics || {};
   const k = metrics.kpi || computeKPI(ind);
+  const stateBadge = estadoBadge(ind);
+  const sigla = SIGLA[ind.key] || ind.key;
+  const fullName = ind.nombre || LABELS[ind.key];
+  const period = k ? k.ultimoP : (ind.last_observation || "—");
+
+  const top = el("div", { class: "mc-top" },
+    el("div", { class: "mc-title" }, sigla),
+    stateBadge
+  );
+  const name = el("div", { class: "mc-name" }, fullName);
+  const eyebrow = el("div", { class: "mc-eyebrow" }, `${sigla} · ${period}`);
+
   if (!k) {
     return el("button", { class: "matrix-card na", type: "button", onclick: () => setView(ind.key) },
-      el("div", { class: "mc-top" }, el("div", { class: "mc-name" }, LABELS[ind.key]), estadoBadge(ind)),
-      el("div", { class: "mc-sigla" }, SIGLA[ind.key]),
-      el("div", { class: "mc-value muted" }, "Sin dato disponible"),
+      top, name, eyebrow,
+      el("div", { class: "mc-value muted" }, "Sin dato"),
+      el("div", { class: "mc-metric" }, "—"),
+      el("div", { class: "spark empty" }),
       el("div", { class: "mc-sub" }, "Se activará al cargar la fuente oficial."));
   }
+
   const yoy = metrics.yoy || annualVar(ind, k);
-  const cfg = KPICFG[ind.key];
   const deltaCls = k.assessment === "favorable" ? "up" : (k.assessment === "adverso" ? "down" : "flat");
+  const showYoy = yoy && (yoy.mag === null || Math.abs((yoy.mag ?? 0) - (k.ultimoRaw ?? 0)) > 1e-9);
   const card = el("button", { class: "matrix-card", type: "button", onclick: () => setView(ind.key) },
-    el("div", { class: "mc-top" }, el("div", { class: "mc-name" }, LABELS[ind.key]), estadoBadge(ind)),
-    el("div", { class: "mc-sigla" }, `${SIGLA[ind.key]} · ${k.ultimoP}`),
+    top, name, eyebrow,
     el("div", { class: "mc-value" }, k.ultimoFmt),
+    el("div", { class: "mc-metric" }, cfg.mainLabel || "Cifra principal"),
     sparkline(k),
     el("div", { class: "mc-deltas" },
-      el("div", { class: `mc-delta ${deltaCls}` }, el("span", { class: "d-val" }, k.varText), el("span", { class: "d-lbl" }, cfg.varLabel)),
-      yoy ? el("div", { class: "mc-delta neutral" }, el("span", { class: "d-val" }, yoy.text), el("span", { class: "d-lbl" }, yoy.label || "Var. anual")) : null),
+      el("div", { class: `mc-delta ${deltaCls}` }, el("span", { class: "d-val" }, k.varText), el("span", { class: "d-lbl" }, k.varLabel || cfg.varLabel)),
+      showYoy ? el("div", { class: "mc-delta neutral" }, el("span", { class: "d-val" }, yoy.text), el("span", { class: "d-lbl" }, yoy.label || "Var. anual")) : null),
   );
   return card;
 }
@@ -462,7 +477,7 @@ function renderPanorama() {
     sec.append(el("div", { class: "alert-discreet" }, el("span", { class: "ad-dot" }), `Estado de los datos: ${parts.join("; ")}. Detalle en “Fuentes y metodología”.`));
   }
 
-  // Matriz de 11 indicadores.
+  // Matriz de 12 indicadores principales.
   const grid = el("div", { class: "matrix" });
   principalInds().forEach((ind) => grid.append(panoramaCard(ind)));
   sec.append(grid);
