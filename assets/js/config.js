@@ -1,5 +1,5 @@
 // Configuración de presentación (paleta, indicadores, navegación). Módulo ES.
-// V3: navegación por indicador, 11 principales + complementarios (entorno financiero).
+// V3: navegación por indicador, 12 principales + complementarios (entorno financiero).
 
 export const COLORS = {
   GREEN: "#1e5b4f",
@@ -13,7 +13,7 @@ export const COLORS = {
   INK: "#161a1d",
 };
 
-// Los 11 indicadores principales (definición oficial de esta fase).
+// Los 12 indicadores principales (definición oficial de esta fase).
 export const PRINCIPAL = ["PIB", "PIBSEC", "IGAE", "IMAI", "BCMM", "DESOCUP", "INPC", "INPP", "CONSUMO", "IMFBCF", "IOAE", "EMIM"];
 
 // Indicadores complementarios (no compiten en la navegación principal).

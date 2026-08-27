@@ -28,8 +28,8 @@ No backend at runtime — the app reads `data/*.json`. Fully testable locally wi
    ```
 
 ## Key things to verify (V3 spec)
-- **Exactly 11 principal indicators** on the panorama (PIB, PIBSEC, IGAE, IMAI, BALANZA,
-  DESOCUP, INPC, CONSUMO, IMFBCF, IOAE, EMIM). Source of truth: `assets/js/config.js`
+- **Exactly 12 principal indicators** on the panorama (PIB, PIBSEC, IGAE, IMAI, BALANZA,
+  DESOCUP, INPC, INPP, CONSUMO, IMFBCF, IOAE, EMIM). Source of truth: `assets/js/config.js`
   `PRINCIPAL`. Complementarios (IED, TIPOCAMBIO, TASA, RESERVAS) must appear ONLY in
   "Entorno financiero", never in the panorama.
 - **Honest states** per indicator: badges "Dato de respaldo" / "En revisión" /
