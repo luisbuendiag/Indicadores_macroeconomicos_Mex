@@ -435,6 +435,8 @@ function coyunturaBullets() {
   if (hasData(bal)) { const k = computeKPI(bal); if (k) bullets.push(`La balanza comercial cerró ${k.ultimoP} con un ${k.ultimoRaw >= 0 ? "superávit" : "déficit"} de ${fmtVal(Math.abs(k.ultimoRaw), "usd")} mdd (saldo = exportaciones − importaciones); su variación mensual del saldo fue de ${k.varText} y la anual de ${k.yoyText}.`); }
   const inpc = getInd("INPC");
   if (hasData(inpc)) { const k = computeKPI(inpc); if (k) bullets.push(`La inflación general anual fue de ${fmtVal(k.ultimoRaw, "pct-raw")} en ${k.ultimoP} (variación de ${k.varText} frente al mes previo); su clasificación depende del contexto de política monetaria, no del signo por sí solo.`); }
+  const inpp = getInd("INPP");
+  if (hasData(inpp)) { const k = computeKPI(inpp); if (k) bullets.push(`La variación anual del Índice Nacional de Precios Productor fue de ${fmtVal(k.ultimoRaw, "pct-raw")} en ${k.ultimoP} (${k.varText} mensual); refleja la evolución de los precios de producción, distinta a la inflación al consumidor.`); }
   const des = getInd("DESOCUP");
   if (hasData(des)) { const k = computeKPI(des); if (k) bullets.push(`La tasa de desocupación fue de ${k.ultimoFmt} de la PEA en ${k.ultimoP} (${k.varText} mensual; ${k.yoyText} anual).`); }
   return bullets;
@@ -1020,14 +1022,15 @@ function breakdown(ind, k) {
     if (ind.key === "PIBSEC") return [["Primarias", last.values[0], "num"], ["Secundarias", last.values[1], "num"], ["Terciarias", last.values[2], "num"]];
     if (ind.key === "IGAE") return null;
     if (ind.key === "IED") return [["Nuevas inversiones", last.values[1], "usd"], ["Reinversión de utilidades", last.values[2], "usd"], ["Cuentas entre compañías", last.values[3], "usd"]];
-    if (ind.key === "INPC") return [["General", last.values[0], "pct-raw"], ["Subyacente", last.values[1], "pct-raw"], ["No subyacente", last.values[2], "pct-raw"]];
+    if (ind.key === "INPC") return [["General", last.values[2], "pct-raw"], ["Subyacente", last.values[5], "pct-raw"], ["No subyacente", last.values[11], "pct-raw"]];
+    if (ind.key === "INPP") return [["INPP con petróleo", last.values[2], "pct-raw"], ["INPP sin petróleo", last.values[6], "pct-raw"], ["Bienes intermedios", last.values[8], "pct-raw"]];
     if (ind.key === "BALANZA") return [["Exportaciones", last.values[0], "usd"], ["Importaciones", last.values[1], "usd"], ["Saldo (X − M)", (last.values[0] != null && last.values[1] != null) ? last.values[0] - last.values[1] : null, "usd"]];
     return null;
   };
   const rows = rowsFor();
   if (!rows) return null;
   const box = el("div", { class: "ficha-block" });
-  box.append(el("h3", { class: "block-sub" }, ind.key === "BALANZA" ? "Componentes del saldo" : ind.key === "INPC" ? "Desagregación de la inflación" : "Desempeño por componentes"));
+  box.append(el("h3", { class: "block-sub" }, ind.key === "BALANZA" ? "Componentes del saldo" : ind.key === "INPC" ? "Desagregación de la inflación" : ind.key === "INPP" ? "Desagregación de precios productor" : "Desempeño por componentes"));
   const g = el("div", { class: "breakdown" });
   rows.forEach(([lbl, val, fmt]) => g.append(el("div", { class: "bd-item" }, el("div", { class: "bd-lbl" }, lbl), el("div", { class: "bd-val" }, fmtVal(val, fmt)))));
   box.append(g);
@@ -1250,7 +1253,7 @@ const DIA_CORTOS = ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"];
 function calColor(clave) {
   const map = {
     PIB: "#002f2a", PIBSEC: "#1e5b4f", IGAE: "#0f7b6c", IMAI: "#a57f2c",
-    BALANZA: "#9b2247", DESOCUP: "#611232", INPC: "#8a6d1f", CONSUMO: "#2d6a9f",
+    BALANZA: "#9b2247", DESOCUP: "#611232", INPC: "#8a6d1f", INPP: "#6b4f1c", CONSUMO: "#2d6a9f",
     IMFBCF: "#5a3e8e", IOAE: "#3a7d44", EMIM: "#b5651d", EMOE: "#4a7c59", BCMM: "#8b4c6b",
   };
   return map[clave] || "#5c5f6a";
@@ -1431,6 +1434,7 @@ function renderMethodology() {
       el("li", {}, el("span", { class: "mark" }), el("span", {}, "Series originales (sin ajuste estacional) salvo indicación en contrario; las variaciones mensuales de series originales pueden incorporar efectos de calendario.")),
       el("li", {}, el("span", { class: "mark" }), el("span", {}, "El saldo de la balanza comercial es exportaciones menos importaciones; la “variación del saldo” compara ese saldo con el mes previo y no debe confundirse con el nivel del saldo.")),
       el("li", {}, el("span", { class: "mark" }), el("span", {}, "La inflación se reporta como variación anual del INPC; una reducción no se clasifica automáticamente como “mejora” sin considerar el objetivo del Banco de México.")),
+      el("li", {}, el("span", { class: "mark" }), el("span", {}, "El INPP mide precios de producción (con y sin petróleo), distinto al INPC que mide precios al consumidor; sus componentes reflejan presiones en distintas etapas de la cadena de valor.")),
       el("li", {}, el("span", { class: "mark" }), el("span", {}, "Cuando falta un token o una serie no está confirmada, se conserva el último dato validado y se señala el estado, sin presentarlo como actualización definitiva.")),
     )));
 }

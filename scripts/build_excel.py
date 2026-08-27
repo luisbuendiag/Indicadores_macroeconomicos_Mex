@@ -798,6 +798,7 @@ NEW_SHEETS = {
     "BCMM": "Balanza comercial",
     "IMAI": "IMAI",
     "INPC": "INPC",
+    "INPP": "INPP",
 }
 
 # Hojas heredadas del libro base que ya no corresponden al perfil V3.

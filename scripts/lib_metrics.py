@@ -79,7 +79,7 @@ def prose_val(key: str, v: float | int | None) -> str:
         return F._to_fixed(v, 1, 1) + " puntos"
     if key == "DESOCUP":
         return F._to_fixed(v, 1, 1) + "%"
-    if key in ("INPC", "TASA"):
+    if key in ("INPC", "INPP", "TASA"):
         return F._to_fixed(v, 1, 1) + "%"
     if key == "TIPOCAMBIO":
         return "$" + F._to_fixed(v, 2, 2)
@@ -341,7 +341,7 @@ def annual_var(ind: dict, kpi: dict, kpicfg: dict | None = None) -> dict[str, An
             "label": cfg.get("yoyLabel", "Var. anual"),
         }
 
-    if ind["key"] in ("INPC", "TASA", "DESOCUP", "IED", "BALANZA"):
+    if ind["key"] in ("INPC", "INPP", "TASA", "DESOCUP", "IED", "BALANZA"):
         return None
 
     vals = kpi["series"]
@@ -497,7 +497,8 @@ def analysis(ind: dict, kpi: dict, kpicfg: dict | None = None) -> list[str]:
             verb = "disminuyó"
         else:
             verb = "no cambió"
-        read = f"La inflación anual {verb} respecto del mes previo. Se ubicó {avg_phrase} ({prose_val(key, promedio)})."
+        noun = "La variación anual de precios productor" if key == "INPP" else "La inflación anual"
+        read = f"{noun} {verb} respecto del mes previo. Se ubicó {avg_phrase} ({prose_val(key, promedio)})."
     else:
         read = f"Este resultado refleja {trend}{prev_clause}, y deja al indicador {avg_phrase} de {prose_val(key, promedio)}."
 

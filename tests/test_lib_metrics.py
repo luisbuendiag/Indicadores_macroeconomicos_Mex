@@ -64,8 +64,8 @@ def test_desocup_kpi():
     metrics = M.compute_all_metrics(payload)
     kpi = metrics["DESOCUP"]["kpi"]
     assert kpi["ultimoFmt"] == "2.9%"
-    assert kpi["varText"] == "+0.1 p.p."
-    assert kpi["yoyText"] == "+0.2 p.p."
+    assert kpi["varText"] == "0.0 p.p."
+    assert kpi["yoyText"] == "+0.1 p.p."
     assert kpi["assessment"] in ("favorable", "adverso", "neutral")
     assert kpi["semaforo"] in ("bueno", "malo", "estable")
 

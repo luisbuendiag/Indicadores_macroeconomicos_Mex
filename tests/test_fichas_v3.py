@@ -57,11 +57,11 @@ def test_balance_saldo_vs_variacion_distinct():
     assert "Saldo (X − M)" in APP
 
 
-def test_exactly_eleven_principal_indicators():
+def test_exactly_twelve_principal_indicators():
     m = re.search(r"PRINCIPAL\s*=\s*\[(.*?)\]", CONFIG, re.S)
     assert m, "no se encontró PRINCIPAL"
     claves = re.findall(r'"([^"]+)"', m.group(1))
-    assert len(claves) == 11, claves
+    assert len(claves) == 12, claves
 
 
 def test_pib_prose_uses_percentage_not_billions_for_variations():

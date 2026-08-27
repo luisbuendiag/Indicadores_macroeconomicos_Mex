@@ -8,6 +8,7 @@
     "BCMM",
     "DESOCUP",
     "INPC",
+    "INPP",
     "CONSUMO",
     "IMFBCF",
     "IOAE",
@@ -233,6 +234,49 @@
         "metodo": "INEGI BIE + Tabulado INPC + Boletines INPC",
         "serie": "334360, 334452, 865548-865559",
         "link": "https://www.inegi.org.mx/app/tabulados/inp/default.aspx?nc=ca55_2018a"
+      },
+      "windows": [
+        {"id": "3m", "label": "3 meses", "count": 3},
+        {"id": "6m", "label": "6 meses", "count": 6},
+        {"id": "1a", "label": "1 año", "count": 12},
+        {"id": "5a", "label": "5 años", "count": 60},
+        {"id": "max", "label": "Máximo", "count": null}
+      ]
+    },
+    "INPP": {
+      "requiere_token": "INEGI",
+      "serie_confirmada": true,
+      "clasificacion": "principal",
+      "nombre": "Índice Nacional de Precios Productor",
+      "sigla": "INPP",
+      "descripcion": "Mide la evolución de los precios de los bienes y servicios producidos en México. Incluye el índice total con y sin petróleo, bienes intermedios, actividades primarias y las variaciones anuales de subsectores representativos (agricultura, minería con petróleo, construcción, manufacturas y transportes).",
+      "frecuencia": "Mensual",
+      "unidad": "Índice base 2019=100 / Porcentaje",
+      "ajuste_estacional": "Cifras originales",
+      "grupo": "inpc",
+      "publicacion": "Aproximadamente 10 días después del cierre del mes",
+      "columns": [
+        {"label": "INPP con petróleo (índice)", "index": 0, "fmt": "idx"},
+        {"label": "INPP con petróleo var. mensual (%)", "index": 1, "fmt": "pct-raw"},
+        {"label": "INPP con petróleo var. anual (%)", "index": 2, "fmt": "pct-raw"},
+        {"label": "INPP con petróleo var. acumulada (%)", "index": 3, "fmt": "pct-raw"},
+        {"label": "INPP sin petróleo (índice)", "index": 4, "fmt": "idx"},
+        {"label": "INPP sin petróleo var. mensual (%)", "index": 5, "fmt": "pct-raw"},
+        {"label": "INPP sin petróleo var. anual (%)", "index": 6, "fmt": "pct-raw"},
+        {"label": "INPP sin petróleo var. acumulada (%)", "index": 7, "fmt": "pct-raw"},
+        {"label": "Bienes intermedios var. anual (%)", "index": 8, "fmt": "pct-raw"},
+        {"label": "Actividades primarias var. anual (%)", "index": 9, "fmt": "pct-raw"},
+        {"label": "Agricultura var. anual (%)", "index": 10, "fmt": "pct-raw"},
+        {"label": "Minería con petróleo var. anual (%)", "index": 11, "fmt": "pct-raw"},
+        {"label": "Construcción var. anual (%)", "index": 12, "fmt": "pct-raw"},
+        {"label": "Manufacturas var. anual (%)", "index": 13, "fmt": "pct-raw"},
+        {"label": "Transportes var. anual (%)", "index": 14, "fmt": "pct-raw"}
+      ],
+      "fuente": {
+        "nombre": "INEGI",
+        "metodo": "INEGI BIE API",
+        "serie": "910492, 910491, 910493, 1800001-1801009, 1700003",
+        "link": "https://www.inegi.org.mx/programas/inpp/2019a/"
       },
       "windows": [
         {"id": "3m", "label": "3 meses", "count": 3},

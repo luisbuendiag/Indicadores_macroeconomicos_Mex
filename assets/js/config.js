@@ -14,7 +14,7 @@ export const COLORS = {
 };
 
 // Los 11 indicadores principales (definición oficial de esta fase).
-export const PRINCIPAL = ["PIB", "PIBSEC", "IGAE", "IMAI", "BCMM", "DESOCUP", "INPC", "CONSUMO", "IMFBCF", "IOAE", "EMIM"];
+export const PRINCIPAL = ["PIB", "PIBSEC", "IGAE", "IMAI", "BCMM", "DESOCUP", "INPC", "INPP", "CONSUMO", "IMFBCF", "IOAE", "EMIM"];
 
 // Indicadores complementarios (no compiten en la navegación principal).
 export const COMPLEMENTARIOS = ["IED", "TIPOCAMBIO", "TASA", "RESERVAS", "EMOE"];
@@ -26,6 +26,7 @@ export const ORDER = [...PRINCIPAL, ...COMPLEMENTARIOS];
 export const LABELS = {
   PIB: "PIB oportuno", PIBSEC: "PIB trimestral a precios constantes", IGAE: "IGAE", IMAI: "IMAI",
   BCMM: "Balanza comercial", DESOCUP: "Indicadores de ocupación y empleo", INPC: "INPC",
+  INPP: "Índice Nacional de Precios Productor",
   CONSUMO: "Consumo privado", IMFBCF: "Formación bruta de capital fijo",
   IOAE: "IOAE", EMIM: "EMIM",
   IED: "IED", TIPOCAMBIO: "Tipo de cambio FIX", TASA: "Tasa objetivo Banxico",
@@ -36,6 +37,7 @@ export const LABELS = {
 export const SIGLA = {
   PIB: "EOPIBT", PIBSEC: "PIBT", IGAE: "IGAE", IMAI: "IMAI",
   BCMM: "Balanza comercial", DESOCUP: "ENOE", INPC: "INPC",
+  INPP: "INPP",
   CONSUMO: "IMCP", IMFBCF: "IMFBCF", IOAE: "IOAE", EMIM: "EMIM",
   IED: "IED", TIPOCAMBIO: "Tipo de cambio FIX", TASA: "Tasa objetivo", RESERVAS: "Reservas int.", EMOE: "EMOE",
 };
@@ -54,6 +56,7 @@ export const KPICFG = {
   EMIM: { valCol: 0, valFmt: "idx", varCol: 3, varFmt: "pct-frac", varLabel: "Var. mensual desest.", yoyCol: 4, yoyFmt: "pct-frac", yoyLabel: "Var. anual desest.", origMomCol: 1, origYoyCol: 2, noun: "Encuesta Mensual de la Industria Manufacturera", art: "la", grupo: "growth", assess: "growth", ctx: " (índice base 2018=100)", vw: "variación mensual desestacionalizada", vg: "f", comp: "frente al mes previo", goodSign: 1 },
   DESOCUP: { valCol: 0, valFmt: "pct-raw", varMode: "pp-prev", varLabel: "Cambio mensual", yoyMode: "pp-yoy", yoyLabel: "Cambio anual", noun: "tasa de desocupación", art: "la", grupo: "desoc", assess: "unemployment", ctx: "", vw: "variación", vg: "f", comp: "frente al mes previo", goodSign: -1 },
   INPC: { valCol: 2, valFmt: "pct-raw", varMode: "pp-prev", ppLong: true, varLabel: "Cambio de la inflación anual respecto al mes previo", noun: "inflación general anual", art: "la", grupo: "inpc", assess: "neutral", ctx: "", vw: "variación", vg: "f", comp: "frente al mes previo", goodSign: 0 },
+  INPP: { valCol: 2, valFmt: "pct-raw", varCol: 1, varFmt: "pct-raw", varLabel: "Var. mensual", yoyCol: 2, yoyFmt: "pct-raw", yoyLabel: "Var. anual", noun: "Índice Nacional de Precios Productor", art: "el", grupo: "inpc", assess: "neutral", ctx: "", vw: "variación anual", vg: "f", comp: "frente al mes previo", goodSign: 0 },
   IED: { valCol: 0, valFmt: "usd", varMode: "pct-yoy", varLabel: "Var. anual (vs. mismo trim. año previo)", noun: "IED total", art: "la", grupo: "growth", assess: "growth", ctx: "", vw: "variación anual", vg: "f", comp: "frente al mismo trimestre del año anterior", goodSign: 1 },
   TIPOCAMBIO: { valCol: 0, valFmt: "fx", varMode: "pct-prev", varLabel: "Variación vs. periodo previo", noun: "tipo de cambio FIX", art: "el", grupo: "fx", assess: "neutral", ctx: " (pesos por dólar)", vw: "variación", vg: "f", comp: "frente al periodo previo", goodSign: 0 },
   TASA: { valCol: 0, valFmt: "pct-raw", varMode: "pp-prev", varLabel: "Variación vs. periodo previo", noun: "tasa objetivo", art: "la", grupo: "tasa", assess: "neutral", ctx: "", vw: "variación", vg: "f", comp: "frente al periodo previo", goodSign: 0 },
@@ -74,6 +77,7 @@ export const CAPTIONS = {
   IED: "Componentes de la IED en barras apiladas y la IED total (línea punteada). Cifras en millones de dólares.",
   DESOCUP: "Indicadores del mercado laboral: tasa de desocupación, participación, informalidad y subocupación (mensuales), más población ocupada (trimestral). Fuente: ENOE/BIE.",
   INPC: "Inflación general, subyacente, no subyacente y componentes: índices, variaciones mensuales, inflaciones anuales e incidencias mensuales en puntos porcentuales.",
+  INPP: "Precios productor con y sin petróleo, bienes intermedios, actividades primarias y subsectores: índices y variaciones mensuales, anuales y acumuladas.",
   TIPOCAMBIO: "Tipo de cambio FIX (pesos por dólar).",
   TASA: "Tasa de interés objetivo del Banco de México (%).",
   RESERVAS: "Reservas internacionales netas (millones de dólares).",

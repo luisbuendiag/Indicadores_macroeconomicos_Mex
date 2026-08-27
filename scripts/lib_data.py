@@ -138,7 +138,9 @@ def apply_profile(payload: dict, meta_file: Path = META_FILE) -> list[str]:
             }
             log.append(f"scaffold creado: {key}")
 
-    # 2) Metadatos de perfil para indicadores existentes.
+    # 2) Metadatos de perfil. Si un indicador listado en principal/complementario
+    # no existe aún, se crea desde el perfil para que los conectores puedan fusionar.
+    listed = set(meta.get("principal", [])) | set(meta.get("complementario", []))
     profile = {**meta.get("profile", {})}
     for key, sc in meta.get("scaffolds", {}).items():
         profile.setdefault(key, {"requiere_token": sc.get("requiere_token"),
@@ -147,7 +149,29 @@ def apply_profile(payload: dict, meta_file: Path = META_FILE) -> list[str]:
     for key, prof in profile.items():
         ind = inds.get(key)
         if not ind:
-            continue
+            if key not in listed:
+                continue
+            inds[key] = {
+                "key": key, "nombre": prof.get("nombre", key),
+                "descripcion": prof.get("descripcion", ""),
+                "frecuencia": prof.get("frecuencia"),
+                "unidad": prof.get("unidad"),
+                "ajuste_estacional": prof.get("ajuste_estacional"),
+                "grupo": prof.get("grupo"),
+                "publicacion": prof.get("publicacion"),
+                "proximo": prof.get("proximo"),
+                "sigla": prof.get("sigla"),
+                "fuente": prof.get("fuente", {}),
+                "columns": prof.get("columns", []),
+                "observations": [], "last_observation": None,
+                "last_updated": None, "last_checked": None,
+                "requiere_token": prof.get("requiere_token"),
+                "serie_confirmada": prof.get("serie_confirmada", False),
+                "clasificacion": prof.get("clasificacion", "principal"),
+            }
+            log.append(f"indicador creado desde perfil: {key}")
+            ind = inds[key]
+
         ind["requiere_token"] = prof.get("requiere_token")
         ind["serie_confirmada"] = prof.get("serie_confirmada", False)
         ind["clasificacion"] = prof.get("clasificacion", "principal")

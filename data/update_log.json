@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-08-27T02:42:03+00:00",
+  "started_at": "2026-08-27T16:07:52+00:00",
   "mode": "offline",
   "network_calls": false,
   "warnings": [],
@@ -11,16 +11,17 @@
     "columnas override IMAI: 18 columnas",
     "columnas override DESOCUP: 6 columnas",
     "columnas override INPC: 18 columnas",
+    "columnas override INPP: 15 columnas",
     "columnas override EMIM: 18 columnas",
     "columnas override BCMM: 29 columnas",
     "pibsec: variaciones calculadas desde niveles (876 celdas)",
     "IGAE: variaciones anuales calculadas para 1560 celdas",
     "IMAI: esquema de 14 columnas aplicado; acumulado calculado para 0 periodos",
-    "BCMM: saldo derivado para 558 periodos",
-    "BCMM: acumulados ene-mes calculados para 558 periodos",
+    "BCMM: saldo derivado para 559 periodos",
+    "BCMM: acumulados ene-mes calculados para 559 periodos",
     "DESOCUP: población ocupada en millones calculada para 34 periodos",
     "DESOCUP: etiquetas trimestrales agregadas a 34 observaciones",
-    "calendario: regenerado con as_of=2026-08-26",
+    "calendario: regenerado con as_of=2026-08-27",
     "métricas: data/metrics.json regenerado",
     "boletín: PIB descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_07.pdf",
     "frescura: PIB -> ACTUALIZADO",
@@ -33,7 +34,7 @@
     "boletín: CONSUMO descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_08.pdf",
     "frescura: CONSUMO -> ACTUALIZADO",
     "frescura: IED -> ACTUALIZADO",
-    "boletín: DESOCUP descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_07.pdf",
+    "boletín: DESOCUP descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_08.pdf",
     "frescura: DESOCUP -> ACTUALIZADO",
     "boletín: INPC descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_08.pdf",
     "frescura: INPC -> ACTUALIZADO",
@@ -48,12 +49,13 @@
     "frescura: RESERVAS -> ACTUALIZADO",
     "boletín: EMOE descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ee/ee2026_08.pdf",
     "frescura: EMOE -> ACTUALIZADO",
-    "boletín: BCMM descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_07.pdf",
+    "boletín: BCMM descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_08.pdf",
     "frescura: BCMM -> ACTUALIZADO",
-    "meta: last_update_ct=2026-08-26T20:42:58-06:00"
+    "frescura: INPP -> ACTUALIZADO",
+    "meta: last_update_ct=2026-08-27T10:08:47-06:00"
   ],
   "consultas": [],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-08-27T02:42:58+00:00"
+  "finished_at": "2026-08-27T16:08:48+00:00"
 }

@@ -36,7 +36,7 @@ function proseVal(ind, v) {
   if (k === "IED" || k === "BALANZA" || k === "BCMM") return money(v, "millones de dólares");
   if (k === "IGAE" || k === "IMAI" || k === "CONSUMO" || k === "EMIM") return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + " puntos";
   if (k === "DESOCUP") return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
-  if (k === "INPC" || k === "TASA") return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
+  if (k === "INPC" || k === "INPP" || k === "TASA") return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
   if (k === "TIPOCAMBIO") return "$" + v.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   return String(v);
 }
@@ -331,7 +331,7 @@ export function annualVar(ind, k) {
   // No se calcula variación anual del nivel cuando: (a) el valor ya es una tasa,
   // (b) la variación primaria ya es interanual (evita duplicar), o
   // (c) la interanual del saldo no tiene lectura económica clara.
-  if (["INPC", "TASA", "DESOCUP", "IED", "BALANZA"].includes(ind.key)) return null;
+  if (["INPC", "INPP", "TASA", "DESOCUP", "IED", "BALANZA"].includes(ind.key)) return null;
   const vals = k.series;
   const lag = ind.frecuencia === "Trimestral" ? 4 : 12;
   const cur = vals[k.lastI];
@@ -409,7 +409,8 @@ export function analysis(ind, k) {
     }
   } else if (cfg.grupo === "inpc") {
     const verb = curVar == null ? "se mantuvo" : (curVar > 0.001 ? "aumentó" : (curVar < -0.001 ? "disminuyó" : "no cambió"));
-    read = `La inflación anual ${verb} respecto del mes previo. Se ubicó ${avgPhrase} (${proseVal(ind, promedio)}).`;
+    const noun = ind.key === "INPP" ? "La variación anual de precios productor" : "La inflación anual";
+    read = `${noun} ${verb} respecto del mes previo. Se ubicó ${avgPhrase} (${proseVal(ind, promedio)}).`;
   } else {
     read = `Este resultado refleja ${trend}${prevClause}, y deja al indicador ${avgPhrase} de ${proseVal(ind, promedio)}.`;
   }

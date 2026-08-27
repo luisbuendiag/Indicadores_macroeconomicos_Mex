@@ -204,6 +204,39 @@
       ]
     },
     {
+      "clave": "INPP",
+      "indicador": "INPP",
+      "producto": "Índice Nacional de Precios Productor",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "publicaciones": [
+        {
+          "fecha": "09 de julio de 2026",
+          "periodo": "Junio 2026"
+        },
+        {
+          "fecha": "07 de agosto de 2026",
+          "periodo": "Julio 2026"
+        },
+        {
+          "fecha": "09 de septiembre de 2026",
+          "periodo": "Agosto 2026"
+        },
+        {
+          "fecha": "08 de octubre de 2026",
+          "periodo": "Septiembre 2026"
+        },
+        {
+          "fecha": "09 de noviembre de 2026",
+          "periodo": "Octubre 2026"
+        },
+        {
+          "fecha": "09 de diciembre de 2026",
+          "periodo": "Noviembre 2026"
+        }
+      ]
+    },
+    {
       "clave": "CONSUMO",
       "indicador": "Consumo privado",
       "producto": "Indicador Mensual del Consumo Privado (IMCP)",

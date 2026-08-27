@@ -99,6 +99,11 @@ function chartSpec(ind, obs) {
       { name: "Subyacente", values: col(5), color: SEC },
       { name: "No subyacente", values: col(11), color: Go }
     ], leftName: "Inflación anual (%)", leftFmt: "pct" };
+    case "INPP": return { periods: P, lines: [
+      { name: "INPP con petróleo", values: col(2), color: G },
+      { name: "INPP sin petróleo", values: col(6), color: SEC },
+      { name: "Bienes intermedios", values: col(8), color: Go }
+    ], leftName: "Variación anual (%)", leftFmt: "pct" };
     case "DESOCUP": return { periods: P, lines: [{ name: "Tasa de desocupación nacional", values: col(0).map((v) => v == null ? null : v * 100), color: G }], leftName: "Porcentaje (%)", leftFmt: "pct" };
     case "IED": return { periods: P, stack: "ied", bars: [{ name: "Nuevas inversiones", values: col(1), color: G }, { name: "Reinversión de utilidades", values: col(2), color: SEC }, { name: "Cuentas entre compañías", values: col(3), color: Go }], lines: [{ name: "IED total", values: col(0), color: REF, dash: true }], leftName: "Millones de dólares", leftFmt: "compact" };
     case "BALANZA": return { periods: P, bars: [{ name: "Exportaciones", values: col(0), color: G }, { name: "Importaciones", values: col(1), color: SEC }], lines: [{ name: "Saldo (X − M)", values: saldo, color: Go, axis: "right" }], leftName: "Millones de dólares", rightName: "Saldo (mdd)", leftFmt: "compact", rightFmt: "compact" };

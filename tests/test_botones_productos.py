@@ -120,12 +120,12 @@ def test_ima_test_case_buttons():
 
 def test_inegi_indicators_have_specific_pdf_bulletin():
     """Los indicadores INEGI deben apuntar al boletín oficial específico en saladeprensa."""
-    for k in ["IMAI", "IGAE", "INPC", "BCMM", "DESOCUP", "CONSUMO", "IMFBCF", "IOAE", "EMIM", "EMOE", "PIB", "PIBSEC"]:
+    for k in ["IMAI", "IGAE", "INPC", "INPP", "BCMM", "DESOCUP", "CONSUMO", "IMFBCF", "IOAE", "EMIM", "EMOE", "PIB", "PIBSEC"]:
         ind = INDICADORES["indicators"][k]
         url = ind.get("url_boletin_oficial")
         assert url, f"{k} no tiene url_boletin_oficial"
         assert ".inegi.org.mx/" in url, f"{k}: dominio no oficial: {url}"
-        if k in ("IMAI", "IGAE", "INPC", "BCMM", "DESOCUP", "IOAE", "EMIM", "EMOE"):
+        if k in ("IMAI", "IGAE", "INPC", "INPP", "BCMM", "DESOCUP", "IOAE", "EMIM", "EMOE"):
             assert "contenidos/saladeprensa/boletines" in url, f"{k}: no es boletín PDF: {url}"
 
 
