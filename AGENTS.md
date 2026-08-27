@@ -22,3 +22,11 @@
 - Publica **variaciones** (no niveles absolutos): trimestral desestacionalizado, anual desestacionalizado, anual original y acumulado.
 - Las actividades económicas (`sectores`) se guardan en la misma escala fraccionaria que el resto del indicador.
 - La sección de actividades económicas se titula *Variación trimestral por actividad económica* y subtitula *Cambio real respecto al trimestre inmediato anterior, cifras desestacionalizadas*.
+
+## IMCP (CONSUMO)
+
+- El indicador `CONSUMO` es el *Indicador Mensual del Consumo Privado* (sigla IMCP), base 2018=100, frecuencia mensual.
+- El INEGI no publica IDs de BIE abiertos para la serie base 2018; la fuente de verdad son los boletines oficiales de prensa (`imcpmi{year}_{mm}.pdf`).
+- El parser extrae 37 series del boletín: índice, variación mensual/anual desestacionalizada, variación anual original, acumulado ene-mes, y desglose por origen (nacional/importado), bienes, servicios y durabilidad (duradero, semi duradero, no duradero).
+- Todas las variaciones se almacenan como fracciones y se muestran con `pct-frac` para evitar doble multiplicación por 100.
+- En la ficha se presentan el índice, las variaciones desestacionalizadas, el acumulado ene-mes y un desglose por origen y durabilidad.
