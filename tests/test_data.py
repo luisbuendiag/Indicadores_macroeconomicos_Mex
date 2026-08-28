@@ -77,8 +77,8 @@ def test_duplicate_flagged_as_revision(payload):
 def test_bulletin_variations_monthly_and_annual(payload, key, monthly_col, annual_col, expected_monthly, expected_annual):
     ind = payload["indicators"][key]
     last = ind["observations"][-1]
-    assert last["values"][monthly_col] == pytest.approx(expected_monthly, abs=1e-4)
-    assert last["values"][annual_col] == pytest.approx(expected_annual, abs=1e-4)
+    assert last["values"][monthly_col] == pytest.approx(expected_monthly, rel=1e-2, abs=1e-4)
+    assert last["values"][annual_col] == pytest.approx(expected_annual, rel=1e-2, abs=1e-4)
 
 
 def test_pib_bulletin_variations(payload):

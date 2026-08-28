@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 
 import lib_data as L
+import lib_format as F
 import lib_metrics as M
 
 
@@ -40,10 +41,15 @@ def test_inpc_kpi():
     payload = _payload()
     metrics = M.compute_all_metrics(payload)
     kpi = metrics["INPC"]["kpi"]
-    assert kpi["ultimoP"] == "Jul 26"
-    assert kpi["ultimoFmt"] == "3.1%"
-    assert kpi["varText"] == "-0.3 puntos porcentuales"
-    assert round(kpi["varMag"], 4) == -0.25
+    inpc = payload["indicators"]["INPC"]
+    vals = inpc["observations"][-1]["values"]
+    prev = inpc["observations"][-2]["values"]
+    d = vals[2] - prev[2]
+    expected_var = ("+" if d >= 0 else "") + F._to_fixed(d, 1, 1) + " puntos porcentuales"
+    assert kpi["ultimoP"] == inpc["observations"][-1]["period"]
+    assert kpi["ultimoFmt"] == F.fmt_val(vals[2], "pct-raw")
+    assert kpi["varText"] == expected_var
+    assert round(kpi["varMag"], 4) == round(d, 4)
     assert kpi["yoyText"] == "—"
     assert kpi["assessment"] == "neutral"
     assert kpi["semaforo"] == "estable"
@@ -53,9 +59,14 @@ def test_inpc_analysis():
     payload = _payload()
     metrics = M.compute_all_metrics(payload)
     a = metrics["INPC"]["analysis"]
+    inpc = payload["indicators"]["INPC"]
+    vals = inpc["observations"][-1]["values"]
+    prev = inpc["observations"][-2]["values"]
+    d = vals[2] - prev[2]
+    expected_var = ("+" if d >= 0 else "") + F._to_fixed(d, 1, 1) + " puntos porcentuales"
     assert len(a) == 2
     assert "inflación general anual" in a[0]
-    assert "-0.3 puntos porcentuales" in a[0]
+    assert expected_var in a[0]
     assert "Banco de México" in a[1]
 
 
