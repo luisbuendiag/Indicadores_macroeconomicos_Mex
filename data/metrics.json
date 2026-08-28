@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-28T22:08:33+00:00",
-  "last_update_ct": "2026-08-28T15:25:31-06:00",
+  "generated_at": "2026-08-28T23:04:22+00:00",
+  "last_update_ct": "2026-08-28T17:04:12-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -2750,8 +2750,8 @@
         "ultimoFmt": "3.1%",
         "ultimoRaw": 3.12,
         "ultimoP": "Jul 26",
-        "varText": "-0.3 puntos porcentuales",
-        "varMag": -0.25,
+        "varText": "-0.2 puntos porcentuales",
+        "varMag": -0.2459769999999999,
         "pos": false,
         "varColor": "#9b2247",
         "varLabel": "Cambio de la inflación anual respecto al mes previo",
@@ -2855,16 +2855,16 @@
           4.317429,
           3.512423,
           3.568777,
-          3.76,
-          3.57,
-          3.8,
-          3.69,
-          3.79,
-          4.02,
-          4.59,
-          4.45,
-          3.94,
-          3.37,
+          3.760288,
+          3.566521,
+          3.799191,
+          3.691944,
+          3.791301,
+          4.023038,
+          4.586774,
+          4.448503,
+          3.938948,
+          3.365977,
           3.12
         ],
         "periods": [
@@ -2977,11 +2977,11 @@
         "yoyLabel": "—"
       },
       "analysis": [
-        "En julio de 2026, la inflación general anual se ubicó en 3.1%, con una variación de -0.3 puntos porcentuales frente al mes previo. La inflación anual disminuyó respecto del mes previo. Se ubicó por debajo del promedio del periodo mostrado (4.9%).",
+        "En julio de 2026, la inflación general anual se ubicó en 3.1%, con una variación de -0.2 puntos porcentuales frente al mes previo. La inflación anual disminuyó respecto del mes previo. Se ubicó por debajo del promedio del periodo mostrado (4.9%).",
         "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 8.7% (septiembre de 2022) y un mínimo de 2.1% (abril de 2020). El resultado más reciente se ubicó por debajo del promedio del periodo mostrado. El último dato fue inferior al del inicio del periodo mostrado. Con ello, la inflación se mantiene dentro del intervalo de variabilidad del Banco de México (3 % ±1 punto), aunque todavía por encima de la meta puntual de 3 %."
       ],
       "resumen": [
-        "En julio de 2026, la inflación general anual se ubicó en 3.1%. El valor de cambio de la inflación anual respecto al mes previo fue de -0.3 puntos porcentuales frente al mes previo.",
+        "En julio de 2026, la inflación general anual se ubicó en 3.1%. El valor de cambio de la inflación anual respecto al mes previo fue de -0.2 puntos porcentuales frente al mes previo.",
         "En la serie mostrada, el indicador oscila entre un máximo de 8.7% (septiembre de 2022) y un mínimo de 2.1% (abril de 2020). El último dato se ubica dentro del rango observado en el periodo mostrado.",
         "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
       ],
@@ -2992,16 +2992,16 @@
         "assessment": "adverso",
         "dir": "down",
         "ultimoFmt": "107.1",
-        "ultimoRaw": 107.1,
+        "ultimoRaw": 107.08,
         "ultimoP": "May 26",
         "varText": "-0.4%",
-        "varMag": -0.4,
+        "varMag": -0.4092,
         "pos": false,
         "varColor": "#9b2247",
         "varLabel": "Var. mensual desest.",
-        "maxFmt": "113.7",
-        "maxRaw": 113.7,
-        "maxP": "Nov 24",
+        "maxFmt": "113.5",
+        "maxRaw": 113.52,
+        "maxP": "Jul 24",
         "minFmt": "38.4",
         "minRaw": 38.42,
         "minP": "May 95",
@@ -3388,26 +3388,26 @@
           113.52,
           112.47,
           110.98,
-          113.1,
-          113.7,
-          109.7,
-          107.4,
-          107.3,
-          107.9,
-          105.6,
-          106.8,
-          105.6,
-          107.5,
-          103.9,
-          101.0,
-          102.2,
-          102.8,
-          103.6,
-          102.3,
-          101.1,
-          102.0,
-          107.4,
-          107.1
+          109.31,
+          109.8,
+          106.09,
+          105.2,
+          105.94,
+          106.09,
+          102.19,
+          104.55,
+          102.97,
+          104.84,
+          101.93,
+          102.03,
+          103.03,
+          103.61,
+          104.06,
+          103.02,
+          102.66,
+          103.26,
+          107.52,
+          107.08
         ],
         "periods": [
           "Ene 93",
@@ -3815,7 +3815,7 @@
         "semaforo": "malo",
         "yoyText": "+2.4%",
         "yoyLabel": "Var. anual desest.",
-        "acumRaw": -0.005,
+        "acumRaw": -0.004976,
         "acumText": "-0.5%",
         "acumLabel": "Acumulado ene-mes",
         "cards": [
@@ -3823,18 +3823,18 @@
             "name": "Construcción",
             "nivelRaw": 106.03,
             "nivelText": "106.0",
-            "momRaw": -0.024,
+            "momRaw": -0.024024,
             "momText": "-2.4%",
-            "yoyRaw": 0.02,
+            "yoyRaw": 0.020304,
             "yoyText": "2.0%"
           },
           {
             "name": "Maquinaria y equipo",
             "nivelRaw": 108.19,
             "nivelText": "108.2",
-            "momRaw": 0.015,
+            "momRaw": 0.015392,
             "momText": "1.5%",
-            "yoyRaw": 0.025,
+            "yoyRaw": 0.025012,
             "yoyText": "2.5%"
           },
           {
@@ -3843,7 +3843,7 @@
             "nivelText": "95.2",
             "momRaw": null,
             "momText": "—",
-            "yoyRaw": -0.054,
+            "yoyRaw": -0.054435,
             "yoyText": "-5.4%"
           },
           {
@@ -3852,7 +3852,7 @@
             "nivelText": "118.0",
             "momRaw": null,
             "momText": "—",
-            "yoyRaw": 0.118,
+            "yoyRaw": 0.117552,
             "yoyText": "11.8%"
           },
           {
@@ -3861,7 +3861,7 @@
             "nivelText": "93.1",
             "momRaw": null,
             "momText": "—",
-            "yoyRaw": -0.077,
+            "yoyRaw": -0.077236,
             "yoyText": "-7.7%"
           },
           {
@@ -3870,7 +3870,7 @@
             "nivelText": "89.4",
             "momRaw": null,
             "momText": "—",
-            "yoyRaw": -0.05,
+            "yoyRaw": -0.049835,
             "yoyText": "-5.0%"
           },
           {
@@ -3879,7 +3879,7 @@
             "nivelText": "97.4",
             "momRaw": null,
             "momText": "—",
-            "yoyRaw": -0.091,
+            "yoyRaw": -0.090731,
             "yoyText": "-9.1%"
           },
           {
@@ -3888,7 +3888,7 @@
             "nivelText": "119.1",
             "momRaw": null,
             "momText": "—",
-            "yoyRaw": 0.089,
+            "yoyRaw": 0.089304,
             "yoyText": "8.9%"
           },
           {
@@ -3897,7 +3897,7 @@
             "nivelText": "138.0",
             "momRaw": null,
             "momText": "—",
-            "yoyRaw": 0.071,
+            "yoyRaw": 0.071329,
             "yoyText": "7.1%"
           },
           {
@@ -3906,25 +3906,25 @@
             "nivelText": "117.1",
             "momRaw": null,
             "momText": "—",
-            "yoyRaw": 0.097,
+            "yoyRaw": 0.097433,
             "yoyText": "9.7%"
           }
         ]
       },
       "yoy": {
-        "mag": 2.4,
+        "mag": 2.4198999999999997,
         "pos": true,
         "text": "+2.4%",
         "label": "Var. anual desest."
       },
       "annualVar": {
-        "mag": 2.4,
+        "mag": 2.4198999999999997,
         "pos": true,
         "text": "+2.4%",
         "label": "Var. anual desest."
       },
       "resumen": [
-        "En mayo de 2026, la formación bruta de capital fijo se ubicó en 107.1 (índice base 2018=100). La variación mensual desestacionalizada fue de -0.4% respecto al mes previo, por lo que el indicador retrocedió.",
+        "En mayo de 2026, la formación bruta de capital fijo se ubicó en 107.08 (índice base 2018=100). La variación mensual desestacionalizada fue de -0.4% respecto al mes previo, por lo que el indicador retrocedió.",
         "A tasa anual, el IMFBCF avanzó +2.4%.",
         "El acumulado ene-may, en cifras originales, fue de -0.5%.",
         "A tasa anual, No residencial (11.8%) y Maquinaria, equipo y otros importados (9.7%) avanzaron, mientras que Equipo de transporte nacional (-5.0%) y Residencial (-5.4%) retrocedieron."
