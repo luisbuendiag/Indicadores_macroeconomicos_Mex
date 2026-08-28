@@ -23,6 +23,15 @@
 - Las actividades económicas (`sectores`) se guardan en la misma escala fraccionaria que el resto del indicador.
 - La sección de actividades económicas se titula *Variación trimestral por actividad económica* y subtitula *Cambio real respecto al trimestre inmediato anterior, cifras desestacionalizadas*.
 
+## IMFBCF (inversión)
+
+- El indicador `IMFBCF` es el *Indicador Mensual de la Formación Bruta de Capital Fijo* (sigla IMFBCF), base 2018=100, frecuencia mensual.
+- La fuente de verdad histórica es el **SIE del Banco de México**, cuadro **CR363** (`banxico_sie.py`), que descarga las 22 series del conjunto: total, construcción, residencial, no residencial, maquinaria y equipo nacional/importado, y sus subcomponentes, tanto desestacionalizadas como originales.
+- Las variaciones del mes más reciente y el índice total se completan con el **boletín de prensa del INEGI** (`ifb/imfbcf{year}_{mm}.pdf`) a través de `inegi_bulletin.py`.
+- El esquema final tiene **40 columnas**: 0-2 (total desestacionalizado), 3-5 (construcción), 6-8 (maquinaria y equipo), 9-12 (residencial / no residencial), 13-24 (maquinaria nacional e importado con subcomponentes), 25-27 (total original), 28-39 (índices originales, variaciones anuales y acumulados ene-mes por componente).
+- Todas las variaciones porcentuales se almacenan como fracciones y se muestran con `pct-frac`.
+- La ficha presenta el índice total, la variación mensual y anual desestacionalizadas, el acumulado ene-mes, y el desglose por componentes en small multiples.
+
 ## IMCP (CONSUMO)
 
 - El indicador `CONSUMO` es el *Indicador Mensual del Consumo Privado* (sigla IMCP), base 2018=100, frecuencia mensual.

@@ -1,7 +1,7 @@
 // Orquestador del tablero macroeconómico V3 (navegación por indicador).
 import { ORDER, PRINCIPAL, COMPLEMENTARIOS, LABELS, SIGLA, CAPTIONS, WINDOWS, COLORS, KPICFG, VIEWS, ESTADOS } from "./config.js";
 import { computeKPI, analysis, annualVar } from "./metrics.js";
-import { buildOption, rangeStats, applyWindow, buildPibsecLevels, buildPibsecVariations, buildIgaeLevels, buildIgaeVariations, buildImaiLevels, buildImaiVariations, buildEmimLevels, buildEmimVariations, buildBcmmLevels, buildBcmmVariations, buildDesocupRates, buildDesocupPoblacion } from "./charts.js";
+import { buildOption, rangeStats, applyWindow, buildPibsecLevels, buildPibsecVariations, buildIgaeLevels, buildIgaeVariations, buildImaiLevels, buildImaiVariations, buildEmimLevels, buildEmimVariations, buildBcmmLevels, buildBcmmVariations, buildImfbcfLevels, buildImfbcfVariations, buildDesocupRates, buildDesocupPoblacion } from "./charts.js";
 import { fmtVal, perLong } from "./format.js";
 
 const state = {
@@ -820,17 +820,18 @@ function renderIndicatorView(key) {
   panel.append(el("div", { class: "chart-caption", id: `caption-${ind.key}` }, `${CAPTIONS[ind.key] || ""} Datos hasta ${ind.last_observation || "—"}.`.trim()));
   const chartMain = el("div", { class: "chart-main" });
   const emimMulti = ind.key === "EMIM" && (k.cards || (ind.columns && ind.columns.length > 15));
-  if (ind.key === "PIBSEC" || ind.key === "IGAE" || ind.key === "IMAI" || ind.key === "BCMM" || emimMulti) {
+  const imfbcfMulti = ind.key === "IMFBCF" && (ind.columns && ind.columns.length > 15);
+  if (ind.key === "PIBSEC" || ind.key === "IGAE" || ind.key === "IMAI" || ind.key === "BCMM" || emimMulti || imfbcfMulti) {
     chartMain.classList.add("pibsec-charts");
     const levels = el("div", { class: "pibsec-section" });
-    levels.append(el("h3", { class: "block-sub" }, ind.key === "IGAE" ? "Niveles del IGAE y actividades económicas" : ind.key === "IMAI" ? "Niveles del IMAI y sectores industriales" : ind.key === "EMIM" ? "Niveles de la EMIM" : ind.key === "BCMM" ? "Niveles del comercio exterior" : "Evolución del PIB y grandes actividades económicas"));
+    levels.append(el("h3", { class: "block-sub" }, ind.key === "IGAE" ? "Niveles del IGAE y actividades económicas" : ind.key === "IMAI" ? "Niveles del IMAI y sectores industriales" : ind.key === "EMIM" ? "Niveles de la EMIM" : ind.key === "BCMM" ? "Niveles del comercio exterior" : ind.key === "IMFBCF" ? "Niveles del IMFBCF y componentes" : "Evolución del PIB y grandes actividades económicas"));
     levels.append(buildWinToggle(ind, winId));
-    levels.append(el("div", { class: `chart-box ${ind.key === "IMAI" ? "imai-levels" : ind.key === "EMIM" ? "emim-levels" : ind.key === "BCMM" ? "bcmm-levels" : "pibsec-levels"}`, id: `chart-${ind.key}-levels`, role: "img", "aria-label": "Niveles del indicador y actividades económicas" }));
+    levels.append(el("div", { class: `chart-box ${ind.key === "IMAI" ? "imai-levels" : ind.key === "EMIM" ? "emim-levels" : ind.key === "BCMM" ? "bcmm-levels" : ind.key === "IMFBCF" ? "imfbcf-levels" : "pibsec-levels"}`, id: `chart-${ind.key}-levels`, role: "img", "aria-label": "Niveles del indicador y actividades económicas" }));
     chartMain.append(levels);
     const vars = el("div", { class: "pibsec-section" });
-    vars.append(el("h3", { class: "block-sub" }, ind.key === "IGAE" ? "Variación anual del IGAE y actividades económicas" : ind.key === "IMAI" ? "Variaciones mensuales y anuales del IMAI y sectores industriales" : ind.key === "EMIM" ? "Variaciones anuales originales" : ind.key === "BCMM" ? "Variaciones anuales del comercio exterior" : "Variación trimestral y anual del PIB y actividades económicas"));
+    vars.append(el("h3", { class: "block-sub" }, ind.key === "IGAE" ? "Variación anual del IGAE y actividades económicas" : ind.key === "IMAI" ? "Variaciones mensuales y anuales del IMAI y sectores industriales" : ind.key === "EMIM" ? "Variaciones anuales originales" : ind.key === "BCMM" ? "Variaciones anuales del comercio exterior" : ind.key === "IMFBCF" ? "Variaciones mensuales y anuales desestacionalizadas" : "Variación trimestral y anual del PIB y actividades económicas"));
     vars.append(buildWinToggle(ind, winId));
-    vars.append(el("div", { class: `chart-box pibsec-variation ${ind.key === "EMIM" ? "emim-variation" : ""} ${ind.key === "BCMM" ? "bcmm-variation" : ""}`, id: `chart-${ind.key}-variation`, role: "img", "aria-label": "Variaciones del indicador y actividades económicas" }));
+    vars.append(el("div", { class: `chart-box pibsec-variation ${ind.key === "EMIM" ? "emim-variation" : ""} ${ind.key === "BCMM" ? "bcmm-variation" : ""} ${ind.key === "IMFBCF" ? "imfbcf-variation" : ""}`, id: `chart-${ind.key}-variation`, role: "img", "aria-label": "Variaciones del indicador y actividades económicas" }));
     chartMain.append(vars);
     chartMain.append(el("div", { class: "range-wrap", id: `range-${ind.key}` }));
   } else if (ind.key === "DESOCUP") {
@@ -1703,6 +1704,31 @@ function mountDesocupCharts(ind) {
   }
 }
 
+function mountImfbcfCharts(ind) {
+  if (typeof echarts === "undefined" || !hasData(ind)) return;
+  const winId = state.windows[ind.key] || state.data.meta?.default_window || "5a";
+  const obs = applyWindow(ind, winId);
+  const domLevels = document.getElementById(`chart-${ind.key}-levels`);
+  const domVars = document.getElementById(`chart-${ind.key}-variation`);
+  if (!domLevels || !domVars) return;
+  let levelsChart = state.charts[`${ind.key}-levels`];
+  if (!levelsChart) { levelsChart = echarts.init(domLevels, null, { renderer: "canvas" }); state.charts[`${ind.key}-levels`] = levelsChart; }
+  let varChart = state.charts[`${ind.key}-variation`];
+  if (!varChart) { varChart = echarts.init(domVars, null, { renderer: "canvas" }); state.charts[`${ind.key}-variation`] = varChart; }
+  levelsChart.setOption(buildImfbcfLevels(obs), true);
+  varChart.setOption(buildImfbcfVariations(obs), true);
+  const rangeCard = document.getElementById(`range-${ind.key}`);
+  if (rangeCard) {
+    rangeCard.innerHTML = "";
+    rangeCard.append(buildRangeCard(ind, winId));
+  }
+  const cap = document.getElementById(`caption-${ind.key}`);
+  if (cap) {
+    const last = obs.length ? obs[obs.length - 1].period : (ind.last_observation || "—");
+    cap.textContent = `${CAPTIONS[ind.key] || ""} Datos hasta ${last}.`.trim();
+  }
+}
+
 function mountChart(ind) {
   if (ind.key === "PIBSEC") { mountPibsecCharts(ind); return; }
   if (ind.key === "IGAE") { mountIgaeCharts(ind); return; }
@@ -1710,6 +1736,7 @@ function mountChart(ind) {
   if (ind.key === "DESOCUP") { mountDesocupCharts(ind); return; }
   if (ind.key === "BCMM" && (ind.metrics?.kpi?.cards || (ind.columns && ind.columns.length > 25))) { mountBcmmCharts(ind); return; }
   if (ind.key === "EMIM" && (ind.metrics?.kpi?.cards || (ind.columns && ind.columns.length > 15))) { mountEmimCharts(ind); return; }
+  if (ind.key === "IMFBCF" && (ind.columns && ind.columns.length > 15)) { mountImfbcfCharts(ind); return; }
   const dom = document.getElementById(`chart-${ind.key}`);
   if (!dom || typeof echarts === "undefined" || !hasData(ind)) return;
   // Usa granularidad original cuando la ficha del indicador es la vista activa.

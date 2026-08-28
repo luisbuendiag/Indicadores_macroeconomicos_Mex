@@ -606,6 +606,8 @@ def _parse_imcp_imfbcf(kind: str, pdf_bytes: bytes, pub_date: tuple[int, int, in
     out["anual"] = [{"ym": ym, "value": anual_value / 100.0, "period": period}]
     if kind == "CONSUMO":
         out.update(_parse_consumo_components(pdf_bytes, ym, period))
+    elif kind == "IMFBCF":
+        out.update(_parse_imfbcf_components(pdf_bytes, ym, period))
     return out
 
 
@@ -723,6 +725,123 @@ def _parse_consumo_components(pdf_bytes: bytes, ym: str, period: str) -> dict[st
 
     return out
 
+
+def _parse_imfbcf_components(pdf_bytes: bytes, ym: str, period: str) -> dict[str, list[dict]]:
+    """Extrae variaciones por componente del IMFBCF desde los Cuadros 1 y 2.
+
+    Página 2 (índice 1): Cuadro 1, cifras desestacionalizadas (var. mensual y anual).
+    Página 3 (índice 2): Cuadro 2, cifras originales (var. anual y acumulado ene-mes).
+    """
+    out: dict[str, list[dict]] = {}
+    page1_tables = _pdf_page_tables(pdf_bytes, 1)
+    page2_tables = _pdf_page_tables(pdf_bytes, 2)
+
+    def _value(v: float | None) -> list[dict]:
+        if v is None:
+            return []
+        return [{"ym": ym, "value": v, "period": period}]
+
+    # ---- Cuadro 1: cifras desestacionalizadas ----
+    rows1: list[tuple[str, float | None, float | None]] = []
+    for table in page1_tables or []:
+        for row in table:
+            if not row:
+                continue
+            cells = [c.strip() if c else "" for c in row]
+            if len(cells) < 3:
+                continue
+            label = cells[0]
+            if not label or any(x in label.lower() for x in ("inversión", "bien y origen", "respecto a")):
+                continue
+            vals = [_parse_pct(c) for c in cells[1:] if c]
+            if len(vals) >= 2:
+                rows1.append((label, vals[0], vals[1]))
+            elif len(vals) == 1:
+                rows1.append((label, None, vals[0]))
+
+    last_origin = None
+    for label, v_mensual, v_anual in rows1:
+        vm = v_mensual / 100.0 if v_mensual is not None else None
+        va = v_anual / 100.0 if v_anual is not None else None
+        if label == "Formación bruta de capital fijo":
+            last_origin = None
+        elif label == "Construcción":
+            out.setdefault("construccion_mensual", _value(vm))
+            out.setdefault("construccion_anual_desest", _value(va))
+        elif label == "Residencial":
+            out.setdefault("residencial_anual_desest", _value(va))
+        elif label == "No residencial":
+            out.setdefault("no_residencial_anual_desest", _value(va))
+        elif label == "Maquinaria y equipo":
+            out.setdefault("mye_mensual", _value(vm))
+            out.setdefault("mye_anual_desest", _value(va))
+        elif label == "Nacional":
+            last_origin = "nacional"
+            out.setdefault("nacional_anual_desest", _value(va))
+        elif label == "Importado":
+            last_origin = "importado"
+            out.setdefault("importado_anual_desest", _value(va))
+        elif label == "Equipo de transporte":
+            if last_origin == "nacional":
+                out.setdefault("eq_transporte_nac_anual_desest", _value(va))
+            elif last_origin == "importado":
+                out.setdefault("eq_transporte_imp_anual_desest", _value(va))
+        elif label == "Maquinaria, equipo y otros bienes":
+            if last_origin == "nacional":
+                out.setdefault("mye_otros_nac_anual_desest", _value(va))
+            elif last_origin == "importado":
+                out.setdefault("mye_otros_imp_anual_desest", _value(va))
+
+    # ---- Cuadro 2: cifras originales (anual y acumulado ene-mes) ----
+    rows2: list[tuple[str, float | None, float | None]] = []
+    for table in page2_tables or []:
+        for row in table:
+            if not row:
+                continue
+            cells = [c.strip() if c else "" for c in row]
+            if len(cells) < 3:
+                continue
+            label = cells[0]
+            if not label or any(x in label.lower() for x in ("inversión", "bien y origen", "comprador", "público", "privado", "sector")):
+                continue
+            vals = [_parse_pct(c) for c in cells[1:] if c]
+            if len(vals) >= 2:
+                rows2.append((label, vals[0], vals[1]))
+            elif len(vals) == 1:
+                rows2.append((label, None, vals[0]))
+
+    seen_total = False
+    last_origin = None
+    for label, v_anual, v_acum in rows2:
+        va = v_anual / 100.0 if v_anual is not None else None
+        vac = v_acum / 100.0 if v_acum is not None else None
+        if label == "Formación bruta de capital fijo":
+            if seen_total:
+                continue
+            seen_total = True
+            out.setdefault("total_anual_original", _value(va))
+            out.setdefault("total_acumulado", _value(vac))
+            last_origin = "total"
+        elif label == "Construcción":
+            out.setdefault("construccion_anual_original", _value(va))
+            out.setdefault("construccion_acumulado", _value(vac))
+            last_origin = "construccion"
+        elif label == "Residencial":
+            out.setdefault("residencial_anual_original", _value(va))
+            out.setdefault("residencial_acumulado", _value(vac))
+        elif label == "No residencial":
+            out.setdefault("no_residencial_anual_original", _value(va))
+            out.setdefault("no_residencial_acumulado", _value(vac))
+        elif label == "Maquinaria y equipo":
+            out.setdefault("mye_anual_original", _value(va))
+            out.setdefault("mye_acumulado", _value(vac))
+            last_origin = "mye"
+        elif label == "Nacional":
+            last_origin = "nacional"
+        elif label == "Importado":
+            last_origin = "importado"
+
+    return out
 
 def _parse_imai_bulletin(pdf_bytes: bytes, pub_date: tuple[int, int, int] | None) -> dict[str, list[dict]] | None:
     """Extrae del boletín IMAI: nivel, variaciones, anual original, acumulado y
@@ -1788,8 +1907,35 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
             parsed = _parse_imcp_imfbcf(kind, pdf, pub_date)
             if not parsed:
                 continue
-            for sub, col in (("index", 0), ("mensual", 1), ("anual", 2)):
-                for o in parsed[sub]:
+            imfbcf_col_map = {
+                "index": 0,
+                "mensual": 1,
+                "anual": 2,
+                "construccion_mensual": 4,
+                "construccion_anual_desest": 5,
+                "mye_mensual": 7,
+                "mye_anual_desest": 8,
+                "residencial_anual_desest": 10,
+                "no_residencial_anual_desest": 12,
+                "nacional_anual_desest": 14,
+                "eq_transporte_nac_anual_desest": 16,
+                "mye_otros_nac_anual_desest": 18,
+                "importado_anual_desest": 20,
+                "eq_transporte_imp_anual_desest": 22,
+                "mye_otros_imp_anual_desest": 24,
+                "total_anual_original": 26,
+                "total_acumulado": 27,
+                "construccion_anual_original": 29,
+                "construccion_acumulado": 30,
+                "residencial_anual_original": 32,
+                "residencial_acumulado": 33,
+                "no_residencial_anual_original": 35,
+                "no_residencial_acumulado": 36,
+                "mye_anual_original": 38,
+                "mye_acumulado": 39,
+            }
+            for sub, col in imfbcf_col_map.items():
+                for o in parsed.get(sub, []):
                     if (kind, col, o["ym"]) not in seen:
                         results.append((kind, sub, col, o, url))
                         seen.add((kind, col, o["ym"]))

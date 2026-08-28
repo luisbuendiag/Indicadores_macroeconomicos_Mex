@@ -440,6 +440,8 @@ tbody tr:last-child td { font-weight: 600; color: var(--dkgreen); }
 .emim-variation { height: 420px; }
 .bcmm-levels { height: 480px; }
 .bcmm-variation { height: 580px; }
+.imfbcf-levels { height: 780px; }
+.imfbcf-variation { height: 420px; }
 .pibsec-sectors { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .pibsec-sector-col { border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; background: var(--soft); }
 .pibsec-sector-title { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 8px; font-weight: 700; }
@@ -454,6 +456,8 @@ tbody tr:last-child td { font-weight: 600; color: var(--dkgreen); }
   .pibsec-variation { height: 340px; }
   .emim-levels { height: 360px; }
   .imai-levels { height: 520px; }
+  .imfbcf-levels { height: 680px; }
+  .imfbcf-variation { height: 360px; }
   .bcmm-levels { height: 400px; }
   .bcmm-variation { height: 480px; }
 }
@@ -462,6 +466,8 @@ tbody tr:last-child td { font-weight: 600; color: var(--dkgreen); }
   .pibsec-levels { height: 560px; }
   .emim-levels { height: 560px; }
   .imai-levels { height: 760px; }
+  .imfbcf-levels { height: 980px; }
+  .imfbcf-variation { height: 560px; }
   .bcmm-levels { height: 720px; }
   .bcmm-variation { height: 900px; }
 }

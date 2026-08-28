@@ -1103,6 +1103,145 @@ def _imai_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     }
 
 
+def _imfbcf_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
+    """KPI y resumen para IMFBCF con el esquema V3 de 40 columnas.
+
+    Columnas:
+      0-2: IMFBCF total desestacionalizado (índice, var. mensual, var. anual).
+      3-5: Construcción (índice, var. mensual, var. anual).
+      6-8: Maquinaria y equipo (índice, var. mensual, var. anual).
+      9-12: Residencial / No residencial (índices, var. anual).
+      13-24: Maquinaria y equipo nacional e importado (índices y var. anual).
+      25-27: IMFBCF total original (índice, var. anual, acumulado ene-mes).
+      28-39: Índices originales y variaciones anuales/acumuladas por componente.
+    """
+    cfg = (kpicfg.get(ind["key"]) or {}).copy()
+    if not cfg:
+        return None
+
+    cfg["valCol"] = 0
+    cfg["valFmt"] = "idx"
+    cfg["varCol"] = 1
+    cfg["varFmt"] = "pct-frac"
+    cfg["varLabel"] = "Var. mensual desest."
+    cfg["yoyCol"] = 2
+    cfg["yoyFmt"] = "pct-frac"
+    cfg["yoyLabel"] = "Var. anual desest."
+    cfg["acumCol"] = 27
+    cfg["acumFmt"] = "pct-frac"
+    cfg["acumLabel"] = "Acumulado ene-mes"
+    cfg["ctx"] = " (índice base 2018=100)"
+    cfg["comp"] = "frente al mes previo"
+    cfg["vw"] = "variación mensual desestacionalizada"
+
+    kpi = compute_kpi(ind, {ind["key"]: cfg})
+    if not kpi:
+        return None
+
+    yoy = annual_var(ind, kpi, {ind["key"]: cfg})
+    if yoy:
+        kpi["yoyText"] = yoy["text"]
+        kpi["yoyLabel"] = yoy["label"]
+    else:
+        kpi["yoyText"] = "—"
+        kpi["yoyLabel"] = cfg.get("yoyLabel", "Var. anual")
+
+    # Acumulado ene-mes total (col 27)
+    acum_raw = _val_at(ind, kpi["lastI"], 27)
+    if acum_raw is not None:
+        kpi["acumRaw"] = acum_raw
+        kpi["acumText"] = ("+" if acum_raw > 0 else "") + F.fmt_val(acum_raw, "pct-frac")
+        kpi["acumLabel"] = "Acumulado ene-mes"
+    else:
+        kpi["acumRaw"] = None
+        kpi["acumText"] = "—"
+        kpi["acumLabel"] = "Acumulado ene-mes"
+
+    # Componentes: índice, mensual (si existe) y anual desestacionalizados.
+    comp_cfg = [
+        {"name": "Construcción", "idxCol": 3, "momCol": 4, "yoyCol": 5},
+        {"name": "Maquinaria y equipo", "idxCol": 6, "momCol": 7, "yoyCol": 8},
+        {"name": "Residencial", "idxCol": 9, "yoyCol": 10},
+        {"name": "No residencial", "idxCol": 11, "yoyCol": 12},
+        {"name": "Maquinaria y equipo nacional", "idxCol": 13, "yoyCol": 14},
+        {"name": "Equipo de transporte nacional", "idxCol": 15, "yoyCol": 16},
+        {"name": "Maquinaria, equipo y otros nacionales", "idxCol": 17, "yoyCol": 18},
+        {"name": "Maquinaria y equipo importado", "idxCol": 19, "yoyCol": 20},
+        {"name": "Equipo de transporte importado", "idxCol": 21, "yoyCol": 22},
+        {"name": "Maquinaria, equipo y otros importados", "idxCol": 23, "yoyCol": 24},
+    ]
+    cards = []
+    for c in comp_cfg:
+        idx = _val_at(ind, kpi["lastI"], c["idxCol"])
+        mom = _val_at(ind, kpi["lastI"], c.get("momCol")) if c.get("momCol") is not None else None
+        y = _val_at(ind, kpi["lastI"], c["yoyCol"])
+        cards.append({
+            "name": c["name"],
+            "nivelRaw": idx,
+            "nivelText": F.fmt_val(idx, "idx") if idx is not None else "—",
+            "momRaw": mom,
+            "momText": F.fmt_val(mom, "pct-frac") if mom is not None else "—",
+            "yoyRaw": y,
+            "yoyText": F.fmt_val(y, "pct-frac") if y is not None else "—",
+        })
+    kpi["cards"] = cards
+
+    def _verb(mag: float | None) -> str:
+        if mag is None:
+            return "se mantuvo"
+        if mag > 0.05:
+            return "avanzó"
+        if mag < -0.05:
+            return "retrocedió"
+        return "se mantuvo prácticamente sin cambio"
+
+    def _composition(comp_cards: list[dict]) -> str | None:
+        active = [c for c in comp_cards if c.get("yoyRaw") is not None]
+        if not active:
+            return None
+        pos = [c for c in active if c["yoyRaw"] > 0.0005]
+        neg = [c for c in active if c["yoyRaw"] < -0.0005]
+        pos.sort(key=lambda c: c["yoyRaw"], reverse=True)
+        neg.sort(key=lambda c: c["yoyRaw"])
+        if pos and neg:
+            top = pos[:2]
+            bottom = neg[-2:][::-1]
+            top_txt = " y ".join(f"{c['name']} ({c['yoyText']})" for c in top)
+            bot_txt = " y ".join(f"{c['name']} ({c['yoyText']})" for c in bottom)
+            return f"A tasa anual, {top_txt} avanzaron, mientras que {bot_txt} retrocedieron."
+        if pos:
+            top = pos[:2]
+            top_txt = " y ".join(f"{c['name']} ({c['yoyText']})" for c in top)
+            return f"A tasa anual, todos los componentes avanzaron; destacaron {top_txt}."
+        if neg:
+            bottom = neg[:2]
+            bot_txt = " y ".join(f"{c['name']} ({c['yoyText']})" for c in bottom)
+            return f"A tasa anual, todos los componentes retrocedieron; la caída más contenida fue en {bot_txt}."
+        return "A tasa anual, los componentes se mantuvieron sin cambio significativo."
+
+    period = per_long(kpi["ultimoP"])
+    mes = (kpi["ultimoP"] or "").split()[0].lower() if (kpi["ultimoP"] or "").split() else "mes"
+    bullets = [
+        f"En {period}, la formación bruta de capital fijo se ubicó en {prose_val('IMFBCF', kpi['ultimoRaw'])} (índice base 2018=100). "
+        f"La variación mensual desestacionalizada fue de {kpi['varText']} respecto al mes previo, por lo que el indicador {_verb(kpi['varMag'])}."
+    ]
+    if yoy:
+        bullets.append(f"A tasa anual, el IMFBCF {_verb(yoy['mag'])} {kpi['yoyText']}.")
+    if kpi.get("acumText") and kpi["acumText"] != "—":
+        bullets.append(f"El acumulado ene-{mes}, en cifras originales, fue de {kpi['acumText']}.")
+    comp_text = _composition(cards)
+    if comp_text:
+        bullets.append(comp_text)
+
+    return {
+        "kpi": kpi,
+        "yoy": yoy,
+        "annualVar": yoy,
+        "resumen": bullets[:4],
+        "analysis": [],
+    }
+
+
 def _emim_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     """KPI y resumen para EMIM con el esquema de 18 columnas.
 
@@ -1675,6 +1814,11 @@ def compute_all_metrics(payload: dict | None = None, kpicfg: dict | None = None)
             imai = _imai_metrics(ind, kpicfg)
             if imai:
                 out[key] = imai
+                continue
+        if key == "IMFBCF" and len(ind.get("columns", [])) >= 40:
+            imfbcf = _imfbcf_metrics(ind, kpicfg)
+            if imfbcf:
+                out[key] = imfbcf
                 continue
         if key == "EMIM" and len(ind.get("columns", [])) >= 18:
             emim = _emim_metrics(ind, kpicfg)

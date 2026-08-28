@@ -664,7 +664,6 @@
         "link": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=682416#D702185"
       }
     ],
-
     "EMOE": [
       {
         "_nota": "Indicador de Confianza Empresarial, cifras originales, serie de la EMOE.",
@@ -1106,5 +1105,29 @@
     "PIB_ANUAL": "NY.GDP.MKTP.KD",
     "INFLACION_ANUAL": "FP.CPI.TOTL.ZG",
     "DESEMPLEO_ANUAL": "SL.UEM.TOTL.ZS"
-  }
+  },
+  "IMFBCF": [
+    {
+      "_nota": "Indicador Mensual de la Formación Bruta de Capital Fijo (IMFBCF), base 2018=100, frecuencia mensual. La fuente de verdad histórica es el SIE del Banco de México (cuadro CR363). Las series desestacionalizadas, originales y componentes se descargan en bloque vía banxico_sie.py. Las variaciones del mes más reciente se completan con el boletín oficial del INEGI (ifb/imfbcf{year}_{mm}.pdf) mediante inegi_bulletin.py."
+    },
+    {
+      "serie": "CR363",
+      "confirmar": false,
+      "nombre": "Formación Bruta de Capital Fijo",
+      "descripcion_serie": "Índice de volumen físico de la inversión fija bruta, Total y componentes, series desestacionalizadas y originales, base 2018=100",
+      "frecuencia": "Mensual",
+      "unidad": "Índice base 2018=100",
+      "tipo_serie": "Mixta",
+      "db": "Banxico SIE",
+      "geo": "00",
+      "columna_objetivo": "0-39",
+      "start_year": 1993,
+      "link": "https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?accion=consultarCuadro&idCuadro=CR363&locale=es&sector=2"
+    },
+    {
+      "serie": null,
+      "confirmar": true,
+      "_nota": "Boletín de prensa del INEGI: https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/ifb/imfbcf{year}_{mm}.pdf. Proporciona el índice total, variación mensual y anual desestacionalizadas, y el desglose por componentes del mes más reciente."
+    }
+  ]
 }

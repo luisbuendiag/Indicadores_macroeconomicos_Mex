@@ -26,7 +26,7 @@ import lib_data as L
 import lib_freshness
 import lib_kpicfg
 import lib_metrics
-from sources import banxico, inegi, inegi_bulletin, inegi_inpc, inegi_inpp, worldbank
+from sources import banxico, banxico_sie, inegi, inegi_bulletin, inegi_inpc, inegi_inpp, worldbank
 import validate as V
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -277,6 +277,64 @@ def prepare_igae_for_v3(payload: dict) -> list[str]:
 
     return changes
 
+
+
+def prepare_imfbcf_for_v3(payload: dict) -> list[str]:
+    """Migra el indicador IMFBCF al esquema de 40 columnas antes de fusionar fuentes.
+
+    El esquema anterior tenía 2 columnas: índice y variación mensual. El nuevo esquema
+    separa la inversión total y sus componentes (construcción, maquinaria y equipo,
+    nacional, importado, etc.) con cifras desestacionalizadas, originales, variaciones
+    mensuales, anuales y acumulados ene-mes. Las variaciones antiguas se conservan en
+    los primeros slots y las demás se recalculan o se obtienen de los conectores.
+    """
+    changes: list[str] = []
+    ind = payload["indicators"].get("IMFBCF")
+    if not ind:
+        return changes
+
+    meta = json.loads(L.META_FILE.read_text(encoding="utf-8"))
+    imfbcf_prof = (
+        meta.get("profile", {}).get("IMFBCF", {})
+        or meta.get("scaffolds", {}).get("IMFBCF", {})
+    )
+    new_cols = imfbcf_prof.get("columns")
+    if not new_cols or len(new_cols) != 40:
+        return changes
+
+    old_cols = ind.get("columns", [])
+    old_labels = [c.get("label", "") for c in old_cols]
+    is_old_schema = (
+        len(old_cols) == 2
+        and "Índice (inversión)" in old_labels[0]
+        and "Var. mensual" in old_labels[1]
+    )
+
+    if is_old_schema:
+        new_obs = []
+        for o in ind.get("observations", []):
+            vals = list(o.get("values", []))
+            nv = [None] * 40
+            if len(vals) > 0:
+                nv[0] = vals[0]  # índice total desest.
+            if len(vals) > 1:
+                nv[1] = vals[1]  # var. mensual total desest.
+            new_obs.append({"period": o.get("period"), "values": nv})
+        ind["observations"] = new_obs
+        changes.append(
+            f"IMFBCF: migradas {len(new_obs)} observaciones del esquema antiguo de 2 columnas a 40"
+        )
+
+    ind["columns"] = new_cols
+    if "windows" in imfbcf_prof:
+        ind["windows"] = imfbcf_prof["windows"]
+    # Sincroniza metadatos del perfil V3 para IMFBCF.
+    for field in ("nombre", "sigla", "descripcion", "frecuencia", "unidad",
+                  "ajuste_estacional", "grupo", "publicacion", "fuente"):
+        if imfbcf_prof.get(field) is not None and ind.get(field) != imfbcf_prof[field]:
+            ind[field] = imfbcf_prof[field]
+            changes.append(f"IMFBCF: actualizado {field}")
+    return changes
 
 
 def compute_imai_metrics(payload: dict) -> list[str]:
@@ -777,6 +835,9 @@ def run(offline: bool = False) -> int:
     # Migrar IGAE al esquema de 9 columnas antes de fusionar fuentes.
     log["changes"].extend(prepare_igae_for_v3(payload))
 
+    # Migrar IMFBCF al esquema de 40 columnas antes de fusionar fuentes.
+    log["changes"].extend(prepare_imfbcf_for_v3(payload))
+
     if not offline:
         # Asegurar que los indicadores del perfil (incluyendo nuevos) existan
         # antes de consultar las fuentes; si faltan, se crean desde el perfil.
@@ -784,7 +845,7 @@ def run(offline: bool = False) -> int:
 
         # inegi_bulletin se ejecuta primero para evitar throttling del sitio de prensa
         # después de las llamadas masivas al BIE.
-        for name, mod in (("inegi_bulletin", inegi_bulletin), ("banxico", banxico), ("inegi", inegi), ("inegi_inpc", inegi_inpc), ("inegi_inpp", inegi_inpp), ("worldbank", worldbank)):
+        for name, mod in (("banxico_sie", banxico_sie), ("inegi_bulletin", inegi_bulletin), ("banxico", banxico), ("inegi", inegi), ("inegi_inpc", inegi_inpc), ("inegi_inpp", inegi_inpp), ("worldbank", worldbank)):
             log["network_calls"] = True
             try:
                 res = mod.fetch(config)
@@ -799,7 +860,7 @@ def run(offline: bool = False) -> int:
                 continue
             if res.ok:
                 for key, ind in res.data.items():
-                    if name in ("inegi", "inegi_bulletin", "inegi_inpc", "inegi_inpp"):
+                    if name in ("inegi", "inegi_bulletin", "inegi_inpc", "inegi_inpp", "banxico_sie"):
                         items = ind if isinstance(ind, list) else [ind]
                         consultas = []
                         for it in items:
