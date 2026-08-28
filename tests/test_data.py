@@ -72,7 +72,7 @@ def test_duplicate_flagged_as_revision(payload):
     ("CONSUMO", 1, 2, 0.001, 0.026),
     ("IMFBCF", 1, 2, -0.004, 0.024),
     ("IGAE", 1, 2, -0.001, 0.028191),
-    ("IOAE", 0, 1, 0.1, 2.7),
+    ("IOAE", 3, 0, 0.001, 0.027),
 ])
 def test_bulletin_variations_monthly_and_annual(payload, key, monthly_col, annual_col, expected_monthly, expected_annual):
     ind = payload["indicators"][key]
@@ -111,10 +111,10 @@ def test_ioae_jun_2026_and_no_secondary_total(payload):
     no la variación de actividades secundarias."""
     ioae = payload["indicators"]["IOAE"]
     last = next(o for o in ioae["observations"] if o["period"] == "Jun 26")
-    # Variación mensual y anual oficiales del IGAE, no la secundaria (0.5%).
-    assert last["values"][0] == pytest.approx(0.2, abs=1e-4)
-    assert last["values"][1] == pytest.approx(1.7, abs=1e-4)
-    assert last["values"][0] != pytest.approx(0.5, abs=1e-4)
+    # Variación anual (col 0) y mensual (col 3) oficiales del IGAE, no la secundaria (col 4, 0.5%).
+    assert last["values"][0] == pytest.approx(0.017, abs=1e-4)
+    assert last["values"][3] == pytest.approx(0.002, abs=1e-4)
+    assert last["values"][0] != pytest.approx(0.005, abs=1e-4)
 
 
 def test_pib_label_includes_2018(payload):

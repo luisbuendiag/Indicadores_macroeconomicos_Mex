@@ -337,6 +337,81 @@ def prepare_imfbcf_for_v3(payload: dict) -> list[str]:
     return changes
 
 
+def prepare_ioae_for_v3(payload: dict) -> list[str]:
+    """Migra el indicador IOAE al esquema de 13 columnas y normaliza metadatos.
+
+    Esquema anterior (4 columnas): 0=mensual, 1=anual, 2=inferior, 3=superior.
+    Esquema nuevo (13 columnas): ver indicadores_meta.json.
+    Las variaciones antiguas venían en formato pct-raw (2.7), por lo que se
+    convierten a fracciones (0.027) para el nuevo esquema pct-frac.
+    """
+    changes: list[str] = []
+    ind = payload["indicators"].get("IOAE")
+    if not ind:
+        return changes
+
+    try:
+        meta = json.loads(L.META_FILE.read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        return changes
+    ioae_prof = (
+        meta.get("profile", {}).get("IOAE", {})
+        or meta.get("scaffolds", {}).get("IOAE", {})
+    )
+    new_cols = ioae_prof.get("columns")
+    if not new_cols or len(new_cols) != 13:
+        return changes
+
+    old_cols = ind.get("columns", [])
+    old_labels = [c.get("label", "") for c in old_cols]
+    is_old_schema = (
+        len(old_cols) == 4
+        and any("mensual" in l for l in old_labels)
+        and any("anual" in l for l in old_labels)
+    )
+
+    if is_old_schema:
+        new_obs = []
+        for o in ind.get("observations", []):
+            vals = list(o.get("values", []))
+            nv = [None] * 13
+            if len(vals) > 1 and vals[1] is not None:
+                nv[0] = vals[1] / 100.0  # anual -> col 0
+            if len(vals) > 2 and vals[2] is not None:
+                nv[1] = vals[2] / 100.0  # inferior -> col 1
+            if len(vals) > 3 and vals[3] is not None:
+                nv[2] = vals[3] / 100.0  # superior -> col 2
+            if len(vals) > 0 and vals[0] is not None:
+                nv[3] = vals[0] / 100.0  # mensual -> col 3
+            new_obs.append({"period": o.get("period"), "values": nv})
+        ind["observations"] = new_obs
+        changes.append(
+            f"IOAE: migradas {len(new_obs)} observaciones del esquema antiguo de 4 columnas a 13"
+        )
+
+    # Asegurar observaciones con 13 valores.
+    fixed = 0
+    for o in ind.get("observations", []):
+        vals = list(o.get("values", []))
+        if len(vals) < 13:
+            vals.extend([None] * (13 - len(vals)))
+            o["values"] = vals
+            fixed += 1
+    if fixed:
+        changes.append(f"IOAE: {fixed} observaciones ajustadas a 13 columnas")
+
+    ind["columns"] = new_cols
+    if "windows" in ioae_prof:
+        ind["windows"] = ioae_prof["windows"]
+    # Sincroniza metadatos del perfil V3.
+    for field in ("nombre", "sigla", "descripcion", "frecuencia", "unidad",
+                  "ajuste_estacional", "grupo", "publicacion", "fuente"):
+        if ioae_prof.get(field) is not None and ind.get(field) != ioae_prof[field]:
+            ind[field] = ioae_prof[field]
+            changes.append(f"IOAE: actualizado {field}")
+    return changes
+
+
 def compute_imai_metrics(payload: dict) -> list[str]:
     """Completa el esquema de 14 columnas del IMAI y calcula el acumulado original.
 
@@ -563,7 +638,11 @@ def apply_inegi_total(payload: dict, key: str, item: dict, prev_last: str | None
         vals = list(o.get("values", []))
         while len(vals) < ncol:
             vals.append(None)
-        rows_by_ym[ym_key] = {"period": o.get("period", ""), "values": vals}
+        row = {"period": o.get("period", ""), "values": vals}
+        for mk in ("pub_date", "caracter"):
+            if o.get(mk) is not None:
+                row[mk] = o[mk]
+        rows_by_ym[ym_key] = row
 
     # Actualizar la columna objetivo y agregar nuevos periodos.
     for o in item["api_total"]:
@@ -580,7 +659,14 @@ def apply_inegi_total(payload: dict, key: str, item: dict, prev_last: str | None
             vals = [None] * ncol
             rows_by_ym[ym_key] = {"period": period_label, "values": vals}
         if 0 <= tcol < ncol:
-            vals[tcol] = round(o["value"], 6)
+            if isinstance(o.get("value"), str):
+                vals[tcol] = o["value"]
+            else:
+                vals[tcol] = round(o["value"], 6)
+            # Propagar metadatos por observación (p.ej. IOAE).
+            for mk in ("pub_date", "caracter"):
+                if o.get(mk) is not None:
+                    rows_by_ym[ym_key][mk] = o[mk]
 
     rows = sorted(rows_by_ym.items(), key=lambda t: t[0])
     ind["observations"] = [o for _, o in rows]
@@ -816,6 +902,75 @@ def compute_desocup_metrics(payload: dict) -> list[str]:
     return changes
 
 
+def compute_ioae_metrics(payload: dict) -> list[str]:
+    """Completa el esquema de 13 columnas del IOAE y añade el IGAE observado.
+
+    - Cols 0-9: nowcasts e intervalos de confianza al 95% (del boletín).
+    - Col 10: fecha de publicación del boletín (string).
+    - Col 11: carácter de la estimación (string).
+    - Col 12: variación anual observada del IGAE (copia de IGAE col 2).
+    """
+    changes: list[str] = []
+    ind = payload["indicators"].get("IOAE")
+    if not ind:
+        return changes
+
+    try:
+        meta = json.loads(L.META_FILE.read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        return changes
+    ioae_prof = meta.get("profile", {}).get("IOAE", {}) or meta.get("scaffolds", {}).get("IOAE", {})
+    new_cols = ioae_prof.get("columns")
+    if not new_cols or len(new_cols) != 13:
+        return changes
+
+    if len(ind.get("columns", [])) != 13:
+        ind["columns"] = new_cols
+        changes.append("IOAE: esquema de 13 columnas aplicado")
+
+    fixed = 0
+    for o in ind.get("observations", []):
+        vals = list(o.get("values", []))
+        if len(vals) < 13:
+            vals.extend([None] * (13 - len(vals)))
+            o["values"] = vals
+            fixed += 1
+    if fixed:
+        changes.append(f"IOAE: {fixed} observaciones ajustadas a 13 columnas")
+
+    # Copiar IGAE observado anual (col 2) al IOAE (col 12).
+    igae = payload["indicators"].get("IGAE")
+    if igae:
+        igae_by_ym = {}
+        for o in igae.get("observations", []):
+            ym = inegi.label_to_ym(o.get("period", ""))
+            if ym:
+                igae_by_ym[ym] = o
+        updated = 0
+        for o in ind.get("observations", []):
+            ym = inegi.label_to_ym(o.get("period", ""))
+            if not ym:
+                continue
+            igae_o = igae_by_ym.get(ym)
+            if not igae_o:
+                continue
+            igae_vals = list(igae_o.get("values", []))
+            if len(igae_vals) > 2 and igae_vals[2] is not None:
+                o["values"][12] = round(igae_vals[2], 6)
+                updated += 1
+        if updated:
+            changes.append(f"IOAE: {updated} observaciones con IGAE observado anual")
+
+    # Sincroniza metadatos del perfil V3.
+    for field in ("nombre", "sigla", "descripcion", "frecuencia", "unidad",
+                  "ajuste_estacional", "grupo", "publicacion", "fuente"):
+        if ioae_prof.get(field) is not None and ind.get(field) != ioae_prof[field]:
+            ind[field] = ioae_prof[field]
+            changes.append(f"IOAE: actualizado {field}")
+
+    return changes
+
+
 def run(offline: bool = False) -> int:
     log = {"started_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
            "mode": "offline" if offline else "online",
@@ -837,6 +992,9 @@ def run(offline: bool = False) -> int:
 
     # Migrar IMFBCF al esquema de 40 columnas antes de fusionar fuentes.
     log["changes"].extend(prepare_imfbcf_for_v3(payload))
+
+    # Migrar IOAE al esquema de 13 columnas antes de fusionar fuentes.
+    log["changes"].extend(prepare_ioae_for_v3(payload))
 
     if not offline:
         # Asegurar que los indicadores del perfil (incluyendo nuevos) existan
@@ -921,6 +1079,9 @@ def run(offline: bool = False) -> int:
 
     # DESOCUP: cuatro tasas laborales mensuales y población ocupada trimestral.
     log["changes"].extend(compute_desocup_metrics(payload))
+
+    # IOAE: esquema de 13 columnas e IGAE observado para comparación.
+    log["changes"].extend(compute_ioae_metrics(payload))
 
     # Frescura, calendario, métricas compartidas y metadatos temporales.
     log["changes"].extend(apply_freshness_and_meta(payload, log))

@@ -804,6 +804,18 @@ function renderIndicatorView(key) {
         el("div", { class: "sub" }, `Periodo: ${k.poblacion.periodo} (trimestral)`),
       ) : null,
     );
+  } else if (ind.key === "IOAE") {
+    const annualColor = k.ultimoRaw >= 0 ? COLORS.GREEN : COLORS.CRIMSON;
+    const monthlyColor = k.varColor;
+    const errorColor = (k.latestErrorPP == null || Math.abs(k.latestErrorPP) <= 0.5) ? COLORS.GREEN : (Math.abs(k.latestErrorPP) <= 1.5 ? COLORS.GOLD : COLORS.CRIMSON);
+    mini = el("div", { class: "mini-kpis" },
+      el("div", { class: "mini dark" }, el("div", { class: "lbl" }, "Nowcast anual del IGAE"), el("div", { class: "num", style: `color:${annualColor}` }, k.ultimoFmt), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),
+      el("div", { class: "mini" }, el("div", { class: "lbl" }, cfg.varLabel), el("div", { class: "num", style: `color:${monthlyColor}` }, k.varText), el("div", { class: "sub" }, cfg.comp)),
+      k.icWidthText ? el("div", { class: "mini" }, el("div", { class: "lbl" }, "Amplitud del IC 95%"), el("div", { class: "num" }, k.icWidthText), el("div", { class: "sub" }, `Límite inferior · superior`)) : null,
+      k.latestObservedText ? el("div", { class: "mini" }, el("div", { class: "lbl" }, "IGAE observado"), el("div", { class: "num" }, k.latestObservedText), el("div", { class: "sub" }, `Publicado: ${k.latestObservedP}`)) : null,
+      k.latestErrorText ? el("div", { class: "mini" }, el("div", { class: "lbl" }, "Error vs. observado"), el("div", { class: "num", style: `color:${errorColor}` }, k.latestErrorText), el("div", { class: "sub" }, `Diferencia en puntos porcentuales`)) : null,
+      k.rmseText ? el("div", { class: "mini" }, el("div", { class: "lbl" }, "RMSE"), el("div", { class: "num" }, k.rmseText), el("div", { class: "sub" }, `${k.rmseN} meses con observado`)) : null,
+    );
   } else {
     mini = el("div", { class: "mini-kpis" },
       el("div", { class: "mini dark" }, el("div", { class: "lbl" }, "Cifra actual"), el("div", { class: "num" }, k.ultimoFmt), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),

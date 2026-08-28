@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-28T17:10:16+00:00",
+    "generated_at": "2026-08-28T18:08:53+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-08-28T11:10:16-06:00",
+    "last_update_ct": "2026-08-28T12:08:53-06:00",
     "periodo_referencia_reciente": {
       "period": "Jul 26",
       "period_long": "Jul 26"
@@ -46431,308 +46431,1298 @@
     "IOAE": {
       "key": "IOAE",
       "nombre": "Indicador Oportuno de la Actividad Económica",
-      "descripcion": "Estimación anticipada (nowcast) de la variación mensual del IGAE, con un intervalo de confianza. Ofrece una lectura temprana de la actividad económica antes de la cifra definitiva.",
+      "descripcion": "Estimación oportuna (nowcast) del IGAE y sus grandes sectores, con intervalos de confianza al 95%. Ofrece una primera lectura de la actividad económica aproximadamente tres semanas después del cierre del mes de referencia.",
       "frecuencia": "Mensual",
-      "unidad": "Variación mensual estimada (%)",
-      "ajuste_estacional": "Serie desestacionalizada",
+      "unidad": "Variación porcentual",
+      "ajuste_estacional": "Cifras desestacionalizadas",
       "grupo": "actividad",
-      "publicacion": "Fin de mes del periodo estimado",
+      "publicacion": "Aproximadamente 20 días tras el cierre del mes",
       "proximo": "Por confirmar con el calendario oficial de difusión",
       "fuente": {
         "nombre": "INEGI",
-        "link": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_08.pdf",
-        "metodo": "INEGI boletín PDF",
-        "serie": "IOAE_pdf"
+        "link": "https://www.inegi.org.mx/investigacion/ioae/",
+        "metodo": "Boletines oficiales de prensa del INEGI (PDF)",
+        "serie": null
       },
       "columns": [
         {
-          "label": "Estimación mensual (%)",
+          "label": "IGAE var. anual nowcast (%)",
           "index": 0,
-          "fmt": "pct-raw"
+          "fmt": "pct-frac"
         },
         {
-          "label": "Estimación anual (%)",
+          "label": "IC95 inferior IGAE (%)",
           "index": 1,
-          "fmt": "pct-raw"
+          "fmt": "pct-frac"
         },
         {
-          "label": "Límite inferior (%)",
+          "label": "IC95 superior IGAE (%)",
           "index": 2,
-          "fmt": "pct-raw"
+          "fmt": "pct-frac"
         },
         {
-          "label": "Límite superior (%)",
+          "label": "IGAE var. mensual nowcast (%)",
           "index": 3,
-          "fmt": "pct-raw"
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Actividades secundarias var. anual nowcast (%)",
+          "index": 4,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "IC95 inferior secundarias (%)",
+          "index": 5,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "IC95 superior secundarias (%)",
+          "index": 6,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Actividades terciarias var. anual nowcast (%)",
+          "index": 7,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "IC95 inferior terciarias (%)",
+          "index": 8,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "IC95 superior terciarias (%)",
+          "index": 9,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Fecha de publicación",
+          "index": 10,
+          "fmt": "text"
+        },
+        {
+          "label": "Carácter",
+          "index": 11,
+          "fmt": "text"
+        },
+        {
+          "label": "IGAE observado anual (%)",
+          "index": 12,
+          "fmt": "pct-frac"
         }
       ],
       "observations": [
         {
+          "period": "Ene 21",
+          "values": [
+            -0.04,
+            -0.055,
+            -0.026,
+            null,
+            -0.037,
+            null,
+            null,
+            -0.044,
+            -0.059,
+            -0.029,
+            null,
+            null,
+            -0.052785
+          ]
+        },
+        {
+          "period": "Feb 21",
+          "values": [
+            -0.04,
+            -0.055,
+            -0.025,
+            null,
+            -0.042,
+            -0.063,
+            -0.022,
+            -0.043,
+            -0.06,
+            -0.027,
+            "18 mar 2021",
+            "estimado",
+            -0.046054
+          ]
+        },
+        {
+          "period": "Mar 21",
+          "values": [
+            -0.021,
+            -0.036,
+            -0.006,
+            null,
+            -0.009,
+            -0.033,
+            0.014,
+            -0.031,
+            -0.048,
+            -0.014,
+            "19 abr 2021",
+            "estimado",
+            0.029752
+          ]
+        },
+        {
+          "period": "Abr 21",
+          "values": [
+            0.206,
+            0.186,
+            0.224,
+            0.004,
+            0.345,
+            0.319,
+            0.372,
+            0.164,
+            0.144,
+            0.183,
+            "18 may 2021",
+            "estimado",
+            0.260214
+          ]
+        },
+        {
+          "period": "May 21",
+          "values": [
+            0.248,
+            0.233,
+            0.262,
+            0.005,
+            0.364,
+            0.334,
+            0.394,
+            0.198,
+            0.183,
+            0.212,
+            "17 jun 2021",
+            "estimado",
+            0.277105
+          ]
+        },
+        {
+          "period": "Jun 21",
+          "values": [
+            0.147,
+            0.134,
+            0.161,
+            0.003,
+            0.144,
+            0.117,
+            0.171,
+            0.14,
+            0.126,
+            0.153,
+            "19 jul 2021",
+            "estimado",
+            0.138131
+          ]
+        },
+        {
+          "period": "Jul 21",
+          "values": [
+            0.099,
+            0.086,
+            0.112,
+            0.005,
+            0.066,
+            0.042,
+            0.089,
+            0.105,
+            0.091,
+            0.118,
+            "19 ago 2021",
+            "estimado",
+            0.075729
+          ]
+        },
+        {
+          "period": "Ago 21",
+          "values": [
+            0.068,
+            0.054,
+            0.081,
+            -0.002,
+            0.041,
+            0.016,
+            0.067,
+            0.083,
+            0.07,
+            0.097,
+            "17 sep 2021",
+            "estimado",
+            0.049504
+          ]
+        },
+        {
+          "period": "Sep 21",
+          "values": [
+            0.05,
+            0.037,
+            0.062,
+            0.001,
+            0.04,
+            0.022,
+            0.058,
+            0.061,
+            0.049,
+            0.074,
+            "20 oct 2021",
+            "estimado",
+            0.008158
+          ]
+        },
+        {
+          "period": "Oct 21",
+          "values": [
+            0.019,
+            0.007,
+            0.031,
+            0.006,
+            0.013,
+            -0.004,
+            0.031,
+            0.02,
+            0.008,
+            0.033,
+            "18 nov 2021",
+            "estimado",
+            -0.000917
+          ]
+        },
+        {
+          "period": "Nov 21",
+          "values": [
+            0.012,
+            -0.006,
+            0.029,
+            0.005,
+            0.014,
+            -0.003,
+            0.031,
+            0.011,
+            -0.002,
+            0.024,
+            "20 dic 2021",
+            "estimado",
+            0.018012
+          ]
+        },
+        {
+          "period": "Dic 21",
+          "values": [
+            -0.002,
+            -0.02,
+            0.015,
+            0.0,
+            0.004,
+            -0.013,
+            0.02,
+            -0.013,
+            -0.026,
+            -0.001,
+            "18 ene 2022",
+            "estimado",
+            0.017055
+          ]
+        },
+        {
+          "period": "Ene 22",
+          "values": [
+            0.007,
+            -0.01,
+            0.025,
+            -0.001,
+            0.021,
+            0.004,
+            0.038,
+            0.001,
+            -0.012,
+            0.014,
+            "18 feb 2022",
+            "estimado",
+            0.017766
+          ]
+        },
+        {
+          "period": "Feb 22",
+          "values": [
+            0.028,
+            0.011,
+            0.046,
+            0.003,
+            0.035,
+            0.018,
+            0.053,
+            0.016,
+            0.004,
+            0.029,
+            "22 mar 2022",
+            "estimado",
+            0.030016
+          ]
+        },
+        {
+          "period": "Mar 22",
+          "values": [
+            0.004,
+            -0.014,
+            0.022,
+            0.008,
+            0.031,
+            0.01,
+            0.052,
+            -0.003,
+            -0.016,
+            0.009,
+            "19 abr 2022",
+            "estimado",
+            0.017879
+          ]
+        },
+        {
+          "period": "Abr 22",
+          "values": [
+            0.018,
+            0.0,
+            0.037,
+            0.004,
+            0.025,
+            0.004,
+            0.046,
+            0.014,
+            0.001,
+            0.026,
+            "19 may 2022",
+            "estimado",
+            0.02378
+          ]
+        },
+        {
+          "period": "May 22",
+          "values": [
+            0.01,
+            -0.009,
+            0.03,
+            0.001,
+            0.033,
+            0.011,
+            0.055,
+            0.0,
+            -0.013,
+            0.013,
+            "21 jun 2022",
+            "estimado",
+            0.034698
+          ]
+        },
+        {
+          "period": "Jun 22",
+          "values": [
+            0.021,
+            0.002,
+            0.041,
+            -0.004,
+            0.035,
+            0.014,
+            0.056,
+            0.009,
+            -0.005,
+            0.024,
+            "19 jul 2022",
+            "estimado",
+            0.018472
+          ]
+        },
+        {
+          "period": "Jul 22",
+          "values": [
+            0.015,
+            -0.005,
+            0.034,
+            -0.001,
+            0.027,
+            0.006,
+            0.047,
+            0.008,
+            -0.006,
+            0.021,
+            "18 ago 2022",
+            "estimado",
+            0.024634
+          ]
+        },
+        {
+          "period": "Ago 22",
+          "values": [
+            0.029,
+            0.008,
+            0.049,
+            0.0,
+            0.031,
+            0.008,
+            0.053,
+            0.026,
+            0.012,
+            0.041,
+            "20 sep 2022",
+            "estimado",
+            0.058617
+          ]
+        },
+        {
+          "period": "Sep 22",
+          "values": [
+            0.033,
+            0.02,
+            0.046,
+            0.0,
+            0.041,
+            0.017,
+            0.065,
+            0.031,
+            0.017,
+            0.046,
+            "20 oct 2022",
+            "estimado",
+            0.054706
+          ]
+        },
+        {
+          "period": "Oct 22",
+          "values": [
+            0.05,
+            0.036,
+            0.064,
+            0.001,
+            0.035,
+            0.012,
+            0.059,
+            0.056,
+            0.041,
+            0.071,
+            "18 nov 2022",
+            "estimado",
+            0.046998
+          ]
+        },
+        {
+          "period": "Nov 22",
+          "values": [
+            0.042,
+            0.029,
+            0.055,
+            -0.001,
+            0.03,
+            0.006,
+            0.053,
+            0.048,
+            0.035,
+            0.062,
+            "19 dic 2022",
+            "estimado",
+            0.047001
+          ]
+        },
+        {
+          "period": "Dic 22",
+          "values": [
+            0.027,
+            0.013,
+            0.04,
+            -0.004,
+            0.012,
+            -0.012,
+            0.036,
+            0.028,
+            0.014,
+            0.042,
+            "20 ene 2023",
+            "estimado",
+            0.043541
+          ]
+        },
+        {
+          "period": "Ene 23",
+          "values": [
+            0.028,
+            0.019,
+            0.038,
+            0.004,
+            0.031,
+            0.007,
+            0.055,
+            0.025,
+            0.013,
+            0.037,
+            "17 feb 2023",
+            "estimado",
+            0.048122
+          ]
+        },
+        {
+          "period": "Feb 23",
+          "values": [
+            0.035,
+            0.024,
+            0.047,
+            0.003,
+            0.029,
+            0.005,
+            0.053,
+            0.031,
+            0.017,
+            0.044,
+            "22 mar 2023",
+            "estimado",
+            0.037245
+          ]
+        },
+        {
+          "period": "Mar 23",
+          "values": [
+            0.032,
+            0.022,
+            0.043,
+            -0.001,
+            0.015,
+            null,
+            null,
+            0.039,
+            0.027,
+            0.051,
+            null,
+            null,
+            0.024907
+          ]
+        },
+        {
+          "period": "Abr 23",
+          "values": [
+            0.026,
+            0.017,
+            0.035,
+            0.004,
+            0.017,
+            -0.006,
+            0.04,
+            0.028,
+            0.017,
+            0.04,
+            "18 may 2023",
+            "estimado",
+            0.017994
+          ]
+        },
+        {
+          "period": "May 23",
+          "values": [
+            0.025,
+            0.013,
+            0.037,
+            0.001,
+            0.014,
+            -0.009,
+            0.037,
+            0.029,
+            0.015,
+            0.043,
+            "19 jun 2023",
+            "estimado",
+            0.041821
+          ]
+        },
+        {
+          "period": "Jun 23",
+          "values": [
+            0.04,
+            0.028,
+            0.052,
+            0.002,
+            0.028,
+            0.004,
+            0.051,
+            0.043,
+            0.03,
+            0.057,
+            "20 jul 2023",
+            "estimado",
+            0.038346
+          ]
+        },
+        {
+          "period": "Jul 23",
+          "values": [
+            0.034,
+            0.025,
+            0.043,
+            0.002,
+            0.032,
+            0.008,
+            0.056,
+            0.036,
+            0.024,
+            0.047,
+            "18 ago 2023",
+            "estimado",
+            0.030921
+          ]
+        },
+        {
+          "period": "Ago 23",
+          "values": [
+            0.034,
+            0.022,
+            0.045,
+            0.002,
+            0.048,
+            0.021,
+            0.074,
+            0.028,
+            0.015,
+            0.042,
+            "19 sep 2023",
+            "estimado",
+            0.033174
+          ]
+        },
+        {
+          "period": "Sep 23",
+          "values": [
+            0.03,
+            0.018,
+            0.041,
+            0.002,
+            0.048,
+            0.023,
+            0.073,
+            0.019,
+            0.006,
+            0.033,
+            "19 oct 2023",
+            "estimado",
+            0.038156
+          ]
+        },
+        {
+          "period": "Oct 23",
+          "values": [
+            0.029,
+            0.02,
+            0.037,
+            -0.001,
+            0.041,
+            0.016,
+            0.066,
+            0.022,
+            0.011,
+            0.033,
+            "21 nov 2023",
+            "estimado",
+            0.045066
+          ]
+        },
+        {
+          "period": "Nov 23",
+          "values": [
+            0.042,
+            0.029,
+            0.054,
+            0.004,
+            0.051,
+            0.025,
+            0.077,
+            0.037,
+            0.024,
+            0.051,
+            "19 dic 2023",
+            "estimado",
+            0.017723
+          ]
+        },
+        {
           "period": "Dic 23",
           "values": [
-            0.1,
-            2.6,
-            -1.2,
-            1.3
+            0.026,
+            0.013,
+            0.039,
+            0.001,
+            0.027,
+            0.002,
+            0.051,
+            0.022,
+            0.009,
+            0.036,
+            "19 ene 2024",
+            "estimado",
+            0.005217
           ]
         },
         {
           "period": "Ene 24",
           "values": [
-            0.1,
-            2.2,
-            -0.7,
-            1.0
+            0.022,
+            0.013,
+            0.031,
+            0.001,
+            0.019,
+            -0.006,
+            0.043,
+            0.02,
+            0.009,
+            0.031,
+            "19 feb 2024",
+            "estimado",
+            0.023888
           ]
         },
         {
           "period": "Feb 24",
           "values": [
-            0.3,
-            2.4,
-            -0.9,
-            1.4
+            0.024,
+            0.012,
+            0.036,
+            0.003,
+            0.023,
+            -0.002,
+            0.048,
+            0.026,
+            0.012,
+            0.039,
+            "20 mar 2024",
+            "estimado",
+            0.044111
           ]
         },
         {
           "period": "Mar 24",
           "values": [
-            0.2,
-            2.1,
-            -0.9,
-            1.3
+            0.021,
+            0.009,
+            0.032,
+            0.002,
+            0.016,
+            -0.009,
+            0.042,
+            0.025,
+            0.011,
+            0.038,
+            "18 abr 2024",
+            "estimado",
+            -0.013439
           ]
         },
         {
           "period": "Abr 24",
           "values": [
-            0.1,
-            1.7,
-            -0.8,
-            0.9
+            0.017,
+            0.009,
+            0.026,
+            0.001,
+            0.016,
+            -0.009,
+            0.04,
+            0.022,
+            0.011,
+            0.033,
+            "20 may 2024",
+            "estimado",
+            0.054617
           ]
         },
         {
           "period": "May 24",
           "values": [
-            0.3,
-            2.0,
-            -0.9,
-            1.5
+            0.02,
+            0.008,
+            0.032,
+            0.003,
+            0.0,
+            -0.024,
+            0.023,
+            0.03,
+            0.017,
+            0.044,
+            "20 jun 2024",
+            "estimado",
+            0.015145
           ]
         },
         {
           "period": "Jun 24",
           "values": [
+            0.009,
+            -0.003,
+            0.021,
             0.0,
-            0.9,
-            -1.2,
-            1.2
+            -0.001,
+            -0.025,
+            0.022,
+            0.016,
+            0.002,
+            0.03,
+            "19 jul 2024",
+            "estimado",
+            -0.005057
           ]
         },
         {
           "period": "Jul 24",
           "values": [
-            -0.1,
-            1.1,
-            -1.0,
-            0.8
+            0.011,
+            0.002,
+            0.02,
+            -0.001,
+            0.001,
+            -0.023,
+            0.026,
+            0.016,
+            0.004,
+            0.027,
+            "19 ago 2024",
+            "estimado",
+            0.039377
+          ]
+        },
+        {
+          "period": "Ago 24",
+          "values": [
+            0.011,
+            -0.002,
+            0.024,
+            0.003,
+            0.007,
+            -0.017,
+            0.032,
+            0.015,
+            0.001,
+            0.028,
+            "19 sep 2024",
+            "estimado",
+            0.004806
+          ]
+        },
+        {
+          "period": "Sep 24",
+          "values": [
+            0.005,
+            -0.007,
+            0.017,
+            -0.001,
+            -0.005,
+            -0.029,
+            0.019,
+            0.009,
+            -0.004,
+            0.023,
+            "21 oct 2024",
+            "estimado",
+            -0.000728
+          ]
+        },
+        {
+          "period": "Oct 24",
+          "values": [
+            0.004,
+            -0.005,
+            0.013,
+            -0.001,
+            -0.013,
+            -0.037,
+            0.011,
+            0.011,
+            -0.001,
+            0.022,
+            "20 nov 2024",
+            "estimado",
+            0.007661
           ]
         },
         {
           "period": "Nov 24",
           "values": [
-            0.2,
-            null,
-            -0.9,
-            1.3
+            0.01,
+            -0.002,
+            0.022,
+            0.001,
+            -0.01,
+            -0.034,
+            0.013,
+            0.015,
+            0.001,
+            0.028,
+            "19 dic 2024",
+            "estimado",
+            0.003169
           ]
         },
         {
           "period": "Dic 24",
           "values": [
-            0.4,
-            1.1,
-            -0.8,
-            1.5
+            0.011,
+            0.0,
+            0.023,
+            0.004,
+            0.003,
+            -0.022,
+            0.027,
+            0.021,
+            0.008,
+            0.035,
+            "21 ene 2025",
+            "estimado",
+            -0.005289
           ]
         },
         {
           "period": "Ene 25",
           "values": [
-            0.1,
-            1.8,
-            -0.8,
-            1.0
+            0.018,
+            0.009,
+            0.027,
+            0.001,
+            -0.017,
+            -0.041,
+            0.006,
+            0.028,
+            0.017,
+            0.04,
+            "18 feb 2025",
+            "estimado",
+            -0.003515
           ]
         },
         {
           "period": "Feb 25",
           "values": [
-            0.2,
-            -0.7,
-            -1.0,
-            1.4
+            -0.007,
+            -0.019,
+            0.005,
+            0.002,
+            -0.021,
+            -0.044,
+            0.002,
+            0.004,
+            -0.009,
+            0.018,
+            "20 mar 2025",
+            "estimado",
+            -0.008658
           ]
         },
         {
           "period": "Mar 25",
           "values": [
+            -0.002,
+            -0.013,
+            0.01,
             0.0,
-            -0.2,
-            -1.2,
-            1.2
+            -0.003,
+            -0.027,
+            0.02,
+            0.003,
+            -0.01,
+            0.017,
+            "22 abr 2025",
+            "estimado",
+            0.02672
           ]
         },
         {
           "period": "Abr 25",
           "values": [
+            0.007,
+            -0.008,
+            0.021,
             0.0,
-            0.7,
-            -1.4,
-            1.4
+            -0.008,
+            -0.032,
+            0.016,
+            0.015,
+            0.004,
+            0.026,
+            "19 may 2025",
+            "estimado",
+            -0.016268
           ]
         },
         {
           "period": "May 25",
           "values": [
-            0.1,
-            -0.3,
-            -1.0,
-            1.3
+            -0.003,
+            -0.015,
+            0.008,
+            0.001,
+            -0.011,
+            -0.035,
+            0.013,
+            0.001,
+            -0.012,
+            0.014,
+            "19 jun 2025",
+            "estimado",
+            -0.000608
           ]
         },
         {
           "period": "Jun 25",
           "values": [
-            0.2,
-            1.3,
-            -0.9,
-            1.4
+            0.013,
+            0.001,
+            0.025,
+            0.002,
+            -0.006,
+            -0.03,
+            0.018,
+            0.02,
+            0.007,
+            0.033,
+            "18 jul 2025",
+            "estimado",
+            0.009082
           ]
         },
         {
           "period": "Jul 25",
           "values": [
-            -0.1,
-            0.1,
-            -1.0,
-            0.9
+            0.001,
+            -0.008,
+            0.01,
+            -0.001,
+            -0.01,
+            -0.034,
+            0.013,
+            0.008,
+            -0.003,
+            0.019,
+            "19 ago 2025",
+            "estimado",
+            -0.010966
           ]
         },
         {
           "period": "Ago 25",
           "values": [
-            0.1,
-            0.2,
-            -1.1,
-            1.3
+            0.002,
+            -0.01,
+            0.014,
+            0.001,
+            -0.02,
+            -0.043,
+            0.003,
+            0.007,
+            -0.006,
+            0.02,
+            "19 sep 2025",
+            "estimado",
+            -0.007088
           ]
         },
         {
           "period": "Sep 25",
           "values": [
-            0.1,
-            -0.6,
-            -1.0,
-            1.2
+            -0.006,
+            -0.018,
+            0.005,
+            0.001,
+            -0.03,
+            -0.053,
+            -0.006,
+            0.008,
+            -0.005,
+            0.021,
+            "21 oct 2025",
+            "estimado",
+            0.006615
           ]
         },
         {
           "period": "Oct 25",
           "values": [
             0.0,
+            -0.009,
+            0.009,
             0.0,
-            -0.9,
-            0.9
+            -0.021,
+            -0.044,
+            0.001,
+            0.009,
+            -0.001,
+            0.019,
+            "20 nov 2025",
+            "estimado",
+            0.016777
           ]
         },
         {
           "period": "Nov 25",
           "values": [
-            -0.2,
             0.0,
-            -1.3,
-            1.0
+            -0.011,
+            0.012,
+            -0.002,
+            -0.015,
+            -0.037,
+            0.007,
+            0.008,
+            -0.005,
+            0.021,
+            "18 dic 2025",
+            "estimado",
+            -0.002115
           ]
         },
         {
           "period": "Dic 25",
           "values": [
-            0.2,
-            2.3,
-            -1.0,
-            1.3
+            0.023,
+            0.011,
+            0.034,
+            0.002,
+            0.012,
+            -0.012,
+            0.036,
+            0.029,
+            0.016,
+            0.043,
+            "21 ene 2026",
+            "estimado",
+            0.033007
           ]
         },
         {
           "period": "Ene 26",
           "values": [
-            0.3,
-            2.3,
-            -0.6,
-            1.2
+            0.023,
+            0.013,
+            0.032,
+            0.003,
+            0.021,
+            -0.003,
+            0.046,
+            0.022,
+            0.011,
+            0.033,
+            "20 feb 2026",
+            "estimado",
+            -0.003766
           ]
         },
         {
           "period": "Feb 26",
           "values": [
-            0.1,
-            1.2,
-            -1.1,
-            1.3
+            0.012,
+            0.0,
+            0.024,
+            0.001,
+            -0.019,
+            -0.042,
+            0.004,
+            0.019,
+            0.006,
+            0.032,
+            "20 mar 2026",
+            "estimado",
+            -0.003473
           ]
         },
         {
           "period": "Mar 26",
           "values": [
+            0.005,
+            -0.007,
+            0.017,
             0.0,
-            0.5,
-            -1.2,
-            1.2
+            -0.005,
+            -0.028,
+            0.018,
+            0.011,
+            -0.003,
+            0.024,
+            "20 abr 2026",
+            "estimado",
+            0.012053
           ]
         },
         {
           "period": "Abr 26",
           "values": [
-            0.3,
-            0.3,
-            -0.6,
-            1.2
+            0.003,
+            -0.006,
+            0.012,
+            0.003,
+            -0.01,
+            -0.032,
+            0.012,
+            0.007,
+            -0.004,
+            0.019,
+            "19 may 2026",
+            "estimado",
+            0.025042
           ]
         },
         {
           "period": "May 26",
           "values": [
+            0.011,
             0.0,
-            1.1,
-            -1.1,
-            1.2
+            0.023,
+            0.0,
+            0.007,
+            -0.015,
+            0.029,
+            0.017,
+            0.003,
+            0.031,
+            "17 jun 2026",
+            "estimado",
+            0.010626
           ]
         },
         {
           "period": "Jun 26",
           "values": [
-            0.2,
-            1.7,
-            -1.0,
-            1.3
+            0.017,
+            0.005,
+            0.028,
+            0.002,
+            0.005,
+            -0.017,
+            0.027,
+            0.022,
+            0.008,
+            0.035,
+            "21 jul 2026",
+            "estimado",
+            0.028191
           ]
         },
         {
           "period": "Jul 26",
           "values": [
-            0.1,
-            2.7,
-            -0.8,
-            1.0
+            0.027,
+            0.018,
+            0.036,
+            0.001,
+            0.018,
+            -0.005,
+            0.042,
+            0.028,
+            0.017,
+            0.039,
+            "20 ago 2026",
+            "estimado",
+            null
           ]
         }
       ],
       "last_observation": "Jul 26",
       "last_updated": "2026-08-28",
       "last_checked": "2026-08-28",
-      "requiere_token": "INEGI",
+      "requiere_token": null,
       "serie_confirmada": true,
       "clasificacion": "principal",
       "estado": "ACTUALIZADO",
@@ -46745,53 +47735,126 @@
         "kpi": {
           "assessment": "favorable",
           "dir": "up",
-          "ultimoFmt": "0.1%",
-          "ultimoRaw": 0.1,
+          "ultimoFmt": "2.7%",
+          "ultimoRaw": 0.027,
           "ultimoP": "Jul 26",
           "varText": "+0.1%",
           "varMag": 0.1,
           "pos": true,
           "varColor": "#1e5b4f",
-          "varLabel": "Estimación mensual",
-          "maxFmt": "0.4%",
-          "maxRaw": 0.4,
-          "maxP": "Dic 24",
-          "minFmt": "-0.2%",
-          "minRaw": -0.2,
-          "minP": "Nov 25",
-          "lastI": 28,
+          "varLabel": "Var. mensual estimada",
+          "maxFmt": "24.8%",
+          "maxRaw": 0.248,
+          "maxP": "May 21",
+          "minFmt": "-4.0%",
+          "minRaw": -0.04,
+          "minP": "Ene 21",
+          "lastI": 66,
           "series": [
-            0.1,
-            0.1,
-            0.3,
-            0.2,
-            0.1,
-            0.3,
+            -0.04,
+            -0.04,
+            -0.021,
+            0.206,
+            0.248,
+            0.147,
+            0.099,
+            0.068,
+            0.05,
+            0.019,
+            0.012,
+            -0.002,
+            0.007,
+            0.028,
+            0.004,
+            0.018,
+            0.01,
+            0.021,
+            0.015,
+            0.029,
+            0.033,
+            0.05,
+            0.042,
+            0.027,
+            0.028,
+            0.035,
+            0.032,
+            0.026,
+            0.025,
+            0.04,
+            0.034,
+            0.034,
+            0.03,
+            0.029,
+            0.042,
+            0.026,
+            0.022,
+            0.024,
+            0.021,
+            0.017,
+            0.02,
+            0.009,
+            0.011,
+            0.011,
+            0.005,
+            0.004,
+            0.01,
+            0.011,
+            0.018,
+            -0.007,
+            -0.002,
+            0.007,
+            -0.003,
+            0.013,
+            0.001,
+            0.002,
+            -0.006,
             0.0,
-            -0.1,
-            0.2,
-            0.4,
-            0.1,
-            0.2,
             0.0,
-            0.0,
-            0.1,
-            0.2,
-            -0.1,
-            0.1,
-            0.1,
-            0.0,
-            -0.2,
-            0.2,
-            0.3,
-            0.1,
-            0.0,
-            0.3,
-            0.0,
-            0.2,
-            0.1
+            0.023,
+            0.023,
+            0.012,
+            0.005,
+            0.003,
+            0.011,
+            0.017,
+            0.027
           ],
           "periods": [
+            "Ene 21",
+            "Feb 21",
+            "Mar 21",
+            "Abr 21",
+            "May 21",
+            "Jun 21",
+            "Jul 21",
+            "Ago 21",
+            "Sep 21",
+            "Oct 21",
+            "Nov 21",
+            "Dic 21",
+            "Ene 22",
+            "Feb 22",
+            "Mar 22",
+            "Abr 22",
+            "May 22",
+            "Jun 22",
+            "Jul 22",
+            "Ago 22",
+            "Sep 22",
+            "Oct 22",
+            "Nov 22",
+            "Dic 22",
+            "Ene 23",
+            "Feb 23",
+            "Mar 23",
+            "Abr 23",
+            "May 23",
+            "Jun 23",
+            "Jul 23",
+            "Ago 23",
+            "Sep 23",
+            "Oct 23",
+            "Nov 23",
             "Dic 23",
             "Ene 24",
             "Feb 24",
@@ -46800,6 +47863,9 @@
             "May 24",
             "Jun 24",
             "Jul 24",
+            "Ago 24",
+            "Sep 24",
+            "Oct 24",
             "Nov 24",
             "Dic 24",
             "Ene 25",
@@ -46823,19 +47889,22 @@
             "Jul 26"
           ],
           "semaforo": "bueno",
-          "yoyText": "+2.7%",
-          "yoyLabel": "Estimación anual"
+          "icWidth": 1.7999999999999998,
+          "icWidthText": "±1.80 pp",
+          "monthlyText": "+0.1%",
+          "latestObservedP": "Jun 26",
+          "latestObservedText": "+2.8%",
+          "latestErrorPP": 1.1191,
+          "latestErrorText": "+1.119 p.p.",
+          "rmseN": 66,
+          "rmseText": "1.89 pp",
+          "yoyText": "—",
+          "yoyLabel": "—"
         },
-        "yoy": {
-          "mag": 2.7,
-          "pos": true,
-          "text": "+2.7%",
-          "label": "Estimación anual"
-        },
+        "yoy": null,
         "resumen": [
-          "En julio de 2026, la estimación oportuna de la actividad económica se ubicó en 0.1 (variación mensual estimada). El valor de estimación mensual fue de +0.1% .",
-          "La estimación anual se situó en +2.7%, lo que refleja la comparación contra julio de 2026 del año previo.",
-          "En la serie mostrada, el indicador oscila entre un máximo de 0.4 (diciembre de 2024) y un mínimo de -0.2 (noviembre de 2025). El último dato se ubica dentro del rango observado en el periodo mostrado.",
+          "En julio de 2026, el indicador oportuno de la actividad económica se ubicó en 2.7% (variación anual estimada con intervalo de confianza al 95%). El valor de var. mensual estimada fue de +0.1% frente al mes previo.",
+          "En la serie mostrada, el indicador oscila entre un máximo de 24.8% (mayo de 2021) y un mínimo de -4.0% (enero de 2021). El último dato se ubica dentro del rango observado en el periodo mostrado.",
           "La variación se clasifica como favorable según la lectura económica del indicador."
         ]
       },
@@ -46854,13 +47923,41 @@
       "nota_disponible": false,
       "nota_causa": "Falta plantilla aprobada",
       "url_nota_individual": null,
-      "url_fuente_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_08.pdf",
+      "url_fuente_oficial": "https://www.inegi.org.mx/investigacion/ioae/",
       "fecha_ultima_publicacion": "20 de agosto de 2026",
       "regla_publicacion": null,
       "periodo_boletin": "Jul 26",
       "numero_boletin": "494/26",
       "tipo_documento": "PDF",
       "producto_boletin": "Indicador Oportuno de la Actividad Económica",
+      "windows": [
+        {
+          "id": "3m",
+          "label": "3 meses",
+          "count": 3
+        },
+        {
+          "id": "6m",
+          "label": "6 meses",
+          "count": 6
+        },
+        {
+          "id": "1a",
+          "label": "1 año",
+          "count": 12
+        },
+        {
+          "id": "5a",
+          "label": "5 años",
+          "count": 60
+        },
+        {
+          "id": "max",
+          "label": "Máximo",
+          "count": null
+        }
+      ],
+      "sigla": "IOAE",
       "boletin_validado": true
     },
     "EMIM": {
@@ -67231,9 +68328,15 @@
           "values": [
             16.9712
           ]
+        },
+        {
+          "period": "2026-08-28",
+          "values": [
+            17.0427
+          ]
         }
       ],
-      "fecha_ultima_observacion": "2026-08-27",
+      "fecha_ultima_observacion": "2026-08-28",
       "url_fuente_oficial": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
       "fecha_ultima_publicacion": null,
       "regla_publicacion": null

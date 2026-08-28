@@ -109,7 +109,19 @@ function chartSpec(ind, obs) {
     case "BALANZA": return { periods: P, bars: [{ name: "Exportaciones", values: col(0), color: G }, { name: "Importaciones", values: col(1), color: SEC }], lines: [{ name: "Saldo (X − M)", values: saldo, color: Go, axis: "right" }], leftName: "Millones de dólares", rightName: "Saldo (mdd)", leftFmt: "compact", rightFmt: "compact" };
     case "IMFBCF": return { periods: P, lines: [{ name: "Índice (inversión)", values: col(0), color: G }, { name: "Var. mensual (%)", values: col(1).map((v) => v == null ? null : v * 100), color: SEC, axis: "right" }], leftName: "Índice (2018=100)", rightName: "Var. mensual (%)", leftFmt: "idx", rightFmt: "pct" };
     case "EMIM": return { periods: P, lines: [{ name: "Producción (índice)", values: col(0), color: G }, { name: "Var. mensual (%)", values: col(1).map((v) => v == null ? null : v * 100), color: SEC, axis: "right" }], leftName: "Índice", rightName: "Var. mensual (%)", leftFmt: "idx", rightFmt: "pct" };
-    case "IOAE": return { periods: P, lines: [{ name: "Estimación puntual (%)", values: col(0), color: G }, { name: "Límite inferior", values: col(1), color: REF, dash: true }, { name: "Límite superior", values: col(2), color: REF, dash: true }], leftName: "Variación mensual (%)", leftFmt: "pct" };
+    case "IOAE": return {
+      periods: P,
+      lines: [
+        { name: "Nowcast anual IGAE (%)", values: col(0).map((v) => v == null ? null : v * 100), color: G },
+        { name: "IC 95% inferior", values: col(1).map((v) => v == null ? null : v * 100), color: REF, dash: true },
+        { name: "IC 95% superior", values: col(2).map((v) => v == null ? null : v * 100), color: REF, dash: true },
+        { name: "IGAE observado", values: col(12).map((v) => v == null ? null : v * 100), color: Go, dash: true },
+        { name: "Nowcast secundarias (%)", values: col(4).map((v) => v == null ? null : v * 100), color: COLORS.TEAL },
+        { name: "Nowcast terciarias (%)", values: col(7).map((v) => v == null ? null : v * 100), color: COLORS.WINE },
+        { name: "Nowcast mensual IGAE (%)", values: col(3).map((v) => v == null ? null : v * 100), color: COLORS.DKGREEN, dash: true, axis: "right" },
+      ],
+      leftName: "Variación anual (%)", rightName: "Var. mensual (%)", leftFmt: "pct", rightFmt: "pct"
+    };
     case "RESERVAS": return { periods: P, lines: [{ name: "Reservas internacionales", values: col(0), color: G }], leftName: "Millones de dólares", leftFmt: "compact" };
     case "TIPOCAMBIO": return { periods: P, lines: [{ name: "Tipo de cambio FIX", values: col(0), color: G }], leftName: "Pesos por dólar", leftFmt: "idx" };
     case "TASA": return { periods: P, lines: [{ name: "Tasa objetivo (%)", values: col(0), color: G }], leftName: "Porcentaje (%)", leftFmt: "pct" };

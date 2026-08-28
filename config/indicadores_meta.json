@@ -420,10 +420,45 @@
       ]
     },
     "IOAE": {
-      "requiere_token": "INEGI",
+      "requiere_token": null,
       "serie_confirmada": true,
       "clasificacion": "principal",
-      "nombre": "Indicador Oportuno de la Actividad Económica"
+      "nombre": "Indicador Oportuno de la Actividad Económica",
+      "sigla": "IOAE",
+      "descripcion": "Estimación oportuna (nowcast) del IGAE y sus grandes sectores, con intervalos de confianza al 95%. Ofrece una primera lectura de la actividad económica aproximadamente tres semanas después del cierre del mes de referencia.",
+      "frecuencia": "Mensual",
+      "unidad": "Variación porcentual",
+      "ajuste_estacional": "Cifras desestacionalizadas",
+      "grupo": "actividad",
+      "publicacion": "Aproximadamente 20 días tras el cierre del mes",
+      "fuente": {
+        "nombre": "INEGI",
+        "link": "https://www.inegi.org.mx/investigacion/ioae/",
+        "metodo": "Boletines oficiales de prensa del INEGI (PDF)",
+        "serie": null
+      },
+      "columns": [
+        {"label": "IGAE var. anual nowcast (%)", "index": 0, "fmt": "pct-frac"},
+        {"label": "IC95 inferior IGAE (%)", "index": 1, "fmt": "pct-frac"},
+        {"label": "IC95 superior IGAE (%)", "index": 2, "fmt": "pct-frac"},
+        {"label": "IGAE var. mensual nowcast (%)", "index": 3, "fmt": "pct-frac"},
+        {"label": "Actividades secundarias var. anual nowcast (%)", "index": 4, "fmt": "pct-frac"},
+        {"label": "IC95 inferior secundarias (%)", "index": 5, "fmt": "pct-frac"},
+        {"label": "IC95 superior secundarias (%)", "index": 6, "fmt": "pct-frac"},
+        {"label": "Actividades terciarias var. anual nowcast (%)", "index": 7, "fmt": "pct-frac"},
+        {"label": "IC95 inferior terciarias (%)", "index": 8, "fmt": "pct-frac"},
+        {"label": "IC95 superior terciarias (%)", "index": 9, "fmt": "pct-frac"},
+        {"label": "Fecha de publicación", "index": 10, "fmt": "text"},
+        {"label": "Carácter", "index": 11, "fmt": "text"},
+        {"label": "IGAE observado anual (%)", "index": 12, "fmt": "pct-frac"}
+      ],
+      "windows": [
+        {"id": "3m", "label": "3 meses", "count": 3},
+        {"id": "6m", "label": "6 meses", "count": 6},
+        {"id": "1a", "label": "1 año", "count": 12},
+        {"id": "5a", "label": "5 años", "count": 60},
+        {"id": "max", "label": "Máximo", "count": null}
+      ]
     },
     "EMIM": {
       "requiere_token": "INEGI",
@@ -611,43 +646,36 @@
     },
     "IOAE": {
       "nombre": "Indicador Oportuno de la Actividad Económica",
-      "descripcion": "Estimación anticipada (nowcast) de la variación mensual del IGAE, con un intervalo de confianza. Ofrece una lectura temprana de la actividad económica antes de la cifra definitiva.",
+      "descripcion": "Estimación oportuna (nowcast) del IGAE y sus grandes sectores, con intervalos de confianza al 95%. Ofrece una primera lectura de la actividad económica aproximadamente tres semanas después del cierre del mes de referencia.",
       "frecuencia": "Mensual",
-      "unidad": "Variación mensual estimada (%)",
-      "ajuste_estacional": "Serie desestacionalizada",
+      "unidad": "Variación porcentual",
+      "ajuste_estacional": "Cifras desestacionalizadas",
       "grupo": "actividad",
-      "publicacion": "Fin de mes del periodo estimado",
+      "publicacion": "Aproximadamente 20 días tras el cierre del mes",
       "proximo": "Por confirmar con el calendario oficial de difusión",
-      "requiere_token": "INEGI",
-      "serie_confirmada": false,
+      "requiere_token": null,
+      "serie_confirmada": true,
       "clasificacion": "principal",
       "fuente": {
         "nombre": "INEGI",
         "link": "https://www.inegi.org.mx/investigacion/ioae/",
-        "metodo": "INEGI (comunicado / BIE)",
+        "metodo": "Boletines oficiales de prensa del INEGI (PDF)",
         "serie": null
       },
       "columns": [
-        {
-          "label": "Estimación mensual (%)",
-          "index": 0,
-          "fmt": "pct-raw"
-        },
-        {
-          "label": "Estimación anual (%)",
-          "index": 1,
-          "fmt": "pct-raw"
-        },
-        {
-          "label": "Límite inferior (%)",
-          "index": 2,
-          "fmt": "pct-raw"
-        },
-        {
-          "label": "Límite superior (%)",
-          "index": 3,
-          "fmt": "pct-raw"
-        }
+        {"label": "IGAE var. anual nowcast (%)", "index": 0, "fmt": "pct-frac"},
+        {"label": "IC95 inferior IGAE (%)", "index": 1, "fmt": "pct-frac"},
+        {"label": "IC95 superior IGAE (%)", "index": 2, "fmt": "pct-frac"},
+        {"label": "IGAE var. mensual nowcast (%)", "index": 3, "fmt": "pct-frac"},
+        {"label": "Actividades secundarias var. anual nowcast (%)", "index": 4, "fmt": "pct-frac"},
+        {"label": "IC95 inferior secundarias (%)", "index": 5, "fmt": "pct-frac"},
+        {"label": "IC95 superior secundarias (%)", "index": 6, "fmt": "pct-frac"},
+        {"label": "Actividades terciarias var. anual nowcast (%)", "index": 7, "fmt": "pct-frac"},
+        {"label": "IC95 inferior terciarias (%)", "index": 8, "fmt": "pct-frac"},
+        {"label": "IC95 superior terciarias (%)", "index": 9, "fmt": "pct-frac"},
+        {"label": "Fecha de publicación", "index": 10, "fmt": "text"},
+        {"label": "Carácter", "index": 11, "fmt": "text"},
+        {"label": "IGAE observado anual (%)", "index": 12, "fmt": "pct-frac"}
       ]
     },
     "EMIM": {

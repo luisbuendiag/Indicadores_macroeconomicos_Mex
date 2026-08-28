@@ -77,8 +77,8 @@ def test_ioae_uses_mensual_and_anual_not_pp():
     m = re.search(r'IOAE:\s*\{[^}]*\}', CONFIG)
     assert m, "no se encontró la configuración de IOAE"
     ioae = m.group(0)
-    assert 'varLabel: "Estimación mensual"' in ioae
-    assert 'yoyLabel: "Estimación anual"' in ioae
+    assert 'varLabel: "Var. mensual estimada"' in ioae
+    assert 'yoyLabel: "IGAE observado"' in ioae
     assert 'varMode:' not in ioae or 'varMode: ""' in ioae
     assert "pp-prev" not in ioae
     assert "puntos porcentuales" not in ioae

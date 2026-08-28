@@ -32,6 +32,14 @@
 - Todas las variaciones porcentuales se almacenan como fracciones y se muestran con `pct-frac`.
 - La ficha presenta el índice total, la variación mensual y anual desestacionalizadas, el acumulado ene-mes, y el desglose por componentes en small multiples.
 
+## IOAE
+
+- El indicador `IOAE` es el *Indicador Oportuno de la Actividad Económica* (nowcast del IGAE), frecuencia mensual.
+- La fuente de verdad son los **boletines oficiales de prensa del INEGI** (`ioae{year}_{mm}.pdf`) a través de `inegi_bulletin.py`.
+- El esquema final tiene **13 columnas**: 0-2 (nowcast anual del IGAE e intervalo de confianza al 95%), 3 (nowcast mensual del IGAE), 4-9 (nowcast anual e intervalos de secundarias y terciarias), 10 (fecha de publicación del boletín, texto), 11 (carácter de la estimación: estimado / preliminar / revisado, texto), 12 (IGAE observado anual, copiado del IGAE para validar el error).
+- Las variaciones porcentuales se almacenan como **fracciones** y se muestran con `pct-frac`.
+- La ficha presenta el nowcast anual con su intervalo de confianza, la variación mensual estimada, el desglose por actividades secundarias y terciarias, y el contraste con el IGAE observado cuando ya está disponible.
+
 ## IMCP (CONSUMO)
 
 - El indicador `CONSUMO` es el *Indicador Mensual del Consumo Privado* (sigla IMCP), base 2018=100, frecuencia mensual.

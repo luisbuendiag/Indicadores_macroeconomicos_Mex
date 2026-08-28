@@ -285,6 +285,62 @@ export function computeKPI(ind) {
     lastI, series: vals, periods: P, semaforo,
   };
   if (acumInfo) Object.assign(out, acumInfo);
+
+  // Métricas adicionales del IOAE: intervalo de confianza, observado y error.
+  if (ind.key === "IOAE") {
+    const lastObs = ind.observations[lastI];
+    if (lastObs) {
+      const v = lastObs.values;
+      const lower = v[1] ?? null, upper = v[2] ?? null, observed = v[12] ?? null, monthly = v[3] ?? null;
+      if (lower != null && upper != null) {
+        const w = (upper - lower) * 100;
+        out.icWidth = w;
+        out.icWidthText = (w > 0 ? "±" : "") + w.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " pp";
+      }
+      if (monthly != null) {
+        out.monthlyText = (monthly > 0 ? "+" : "") + fmtVal(monthly, "pct-frac");
+      }
+      if (observed != null) {
+        out.observedRaw = observed;
+        out.observedText = (observed > 0 ? "+" : "") + fmtVal(observed, "pct-frac");
+        const err = observed - ultimo;
+        out.errorRaw = err;
+        out.errorText = (err > 0 ? "+" : "-") + fmtVal(Math.abs(err) * 100, "pp");
+        out.errorPP = err * 100;
+      }
+    }
+    // IGAE observado más reciente (puede ser dos meses atrás).
+    for (let i = lastI; i >= 0; i--) {
+      const v = ind.observations[i].values;
+      if (v[12] != null) {
+        const observed = v[12];
+        const now = v[0];
+        out.latestObservedP = ind.observations[i].period;
+        out.latestObservedText = (observed > 0 ? "+" : "") + fmtVal(observed, "pct-frac");
+        if (now != null) {
+          const err = observed - now;
+          out.latestErrorPP = err * 100;
+          out.latestErrorText = (err > 0 ? "+" : "-") + fmtVal(Math.abs(err) * 100, "pp");
+        }
+        break;
+      }
+    }
+    let n = 0, sse = 0;
+    ind.observations.forEach((o) => {
+      const v = o.values;
+      if (v[0] != null && v[12] != null) {
+        const e = v[12] - v[0];
+        sse += e * e;
+        n += 1;
+      }
+    });
+    if (n > 0) {
+      const rmse = Math.sqrt(sse / n) * 100;
+      out.rmseN = n;
+      out.rmseText = rmse.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " pp";
+    }
+  }
+
   return out;
 }
 
@@ -331,7 +387,7 @@ export function annualVar(ind, k) {
   // No se calcula variación anual del nivel cuando: (a) el valor ya es una tasa,
   // (b) la variación primaria ya es interanual (evita duplicar), o
   // (c) la interanual del saldo no tiene lectura económica clara.
-  if (["INPC", "INPP", "TASA", "DESOCUP", "IED", "BALANZA"].includes(ind.key)) return null;
+  if (["INPC", "INPP", "TASA", "DESOCUP", "IED", "BALANZA", "IOAE"].includes(ind.key)) return null;
   const vals = k.series;
   const lag = ind.frecuencia === "Trimestral" ? 4 : 12;
   const cur = vals[k.lastI];

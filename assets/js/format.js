@@ -24,6 +24,8 @@ export function fmtVal(v, fmt) {
       return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
     case "pp":
       return v.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 3 }) + " p.p.";
+    case "text":
+      return v == null ? "—" : String(v);
     default:
       return String(v);
   }

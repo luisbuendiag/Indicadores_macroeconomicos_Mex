@@ -88,6 +88,8 @@ def _xl_fmt(fmt: str) -> str:
         return "#,##0.0"
     if fmt == "fx":
         return "$#,##0.00"
+    if fmt == "text":
+        return "@"
     return "#,##0.0"
 
 

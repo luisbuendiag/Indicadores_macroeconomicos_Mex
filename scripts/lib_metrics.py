@@ -81,6 +81,8 @@ def prose_val(key: str, v: float | int | None) -> str:
         return F._to_fixed(v, 1, 1) + "%"
     if key in ("INPC", "INPP", "TASA"):
         return F._to_fixed(v, 1, 1) + "%"
+    if key == "IOAE":
+        return F._to_fixed(v * 100, 1, 1) + "%"
     if key == "TIPOCAMBIO":
         return "$" + F._to_fixed(v, 2, 2)
     return str(v)
@@ -250,7 +252,7 @@ def compute_kpi(ind: dict, kpicfg: dict | None = None) -> dict[str, Any] | None:
         else ("neutral" if mag is None else "estable")
     )
 
-    return {
+    out = {
         "assessment": assessment,
         "dir": dir_,
         "ultimoFmt": F.fmt_val(ultimo, cfg.get("valFmt")),
@@ -272,6 +274,56 @@ def compute_kpi(ind: dict, kpicfg: dict | None = None) -> dict[str, Any] | None:
         "periods": periods,
         "semaforo": semaforo,
     }
+
+    # Métricas adicionales del IOAE: intervalo de confianza, observado y error.
+    if ind["key"] == "IOAE":
+        last_obs = ind["observations"][last_i]
+        if last_obs:
+            v = last_obs.get("values", [])
+            lower = v[1] if len(v) > 1 and v[1] is not None else None
+            upper = v[2] if len(v) > 2 and v[2] is not None else None
+            observed = v[12] if len(v) > 12 and v[12] is not None else None
+            monthly = v[3] if len(v) > 3 and v[3] is not None else None
+            if lower is not None and upper is not None:
+                w = (upper - lower) * 100
+                out["icWidth"] = w
+                out["icWidthText"] = ("±" if w > 0 else "") + F._to_fixed(w, 2, 2) + " pp"
+            if monthly is not None:
+                out["monthlyText"] = ("+" if monthly > 0 else "") + F.fmt_val(monthly, "pct-frac")
+            if observed is not None:
+                out["observedRaw"] = observed
+                out["observedText"] = ("+" if observed > 0 else "") + F.fmt_val(observed, "pct-frac")
+                err = observed - ultimo
+                out["errorRaw"] = err
+                out["errorText"] = ("+" if err > 0 else "-") + F.fmt_val(abs(err) * 100, "pp")
+                out["errorPP"] = err * 100
+        # IGAE observado más reciente (puede ser dos meses atrás).
+        for i in range(last_i, -1, -1):
+            v = ind["observations"][i].get("values", [])
+            if len(v) > 12 and v[12] is not None:
+                observed = v[12]
+                now = v[0]
+                out["latestObservedP"] = ind["observations"][i]["period"]
+                out["latestObservedText"] = ("+" if observed > 0 else "") + F.fmt_val(observed, "pct-frac")
+                if now is not None:
+                    err = observed - now
+                    out["latestErrorPP"] = err * 100
+                    out["latestErrorText"] = ("+" if err > 0 else "-") + F.fmt_val(abs(err) * 100, "pp")
+                break
+        n = 0
+        sse = 0.0
+        for o in ind.get("observations", []):
+            v = o.get("values", [])
+            if len(v) > 12 and v[0] is not None and v[12] is not None:
+                e = v[12] - v[0]
+                sse += e * e
+                n += 1
+        if n > 0:
+            rmse = math.sqrt(sse / n) * 100
+            out["rmseN"] = n
+            out["rmseText"] = F._to_fixed(rmse, 2, 2) + " pp"
+
+    return out
 
 
 def _var_at(ind: dict, cfg: dict, vals: list, idx: int) -> float | None:
@@ -341,7 +393,7 @@ def annual_var(ind: dict, kpi: dict, kpicfg: dict | None = None) -> dict[str, An
             "label": cfg.get("yoyLabel", "Var. anual"),
         }
 
-    if ind["key"] in ("INPC", "INPP", "TASA", "DESOCUP", "IED", "BALANZA"):
+    if ind["key"] in ("INPC", "INPP", "TASA", "DESOCUP", "IED", "BALANZA", "IOAE"):
         return None
 
     vals = kpi["series"]
