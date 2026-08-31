@@ -26,10 +26,16 @@ MESES = {
     "dic": "diciembre",
 }
 
+MESES_FULL = {
+    1: "enero", 2: "febrero", 3: "marzo", 4: "abril", 5: "mayo", 6: "junio",
+    7: "julio", 8: "agosto", 9: "septiembre", 10: "octubre", 11: "noviembre", 12: "diciembre",
+}
+
 ORD = {"1": "primer", "2": "segundo", "3": "tercer", "4": "cuarto"}
 
 TRIM_RE = re.compile(r"^([1-4])T-(\d{2})")
 MONTH_RE = re.compile(r"^([A-Za-zÁÉÍÓÚáéíóú]{3})\s*(\d{2})")
+ISO_RE = re.compile(r"^(\d{4})-(\d{2})-(\d{2})$")
 
 
 def _to_decimal(value: float | int | Decimal | None) -> Decimal | None:
@@ -195,9 +201,18 @@ def _year_from_yy(yy: str) -> int:
     return (1900 if y >= 93 else 2000) + y
 
 
+def _mes_abbr(m: int) -> str:
+    return ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
+            "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"][m - 1]
+
+
 def per_long(p: str | None) -> str:
     if not p:
         return ""
+    iso = ISO_RE.match(p)
+    if iso:
+        d = date(int(iso.group(1)), int(iso.group(2)), int(iso.group(3)))
+        return f"{d.day} de {MESES_FULL[d.month]} de {d.year}"
     q = TRIM_RE.match(p)
     if q:
         return f"{ORD[q.group(1)]} trimestre de {_year_from_yy(q.group(2))}"
@@ -206,6 +221,23 @@ def per_long(p: str | None) -> str:
         m = MESES.get(mo.group(1).lower())
         if m:
             return f"{m} de {_year_from_yy(mo.group(2))}"
+    return p
+
+
+def per_short(p: str | None) -> str:
+    """Etiqueta corta para tarjetas: 28 Ago 26, 1T-26, etc."""
+    if not p:
+        return ""
+    iso = ISO_RE.match(p)
+    if iso:
+        d = date(int(iso.group(1)), int(iso.group(2)), int(iso.group(3)))
+        return f"{d.day} {_mes_abbr(d.month)} {str(d.year)[2:]}"
+    q = TRIM_RE.match(p)
+    if q:
+        return f"{q.group(1)}T-{q.group(2)}"
+    mo = MONTH_RE.match(p)
+    if mo:
+        return f"{mo.group(1).capitalize()} {mo.group(2)}"
     return p
 
 
@@ -220,6 +252,9 @@ def resp_frase(p: str | None) -> str:
 def period_to_date(p: str | None) -> date | None:
     if not p:
         return None
+    iso = ISO_RE.match(p)
+    if iso:
+        return date(int(iso.group(1)), int(iso.group(2)), int(iso.group(3)))
     q = TRIM_RE.match(p)
     if q:
         month = (int(q.group(1)) - 1) * 3

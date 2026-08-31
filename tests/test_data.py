@@ -7,7 +7,7 @@ import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "indicadores.json"
-PERIOD_RE = re.compile(r"^([1-4]T-\d{2}|[A-Za-zÁÉÍÓÚáéíóú]{3}\s*\d{2})")
+PERIOD_RE = re.compile(r"^(\d{4}-\d{2}-\d{2}|[1-4]T-\d{2}|[A-Za-zÁÉÍÓÚáéíóú]{3}\s*\d{2})")
 
 
 @pytest.fixture(scope="module")

@@ -124,7 +124,7 @@ function chartSpec(ind, obs) {
     };
     case "RESERVAS": return { periods: P, lines: [{ name: "Reservas internacionales", values: col(0), color: G }], leftName: "Millones de dólares", leftFmt: "compact" };
     case "TIPOCAMBIO": return { periods: P, lines: [{ name: "Tipo de cambio FIX", values: col(0), color: G }], leftName: "Pesos por dólar", leftFmt: "idx" };
-    case "TASA": return { periods: P, lines: [{ name: "Tasa objetivo (%)", values: col(0), color: G }], leftName: "Porcentaje (%)", leftFmt: "pct" };
+    case "TASA": return { periods: P, lines: [{ name: "Tasa objetivo (%)", values: col(0), color: G, step: "start" }], leftName: "Porcentaje (%)", leftFmt: "pct" };
     case "EMOE": return { periods: P, lines: [{ name: "Confianza empresarial", values: col(0), color: G }, { name: "Var. mensual (puntos)", values: col(1).map((v) => v == null ? null : v), color: SEC, axis: "right" }], leftName: "Puntos", rightName: "Var. mensual", leftFmt: "idx", rightFmt: "idx" };
     case "BCMM": return { periods: P, bars: [{ name: "Exportaciones", values: col(0), color: G }, { name: "Importaciones", values: col(1), color: SEC }], lines: [{ name: "Saldo (X − M)", values: saldo, color: Go, axis: "right" }], leftName: "Millones de dólares", rightName: "Saldo (mdd)", leftFmt: "compact", rightFmt: "compact" };
     default: return { periods: P, lines: [{ name: ind.nombre, values: col(0), color: G }], leftName: "", leftFmt: "num" };
@@ -204,6 +204,7 @@ export function buildOption(ind, windowId) {
     const s = {
       name: l.name, type: "line", data: l.values, yAxisIndex: l.axis === "right" ? 1 : 0,
       smooth: false, symbol: "circle", symbolSize: 5, connectNulls: false,
+      step: l.step || undefined,
       lineStyle: { color: l.color, width: 2.4, type: l.dash ? "dashed" : "solid" },
       itemStyle: { color: l.color }, emphasis: { focus: "series" },
       _fmt: fmt,

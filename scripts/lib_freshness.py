@@ -233,7 +233,7 @@ def expected_period_from_frequency(
         ym = f"{prev.year}-{prev.month:02d}"
         return ym, _ym_to_period(ym, frecuencia)
 
-    if f in ("diaria",):
+    if "diaria" in f:
         # Series diarias: se espera el mes actual desde el primer día hábil.
         first_biz = _first_business_day(as_of.year, as_of.month)
         if as_of >= first_biz:
@@ -243,7 +243,7 @@ def expected_period_from_frequency(
             ym = f"{prev.year}-{prev.month:02d}"
         return ym, _ym_to_period(ym, frecuencia)
 
-    if f in ("semanal",):
+    if "semanal" in f:
         # Series semanales: se espera el mes actual desde el primer viernes.
         first_fri = _first_friday(as_of.year, as_of.month)
         if as_of >= first_fri:
@@ -253,13 +253,13 @@ def expected_period_from_frequency(
             ym = f"{prev.year}-{prev.month:02d}"
         return ym, _ym_to_period(ym, frecuencia)
 
-    if f == "mensual":
+    if "mensual" in f:
         # Sin calendario mensual, se espera el mes anterior (publicación con lag).
         prev = _prev_month(as_of)
         ym = f"{prev.year}-{prev.month:02d}"
         return ym, _ym_to_period(ym, frecuencia)
 
-    if f == "trimestral":
+    if "trimest" in f:
         # Sin calendario trimestral, se espera el trimestre recién cerrado
         # ~60 días después de su último día. Ej. Q2 (termina 30 de junio):
         # antes de ~finales de agosto se espera Q1; después se espera Q2.
@@ -435,12 +435,12 @@ def compute_state(
 
     row = manifest_row or {}
     dashboard_period_clean = _clean_period(dashboard_period)
-    dashboard_ym = _period_to_ym(dashboard_period_clean)
+    dashboard_ym = _period_to_ym_flexible(dashboard_period_clean)
 
     pub, prox = _resolve_pub_prox(calendar, key, ind, as_of)
 
     official_period = pub.get("periodo_referencia") if pub else None
-    official_ym = _period_to_ym(official_period) if official_period else None
+    official_ym = _period_to_ym_flexible(official_period) if official_period else None
 
     # Error de fuente si el pipeline falló explícitamente para este indicador.
     had_error = source_had_error(key, update_log, manifest_row)
@@ -455,7 +455,7 @@ def compute_state(
     #    PENDIENTE (se espera una publicación intermedia no registrada).
     #  - Si la fecha ya pasó y el dashboard no alcanzó el periodo, es REZAGADO.
     if not pub and prox:
-        prox_ym = _period_to_ym(prox.get("periodo_referencia"))
+        prox_ym = _period_to_ym_flexible(prox.get("periodo_referencia"))
         prox_date = date.fromisoformat(prox["fecha_iso"]) if prox.get("fecha_iso") else None
         prox_due = prox_date and as_of >= prox_date
         if prox_ym and dashboard_ym:

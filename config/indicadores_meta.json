@@ -3,6 +3,7 @@
   "principal": [
     "PIB",
     "PIBSEC",
+    "IOAE",
     "IGAE",
     "IMAI",
     "BCMM",
@@ -11,7 +12,6 @@
     "INPP",
     "CONSUMO",
     "IMFBCF",
-    "IOAE",
     "EMIM"
   ],
   "complementario": [
@@ -57,11 +57,31 @@
         }
       ],
       "windows": [
-        {"id": "1a", "label": "1 año", "count": 4},
-        {"id": "2a", "label": "2 años", "count": 8},
-        {"id": "3a", "label": "3 años", "count": 12},
-        {"id": "5a", "label": "5 años", "count": 20},
-        {"id": "max", "label": "Máximo", "count": null}
+        {
+          "id": "1a",
+          "label": "1 año",
+          "count": 4
+        },
+        {
+          "id": "2a",
+          "label": "2 años",
+          "count": 8
+        },
+        {
+          "id": "3a",
+          "label": "3 años",
+          "count": 12
+        },
+        {
+          "id": "5a",
+          "label": "5 años",
+          "count": 20
+        },
+        {
+          "id": "max",
+          "label": "Máximo",
+          "count": null
+        }
       ]
     },
     "PIBSEC": {
@@ -77,25 +97,93 @@
       "grupo": "growth",
       "publicacion": "30 días después del cierre del trimestre",
       "columns": [
-        {"label": "Primarias", "index": 0, "fmt": "num"},
-        {"label": "Secundarias", "index": 1, "fmt": "num"},
-        {"label": "Terciarias", "index": 2, "fmt": "num"},
-        {"label": "Var. trim. Terciarias (%)", "index": 3, "fmt": "pct-frac"},
-        {"label": "Var. anual Terciarias (%)", "index": 4, "fmt": "pct-frac"},
-        {"label": "PIB", "index": 5, "fmt": "num"},
-        {"label": "Var. trim. PIB (%)", "index": 6, "fmt": "pct-frac"},
-        {"label": "Var. anual PIB (%)", "index": 7, "fmt": "pct-frac"},
-        {"label": "Var. trim. Primarias (%)", "index": 8, "fmt": "pct-frac"},
-        {"label": "Var. anual Primarias (%)", "index": 9, "fmt": "pct-frac"},
-        {"label": "Var. trim. Secundarias (%)", "index": 10, "fmt": "pct-frac"},
-        {"label": "Var. anual Secundarias (%)", "index": 11, "fmt": "pct-frac"}
+        {
+          "label": "Primarias",
+          "index": 0,
+          "fmt": "num"
+        },
+        {
+          "label": "Secundarias",
+          "index": 1,
+          "fmt": "num"
+        },
+        {
+          "label": "Terciarias",
+          "index": 2,
+          "fmt": "num"
+        },
+        {
+          "label": "Var. trim. Terciarias (%)",
+          "index": 3,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual Terciarias (%)",
+          "index": 4,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "PIB",
+          "index": 5,
+          "fmt": "num"
+        },
+        {
+          "label": "Var. trim. PIB (%)",
+          "index": 6,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual PIB (%)",
+          "index": 7,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. trim. Primarias (%)",
+          "index": 8,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual Primarias (%)",
+          "index": 9,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. trim. Secundarias (%)",
+          "index": 10,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual Secundarias (%)",
+          "index": 11,
+          "fmt": "pct-frac"
+        }
       ],
       "windows": [
-        {"id": "1a", "label": "1 año", "count": 4},
-        {"id": "2a", "label": "2 años", "count": 8},
-        {"id": "3a", "label": "3 años", "count": 12},
-        {"id": "5a", "label": "5 años", "count": 20},
-        {"id": "max", "label": "Máximo", "count": null}
+        {
+          "id": "1a",
+          "label": "1 año",
+          "count": 4
+        },
+        {
+          "id": "2a",
+          "label": "2 años",
+          "count": 8
+        },
+        {
+          "id": "3a",
+          "label": "3 años",
+          "count": 12
+        },
+        {
+          "id": "5a",
+          "label": "5 años",
+          "count": 20
+        },
+        {
+          "id": "max",
+          "label": "Máximo",
+          "count": null
+        }
       ]
     },
     "IGAE": {
@@ -111,22 +199,78 @@
       "grupo": "growth",
       "publicacion": "Aproximadamente 30 días después del cierre del mes",
       "columns": [
-        {"label": "IGAE (índice)", "index": 0, "fmt": "idx"},
-        {"label": "Var. mensual desest. (%)", "index": 1, "fmt": "pct-frac"},
-        {"label": "Var. anual original (%)", "index": 2, "fmt": "pct-frac"},
-        {"label": "Act. primarias (índice)", "index": 3, "fmt": "idx"},
-        {"label": "Var. anual act. primarias (%)", "index": 4, "fmt": "pct-frac"},
-        {"label": "Act. secundarias (índice)", "index": 5, "fmt": "idx"},
-        {"label": "Var. anual act. secundarias (%)", "index": 6, "fmt": "pct-frac"},
-        {"label": "Act. terciarias (índice)", "index": 7, "fmt": "idx"},
-        {"label": "Var. anual act. terciarias (%)", "index": 8, "fmt": "pct-frac"}
+        {
+          "label": "IGAE (índice)",
+          "index": 0,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. mensual desest. (%)",
+          "index": 1,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual original (%)",
+          "index": 2,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Act. primarias (índice)",
+          "index": 3,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual act. primarias (%)",
+          "index": 4,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Act. secundarias (índice)",
+          "index": 5,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual act. secundarias (%)",
+          "index": 6,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Act. terciarias (índice)",
+          "index": 7,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual act. terciarias (%)",
+          "index": 8,
+          "fmt": "pct-frac"
+        }
       ],
       "windows": [
-        {"id": "3m", "label": "3 meses", "count": 3},
-        {"id": "6m", "label": "6 meses", "count": 6},
-        {"id": "1a", "label": "1 año", "count": 12},
-        {"id": "5a", "label": "5 años", "count": 60},
-        {"id": "max", "label": "Máximo", "count": null}
+        {
+          "id": "3m",
+          "label": "3 meses",
+          "count": 3
+        },
+        {
+          "id": "6m",
+          "label": "6 meses",
+          "count": 6
+        },
+        {
+          "id": "1a",
+          "label": "1 año",
+          "count": 12
+        },
+        {
+          "id": "5a",
+          "label": "5 años",
+          "count": 60
+        },
+        {
+          "id": "max",
+          "label": "Máximo",
+          "count": null
+        }
       ]
     },
     "IMAI": {
@@ -142,31 +286,123 @@
       "grupo": "growth",
       "publicacion": "Aproximadamente 42 días después del cierre del mes",
       "columns": [
-        {"label": "IMAI (índice desest.)", "index": 0, "fmt": "idx"},
-        {"label": "Var. mensual desest. (%)", "index": 1, "fmt": "pct-frac"},
-        {"label": "Var. anual desest. (%)", "index": 2, "fmt": "pct-frac"},
-        {"label": "IMAI (índice original)", "index": 3, "fmt": "idx"},
-        {"label": "Var. anual original (%)", "index": 4, "fmt": "pct-frac"},
-        {"label": "Acumulado ene-mes original (%)", "index": 5, "fmt": "pct-frac"},
-        {"label": "Minería (índice desest.)", "index": 6, "fmt": "idx"},
-        {"label": "Energía, agua y gas (índice desest.)", "index": 7, "fmt": "idx"},
-        {"label": "Construcción (índice desest.)", "index": 8, "fmt": "idx"},
-        {"label": "Industrias manufactureras (índice desest.)", "index": 9, "fmt": "idx"},
-        {"label": "Var. anual Minería (%)", "index": 10, "fmt": "pct-frac"},
-        {"label": "Var. anual Energía (%)", "index": 11, "fmt": "pct-frac"},
-        {"label": "Var. anual Construcción (%)", "index": 12, "fmt": "pct-frac"},
-        {"label": "Var. anual Manufacturas (%)", "index": 13, "fmt": "pct-frac"},
-        {"label": "Var. mensual Minería (%)", "index": 14, "fmt": "pct-frac"},
-        {"label": "Var. mensual Energía (%)", "index": 15, "fmt": "pct-frac"},
-        {"label": "Var. mensual Construcción (%)", "index": 16, "fmt": "pct-frac"},
-        {"label": "Var. mensual Manufacturas (%)", "index": 17, "fmt": "pct-frac"}
+        {
+          "label": "IMAI (índice desest.)",
+          "index": 0,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. mensual desest. (%)",
+          "index": 1,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual desest. (%)",
+          "index": 2,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "IMAI (índice original)",
+          "index": 3,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual original (%)",
+          "index": 4,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes original (%)",
+          "index": 5,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Minería (índice desest.)",
+          "index": 6,
+          "fmt": "idx"
+        },
+        {
+          "label": "Energía, agua y gas (índice desest.)",
+          "index": 7,
+          "fmt": "idx"
+        },
+        {
+          "label": "Construcción (índice desest.)",
+          "index": 8,
+          "fmt": "idx"
+        },
+        {
+          "label": "Industrias manufactureras (índice desest.)",
+          "index": 9,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual Minería (%)",
+          "index": 10,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual Energía (%)",
+          "index": 11,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual Construcción (%)",
+          "index": 12,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual Manufacturas (%)",
+          "index": 13,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. mensual Minería (%)",
+          "index": 14,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. mensual Energía (%)",
+          "index": 15,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. mensual Construcción (%)",
+          "index": 16,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. mensual Manufacturas (%)",
+          "index": 17,
+          "fmt": "pct-frac"
+        }
       ],
       "windows": [
-        {"id": "3m", "label": "3 meses", "count": 3},
-        {"id": "6m", "label": "6 meses", "count": 6},
-        {"id": "1a", "label": "1 año", "count": 12},
-        {"id": "5a", "label": "5 años", "count": 60},
-        {"id": "max", "label": "Máximo", "count": null}
+        {
+          "id": "3m",
+          "label": "3 meses",
+          "count": 3
+        },
+        {
+          "id": "6m",
+          "label": "6 meses",
+          "count": 6
+        },
+        {
+          "id": "1a",
+          "label": "1 año",
+          "count": 12
+        },
+        {
+          "id": "5a",
+          "label": "5 años",
+          "count": 60
+        },
+        {
+          "id": "max",
+          "label": "Máximo",
+          "count": null
+        }
       ]
     },
     "DESOCUP": {
@@ -182,19 +418,63 @@
       "grupo": "desoc",
       "publicacion": "Mensual para tasas; trimestral para población ocupada",
       "columns": [
-        {"label": "Tasa de desocupación (%)", "index": 0, "fmt": "pct-raw"},
-        {"label": "Tasa de participación (%)", "index": 1, "fmt": "pct-raw"},
-        {"label": "Tasa de informalidad laboral 1 (%)", "index": 2, "fmt": "pct-raw"},
-        {"label": "Tasa de subocupación (%)", "index": 3, "fmt": "pct-raw"},
-        {"label": "Población ocupada (millones de personas)", "index": 4, "fmt": "idx"},
-        {"label": "Población ocupada (personas)", "index": 5, "fmt": "num"}
+        {
+          "label": "Tasa de desocupación (%)",
+          "index": 0,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Tasa de participación (%)",
+          "index": 1,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Tasa de informalidad laboral 1 (%)",
+          "index": 2,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Tasa de subocupación (%)",
+          "index": 3,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Población ocupada (millones de personas)",
+          "index": 4,
+          "fmt": "idx"
+        },
+        {
+          "label": "Población ocupada (personas)",
+          "index": 5,
+          "fmt": "num"
+        }
       ],
       "windows": [
-        {"id": "3m", "label": "3 meses", "count": 3},
-        {"id": "6m", "label": "6 meses", "count": 6},
-        {"id": "1a", "label": "1 año", "count": 12},
-        {"id": "5a", "label": "5 años", "count": 60},
-        {"id": "max", "label": "Máximo", "count": null}
+        {
+          "id": "3m",
+          "label": "3 meses",
+          "count": 3
+        },
+        {
+          "id": "6m",
+          "label": "6 meses",
+          "count": 6
+        },
+        {
+          "id": "1a",
+          "label": "1 año",
+          "count": 12
+        },
+        {
+          "id": "5a",
+          "label": "5 años",
+          "count": 60
+        },
+        {
+          "id": "max",
+          "label": "Máximo",
+          "count": null
+        }
       ]
     },
     "INPC": {
@@ -210,24 +490,96 @@
       "grupo": "inpc",
       "publicacion": "Aproximadamente 9-10 días después del cierre del mes",
       "columns": [
-        {"label": "INPC (índice)", "index": 0, "fmt": "idx"},
-        {"label": "INPC var. mensual (%)", "index": 1, "fmt": "pct-raw"},
-        {"label": "INPC inflación anual (%)", "index": 2, "fmt": "pct-raw"},
-        {"label": "Subyacente (índice)", "index": 3, "fmt": "idx"},
-        {"label": "Subyacente var. mensual (%)", "index": 4, "fmt": "pct-raw"},
-        {"label": "Subyacente inflación anual (%)", "index": 5, "fmt": "pct-raw"},
-        {"label": "Mercancías var. mensual (%)", "index": 6, "fmt": "pct-raw"},
-        {"label": "Mercancías inflación anual (%)", "index": 7, "fmt": "pct-raw"},
-        {"label": "Servicios var. mensual (%)", "index": 8, "fmt": "pct-raw"},
-        {"label": "Servicios inflación anual (%)", "index": 9, "fmt": "pct-raw"},
-        {"label": "No subyacente var. mensual (%)", "index": 10, "fmt": "pct-raw"},
-        {"label": "No subyacente inflación anual (%)", "index": 11, "fmt": "pct-raw"},
-        {"label": "Agropecuarios var. mensual (%)", "index": 12, "fmt": "pct-raw"},
-        {"label": "Agropecuarios inflación anual (%)", "index": 13, "fmt": "pct-raw"},
-        {"label": "Energéticos y tarifas var. mensual (%)", "index": 14, "fmt": "pct-raw"},
-        {"label": "Energéticos y tarifas inflación anual (%)", "index": 15, "fmt": "pct-raw"},
-        {"label": "Incidencia subyacente (p.p.)", "index": 16, "fmt": "pp"},
-        {"label": "Incidencia no subyacente (p.p.)", "index": 17, "fmt": "pp"}
+        {
+          "label": "INPC (índice)",
+          "index": 0,
+          "fmt": "idx"
+        },
+        {
+          "label": "INPC var. mensual (%)",
+          "index": 1,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "INPC inflación anual (%)",
+          "index": 2,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Subyacente (índice)",
+          "index": 3,
+          "fmt": "idx"
+        },
+        {
+          "label": "Subyacente var. mensual (%)",
+          "index": 4,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Subyacente inflación anual (%)",
+          "index": 5,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Mercancías var. mensual (%)",
+          "index": 6,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Mercancías inflación anual (%)",
+          "index": 7,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Servicios var. mensual (%)",
+          "index": 8,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Servicios inflación anual (%)",
+          "index": 9,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "No subyacente var. mensual (%)",
+          "index": 10,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "No subyacente inflación anual (%)",
+          "index": 11,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Agropecuarios var. mensual (%)",
+          "index": 12,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Agropecuarios inflación anual (%)",
+          "index": 13,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Energéticos y tarifas var. mensual (%)",
+          "index": 14,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Energéticos y tarifas inflación anual (%)",
+          "index": 15,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Incidencia subyacente (p.p.)",
+          "index": 16,
+          "fmt": "pp"
+        },
+        {
+          "label": "Incidencia no subyacente (p.p.)",
+          "index": 17,
+          "fmt": "pp"
+        }
       ],
       "fuente": {
         "nombre": "INEGI",
@@ -236,11 +588,31 @@
         "link": "https://www.inegi.org.mx/app/tabulados/inp/default.aspx?nc=ca55_2018a"
       },
       "windows": [
-        {"id": "3m", "label": "3 meses", "count": 3},
-        {"id": "6m", "label": "6 meses", "count": 6},
-        {"id": "1a", "label": "1 año", "count": 12},
-        {"id": "5a", "label": "5 años", "count": 60},
-        {"id": "max", "label": "Máximo", "count": null}
+        {
+          "id": "3m",
+          "label": "3 meses",
+          "count": 3
+        },
+        {
+          "id": "6m",
+          "label": "6 meses",
+          "count": 6
+        },
+        {
+          "id": "1a",
+          "label": "1 año",
+          "count": 12
+        },
+        {
+          "id": "5a",
+          "label": "5 años",
+          "count": 60
+        },
+        {
+          "id": "max",
+          "label": "Máximo",
+          "count": null
+        }
       ]
     },
     "INPP": {
@@ -256,21 +628,81 @@
       "grupo": "inpc",
       "publicacion": "Aproximadamente 10 días después del cierre del mes",
       "columns": [
-        {"label": "INPP con petróleo (índice)", "index": 0, "fmt": "idx"},
-        {"label": "INPP con petróleo var. mensual (%)", "index": 1, "fmt": "pct-raw"},
-        {"label": "INPP con petróleo var. anual (%)", "index": 2, "fmt": "pct-raw"},
-        {"label": "INPP con petróleo var. acumulada (%)", "index": 3, "fmt": "pct-raw"},
-        {"label": "INPP sin petróleo (índice)", "index": 4, "fmt": "idx"},
-        {"label": "INPP sin petróleo var. mensual (%)", "index": 5, "fmt": "pct-raw"},
-        {"label": "INPP sin petróleo var. anual (%)", "index": 6, "fmt": "pct-raw"},
-        {"label": "INPP sin petróleo var. acumulada (%)", "index": 7, "fmt": "pct-raw"},
-        {"label": "Bienes intermedios var. anual (%)", "index": 8, "fmt": "pct-raw"},
-        {"label": "Actividades primarias var. anual (%)", "index": 9, "fmt": "pct-raw"},
-        {"label": "Agricultura var. anual (%)", "index": 10, "fmt": "pct-raw"},
-        {"label": "Minería con petróleo var. anual (%)", "index": 11, "fmt": "pct-raw"},
-        {"label": "Construcción var. anual (%)", "index": 12, "fmt": "pct-raw"},
-        {"label": "Manufacturas var. anual (%)", "index": 13, "fmt": "pct-raw"},
-        {"label": "Transportes var. anual (%)", "index": 14, "fmt": "pct-raw"}
+        {
+          "label": "INPP con petróleo (índice)",
+          "index": 0,
+          "fmt": "idx"
+        },
+        {
+          "label": "INPP con petróleo var. mensual (%)",
+          "index": 1,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "INPP con petróleo var. anual (%)",
+          "index": 2,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "INPP con petróleo var. acumulada (%)",
+          "index": 3,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "INPP sin petróleo (índice)",
+          "index": 4,
+          "fmt": "idx"
+        },
+        {
+          "label": "INPP sin petróleo var. mensual (%)",
+          "index": 5,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "INPP sin petróleo var. anual (%)",
+          "index": 6,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "INPP sin petróleo var. acumulada (%)",
+          "index": 7,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Bienes intermedios var. anual (%)",
+          "index": 8,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Actividades primarias var. anual (%)",
+          "index": 9,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Agricultura var. anual (%)",
+          "index": 10,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Minería con petróleo var. anual (%)",
+          "index": 11,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Construcción var. anual (%)",
+          "index": 12,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Manufacturas var. anual (%)",
+          "index": 13,
+          "fmt": "pct-raw"
+        },
+        {
+          "label": "Transportes var. anual (%)",
+          "index": 14,
+          "fmt": "pct-raw"
+        }
       ],
       "fuente": {
         "nombre": "INEGI",
@@ -279,11 +711,31 @@
         "link": "https://www.inegi.org.mx/programas/inpp/2019a/"
       },
       "windows": [
-        {"id": "3m", "label": "3 meses", "count": 3},
-        {"id": "6m", "label": "6 meses", "count": 6},
-        {"id": "1a", "label": "1 año", "count": 12},
-        {"id": "5a", "label": "5 años", "count": 60},
-        {"id": "max", "label": "Máximo", "count": null}
+        {
+          "id": "3m",
+          "label": "3 meses",
+          "count": 3
+        },
+        {
+          "id": "6m",
+          "label": "6 meses",
+          "count": 6
+        },
+        {
+          "id": "1a",
+          "label": "1 año",
+          "count": 12
+        },
+        {
+          "id": "5a",
+          "label": "5 años",
+          "count": 60
+        },
+        {
+          "id": "max",
+          "label": "Máximo",
+          "count": null
+        }
       ]
     },
     "CONSUMO": {
@@ -305,50 +757,218 @@
         "link": "https://www.inegi.org.mx/programas/imcp/"
       },
       "columns": [
-        {"label": "Índice de volumen físico", "index": 0, "fmt": "idx"},
-        {"label": "Var. mensual total (%)", "index": 1, "fmt": "pct-frac"},
-        {"label": "Var. anual total (%)", "index": 2, "fmt": "pct-frac"},
-        {"label": "Var. anual original total (%)", "index": 3, "fmt": "pct-frac"},
-        {"label": "Acumulado ene-mes total (%)", "index": 4, "fmt": "pct-frac"},
-        {"label": "Var. mensual nacional (%)", "index": 5, "fmt": "pct-frac"},
-        {"label": "Var. anual nacional (%)", "index": 6, "fmt": "pct-frac"},
-        {"label": "Var. mensual bienes nacionales (%)", "index": 7, "fmt": "pct-frac"},
-        {"label": "Var. anual bienes nacionales (%)", "index": 8, "fmt": "pct-frac"},
-        {"label": "Var. mensual servicios nacionales (%)", "index": 9, "fmt": "pct-frac"},
-        {"label": "Var. anual servicios nacionales (%)", "index": 10, "fmt": "pct-frac"},
-        {"label": "Var. mensual importado (%)", "index": 11, "fmt": "pct-frac"},
-        {"label": "Var. anual importado (%)", "index": 12, "fmt": "pct-frac"},
-        {"label": "Var. mensual bienes importados (%)", "index": 13, "fmt": "pct-frac"},
-        {"label": "Var. anual bienes importados (%)", "index": 14, "fmt": "pct-frac"},
-        {"label": "Var. anual original nacional (%)", "index": 15, "fmt": "pct-frac"},
-        {"label": "Acumulado ene-mes nacional (%)", "index": 16, "fmt": "pct-frac"},
-        {"label": "Var. anual original bienes nacionales (%)", "index": 17, "fmt": "pct-frac"},
-        {"label": "Acumulado ene-mes bienes nacionales (%)", "index": 18, "fmt": "pct-frac"},
-        {"label": "Var. anual original servicios nacionales (%)", "index": 19, "fmt": "pct-frac"},
-        {"label": "Acumulado ene-mes servicios nacionales (%)", "index": 20, "fmt": "pct-frac"},
-        {"label": "Var. anual original importado (%)", "index": 21, "fmt": "pct-frac"},
-        {"label": "Acumulado ene-mes importado (%)", "index": 22, "fmt": "pct-frac"},
-        {"label": "Var. anual original bienes importados (%)", "index": 23, "fmt": "pct-frac"},
-        {"label": "Acumulado ene-mes bienes importados (%)", "index": 24, "fmt": "pct-frac"},
-        {"label": "Var. anual original bienes duraderos nacionales (%)", "index": 25, "fmt": "pct-frac"},
-        {"label": "Acumulado ene-mes bienes duraderos nacionales (%)", "index": 26, "fmt": "pct-frac"},
-        {"label": "Var. anual original bienes semi duraderos nacionales (%)", "index": 27, "fmt": "pct-frac"},
-        {"label": "Acumulado ene-mes bienes semi duraderos nacionales (%)", "index": 28, "fmt": "pct-frac"},
-        {"label": "Var. anual original bienes no duraderos nacionales (%)", "index": 29, "fmt": "pct-frac"},
-        {"label": "Acumulado ene-mes bienes no duraderos nacionales (%)", "index": 30, "fmt": "pct-frac"},
-        {"label": "Var. anual original bienes duraderos importados (%)", "index": 31, "fmt": "pct-frac"},
-        {"label": "Acumulado ene-mes bienes duraderos importados (%)", "index": 32, "fmt": "pct-frac"},
-        {"label": "Var. anual original bienes semi duraderos importados (%)", "index": 33, "fmt": "pct-frac"},
-        {"label": "Acumulado ene-mes bienes semi duraderos importados (%)", "index": 34, "fmt": "pct-frac"},
-        {"label": "Var. anual original bienes no duraderos importados (%)", "index": 35, "fmt": "pct-frac"},
-        {"label": "Acumulado ene-mes bienes no duraderos importados (%)", "index": 36, "fmt": "pct-frac"}
+        {
+          "label": "Índice de volumen físico",
+          "index": 0,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. mensual total (%)",
+          "index": 1,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual total (%)",
+          "index": 2,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual original total (%)",
+          "index": 3,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes total (%)",
+          "index": 4,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. mensual nacional (%)",
+          "index": 5,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual nacional (%)",
+          "index": 6,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. mensual bienes nacionales (%)",
+          "index": 7,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual bienes nacionales (%)",
+          "index": 8,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. mensual servicios nacionales (%)",
+          "index": 9,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual servicios nacionales (%)",
+          "index": 10,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. mensual importado (%)",
+          "index": 11,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual importado (%)",
+          "index": 12,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. mensual bienes importados (%)",
+          "index": 13,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual bienes importados (%)",
+          "index": 14,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual original nacional (%)",
+          "index": 15,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes nacional (%)",
+          "index": 16,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual original bienes nacionales (%)",
+          "index": 17,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes bienes nacionales (%)",
+          "index": 18,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual original servicios nacionales (%)",
+          "index": 19,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes servicios nacionales (%)",
+          "index": 20,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual original importado (%)",
+          "index": 21,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes importado (%)",
+          "index": 22,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual original bienes importados (%)",
+          "index": 23,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes bienes importados (%)",
+          "index": 24,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual original bienes duraderos nacionales (%)",
+          "index": 25,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes bienes duraderos nacionales (%)",
+          "index": 26,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual original bienes semi duraderos nacionales (%)",
+          "index": 27,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes bienes semi duraderos nacionales (%)",
+          "index": 28,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual original bienes no duraderos nacionales (%)",
+          "index": 29,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes bienes no duraderos nacionales (%)",
+          "index": 30,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual original bienes duraderos importados (%)",
+          "index": 31,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes bienes duraderos importados (%)",
+          "index": 32,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual original bienes semi duraderos importados (%)",
+          "index": 33,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes bienes semi duraderos importados (%)",
+          "index": 34,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual original bienes no duraderos importados (%)",
+          "index": 35,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes bienes no duraderos importados (%)",
+          "index": 36,
+          "fmt": "pct-frac"
+        }
       ],
       "windows": [
-        {"id": "3m", "label": "3 meses", "count": 3},
-        {"id": "6m", "label": "6 meses", "count": 6},
-        {"id": "1a", "label": "1 año", "count": 12},
-        {"id": "5a", "label": "5 años", "count": 60},
-        {"id": "max", "label": "Máximo", "count": null}
+        {
+          "id": "3m",
+          "label": "3 meses",
+          "count": 3
+        },
+        {
+          "id": "6m",
+          "label": "6 meses",
+          "count": 6
+        },
+        {
+          "id": "1a",
+          "label": "1 año",
+          "count": 12
+        },
+        {
+          "id": "5a",
+          "label": "5 años",
+          "count": 60
+        },
+        {
+          "id": "max",
+          "label": "Máximo",
+          "count": null
+        }
       ]
     },
     "IMFBCF": {
@@ -370,53 +990,233 @@
         "serie": "CR363"
       },
       "columns": [
-        {"label": "Índice total (desest.)", "index": 0, "fmt": "idx"},
-        {"label": "Var. mensual total (%)", "index": 1, "fmt": "pct-frac"},
-        {"label": "Var. anual total (%)", "index": 2, "fmt": "pct-frac"},
-        {"label": "Índice construcción (desest.)", "index": 3, "fmt": "idx"},
-        {"label": "Var. mensual construcción (%)", "index": 4, "fmt": "pct-frac"},
-        {"label": "Var. anual construcción (%)", "index": 5, "fmt": "pct-frac"},
-        {"label": "Índice maquinaria y equipo (desest.)", "index": 6, "fmt": "idx"},
-        {"label": "Var. mensual maquinaria y equipo (%)", "index": 7, "fmt": "pct-frac"},
-        {"label": "Var. anual maquinaria y equipo (%)", "index": 8, "fmt": "pct-frac"},
-        {"label": "Índice residencial (desest.)", "index": 9, "fmt": "idx"},
-        {"label": "Var. anual residencial (%)", "index": 10, "fmt": "pct-frac"},
-        {"label": "Índice no residencial (desest.)", "index": 11, "fmt": "idx"},
-        {"label": "Var. anual no residencial (%)", "index": 12, "fmt": "pct-frac"},
-        {"label": "Índice maquinaria y equipo nacional (desest.)", "index": 13, "fmt": "idx"},
-        {"label": "Var. anual maquinaria y equipo nacional (%)", "index": 14, "fmt": "pct-frac"},
-        {"label": "Índice equipo de transporte nacional (desest.)", "index": 15, "fmt": "idx"},
-        {"label": "Var. anual equipo de transporte nacional (%)", "index": 16, "fmt": "pct-frac"},
-        {"label": "Índice maquinaria, equipo y otros bienes nacionales (desest.)", "index": 17, "fmt": "idx"},
-        {"label": "Var. anual maquinaria, equipo y otros bienes nacionales (%)", "index": 18, "fmt": "pct-frac"},
-        {"label": "Índice maquinaria y equipo importado (desest.)", "index": 19, "fmt": "idx"},
-        {"label": "Var. anual maquinaria y equipo importado (%)", "index": 20, "fmt": "pct-frac"},
-        {"label": "Índice equipo de transporte importado (desest.)", "index": 21, "fmt": "idx"},
-        {"label": "Var. anual equipo de transporte importado (%)", "index": 22, "fmt": "pct-frac"},
-        {"label": "Índice maquinaria, equipo y otros bienes importados (desest.)", "index": 23, "fmt": "idx"},
-        {"label": "Var. anual maquinaria, equipo y otros bienes importados (%)", "index": 24, "fmt": "pct-frac"},
-        {"label": "Índice total (original)", "index": 25, "fmt": "idx"},
-        {"label": "Var. anual original total (%)", "index": 26, "fmt": "pct-frac"},
-        {"label": "Acumulado ene-mes total (%)", "index": 27, "fmt": "pct-frac"},
-        {"label": "Índice construcción (original)", "index": 28, "fmt": "idx"},
-        {"label": "Var. anual original construcción (%)", "index": 29, "fmt": "pct-frac"},
-        {"label": "Acumulado ene-mes construcción (%)", "index": 30, "fmt": "pct-frac"},
-        {"label": "Índice residencial (original)", "index": 31, "fmt": "idx"},
-        {"label": "Var. anual original residencial (%)", "index": 32, "fmt": "pct-frac"},
-        {"label": "Acumulado ene-mes residencial (%)", "index": 33, "fmt": "pct-frac"},
-        {"label": "Índice no residencial (original)", "index": 34, "fmt": "idx"},
-        {"label": "Var. anual original no residencial (%)", "index": 35, "fmt": "pct-frac"},
-        {"label": "Acumulado ene-mes no residencial (%)", "index": 36, "fmt": "pct-frac"},
-        {"label": "Índice maquinaria y equipo (original)", "index": 37, "fmt": "idx"},
-        {"label": "Var. anual original maquinaria y equipo (%)", "index": 38, "fmt": "pct-frac"},
-        {"label": "Acumulado ene-mes maquinaria y equipo (%)", "index": 39, "fmt": "pct-frac"}
+        {
+          "label": "Índice total (desest.)",
+          "index": 0,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. mensual total (%)",
+          "index": 1,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual total (%)",
+          "index": 2,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice construcción (desest.)",
+          "index": 3,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. mensual construcción (%)",
+          "index": 4,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual construcción (%)",
+          "index": 5,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice maquinaria y equipo (desest.)",
+          "index": 6,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. mensual maquinaria y equipo (%)",
+          "index": 7,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual maquinaria y equipo (%)",
+          "index": 8,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice residencial (desest.)",
+          "index": 9,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual residencial (%)",
+          "index": 10,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice no residencial (desest.)",
+          "index": 11,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual no residencial (%)",
+          "index": 12,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice maquinaria y equipo nacional (desest.)",
+          "index": 13,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual maquinaria y equipo nacional (%)",
+          "index": 14,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice equipo de transporte nacional (desest.)",
+          "index": 15,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual equipo de transporte nacional (%)",
+          "index": 16,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice maquinaria, equipo y otros bienes nacionales (desest.)",
+          "index": 17,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual maquinaria, equipo y otros bienes nacionales (%)",
+          "index": 18,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice maquinaria y equipo importado (desest.)",
+          "index": 19,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual maquinaria y equipo importado (%)",
+          "index": 20,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice equipo de transporte importado (desest.)",
+          "index": 21,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual equipo de transporte importado (%)",
+          "index": 22,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice maquinaria, equipo y otros bienes importados (desest.)",
+          "index": 23,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual maquinaria, equipo y otros bienes importados (%)",
+          "index": 24,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice total (original)",
+          "index": 25,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual original total (%)",
+          "index": 26,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes total (%)",
+          "index": 27,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice construcción (original)",
+          "index": 28,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual original construcción (%)",
+          "index": 29,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes construcción (%)",
+          "index": 30,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice residencial (original)",
+          "index": 31,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual original residencial (%)",
+          "index": 32,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes residencial (%)",
+          "index": 33,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice no residencial (original)",
+          "index": 34,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual original no residencial (%)",
+          "index": 35,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes no residencial (%)",
+          "index": 36,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice maquinaria y equipo (original)",
+          "index": 37,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual original maquinaria y equipo (%)",
+          "index": 38,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes maquinaria y equipo (%)",
+          "index": 39,
+          "fmt": "pct-frac"
+        }
       ],
       "windows": [
-        {"id": "3m", "label": "3 meses", "count": 3},
-        {"id": "6m", "label": "6 meses", "count": 6},
-        {"id": "1a", "label": "1 año", "count": 12},
-        {"id": "5a", "label": "5 años", "count": 60},
-        {"id": "max", "label": "Máximo", "count": null}
+        {
+          "id": "3m",
+          "label": "3 meses",
+          "count": 3
+        },
+        {
+          "id": "6m",
+          "label": "6 meses",
+          "count": 6
+        },
+        {
+          "id": "1a",
+          "label": "1 año",
+          "count": 12
+        },
+        {
+          "id": "5a",
+          "label": "5 años",
+          "count": 60
+        },
+        {
+          "id": "max",
+          "label": "Máximo",
+          "count": null
+        }
       ]
     },
     "IOAE": {
@@ -438,26 +1238,98 @@
         "serie": null
       },
       "columns": [
-        {"label": "IGAE var. anual nowcast (%)", "index": 0, "fmt": "pct-frac"},
-        {"label": "IC95 inferior IGAE (%)", "index": 1, "fmt": "pct-frac"},
-        {"label": "IC95 superior IGAE (%)", "index": 2, "fmt": "pct-frac"},
-        {"label": "IGAE var. mensual nowcast (%)", "index": 3, "fmt": "pct-frac"},
-        {"label": "Actividades secundarias var. anual nowcast (%)", "index": 4, "fmt": "pct-frac"},
-        {"label": "IC95 inferior secundarias (%)", "index": 5, "fmt": "pct-frac"},
-        {"label": "IC95 superior secundarias (%)", "index": 6, "fmt": "pct-frac"},
-        {"label": "Actividades terciarias var. anual nowcast (%)", "index": 7, "fmt": "pct-frac"},
-        {"label": "IC95 inferior terciarias (%)", "index": 8, "fmt": "pct-frac"},
-        {"label": "IC95 superior terciarias (%)", "index": 9, "fmt": "pct-frac"},
-        {"label": "Fecha de publicación", "index": 10, "fmt": "text"},
-        {"label": "Carácter", "index": 11, "fmt": "text"},
-        {"label": "IGAE observado anual (%)", "index": 12, "fmt": "pct-frac"}
+        {
+          "label": "IGAE var. anual nowcast (%)",
+          "index": 0,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "IC95 inferior IGAE (%)",
+          "index": 1,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "IC95 superior IGAE (%)",
+          "index": 2,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "IGAE var. mensual nowcast (%)",
+          "index": 3,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Actividades secundarias var. anual nowcast (%)",
+          "index": 4,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "IC95 inferior secundarias (%)",
+          "index": 5,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "IC95 superior secundarias (%)",
+          "index": 6,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Actividades terciarias var. anual nowcast (%)",
+          "index": 7,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "IC95 inferior terciarias (%)",
+          "index": 8,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "IC95 superior terciarias (%)",
+          "index": 9,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Fecha de publicación",
+          "index": 10,
+          "fmt": "text"
+        },
+        {
+          "label": "Carácter",
+          "index": 11,
+          "fmt": "text"
+        },
+        {
+          "label": "IGAE observado anual (%)",
+          "index": 12,
+          "fmt": "pct-frac"
+        }
       ],
       "windows": [
-        {"id": "3m", "label": "3 meses", "count": 3},
-        {"id": "6m", "label": "6 meses", "count": 6},
-        {"id": "1a", "label": "1 año", "count": 12},
-        {"id": "5a", "label": "5 años", "count": 60},
-        {"id": "max", "label": "Máximo", "count": null}
+        {
+          "id": "3m",
+          "label": "3 meses",
+          "count": 3
+        },
+        {
+          "id": "6m",
+          "label": "6 meses",
+          "count": 6
+        },
+        {
+          "id": "1a",
+          "label": "1 año",
+          "count": 12
+        },
+        {
+          "id": "5a",
+          "label": "5 años",
+          "count": 60
+        },
+        {
+          "id": "max",
+          "label": "Máximo",
+          "count": null
+        }
       ]
     },
     "EMIM": {
@@ -479,31 +1351,123 @@
         "serie": "796224"
       },
       "columns": [
-        {"label": "Producción (índice)", "index": 0, "fmt": "idx"},
-        {"label": "Producción var. mensual original (%)", "index": 1, "fmt": "pct-frac"},
-        {"label": "Producción var. anual original (%)", "index": 2, "fmt": "pct-frac"},
-        {"label": "Producción var. mensual desest. (%)", "index": 3, "fmt": "pct-frac"},
-        {"label": "Producción var. anual desest. (%)", "index": 4, "fmt": "pct-frac"},
-        {"label": "Personal ocupado (índice)", "index": 5, "fmt": "idx"},
-        {"label": "Personal var. mensual original (%)", "index": 6, "fmt": "pct-frac"},
-        {"label": "Personal var. anual original (%)", "index": 7, "fmt": "pct-frac"},
-        {"label": "Personal var. mensual desest. (%)", "index": 8, "fmt": "pct-frac"},
-        {"label": "Personal var. anual desest. (%)", "index": 9, "fmt": "pct-frac"},
-        {"label": "Horas trabajadas (índice)", "index": 10, "fmt": "idx"},
-        {"label": "Horas var. mensual original (%)", "index": 11, "fmt": "pct-frac"},
-        {"label": "Horas var. anual original (%)", "index": 12, "fmt": "pct-frac"},
-        {"label": "Horas var. mensual desest. (%)", "index": 13, "fmt": "pct-frac"},
-        {"label": "Horas var. anual desest. (%)", "index": 14, "fmt": "pct-frac"},
-        {"label": "Remuneraciones medias reales (índice)", "index": 15, "fmt": "idx"},
-        {"label": "Remuneraciones var. mensual desest. (%)", "index": 16, "fmt": "pct-frac"},
-        {"label": "Remuneraciones var. anual desest. (%)", "index": 17, "fmt": "pct-frac"}
+        {
+          "label": "Producción (índice)",
+          "index": 0,
+          "fmt": "idx"
+        },
+        {
+          "label": "Producción var. mensual original (%)",
+          "index": 1,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Producción var. anual original (%)",
+          "index": 2,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Producción var. mensual desest. (%)",
+          "index": 3,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Producción var. anual desest. (%)",
+          "index": 4,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Personal ocupado (índice)",
+          "index": 5,
+          "fmt": "idx"
+        },
+        {
+          "label": "Personal var. mensual original (%)",
+          "index": 6,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Personal var. anual original (%)",
+          "index": 7,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Personal var. mensual desest. (%)",
+          "index": 8,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Personal var. anual desest. (%)",
+          "index": 9,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Horas trabajadas (índice)",
+          "index": 10,
+          "fmt": "idx"
+        },
+        {
+          "label": "Horas var. mensual original (%)",
+          "index": 11,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Horas var. anual original (%)",
+          "index": 12,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Horas var. mensual desest. (%)",
+          "index": 13,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Horas var. anual desest. (%)",
+          "index": 14,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Remuneraciones medias reales (índice)",
+          "index": 15,
+          "fmt": "idx"
+        },
+        {
+          "label": "Remuneraciones var. mensual desest. (%)",
+          "index": 16,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Remuneraciones var. anual desest. (%)",
+          "index": 17,
+          "fmt": "pct-frac"
+        }
       ],
       "windows": [
-        {"id": "3m", "label": "3 meses", "count": 3},
-        {"id": "6m", "label": "6 meses", "count": 6},
-        {"id": "1a", "label": "1 año", "count": 12},
-        {"id": "5a", "label": "5 años", "count": 60},
-        {"id": "max", "label": "Máximo", "count": null}
+        {
+          "id": "3m",
+          "label": "3 meses",
+          "count": 3
+        },
+        {
+          "id": "6m",
+          "label": "6 meses",
+          "count": 6
+        },
+        {
+          "id": "1a",
+          "label": "1 año",
+          "count": 12
+        },
+        {
+          "id": "5a",
+          "label": "5 años",
+          "count": 60
+        },
+        {
+          "id": "max",
+          "label": "Máximo",
+          "count": null
+        }
       ]
     },
     "IED": {
@@ -514,7 +1478,49 @@
         "nombre": "Secretaría de Economía / Dirección General de Inversión Extranjera",
         "link": "https://www.proyectosmexico.gob.mx/cifra-record-de-inversion-extranjera-directa-1t-2026/",
         "metodo": "Comunicado oficial SE / DGIE"
-      }
+      },
+      "descripcion": "Flujo trimestral de inversión extranjera directa (IED total) y sus componentes: nuevas inversiones, reinversión de utilidades y cuentas entre compañías. Cifras en millones de dólares.",
+      "frecuencia": "Trimestral",
+      "unidad": "Millones de dólares",
+      "columns": [
+        {
+          "label": "IED total",
+          "index": 0,
+          "fmt": "usd"
+        },
+        {
+          "label": "Nuevas inversiones",
+          "index": 1,
+          "fmt": "usd"
+        },
+        {
+          "label": "Reinversión de utilidades",
+          "index": 2,
+          "fmt": "usd"
+        },
+        {
+          "label": "Cuentas entre compañías",
+          "index": 3,
+          "fmt": "usd"
+        }
+      ],
+      "windows": [
+        {
+          "id": "1a",
+          "label": "1 año",
+          "count": 4
+        },
+        {
+          "id": "5a",
+          "label": "5 años",
+          "count": 20
+        },
+        {
+          "id": "max",
+          "label": "Máximo",
+          "count": null
+        }
+      ]
     },
     "EMOE": {
       "requiere_token": "INEGI",
@@ -535,42 +1541,178 @@
       "grupo": "balanza",
       "publicacion": "Aproximadamente 42 días después del cierre del mes",
       "columns": [
-        {"label": "Exportaciones", "index": 0, "fmt": "usd"},
-        {"label": "Importaciones", "index": 1, "fmt": "usd"},
-        {"label": "Saldo", "index": 2, "fmt": "usd"},
-        {"label": "Var. anual exportaciones", "index": 3, "fmt": "pct-frac"},
-        {"label": "Var. anual importaciones", "index": 4, "fmt": "pct-frac"},
-        {"label": "Var. anual saldo", "index": 5, "fmt": "pct-frac"},
-        {"label": "Exportaciones petroleras", "index": 6, "fmt": "usd"},
-        {"label": "Importaciones petroleras", "index": 7, "fmt": "usd"},
-        {"label": "Exportaciones no petroleras", "index": 8, "fmt": "usd"},
-        {"label": "Importaciones no petroleras", "index": 9, "fmt": "usd"},
-        {"label": "Var. anual exp. petroleras", "index": 10, "fmt": "pct-frac"},
-        {"label": "Var. anual imp. petroleras", "index": 11, "fmt": "pct-frac"},
-        {"label": "Var. anual exp. no petroleras", "index": 12, "fmt": "pct-frac"},
-        {"label": "Var. anual imp. no petroleras", "index": 13, "fmt": "pct-frac"},
-        {"label": "Bienes de consumo", "index": 14, "fmt": "usd"},
-        {"label": "Bienes intermedios", "index": 15, "fmt": "usd"},
-        {"label": "Bienes de capital", "index": 16, "fmt": "usd"},
-        {"label": "Var. anual consumo", "index": 17, "fmt": "pct-frac"},
-        {"label": "Var. anual intermedios", "index": 18, "fmt": "pct-frac"},
-        {"label": "Var. anual capital", "index": 19, "fmt": "pct-frac"},
-        {"label": "Exportaciones manufactureras", "index": 20, "fmt": "usd"},
-        {"label": "Exportaciones agropecuarias", "index": 21, "fmt": "usd"},
-        {"label": "Exportaciones extractivas", "index": 22, "fmt": "usd"},
-        {"label": "Var. anual manufactureras", "index": 23, "fmt": "pct-frac"},
-        {"label": "Var. anual agropecuarias", "index": 24, "fmt": "pct-frac"},
-        {"label": "Var. anual extractivas", "index": 25, "fmt": "pct-frac"},
-        {"label": "Acum ene-mes exportaciones", "index": 26, "fmt": "usd"},
-        {"label": "Acum ene-mes importaciones", "index": 27, "fmt": "usd"},
-        {"label": "Acum ene-mes saldo", "index": 28, "fmt": "usd"}
+        {
+          "label": "Exportaciones",
+          "index": 0,
+          "fmt": "usd"
+        },
+        {
+          "label": "Importaciones",
+          "index": 1,
+          "fmt": "usd"
+        },
+        {
+          "label": "Saldo",
+          "index": 2,
+          "fmt": "usd"
+        },
+        {
+          "label": "Var. anual exportaciones",
+          "index": 3,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual importaciones",
+          "index": 4,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual saldo",
+          "index": 5,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Exportaciones petroleras",
+          "index": 6,
+          "fmt": "usd"
+        },
+        {
+          "label": "Importaciones petroleras",
+          "index": 7,
+          "fmt": "usd"
+        },
+        {
+          "label": "Exportaciones no petroleras",
+          "index": 8,
+          "fmt": "usd"
+        },
+        {
+          "label": "Importaciones no petroleras",
+          "index": 9,
+          "fmt": "usd"
+        },
+        {
+          "label": "Var. anual exp. petroleras",
+          "index": 10,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual imp. petroleras",
+          "index": 11,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual exp. no petroleras",
+          "index": 12,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual imp. no petroleras",
+          "index": 13,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Bienes de consumo",
+          "index": 14,
+          "fmt": "usd"
+        },
+        {
+          "label": "Bienes intermedios",
+          "index": 15,
+          "fmt": "usd"
+        },
+        {
+          "label": "Bienes de capital",
+          "index": 16,
+          "fmt": "usd"
+        },
+        {
+          "label": "Var. anual consumo",
+          "index": 17,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual intermedios",
+          "index": 18,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual capital",
+          "index": 19,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Exportaciones manufactureras",
+          "index": 20,
+          "fmt": "usd"
+        },
+        {
+          "label": "Exportaciones agropecuarias",
+          "index": 21,
+          "fmt": "usd"
+        },
+        {
+          "label": "Exportaciones extractivas",
+          "index": 22,
+          "fmt": "usd"
+        },
+        {
+          "label": "Var. anual manufactureras",
+          "index": 23,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual agropecuarias",
+          "index": 24,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual extractivas",
+          "index": 25,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acum ene-mes exportaciones",
+          "index": 26,
+          "fmt": "usd"
+        },
+        {
+          "label": "Acum ene-mes importaciones",
+          "index": 27,
+          "fmt": "usd"
+        },
+        {
+          "label": "Acum ene-mes saldo",
+          "index": 28,
+          "fmt": "usd"
+        }
       ],
       "windows": [
-        {"id": "3m", "label": "3 meses", "count": 3},
-        {"id": "6m", "label": "6 meses", "count": 6},
-        {"id": "1a", "label": "1 año", "count": 12},
-        {"id": "5a", "label": "5 años", "count": 60},
-        {"id": "max", "label": "Máximo", "count": null}
+        {
+          "id": "3m",
+          "label": "3 meses",
+          "count": 3
+        },
+        {
+          "id": "6m",
+          "label": "6 meses",
+          "count": 6
+        },
+        {
+          "id": "1a",
+          "label": "1 año",
+          "count": 12
+        },
+        {
+          "id": "5a",
+          "label": "5 años",
+          "count": 60
+        },
+        {
+          "id": "max",
+          "label": "Máximo",
+          "count": null
+        }
       ]
     }
   },
@@ -595,53 +1737,233 @@
         "serie": "CR363"
       },
       "columns": [
-        {"label": "Índice total (desest.)", "index": 0, "fmt": "idx"},
-        {"label": "Var. mensual total (%)", "index": 1, "fmt": "pct-frac"},
-        {"label": "Var. anual total (%)", "index": 2, "fmt": "pct-frac"},
-        {"label": "Índice construcción (desest.)", "index": 3, "fmt": "idx"},
-        {"label": "Var. mensual construcción (%)", "index": 4, "fmt": "pct-frac"},
-        {"label": "Var. anual construcción (%)", "index": 5, "fmt": "pct-frac"},
-        {"label": "Índice maquinaria y equipo (desest.)", "index": 6, "fmt": "idx"},
-        {"label": "Var. mensual maquinaria y equipo (%)", "index": 7, "fmt": "pct-frac"},
-        {"label": "Var. anual maquinaria y equipo (%)", "index": 8, "fmt": "pct-frac"},
-        {"label": "Índice residencial (desest.)", "index": 9, "fmt": "idx"},
-        {"label": "Var. anual residencial (%)", "index": 10, "fmt": "pct-frac"},
-        {"label": "Índice no residencial (desest.)", "index": 11, "fmt": "idx"},
-        {"label": "Var. anual no residencial (%)", "index": 12, "fmt": "pct-frac"},
-        {"label": "Índice maquinaria y equipo nacional (desest.)", "index": 13, "fmt": "idx"},
-        {"label": "Var. anual maquinaria y equipo nacional (%)", "index": 14, "fmt": "pct-frac"},
-        {"label": "Índice equipo de transporte nacional (desest.)", "index": 15, "fmt": "idx"},
-        {"label": "Var. anual equipo de transporte nacional (%)", "index": 16, "fmt": "pct-frac"},
-        {"label": "Índice maquinaria, equipo y otros bienes nacionales (desest.)", "index": 17, "fmt": "idx"},
-        {"label": "Var. anual maquinaria, equipo y otros bienes nacionales (%)", "index": 18, "fmt": "pct-frac"},
-        {"label": "Índice maquinaria y equipo importado (desest.)", "index": 19, "fmt": "idx"},
-        {"label": "Var. anual maquinaria y equipo importado (%)", "index": 20, "fmt": "pct-frac"},
-        {"label": "Índice equipo de transporte importado (desest.)", "index": 21, "fmt": "idx"},
-        {"label": "Var. anual equipo de transporte importado (%)", "index": 22, "fmt": "pct-frac"},
-        {"label": "Índice maquinaria, equipo y otros bienes importados (desest.)", "index": 23, "fmt": "idx"},
-        {"label": "Var. anual maquinaria, equipo y otros bienes importados (%)", "index": 24, "fmt": "pct-frac"},
-        {"label": "Índice total (original)", "index": 25, "fmt": "idx"},
-        {"label": "Var. anual original total (%)", "index": 26, "fmt": "pct-frac"},
-        {"label": "Acumulado ene-mes total (%)", "index": 27, "fmt": "pct-frac"},
-        {"label": "Índice construcción (original)", "index": 28, "fmt": "idx"},
-        {"label": "Var. anual original construcción (%)", "index": 29, "fmt": "pct-frac"},
-        {"label": "Acumulado ene-mes construcción (%)", "index": 30, "fmt": "pct-frac"},
-        {"label": "Índice residencial (original)", "index": 31, "fmt": "idx"},
-        {"label": "Var. anual original residencial (%)", "index": 32, "fmt": "pct-frac"},
-        {"label": "Acumulado ene-mes residencial (%)", "index": 33, "fmt": "pct-frac"},
-        {"label": "Índice no residencial (original)", "index": 34, "fmt": "idx"},
-        {"label": "Var. anual original no residencial (%)", "index": 35, "fmt": "pct-frac"},
-        {"label": "Acumulado ene-mes no residencial (%)", "index": 36, "fmt": "pct-frac"},
-        {"label": "Índice maquinaria y equipo (original)", "index": 37, "fmt": "idx"},
-        {"label": "Var. anual original maquinaria y equipo (%)", "index": 38, "fmt": "pct-frac"},
-        {"label": "Acumulado ene-mes maquinaria y equipo (%)", "index": 39, "fmt": "pct-frac"}
+        {
+          "label": "Índice total (desest.)",
+          "index": 0,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. mensual total (%)",
+          "index": 1,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual total (%)",
+          "index": 2,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice construcción (desest.)",
+          "index": 3,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. mensual construcción (%)",
+          "index": 4,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual construcción (%)",
+          "index": 5,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice maquinaria y equipo (desest.)",
+          "index": 6,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. mensual maquinaria y equipo (%)",
+          "index": 7,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual maquinaria y equipo (%)",
+          "index": 8,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice residencial (desest.)",
+          "index": 9,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual residencial (%)",
+          "index": 10,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice no residencial (desest.)",
+          "index": 11,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual no residencial (%)",
+          "index": 12,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice maquinaria y equipo nacional (desest.)",
+          "index": 13,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual maquinaria y equipo nacional (%)",
+          "index": 14,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice equipo de transporte nacional (desest.)",
+          "index": 15,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual equipo de transporte nacional (%)",
+          "index": 16,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice maquinaria, equipo y otros bienes nacionales (desest.)",
+          "index": 17,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual maquinaria, equipo y otros bienes nacionales (%)",
+          "index": 18,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice maquinaria y equipo importado (desest.)",
+          "index": 19,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual maquinaria y equipo importado (%)",
+          "index": 20,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice equipo de transporte importado (desest.)",
+          "index": 21,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual equipo de transporte importado (%)",
+          "index": 22,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice maquinaria, equipo y otros bienes importados (desest.)",
+          "index": 23,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual maquinaria, equipo y otros bienes importados (%)",
+          "index": 24,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice total (original)",
+          "index": 25,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual original total (%)",
+          "index": 26,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes total (%)",
+          "index": 27,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice construcción (original)",
+          "index": 28,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual original construcción (%)",
+          "index": 29,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes construcción (%)",
+          "index": 30,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice residencial (original)",
+          "index": 31,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual original residencial (%)",
+          "index": 32,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes residencial (%)",
+          "index": 33,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice no residencial (original)",
+          "index": 34,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual original no residencial (%)",
+          "index": 35,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes no residencial (%)",
+          "index": 36,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Índice maquinaria y equipo (original)",
+          "index": 37,
+          "fmt": "idx"
+        },
+        {
+          "label": "Var. anual original maquinaria y equipo (%)",
+          "index": 38,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado ene-mes maquinaria y equipo (%)",
+          "index": 39,
+          "fmt": "pct-frac"
+        }
       ],
       "windows": [
-        {"id": "3m", "label": "3 meses", "count": 3},
-        {"id": "6m", "label": "6 meses", "count": 6},
-        {"id": "1a", "label": "1 año", "count": 12},
-        {"id": "5a", "label": "5 años", "count": 60},
-        {"id": "max", "label": "Máximo", "count": null}
+        {
+          "id": "3m",
+          "label": "3 meses",
+          "count": 3
+        },
+        {
+          "id": "6m",
+          "label": "6 meses",
+          "count": 6
+        },
+        {
+          "id": "1a",
+          "label": "1 año",
+          "count": 12
+        },
+        {
+          "id": "5a",
+          "label": "5 años",
+          "count": 60
+        },
+        {
+          "id": "max",
+          "label": "Máximo",
+          "count": null
+        }
       ]
     },
     "IOAE": {
@@ -663,19 +1985,71 @@
         "serie": null
       },
       "columns": [
-        {"label": "IGAE var. anual nowcast (%)", "index": 0, "fmt": "pct-frac"},
-        {"label": "IC95 inferior IGAE (%)", "index": 1, "fmt": "pct-frac"},
-        {"label": "IC95 superior IGAE (%)", "index": 2, "fmt": "pct-frac"},
-        {"label": "IGAE var. mensual nowcast (%)", "index": 3, "fmt": "pct-frac"},
-        {"label": "Actividades secundarias var. anual nowcast (%)", "index": 4, "fmt": "pct-frac"},
-        {"label": "IC95 inferior secundarias (%)", "index": 5, "fmt": "pct-frac"},
-        {"label": "IC95 superior secundarias (%)", "index": 6, "fmt": "pct-frac"},
-        {"label": "Actividades terciarias var. anual nowcast (%)", "index": 7, "fmt": "pct-frac"},
-        {"label": "IC95 inferior terciarias (%)", "index": 8, "fmt": "pct-frac"},
-        {"label": "IC95 superior terciarias (%)", "index": 9, "fmt": "pct-frac"},
-        {"label": "Fecha de publicación", "index": 10, "fmt": "text"},
-        {"label": "Carácter", "index": 11, "fmt": "text"},
-        {"label": "IGAE observado anual (%)", "index": 12, "fmt": "pct-frac"}
+        {
+          "label": "IGAE var. anual nowcast (%)",
+          "index": 0,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "IC95 inferior IGAE (%)",
+          "index": 1,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "IC95 superior IGAE (%)",
+          "index": 2,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "IGAE var. mensual nowcast (%)",
+          "index": 3,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Actividades secundarias var. anual nowcast (%)",
+          "index": 4,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "IC95 inferior secundarias (%)",
+          "index": 5,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "IC95 superior secundarias (%)",
+          "index": 6,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Actividades terciarias var. anual nowcast (%)",
+          "index": 7,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "IC95 inferior terciarias (%)",
+          "index": 8,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "IC95 superior terciarias (%)",
+          "index": 9,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Fecha de publicación",
+          "index": 10,
+          "fmt": "text"
+        },
+        {
+          "label": "Carácter",
+          "index": 11,
+          "fmt": "text"
+        },
+        {
+          "label": "IGAE observado anual (%)",
+          "index": 12,
+          "fmt": "pct-frac"
+        }
       ]
     },
     "EMIM": {
@@ -698,37 +2072,129 @@
         "serie": "796224"
       },
       "columns": [
-        {"label": "Producción (índice)", "index": 0, "fmt": "idx"},
-        {"label": "Producción var. mensual original (%)", "index": 1, "fmt": "pct-frac"},
-        {"label": "Producción var. anual original (%)", "index": 2, "fmt": "pct-frac"},
-        {"label": "Producción var. mensual desest. (%)", "index": 3, "fmt": "pct-frac"},
-        {"label": "Producción var. anual desest. (%)", "index": 4, "fmt": "pct-frac"},
-        {"label": "Personal ocupado (índice)", "index": 5, "fmt": "idx"},
-        {"label": "Personal var. mensual original (%)", "index": 6, "fmt": "pct-frac"},
-        {"label": "Personal var. anual original (%)", "index": 7, "fmt": "pct-frac"},
-        {"label": "Personal var. mensual desest. (%)", "index": 8, "fmt": "pct-frac"},
-        {"label": "Personal var. anual desest. (%)", "index": 9, "fmt": "pct-frac"},
-        {"label": "Horas trabajadas (índice)", "index": 10, "fmt": "idx"},
-        {"label": "Horas var. mensual original (%)", "index": 11, "fmt": "pct-frac"},
-        {"label": "Horas var. anual original (%)", "index": 12, "fmt": "pct-frac"},
-        {"label": "Horas var. mensual desest. (%)", "index": 13, "fmt": "pct-frac"},
-        {"label": "Horas var. anual desest. (%)", "index": 14, "fmt": "pct-frac"},
-        {"label": "Remuneraciones medias reales (índice)", "index": 15, "fmt": "idx"},
-        {"label": "Remuneraciones var. mensual desest. (%)", "index": 16, "fmt": "pct-frac"},
-        {"label": "Remuneraciones var. anual desest. (%)", "index": 17, "fmt": "pct-frac"}
+        {
+          "label": "Producción (índice)",
+          "index": 0,
+          "fmt": "idx"
+        },
+        {
+          "label": "Producción var. mensual original (%)",
+          "index": 1,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Producción var. anual original (%)",
+          "index": 2,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Producción var. mensual desest. (%)",
+          "index": 3,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Producción var. anual desest. (%)",
+          "index": 4,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Personal ocupado (índice)",
+          "index": 5,
+          "fmt": "idx"
+        },
+        {
+          "label": "Personal var. mensual original (%)",
+          "index": 6,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Personal var. anual original (%)",
+          "index": 7,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Personal var. mensual desest. (%)",
+          "index": 8,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Personal var. anual desest. (%)",
+          "index": 9,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Horas trabajadas (índice)",
+          "index": 10,
+          "fmt": "idx"
+        },
+        {
+          "label": "Horas var. mensual original (%)",
+          "index": 11,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Horas var. anual original (%)",
+          "index": 12,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Horas var. mensual desest. (%)",
+          "index": 13,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Horas var. anual desest. (%)",
+          "index": 14,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Remuneraciones medias reales (índice)",
+          "index": 15,
+          "fmt": "idx"
+        },
+        {
+          "label": "Remuneraciones var. mensual desest. (%)",
+          "index": 16,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Remuneraciones var. anual desest. (%)",
+          "index": 17,
+          "fmt": "pct-frac"
+        }
       ],
       "windows": [
-        {"id": "3m", "label": "3 meses", "count": 3},
-        {"id": "6m", "label": "6 meses", "count": 6},
-        {"id": "1a", "label": "1 año", "count": 12},
-        {"id": "5a", "label": "5 años", "count": 60},
-        {"id": "max", "label": "Máximo", "count": null}
+        {
+          "id": "3m",
+          "label": "3 meses",
+          "count": 3
+        },
+        {
+          "id": "6m",
+          "label": "6 meses",
+          "count": 6
+        },
+        {
+          "id": "1a",
+          "label": "1 año",
+          "count": 12
+        },
+        {
+          "id": "5a",
+          "label": "5 años",
+          "count": 60
+        },
+        {
+          "id": "max",
+          "label": "Máximo",
+          "count": null
+        }
       ]
     },
     "TIPOCAMBIO": {
       "nombre": "Tipo de cambio FIX",
       "descripcion": "Tipo de cambio de referencia (peso por dólar) determinado por el Banco de México, utilizado para solventar obligaciones denominadas en dólares.",
-      "frecuencia": "Diaria",
+      "frecuencia": "Diaria — días hábiles bancarios",
       "unidad": "Pesos por dólar",
       "ajuste_estacional": "No aplica",
       "grupo": "financiero",
@@ -749,14 +2215,46 @@
           "index": 0,
           "fmt": "fx"
         }
+      ],
+      "windows": [
+        {
+          "id": "1m",
+          "label": "1 mes",
+          "count": 22
+        },
+        {
+          "id": "3m",
+          "label": "3 meses",
+          "count": 66
+        },
+        {
+          "id": "6m",
+          "label": "6 meses",
+          "count": 132
+        },
+        {
+          "id": "1a",
+          "label": "1 año",
+          "count": 252
+        },
+        {
+          "id": "5a",
+          "label": "5 años",
+          "count": 1250
+        },
+        {
+          "id": "max",
+          "label": "Máximo",
+          "count": null
+        }
       ]
     },
     "TASA": {
       "nombre": "Tasa de interés objetivo",
       "descripcion": "Objetivo para la Tasa de Interés Interbancaria a un día fijado por la Junta de Gobierno del Banco de México como principal instrumento de política monetaria.",
-      "frecuencia": "Por reunión",
+      "frecuencia": "Diaria (cambios discretos)",
       "unidad": "Porcentaje anual",
-      "ajuste_estacional": "No aplica",
+      "ajuste_estacional": "No aplica; se publica diariamente pero solo cambia en fechas de decisión de política monetaria",
       "grupo": "financiero",
       "publicacion": "Días de anuncio de política monetaria",
       "proximo": "Siguiente reunión programada",
@@ -775,6 +2273,33 @@
           "index": 0,
           "fmt": "pct-raw"
         }
+      ],
+      "windows": [
+        {
+          "id": "1a",
+          "label": "1 año",
+          "count": 252
+        },
+        {
+          "id": "3a",
+          "label": "3 años",
+          "count": 756
+        },
+        {
+          "id": "5a",
+          "label": "5 años",
+          "count": 1260
+        },
+        {
+          "id": "10a",
+          "label": "10 años",
+          "count": 2520
+        },
+        {
+          "id": "max",
+          "label": "Máximo",
+          "count": null
+        }
       ]
     },
     "RESERVAS": {
@@ -782,7 +2307,7 @@
       "descripcion": "Activos internacionales del Banco de México disponibles para atender obligaciones y estabilizar el mercado cambiario.",
       "frecuencia": "Semanal",
       "unidad": "Millones de dólares",
-      "ajuste_estacional": "No aplica; se toma el último dato semanal de cada mes",
+      "ajuste_estacional": "No aplica",
       "grupo": "financiero",
       "publicacion": "Semanal (martes)",
       "proximo": "Siguiente publicación semanal",
@@ -800,6 +2325,33 @@
           "label": "Reservas internacionales",
           "index": 0,
           "fmt": "usd"
+        }
+      ],
+      "windows": [
+        {
+          "id": "3m",
+          "label": "3 meses",
+          "count": 13
+        },
+        {
+          "id": "6m",
+          "label": "6 meses",
+          "count": 26
+        },
+        {
+          "id": "1a",
+          "label": "1 año",
+          "count": 52
+        },
+        {
+          "id": "5a",
+          "label": "5 años",
+          "count": 260
+        },
+        {
+          "id": "max",
+          "label": "Máximo",
+          "count": null
         }
       ]
     },

@@ -12,7 +12,7 @@ from __future__ import annotations
 
 import json
 import math
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 import re
 from typing import Any
@@ -72,7 +72,7 @@ def prose_val(key: str, v: float | int | None) -> str:
         return F._to_fixed(v / 1e6, 2, 2) + " billones de pesos de 2018"
     if key == "PIBSEC":
         return F._to_fixed(v / 1e6, 2, 2) + " billones de pesos"
-    if key in ("IED", "BALANZA", "BCMM"):
+    if key in ("IED", "BALANZA", "BCMM", "RESERVAS"):
         sign = "−" if v < 0 else ""
         return sign + "$" + F._to_fixed(abs(F._js_round(v)), 0, 0) + " millones de dólares"
     if key in ("IGAE", "IMAI", "CONSUMO", "EMIM"):
@@ -1838,6 +1838,298 @@ def _desocup_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     }
 
 
+def _find_prev_by_date(periods: list[str], dates: list[date], target: date) -> int | None:
+    """Mayor índice cuya fecha sea <= target."""
+    best = None
+    for i, d in enumerate(dates):
+        if d <= target:
+            best = i
+    return best
+
+
+def _fix_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
+    """KPI y resumen para tipo de cambio FIX (diario)."""
+    obs = ind.get("observations", [])
+    if not obs:
+        return None
+    _, colors = _kpicfg_and_colors()
+    cfg = kpicfg.get(ind["key"]) or {}
+
+    periods = [o.get("period", "") for o in obs]
+    dates = [F.period_to_date(p) for p in periods]
+    vals = [o["values"][0] if o.get("values") else None for o in obs]
+
+    last_i = len(vals) - 1
+    last = vals[last_i]
+    if last is None:
+        return None
+    last_p = periods[last_i]
+    last_dt = dates[last_i]
+
+    # Variación diaria.
+    prev = vals[last_i - 1] if last_i - 1 >= 0 else None
+    daily = None
+    if prev is not None and prev != 0:
+        daily = round((last - prev) / abs(prev), 6)
+
+    # Cambio mensual (último día hábil del mes previo).
+    monthly = None
+    if last_dt:
+        # primer día del mes actual
+        first_cur = date(last_dt.year, last_dt.month, 1)
+        prev_month_end = first_cur - timedelta(days=1)
+        j = _find_prev_by_date(periods, dates, prev_month_end)
+        if j is not None and vals[j] is not None and vals[j] != 0:
+            monthly = round((last - vals[j]) / abs(vals[j]), 6)
+
+    # Cambio anual (misma fecha hábil aproximada, un año atrás).
+    yoy = None
+    if last_dt:
+        target = last_dt.replace(year=last_dt.year - 1)
+        j = _find_prev_by_date(periods, dates, target)
+        if j is not None and vals[j] is not None and vals[j] != 0:
+            yoy = round((last - vals[j]) / abs(vals[j]), 6)
+
+    # Rango de los últimos 12 meses (min/max entre last_dt - 365 y last_dt).
+    range_min = range_max = None
+    if last_dt:
+        start = last_dt - timedelta(days=365)
+        slice_vals = [v for v, d in zip(vals, dates) if v is not None and d and d >= start]
+        if slice_vals:
+            range_min = min(slice_vals)
+            range_max = max(slice_vals)
+
+    def _pct(v: float | None) -> str:
+        if v is None:
+            return "—"
+        return ("+" if v >= 0 else "") + F._to_fixed(v * 100, 2, 2) + "%"
+
+    kpi = {
+        "ultimoP": F.per_short(last_p),
+        "ultimoRaw": last,
+        "ultimoFmt": F.fmt_val(last, "fx"),
+        "varText": _pct(daily),
+        "varMag": daily,
+        "varLabel": "Cambio diario",
+        "pos": daily is not None and daily >= 0,
+        "varColor": colors.get("GREEN") if (daily is not None and daily >= 0) else colors.get("CRIMSON"),
+        "monthlyText": _pct(monthly),
+        "monthlyLabel": "Cambio mensual",
+        "yoyText": _pct(yoy),
+        "yoyLabel": "Cambio anual",
+        "yoyRaw": yoy,
+        "yoyMag": yoy,
+        "yoyPos": yoy is not None and yoy >= 0,
+        "yoyColor": colors.get("GREEN") if (yoy is not None and yoy >= 0) else colors.get("CRIMSON"),
+        "range12mText": (F.fmt_val(range_min, "fx") + " — " + F.fmt_val(range_max, "fx")) if range_min is not None and range_max is not None else "—",
+        "range12mLabel": "Rango 12 meses mínimo — máximo",
+        "maxRaw": max(v for v in vals if v is not None) if any(v is not None for v in vals) else None,
+        "minRaw": min(v for v in vals if v is not None) if any(v is not None for v in vals) else None,
+        "maxP": F.per_short(periods[vals.index(max(v for v in vals if v is not None))]) if any(v is not None for v in vals) else None,
+        "minP": F.per_short(periods[vals.index(min(v for v in vals if v is not None))]) if any(v is not None for v in vals) else None,
+        "maxFmt": F.fmt_val(max(v for v in vals if v is not None), "fx") if any(v is not None for v in vals) else "—",
+        "minFmt": F.fmt_val(min(v for v in vals if v is not None), "fx") if any(v is not None for v in vals) else "—",
+        "lastI": last_i,
+        "series": vals,
+        "periods": periods,
+        "assessment": "neutral",
+        "dir": "flat" if daily is None else ("up" if daily > 0.0005 else ("down" if daily < -0.0005 else "flat")),
+        "semaforo": "estable",
+    }
+
+    bullets = [
+        f"En {F.en_frase(last_p)}, el tipo de cambio FIX se ubicó en {prose_val('TIPOCAMBIO', last)} (pesos por dólar).",
+    ]
+    if daily is not None:
+        bullets.append(f"El cambio diario fue de {kpi['varText']} respecto al día hábil previo.")
+    if monthly is not None:
+        bullets.append(f"Respecto al último día hábil del mes previo, el FIX registró un cambio mensual de {kpi['monthlyText']}.")
+    if yoy is not None:
+        bullets.append(f"A tasa anual, el FIX varió {kpi['yoyText']}; en los últimos 12 meses osciló entre {kpi['range12mText']}.")
+
+    return {
+        "kpi": kpi,
+        "yoy": {"mag": yoy, "pos": yoy is not None and yoy >= 0, "text": kpi["yoyText"], "label": kpi["yoyLabel"]} if yoy is not None else None,
+        "annualVar": {"mag": yoy, "pos": yoy is not None and yoy >= 0, "text": kpi["yoyText"], "label": kpi["yoyLabel"]} if yoy is not None else None,
+        "resumen": bullets[:4],
+        "analysis": [],
+    }
+
+
+def _tasa_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
+    """KPI y resumen para la tasa objetivo (diaria, cambios discretos)."""
+    obs = ind.get("observations", [])
+    if not obs:
+        return None
+    _, colors = _kpicfg_and_colors()
+
+    periods = [o.get("period", "") for o in obs]
+    dates = [F.period_to_date(p) for p in periods]
+    vals = [o["values"][0] if o.get("values") else None for o in obs]
+
+    last_i = len(vals) - 1
+    last = vals[last_i]
+    if last is None:
+        return None
+
+    # Buscar la última decisión: inicio de la meseta actual y valor previo.
+    dec_i = last_i
+    while dec_i - 1 >= 0 and vals[dec_i - 1] == last:
+        dec_i -= 1
+    prev_i = dec_i - 1
+    decision_dt = dates[dec_i]
+    decision_p = periods[dec_i]
+    prev_val = vals[prev_i] if prev_i >= 0 else None
+
+    pp_change = None
+    if prev_val is not None:
+        pp_change = round(last - prev_val, 6)
+
+    kpi = {
+        "ultimoP": f"VIGENTE DESDE {F.per_short(decision_p)}",
+        "ultimoRaw": last,
+        "ultimoFmt": F._to_fixed(last, 2, 2) + "%",
+        "varText": F.fmt_val(pp_change, "pp") if pp_change is not None else "—",
+        "varMag": pp_change,
+        "varLabel": "Cambio última decisión",
+        "varColor": colors.get("GREEN") if (pp_change is not None and pp_change >= 0) else colors.get("CRIMSON"),
+        "pos": pp_change is not None and pp_change >= 0,
+        "yoyText": F.per_short(decision_p),
+        "yoyLabel": "Fecha última modificación",
+        "yoyRaw": None,
+        "yoyMag": None,
+        "yoyPos": None,
+        "yoyColor": colors.get("INK"),
+        "decisionP": decision_p,
+        "decisionText": F.per_short(decision_p),
+        "maxRaw": max(v for v in vals if v is not None) if any(v is not None for v in vals) else None,
+        "minRaw": min(v for v in vals if v is not None) if any(v is not None for v in vals) else None,
+        "maxP": F.per_short(periods[vals.index(max(v for v in vals if v is not None))]) if any(v is not None for v in vals) else None,
+        "minP": F.per_short(periods[vals.index(min(v for v in vals if v is not None))]) if any(v is not None for v in vals) else None,
+        "maxFmt": F.fmt_val(max(v for v in vals if v is not None), "pct-raw") if any(v is not None for v in vals) else "—",
+        "minFmt": F.fmt_val(min(v for v in vals if v is not None), "pct-raw") if any(v is not None for v in vals) else "—",
+        "lastI": last_i,
+        "series": vals,
+        "periods": periods,
+        "assessment": "neutral",
+        "dir": "flat" if pp_change is None or abs(pp_change) < 0.0001 else ("up" if pp_change > 0 else "down"),
+        "semaforo": "estable",
+    }
+
+    bullets = [
+        f"La tasa objetivo vigente es {kpi['ultimoFmt']} (% anual). La última decisión fue el {F.en_frase(decision_p)}.",
+    ]
+    if pp_change is not None:
+        bullets.append(f"El cambio de la última decisión respecto a la tasa previa fue de {kpi['varText']}")
+    if decision_dt:
+        bullets.append(f"La tasa se mantiene estable desde el {F.en_frase(decision_p)}.")
+
+    return {
+        "kpi": kpi,
+        "yoy": None,
+        "annualVar": None,
+        "resumen": bullets[:4],
+        "analysis": [],
+    }
+
+
+def _reservas_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
+    """KPI y resumen para reservas internacionales (semanal)."""
+    obs = ind.get("observations", [])
+    if not obs:
+        return None
+    _, colors = _kpicfg_and_colors()
+
+    periods = [o.get("period", "") for o in obs]
+    dates = [F.period_to_date(p) for p in periods]
+    vals = [o["values"][0] if o.get("values") else None for o in obs]
+
+    last_i = len(vals) - 1
+    last = vals[last_i]
+    if last is None:
+        return None
+    last_p = periods[last_i]
+    last_dt = dates[last_i]
+
+    prev = vals[last_i - 1] if last_i - 1 >= 0 else None
+    weekly = None
+    if prev is not None:
+        weekly = round(last - prev, 6)
+
+    yoy = None
+    if last_dt:
+        target = last_dt - timedelta(weeks=52)
+        j = _find_prev_by_date(periods, dates, target)
+        if j is not None and vals[j] is not None and vals[j] != 0:
+            yoy = round((last - vals[j]) / abs(vals[j]), 6)
+
+    ytd = None
+    if last_dt:
+        start_year = date(last_dt.year, 1, 1)
+        j = _find_prev_by_date(periods, dates, start_year)
+        if j is not None and vals[j] is not None and vals[j] != 0:
+            ytd = round((last - vals[j]) / abs(vals[j]), 6)
+
+    def _usd(v: float | None) -> str:
+        if v is None:
+            return "—"
+        sgn = "+" if v >= 0 else "−"
+        return sgn + "$" + F._to_fixed(abs(F._js_round(v)), 0, 0) + " mdd"
+
+    def _pct(v: float | None) -> str:
+        if v is None:
+            return "—"
+        return ("+" if v >= 0 else "") + F._to_fixed(v * 100, 1, 1) + "%"
+
+    kpi = {
+        "ultimoP": f"SEMANA AL {F.per_short(last_p)}",
+        "ultimoRaw": last,
+        "ultimoFmt": prose_val("RESERVAS", last),
+        "varText": _usd(weekly),
+        "varMag": weekly,
+        "varLabel": "Var. semanal",
+        "pos": weekly is not None and weekly >= 0,
+        "varColor": colors.get("GREEN") if (weekly is not None and weekly >= 0) else colors.get("CRIMSON"),
+        "yoyText": _pct(yoy),
+        "yoyLabel": "Var. anual",
+        "yoyRaw": yoy,
+        "yoyMag": yoy,
+        "yoyPos": yoy is not None and yoy >= 0,
+        "yoyColor": colors.get("GREEN") if (yoy is not None and yoy >= 0) else colors.get("CRIMSON"),
+        "acumText": _pct(ytd) if ytd is not None else "—",
+        "acumLabel": "YTD ene-" + (last_dt.strftime("%b").lower() if last_dt else "mes"),
+        "maxRaw": max(v for v in vals if v is not None) if any(v is not None for v in vals) else None,
+        "minRaw": min(v for v in vals if v is not None) if any(v is not None for v in vals) else None,
+        "maxP": F.per_short(periods[vals.index(max(v for v in vals if v is not None))]) if any(v is not None for v in vals) else None,
+        "minP": F.per_short(periods[vals.index(min(v for v in vals if v is not None))]) if any(v is not None for v in vals) else None,
+        "maxFmt": prose_val("RESERVAS", max(v for v in vals if v is not None)) if any(v is not None for v in vals) else "—",
+        "minFmt": prose_val("RESERVAS", min(v for v in vals if v is not None)) if any(v is not None for v in vals) else "—",
+        "lastI": last_i,
+        "series": vals,
+        "periods": periods,
+        "assessment": "neutral",
+        "dir": "flat" if weekly is None else ("up" if weekly > 0.5 else ("down" if weekly < -0.5 else "flat")),
+        "semaforo": "estable",
+    }
+
+    bullets = [
+        f"En la semana al {F.per_short(last_p)}, las reservas internacionales se ubicaron en {kpi['ultimoFmt']}.",
+    ]
+    if weekly is not None:
+        bullets.append(f"La variación semanal fue de {kpi['varText']} respecto a la semana previa.")
+    if yoy is not None:
+        bullets.append(f"A tasa anual, las reservas variaron {kpi['yoyText']}.")
+    if ytd is not None:
+        bullets.append(f"El acumulado en el año ({kpi['acumLabel']}) fue de {kpi['acumText']}.")
+
+    return {
+        "kpi": kpi,
+        "yoy": {"mag": yoy, "pos": yoy is not None and yoy >= 0, "text": kpi["yoyText"], "label": kpi["yoyLabel"]} if yoy is not None else None,
+        "annualVar": {"mag": yoy, "pos": yoy is not None and yoy >= 0, "text": kpi["yoyText"], "label": kpi["yoyLabel"]} if yoy is not None else None,
+        "resumen": bullets[:4],
+        "analysis": [],
+    }
+
 def compute_all_metrics(payload: dict | None = None, kpicfg: dict | None = None) -> dict[str, dict[str, Any]]:
     """Calcula kpi, analysis y annualVar para todos los indicadores."""
     if payload is None:
@@ -1886,6 +2178,21 @@ def compute_all_metrics(payload: dict | None = None, kpicfg: dict | None = None)
             desocup = _desocup_metrics(ind, kpicfg)
             if desocup:
                 out[key] = desocup
+                continue
+        if key == "TIPOCAMBIO" and len(ind.get("observations", [])) > 0:
+            fix = _fix_metrics(ind, kpicfg)
+            if fix:
+                out[key] = fix
+                continue
+        if key == "TASA" and len(ind.get("observations", [])) > 0:
+            tasa = _tasa_metrics(ind, kpicfg)
+            if tasa:
+                out[key] = tasa
+                continue
+        if key == "RESERVAS" and len(ind.get("observations", [])) > 0:
+            reservas = _reservas_metrics(ind, kpicfg)
+            if reservas:
+                out[key] = reservas
                 continue
         kpi = compute_kpi(ind, kpicfg)
         yoy = annual_var(ind, kpi, kpicfg) if kpi else None

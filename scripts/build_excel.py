@@ -912,6 +912,10 @@ NEW_SHEETS = {
     "IMAI": "IMAI",
     "INPC": "INPC",
     "INPP": "INPP",
+    "TIPOCAMBIO": "Tipo de cambio FIX",
+    "TASA": "Tasa objetivo",
+    "RESERVAS": "Reservas internacionales",
+    "EMOE": "EMOE",
 }
 
 # Hojas heredadas del libro base que ya no corresponden al perfil V3.

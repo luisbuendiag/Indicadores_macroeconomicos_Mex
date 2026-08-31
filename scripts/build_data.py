@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from datetime import date, datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -411,6 +412,81 @@ def prepare_ioae_for_v3(payload: dict) -> list[str]:
             changes.append(f"IOAE: actualizado {field}")
     return changes
 
+
+
+
+def prepare_financiero_for_v3(payload: dict) -> list[str]:
+    """Migra los indicadores del Entorno financiero a su frecuencia oficial.
+
+    FIX (TIPOCAMBIO) y TASA pasan a ser series diarias; RESERVAS, semanal.
+    Si el archivo local aún conserva agregaciones mensuales y las observaciones
+    originales, intercambia la serie principal. También normaliza metadatos.
+    """
+    changes: list[str] = []
+    try:
+        meta = json.loads(L.META_FILE.read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        return changes
+
+    profile = {**(meta.get("profile") or {}), **(meta.get("scaffolds") or {})}
+    cfg = {
+        "TIPOCAMBIO": {"frecuencia": "Diaria", "fmt": "fx"},
+        "TASA": {"frecuencia": "Diaria", "fmt": "pct-raw"},
+        "RESERVAS": {"frecuencia": "Semanal", "fmt": "usd"},
+    }
+
+    for key, meta_cfg in cfg.items():
+        ind = payload["indicators"].get(key)
+        if not ind:
+            continue
+
+        prof = profile.get(key, {})
+        original = ind.get("observations_original")
+        current = ind.get("observations", [])
+
+        # Detectar si la serie principal aún es mensual.
+        current_is_monthly = current and not any(
+            re.match(r"^\d{4}-\d{2}-\d{2}$", str(o.get("period", "")))
+            for o in current
+        )
+
+        if original and current_is_monthly:
+            ind["observations"] = list(original)
+            changes.append(f"{key}: migradas observaciones originales a la serie principal")
+
+        obs = ind.get("observations", [])
+        if obs:
+            last = obs[-1]
+            last_period = last.get("period")
+            if re.match(r"^\d{4}-\d{2}-\d{2}$", str(last_period)):
+                ind["last_observation"] = last_period
+                ind["fecha_ultima_observacion"] = last_period
+
+        # Normalizar frecuencia y columnas desde el perfil si están disponibles.
+        if prof.get("frecuencia"):
+            ind["frecuencia"] = prof["frecuencia"]
+        else:
+            ind["frecuencia"] = meta_cfg["frecuencia"]
+
+        if prof.get("columns"):
+            ind["columns"] = prof["columns"]
+        else:
+            ind["columns"] = [{
+                "label": prof.get("nombre") or ind.get("nombre") or key,
+                "index": 0,
+                "fmt": meta_cfg["fmt"],
+            }]
+
+        if prof.get("windows"):
+            ind["windows"] = prof["windows"]
+
+        for field in ("nombre", "descripcion", "unidad", "ajuste_estacional",
+                      "grupo", "publicacion", "proximo", "fuente"):
+            if prof.get(field) is not None and ind.get(field) != prof[field]:
+                ind[field] = prof[field]
+                changes.append(f"{key}: actualizado {field}")
+
+    return changes
 
 def compute_imai_metrics(payload: dict) -> list[str]:
     """Completa el esquema de 14 columnas del IMAI y calcula el acumulado original.
@@ -995,6 +1071,9 @@ def run(offline: bool = False) -> int:
 
     # Migrar IOAE al esquema de 13 columnas antes de fusionar fuentes.
     log["changes"].extend(prepare_ioae_for_v3(payload))
+
+    # Migrar Entorno financiero a frecuencias oficiales (diario/semanal).
+    log["changes"].extend(prepare_financiero_for_v3(payload))
 
     if not offline:
         # Asegurar que los indicadores del perfil (incluyendo nuevos) existan

@@ -1,21 +1,26 @@
 """Conector Banco de México (SIE). Requiere BANXICO_TOKEN.
 
 Descarga series diarias/semanales (tipo de cambio FIX, tasa objetivo, reservas
-internacionales) y las agrega a frecuencia mensual (último dato del mes) para el
-dashboard. Si no hay token, devuelve SourceResult(ok=False) y el pipeline conserva
-los datos existentes.
+internacionales) y las conserva en su frecuencia oficial original. No fuerza una
+agregación mensual como serie principal.
+
+- FIX: diaria, días hábiles bancarios.
+- TASA: diaria, con cambios discretos en fechas de decisión.
+- RESERVAS: semanal.
+
+Si no hay token, devuelve SourceResult(ok=False) y el pipeline conserva los datos
+existentes.
 """
 from __future__ import annotations
 
 import os
-from collections import OrderedDict
-import calendar
 from datetime import datetime
 
 from .base import SourceResult, http_get_json
 
 BASE = ("https://www.banxico.org.mx/SieAPIRest/service/v1/series/{series}/"
         "datos/{start}/{end}?token={token}")
+
 MESES_ABBR = ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
               "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
 
@@ -39,40 +44,37 @@ def _raw_observations(datos, factor: float = 1.0) -> list[dict]:
     return obs
 
 
-def _monthly_last(datos, factor: float = 1.0, end: str | None = None) -> list[dict]:
-    """Agrega observaciones diarias/semanales al último valor de cada mes.
+def _monthly_last(datos, factor: float = 1.0) -> list[dict]:
+    """Serie auxiliar mensual: último valor de cada mes.
 
-    Si la consulta termina antes del último día del mes en curso, se omite ese
-    mes incompleto; de esa forma el dashboard no muestra un "último dato mensual"
-    parcial basado en la semana/día más reciente.
+    Se conserva como FIX_MENSUAL / TASA_MENSUAL / RESERVAS_MENSUAL en
+    observaciones_mensual, pero NO es la serie principal del dashboard.
     """
-    by_month: OrderedDict[tuple[int, int], float] = OrderedDict()
+    by_month: dict[tuple[int, int], float] = {}
     for d in datos:
         try:
             dt = datetime.strptime(d["fecha"], "%d/%m/%Y")
             val = float(d["dato"].replace(",", "")) * factor
         except (ValueError, KeyError, TypeError):
             continue
-        key = (dt.year, dt.month)
-        by_month[key] = val  # el último recorrido gana (datos vienen ordenados asc)
-
-    # Descartar el mes en curso si la consulta no llega a su último día.
-    if end and by_month:
-        try:
-            end_dt = datetime.strptime(end, "%Y-%m-%d").date()
-            last_year, last_month = next(reversed(by_month))
-            if (last_year, last_month) == (end_dt.year, end_dt.month):
-                last_day = calendar.monthrange(end_dt.year, end_dt.month)[1]
-                if end_dt.day < last_day:
-                    by_month.popitem(last=True)
-        except (ValueError, TypeError):
-            pass
+        by_month[(dt.year, dt.month)] = val
 
     obs = []
-    for (y, m), v in by_month.items():
+    for (y, m), v in sorted(by_month.items()):
         period = f"{MESES_ABBR[m - 1]} {str(y)[2:]}"
         obs.append({"period": period, "values": [round(v, 6)]})
     return obs
+
+
+def _infer_frecuencia(meta: dict, key: str) -> str:
+    frec = (meta.get("frecuencia") or "").lower().replace("-", " ")
+    if "semanal" in frec:
+        return "Semanal"
+    if "diaria" in frec:
+        return "Diaria"
+    if key in ("TIPOCAMBIO", "TASA"):
+        return "Diaria"
+    return meta.get("frecuencia") or "Diaria"
 
 
 def fetch(config: dict, start: str = "2018-01-01", end: str | None = None) -> SourceResult:
@@ -101,36 +103,27 @@ def fetch(config: dict, start: str = "2018-01-01", end: str | None = None) -> So
             continue
 
         factor = float(meta.get("factor", 1.0))
-        obs = _monthly_last(datos, factor, end)
+        obs = _raw_observations(datos, factor)
         if not obs:
-            warns.append(f"Banxico {key}: sin observaciones mensuales.")
-            continue
-
-        raw = _raw_observations(datos, factor)
-        if not raw:
             warns.append(f"Banxico {key}: sin observaciones originales.")
             continue
 
+        # Serie auxiliar mensual, claramente diferenciada.
+        mensual = _monthly_last(datos, factor)
+
+        frecuencia = _infer_frecuencia(meta, key)
         last = obs[-1]
-        last_raw = raw[-1]
-        frecuencia_meta = (meta.get("frecuencia") or "").lower()
-        frecuencia_original = "Diaria"
-        if "semanal" in frecuencia_meta:
-            frecuencia_original = "Semanal"
-        elif "diaria" in frecuencia_meta or key in ("TIPOCAMBIO", "TASA"):
-            frecuencia_original = "Diaria"
 
         out[key] = {
             "key": key,
             "nombre": meta.get("nombre"),
-            "frecuencia": meta.get("frecuencia", "Mensual"),
-            "frecuencia_original": frecuencia_original,
+            "frecuencia": frecuencia,
             "unidad": meta.get("unidad"),
             "columns": [{"label": meta.get("nombre"), "index": 0, "fmt": FMT.get(key, "num")}],
             "observations": obs,
-            "observations_original": raw,
+            "observations_mensual": mensual,
             "last_observation": last["period"],
-            "fecha_ultima_observacion": last_raw["period"],
+            "fecha_ultima_observacion": last["period"],
             "fuente": {
                 "nombre": "Banco de México (SIE)",
                 "serie": serie,
@@ -139,12 +132,10 @@ def fetch(config: dict, start: str = "2018-01-01", end: str | None = None) -> So
             },
             "api_meta": {
                 "serie": serie,
-                "n_obs_mensual": len(obs),
-                "n_obs_original": len(raw),
+                "n_obs": len(obs),
+                "n_obs_mensual": len(mensual),
                 "ultimo_valor": last["values"][0],
-                "ultimo_valor_original": last_raw["values"][0],
                 "ultima_observacion": last["period"],
-                "ultima_observacion_original": last_raw["period"],
                 "ultima_ym": None,
             },
         }
