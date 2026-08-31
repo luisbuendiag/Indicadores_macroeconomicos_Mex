@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T18:24:35+00:00",
+  "generated_at": "2026-08-31T21:15:31+00:00",
   "indicadores": [
     {
       "indicador": "Estimación Oportuna del Producto Interno Bruto Trimestral",
@@ -322,8 +322,8 @@
       "frecuencia": "Diaria — días hábiles bancarios",
       "unidad": "Pesos por dólar",
       "ajuste_estacional": "No aplica",
-      "ultima_observacion": "2026-08-28",
-      "periodo_referencia": "2026-08-28",
+      "ultima_observacion": "2026-08-31",
+      "periodo_referencia": "2026-08-31",
       "fecha_publicacion": "Días hábiles",
       "fecha_consulta": "2026-08-31",
       "fecha_actualizacion_archivo": "2026-08-31",
