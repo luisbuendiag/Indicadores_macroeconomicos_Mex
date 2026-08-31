@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-08-29T02:49:43+00:00",
+  "started_at": "2026-08-31T16:10:17+00:00",
   "mode": "offline",
   "network_calls": false,
   "warnings": [],
@@ -25,7 +25,7 @@
     "DESOCUP: población ocupada en millones calculada para 34 periodos",
     "DESOCUP: etiquetas trimestrales agregadas a 34 observaciones",
     "IOAE: 66 observaciones con IGAE observado anual",
-    "calendario: regenerado con as_of=2026-08-29",
+    "calendario: regenerado con as_of=2026-08-31",
     "métricas: data/metrics.json regenerado",
     "frescura: PIB -> ACTUALIZADO",
     "frescura: PIBSEC -> ACTUALIZADO",
@@ -44,10 +44,10 @@
     "frescura: EMOE -> ACTUALIZADO",
     "frescura: BCMM -> ACTUALIZADO",
     "frescura: INPP -> ACTUALIZADO",
-    "meta: last_update_ct=2026-08-28T21:40:02-06:00"
+    "meta: last_update_ct=2026-08-31T11:04:03-06:00"
   ],
   "consultas": [],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-08-29T03:40:03+00:00"
+  "finished_at": "2026-08-31T17:04:03+00:00"
 }

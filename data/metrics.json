@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-29T02:49:43+00:00",
-  "last_update_ct": "2026-08-28T20:49:27-06:00",
+  "generated_at": "2026-08-31T16:10:17+00:00",
+  "last_update_ct": "2026-08-31T10:10:06-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -4708,11 +4708,11 @@
       "kpi": {
         "assessment": "neutral",
         "dir": "down",
-        "ultimoFmt": "$17.33",
-        "ultimoRaw": 17.3288,
-        "ultimoP": "Jul 26",
-        "varText": "-0.8%",
-        "varMag": -0.8042680588231892,
+        "ultimoFmt": "$17.04",
+        "ultimoRaw": 17.0427,
+        "ultimoP": "Ago 26",
+        "varText": "-1.7%",
+        "varMag": -1.6510087253589465,
         "pos": false,
         "varColor": "#9b2247",
         "varLabel": "Variación vs. periodo previo",
@@ -4722,7 +4722,7 @@
         "minFmt": "$16.53",
         "minRaw": 16.5323,
         "minP": "Mar 24",
-        "lastI": 102,
+        "lastI": 103,
         "series": [
           18.6069,
           18.8331,
@@ -4826,7 +4826,8 @@
           17.5118,
           17.3505,
           17.4693,
-          17.3288
+          17.3288,
+          17.0427
         ],
         "periods": [
           "Ene 18",
@@ -4931,26 +4932,27 @@
           "Abr 26",
           "May 26",
           "Jun 26",
-          "Jul 26"
+          "Jul 26",
+          "Ago 26"
         ],
         "semaforo": "estable",
-        "yoyText": "-7.8%",
+        "yoyText": "-8.6%",
         "yoyLabel": "Var. anual"
       },
       "analysis": [
-        "En julio de 2026, el tipo de cambio FIX se ubicó en $17.33 (pesos por dólar), con una variación de -0.80% frente al periodo previo. Este resultado refleja una apreciación del peso respecto a junio de 2026 (+0.68%), y deja al indicador por debajo del promedio del periodo mostrado de $19.35.",
+        "En agosto de 2026, el tipo de cambio FIX se ubicó en $17.04 (pesos por dólar), con una variación de -1.65% frente al periodo previo. Este resultado refleja una apreciación del peso respecto a julio de 2026 (-0.80%), y deja al indicador por debajo del promedio del periodo mostrado de $19.32.",
         "A lo largo de la serie mostrada, el indicador osciló entre un máximo de $23.93 (abril de 2020) y un mínimo de $16.53 (marzo de 2024). El resultado más reciente se ubicó por debajo del promedio del periodo mostrado. El último dato fue inferior al del inicio del periodo mostrado."
       ],
       "resumen": [
-        "En julio de 2026, el tipo de cambio FIX se ubicó en $17.33 (pesos por dólar). El valor de variación vs. periodo previo fue de -0.8% frente al periodo previo.",
-        "La var. anual se situó en -7.8%, lo que refleja la comparación contra julio de 2026 del año previo.",
+        "En agosto de 2026, el tipo de cambio FIX se ubicó en $17.04 (pesos por dólar). El valor de variación vs. periodo previo fue de -1.7% frente al periodo previo.",
+        "La var. anual se situó en -8.6%, lo que refleja la comparación contra agosto de 2026 del año previo.",
         "En la serie mostrada, el indicador oscila entre un máximo de $23.93 (abril de 2020) y un mínimo de $16.53 (marzo de 2024). El último dato se ubica dentro del rango observado en el periodo mostrado.",
         "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
       ],
       "annualVar": {
-        "mag": -7.807387624160062,
+        "mag": -8.588822141171415,
         "pos": false,
-        "text": "-7.8%",
+        "text": "-8.6%",
         "label": "Var. anual"
       }
     },
@@ -4960,7 +4962,7 @@
         "dir": "flat",
         "ultimoFmt": "6.5%",
         "ultimoRaw": 6.5,
-        "ultimoP": "Jul 26",
+        "ultimoP": "Ago 26",
         "varText": "+0.0 pp",
         "varMag": 0.0,
         "pos": true,
@@ -4972,7 +4974,7 @@
         "minFmt": "4.0%",
         "minRaw": 4.0,
         "minP": "Feb 21",
-        "lastI": 102,
+        "lastI": 103,
         "series": [
           7.25,
           7.5,
@@ -5074,6 +5076,7 @@
           7.0,
           6.75,
           6.75,
+          6.5,
           6.5,
           6.5,
           6.5
@@ -5181,18 +5184,19 @@
           "Abr 26",
           "May 26",
           "Jun 26",
-          "Jul 26"
+          "Jul 26",
+          "Ago 26"
         ],
         "semaforo": "estable",
         "yoyText": "—",
         "yoyLabel": "—"
       },
       "analysis": [
-        "En julio de 2026, la tasa objetivo se ubicó en 6.5%, con una variación de 0.00 pp frente al periodo previo. Este resultado refleja una tasa de referencia sin cambios respecto a junio de 2026 (0.00 pp), y deja al indicador por debajo del promedio del periodo mostrado de 7.9%.",
-        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 11.3% (marzo de 2023) y un mínimo de 4.0% (febrero de 2021). El resultado más reciente se ubicó por debajo del promedio del periodo mostrado. El último dato fue inferior al del inicio del periodo mostrado."
+        "En agosto de 2026, la tasa objetivo se ubicó en 6.5%, con una variación de 0.00 pp frente al periodo previo. Este resultado refleja una tasa de referencia sin cambios respecto a julio de 2026 (0.00 pp), y deja al indicador por debajo del promedio del periodo mostrado de 7.8%.",
+        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 11.3% (marzo de 2023) y un mínimo de 4.0% (febrero de 2021). El resultado más reciente se ubicó por debajo del promedio del periodo mostrado. El último dato se mantuvo cercano al del inicio del periodo mostrado."
       ],
       "resumen": [
-        "En julio de 2026, la tasa objetivo se ubicó en 6.5%. El valor de variación vs. periodo previo fue de +0.0 pp frente al periodo previo.",
+        "En agosto de 2026, la tasa objetivo se ubicó en 6.5%. El valor de variación vs. periodo previo fue de +0.0 pp frente al periodo previo.",
         "En la serie mostrada, el indicador oscila entre un máximo de 11.3% (marzo de 2023) y un mínimo de 4.0% (febrero de 2021). El último dato se ubica dentro del rango observado en el periodo mostrado.",
         "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
       ],
@@ -5202,21 +5206,21 @@
       "kpi": {
         "assessment": "neutral",
         "dir": "up",
-        "ultimoFmt": "255,498",
-        "ultimoRaw": 255498.1,
-        "ultimoP": "Jul 26",
-        "varText": "+317 mdd",
-        "varMag": 317.3999999999942,
+        "ultimoFmt": "258,609",
+        "ultimoRaw": 258608.8,
+        "ultimoP": "Ago 26",
+        "varText": "+3,111 mdd",
+        "varMag": 3110.6999999999825,
         "pos": true,
         "varColor": "#1e5b4f",
         "varLabel": "Variación semanal",
-        "maxFmt": "257,815",
-        "maxRaw": 257815.2,
-        "maxP": "Feb 26",
+        "maxFmt": "258,609",
+        "maxRaw": 258608.8,
+        "maxP": "Ago 26",
         "minFmt": "172,910",
         "minRaw": 172910.3,
         "minP": "Feb 18",
-        "lastI": 102,
+        "lastI": 103,
         "series": [
           173194.6,
           172910.3,
@@ -5320,7 +5324,8 @@
           256263.9,
           256599.9,
           255180.7,
-          255498.1
+          255498.1,
+          258608.8
         ],
         "periods": [
           "Ene 18",
@@ -5425,26 +5430,27 @@
           "Abr 26",
           "May 26",
           "Jun 26",
-          "Jul 26"
+          "Jul 26",
+          "Ago 26"
         ],
         "semaforo": "estable",
-        "yoyText": "+5.4%",
+        "yoyText": "+5.8%",
         "yoyLabel": "Var. anual"
       },
       "analysis": [
-        "En julio de 2026, las reservas internacionales se ubicó en 255498.1, con una variación elevada de +317 mdd frente al periodo previo. Este resultado refleja una marcada aceleración respecto a junio de 2026 (-1,419 mdd), y deja al indicador por encima del promedio del periodo mostrado de 204469.7126213592.",
-        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 257815.2 (febrero de 2026) y un mínimo de 172910.3 (febrero de 2018). El resultado más reciente se ubicó por encima del promedio del periodo mostrado. El último dato se mantuvo cercano al del inicio del periodo mostrado."
+        "En agosto de 2026, las reservas internacionales se ubicó en 258608.8, con una variación elevada de +3,111 mdd frente al periodo previo. Este resultado refleja una marcada aceleración respecto a julio de 2026 (+317 mdd), y deja al indicador por encima del promedio del periodo mostrado de 204990.28076923077.",
+        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 258608.8 (agosto de 2026) y un mínimo de 172910.3 (febrero de 2018). El resultado más reciente se ubicó por encima del promedio del periodo mostrado y fue el registro más alto de la serie mostrada. El último dato se mantuvo cercano al del inicio del periodo mostrado."
       ],
       "resumen": [
-        "En julio de 2026, las reservas internacionales se ubicó en 255498.1. El valor de variación semanal fue de +317 mdd frente al periodo previo.",
-        "La var. anual se situó en +5.4%, lo que refleja la comparación contra julio de 2026 del año previo.",
-        "En la serie mostrada, el indicador oscila entre un máximo de 257815.2 (febrero de 2026) y un mínimo de 172910.3 (febrero de 2018). El último dato se ubica dentro del rango observado en el periodo mostrado.",
+        "En agosto de 2026, las reservas internacionales se ubicó en 258608.8. El valor de variación semanal fue de +3,111 mdd frente al periodo previo.",
+        "La var. anual se situó en +5.8%, lo que refleja la comparación contra agosto de 2026 del año previo.",
+        "En la serie mostrada, el indicador oscila entre un máximo de 258608.8 (agosto de 2026) y un mínimo de 172910.3 (febrero de 2018). El último dato coincide con el máximo de la serie mostrada.",
         "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
       ],
       "annualVar": {
-        "mag": 5.4279063760218484,
+        "mag": 5.8141809090871845,
         "pos": true,
-        "text": "+5.4%",
+        "text": "+5.8%",
         "label": "Var. anual"
       }
     },
