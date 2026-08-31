@@ -1163,7 +1163,7 @@ def run(offline: bool = False) -> int:
     log["changes"].extend(compute_ioae_metrics(payload))
 
     # Frescura, calendario, métricas compartidas y metadatos temporales.
-    log["changes"].extend(apply_freshness_and_meta(payload, log))
+    log["changes"].extend(apply_freshness_and_meta(payload, log, offline=offline))
 
     payload["meta"]["generated_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
 
@@ -1216,7 +1216,7 @@ def _periodo_referencia_reciente(payload: dict) -> dict:
     return {"period": candidates[-1][1], "period_long": inegi.ym_to_label(candidates[-1][0])}
 
 
-def apply_freshness_and_meta(payload: dict, log: dict, as_of: date | None = None) -> list[str]:
+def apply_freshness_and_meta(payload: dict, log: dict, as_of: date | None = None, offline: bool = False) -> list[str]:
     """Aplica frescura (estados ACTUALIZADO/PENDIENTE/REZAGADO/ERROR), escribe el
     calendario, calcula métricas y actualiza metadatos temporales."""
     changes: list[str] = []
@@ -1224,7 +1224,7 @@ def apply_freshness_and_meta(payload: dict, log: dict, as_of: date | None = None
         as_of = date.today()
 
     # Calendario oficial con la fecha de referencia del pipeline.
-    cal = build_calendar.build(as_of=as_of)
+    cal = build_calendar.build(as_of=as_of, offline=offline)
     (L.DATA_DIR / "calendario_publicaciones.json").write_text(
         json.dumps(cal, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )

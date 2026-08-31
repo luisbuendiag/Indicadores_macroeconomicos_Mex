@@ -15,6 +15,9 @@ venv/
 data/_backup/
 data/_candidate.json
 
+# Caché de fuentes de calendario (se regenera en CI o se descarga online)
+data/cache/
+
 # Sistema
 .DS_Store
 Thumbs.db

@@ -3,6 +3,7 @@ import { ORDER, PRINCIPAL, COMPLEMENTARIOS, LABELS, SIGLA, CAPTIONS, WINDOWS, CO
 import { computeKPI, analysis, annualVar } from "./metrics.js";
 import { buildOption, rangeStats, applyWindow, buildPibsecLevels, buildPibsecVariations, buildIgaeLevels, buildIgaeVariations, buildImaiLevels, buildImaiVariations, buildEmimLevels, buildEmimVariations, buildBcmmLevels, buildBcmmVariations, buildImfbcfLevels, buildImfbcfVariations, buildDesocupRates, buildDesocupPoblacion } from "./charts.js";
 import { fmtVal, perLong } from "./format.js";
+import * as cal from "./calendar.js";
 
 const state = {
   data: null, manifest: null, noticias: null, calendario: null,
@@ -39,23 +40,13 @@ const principalInds = () => PRINCIPAL.map(getInd).filter(Boolean);
 const hasData = (ind) => ind && ind.observations && ind.observations.length > 0;
 
 // ---------------- Calendario (fechas oficiales) ----------------
-const calItems = () => (state.calendario && state.calendario.items) || [];
-// Próxima publicación de un indicador (próximo, no anunciada o evento futuro).
-function nextPublication(key) {
-  const asOf = state.data.calendario?.as_of;
-  const asOfD = asOf ? new Date(asOf + "T00:00:00") : new Date();
-  const up = calItems()
-    .filter((c) => c.clave === key && (["próximo", "no_anunciada"].includes(c.estatus) || (c.estatus === "evento" && c.fecha_iso && new Date(c.fecha_iso + "T00:00:00") > asOfD)))
-    .sort((a, b) => (a.fecha_iso || "").localeCompare(b.fecha_iso || ""));
-  return up[0] || null;
-}
-// Próximas N publicaciones globales (una lista ordenada por fecha).
-function upcomingPublications(n = 8) {
-  return calItems()
-    .filter((c) => ["próximo", "pendiente", "no_anunciada", "evento"].includes(c.estatus))
-    .sort((a, b) => (a.fecha_iso || "").localeCompare(b.fecha_iso || ""))
-    .slice(0, n);
-}
+const calCtx = () => ({ state, $, el, getInd, setView, openModal, closeModal });
+function nextPublication(key) { return cal.nextPublication(calCtx(), key); }
+function upcomingPublications(n = 8) { return cal.upcomingPublications(calCtx(), n); }
+function calendarioDisponible(ind) { return cal.calendarioDisponible(calCtx(), ind); }
+function openCalendarioFiltro(ind) { cal.openCalendarioFiltro(calCtx(), ind); }
+function buildCalendarioPanel(ind) { return cal.buildCalendarioPanel(calCtx(), ind); }
+function renderCalendar() { cal.renderCalendar(calCtx()); }
 
 function estadoBadge(ind) {
   const est = ind.estado || "no disponible";
@@ -92,20 +83,6 @@ function downloadProduct(url, fallbackName) {
   document.body.appendChild(a);
   a.click();
   a.remove();
-}
-
-function openCalendarioFiltro(ind) {
-  openModal(`Calendario de publicaciones · ${ind.nombre}`, buildCalendarioPanel(ind));
-}
-
-// El calendario está disponible si hay items del calendario para la clave,
-// una regla de publicación o una próxima publicación conocida.
-function calendarioDisponible(ind) {
-  if (!ind) return false;
-  if (ind.regla_publicacion) return true;
-  if (ind.proxima_publicacion) return true;
-  if (ind.observations_original && ind.observations_original.length) return true;
-  return calItems().some((c) => c && c.clave === ind.key && (c.fecha_publicacion || c.regla_publicacion));
 }
 
 function productBtn(label, icon, enabled, title, onClick, kind) {
@@ -214,111 +191,6 @@ function closeModal() {
   modal.overlay.setAttribute("aria-hidden", "true");
   modal.overlay.hidden = true;
   document.body.style.overflow = "";
-}
-
-function statusLabel(st) {
-  if (st === "publicado") return "Publicado";
-  if (st === "próximo") return "Próxima publicación";
-  if (st === "pendiente") return "Pendiente";
-  if (st === "no_anunciada") return "Fecha oficial no anunciada";
-  if (st === "evento") return "Decisión / anuncio";
-  if (st === "regla") return "Regla de publicación";
-  return st || "—";
-}
-
-function buildCalendarioPanel(ind) {
-  const cal = state.data.calendario || {};
-  const asOfIso = cal.as_of;
-  const asOf = asOfIso ? new Date(asOfIso + "T00:00:00") : new Date();
-
-  let all = calItems().filter((c) => c.clave === ind.key)
-    .filter((c) => c.estatus !== "regla")
-    .sort((a, b) => (b.fecha_iso || "").localeCompare(a.fecha_iso || ""));
-
-  const rule = calItems().find((c) => c.clave === ind.key && c.estatus === "regla");
-
-  const isFuture = (c) => c.fecha_iso && new Date(c.fecha_iso + "T00:00:00") > asOf;
-
-  // Para decisiones/eventos (TASA) la fecha del propio evento es la publicación.
-  const latest = all.find((c) => c.estatus === "publicado" ||
-    (c.estatus === "evento" && !isFuture(c)));
-  const nextCandidates = all.filter((c) => ["próximo", "no_anunciada"].includes(c.estatus) ||
-    (c.estatus === "evento" && isFuture(c)));
-  const next = nextCandidates.sort((a, b) => (a.fecha_iso || "").localeCompare(b.fecha_iso || ""))[0];
-
-  const wrap = el("div", { class: "ind-cal" });
-
-  // Resumen
-  const hero = el("div", { class: "cal-hero" });
-  hero.append(el("div", { class: "cal-hero-lbl" }, ind.nombre));
-  if (latest) {
-    hero.append(el("div", { class: "cal-hero-date" }, latest.fecha_publicacion));
-    if (latest.estatus === "evento") {
-      hero.append(el("div", {}, `Última decisión: ${latest.periodo_referencia} · ${statusLabel(latest.estatus)}`));
-    } else {
-      hero.append(el("div", {}, `Última publicación: ${latest.periodo_referencia} · ${statusLabel(latest.estatus)}`));
-    }
-    if (latest.url_boletin) {
-      hero.append(el("a", { href: latest.url_boletin, target: "_blank", rel: "noopener" }, `Comunicado / boletín oficial ↗`));
-    }
-  }
-  if (next) {
-    if (next.estatus === "no_anunciada") {
-      hero.append(el("div", { class: "cal-hero-ind" }, `Próxima publicación: ${next.periodo_referencia}`));
-      hero.append(el("div", { class: "cal-hero-src" }, next.comentario || "Próxima fecha oficial no anunciada"));
-    } else if (next.estatus === "evento") {
-      hero.append(el("div", { class: "cal-hero-ind" }, `Próxima decisión: ${next.fecha_publicacion} · ${next.periodo_referencia}`));
-      hero.append(el("div", { class: "cal-hero-src" }, `${next.producto} — ${next.institucion}`));
-    } else {
-      hero.append(el("div", { class: "cal-hero-ind" }, `Próxima publicación: ${next.fecha_publicacion} · ${next.periodo_referencia}`));
-      hero.append(el("div", { class: "cal-hero-src" }, `${next.producto} — ${next.institucion}`));
-    }
-  } else if (!latest) {
-    hero.append(el("div", { class: "muted" }, "Sin fechas registradas para este indicador."));
-  }
-
-  // Regla de publicación (FIX, etc.)
-  if (rule || ind.regla_publicacion) {
-    hero.append(el("div", { class: "cal-hero-rule" }, `Frecuencia: ${ind.frecuencia_original || ind.frecuencia} · ${rule?.regla_publicacion || ind.regla_publicacion}`));
-  }
-  if (ind.fecha_ultima_observacion) {
-    hero.append(el("div", { class: "cal-hero-src" }, `Última observación disponible: ${ind.fecha_ultima_observacion}`));
-  }
-  const url = ind.url_fuente_oficial || ind.url_boletin_oficial || (ind.fuente && ind.fuente.link) || null;
-  if (url) {
-    hero.append(el("a", { href: url, target: "_blank", rel: "noopener" }, "Consultar fuente oficial ↗"));
-  }
-  wrap.append(hero);
-
-  // Histórico reciente
-  const histWrap = el("div", { class: "panel cal-hist" });
-  histWrap.append(el("h3", {}, "Histórico reciente"));
-  if (all.length) {
-    const ul = el("ul", { class: "cal-list" });
-    all.slice(0, 12).forEach((c) => {
-      const li = el("li", {},
-        el("span", { class: "cal-list-date" }, c.fecha_publicacion || "—"),
-        el("span", {}, ` · ${c.periodo_referencia} · ${statusLabel(c.estatus)}`)
-      );
-      ul.append(li);
-    });
-    histWrap.append(ul);
-  } else if (ind.observations_original) {
-    const recent = [...ind.observations_original].reverse().slice(0, 12);
-    const ul = el("ul", { class: "cal-list" });
-    recent.forEach((o) => {
-      ul.append(el("li", {},
-        el("span", { class: "cal-list-date" }, o.period),
-        el("span", {}, ` · Valor: ${o.values[0]}`)
-      ));
-    });
-    histWrap.append(ul);
-  } else {
-    histWrap.append(el("div", { class: "muted" }, "No hay publicaciones registradas."));
-  }
-  wrap.append(histWrap);
-
-  return wrap;
 }
 
 // ---------------- Header ----------------
@@ -1310,169 +1182,7 @@ function renderEntorno() {
   sec.append(grid);
 }
 
-// ---------------- Calendar ----------------
-const MES_NOMBRES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
-const DIA_CORTOS = ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"];
-// Color por indicador (para la vista mensual), derivado de la clave.
-function calColor(clave) {
-  const map = {
-    PIB: "#002f2a", PIBSEC: "#1e5b4f", IGAE: "#0f7b6c", IMAI: "#a57f2c",
-    BALANZA: "#9b2247", DESOCUP: "#611232", INPC: "#8a6d1f", INPP: "#6b4f1c", CONSUMO: "#2d6a9f",
-    IMFBCF: "#5a3e8e", IOAE: "#3a7d44", EMIM: "#b5651d", EMOE: "#4a7c59", BCMM: "#8b4c6b",
-  };
-  return map[clave] || "#5c5f6a";
-}
-
-const calState = { filter: "", mode: "mensual" };
-
-function renderCalendar() {
-  const sec = $("#view-calendario");
-  sec.innerHTML = "";
-  sec.append(el("div", { class: "section-title" }, "Calendario de publicaciones"));
-  const cal = state.calendario;
-  if (!cal || !cal.items || !cal.items.length) {
-    sec.append(el("div", { class: "notice" }, "El calendario oficial (fechas exactas) se integra a partir de data/calendario_publicaciones.json. Mientras tanto se muestran las próximas fechas indicativas de cada indicador."));
-    const panel = el("div", { class: "panel" });
-    principalInds().forEach((ind) => { if (ind.proximo || ind.fecha_publicacion) panel.append(el("div", { class: "cal-item" }, el("span", { class: "date" }, ind.proximo || ind.fecha_publicacion), el("span", {}, `${LABELS[ind.key]} · ${ind.fuente?.nombre || ""} · ${ind.frecuencia || ""}`))); });
-    sec.append(panel);
-    return;
-  }
-  sec.append(el("div", { class: "section-sub" }, `Fuente: ${cal.fuente || "Calendario oficial de difusión"} · actualizado el ${cal.actualizado || cal.generated_at || "—"}${cal.as_of ? ` · vigencia al ${cal.as_of}` : ""}.`));
-
-  // Próxima publicación destacada + próximos 30 días.
-  sec.append(renderCalHighlights());
-
-  // Controles: filtro + toggle de vista.
-  const controls = el("div", { class: "cal-controls no-print" });
-  const sel = el("select", { onchange: () => { calState.filter = sel.value; drawCalBody(); } }, el("option", { value: "" }, "Todos los indicadores"));
-  [...new Set(cal.items.map((c) => c.indicador))].forEach((n) => sel.append(el("option", { value: n, selected: n === calState.filter ? "" : null }, n)));
-  const filterWrap = el("span", { class: "cal-filter" }, el("span", {}, "Filtrar: "), sel);
-  const toggle = el("div", { class: "cal-view-toggle", role: "group", "aria-label": "Vista del calendario" });
-  [["mensual", "Vista mensual"], ["tabla", "Vista tabular"]].forEach(([m, lbl]) => {
-    toggle.append(el("button", { class: "win-btn", type: "button", "aria-pressed": String(calState.mode === m), onclick: () => { calState.mode = m; renderCalendar(); } }, lbl));
-  });
-  controls.append(filterWrap, toggle);
-  sec.append(controls);
-
-  sec.append(el("div", { id: "cal-body" }));
-  drawCalBody();
-}
-
-function renderCalHighlights() {
-  const wrap = el("div", { class: "cal-highlights" });
-  const soon = upcomingPublications(50);
-  const nextOne = soon[0];
-  const hero = el("div", { class: "panel cal-hero" });
-  if (nextOne) {
-    hero.append(el("div", { class: "cal-hero-lbl" }, "Próximo dato por publicarse"));
-    hero.append(el("div", { class: "cal-hero-date" }, nextOne.fecha_publicacion));
-    hero.append(el("div", { class: "cal-hero-ind" }, `${nextOne.indicador} · ${nextOne.periodo_referencia}`));
-    hero.append(el("div", { class: "cal-hero-src" }, `${nextOne.producto} — ${nextOne.institucion}`));
-  } else {
-    hero.append(el("div", { class: "muted" }, "Sin próximas publicaciones registradas."));
-  }
-  // Próximos 30 días respecto a la fecha de vigencia del calendario.
-  const asOf = state.calendario.as_of;
-  const days30 = el("div", { class: "panel" });
-  days30.append(el("h3", {}, "Próximos 30 días"));
-  let list30 = soon;
-  if (asOf) {
-    const lim = new Date(asOf + "T00:00:00"); lim.setDate(lim.getDate() + 30);
-    const limIso = lim.toISOString().slice(0, 10);
-    list30 = soon.filter((c) => c.fecha_iso && c.fecha_iso <= limIso);
-  }
-  list30 = list30.slice(0, 12);
-  if (list30.length) {
-    list30.forEach((c) => {
-      const row = el("div", { class: "cal-item clickable", role: "link", onclick: () => c.clave && getInd(c.clave) && setView(c.clave) },
-        el("span", { class: "date" }, c.fecha_publicacion), el("span", {}, `${c.indicador} · ${c.periodo_referencia}`));
-      days30.append(row);
-    });
-  } else {
-    days30.append(el("div", { class: "muted" }, "Sin publicaciones en los próximos 30 días."));
-  }
-  wrap.append(hero, days30);
-  return wrap;
-}
-
-function drawCalBody() {
-  const host = document.getElementById("cal-body");
-  if (!host) return;
-  host.innerHTML = "";
-  if (calState.mode === "tabla") drawCalTable(host);
-  else drawCalMonths(host);
-}
-
-function statusChip(st) { return el("span", { class: `cal-status ${st}` }, st || "—"); }
-
-function drawCalTable(host) {
-  const items = calItems().filter((c) => !calState.filter || c.indicador === calState.filter);
-  const table = el("table");
-  table.append(el("thead", {}, el("tr", {}, ...["Fecha", "Indicador", "Producto", "Periodo de referencia", "Frecuencia", "Institución", "Estatus"].map((h) => el("th", {}, h)))));
-  const tb = el("tbody");
-  items.forEach((c) => {
-    const tr = el("tr", { class: c.clave && getInd(c.clave) ? "clickable" : "" },
-      el("td", {}, c.fecha_publicacion || "—"), el("td", {}, c.indicador || "—"), el("td", {}, c.producto || "—"),
-      el("td", {}, c.periodo_referencia || "—"), el("td", {}, c.frecuencia || "—"), el("td", {}, c.institucion || "—"),
-      el("td", {}, statusChip(c.estatus)));
-    if (c.clave && getInd(c.clave)) tr.addEventListener("click", () => setView(c.clave));
-    tb.append(tr);
-  });
-  table.append(tb);
-  host.append(el("div", { class: "panel", style: "padding:0;overflow:hidden" }, el("div", { class: "table-wrap", style: "max-height:none;border:none" }, table)));
-}
-
-function drawCalMonths(host) {
-  const items = calItems().filter((c) => !calState.filter || c.indicador === calState.filter);
-  if (!items.length) { host.append(el("div", { class: "panel muted" }, "Sin publicaciones para el filtro seleccionado.")); return; }
-  // Agrupa por (año, mes).
-  const byMonth = new Map();
-  items.forEach((c) => { const key = `${c.anio}-${String(c.mes).padStart(2, "0")}`; if (!byMonth.has(key)) byMonth.set(key, []); byMonth.get(key).push(c); });
-  const keys = [...byMonth.keys()].sort();
-
-  // Leyenda de colores por indicador (solo indicadores presentes).
-  const claves = [...new Set(items.map((c) => c.clave))];
-  const legend = el("div", { class: "cal-legend" });
-  claves.forEach((cl) => legend.append(el("span", { class: "cal-leg-item" }, el("span", { class: "cal-leg-dot", style: `background:${calColor(cl)}` }), (SIGLA[cl] || cl))));
-  host.append(legend);
-
-  const grid = el("div", { class: "cal-months" });
-  keys.forEach((key) => {
-    const [y, m] = key.split("-").map(Number);
-    grid.append(monthCard(y, m, byMonth.get(key)));
-  });
-  host.append(grid);
-}
-
-function monthCard(year, month, pubs) {
-  const card = el("div", { class: "panel cal-month" });
-  card.append(el("div", { class: "cal-month-title" }, `${MES_NOMBRES[month - 1]} ${year}`));
-  const byDay = new Map();
-  pubs.forEach((p) => { const d = new Date(p.fecha_iso + "T00:00:00").getDate(); if (!byDay.has(d)) byDay.set(d, []); byDay.get(d).push(p); });
-  const table = el("table", { class: "cal-grid" });
-  table.append(el("thead", {}, el("tr", {}, ...DIA_CORTOS.map((d) => el("th", {}, d)))));
-  const first = new Date(year, month - 1, 1);
-  const startDow = first.getDay();
-  const daysIn = new Date(year, month, 0).getDate();
-  const tb = el("tbody");
-  let day = 1 - startDow;
-  while (day <= daysIn) {
-    const tr = el("tr", {});
-    for (let i = 0; i < 7; i++, day++) {
-      if (day < 1 || day > daysIn) { tr.append(el("td", { class: "cal-cell empty" })); continue; }
-      const cell = el("td", { class: "cal-cell" }, el("div", { class: "cal-daynum" }, String(day)));
-      (byDay.get(day) || []).forEach((p) => {
-        const chip = el("div", { class: "cal-chip", style: `background:${calColor(p.clave)}`, title: `${p.indicador} · ${p.periodo_referencia}`, onclick: () => p.clave && getInd(p.clave) && setView(p.clave) }, SIGLA[p.clave] || p.clave);
-        cell.append(chip);
-      });
-      tr.append(cell);
-    }
-    tb.append(tr);
-  }
-  table.append(tb);
-  card.append(el("div", { class: "table-wrap", style: "max-height:none;border:none;overflow:visible" }, table));
-  return card;
-}
+// ---------------- Calendar (logica en calendar.js) ----------------
 
 // ---------------- Methodology ----------------
 function renderMethodology() {
@@ -1824,7 +1534,7 @@ async function init() {
     state.data = await loadJSON("data/indicadores.json");
     state.manifest = await loadJSON("data/manifest.json", true);
     state.noticias = await loadJSON("data/noticias.json", true);
-    state.calendario = await loadJSON("data/calendario_publicaciones.json", true) || await loadJSON("data/calendario.json", true);
+    state.calendario = await loadJSON("data/calendario.json", true) || await loadJSON("data/calendario_publicaciones.json", true);
   } catch (e) {
     $("#status").textContent = "No se pudieron cargar los datos (data/indicadores.json).";
     return;

@@ -54,6 +54,9 @@ jobs:
           BANXICO_TOKEN: ${{ secrets.BANXICO_TOKEN }}
         run: python scripts/build_data.py
 
+      - name: Regenerar calendario de publicaciones
+        run: python scripts/build_calendar.py
+
       - name: Recopilar noticias oficiales (a prueba de fallos)
         run: python scripts/fetch_news.py || true
 

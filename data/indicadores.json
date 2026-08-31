@@ -506,14 +506,14 @@
       "fecha_publicacion": "30 de julio de 2026",
       "periodo_referencia": "2T-26 P",
       "fecha_consulta": "2026-08-28",
-      "periodo_referencia_oficial": "2° trimestre 2026",
-      "fecha_publicacion_oficial": "30 de julio de 2026",
+      "periodo_referencia_oficial": "2T-26",
+      "fecha_publicacion_oficial": null,
       "proxima_publicacion": {
-        "fecha_publicacion": "30 de octubre de 2026",
-        "periodo_referencia": "3er trimestre 2026",
-        "tipo": "oficial"
+        "fecha_publicacion": "30 de enero de 2025",
+        "periodo_referencia": "Cuarto trimestre de 2024",
+        "tipo": "calculada"
       },
-      "motivo_frescura": "El periodo cargado (2T-26) coincide con el último periodo esperado (2° trimestre 2026).",
+      "motivo_frescura": "El periodo cargado (2T-26) coincide con el último periodo esperado (2T-26).",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_07.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/PIB/PIB_datos.xlsx",
@@ -523,7 +523,7 @@
       "url_nota_individual": null,
       "data_quality": [],
       "url_fuente_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_07.pdf",
-      "fecha_ultima_publicacion": "30 de julio de 2026",
+      "fecha_ultima_publicacion": null,
       "regla_publicacion": null,
       "periodo_boletin": "2T-26",
       "numero_boletin": "470/26",
@@ -10889,14 +10889,14 @@
           "La variación se clasifica como adversa según la lectura económica del indicador."
         ]
       },
-      "periodo_referencia_oficial": "Junio 2026",
+      "periodo_referencia_oficial": "Junio de 2026",
       "fecha_publicacion_oficial": "24 de agosto de 2026",
       "proxima_publicacion": {
         "fecha_publicacion": "24 de septiembre de 2026",
-        "periodo_referencia": "Julio 2026",
+        "periodo_referencia": "Julio de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (Jun 26) coincide con el último periodo esperado (Junio 2026).",
+      "motivo_frescura": "El periodo cargado (Jun 26) coincide con el último periodo esperado (Junio de 2026).",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_08.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/IGAE/IGAE_datos.xlsx",
@@ -21198,14 +21198,14 @@
           "A tasa anual, Minería (7.0%) y Construcción (4.2%) avanzaron, mientras que Industrias manufactureras (-1.2%) retrocedieron."
         ]
       },
-      "periodo_referencia_oficial": "Junio 2026",
+      "periodo_referencia_oficial": "Junio de 2026",
       "fecha_publicacion_oficial": "11 de agosto de 2026",
       "proxima_publicacion": {
         "fecha_publicacion": "11 de septiembre de 2026",
-        "periodo_referencia": "Julio 2026",
+        "periodo_referencia": "Julio de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (Jun 26) coincide con el último periodo esperado (Junio 2026).",
+      "motivo_frescura": "El periodo cargado (Jun 26) coincide con el último periodo esperado (Junio de 2026).",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_08.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/IMAI/IMAI_datos.xlsx",
@@ -22392,14 +22392,14 @@
           "La variación se clasifica como favorable según la lectura económica del indicador."
         ]
       },
-      "periodo_referencia_oficial": "Mayo 2026",
-      "fecha_publicacion_oficial": "05 de agosto de 2026",
+      "periodo_referencia_oficial": "Mayo de 2026",
+      "fecha_publicacion_oficial": "5 de agosto de 2026",
       "proxima_publicacion": {
-        "fecha_publicacion": "04 de septiembre de 2026",
-        "periodo_referencia": "Junio 2026",
+        "fecha_publicacion": "4 de septiembre de 2026",
+        "periodo_referencia": "Junio de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (May 26) coincide con el último periodo esperado (Mayo 2026).",
+      "motivo_frescura": "El periodo cargado (May 26) coincide con el último periodo esperado (Mayo de 2026).",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_08.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/CONSUMO/CONSUMO_datos.xlsx",
@@ -22408,7 +22408,7 @@
       "nota_causa": "Falta plantilla aprobada",
       "url_nota_individual": null,
       "url_fuente_oficial": "https://www.inegi.org.mx/programas/imcp/",
-      "fecha_ultima_publicacion": "05 de agosto de 2026",
+      "fecha_ultima_publicacion": "5 de agosto de 2026",
       "regla_publicacion": null,
       "periodo_boletin": "May 26",
       "numero_boletin": "478/26",
@@ -22762,14 +22762,14 @@
           "La variación se clasifica como favorable según la lectura económica del indicador."
         ]
       },
-      "periodo_referencia_oficial": "1T 2026",
+      "periodo_referencia_oficial": "1° trimestre 2026",
       "fecha_publicacion_oficial": "26 de mayo de 2026",
       "proxima_publicacion": {
         "fecha_publicacion": "Por anunciar",
-        "periodo_referencia": "2T 2026",
+        "periodo_referencia": "2° trimestre 2026",
         "tipo": "no_anunciada"
       },
-      "motivo_frescura": "El periodo cargado (1T-26) coincide con el último periodo esperado (1T 2026).",
+      "motivo_frescura": "El periodo cargado (1T-26) coincide con el último periodo esperado (1° trimestre 2026).",
       "url_boletin_oficial": "https://www.presidenta.gob.mx/boletines/inversion-extranjera-aumenta-10-4-por-ciento-en-primer-trimestre-2026-presidenta-sheinbaum",
       "xlsx_disponible": true,
       "xlsx_causa": null,
@@ -22779,7 +22779,7 @@
       "url_nota_individual": null,
       "url_fuente_oficial": "https://www.proyectosmexico.gob.mx/cifra-record-de-inversion-extranjera-directa-1t-2026/",
       "fecha_ultima_publicacion": "26 de mayo de 2026",
-      "regla_publicacion": "Publicación trimestral de flujos de IED. La fecha exacta de la siguiente publicación se anuncia por la Secretaría de Economía.",
+      "regla_publicacion": null,
       "windows": [
         {
           "id": "1a",
@@ -24337,14 +24337,14 @@
           "Respecto al mismo mes del año previo, la participación cambió -1.0 p.p. y la informalidad +0.1 p.p.."
         ]
       },
-      "periodo_referencia_oficial": "Julio 2026",
-      "fecha_publicacion_oficial": "25 de agosto de 2026",
+      "periodo_referencia_oficial": "Julio de 2026",
+      "fecha_publicacion_oficial": "27 de agosto de 2026",
       "proxima_publicacion": {
         "fecha_publicacion": "25 de septiembre de 2026",
-        "periodo_referencia": "Agosto 2026",
+        "periodo_referencia": "Agosto de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo esperado (Julio 2026).",
+      "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo esperado (Julio de 2026).",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_08.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/DESOCUP/DESOCUP_datos.xlsx",
@@ -24353,7 +24353,7 @@
       "nota_causa": "Falta plantilla aprobada",
       "url_nota_individual": null,
       "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=4#D444603",
-      "fecha_ultima_publicacion": "25 de agosto de 2026",
+      "fecha_ultima_publicacion": "27 de agosto de 2026",
       "regla_publicacion": null,
       "periodo_boletin": "Jul 26",
       "numero_boletin": "570/26",
@@ -27122,14 +27122,14 @@
           "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
         ]
       },
-      "periodo_referencia_oficial": "Julio 2026",
-      "fecha_publicacion_oficial": "07 de agosto de 2026",
+      "periodo_referencia_oficial": "Julio de 2026",
+      "fecha_publicacion_oficial": "7 de agosto de 2026",
       "proxima_publicacion": {
-        "fecha_publicacion": "09 de septiembre de 2026",
-        "periodo_referencia": "Agosto 2026",
+        "fecha_publicacion": "9 de septiembre de 2026",
+        "periodo_referencia": "Agosto de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo esperado (Julio 2026).",
+      "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo esperado (Julio de 2026).",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_08.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/INPC/INPC_datos.xlsx",
@@ -27138,7 +27138,7 @@
       "nota_causa": "Falta plantilla aprobada",
       "url_nota_individual": null,
       "url_fuente_oficial": "https://www.inegi.org.mx/app/tabulados/inp/default.aspx?nc=ca55_2018a",
-      "fecha_ultima_publicacion": "07 de agosto de 2026",
+      "fecha_ultima_publicacion": "7 de agosto de 2026",
       "regla_publicacion": null,
       "periodo_boletin": "Jul 26",
       "numero_boletin": "481/26",
@@ -46387,14 +46387,14 @@
           "A tasa anual, No residencial (11.8%) y Maquinaria, equipo y otros importados (9.7%) avanzaron, mientras que Equipo de transporte nacional (-5.0%) y Residencial (-5.4%) retrocedieron."
         ]
       },
-      "periodo_referencia_oficial": "Mayo 2026",
-      "fecha_publicacion_oficial": "05 de agosto de 2026",
+      "periodo_referencia_oficial": "Mayo de 2026",
+      "fecha_publicacion_oficial": "5 de agosto de 2026",
       "proxima_publicacion": {
-        "fecha_publicacion": "04 de septiembre de 2026",
-        "periodo_referencia": "Junio 2026",
+        "fecha_publicacion": "4 de septiembre de 2026",
+        "periodo_referencia": "Junio de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (May 26) coincide con el último periodo esperado (Mayo 2026).",
+      "motivo_frescura": "El periodo cargado (May 26) coincide con el último periodo esperado (Mayo de 2026).",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_08.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/IMFBCF/IMFBCF_datos.xlsx",
@@ -46403,7 +46403,7 @@
       "nota_causa": "Falta plantilla aprobada",
       "url_nota_individual": null,
       "url_fuente_oficial": "https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?accion=consultarCuadro&idCuadro=CR363",
-      "fecha_ultima_publicacion": "05 de agosto de 2026",
+      "fecha_ultima_publicacion": "5 de agosto de 2026",
       "regla_publicacion": null,
       "periodo_boletin": "May 26",
       "numero_boletin": "479/26",
@@ -47918,14 +47918,14 @@
           "La variación se clasifica como favorable según la lectura económica del indicador."
         ]
       },
-      "periodo_referencia_oficial": "Julio 2026",
+      "periodo_referencia_oficial": "Julio de 2026",
       "fecha_publicacion_oficial": "20 de agosto de 2026",
       "proxima_publicacion": {
         "fecha_publicacion": "22 de septiembre de 2026",
-        "periodo_referencia": "Agosto 2026",
+        "periodo_referencia": "Agosto de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo esperado (Julio 2026).",
+      "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo esperado (Julio de 2026).",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_08.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/IOAE/IOAE_datos.xlsx",
@@ -54054,14 +54054,14 @@
           "A nivel subsectorial, los mayores dinamismos anuales fueron Fabricación de equipo de computación (+6.8%), Industria química (+5.1%), Fabricación de maquinaria (+3.8%); los mayores retrocesos: Fabricación de productos derivados del petróleo (-5.0%), Fabricación de insumos textiles (-3.9%), Fabricación de muebles (-3.9%)."
         ]
       },
-      "periodo_referencia_oficial": "Junio 2026",
+      "periodo_referencia_oficial": "Junio de 2026",
       "fecha_publicacion_oficial": "17 de agosto de 2026",
       "proxima_publicacion": {
         "fecha_publicacion": "17 de septiembre de 2026",
-        "periodo_referencia": "Julio 2026",
+        "periodo_referencia": "Julio de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (Jun 26) coincide con el último periodo esperado (Junio 2026).",
+      "motivo_frescura": "El periodo cargado (Jun 26) coincide con el último periodo esperado (Junio de 2026).",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_08.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/EMIM/EMIM_datos.xlsx",
@@ -138591,14 +138591,14 @@
           "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
         ]
       },
-      "periodo_referencia_oficial": "Julio 2026",
+      "periodo_referencia_oficial": "Julio de 2026",
       "fecha_publicacion_oficial": "3 de agosto de 2026",
       "proxima_publicacion": {
         "fecha_publicacion": "1 de septiembre de 2026",
-        "periodo_referencia": "Agosto 2026",
+        "periodo_referencia": "Agosto de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo esperado (Julio 2026).",
+      "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo esperado (Julio de 2026).",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ee/ee2026_08.pdf",
       "xlsx_disponible": true,
       "xlsx_causa": null,
@@ -158986,14 +158986,14 @@
           "Las importaciones por tipo de bien se componen de consumo +11.6%, intermedios +81.6% y capital +6.8%."
         ]
       },
-      "periodo_referencia_oficial": "Julio 2026",
+      "periodo_referencia_oficial": "Julio de 2026",
       "fecha_publicacion_oficial": "27 de agosto de 2026",
       "proxima_publicacion": {
         "fecha_publicacion": "28 de septiembre de 2026",
-        "periodo_referencia": "Agosto 2026",
+        "periodo_referencia": "Agosto de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo esperado (Julio 2026).",
+      "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo esperado (Julio de 2026).",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_08.pdf",
       "xlsx_disponible": true,
       "xlsx_causa": null,
@@ -161479,17 +161479,17 @@
           "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
         ]
       },
-      "periodo_referencia_oficial": "Julio 2026",
-      "fecha_publicacion_oficial": "07 de agosto de 2026",
+      "periodo_referencia_oficial": "Julio de 2026",
+      "fecha_publicacion_oficial": "7 de agosto de 2026",
       "proxima_publicacion": {
-        "fecha_publicacion": "09 de septiembre de 2026",
-        "periodo_referencia": "Agosto 2026",
+        "fecha_publicacion": "9 de septiembre de 2026",
+        "periodo_referencia": "Agosto de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo esperado (Julio 2026).",
+      "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo esperado (Julio de 2026).",
       "url_fuente_oficial": "https://www.inegi.org.mx/programas/inpp/2019a/",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_07.pdf",
-      "fecha_ultima_publicacion": "07 de agosto de 2026",
+      "fecha_ultima_publicacion": "7 de agosto de 2026",
       "regla_publicacion": null,
       "periodo_boletin": "Jul 26",
       "tipo_documento": "PDF",

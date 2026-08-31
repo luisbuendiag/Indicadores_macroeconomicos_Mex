@@ -1,0 +1,224 @@
+{
+  "_comment": "Mapeo de programas del Calendario de Sala de Prensa del INEGI y del calendario de Banxico a las claves del dashboard. Se lee desde scripts/build_calendar.py.",
+  "inegi": {
+    "url": "https://www.inegi.org.mx/app/api/saladeprensa/api/saladeprensa/ObtenerFechasTabla/v3",
+    "form": {
+      "titulo": "",
+      "idPrograma": "0",
+      "ordenarPor": "fecha",
+      "ordenarAsc": "1",
+      "desde": "0",
+      "tomar": "5000",
+      "ingles": "0",
+      "ambito": "-1",
+      "tipoNoticia": "1,2,3,4,5,6,7,8"
+    },
+    "exclude_substrings": ["por Entidad Federativa", "1a quincena", "Primera quincena", "Tabulados interactivos", "Países y zonas geográficas", "modo de transporte"],
+    "indicators": {
+      "PIB": {
+        "acronyms": [],
+        "program_contains": ["Estimación Oportuna del PIB Trimestral"],
+        "program_exclude": ["Entidad Federativa"],
+        "product": "Estimación Oportuna del Producto Interno Bruto Trimestral",
+        "frequency": "Trimestral",
+        "category": "Actividad económica",
+        "institution": "INEGI",
+        "sigla": "PIB",
+        "usar_para_frescura": true
+      },
+      "IGAE": {
+        "acronyms": ["IGAE"],
+        "program_contains": ["Indicador Global de la Actividad Económica"],
+        "program_exclude": [],
+        "product": "Indicador Global de la Actividad Económica",
+        "frequency": "Mensual",
+        "category": "Actividad económica",
+        "institution": "INEGI",
+        "sigla": "IGAE",
+        "usar_para_frescura": true
+      },
+      "IMAI": {
+        "acronyms": ["IMAI"],
+        "program_contains": ["Indicador Mensual de la Actividad Industrial"],
+        "program_exclude": ["por Entidad Federativa", "IMAIEF"],
+        "product": "Indicador Mensual de la Actividad Industrial",
+        "frequency": "Mensual",
+        "category": "Actividad económica",
+        "institution": "INEGI",
+        "sigla": "IMAI",
+        "usar_para_frescura": true
+      },
+      "IOAE": {
+        "acronyms": ["IOAE"],
+        "program_contains": ["Indicador Oportuno de la Actividad Económica"],
+        "program_exclude": ["Consumo"],
+        "product": "Indicador Oportuno de la Actividad Económica",
+        "frequency": "Mensual",
+        "category": "Actividad económica",
+        "institution": "INEGI",
+        "sigla": "IOAE",
+        "usar_para_frescura": true
+      },
+      "EMIM": {
+        "acronyms": ["EMIM"],
+        "program_contains": ["Encuesta Mensual de la Industria Manufacturera"],
+        "program_exclude": [],
+        "product": "Encuesta Mensual de la Industria Manufacturera",
+        "frequency": "Mensual",
+        "category": "Actividad económica",
+        "institution": "INEGI",
+        "sigla": "EMIM",
+        "usar_para_frescura": true
+      },
+      "BCMM": {
+        "acronyms": ["BCMM"],
+        "program_contains": ["Balanza Comercial de Mercancías de México"],
+        "program_exclude": ["Países y zonas geográficas", "Tabulados interactivos", "modo de transporte", "Cifras definitivas"],
+        "product": "Balanza Comercial de Mercancías de México",
+        "frequency": "Mensual",
+        "category": "Sector externo",
+        "institution": "INEGI",
+        "sigla": "BCMM",
+        "usar_para_frescura": true,
+        "preferred_program_contains": ["Información oportuna"]
+      },
+      "DESOCUP": {
+        "acronyms": ["ENOE"],
+        "program_contains": ["Encuesta Nacional de Ocupación y Empleo", "Indicadores de Ocupación y Empleo"],
+        "program_exclude": [],
+        "product": "Encuesta Nacional de Ocupación y Empleo / Indicadores de Ocupación y Empleo",
+        "frequency": "Mensual",
+        "category": "Mercado laboral",
+        "institution": "INEGI",
+        "sigla": "ENOE",
+        "usar_para_frescura": true
+      },
+      "INPC": {
+        "acronyms": ["INPC"],
+        "program_contains": ["Índice Nacional de Precios al Consumidor"],
+        "program_exclude": ["1a quincena", "Primera quincena"],
+        "product": "Índice Nacional de Precios al Consumidor",
+        "frequency": "Mensual",
+        "category": "Precios",
+        "institution": "INEGI",
+        "sigla": "INPC",
+        "usar_para_frescura": true
+      },
+      "INPP": {
+        "acronyms": ["INPP"],
+        "program_contains": ["Índice Nacional de Precios Productor"],
+        "program_exclude": [],
+        "product": "Índice Nacional de Precios Productor",
+        "frequency": "Mensual",
+        "category": "Precios",
+        "institution": "INEGI",
+        "sigla": "INPP",
+        "usar_para_frescura": true
+      },
+      "CONSUMO": {
+        "acronyms": ["IMCP"],
+        "program_contains": ["Indicador Mensual del Consumo Privado"],
+        "program_exclude": ["Oportuno del Consumo"],
+        "product": "Indicador Mensual del Consumo Privado",
+        "frequency": "Mensual",
+        "category": "Consumo e inversión",
+        "institution": "INEGI",
+        "sigla": "IMCP",
+        "usar_para_frescura": true
+      },
+      "IMFBCF": {
+        "acronyms": ["IMFBCF"],
+        "program_contains": ["Indicador Mensual de la Formación Bruta de Capital Fijo"],
+        "program_exclude": [],
+        "product": "Indicador Mensual de la Formación Bruta de Capital Fijo",
+        "frequency": "Mensual",
+        "category": "Consumo e inversión",
+        "institution": "INEGI",
+        "sigla": "IMFBCF",
+        "usar_para_frescura": true
+      },
+      "EMOE": {
+        "acronyms": ["EMOE"],
+        "program_contains": ["Encuesta Mensual de Opinión Empresarial"],
+        "program_exclude": ["Pedidos Manufactureros"],
+        "product": "Encuesta Mensual de Opinión Empresarial",
+        "frequency": "Mensual",
+        "category": "Mercado laboral",
+        "institution": "INEGI",
+        "sigla": "EMOE",
+        "usar_para_frescura": true,
+        "preferred_program_contains": ["Indicadores de Confianza Empresarial"]
+      }
+    }
+  },
+  "banxico": {
+    "base_url": "https://www.banxico.org.mx/canales/canal_1_{MM}{YYYY}_es.json",
+    "indicators": {
+      "TASA": {
+        "parent_id": "1",
+        "category_id": "3",
+        "product": "Anuncio de la Decisión de Política Monetaria",
+        "frequency": "Decisiones de política monetaria",
+        "category": "Financiero",
+        "institution": "Banco de México",
+        "sigla": "TASA",
+        "usar_para_frescura": false,
+        "is_evento": true
+      },
+      "RESERVAS": {
+        "parent_id": "11",
+        "category_id": "13",
+        "product": "Estado de cuenta del Banco de México",
+        "frequency": "Semanal",
+        "category": "Financiero",
+        "institution": "Banco de México",
+        "sigla": "RESERVAS",
+        "usar_para_frescura": false
+      }
+    },
+    "prefix": "https://www.banxico.org.mx"
+  },
+  "se": {
+    "fallback_file": "2026_se.json",
+    "indicators": {
+      "IED": {
+        "product": "Flujos de inversión extranjera directa",
+        "frequency": "Trimestral",
+        "category": "Sector externo",
+        "institution": "Secretaría de Economía",
+        "sigla": "IED",
+        "usar_para_frescura": true
+      }
+    }
+  },
+  "categories": {
+    "Actividad económica": "#0d47a1",
+    "Precios": "#b71c1c",
+    "Consumo e inversión": "#1b5e20",
+    "Mercado laboral": "#e65100",
+    "Sector externo": "#4a148c",
+    "Financiero": "#006064"
+  },
+  "rules": {
+    "TIPOCAMBIO": {
+      "name": "Tipo de cambio FIX",
+      "product": "Tipo de cambio FIX",
+      "frequency": "Diaria",
+      "institution": "Banco de México",
+      "category": "Financiero",
+      "rule_text": "Días hábiles bancarios. Banco de México publica el FIX a partir de las 12:00 horas.",
+      "url": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
+      "usar_para_frescura": false
+    },
+    "IED": {
+      "name": "Inversión Extranjera Directa",
+      "product": "Flujos de inversión extranjera directa",
+      "frequency": "Trimestral",
+      "institution": "Secretaría de Economía",
+      "category": "Sector externo",
+      "rule_text": "Publicación trimestral de flujos de IED. La fecha exacta de la siguiente publicación se anuncia por la Secretaría de Economía.",
+      "url": "https://www.gob.mx/se",
+      "usar_para_frescura": true
+    }
+  }
+}
