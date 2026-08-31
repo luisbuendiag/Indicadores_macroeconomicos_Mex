@@ -59,8 +59,8 @@ def test_excel_has_new_sheets(tmp_path):
     assert "Resumen ejecutivo" not in wb.sheetnames
     # La hoja "Exportaciones" quedó obsoleta; BCMM se presenta como "Balanza comercial".
     assert "Exportaciones" not in wb.sheetnames
-    # 19 hojas: 10 principales (PIB separado en 2, DESOCUP separado en 2) + BCMM + EMIM con subsectores + 3 nuevas + INPP
-    assert len(wb.sheetnames) == 19
+    # 23 hojas: 10 principales (PIB separado en 2, DESOCUP separado en 2) + BCMM + EMIM con subsectores + EMOE + 3 financieras + INPP
+    assert len(wb.sheetnames) == 23
     # hojas originales conservadas; PIB se divide en PIB oportuno y Nivel PIB
     for orig in ("PIB oportuno", "Nivel PIB", "IGAE", "Balanza comercial", "INPC", "INPP", "Tasas laborales", "Población ocupada"):
         assert orig in wb.sheetnames

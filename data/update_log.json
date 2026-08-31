@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-08-31T18:03:41+00:00",
+  "started_at": "2026-08-31T18:23:33+00:00",
   "mode": "offline",
   "network_calls": false,
   "warnings": [],
@@ -56,10 +56,10 @@
     "boletín: BCMM descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_08.pdf",
     "frescura: BCMM -> ACTUALIZADO",
     "frescura: INPP -> ACTUALIZADO",
-    "meta: last_update_ct=2026-08-31T12:05:48-06:00"
+    "meta: last_update_ct=2026-08-31T12:24:34-06:00"
   ],
   "consultas": [],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-08-31T18:05:49+00:00"
+  "finished_at": "2026-08-31T18:24:35+00:00"
 }
