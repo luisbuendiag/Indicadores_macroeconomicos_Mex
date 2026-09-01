@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-01T12:25:34+00:00",
-  "last_update_ct": "2026-09-01T00:48:30-06:00",
+  "generated_at": "2026-09-01T16:41:02+00:00",
+  "last_update_ct": "2026-09-01T07:11:02-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -15469,18 +15469,18 @@
     },
     "RESERVAS": {
       "kpi": {
-        "ultimoP": "SEMANA AL 21 Ago 26",
-        "ultimoRaw": 258608.8,
-        "ultimoFmt": "$258,609 millones de dólares",
-        "varText": "+$1,192 mdd",
-        "varMag": 1192.0,
+        "ultimoP": "SEMANA AL 28 Ago 26",
+        "ultimoRaw": 258564.1,
+        "ultimoFmt": "$258,564 millones de dólares",
+        "varText": "−$45 mdd",
+        "varMag": -44.7,
         "varLabel": "Var. semanal",
-        "pos": true,
-        "varColor": "#1e5b4f",
-        "yoyText": "+6.3%",
+        "pos": false,
+        "varColor": "#9b2247",
+        "yoyText": "+5.8%",
         "yoyLabel": "Var. anual",
-        "yoyRaw": 0.062646,
-        "yoyMag": 0.062646,
+        "yoyRaw": 0.057959,
+        "yoyMag": 0.057959,
         "yoyPos": true,
         "yoyColor": "#1e5b4f",
         "acumText": "+2.6%",
@@ -15491,7 +15491,7 @@
         "minP": "9 Feb 18",
         "maxFmt": "$258,609 millones de dólares",
         "minFmt": "$172,797 millones de dólares",
-        "lastI": 450,
+        "lastI": 451,
         "series": [
           172904.4,
           172951.2,
@@ -15943,7 +15943,8 @@
           255498.1,
           257087.4,
           257416.8,
-          258608.8
+          258608.8,
+          258564.1
         ],
         "periods": [
           "2018-01-05",
@@ -16396,28 +16397,29 @@
           "2026-07-31",
           "2026-08-07",
           "2026-08-14",
-          "2026-08-21"
+          "2026-08-21",
+          "2026-08-28"
         ],
         "assessment": "neutral",
-        "dir": "up",
+        "dir": "down",
         "semaforo": "estable"
       },
       "yoy": {
-        "mag": 0.062646,
+        "mag": 0.057959,
         "pos": true,
-        "text": "+6.3%",
+        "text": "+5.8%",
         "label": "Var. anual"
       },
       "annualVar": {
-        "mag": 0.062646,
+        "mag": 0.057959,
         "pos": true,
-        "text": "+6.3%",
+        "text": "+5.8%",
         "label": "Var. anual"
       },
       "resumen": [
-        "En la semana al 21 Ago 26, las reservas internacionales se ubicaron en $258,609 millones de dólares.",
-        "La variación semanal fue de +$1,192 mdd respecto a la semana previa.",
-        "A tasa anual, las reservas variaron +6.3%.",
+        "En la semana al 28 Ago 26, las reservas internacionales se ubicaron en $258,564 millones de dólares.",
+        "La variación semanal fue de −$45 mdd respecto a la semana previa.",
+        "A tasa anual, las reservas variaron +5.8%.",
         "El acumulado en el año (YTD ene-aug) fue de +2.6%."
       ],
       "analysis": []
