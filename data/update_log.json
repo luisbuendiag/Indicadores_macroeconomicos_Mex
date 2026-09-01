@@ -1,8 +1,10 @@
 {
-  "started_at": "2026-08-31T23:39:36+00:00",
+  "started_at": "2026-09-01T04:49:29+00:00",
   "mode": "offline",
   "network_calls": false,
-  "warnings": [],
+  "warnings": [
+    "TIPOCAMBIO: REZAGADO – El periodo esperado es Sep 26, pero el dashboard aún muestra 2026-08-31."
+  ],
   "changes": [
     "IGAE: fuente normalizada a serie total 737121",
     "TIPOCAMBIO: actualizado nombre",
@@ -31,7 +33,7 @@
     "DESOCUP: población ocupada en millones calculada para 34 periodos",
     "DESOCUP: etiquetas trimestrales agregadas a 34 observaciones",
     "IOAE: 66 observaciones con IGAE observado anual",
-    "calendario: regenerado con as_of=2026-08-31",
+    "calendario: regenerado con as_of=2026-09-01",
     "métricas: data/metrics.json regenerado",
     "frescura: PIB -> ACTUALIZADO",
     "frescura: PIBSEC -> ACTUALIZADO",
@@ -44,16 +46,16 @@
     "frescura: IMFBCF -> ACTUALIZADO",
     "frescura: IOAE -> ACTUALIZADO",
     "frescura: EMIM -> ACTUALIZADO",
-    "frescura: TIPOCAMBIO -> ACTUALIZADO",
+    "frescura: TIPOCAMBIO -> REZAGADO",
     "frescura: TASA -> ACTUALIZADO",
     "frescura: RESERVAS -> ACTUALIZADO",
     "frescura: EMOE -> ACTUALIZADO",
     "frescura: BCMM -> ACTUALIZADO",
     "frescura: INPP -> ACTUALIZADO",
-    "meta: last_update_ct=2026-08-31T18:36:28-06:00"
+    "meta: last_update_ct=2026-08-31T23:39:05-06:00"
   ],
   "consultas": [],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-09-01T00:36:30+00:00"
+  "finished_at": "2026-09-01T05:39:06+00:00"
 }

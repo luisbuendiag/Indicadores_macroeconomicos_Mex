@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-01T00:36:36+00:00",
-  "as_of": "2026-08-31",
+  "generated_at": "2026-09-01T05:39:13+00:00",
+  "as_of": "2026-09-01",
   "fuente": "Calendario oficial de difusión",
   "sources": {
     "INEGI Sala de Prensa": {
@@ -13353,7 +13353,7 @@
       "publication_date_display": "1 de septiembre de 2026",
       "reference_period": "Agosto de 2026",
       "frequency": "Mensual",
-      "status": "próximo",
+      "status": "publicado",
       "source": "INEGI Sala de Prensa",
       "institution": "INEGI",
       "category": "Mercado laboral",
@@ -13382,7 +13382,7 @@
       "publication_date_display": "1 de septiembre de 2026",
       "reference_period": "28 de agosto de 2026",
       "frequency": "Semanal",
-      "status": "próximo",
+      "status": "publicado",
       "source": "Banco de México calendario",
       "institution": "Banco de México",
       "category": "Financiero",
@@ -19408,64 +19408,6 @@
   ],
   "upcoming": [
     {
-      "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
-      "product": "Encuesta Mensual de Opinión Empresarial",
-      "publication_date": "2026-09-01",
-      "publication_date_display": "1 de septiembre de 2026",
-      "reference_period": "Agosto de 2026",
-      "frequency": "Mensual",
-      "status": "próximo",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Mercado laboral",
-      "sigla": "EMOE",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": "Información de Interés Nacional. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 9,
-      "fecha_iso": "2026-09-01"
-    },
-    {
-      "indicator": "RESERVAS",
-      "program": "Estado de cuenta del Banco de México",
-      "product": "Estado de cuenta del Banco de México",
-      "publication_date": "2026-09-01",
-      "publication_date_display": "1 de septiembre de 2026",
-      "reference_period": "28 de agosto de 2026",
-      "frequency": "Semanal",
-      "status": "próximo",
-      "source": "Banco de México calendario",
-      "institution": "Banco de México",
-      "category": "Financiero",
-      "sigla": "RESERVAS",
-      "type": "event",
-      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": null,
-      "anio": 2026,
-      "mes": 9,
-      "fecha_iso": "2026-09-01"
-    },
-    {
       "indicator": "CONSUMO",
       "program": "Indicador Mensual del Consumo Privado (IMCP). Año base 2018. Cifras preliminares",
       "product": "Indicador Mensual del Consumo Privado",
@@ -19986,9 +19928,125 @@
       "anio": 2026,
       "mes": 10,
       "fecha_iso": "2026-10-05"
+    },
+    {
+      "indicator": "IMFBCF",
+      "program": "Indicador Mensual de la Formación Bruta de Capital Fijo (IMFBCF). Año base 2018. Cifras preliminares",
+      "product": "Indicador Mensual de la Formación Bruta de Capital Fijo",
+      "publication_date": "2026-10-05",
+      "publication_date_display": "5 de octubre de 2026",
+      "reference_period": "Julio de 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Consumo e inversión",
+      "sigla": "IMFBCF",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 10,
+      "fecha_iso": "2026-10-05"
+    },
+    {
+      "indicator": "RESERVAS",
+      "program": "Estado de cuenta del Banco de México",
+      "product": "Estado de cuenta del Banco de México",
+      "publication_date": "2026-10-06",
+      "publication_date_display": "6 de octubre de 2026",
+      "reference_period": "2 de octubre de 2026",
+      "frequency": "Semanal",
+      "status": "próximo",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Financiero",
+      "sigla": "RESERVAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 10,
+      "fecha_iso": "2026-10-06"
     }
   ],
   "recent": [
+    {
+      "indicator": "RESERVAS",
+      "program": "Estado de cuenta del Banco de México",
+      "product": "Estado de cuenta del Banco de México",
+      "publication_date": "2026-09-01",
+      "publication_date_display": "1 de septiembre de 2026",
+      "reference_period": "28 de agosto de 2026",
+      "frequency": "Semanal",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Financiero",
+      "sigla": "RESERVAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 9,
+      "fecha_iso": "2026-09-01"
+    },
+    {
+      "indicator": "EMOE",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "product": "Encuesta Mensual de Opinión Empresarial",
+      "publication_date": "2026-09-01",
+      "publication_date_display": "1 de septiembre de 2026",
+      "reference_period": "Agosto de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Mercado laboral",
+      "sigla": "EMOE",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 9,
+      "fecha_iso": "2026-09-01"
+    },
     {
       "indicator": "DESOCUP",
       "program": "Encuesta Nacional de Ocupación y Empleo (ENOE), población de 15 años y más de edad. Indicadores de Ocupación y Empleo. Cifras definitivas",
@@ -20650,85 +20708,6 @@
       "anio": 2026,
       "mes": 8,
       "fecha_iso": "2026-08-04"
-    },
-    {
-      "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
-      "product": "Encuesta Mensual de Opinión Empresarial",
-      "publication_date": "2026-08-03",
-      "publication_date_display": "3 de agosto de 2026",
-      "reference_period": "Julio de 2026",
-      "frequency": "Mensual",
-      "status": "publicado",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Mercado laboral",
-      "sigla": "EMOE",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_08.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_08.pdf",
-          "label": "Boletín PDF",
-          "size": "0.27 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "word",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_08.docx",
-          "label": "Boletín Word",
-          "size": "0.27 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "excel",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_08.xlsx",
-          "label": "Boletín Excel",
-          "size": "0.02 MB"
-        }
-      ],
-      "comentario": "Información de Interés Nacional. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 8,
-      "fecha_iso": "2026-08-03"
-    },
-    {
-      "indicator": "PIB",
-      "program": "Estimación Oportuna del PIB Trimestral. Base 2018. Cifras preliminares",
-      "product": "Estimación Oportuna del Producto Interno Bruto Trimestral",
-      "publication_date": "2026-07-30",
-      "publication_date_display": "30 de julio de 2026",
-      "reference_period": "Segundo trimestre de 2026",
-      "frequency": "Trimestral",
-      "status": "publicado",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Actividad económica",
-      "sigla": "PIB",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_07.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_07.pdf",
-          "label": "Boletín PDF",
-          "size": "0.25 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "word",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_07.docx",
-          "label": "Boletín Word",
-          "size": "0.22 MB"
-        }
-      ],
-      "comentario": "Información de Interés Nacional. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 7,
-      "fecha_iso": "2026-07-30"
     }
   ],
   "categories": {
