@@ -57,7 +57,7 @@ export const KPICFG = {
   DESOCUP: { valCol: 0, valFmt: "pct-raw", varMode: "pp-prev", varLabel: "Cambio mensual", yoyMode: "pp-yoy", yoyLabel: "Cambio anual", mainLabel: "Tasa de desocupación", noun: "tasa de desocupación", art: "la", grupo: "desoc", assess: "unemployment", ctx: "", vw: "variación", vg: "f", comp: "frente al mes previo", goodSign: -1 },
   INPC: { valCol: 2, valFmt: "pct-raw", varMode: "pp-prev", ppLong: true, varLabel: "Cambio de la inflación anual respecto al mes previo", mainLabel: "Inflación anual", noun: "inflación general anual", art: "la", grupo: "inpc", assess: "neutral", ctx: "", vw: "variación", vg: "f", comp: "frente al mes previo", goodSign: 0 },
   INPP: { valCol: 2, valFmt: "pct-raw", varCol: 1, varFmt: "pct-raw", varLabel: "Var. mensual", yoyCol: 2, yoyFmt: "pct-raw", yoyLabel: "Var. anual", mainLabel: "Variación anual", noun: "Índice Nacional de Precios Productor", art: "el", grupo: "inpc", assess: "neutral", ctx: "", vw: "variación anual", vg: "f", comp: "frente al mes previo", goodSign: 0 },
-  IED: { valCol: 0, valFmt: "usd", varCol: 4, varFmt: "pct-frac", varLabel: "Var. anual del acumulado", mainLabel: "IED acumulada en el año", noun: "IED acumulada", art: "la", grupo: "growth", assess: "growth", ctx: " (acumulado ene-jun, millones de dólares)", vw: "variación anual", vg: "f", comp: "frente al mismo periodo del año anterior", goodSign: 1 },
+  IED: { valCol: 0, valFmt: "usd", varCol: 4, varFmt: "pct-frac", varLabel: "Var. anual del acumulado", mainLabel: "IED acumulada en el año", noun: "IED acumulada", art: "la", grupo: "growth", assess: "growth", ctx: " (acumulado ene-jun, millones de dólares)", vw: "variación anual", vg: "f", comp: "frente al mismo periodo del año anterior", goodSign: 1, flowLabel: "Flujo trimestral" },
   TIPOCAMBIO: { valCol: 0, valFmt: "fx", varMode: "pct-prev", varLabel: "Cambio diario", yoyLabel: "Cambio anual", mainLabel: "Tipo de cambio FIX", noun: "tipo de cambio FIX", art: "el", grupo: "fx", assess: "neutral", ctx: " (pesos por dólar)", vw: "variación diaria", vg: "f", comp: "frente al día hábil previo", goodSign: 0 },
   TASA: { valCol: 0, valFmt: "pct-raw", varMode: "pp-prev", varLabel: "Cambio diario", yoyLabel: "Última modificación", mainLabel: "Tasa objetivo", noun: "tasa objetivo", art: "la", grupo: "tasa", assess: "neutral", ctx: " (% anual)", vw: "cambio de política monetaria", vg: "f", comp: "frente al día previo", goodSign: 0 },
   RESERVAS: { valCol: 0, valFmt: "usd", varMode: "abs-prev", varLabel: "Var. semanal", yoyLabel: "Var. anual", mainLabel: "Reservas internacionales", noun: "reservas internacionales", art: "las", grupo: "growth", assess: "neutral", ctx: " (millones de dólares)", vw: "variación semanal", vg: "f", comp: "frente a la semana previa", goodSign: 0 },
@@ -102,6 +102,19 @@ export const WINDOWS = [
   { id: "1a", label: "1 año", months: 12 },
   { id: "5a", label: "5 años", months: 60 },
   { id: "max", label: "Máximo", months: null },
+];
+
+// Ventanas especiales para IED: acumulado comparable (años) y flujo trimestral.
+export const IED_WINDOWS = [
+  { id: "5a", label: "5 años", count: 5 },
+  { id: "10a", label: "10 años", count: 10 },
+  { id: "max", label: "Máximo", count: null },
+];
+export const IED_WINDOWS_FLUJO = [
+  { id: "1a", label: "1 año", count: 4 },
+  { id: "3a", label: "3 años", count: 12 },
+  { id: "5a", label: "5 años", count: 20 },
+  { id: "max", label: "Máximo", count: null },
 ];
 
 // Estados de actualización permitidos (para presentación y mapeo de estilos).

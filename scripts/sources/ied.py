@@ -349,34 +349,78 @@ def _build_indicator(resumen: list[dict], manual: dict | None, ti_1t: dict | Non
         if prev_flow and prev_flow[0].get("flujo") and last["flujo"]:
             var_flujo_pct = round((last["flujo"] / prev_flow[0]["flujo"] - 1), 6)
 
-    # Observaciones: acumulados desde el inicio del año, 5 columnas.
-    # [0] IED acumulada, [1] Nuevas acumuladas, [2] Reinversión acumulada,
-    # [3] Cuentas entre compañías acumuladas, [4] Var. anual acumulada (fracción).
-    observations = []
     comp_keys = ["Nuevas inversiones", "Reinversión de utilidades", "Cuentas entre compañías"]
+
     # Mapa de acumulados publicados originales para variaciones
     publicado_by_ym = {(a["year"], a["end_month"]): a["valor_publicado"] for a in acum}
-    for a in acum_sorted:
-        # Variación anual del acumulado (publicado original vs mismo corte año anterior)
+
+    # Variación anual acumulada por corte
+    def var_acum_para(a: dict) -> float | None:
         prev_pub = publicado_by_ym.get((a["year"] - 1, a["end_month"]))
-        var = round((a["acumulado"] / prev_pub - 1), 6) if prev_pub else None
-        # Para 2026 2T, preferir la variación del manual
-        if a["year"] == 2026 and a["end_month"] == 6 and manual and manual.get("variacion_anual_acumulada_pct") is not None:
-            var = float(manual["variacion_anual_acumulada_pct"])
-        vals = [a["acumulado"], None, None, None, var]
-        if a["year"] == 2026 and a["end_month"] == 6 and comp_acum:
-            vals = [a["acumulado"]] + [comp_acum.get(k) for k in comp_keys] + [var]
+        if not prev_pub:
+            return None
+        return round((a["acumulado"] / prev_pub - 1), 6)
+
+    # Variación anual de flujo por trimestre
+    flujos_by_ym = {(f["year"], f["end_month"]): f["flujo"] for f in flows}
+
+    def var_flujo_para(a: dict) -> float | None:
+        prev = flujos_by_ym.get((a["year"] - 1, a["end_month"]))
+        cur = a.get("flujo")
+        if cur is None or prev is None or prev == 0:
+            return None
+        return round((cur / prev - 1), 6)
+
+    # --- Serie 1: flujo trimestral (usado en sparkline y gráfica de flujo) ---
+    observations = []
+    for a in acum_sorted:
+        # componentes del flujo trimestral
+        comp_flow = {}
+        if a["year"] == 2026 and a["end_month"] == 6:
+            comp_flow = comp_flujo
         elif a["year"] == 2026 and a["end_month"] == 3 and ti_1t:
-            vals = [a["acumulado"], ti_1t.get("nuevas"), ti_1t.get("reinversion"), ti_1t.get("cuentas"), var]
+            comp_flow = {k: ti_1t.get(k.lower().replace(" ", "_")) for k in comp_keys}
         else:
-            # histórico sin desglose de componentes
-            vals = [a["acumulado"], None, None, None, var]
+            comp_flow = {k: None for k in comp_keys}
+        var_f = var_flujo_para(a)
+        # para 2026 2T, preferir la variación del manual
+        if a["year"] == 2026 and a["end_month"] == 6 and manual and manual.get("variacion_anual_trimestral_pct") is not None:
+            var_f = float(manual["variacion_anual_trimestral_pct"])
+        vals = [a.get("flujo"), comp_flow.get("Nuevas inversiones"), comp_flow.get("Reinversión de utilidades"), comp_flow.get("Cuentas entre compañías"), var_f]
         observations.append({
             "period": a["quarter"],
             "period_acumulado": a["period_acum"],
             "values": [round(v, 2) if v is not None else None for v in vals],
-            "flujo_trimestral": round(a.get("flujo"), 2) if a.get("flujo") is not None else None,
         })
+
+    # --- Serie 2: acumulado comparable al mismo corte de cada año ---
+    # Se usa el corte del último periodo disponible para comparar años.
+    corte_end = last["end_month"]
+    corte_label = last["period_acum"].split()[0]  # "Ene" o "Ene-Mar" etc. simplificado
+    observations_acumulado = []
+    for a in acum_sorted:
+        if a["end_month"] != corte_end:
+            continue
+        var_a = var_acum_para(a)
+        if a["year"] == 2026 and a["end_month"] == 6 and manual and manual.get("variacion_anual_acumulada_pct") is not None:
+            var_a = float(manual["variacion_anual_acumulada_pct"])
+        vals = [a["acumulado"], None, None, None, var_a]
+        if a["year"] == 2026 and a["end_month"] == 6 and comp_acum:
+            vals = [a["acumulado"]] + [comp_acum.get(k) for k in comp_keys] + [var_a]
+        elif a["year"] == 2026 and a["end_month"] == 3 and ti_1t:
+            vals = [a["acumulado"], ti_1t.get("nuevas"), ti_1t.get("reinversion"), ti_1t.get("cuentas"), var_a]
+        observations_acumulado.append({
+            "period": str(a["year"]),
+            "period_acumulado": a["period_acum"],
+            "quarter": a["quarter"],
+            "values": [round(v, 2) if v is not None else None for v in vals],
+        })
+
+    # Determinar source_mode: "structured" si el XLSX contenía el corte actual,
+    # de lo contrario "manual_fallback".  Se considera estructurado cuando el
+    # resumen ya traía el dato del mismo corte que el manual.
+    tiene_corte_xls = any(a["year"] == last_year and a["end_month"] == last_end and a.get("valor_publicado") for a in acum)
+    source_mode = "structured" if tiene_corte_xls else "manual_fallback"
 
     # KPIs / métricas
     metrics = {
@@ -385,9 +429,10 @@ def _build_indicator(resumen: list[dict], manual: dict | None, ti_1t: dict | Non
             "valor": round(last["acumulado"], 2),
             "unidad": "mdd",
             "variacion_anual_pct": var_acum_pct,
+            "corte": corte_label,
         },
         "flujo_trimestral": {
-            "periodo": f"{last['quarter']} flujo",
+            "periodo": last["quarter"],
             "valor": round(last["flujo"], 2) if last["flujo"] else None,
             "unidad": "mdd",
             "variacion_anual_pct": var_flujo_pct,
@@ -397,6 +442,9 @@ def _build_indicator(resumen: list[dict], manual: dict | None, ti_1t: dict | Non
         "composicion_sector": _pct_to_frac(manual.get("sector_economico")) if manual else [],
         "composicion_entidad": _pct_to_frac(manual.get("entidad_federativa")) if manual else [],
         "componentes_acumulado": {k: comp_acum.get(k) for k in comp_keys},
+        "componentes_flujo": {k: comp_flujo.get(k) for k in comp_keys},
+        "corte_referencia": corte_label,
+        "source_mode": source_mode,
     }
 
     return {
@@ -411,13 +459,14 @@ def _build_indicator(resumen: list[dict], manual: dict | None, ti_1t: dict | Non
         "grupo": "inversion",
         "clasificacion": "complementario",
         "columns": [
-            {"label": "IED acumulada", "index": 0, "fmt": "usd"},
+            {"label": "Flujo trimestral", "index": 0, "fmt": "usd"},
             {"label": "Nuevas inversiones", "index": 1, "fmt": "usd"},
             {"label": "Reinversión de utilidades", "index": 2, "fmt": "usd"},
             {"label": "Cuentas entre compañías", "index": 3, "fmt": "usd"},
-            {"label": "Var. anual acumulada", "index": 4, "fmt": "pct-frac"},
+            {"label": "Var. anual flujo", "index": 4, "fmt": "pct-frac"},
         ],
         "observations": observations,
+        "observations_acumulado": observations_acumulado,
         "last_observation": last["quarter"],
         "periodo_referencia": last["period_acum"],
         "url_boletin_oficial": (manual or {}).get("url_boletin", URL_RESUMEN),
@@ -428,8 +477,21 @@ def _build_indicator(resumen: list[dict], manual: dict | None, ti_1t: dict | Non
             "serie": None,
         },
         "metrics": metrics,
+        "source_mode": source_mode,
+        "windows": [
+            {"id": "5a", "label": "5 años", "count": 5},
+            {"id": "10a", "label": "10 años", "count": 10},
+            {"id": "max", "label": "Máximo", "count": None},
+        ],
+        "windows_flujo": [
+            {"id": "1a", "label": "1 año", "count": 4},
+            {"id": "3a", "label": "3 años", "count": 12},
+            {"id": "5a", "label": "5 años", "count": 20},
+            {"id": "max", "label": "Máximo", "count": None},
+        ],
         "api_meta": {
             "n_obs": len(observations),
+            "n_obs_acumulado": len(observations_acumulado),
             "ultima_observacion": last["quarter"],
             "ultimo_valor": last["acumulado"],
         },

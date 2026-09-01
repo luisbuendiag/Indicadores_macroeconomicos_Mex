@@ -237,7 +237,55 @@ function computeDesocupKPI(ind) {
 
 function round6(v) { return Math.round(v * 1_000_000) / 1_000_000; }
 
+function computeIedKPI(ind) {
+  const cfg = KPICFG.IED;
+  const obs = ind.observations || [];
+  const obsAc = ind.observations_acumulado || [];
+  const P = obs.map((o) => o.period);
+  const vals = obs.map((o) => o.values[0]);
+  const idxs = vals.map((v, i) => (v != null ? i : -1)).filter((i) => i >= 0);
+  if (!idxs.length) return null;
+  const lastI = idxs[idxs.length - 1];
+  const prevI = idxs.length >= 2 ? idxs[idxs.length - 2] : null;
+  const maxI = idxs.reduce((m, i) => (vals[i] > vals[m] ? i : m), idxs[0]);
+  const minI = idxs.reduce((m, i) => (vals[i] < vals[m] ? i : m), idxs[0]);
+
+  const ac = ind.metrics?.acumulado || {};
+  const fl = ind.metrics?.flujo_trimestral || {};
+  const ultimo = ac.valor;
+  const ultimoP = ac.periodo || "—";
+
+  // Variación anual del acumulado.
+  const varAcum = ac.variacion_anual_pct;
+  const varInfo = varAcum != null
+    ? { mag: varAcum * 100, text: (varAcum >= 0 ? "+" : "") + (varAcum * 100).toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%", pos: varAcum >= 0, label: "Var. anual del acumulado" }
+    : { mag: null, text: "—", pos: true, label: "Var. anual del acumulado" };
+
+  // Variación anual del flujo (para tarjeta secundaria).
+  const varFlujo = fl.variacion_anual_pct;
+  const yoy = varFlujo != null
+    ? { mag: varFlujo * 100, text: (varFlujo >= 0 ? "+" : "") + (varFlujo * 100).toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%", pos: varFlujo >= 0, label: "Var. anual del flujo" }
+    : null;
+
+  const dir = varInfo.mag == null ? "flat" : (varInfo.mag > 0.05 ? "up" : (varInfo.mag < -0.05 ? "down" : "flat"));
+  const assessment = dir === "up" ? "favorable" : (dir === "down" ? "adverso" : "neutral");
+
+  return {
+    assessment, dir,
+    ultimoFmt: fmtVal(ultimo, "usd"), ultimoRaw: ultimo, ultimoP,
+    varText: varInfo.text, varMag: varInfo.mag, pos: varInfo.pos,
+    varColor: varInfo.pos ? COLORS.GREEN : COLORS.CRIMSON,
+    varLabel: "Var. anual del acumulado",
+    maxFmt: fmtVal(vals[maxI], "usd"), maxRaw: vals[maxI], maxP: P[maxI],
+    minFmt: fmtVal(vals[minI], "usd"), minRaw: vals[minI], minP: P[minI],
+    lastI, series: vals, periods: P, semaforo: assessment === "favorable" ? "bueno" : (assessment === "adverso" ? "malo" : "estable"),
+    flujoRaw: fl.valor, flujoText: fmtVal(fl.valor, "usd"), flujoP: fl.periodo,
+    yoy: yoy,
+  };
+}
+
 export function computeKPI(ind) {
+  if (ind.key === "IED") return computeIedKPI(ind);
   if (ind.key === "DESOCUP") return computeDesocupKPI(ind);
   const cfg = KPICFG[ind.key];
   const P = periods(ind);
@@ -493,11 +541,26 @@ export function analysis(ind, k) {
       : (lvl >= 2 ? " Con ello, la inflación se mantiene dentro del intervalo de variabilidad del Banco de México (3 % ±1 punto), aunque todavía por encima de la meta puntual de 3 %."
         : " Este nivel se sitúa por debajo de la meta de 3 % del Banco de México.");
   } else if (ind.key === "IED") {
-    const v = ind.observations[k.lastI].values;
-    const comps = [["nuevas inversiones", v[1]], ["reinversión de utilidades", v[2]], ["cuentas entre compañías", v[3]]].filter((c) => c[1] != null);
-    comps.sort((a, b) => b[1] - a[1]);
-    const dom = comps[0], share = k.ultimoRaw ? Math.round(dom[1] / k.ultimoRaw * 100) : 0;
-    extra = ` En su composición, el rubro predominante fue ${dom[0]} (≈${share}% del total), lo que ${dom[0] === "reinversión de utilidades" ? "refleja sobre todo la permanencia de capital ya instalado más que la llegada de proyectos nuevos" : "apunta a la captación de capital fresco"}.`;
+    const ac = ind.metrics?.acumulado || {};
+    const fl = ind.metrics?.flujo_trimestral || {};
+    const corte = ac.periodo || "—";
+    const acVal = ac.valor;
+    const flVal = fl.valor;
+    const acVar = ac.variacion_anual_pct;
+    const flVar = fl.variacion_anual_pct;
+    const lastAc = (ind.observations_acumulado || []).slice(-1)[0] || {};
+    const anio = lastAc.period || ac.periodo?.split(" ")?.pop() || "2026";
+    extra = ` Entre ${corte.toLowerCase()} de ${anio}, la IED acumulada fue de ${fmtVal(acVal, "usd")} mdd${acVar != null ? ", " + (acVar >= 0 ? "+" : "") + (acVar * 100).toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "% mayor que" : ", comparable a"} el mismo periodo del año anterior.`;
+    if (flVal != null) {
+      extra += ` Durante el ${fl.periodo || "trimestre más reciente"}, el flujo trimestral fue de ${fmtVal(flVal, "usd")} mdd${flVar != null ? " (" + (flVar >= 0 ? "+" : "") + (flVar * 100).toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "% anual)" : ""}.`;
+    }
+    const compAcum = ind.metrics?.componentes_acumulado || {};
+    const comps = [["nuevas inversiones", compAcum["Nuevas inversiones"]], ["reinversión de utilidades", compAcum["Reinversión de utilidades"]], ["cuentas entre compañías", compAcum["Cuentas entre compañías"]]].filter((c) => c[1] != null);
+    if (comps.length) {
+      comps.sort((a, b) => b[1] - a[1]);
+      const dom = comps[0], share = acVal ? Math.round(dom[1] / acVal * 100) : 0;
+      extra += ` En su composición, el rubro predominante fue ${dom[0]} (≈${share}% del total), lo que ${dom[0] === "reinversión de utilidades" ? "refleja sobre todo la permanencia de capital ya instalado más que la llegada de proyectos nuevos" : "apunta a la captación de capital fresco"}.`;
+    }
   } else if (ind.key === "BALANZA") {
     const sup = k.ultimoRaw >= 0;
     extra = ` El saldo del último mes corresponde a un ${sup ? "superávit comercial, con exportaciones por encima de las importaciones" : "déficit comercial, con importaciones por encima de las exportaciones"}.`;

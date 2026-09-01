@@ -669,6 +669,66 @@ def _build_desocup_workbook(ind: dict, out_path: Path) -> None:
     wb.save(out_path)
 
 
+def _build_ied_workbook(ind: dict, out_path: Path) -> None:
+    """Genera el Excel de IED con dos hojas: Flujo trimestral y Acumulado comparable."""
+    wb = openpyxl.Workbook()
+    wb.remove(wb.active)
+    src = ind.get("fuente", {}).get("nombre", "Secretaría de Economía")
+    url = ind.get("url_boletin_oficial") or ind.get("fuente", {}).get("link") or "—"
+    pub = ind.get("fecha_publicacion") or "—"
+    corte = ind.get("metrics", {}).get("acumulado", {}).get("corte", "Ene-Jun")
+
+    # Hoja 1: flujo trimestral (observations principal).
+    ws1 = wb.create_sheet("Flujo trimestral")
+    _write_indicator_sheet(ws1, ind, sheet_title=f"{ind.get('nombre', 'IED')} — Flujo trimestral")
+    ws1["A2"] = f"Fuente: {src} · Frecuencia: Trimestral · Unidad: millones de dólares · Corte: {corte} · Boletín: {url} · Fecha de publicación: {pub}"
+
+    # Hoja 2: acumulado comparable al mismo corte.
+    ws2 = wb.create_sheet("Acumulado comparable")
+    ws2.sheet_view.showGridLines = False
+    ws2["A1"] = f"{ind.get('nombre', 'IED')} — Acumulado al mismo corte de cada año ({corte})"
+    ws2["A1"].font = TITLE
+    ws2["A2"] = f"Fuente: {src} · Frecuencia: Trimestral · Unidad: millones de dólares · Boletín: {url} · Fecha de publicación: {pub}"
+    ws2["A2"].font = MUT
+    ws2["A3"] = f"Solo se incluye el corte {corte} de cada año para mantener la comparabilidad."
+    ws2["A3"].font = MUT
+
+    cols = [
+        {"label": "IED acumulada", "fmt": "usd"},
+        {"label": "Nuevas inversiones", "fmt": "usd"},
+        {"label": "Reinversión de utilidades", "fmt": "usd"},
+        {"label": "Cuentas entre compañías", "fmt": "usd"},
+        {"label": "Var. anual acumulada", "fmt": "pct-frac"},
+    ]
+    headers = ["Año", "Corte"] + [c["label"] for c in cols]
+    r0 = 5
+    for i, h in enumerate(headers, start=1):
+        ws2.cell(row=r0, column=i, value=h)
+    _style_header(ws2, r0, len(headers))
+
+    obs = ind.get("observations_acumulado", [])
+    r = r0 + 1
+    for o in obs:
+        ws2.cell(row=r, column=1, value=o["period"]).font = TXT
+        ws2.cell(row=r, column=2, value=o["period_acumulado"]).font = TXT
+        values = o.get("values", [])
+        for j, v in enumerate(values, start=3):
+            if j - 3 < len(cols):
+                cell = ws2.cell(row=r, column=j, value=v)
+                cell.font = TXT
+                cell.border = BORDER
+                cell.number_format = _xl_fmt(cols[j - 3].get("fmt", "num"))
+                if r % 2 == 0:
+                    cell.fill = BAND_FILL
+        r += 1
+
+    ws2.merge_cells(start_row=1, start_column=1, end_row=1, end_column=len(headers))
+    ws2.merge_cells(start_row=2, start_column=1, end_row=2, end_column=len(headers))
+    ws2.merge_cells(start_row=3, start_column=1, end_row=3, end_column=len(headers))
+    _autow(ws2, [10, 16] + [26] * len(cols))
+    wb.save(out_path)
+
+
 def build_individual_files(payload: dict, pilot: list[str] | None = None):
     """Genera un archivo Excel por indicador y actualiza flags en el payload.
 
@@ -710,6 +770,8 @@ def build_individual_files(payload: dict, pilot: list[str] | None = None):
                 _build_bcmm_workbook(ind, out_path)
             elif key == "DESOCUP" and len(ind.get("columns", [])) >= 6:
                 _build_desocup_workbook(ind, out_path)
+            elif key == "IED" and ind.get("observations_acumulado"):
+                _build_ied_workbook(ind, out_path)
             else:
                 _build_individual_workbook(ind, cfg, kpicfg, out_path)
             ind["xlsx_disponible"] = True

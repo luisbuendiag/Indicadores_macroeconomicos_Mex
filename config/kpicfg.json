@@ -243,7 +243,8 @@
       "vw": "variación anual",
       "vg": "f",
       "comp": "frente al mismo periodo del año anterior",
-      "goodSign": 1
+      "goodSign": 1,
+      "flowLabel": "Flujo trimestral"
     },
     "TIPOCAMBIO": {
       "valCol": 0,

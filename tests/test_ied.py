@@ -70,14 +70,55 @@ def test_build_indicator_shape():
     ind = res.data["IED"]
     assert ind["key"] == "IED"
     assert ind["last_observation"] == "2T-26"
+    assert ind["columns"][0]["label"] == "Flujo trimestral"
     assert ind["columns"][4]["fmt"] == "pct-frac"
+
+    # La serie principal (observations) debe ser flujo trimestral, no acumulado.
     last = ind["observations"][-1]
     assert last["period"] == "2T-26"
     assert last.get("period_acumulado") == "Ene-Jun 26"
-    assert last["values"][0] == 34968
-    assert round(last["values"][4], 3) == 0.02
+    assert last["values"][0] == 10464.95
+    assert round(last["values"][4], 2) == -0.04
+
+    # Serie de acumulado comparable: mismo corte para todos los puntos.
+    acum = ind["observations_acumulado"]
+    assert acum, "observations_acumulado no puede estar vacío"
+    cortes = {o["period_acumulado"].split(" ")[0] for o in acum}
+    assert len(cortes) == 1, f"se mezclan cortes en acumulado comparable: {cortes}"
+    last_ac = acum[-1]
+    assert last_ac["period"] == "2026"
+    assert last_ac["period_acumulado"] == "Ene-Jun 26"
+    assert last_ac["values"][0] == 34968
+    assert round(last_ac["values"][4], 3) == 0.02
+
+    # Métricas
     assert ind["metrics"]["acumulado"]["valor"] == 34968
     assert round(ind["metrics"]["acumulado"]["variacion_anual_pct"], 3) == 0.021
     assert round(ind["metrics"]["flujo_trimestral"]["valor"], 2) == 10464.95
     assert round(ind["metrics"]["flujo_trimestral"]["variacion_anual_pct"], 3) == -0.035
+    assert ind["metrics"]["corte_referencia"] == "Ene-Jun"
+    assert ind["source_mode"] in ("structured", "manual_fallback")
+    assert "source_mode" in ind["metrics"]
 
+
+@pytest.mark.skipif(not (DATA_DIR / "ied_manual_2026_2t.json").exists(), reason="manual 2T no presente")
+def test_source_mode_priority():
+    res = ied.fetch()
+    assert res.ok, res.warnings
+    ind = res.data["IED"]
+    # Si el XLS estructurado contiene el corte actual, source_mode debe ser structured.
+    # En este entorno el resumen histórico ya contiene 2026 2T, por lo que se espera structured.
+    assert ind["source_mode"] == "structured"
+    assert ind["metrics"]["source_mode"] == "structured"
+
+
+@pytest.mark.skipif(not (DATA_DIR / "ied_manual_2026_2t.json").exists(), reason="manual 2T no presente")
+def test_labels_and_separation():
+    res = ied.fetch()
+    assert res.ok, res.warnings
+    ind = res.data["IED"]
+    assert ind["metrics"]["acumulado"]["valor"] == 34968
+    assert ind["metrics"]["flujo_trimestral"]["valor"] == 10464.95
+    assert ind["metrics"]["acumulado"]["valor"] != ind["metrics"]["flujo_trimestral"]["valor"]
+    assert round(ind["metrics"]["acumulado"]["variacion_anual_pct"], 3) == 0.021
+    assert round(ind["metrics"]["flujo_trimestral"]["variacion_anual_pct"], 3) == -0.035

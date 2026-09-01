@@ -1,5 +1,5 @@
 // Orquestador del tablero macroeconómico V3 (navegación por indicador).
-import { ORDER, PRINCIPAL, COMPLEMENTARIOS, LABELS, SIGLA, CAPTIONS, WINDOWS, COLORS, KPICFG, VIEWS, ESTADOS } from "./config.js";
+import { ORDER, PRINCIPAL, COMPLEMENTARIOS, LABELS, SIGLA, CAPTIONS, WINDOWS, IED_WINDOWS, IED_WINDOWS_FLUJO, COLORS, KPICFG, VIEWS, ESTADOS } from "./config.js";
 import { computeKPI, analysis, annualVar } from "./metrics.js";
 import { buildOption, rangeStats, applyWindow, buildPibsecLevels, buildPibsecVariations, buildIgaeLevels, buildIgaeVariations, buildImaiLevels, buildImaiVariations, buildEmimLevels, buildEmimVariations, buildBcmmLevels, buildBcmmVariations, buildImfbcfLevels, buildImfbcfVariations, buildDesocupRates, buildDesocupPoblacion } from "./charts.js";
 import { fmtVal, perLong } from "./format.js";
@@ -283,6 +283,7 @@ function panoramaCard(ind) {
   const yoy = metrics.yoy || annualVar(ind, k);
   const deltaCls = k.assessment === "favorable" ? "up" : (k.assessment === "adverso" ? "down" : "flat");
   const showYoy = yoy && (yoy.mag === null || Math.abs((yoy.mag ?? 0) - (k.ultimoRaw ?? 0)) > 1e-9);
+  const flowKpi = ind.key === "IED" && k.flujoText ? { text: k.flujoText, label: cfg.flowLabel || "Flujo del 2T" } : null;
   const card = el("button", { class: "matrix-card", type: "button", onclick: () => setView(ind.key) },
     top, name, eyebrow,
     el("div", { class: "mc-value" }, k.ultimoFmt),
@@ -290,7 +291,8 @@ function panoramaCard(ind) {
     sparkline(k),
     el("div", { class: "mc-deltas" },
       el("div", { class: `mc-delta ${deltaCls}` }, el("span", { class: "d-val" }, k.varText), el("span", { class: "d-lbl" }, k.varLabel || cfg.varLabel)),
-      showYoy ? el("div", { class: "mc-delta neutral" }, el("span", { class: "d-val" }, yoy.text), el("span", { class: "d-lbl" }, yoy.label || "Var. anual")) : null),
+      showYoy ? el("div", { class: "mc-delta neutral" }, el("span", { class: "d-val" }, yoy.text), el("span", { class: "d-lbl" }, yoy.label || "Var. anual")) :
+        (flowKpi ? el("div", { class: "mc-delta neutral" }, el("span", { class: "d-val" }, flowKpi.text), el("span", { class: "d-lbl" }, flowKpi.label)) : null)),
   );
   return card;
 }
@@ -564,6 +566,26 @@ function buildWinToggle(ind, winId) {
   return wt;
 }
 
+function buildWinToggleForObservations(ind, winId, tipo) {
+  const wt = el("div", { class: "win-toggle no-print", role: "group", "aria-label": `Ventana temporal ${tipo}` });
+  const wins = tipo === "acumulado" ? (ind.windows || IED_WINDOWS) : (ind.windows_flujo || IED_WINDOWS_FLUJO);
+  wins.forEach((w) => {
+    const pressed = w.id === winId;
+    wt.append(el("button", {
+      class: "win-btn", type: "button", "aria-pressed": String(pressed),
+      "data-ind": ind.key, "data-win-id": w.id, "data-tipo": tipo,
+      onclick: () => {
+        state.windows[`${ind.key}_${tipo}`] = w.id;
+        mountIedCharts(ind);
+        document.querySelectorAll(`.win-btn[data-ind="${ind.key}"][data-tipo="${tipo}"]`).forEach((b) => {
+          b.setAttribute("aria-pressed", String(b.dataset.winId === w.id));
+        });
+      },
+    }, w.label));
+  });
+  return wt;
+}
+
 function buildPobWinToggle(ind) {
   const wt = el("div", { class: "win-toggle no-print", role: "group", "aria-label": "Ventana de población ocupada" });
   const winId = state.windows[`${ind.key}_POB`] || "max";
@@ -676,6 +698,15 @@ function renderIndicatorView(key) {
         el("div", { class: "sub" }, `Periodo: ${k.poblacion.periodo} (trimestral)`),
       ) : null,
     );
+  } else if (ind.key === "IED") {
+    const acColor = (k.varMag ?? 0) >= 0 ? COLORS.GREEN : COLORS.CRIMSON;
+    const flColor = (ind.metrics?.flujo_trimestral?.variacion_anual_pct ?? 0) >= 0 ? COLORS.GREEN : COLORS.CRIMSON;
+    mini = el("div", { class: "mini-kpis" },
+      el("div", { class: "mini dark" }, el("div", { class: "lbl" }, "IED acumulada"), el("div", { class: "num" }, k.ultimoFmt), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),
+      el("div", { class: "mini" }, el("div", { class: "lbl" }, "Var. anual del acumulado"), el("div", { class: "num", style: `color:${acColor}` }, k.varText), el("div", { class: "sub" }, cfg.comp)),
+      el("div", { class: "mini" }, el("div", { class: "lbl" }, "Flujo del 2T"), el("div", { class: "num" }, k.flujoText || "—"), el("div", { class: "sub" }, ind.metrics?.flujo_trimestral?.periodo || "—")),
+      el("div", { class: "mini" }, el("div", { class: "lbl" }, "Var. anual del flujo"), el("div", { class: "num", style: `color:${flColor}` }, (k.yoy && k.yoy.text) ? k.yoy.text : ((ind.metrics?.flujo_trimestral?.variacion_anual_pct != null ? (ind.metrics.flujo_trimestral.variacion_anual_pct >= 0 ? "+" : "") + (ind.metrics.flujo_trimestral.variacion_anual_pct * 100).toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%" : "—"))), el("div", { class: "sub" }, "Frente al mismo trimestre del año previo")),
+    );
   } else if (ind.key === "IOAE") {
     const annualColor = k.ultimoRaw >= 0 ? COLORS.GREEN : COLORS.CRIMSON;
     const monthlyColor = k.varColor;
@@ -730,6 +761,19 @@ function renderIndicatorView(key) {
     pob.append(buildPobWinToggle(ind));
     pob.append(el("div", { class: "chart-box desocup-pob", id: `chart-${ind.key}-pob`, role: "img", "aria-label": "Población ocupada" }));
     chartMain.append(pob);
+    chartMain.append(el("div", { class: "range-wrap", id: `range-${ind.key}` }));
+  } else if (ind.key === "IED") {
+    chartMain.classList.add("pibsec-charts");
+    const ac = el("div", { class: "pibsec-section" });
+    ac.append(el("h3", { class: "block-sub" }, `IED acumulada al mismo corte de cada año (${ind.metrics?.acumulado?.corte?.toLowerCase() || "ene-jun"})`));
+    ac.append(buildWinToggleForObservations(ind, winId, "acumulado"));
+    ac.append(el("div", { class: "chart-box ied-acumulado", id: `chart-${ind.key}-acumulado`, role: "img", "aria-label": "IED acumulada comparable por año" }));
+    chartMain.append(ac);
+    const fl = el("div", { class: "pibsec-section" });
+    fl.append(el("h3", { class: "block-sub" }, "Flujo trimestral de IED"));
+    fl.append(buildWinToggleForObservations(ind, state.windows[`${ind.key}_flujo`] || "max", "flujo"));
+    fl.append(el("div", { class: "chart-box ied-flujo", id: `chart-${ind.key}-flujo`, role: "img", "aria-label": "Flujo trimestral de IED" }));
+    chartMain.append(fl);
     chartMain.append(el("div", { class: "range-wrap", id: `range-${ind.key}` }));
   } else {
     chartMain.append(buildWinToggle(ind, winId));
@@ -959,8 +1003,16 @@ function breakdown(ind, k) {
     if (ind.key === "IGAE") return null;
     if (ind.key === "IED") {
       const m = ind.metrics || {};
-      const flujo = m.flujo_trimestral && m.flujo_trimestral.valor != null ? m.flujo_trimestral.valor : (last.flujo_trimestral != null ? last.flujo_trimestral : null);
-      return [["IED acumulada", last.values[0], "usd"], ["Flujo del 2T", flujo, "usd"], ["Nuevas inversiones", last.values[1], "usd"], ["Reinversión de utilidades", last.values[2], "usd"], ["Cuentas entre compañías", last.values[3], "usd"]];
+      const ac = ind.observations_acumulado ? ind.observations_acumulado[ind.observations_acumulado.length - 1] : null;
+      const lastAc = ac ? ac.values : [null, null, null, null, null];
+      const flujo = m.flujo_trimestral && m.flujo_trimestral.valor != null ? m.flujo_trimestral.valor : null;
+      return [
+        ["IED acumulada", lastAc[0], "usd"],
+        ["Flujo del 2T", flujo, "usd"],
+        ["Nuevas inversiones", lastAc[1], "usd"],
+        ["Reinversión de utilidades", lastAc[2], "usd"],
+        ["Cuentas entre compañías", lastAc[3], "usd"],
+      ];
     }
     if (ind.key === "INPC") return [["General", last.values[2], "pct-raw"], ["Subyacente", last.values[5], "pct-raw"], ["No subyacente", last.values[11], "pct-raw"]];
     if (ind.key === "INPP") return [["INPP con petróleo", last.values[2], "pct-raw"], ["INPP sin petróleo", last.values[6], "pct-raw"], ["Bienes intermedios", last.values[8], "pct-raw"]];
@@ -1455,7 +1507,79 @@ function mountImfbcfCharts(ind) {
   }
 }
 
+function applyWindowForList(obs, winId, wins) {
+  if (!obs || !obs.length) return [];
+  if (winId === "max" || !wins) return obs.slice();
+  const w = wins.find((x) => x.id === winId);
+  if (w && w.count != null && w.count < obs.length) return obs.slice(-w.count);
+  if (w && w.count != null && w.count >= obs.length) return obs.slice();
+  return obs.slice();
+}
+
+function mountIedCharts(ind) {
+  if (typeof echarts === "undefined" || !hasData(ind)) return;
+
+  const acWinId = state.windows[`${ind.key}_acumulado`] || state.windows[ind.key] || "5a";
+  const flWinId = state.windows[`${ind.key}_flujo`] || "5a";
+
+  const acObs = applyWindowForList(ind.observations_acumulado || [], acWinId, IED_WINDOWS);
+  const flObs = applyWindowForList(ind.observations || [], flWinId, IED_WINDOWS_FLUJO);
+
+  // Gráfica 1: acumulado comparable (barras)
+  const domAc = document.getElementById(`chart-${ind.key}-acumulado`);
+  if (domAc) {
+    let chartAc = state.charts[`${ind.key}-acumulado`];
+    if (!chartAc) { chartAc = echarts.init(domAc, null, { renderer: "canvas" }); state.charts[`${ind.key}-acumulado`] = chartAc; }
+    const corte = ind.metrics?.acumulado?.corte || "Ene-Jun";
+    const optionAc = {
+      title: { text: `Acumulado ${corte.toLowerCase()}`, left: "center", textStyle: { fontSize: 12, color: "#6c6f6a" } },
+      tooltip: { trigger: "axis", formatter: (params) => {
+        const p = params[0];
+        const o = acObs[p.dataIndex];
+        const vals = o ? o.values : [];
+        const varTxt = vals[4] != null ? `<br/>Var. anual: ${(vals[4] >= 0 ? "+" : "") + (vals[4] * 100).toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%` : "";
+        return `${o?.period || p.name}<br/>${p.seriesName}: ${fmtVal(p.value, "usd")} mdd${varTxt}`;
+      }},
+      grid: { left: 52, right: 24, top: 48, bottom: 28 },
+      xAxis: { type: "category", data: acObs.map((o) => o.period), axisLabel: { color: "#6c6f6a" } },
+      yAxis: { type: "value", name: "Millones de dólares", nameLocation: "middle", nameGap: 40, axisLabel: { formatter: (v) => fmtVal(v, "compact") }, splitLine: { lineStyle: { color: "#ece7da" } } },
+      series: [{ name: "IED acumulada", type: "bar", data: acObs.map((o) => o.values[0]), itemStyle: { color: COLORS.GREEN }, label: { show: false } }],
+    };
+    chartAc.setOption(optionAc, true);
+  }
+
+  // Gráfica 2: flujo trimestral
+  const domFl = document.getElementById(`chart-${ind.key}-flujo`);
+  if (domFl) {
+    let chartFl = state.charts[`${ind.key}-flujo`];
+    if (!chartFl) { chartFl = echarts.init(domFl, null, { renderer: "canvas" }); state.charts[`${ind.key}-flujo`] = chartFl; }
+    const optionFl = {
+      title: { text: "Flujo trimestral", left: "center", textStyle: { fontSize: 12, color: "#6c6f6a" } },
+      tooltip: { trigger: "axis", formatter: (params) => {
+        const p = params[0];
+        const o = flObs[p.dataIndex];
+        const vals = o ? o.values : [];
+        const varTxt = vals[4] != null ? `<br/>Var. anual: ${(vals[4] >= 0 ? "+" : "") + (vals[4] * 100).toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%` : "";
+        return `${o?.period || p.name}<br/>${p.seriesName}: ${fmtVal(p.value, "usd")} mdd${varTxt}`;
+      }},
+      grid: { left: 52, right: 24, top: 48, bottom: 28 },
+      xAxis: { type: "category", data: flObs.map((o) => o.period), axisLabel: { color: "#6c6f6a" } },
+      yAxis: { type: "value", name: "Millones de dólares", nameLocation: "middle", nameGap: 40, axisLabel: { formatter: (v) => fmtVal(v, "compact") }, splitLine: { lineStyle: { color: "#ece7da" } } },
+      series: [{ name: "Flujo trimestral", type: "bar", data: flObs.map((o) => o.values[0]), itemStyle: { color: COLORS.GOLD }, label: { show: false } }],
+    };
+    chartFl.setOption(optionFl, true);
+  }
+
+  // Caption
+  const cap = document.getElementById(`caption-${ind.key}`);
+  if (cap) {
+    const lastAc = acObs.length ? acObs[acObs.length - 1].period : (ind.last_observation || "—");
+    cap.textContent = `${CAPTIONS[ind.key] || ""} Acumulado comparable hasta ${lastAc}; flujo hasta ${flObs.length ? flObs[flObs.length - 1].period : ind.last_observation || "—"}.`.trim();
+  }
+}
+
 function mountChart(ind) {
+  if (ind.key === "IED") { mountIedCharts(ind); return; }
   if (ind.key === "PIBSEC") { mountPibsecCharts(ind); return; }
   if (ind.key === "IGAE") { mountIgaeCharts(ind); return; }
   if (ind.key === "IMAI") { mountImaiCharts(ind); return; }

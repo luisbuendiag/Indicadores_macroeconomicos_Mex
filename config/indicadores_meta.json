@@ -1484,7 +1484,7 @@
       "unidad": "Millones de dólares",
       "columns": [
         {
-          "label": "IED acumulada",
+          "label": "Flujo trimestral",
           "index": 0,
           "fmt": "usd"
         },
@@ -1504,7 +1504,7 @@
           "fmt": "usd"
         },
         {
-          "label": "Var. anual acumulada",
+          "label": "Var. anual flujo",
           "index": 4,
           "fmt": "pct-frac"
         }
