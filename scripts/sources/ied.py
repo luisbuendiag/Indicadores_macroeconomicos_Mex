@@ -447,6 +447,25 @@ def _build_indicator(resumen: list[dict], manual: dict | None, ti_1t: dict | Non
         "source_mode": source_mode,
     }
 
+    # Publicación y próxima publicación (IED trimestral: feb, may, ago, nov)
+    pub_fechas = {
+        (2025, 12): ("23 de febrero de 2026", "1° trimestre 2026"),
+        (2026, 3): ("26 de mayo de 2026", "2° trimestre 2026"),
+        (2026, 6): ("24 de agosto de 2026", "3° trimestre 2026"),
+        (2026, 9): ("Por anunciar", "4° trimestre 2026"),
+    }
+    pub_key = (last_year, last_end)
+    fecha_publicacion, periodo_proximo = pub_fechas.get(
+        pub_key,
+        ("Por anunciar", f"{last['quarter']} publicado"),
+    )
+    # Fecha de la siguiente publicación futura (trimestre siguiente)
+    next_q_map = {3: ((2026, 6), "24 de agosto de 2026", "3° trimestre 2026"),
+                  6: ((2026, 9), "Por anunciar", "4° trimestre 2026"),
+                  9: ((2026, 12), "Por anunciar", "4° trimestre 2026"),
+                  12: ((2027, 3), "Por anunciar", "1° trimestre 2027")}
+    _, prox_fecha, prox_periodo = next_q_map.get(last_end, (None, "Por anunciar", "periodo siguiente"))
+
     return {
         "key": "IED",
         "nombre": "Inversión Extranjera Directa (IED)",
@@ -458,6 +477,11 @@ def _build_indicator(resumen: list[dict], manual: dict | None, ti_1t: dict | Non
         "ajuste_estacional": "No aplica",
         "grupo": "inversion",
         "clasificacion": "complementario",
+        "fecha_publicacion": fecha_publicacion,
+        "proxima_publicacion": {
+            "fecha_publicacion": prox_fecha,
+            "periodo_referencia": prox_periodo,
+        },
         "columns": [
             {"label": "Flujo trimestral", "index": 0, "fmt": "usd"},
             {"label": "Nuevas inversiones", "index": 1, "fmt": "usd"},

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-01T19:59:44+00:00",
+    "generated_at": "2026-09-01T20:19:51+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-09-01T13:59:44-06:00",
+    "last_update_ct": "2026-09-01T14:19:51-06:00",
     "periodo_referencia_reciente": {
       "period": "Jul 26",
       "period_long": "Jul 26"
@@ -1532,7 +1532,8 @@
         "frecuencia": "Trimestral",
         "unidad": "Millones de pesos (a precios de 2018)",
         "ajuste_estacional": "Serie original"
-      }
+      },
+      "boletin_validado": true
     },
     "PIBSEC": {
       "key": "PIBSEC",
@@ -4333,7 +4334,8 @@
         "72 Servicios de alojamiento temporal y de preparación de alimentos y bebidas": -0.027000000000000003,
         "81 Otros servicios excepto actividades gubernamentales": 0.01,
         "93 Actividades legislativas, gubernamentales, de impartición de justicia y de organismos internacionales y extraterritoriales": 0.035
-      }
+      },
+      "boletin_validado": true
     },
     "IGAE": {
       "key": "IGAE",
@@ -10938,7 +10940,8 @@
           "count": null
         }
       ],
-      "sigla": "IGAE"
+      "sigla": "IGAE",
+      "boletin_validado": true
     },
     "IMAI": {
       "key": "IMAI",
@@ -21247,7 +21250,8 @@
           "label": "Máximo",
           "count": null
         }
-      ]
+      ],
+      "boletin_validado": true
     },
     "CONSUMO": {
       "key": "CONSUMO",
@@ -22441,7 +22445,8 @@
           "label": "Máximo",
           "count": null
         }
-      ]
+      ],
+      "boletin_validado": true
     },
     "IED": {
       "key": "IED",
@@ -22458,12 +22463,13 @@
       ],
       "fuente": {
         "nombre": "Secretaría de Economía — Dirección General de Inversión Extranjera / RNIE",
+        "metodo": "Descarga y parseo de XLSX oficiales (resumen histórico + desgloses 2T-2026)",
         "link": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa",
-        "metodo": "Descarga y parseo de XLSX oficiales (resumen histórico + desgloses 2T-2026)"
+        "serie": null
       },
       "columns": [
         {
-          "label": "IED acumulada",
+          "label": "Flujo trimestral",
           "index": 0,
           "fmt": "usd"
         },
@@ -22483,278 +22489,1442 @@
           "fmt": "usd"
         },
         {
-          "label": "Var. anual acumulada",
+          "label": "Var. anual flujo",
           "index": 4,
           "fmt": "pct-frac"
         }
       ],
       "observations": [
         {
-          "period": "1T-21",
+          "period": "2T-99",
+          "period_acumulado": "Ene-Jun 99",
           "values": [
-            11864.03046282,
-            2209.41801316,
-            7025.2112565499965,
-            2629.401193109997,
+            null,
+            null,
+            null,
+            null,
             null
+          ]
+        },
+        {
+          "period": "3T-99",
+          "period_acumulado": "Ene-Sep 99",
+          "values": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "4T-99",
+          "period_acumulado": "Ene-Dic 99",
+          "values": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "1T-00",
+          "period_acumulado": "Ene-Mar 00",
+          "values": [
+            4600.64,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "2T-00",
+          "period_acumulado": "Ene-Jun 00",
+          "values": [
+            4857.42,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "3T-00",
+          "period_acumulado": "Ene-Sep 00",
+          "values": [
+            3056.95,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "4T-00",
+          "period_acumulado": "Ene-Dic 00",
+          "values": [
+            5733.68,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "1T-01",
+          "period_acumulado": "Ene-Mar 01",
+          "values": [
+            3598.68,
+            null,
+            null,
+            null,
+            -0.22
+          ]
+        },
+        {
+          "period": "2T-01",
+          "period_acumulado": "Ene-Jun 01",
+          "values": [
+            5218.83,
+            null,
+            null,
+            null,
+            0.07
+          ]
+        },
+        {
+          "period": "3T-01",
+          "period_acumulado": "Ene-Sep 01",
+          "values": [
+            16314.05,
+            null,
+            null,
+            null,
+            4.34
+          ]
+        },
+        {
+          "period": "4T-01",
+          "period_acumulado": "Ene-Dic 01",
+          "values": [
+            4925.63,
+            null,
+            null,
+            null,
+            -0.14
+          ]
+        },
+        {
+          "period": "1T-02",
+          "period_acumulado": "Ene-Mar 02",
+          "values": [
+            5067.98,
+            null,
+            null,
+            null,
+            0.41
+          ]
+        },
+        {
+          "period": "2T-02",
+          "period_acumulado": "Ene-Jun 02",
+          "values": [
+            6258.52,
+            null,
+            null,
+            null,
+            0.2
+          ]
+        },
+        {
+          "period": "3T-02",
+          "period_acumulado": "Ene-Sep 02",
+          "values": [
+            6114.34,
+            null,
+            null,
+            null,
+            -0.63
+          ]
+        },
+        {
+          "period": "4T-02",
+          "period_acumulado": "Ene-Dic 02",
+          "values": [
+            6658.37,
+            null,
+            null,
+            null,
+            0.35
+          ]
+        },
+        {
+          "period": "1T-03",
+          "period_acumulado": "Ene-Mar 03",
+          "values": [
+            3963.69,
+            null,
+            null,
+            null,
+            -0.22
+          ]
+        },
+        {
+          "period": "2T-03",
+          "period_acumulado": "Ene-Jun 03",
+          "values": [
+            5547.34,
+            null,
+            null,
+            null,
+            -0.11
+          ]
+        },
+        {
+          "period": "3T-03",
+          "period_acumulado": "Ene-Sep 03",
+          "values": [
+            2521.68,
+            null,
+            null,
+            null,
+            -0.59
+          ]
+        },
+        {
+          "period": "4T-03",
+          "period_acumulado": "Ene-Dic 03",
+          "values": [
+            6217.27,
+            null,
+            null,
+            null,
+            -0.07
+          ]
+        },
+        {
+          "period": "1T-04",
+          "period_acumulado": "Ene-Mar 04",
+          "values": [
+            9363.46,
+            null,
+            null,
+            null,
+            1.36
+          ]
+        },
+        {
+          "period": "2T-04",
+          "period_acumulado": "Ene-Jun 04",
+          "values": [
+            4351.5,
+            null,
+            null,
+            null,
+            -0.22
+          ]
+        },
+        {
+          "period": "3T-04",
+          "period_acumulado": "Ene-Sep 04",
+          "values": [
+            3284.91,
+            null,
+            null,
+            null,
+            0.3
+          ]
+        },
+        {
+          "period": "4T-04",
+          "period_acumulado": "Ene-Dic 04",
+          "values": [
+            8015.7,
+            null,
+            null,
+            null,
+            0.29
+          ]
+        },
+        {
+          "period": "1T-05",
+          "period_acumulado": "Ene-Mar 05",
+          "values": [
+            6761.62,
+            null,
+            null,
+            null,
+            -0.28
+          ]
+        },
+        {
+          "period": "2T-05",
+          "period_acumulado": "Ene-Jun 05",
+          "values": [
+            6773.62,
+            null,
+            null,
+            null,
+            0.56
+          ]
+        },
+        {
+          "period": "3T-05",
+          "period_acumulado": "Ene-Sep 05",
+          "values": [
+            5478.92,
+            null,
+            null,
+            null,
+            0.67
+          ]
+        },
+        {
+          "period": "4T-05",
+          "period_acumulado": "Ene-Dic 05",
+          "values": [
+            6781.66,
+            null,
+            null,
+            null,
+            -0.15
+          ]
+        },
+        {
+          "period": "1T-06",
+          "period_acumulado": "Ene-Mar 06",
+          "values": [
+            7437.86,
+            null,
+            null,
+            null,
+            0.1
+          ]
+        },
+        {
+          "period": "2T-06",
+          "period_acumulado": "Ene-Jun 06",
+          "values": [
+            6634.31,
+            null,
+            null,
+            null,
+            -0.02
+          ]
+        },
+        {
+          "period": "3T-06",
+          "period_acumulado": "Ene-Sep 06",
+          "values": [
+            2346.72,
+            null,
+            null,
+            null,
+            -0.57
+          ]
+        },
+        {
+          "period": "4T-06",
+          "period_acumulado": "Ene-Dic 06",
+          "values": [
+            4817.96,
+            null,
+            null,
+            null,
+            -0.29
+          ]
+        },
+        {
+          "period": "1T-07",
+          "period_acumulado": "Ene-Mar 07",
+          "values": [
+            10815.78,
+            null,
+            null,
+            null,
+            0.45
+          ]
+        },
+        {
+          "period": "2T-07",
+          "period_acumulado": "Ene-Jun 07",
+          "values": [
+            6137.64,
+            null,
+            null,
+            null,
+            -0.07
+          ]
+        },
+        {
+          "period": "3T-07",
+          "period_acumulado": "Ene-Sep 07",
+          "values": [
+            7628.66,
+            null,
+            null,
+            null,
+            2.25
+          ]
+        },
+        {
+          "period": "4T-07",
+          "period_acumulado": "Ene-Dic 07",
+          "values": [
+            7811.96,
+            null,
+            null,
+            null,
+            0.62
+          ]
+        },
+        {
+          "period": "1T-08",
+          "period_acumulado": "Ene-Mar 08",
+          "values": [
+            8554.83,
+            null,
+            null,
+            null,
+            -0.21
+          ]
+        },
+        {
+          "period": "2T-08",
+          "period_acumulado": "Ene-Jun 08",
+          "values": [
+            8377.56,
+            null,
+            null,
+            null,
+            0.36
+          ]
+        },
+        {
+          "period": "3T-08",
+          "period_acumulado": "Ene-Sep 08",
+          "values": [
+            5644.14,
+            null,
+            null,
+            null,
+            -0.26
+          ]
+        },
+        {
+          "period": "4T-08",
+          "period_acumulado": "Ene-Dic 08",
+          "values": [
+            6945.7,
+            null,
+            null,
+            null,
+            -0.11
+          ]
+        },
+        {
+          "period": "1T-09",
+          "period_acumulado": "Ene-Mar 09",
+          "values": [
+            6105.3,
+            null,
+            null,
+            null,
+            -0.29
+          ]
+        },
+        {
+          "period": "2T-09",
+          "period_acumulado": "Ene-Jun 09",
+          "values": [
+            6094.49,
+            null,
+            null,
+            null,
+            -0.27
+          ]
+        },
+        {
+          "period": "3T-09",
+          "period_acumulado": "Ene-Sep 09",
+          "values": [
+            2398.04,
+            null,
+            null,
+            null,
+            -0.58
+          ]
+        },
+        {
+          "period": "4T-09",
+          "period_acumulado": "Ene-Dic 09",
+          "values": [
+            3253.43,
+            null,
+            null,
+            null,
+            -0.53
+          ]
+        },
+        {
+          "period": "1T-10",
+          "period_acumulado": "Ene-Mar 10",
+          "values": [
+            8722.79,
+            null,
+            null,
+            null,
+            0.43
+          ]
+        },
+        {
+          "period": "2T-10",
+          "period_acumulado": "Ene-Jun 10",
+          "values": [
+            9301.62,
+            null,
+            null,
+            null,
+            0.53
+          ]
+        },
+        {
+          "period": "3T-10",
+          "period_acumulado": "Ene-Sep 10",
+          "values": [
+            3942.08,
+            null,
+            null,
+            null,
+            0.64
+          ]
+        },
+        {
+          "period": "4T-10",
+          "period_acumulado": "Ene-Dic 10",
+          "values": [
+            5232.51,
+            null,
+            null,
+            null,
+            0.61
+          ]
+        },
+        {
+          "period": "1T-11",
+          "period_acumulado": "Ene-Mar 11",
+          "values": [
+            8431.22,
+            null,
+            null,
+            null,
+            -0.03
+          ]
+        },
+        {
+          "period": "2T-11",
+          "period_acumulado": "Ene-Jun 11",
+          "values": [
+            6697.45,
+            null,
+            null,
+            null,
+            -0.28
+          ]
+        },
+        {
+          "period": "3T-11",
+          "period_acumulado": "Ene-Sep 11",
+          "values": [
+            4349.9,
+            null,
+            null,
+            null,
+            0.1
+          ]
+        },
+        {
+          "period": "4T-11",
+          "period_acumulado": "Ene-Dic 11",
+          "values": [
+            6154.01,
+            null,
+            null,
+            null,
+            0.18
+          ]
+        },
+        {
+          "period": "1T-12",
+          "period_acumulado": "Ene-Mar 12",
+          "values": [
+            7893.19,
+            null,
+            null,
+            null,
+            -0.06
+          ]
+        },
+        {
+          "period": "2T-12",
+          "period_acumulado": "Ene-Jun 12",
+          "values": [
+            5622.13,
+            null,
+            null,
+            null,
+            -0.16
+          ]
+        },
+        {
+          "period": "3T-12",
+          "period_acumulado": "Ene-Sep 12",
+          "values": [
+            5736.59,
+            null,
+            null,
+            null,
+            0.32
+          ]
+        },
+        {
+          "period": "4T-12",
+          "period_acumulado": "Ene-Dic 12",
+          "values": [
+            2518.22,
+            null,
+            null,
+            null,
+            -0.59
+          ]
+        },
+        {
+          "period": "1T-13",
+          "period_acumulado": "Ene-Mar 13",
+          "values": [
+            10571.58,
+            null,
+            null,
+            null,
+            0.34
+          ]
+        },
+        {
+          "period": "2T-13",
+          "period_acumulado": "Ene-Jun 13",
+          "values": [
+            21019.15,
+            null,
+            null,
+            null,
+            2.74
+          ]
+        },
+        {
+          "period": "3T-13",
+          "period_acumulado": "Ene-Sep 13",
+          "values": [
+            4179.16,
+            null,
+            null,
+            null,
+            -0.27
+          ]
+        },
+        {
+          "period": "4T-13",
+          "period_acumulado": "Ene-Dic 13",
+          "values": [
+            12587.22,
+            null,
+            null,
+            null,
+            4.0
+          ]
+        },
+        {
+          "period": "1T-14",
+          "period_acumulado": "Ene-Mar 14",
+          "values": [
+            13828.01,
+            null,
+            null,
+            null,
+            0.31
+          ]
+        },
+        {
+          "period": "2T-14",
+          "period_acumulado": "Ene-Jun 14",
+          "values": [
+            5479.83,
+            null,
+            null,
+            null,
+            -0.74
+          ]
+        },
+        {
+          "period": "3T-14",
+          "period_acumulado": "Ene-Sep 14",
+          "values": [
+            3222.12,
+            null,
+            null,
+            null,
+            -0.23
+          ]
+        },
+        {
+          "period": "4T-14",
+          "period_acumulado": "Ene-Dic 14",
+          "values": [
+            7822.45,
+            null,
+            null,
+            null,
+            -0.38
+          ]
+        },
+        {
+          "period": "1T-15",
+          "period_acumulado": "Ene-Mar 15",
+          "values": [
+            12136.46,
+            null,
+            null,
+            null,
+            -0.12
+          ]
+        },
+        {
+          "period": "2T-15",
+          "period_acumulado": "Ene-Jun 15",
+          "values": [
+            6656.85,
+            null,
+            null,
+            null,
+            0.21
+          ]
+        },
+        {
+          "period": "3T-15",
+          "period_acumulado": "Ene-Sep 15",
+          "values": [
+            9635.92,
+            null,
+            null,
+            null,
+            1.99
+          ]
+        },
+        {
+          "period": "4T-15",
+          "period_acumulado": "Ene-Dic 15",
+          "values": [
+            7516.39,
+            null,
+            null,
+            null,
+            -0.04
+          ]
+        },
+        {
+          "period": "1T-16",
+          "period_acumulado": "Ene-Mar 16",
+          "values": [
+            12805.81,
+            null,
+            null,
+            null,
+            0.06
+          ]
+        },
+        {
+          "period": "2T-16",
+          "period_acumulado": "Ene-Jun 16",
+          "values": [
+            6210.67,
+            null,
+            null,
+            null,
+            -0.07
+          ]
+        },
+        {
+          "period": "3T-16",
+          "period_acumulado": "Ene-Sep 16",
+          "values": [
+            4320.1,
+            null,
+            null,
+            null,
+            -0.55
+          ]
+        },
+        {
+          "period": "4T-16",
+          "period_acumulado": "Ene-Dic 16",
+          "values": [
+            7855.77,
+            null,
+            null,
+            null,
+            0.05
+          ]
+        },
+        {
+          "period": "1T-17",
+          "period_acumulado": "Ene-Mar 17",
+          "values": [
+            13796.27,
+            null,
+            null,
+            null,
+            0.08
+          ]
+        },
+        {
+          "period": "2T-17",
+          "period_acumulado": "Ene-Jun 17",
+          "values": [
+            6837.92,
+            null,
+            null,
+            null,
+            0.1
+          ]
+        },
+        {
+          "period": "3T-17",
+          "period_acumulado": "Ene-Sep 17",
+          "values": [
+            6367.72,
+            null,
+            null,
+            null,
+            0.47
+          ]
+        },
+        {
+          "period": "4T-17",
+          "period_acumulado": "Ene-Dic 17",
+          "values": [
+            7062.67,
+            null,
+            null,
+            null,
+            -0.1
+          ]
+        },
+        {
+          "period": "1T-18",
+          "period_acumulado": "Ene-Mar 18",
+          "values": [
+            14075.43,
+            null,
+            null,
+            null,
+            0.02
+          ]
+        },
+        {
+          "period": "2T-18",
+          "period_acumulado": "Ene-Jun 18",
+          "values": [
+            9579.73,
+            null,
+            null,
+            null,
+            0.4
+          ]
+        },
+        {
+          "period": "3T-18",
+          "period_acumulado": "Ene-Sep 18",
+          "values": [
+            4133.53,
+            null,
+            null,
+            null,
+            -0.35
+          ]
+        },
+        {
+          "period": "4T-18",
+          "period_acumulado": "Ene-Dic 18",
+          "values": [
+            6325.44,
+            null,
+            null,
+            null,
+            -0.1
+          ]
+        },
+        {
+          "period": "1T-19",
+          "period_acumulado": "Ene-Mar 19",
+          "values": [
+            15213.12,
+            null,
+            null,
+            null,
+            0.08
+          ]
+        },
+        {
+          "period": "2T-19",
+          "period_acumulado": "Ene-Jun 19",
+          "values": [
+            6681.61,
+            null,
+            null,
+            null,
+            -0.3
+          ]
+        },
+        {
+          "period": "3T-19",
+          "period_acumulado": "Ene-Sep 19",
+          "values": [
+            8218.74,
+            null,
+            null,
+            null,
+            0.99
+          ]
+        },
+        {
+          "period": "4T-19",
+          "period_acumulado": "Ene-Dic 19",
+          "values": [
+            4685.06,
+            null,
+            null,
+            null,
+            -0.26
+          ]
+        },
+        {
+          "period": "1T-20",
+          "period_acumulado": "Ene-Mar 20",
+          "values": [
+            16783.71,
+            null,
+            null,
+            null,
+            0.1
+          ]
+        },
+        {
+          "period": "2T-20",
+          "period_acumulado": "Ene-Jun 20",
+          "values": [
+            7377.65,
+            null,
+            null,
+            null,
+            0.1
+          ]
+        },
+        {
+          "period": "3T-20",
+          "period_acumulado": "Ene-Sep 20",
+          "values": [
+            1339.34,
+            null,
+            null,
+            null,
+            -0.84
+          ]
+        },
+        {
+          "period": "4T-20",
+          "period_acumulado": "Ene-Dic 20",
+          "values": [
+            2783.55,
+            null,
+            null,
+            null,
+            -0.41
+          ]
+        },
+        {
+          "period": "1T-21",
+          "period_acumulado": "Ene-Mar 21",
+          "values": [
+            16503.34,
+            null,
+            null,
+            null,
+            -0.02
           ]
         },
         {
           "period": "2T-21",
+          "period_acumulado": "Ene-Jun 21",
           "values": [
-            18433.46954255985,
-            6025.000693990005,
-            8658.214019469988,
-            3750.254829099993,
-            null
+            5927.4,
+            null,
+            null,
+            null,
+            -0.2
           ]
         },
         {
           "period": "3T-21",
+          "period_acumulado": "Ene-Sep 21",
           "values": [
-            24831.724270920065,
-            9544.62750515,
-            9999.422711059975,
-            5287.674054709976,
-            null
+            6439.84,
+            null,
+            null,
+            null,
+            3.81
           ]
         },
         {
           "period": "4T-21",
+          "period_acumulado": "Ene-Dic 21",
           "values": [
-            31621.20435087015,
-            13825.301669439956,
-            12213.01206093998,
-            5582.890620490009,
-            null
+            4984.47,
+            null,
+            null,
+            null,
+            0.79
           ]
         },
         {
           "period": "1T-22",
+          "period_acumulado": "Ene-Mar 22",
           "values": [
-            19427.457786730047,
-            8792.209679979997,
-            9259.124450750005,
-            1376.1236559999968,
-            null
+            22783.26,
+            null,
+            null,
+            null,
+            0.38
           ]
         },
         {
           "period": "2T-22",
+          "period_acumulado": "Ene-Jun 22",
           "values": [
-            27511.623732829947,
-            11836.527790140002,
-            11655.60546753999,
-            4019.4904751499985,
-            null
+            8382.12,
+            null,
+            null,
+            null,
+            0.41
           ]
         },
         {
           "period": "3T-22",
+          "period_acumulado": "Ene-Sep 22",
           "values": [
-            32147.38886485986,
-            14519.885829040022,
-            14052.151391029991,
-            3575.3516447900115,
-            null
+            3450.38,
+            null,
+            null,
+            null,
+            -0.46
           ]
         },
         {
           "period": "4T-22",
+          "period_acumulado": "Ene-Dic 22",
           "values": [
-            35291.61835650035,
-            16993.097777980158,
-            16027.790410173762,
-            2270.730168346636,
-            null
+            1804.83,
+            null,
+            null,
+            null,
+            -0.64
           ]
         },
         {
           "period": "1T-23",
+          "period_acumulado": "Ene-Mar 23",
           "values": [
-            18635.69179056182,
-            931.6891732793321,
-            16704.7085712238,
-            999.2940460586948,
-            null
+            23658.92,
+            null,
+            null,
+            null,
+            0.04
           ]
         },
         {
           "period": "2T-23",
+          "period_acumulado": "Ene-Jun 23",
           "values": [
-            29040.823874591104,
-            2135.168038952664,
-            22608.62151171782,
-            4297.034323920598,
-            null
+            8512.41,
+            null,
+            null,
+            null,
+            0.02
           ]
         },
         {
           "period": "3T-23",
+          "period_acumulado": "Ene-Sep 23",
           "values": [
-            32926.43680025823,
-            2806.241495010777,
-            24905.191435293553,
-            5215.003869953881,
-            null
+            3043.69,
+            null,
+            null,
+            null,
+            -0.12
           ]
         },
         {
           "period": "4T-23",
+          "period_acumulado": "Ene-Dic 23",
           "values": [
-            36058.04377568115,
-            4817.437436025721,
-            26630.612710594727,
-            4609.993629060474,
-            null
+            1292.36,
+            null,
+            null,
+            null,
+            -0.28
           ]
         },
         {
           "period": "1T-24",
+          "period_acumulado": "Ene-Mar 24",
           "values": [
-            20312.65875078067,
-            599.3244456864041,
-            19614.77618673003,
-            98.5581183642047,
-            null
+            27218.64,
+            null,
+            null,
+            null,
+            0.15
           ]
         },
         {
           "period": "2T-24",
+          "period_acumulado": "Ene-Jun 24",
           "values": [
-            31096.32510957158,
-            909.3070721249387,
-            30287.603011614978,
-            -100.58497416839889,
-            null
+            6490.68,
+            null,
+            null,
+            null,
+            -0.24
           ]
         },
         {
           "period": "3T-24",
+          "period_acumulado": "Ene-Sep 24",
           "values": [
-            35737.48954061164,
-            2060.3689516581985,
-            30744.83932329829,
-            2932.2812656551187,
-            null
+            3075.28,
+            null,
+            null,
+            null,
+            0.01
           ]
         },
         {
           "period": "4T-24",
+          "period_acumulado": "Ene-Dic 24",
           "values": [
-            36872.42195115965,
-            3168.543654846584,
-            28710.3148665372,
-            4993.563429775793,
-            null
+            1184.56,
+            null,
+            null,
+            null,
+            -0.08
           ]
         },
         {
           "period": "1T-25",
+          "period_acumulado": "Ene-Mar 25",
           "values": [
-            21373.193105502167,
-            1586.3962848710341,
-            16646.993088795327,
-            3139.80373183581,
-            null
+            24061.16,
+            null,
+            null,
+            null,
+            -0.12
           ]
         },
         {
           "period": "2T-25",
+          "period_acumulado": "Ene-Jun 25",
           "values": [
-            34264.56746296593,
-            3148.538441297729,
-            28914.108630111772,
-            2201.9203915563307,
-            null
+            13958.56,
+            null,
+            null,
+            null,
+            1.15
           ]
         },
         {
           "period": "3T-25",
+          "period_acumulado": "Ene-Sep 25",
           "values": [
-            40905.61371637016,
-            6563.38012553143,
-            27748.842164331676,
-            6593.391426507059,
-            null
+            7886.47,
+            null,
+            null,
+            null,
+            1.56
           ]
         },
         {
           "period": "4T-25",
+          "period_acumulado": "Ene-Dic 25",
           "values": [
-            40870.76932803365,
-            7377.426584413343,
-            27649.339908233083,
-            5844.002835387397,
-            null
+            -3989.51,
+            null,
+            null,
+            null,
+            -4.37
           ]
         },
         {
           "period": "1T-26",
+          "period_acumulado": "Ene-Mar 26",
           "values": [
-            23590.622045545126,
-            1705.2271007425254,
-            22221.505971855015,
-            -336.1110270523728,
-            null
+            24503.05,
+            null,
+            null,
+            null,
+            0.02
+          ]
+        },
+        {
+          "period": "2T-26",
+          "period_acumulado": "Ene-Jun 26",
+          "values": [
+            10464.95,
+            654.37,
+            6870.96,
+            2939.62,
+            -0.04
           ]
         }
       ],
-      "last_observation": "1T-26",
-      "last_updated": "2026-07-16",
-      "last_checked": "2026-07-16",
-      "source_origin": "legacy_dashboard",
+      "last_observation": "2T-26",
+      "last_updated": "2026-09-01",
+      "last_checked": "2026-09-01",
+      "source_origin": "api",
       "requiere_token": null,
       "serie_confirmada": false,
       "clasificacion": "complementario",
       "estado": "ACTUALIZADO",
       "origen_dato": "respaldo",
-      "fecha_publicacion": "26 de mayo de 2026",
-      "periodo_referencia": "1T-26",
-      "fecha_consulta": "2026-07-16",
+      "fecha_publicacion": "24 de agosto de 2026",
+      "periodo_referencia": "2T-26",
+      "fecha_consulta": "2026-09-01",
       "metrics": {
         "kpi": {
-          "assessment": "neutral",
-          "dir": "flat",
-          "ultimoFmt": "23,591",
-          "ultimoRaw": 23590.622045545126,
-          "ultimoP": "1T-26",
-          "varText": "—",
-          "varMag": null,
-          "pos": true,
-          "varColor": "#1e5b4f",
+          "assessment": "adverso",
+          "dir": "down",
+          "ultimoFmt": "10,465",
+          "ultimoRaw": 10464.95,
+          "ultimoP": "2T-26",
+          "varText": "-4.0%",
+          "varMag": -4.0,
+          "pos": false,
+          "varColor": "#9b2247",
           "varLabel": "Var. anual del acumulado",
-          "maxFmt": "40,906",
-          "maxRaw": 40905.61371637016,
-          "maxP": "3T-25",
-          "minFmt": "11,864",
-          "minRaw": 11864.03046282,
-          "minP": "1T-21",
-          "lastI": 20,
+          "maxFmt": "27,219",
+          "maxRaw": 27218.64,
+          "maxP": "1T-24",
+          "minFmt": "-3,990",
+          "minRaw": -3989.51,
+          "minP": "4T-25",
+          "lastI": 108,
           "series": [
-            11864.03046282,
-            18433.46954255985,
-            24831.724270920065,
-            31621.20435087015,
-            19427.457786730047,
-            27511.623732829947,
-            32147.38886485986,
-            35291.61835650035,
-            18635.69179056182,
-            29040.823874591104,
-            32926.43680025823,
-            36058.04377568115,
-            20312.65875078067,
-            31096.32510957158,
-            35737.48954061164,
-            36872.42195115965,
-            21373.193105502167,
-            34264.56746296593,
-            40905.61371637016,
-            40870.76932803365,
-            23590.622045545126
+            null,
+            null,
+            null,
+            4600.64,
+            4857.42,
+            3056.95,
+            5733.68,
+            3598.68,
+            5218.83,
+            16314.05,
+            4925.63,
+            5067.98,
+            6258.52,
+            6114.34,
+            6658.37,
+            3963.69,
+            5547.34,
+            2521.68,
+            6217.27,
+            9363.46,
+            4351.5,
+            3284.91,
+            8015.7,
+            6761.62,
+            6773.62,
+            5478.92,
+            6781.66,
+            7437.86,
+            6634.31,
+            2346.72,
+            4817.96,
+            10815.78,
+            6137.64,
+            7628.66,
+            7811.96,
+            8554.83,
+            8377.56,
+            5644.14,
+            6945.7,
+            6105.3,
+            6094.49,
+            2398.04,
+            3253.43,
+            8722.79,
+            9301.62,
+            3942.08,
+            5232.51,
+            8431.22,
+            6697.45,
+            4349.9,
+            6154.01,
+            7893.19,
+            5622.13,
+            5736.59,
+            2518.22,
+            10571.58,
+            21019.15,
+            4179.16,
+            12587.22,
+            13828.01,
+            5479.83,
+            3222.12,
+            7822.45,
+            12136.46,
+            6656.85,
+            9635.92,
+            7516.39,
+            12805.81,
+            6210.67,
+            4320.1,
+            7855.77,
+            13796.27,
+            6837.92,
+            6367.72,
+            7062.67,
+            14075.43,
+            9579.73,
+            4133.53,
+            6325.44,
+            15213.12,
+            6681.61,
+            8218.74,
+            4685.06,
+            16783.71,
+            7377.65,
+            1339.34,
+            2783.55,
+            16503.34,
+            5927.4,
+            6439.84,
+            4984.47,
+            22783.26,
+            8382.12,
+            3450.38,
+            1804.83,
+            23658.92,
+            8512.41,
+            3043.69,
+            1292.36,
+            27218.64,
+            6490.68,
+            3075.28,
+            1184.56,
+            24061.16,
+            13958.56,
+            7886.47,
+            -3989.51,
+            24503.05,
+            10464.95
           ],
           "periods": [
+            "2T-99",
+            "3T-99",
+            "4T-99",
+            "1T-00",
+            "2T-00",
+            "3T-00",
+            "4T-00",
+            "1T-01",
+            "2T-01",
+            "3T-01",
+            "4T-01",
+            "1T-02",
+            "2T-02",
+            "3T-02",
+            "4T-02",
+            "1T-03",
+            "2T-03",
+            "3T-03",
+            "4T-03",
+            "1T-04",
+            "2T-04",
+            "3T-04",
+            "4T-04",
+            "1T-05",
+            "2T-05",
+            "3T-05",
+            "4T-05",
+            "1T-06",
+            "2T-06",
+            "3T-06",
+            "4T-06",
+            "1T-07",
+            "2T-07",
+            "3T-07",
+            "4T-07",
+            "1T-08",
+            "2T-08",
+            "3T-08",
+            "4T-08",
+            "1T-09",
+            "2T-09",
+            "3T-09",
+            "4T-09",
+            "1T-10",
+            "2T-10",
+            "3T-10",
+            "4T-10",
+            "1T-11",
+            "2T-11",
+            "3T-11",
+            "4T-11",
+            "1T-12",
+            "2T-12",
+            "3T-12",
+            "4T-12",
+            "1T-13",
+            "2T-13",
+            "3T-13",
+            "4T-13",
+            "1T-14",
+            "2T-14",
+            "3T-14",
+            "4T-14",
+            "1T-15",
+            "2T-15",
+            "3T-15",
+            "4T-15",
+            "1T-16",
+            "2T-16",
+            "3T-16",
+            "4T-16",
+            "1T-17",
+            "2T-17",
+            "3T-17",
+            "4T-17",
+            "1T-18",
+            "2T-18",
+            "3T-18",
+            "4T-18",
+            "1T-19",
+            "2T-19",
+            "3T-19",
+            "4T-19",
+            "1T-20",
+            "2T-20",
+            "3T-20",
+            "4T-20",
             "1T-21",
             "2T-21",
             "3T-21",
@@ -22775,28 +23945,29 @@
             "2T-25",
             "3T-25",
             "4T-25",
-            "1T-26"
+            "1T-26",
+            "2T-26"
           ],
-          "semaforo": "neutral",
+          "semaforo": "malo",
           "yoyText": "—",
           "yoyLabel": "—"
         },
         "yoy": null,
         "resumen": [
-          "En primer trimestre de 2026, la IED acumulada se ubicó en $23,591 millones de dólares (acumulado ene-jun, millones de dólares). El valor de var. anual del acumulado fue de — frente al mismo periodo del año anterior.",
-          "En la serie mostrada, el indicador oscila entre un máximo de $40,906 millones de dólares (tercer trimestre de 2025) y un mínimo de $11,864 millones de dólares (primer trimestre de 2021). El último dato se ubica dentro del rango observado en el periodo mostrado.",
-          "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
+          "En segundo trimestre de 2026, la IED acumulada se ubicó en $10,465 millones de dólares (acumulado ene-jun, millones de dólares). El valor de var. anual del acumulado fue de -4.0% frente al mismo periodo del año anterior.",
+          "En la serie mostrada, el indicador oscila entre un máximo de $27,219 millones de dólares (primer trimestre de 2024) y un mínimo de −$3,990 millones de dólares (cuarto trimestre de 2025). El último dato se ubica dentro del rango observado en el periodo mostrado.",
+          "La variación se clasifica como adversa según la lectura económica del indicador."
         ]
       },
-      "periodo_referencia_oficial": "1° trimestre 2026",
-      "fecha_publicacion_oficial": "26 de mayo de 2026",
+      "periodo_referencia_oficial": "2° trimestre 2026",
+      "fecha_publicacion_oficial": "24 de agosto de 2026",
       "proxima_publicacion": {
-        "fecha_publicacion": "24 de agosto de 2026",
-        "periodo_referencia": "2° trimestre 2026",
-        "tipo": "oficial"
+        "fecha_publicacion": "Por anunciar",
+        "periodo_referencia": "3° trimestre 2026",
+        "tipo": "no_anunciada"
       },
-      "motivo_frescura": "El periodo cargado (1T-26) coincide con el último periodo esperado (1° trimestre 2026).",
-      "url_boletin_oficial": "https://www.presidenta.gob.mx/boletines/inversion-extranjera-aumenta-10-4-por-ciento-en-primer-trimestre-2026-presidenta-sheinbaum",
+      "motivo_frescura": "El periodo cargado (2T-26) coincide con el último periodo esperado (2° trimestre 2026).",
+      "url_boletin_oficial": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa",
       "xlsx_disponible": true,
       "xlsx_causa": null,
       "url_excel_individual": "downloads/indicadores/IED/IED_datos.xlsx",
@@ -22804,7 +23975,7 @@
       "nota_causa": "Falta plantilla aprobada",
       "url_nota_individual": null,
       "url_fuente_oficial": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa",
-      "fecha_ultima_publicacion": "26 de mayo de 2026",
+      "fecha_ultima_publicacion": "24 de agosto de 2026",
       "regla_publicacion": null,
       "windows": [
         {
@@ -22822,7 +23993,374 @@
           "label": "Máximo",
           "count": null
         }
-      ]
+      ],
+      "observations_acumulado": [
+        {
+          "period": "1999",
+          "period_acumulado": "Ene-Jun 99",
+          "quarter": "2T-99",
+          "values": [
+            6991.97,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "period": "2000",
+          "period_acumulado": "Ene-Jun 00",
+          "quarter": "2T-00",
+          "values": [
+            9458.06,
+            null,
+            null,
+            null,
+            1.26
+          ]
+        },
+        {
+          "period": "2001",
+          "period_acumulado": "Ene-Jun 01",
+          "quarter": "2T-01",
+          "values": [
+            8817.51,
+            null,
+            null,
+            null,
+            0.24
+          ]
+        },
+        {
+          "period": "2002",
+          "period_acumulado": "Ene-Jun 02",
+          "quarter": "2T-02",
+          "values": [
+            11326.5,
+            null,
+            null,
+            null,
+            2.01
+          ]
+        },
+        {
+          "period": "2003",
+          "period_acumulado": "Ene-Jun 03",
+          "quarter": "2T-03",
+          "values": [
+            9511.02,
+            null,
+            null,
+            null,
+            1.04
+          ]
+        },
+        {
+          "period": "2004",
+          "period_acumulado": "Ene-Jun 04",
+          "quarter": "2T-04",
+          "values": [
+            13714.95,
+            null,
+            null,
+            null,
+            2.3
+          ]
+        },
+        {
+          "period": "2005",
+          "period_acumulado": "Ene-Jun 05",
+          "quarter": "2T-05",
+          "values": [
+            13535.24,
+            null,
+            null,
+            null,
+            0.41
+          ]
+        },
+        {
+          "period": "2006",
+          "period_acumulado": "Ene-Jun 06",
+          "quarter": "2T-06",
+          "values": [
+            14072.17,
+            null,
+            null,
+            null,
+            1.36
+          ]
+        },
+        {
+          "period": "2007",
+          "period_acumulado": "Ene-Jun 07",
+          "quarter": "2T-07",
+          "values": [
+            16953.42,
+            null,
+            null,
+            null,
+            1.44
+          ]
+        },
+        {
+          "period": "2008",
+          "period_acumulado": "Ene-Jun 08",
+          "quarter": "2T-08",
+          "values": [
+            16932.4,
+            null,
+            null,
+            null,
+            0.79
+          ]
+        },
+        {
+          "period": "2009",
+          "period_acumulado": "Ene-Jun 09",
+          "quarter": "2T-09",
+          "values": [
+            12199.79,
+            null,
+            null,
+            null,
+            0.28
+          ]
+        },
+        {
+          "period": "2010",
+          "period_acumulado": "Ene-Jun 10",
+          "quarter": "2T-10",
+          "values": [
+            18024.41,
+            null,
+            null,
+            null,
+            0.81
+          ]
+        },
+        {
+          "period": "2011",
+          "period_acumulado": "Ene-Jun 11",
+          "quarter": "2T-11",
+          "values": [
+            15128.67,
+            null,
+            null,
+            null,
+            0.24
+          ]
+        },
+        {
+          "period": "2012",
+          "period_acumulado": "Ene-Jun 12",
+          "quarter": "2T-12",
+          "values": [
+            13515.32,
+            null,
+            null,
+            null,
+            0.27
+          ]
+        },
+        {
+          "period": "2013",
+          "period_acumulado": "Ene-Jun 13",
+          "quarter": "2T-13",
+          "values": [
+            31590.73,
+            null,
+            null,
+            null,
+            2.28
+          ]
+        },
+        {
+          "period": "2014",
+          "period_acumulado": "Ene-Jun 14",
+          "quarter": "2T-14",
+          "values": [
+            19307.83,
+            null,
+            null,
+            null,
+            -0.19
+          ]
+        },
+        {
+          "period": "2015",
+          "period_acumulado": "Ene-Jun 15",
+          "quarter": "2T-15",
+          "values": [
+            18793.31,
+            null,
+            null,
+            null,
+            0.93
+          ]
+        },
+        {
+          "period": "2016",
+          "period_acumulado": "Ene-Jun 16",
+          "quarter": "2T-16",
+          "values": [
+            19016.48,
+            null,
+            null,
+            null,
+            0.38
+          ]
+        },
+        {
+          "period": "2017",
+          "period_acumulado": "Ene-Jun 17",
+          "quarter": "2T-17",
+          "values": [
+            20634.18,
+            null,
+            null,
+            null,
+            0.43
+          ]
+        },
+        {
+          "period": "2018",
+          "period_acumulado": "Ene-Jun 18",
+          "quarter": "2T-18",
+          "values": [
+            23655.16,
+            null,
+            null,
+            null,
+            0.51
+          ]
+        },
+        {
+          "period": "2019",
+          "period_acumulado": "Ene-Jun 19",
+          "quarter": "2T-19",
+          "values": [
+            21894.73,
+            null,
+            null,
+            null,
+            0.23
+          ]
+        },
+        {
+          "period": "2020",
+          "period_acumulado": "Ene-Jun 20",
+          "quarter": "2T-20",
+          "values": [
+            24161.35,
+            null,
+            null,
+            null,
+            0.33
+          ]
+        },
+        {
+          "period": "2021",
+          "period_acumulado": "Ene-Jun 21",
+          "quarter": "2T-21",
+          "values": [
+            22430.74,
+            null,
+            null,
+            null,
+            0.25
+          ]
+        },
+        {
+          "period": "2022",
+          "period_acumulado": "Ene-Jun 22",
+          "quarter": "2T-22",
+          "values": [
+            31165.38,
+            null,
+            null,
+            null,
+            0.69
+          ]
+        },
+        {
+          "period": "2023",
+          "period_acumulado": "Ene-Jun 23",
+          "quarter": "2T-23",
+          "values": [
+            32171.33,
+            null,
+            null,
+            null,
+            0.17
+          ]
+        },
+        {
+          "period": "2024",
+          "period_acumulado": "Ene-Jun 24",
+          "quarter": "2T-24",
+          "values": [
+            33709.33,
+            null,
+            null,
+            null,
+            0.16
+          ]
+        },
+        {
+          "period": "2025",
+          "period_acumulado": "Ene-Jun 25",
+          "quarter": "2T-25",
+          "values": [
+            38019.72,
+            null,
+            null,
+            null,
+            0.22
+          ]
+        },
+        {
+          "period": "2026",
+          "period_acumulado": "Ene-Jun 26",
+          "quarter": "2T-26",
+          "values": [
+            34968,
+            2726,
+            30957,
+            1285,
+            0.02
+          ]
+        }
+      ],
+      "source_mode": "structured",
+      "windows_flujo": [
+        {
+          "id": "1a",
+          "label": "1 año",
+          "count": 4
+        },
+        {
+          "id": "3a",
+          "label": "3 años",
+          "count": 12
+        },
+        {
+          "id": "5a",
+          "label": "5 años",
+          "count": 20
+        },
+        {
+          "id": "max",
+          "label": "Máximo",
+          "count": null
+        }
+      ],
+      "api_meta": {
+        "n_obs": 109,
+        "n_obs_acumulado": 28,
+        "ultima_observacion": "2T-26",
+        "ultimo_valor": 34968
+      }
     },
     "DESOCUP": {
       "key": "DESOCUP",
@@ -24412,7 +25950,8 @@
           "label": "Máximo",
           "count": null
         }
-      ]
+      ],
+      "boletin_validado": true
     },
     "INPC": {
       "key": "INPC",
@@ -27197,7 +28736,8 @@
           "label": "Máximo",
           "count": null
         }
-      ]
+      ],
+      "boletin_validado": true
     },
     "IMFBCF": {
       "key": "IMFBCF",
@@ -47993,7 +49533,8 @@
           "count": null
         }
       ],
-      "sigla": "IOAE"
+      "sigla": "IOAE",
+      "boletin_validado": true
     },
     "EMIM": {
       "key": "EMIM",
@@ -54385,23 +55926,24 @@
           "remuneraciones_index": 144.1,
           "remuneraciones_anual": 0.038
         }
-      }
+      },
+      "boletin_validado": true
     },
     "TIPOCAMBIO": {
       "key": "TIPOCAMBIO",
-      "nombre": "Tipo de cambio FIX (pesos por dólar)",
+      "nombre": "Tipo de cambio FIX",
       "descripcion": "Tipo de cambio de referencia (peso por dólar) determinado por el Banco de México, utilizado para solventar obligaciones denominadas en dólares.",
-      "frecuencia": "Diaria",
+      "frecuencia": "Diaria — días hábiles bancarios",
       "unidad": "Pesos por dólar",
       "ajuste_estacional": "No aplica",
       "grupo": "financiero",
       "publicacion": "Días hábiles",
       "proximo": "Siguiente día hábil",
       "fuente": {
-        "nombre": "Banco de México (SIE)",
-        "serie": "SF43718",
+        "nombre": "Banco de México",
         "link": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
-        "metodo": "Banxico SIE API"
+        "metodo": "Banxico SIE API",
+        "serie": "SF43718"
       },
       "columns": [
         {
@@ -71912,10 +73454,10 @@
           "A tasa anual, el FIX varió -8.96%; en los últimos 12 meses osciló entre $16.90 — $18.76."
         ]
       },
-      "periodo_referencia_oficial": "Ago 26",
+      "periodo_referencia_oficial": "Sep 26",
       "fecha_publicacion_oficial": null,
       "proxima_publicacion": null,
-      "motivo_frescura": "El dashboard tiene 2026-09-01, que está adelantado al periodo esperado (Ago 26); se recomienda revisar el calendario.",
+      "motivo_frescura": "El periodo cargado (2026-09-01) coincide con el último periodo esperado (Sep 26).",
       "url_boletin_oficial": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/TIPOCAMBIO/TIPOCAMBIO_datos.xlsx",
@@ -85665,19 +87207,19 @@
     },
     "TASA": {
       "key": "TASA",
-      "nombre": "Tasa objetivo de Banco de México",
+      "nombre": "Tasa de interés objetivo",
       "descripcion": "Objetivo para la Tasa de Interés Interbancaria a un día fijado por la Junta de Gobierno del Banco de México como principal instrumento de política monetaria.",
-      "frecuencia": "Diaria",
+      "frecuencia": "Diaria (cambios discretos)",
       "unidad": "Porcentaje anual",
       "ajuste_estacional": "No aplica; se publica diariamente pero solo cambia en fechas de decisión de política monetaria",
       "grupo": "financiero",
       "publicacion": "Días de anuncio de política monetaria",
       "proximo": "Siguiente reunión programada",
       "fuente": {
-        "nombre": "Banco de México (SIE)",
-        "serie": "SF61745",
+        "nombre": "Banco de México",
         "link": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
-        "metodo": "Banxico SIE API"
+        "metodo": "Banxico SIE API",
+        "serie": "SF61745"
       },
       "columns": [
         {
@@ -130579,10 +132121,10 @@
       "publicacion": "Semanal (martes)",
       "proximo": "Siguiente publicación semanal",
       "fuente": {
-        "nombre": "Banco de México (SIE)",
-        "serie": "SF43707",
+        "nombre": "Banco de México",
         "link": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
-        "metodo": "Banxico SIE API"
+        "metodo": "Banxico SIE API",
+        "serie": "SF43707"
       },
       "columns": [
         {
@@ -138411,7 +139953,7 @@
       "clasificacion": "complementario",
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
-      "fecha_publicacion": "3 de agosto de 2026",
+      "fecha_publicacion": "1 de septiembre de 2026",
       "periodo_referencia": "Ago 26",
       "fecha_consulta": "2026-09-01",
       "metrics": {
@@ -138670,7 +140212,7 @@
         "tipo": "oficial"
       },
       "motivo_frescura": "El periodo cargado (Ago 26) coincide con el último periodo esperado (Agosto de 2026).",
-      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ee/ee2026_08.pdf",
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ee/ee2026_09.pdf",
       "xlsx_disponible": true,
       "xlsx_causa": null,
       "url_excel_individual": "downloads/indicadores/EMOE/EMOE_datos.xlsx",
@@ -138681,10 +140223,11 @@
       "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=682416#D701401",
       "fecha_ultima_publicacion": "1 de septiembre de 2026",
       "regla_publicacion": null,
-      "periodo_boletin": "Jul 26",
-      "numero_boletin": "474/26",
+      "periodo_boletin": "Ago 26",
+      "numero_boletin": "576/26",
       "tipo_documento": "PDF",
-      "producto_boletin": "Encuesta Mensual de Opinión Empresarial"
+      "producto_boletin": "Encuesta Mensual de Opinión Empresarial",
+      "boletin_validado": true
     },
     "BCMM": {
       "key": "BCMM",
@@ -159107,7 +160650,8 @@
           "label": "Máximo",
           "count": null
         }
-      ]
+      ],
+      "boletin_validado": true
     },
     "INPP": {
       "key": "INPP",

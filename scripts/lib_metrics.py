@@ -2130,6 +2130,63 @@ def _reservas_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
         "analysis": [],
     }
 
+def _ied_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
+    """KPI y resumen específico para IED: acumulado comparable como principal."""
+    m = ind.get("metrics") or {}
+    ac = m.get("acumulado", {})
+    fl = m.get("flujo_trimestral", {})
+    comp_tipo = m.get("composicion_tipo") or []
+    comp_sector = m.get("composicion_sector") or []
+
+    if not ac or ac.get("valor") is None:
+        return None
+
+    acum_val = ac.get("valor")
+    acum_var = ac.get("variacion_anual_pct")
+    flujo_val = fl.get("valor")
+    flujo_var = fl.get("variacion_anual_pct")
+    corte = ac.get("corte") or "Ene-Jun"
+    periodo = ac.get("periodo") or "Ene-Jun 26"
+    anio = periodo.split()[-1]
+    anio = ("20" + anio) if len(anio) == 2 else anio
+    # Convertir corte a texto legible (Ene-Jun -> enero y junio)
+    M = {"Ene": "enero", "Feb": "febrero", "Mar": "marzo", "Abr": "abril", "May": "mayo",
+         "Jun": "junio", "Jul": "julio", "Ago": "agosto", "Sep": "septiembre", "Oct": "octubre",
+         "Nov": "noviembre", "Dic": "diciembre"}
+    meses = [M.get(x, x.lower()) for x in corte.split("-")]
+    corte_text = " y ".join(meses) if len(meses) > 1 else meses[0]
+    flujo_periodo = fl.get("periodo") or "2T-26"
+
+    bullets = [
+        f"Entre {corte_text} de {anio}, México recibió {prose_val('IED', acum_val)} de IED"
+        + (f", {'una variación anual del ' if (acum_var or 0) >= 0 else 'una caída anual del '}{F._to_fixed(abs(acum_var or 0) * 100, 1, 1)}%" if acum_var is not None else "")
+        + (" más que en el mismo periodo del año previo." if (acum_var or 0) >= 0 else " respecto al mismo periodo del año previo."),
+    ]
+    if flujo_val is not None:
+        bullets.append(
+            f"Durante el {flujo_periodo}, el flujo trimestral fue de {prose_val('IED', flujo_val)}"
+            + (f" (variación anual {F._to_fixed((flujo_var or 0) * 100, 1, 1)}%)." if flujo_var is not None else ".")
+        )
+    if comp_tipo:
+        top = comp_tipo[0]
+        bullets.append(
+            f"{top['concepto']} representó {F._to_fixed(top.get('participacion_pct', 0) * 100, 1, 1)}% del acumulado."
+        )
+    if comp_sector:
+        top = comp_sector[0]
+        bullets.append(
+            f"{top['sector']} concentró {F._to_fixed(top.get('participacion_pct', 0) * 100, 1, 1)}% de la IED."
+        )
+
+    return {
+        "kpi": None,
+        "yoy": None,
+        "annualVar": None,
+        "resumen": bullets[:4],
+        "analysis": bullets[:4],
+    }
+
+
 def compute_all_metrics(payload: dict | None = None, kpicfg: dict | None = None) -> dict[str, dict[str, Any]]:
     """Calcula kpi, analysis y annualVar para todos los indicadores."""
     if payload is None:
@@ -2193,6 +2250,11 @@ def compute_all_metrics(payload: dict | None = None, kpicfg: dict | None = None)
             reservas = _reservas_metrics(ind, kpicfg)
             if reservas:
                 out[key] = reservas
+                continue
+        if key == "IED" and ind.get("metrics", {}).get("acumulado"):
+            ied = _ied_metrics(ind, kpicfg)
+            if ied:
+                out[key] = ied
                 continue
         kpi = compute_kpi(ind, kpicfg)
         yoy = annual_var(ind, kpi, kpicfg) if kpi else None

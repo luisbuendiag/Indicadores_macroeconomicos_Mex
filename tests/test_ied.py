@@ -112,6 +112,52 @@ def test_source_mode_priority():
     assert ind["metrics"]["source_mode"] == "structured"
 
 
+def test_ied_integration_final_output():
+    """Construye IED y verifica la SALIDA FINAL que persistiría en data/indicadores.json."""
+    res = ied.fetch()
+    assert res.ok, res.warnings
+    raw = res.data["IED"]
+
+    from build_data import merge_indicator
+    import lib_data as L
+    payload = L.load_data()
+    merge_indicator(payload, "IED", raw)
+
+    # Reproducir el merge de métricas de lib_metrics
+    import lib_metrics
+    kpicfg, _ = lib_metrics._kpicfg_and_colors()
+    ied_metrics = lib_metrics._ied_metrics(payload["indicators"]["IED"], kpicfg)
+    payload["indicators"]["IED"].setdefault("metrics", {})
+    payload["indicators"]["IED"]["metrics"].update(ied_metrics or {})
+
+    ind = payload["indicators"]["IED"]
+
+    # El periodo final no puede ser 1T-26
+    assert ind["last_observation"] == "2T-26", f"last_observation={ind['last_observation']}"
+    assert ind["periodo_referencia"] == "Ene-Jun 26", f"periodo_referencia={ind['periodo_referencia']}"
+
+    # Acumulado y flujo
+    assert ind["metrics"]["acumulado"]["valor"] == 34968
+    assert round(ind["metrics"]["acumulado"]["variacion_anual_pct"], 3) == 0.021
+    assert round(ind["metrics"]["flujo_trimestral"]["valor"], 2) == 10464.95
+    assert round(ind["metrics"]["flujo_trimestral"]["variacion_anual_pct"], 2) == -0.04
+
+    # Series
+    assert len(ind["observations"]) > 0
+    assert len(ind["observations_acumulado"]) > 0
+    assert ind["observations"][-1]["period"] == "2T-26"
+    assert ind["observations_acumulado"][-1]["period"] == "2026"
+
+    # Componentes no vacíos
+    assert ind["metrics"]["componentes_acumulado"]
+    assert ind["metrics"]["composicion_tipo"]
+    assert ind["metrics"]["composicion_sector"]
+
+    # Metadata
+    assert ind["fecha_publicacion"] == "24 de agosto de 2026"
+    assert "source_mode" in ind
+
+
 @pytest.mark.skipif(not (DATA_DIR / "ied_manual_2026_2t.json").exists(), reason="manual 2T no presente")
 def test_labels_and_separation():
     res = ied.fetch()
