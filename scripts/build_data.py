@@ -1082,7 +1082,7 @@ def run(offline: bool = False) -> int:
 
         # inegi_bulletin se ejecuta primero para evitar throttling del sitio de prensa
         # después de las llamadas masivas al BIE.
-        for name, mod in (("banxico_sie", banxico_sie), ("inegi_bulletin", inegi_bulletin), ("banxico", banxico), ("inegi", inegi), ("inegi_inpc", inegi_inpc), ("inegi_inpp", inegi_inpp), ("worldbank", worldbank)):
+        for name, mod in (("banxico_sie", banxico_sie), ("inegi_bulletin", inegi_bulletin), ("banxico", banxico), ("inegi", inegi), ("inegi_inpc", inegi_inpc), ("inegi_inpp", inegi_inpp), ("ied", ied), ("worldbank", worldbank)):
             log["network_calls"] = True
             try:
                 res = mod.fetch(config)
