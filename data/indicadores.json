@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-01T06:48:30+00:00",
+    "generated_at": "2026-09-01T13:11:02+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-09-01T00:48:30-06:00",
+    "last_update_ct": "2026-09-01T07:11:02-06:00",
     "periodo_referencia_reciente": {
       "period": "Jul 26",
       "period_long": "Jul 26"
@@ -138343,12 +138343,19 @@
         {
           "period": "Jul 26",
           "values": [
-            48.241225,
-            0.084252
+            48.203612,
+            0.046638
+          ]
+        },
+        {
+          "period": "Ago 26",
+          "values": [
+            48.232912,
+            0.029301
           ]
         }
       ],
-      "last_observation": "Jul 26",
+      "last_observation": "Ago 26",
       "last_updated": "2026-09-01",
       "last_checked": "2026-09-01",
       "requiere_token": "INEGI",
@@ -138357,17 +138364,17 @@
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
       "fecha_publicacion": "3 de agosto de 2026",
-      "periodo_referencia": "Jul 26",
+      "periodo_referencia": "Ago 26",
       "fecha_consulta": "2026-09-01",
       "metrics": {
         "kpi": {
           "assessment": "neutral",
-          "dir": "up",
+          "dir": "flat",
           "ultimoFmt": "48.2",
-          "ultimoRaw": 48.241225,
-          "ultimoP": "Jul 26",
-          "varText": "+0.1",
-          "varMag": 0.084252,
+          "ultimoRaw": 48.232912,
+          "ultimoP": "Ago 26",
+          "varText": "+0.0",
+          "varMag": 0.029301,
           "pos": true,
           "varColor": "#1e5b4f",
           "varLabel": "Var. mensual",
@@ -138377,7 +138384,7 @@
           "minFmt": "33.9",
           "minRaw": 33.9,
           "minP": "May 20",
-          "lastI": 102,
+          "lastI": 103,
           "series": [
             48.793,
             48.915,
@@ -138481,7 +138488,8 @@
             48.357206,
             48.225992,
             48.156973,
-            48.241225
+            48.203612,
+            48.232912
           ],
           "periods": [
             "Ene 18",
@@ -138586,33 +138594,34 @@
             "Abr 26",
             "May 26",
             "Jun 26",
-            "Jul 26"
+            "Jul 26",
+            "Ago 26"
           ],
           "semaforo": "estable",
-          "yoyText": "-1.5%",
+          "yoyText": "-2.2%",
           "yoyLabel": "Var. anual"
         },
         "yoy": {
-          "mag": -1.4848534868442451,
+          "mag": -2.1697512164506763,
           "pos": false,
-          "text": "-1.5%",
+          "text": "-2.2%",
           "label": "Var. anual"
         },
         "resumen": [
-          "En julio de 2026, la confianza empresarial se ubicó en 48.241225. El valor de var. mensual fue de +0.1 frente al mes previo.",
-          "La var. anual se situó en -1.5%, lo que refleja la comparación contra julio de 2026 del año previo.",
+          "En agosto de 2026, la confianza empresarial se ubicó en 48.232912. El valor de var. mensual fue de +0.0 frente al mes previo.",
+          "La var. anual se situó en -2.2%, lo que refleja la comparación contra agosto de 2026 del año previo.",
           "En la serie mostrada, el indicador oscila entre un máximo de 56.536 (julio de 2023) y un mínimo de 33.9 (mayo de 2020). El último dato se ubica dentro del rango observado en el periodo mostrado.",
           "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
         ]
       },
-      "periodo_referencia_oficial": "Julio de 2026",
-      "fecha_publicacion_oficial": "3 de agosto de 2026",
+      "periodo_referencia_oficial": "Agosto de 2026",
+      "fecha_publicacion_oficial": "1 de septiembre de 2026",
       "proxima_publicacion": {
-        "fecha_publicacion": "1 de septiembre de 2026",
-        "periodo_referencia": "Agosto de 2026",
+        "fecha_publicacion": "1 de octubre de 2026",
+        "periodo_referencia": "Septiembre de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo esperado (Julio de 2026).",
+      "motivo_frescura": "El periodo cargado (Ago 26) coincide con el último periodo esperado (Agosto de 2026).",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ee/ee2026_08.pdf",
       "xlsx_disponible": true,
       "xlsx_causa": null,
@@ -138622,7 +138631,7 @@
       "url_nota_individual": null,
       "source_origin": "api",
       "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=682416#D701401",
-      "fecha_ultima_publicacion": "3 de agosto de 2026",
+      "fecha_ultima_publicacion": "1 de septiembre de 2026",
       "regla_publicacion": null,
       "periodo_boletin": "Jul 26",
       "numero_boletin": "474/26",

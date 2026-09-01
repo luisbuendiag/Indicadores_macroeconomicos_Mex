@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-01T06:48:45+00:00",
+  "generated_at": "2026-09-01T13:11:16+00:00",
   "as_of": "2026-09-01",
   "fuente": "Calendario oficial de difusión",
   "sources": {
@@ -13359,14 +13359,28 @@
       "category": "Mercado laboral",
       "sigla": "EMOE",
       "type": "event",
-      "url": "https://www.inegi.org.mx/temas/opinion/",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_09.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/temas/opinion/",
-          "label": "Boletín / página oficial",
-          "size": null
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_09.pdf",
+          "label": "Boletín PDF",
+          "size": "0.27 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_09.docx",
+          "label": "Boletín Word",
+          "size": "0.26 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_09.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.02 MB"
         }
       ],
       "comentario": "Información de Interés Nacional. Incluye boletín de indicador.",
@@ -20032,14 +20046,28 @@
       "category": "Mercado laboral",
       "sigla": "EMOE",
       "type": "event",
-      "url": "https://www.inegi.org.mx/temas/opinion/",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_09.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/temas/opinion/",
-          "label": "Boletín / página oficial",
-          "size": null
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_09.pdf",
+          "label": "Boletín PDF",
+          "size": "0.27 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_09.docx",
+          "label": "Boletín Word",
+          "size": "0.26 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_09.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.02 MB"
         }
       ],
       "comentario": "Información de Interés Nacional. Incluye boletín de indicador.",

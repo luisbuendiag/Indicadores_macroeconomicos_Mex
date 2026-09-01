@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-01T05:49:20+00:00",
-  "last_update_ct": "2026-08-31T23:39:05-06:00",
+  "generated_at": "2026-09-01T12:25:34+00:00",
+  "last_update_ct": "2026-09-01T00:48:30-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -16425,12 +16425,12 @@
     "EMOE": {
       "kpi": {
         "assessment": "neutral",
-        "dir": "up",
+        "dir": "flat",
         "ultimoFmt": "48.2",
-        "ultimoRaw": 48.241225,
-        "ultimoP": "Jul 26",
-        "varText": "+0.1",
-        "varMag": 0.084252,
+        "ultimoRaw": 48.232912,
+        "ultimoP": "Ago 26",
+        "varText": "+0.0",
+        "varMag": 0.029301,
         "pos": true,
         "varColor": "#1e5b4f",
         "varLabel": "Var. mensual",
@@ -16440,7 +16440,7 @@
         "minFmt": "33.9",
         "minRaw": 33.9,
         "minP": "May 20",
-        "lastI": 102,
+        "lastI": 103,
         "series": [
           48.793,
           48.915,
@@ -16544,7 +16544,8 @@
           48.357206,
           48.225992,
           48.156973,
-          48.241225
+          48.203612,
+          48.232912
         ],
         "periods": [
           "Ene 18",
@@ -16649,26 +16650,27 @@
           "Abr 26",
           "May 26",
           "Jun 26",
-          "Jul 26"
+          "Jul 26",
+          "Ago 26"
         ],
         "semaforo": "estable",
-        "yoyText": "-1.5%",
+        "yoyText": "-2.2%",
         "yoyLabel": "Var. anual"
       },
       "analysis": [
-        "En julio de 2026, la confianza empresarial se ubicó en 48.241225, con una variación marginal de +0.08% frente al mes previo. Este resultado refleja  respecto a junio de 2026 (-0.07%), y deja al indicador por debajo del promedio del periodo mostrado de 49.62748273786408.",
+        "En agosto de 2026, la confianza empresarial se ubicó en 48.232912, con una variación marginal de +0.03% frente al mes previo. Este resultado refleja  respecto a julio de 2026 (+0.05%), y deja al indicador por debajo del promedio del periodo mostrado de 49.61371174038462.",
         "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 56.536 (julio de 2023) y un mínimo de 33.9 (mayo de 2020). El resultado más reciente se ubicó por debajo del promedio del periodo mostrado. El último dato se mantuvo cercano al del inicio del periodo mostrado."
       ],
       "resumen": [
-        "En julio de 2026, la confianza empresarial se ubicó en 48.241225. El valor de var. mensual fue de +0.1 frente al mes previo.",
-        "La var. anual se situó en -1.5%, lo que refleja la comparación contra julio de 2026 del año previo.",
+        "En agosto de 2026, la confianza empresarial se ubicó en 48.232912. El valor de var. mensual fue de +0.0 frente al mes previo.",
+        "La var. anual se situó en -2.2%, lo que refleja la comparación contra agosto de 2026 del año previo.",
         "En la serie mostrada, el indicador oscila entre un máximo de 56.536 (julio de 2023) y un mínimo de 33.9 (mayo de 2020). El último dato se ubica dentro del rango observado en el periodo mostrado.",
         "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
       ],
       "annualVar": {
-        "mag": -1.4848534868442451,
+        "mag": -2.1697512164506763,
         "pos": false,
-        "text": "-1.5%",
+        "text": "-2.2%",
         "label": "Var. anual"
       }
     },

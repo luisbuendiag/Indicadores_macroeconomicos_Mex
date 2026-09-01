@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-09-01T05:47:45+00:00",
+  "started_at": "2026-09-01T12:24:08+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -44,8 +44,8 @@
     "INEGI EMIM: 234 observaciones (serie 702185, base BIE-BISE); última Jun 26 = 97.8; actualización BIE 17/08/2026 12:00:00 a. m..",
     "INEGI EMIM: 233 observaciones (serie 702185, base BIE-BISE); última Jun 26 = 0.01875; actualización BIE 17/08/2026 12:00:00 a. m..",
     "INEGI EMIM: 222 observaciones (serie 702185, base BIE-BISE); última Jun 26 = -0.001021; actualización BIE 17/08/2026 12:00:00 a. m..",
-    "INEGI EMOE: 103 observaciones (serie 701401, base BIE-BISE); última Jul 26 = 48.241225; actualización BIE 03/08/2026 12:00:00 a. m..",
-    "INEGI EMOE: 103 observaciones (serie 701401, base BIE-BISE); última Jul 26 = 0.084252; actualización BIE 03/08/2026 12:00:00 a. m..",
+    "INEGI EMOE: 104 observaciones (serie 701401, base BIE-BISE); última Ago 26 = 48.232912; actualización BIE 01/09/2026 12:00:00 a. m..",
+    "INEGI EMOE: 104 observaciones (serie 701401, base BIE-BISE); última Ago 26 = 0.029301; actualización BIE 01/09/2026 12:00:00 a. m..",
     "INEGI BCMM: 559 observaciones (serie 33223, base BIE-BISE); última Jul 26 = 81420.015; actualización BIE 27/08/2026 12:00:00 a. m..",
     "INEGI BCMM: 559 observaciones (serie 33226, base BIE-BISE); última Jul 26 = 82267.552; actualización BIE 27/08/2026 12:00:00 a. m..",
     "INEGI BCMM: 211 observaciones (serie 6204198547, base BISE); última Jul 26 = 81420.015; actualización BIE 27/08/2026 12:00:00 a. m..",
@@ -92,6 +92,11 @@
   ],
   "changes": [
     "IGAE: fuente normalizada a serie total 737121",
+    "TIPOCAMBIO: actualizado nombre",
+    "TIPOCAMBIO: actualizado fuente",
+    "TASA: actualizado nombre",
+    "TASA: actualizado fuente",
+    "RESERVAS: actualizado fuente",
     "columnas override PIB: 4 columnas",
     "columnas override PIBSEC: 12 columnas",
     "columnas override IGAE: 9 columnas",
@@ -188,8 +193,8 @@
     "inegi: actualizado EMIM (última obs Jun 26, sin cambio de periodo)",
     "inegi: actualizado EMIM (última obs Jun 26, sin cambio de periodo)",
     "inegi: actualizado EMIM (última obs Jun 26, sin cambio de periodo)",
-    "inegi: actualizado EMOE (última obs Jul 26, sin cambio de periodo)",
-    "inegi: actualizado EMOE (última obs Jul 26, sin cambio de periodo)",
+    "inegi: actualizado EMOE (última obs Ago 26, dato nuevo)",
+    "inegi: actualizado EMOE (última obs Ago 26, dato nuevo)",
     "inegi: actualizado BCMM (última obs Jul 26, sin cambio de periodo)",
     "inegi: actualizado BCMM (última obs Jul 26, sin cambio de periodo)",
     "inegi: actualizado BCMM (última obs Jul 26, sin cambio de periodo)",
@@ -292,7 +297,7 @@
     "frescura: EMOE -> ACTUALIZADO",
     "frescura: BCMM -> ACTUALIZADO",
     "frescura: INPP -> ACTUALIZADO",
-    "meta: last_update_ct=2026-09-01T00:48:30-06:00"
+    "meta: last_update_ct=2026-09-01T07:11:02-06:00"
   ],
   "consultas": [
     {
@@ -1295,24 +1300,24 @@
       "fuente": "inegi",
       "indicador": "EMOE",
       "serie": "701401",
-      "observaciones": 103,
-      "ultima_observacion": "Jul 26",
-      "ultimo_valor": 48.241225,
+      "observaciones": 104,
+      "ultima_observacion": "Ago 26",
+      "ultimo_valor": 48.232912,
       "observacion_previa": "Jul 26",
-      "actualizacion_fuente": "03/08/2026 12:00:00 a. m.",
-      "dato_nuevo": false,
+      "actualizacion_fuente": "01/09/2026 12:00:00 a. m.",
+      "dato_nuevo": true,
       "resultado": "consulta válida"
     },
     {
       "fuente": "inegi",
       "indicador": "EMOE",
       "serie": "701401",
-      "observaciones": 103,
-      "ultima_observacion": "Jul 26",
-      "ultimo_valor": 0.084252,
+      "observaciones": 104,
+      "ultima_observacion": "Ago 26",
+      "ultimo_valor": 0.029301,
       "observacion_previa": "Jul 26",
-      "actualizacion_fuente": "03/08/2026 12:00:00 a. m.",
-      "dato_nuevo": false,
+      "actualizacion_fuente": "01/09/2026 12:00:00 a. m.",
+      "dato_nuevo": true,
       "resultado": "consulta válida"
     },
     {
@@ -2038,5 +2043,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-09-01T06:48:32+00:00"
+  "finished_at": "2026-09-01T13:11:03+00:00"
 }
