@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-01T05:39:06+00:00",
+  "generated_at": "2026-09-01T06:48:32+00:00",
   "indicadores": [
     {
       "indicador": "Estimación Oportuna del Producto Interno Bruto Trimestral",
@@ -314,12 +314,12 @@
       "observaciones": ""
     },
     {
-      "indicador": "Tipo de cambio FIX",
+      "indicador": "Tipo de cambio FIX (pesos por dólar)",
       "clave": "TIPOCAMBIO",
       "clasificacion": "complementario",
-      "fuente": "Banco de México",
+      "fuente": "Banco de México (SIE)",
       "serie": "SF43718",
-      "frecuencia": "Diaria — días hábiles bancarios",
+      "frecuencia": "Diaria",
       "unidad": "Pesos por dólar",
       "ajuste_estacional": "No aplica",
       "ultima_observacion": "2026-08-31",
@@ -338,12 +338,12 @@
       "observaciones": ""
     },
     {
-      "indicador": "Tasa de interés objetivo",
+      "indicador": "Tasa objetivo de Banco de México",
       "clave": "TASA",
       "clasificacion": "complementario",
-      "fuente": "Banco de México",
+      "fuente": "Banco de México (SIE)",
       "serie": "SF61745",
-      "frecuencia": "Diaria (cambios discretos)",
+      "frecuencia": "Diaria",
       "unidad": "Porcentaje anual",
       "ajuste_estacional": "No aplica; se publica diariamente pero solo cambia en fechas de decisión de política monetaria",
       "ultima_observacion": "2026-09-01",
@@ -365,7 +365,7 @@
       "indicador": "Reservas internacionales",
       "clave": "RESERVAS",
       "clasificacion": "complementario",
-      "fuente": "Banco de México",
+      "fuente": "Banco de México (SIE)",
       "serie": "SF43707",
       "frecuencia": "Semanal",
       "unidad": "Millones de dólares",
