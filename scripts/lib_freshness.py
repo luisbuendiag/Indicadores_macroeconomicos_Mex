@@ -16,7 +16,7 @@ from __future__ import annotations
 import calendar
 import json
 import re
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, time, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -214,8 +214,67 @@ def _ym_to_period(ym: str, frecuencia: str | None = None) -> str | None:
     return f"{inegi.MESES[m - 1].capitalize()} {y % 100}"
 
 
+def _last_observation_ym(ind: dict | None) -> str | None:
+    """Último periodo presente en las observaciones del indicador."""
+    if not ind:
+        return None
+    obs = list(ind.get("observations", []) or ind.get("observations_original", []))
+    if not obs:
+        return None
+    p = _clean_period(obs[-1].get("period"))
+    return _period_to_ym_flexible(p)
+
+
+def _expected_reserves(
+    cal_items: list[dict],
+    as_of: date,
+    now: datetime,
+    frecuencia: str | None,
+) -> tuple[str | None, str | None]:
+    """Periodo esperado para reservas internacionales usando el calendario semanal.
+
+    Banxico publica reservas una vez por semana, normalmente los martes.
+    Hasta pasada la hora de publicación (~12:00 CDMX + tolerancia) del día
+    hábil de publicación, la última semana esperable es la anterior.
+    """
+    tz = now.tzinfo
+    publish_time = time(12, 0)
+    tolerance = timedelta(hours=2)
+    items = [
+        i for i in cal_items
+        if i.get("clave") == "RESERVAS" and i.get("estatus") in ("publicado", "próximo")
+        and i.get("fecha_iso")
+    ]
+    items.sort(key=lambda i: i.get("fecha_iso", ""))
+    available = []
+    for it in items:
+        pub_date = date.fromisoformat(it["fecha_iso"])
+        pub = datetime.combine(pub_date, publish_time)
+        if tz is not None:
+            pub = pub.replace(tzinfo=tz)
+        if now >= pub + tolerance:
+            available.append(it)
+    if available:
+        latest = available[-1]
+        period = latest.get("periodo_referencia")
+        ym = _period_to_ym_flexible(period)
+        if ym:
+            return ym, _ym_to_period(ym, frecuencia)
+    # Fallback: mes del último día hábil esperable.
+    expected = latest_expected_business_date(now)
+    if not _is_business_day(expected):
+        expected = _previous_business_day(expected)
+    ym = f"{expected.year}-{expected.month:02d}"
+    return ym, _ym_to_period(ym, frecuencia)
+
+
 def expected_period_from_frequency(
-    frecuencia: str | None, as_of: date
+    frecuencia: str | None,
+    as_of: date,
+    key: str | None = None,
+    now: datetime | None = None,
+    cal_items: list[dict] | None = None,
+    ind: dict | None = None,
 ) -> tuple[str | None, str | None]:
     """Periodo esperado para series sin calendario oficial.
 
@@ -224,6 +283,11 @@ def expected_period_from_frequency(
     f = (frecuencia or "").lower().replace(" ", "").replace("->mensual", "")
     if not f:
         return None, None
+
+    if now is None:
+        now = _mexico_city_now()
+    if as_of is None:
+        as_of = now.date()
 
     # Si la serie se agrega y muestra como mensual (Diaria->mensual,
     # Semanal->mensual), el valor del mes en curso sólo estará disponible
@@ -234,17 +298,33 @@ def expected_period_from_frequency(
         return ym, _ym_to_period(ym, frecuencia)
 
     if "diaria" in f:
-        # Series diarias: se espera el mes actual desde el primer día hábil.
-        first_biz = _first_business_day(as_of.year, as_of.month)
-        if as_of >= first_biz:
-            ym = f"{as_of.year}-{as_of.month:02d}"
-        else:
+        # FIX y series diarias hábiles bancarias: publicación ~12:00 CDMX.
+        # Antes de la hora de publicación (+ tolerancia) se espera el día hábil anterior.
+        if key == "TIPOCAMBIO" or "bancario" in f or "fix" in f:
+            expected = latest_expected_business_date(now)
+            ym = f"{expected.year}-{expected.month:02d}"
+            return ym, _ym_to_period(ym, frecuencia)
+
+        # Tasa objetivo: cambios discretos; no se espera un valor nuevo cada día.
+        # El periodo oficial esperado es el de la última observación disponible.
+        if "cambiosdiscretos" in f or key == "TASA":
+            last_ym = _last_observation_ym(ind)
+            if last_ym:
+                return last_ym, _ym_to_period(last_ym, frecuencia)
             prev = _prev_month(as_of)
             ym = f"{prev.year}-{prev.month:02d}"
+            return ym, _ym_to_period(ym, frecuencia)
+
+        # Diaria genérica (por ejemplo otros tipos de cambio): día hábil actual.
+        expected = latest_expected_business_date(now)
+        ym = f"{expected.year}-{expected.month:02d}"
         return ym, _ym_to_period(ym, frecuencia)
 
     if "semanal" in f:
-        # Series semanales: se espera el mes actual desde el primer viernes.
+        # RESERVAS: usar calendario semanal si existe.
+        if key == "RESERVAS":
+            return _expected_reserves(cal_items or [], as_of, now, frecuencia)
+        # Fallback semanal genérico.
         first_fri = _first_friday(as_of.year, as_of.month)
         if as_of >= first_fri:
             ym = f"{as_of.year}-{as_of.month:02d}"
@@ -298,11 +378,65 @@ def _prev_period(ym: str, frecuencia: str | None) -> str | None:
 
 def _mexico_city_today() -> date:
     """Fecha de hoy en America/Mexico_City."""
+    return _mexico_city_now().date()
+
+
+def _mexico_city_now() -> datetime:
+    """Fecha y hora actual en America/Mexico_City, con zona horaria."""
     try:
         from zoneinfo import ZoneInfo
-        return datetime.now(ZoneInfo("America/Mexico_City")).date()
+        return datetime.now(ZoneInfo("America/Mexico_City"))
     except Exception:
-        return date.today()
+        return datetime.now()
+
+
+def _is_business_day(d: date) -> bool:
+    """Día hábil bancario de lunes a viernes (fail-soft; sin calendario de festivos)."""
+    return d.weekday() < 5
+
+
+def _previous_business_day(d: date) -> date:
+    """Último día hábil estrictamente anterior a `d`."""
+    d -= timedelta(days=1)
+    while not _is_business_day(d):
+        d -= timedelta(days=1)
+    return d
+
+
+def _next_business_day(d: date) -> date:
+    """Primer día hábil a partir de `d` (inclusive)."""
+    while not _is_business_day(d):
+        d += timedelta(days=1)
+    return d
+
+
+def latest_expected_business_date(
+    now: datetime,
+    publish_time: time = time(12, 0),
+    tolerance: timedelta = timedelta(hours=2),
+) -> date:
+    """Última fecha de publicación oficial razonablemente esperable.
+
+    Regla para series diarias publicadas a `publish_time` (por defecto 12:00 CDMX):
+    - Antes de `publish_time`: se espera el dato del día hábil anterior.
+    - Entre `publish_time` y `publish_time + tolerance`: se sigue aceptando el
+      día hábil anterior (ventana de ingestión; no se marca REZAGADO).
+    - Después de la tolerancia: se espera el dato del día hábil actual.
+    - Si el día actual no es hábil (sábado/domingo), la última esperable es el
+      viernes hábil anterior.
+    """
+    today = now.date()
+    tz = now.tzinfo
+    publish = datetime.combine(today, publish_time)
+    if tz is not None:
+        publish = publish.replace(tzinfo=tz)
+    if now < publish:
+        return _previous_business_day(today)
+    if now < publish + tolerance:
+        return _previous_business_day(today)
+    if _is_business_day(today):
+        return today
+    return _previous_business_day(today)
 
 
 def source_had_error(key: str, update_log: dict | None = None, manifest_row: dict | None = None) -> bool:
@@ -413,6 +547,7 @@ def compute_state(
     calendar: list[dict] | None = None,
     as_of: date | None = None,
     ind: dict | None = None,
+    now: datetime | None = None,
 ) -> dict[str, Any]:
     """Determina el estado de frescura de un indicador.
 
@@ -426,8 +561,10 @@ def compute_state(
       - periodo_proximo
       - motivo
     """
+    if now is None:
+        now = _mexico_city_now()
     if as_of is None:
-        as_of = _mexico_city_today()
+        as_of = now.date()
     if calendar is None:
         calendar = load_calendar()
     if update_log is None:
@@ -479,7 +616,7 @@ def compute_state(
     fallback_label = None
     used_fallback = False
     if not official_ym and freq:
-        fallback_ym, fallback_label = expected_period_from_frequency(freq, as_of)
+        fallback_ym, fallback_label = expected_period_from_frequency(freq, as_of, key=key, now=now, cal_items=calendar, ind=ind)
         if fallback_ym:
             official_ym = fallback_ym
             official_period = fallback_label
@@ -559,12 +696,17 @@ def diagnose_all(
     update_log: dict | None = None,
     calendar: list[dict] | None = None,
     as_of: date | None = None,
+    now: datetime | None = None,
 ) -> dict[str, dict[str, Any]]:
     """Diagnostica la frescura de todos los indicadores del payload."""
     if calendar is None:
         calendar = load_calendar()
     if update_log is None:
         update_log = _load_json(UPDATE_LOG_FILE)
+    if now is None:
+        now = _mexico_city_now()
+    if as_of is None:
+        as_of = now.date()
     rows = manifest_rows or {}
     result: dict[str, dict[str, Any]] = {}
     for key, ind in indicators.items():
@@ -576,6 +718,7 @@ def diagnose_all(
             calendar=calendar,
             as_of=as_of,
             ind=ind,
+            now=now,
         )
     return result
 
