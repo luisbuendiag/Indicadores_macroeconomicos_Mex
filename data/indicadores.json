@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-01T17:27:07+00:00",
+    "generated_at": "2026-09-01T19:59:44+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-09-01T11:27:07-06:00",
+    "last_update_ct": "2026-09-01T13:59:44-06:00",
     "periodo_referencia_reciente": {
       "period": "Jul 26",
       "period_long": "Jul 26"
@@ -22446,7 +22446,7 @@
     "IED": {
       "key": "IED",
       "nombre": "Inversión Extranjera Directa (IED)",
-      "descripcion": "Flujo trimestral de inversión extranjera directa (IED total) y sus componentes: nuevas inversiones, reinversión de utilidades y cuentas entre compañías. Cifras en millones de dólares.",
+      "descripcion": "Acumulado anual de inversión extranjera directa en México (IED) y sus componentes: nuevas inversiones, reinversión de utilidades y cuentas entre compañías. La ficha distingue el acumulado en el año del flujo exclusivo del trimestre, e incluye desgloses por tipo de inversión, país de origen, sector económico y entidad federativa.",
       "frecuencia": "Trimestral",
       "unidad": "Millones de dólares",
       "ajuste_estacional": "No aplica",
@@ -22457,13 +22457,13 @@
         "Cifras en millones de dólares"
       ],
       "fuente": {
-        "nombre": "Secretaría de Economía / Dirección General de Inversión Extranjera",
-        "link": "https://www.proyectosmexico.gob.mx/cifra-record-de-inversion-extranjera-directa-1t-2026/",
-        "metodo": "Comunicado oficial SE / DGIE"
+        "nombre": "Secretaría de Economía — Dirección General de Inversión Extranjera / RNIE",
+        "link": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa",
+        "metodo": "Descarga y parseo de XLSX oficiales (resumen histórico + desgloses 2T-2026)"
       },
       "columns": [
         {
-          "label": "IED total",
+          "label": "IED acumulada",
           "index": 0,
           "fmt": "usd"
         },
@@ -22481,6 +22481,11 @@
           "label": "Cuentas entre compañías",
           "index": 3,
           "fmt": "usd"
+        },
+        {
+          "label": "Var. anual acumulada",
+          "index": 4,
+          "fmt": "pct-frac"
         }
       ],
       "observations": [
@@ -22490,7 +22495,8 @@
             11864.03046282,
             2209.41801316,
             7025.2112565499965,
-            2629.401193109997
+            2629.401193109997,
+            null
           ]
         },
         {
@@ -22499,7 +22505,8 @@
             18433.46954255985,
             6025.000693990005,
             8658.214019469988,
-            3750.254829099993
+            3750.254829099993,
+            null
           ]
         },
         {
@@ -22508,7 +22515,8 @@
             24831.724270920065,
             9544.62750515,
             9999.422711059975,
-            5287.674054709976
+            5287.674054709976,
+            null
           ]
         },
         {
@@ -22517,7 +22525,8 @@
             31621.20435087015,
             13825.301669439956,
             12213.01206093998,
-            5582.890620490009
+            5582.890620490009,
+            null
           ]
         },
         {
@@ -22526,7 +22535,8 @@
             19427.457786730047,
             8792.209679979997,
             9259.124450750005,
-            1376.1236559999968
+            1376.1236559999968,
+            null
           ]
         },
         {
@@ -22535,7 +22545,8 @@
             27511.623732829947,
             11836.527790140002,
             11655.60546753999,
-            4019.4904751499985
+            4019.4904751499985,
+            null
           ]
         },
         {
@@ -22544,7 +22555,8 @@
             32147.38886485986,
             14519.885829040022,
             14052.151391029991,
-            3575.3516447900115
+            3575.3516447900115,
+            null
           ]
         },
         {
@@ -22553,7 +22565,8 @@
             35291.61835650035,
             16993.097777980158,
             16027.790410173762,
-            2270.730168346636
+            2270.730168346636,
+            null
           ]
         },
         {
@@ -22562,7 +22575,8 @@
             18635.69179056182,
             931.6891732793321,
             16704.7085712238,
-            999.2940460586948
+            999.2940460586948,
+            null
           ]
         },
         {
@@ -22571,7 +22585,8 @@
             29040.823874591104,
             2135.168038952664,
             22608.62151171782,
-            4297.034323920598
+            4297.034323920598,
+            null
           ]
         },
         {
@@ -22580,7 +22595,8 @@
             32926.43680025823,
             2806.241495010777,
             24905.191435293553,
-            5215.003869953881
+            5215.003869953881,
+            null
           ]
         },
         {
@@ -22589,7 +22605,8 @@
             36058.04377568115,
             4817.437436025721,
             26630.612710594727,
-            4609.993629060474
+            4609.993629060474,
+            null
           ]
         },
         {
@@ -22598,7 +22615,8 @@
             20312.65875078067,
             599.3244456864041,
             19614.77618673003,
-            98.5581183642047
+            98.5581183642047,
+            null
           ]
         },
         {
@@ -22607,7 +22625,8 @@
             31096.32510957158,
             909.3070721249387,
             30287.603011614978,
-            -100.58497416839889
+            -100.58497416839889,
+            null
           ]
         },
         {
@@ -22616,7 +22635,8 @@
             35737.48954061164,
             2060.3689516581985,
             30744.83932329829,
-            2932.2812656551187
+            2932.2812656551187,
+            null
           ]
         },
         {
@@ -22625,7 +22645,8 @@
             36872.42195115965,
             3168.543654846584,
             28710.3148665372,
-            4993.563429775793
+            4993.563429775793,
+            null
           ]
         },
         {
@@ -22634,7 +22655,8 @@
             21373.193105502167,
             1586.3962848710341,
             16646.993088795327,
-            3139.80373183581
+            3139.80373183581,
+            null
           ]
         },
         {
@@ -22643,7 +22665,8 @@
             34264.56746296593,
             3148.538441297729,
             28914.108630111772,
-            2201.9203915563307
+            2201.9203915563307,
+            null
           ]
         },
         {
@@ -22652,7 +22675,8 @@
             40905.61371637016,
             6563.38012553143,
             27748.842164331676,
-            6593.391426507059
+            6593.391426507059,
+            null
           ]
         },
         {
@@ -22661,7 +22685,8 @@
             40870.76932803365,
             7377.426584413343,
             27649.339908233083,
-            5844.002835387397
+            5844.002835387397,
+            null
           ]
         },
         {
@@ -22670,7 +22695,8 @@
             23590.622045545126,
             1705.2271007425254,
             22221.505971855015,
-            -336.1110270523728
+            -336.1110270523728,
+            null
           ]
         }
       ],
@@ -22688,16 +22714,16 @@
       "fecha_consulta": "2026-07-16",
       "metrics": {
         "kpi": {
-          "assessment": "favorable",
-          "dir": "up",
+          "assessment": "neutral",
+          "dir": "flat",
           "ultimoFmt": "23,591",
           "ultimoRaw": 23590.622045545126,
           "ultimoP": "1T-26",
-          "varText": "+10.4%",
-          "varMag": 10.374813576508226,
+          "varText": "—",
+          "varMag": null,
           "pos": true,
           "varColor": "#1e5b4f",
-          "varLabel": "Var. anual (vs. mismo trim. año previo)",
+          "varLabel": "Var. anual del acumulado",
           "maxFmt": "40,906",
           "maxRaw": 40905.61371637016,
           "maxP": "3T-25",
@@ -22751,23 +22777,23 @@
             "4T-25",
             "1T-26"
           ],
-          "semaforo": "bueno",
+          "semaforo": "neutral",
           "yoyText": "—",
           "yoyLabel": "—"
         },
         "yoy": null,
         "resumen": [
-          "En primer trimestre de 2026, la IED total se ubicó en $23,591 millones de dólares (flujo trimestral, millones de dólares). El valor de var. anual (vs. mismo trim. año previo) fue de +10.4% frente al mismo trimestre del año anterior.",
+          "En primer trimestre de 2026, la IED acumulada se ubicó en $23,591 millones de dólares (acumulado ene-jun, millones de dólares). El valor de var. anual del acumulado fue de — frente al mismo periodo del año anterior.",
           "En la serie mostrada, el indicador oscila entre un máximo de $40,906 millones de dólares (tercer trimestre de 2025) y un mínimo de $11,864 millones de dólares (primer trimestre de 2021). El último dato se ubica dentro del rango observado en el periodo mostrado.",
-          "La variación se clasifica como favorable según la lectura económica del indicador."
+          "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
         ]
       },
       "periodo_referencia_oficial": "1° trimestre 2026",
       "fecha_publicacion_oficial": "26 de mayo de 2026",
       "proxima_publicacion": {
-        "fecha_publicacion": "Por anunciar",
+        "fecha_publicacion": "24 de agosto de 2026",
         "periodo_referencia": "2° trimestre 2026",
-        "tipo": "no_anunciada"
+        "tipo": "oficial"
       },
       "motivo_frescura": "El periodo cargado (1T-26) coincide con el último periodo esperado (1° trimestre 2026).",
       "url_boletin_oficial": "https://www.presidenta.gob.mx/boletines/inversion-extranjera-aumenta-10-4-por-ciento-en-primer-trimestre-2026-presidenta-sheinbaum",
@@ -22777,7 +22803,7 @@
       "nota_disponible": false,
       "nota_causa": "Falta plantilla aprobada",
       "url_nota_individual": null,
-      "url_fuente_oficial": "https://www.proyectosmexico.gob.mx/cifra-record-de-inversion-extranjera-directa-1t-2026/",
+      "url_fuente_oficial": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa",
       "fecha_ultima_publicacion": "26 de mayo de 2026",
       "regla_publicacion": null,
       "windows": [
@@ -67458,9 +67484,15 @@
           "values": [
             17.0147
           ]
+        },
+        {
+          "period": "2026-09-01",
+          "values": [
+            16.9755
+          ]
         }
       ],
-      "last_observation": "2026-08-31",
+      "last_observation": "2026-09-01",
       "last_updated": "2026-09-01",
       "last_checked": "2026-09-01",
       "requiere_token": "BANXICO",
@@ -67469,25 +67501,25 @@
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
       "fecha_publicacion": null,
-      "periodo_referencia": "2026-08-31",
+      "periodo_referencia": "2026-09-01",
       "fecha_consulta": "2026-09-01",
       "source_origin": "api",
       "metrics": {
         "kpi": {
-          "ultimoP": "31 Ago 26",
-          "ultimoRaw": 17.0147,
-          "ultimoFmt": "$17.01",
-          "varText": "-0.16%",
-          "varMag": -0.001643,
+          "ultimoP": "1 Sep 26",
+          "ultimoRaw": 16.9755,
+          "ultimoFmt": "$16.98",
+          "varText": "-0.23%",
+          "varMag": -0.002304,
           "varLabel": "Cambio diario",
           "pos": false,
           "varColor": "#9b2247",
-          "monthlyText": "-1.81%",
+          "monthlyText": "-0.23%",
           "monthlyLabel": "Cambio mensual",
-          "yoyText": "-8.74%",
+          "yoyText": "-8.96%",
           "yoyLabel": "Cambio anual",
-          "yoyRaw": -0.08739,
-          "yoyMag": -0.08739,
+          "yoyRaw": -0.08959,
+          "yoyMag": -0.08959,
           "yoyPos": false,
           "yoyColor": "#9b2247",
           "range12mText": "$16.90 — $18.76",
@@ -67498,7 +67530,7 @@
           "minP": "8 Abr 24",
           "maxFmt": "$25.12",
           "minFmt": "$16.34",
-          "lastI": 2178,
+          "lastI": 2179,
           "series": [
             19.4899,
             19.3717,
@@ -69678,7 +69710,8 @@
             16.966,
             16.9712,
             17.0427,
-            17.0147
+            17.0147,
+            16.9755
           ],
           "periods": [
             "2018-01-02",
@@ -71859,29 +71892,30 @@
             "2026-08-26",
             "2026-08-27",
             "2026-08-28",
-            "2026-08-31"
+            "2026-08-31",
+            "2026-09-01"
           ],
           "assessment": "neutral",
           "dir": "down",
           "semaforo": "estable"
         },
         "yoy": {
-          "mag": -0.08739,
+          "mag": -0.08959,
           "pos": false,
-          "text": "-8.74%",
+          "text": "-8.96%",
           "label": "Cambio anual"
         },
         "resumen": [
-          "En 31 de agosto de 2026, el tipo de cambio FIX se ubicó en $17.01 (pesos por dólar).",
-          "El cambio diario fue de -0.16% respecto al día hábil previo.",
-          "Respecto al último día hábil del mes previo, el FIX registró un cambio mensual de -1.81%.",
-          "A tasa anual, el FIX varió -8.74%; en los últimos 12 meses osciló entre $16.90 — $18.76."
+          "En 1 de septiembre de 2026, el tipo de cambio FIX se ubicó en $16.98 (pesos por dólar).",
+          "El cambio diario fue de -0.23% respecto al día hábil previo.",
+          "Respecto al último día hábil del mes previo, el FIX registró un cambio mensual de -0.23%.",
+          "A tasa anual, el FIX varió -8.96%; en los últimos 12 meses osciló entre $16.90 — $18.76."
         ]
       },
       "periodo_referencia_oficial": "Ago 26",
       "fecha_publicacion_oficial": null,
       "proxima_publicacion": null,
-      "motivo_frescura": "El periodo cargado (2026-08-31) coincide con el último periodo esperado (Ago 26).",
+      "motivo_frescura": "El dashboard tiene 2026-09-01, que está adelantado al periodo esperado (Ago 26); se recomienda revisar el calendario.",
       "url_boletin_oficial": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/TIPOCAMBIO/TIPOCAMBIO_datos.xlsx",
@@ -84960,7 +84994,7 @@
           ]
         }
       ],
-      "fecha_ultima_observacion": "2026-08-31",
+      "fecha_ultima_observacion": "2026-09-01",
       "url_fuente_oficial": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
       "fecha_ultima_publicacion": null,
       "regla_publicacion": null,
@@ -85619,6 +85653,12 @@
           "period": "Ago 26",
           "values": [
             17.0147
+          ]
+        },
+        {
+          "period": "Sep 26",
+          "values": [
+            16.9755
           ]
         }
       ]

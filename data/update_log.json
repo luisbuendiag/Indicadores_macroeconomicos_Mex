@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-09-01T16:39:20+00:00",
+  "started_at": "2026-09-01T19:01:01+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -107,7 +107,8 @@
     "columnas override IMFBCF: 40 columnas",
     "columnas override IOAE: 13 columnas",
     "columnas override EMIM: 18 columnas",
-    "columnas override IED: 4 columnas",
+    "columnas override IED: 5 columnas",
+    "columnas padding IED: 1 columnas nuevas",
     "columnas override BCMM: 29 columnas",
     "banxico_sie: actualizado IMFBCF (última obs May 26, sin cambio de periodo)",
     "banxico_sie: actualizado IMFBCF (última obs May 26, sin cambio de periodo)",
@@ -149,9 +150,9 @@
     "banxico_sie: actualizado IMFBCF (última obs May 26, sin cambio de periodo)",
     "banxico_sie: actualizado IMFBCF (última obs May 26, sin cambio de periodo)",
     "banxico_sie: actualizado IMFBCF (última obs May 26, sin cambio de periodo)",
-    "banxico: actualizado TIPOCAMBIO (última obs 2026-08-31, sin cambio de periodo)",
+    "banxico: actualizado TIPOCAMBIO (última obs 2026-09-01, dato nuevo)",
     "banxico: actualizado TASA (última obs 2026-09-01, sin cambio de periodo)",
-    "banxico: actualizado RESERVAS (última obs 2026-08-28, dato nuevo)",
+    "banxico: actualizado RESERVAS (última obs 2026-08-28, sin cambio de periodo)",
     "inegi: actualizado PIB (última obs 1T-26, dato nuevo)",
     "inegi: actualizado PIBSEC (última obs 2T-26, sin cambio de periodo)",
     "inegi: actualizado PIBSEC (última obs 2T-26, sin cambio de periodo)",
@@ -265,7 +266,7 @@
     "columnas override IMFBCF: 40 columnas",
     "columnas override IOAE: 13 columnas",
     "columnas override EMIM: 18 columnas",
-    "columnas override IED: 4 columnas",
+    "columnas override IED: 5 columnas",
     "columnas override BCMM: 29 columnas",
     "columna label TIPOCAMBIO col0: Tipo de cambio FIX -> Tipo de cambio FIX",
     "columna label TASA col0: Tasa objetivo (%) -> Tasa objetivo (%)",
@@ -296,7 +297,7 @@
     "frescura: EMOE -> ACTUALIZADO",
     "frescura: BCMM -> ACTUALIZADO",
     "frescura: INPP -> ACTUALIZADO",
-    "meta: last_update_ct=2026-09-01T11:27:07-06:00"
+    "meta: last_update_ct=2026-09-01T13:59:44-06:00"
   ],
   "consultas": [
     {
@@ -783,12 +784,12 @@
       "fuente": "banxico",
       "indicador": "TIPOCAMBIO",
       "serie": "SF43718",
-      "observaciones": 2179,
-      "ultima_observacion": "2026-08-31",
-      "ultimo_valor": 17.0147,
+      "observaciones": 2180,
+      "ultima_observacion": "2026-09-01",
+      "ultimo_valor": 16.9755,
       "observacion_previa": "2026-08-31",
       "actualizacion_fuente": null,
-      "dato_nuevo": false,
+      "dato_nuevo": true,
       "resultado": "consulta válida"
     },
     {
@@ -810,9 +811,9 @@
       "observaciones": 452,
       "ultima_observacion": "2026-08-28",
       "ultimo_valor": 258564.1,
-      "observacion_previa": "2026-08-21",
+      "observacion_previa": "2026-08-28",
       "actualizacion_fuente": null,
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -2042,5 +2043,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-09-01T17:27:08+00:00"
+  "finished_at": "2026-09-01T19:59:45+00:00"
 }

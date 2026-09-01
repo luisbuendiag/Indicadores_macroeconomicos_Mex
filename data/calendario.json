@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-01T17:27:22+00:00",
+  "generated_at": "2026-09-01T20:00:02+00:00",
   "as_of": "2026-09-01",
   "fuente": "Calendario oficial de difusión",
   "sources": {
@@ -19,9 +19,9 @@
     },
     "Secretaría de Economía (manual)": {
       "status": "ok",
-      "count": 3,
-      "message": "3 eventos cargados desde 2026_se.json",
-      "consulted_at": "2026-08-11",
+      "count": 4,
+      "message": "4 eventos cargados desde 2026_se.json",
+      "consulted_at": "2026-08-24",
       "url": "https://www.gob.mx/se"
     }
   },
@@ -13123,6 +13123,35 @@
       "fecha_iso": "2026-08-20"
     },
     {
+      "indicator": "IED",
+      "program": "Flujos de inversión extranjera directa",
+      "product": "Flujos de inversión extranjera directa",
+      "publication_date": "2026-08-24",
+      "publication_date_display": "24 de agosto de 2026",
+      "reference_period": "2° trimestre 2026",
+      "frequency": "Trimestral",
+      "status": "publicado",
+      "source": "Secretaría de Economía (manual)",
+      "institution": "Secretaría de Economía",
+      "category": "Sector externo",
+      "sigla": "IED",
+      "type": "event",
+      "url": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa",
+          "label": "Comunicado",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 8,
+      "fecha_iso": "2026-08-24"
+    },
+    {
       "indicator": "IGAE",
       "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018. Cifras preliminares",
       "product": "Indicador Global de la Actividad Económica",
@@ -19368,7 +19397,7 @@
       "product": "Flujos de inversión extranjera directa",
       "publication_date": null,
       "publication_date_display": "Por anunciar",
-      "reference_period": "2° trimestre 2026",
+      "reference_period": "3° trimestre 2026",
       "frequency": "Trimestral",
       "status": "próximo",
       "source": "Secretaría de Economía (manual)",
@@ -20299,6 +20328,35 @@
       "fecha_iso": "2026-08-24"
     },
     {
+      "indicator": "IED",
+      "program": "Flujos de inversión extranjera directa",
+      "product": "Flujos de inversión extranjera directa",
+      "publication_date": "2026-08-24",
+      "publication_date_display": "24 de agosto de 2026",
+      "reference_period": "2° trimestre 2026",
+      "frequency": "Trimestral",
+      "status": "publicado",
+      "source": "Secretaría de Economía (manual)",
+      "institution": "Secretaría de Economía",
+      "category": "Sector externo",
+      "sigla": "IED",
+      "type": "event",
+      "url": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa",
+          "label": "Comunicado",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 8,
+      "fecha_iso": "2026-08-24"
+    },
+    {
       "indicator": "IOAE",
       "program": "Indicador Oportuno de la Actividad Económica. Cifras preliminares",
       "product": "Indicador Oportuno de la Actividad Económica",
@@ -20707,35 +20765,6 @@
       "anio": 2026,
       "mes": 8,
       "fecha_iso": "2026-08-05"
-    },
-    {
-      "indicator": "RESERVAS",
-      "program": "Estado de cuenta del Banco de México de la semana al 31 de julio y del mes de julio de 2026",
-      "product": "Estado de cuenta del Banco de México",
-      "publication_date": "2026-08-04",
-      "publication_date_display": "4 de agosto de 2026",
-      "reference_period": "31 de julio de 2026",
-      "frequency": "Semanal",
-      "status": "publicado",
-      "source": "Banco de México calendario",
-      "institution": "Banco de México",
-      "category": "Financiero",
-      "sigla": "RESERVAS",
-      "type": "event",
-      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{053FE157-1460-9BD6-9381-7516FE09F083}.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{053FE157-1460-9BD6-9381-7516FE09F083}.pdf",
-          "label": "Estado de cuenta del Banco de México de la semana al 31 de julio y del mes de julio de 2026",
-          "size": null
-        }
-      ],
-      "comentario": null,
-      "anio": 2026,
-      "mes": 8,
-      "fecha_iso": "2026-08-04"
     }
   ],
   "categories": {

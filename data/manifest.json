@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-01T17:27:08+00:00",
+  "generated_at": "2026-09-01T19:59:45+00:00",
   "indicadores": [
     {
       "indicador": "Estimación Oportuna del Producto Interno Bruto Trimestral",
@@ -293,7 +293,7 @@
       "indicador": "Inversión Extranjera Directa (IED)",
       "clave": "IED",
       "clasificacion": "complementario",
-      "fuente": "Secretaría de Economía / Dirección General de Inversión Extranjera",
+      "fuente": "Secretaría de Economía — Dirección General de Inversión Extranjera / RNIE",
       "serie": null,
       "frecuencia": "Trimestral",
       "unidad": "Millones de dólares",
@@ -303,7 +303,7 @@
       "fecha_publicacion": "26 de mayo de 2026",
       "fecha_consulta": "2026-07-16",
       "fecha_actualizacion_archivo": "2026-07-16",
-      "metodo_actualizacion": "Comunicado oficial SE / DGIE",
+      "metodo_actualizacion": "Descarga y parseo de XLSX oficiales (resumen histórico + desgloses 2T-2026)",
       "estado": "ACTUALIZADO",
       "origen_dato": "respaldo",
       "requiere_token": null,
@@ -322,8 +322,8 @@
       "frecuencia": "Diaria",
       "unidad": "Pesos por dólar",
       "ajuste_estacional": "No aplica",
-      "ultima_observacion": "2026-08-31",
-      "periodo_referencia": "2026-08-31",
+      "ultima_observacion": "2026-09-01",
+      "periodo_referencia": "2026-09-01",
       "fecha_publicacion": "Días hábiles",
       "fecha_consulta": "2026-09-01",
       "fecha_actualizacion_archivo": "2026-09-01",

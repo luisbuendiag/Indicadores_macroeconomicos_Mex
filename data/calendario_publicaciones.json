@@ -5909,6 +5909,22 @@
       "comentario": "Incluye boletín de indicador. Estas fechas son preliminares, están sujetas al indicador de la actividad industrial de los Estados Unidos cuyo calendario de publicación para 2026 aún no está disponible."
     },
     {
+      "clave": "IED",
+      "indicador": "Flujos de inversión extranjera directa",
+      "producto": "Flujos de inversión extranjera directa",
+      "institucion": "Secretaría de Economía",
+      "frecuencia": "Trimestral",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "24 de agosto de 2026",
+      "fecha_iso": "2026-08-24",
+      "anio": 2026,
+      "mes": 8,
+      "periodo_referencia": "2° trimestre 2026",
+      "estatus": "publicado",
+      "url_boletin": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa"
+    },
+    {
       "clave": "IGAE",
       "indicador": "Indicador Global de la Actividad Económica",
       "producto": "Indicador Global de la Actividad Económica",
@@ -9457,7 +9473,7 @@
       "fecha_iso": "9999-12-31",
       "anio": null,
       "mes": null,
-      "periodo_referencia": "2° trimestre 2026",
+      "periodo_referencia": "3° trimestre 2026",
       "estatus": "no_anunciada",
       "url_boletin": "https://www.gob.mx/se",
       "comentario": "Próxima fecha oficial no anunciada"

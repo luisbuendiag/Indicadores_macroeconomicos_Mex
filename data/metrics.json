@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-01T16:41:02+00:00",
-  "last_update_ct": "2026-09-01T07:11:02-06:00",
+  "generated_at": "2026-09-01T19:02:43+00:00",
+  "last_update_ct": "2026-09-01T11:27:07-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -2346,16 +2346,16 @@
     },
     "IED": {
       "kpi": {
-        "assessment": "favorable",
-        "dir": "up",
+        "assessment": "neutral",
+        "dir": "flat",
         "ultimoFmt": "23,591",
         "ultimoRaw": 23590.622045545126,
         "ultimoP": "1T-26",
-        "varText": "+10.4%",
-        "varMag": 10.374813576508226,
+        "varText": "—",
+        "varMag": null,
         "pos": true,
         "varColor": "#1e5b4f",
-        "varLabel": "Var. anual (vs. mismo trim. año previo)",
+        "varLabel": "Var. anual del acumulado",
         "maxFmt": "40,906",
         "maxRaw": 40905.61371637016,
         "maxP": "3T-25",
@@ -2409,18 +2409,18 @@
           "4T-25",
           "1T-26"
         ],
-        "semaforo": "bueno",
+        "semaforo": "neutral",
         "yoyText": "—",
         "yoyLabel": "—"
       },
       "analysis": [
-        "En el primer trimestre de 2026, la IED total se ubicó en $23,591 millones de dólares (flujo trimestral, millones de dólares), con una variación anual elevada de +10.37% frente al mismo trimestre del año anterior. Este resultado refleja una ligera desaceleración respecto al cuarto trimestre de 2025 (+10.84%), y deja al indicador por debajo del promedio del periodo mostrado de $28,705 millones de dólares.",
+        "En el primer trimestre de 2026, la IED acumulada se ubicó en $23,591 millones de dólares (acumulado ene-jun, millones de dólares), con una variación anual marginal de — frente al mismo periodo del año anterior. Este resultado refleja un ritmo de expansión estable, y deja al indicador por debajo del promedio del periodo mostrado de $28,705 millones de dólares.",
         "A lo largo de la serie mostrada, el indicador osciló entre un máximo de $40,906 millones de dólares (tercer trimestre de 2025) y un mínimo de $11,864 millones de dólares (primer trimestre de 2021). El resultado más reciente se ubicó por debajo del promedio del periodo mostrado. El último dato fue inferior al del inicio del periodo mostrado. En su composición, el rubro predominante fue reinversión de utilidades (≈94% del total), lo que refleja sobre todo la permanencia de capital ya instalado más que la llegada de proyectos nuevos."
       ],
       "resumen": [
-        "En primer trimestre de 2026, la IED total se ubicó en $23,591 millones de dólares (flujo trimestral, millones de dólares). El valor de var. anual (vs. mismo trim. año previo) fue de +10.4% frente al mismo trimestre del año anterior.",
+        "En primer trimestre de 2026, la IED acumulada se ubicó en $23,591 millones de dólares (acumulado ene-jun, millones de dólares). El valor de var. anual del acumulado fue de — frente al mismo periodo del año anterior.",
         "En la serie mostrada, el indicador oscila entre un máximo de $40,906 millones de dólares (tercer trimestre de 2025) y un mínimo de $11,864 millones de dólares (primer trimestre de 2021). El último dato se ubica dentro del rango observado en el periodo mostrado.",
-        "La variación se clasifica como favorable según la lectura económica del indicador."
+        "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
       ],
       "annualVar": null
     },
@@ -4706,20 +4706,20 @@
     },
     "TIPOCAMBIO": {
       "kpi": {
-        "ultimoP": "31 Ago 26",
-        "ultimoRaw": 17.0147,
-        "ultimoFmt": "$17.01",
-        "varText": "-0.16%",
-        "varMag": -0.001643,
+        "ultimoP": "1 Sep 26",
+        "ultimoRaw": 16.9755,
+        "ultimoFmt": "$16.98",
+        "varText": "-0.23%",
+        "varMag": -0.002304,
         "varLabel": "Cambio diario",
         "pos": false,
         "varColor": "#9b2247",
-        "monthlyText": "-1.81%",
+        "monthlyText": "-0.23%",
         "monthlyLabel": "Cambio mensual",
-        "yoyText": "-8.74%",
+        "yoyText": "-8.96%",
         "yoyLabel": "Cambio anual",
-        "yoyRaw": -0.08739,
-        "yoyMag": -0.08739,
+        "yoyRaw": -0.08959,
+        "yoyMag": -0.08959,
         "yoyPos": false,
         "yoyColor": "#9b2247",
         "range12mText": "$16.90 — $18.76",
@@ -4730,7 +4730,7 @@
         "minP": "8 Abr 24",
         "maxFmt": "$25.12",
         "minFmt": "$16.34",
-        "lastI": 2178,
+        "lastI": 2179,
         "series": [
           19.4899,
           19.3717,
@@ -6910,7 +6910,8 @@
           16.966,
           16.9712,
           17.0427,
-          17.0147
+          17.0147,
+          16.9755
         ],
         "periods": [
           "2018-01-02",
@@ -9091,29 +9092,30 @@
           "2026-08-26",
           "2026-08-27",
           "2026-08-28",
-          "2026-08-31"
+          "2026-08-31",
+          "2026-09-01"
         ],
         "assessment": "neutral",
         "dir": "down",
         "semaforo": "estable"
       },
       "yoy": {
-        "mag": -0.08739,
+        "mag": -0.08959,
         "pos": false,
-        "text": "-8.74%",
+        "text": "-8.96%",
         "label": "Cambio anual"
       },
       "annualVar": {
-        "mag": -0.08739,
+        "mag": -0.08959,
         "pos": false,
-        "text": "-8.74%",
+        "text": "-8.96%",
         "label": "Cambio anual"
       },
       "resumen": [
-        "En 31 de agosto de 2026, el tipo de cambio FIX se ubicó en $17.01 (pesos por dólar).",
-        "El cambio diario fue de -0.16% respecto al día hábil previo.",
-        "Respecto al último día hábil del mes previo, el FIX registró un cambio mensual de -1.81%.",
-        "A tasa anual, el FIX varió -8.74%; en los últimos 12 meses osciló entre $16.90 — $18.76."
+        "En 1 de septiembre de 2026, el tipo de cambio FIX se ubicó en $16.98 (pesos por dólar).",
+        "El cambio diario fue de -0.23% respecto al día hábil previo.",
+        "Respecto al último día hábil del mes previo, el FIX registró un cambio mensual de -0.23%.",
+        "A tasa anual, el FIX varió -8.96%; en los últimos 12 meses osciló entre $16.90 — $18.76."
       ],
       "analysis": []
     },
