@@ -11,7 +11,6 @@ from pathlib import Path
 
 import pytest
 
-import build_calendar
 import lib_data as L
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -25,12 +24,6 @@ META_FILE = ROOT / "config" / "indicadores_meta.json"
 def _meta_keys() -> set[str]:
     meta = json.loads(META_FILE.read_text(encoding="utf-8"))
     return set(meta.get("principal", [])) | set(meta.get("complementario", []))
-
-
-@pytest.fixture(scope="module", autouse=True)
-def regenerate():
-    """Regenera ambos calendarios en modo offline con una fecha fija."""
-    build_calendar.build(as_of=AS_OF, offline=True)
 
 
 @pytest.fixture
@@ -248,11 +241,12 @@ def test_urls_validas(calendario_nuevo, calendario_legacy):
 
 def test_fechas_consistentes_con_estado(calendario_nuevo):
     """Un evento publicado debe tener fecha <= as_of; uno próximo, fecha > as_of."""
+    as_of = date.fromisoformat(calendario_nuevo["as_of"])
     for ev in calendario_nuevo["events"]:
         iso = ev.get("fecha_iso")
         if iso:
             d = date.fromisoformat(iso)
             if ev["status"] == "publicado":
-                assert d <= AS_OF, f"{ev['indicator']} marcado publicado pero fecha {d} > {AS_OF}"
+                assert d <= as_of, f"{ev['indicator']} marcado publicado pero fecha {d} > {as_of}"
             elif ev["status"] == "próximo":
-                assert d > AS_OF, f"{ev['indicator']} marcado próximo pero fecha {d} <= {AS_OF}"
+                assert d > as_of, f"{ev['indicator']} marcado próximo pero fecha {d} <= {as_of}"
