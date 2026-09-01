@@ -788,16 +788,17 @@ function renderIndicatorView(key) {
   }
 
   // Síntesis / Principales resultados: fuente única Python (lib_metrics).
+  const readingKeys = ["PIB", "PIBSEC", "IGAE", "IMAI", "IED"];
   const syn = el("div", { class: "ficha-block" });
-  syn.append(el("h3", { class: "block-sub" }, (ind.key === "PIB" || ind.key === "PIBSEC" || ind.key === "IGAE" || ind.key === "IMAI") ? "Lectura del indicador" : "Evolución reciente"));
-  if (ind.key === "PIB" || ind.key === "PIBSEC" || ind.key === "IGAE" || ind.key === "IMAI") {
+  syn.append(el("h3", { class: "block-sub" }, readingKeys.includes(ind.key) ? "Lectura del indicador" : "Evolución reciente"));
+  if (readingKeys.includes(ind.key)) {
     const ul = el("ul", { class: "reading-bullets" });
     resumen.slice(0, 4).forEach((b) => ul.append(el("li", {}, b)));
     syn.append(ul);
   } else {
     resumen.forEach((b) => syn.append(el("p", { class: "prose" }, b)));
   }
-  const results = (resumen.length > 1 && ind.key !== "PIB" && ind.key !== "PIBSEC")
+  const results = (resumen.length > 1 && !readingKeys.includes(ind.key))
     ? el("div", { class: "ficha-block print-highlight" },
         el("h3", { class: "block-sub" }, "Principales resultados"),
         ...resumen.slice(0, 2).map((b) => el("p", { class: "prose" }, b)))
