@@ -1475,16 +1475,16 @@
       "serie_confirmada": false,
       "clasificacion": "complementario",
       "fuente": {
-        "nombre": "Secretaría de Economía / Dirección General de Inversión Extranjera",
-        "link": "https://www.proyectosmexico.gob.mx/cifra-record-de-inversion-extranjera-directa-1t-2026/",
-        "metodo": "Comunicado oficial SE / DGIE"
+        "nombre": "Secretaría de Economía — Dirección General de Inversión Extranjera / RNIE",
+        "link": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa",
+        "metodo": "Descarga y parseo de XLSX oficiales (resumen histórico + desgloses 2T-2026)"
       },
-      "descripcion": "Flujo trimestral de inversión extranjera directa (IED total) y sus componentes: nuevas inversiones, reinversión de utilidades y cuentas entre compañías. Cifras en millones de dólares.",
+      "descripcion": "Acumulado anual de inversión extranjera directa en México (IED) y sus componentes: nuevas inversiones, reinversión de utilidades y cuentas entre compañías. La ficha distingue el acumulado en el año del flujo exclusivo del trimestre, e incluye desgloses por tipo de inversión, país de origen, sector económico y entidad federativa.",
       "frecuencia": "Trimestral",
       "unidad": "Millones de dólares",
       "columns": [
         {
-          "label": "IED total",
+          "label": "IED acumulada",
           "index": 0,
           "fmt": "usd"
         },
@@ -1502,6 +1502,11 @@
           "label": "Cuentas entre compañías",
           "index": 3,
           "fmt": "usd"
+        },
+        {
+          "label": "Var. anual acumulada",
+          "index": 4,
+          "fmt": "pct-frac"
         }
       ],
       "windows": [

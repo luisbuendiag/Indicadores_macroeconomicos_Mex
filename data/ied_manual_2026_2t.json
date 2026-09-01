@@ -1,0 +1,41 @@
+{
+  "fuente": "Secretaría de Economía / Dirección General de Inversión Extranjera / RNIE",
+  "nota": "Datos del comunicado del 24 de agosto de 2026 mientras se actualiza el archivo estructurado en gob.mx",
+  "actualizado": "2026-08-24",
+  "periodo_referencia": "Enero - junio 2026",
+  "periodo_corto": "ENE-JUN 26",
+  "acumulado": 34968,
+  "acumulado_1t": 24503.05,
+  "acumulado_ano_anterior": 34265,
+  "variacion_anual_acumulada_pct": 0.021,
+  "flujo_trimestral": 10464,
+  "flujo_trimestral_ano_anterior": 10848,
+  "variacion_anual_trimestral_pct": -0.035,
+  "tipo_de_inversion": [
+    {"concepto": "Reinversión de utilidades", "mdd": 30957, "participacion_pct": 88.5},
+    {"concepto": "Nuevas inversiones", "mdd": 2726, "participacion_pct": 7.8},
+    {"concepto": "Cuentas entre compañías", "mdd": 1285, "participacion_pct": 3.7}
+  ],
+  "pais_origen": [
+    {"pais": "Estados Unidos", "mdd": 16871, "participacion_pct": 48.2},
+    {"pais": "España", "mdd": 4954, "participacion_pct": 14.2},
+    {"pais": "Canadá", "mdd": 1741, "participacion_pct": 5.0},
+    {"pais": "Australia", "mdd": 1698, "participacion_pct": 4.9},
+    {"pais": "Alemania", "mdd": 1647, "participacion_pct": 4.7}
+  ],
+  "sector_economico": [
+    {"sector": "Manufacturas", "mdd": 13482, "participacion_pct": 38.6},
+    {"sector": "Servicios financieros y de seguros", "mdd": 10150, "participacion_pct": 29.0},
+    {"sector": "Transportes, correos y almacenamiento", "mdd": 2650, "participacion_pct": 7.6},
+    {"sector": "Comercio al por mayor", "mdd": 2014, "participacion_pct": 5.8},
+    {"sector": "Minería", "mdd": 1557, "participacion_pct": 4.5}
+  ],
+  "entidad_federativa": [
+    {"entidad": "Ciudad de México", "mdd": 16862, "participacion_pct": 48.2},
+    {"entidad": "Nuevo León", "mdd": 3712, "participacion_pct": 10.6},
+    {"entidad": "Estado de México", "mdd": 2114, "participacion_pct": 6.0},
+    {"entidad": "Baja California", "mdd": 1743, "participacion_pct": 5.0},
+    {"entidad": "Jalisco", "mdd": 1406, "participacion_pct": 4.0}
+  ],
+  "url_boletin": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa"
+}

@@ -957,7 +957,11 @@ function breakdown(ind, k) {
   const rowsFor = () => {
     if (ind.key === "PIBSEC") return [["Primarias", last.values[0], "num"], ["Secundarias", last.values[1], "num"], ["Terciarias", last.values[2], "num"]];
     if (ind.key === "IGAE") return null;
-    if (ind.key === "IED") return [["Nuevas inversiones", last.values[1], "usd"], ["Reinversión de utilidades", last.values[2], "usd"], ["Cuentas entre compañías", last.values[3], "usd"]];
+    if (ind.key === "IED") {
+      const m = ind.metrics || {};
+      const flujo = m.flujo_trimestral && m.flujo_trimestral.valor != null ? m.flujo_trimestral.valor : (last.flujo_trimestral != null ? last.flujo_trimestral : null);
+      return [["IED acumulada", last.values[0], "usd"], ["Flujo del 2T", flujo, "usd"], ["Nuevas inversiones", last.values[1], "usd"], ["Reinversión de utilidades", last.values[2], "usd"], ["Cuentas entre compañías", last.values[3], "usd"]];
+    }
     if (ind.key === "INPC") return [["General", last.values[2], "pct-raw"], ["Subyacente", last.values[5], "pct-raw"], ["No subyacente", last.values[11], "pct-raw"]];
     if (ind.key === "INPP") return [["INPP con petróleo", last.values[2], "pct-raw"], ["INPP sin petróleo", last.values[6], "pct-raw"], ["Bienes intermedios", last.values[8], "pct-raw"]];
     if (ind.key === "BALANZA") return [["Exportaciones", last.values[0], "usd"], ["Importaciones", last.values[1], "usd"], ["Saldo (X − M)", (last.values[0] != null && last.values[1] != null) ? last.values[0] - last.values[1] : null, "usd"]];

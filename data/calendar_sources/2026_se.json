@@ -1,7 +1,7 @@
 {
   "year": 2026,
   "fuente": "Secretaría de Economía / Dirección General de Inversión Extranjera",
-  "actualizado": "2026-08-11",
+  "actualizado": "2026-08-24",
   "entries": [
     {
       "clave": "IED",
@@ -20,9 +20,14 @@
           "fecha": "26 de mayo de 2026",
           "periodo": "1T 2026",
           "url": "https://www.presidenta.gob.mx/boletines/inversion-extranjera-aumenta-10-4-por-ciento-en-primer-trimestre-2026-presidenta-sheinbaum"
+        },
+        {
+          "fecha": "24 de agosto de 2026",
+          "periodo": "2T 2026",
+          "url": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa"
         }
       ],
-      "proxima_periodo": "2T 2026",
+      "proxima_periodo": "3T 2026",
       "proxima_no_anunciada": true,
       "proxima_comentario": "Próxima fecha oficial no anunciada"
     }

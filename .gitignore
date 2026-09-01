@@ -18,6 +18,9 @@ data/_candidate.json
 # Caché de fuentes de calendario (se regenera en CI o se descarga online)
 data/cache/
 
+# Descargas de fuentes (XLSX/CSV) obtenidas en runtime por los conectores
+data/downloads/
+
 # Sistema
 .DS_Store
 Thumbs.db
