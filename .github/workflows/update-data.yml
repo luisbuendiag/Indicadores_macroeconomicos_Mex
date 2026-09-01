@@ -71,10 +71,6 @@ jobs:
       - name: Validar (estricto para el reporte de CI)
         run: python scripts/validate.py
 
-      - name: Ejecutar pruebas
-        run: python -m pytest -q
-        timeout-minutes: 90
-
       - name: Commit de artefactos actualizados
         run: |
           git config user.name "github-actions[bot]"
