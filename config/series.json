@@ -710,60 +710,60 @@
         "link": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=682416#D701401"
       },
       {
-        "_nota": "Indicador de Confianza Empresarial (ICE) de Industrias manufactureras. IDs de sectores por confirmar en el catálogo BIE.",
-        "serie": "",
-        "confirmar": false,
+        "_nota": "Indicador de Confianza Empresarial (ICE) de Industrias manufactureras. Serie desestacionalizada.",
+        "serie": "701570",
+        "confirmar": true,
         "nombre": "Manufacturas",
-        "descripcion_serie": "ICE de Industrias manufactureras (puntos)",
+        "descripcion_serie": "ICE de Industrias manufactureras (puntos, cifras desestacionalizadas)",
         "frecuencia": "Mensual",
         "unidad": "Puntos",
         "tipo_serie": "Serie original",
         "db": "BIE-BISE",
         "geo": "00",
         "columna_objetivo": 3,
-        "link": ""
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=682416#D701570"
       },
       {
-        "_nota": "ICE de Construcción. IDs de sectores por confirmar en el catálogo BIE.",
-        "serie": "",
-        "confirmar": false,
+        "_nota": "ICE de Construcción. Serie original.",
+        "serie": "701407",
+        "confirmar": true,
         "nombre": "Construcción",
-        "descripcion_serie": "ICE de Construcción (puntos)",
+        "descripcion_serie": "ICE de Construcción (puntos, cifras originales)",
         "frecuencia": "Mensual",
         "unidad": "Puntos",
         "tipo_serie": "Serie original",
         "db": "BIE-BISE",
         "geo": "00",
         "columna_objetivo": 4,
-        "link": ""
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=682416#D701407"
       },
       {
-        "_nota": "ICE de Comercio. IDs de sectores por confirmar en el catálogo BIE.",
-        "serie": "",
-        "confirmar": false,
+        "_nota": "ICE de Comercio. Serie original.",
+        "serie": "701826",
+        "confirmar": true,
         "nombre": "Comercio",
-        "descripcion_serie": "ICE de Comercio (puntos)",
+        "descripcion_serie": "ICE de Comercio (puntos, cifras originales)",
         "frecuencia": "Mensual",
         "unidad": "Puntos",
         "tipo_serie": "Serie original",
         "db": "BIE-BISE",
         "geo": "00",
         "columna_objetivo": 5,
-        "link": ""
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=682416#D701826"
       },
       {
-        "_nota": "ICE de Servicios privados no financieros. IDs de sectores por confirmar en el catálogo BIE.",
-        "serie": "",
-        "confirmar": false,
+        "_nota": "ICE de Servicios privados no financieros. Serie original.",
+        "serie": "701975",
+        "confirmar": true,
         "nombre": "Servicios privados no financieros",
-        "descripcion_serie": "ICE de Servicios privados no financieros (puntos)",
+        "descripcion_serie": "ICE de Servicios privados no financieros (puntos, cifras originales)",
         "frecuencia": "Mensual",
         "unidad": "Puntos",
         "tipo_serie": "Serie original",
         "db": "BIE-BISE",
         "geo": "00",
         "columna_objetivo": 6,
-        "link": ""
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=682416#D701975"
       }
     ],
     "BCMM": [
