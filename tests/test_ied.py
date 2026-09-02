@@ -9,6 +9,11 @@ import pytest
 from sources import ied
 
 DATA_DIR = Path(__file__).resolve().parents[1] / "data"
+META_FILE = Path(__file__).resolve().parents[1] / "config" / "indicadores_meta.json"
+
+
+def _meta():
+    return json.loads(META_FILE.read_text(encoding="utf-8"))
 
 
 def _sample_manual() -> dict:
@@ -61,6 +66,35 @@ def test_componentes_flujo_from_manual():
     assert comp["Nuevas inversiones"] == round(2726 - 2071.63 * (24503.05 / (2071.63 + 24086.04 - 1654.62)), 2)
     assert comp["Reinversión de utilidades"] > 0
     assert comp["Cuentas entre compañías"] > 0
+
+
+def test_ied_is_principal_and_position():
+    """IED es principal, no complementario, y va después de IMFBCF y antes de BCMM."""
+    meta = _meta()
+    assert "IED" in meta["principal"]
+    assert "IED" not in meta["complementario"]
+    idx = meta["principal"].index("IED")
+    assert meta["principal"][idx - 1] == "IMFBCF"
+    assert meta["principal"][idx + 1] == "BCMM"
+
+
+def test_ied_kpi_is_acumulado_not_flujo():
+    """El KPI principal de IED es el acumulado (34 968 mdd), no el flujo trimestral (10 465 mdd)."""
+    meta = _meta()
+    if "IED" not in meta["principal"]:
+        pytest.skip("IED no está en principal todavía")
+    # Verificar directamente el conector (sin depender del pipeline de métricas).
+    res = ied.fetch()
+    assert res.ok, res.warnings
+    ind = res.data["IED"]
+    # El flujo trimestral sigue siendo un dato secundario.
+    last = ind["observations"][-1]
+    assert last["values"][0] == 10464.95
+    # El acumulado comparable es el KPI principal.
+    last_ac = ind["observations_acumulado"][-1]
+    assert last_ac["values"][0] == 34968
+    assert ind["metrics"]["acumulado"]["valor"] == 34968
+    assert ind["metrics"]["acumulado"]["valor"] != ind["metrics"]["flujo_trimestral"]["valor"]
 
 
 @pytest.mark.skipif(not (DATA_DIR / "ied_manual_2026_2t.json").exists(), reason="manual 2T no presente")

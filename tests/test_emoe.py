@@ -12,11 +12,12 @@ SERIES = json.loads((ROOT / "config" / "series.json").read_text(encoding="utf-8"
 BUILD_DATA = (ROOT / "scripts" / "build_data.py").read_text(encoding="utf-8")
 
 
-def test_emoe_is_principal_and_ordered_after_emim():
+def test_emoe_is_principal_and_ordered():
     assert "EMOE" in META["principal"]
     assert "EMOE" not in META["complementario"]
     idx = META["principal"].index("EMOE")
     assert META["principal"][idx - 1] == "EMIM"
+    assert META["principal"][idx + 1] == "DESOCUP"
 
 
 def test_emoe_not_in_entorno_financiero():
@@ -37,8 +38,12 @@ def test_emoe_columns_are_points_not_pct():
     assert cols[0] == "IGOEC"
     assert "puntos" in cols[1].lower()
     assert "puntos" in cols[2].lower()
-    for c in DATA["indicators"]["EMOE"]["columns"][:3]:
-        assert c["fmt"] == "idx"
+    # El IGOEC se formatea como índice; los cambios mensual/anual usan el formato emoe (puntos).
+    emoe_cols = DATA["indicators"]["EMOE"]["columns"][:3]
+    assert emoe_cols[0]["fmt"] == "idx"
+    for c in emoe_cols[1:]:
+        assert c["fmt"] in ("idx", "emoe"), f"fmt inesperado para {c['label']}: {c['fmt']}"
+        assert "%" not in c["fmt"]
 
 
 def test_emoe_values_are_points():
@@ -87,3 +92,22 @@ def test_emoe_url_points_to_ice():
 def test_emoe_no_percent_sign_in_main_value():
     k = METRICS["EMOE"]["kpi"]
     assert "%" not in k["ultimoFmt"]
+
+
+def test_emoe_confirmed_series_ids():
+    """Los 5 IDs de series EMOE/ICE deben estar configurados y reflejarse en la fuente."""
+    expected = {
+        "701401": "IGOEC",
+        "701570": "Manufacturas",
+        "701407": "Construcción",
+        "701826": "Comercio",
+        "701975": "Servicios",
+    }
+    emoe_series = SERIES.get("inegi", {}).get("EMOE", [])
+    ids = {str(s["serie"]): s["nombre"] for s in emoe_series}
+    for sid, name in expected.items():
+        assert sid in ids, f"Falta serie EMOE {sid}"
+        assert name in ids[sid] or ids[sid] in name, f"Serie {sid} no coincide: {ids[sid]}"
+    serie_str = DATA["indicators"]["EMOE"].get("fuente", {}).get("serie", "")
+    for sid in expected:
+        assert sid in serie_str, f"Fuente no menciona serie {sid}: {serie_str}"

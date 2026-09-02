@@ -138,12 +138,12 @@
         "usar_para_frescura": true
       },
       "EMOE": {
-        "acronyms": ["EMOE"],
-        "program_contains": ["Encuesta Mensual de Opinión Empresarial"],
+        "acronyms": ["EMOE", "ICE"],
+        "program_contains": ["Encuesta Mensual de Opinión Empresarial", "Indicadores de Confianza Empresarial"],
         "program_exclude": ["Pedidos Manufactureros"],
-        "product": "Encuesta Mensual de Opinión Empresarial",
+        "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
         "frequency": "Mensual",
-        "category": "Mercado laboral",
+        "category": "Confianza empresarial",
         "institution": "INEGI",
         "sigla": "EMOE",
         "usar_para_frescura": true,
@@ -184,7 +184,7 @@
       "IED": {
         "product": "Flujos de inversión extranjera directa",
         "frequency": "Trimestral",
-        "category": "Sector externo",
+        "category": "Inversión",
         "institution": "Secretaría de Economía",
         "sigla": "IED",
         "usar_para_frescura": true
@@ -196,6 +196,8 @@
     "Precios": "#b71c1c",
     "Consumo e inversión": "#1b5e20",
     "Mercado laboral": "#e65100",
+    "Confianza empresarial": "#827717",
+    "Inversión": "#1a237e",
     "Sector externo": "#4a148c",
     "Financiero": "#006064"
   },
@@ -215,7 +217,7 @@
       "product": "Flujos de inversión extranjera directa",
       "frequency": "Trimestral",
       "institution": "Secretaría de Economía",
-      "category": "Sector externo",
+      "category": "Inversión",
       "rule_text": "Publicación trimestral de flujos de IED. La fecha exacta de la siguiente publicación se anuncia por la Secretaría de Economía.",
       "url": "https://www.gob.mx/se",
       "usar_para_frescura": true

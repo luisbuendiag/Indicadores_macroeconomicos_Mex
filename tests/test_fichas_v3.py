@@ -57,15 +57,29 @@ def test_balance_saldo_vs_variacion_distinct():
     assert "Saldo (X − M)" in APP
 
 
-def test_principal_indicators_include_emoe():
-    m = re.search(r"PRINCIPAL\s*=\s*\[(.*?)\]", CONFIG, re.S)
-    assert m, "no se encontró PRINCIPAL"
-    claves = re.findall(r'"([^"]+)"', m.group(1))
-    assert "EMOE" in claves
-    assert "IED" not in claves
-    assert "TIPOCAMBIO" not in claves
-    assert "TASA" not in claves
-    assert "RESERVAS" not in claves
+EXPECTED_PRINCIPAL = [
+    "PIB", "PIBSEC", "IOAE", "IGAE", "IMAI", "EMIM", "EMOE", "DESOCUP",
+    "INPC", "INPP", "CONSUMO", "IMFBCF", "IED", "BCMM",
+]
+EXPECTED_COMPLEMENTARIOS = ["TIPOCAMBIO", "TASA", "RESERVAS"]
+
+
+def _parse_js_array(name):
+    m = re.search(rf"{re.escape(name)}\s*=\s*\[(.*?)\]", CONFIG, re.S)
+    assert m, f"no se encontró {name}"
+    return re.findall(r'"([^"]+)"', m.group(1))
+
+
+def test_principal_indicators_exact_order():
+    """PRINCIPAL debe coincidir exacto con los 14 indicadores del Panorama."""
+    claves = _parse_js_array("PRINCIPAL")
+    assert claves == EXPECTED_PRINCIPAL, f"PRINCIPAL incorrecto: {claves}"
+
+
+def test_complementarios_exact():
+    """Entorno financiero solo tiene 3 indicadores."""
+    claves = _parse_js_array("COMPLEMENTARIOS")
+    assert claves == EXPECTED_COMPLEMENTARIOS, f"COMPLEMENTARIOS incorrecto: {claves}"
 
 
 def test_pib_prose_uses_percentage_not_billions_for_variations():
@@ -102,8 +116,10 @@ def test_all_indicators_have_indicator_view():
     """Cada clave en ORDER genera una vista de ficha individual."""
     assert '...ORDER.map((k) => ({ id: k, type: "indicator"' in CONFIG
     assert 'VIEWS.filter((v) => v.type === "indicator").forEach((v) => renderIndicatorView(v.key))' in APP
-    from lib_kpicfg import get_cfg
-    for k in [*get_cfg("PRINCIPAL"), *get_cfg("COMPLEMENTARIOS")]:
+    # ORDER se construye a partir de PRINCIPAL + COMPLEMENTARIOS.
+    assert "export const ORDER = [...PRINCIPAL, ...COMPLEMENTARIOS];" in CONFIG
+    order = EXPECTED_PRINCIPAL + EXPECTED_COMPLEMENTARIOS
+    for k in order:
         assert f'"{k}"' in CONFIG
 
 
@@ -112,8 +128,12 @@ def test_financial_cards_open_individual_view():
     entorno_render = re.search(r"function renderEntorno\(\).*?(?=\nfunction |\Z)", APP, re.S)
     assert entorno_render
     assert "panoramaCard(ind)" in entorno_render.group(0)
-    for k in ["IED", "TIPOCAMBIO", "TASA", "RESERVAS", "EMOE"]:
+    # Solo los 3 complementarios aparecen en la sección financiera.
+    for k in ["TIPOCAMBIO", "TASA", "RESERVAS"]:
         assert f'"{k}"' in CONFIG
+    # IED y EMOE ya NO son financieros.
+    for k in ["IED", "EMOE"]:
+        assert k not in _parse_js_array("COMPLEMENTARIOS")
 
 
 def test_product_buttons_evaluated_independently():
@@ -141,6 +161,22 @@ def test_navegacion_prev_next_por_seccion():
     assert "function indicatorSection(key)" in APP
     assert "if (PRINCIPAL.includes(key)) return PRINCIPAL" in APP
     assert "if (COMPLEMENTARIOS.includes(key)) return COMPLEMENTARIOS" in APP
+
+    # Reproduce el cálculo de prev/next usando las listas de config.js.
+    def nav(section, key):
+        idx = section.index(key)
+        prev = section[idx - 1] if idx > 0 else None
+        next_ = section[idx + 1] if idx < len(section) - 1 else None
+        return prev, next_
+
+    assert nav(EXPECTED_PRINCIPAL, "EMIM") == ("IMAI", "EMOE")
+    assert nav(EXPECTED_PRINCIPAL, "EMOE") == ("EMIM", "DESOCUP")
+    assert nav(EXPECTED_PRINCIPAL, "IMFBCF") == ("CONSUMO", "IED")
+    assert nav(EXPECTED_PRINCIPAL, "IED") == ("IMFBCF", "BCMM")
+    assert nav(EXPECTED_PRINCIPAL, "BCMM") == ("IED", None)
+    assert nav(EXPECTED_COMPLEMENTARIOS, "TIPOCAMBIO") == (None, "TASA")
+    assert nav(EXPECTED_COMPLEMENTARIOS, "TASA") == ("TIPOCAMBIO", "RESERVAS")
+    assert nav(EXPECTED_COMPLEMENTARIOS, "RESERVAS") == ("TASA", None)
 
 
 def test_calendario_filtrado_por_indicador():

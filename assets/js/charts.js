@@ -127,7 +127,7 @@ function chartSpec(ind, obs) {
     case "RESERVAS": return { periods: P, lines: [{ name: "Reservas internacionales", values: col(0), color: G }], leftName: "Millones de dólares", leftFmt: "compact" };
     case "TIPOCAMBIO": return { periods: P, lines: [{ name: "Tipo de cambio FIX", values: col(0), color: G }], leftName: "Pesos por dólar", leftFmt: "idx" };
     case "TASA": return { periods: P, lines: [{ name: "Tasa objetivo (%)", values: col(0), color: G, step: "start" }], leftName: "Porcentaje (%)", leftFmt: "pct" };
-    case "EMOE": return { periods: P, lines: [{ name: "IGOEC", values: col(0), color: G, refLine: 50 }, { name: "Cambio mensual (puntos)", values: col(1).map((v) => v == null ? null : v), color: SEC, axis: "right" }], leftName: "Puntos", rightName: "Cambio mensual", leftFmt: "idx", rightFmt: "idx" };
+    case "EMOE": return { periods: P, lines: [{ name: "IGOEC", values: col(0), color: G, refLine: 50 }], leftName: "Puntos", leftFmt: "idx" };
     case "BCMM": return { periods: P, bars: [{ name: "Exportaciones", values: col(0), color: G }, { name: "Importaciones", values: col(1), color: SEC }], lines: [{ name: "Saldo (X − M)", values: saldo, color: Go, axis: "right" }], leftName: "Millones de dólares", rightName: "Saldo (mdd)", leftFmt: "compact", rightFmt: "compact" };
     default: return { periods: P, lines: [{ name: ind.nombre, values: col(0), color: G }], leftName: "", leftFmt: "num" };
   }
@@ -481,6 +481,73 @@ export function buildPibsecVariations(obs) {
     },
     legend: { top: 10, left: "center", itemWidth: 12, itemHeight: 12, icon: "roundRect", textStyle: { color: "#3d403b", fontFamily: FONT, fontSize: 11 } },
     toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "PIBT-variaciones", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+  };
+}
+
+// ---------------- EMOE: small multiples de sectores (ICE) ----------------
+const EMOE_SECTOR_COLORS = { Manufacturas: G, Construccion: COLORS.CRIMSON, Comercio: Go, Servicios: COLORS.TEAL };
+const EMOE_SECTORS = [
+  { key: "Manufacturas", col: 3, top: "Manufacturas" },
+  { key: "Construccion", col: 4, top: "Construcción" },
+  { key: "Comercio", col: 5, top: "Comercio" },
+  { key: "Servicios", col: 6, top: "Servicios privados no financieros" },
+];
+
+export function buildEmoeSectors(obs) {
+  const periods = obs.map((o) => o.period);
+  const grids = [], xAxes = [], yAxes = [], series = [], titles = [];
+  const rotate = periods.length > 12;
+  EMOE_SECTORS.forEach((cfg, i) => {
+    const row = Math.floor(i / 2);
+    const col = i % 2;
+    const left = col === 0 ? "4%" : "54%";
+    const top = row === 0 ? 20 : 225;
+    const height = 165;
+    const width = "42%";
+    grids.push({ left, top, width, height, containLabel: false });
+    xAxes.push({
+      gridIndex: i, type: "category", data: periods, boundaryGap: false,
+      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 },
+      axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+    });
+    yAxes.push({
+      gridIndex: i, type: "value", name: "Puntos", nameLocation: "middle", nameGap: 34,
+      nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 10, fontWeight: 500 },
+      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) },
+      splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
+    });
+    const values = obs.map((o) => o.values[cfg.col] ?? null);
+    const s = {
+      name: cfg.top, type: "line", xAxisIndex: i, yAxisIndex: i,
+      data: values, smooth: false, symbol: "circle", symbolSize: 3,
+      lineStyle: { color: EMOE_SECTOR_COLORS[cfg.key], width: 2 },
+      itemStyle: { color: EMOE_SECTOR_COLORS[cfg.key] },
+      areaStyle: { color: EMOE_SECTOR_COLORS[cfg.key], opacity: 0.08 },
+      markLine: { symbol: "none", data: [{ yAxis: 50, name: "Umbral 50", lineStyle: { color: COLORS.GRAY, type: "dashed", width: 1 }, label: { show: false } }], animation: false },
+    };
+    lastHighlight(s, periods, values, EMOE_SECTOR_COLORS[cfg.key], (v) => v == null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+    series.push(s);
+    const yRange = computeYRange(values, { padding: 0.08, includeZero: false, ref: 50 });
+    if (yRange) { yAxes[i].min = yRange.min; yAxes[i].max = yRange.max; yAxes[i].scale = true; }
+    titles.push({ text: cfg.top, left, top: top - 18, textStyle: { color: "#3d403b", fontFamily: FONT, fontSize: 12, fontWeight: 600 } });
+  });
+  return {
+    animation: false, color: [G, COLORS.CRIMSON, Go, COLORS.TEAL],
+    title: titles, grid: grids, xAxis: xAxes, yAxis: yAxes, series,
+    tooltip: {
+      trigger: "axis", backgroundColor: "#fff", borderColor: "#ddd7c6", borderWidth: 1,
+      textStyle: { color: COLORS.INK, fontFamily: FONT, fontSize: 12 },
+      extraCssText: "box-shadow:0 5px 16px rgba(0,0,0,.13);border-radius:9px;",
+      formatter: (params) => {
+        if (!params || !params.length) return "";
+        const p = params[0];
+        const v = p.value;
+        const val = v == null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " puntos";
+        return `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${val}</span></div>`;
+      },
+    },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "EMOE-sectores", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
   };
 }
 

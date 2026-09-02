@@ -84,8 +84,8 @@ def _xl_fmt(fmt: str) -> str:
         return '0.0"%"'
     if fmt == "pp":
         return '0.000" p.p."'
-    if fmt == "idx":
-        return "#,##0.0"
+    if fmt == "idx" or fmt == "emoe":
+        return "#,##0.00" if fmt == "emoe" else "#,##0.0"
     if fmt == "fx":
         return "$#,##0.00"
     if fmt == "text":
@@ -1015,32 +1015,35 @@ def add_desocup_sheets(wb, payload):
     _write_subset_sheet(ws2, ind, f"{ind.get('nombre', 'DESOCUP')} — Población ocupada", sub_pob, [4, 5])
 
 
-# Hojas de datos a crear (o recrear) para indicadores principales.
+# Hojas de datos a crear (o recrear) para indicadores principales y complementarios.
+# Orden: Panorama macroeconómico (14), Entorno financiero (3).
 NEW_SHEETS = {
-    "CONSUMO": "Consumo Privado",
     "PIBSEC": "PIB Sectorial",
-    "IMFBCF": "Formación bruta capital fijo",
     "IOAE": "IOAE",
-    "EMIM": "EMIM (Manufactura)",
-    "BCMM": "Balanza comercial",
+    "IGAE": "IGAE",
     "IMAI": "IMAI",
+    "EMIM": "EMIM (Manufactura)",
+    "EMOE": "EMOE (Confianza empresarial)",
     "INPC": "INPC",
     "INPP": "INPP",
+    "CONSUMO": "Consumo Privado",
+    "IMFBCF": "Formación bruta capital fijo",
+    "IED": "IED",
+    "BCMM": "Balanza comercial",
     "TIPOCAMBIO": "Tipo de cambio FIX",
     "TASA": "Tasa objetivo",
     "RESERVAS": "Reservas internacionales",
-    "EMOE": "EMOE (Confianza empresarial)",
 }
 
 # Hojas heredadas del libro base que ya no corresponden al perfil V3.
 LEGACY_SHEETS = ["Exportaciones", "PIB", "Tasa de desocupación", "INPC (Inflación)"]
 
 
-def add_indicator_sheets(wb, payload):
+def add_indicator_sheets(wb, payload, keys=None):
     """Crea o recrea hojas de datos para los indicadores principales. Si aún no
     tienen observaciones (scaffold pendiente de token), la hoja queda con los
     encabezados y una nota honesta, sin cifras inventadas."""
-    for key, sheet_name in NEW_SHEETS.items():
+    for key, sheet_name in (NEW_SHEETS.items() if keys is None else [(k, NEW_SHEETS[k]) for k in keys if k in NEW_SHEETS]):
         ind = payload["indicators"].get(key)
         if not ind:
             continue
@@ -1220,8 +1223,13 @@ def main():
     if "Subsectores EMIM" in wb.sheetnames:
         wb.remove(wb["Subsectores EMIM"])
     add_pib_sheets(wb, payload)
+    # Parte 1 del Panorama: actividad, industria y opinión empresarial.
+    pan_1 = ["PIBSEC", "IOAE", "IGAE", "IMAI", "EMIM", "EMOE"]
+    add_indicator_sheets(wb, payload, keys=pan_1)
     add_desocup_sheets(wb, payload)
-    add_indicator_sheets(wb, payload)
+    # Parte 2 del Panorama y Entorno financiero.
+    pan_2 = ["INPC", "INPP", "CONSUMO", "IMFBCF", "IED", "BCMM", "TIPOCAMBIO", "TASA", "RESERVAS"]
+    add_indicator_sheets(wb, payload, keys=pan_2)
     add_metodologia(wb, payload)
     add_control(wb, payload, manifest, log, calendar)
     add_resumen(wb, payload, manifest)  # queda como primera hoja (índice 0)

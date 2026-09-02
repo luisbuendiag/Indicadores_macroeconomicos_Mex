@@ -47,3 +47,44 @@
 - El parser extrae 37 series del boletín: índice, variación mensual/anual desestacionalizada, variación anual original, acumulado ene-mes, y desglose por origen (nacional/importado), bienes, servicios y durabilidad (duradero, semi duradero, no duradero).
 - Todas las variaciones se almacenan como fracciones y se muestran con `pct-frac` para evitar doble multiplicación por 100.
 - En la ficha se presentan el índice, las variaciones desestacionalizadas, el acumulado ene-mes y un desglose por origen y durabilidad.
+
+## Clasificación de indicadores
+
+A partir de la V3, la clasificación permanente del dashboard separa los indicadores en dos grupos:
+
+### Panorama macroeconómico (indicadores principales, 14)
+
+Orden exacto:
+
+1. **PIB** (EOPIBT)
+2. **PIBSEC** (PIB trimestral a precios constantes, sigla PIBT)
+3. **IOAE**
+4. **IGAE**
+5. **IMAI**
+6. **EMIM**
+7. **EMOE** (Encuesta Mensual de Opinión Empresarial)
+8. **DESOCUP** (ENOE)
+9. **INPC**
+10. **INPP**
+11. **CONSUMO** (IMCP)
+12. **IMFBCF**
+13. **IED** (Inversión Extranjera Directa)
+14. **BCMM** (Balanza comercial)
+
+Conceptualmente, Panorama macroeconómico agrupa indicadores de actividad, industria, opinión empresarial, mercado laboral, precios, consumo, inversión y sector externo.
+
+### Entorno financiero (indicadores complementarios, 3)
+
+1. **TIPOCAMBIO** (FIX)
+2. **TASA** (tasa objetivo)
+3. **RESERVAS** (reservas internacionales)
+
+Entorno financiero contiene únicamente variables monetarias y financieras de **Banco de México**. **IED** y **EMOE no pertenecen a Entorno financiero**; ambos son indicadores principales del Panorama macroeconómico porque IED es inversión real hacia la economía y EMOE es opinión/confianza empresarial.
+
+### Series EMOE confirmadas (para evitar regresión)
+
+- IGOEC: `701401`
+- Manufacturas: `701570`
+- Construcción: `701407`
+- Comercio: `701826`
+- Servicios privados no financieros: `701975`

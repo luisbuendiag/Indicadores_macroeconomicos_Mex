@@ -1,7 +1,7 @@
 // Orquestador del tablero macroeconómico V3 (navegación por indicador).
 import { ORDER, PRINCIPAL, COMPLEMENTARIOS, LABELS, SIGLA, CAPTIONS, WINDOWS, IED_WINDOWS, IED_WINDOWS_FLUJO, COLORS, KPICFG, VIEWS, ESTADOS } from "./config.js";
 import { computeKPI, analysis, annualVar } from "./metrics.js";
-import { buildOption, rangeStats, applyWindow, buildPibsecLevels, buildPibsecVariations, buildIgaeLevels, buildIgaeVariations, buildImaiLevels, buildImaiVariations, buildEmimLevels, buildEmimVariations, buildBcmmLevels, buildBcmmVariations, buildImfbcfLevels, buildImfbcfVariations, buildDesocupRates, buildDesocupPoblacion } from "./charts.js";
+import { buildOption, rangeStats, applyWindow, buildPibsecLevels, buildPibsecVariations, buildIgaeLevels, buildIgaeVariations, buildImaiLevels, buildImaiVariations, buildEmimLevels, buildEmimVariations, buildBcmmLevels, buildBcmmVariations, buildImfbcfLevels, buildImfbcfVariations, buildDesocupRates, buildDesocupPoblacion, buildEmoeSectors } from "./charts.js";
 import { fmtVal, perLong, perShort } from "./format.js";
 import * as cal from "./calendar.js";
 
@@ -806,6 +806,19 @@ function renderIndicatorView(key) {
     fl.append(el("div", { class: "chart-box ied-flujo", id: `chart-${ind.key}-flujo`, role: "img", "aria-label": "Flujo trimestral de IED" }));
     chartMain.append(fl);
     chartMain.append(el("div", { class: "range-wrap", id: `range-${ind.key}` }));
+  } else if (ind.key === "EMOE") {
+    chartMain.classList.add("pibsec-charts");
+    const main = el("div", { class: "pibsec-section" });
+    main.append(el("h3", { class: "block-sub" }, "Indicador Global de Opinión Empresarial de Confianza (IGOEC)"));
+    main.append(buildWinToggle(ind, winId));
+    main.append(el("div", { class: "chart-box emoe-main", id: `chart-${ind.key}`, role: "img", "aria-label": "IGOEC y línea de referencia a 50 puntos" }));
+    chartMain.append(main);
+    const sect = el("div", { class: "pibsec-section" });
+    sect.append(el("h3", { class: "block-sub" }, "Indicadores de Confianza Empresarial por sector"));
+    sect.append(buildWinToggle(ind, winId));
+    sect.append(el("div", { class: "chart-box emoe-sectors", id: `chart-${ind.key}-sectors`, role: "img", "aria-label": "ICE por sector: manufacturas, construcción, comercio y servicios" }));
+    chartMain.append(sect);
+    chartMain.append(el("div", { class: "range-wrap", id: `range-${ind.key}` }));
   } else {
     chartMain.append(buildWinToggle(ind, winId));
     chartMain.append(el("div", { class: "chart-box", id: `chart-${ind.key}`, role: "img", "aria-label": `Gráfica de ${ind.nombre}` }));
@@ -819,7 +832,7 @@ function renderIndicatorView(key) {
   }
 
   // Síntesis / Principales resultados: fuente única Python (lib_metrics).
-  const readingKeys = ["PIB", "PIBSEC", "IGAE", "IMAI", "IED", "TASA"];
+  const readingKeys = ["PIB", "PIBSEC", "IGAE", "IMAI", "EMOE", "IED", "TASA"];
   const syn = el("div", { class: "ficha-block" });
   syn.append(el("h3", { class: "block-sub" }, readingKeys.includes(ind.key) ? "Lectura del indicador" : "Evolución reciente"));
   if (readingKeys.includes(ind.key)) {
@@ -1041,8 +1054,8 @@ function breakdown(ind, k) {
     const grid = el("div", { class: "breakdown" });
     grid.append(el("div", { class: "bd-item" },
       el("div", { class: "bd-lbl" }, "IGOEC"),
-      el("div", { class: "bd-val" }, fmtVal(nivel, "idx")),
-      el("div", { class: "bd-sub" }, `Umbral: ${umbral} puntos · diferencia: `, el("span", { style: `color:${color}` }, diff != null ? (diff > 0 ? "+" : "") + diff.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + " puntos" : "—"), ` · sesgo: ${sentido}`)
+      el("div", { class: "bd-val" }, `${fmtVal(nivel, "idx")} puntos`),
+      el("div", { class: "bd-sub" }, `Umbral: ${umbral} puntos · diferencia: `, el("span", { style: `color:${color}` }, diff != null ? (diff > 0 ? "+" : "") + diff.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " puntos" : "—"), ` · sesgo: ${sentido}`)
     ));
     const sectores = [
       { col: 3, label: "Manufacturas" },
@@ -1060,12 +1073,12 @@ function breakdown(ind, k) {
         const c = d > 0 ? COLORS.GREEN : (d < 0 ? COLORS.CRIMSON : COLORS.INK);
         grid.append(el("div", { class: "bd-item" },
           el("div", { class: "bd-lbl" }, s.label),
-          el("div", { class: "bd-val" }, fmtVal(v, "idx")),
-          el("div", { class: "bd-sub" }, `vs. umbral: `, el("span", { style: `color:${c}` }, (d > 0 ? "+" : "") + d.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + " puntos"))
+          el("div", { class: "bd-val" }, `${fmtVal(v, "idx")} puntos`),
+          el("div", { class: "bd-sub" }, `vs. umbral: `, el("span", { style: `color:${c}` }, (d > 0 ? "+" : "") + d.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " puntos"))
         ));
       });
     } else {
-      box.append(el("p", { class: "prose", style: "font-size:12.5px;color:var(--muted);margin-top:-4px;margin-bottom:12px;text-align:left;" }, "El desglose por sector requiere confirmar las series BIE de los ICE. Mientras tanto, el IGOEC agrega la confianza de los cuatro sectores."));
+      box.append(el("p", { class: "prose", style: "font-size:12.5px;color:var(--muted);margin-top:-4px;margin-bottom:12px;text-align:left;" }, "Los sectores se obtienen de las series BIE del ICE (701401, 701570, 701407, 701826, 701975)."));
     }
     box.append(grid);
     return box;
@@ -1327,7 +1340,7 @@ function renderEntorno() {
   const sec = $("#view-entorno");
   sec.innerHTML = "";
   sec.append(el("div", { class: "section-title" }, "Entorno financiero"));
-  sec.append(el("div", { class: "section-sub" }, "Indicadores complementarios (Banco de México y otros). Haz clic en cualquier tarjeta para abrir su ficha individual."));
+  sec.append(el("div", { class: "section-sub" }, "Variables monetarias y financieras de Banco de México: tipo de cambio FIX, tasa objetivo y reservas internacionales."));
   const grid = el("div", { class: "matrix" });
   COMPLEMENTARIOS.map(getInd).filter(Boolean).forEach((ind) => grid.append(panoramaCard(ind)));
   sec.append(grid);
@@ -1519,6 +1532,33 @@ function mountEmimCharts(ind) {
   }
 }
 
+function mountEmoeCharts(ind) {
+  if (typeof echarts === "undefined" || !hasData(ind)) return;
+  const winId = state.windows[ind.key] || state.data.meta?.default_window || "5a";
+  const obs = applyWindow(ind, winId);
+  const domMain = document.getElementById(`chart-${ind.key}`);
+  const domSectors = document.getElementById(`chart-${ind.key}-sectors`);
+  if (!domMain || !domSectors) return;
+  let mainChart = state.charts[ind.key];
+  if (!mainChart) { mainChart = echarts.init(domMain, null, { renderer: "canvas" }); state.charts[ind.key] = mainChart; }
+  mainChart.setOption(buildOption(ind, winId), true);
+
+  let sectorsChart = state.charts[`${ind.key}-sectors`];
+  if (!sectorsChart) { sectorsChart = echarts.init(domSectors, null, { renderer: "canvas" }); state.charts[`${ind.key}-sectors`] = sectorsChart; }
+  sectorsChart.setOption(buildEmoeSectors(obs), true);
+
+  const rangeCard = document.getElementById(`range-${ind.key}`);
+  if (rangeCard) {
+    rangeCard.innerHTML = "";
+    rangeCard.append(buildRangeCard(ind, winId));
+  }
+  const cap = document.getElementById(`caption-${ind.key}`);
+  if (cap) {
+    const last = obs.length ? obs[obs.length - 1].period : (ind.last_observation || "—");
+    cap.textContent = `${CAPTIONS[ind.key] || ""} Datos hasta ${last}.`.trim();
+  }
+}
+
 function mountBcmmCharts(ind) {
   if (typeof echarts === "undefined" || !hasData(ind)) return;
   const winId = state.windows[ind.key] || state.data.meta?.default_window || "5a";
@@ -1679,6 +1719,7 @@ function mountChart(ind) {
   if (ind.key === "IGAE") { mountIgaeCharts(ind); return; }
   if (ind.key === "IMAI") { mountImaiCharts(ind); return; }
   if (ind.key === "DESOCUP") { mountDesocupCharts(ind); return; }
+  if (ind.key === "EMOE") { mountEmoeCharts(ind); return; }
   if (ind.key === "BCMM" && (ind.metrics?.kpi?.cards || (ind.columns && ind.columns.length > 25))) { mountBcmmCharts(ind); return; }
   if (ind.key === "EMIM" && (ind.metrics?.kpi?.cards || (ind.columns && ind.columns.length > 15))) { mountEmimCharts(ind); return; }
   if (ind.key === "IMFBCF" && (ind.columns && ind.columns.length > 15)) { mountImfbcfCharts(ind); return; }

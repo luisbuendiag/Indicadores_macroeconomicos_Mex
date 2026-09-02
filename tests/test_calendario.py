@@ -250,3 +250,68 @@ def test_fechas_consistentes_con_estado(calendario_nuevo):
                 assert d <= as_of, f"{ev['indicator']} marcado publicado pero fecha {d} > {as_of}"
             elif ev["status"] == "próximo":
                 assert d > as_of, f"{ev['indicator']} marcado próximo pero fecha {d} <= {as_of}"
+
+
+def _items_for(calendario_nuevo, clave):
+    return [e for e in calendario_nuevo["events"] if e["indicator"] == clave] + \
+           [r for r in calendario_nuevo["rules"] if r["indicator"] == clave]
+
+
+def test_categorias_y_filtros_indicadores_reclasificados(calendario_nuevo):
+    """Las categorías e instituciones reflejan la clasificación permanente V3.
+
+    - EMOE: Panorama (confianza empresarial), INEGI, mensual.
+    - IED:  Panorama (inversión), Secretaría de Economía/RNIE, trimestral.
+    - FIX:  Financiero, diario/regla, Banco de México.
+    - TASA: Financiero, decisiones de política monetaria, Banco de México.
+    - RESERVAS: Financiero, semanal, Banco de México.
+    """
+    meta = json.loads(META_FILE.read_text(encoding="utf-8"))
+    principal = set(meta["principal"])
+    complementario = set(meta["complementario"])
+
+    # EMOE es Panorama, INEGI, mensual y de confianza empresarial.
+    emoe = _items_for(calendario_nuevo, "EMOE")
+    assert emoe, "No hay eventos EMOE"
+    for e in emoe:
+        assert e["indicator"] in principal, "EMOE debe ser indicador principal/Panorama"
+        assert e["institution"] == "INEGI", f"EMOE institución incorrecta: {e['institution']}"
+        assert e["frequency"] == "Mensual", f"EMOE frecuencia incorrecta: {e['frequency']}"
+        text = f"{e.get('program', '')} {e.get('product', '')}".lower()
+        assert "opinión empresarial" in text or "confianza empresarial" in text, \
+            f"EMOE no refleja confianza empresarial: {text}"
+
+    # IED es Panorama (inversión), SE-RNIE, trimestral.
+    ied = _items_for(calendario_nuevo, "IED")
+    assert ied, "No hay eventos IED"
+    for e in ied:
+        assert e["indicator"] in principal, "IED debe ser indicador principal/Panorama"
+        assert e["institution"] == "Secretaría de Economía", f"IED institución incorrecta: {e['institution']}"
+        assert e["frequency"] == "Trimestral", f"IED frecuencia incorrecta: {e['frequency']}"
+        text = f"{e.get('program', '')} {e.get('product', '')}".lower()
+        assert "inversión" in text, f"IED no refleja inversión: {text}"
+
+    # FIX es Financiero, diario, regla.
+    fix = _items_for(calendario_nuevo, "TIPOCAMBIO")
+    assert fix, "No hay regla TIPOCAMBIO"
+    for e in fix:
+        assert e["indicator"] in complementario, "FIX debe ser indicador financiero"
+        assert e["institution"] == "Banco de México", f"FIX institución incorrecta: {e['institution']}"
+        assert e["frequency"] == "Diaria", f"FIX frecuencia incorrecta: {e['frequency']}"
+        assert e.get("status") == "regla" or e.get("type") == "rule", "FIX debe ser una regla diaria"
+
+    # TASA es Financiero, decisiones de política monetaria.
+    tasa = _items_for(calendario_nuevo, "TASA")
+    assert tasa, "No hay eventos TASA"
+    for e in tasa:
+        assert e["indicator"] in complementario, "TASA debe ser indicador financiero"
+        assert e["institution"] == "Banco de México", f"TASA institución incorrecta: {e['institution']}"
+        assert "Decisión" in e["product"], f"TASA no es decisión de política monetaria: {e['product']}"
+
+    # RESERVAS es Financiero, semanal.
+    reservas = _items_for(calendario_nuevo, "RESERVAS")
+    assert reservas, "No hay eventos RESERVAS"
+    for e in reservas:
+        assert e["indicator"] in complementario, "RESERVAS debe ser indicador financiero"
+        assert e["institution"] == "Banco de México", f"RESERVAS institución incorrecta: {e['institution']}"
+        assert e["frequency"] == "Semanal", f"RESERVAS frecuencia incorrecta: {e['frequency']}"

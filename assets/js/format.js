@@ -16,6 +16,8 @@ export function fmtVal(v, fmt) {
       return (v / 1e6).toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " billones de pesos de 2018";
     case "idx":
       return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    case "emoe":
+      return v.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     case "fx":
       return "$" + v.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     case "pct-frac":

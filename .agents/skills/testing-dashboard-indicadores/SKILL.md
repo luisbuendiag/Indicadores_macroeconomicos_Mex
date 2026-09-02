@@ -28,10 +28,26 @@ No backend at runtime — the app reads `data/*.json`. Fully testable locally wi
    ```
 
 ## Key things to verify (V3 spec)
-- **Exactly 12 principal indicators** on the panorama (PIB, PIBSEC, IGAE, IMAI, BALANZA,
-  DESOCUP, INPC, INPP, CONSUMO, IMFBCF, IOAE, EMIM). Source of truth: `assets/js/config.js`
-  `PRINCIPAL`. Complementarios (IED, TIPOCAMBIO, TASA, RESERVAS) must appear ONLY in
-  "Entorno financiero", never in the panorama.
+- **Exactly 14 principal indicators** on the panorama, in this order:
+  1. PIB (EOPIBT)
+  2. PIBSEC (PIB trimestral a precios constantes, sigla PIBT)
+  3. IOAE
+  4. IGAE
+  5. IMAI
+  6. EMIM
+  7. EMOE (Encuesta Mensual de Opinión Empresarial)
+  8. DESOCUP (ENOE)
+  9. INPC
+  10. INPP
+  11. CONSUMO (IMCP)
+  12. IMFBCF
+  13. IED (Inversión Extranjera Directa)
+  14. BCMM (Balanza comercial)
+  Source of truth: `assets/js/config.js` `PRINCIPAL`.
+
+- **Complementarios (TIPOCAMBIO, TASA, RESERVAS)** must appear ONLY in
+  "Entorno financiero", never in the panorama. IED and EMOE are now principal
+  indicators in Panorama macroeconómico.
 - **Honest states** per indicator: badges "Dato de respaldo" / "En revisión" /
   "Pendiente de token". Without tokens, indicators with a backup series show "dato de
   respaldo" (NOT "actualizado automáticamente"). Scaffolds (IMFBCF/IOAE/EMIM) must show a
@@ -49,6 +65,22 @@ No backend at runtime — the app reads `data/*.json`. Fully testable locally wi
   verify sheets with openpyxl — must include `Formación bruta capital fijo`, `IOAE`,
   `EMIM (Manufactura)`, `Control de actualizaciones` (uses field `estado`, not `estatus`).
 - **Desocupación** attributed to INEGI/ENOE, not OCDE (regression).
+
+## Nota conceptual — Clasificación permanente de indicadores
+
+A partir de la V3, la separación entre Panorama macroeconómico y Entorno financiero se define de la siguiente manera:
+
+- **Panorama macroeconómico** reúne indicadores de actividad, industria, opinión empresarial, mercado laboral, precios, consumo, inversión y sector externo. Por ello **IED** (inversión real hacia la economía) y **EMOE** (opinión/confianza empresarial) son indicadores principales del Panorama.
+- **Entorno financiero** contiene únicamente variables monetarias y financieras de **Banco de México**: **TIPOCAMBIO** (FIX), **TASA** (tasa objetivo) y **RESERVAS** (reservas internacionales).
+- **Ni IED ni EMOE pertenecen a Entorno financiero.**
+
+### Series EMOE confirmadas (regresión a vigilar)
+
+- IGOEC: `701401`
+- Manufacturas: `701570`
+- Construcción: `701407`
+- Comercio: `701826`
+- Servicios privados no financieros: `701975`
 
 ## Recording
 Record browser interactions; annotate setup/test_start/assertion. Maximize first:

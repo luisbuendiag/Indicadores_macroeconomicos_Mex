@@ -32,9 +32,9 @@ def test_meta_last_update_ct_mexico_city(payload):
 def test_periodo_referencia_reciente_from_principal(payload):
     ref = payload["meta"].get("periodo_referencia_reciente")
     assert ref and ref.get("period")
-    # Debe pertenecer a un indicador principal.
-    from lib_kpicfg import get_cfg
-    principal = get_cfg("PRINCIPAL")
+    # Debe pertenecer a un indicador principal (fuente única de verdad: config/indicadores_meta.json).
+    meta = json.loads((ROOT / "config" / "indicadores_meta.json").read_text(encoding="utf-8"))
+    principal = meta["principal"]
     matches = [ind for k, ind in payload["indicators"].items() if k in principal and ind.get("last_observation") == ref["period"]]
     assert matches, f"El periodo de referencia reciente {ref['period']} no pertenece a un indicador principal"
 

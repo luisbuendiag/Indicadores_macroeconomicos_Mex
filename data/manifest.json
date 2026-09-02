@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-02T19:36:57+00:00",
+  "generated_at": "2026-09-02T22:08:09+00:00",
   "indicadores": [
     {
       "indicador": "Estimación Oportuna del Producto Interno Bruto Trimestral",
@@ -170,30 +170,6 @@
       "observaciones": ""
     },
     {
-      "indicador": "Balanza Comercial de Mercancías de México",
-      "clave": "BCMM",
-      "clasificacion": "principal",
-      "fuente": "INEGI",
-      "serie": "6204198547",
-      "frecuencia": "Mensual",
-      "unidad": "Millones de dólares estadounidenses",
-      "ajuste_estacional": "Cifras originales",
-      "ultima_observacion": "Jul 26",
-      "periodo_referencia": "Jul 26",
-      "fecha_publicacion": "27 de agosto de 2026",
-      "fecha_consulta": "2026-09-02",
-      "fecha_actualizacion_archivo": "2026-09-02",
-      "metodo_actualizacion": "INEGI BIE API",
-      "estado": "ACTUALIZADO",
-      "origen_dato": "api",
-      "requiere_token": "INEGI",
-      "serie_confirmada": true,
-      "usa_respaldo": false,
-      "revision_detectada": false,
-      "error": null,
-      "observaciones": ""
-    },
-    {
       "indicador": "Indicadores de ocupación y empleo",
       "clave": "DESOCUP",
       "clasificacion": "principal",
@@ -316,7 +292,7 @@
     {
       "indicador": "Inversión Extranjera Directa (IED)",
       "clave": "IED",
-      "clasificacion": "complementario",
+      "clasificacion": "principal",
       "fuente": "Secretaría de Economía — Dirección General de Inversión Extranjera / RNIE",
       "serie": null,
       "frecuencia": "Trimestral",
@@ -333,6 +309,30 @@
       "requiere_token": null,
       "serie_confirmada": false,
       "usa_respaldo": true,
+      "revision_detectada": false,
+      "error": null,
+      "observaciones": ""
+    },
+    {
+      "indicador": "Balanza Comercial de Mercancías de México",
+      "clave": "BCMM",
+      "clasificacion": "principal",
+      "fuente": "INEGI",
+      "serie": "6204198547",
+      "frecuencia": "Mensual",
+      "unidad": "Millones de dólares estadounidenses",
+      "ajuste_estacional": "Cifras originales",
+      "ultima_observacion": "Jul 26",
+      "periodo_referencia": "Jul 26",
+      "fecha_publicacion": "27 de agosto de 2026",
+      "fecha_consulta": "2026-09-02",
+      "fecha_actualizacion_archivo": "2026-09-02",
+      "metodo_actualizacion": "INEGI BIE API",
+      "estado": "ACTUALIZADO",
+      "origen_dato": "api",
+      "requiere_token": "INEGI",
+      "serie_confirmada": true,
+      "usa_respaldo": false,
       "revision_detectada": false,
       "error": null,
       "observaciones": ""

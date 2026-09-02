@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-02T19:36:56+00:00",
+    "generated_at": "2026-09-02T22:08:07+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-09-02T13:36:56-06:00",
+    "last_update_ct": "2026-09-02T16:08:07-06:00",
     "periodo_referencia_reciente": {
       "period": "Ago 26",
       "period_long": "Ago 26"
@@ -24,13 +24,13 @@
     "IMAI",
     "EMIM",
     "EMOE",
-    "BCMM",
     "DESOCUP",
     "INPC",
     "INPP",
     "CONSUMO",
     "IMFBCF",
     "IED",
+    "BCMM",
     "TIPOCAMBIO",
     "TASA",
     "RESERVAS"
@@ -23701,7 +23701,7 @@
       "source_origin": "api",
       "requiere_token": null,
       "serie_confirmada": false,
-      "clasificacion": "complementario",
+      "clasificacion": "principal",
       "estado": "ACTUALIZADO",
       "origen_dato": "respaldo",
       "fecha_publicacion": "24 de agosto de 2026",
@@ -134093,12 +134093,12 @@
         {
           "label": "Cambio mensual IGOEC (puntos)",
           "index": 1,
-          "fmt": "idx"
+          "fmt": "emoe"
         },
         {
           "label": "Cambio anual IGOEC (puntos)",
           "index": 2,
-          "fmt": "idx"
+          "fmt": "emoe"
         },
         {
           "label": "Manufacturas",
@@ -135386,18 +135386,18 @@
         "kpi": {
           "assessment": "neutral",
           "dir": "flat",
-          "ultimoFmt": "48.2",
+          "ultimoFmt": "48.2 puntos",
           "ultimoRaw": 48.232912,
           "ultimoP": "Ago 26",
-          "varText": "+0.0",
+          "varText": "+0.03 puntos",
           "varMag": 0.029301,
           "pos": true,
           "varColor": "#1e5b4f",
           "varLabel": "Cambio mensual",
-          "maxFmt": "56.5",
+          "maxFmt": "56.5 puntos",
           "maxRaw": 56.536,
           "maxP": "Jul 23",
-          "minFmt": "33.9",
+          "minFmt": "33.9 puntos",
           "minRaw": 33.9,
           "minP": "May 20",
           "lastI": 103,
@@ -135614,18 +135614,18 @@
             "Ago 26"
           ],
           "semaforo": "estable",
-          "yoyText": "-0.6",
+          "yoyText": "-0.61 puntos",
           "yoyLabel": "Cambio anual"
         },
         "yoy": {
           "mag": -0.608084,
           "pos": false,
-          "text": "-0.6",
+          "text": "-0.61 puntos",
           "label": "Cambio anual"
         },
         "resumen": [
-          "En agosto de 2026, el IGOEC se ubicó en 48.2 puntos (puntos; umbral de referencia=50). El valor de cambio mensual fue de +0.0 frente al mes previo.",
-          "La cambio anual se situó en -0.6, lo que refleja la comparación contra agosto de 2026 del año previo.",
+          "En agosto de 2026, el IGOEC se ubicó en 48.2 puntos (umbral de referencia=50). El valor de cambio mensual fue de +0.03 puntos frente al mes previo.",
+          "El cambio anual se situó en -0.61 puntos, lo que refleja la comparación contra agosto de 2026 del año previo.",
           "En la serie mostrada, el indicador oscila entre un máximo de 56.5 puntos (julio de 2023) y un mínimo de 33.9 puntos (mayo de 2020). El último dato se ubica dentro del rango observado en el periodo mostrado.",
           "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
         ]

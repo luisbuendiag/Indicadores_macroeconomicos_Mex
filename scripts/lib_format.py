@@ -167,6 +167,8 @@ def fmt_val(v: float | int | None, fmt: str) -> str:
         return _to_fixed(v / 1e6, 2, 2) + " billones de pesos de 2018"
     if fmt == "idx":
         return _to_fixed(v, 1, 1)
+    if fmt == "emoe":
+        return _to_fixed(v, 2, 2)
     if fmt == "fx":
         return "$" + _to_fixed(v, 2, 2)
     if fmt == "pct-frac":

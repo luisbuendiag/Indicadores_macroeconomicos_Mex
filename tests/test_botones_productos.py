@@ -145,7 +145,8 @@ def test_boletin_inegi_fallback_when_no_specific_url():
 
 
 def test_financial_indicators_have_products():
-    for k in ["IED", "TIPOCAMBIO", "TASA", "RESERVAS", "EMOE"]:
+    # Entorno financiero solo tiene 3 indicadores (Banco de México).
+    for k in ["TIPOCAMBIO", "TASA", "RESERVAS"]:
         ind = INDICADORES["indicators"][k]
         assert ind.get("xlsx_disponible"), f"{k} sin xlsx_disponible"
         assert ind.get("url_excel_individual")

@@ -1109,8 +1109,7 @@ def compute_emoe_metrics(payload: dict) -> list[str]:
     ind["unidad"] = "Puntos"
     ind["umbral"] = 50
     ind["indicador_principal"] = "IGOEC"
-    # Forzar redescubrimiento del boletín ICE (antes se usaba ee/ee).
-    ind["url_boletin_oficial"] = None
+    # Dejar url_boletin_oficial para el descubrimiento posterior del boletín ICE.
     ind["boletin_validado"] = False
     return changes
 

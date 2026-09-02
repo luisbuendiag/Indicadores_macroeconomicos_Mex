@@ -1,5 +1,5 @@
 // Configuración de presentación (paleta, indicadores, navegación). Módulo ES.
-// V3: navegación por indicador, 12 principales + complementarios (entorno financiero).
+// V3: Panorama macroeconómico (14 principales) + Entorno financiero (3 complementarios).
 
 export const COLORS = {
   GREEN: "#1e5b4f",
@@ -14,10 +14,10 @@ export const COLORS = {
 };
 
 // Indicadores principales del Panorama macroeconómico.
-export const PRINCIPAL = ["PIB", "PIBSEC", "IOAE", "IGAE", "IMAI", "EMIM", "EMOE", "BCMM", "DESOCUP", "INPC", "INPP", "CONSUMO", "IMFBCF"];
+export const PRINCIPAL = ["PIB", "PIBSEC", "IOAE", "IGAE", "IMAI", "EMIM", "EMOE", "DESOCUP", "INPC", "INPP", "CONSUMO", "IMFBCF", "IED", "BCMM"];
 
-// Indicarios complementarios del Entorno financiero.
-export const COMPLEMENTARIOS = ["IED", "TIPOCAMBIO", "TASA", "RESERVAS"];
+// Indicadores complementarios del Entorno financiero (Banco de México).
+export const COMPLEMENTARIOS = ["TIPOCAMBIO", "TASA", "RESERVAS"];
 
 // Orden lógico completo (principal + complementario).
 export const ORDER = [...PRINCIPAL, ...COMPLEMENTARIOS];
@@ -29,7 +29,7 @@ export const LABELS = {
   INPP: "Índice Nacional de Precios Productor",
   CONSUMO: "Consumo privado", IMFBCF: "Formación bruta de capital fijo",
   IOAE: "IOAE", EMIM: "EMIM", EMOE: "Encuesta Mensual de Opinión Empresarial",
-  IED: "IED", TIPOCAMBIO: "Tipo de cambio FIX", TASA: "Tasa objetivo de Banco de México",
+  IED: "Inversión Extranjera Directa", TIPOCAMBIO: "Tipo de cambio FIX", TASA: "Tasa objetivo de Banco de México",
   RESERVAS: "Reservas internacionales",
 };
 
@@ -61,7 +61,7 @@ export const KPICFG = {
   TIPOCAMBIO: { valCol: 0, valFmt: "fx", varMode: "pct-prev", varLabel: "Cambio diario", yoyLabel: "Cambio anual", mainLabel: "Tipo de cambio FIX", noun: "tipo de cambio FIX", art: "el", grupo: "fx", assess: "neutral", ctx: " (pesos por dólar)", vw: "variación diaria", vg: "f", comp: "frente al día hábil previo", goodSign: 0 },
   TASA: { valCol: 0, valFmt: "pct-raw", varMode: "pp-prev", varLabel: "Último ajuste", yoyLabel: "Fecha del último ajuste", mainLabel: "Tasa objetivo", noun: "tasa objetivo", art: "la", grupo: "tasa", assess: "neutral", ctx: " (% anual). No confundir con la TIIE.", vw: "cambio de política monetaria", vg: "f", comp: "en la última decisión", goodSign: 0 },
   RESERVAS: { valCol: 0, valFmt: "usd", varMode: "abs-prev", varLabel: "Var. semanal", yoyLabel: "Var. anual", mainLabel: "Reservas internacionales", noun: "reservas internacionales", art: "las", grupo: "growth", assess: "neutral", ctx: " (millones de dólares)", vw: "variación semanal", vg: "f", comp: "frente a la semana previa", goodSign: 0 },
-  EMOE: { valCol: 0, valFmt: "idx", varCol: 1, varFmt: "idx", varLabel: "Cambio mensual", yoyCol: 2, yoyFmt: "idx", yoyLabel: "Cambio anual", mainLabel: "IGOEC", noun: "IGOEC", art: "el", grupo: "opinion", assess: "neutral", ctx: " (puntos; umbral de referencia=50)", vw: "cambio mensual", vg: "f", comp: "frente al mes previo", goodSign: 0, umbral: 50 },
+  EMOE: { valCol: 0, valFmt: "idx", varCol: 1, varFmt: "emoe", varLabel: "Cambio mensual", yoyCol: 2, yoyFmt: "emoe", yoyLabel: "Cambio anual", mainLabel: "IGOEC", noun: "IGOEC", art: "el", grupo: "opinion", assess: "neutral", ctx: "umbral de referencia=50", vw: "cambio mensual", vg: "f", comp: "frente al mes previo", goodSign: 0, umbral: 50, unit: "puntos" },
   BCMM: { valCol: 2, valFmt: "usd", varCol: 2, varFmt: "usd", varLabel: "Variación mensual del saldo", yoyCol: 5, yoyFmt: "pct-frac", yoyLabel: "Var. anual saldo", mainLabel: "Saldo comercial", derived: "saldo", noun: "saldo comercial", art: "el", grupo: "balanza", assess: "neutral", ctx: "", vw: "variación anual", vg: "m", comp: "frente al mismo mes del año anterior", goodSign: 0 },
 };
 
@@ -81,7 +81,7 @@ export const CAPTIONS = {
   TIPOCAMBIO: "Tipo de cambio FIX (pesos por dólar).",
   TASA: "Objetivo para la Tasa de Interés Interbancaria a un día (tasa objetivo) fijado por la Junta de Gobierno de Banco de México. No confundir con la TIIE de fondeo ni con las TIIE a 28, 91 o 182 días.",
   RESERVAS: "Reservas internacionales netas (millones de dólares).",
-  EMOE: "Indicador Global de Opinión Empresarial de Confianza (IGOEC) y su cambio mensual y anual en puntos. Línea de referencia en 50 puntos. El desglose por sector requiere confirmar los IDs de las series BIE de ICE.",
+  EMOE: "Indicador Global de Opinión Empresarial de Confianza (IGOEC) y su cambio mensual y anual en puntos. Línea de referencia en 50 puntos. Desglose sectorial: Manufacturas, Construcción, Comercio y Servicios privados no financieros.",
   BCMM: "Exportaciones, importaciones y saldo comercial de mercancías de México (millones de dólares). Incluye desglose petrolero/no petrolero, por tipo de bien importado y composición de las exportaciones no petroleras, además de sus variaciones anuales y acumulados ene-mes."
 };
 

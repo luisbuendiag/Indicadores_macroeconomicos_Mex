@@ -19,6 +19,19 @@ def test_file_exists():
     assert DATA.exists(), "data/indicadores.json debe existir"
 
 
+def test_meta_counts_match_new_classification():
+    """El perfil V3 tiene 14 principales y 3 complementarios."""
+    meta_path = ROOT / "config" / "indicadores_meta.json"
+    meta = json.loads(meta_path.read_text(encoding="utf-8"))
+    assert len(meta["principal"]) == 14, f"Se esperaban 14 principales, hay {len(meta['principal'])}"
+    assert meta["principal"] == [
+        "PIB", "PIBSEC", "IOAE", "IGAE", "IMAI", "EMIM", "EMOE", "DESOCUP",
+        "INPC", "INPP", "CONSUMO", "IMFBCF", "IED", "BCMM",
+    ]
+    assert len(meta["complementario"]) == 3, f"Se esperaban 3 complementarios, hay {len(meta['complementario'])}"
+    assert meta["complementario"] == ["TIPOCAMBIO", "TASA", "RESERVAS"]
+
+
 def test_meta_and_order(payload):
     assert "meta" in payload and "indicators" in payload
     assert payload["meta"]["base_year"] == 2018

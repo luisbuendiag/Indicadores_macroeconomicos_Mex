@@ -47,7 +47,9 @@ function computeVar(ind, cfg, vals, lastI, prevI) {
     const raw = valAt(ind, lastI, cfg.varCol);
     if (raw == null) return { mag: null, text: "—", pos: true };
     const mag = cfg.varFmt === "pct-frac" ? raw * 100 : raw;
-    return { mag, text: (raw > 0 ? "+" : "") + fmtVal(raw, cfg.varFmt), pos: raw >= 0 };
+    let text = (raw > 0 ? "+" : "") + fmtVal(raw, cfg.varFmt);
+    if (cfg.unit) text += " " + cfg.unit;
+    return { mag, text, pos: raw >= 0 };
   }
   const cur = vals[lastI];
   const lag = ind.frecuencia === "Trimestral" ? 4 : 12;
@@ -392,14 +394,16 @@ export function computeKPI(ind) {
   else if (varInfo.mag != null && assess === "unemployment") assessment = dir === "down" ? "favorable" : (dir === "up" ? "adverso" : "neutral");
   // semáforo derivado (para el punto de color): favorable=bueno, adverso=malo, resto=neutral/estable.
   let semaforo = assessment === "favorable" ? "bueno" : (assessment === "adverso" ? "malo" : (varInfo.mag == null ? "neutral" : "estable"));
+  const unit = cfg.unit || "";
+  const withUnit = (s) => unit ? `${s} ${unit}` : s;
   const out = {
     assessment, dir,
-    ultimoFmt: fmtVal(ultimo, cfg.valFmt), ultimoRaw: ultimo, ultimoP: P[lastI],
+    ultimoFmt: withUnit(fmtVal(ultimo, cfg.valFmt)), ultimoRaw: ultimo, ultimoP: P[lastI],
     varText: varInfo.text, varMag: varInfo.mag, pos: varInfo.pos,
     varColor: varInfo.pos ? COLORS.GREEN : COLORS.CRIMSON,
     varLabel: varInfo.label || cfg.varLabel,
-    maxFmt: fmtVal(vals[maxI], cfg.valFmt), maxRaw: vals[maxI], maxP: P[maxI],
-    minFmt: fmtVal(vals[minI], cfg.valFmt), minRaw: vals[minI], minP: P[minI],
+    maxFmt: withUnit(fmtVal(vals[maxI], cfg.valFmt)), maxRaw: vals[maxI], maxP: P[maxI],
+    minFmt: withUnit(fmtVal(vals[minI], cfg.valFmt)), minRaw: vals[minI], minP: P[minI],
     lastI, series: vals, periods: P, semaforo,
   };
   if (acumInfo) Object.assign(out, acumInfo);
@@ -495,10 +499,12 @@ export function annualVar(ind, k) {
     const raw = valAt(ind, k.lastI, cfg.yoyCol);
     if (raw == null) return null;
     const mag = cfg.yoyFmt === "pct-frac" ? raw * 100 : raw;
+    let text = (raw > 0 ? "+" : "") + fmtVal(raw, cfg.yoyFmt);
+    if (cfg.unit) text += " " + cfg.unit;
     return {
       mag,
       pos: raw >= 0,
-      text: (raw > 0 ? "+" : "") + fmtVal(raw, cfg.yoyFmt),
+      text,
       label: cfg.yoyLabel || "Var. anual",
     };
   }

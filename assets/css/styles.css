@@ -439,6 +439,8 @@ tbody tr:last-child td { font-weight: 600; color: var(--dkgreen); }
 .emim-levels { height: 420px; }
 .emim-variation { height: 420px; }
 .bcmm-levels { height: 480px; }
+.emoe-main { height: 400px; }
+.emoe-sectors { height: 460px; }
 .bcmm-variation { height: 580px; }
 .imfbcf-levels { height: 780px; }
 .imfbcf-variation { height: 420px; }

@@ -141,6 +141,8 @@ def compute_var(ind: dict, cfg: dict, vals: list, last_i: int, prev_i: int | Non
             return {"mag": None, "text": "—", "pos": True, "label": cfg.get("varLabel")}
         mag = raw * 100 if cfg.get("varFmt") == "pct-frac" else raw
         text = ("+" if raw > 0 else "") + F.fmt_val(raw, cfg.get("varFmt"))
+        if cfg.get("unit"):
+            text += " " + cfg["unit"]
         return {"mag": mag, "text": text, "pos": raw >= 0, "label": cfg.get("varLabel")}
 
     cur = vals[last_i]
@@ -252,10 +254,11 @@ def compute_kpi(ind: dict, kpicfg: dict | None = None) -> dict[str, Any] | None:
         else ("neutral" if mag is None else "estable")
     )
 
+    unit = cfg.get("unit")
     out = {
         "assessment": assessment,
         "dir": dir_,
-        "ultimoFmt": F.fmt_val(ultimo, cfg.get("valFmt")),
+        "ultimoFmt": F.fmt_val(ultimo, cfg.get("valFmt")) + (f" {unit}" if unit else ""),
         "ultimoRaw": ultimo,
         "ultimoP": periods[last_i],
         "varText": var_info["text"],
@@ -263,10 +266,10 @@ def compute_kpi(ind: dict, kpicfg: dict | None = None) -> dict[str, Any] | None:
         "pos": var_info["pos"],
         "varColor": colors.get("GREEN") if var_info["pos"] else colors.get("CRIMSON"),
         "varLabel": var_info.get("label") or cfg.get("varLabel"),
-        "maxFmt": F.fmt_val(vals[max_i], cfg.get("valFmt")),
+        "maxFmt": F.fmt_val(vals[max_i], cfg.get("valFmt")) + (f" {unit}" if unit else ""),
         "maxRaw": vals[max_i],
         "maxP": periods[max_i],
-        "minFmt": F.fmt_val(vals[min_i], cfg.get("valFmt")),
+        "minFmt": F.fmt_val(vals[min_i], cfg.get("valFmt")) + (f" {unit}" if unit else ""),
         "minRaw": vals[min_i],
         "minP": periods[min_i],
         "lastI": last_i,
@@ -386,10 +389,13 @@ def annual_var(ind: dict, kpi: dict, kpicfg: dict | None = None) -> dict[str, An
         if raw is None:
             return None
         mag = raw * 100 if cfg.get("yoyFmt") == "pct-frac" else raw
+        text = ("+" if raw > 0 else "") + F.fmt_val(raw, cfg.get("yoyFmt"))
+        if cfg.get("unit"):
+            text += " " + cfg["unit"]
         return {
             "mag": mag,
             "pos": raw >= 0,
-            "text": ("+" if raw > 0 else "") + F.fmt_val(raw, cfg.get("yoyFmt")),
+            "text": text,
             "label": cfg.get("yoyLabel", "Var. anual"),
         }
 
@@ -669,7 +675,8 @@ def resumen(ind: dict, kpi: dict, yoy: dict | None, kpicfg: dict | None = None) 
     )
     if yoy:
         label = yoy.get("label", "variación anual").lower()
-        bullets.append(f"La {label} se situó en {yoy['text']}, lo que refleja la comparación contra {F.per_long(kpi['ultimoP'])} del año previo.")
+        art = "El" if label.split()[0] in ("cambio", "incremento", "descenso", "ajuste") else "La"
+        bullets.append(f"{art} {label} se situó en {yoy['text']}, lo que refleja la comparación contra {F.per_long(kpi['ultimoP'])} del año previo.")
     if kpi["ultimoRaw"] == kpi["maxRaw"]:
         rango_pos = "coincide con el máximo de la serie mostrada."
     elif kpi["ultimoRaw"] == kpi["minRaw"]:

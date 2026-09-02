@@ -48,3 +48,24 @@ def test_revision_detection():
     new["indicators"]["A"]["observations"][0]["values"][0] = 200.0
     notes = V.compare_revisions(new, old)
     assert any("revisión" in n for n in notes)
+
+
+def test_ied_and_bcmm_are_principal_and_not_duplicated():
+    """Con la nueva clasificación, IED y BCMM son principales y no deben marcarse como duplicados."""
+    import json
+    from pathlib import Path
+    meta_path = Path(__file__).resolve().parents[1] / "config" / "indicadores_meta.json"
+    meta = json.loads(meta_path.read_text(encoding="utf-8"))
+    assert "IED" in meta["principal"]
+    assert "BCMM" in meta["principal"]
+    assert "IED" not in meta.get("complementario", [])
+    assert "BCMM" not in meta.get("complementario", [])
+
+    # Validar el payload real: no debe haber errores críticos ni duplicados entre IED/BCMM.
+    data_path = Path(__file__).resolve().parents[1] / "data" / "indicadores.json"
+    payload = json.loads(data_path.read_text(encoding="utf-8"))
+    errors, warnings = V.validate(payload)
+    dup_msgs = [w for w in warnings if "idéntico" in w]
+    ied_bcmm_dups = [m for m in dup_msgs if "IED" in m and "BCMM" in m]
+    assert not errors, f"Errores críticos: {errors}"
+    assert not ied_bcmm_dups, f"IED y BCMM marcados como duplicados: {ied_bcmm_dups}"

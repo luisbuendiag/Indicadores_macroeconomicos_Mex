@@ -8,15 +8,15 @@
     "IMAI",
     "EMIM",
     "EMOE",
-    "BCMM",
     "DESOCUP",
     "INPC",
     "INPP",
     "CONSUMO",
-    "IMFBCF"
+    "IMFBCF",
+    "IED",
+    "BCMM"
   ],
   "complementario": [
-    "IED",
     "TIPOCAMBIO",
     "TASA",
     "RESERVAS"
@@ -1473,7 +1473,7 @@
     "IED": {
       "requiere_token": null,
       "serie_confirmada": false,
-      "clasificacion": "complementario",
+      "clasificacion": "principal",
       "fuente": {
         "nombre": "Secretaría de Economía — Dirección General de Inversión Extranjera / RNIE",
         "link": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa",
@@ -1548,8 +1548,8 @@
       },
       "columns": [
         { "label": "IGOEC", "index": 0, "fmt": "idx" },
-        { "label": "Cambio mensual IGOEC (puntos)", "index": 1, "fmt": "idx" },
-        { "label": "Cambio anual IGOEC (puntos)", "index": 2, "fmt": "idx" },
+        { "label": "Cambio mensual IGOEC (puntos)", "index": 1, "fmt": "emoe" },
+        { "label": "Cambio anual IGOEC (puntos)", "index": 2, "fmt": "emoe" },
         { "label": "Manufacturas", "index": 3, "fmt": "idx" },
         { "label": "Construcción", "index": 4, "fmt": "idx" },
         { "label": "Comercio", "index": 5, "fmt": "idx" },
@@ -2380,42 +2380,6 @@
           "id": "max",
           "label": "Máximo",
           "count": null
-        }
-      ]
-    },
-    "BCMM": {
-      "nombre": "Balanza Comercial de Mercancías de México",
-      "descripcion": "Valor de exportaciones e importaciones de mercancías. Serie revisada que complementa la información oportuna de la balanza comercial.",
-      "frecuencia": "Mensual",
-      "unidad": "Millones de dólares",
-      "ajuste_estacional": "Serie original",
-      "grupo": "sector_externo",
-      "publicacion": "Días 20-27 del mes siguiente",
-      "proximo": "27 de agosto de 2026",
-      "requiere_token": "INEGI",
-      "serie_confirmada": true,
-      "clasificacion": "complementario",
-      "fuente": {
-        "nombre": "INEGI",
-        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=36695#D33223",
-        "metodo": "INEGI BIE API",
-        "serie": "33223"
-      },
-      "columns": [
-        {
-          "label": "Exportaciones",
-          "index": 0,
-          "fmt": "usd"
-        },
-        {
-          "label": "Importaciones",
-          "index": 1,
-          "fmt": "usd"
-        },
-        {
-          "label": "Saldo",
-          "index": 2,
-          "fmt": "usd"
         }
       ]
     }
