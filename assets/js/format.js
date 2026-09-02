@@ -49,7 +49,10 @@ export function perShort(p) {
   const iso = p.match(/^(\d{4})-(\d{2})-(\d{2})$/);
   if (iso) {
     const d = new Date(parseInt(iso[1], 10), parseInt(iso[2], 10) - 1, parseInt(iso[3], 10));
-    return d.toLocaleDateString("es-MX", { timeZone: "UTC", day: "numeric", month: "short", year: "2-digit" }).replace(/^\w/, (c) => c.toUpperCase()).replace(/\s+de\s+/g, " ").replace(/\.$/, "");
+    const day = d.getUTCDate();
+    const month = MESES_CORTO[d.getUTCMonth()];
+    const year = String(d.getUTCFullYear()).slice(-2);
+    return `${day} ${month} ${year}`;
   }
   const q = p.match(/^([1-4])T-(\d{2})/);
   if (q) return `${q[1]}T-${q[2]}`;
