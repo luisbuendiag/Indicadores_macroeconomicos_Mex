@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-02T17:17:07+00:00",
+    "generated_at": "2026-09-02T18:50:47+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-09-02T11:17:07-06:00",
+    "last_update_ct": "2026-09-02T12:50:47-06:00",
     "periodo_referencia_reciente": {
       "period": "Ago 26",
       "period_long": "Ago 26"
@@ -1532,8 +1532,7 @@
         "frecuencia": "Trimestral",
         "unidad": "Millones de pesos (a precios de 2018)",
         "ajuste_estacional": "Serie original"
-      },
-      "boletin_validado": true
+      }
     },
     "PIBSEC": {
       "key": "PIBSEC",
@@ -3898,8 +3897,8 @@
         }
       ],
       "last_observation": "2T-26",
-      "last_updated": "2026-09-01",
-      "last_checked": "2026-09-01",
+      "last_updated": "2026-09-02",
+      "last_checked": "2026-09-02",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -3908,7 +3907,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "24 de agosto de 2026",
       "periodo_referencia": "2T-26",
-      "fecha_consulta": "2026-09-01",
+      "fecha_consulta": "2026-09-02",
       "metrics": {
         "kpi": {
           "assessment": "adverso",
@@ -4334,8 +4333,7 @@
         "72 Servicios de alojamiento temporal y de preparación de alimentos y bebidas": -0.027000000000000003,
         "81 Otros servicios excepto actividades gubernamentales": 0.01,
         "93 Actividades legislativas, gubernamentales, de impartición de justicia y de organismos internacionales y extraterritoriales": 0.035
-      },
-      "boletin_validado": true
+      }
     },
     "IGAE": {
       "key": "IGAE",
@@ -10036,8 +10034,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-09-01",
-      "last_checked": "2026-09-01",
+      "last_updated": "2026-09-02",
+      "last_checked": "2026-09-02",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -10046,7 +10044,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "24 de agosto de 2026",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-09-01",
+      "fecha_consulta": "2026-09-02",
       "metrics": {
         "kpi": {
           "assessment": "adverso",
@@ -10940,8 +10938,7 @@
           "count": null
         }
       ],
-      "sigla": "IGAE",
-      "boletin_validado": true
+      "sigla": "IGAE"
     },
     "IMAI": {
       "key": "IMAI",
@@ -20304,8 +20301,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-09-01",
-      "last_checked": "2026-09-01",
+      "last_updated": "2026-09-02",
+      "last_checked": "2026-09-02",
       "source_origin": "api",
       "data_quality": [],
       "requiere_token": "INEGI",
@@ -20315,7 +20312,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "11 de agosto de 2026",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-09-01",
+      "fecha_consulta": "2026-09-02",
       "metrics": {
         "kpi": {
           "assessment": "favorable",
@@ -21250,8 +21247,7 @@
           "label": "Máximo",
           "count": null
         }
-      ],
-      "boletin_validado": true
+      ]
     },
     "CONSUMO": {
       "key": "CONSUMO",
@@ -22445,8 +22441,7 @@
           "label": "Máximo",
           "count": null
         }
-      ],
-      "boletin_validado": true
+      ]
     },
     "IED": {
       "key": "IED",
@@ -23696,8 +23691,8 @@
         }
       ],
       "last_observation": "2T-26",
-      "last_updated": "2026-09-01",
-      "last_checked": "2026-09-01",
+      "last_updated": "2026-09-02",
+      "last_checked": "2026-09-02",
       "source_origin": "api",
       "requiere_token": null,
       "serie_confirmada": false,
@@ -23706,18 +23701,18 @@
       "origen_dato": "respaldo",
       "fecha_publicacion": "24 de agosto de 2026",
       "periodo_referencia": "2T-26",
-      "fecha_consulta": "2026-09-01",
+      "fecha_consulta": "2026-09-02",
       "metrics": {
         "kpi": {
-          "assessment": "adverso",
-          "dir": "down",
-          "ultimoFmt": "10,465",
-          "ultimoRaw": 10464.95,
-          "ultimoP": "2T-26",
-          "varText": "-4.0%",
-          "varMag": -4.0,
-          "pos": false,
-          "varColor": "#9b2247",
+          "assessment": "favorable",
+          "dir": "up",
+          "ultimoFmt": "34,968",
+          "ultimoRaw": 34968,
+          "ultimoP": "Ene-Jun 26",
+          "varText": "+2.1%",
+          "varMag": 2.1,
+          "pos": true,
+          "varColor": "#1e5b4f",
           "varLabel": "Var. anual del acumulado",
           "maxFmt": "27,219",
           "maxRaw": 27218.64,
@@ -23948,15 +23943,22 @@
             "1T-26",
             "2T-26"
           ],
-          "semaforo": "malo",
-          "yoyText": "—",
-          "yoyLabel": "—"
+          "semaforo": "bueno",
+          "flujoRaw": 10464.95,
+          "flujoText": "10,465",
+          "flujoP": "2T-26"
         },
-        "yoy": null,
+        "yoy": {
+          "mag": -3.5000000000000004,
+          "pos": false,
+          "text": "-3.5%",
+          "label": "Var. anual del flujo"
+        },
         "resumen": [
-          "En segundo trimestre de 2026, la IED acumulada se ubicó en $10,465 millones de dólares (acumulado ene-jun, millones de dólares). El valor de var. anual del acumulado fue de -4.0% frente al mismo periodo del año anterior.",
-          "En la serie mostrada, el indicador oscila entre un máximo de $27,219 millones de dólares (primer trimestre de 2024) y un mínimo de −$3,990 millones de dólares (cuarto trimestre de 2025). El último dato se ubica dentro del rango observado en el periodo mostrado.",
-          "La variación se clasifica como adversa según la lectura económica del indicador."
+          "Entre enero y junio de 2026, México recibió $34,968 millones de dólares de IED, una variación anual del 2.1% más que en el mismo periodo del año previo.",
+          "Durante el segundo trimestre de 2026, el flujo exclusivo fue de aproximadamente $10,465 millones de dólares.",
+          "La IED acumulada se compone de Reinversión de utilidades 88.5%, Nuevas inversiones 7.8% y Cuentas entre compañías 3.7% del acumulado.",
+          "Manufacturas concentró 38.6% de la IED acumulada."
         ]
       },
       "periodo_referencia_oficial": "2° trimestre 2026",
@@ -25583,8 +25585,8 @@
         }
       ],
       "last_observation": "Jul 26",
-      "last_updated": "2026-09-01",
-      "last_checked": "2026-09-01",
+      "last_updated": "2026-09-02",
+      "last_checked": "2026-09-02",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -25593,7 +25595,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "27 de agosto de 2026",
       "periodo_referencia": "Jul 26",
-      "fecha_consulta": "2026-09-01",
+      "fecha_consulta": "2026-09-02",
       "metrics": {
         "kpi": {
           "ultimoP": "Jul 26",
@@ -25950,8 +25952,7 @@
           "label": "Máximo",
           "count": null
         }
-      ],
-      "boletin_validado": true
+      ]
     },
     "INPC": {
       "key": "INPC",
@@ -28436,8 +28437,8 @@
         }
       ],
       "last_observation": "Jul 26",
-      "last_updated": "2026-09-01",
-      "last_checked": "2026-09-01",
+      "last_updated": "2026-09-02",
+      "last_checked": "2026-09-02",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -28446,7 +28447,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "7 de agosto de 2026",
       "periodo_referencia": "Jul 26",
-      "fecha_consulta": "2026-09-01",
+      "fecha_consulta": "2026-09-02",
       "metrics": {
         "kpi": {
           "assessment": "neutral",
@@ -28736,8 +28737,7 @@
           "label": "Máximo",
           "count": null
         }
-      ],
-      "boletin_validado": true
+      ]
     },
     "IMFBCF": {
       "key": "IMFBCF",
@@ -47005,8 +47005,8 @@
         }
       ],
       "last_observation": "May 26",
-      "last_updated": "2026-09-01",
-      "last_checked": "2026-09-01",
+      "last_updated": "2026-09-02",
+      "last_checked": "2026-09-02",
       "requiere_token": null,
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -47014,7 +47014,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "5 de agosto de 2026",
       "periodo_referencia": "May 26",
-      "fecha_consulta": "2026-09-01",
+      "fecha_consulta": "2026-09-02",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -49533,8 +49533,7 @@
           "count": null
         }
       ],
-      "sigla": "IOAE",
-      "boletin_validado": true
+      "sigla": "IOAE"
     },
     "EMIM": {
       "key": "EMIM",
@@ -55028,8 +55027,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-09-01",
-      "last_checked": "2026-09-01",
+      "last_updated": "2026-09-02",
+      "last_checked": "2026-09-02",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -55037,7 +55036,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "17 de agosto de 2026",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-09-01",
+      "fecha_consulta": "2026-09-02",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -55926,24 +55925,23 @@
           "remuneraciones_index": 144.1,
           "remuneraciones_anual": 0.038
         }
-      },
-      "boletin_validado": true
+      }
     },
     "TIPOCAMBIO": {
       "key": "TIPOCAMBIO",
-      "nombre": "Tipo de cambio FIX",
+      "nombre": "Tipo de cambio FIX (pesos por dólar)",
       "descripcion": "Tipo de cambio de referencia (peso por dólar) determinado por el Banco de México, utilizado para solventar obligaciones denominadas en dólares.",
-      "frecuencia": "Diaria — días hábiles bancarios",
+      "frecuencia": "Diaria",
       "unidad": "Pesos por dólar",
       "ajuste_estacional": "No aplica",
       "grupo": "financiero",
       "publicacion": "Días hábiles",
       "proximo": "Siguiente día hábil",
       "fuente": {
-        "nombre": "Banco de México",
+        "nombre": "Banco de México (SIE)",
+        "serie": "SF43718",
         "link": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
-        "metodo": "Banxico SIE API",
-        "serie": "SF43718"
+        "metodo": "Banxico SIE API"
       },
       "columns": [
         {
@@ -69032,36 +69030,42 @@
           "values": [
             16.9755
           ]
+        },
+        {
+          "period": "2026-09-02",
+          "values": [
+            16.9852
+          ]
         }
       ],
-      "last_observation": "2026-09-01",
-      "last_updated": "2026-09-01",
-      "last_checked": "2026-09-01",
+      "last_observation": "2026-09-02",
+      "last_updated": "2026-09-02",
+      "last_checked": "2026-09-02",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
       "fecha_publicacion": null,
-      "periodo_referencia": "2026-09-01",
-      "fecha_consulta": "2026-09-01",
+      "periodo_referencia": "2026-09-02",
+      "fecha_consulta": "2026-09-02",
       "source_origin": "api",
       "metrics": {
         "kpi": {
-          "ultimoP": "1 Sep 26",
-          "ultimoRaw": 16.9755,
-          "ultimoFmt": "$16.98",
-          "varText": "-0.23%",
-          "varMag": -0.002304,
+          "ultimoP": "2 Sep 26",
+          "ultimoRaw": 16.9852,
+          "ultimoFmt": "$16.99",
+          "varText": "+0.06%",
+          "varMag": 0.000571,
           "varLabel": "Cambio diario",
-          "pos": false,
-          "varColor": "#9b2247",
-          "monthlyText": "-0.23%",
+          "pos": true,
+          "varColor": "#1e5b4f",
+          "monthlyText": "-0.17%",
           "monthlyLabel": "Cambio mensual",
-          "yoyText": "-8.96%",
+          "yoyText": "-9.21%",
           "yoyLabel": "Cambio anual",
-          "yoyRaw": -0.08959,
-          "yoyMag": -0.08959,
+          "yoyRaw": -0.09205,
+          "yoyMag": -0.09205,
           "yoyPos": false,
           "yoyColor": "#9b2247",
           "range12mText": "$16.90 — $18.76",
@@ -69072,7 +69076,7 @@
           "minP": "8 Abr 24",
           "maxFmt": "$25.12",
           "minFmt": "$16.34",
-          "lastI": 2179,
+          "lastI": 2180,
           "series": [
             19.4899,
             19.3717,
@@ -71253,7 +71257,8 @@
             16.9712,
             17.0427,
             17.0147,
-            16.9755
+            16.9755,
+            16.9852
           ],
           "periods": [
             "2018-01-02",
@@ -73435,29 +73440,30 @@
             "2026-08-27",
             "2026-08-28",
             "2026-08-31",
-            "2026-09-01"
+            "2026-09-01",
+            "2026-09-02"
           ],
           "assessment": "neutral",
-          "dir": "down",
+          "dir": "up",
           "semaforo": "estable"
         },
         "yoy": {
-          "mag": -0.08959,
+          "mag": -0.09205,
           "pos": false,
-          "text": "-8.96%",
+          "text": "-9.21%",
           "label": "Cambio anual"
         },
         "resumen": [
-          "En 1 de septiembre de 2026, el tipo de cambio FIX se ubicó en $16.98 (pesos por dólar).",
-          "El cambio diario fue de -0.23% respecto al día hábil previo.",
-          "Respecto al último día hábil del mes previo, el FIX registró un cambio mensual de -0.23%.",
-          "A tasa anual, el FIX varió -8.96%; en los últimos 12 meses osciló entre $16.90 — $18.76."
+          "En 2 de septiembre de 2026, el tipo de cambio FIX se ubicó en $16.99 (pesos por dólar).",
+          "El cambio diario fue de +0.06% respecto al día hábil previo.",
+          "Respecto al último día hábil del mes previo, el FIX registró un cambio mensual de -0.17%.",
+          "A tasa anual, el FIX varió -9.21%; en los últimos 12 meses osciló entre $16.90 — $18.76."
         ]
       },
       "periodo_referencia_oficial": "Sep 26",
       "fecha_publicacion_oficial": null,
       "proxima_publicacion": null,
-      "motivo_frescura": "El periodo cargado (2026-09-01) coincide con el último periodo esperado (Sep 26).",
+      "motivo_frescura": "El periodo cargado (2026-09-02) coincide con el último periodo esperado (Sep 26).",
       "url_boletin_oficial": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/TIPOCAMBIO/TIPOCAMBIO_datos.xlsx",
@@ -86536,7 +86542,7 @@
           ]
         }
       ],
-      "fecha_ultima_observacion": "2026-09-01",
+      "fecha_ultima_observacion": "2026-09-02",
       "url_fuente_oficial": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
       "fecha_ultima_publicacion": null,
       "regla_publicacion": null,
@@ -87200,7 +87206,7 @@
         {
           "period": "Sep 26",
           "values": [
-            16.9755
+            16.9852
           ]
         }
       ]
@@ -87216,10 +87222,10 @@
       "publicacion": "Días de anuncio de política monetaria",
       "proximo": "Siguiente reunión programada",
       "fuente": {
-        "nombre": "Banco de México",
+        "nombre": "Banco de México (SIE)",
+        "serie": "SF61745",
         "link": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
-        "metodo": "Banxico SIE API",
-        "serie": "SF61745"
+        "metodo": "Banxico SIE API"
       },
       "columns": [
         {
@@ -106152,19 +106158,25 @@
           "values": [
             6.5
           ]
+        },
+        {
+          "period": "2026-09-02",
+          "values": [
+            6.5
+          ]
         }
       ],
-      "last_observation": "2026-09-01",
-      "last_updated": "2026-09-01",
-      "last_checked": "2026-09-01",
+      "last_observation": "2026-09-02",
+      "last_updated": "2026-09-02",
+      "last_checked": "2026-09-02",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
       "fecha_publicacion": null,
-      "periodo_referencia": "2026-09-01",
-      "fecha_consulta": "2026-09-01",
+      "periodo_referencia": "2026-09-02",
+      "fecha_consulta": "2026-09-02",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -106240,7 +106252,7 @@
       "periodo_referencia_oficial": "Sep 26",
       "fecha_publicacion_oficial": null,
       "proxima_publicacion": null,
-      "motivo_frescura": "El periodo cargado (2026-09-01) coincide con el último periodo esperado (Sep 26).",
+      "motivo_frescura": "El periodo cargado (2026-09-02) coincide con el último periodo esperado (Sep 26).",
       "url_boletin_oficial": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/{8DA3F519-341F-480E-1D4E-1AEE71DD08DA}.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/TASA/TASA_datos.xlsx",
@@ -125169,7 +125181,7 @@
           ]
         }
       ],
-      "fecha_ultima_observacion": "2026-09-01",
+      "fecha_ultima_observacion": "2026-09-02",
       "url_fuente_oficial": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
       "fecha_ultima_publicacion": null,
       "regla_publicacion": null,
@@ -126988,10 +127000,10 @@
       "publicacion": "Semanal (martes)",
       "proximo": "Siguiente publicación semanal",
       "fuente": {
-        "nombre": "Banco de México",
+        "nombre": "Banco de México (SIE)",
+        "serie": "SF43707",
         "link": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
-        "metodo": "Banxico SIE API",
-        "serie": "SF43707"
+        "metodo": "Banxico SIE API"
       },
       "columns": [
         {
@@ -129715,8 +129727,8 @@
         }
       ],
       "last_observation": "2026-08-28",
-      "last_updated": "2026-09-01",
-      "last_checked": "2026-09-01",
+      "last_updated": "2026-09-02",
+      "last_checked": "2026-09-02",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
@@ -129724,7 +129736,7 @@
       "origen_dato": "api",
       "fecha_publicacion": null,
       "periodo_referencia": "2026-08-28",
-      "fecha_consulta": "2026-09-01",
+      "fecha_consulta": "2026-09-02",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -134269,7 +134281,7 @@
           "values": [
             52.583,
             0.504,
-            3.668,
+            0.76415,
             null,
             null,
             null,
@@ -134281,7 +134293,7 @@
           "values": [
             52.754,
             0.171,
-            2.919,
+            -1.641393,
             null,
             null,
             null,
@@ -134293,7 +134305,7 @@
           "values": [
             52.774,
             0.02,
-            2.936,
+            0.033758,
             null,
             null,
             null,
@@ -134305,7 +134317,7 @@
           "values": [
             51.361,
             -1.413,
-            2.378,
+            -1.036342,
             null,
             null,
             null,
@@ -134317,7 +134329,7 @@
           "values": [
             50.469,
             -0.892,
-            2.264,
+            -0.158137,
             null,
             null,
             null,
@@ -134329,7 +134341,7 @@
           "values": [
             49.476,
             -0.993,
-            -3.083,
+            -10.562397,
             null,
             null,
             null,
@@ -134341,7 +134353,7 @@
           "values": [
             48.952,
             -0.524,
-            -4.261,
+            -2.141653,
             null,
             null,
             null,
@@ -134353,7 +134365,7 @@
           "values": [
             49.794,
             0.842,
-            -2.278,
+            3.63273,
             null,
             null,
             null,
@@ -134365,7 +134377,7 @@
           "values": [
             48.495,
             -1.299,
-            -3.081,
+            -1.598997,
             null,
             null,
             null,
@@ -134377,7 +134389,7 @@
           "values": [
             47.736,
             -0.759,
-            -2.376,
+            1.232329,
             null,
             null,
             null,
@@ -134389,7 +134401,7 @@
           "values": [
             48.16,
             0.424,
-            -2.507,
+            -0.206614,
             null,
             null,
             null,
@@ -134401,7 +134413,7 @@
           "values": [
             47.22,
             -0.94,
-            -4.859,
+            -4.382062,
             null,
             null,
             null,
@@ -134413,7 +134425,7 @@
           "values": [
             48.291,
             1.071,
-            -4.292,
+            1.167722,
             null,
             null,
             null,
@@ -134425,7 +134437,7 @@
           "values": [
             43.907,
             -4.384,
-            -8.847,
+            -8.607958,
             null,
             null,
             null,
@@ -134437,7 +134449,7 @@
           "values": [
             35.66,
             -8.247,
-            -17.114,
+            -15.658555,
             null,
             null,
             null,
@@ -134449,7 +134461,7 @@
           "values": [
             33.9,
             -1.76,
-            -17.461,
+            -1.567765,
             null,
             null,
             null,
@@ -134461,7 +134473,7 @@
           "values": [
             36.409,
             2.509,
-            -14.06,
+            6.137927,
             null,
             null,
             null,
@@ -134473,7 +134485,7 @@
           "values": [
             38.54,
             2.131,
-            -10.936,
+            5.755039,
             null,
             null,
             null,
@@ -134485,7 +134497,7 @@
           "values": [
             37.923,
             -0.617,
-            -11.029,
+            -0.426587,
             null,
             null,
             null,
@@ -134497,7 +134509,7 @@
           "values": [
             38.821,
             0.898,
-            -10.973,
+            0.493442,
             null,
             null,
             null,
@@ -134509,7 +134521,7 @@
           "values": [
             40.066,
             1.245,
-            -8.429,
+            4.655618,
             null,
             null,
             null,
@@ -134521,7 +134533,7 @@
           "values": [
             39.902,
             -0.164,
-            -7.834,
+            0.970079,
             null,
             null,
             null,
@@ -134533,7 +134545,7 @@
           "values": [
             41.074,
             1.172,
-            -7.086,
+            1.697639,
             null,
             null,
             null,
@@ -134545,7 +134557,7 @@
           "values": [
             40.966,
             -0.108,
-            -6.254,
+            1.469067,
             null,
             null,
             null,
@@ -134557,7 +134569,7 @@
           "values": [
             42.167,
             1.201,
-            -6.124,
+            0.562936,
             null,
             null,
             null,
@@ -134569,7 +134581,7 @@
           "values": [
             45.128,
             2.961,
-            1.221,
+            15.46233,
             null,
             null,
             null,
@@ -134581,7 +134593,7 @@
           "values": [
             47.308,
             2.18,
-            11.648,
+            29.883172,
             null,
             null,
             null,
@@ -134593,7 +134605,7 @@
           "values": [
             49.07,
             1.762,
-            15.17,
+            12.085213,
             null,
             null,
             null,
@@ -134605,7 +134617,7 @@
           "values": [
             51.243,
             2.173,
-            14.834,
+            -4.006589,
             null,
             null,
             null,
@@ -134617,7 +134629,7 @@
           "values": [
             51.16,
             -0.083,
-            12.62,
+            -7.997474,
             null,
             null,
             null,
@@ -134629,7 +134641,7 @@
           "values": [
             49.766,
             -1.394,
-            11.843,
+            -1.51613,
             null,
             null,
             null,
@@ -134641,7 +134653,7 @@
           "values": [
             51.195,
             1.429,
-            12.374,
+            0.645431,
             null,
             null,
             null,
@@ -134653,7 +134665,7 @@
           "values": [
             52.023,
             0.828,
-            11.957,
+            -2.031242,
             null,
             null,
             null,
@@ -134665,7 +134677,7 @@
           "values": [
             53.469,
             1.446,
-            13.567,
+            4.157543,
             null,
             null,
             null,
@@ -134677,7 +134689,7 @@
           "values": [
             54.903,
             1.434,
-            13.829,
+            -0.332301,
             null,
             null,
             null,
@@ -134689,7 +134701,7 @@
           "values": [
             51.463,
             -3.44,
-            10.497,
+            -8.044813,
             null,
             null,
             null,
@@ -134701,7 +134713,7 @@
           "values": [
             52.042,
             0.579,
-            9.875,
+            -2.204901,
             null,
             null,
             null,
@@ -134713,7 +134725,7 @@
           "values": [
             51.958,
             -0.084,
-            6.83,
+            -8.284059,
             null,
             null,
             null,
@@ -134725,7 +134737,7 @@
           "values": [
             53.543,
             1.585,
-            6.235,
+            -1.955139,
             null,
             null,
             null,
@@ -134737,7 +134749,7 @@
           "values": [
             52.941,
             -0.602,
-            3.871,
+            -5.290859,
             null,
             null,
             null,
@@ -134749,7 +134761,7 @@
           "values": [
             51.509,
             -1.432,
-            0.266,
+            -7.369635,
             null,
             null,
             null,
@@ -134761,7 +134773,7 @@
           "values": [
             50.453,
             -1.056,
-            -0.707,
+            -1.901034,
             null,
             null,
             null,
@@ -134773,7 +134785,7 @@
           "values": [
             48.452,
             -2.001,
-            -1.314,
+            -1.258418,
             null,
             null,
             null,
@@ -134785,7 +134797,7 @@
           "values": [
             47.964,
             -0.488,
-            -3.231,
+            -3.670806,
             null,
             null,
             null,
@@ -134797,7 +134809,7 @@
           "values": [
             49.848,
             1.884,
-            -2.175,
+            2.13032,
             null,
             null,
             null,
@@ -134809,7 +134821,7 @@
           "values": [
             49.603,
             -0.245,
-            -3.866,
+            -3.049515,
             null,
             null,
             null,
@@ -134821,7 +134833,7 @@
           "values": [
             47.402,
             -2.201,
-            -7.501,
+            -6.431919,
             null,
             null,
             null,
@@ -134833,7 +134845,7 @@
           "values": [
             48.55,
             1.148,
-            -2.913,
+            8.0019,
             null,
             null,
             null,
@@ -134845,7 +134857,7 @@
           "values": [
             51.775,
             3.225,
-            -0.267,
+            5.14733,
             null,
             null,
             null,
@@ -134857,7 +134869,7 @@
           "values": [
             53.611,
             1.836,
-            1.653,
+            3.694463,
             null,
             null,
             null,
@@ -134869,7 +134881,7 @@
           "values": [
             54.776,
             1.165,
-            1.233,
+            -0.878594,
             null,
             null,
             null,
@@ -134881,7 +134893,7 @@
           "values": [
             55.68,
             0.904,
-            2.739,
+            2.870862,
             null,
             null,
             null,
@@ -134893,7 +134905,7 @@
           "values": [
             54.955,
             -0.725,
-            3.446,
+            1.516409,
             null,
             null,
             null,
@@ -134905,7 +134917,7 @@
           "values": [
             56.536,
             1.581,
-            6.083,
+            5.366673,
             null,
             null,
             null,
@@ -134917,7 +134929,7 @@
           "values": [
             56.436,
             -0.1,
-            7.984,
+            4.421398,
             null,
             null,
             null,
@@ -134929,7 +134941,7 @@
           "values": [
             56.361,
             -0.075,
-            8.397,
+            1.028716,
             null,
             null,
             null,
@@ -134941,7 +134953,7 @@
           "values": [
             55.449,
             -0.912,
-            5.601,
+            -6.270722,
             null,
             null,
             null,
@@ -134953,7 +134965,7 @@
           "values": [
             56.048,
             0.599,
-            6.445,
+            1.757008,
             null,
             null,
             null,
@@ -134965,7 +134977,7 @@
           "values": [
             56.168,
             0.12,
-            8.766,
+            5.499725,
             null,
             null,
             null,
@@ -134977,7 +134989,7 @@
           "values": [
             55.971,
             -0.197,
-            7.421,
+            -3.207618,
             null,
             null,
             null,
@@ -134989,7 +135001,7 @@
           "values": [
             54.975,
             -0.996,
-            3.2,
+            -9.104684,
             null,
             null,
             null,
@@ -135001,7 +135013,7 @@
           "values": [
             54.757,
             -0.218,
-            1.146,
+            -4.042968,
             null,
             null,
             null,
@@ -135013,7 +135025,7 @@
           "values": [
             54.957,
             0.2,
-            0.181,
+            -1.807184,
             null,
             null,
             null,
@@ -135025,7 +135037,7 @@
           "values": [
             54.636886,
             -0.320114,
-            -1.043114,
+            -2.203846,
             null,
             null,
             null,
@@ -135037,7 +135049,7 @@
           "values": [
             53.149893,
             -1.486992,
-            -1.805107,
+            -1.41129,
             null,
             null,
             null,
@@ -135049,7 +135061,7 @@
           "values": [
             53.492096,
             0.342203,
-            -3.043904,
+            -2.099311,
             null,
             null,
             null,
@@ -135061,7 +135073,7 @@
           "values": [
             52.740526,
             -0.75157,
-            -3.695474,
+            -1.16407,
             null,
             null,
             null,
@@ -135073,7 +135085,7 @@
           "values": [
             50.985505,
             -1.755021,
-            -5.375495,
+            -2.989536,
             null,
             null,
             null,
@@ -135085,7 +135097,7 @@
           "values": [
             51.906183,
             0.920679,
-            -3.542817,
+            3.14829,
             null,
             null,
             null,
@@ -135097,7 +135109,7 @@
           "values": [
             51.484636,
             -0.421547,
-            -4.563364,
+            -1.75256,
             null,
             null,
             null,
@@ -135109,7 +135121,7 @@
           "values": [
             51.89662,
             0.411983,
-            -4.27138,
+            0.537234,
             null,
             null,
             null,
@@ -135121,7 +135133,7 @@
           "values": [
             51.374907,
             -0.521713,
-            -4.596093,
+            -0.606911,
             null,
             null,
             null,
@@ -135133,7 +135145,7 @@
           "values": [
             50.117443,
             -1.257464,
-            -4.857557,
+            -0.624376,
             null,
             null,
             null,
@@ -135145,7 +135157,7 @@
           "values": [
             49.337817,
             -0.779626,
-            -5.419183,
+            -1.060847,
             null,
             null,
             null,
@@ -135157,7 +135169,7 @@
           "values": [
             48.689455,
             -0.648362,
-            -6.267545,
+            -1.507667,
             null,
             null,
             null,
@@ -135169,7 +135181,7 @@
           "values": [
             48.722203,
             0.032747,
-            -5.914683,
+            0.579012,
             null,
             null,
             null,
@@ -135181,7 +135193,7 @@
           "values": [
             48.623622,
             -0.098581,
-            -4.526271,
+            2.30939,
             null,
             null,
             null,
@@ -135193,7 +135205,7 @@
           "values": [
             48.968333,
             0.344711,
-            -4.523763,
+            0.059169,
             null,
             null,
             null,
@@ -135205,7 +135217,7 @@
           "values": [
             49.302657,
             0.334323,
-            -3.437869,
+            1.938422,
             null,
             null,
             null,
@@ -135217,7 +135229,7 @@
           "values": [
             49.319399,
             0.016742,
-            -1.666106,
+            3.250656,
             null,
             null,
             null,
@@ -135229,7 +135241,7 @@
           "values": [
             48.512276,
             -0.807123,
-            -3.393907,
+            -3.270739,
             null,
             null,
             null,
@@ -135241,7 +135253,7 @@
           "values": [
             48.303114,
             -0.209162,
-            -3.181522,
+            0.358984,
             null,
             null,
             null,
@@ -135253,7 +135265,7 @@
           "values": [
             48.14813,
             -0.154983,
-            -3.74849,
+            -1.043436,
             null,
             null,
             null,
@@ -135265,7 +135277,7 @@
           "values": [
             48.00424,
             -0.14389,
-            -3.370667,
+            0.662073,
             null,
             null,
             null,
@@ -135277,7 +135289,7 @@
           "values": [
             48.796111,
             0.791872,
-            -1.321332,
+            3.92445,
             null,
             null,
             null,
@@ -135289,7 +135301,7 @@
           "values": [
             48.442274,
             -0.353837,
-            -0.895543,
+            0.821345,
             null,
             null,
             null,
@@ -135301,7 +135313,7 @@
           "values": [
             48.357206,
             -0.085068,
-            -0.332249,
+            1.13274,
             null,
             null,
             null,
@@ -135313,7 +135325,7 @@
           "values": [
             48.225992,
             -0.131213,
-            -0.496211,
+            -0.336063,
             null,
             null,
             null,
@@ -135325,7 +135337,7 @@
           "values": [
             48.156973,
             -0.069019,
-            -0.466649,
+            0.058732,
             null,
             null,
             null,
@@ -135337,7 +135349,7 @@
           "values": [
             48.203612,
             0.046638,
-            -0.764721,
+            -0.60195,
             null,
             null,
             null,
@@ -135349,7 +135361,7 @@
           "values": [
             48.232912,
             0.029301,
-            -1.069745,
+            -0.608084,
             null,
             null,
             null,
@@ -135358,8 +135370,8 @@
         }
       ],
       "last_observation": "Ago 26",
-      "last_updated": "2026-09-01",
-      "last_checked": "2026-09-01",
+      "last_updated": "2026-09-02",
+      "last_checked": "2026-09-02",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -135367,7 +135379,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "1 de septiembre de 2026",
       "periodo_referencia": "Ago 26",
-      "fecha_consulta": "2026-09-01",
+      "fecha_consulta": "2026-09-02",
       "metrics": {
         "kpi": {
           "assessment": "neutral",
@@ -135600,18 +135612,18 @@
             "Ago 26"
           ],
           "semaforo": "estable",
-          "yoyText": "-1.1",
+          "yoyText": "-0.6",
           "yoyLabel": "Cambio anual"
         },
         "yoy": {
-          "mag": -1.069745,
+          "mag": -0.608084,
           "pos": false,
-          "text": "-1.1",
+          "text": "-0.6",
           "label": "Cambio anual"
         },
         "resumen": [
           "En agosto de 2026, el IGOEC se ubicó en 48.2 puntos (puntos; umbral de referencia=50). El valor de cambio mensual fue de +0.0 frente al mes previo.",
-          "La cambio anual se situó en -1.1, lo que refleja la comparación contra agosto de 2026 del año previo.",
+          "La cambio anual se situó en -0.6, lo que refleja la comparación contra agosto de 2026 del año previo.",
           "En la serie mostrada, el indicador oscila entre un máximo de 56.5 puntos (julio de 2023) y un mínimo de 33.9 puntos (mayo de 2020). El último dato se ubica dentro del rango observado en el periodo mostrado.",
           "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
         ]
@@ -135643,7 +135655,7 @@
       "nombre_corto": "EMOE",
       "umbral": 50,
       "indicador_principal": "IGOEC",
-      "boletin_validado": true
+      "boletin_validado": false
     },
     "BCMM": {
       "key": "BCMM",
@@ -154817,8 +154829,8 @@
         }
       ],
       "last_observation": "Jul 26",
-      "last_updated": "2026-09-01",
-      "last_checked": "2026-09-01",
+      "last_updated": "2026-09-02",
+      "last_checked": "2026-09-02",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -154826,7 +154838,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "27 de agosto de 2026",
       "periodo_referencia": "Jul 26",
-      "fecha_consulta": "2026-09-01",
+      "fecha_consulta": "2026-09-02",
       "metrics": {
         "kpi": {
           "ultimoRaw": -847.537,
@@ -156066,8 +156078,7 @@
           "label": "Máximo",
           "count": null
         }
-      ],
-      "boletin_validado": true
+      ]
     },
     "INPP": {
       "key": "INPP",
@@ -158226,8 +158237,8 @@
         }
       ],
       "last_observation": "Jul 26",
-      "last_updated": "2026-09-01",
-      "last_checked": "2026-09-01",
+      "last_updated": "2026-09-02",
+      "last_checked": "2026-09-02",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -158262,7 +158273,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "07 de agosto de 2026",
       "periodo_referencia": "Jul 26",
-      "fecha_consulta": "2026-09-01",
+      "fecha_consulta": "2026-09-02",
       "source_origin": "api",
       "metrics": {
         "kpi": {
