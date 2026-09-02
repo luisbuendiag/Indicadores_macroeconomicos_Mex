@@ -75,7 +75,7 @@ def prose_val(key: str, v: float | int | None) -> str:
     if key in ("IED", "BALANZA", "BCMM", "RESERVAS"):
         sign = "−" if v < 0 else ""
         return sign + "$" + F._to_fixed(abs(F._js_round(v)), 0, 0) + " millones de dólares"
-    if key in ("IGAE", "IMAI", "CONSUMO", "EMIM"):
+    if key in ("IGAE", "IMAI", "CONSUMO", "EMIM", "EMOE"):
         return F._to_fixed(v, 1, 1) + " puntos"
     if key == "DESOCUP":
         return F._to_fixed(v, 1, 1) + "%"

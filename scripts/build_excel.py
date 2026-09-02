@@ -1029,7 +1029,7 @@ NEW_SHEETS = {
     "TIPOCAMBIO": "Tipo de cambio FIX",
     "TASA": "Tasa objetivo",
     "RESERVAS": "Reservas internacionales",
-    "EMOE": "EMOE",
+    "EMOE": "EMOE (Confianza empresarial)",
 }
 
 # Hojas heredadas del libro base que ya no corresponden al perfil V3.

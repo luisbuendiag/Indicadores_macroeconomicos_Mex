@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-02T16:18:03+00:00",
-  "last_update_ct": "2026-09-02T10:16:22-06:00",
+  "generated_at": "2026-09-02T17:15:43+00:00",
+  "last_update_ct": "2026-09-02T11:13:20-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -10481,7 +10481,7 @@
         "varMag": 0.029301,
         "pos": true,
         "varColor": "#1e5b4f",
-        "varLabel": "Var. mensual",
+        "varLabel": "Cambio mensual",
         "maxFmt": "56.5",
         "maxRaw": 56.536,
         "maxP": "Jul 23",
@@ -10702,24 +10702,24 @@
           "Ago 26"
         ],
         "semaforo": "estable",
-        "yoyText": "-2.2%",
-        "yoyLabel": "Var. anual"
+        "yoyText": "-1.1",
+        "yoyLabel": "Cambio anual"
       },
       "analysis": [
-        "En agosto de 2026, la confianza empresarial se ubicó en 48.232912, con una variación marginal de +0.03% frente al mes previo. Este resultado refleja  respecto a julio de 2026 (+0.05%), y deja al indicador por debajo del promedio del periodo mostrado de 49.61371174038462.",
-        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 56.536 (julio de 2023) y un mínimo de 33.9 (mayo de 2020). El resultado más reciente se ubicó por debajo del promedio del periodo mostrado. El último dato se mantuvo cercano al del inicio del periodo mostrado."
+        "En agosto de 2026, el IGOEC se ubicó en 48.2 puntos (puntos; umbral de referencia=50), con una cambio mensual marginal de +0.03% frente al mes previo. Este resultado refleja  respecto a julio de 2026 (+0.05%), y deja al indicador por debajo del promedio del periodo mostrado de 49.6 puntos.",
+        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 56.5 puntos (julio de 2023) y un mínimo de 33.9 puntos (mayo de 2020). El resultado más reciente se ubicó por debajo del promedio del periodo mostrado. El último dato se mantuvo cercano al del inicio del periodo mostrado."
       ],
       "resumen": [
-        "En agosto de 2026, la confianza empresarial se ubicó en 48.232912. El valor de var. mensual fue de +0.0 frente al mes previo.",
-        "La var. anual se situó en -2.2%, lo que refleja la comparación contra agosto de 2026 del año previo.",
-        "En la serie mostrada, el indicador oscila entre un máximo de 56.536 (julio de 2023) y un mínimo de 33.9 (mayo de 2020). El último dato se ubica dentro del rango observado en el periodo mostrado.",
+        "En agosto de 2026, el IGOEC se ubicó en 48.2 puntos (puntos; umbral de referencia=50). El valor de cambio mensual fue de +0.0 frente al mes previo.",
+        "La cambio anual se situó en -1.1, lo que refleja la comparación contra agosto de 2026 del año previo.",
+        "En la serie mostrada, el indicador oscila entre un máximo de 56.5 puntos (julio de 2023) y un mínimo de 33.9 puntos (mayo de 2020). El último dato se ubica dentro del rango observado en el periodo mostrado.",
         "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
       ],
       "annualVar": {
-        "mag": -2.1697512164506763,
+        "mag": -1.069745,
         "pos": false,
-        "text": "-2.2%",
-        "label": "Var. anual"
+        "text": "-1.1",
+        "label": "Cambio anual"
       }
     },
     "BCMM": {

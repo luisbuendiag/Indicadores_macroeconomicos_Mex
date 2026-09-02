@@ -6,20 +6,20 @@
     "IOAE",
     "IGAE",
     "IMAI",
+    "EMIM",
+    "EMOE",
     "BCMM",
     "DESOCUP",
     "INPC",
     "INPP",
     "CONSUMO",
-    "IMFBCF",
-    "EMIM"
+    "IMFBCF"
   ],
   "complementario": [
     "IED",
     "TIPOCAMBIO",
     "TASA",
-    "RESERVAS",
-    "EMOE"
+    "RESERVAS"
   ],
   "profile": {
     "PIB": {
@@ -1528,10 +1528,33 @@
       ]
     },
     "EMOE": {
+      "nombre": "Encuesta Mensual de Opinión Empresarial",
+      "descripcion": "La EMOE genera indicadores mensuales de opinión y confianza empresarial para conocer oportunamente la percepción de directivos de los sectores manufacturero, construcción, comercio y servicios privados no financieros sobre la situación económica de sus empresas y del país.",
+      "frecuencia": "Mensual",
+      "unidad": "Puntos",
+      "ajuste_estacional": "Cifras desestacionalizadas (IGOEC e industrias manufactureras); cifras originales para construcción, comercio y servicios según patrón estacional",
+      "grupo": "opinion",
+      "publicacion": "Días 1-4 del mes siguiente",
+      "proximo": "Primeros días de octubre de 2026",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
-      "clasificacion": "complementario",
-      "nombre": "Confianza empresarial (EMOE)"
+      "clasificacion": "principal",
+      "sigla": "EMOE",
+      "fuente": {
+        "nombre": "INEGI — Encuesta Mensual de Opinión Empresarial (EMOE) / Indicadores de Confianza Empresarial (ICE)",
+        "link": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_08.pdf",
+        "metodo": "INEGI BIE API y boletín ICE",
+        "serie": "701401 (IGOEC, por confirmar sectores)"
+      },
+      "columns": [
+        { "label": "IGOEC", "index": 0, "fmt": "idx" },
+        { "label": "Cambio mensual IGOEC (puntos)", "index": 1, "fmt": "idx" },
+        { "label": "Cambio anual IGOEC (puntos)", "index": 2, "fmt": "idx" },
+        { "label": "Manufacturas", "index": 3, "fmt": "idx" },
+        { "label": "Construcción", "index": 4, "fmt": "idx" },
+        { "label": "Comercio", "index": 5, "fmt": "idx" },
+        { "label": "Servicios privados no financieros", "index": 6, "fmt": "idx" }
+      ]
     },
     "BCMM": {
       "requiere_token": "INEGI",
@@ -2361,32 +2384,57 @@
       ]
     },
     "EMOE": {
-      "nombre": "Confianza empresarial (EMOE)",
-      "descripcion": "Indicador de confianza empresarial de la Encuesta Mensual de Opinión Empresarial (EMOE), elaborado a partir de la opinión de directivos de empresas manufactureras, constructoras, comerciales y de servicios.",
+      "nombre": "Encuesta Mensual de Opinión Empresarial",
+      "descripcion": "La EMOE genera indicadores mensuales de opinión y confianza empresarial para conocer oportunamente la percepción de directivos de los sectores manufacturero, construcción, comercio y servicios privados no financieros sobre la situación económica de sus empresas y del país.",
       "frecuencia": "Mensual",
       "unidad": "Puntos",
-      "ajuste_estacional": "Serie desestacionalizada",
+      "ajuste_estacional": "Cifras desestacionalizadas (IGOEC e industrias manufactureras); cifras originales para construcción, comercio y servicios según patrón estacional",
       "grupo": "opinion",
       "publicacion": "Días 1-4 del mes siguiente",
-      "proximo": "Primeros días de septiembre de 2026",
+      "proximo": "Primeros días de octubre de 2026",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
-      "clasificacion": "complementario",
+      "clasificacion": "principal",
       "fuente": {
-        "nombre": "INEGI",
-        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=682416#D701401",
-        "metodo": "INEGI BIE API",
-        "serie": "701401"
+        "nombre": "INEGI — Encuesta Mensual de Opinión Empresarial (EMOE) / Indicadores de Confianza Empresarial (ICE)",
+        "link": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_08.pdf",
+        "metodo": "INEGI BIE API y boletín ICE",
+        "serie": "701401 (IGOEC, por confirmar sectores)"
       },
       "columns": [
         {
-          "label": "Confianza empresarial (puntos)",
+          "label": "IGOEC",
           "index": 0,
           "fmt": "idx"
         },
         {
-          "label": "Var. mensual (puntos)",
+          "label": "Cambio mensual IGOEC (puntos)",
           "index": 1,
+          "fmt": "idx"
+        },
+        {
+          "label": "Cambio anual IGOEC (puntos)",
+          "index": 2,
+          "fmt": "idx"
+        },
+        {
+          "label": "Manufacturas",
+          "index": 3,
+          "fmt": "idx"
+        },
+        {
+          "label": "Construcción",
+          "index": 4,
+          "fmt": "idx"
+        },
+        {
+          "label": "Comercio",
+          "index": 5,
+          "fmt": "idx"
+        },
+        {
+          "label": "Servicios privados no financieros",
+          "index": 6,
           "fmt": "idx"
         }
       ]

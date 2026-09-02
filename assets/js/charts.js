@@ -127,7 +127,7 @@ function chartSpec(ind, obs) {
     case "RESERVAS": return { periods: P, lines: [{ name: "Reservas internacionales", values: col(0), color: G }], leftName: "Millones de dólares", leftFmt: "compact" };
     case "TIPOCAMBIO": return { periods: P, lines: [{ name: "Tipo de cambio FIX", values: col(0), color: G }], leftName: "Pesos por dólar", leftFmt: "idx" };
     case "TASA": return { periods: P, lines: [{ name: "Tasa objetivo (%)", values: col(0), color: G, step: "start" }], leftName: "Porcentaje (%)", leftFmt: "pct" };
-    case "EMOE": return { periods: P, lines: [{ name: "Confianza empresarial", values: col(0), color: G }, { name: "Var. mensual (puntos)", values: col(1).map((v) => v == null ? null : v), color: SEC, axis: "right" }], leftName: "Puntos", rightName: "Var. mensual", leftFmt: "idx", rightFmt: "idx" };
+    case "EMOE": return { periods: P, lines: [{ name: "IGOEC", values: col(0), color: G, refLine: 50 }, { name: "Cambio mensual (puntos)", values: col(1).map((v) => v == null ? null : v), color: SEC, axis: "right" }], leftName: "Puntos", rightName: "Cambio mensual", leftFmt: "idx", rightFmt: "idx" };
     case "BCMM": return { periods: P, bars: [{ name: "Exportaciones", values: col(0), color: G }, { name: "Importaciones", values: col(1), color: SEC }], lines: [{ name: "Saldo (X − M)", values: saldo, color: Go, axis: "right" }], leftName: "Millones de dólares", rightName: "Saldo (mdd)", leftFmt: "compact", rightFmt: "compact" };
     default: return { periods: P, lines: [{ name: ind.nombre, values: col(0), color: G }], leftName: "", leftFmt: "num" };
   }
@@ -195,14 +195,15 @@ export function buildOption(ind, windowId) {
     }
     series.push(s);
   });
-  function refLine(fmt) {
+  function refLine(fmt, customY) {
+    if (customY != null) return { yAxis: customY, name: "Referencia", lineStyle: { color: COLORS.GRAY, type: "dashed", width: 1 }, label: { show: false } };
     if (fmt === "pct") return { yAxis: 0, name: "Cero", lineStyle: { color: COLORS.GRAY, type: "dashed", width: 1 }, label: { show: false } };
     if (fmt === "idx") return { yAxis: 100, name: "Base 100", lineStyle: { color: COLORS.GRAY, type: "dashed", width: 1 }, label: { show: false } };
     return null;
   }
   lines.forEach((l) => {
     const fmt = l.axis === "right" ? rightFmt : leftFmt;
-    const ref = refLine(fmt);
+    const ref = refLine(fmt, l.refLine);
     const s = {
       name: l.name, type: "line", data: l.values, yAxisIndex: l.axis === "right" ? 1 : 0,
       smooth: false, symbol: "circle", symbolSize: 5, connectNulls: false,
@@ -230,12 +231,14 @@ export function buildOption(ind, windowId) {
   const rightSources = [...bars, ...lines].filter((s) => s.axis === "right");
   const leftVals = allValues(leftSources);
   const rightVals = allValues(rightSources);
+  const leftRef = (lines.find((l) => l.axis !== "right" && l.refLine != null) || {}).refLine;
+  const rightRef = (lines.find((l) => l.axis === "right" && l.refLine != null) || {}).refLine;
   if (yAxis[0].scale && leftVals.length) {
-    const yRange = computeYRange(leftVals, { padding: 0.08, includeZero: false });
+    const yRange = computeYRange(leftVals, { padding: 0.08, includeZero: false, ref: leftRef });
     if (yRange) { yAxis[0].min = yRange.min; yAxis[0].max = yRange.max; }
   }
   if (yAxis[1] && yAxis[1].scale && rightVals.length) {
-    const yRange = computeYRange(rightVals, { padding: 0.08, includeZero: false });
+    const yRange = computeYRange(rightVals, { padding: 0.08, includeZero: false, ref: rightRef });
     if (yRange) { yAxis[1].min = yRange.min; yAxis[1].max = yRange.max; }
   }
 
@@ -281,12 +284,16 @@ export function buildOption(ind, windowId) {
 }
 
 // ---------------- PIBT: 4 small multiples (niveles) ----------------
-function computeYRange(values, { padding = 0.08, includeZero = false } = {}) {
+function computeYRange(values, { padding = 0.08, includeZero = false, ref = null } = {}) {
   const v = values.filter((x) => x != null && !Number.isNaN(x));
-  if (!v.length) return null;
-  const actualMin = Math.min(...v);
-  const actualMax = Math.max(...v);
+  if (!v.length && ref == null) return null;
+  const actualMin = v.length ? Math.min(...v) : ref;
+  const actualMax = v.length ? Math.max(...v) : ref;
   let min = actualMin, max = actualMax;
+  if (ref != null) {
+    min = Math.min(min, ref);
+    max = Math.max(max, ref);
+  }
   if (min === max) {
     const span = Math.max(Math.abs(min), Math.abs(max)) || 1;
     min -= span * 0.05;

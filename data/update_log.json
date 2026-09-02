@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-09-02T16:18:03+00:00",
+  "started_at": "2026-09-02T17:15:42+00:00",
   "mode": "offline",
   "network_calls": false,
   "warnings": [],
@@ -19,6 +19,7 @@
     "columnas override IOAE: 13 columnas",
     "columnas override EMIM: 18 columnas",
     "columnas override IED: 5 columnas",
+    "columnas override EMOE: 7 columnas",
     "columnas override BCMM: 29 columnas",
     "pibsec: variaciones calculadas desde niveles (876 celdas)",
     "IGAE: variaciones anuales calculadas para 1560 celdas",
@@ -56,15 +57,15 @@
     "frescura: TIPOCAMBIO -> ACTUALIZADO",
     "frescura: TASA -> ACTUALIZADO",
     "frescura: RESERVAS -> ACTUALIZADO",
-    "boletín: EMOE descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ee/ee2026_09.pdf",
+    "boletín: EMOE descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_09.pdf",
     "frescura: EMOE -> ACTUALIZADO",
     "boletín: BCMM descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_08.pdf",
     "frescura: BCMM -> ACTUALIZADO",
     "frescura: INPP -> ACTUALIZADO",
-    "meta: last_update_ct=2026-09-02T10:18:59-06:00"
+    "meta: last_update_ct=2026-09-02T11:17:07-06:00"
   ],
   "consultas": [],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-09-02T16:19:00+00:00"
+  "finished_at": "2026-09-02T17:17:09+00:00"
 }

@@ -1048,6 +1048,73 @@ def compute_ioae_metrics(payload: dict) -> list[str]:
     return changes
 
 
+
+def compute_emoe_metrics(payload: dict) -> list[str]:
+    """Asegura que EMOE presente IGOEC en puntos, cambio mensual/anual en puntos
+    y metadatos consistentes con el Indicador de Confianza Empresarial (ICE).
+    """
+    changes: list[str] = []
+    ind = payload["indicators"].get("EMOE")
+    if not ind or not ind.get("observations"):
+        return changes
+    obs = ind["observations"]
+
+    # Normalizar a 7 columnas (padding a None).
+    for o in obs:
+        vals = list(o.get("values", []))
+        while len(vals) < 7:
+            vals.append(None)
+        o["values"] = vals
+
+    by_ym: dict[str, dict] = {}
+    for o in obs:
+        ym = inegi.label_to_ym(o.get("period", ""))
+        if ym:
+            by_ym[ym] = o
+
+    updated = 0
+    for o in obs:
+        vals = list(o.get("values", []))
+        cur = vals[0]
+        if cur is None:
+            continue
+        ym = inegi.label_to_ym(o.get("period", ""))
+        if ym:
+            prev_m = inegi._ym_minus_months(ym, 1)
+            if prev_m and prev_m in by_ym:
+                prev_vals = by_ym[prev_m].get("values", [])
+                prev = prev_vals[0] if len(prev_vals) > 0 else None
+                if prev is not None and vals[1] is None:
+                    vals[1] = round(cur - prev, 6)
+                    updated += 1
+            prev_y = inegi._ym_minus_months(ym, 12)
+            if prev_y and prev_y in by_ym:
+                prev_vals = by_ym[prev_y].get("values", [])
+                prev = prev_vals[0] if len(prev_vals) > 0 else None
+                if prev is not None and vals[2] is None:
+                    vals[2] = round(cur - prev, 6)
+                    updated += 1
+        o["values"] = vals
+
+    if updated:
+        changes.append(f"EMOE: {updated} variaciones calculadas (puntos)")
+
+    ind["nombre"] = "Encuesta Mensual de Opinión Empresarial"
+    ind["nombre_corto"] = "EMOE"
+    ind["descripcion"] = (
+        "La EMOE genera indicadores mensuales de opinión y confianza empresarial para conocer oportunamente "
+        "la percepción de directivos de los sectores manufacturero, construcción, comercio y servicios privados no financieros "
+        "sobre la situación económica de sus empresas y del país."
+    )
+    ind["unidad"] = "Puntos"
+    ind["umbral"] = 50
+    ind["indicador_principal"] = "IGOEC"
+    # Forzar redescubrimiento del boletín ICE (antes se usaba ee/ee).
+    ind["url_boletin_oficial"] = None
+    ind["boletin_validado"] = False
+    return changes
+
+
 def compute_tasa_metrics(payload: dict) -> list[str]:
     """Construye policy_decisions y metadatos de regimen para la tasa objetivo."""
     changes: list[str] = []
@@ -1205,6 +1272,9 @@ def run(offline: bool = False) -> int:
 
     # IOAE: esquema de 13 columnas e IGAE observado para comparación.
     log["changes"].extend(compute_ioae_metrics(payload))
+
+    # EMOE: IGOEC, cambios mensual/anual en puntos y metadatos de confianza.
+    log["changes"].extend(compute_emoe_metrics(payload))
 
     # TASA: decisiones de política monetaria y metadatos de régimen.
     log["changes"].extend(compute_tasa_metrics(payload))

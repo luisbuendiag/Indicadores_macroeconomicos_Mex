@@ -61,7 +61,7 @@ BULLETIN_URLS = {
         "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/pib_eo/pib_eo{year}_{mm}.pdf",
     ],
     "INPC": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/inpc/inpc_2q{year}_{mm}.pdf",
-    "EMOE": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/ee/ee{year}_{mm}.pdf",
+    "EMOE": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/ice/ice{year}_{mm}.pdf",
     "IOOE": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/iooe/IOE{year}_{mm}.pdf",
     "BCMM": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/comext_o/balcom_o{year}_{mm}.pdf",
 }
@@ -101,7 +101,7 @@ PRODUCTO_NOMBRE = {
 # Alias de producto para la validación por contenido.
 PRODUCTO_ALIASES = {
     "INPC": ("ÍNDICE NACIONAL DE PRECIOS", "INPC"),
-    "EMOE": ("ENCUESTA MENSUAL DE OPINIÓN EMPRESARIAL", "EMOE"),
+    "EMOE": ("INDICADORES DE CONFIANZA EMPRESARIAL", "IGOEC", "ENCUESTA MENSUAL DE OPINIÓN EMPRESARIAL"),
     "IOOE": ("ENCUESTA NACIONAL DE OCUPACIÓN", "ENOE", "IOOE", "DESOCUPACIÓN"),
     "BCMM": ("BALANZA COMERCIAL", "BCMM"),
     "IGAE": ("INDICADOR GLOBAL", "IGAE"),

@@ -1030,6 +1030,46 @@ function breakdown(ind, k) {
     }
     return box;
   }
+  if (ind.key === "EMOE" && last) {
+    const box = el("div", { class: "ficha-block pibsec-activity" });
+    box.append(el("h3", { class: "block-sub" }, "Lectura respecto al umbral de 50 puntos"));
+    const umbral = ind.umbral ?? 50;
+    const nivel = last.values[0];
+    const diff = nivel != null ? nivel - umbral : null;
+    const sentido = diff == null ? "—" : (diff > 0 ? "optimista" : (diff < 0 ? "pesimista" : "neutro"));
+    const color = diff == null ? COLORS.GRAY : (diff > 0 ? COLORS.GREEN : (diff < 0 ? COLORS.CRIMSON : COLORS.INK));
+    const grid = el("div", { class: "breakdown" });
+    grid.append(el("div", { class: "bd-item" },
+      el("div", { class: "bd-lbl" }, "IGOEC"),
+      el("div", { class: "bd-val" }, fmtVal(nivel, "idx")),
+      el("div", { class: "bd-sub" }, `Umbral: ${umbral} puntos · diferencia: `, el("span", { style: `color:${color}` }, diff != null ? (diff > 0 ? "+" : "") + diff.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + " puntos" : "—"), ` · sesgo: ${sentido}`)
+    ));
+    const sectores = [
+      { col: 3, label: "Manufacturas" },
+      { col: 4, label: "Construcción" },
+      { col: 5, label: "Comercio" },
+      { col: 6, label: "Servicios privados no financieros" },
+    ];
+    const haySectores = sectores.some((s) => last.values[s.col] != null);
+    if (haySectores) {
+      box.append(el("p", { class: "prose", style: "font-size:12.5px;color:var(--muted);margin-top:-4px;margin-bottom:12px;text-align:left;" }, "Valores de los Indicadores de Confianza Empresarial (ICE) por sector. Un ICE superior a 50 puntos indica optimismo; inferior, pesimismo."));
+      sectores.forEach((s) => {
+        const v = last.values[s.col];
+        if (v == null) return;
+        const d = v - umbral;
+        const c = d > 0 ? COLORS.GREEN : (d < 0 ? COLORS.CRIMSON : COLORS.INK);
+        grid.append(el("div", { class: "bd-item" },
+          el("div", { class: "bd-lbl" }, s.label),
+          el("div", { class: "bd-val" }, fmtVal(v, "idx")),
+          el("div", { class: "bd-sub" }, `vs. umbral: `, el("span", { style: `color:${c}` }, (d > 0 ? "+" : "") + d.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + " puntos"))
+        ));
+      });
+    } else {
+      box.append(el("p", { class: "prose", style: "font-size:12.5px;color:var(--muted);margin-top:-4px;margin-bottom:12px;text-align:left;" }, "El desglose por sector requiere confirmar las series BIE de los ICE. Mientras tanto, el IGOEC agrega la confianza de los cuatro sectores."));
+    }
+    box.append(grid);
+    return box;
+  }
   const rowsFor = () => {
     if (ind.key === "PIBSEC") return [["Primarias", last.values[0], "num"], ["Secundarias", last.values[1], "num"], ["Terciarias", last.values[2], "num"]];
     if (ind.key === "IGAE") return null;

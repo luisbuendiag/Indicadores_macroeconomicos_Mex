@@ -302,17 +302,21 @@
       "valFmt": "idx",
       "varCol": 1,
       "varFmt": "idx",
-      "varLabel": "Var. mensual",
-      "mainLabel": "Confianza empresarial",
-      "noun": "confianza empresarial",
-      "art": "la",
+      "varLabel": "Cambio mensual",
+      "yoyCol": 2,
+      "yoyFmt": "idx",
+      "yoyLabel": "Cambio anual",
+      "mainLabel": "IGOEC",
+      "noun": "IGOEC",
+      "art": "el",
       "grupo": "opinion",
       "assess": "neutral",
-      "ctx": "",
-      "vw": "variación",
+      "ctx": " (puntos; umbral de referencia=50)",
+      "vw": "cambio mensual",
       "vg": "f",
       "comp": "frente al mes previo",
-      "goodSign": 0
+      "goodSign": 0,
+      "umbral": 50
     },
     "BCMM": {
       "valCol": 2,
@@ -353,20 +357,20 @@
     "IOAE",
     "IGAE",
     "IMAI",
+    "EMIM",
+    "EMOE",
     "BCMM",
     "DESOCUP",
     "INPC",
     "INPP",
     "CONSUMO",
-    "IMFBCF",
-    "EMIM"
+    "IMFBCF"
   ],
   "COMPLEMENTARIOS": [
     "IED",
     "TIPOCAMBIO",
     "TASA",
-    "RESERVAS",
-    "EMOE"
+    "RESERVAS"
   ],
   "LABELS": {
     "PIB": "PIB oportuno",
@@ -381,11 +385,11 @@
     "IMFBCF": "Formación bruta de capital fijo",
     "IOAE": "IOAE",
     "EMIM": "EMIM",
+    "EMOE": "Encuesta Mensual de Opinión Empresarial",
     "IED": "IED",
     "TIPOCAMBIO": "Tipo de cambio FIX",
     "TASA": "Tasa objetivo de Banco de México",
-    "RESERVAS": "Reservas internacionales",
-    "EMOE": "Confianza empresarial (EMOE)"
+    "RESERVAS": "Reservas internacionales"
   },
   "SIGLA": {
     "PIB": "PIB",
@@ -400,11 +404,11 @@
     "IMFBCF": "IMFBCF",
     "IOAE": "IOAE",
     "EMIM": "EMIM",
+    "EMOE": "EMOE",
     "IED": "IED",
     "TIPOCAMBIO": "FIX",
     "TASA": "TASA OBJETIVO",
-    "RESERVAS": "RESERVAS",
-    "EMOE": "EMOE"
+    "RESERVAS": "RESERVAS"
   },
   "CAPTIONS": {
     "PIB": "Variación trimestral desestacionalizada del PIB oportuno (barras) y su variación anual desestacionalizada (línea). Ambas en porcentaje.",
@@ -422,7 +426,7 @@
     "TIPOCAMBIO": "Tipo de cambio FIX (pesos por dólar).",
     "TASA": "Objetivo para la Tasa de Interés Interbancaria a un día (tasa objetivo) fijado por la Junta de Gobierno de Banco de México. No confundir con la TIIE de fondeo ni con las TIIE a 28, 91 o 182 días.",
     "RESERVAS": "Reservas internacionales netas (millones de dólares).",
-    "EMOE": "Confianza empresarial (EMOE) y su variación mensual (puntos).",
+    "EMOE": "Indicador Global de Opinión Empresarial de Confianza (IGOEC) y su cambio mensual y anual en puntos. Línea de referencia en 50 puntos. El desglose por sector requiere confirmar los IDs de las series BIE de ICE.",
     "BCMM": "Exportaciones, importaciones y saldo comercial de mercancías de México (millones de dólares). Incluye desglose petrolero/no petrolero, por tipo de bien importado y composición de las exportaciones no petroleras, además de sus variaciones anuales y acumulados ene-mes."
   },
   "ESTADOS": {
