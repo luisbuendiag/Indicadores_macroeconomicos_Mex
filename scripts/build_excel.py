@@ -757,8 +757,10 @@ def _build_tasa_workbook(ind: dict, out_path: Path) -> None:
     _style_header(ws2, r0, len(headers))
     r = r0 + 1
     for d in reversed(ind.get("policy_decisions", [])):
-        ws2.cell(row=r, column=1, value=_period_date(d.get("announcement_date"))).number_format = "yyyy-mm-dd"
-        ws2.cell(row=r, column=2, value=_period_date(d.get("effective_date"))).number_format = "yyyy-mm-dd"
+        ad = d.get("announcement_date")
+        ed = d.get("effective_date")
+        ws2.cell(row=r, column=1, value=date.fromisoformat(ad) if ad else None).number_format = "yyyy-mm-dd"
+        ws2.cell(row=r, column=2, value=date.fromisoformat(ed) if ed else None).number_format = "yyyy-mm-dd"
         ws2.cell(row=r, column=3, value=d.get("decision", "—"))
         ws2.cell(row=r, column=4, value=d.get("change_bp"))
         ws2.cell(row=r, column=5, value=d.get("previous_rate"))
