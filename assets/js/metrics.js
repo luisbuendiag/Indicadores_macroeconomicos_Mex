@@ -250,21 +250,35 @@ function computeIedKPI(ind) {
   const maxI = idxs.reduce((m, i) => (vals[i] > vals[m] ? i : m), idxs[0]);
   const minI = idxs.reduce((m, i) => (vals[i] < vals[m] ? i : m), idxs[0]);
 
-  const ac = ind.metrics?.acumulado || {};
-  const fl = ind.metrics?.flujo_trimestral || {};
+  // Principal: acumulado. Si metrics no tiene, lee del último observations_acumulado.
+  const lastAc = obsAc[idxs.length - 1] || obsAc[obsAc.length - 1] || {};
+  const lastFl = obs[idxs.length - 1] || obs[obs.length - 1] || {};
+  const acFallback = lastAc.values ? {
+    valor: lastAc.values[0],
+    variacion_anual_pct: lastAc.values[4],
+    periodo: lastAc.period_acumulado,
+  } : {};
+  const flFallback = lastFl.values ? {
+    valor: lastFl.values[0],
+    variacion_anual_pct: lastFl.values[4],
+    periodo: lastFl.period,
+  } : {};
+
+  const ac = { ...acFallback, ...(ind.metrics?.acumulado || {}) };
+  const fl = { ...flFallback, ...(ind.metrics?.flujo_trimestral || {}) };
   const ultimo = ac.valor;
   const ultimoP = ac.periodo || "—";
 
   // Variación anual del acumulado.
   const varAcum = ac.variacion_anual_pct;
   const varInfo = varAcum != null
-    ? { mag: varAcum * 100, text: (varAcum >= 0 ? "+" : "") + (varAcum * 100).toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%", pos: varAcum >= 0, label: "Var. anual del acumulado" }
+    ? { mag: varAcum * 100, text: (varAcum >= 0 ? "+" : "−") + Math.abs(varAcum * 100).toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%", pos: varAcum >= 0, label: "Var. anual del acumulado" }
     : { mag: null, text: "—", pos: true, label: "Var. anual del acumulado" };
 
   // Variación anual del flujo (para tarjeta secundaria).
   const varFlujo = fl.variacion_anual_pct;
   const yoy = varFlujo != null
-    ? { mag: varFlujo * 100, text: (varFlujo >= 0 ? "+" : "") + (varFlujo * 100).toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%", pos: varFlujo >= 0, label: "Var. anual del flujo" }
+    ? { mag: varFlujo * 100, text: (varFlujo >= 0 ? "+" : "−") + Math.abs(varFlujo * 100).toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%", pos: varFlujo >= 0, label: "Var. anual del flujo" }
     : null;
 
   const dir = varInfo.mag == null ? "flat" : (varInfo.mag > 0.05 ? "up" : (varInfo.mag < -0.05 ? "down" : "flat"));

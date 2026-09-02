@@ -2131,12 +2131,41 @@ def _reservas_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     }
 
 def _ied_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
-    """KPI y resumen específico para IED: acumulado comparable como principal."""
+    """KPI y resumen específico para IED: acumulado comparable como principal.
+
+    Si metrics no está completo (p. ej. build_data no ejecutó el conector),
+    lee directamente de observations_acumulado y observations.
+    """
     m = ind.get("metrics") or {}
-    ac = m.get("acumulado", {})
-    fl = m.get("flujo_trimestral", {})
+    ac = m.get("acumulado") or {}
+    fl = m.get("flujo_trimestral") or {}
     comp_tipo = m.get("composicion_tipo") or []
     comp_sector = m.get("composicion_sector") or []
+
+    # Fallback a observations si metrics no está poblado
+    obs_ac = (ind.get("observations_acumulado") or [])[-1] if ind.get("observations_acumulado") else None
+    obs_fl = (ind.get("observations") or [])[-1] if ind.get("observations") else None
+    if not ac and obs_ac:
+        vals = obs_ac.get("values") or []
+        ac = {
+            "valor": vals[0] if len(vals) > 0 else None,
+            "variacion_anual_pct": vals[4] if len(vals) > 4 else None,
+            "periodo": obs_ac.get("period_acumulado"),
+            "corte": (obs_ac.get("period_acumulado") or "").split()[0] or "Ene-Jun",
+        }
+    if not fl and obs_fl:
+        vals = obs_fl.get("values") or []
+        fl = {
+            "valor": vals[0] if len(vals) > 0 else None,
+            "variacion_anual_pct": vals[4] if len(vals) > 4 else None,
+            "periodo": obs_fl.get("period"),
+        }
+    if not comp_tipo and m.get("componentes_acumulado"):
+        comp = m["componentes_acumulado"]
+        total = sum((v or 0) for v in comp.values()) or 1
+        comp_tipo = [{"concepto": k, "mdd": v, "participacion_pct": (v or 0) / total} for k, v in comp.items() if v is not None]
+    if not comp_sector and m.get("composicion_sector"):
+        comp_sector = m["composicion_sector"]
 
     if not ac or ac.get("valor") is None:
         return None
@@ -2163,25 +2192,84 @@ def _ied_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
         + (" más que en el mismo periodo del año previo." if (acum_var or 0) >= 0 else " respecto al mismo periodo del año previo."),
     ]
     if flujo_val is not None:
+        q_raw = flujo_periodo or "2T-26"
+        q_num = q_raw.split("-")[0] if "-" in q_raw else q_raw[:2]
+        q_long = {
+            "1T": "primer trimestre", "2T": "segundo trimestre",
+            "3T": "tercer trimestre", "4T": "cuarto trimestre",
+        }.get(q_num, "trimestre")
         bullets.append(
-            f"Durante el {flujo_periodo}, el flujo trimestral fue de {prose_val('IED', flujo_val)}"
-            + (f" (variación anual {F._to_fixed((flujo_var or 0) * 100, 1, 1)}%)." if flujo_var is not None else ".")
+            f"Durante el {q_long} de {anio}, el flujo exclusivo fue de aproximadamente {prose_val('IED', flujo_val)}."
         )
     if comp_tipo:
-        top = comp_tipo[0]
-        bullets.append(
-            f"{top['concepto']} representó {F._to_fixed(top.get('participacion_pct', 0) * 100, 1, 1)}% del acumulado."
-        )
+        # Incluir todos los componentes principales en un solo bullet
+        partes = [
+            f"{c['concepto']} {F._to_fixed(c.get('participacion_pct', 0) * 100, 1, 1)}%"
+            for c in sorted(comp_tipo, key=lambda x: x.get('mdd', 0) or 0, reverse=True)
+        ]
+        if partes:
+            bullets.append(
+                f"La IED acumulada se compone de {', '.join(partes[:-1]) + ' y ' + partes[-1] if len(partes) > 1 else partes[0]} del acumulado."
+            )
     if comp_sector:
         top = comp_sector[0]
         bullets.append(
-            f"{top['sector']} concentró {F._to_fixed(top.get('participacion_pct', 0) * 100, 1, 1)}% de la IED."
+            f"{top['sector']} concentró {F._to_fixed(top.get('participacion_pct', 0) * 100, 1, 1)}% de la IED acumulada."
         )
 
+    # KPI para Panorama/ficha: acumulado como principal, flujo como yoy secundario
+    cfg = kpicfg.get("IED") or {}
+    full_cfg = get_cfg()
+    colors = full_cfg.get("COLORS", {})
+    acum_var_pct = (acum_var or 0) * 100
+    flujo_var_pct = (flujo_var or 0) * 100
+    acum_dir = "flat" if acum_var is None else ("up" if acum_var_pct > 0.05 else ("down" if acum_var_pct < -0.05 else "flat"))
+    acum_assess = "favorable" if acum_dir == "up" else ("adverso" if acum_dir == "down" else "neutral")
+    flujo_var_text = ("" if flujo_var is None else ("+" if flujo_var >= 0 else "-") + F._to_fixed(abs(flujo_var_pct), 1, 1) + "%")
+
+    # Serie de sparkline y max/min deben ser flujo trimestral
+    flujo_periods = [o.get("period") for o in ind.get("observations", [])]
+    flujo_vals = [o.get("values", [None])[0] for o in ind.get("observations", [])]
+    flujo_idxs = [i for i, v in enumerate(flujo_vals) if v is not None]
+    max_i = max(flujo_idxs, key=lambda i: flujo_vals[i]) if flujo_idxs else 0
+    min_i = min(flujo_idxs, key=lambda i: flujo_vals[i]) if flujo_idxs else 0
+
+    kpi = {
+        "assessment": acum_assess,
+        "dir": acum_dir,
+        "ultimoFmt": F.fmt_val(acum_val, cfg.get("valFmt", "usd")),
+        "ultimoRaw": acum_val,
+        "ultimoP": periodo,
+        "varText": ("" if acum_var is None else ("+" if acum_var >= 0 else "-") + F._to_fixed(abs(acum_var_pct), 1, 1) + "%"),
+        "varMag": acum_var_pct,
+        "pos": (acum_var or 0) >= 0,
+        "varColor": colors.get("GREEN") if (acum_var or 0) >= 0 else colors.get("CRIMSON"),
+        "varLabel": "Var. anual del acumulado",
+        "maxFmt": F.fmt_val(flujo_vals[max_i], "usd"),
+        "maxRaw": flujo_vals[max_i],
+        "maxP": flujo_periods[max_i],
+        "minFmt": F.fmt_val(flujo_vals[min_i], "usd"),
+        "minRaw": flujo_vals[min_i],
+        "minP": flujo_periods[min_i],
+        "lastI": flujo_idxs[-1] if flujo_idxs else 0,
+        "series": flujo_vals,
+        "periods": flujo_periods,
+        "semaforo": {"favorable": "bueno", "adverso": "malo"}.get(acum_assess, "estable"),
+        "flujoRaw": flujo_val,
+        "flujoText": F.fmt_val(flujo_val, "usd"),
+        "flujoP": flujo_periodo,
+    }
+    yoy = {
+        "mag": flujo_var_pct,
+        "pos": (flujo_var or 0) >= 0,
+        "text": flujo_var_text,
+        "label": "Var. anual del flujo",
+    }
+
     return {
-        "kpi": None,
-        "yoy": None,
-        "annualVar": None,
+        "kpi": kpi,
+        "yoy": yoy,
+        "annualVar": yoy,
         "resumen": bullets[:4],
         "analysis": bullets[:4],
     }

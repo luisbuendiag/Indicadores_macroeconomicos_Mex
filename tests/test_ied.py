@@ -157,6 +157,24 @@ def test_ied_integration_final_output():
     assert ind["fecha_publicacion"] == "24 de agosto de 2026"
     assert "source_mode" in ind
 
+    # Mapeo de KPIs: acumulado es principal, flujo es secundario
+    kpi = ind["metrics"]["kpi"]
+    assert kpi["ultimoRaw"] == 34968, f"kpi.ultimoRaw={kpi['ultimoRaw']}"
+    assert kpi["ultimoP"] == "Ene-Jun 26", f"kpi.ultimoP={kpi['ultimoP']}"
+    assert kpi["varText"] == "+2.1%", f"kpi.varText={kpi['varText']}"
+    assert kpi["flujoRaw"] == 10464.95, f"kpi.flujoRaw={kpi['flujoRaw']}"
+    assert kpi["flujoP"] == "2T-26", f"kpi.flujoP={kpi['flujoP']}"
+    assert ind["metrics"]["yoy"]["text"] == "-3.5%", f"yoy.text={ind['metrics']['yoy']['text']}"
+
+    # Resumen/lectura sin genéricos de max/min/adverso
+    resumen = " ".join(ind["metrics"].get("resumen", []))
+    assert "máximo" not in resumen.lower()
+    assert "mínimo" not in resumen.lower()
+    assert "adverso" not in resumen.lower()
+    assert "favorable" not in resumen.lower()
+    assert "34,968" in resumen
+    assert "10,465" in resumen
+
 
 @pytest.mark.skipif(not (DATA_DIR / "ied_manual_2026_2t.json").exists(), reason="manual 2T no presente")
 def test_labels_and_separation():

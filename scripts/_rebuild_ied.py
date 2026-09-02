@@ -30,7 +30,17 @@ def main() -> int:
     ied_metrics = lib_metrics._ied_metrics(payload["indicators"]["IED"], kpicfg)
     if ied_metrics:
         payload["indicators"]["IED"].setdefault("metrics", {})
-        payload["indicators"]["IED"]["metrics"]["resumen"] = ied_metrics["resumen"]
+        for key in ("kpi", "yoy", "annualVar", "resumen", "analysis"):
+            if ied_metrics.get(key) is not None:
+                payload["indicators"]["IED"]["metrics"][key] = ied_metrics[key]
+        # Asegurar que las métricas estructuradas del conector se conservan
+        for key in ("acumulado", "flujo_trimestral", "composicion_tipo", "composicion_pais",
+                    "composicion_sector", "composicion_entidad", "componentes_acumulado",
+                    "componentes_flujo", "corte_referencia", "source_mode"):
+            if key in payload["indicators"]["IED"]["metrics"]:
+                payload["indicators"]["IED"]["metrics"].setdefault(key, payload["indicators"]["IED"]["metrics"][key])
+        # Quitar campos antiguos genéricos si existen y ya no aplican
+        payload["indicators"]["IED"]["metrics"].pop("main", None)
 
     # Estado honesto: el dato de 2T-26 ya fue publicado (24 ago 2026)
     payload["indicators"]["IED"]["estado"] = "ACTUALIZADO"

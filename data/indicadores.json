@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-01T20:19:51+00:00",
+    "generated_at": "2026-09-02T01:03:48+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-09-01T14:19:51-06:00",
+    "last_update_ct": "2026-09-01T19:03:48-06:00",
     "periodo_referencia_reciente": {
       "period": "Jul 26",
       "period_long": "Jul 26"
@@ -22451,7 +22451,7 @@
     "IED": {
       "key": "IED",
       "nombre": "Inversión Extranjera Directa (IED)",
-      "descripcion": "Acumulado anual de inversión extranjera directa en México (IED) y sus componentes: nuevas inversiones, reinversión de utilidades y cuentas entre compañías. La ficha distingue el acumulado en el año del flujo exclusivo del trimestre, e incluye desgloses por tipo de inversión, país de origen, sector económico y entidad federativa.",
+      "descripcion": "Flujo trimestral y acumulado anual de inversión extranjera directa en México. El valor principal muestra el acumulado ene-jun 2026. Incluye desgloses por tipo de inversión, país de origen, sector económico y entidad federativa.",
       "frecuencia": "Trimestral",
       "unidad": "Millones de dólares",
       "ajuste_estacional": "No aplica",
@@ -22463,7 +22463,7 @@
       ],
       "fuente": {
         "nombre": "Secretaría de Economía — Dirección General de Inversión Extranjera / RNIE",
-        "metodo": "Descarga y parseo de XLSX oficiales (resumen histórico + desgloses 2T-2026)",
+        "metodo": "Descarga y parseo de archivos XLSX oficiales",
         "link": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa",
         "serie": null
       },
@@ -23705,19 +23705,142 @@
       "estado": "ACTUALIZADO",
       "origen_dato": "respaldo",
       "fecha_publicacion": "24 de agosto de 2026",
-      "periodo_referencia": "2T-26",
+      "periodo_referencia": "Ene-Jun 26",
       "fecha_consulta": "2026-09-01",
       "metrics": {
+        "acumulado": {
+          "periodo": "Ene-Jun 26",
+          "valor": 34968,
+          "unidad": "mdd",
+          "variacion_anual_pct": 0.021,
+          "corte": "Ene-Jun"
+        },
+        "flujo_trimestral": {
+          "periodo": "2T-26",
+          "valor": 10464.95,
+          "unidad": "mdd",
+          "variacion_anual_pct": -0.035
+        },
+        "composicion_tipo": [
+          {
+            "concepto": "Reinversión de utilidades",
+            "mdd": 30957,
+            "participacion_pct": 0.885
+          },
+          {
+            "concepto": "Nuevas inversiones",
+            "mdd": 2726,
+            "participacion_pct": 0.078
+          },
+          {
+            "concepto": "Cuentas entre compañías",
+            "mdd": 1285,
+            "participacion_pct": 0.037
+          }
+        ],
+        "composicion_pais": [
+          {
+            "pais": "Estados Unidos",
+            "mdd": 16871,
+            "participacion_pct": 0.482
+          },
+          {
+            "pais": "España",
+            "mdd": 4954,
+            "participacion_pct": 0.142
+          },
+          {
+            "pais": "Canadá",
+            "mdd": 1741,
+            "participacion_pct": 0.05
+          },
+          {
+            "pais": "Australia",
+            "mdd": 1698,
+            "participacion_pct": 0.049
+          },
+          {
+            "pais": "Alemania",
+            "mdd": 1647,
+            "participacion_pct": 0.047
+          }
+        ],
+        "composicion_sector": [
+          {
+            "sector": "Manufacturas",
+            "mdd": 13482,
+            "participacion_pct": 0.386
+          },
+          {
+            "sector": "Servicios financieros y de seguros",
+            "mdd": 10150,
+            "participacion_pct": 0.29
+          },
+          {
+            "sector": "Transportes, correos y almacenamiento",
+            "mdd": 2650,
+            "participacion_pct": 0.076
+          },
+          {
+            "sector": "Comercio al por mayor",
+            "mdd": 2014,
+            "participacion_pct": 0.058
+          },
+          {
+            "sector": "Minería",
+            "mdd": 1557,
+            "participacion_pct": 0.045
+          }
+        ],
+        "composicion_entidad": [
+          {
+            "entidad": "Ciudad de México",
+            "mdd": 16862,
+            "participacion_pct": 0.482
+          },
+          {
+            "entidad": "Nuevo León",
+            "mdd": 3712,
+            "participacion_pct": 0.106
+          },
+          {
+            "entidad": "Estado de México",
+            "mdd": 2114,
+            "participacion_pct": 0.06
+          },
+          {
+            "entidad": "Baja California",
+            "mdd": 1743,
+            "participacion_pct": 0.05
+          },
+          {
+            "entidad": "Jalisco",
+            "mdd": 1406,
+            "participacion_pct": 0.04
+          }
+        ],
+        "componentes_acumulado": {
+          "Nuevas inversiones": 2726,
+          "Reinversión de utilidades": 30957,
+          "Cuentas entre compañías": 1285
+        },
+        "componentes_flujo": {
+          "Nuevas inversiones": 654.37,
+          "Reinversión de utilidades": 6870.96,
+          "Cuentas entre compañías": 2939.62
+        },
+        "corte_referencia": "Ene-Jun",
+        "source_mode": "structured",
         "kpi": {
-          "assessment": "adverso",
-          "dir": "down",
-          "ultimoFmt": "10,465",
-          "ultimoRaw": 10464.95,
-          "ultimoP": "2T-26",
-          "varText": "-4.0%",
-          "varMag": -4.0,
-          "pos": false,
-          "varColor": "#9b2247",
+          "assessment": "favorable",
+          "dir": "up",
+          "ultimoFmt": "34,968",
+          "ultimoRaw": 34968,
+          "ultimoP": "Ene-Jun 26",
+          "varText": "+2.1%",
+          "varMag": 2.1,
+          "pos": true,
+          "varColor": "#1e5b4f",
           "varLabel": "Var. anual del acumulado",
           "maxFmt": "27,219",
           "maxRaw": 27218.64,
@@ -23948,23 +24071,41 @@
             "1T-26",
             "2T-26"
           ],
-          "semaforo": "malo",
-          "yoyText": "—",
-          "yoyLabel": "—"
+          "semaforo": "bueno",
+          "flujoRaw": 10464.95,
+          "flujoText": "10,465",
+          "flujoP": "2T-26"
         },
-        "yoy": null,
+        "yoy": {
+          "mag": -3.5000000000000004,
+          "pos": false,
+          "text": "-3.5%",
+          "label": "Var. anual del flujo"
+        },
+        "annualVar": {
+          "mag": -3.5000000000000004,
+          "pos": false,
+          "text": "-3.5%",
+          "label": "Var. anual del flujo"
+        },
         "resumen": [
-          "En segundo trimestre de 2026, la IED acumulada se ubicó en $10,465 millones de dólares (acumulado ene-jun, millones de dólares). El valor de var. anual del acumulado fue de -4.0% frente al mismo periodo del año anterior.",
-          "En la serie mostrada, el indicador oscila entre un máximo de $27,219 millones de dólares (primer trimestre de 2024) y un mínimo de −$3,990 millones de dólares (cuarto trimestre de 2025). El último dato se ubica dentro del rango observado en el periodo mostrado.",
-          "La variación se clasifica como adversa según la lectura económica del indicador."
+          "Entre enero y junio de 2026, México recibió $34,968 millones de dólares de IED, una variación anual del 2.1% más que en el mismo periodo del año previo.",
+          "Durante el segundo trimestre de 2026, el flujo exclusivo fue de aproximadamente $10,465 millones de dólares.",
+          "La IED acumulada se compone de Reinversión de utilidades 88.5%, Nuevas inversiones 7.8% y Cuentas entre compañías 3.7% del acumulado.",
+          "Manufacturas concentró 38.6% de la IED acumulada."
+        ],
+        "analysis": [
+          "Entre enero y junio de 2026, México recibió $34,968 millones de dólares de IED, una variación anual del 2.1% más que en el mismo periodo del año previo.",
+          "Durante el segundo trimestre de 2026, el flujo exclusivo fue de aproximadamente $10,465 millones de dólares.",
+          "La IED acumulada se compone de Reinversión de utilidades 88.5%, Nuevas inversiones 7.8% y Cuentas entre compañías 3.7% del acumulado.",
+          "Manufacturas concentró 38.6% de la IED acumulada."
         ]
       },
       "periodo_referencia_oficial": "2° trimestre 2026",
       "fecha_publicacion_oficial": "24 de agosto de 2026",
       "proxima_publicacion": {
         "fecha_publicacion": "Por anunciar",
-        "periodo_referencia": "3° trimestre 2026",
-        "tipo": "no_anunciada"
+        "periodo_referencia": "4° trimestre 2026"
       },
       "motivo_frescura": "El periodo cargado (2T-26) coincide con el último periodo esperado (2° trimestre 2026).",
       "url_boletin_oficial": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa",
@@ -23979,14 +24120,14 @@
       "regla_publicacion": null,
       "windows": [
         {
-          "id": "1a",
-          "label": "1 año",
-          "count": 4
-        },
-        {
           "id": "5a",
           "label": "5 años",
-          "count": 20
+          "count": 5
+        },
+        {
+          "id": "10a",
+          "label": "10 años",
+          "count": 10
         },
         {
           "id": "max",

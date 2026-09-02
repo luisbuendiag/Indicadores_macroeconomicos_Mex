@@ -282,8 +282,9 @@ function panoramaCard(ind) {
 
   const yoy = metrics.yoy || annualVar(ind, k);
   const deltaCls = k.assessment === "favorable" ? "up" : (k.assessment === "adverso" ? "down" : "flat");
-  const showYoy = yoy && (yoy.mag === null || Math.abs((yoy.mag ?? 0) - (k.ultimoRaw ?? 0)) > 1e-9);
+  const showYoy = ind.key !== "IED" && yoy && (yoy.mag === null || Math.abs((yoy.mag ?? 0) - (k.ultimoRaw ?? 0)) > 1e-9);
   const flowKpi = ind.key === "IED" && k.flujoText ? { text: k.flujoText, label: cfg.flowLabel || "Flujo del 2T" } : null;
+  const yoyKpi = ind.key === "IED" && yoy ? { text: yoy.text, label: yoy.label || "Var. anual flujo" } : null;
   const card = el("button", { class: "matrix-card", type: "button", onclick: () => setView(ind.key) },
     top, name, eyebrow,
     el("div", { class: "mc-value" }, k.ultimoFmt),
@@ -291,8 +292,9 @@ function panoramaCard(ind) {
     sparkline(k),
     el("div", { class: "mc-deltas" },
       el("div", { class: `mc-delta ${deltaCls}` }, el("span", { class: "d-val" }, k.varText), el("span", { class: "d-lbl" }, k.varLabel || cfg.varLabel)),
-      showYoy ? el("div", { class: "mc-delta neutral" }, el("span", { class: "d-val" }, yoy.text), el("span", { class: "d-lbl" }, yoy.label || "Var. anual")) :
-        (flowKpi ? el("div", { class: "mc-delta neutral" }, el("span", { class: "d-val" }, flowKpi.text), el("span", { class: "d-lbl" }, flowKpi.label)) : null)),
+      flowKpi ? el("div", { class: "mc-delta neutral" }, el("span", { class: "d-val" }, flowKpi.text), el("span", { class: "d-lbl" }, flowKpi.label)) :
+        (showYoy ? el("div", { class: "mc-delta neutral" }, el("span", { class: "d-val" }, yoy.text), el("span", { class: "d-lbl" }, yoy.label || "Var. anual")) :
+          (yoyKpi ? el("div", { class: "mc-delta neutral" }, el("span", { class: "d-val" }, yoyKpi.text), el("span", { class: "d-lbl" }, yoyKpi.label)) : null))),
   );
   return card;
 }
@@ -704,7 +706,7 @@ function renderIndicatorView(key) {
     mini = el("div", { class: "mini-kpis" },
       el("div", { class: "mini dark" }, el("div", { class: "lbl" }, "IED acumulada"), el("div", { class: "num" }, k.ultimoFmt), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),
       el("div", { class: "mini" }, el("div", { class: "lbl" }, "Var. anual del acumulado"), el("div", { class: "num", style: `color:${acColor}` }, k.varText), el("div", { class: "sub" }, cfg.comp)),
-      el("div", { class: "mini" }, el("div", { class: "lbl" }, "Flujo del 2T"), el("div", { class: "num" }, k.flujoText || "—"), el("div", { class: "sub" }, ind.metrics?.flujo_trimestral?.periodo || "—")),
+      el("div", { class: "mini" }, el("div", { class: "lbl" }, `Flujo ${k.flujoP || "del 2T"}`), el("div", { class: "num" }, k.flujoText || "—"), el("div", { class: "sub" }, ind.metrics?.flujo_trimestral?.periodo || "—")),
       el("div", { class: "mini" }, el("div", { class: "lbl" }, "Var. anual del flujo"), el("div", { class: "num", style: `color:${flColor}` }, (k.yoy && k.yoy.text) ? k.yoy.text : ((ind.metrics?.flujo_trimestral?.variacion_anual_pct != null ? (ind.metrics.flujo_trimestral.variacion_anual_pct >= 0 ? "+" : "") + (ind.metrics.flujo_trimestral.variacion_anual_pct * 100).toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%" : "—"))), el("div", { class: "sub" }, "Frente al mismo trimestre del año previo")),
     );
   } else if (ind.key === "IOAE") {
