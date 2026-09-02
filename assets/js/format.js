@@ -24,6 +24,8 @@ export function fmtVal(v, fmt) {
       return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
     case "pp":
       return v.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 3 }) + " p.p.";
+    case "bp":
+      return (v > 0 ? "+" : "") + Math.round(v).toLocaleString("es-MX") + " pb";
     case "text":
       return v == null ? "—" : String(v);
     default:
@@ -39,6 +41,22 @@ export function tick(v, kind) {
 }
 
 export function isTrim(p) { return /^[1-4]T-/.test(p || ""); }
+
+const MESES_CORTO = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+
+export function perShort(p) {
+  if (!p) return "";
+  const iso = p.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (iso) {
+    const d = new Date(parseInt(iso[1], 10), parseInt(iso[2], 10) - 1, parseInt(iso[3], 10));
+    return d.toLocaleDateString("es-MX", { timeZone: "UTC", day: "numeric", month: "short", year: "2-digit" }).replace(/^\w/, (c) => c.toUpperCase()).replace(/\s+de\s+/g, " ").replace(/\.$/, "");
+  }
+  const q = p.match(/^([1-4])T-(\d{2})/);
+  if (q) return `${q[1]}T-${q[2]}`;
+  const mo = p.match(/^([A-Za-zÁÉÍÓÚáéíóú]{3})\s*(\d{2})/);
+  if (mo) return `${mo[1][0].toUpperCase() + mo[1].slice(1).toLowerCase()} ${mo[2]}`;
+  return p;
+}
 
 export function perLong(p) {
   if (!p) return "";

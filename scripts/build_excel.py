@@ -729,6 +729,54 @@ def _build_ied_workbook(ind: dict, out_path: Path) -> None:
     wb.save(out_path)
 
 
+def _build_tasa_workbook(ind: dict, out_path: Path) -> None:
+    """Genera el Excel de TASA con dos hojas: Serie diaria y Decisiones."""
+    wb = openpyxl.Workbook()
+    wb.remove(wb.active)
+    src = ind.get("fuente", {}).get("nombre", "Banco de México")
+    url = ind.get("url_boletin_oficial") or ind.get("fuente", {}).get("link") or "—"
+    pub = ind.get("fecha_publicacion") or "—"
+
+    # Serie diaria
+    ws1 = wb.create_sheet("Serie diaria")
+    _write_subset_sheet(ws1, ind, f"{ind.get('nombre', 'TASA')} — Serie diaria",
+                        f"Fuente: {src} · Frecuencia: Diaria · Unidad: {ind.get('unidad', 'Porcentaje anual')} · Boletín: {url} · Fecha de publicación: {pub}",
+                        [0])
+
+    # Decisiones de política monetaria
+    ws2 = wb.create_sheet("Decisiones")
+    ws2.sheet_view.showGridLines = False
+    ws2["A1"] = f"{ind.get('nombre', 'TASA')} — Historial de decisiones de política monetaria"
+    ws2["A1"].font = TITLE
+    ws2["A2"] = f"Fuente: {src} · Calendario de Banxico"
+    ws2["A2"].font = MUT
+    headers = ["Fecha anuncio", "Vigencia", "Decisión", "Cambio (pb)", "Tasa previa (%)", "Nueva tasa (%)", "Comunicado"]
+    r0 = 4
+    for i, h in enumerate(headers, start=1):
+        ws2.cell(row=r0, column=i, value=h)
+    _style_header(ws2, r0, len(headers))
+    r = r0 + 1
+    for d in reversed(ind.get("policy_decisions", [])):
+        ws2.cell(row=r, column=1, value=_period_date(d.get("announcement_date"))).number_format = "yyyy-mm-dd"
+        ws2.cell(row=r, column=2, value=_period_date(d.get("effective_date"))).number_format = "yyyy-mm-dd"
+        ws2.cell(row=r, column=3, value=d.get("decision", "—"))
+        ws2.cell(row=r, column=4, value=d.get("change_bp"))
+        ws2.cell(row=r, column=5, value=d.get("previous_rate"))
+        ws2.cell(row=r, column=6, value=d.get("new_rate"))
+        ws2.cell(row=r, column=7, value=d.get("comunicado_url", "—"))
+        for c in range(1, 8):
+            cell = ws2.cell(row=r, column=c)
+            cell.font = TXT
+            cell.border = BORDER
+            if r % 2 == 0:
+                cell.fill = BAND_FILL
+        r += 1
+    ws2.merge_cells(start_row=1, start_column=1, end_row=1, end_column=len(headers))
+    ws2.merge_cells(start_row=2, start_column=1, end_row=2, end_column=len(headers))
+    _autow(ws2, [16, 16, 14, 16, 18, 18, 55])
+    wb.save(out_path)
+
+
 def build_individual_files(payload: dict, pilot: list[str] | None = None):
     """Genera un archivo Excel por indicador y actualiza flags en el payload.
 
@@ -772,6 +820,8 @@ def build_individual_files(payload: dict, pilot: list[str] | None = None):
                 _build_desocup_workbook(ind, out_path)
             elif key == "IED" and ind.get("observations_acumulado"):
                 _build_ied_workbook(ind, out_path)
+            elif key == "TASA" and ind.get("policy_decisions"):
+                _build_tasa_workbook(ind, out_path)
             else:
                 _build_individual_workbook(ind, cfg, kpicfg, out_path)
             ind["xlsx_disponible"] = True

@@ -1957,72 +1957,94 @@ def _fix_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
 
 
 def _tasa_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
-    """KPI y resumen para la tasa objetivo (diaria, cambios discretos)."""
-    obs = ind.get("observations", [])
-    if not obs:
+    """KPI y resumen para la tasa objetivo usando policy_decisions."""
+    decisions = ind.get("policy_decisions", [])
+    if not decisions:
         return None
     _, colors = _kpicfg_and_colors()
 
-    periods = [o.get("period", "") for o in obs]
-    dates = [F.period_to_date(p) for p in periods]
-    vals = [o["values"][0] if o.get("values") else None for o in obs]
+    last_dec = decisions[-1]
+    last_adj = next((d for d in reversed(decisions) if d.get("decision") in ("alza", "recorte")), None)
 
-    last_i = len(vals) - 1
-    last = vals[last_i]
-    if last is None:
-        return None
+    current_rate = last_dec.get("new_rate")
+    current_p = last_adj.get("effective_date") if last_adj else last_dec.get("effective_date")
+    last_announcement = last_dec.get("announcement_date")
+    last_adj_p = last_adj.get("announcement_date") if last_adj else None
+    last_adj_rate = last_adj.get("new_rate") if last_adj else None
+    last_adj_change = last_adj.get("change_bp") if last_adj else None
 
-    # Buscar la última decisión: inicio de la meseta actual y valor previo.
-    dec_i = last_i
-    while dec_i - 1 >= 0 and vals[dec_i - 1] == last:
-        dec_i -= 1
-    prev_i = dec_i - 1
-    decision_dt = dates[dec_i]
-    decision_p = periods[dec_i]
-    prev_val = vals[prev_i] if prev_i >= 0 else None
+    # Próxima decisión programada: del calendario de publicaciones
+    next_decision = None
+    for e in (ind.get("calendario_publicaciones") or []):
+        status = (e.get("status") or "").lower()
+        if status in ("próximo", "proximo", "programado"):
+            pd = e.get("publication_date") or e.get("fecha_iso")
+            if pd and (next_decision is None or pd < next_decision):
+                next_decision = pd
 
-    pp_change = None
-    if prev_val is not None:
-        pp_change = round(last - prev_val, 6)
+    def _per_short(s: str) -> str:
+        return F.per_short(s) if s else "—"
+
+    def _en_frase(s: str) -> str:
+        return F.en_frase(s) if s else "—"
+
+    def _fmt_rate(v):
+        return F._to_fixed(v, 2, 2) + "%" if v is not None else "—"
+
+    def _fmt_bp(v):
+        if v is None:
+            return "—"
+        sign = "+" if v > 0 else ""
+        return f"{sign}{F._to_fixed(v, 0, 0)} pb"
 
     kpi = {
-        "ultimoP": f"VIGENTE DESDE {F.per_short(decision_p)}",
-        "ultimoRaw": last,
-        "ultimoFmt": F._to_fixed(last, 2, 2) + "%",
-        "varText": F.fmt_val(pp_change, "pp") if pp_change is not None else "—",
-        "varMag": pp_change,
-        "varLabel": "Cambio última decisión",
-        "varColor": colors.get("GREEN") if (pp_change is not None and pp_change >= 0) else colors.get("CRIMSON"),
-        "pos": pp_change is not None and pp_change >= 0,
-        "yoyText": F.per_short(decision_p),
-        "yoyLabel": "Fecha última modificación",
+        "ultimoP": f"VIGENTE DESDE {_per_short(current_p)}",
+        "ultimoRaw": current_rate,
+        "ultimoFmt": _fmt_rate(current_rate),
+        "decisionP": last_announcement,
+        "decisionText": _per_short(last_announcement),
+        "decisionLabel": "Última decisión",
+        "decisionRaw": last_dec.get("decision"),
+        "decisionDisplay": ("SIN CAMBIO" if last_dec.get("decision") == "sin cambio" else last_dec.get("decision", "").upper()),
+        "varText": _fmt_bp(last_adj_change) if last_adj_change is not None else "—",
+        "varMag": last_adj_change,
+        "varLabel": "Último ajuste",
+        "varColor": colors.get("GREEN") if (last_adj_change is not None and last_adj_change >= 0) else colors.get("CRIMSON"),
+        "pos": last_adj_change is not None and last_adj_change >= 0,
+        "yoyText": _per_short(last_adj_p) if last_adj_p else "—",
+        "yoyLabel": "Fecha del último ajuste",
         "yoyRaw": None,
         "yoyMag": None,
         "yoyPos": None,
         "yoyColor": colors.get("INK"),
-        "decisionP": decision_p,
-        "decisionText": F.per_short(decision_p),
-        "maxRaw": max(v for v in vals if v is not None) if any(v is not None for v in vals) else None,
-        "minRaw": min(v for v in vals if v is not None) if any(v is not None for v in vals) else None,
-        "maxP": F.per_short(periods[vals.index(max(v for v in vals if v is not None))]) if any(v is not None for v in vals) else None,
-        "minP": F.per_short(periods[vals.index(min(v for v in vals if v is not None))]) if any(v is not None for v in vals) else None,
-        "maxFmt": F.fmt_val(max(v for v in vals if v is not None), "pct-raw") if any(v is not None for v in vals) else "—",
-        "minFmt": F.fmt_val(min(v for v in vals if v is not None), "pct-raw") if any(v is not None for v in vals) else "—",
-        "lastI": last_i,
-        "series": vals,
-        "periods": periods,
+        "vigenteDesdeP": current_p,
+        "vigenteDesdeText": _per_short(current_p),
+        "vigenteDesdeLabel": "Vigente desde",
+        "nextDecisionP": next_decision,
+        "nextDecisionText": _per_short(next_decision) if next_decision else "—",
+        "nextDecisionLabel": "Próxima decisión",
+        "comunicado_url": last_dec.get("comunicado_url") or "",
+        "lastI": len(decisions) - 1,
+        "series": [d.get("new_rate") for d in decisions],
+        "periods": [d.get("effective_date") for d in decisions],
         "assessment": "neutral",
-        "dir": "flat" if pp_change is None or abs(pp_change) < 0.0001 else ("up" if pp_change > 0 else "down"),
+        "dir": "flat" if not last_adj_change else ("up" if last_adj_change > 0 else "down"),
         "semaforo": "estable",
     }
 
     bullets = [
-        f"La tasa objetivo vigente es {kpi['ultimoFmt']} (% anual). La última decisión fue el {F.en_frase(decision_p)}.",
+        f"La tasa objetivo de Banco de México se mantiene en {_fmt_rate(current_rate)}.",
     ]
-    if pp_change is not None:
-        bullets.append(f"El cambio de la última decisión respecto a la tasa previa fue de {kpi['varText']}")
-    if decision_dt:
-        bullets.append(f"La tasa se mantiene estable desde el {F.en_frase(decision_p)}.")
+    if last_dec.get("decision") == "sin cambio" and last_announcement:
+        bullets.append(f"En su decisión del {_en_frase(last_announcement)}, la Junta de Gobierno mantuvo sin cambio el objetivo.")
+    elif last_dec.get("decision") in ("alza", "recorte") and last_announcement:
+        bullets.append(f"En su decisión del {_en_frase(last_announcement)}, la Junta de Gobierno {'aumentó' if last_dec.get('decision')=='alza' else 'redujo'} la tasa en {_fmt_bp(last_dec.get('change_bp'))}.")
+    if last_adj and last_adj_p:
+        adj_bp = abs(last_adj_change) if last_adj_change is not None else None
+        bp_text = f"{F._to_fixed(adj_bp, 0, 0)} pb" if adj_bp is not None else "—"
+        bullets.append(f"El último ajuste ocurrió el {_en_frase(last_adj_p)}, cuando {'aumentó' if last_adj.get('decision')=='alza' else 'redujo'} la tasa en {bp_text}; el nuevo nivel entró en vigor el {_en_frase(last_adj.get('effective_date'))}.")
+    if next_decision:
+        bullets.append(f"La próxima decisión programada es el {_en_frase(next_decision)}.")
 
     return {
         "kpi": kpi,
@@ -2030,6 +2052,7 @@ def _tasa_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
         "annualVar": None,
         "resumen": bullets[:4],
         "analysis": [],
+        "policy_decisions": decisions,
     }
 
 

@@ -27,7 +27,8 @@ import lib_data as L
 import lib_freshness
 import lib_kpicfg
 import lib_metrics
-from sources import banxico, banxico_sie, inegi, inegi_bulletin, inegi_inpc, inegi_inpp, worldbank
+from sources import (banxico, banxico_policy, banxico_sie, ied, inegi,
+                     inegi_bulletin, inegi_inpc, inegi_inpp, worldbank)
 import validate as V
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -1047,6 +1048,49 @@ def compute_ioae_metrics(payload: dict) -> list[str]:
     return changes
 
 
+def compute_tasa_metrics(payload: dict) -> list[str]:
+    """Construye policy_decisions y metadatos de regimen para la tasa objetivo."""
+    changes: list[str] = []
+    ind = payload["indicators"].get("TASA")
+    if not ind or not ind.get("observations"):
+        return changes
+    obs = ind["observations"]
+    cal = banxico_policy._load_calendar()
+    events = banxico_policy._tasa_events(cal)
+    decisions = banxico_policy.build_decisions(obs, events)
+    if not decisions:
+        return changes
+    ind["policy_decisions"] = decisions
+    ind["regimen"] = banxico_policy.regimen_from_observations(obs)
+    ind["frecuencia"] = "Diaria"
+    ind["frecuencia_naturaleza"] = "Cambios discretos por decision de politica monetaria"
+    ind["nombre"] = "Objetivo para la Tasa de Interes Interbancaria a un dia"
+    ind["descripcion"] = (
+        "Tasa objetivo de politica monetaria fijada por la Junta de Gobierno de Banco de Mexico "
+        "para las operaciones de fondeo interbancario a un dia. No confundir con la TIIE."
+    )
+    ind["nombre_corto"] = "Tasa objetivo de Banco de Mexico"
+    cal_tasa = [e for e in (cal.get("events", []) if isinstance(cal, dict) else cal)
+                if e.get("indicator") == "TASA" or e.get("sigla") == "TASA"]
+    if cal_tasa:
+        ind["calendario_publicaciones"] = cal_tasa
+        changes.append(f"TASA: calendario de publicaciones con {len(cal_tasa)} eventos")
+    latest = decisions[-1]
+    last_adj = next(
+        (d for d in reversed(decisions) if d.get("decision") in ("alza", "recorte")),
+        None,
+    )
+    ind["tasa_vigente"] = latest.get("new_rate")
+    ind["vigente_desde"] = last_adj.get("effective_date") if last_adj else latest.get("effective_date")
+    ind["ultima_decision"] = latest.get("announcement_date")
+    ind["ultimo_ajuste"] = last_adj
+    ind["url_boletin_oficial"] = latest.get("comunicado_url") or ""
+    ind["boletin_label"] = "Comunicado"
+    changes.append(f"TASA: {len(decisions)} decisiones de politica monetaria construidas")
+    changes.append(f"TASA: {len(ind['regimen'])} regímenes detectados")
+    return changes
+
+
 def run(offline: bool = False) -> int:
     log = {"started_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
            "mode": "offline" if offline else "online",
@@ -1161,6 +1205,9 @@ def run(offline: bool = False) -> int:
 
     # IOAE: esquema de 13 columnas e IGAE observado para comparación.
     log["changes"].extend(compute_ioae_metrics(payload))
+
+    # TASA: decisiones de política monetaria y metadatos de régimen.
+    log["changes"].extend(compute_tasa_metrics(payload))
 
     # Frescura, calendario, métricas compartidas y metadatos temporales.
     log["changes"].extend(apply_freshness_and_meta(payload, log, offline=offline))

@@ -175,6 +175,9 @@ def fmt_val(v: float | int | None, fmt: str) -> str:
         return _to_fixed(v, 1, 1) + "%"
     if fmt == "pp":
         return _to_fixed(v, 2, 3) + " p.p."
+    if fmt == "bp":
+        sign = "+" if v > 0 else ""
+        return f"{sign}{_to_fixed(v, 0, 0)} pb"
     return str(v)
 
 

@@ -2,7 +2,7 @@
 import { ORDER, PRINCIPAL, COMPLEMENTARIOS, LABELS, SIGLA, CAPTIONS, WINDOWS, IED_WINDOWS, IED_WINDOWS_FLUJO, COLORS, KPICFG, VIEWS, ESTADOS } from "./config.js";
 import { computeKPI, analysis, annualVar } from "./metrics.js";
 import { buildOption, rangeStats, applyWindow, buildPibsecLevels, buildPibsecVariations, buildIgaeLevels, buildIgaeVariations, buildImaiLevels, buildImaiVariations, buildEmimLevels, buildEmimVariations, buildBcmmLevels, buildBcmmVariations, buildImfbcfLevels, buildImfbcfVariations, buildDesocupRates, buildDesocupPoblacion } from "./charts.js";
-import { fmtVal, perLong } from "./format.js";
+import { fmtVal, perLong, perShort } from "./format.js";
 import * as cal from "./calendar.js";
 
 const state = {
@@ -133,6 +133,7 @@ function productToolbar(ind) {
     }
   }
   const boletinEnabled = !!boletinUrl;
+  const boletinLabel = ind.boletin_label || "BOLETÍN";
 
   // Nota: deshabilitada mientras no exista plantilla aprobada.
   const notaReady = !!ind.nota_disponible;
@@ -148,7 +149,7 @@ function productToolbar(ind) {
 
   bar.append(
     productBtn("CALENDARIO", "", calEnabled, calTitle, () => openCalendarioFiltro(ind), "calendario"),
-    productBtn("BOLETÍN", "", boletinEnabled, boletinTitle, () => openBoletin(boletinUrl), "boletin"),
+    productBtn(boletinLabel, "", boletinEnabled, boletinTitle, () => openBoletin(boletinUrl), "boletin"),
     productBtn("NOTA", "", notaReady, notaTitle, () => downloadProduct(notaUrl(ind), `${ind.key}_nota.docx`), "nota"),
     productBtn("EXCEL", "", xlsxReady, xlsxTitle, () => downloadProduct(xlsxUrl(ind), `${ind.key}_datos.xlsx`), "excel")
   );
@@ -282,9 +283,21 @@ function panoramaCard(ind) {
 
   const yoy = metrics.yoy || annualVar(ind, k);
   const deltaCls = k.assessment === "favorable" ? "up" : (k.assessment === "adverso" ? "down" : "flat");
-  const showYoy = ind.key !== "IED" && yoy && (yoy.mag === null || Math.abs((yoy.mag ?? 0) - (k.ultimoRaw ?? 0)) > 1e-9);
+  const showYoy = ind.key !== "IED" && ind.key !== "TASA" && yoy && (yoy.mag === null || Math.abs((yoy.mag ?? 0) - (k.ultimoRaw ?? 0)) > 1e-9);
   const flowKpi = ind.key === "IED" && k.flujoText ? { text: k.flujoText, label: cfg.flowLabel || "Flujo del 2T" } : null;
   const yoyKpi = ind.key === "IED" && yoy ? { text: yoy.text, label: yoy.label || "Var. anual flujo" } : null;
+
+  const decisionKpi = ind.key === "TASA" && k.decisionDisplay
+    ? { text: k.decisionDisplay, label: `${k.decisionLabel} · ${k.decisionText}` }
+    : null;
+  const adjKpi = ind.key === "TASA" && k.yoyText
+    ? { text: k.varText, label: `${k.yoyLabel} · ${k.yoyText}` }
+    : null;
+
+  const secondKpi = decisionKpi || adjKpi || flowKpi ||
+    (showYoy ? { text: yoy.text, label: yoy.label || "Var. anual" } : null) ||
+    (yoyKpi ? { text: yoyKpi.text, label: yoyKpi.label } : null);
+
   const card = el("button", { class: "matrix-card", type: "button", onclick: () => setView(ind.key) },
     top, name, eyebrow,
     el("div", { class: "mc-value" }, k.ultimoFmt),
@@ -292,9 +305,7 @@ function panoramaCard(ind) {
     sparkline(k),
     el("div", { class: "mc-deltas" },
       el("div", { class: `mc-delta ${deltaCls}` }, el("span", { class: "d-val" }, k.varText), el("span", { class: "d-lbl" }, k.varLabel || cfg.varLabel)),
-      flowKpi ? el("div", { class: "mc-delta neutral" }, el("span", { class: "d-val" }, flowKpi.text), el("span", { class: "d-lbl" }, flowKpi.label)) :
-        (showYoy ? el("div", { class: "mc-delta neutral" }, el("span", { class: "d-val" }, yoy.text), el("span", { class: "d-lbl" }, yoy.label || "Var. anual")) :
-          (yoyKpi ? el("div", { class: "mc-delta neutral" }, el("span", { class: "d-val" }, yoyKpi.text), el("span", { class: "d-lbl" }, yoyKpi.label)) : null))),
+      secondKpi ? el("div", { class: "mc-delta neutral" }, el("span", { class: "d-val" }, secondKpi.text), el("span", { class: "d-lbl" }, secondKpi.label)) : null),
   );
   return card;
 }
@@ -451,8 +462,12 @@ function componentStatusTable(title, components) {
 function fichaHeader(ind) {
   const head = el("div", { class: "ficha-head" });
   const desc = [ind.descripcion || "", ind.frecuencia ? `Frecuencia: ${ind.frecuencia}.` : ""].filter(Boolean).join(" ").trim();
+  const isTasa = ind.key === "TASA";
+  const eyebrow = isTasa
+    ? `${SIGLA[ind.key]} · VIGENTE DESDE ${perShort(ind.vigente_desde) || "—"}`
+    : `${SIGLA[ind.key]} · ${ind.last_observation || "—"}`;
   const left = el("div", {},
-    el("div", { class: "fh-sigla" }, `${SIGLA[ind.key]} · ${ind.last_observation || "—"}`),
+    el("div", { class: "fh-sigla" }, eyebrow),
     el("h2", { class: "fh-name" }, ind.nombre),
     el("p", { class: "fh-desc" }, desc || ind.descripcion || ""));
   const meta = el("div", { class: "fh-meta" });
@@ -469,7 +484,11 @@ function fichaHeader(ind) {
     ["Fuente oficial", ind.fuente?.nombre || "—"],
   ].filter(Boolean);
   const np = ind.proxima_publicacion || nextPublication(ind.key);
-  if (np) rows.push(["Próxima publicación", `${np.fecha_publicacion} · ${np.periodo_referencia}`]);
+  if (np) {
+    const nextLabel = ind.key === "TASA" ? "Próxima decisión de política monetaria" : "Próxima publicación";
+    const nextValue = ind.key === "TASA" ? np.fecha_publicacion : `${np.fecha_publicacion} · ${np.periodo_referencia}`;
+    rows.push([nextLabel, nextValue]);
+  }
   rows.forEach(([k, v]) => meta.append(el("div", { class: "fh-item" }, el("span", { class: "k" }, k), el("span", { class: "v" }, v))));
   meta.append(el("div", { class: "fh-item" }, el("span", { class: "k" }, "Estado de actualización"), el("span", { class: "v" }, estadoBadge(ind))));
   head.append(left, meta);
@@ -529,8 +548,10 @@ function fichaCompareTable(ind, k, cfg, yoy) {
     [cfg.varLabel, cfg.comp || "—", k.varText],
   ];
   if (yoy) rows.push(["Variación anual", "Año previo", yoy.text]);
-  rows.push(["Máximo de la serie", k.maxP, k.maxFmt]);
-  rows.push(["Mínimo de la serie", k.minP, k.minFmt]);
+  if (ind.key !== "TASA") {
+    rows.push(["Máximo de la serie", k.maxP, k.maxFmt]);
+    rows.push(["Mínimo de la serie", k.minP, k.minFmt]);
+  }
   const table = el("table");
   table.append(el("thead", {}, el("tr", {}, el("th", {}, "Concepto"), el("th", {}, "Referencia"), el("th", {}, "Valor"))));
   const tb = el("tbody");
@@ -709,6 +730,14 @@ function renderIndicatorView(key) {
       el("div", { class: "mini" }, el("div", { class: "lbl" }, `Flujo ${k.flujoP || "del 2T"}`), el("div", { class: "num" }, k.flujoText || "—"), el("div", { class: "sub" }, ind.metrics?.flujo_trimestral?.periodo || "—")),
       el("div", { class: "mini" }, el("div", { class: "lbl" }, "Var. anual del flujo"), el("div", { class: "num", style: `color:${flColor}` }, (k.yoy && k.yoy.text) ? k.yoy.text : ((ind.metrics?.flujo_trimestral?.variacion_anual_pct != null ? (ind.metrics.flujo_trimestral.variacion_anual_pct >= 0 ? "+" : "") + (ind.metrics.flujo_trimestral.variacion_anual_pct * 100).toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%" : "—"))), el("div", { class: "sub" }, "Frente al mismo trimestre del año previo")),
     );
+  } else if (ind.key === "TASA") {
+    const decisionColor = k.decisionRaw === "sin cambio" ? COLORS.INK : (k.varMag >= 0 ? COLORS.GREEN : COLORS.CRIMSON);
+    mini = el("div", { class: "mini-kpis" },
+      el("div", { class: "mini dark" }, el("div", { class: "lbl" }, "Tasa objetivo vigente"), el("div", { class: "num" }, k.ultimoFmt), el("div", { class: "sub" }, `Vigente desde: ${k.vigenteDesdeText}`)),
+      el("div", { class: "mini" }, el("div", { class: "lbl" }, "Última decisión"), el("div", { class: "num", style: `color:${decisionColor}` }, k.decisionDisplay), el("div", { class: "sub" }, k.decisionText)),
+      el("div", { class: "mini" }, el("div", { class: "lbl" }, k.varLabel), el("div", { class: "num", style: `color:${k.varColor}` }, k.varText), el("div", { class: "sub" }, k.yoyText)),
+      k.nextDecisionP ? el("div", { class: "mini" }, el("div", { class: "lbl" }, k.nextDecisionLabel), el("div", { class: "num" }, k.nextDecisionText), el("div", { class: "sub" }, "Próxima decisión de política monetaria")) : null,
+    );
   } else if (ind.key === "IOAE") {
     const annualColor = k.ultimoRaw >= 0 ? COLORS.GREEN : COLORS.CRIMSON;
     const monthlyColor = k.varColor;
@@ -790,7 +819,7 @@ function renderIndicatorView(key) {
   }
 
   // Síntesis / Principales resultados: fuente única Python (lib_metrics).
-  const readingKeys = ["PIB", "PIBSEC", "IGAE", "IMAI", "IED"];
+  const readingKeys = ["PIB", "PIBSEC", "IGAE", "IMAI", "IED", "TASA"];
   const syn = el("div", { class: "ficha-block" });
   syn.append(el("h3", { class: "block-sub" }, readingKeys.includes(ind.key) ? "Lectura del indicador" : "Evolución reciente"));
   if (readingKeys.includes(ind.key)) {
@@ -1212,6 +1241,29 @@ function mountPibtChart(pibt) {
 function renderTable(ind, k) {
   const wrap = el("div", { class: "table-wrap" });
   const table = el("table");
+  // TASA: tabla de decisiones de política monetaria.
+  if (ind.key === "TASA") {
+    const decisions = ind.policy_decisions || [];
+    table.append(el("thead", {}, el("tr", {}, ...["Fecha anuncio", "Vigencia", "Decisión", "Cambio", "Tasa previa", "Nueva tasa", "Comunicado"].map((h) => el("th", {}, h)))));
+    const tbody = el("tbody");
+    [...decisions].reverse().forEach((d) => {
+      const decisionText = d.decision === "sin cambio" ? "Sin cambio" : d.decision === "alza" ? "Alza" : "Recorte";
+      const changeText = d.decision === "sin cambio" ? "0 pb" : fmtVal(d.change_bp, "bp");
+      const link = d.comunicado_url ? el("a", { href: d.comunicado_url, target: "_blank", rel: "noopener" }, "Ver comunicado") : "—";
+      tbody.append(el("tr", {},
+        el("td", {}, perShort(d.announcement_date)),
+        el("td", {}, perShort(d.effective_date)),
+        el("td", {}, decisionText),
+        el("td", {}, changeText),
+        el("td", {}, d.previous_rate != null ? fmtVal(d.previous_rate, "pct-raw") : "—"),
+        el("td", {}, fmtVal(d.new_rate, "pct-raw")),
+        el("td", {}, link)
+      ));
+    });
+    table.append(tbody);
+    wrap.append(table);
+    return wrap;
+  }
   table.append(el("thead", {}, el("tr", {}, el("th", {}, "Periodo"), ...ind.columns.map((c) => el("th", {}, c.label)))));
   const series = k ? k.series : [];
   const idxs = series.map((v, i) => (v == null ? -1 : i)).filter((i) => i >= 0);

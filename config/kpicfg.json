@@ -244,7 +244,7 @@
       "vg": "f",
       "comp": "frente al mismo periodo del año anterior",
       "goodSign": 1,
-      "flowLabel": "Flujo trimestral"
+      "flowLabel": "Flujo del 2T"
     },
     "TIPOCAMBIO": {
       "valCol": 0,
@@ -267,17 +267,17 @@
       "valCol": 0,
       "valFmt": "pct-raw",
       "varMode": "pp-prev",
-      "varLabel": "Cambio diario",
-      "yoyLabel": "Última modificación",
+      "varLabel": "Último ajuste",
+      "yoyLabel": "Fecha del último ajuste",
       "mainLabel": "Tasa objetivo",
       "noun": "tasa objetivo",
       "art": "la",
       "grupo": "tasa",
       "assess": "neutral",
-      "ctx": " (% anual)",
+      "ctx": " (% anual). No confundir con la TIIE.",
       "vw": "cambio de política monetaria",
       "vg": "f",
-      "comp": "frente al día previo",
+      "comp": "en la última decisión",
       "goodSign": 0
     },
     "RESERVAS": {
@@ -383,7 +383,7 @@
     "EMIM": "EMIM",
     "IED": "IED",
     "TIPOCAMBIO": "Tipo de cambio FIX",
-    "TASA": "Tasa objetivo Banxico",
+    "TASA": "Tasa objetivo de Banco de México",
     "RESERVAS": "Reservas internacionales",
     "EMOE": "Confianza empresarial (EMOE)"
   },
@@ -402,7 +402,7 @@
     "EMIM": "EMIM",
     "IED": "IED",
     "TIPOCAMBIO": "FIX",
-    "TASA": "TASA",
+    "TASA": "TASA OBJETIVO",
     "RESERVAS": "RESERVAS",
     "EMOE": "EMOE"
   },
@@ -420,7 +420,7 @@
     "INPC": "Inflación general, subyacente, no subyacente y componentes: índices, variaciones mensuales, inflaciones anuales e incidencias mensuales en puntos porcentuales.",
     "INPP": "Precios productor con y sin petróleo, bienes intermedios, actividades primarias y subsectores: índices y variaciones mensuales, anuales y acumuladas.",
     "TIPOCAMBIO": "Tipo de cambio FIX (pesos por dólar).",
-    "TASA": "Tasa de interés objetivo del Banco de México (%).",
+    "TASA": "Objetivo para la Tasa de Interés Interbancaria a un día (tasa objetivo) fijado por la Junta de Gobierno de Banco de México. No confundir con la TIIE de fondeo ni con las TIIE a 28, 91 o 182 días.",
     "RESERVAS": "Reservas internacionales netas (millones de dólares).",
     "EMOE": "Confianza empresarial (EMOE) y su variación mensual (puntos).",
     "BCMM": "Exportaciones, importaciones y saldo comercial de mercancías de México (millones de dólares). Incluye desglose petrolero/no petrolero, por tipo de bien importado y composición de las exportaciones no petroleras, además de sus variaciones anuales y acumulados ene-mes."

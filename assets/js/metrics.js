@@ -1,7 +1,7 @@
 // Motor de métricas determinista: series primarias, KPIs y análisis textual.
 // Portado del dashboard legado (DCLogic) al modelo de datos abierto.
 import { KPICFG, COLORS } from "./config.js";
-import { fmtVal, perLong, enFrase, respFrase, isTrim } from "./format.js";
+import { fmtVal, perLong, perShort, enFrase, respFrase, isTrim } from "./format.js";
 
 function periods(ind) { return ind.observations.map((o) => o.period); }
 function valAt(ind, i, col) {
@@ -298,8 +298,64 @@ function computeIedKPI(ind) {
   };
 }
 
+function computeTasaKPI(ind) {
+  const k = ind.metrics?.kpi || {};
+  const d = ind.policy_decisions || (k.policy_decisions || []);
+  const lastD = d[d.length - 1] || {};
+  const lastAdj = d.length
+    ? [...d].reverse().find((x) => x.decision === "alza" || x.decision === "recorte")
+    : null;
+
+  const currentRate = k.ultimoRaw ?? ind.tasa_vigente ?? lastD.new_rate ?? null;
+  const vigenteP = k.vigenteDesdeP ?? ind.vigente_desde ?? lastD.effective_date ?? null;
+  const decisionP = k.decisionP ?? lastD.announcement_date ?? null;
+  const adjP = lastAdj ? lastAdj.announcement_date : null;
+  const adjBP = lastAdj ? lastAdj.change_bp : null;
+  const adjRate = lastAdj ? lastAdj.new_rate : null;
+
+  const ultimoP = vigenteP ? `VIGENTE DESDE ${perShort(vigenteP)}` : "VIGENTE";
+
+  const kpi = {
+    assessment: "neutral",
+    dir: "flat",
+    ultimoFmt: fmtVal(currentRate, "pct-raw"),
+    ultimoRaw: currentRate,
+    ultimoP,
+    varText: fmtVal(adjBP, "bp"),
+    varMag: adjBP,
+    pos: (adjBP || 0) >= 0,
+    varColor: (adjBP || 0) >= 0 ? COLORS.GREEN : COLORS.CRIMSON,
+    varLabel: "Último ajuste",
+    yoyText: perShort(adjP) || "—",
+    yoyLabel: "Fecha del último ajuste",
+    yoyRaw: adjRate,
+    yoyMag: adjRate,
+    yoyPos: null,
+    yoyColor: COLORS.INK,
+    decisionP,
+    decisionText: perShort(decisionP) || "—",
+    decisionLabel: "Última decisión",
+    decisionDisplay: (lastD.decision === "sin cambio" ? "SIN CAMBIO" : (lastD.decision || "—").toUpperCase()),
+    decisionRaw: lastD.decision,
+    vigenteDesdeP: vigenteP,
+    vigenteDesdeText: perShort(vigenteP) || "—",
+    vigenteDesdeLabel: "Vigente desde",
+    nextDecisionP: k.nextDecisionP || null,
+    nextDecisionText: k.nextDecisionText || "—",
+    nextDecisionLabel: "Próxima decisión",
+    comunicado_url: k.comunicado_url || lastD.comunicado_url || "",
+    lastI: d.length - 1,
+    series: d.map((x) => x.new_rate),
+    periods: d.map((x) => x.effective_date),
+    semaforo: "estable",
+    decisions: d,
+  };
+  return kpi;
+}
+
 export function computeKPI(ind) {
   if (ind.key === "IED") return computeIedKPI(ind);
+  if (ind.key === "TASA") return computeTasaKPI(ind);
   if (ind.key === "DESOCUP") return computeDesocupKPI(ind);
   const cfg = KPICFG[ind.key];
   const P = periods(ind);

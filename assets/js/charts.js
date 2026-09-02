@@ -16,7 +16,9 @@ function addMonths(d, n) {
 export function applyWindow(ind, windowId) {
   const wins = ind.windows || WINDOWS;
   const win = wins.find((w) => w.id === windowId) || wins[wins.length - 1];
-  const base = ind._useOriginal && ind.observations_original?.length ? ind.observations_original : (ind.observations || []);
+  const base = ind._useOriginal && ind.observations_original?.length
+    ? ind.observations_original
+    : (ind.key === "TASA" && ind.regimen?.length ? ind.regimen : (ind.observations || []));
   let obs = base;
   if (!obs.length || win.id === "max") return obs;
   if (win.count != null) {

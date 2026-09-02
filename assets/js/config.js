@@ -29,7 +29,7 @@ export const LABELS = {
   INPP: "Índice Nacional de Precios Productor",
   CONSUMO: "Consumo privado", IMFBCF: "Formación bruta de capital fijo",
   IOAE: "IOAE", EMIM: "EMIM",
-  IED: "IED", TIPOCAMBIO: "Tipo de cambio FIX", TASA: "Tasa objetivo Banxico",
+  IED: "IED", TIPOCAMBIO: "Tipo de cambio FIX", TASA: "Tasa objetivo de Banco de México",
   RESERVAS: "Reservas internacionales", EMOE: "Confianza empresarial (EMOE)",
 };
 
@@ -39,7 +39,7 @@ export const SIGLA = {
   BCMM: "BCMM", DESOCUP: "ENOE", INPC: "INPC",
   INPP: "INPP",
   CONSUMO: "IMCP", IMFBCF: "IMFBCF", IOAE: "IOAE", EMIM: "EMIM",
-  IED: "IED", TIPOCAMBIO: "FIX", TASA: "TASA", RESERVAS: "RESERVAS", EMOE: "EMOE",
+  IED: "IED", TIPOCAMBIO: "FIX", TASA: "TASA OBJETIVO", RESERVAS: "RESERVAS", EMOE: "EMOE",
 };
 
 // Configuración de KPI y semántica de variación por indicador.
@@ -59,7 +59,7 @@ export const KPICFG = {
   INPP: { valCol: 2, valFmt: "pct-raw", varCol: 1, varFmt: "pct-raw", varLabel: "Var. mensual", yoyCol: 2, yoyFmt: "pct-raw", yoyLabel: "Var. anual", mainLabel: "Variación anual", noun: "Índice Nacional de Precios Productor", art: "el", grupo: "inpc", assess: "neutral", ctx: "", vw: "variación anual", vg: "f", comp: "frente al mes previo", goodSign: 0 },
   IED: { valCol: 0, valFmt: "usd", varCol: 4, varFmt: "pct-frac", varLabel: "Var. anual del acumulado", mainLabel: "IED acumulada en el año", noun: "IED acumulada", art: "la", grupo: "growth", assess: "growth", ctx: " (acumulado ene-jun, millones de dólares)", vw: "variación anual", vg: "f", comp: "frente al mismo periodo del año anterior", goodSign: 1, flowLabel: "Flujo del 2T" },
   TIPOCAMBIO: { valCol: 0, valFmt: "fx", varMode: "pct-prev", varLabel: "Cambio diario", yoyLabel: "Cambio anual", mainLabel: "Tipo de cambio FIX", noun: "tipo de cambio FIX", art: "el", grupo: "fx", assess: "neutral", ctx: " (pesos por dólar)", vw: "variación diaria", vg: "f", comp: "frente al día hábil previo", goodSign: 0 },
-  TASA: { valCol: 0, valFmt: "pct-raw", varMode: "pp-prev", varLabel: "Cambio diario", yoyLabel: "Última modificación", mainLabel: "Tasa objetivo", noun: "tasa objetivo", art: "la", grupo: "tasa", assess: "neutral", ctx: " (% anual)", vw: "cambio de política monetaria", vg: "f", comp: "frente al día previo", goodSign: 0 },
+  TASA: { valCol: 0, valFmt: "pct-raw", varMode: "pp-prev", varLabel: "Último ajuste", yoyLabel: "Fecha del último ajuste", mainLabel: "Tasa objetivo", noun: "tasa objetivo", art: "la", grupo: "tasa", assess: "neutral", ctx: " (% anual). No confundir con la TIIE.", vw: "cambio de política monetaria", vg: "f", comp: "en la última decisión", goodSign: 0 },
   RESERVAS: { valCol: 0, valFmt: "usd", varMode: "abs-prev", varLabel: "Var. semanal", yoyLabel: "Var. anual", mainLabel: "Reservas internacionales", noun: "reservas internacionales", art: "las", grupo: "growth", assess: "neutral", ctx: " (millones de dólares)", vw: "variación semanal", vg: "f", comp: "frente a la semana previa", goodSign: 0 },
   EMOE: { valCol: 0, valFmt: "idx", varCol: 1, varFmt: "idx", varLabel: "Var. mensual", mainLabel: "Confianza empresarial", noun: "confianza empresarial", art: "la", grupo: "opinion", assess: "neutral", ctx: "", vw: "variación", vg: "f", comp: "frente al mes previo", goodSign: 0 },
   BCMM: { valCol: 2, valFmt: "usd", varCol: 2, varFmt: "usd", varLabel: "Variación mensual del saldo", yoyCol: 5, yoyFmt: "pct-frac", yoyLabel: "Var. anual saldo", mainLabel: "Saldo comercial", derived: "saldo", noun: "saldo comercial", art: "el", grupo: "balanza", assess: "neutral", ctx: "", vw: "variación anual", vg: "m", comp: "frente al mismo mes del año anterior", goodSign: 0 },
@@ -79,7 +79,7 @@ export const CAPTIONS = {
   INPC: "Inflación general, subyacente, no subyacente y componentes: índices, variaciones mensuales, inflaciones anuales e incidencias mensuales en puntos porcentuales.",
   INPP: "Precios productor con y sin petróleo, bienes intermedios, actividades primarias y subsectores: índices y variaciones mensuales, anuales y acumuladas.",
   TIPOCAMBIO: "Tipo de cambio FIX (pesos por dólar).",
-  TASA: "Tasa de interés objetivo del Banco de México (%).",
+  TASA: "Objetivo para la Tasa de Interés Interbancaria a un día (tasa objetivo) fijado por la Junta de Gobierno de Banco de México. No confundir con la TIIE de fondeo ni con las TIIE a 28, 91 o 182 días.",
   RESERVAS: "Reservas internacionales netas (millones de dólares).",
   EMOE: "Confianza empresarial (EMOE) y su variación mensual (puntos).",
   BCMM: "Exportaciones, importaciones y saldo comercial de mercancías de México (millones de dólares). Incluye desglose petrolero/no petrolero, por tipo de bien importado y composición de las exportaciones no petroleras, además de sus variaciones anuales y acumulados ene-mes."
