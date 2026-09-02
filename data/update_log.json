@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-09-02T18:03:33+00:00",
+  "started_at": "2026-09-02T21:37:08+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -88,13 +88,16 @@
     "INEGI INPP: 83 observaciones (serie 1801005, base BIE-BISE); última Jul 26 = 10.177846; actualización BIE 07/08/2026 12:00:00 a. m..",
     "INEGI INPP: 103 observaciones (serie 1801007, base BIE-BISE); última Jul 26 = 5.78763; actualización BIE 07/08/2026 12:00:00 a. m..",
     "INEGI INPP: 103 observaciones (serie 1801008, base BIE-BISE); última Jul 26 = 1.586369; actualización BIE 07/08/2026 12:00:00 a. m..",
-    "INEGI INPP: 103 observaciones (serie 1801009, base BIE-BISE); última Jul 26 = 4.191698; actualización BIE 07/08/2026 12:00:00 a. m..",
-    "World Bank PIB_ANUAL (NY.GDP.MKTP.KD) falló: The read operation timed out."
+    "INEGI INPP: 103 observaciones (serie 1801009, base BIE-BISE); última Jul 26 = 4.191698; actualización BIE 07/08/2026 12:00:00 a. m.."
   ],
   "changes": [
     "IGAE: fuente normalizada a serie total 737121",
+    "TIPOCAMBIO: actualizado nombre",
+    "TIPOCAMBIO: actualizado fuente",
     "TASA: actualizado nombre",
     "TASA: actualizado descripcion",
+    "TASA: actualizado fuente",
+    "RESERVAS: actualizado fuente",
     "columnas override PIB: 4 columnas",
     "columnas override PIBSEC: 12 columnas",
     "columnas override IGAE: 9 columnas",
@@ -149,8 +152,8 @@
     "banxico_sie: actualizado IMFBCF (última obs May 26, sin cambio de periodo)",
     "banxico_sie: actualizado IMFBCF (última obs May 26, sin cambio de periodo)",
     "banxico_sie: actualizado IMFBCF (última obs May 26, sin cambio de periodo)",
-    "banxico: actualizado TIPOCAMBIO (última obs 2026-09-02, dato nuevo)",
-    "banxico: actualizado TASA (última obs 2026-09-02, dato nuevo)",
+    "banxico: actualizado TIPOCAMBIO (última obs 2026-09-02, sin cambio de periodo)",
+    "banxico: actualizado TASA (última obs 2026-09-02, sin cambio de periodo)",
     "banxico: actualizado RESERVAS (última obs 2026-08-28, sin cambio de periodo)",
     "inegi: actualizado PIB (última obs 1T-26, dato nuevo)",
     "inegi: actualizado PIBSEC (última obs 2T-26, sin cambio de periodo)",
@@ -302,7 +305,7 @@
     "frescura: EMOE -> ACTUALIZADO",
     "frescura: BCMM -> ACTUALIZADO",
     "frescura: INPP -> ACTUALIZADO",
-    "meta: last_update_ct=2026-09-02T12:50:47-06:00"
+    "meta: last_update_ct=2026-09-02T16:20:55-06:00"
   ],
   "consultas": [
     {
@@ -792,9 +795,9 @@
       "observaciones": 2181,
       "ultima_observacion": "2026-09-02",
       "ultimo_valor": 16.9852,
-      "observacion_previa": "2026-09-01",
+      "observacion_previa": "2026-09-02",
       "actualizacion_fuente": null,
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -804,9 +807,9 @@
       "observaciones": 3155,
       "ultima_observacion": "2026-09-02",
       "ultimo_valor": 6.5,
-      "observacion_previa": "2026-09-01",
+      "observacion_previa": "2026-09-02",
       "actualizacion_fuente": null,
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -2072,5 +2075,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-09-02T18:50:48+00:00"
+  "finished_at": "2026-09-02T22:20:57+00:00"
 }
