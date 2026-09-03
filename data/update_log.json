@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-09-03T02:34:24+00:00",
+  "started_at": "2026-09-03T11:58:34+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -96,8 +96,11 @@
   ],
   "changes": [
     "IGAE: fuente normalizada a serie total 737121",
+    "TIPOCAMBIO: actualizado nombre",
+    "TIPOCAMBIO: actualizado fuente",
     "TASA: actualizado nombre",
     "TASA: actualizado descripcion",
+    "TASA: actualizado fuente",
     "columnas override PIB: 4 columnas",
     "columnas override PIBSEC: 12 columnas",
     "columnas override IGAE: 9 columnas",
@@ -153,7 +156,7 @@
     "banxico_sie: actualizado IMFBCF (última obs May 26, sin cambio de periodo)",
     "banxico_sie: actualizado IMFBCF (última obs May 26, sin cambio de periodo)",
     "banxico: actualizado TIPOCAMBIO (última obs 2026-09-02, sin cambio de periodo)",
-    "banxico: actualizado TASA (última obs 2026-09-03, dato nuevo)",
+    "banxico: actualizado TASA (última obs 2026-09-03, sin cambio de periodo)",
     "banxico: actualizado RESERVAS (última obs 2026-08-28, sin cambio de periodo)",
     "inegi: actualizado PIB (última obs 1T-26, dato nuevo)",
     "inegi: actualizado PIBSEC (última obs 2T-26, sin cambio de periodo)",
@@ -309,7 +312,7 @@
     "frescura: EMOE -> ACTUALIZADO",
     "frescura: BCMM -> ACTUALIZADO",
     "frescura: INPP -> ACTUALIZADO",
-    "meta: last_update_ct=2026-09-02T21:31:45-06:00"
+    "meta: last_update_ct=2026-09-03T06:51:47-06:00"
   ],
   "consultas": [
     {
@@ -811,9 +814,9 @@
       "observaciones": 3156,
       "ultima_observacion": "2026-09-03",
       "ultimo_valor": 6.5,
-      "observacion_previa": "2026-09-02",
+      "observacion_previa": "2026-09-03",
       "actualizacion_fuente": null,
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -2127,5 +2130,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-09-03T03:31:47+00:00"
+  "finished_at": "2026-09-03T12:51:49+00:00"
 }
