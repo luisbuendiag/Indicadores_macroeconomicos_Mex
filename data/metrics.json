@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-02T22:56:35+00:00",
-  "last_update_ct": "2026-09-02T16:56:16-06:00",
+  "generated_at": "2026-09-03T02:30:25+00:00",
+  "last_update_ct": "2026-09-02T20:29:02-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -9519,26 +9519,21 @@
       "kpi": {
         "ultimoP": "SEMANA AL 28 Ago 26",
         "ultimoRaw": 258564.1,
-        "ultimoFmt": "$258,564 millones de dólares",
-        "varText": "−$45 mdd",
+        "ultimoFmt": "258,564 mdd",
+        "varText": "−45 mdd",
         "varMag": -44.7,
-        "varLabel": "Var. semanal",
+        "varLabel": "Cambio semanal",
         "pos": false,
         "varColor": "#9b2247",
         "yoyText": "+5.8%",
-        "yoyLabel": "Var. anual",
+        "yoyLabel": "Variación anual",
         "yoyRaw": 0.057959,
         "yoyMag": 0.057959,
         "yoyPos": true,
         "yoyColor": "#1e5b4f",
-        "acumText": "+2.6%",
-        "acumLabel": "YTD ene-aug",
-        "maxRaw": 258608.8,
-        "minRaw": 172796.8,
-        "maxP": "21 Ago 26",
-        "minP": "9 Feb 18",
-        "maxFmt": "$258,609 millones de dólares",
-        "minFmt": "$172,797 millones de dólares",
+        "acumText": "+6,435 mdd",
+        "acumPctText": "+2.6%",
+        "acumLabel": "Cambio YTD",
         "lastI": 451,
         "series": [
           172904.4,
@@ -10456,19 +10451,19 @@
         "mag": 0.057959,
         "pos": true,
         "text": "+5.8%",
-        "label": "Var. anual"
+        "label": "Variación anual"
       },
       "annualVar": {
         "mag": 0.057959,
         "pos": true,
         "text": "+5.8%",
-        "label": "Var. anual"
+        "label": "Variación anual"
       },
       "resumen": [
-        "En la semana al 28 Ago 26, las reservas internacionales se ubicaron en $258,564 millones de dólares.",
-        "La variación semanal fue de −$45 mdd respecto a la semana previa.",
-        "A tasa anual, las reservas variaron +5.8%.",
-        "El acumulado en el año (YTD ene-aug) fue de +2.6%."
+        "Al 28 de agosto de 2026, la reserva internacional se ubicó en 258,564 mdd.",
+        "La variación semanal fue de −45 mdd respecto a la semana previa.",
+        "A tasa anual, la reserva varió +5.8%.",
+        "En lo que va del año, el cambio acumulado fue de +6,435 mdd (+2.6%) respecto al cierre del año previo."
       ],
       "analysis": []
     },

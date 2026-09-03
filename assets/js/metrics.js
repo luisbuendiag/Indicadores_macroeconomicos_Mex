@@ -33,6 +33,7 @@ function proseVal(ind, v) {
   const money = (x, u) => (x < 0 ? "−$" : "$") + Math.abs(Math.round(x)).toLocaleString("es-MX") + " " + u;
   if (k === "PIB") return (Math.abs(v) < 1 ? (v * 100) : (v / 1e6)).toLocaleString("es-MX", { minimumFractionDigits: Math.abs(v) < 1 ? 1 : 2, maximumFractionDigits: Math.abs(v) < 1 ? 1 : 2 }) + (Math.abs(v) < 1 ? "%" : " billones de pesos de 2018");
   if (k === "PIBSEC") return (v / 1e6).toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " billones de pesos";
+  if (k === "RESERVAS") return Math.abs(Math.round(v)).toLocaleString("es-MX") + " mdd";
   if (k === "IED" || k === "BALANZA" || k === "BCMM") return money(v, "millones de dólares");
   if (k === "IGAE" || k === "IMAI" || k === "CONSUMO" || k === "EMIM" || k === "EMOE") return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + " puntos";
   if (k === "DESOCUP") return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
@@ -47,7 +48,8 @@ function computeVar(ind, cfg, vals, lastI, prevI) {
     const raw = valAt(ind, lastI, cfg.varCol);
     if (raw == null) return { mag: null, text: "—", pos: true };
     const mag = cfg.varFmt === "pct-frac" ? raw * 100 : raw;
-    let text = (raw > 0 ? "+" : "") + fmtVal(raw, cfg.varFmt);
+    const signedFmt = cfg.varFmt === "mdd-signed";
+    let text = signedFmt ? fmtVal(raw, cfg.varFmt) : ((raw > 0 ? "+" : "") + fmtVal(raw, cfg.varFmt));
     if (cfg.unit) text += " " + cfg.unit;
     return { mag, text, pos: raw >= 0 };
   }
@@ -370,15 +372,16 @@ export function computeKPI(ind) {
   const varInfo = computeVar(ind, cfg, vals, lastI, prevI);
   let maxI = idxs[0], minI = idxs[0];
   idxs.forEach((i) => { if (vals[i] > vals[maxI]) maxI = i; if (vals[i] < vals[minI]) minI = i; });
-  // Variación acumulada (col 5 para IMAI, si existe).
+  // Variación acumulada (col 5 para IMAI, si existe; col 2 para RESERVAS YTD en mdd).
   let acumInfo = null;
   if (cfg.acumCol != null) {
     const raw = valAt(ind, lastI, cfg.acumCol);
     if (raw != null) {
       const mag = cfg.acumFmt === "pct-frac" ? raw * 100 : raw;
+      const signedFmt = cfg.acumFmt === "mdd-signed";
       acumInfo = {
         acumMag: mag,
-        acumText: (raw > 0 ? "+" : "") + fmtVal(raw, cfg.acumFmt),
+        acumText: signedFmt ? fmtVal(raw, cfg.acumFmt) : ((raw > 0 ? "+" : "") + fmtVal(raw, cfg.acumFmt)),
         acumPos: raw >= 0,
         acumLabel: cfg.acumLabel || "Acumulado",
       };

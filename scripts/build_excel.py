@@ -76,6 +76,10 @@ def _xl_fmt(fmt: str) -> str:
     # Valores ya en puntos porcentuales (4.5) usan % literal para no multiplicar.
     if fmt == "num" or fmt == "usd":
         return "#,##0"
+    if fmt == "mdd":
+        return '#,##0" mdd"'
+    if fmt == "mdd-signed":
+        return '+#,##0" mdd";-#,##0" mdd";0" mdd"'
     if fmt == "bill":
         return "#,##0.00"
     if fmt == "pct-frac":

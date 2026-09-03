@@ -163,6 +163,11 @@ def fmt_val(v: float | int | None, fmt: str) -> str:
         return "—"
     if fmt in ("num", "usd"):
         return _to_fixed(_js_round(v), 0, 0)
+    if fmt == "mdd":
+        return _to_fixed(_js_round(v), 0, 0) + " mdd"
+    if fmt == "mdd-signed":
+        sgn = "−" if v < 0 else "+"
+        return sgn + _to_fixed(abs(_js_round(v)), 0, 0) + " mdd"
     if fmt == "bill":
         return _to_fixed(v / 1e6, 2, 2) + " billones de pesos de 2018"
     if fmt == "idx":

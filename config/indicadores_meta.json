@@ -2332,7 +2332,7 @@
     },
     "RESERVAS": {
       "nombre": "Reservas internacionales",
-      "descripcion": "Activos internacionales del Banco de México disponibles para atender obligaciones y estabilizar el mercado cambiario.",
+      "descripcion": "Reserva internacional de Banco de México. Activo internacional disponible para atender obligaciones y estabilizar el mercado cambiario. Se publica semanalmente en el Estado de cuenta del Banco de México.",
       "frecuencia": "Semanal",
       "unidad": "Millones de dólares",
       "ajuste_estacional": "No aplica",
@@ -2343,16 +2343,31 @@
       "serie_confirmada": true,
       "clasificacion": "complementario",
       "fuente": {
-        "nombre": "Banco de México",
+        "nombre": "Banco de México — SIE / Estado de cuenta semanal",
         "link": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
         "metodo": "Banxico SIE API",
         "serie": "SF43707"
       },
       "columns": [
         {
-          "label": "Reservas internacionales",
+          "label": "Reserva internacional",
           "index": 0,
-          "fmt": "usd"
+          "fmt": "mdd"
+        },
+        {
+          "label": "Cambio semanal",
+          "index": 1,
+          "fmt": "mdd-signed"
+        },
+        {
+          "label": "Cambio YTD",
+          "index": 2,
+          "fmt": "mdd-signed"
+        },
+        {
+          "label": "Variación anual",
+          "index": 3,
+          "fmt": "pct-frac"
         }
       ],
       "windows": [

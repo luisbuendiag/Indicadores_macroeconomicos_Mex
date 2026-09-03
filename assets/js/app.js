@@ -1,7 +1,7 @@
 // Orquestador del tablero macroeconómico V3 (navegación por indicador).
 import { ORDER, PRINCIPAL, COMPLEMENTARIOS, LABELS, SIGLA, CAPTIONS, WINDOWS, IED_WINDOWS, IED_WINDOWS_FLUJO, COLORS, KPICFG, VIEWS, ESTADOS } from "./config.js";
 import { computeKPI, analysis, annualVar } from "./metrics.js";
-import { buildOption, rangeStats, applyWindow, buildPibsecLevels, buildPibsecVariations, buildIgaeLevels, buildIgaeVariations, buildImaiLevels, buildImaiVariations, buildEmimLevels, buildEmimVariations, buildBcmmLevels, buildBcmmVariations, buildImfbcfLevels, buildImfbcfVariations, buildDesocupRates, buildDesocupPoblacion, buildEmoeSectors } from "./charts.js";
+import { buildOption, rangeStats, applyWindow, buildPibsecLevels, buildPibsecVariations, buildIgaeLevels, buildIgaeVariations, buildImaiLevels, buildImaiVariations, buildEmimLevels, buildEmimVariations, buildBcmmLevels, buildBcmmVariations, buildImfbcfLevels, buildImfbcfVariations, buildDesocupRates, buildDesocupPoblacion, buildEmoeSectors, buildReservasLevel, buildReservasChange } from "./charts.js";
 import { fmtVal, perLong, perShort } from "./format.js";
 import * as cal from "./calendar.js";
 
@@ -463,9 +463,15 @@ function fichaHeader(ind) {
   const head = el("div", { class: "ficha-head" });
   const desc = [ind.descripcion || "", ind.frecuencia ? `Frecuencia: ${ind.frecuencia}.` : ""].filter(Boolean).join(" ").trim();
   const isTasa = ind.key === "TASA";
-  const eyebrow = isTasa
-    ? `${SIGLA[ind.key]} · VIGENTE DESDE ${perShort(ind.vigente_desde) || "—"}`
-    : `${SIGLA[ind.key]} · ${ind.last_observation || "—"}`;
+  const isReservas = ind.key === "RESERVAS";
+  let eyebrow;
+  if (isTasa) {
+    eyebrow = `${SIGLA[ind.key]} · VIGENTE DESDE ${perShort(ind.vigente_desde) || "—"}`;
+  } else if (isReservas) {
+    eyebrow = `${SIGLA[ind.key]} · SEMANA AL ${perShort(ind.last_observation) || "—"}`;
+  } else {
+    eyebrow = `${SIGLA[ind.key]} · ${ind.last_observation || "—"}`;
+  }
   const left = el("div", {},
     el("div", { class: "fh-sigla" }, eyebrow),
     el("h2", { class: "fh-name" }, ind.nombre),
@@ -548,7 +554,7 @@ function fichaCompareTable(ind, k, cfg, yoy) {
     [cfg.varLabel, cfg.comp || "—", k.varText],
   ];
   if (yoy) rows.push(["Variación anual", "Año previo", yoy.text]);
-  if (ind.key !== "TASA") {
+  if (ind.key !== "TASA" && ind.key !== "RESERVAS") {
     rows.push(["Máximo de la serie", k.maxP, k.maxFmt]);
     rows.push(["Mínimo de la serie", k.minP, k.minFmt]);
   }
@@ -738,6 +744,17 @@ function renderIndicatorView(key) {
       el("div", { class: "mini" }, el("div", { class: "lbl" }, k.varLabel), el("div", { class: "num", style: `color:${k.varColor}` }, k.varText), el("div", { class: "sub" }, k.yoyText)),
       k.nextDecisionP ? el("div", { class: "mini" }, el("div", { class: "lbl" }, k.nextDecisionLabel), el("div", { class: "num" }, k.nextDecisionText), el("div", { class: "sub" }, "Próxima decisión de política monetaria")) : null,
     );
+  } else if (ind.key === "RESERVAS") {
+    const saldoColor = COLORS.INK;
+    const semColor = (k.varMag ?? 0) >= 0 ? COLORS.GREEN : COLORS.CRIMSON;
+    const anualColor = (k.yoyMag ?? 0) >= 0 ? COLORS.GREEN : COLORS.CRIMSON;
+    const ytdColor = (k.acumMag ?? 0) >= 0 ? COLORS.GREEN : COLORS.CRIMSON;
+    mini = el("div", { class: "mini-kpis" },
+      el("div", { class: "mini dark" }, el("div", { class: "lbl" }, "Saldo de reservas"), el("div", { class: "num", style: `color:${saldoColor}` }, k.ultimoFmt), el("div", { class: "sub" }, `Semana al ${k.ultimoP}`)),
+      el("div", { class: "mini" }, el("div", { class: "lbl" }, "Cambio semanal"), el("div", { class: "num", style: `color:${semColor}` }, k.varText || "—"), el("div", { class: "sub" }, "Respecto a la semana previa")),
+      k.yoy ? el("div", { class: "mini" }, el("div", { class: "lbl" }, k.yoyLabel || "Variación anual"), el("div", { class: "num", style: `color:${anualColor}` }, k.yoy.text), el("div", { class: "sub" }, "Frente a la misma semana del año previo")) : null,
+      k.acumText ? el("div", { class: "mini" }, el("div", { class: "lbl" }, k.acumLabel || "Cambio YTD"), el("div", { class: "num", style: `color:${ytdColor}` }, k.acumText), el("div", { class: "sub" }, "Respecto al cierre del año previo")) : null,
+    );
   } else if (ind.key === "IOAE") {
     const annualColor = k.ultimoRaw >= 0 ? COLORS.GREEN : COLORS.CRIMSON;
     const monthlyColor = k.varColor;
@@ -819,6 +836,19 @@ function renderIndicatorView(key) {
     sect.append(el("div", { class: "chart-box emoe-sectors", id: `chart-${ind.key}-sectors`, role: "img", "aria-label": "ICE por sector: manufacturas, construcción, comercio y servicios" }));
     chartMain.append(sect);
     chartMain.append(el("div", { class: "range-wrap", id: `range-${ind.key}` }));
+  } else if (ind.key === "RESERVAS") {
+    chartMain.classList.add("pibsec-charts");
+    const level = el("div", { class: "pibsec-section" });
+    level.append(el("h3", { class: "block-sub" }, "Evolución de la reserva internacional"));
+    level.append(buildWinToggle(ind, winId));
+    level.append(el("div", { class: "chart-box reservas-level", id: `chart-${ind.key}`, role: "img", "aria-label": "Reservas internacionales (mdd)" }));
+    chartMain.append(level);
+    const change = el("div", { class: "pibsec-section" });
+    change.append(el("h3", { class: "block-sub" }, "Cambio semanal de la reserva internacional"));
+    change.append(buildWinToggle(ind, winId));
+    change.append(el("div", { class: "chart-box reservas-change", id: `chart-${ind.key}-change`, role: "img", "aria-label": "Cambio semanal de reservas internacionales (mdd)" }));
+    chartMain.append(change);
+    chartMain.append(el("div", { class: "range-wrap", id: `range-${ind.key}` }));
   } else {
     chartMain.append(buildWinToggle(ind, winId));
     chartMain.append(el("div", { class: "chart-box", id: `chart-${ind.key}`, role: "img", "aria-label": `Gráfica de ${ind.nombre}` }));
@@ -832,7 +862,7 @@ function renderIndicatorView(key) {
   }
 
   // Síntesis / Principales resultados: fuente única Python (lib_metrics).
-  const readingKeys = ["PIB", "PIBSEC", "IGAE", "IMAI", "EMOE", "IED", "TASA"];
+  const readingKeys = ["PIB", "PIBSEC", "IGAE", "IMAI", "EMOE", "IED", "TASA", "RESERVAS"];
   const syn = el("div", { class: "ficha-block" });
   syn.append(el("h3", { class: "block-sub" }, readingKeys.includes(ind.key) ? "Lectura del indicador" : "Evolución reciente"));
   if (readingKeys.includes(ind.key)) {
@@ -1326,8 +1356,10 @@ function renderTable(ind, k) {
     idxs.forEach((i) => { if (series[i] > series[maxI]) maxI = i; if (series[i] < series[minI]) minI = i; });
   }
   const tbody = el("tbody");
-  ind.observations.forEach((o, ri) => {
-    const cls = ri === maxI ? "max" : (ri === minI ? "min" : "");
+  const obsRows = ind.key === "RESERVAS" ? [...ind.observations].reverse() : ind.observations;
+  obsRows.forEach((o, ri) => {
+    const originalI = ind.key === "RESERVAS" ? ind.observations.length - 1 - ri : ri;
+    const cls = originalI === maxI ? "max" : (originalI === minI ? "min" : "");
     tbody.append(el("tr", { class: cls }, el("td", {}, o.period), ...ind.columns.map((c) => el("td", {}, fmtVal(o.values[c.index], c.fmt)))));
   });
   table.append(tbody);
@@ -1559,6 +1591,33 @@ function mountEmoeCharts(ind) {
   }
 }
 
+function mountReservasCharts(ind) {
+  if (typeof echarts === "undefined" || !hasData(ind)) return;
+  const winId = state.windows[ind.key] || state.data.meta?.default_window || "5a";
+  const obs = applyWindow(ind, winId);
+  const domLevel = document.getElementById(`chart-${ind.key}`);
+  const domChange = document.getElementById(`chart-${ind.key}-change`);
+  if (!domLevel || !domChange) return;
+  let levelChart = state.charts[ind.key];
+  if (!levelChart) { levelChart = echarts.init(domLevel, null, { renderer: "canvas" }); state.charts[ind.key] = levelChart; }
+  levelChart.setOption(buildReservasLevel(obs), true);
+
+  let changeChart = state.charts[`${ind.key}-change`];
+  if (!changeChart) { changeChart = echarts.init(domChange, null, { renderer: "canvas" }); state.charts[`${ind.key}-change`] = changeChart; }
+  changeChart.setOption(buildReservasChange(obs), true);
+
+  const rangeCard = document.getElementById(`range-${ind.key}`);
+  if (rangeCard) {
+    rangeCard.innerHTML = "";
+    rangeCard.append(buildRangeCard(ind, winId));
+  }
+  const cap = document.getElementById(`caption-${ind.key}`);
+  if (cap) {
+    const last = obs.length ? obs[obs.length - 1].period : (ind.last_observation || "—");
+    cap.textContent = `${CAPTIONS[ind.key] || ""} Datos hasta ${last}.`.trim();
+  }
+}
+
 function mountBcmmCharts(ind) {
   if (typeof echarts === "undefined" || !hasData(ind)) return;
   const winId = state.windows[ind.key] || state.data.meta?.default_window || "5a";
@@ -1720,6 +1779,7 @@ function mountChart(ind) {
   if (ind.key === "IMAI") { mountImaiCharts(ind); return; }
   if (ind.key === "DESOCUP") { mountDesocupCharts(ind); return; }
   if (ind.key === "EMOE") { mountEmoeCharts(ind); return; }
+  if (ind.key === "RESERVAS") { mountReservasCharts(ind); return; }
   if (ind.key === "BCMM" && (ind.metrics?.kpi?.cards || (ind.columns && ind.columns.length > 25))) { mountBcmmCharts(ind); return; }
   if (ind.key === "EMIM" && (ind.metrics?.kpi?.cards || (ind.columns && ind.columns.length > 15))) { mountEmimCharts(ind); return; }
   if (ind.key === "IMFBCF" && (ind.columns && ind.columns.length > 15)) { mountImfbcfCharts(ind); return; }

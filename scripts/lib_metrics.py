@@ -72,7 +72,9 @@ def prose_val(key: str, v: float | int | None) -> str:
         return F._to_fixed(v / 1e6, 2, 2) + " billones de pesos de 2018"
     if key == "PIBSEC":
         return F._to_fixed(v / 1e6, 2, 2) + " billones de pesos"
-    if key in ("IED", "BALANZA", "BCMM", "RESERVAS"):
+    if key == "RESERVAS":
+        return F._to_fixed(F._js_round(v), 0, 0) + " mdd"
+    if key in ("IED", "BALANZA", "BCMM"):
         sign = "−" if v < 0 else ""
         return sign + "$" + F._to_fixed(abs(F._js_round(v)), 0, 0) + " millones de dólares"
     if key in ("IGAE", "IMAI", "CONSUMO", "EMIM", "EMOE"):
@@ -2064,7 +2066,14 @@ def _tasa_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
 
 
 def _reservas_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
-    """KPI y resumen para reservas internacionales (semanal)."""
+    """KPI y resumen para reservas internacionales (semanal).
+
+    Enriquece las observaciones con 4 columnas:
+      0: Reserva internacional (mdd)
+      1: Cambio semanal (mdd)
+      2: Cambio YTD desde el cierre del año previo (mdd)
+      3: Variación anual (%)
+    """
     obs = ind.get("observations", [])
     if not obs:
         return None
@@ -2074,6 +2083,47 @@ def _reservas_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     dates = [F.period_to_date(p) for p in periods]
     vals = [o["values"][0] if o.get("values") else None for o in obs]
 
+    # Último valor de cada año para el cálculo YTD.
+    last_by_year: dict[int, int] = {}
+    for i, d in enumerate(dates):
+        if d is not None and vals[i] is not None:
+            last_by_year[d.year] = i
+
+    # Enriquecer observaciones con métricas derivadas semanales.
+    enriched = []
+    for i, (o, d, v) in enumerate(zip(obs, dates, vals)):
+        cambio_semanal = None
+        if i > 0 and v is not None and vals[i - 1] is not None:
+            cambio_semanal = round(v - vals[i - 1], 6)
+
+        cambio_ytd = None
+        if d is not None and d.year - 1 in last_by_year:
+            j = last_by_year[d.year - 1]
+            if vals[j] is not None:
+                cambio_ytd = round(v - vals[j], 6)
+
+        variacion_anual = None
+        if d is not None and v is not None:
+            target = d - timedelta(weeks=52)
+            j = _find_prev_by_date(periods, dates, target)
+            if j is not None and vals[j] is not None and vals[j] != 0:
+                variacion_anual = round((v - vals[j]) / abs(vals[j]), 6)
+
+        enriched.append({
+            "period": o["period"],
+            "values": [v, cambio_semanal, cambio_ytd, variacion_anual],
+        })
+
+    # Actualizar columnas del indicador para tabla, Excel y frontend.
+    ind["columns"] = [
+        {"label": "Reserva internacional", "index": 0, "fmt": "mdd"},
+        {"label": "Cambio semanal", "index": 1, "fmt": "mdd-signed"},
+        {"label": "Cambio YTD", "index": 2, "fmt": "mdd-signed"},
+        {"label": "Variación anual", "index": 3, "fmt": "pct-frac"},
+    ]
+    ind["observations"] = enriched
+    obs = enriched
+
     last_i = len(vals) - 1
     last = vals[last_i]
     if last is None:
@@ -2081,59 +2131,45 @@ def _reservas_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     last_p = periods[last_i]
     last_dt = dates[last_i]
 
-    prev = vals[last_i - 1] if last_i - 1 >= 0 else None
-    weekly = None
-    if prev is not None:
-        weekly = round(last - prev, 6)
+    weekly = obs[last_i]["values"][1]
+    ytd_mdd = obs[last_i]["values"][2]
+    yoy = obs[last_i]["values"][3]
 
-    yoy = None
-    if last_dt:
-        target = last_dt - timedelta(weeks=52)
-        j = _find_prev_by_date(periods, dates, target)
-        if j is not None and vals[j] is not None and vals[j] != 0:
-            yoy = round((last - vals[j]) / abs(vals[j]), 6)
+    # Variación porcentual YTD para referencia secundaria.
+    ytd_pct = None
+    if last_dt and last_dt.year - 1 in last_by_year:
+        j = last_by_year[last_dt.year - 1]
+        if vals[j] is not None and vals[j] != 0:
+            ytd_pct = round((last - vals[j]) / abs(vals[j]), 6)
 
-    ytd = None
-    if last_dt:
-        start_year = date(last_dt.year, 1, 1)
-        j = _find_prev_by_date(periods, dates, start_year)
-        if j is not None and vals[j] is not None and vals[j] != 0:
-            ytd = round((last - vals[j]) / abs(vals[j]), 6)
-
-    def _usd(v: float | None) -> str:
+    def _mdd(v: float | None) -> str:
         if v is None:
             return "—"
-        sgn = "+" if v >= 0 else "−"
-        return sgn + "$" + F._to_fixed(abs(F._js_round(v)), 0, 0) + " mdd"
+        return F.fmt_val(v, "mdd-signed")
 
     def _pct(v: float | None) -> str:
         if v is None:
             return "—"
-        return ("+" if v >= 0 else "") + F._to_fixed(v * 100, 1, 1) + "%"
+        return ("+" if v >= 0 else "") + F.fmt_val(v, "pct-frac")
 
     kpi = {
         "ultimoP": f"SEMANA AL {F.per_short(last_p)}",
         "ultimoRaw": last,
-        "ultimoFmt": prose_val("RESERVAS", last),
-        "varText": _usd(weekly),
+        "ultimoFmt": F.fmt_val(last, "mdd"),
+        "varText": _mdd(weekly),
         "varMag": weekly,
-        "varLabel": "Var. semanal",
+        "varLabel": "Cambio semanal",
         "pos": weekly is not None and weekly >= 0,
         "varColor": colors.get("GREEN") if (weekly is not None and weekly >= 0) else colors.get("CRIMSON"),
         "yoyText": _pct(yoy),
-        "yoyLabel": "Var. anual",
+        "yoyLabel": "Variación anual",
         "yoyRaw": yoy,
         "yoyMag": yoy,
         "yoyPos": yoy is not None and yoy >= 0,
         "yoyColor": colors.get("GREEN") if (yoy is not None and yoy >= 0) else colors.get("CRIMSON"),
-        "acumText": _pct(ytd) if ytd is not None else "—",
-        "acumLabel": "YTD ene-" + (last_dt.strftime("%b").lower() if last_dt else "mes"),
-        "maxRaw": max(v for v in vals if v is not None) if any(v is not None for v in vals) else None,
-        "minRaw": min(v for v in vals if v is not None) if any(v is not None for v in vals) else None,
-        "maxP": F.per_short(periods[vals.index(max(v for v in vals if v is not None))]) if any(v is not None for v in vals) else None,
-        "minP": F.per_short(periods[vals.index(min(v for v in vals if v is not None))]) if any(v is not None for v in vals) else None,
-        "maxFmt": prose_val("RESERVAS", max(v for v in vals if v is not None)) if any(v is not None for v in vals) else "—",
-        "minFmt": prose_val("RESERVAS", min(v for v in vals if v is not None)) if any(v is not None for v in vals) else "—",
+        "acumText": _mdd(ytd_mdd) if ytd_mdd is not None else "—",
+        "acumPctText": _pct(ytd_pct) if ytd_pct is not None else None,
+        "acumLabel": "Cambio YTD",
         "lastI": last_i,
         "series": vals,
         "periods": periods,
@@ -2143,14 +2179,27 @@ def _reservas_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     }
 
     bullets = [
-        f"En la semana al {F.per_short(last_p)}, las reservas internacionales se ubicaron en {kpi['ultimoFmt']}.",
+        f"Al {F.per_long(last_p)}, la reserva internacional se ubicó en {kpi['ultimoFmt']}.",
     ]
     if weekly is not None:
         bullets.append(f"La variación semanal fue de {kpi['varText']} respecto a la semana previa.")
     if yoy is not None:
-        bullets.append(f"A tasa anual, las reservas variaron {kpi['yoyText']}.")
-    if ytd is not None:
-        bullets.append(f"El acumulado en el año ({kpi['acumLabel']}) fue de {kpi['acumText']}.")
+        bullets.append(f"A tasa anual, la reserva varió {kpi['yoyText']}.")
+    if ytd_mdd is not None:
+        ytd_bullet = f"En lo que va del año, el cambio acumulado fue de {kpi['acumText']}"
+        if kpi["acumPctText"]:
+            ytd_bullet += f" ({kpi['acumPctText']})"
+        ytd_bullet += " respecto al cierre del año previo."
+        bullets.append(ytd_bullet)
+
+    # Botón de producto: apuntar al estado de cuenta semanal de Banxico.
+    ind["boletin_label"] = "ESTADO DE CUENTA"
+    ind["url_boletin_oficial"] = "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/"
+    ind["periodo_referencia"] = kpi["ultimoP"]
+    ind["last_observation"] = last_p
+    fuente = ind.get("fuente") or {}
+    fuente["nombre"] = "Banco de México — SIE / Estado de cuenta semanal"
+    ind["fuente"] = fuente
 
     return {
         "kpi": kpi,

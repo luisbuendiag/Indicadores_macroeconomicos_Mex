@@ -12,6 +12,10 @@ export function fmtVal(v, fmt) {
     case "num":
     case "usd":
       return Math.round(v).toLocaleString("es-MX");
+    case "mdd":
+      return Math.round(v).toLocaleString("es-MX") + " mdd";
+    case "mdd-signed":
+      return (v >= 0 ? "+" : "−") + Math.abs(Math.round(v)).toLocaleString("es-MX") + " mdd";
     case "bill":
       return (v / 1e6).toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " billones de pesos de 2018";
     case "idx":

@@ -1433,3 +1433,99 @@ export function buildDesocupPoblacion(ind, obs) {
     toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "desocup-poblacion", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
   };
 }
+
+// ---------------- RESERVAS: nivel semanal y cambio semanal ----------------
+export function buildReservasLevel(obs) {
+  const periods = obs.map((o) => o.period);
+  const values = obs.map((o) => o.values?.[0] ?? null);
+  const yRange = computeYRange(values, { padding: 0.08, includeZero: false });
+  return {
+    animation: false,
+    color: [COLORS.GREEN],
+    grid: { left: 66, right: 24, top: 52, bottom: 44 },
+    legend: { show: false },
+    tooltip: {
+      trigger: "axis",
+      backgroundColor: "#fff", borderColor: "#ddd7c6", borderWidth: 1,
+      textStyle: { color: COLORS.INK, fontFamily: FONT, fontSize: 12 },
+      extraCssText: "box-shadow:0 5px 16px rgba(0,0,0,.13);border-radius:9px;",
+      formatter: (params) => {
+        const p = params[0];
+        const v = p.value;
+        const val = v == null ? "—" : fmtVal(v, "mdd");
+        return `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">Reserva internacional</span><span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${val}</span></div>`;
+      },
+    },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "reservas-nivel", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+    xAxis: {
+      type: "category", data: periods, boundaryGap: false,
+      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: periods.length > 16 ? 9 : 10, rotate: periods.length > 16 ? 42 : 0, interval: periods.length > 24 ? "auto" : 0 },
+      axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+    },
+    yAxis: (() => {
+      const ay = { type: "value", name: "Millones de dólares", nameLocation: "middle", nameGap: 52,
+        nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 11, fontWeight: 500 },
+        axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 11, formatter: (v) => fmtVal(v, "mdd") },
+        splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: true,
+      };
+      if (yRange) { ay.min = yRange.min; ay.max = yRange.max; }
+      return ay;
+    })(),
+    series: [{
+      name: "Reserva internacional", type: "line", data: values,
+      smooth: false, symbol: "circle", symbolSize: 4,
+      lineStyle: { color: COLORS.GREEN, width: 2.4 },
+      itemStyle: { color: COLORS.GREEN },
+      areaStyle: { color: COLORS.GREEN, opacity: 0.08 },
+    }],
+  };
+}
+
+export function buildReservasChange(obs) {
+  const periods = obs.map((o) => o.period);
+  const changes = obs.map((o) => o.values?.[1] ?? null);
+  const yRange = computeYRange(changes, { padding: 0.12, includeZero: true });
+  return {
+    animation: false,
+    color: [COLORS.GREEN],
+    grid: { left: 66, right: 24, top: 52, bottom: 44 },
+    legend: { show: false },
+    tooltip: {
+      trigger: "axis",
+      backgroundColor: "#fff", borderColor: "#ddd7c6", borderWidth: 1,
+      textStyle: { color: COLORS.INK, fontFamily: FONT, fontSize: 12 },
+      extraCssText: "box-shadow:0 5px 16px rgba(0,0,0,.13);border-radius:9px;",
+      formatter: (params) => {
+        const p = params[0];
+        const v = p.value;
+        const val = v == null ? "—" : fmtVal(v, "mdd-signed");
+        return `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">Cambio semanal</span><span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${val}</span></div>`;
+      },
+    },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "reservas-cambio", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+    xAxis: {
+      type: "category", data: periods, boundaryGap: true,
+      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: periods.length > 16 ? 9 : 10, rotate: periods.length > 16 ? 42 : 0, interval: periods.length > 24 ? "auto" : 0 },
+      axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+    },
+    yAxis: (() => {
+      const ay = { type: "value", name: "Cambio semanal (mdd)", nameLocation: "middle", nameGap: 52,
+        nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 11, fontWeight: 500 },
+        axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 11, formatter: (v) => fmtVal(v, "mdd-signed") },
+        splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
+      };
+      if (yRange) { ay.min = yRange.min; ay.max = yRange.max; }
+      return ay;
+    })(),
+    series: [{
+      name: "Cambio semanal", type: "bar", data: changes,
+      itemStyle: {
+        color: (p) => p.value == null ? COLORS.GRAY : (p.value >= 0 ? COLORS.GREEN : COLORS.CRIMSON),
+      },
+      barMaxWidth: 12,
+      markLine: { symbol: "none", data: [{ yAxis: 0, lineStyle: { color: COLORS.GRAY, type: "dashed", width: 1 }, label: { show: false } }], animation: false },
+    }],
+  };
+}
