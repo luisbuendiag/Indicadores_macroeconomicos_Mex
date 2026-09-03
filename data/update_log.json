@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-09-03T11:58:34+00:00",
+  "started_at": "2026-09-03T16:58:14+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -312,7 +312,7 @@
     "frescura: EMOE -> ACTUALIZADO",
     "frescura: BCMM -> ACTUALIZADO",
     "frescura: INPP -> ACTUALIZADO",
-    "meta: last_update_ct=2026-09-03T06:51:47-06:00"
+    "meta: last_update_ct=2026-09-03T11:55:53-06:00"
   ],
   "consultas": [
     {
@@ -2130,5 +2130,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-09-03T12:51:49+00:00"
+  "finished_at": "2026-09-03T17:55:55+00:00"
 }
