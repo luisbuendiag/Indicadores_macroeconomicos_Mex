@@ -231,7 +231,7 @@ td.cal-cell.empty { background: var(--soft); }
 .mini { border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; background: #fff; }
 .mini.dark { background: var(--dkgreen); border-color: var(--dkgreen); }
 .mini .lbl { font-family: var(--mono); font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 6px; color: var(--muted2); }
-.mini .num { font-family: var(--mono); font-size: 21px; font-weight: 600; line-height: 1.05; }
+.mini .num { font-family: var(--mono); font-size: 21px; font-weight: 600; line-height: 1.05; color: inherit; }
 .mini .sub { font-size: 10.5px; margin-top: 4px; color: var(--muted); }
 .mini.dark .lbl { color: #9db8b0; } .mini.dark .num { color: #fff; } .mini.dark .sub { color: #bcd0c9; }
 

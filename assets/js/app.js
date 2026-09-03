@@ -263,7 +263,8 @@ function panoramaCard(ind) {
   const stateBadge = estadoBadge(ind);
   const sigla = SIGLA[ind.key] || ind.key;
   const fullName = ind.nombre || LABELS[ind.key];
-  const period = k ? k.ultimoP : (ind.last_observation || "—");
+  let period = k ? k.ultimoP : (ind.last_observation || "—");
+  if (ind.key === "RESERVAS") period = period.toUpperCase();
 
   const top = el("div", { class: "mc-top" },
     el("div", { class: "mc-title" }, sigla),
@@ -468,7 +469,7 @@ function fichaHeader(ind) {
   if (isTasa) {
     eyebrow = `${SIGLA[ind.key]} · VIGENTE DESDE ${perShort(ind.vigente_desde) || "—"}`;
   } else if (isReservas) {
-    eyebrow = `${SIGLA[ind.key]} · SEMANA AL ${perShort(ind.last_observation) || "—"}`;
+    eyebrow = `${SIGLA[ind.key]} · ${ind.periodo_referencia || perShort(ind.last_observation) || "—"}`;
   } else {
     eyebrow = `${SIGLA[ind.key]} · ${ind.last_observation || "—"}`;
   }
@@ -745,12 +746,12 @@ function renderIndicatorView(key) {
       k.nextDecisionP ? el("div", { class: "mini" }, el("div", { class: "lbl" }, k.nextDecisionLabel), el("div", { class: "num" }, k.nextDecisionText), el("div", { class: "sub" }, "Próxima decisión de política monetaria")) : null,
     );
   } else if (ind.key === "RESERVAS") {
-    const saldoColor = COLORS.INK;
     const semColor = (k.varMag ?? 0) >= 0 ? COLORS.GREEN : COLORS.CRIMSON;
     const anualColor = (k.yoyMag ?? 0) >= 0 ? COLORS.GREEN : COLORS.CRIMSON;
     const ytdColor = (k.acumMag ?? 0) >= 0 ? COLORS.GREEN : COLORS.CRIMSON;
+    const periodo = ind.periodo_referencia || k.ultimoP || "—";
     mini = el("div", { class: "mini-kpis" },
-      el("div", { class: "mini dark" }, el("div", { class: "lbl" }, "Saldo de reservas"), el("div", { class: "num", style: `color:${saldoColor}` }, k.ultimoFmt), el("div", { class: "sub" }, `Semana al ${k.ultimoP}`)),
+      el("div", { class: "mini dark" }, el("div", { class: "lbl" }, "Saldo de reservas"), el("div", { class: "num" }, k.ultimoFmt), el("div", { class: "sub" }, periodo)),
       el("div", { class: "mini" }, el("div", { class: "lbl" }, "Cambio semanal"), el("div", { class: "num", style: `color:${semColor}` }, k.varText || "—"), el("div", { class: "sub" }, "Respecto a la semana previa")),
       k.yoy ? el("div", { class: "mini" }, el("div", { class: "lbl" }, k.yoyLabel || "Variación anual"), el("div", { class: "num", style: `color:${anualColor}` }, k.yoy.text), el("div", { class: "sub" }, "Frente a la misma semana del año previo")) : null,
       k.acumText ? el("div", { class: "mini" }, el("div", { class: "lbl" }, k.acumLabel || "Cambio YTD"), el("div", { class: "num", style: `color:${ytdColor}` }, k.acumText), el("div", { class: "sub" }, "Respecto al cierre del año previo")) : null,

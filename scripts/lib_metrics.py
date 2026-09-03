@@ -12,10 +12,14 @@ from __future__ import annotations
 
 import json
 import math
+import re
+import socket
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
-import re
 from typing import Any
+from urllib import error as urllib_error
+from urllib import parse as urllib_parse
+from urllib import request as urllib_request
 
 import lib_format as F
 from lib_kpicfg import get_cfg
@@ -2065,7 +2069,51 @@ def _tasa_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     }
 
 
-def _reservas_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
+RESERVAS_ESTADO_CUENTA_URL = "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/estado-cuenta-semanal-reserva.html"
+
+
+def _discover_reservas_url(timeout: int = 15) -> str:
+    """Descubre el PDF más reciente del Estado de Cuenta Semanal de Banxico.
+
+    Si no puede parsear/validar el PDF del último comunicado, responde 4xx/5xx o
+    la red no está disponible, cae al URL estable de la lista de publicaciones.
+    """
+    req = urllib_request.Request(
+        RESERVAS_ESTADO_CUENTA_URL,
+        headers={"User-Agent": "Mozilla/5.0 (compatible; IndicadoresMacro/3.0)"},
+    )
+    try:
+        with urllib_request.urlopen(req, timeout=timeout) as r:
+            html = r.read().decode("utf-8", errors="replace")
+    except (urllib_error.URLError, socket.timeout, OSError):
+        return RESERVAS_ESTADO_CUENTA_URL
+
+    # Primer enlace a PDF dentro de la ruta del estado de cuenta semanal.
+    # La página lista los comunicados más recientes primero.
+    m = re.search(
+        r'<a[^>]*href="([^"]*publicaciones-y-prensa/estado-de-cuenta-semanal/[^"]+\.pdf)"',
+        html,
+        re.IGNORECASE,
+    )
+    if not m:
+        return RESERVAS_ESTADO_CUENTA_URL
+
+    pdf_url = urllib_parse.urljoin(RESERVAS_ESTADO_CUENTA_URL, m.group(1))
+    req_pdf = urllib_request.Request(
+        pdf_url,
+        method="HEAD",
+        headers={"User-Agent": "Mozilla/5.0 (compatible; IndicadoresMacro/3.0)"},
+    )
+    try:
+        with urllib_request.urlopen(req_pdf, timeout=timeout) as r:
+            if r.status == 200:
+                return pdf_url
+    except (urllib_error.URLError, socket.timeout, OSError):
+        pass
+    return RESERVAS_ESTADO_CUENTA_URL
+
+
+def _reservas_metrics(ind: dict, kpicfg: dict, offline: bool = False) -> dict[str, Any] | None:
     """KPI y resumen para reservas internacionales (semanal).
 
     Enriquece las observaciones con 4 columnas:
@@ -2152,8 +2200,9 @@ def _reservas_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
             return "—"
         return ("+" if v >= 0 else "") + F.fmt_val(v, "pct-frac")
 
+    periodo = f"Semana al {F.per_short(last_p)}"
     kpi = {
-        "ultimoP": f"SEMANA AL {F.per_short(last_p)}",
+        "ultimoP": periodo,
         "ultimoRaw": last,
         "ultimoFmt": F.fmt_val(last, "mdd"),
         "varText": _mdd(weekly),
@@ -2193,13 +2242,17 @@ def _reservas_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
         bullets.append(ytd_bullet)
 
     # Botón de producto: apuntar al estado de cuenta semanal de Banxico.
+    # Descubrir el PDF del comunicado más reciente; si falla, usar la página estable.
+    url_final = _discover_reservas_url() if not offline else RESERVAS_ESTADO_CUENTA_URL
     ind["boletin_label"] = "ESTADO DE CUENTA"
-    ind["url_boletin_oficial"] = "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/"
+    ind["url_boletin_oficial"] = url_final
     ind["periodo_referencia"] = kpi["ultimoP"]
     ind["last_observation"] = last_p
     fuente = ind.get("fuente") or {}
     fuente["nombre"] = "Banco de México — SIE / Estado de cuenta semanal"
+    fuente["link"] = RESERVAS_ESTADO_CUENTA_URL
     ind["fuente"] = fuente
+    ind["url_fuente_oficial"] = RESERVAS_ESTADO_CUENTA_URL
 
     return {
         "kpi": kpi,
@@ -2354,7 +2407,7 @@ def _ied_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     }
 
 
-def compute_all_metrics(payload: dict | None = None, kpicfg: dict | None = None) -> dict[str, dict[str, Any]]:
+def compute_all_metrics(payload: dict | None = None, kpicfg: dict | None = None, offline: bool = False) -> dict[str, dict[str, Any]]:
     """Calcula kpi, analysis y annualVar para todos los indicadores."""
     if payload is None:
         payload = json.loads(DATA_FILE.read_text(encoding="utf-8"))
@@ -2414,7 +2467,7 @@ def compute_all_metrics(payload: dict | None = None, kpicfg: dict | None = None)
                 out[key] = tasa
                 continue
         if key == "RESERVAS" and len(ind.get("observations", [])) > 0:
-            reservas = _reservas_metrics(ind, kpicfg)
+            reservas = _reservas_metrics(ind, kpicfg, offline=offline)
             if reservas:
                 out[key] = reservas
                 continue

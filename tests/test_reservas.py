@@ -2,7 +2,9 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
+from urllib import request as urllib_request
 
 import openpyxl
 import pytest
@@ -70,7 +72,7 @@ def test_reservas_kpi_format_and_values():
     assert k["acumText"].endswith(" mdd")
     assert k["acumLabel"] == "Cambio YTD"
     assert k["acumPctText"] is None or "%" in k["acumPctText"]
-    assert k["ultimoP"].startswith("SEMANA AL")
+    assert k["ultimoP"].startswith("Semana al")
 
 
 def test_reservas_resumen_bullets():
@@ -136,8 +138,10 @@ def test_reservas_boletin_button():
     payload = _payload()
     r = payload["indicators"]["RESERVAS"]
     assert r.get("boletin_label") == "ESTADO DE CUENTA"
-    assert "banxico.org.mx" in r.get("url_boletin_oficial", "")
-    assert "reservas-internacionales" in r.get("url_boletin_oficial", "")
+    url = r.get("url_boletin_oficial", "")
+    assert "banxico.org.mx" in url
+    assert "/publicaciones-y-prensa/estado-de-cuenta-semanal/" in url
+    assert "reservas-internacionales" not in url
 
 
 def test_reservas_format_lib():
@@ -159,3 +163,39 @@ def test_reservas_excel_sheet():
     ws = wb["Reservas internacionales"]
     headers = [ws.cell(4, c).value for c in range(1, ws.max_column + 1)]
     assert headers == ["Periodo", "Reserva internacional", "Cambio semanal", "Cambio YTD", "Variación anual"]
+
+
+def test_reservas_url_responde_200():
+    """El URL final del botón responde HTTP 200 y es un endpoint vigente."""
+    payload = _payload()
+    url = payload["indicators"]["RESERVAS"].get("url_boletin_oficial", "")
+    assert url
+    req = urllib_request.Request(url, method="HEAD", headers={"User-Agent": "Mozilla/5.0"})
+    with urllib_request.urlopen(req, timeout=20) as r:
+        assert r.status == 200
+
+
+def test_reservas_periodo_sin_doble_semana():
+    """El periodo no repite 'Semana al' ni 'SEMANA AL'."""
+    payload = _payload()
+    r = payload["indicators"]["RESERVAS"]
+    per = r.get("periodo_referencia", "")
+    assert per
+    assert per.lower().count("semana al") == 1
+
+
+def test_reservas_css_herencia_color_claro():
+    """El valor .num hereda color; en tarjetas oscuras es blanco."""
+    css = (ROOT / "assets" / "css" / "styles.css").read_text(encoding="utf-8")
+    assert ".mini .num {" in css and "color: inherit" in css
+    assert ".mini.dark .num { color: #fff; }" in css
+
+
+def test_reservas_no_inline_color_oscuro_saldo():
+    """El mini KPI oscuro de RESERVAS no fuerza color oscuro en el saldo."""
+    app = (ROOT / "assets" / "js" / "app.js").read_text(encoding="utf-8")
+    reservas_block = re.search(r'else if \(ind\.key === "RESERVAS"\) \{.*?\);\s*\}', app, re.DOTALL)
+    assert reservas_block
+    block = reservas_block.group(0)
+    assert 'style: `color:${saldoColor}`' not in block
+    assert "COLORS.INK" not in block
