@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-03T02:30:25+00:00",
-  "last_update_ct": "2026-09-02T20:29:02-06:00",
+  "generated_at": "2026-09-02T22:59:54+00:00",
+  "last_update_ct": "2026-09-02T16:57:25-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -2346,15 +2346,15 @@
     },
     "IED": {
       "kpi": {
-        "assessment": "adverso",
-        "dir": "down",
-        "ultimoFmt": "10,465",
-        "ultimoRaw": 10464.95,
-        "ultimoP": "2T-26",
-        "varText": "-4.0%",
-        "varMag": -4.0,
-        "pos": false,
-        "varColor": "#9b2247",
+        "assessment": "favorable",
+        "dir": "up",
+        "ultimoFmt": "34,968",
+        "ultimoRaw": 34968,
+        "ultimoP": "Ene-Jun 26",
+        "varText": "+2.1%",
+        "varMag": 2.1,
+        "pos": true,
+        "varColor": "#1e5b4f",
         "varLabel": "Var. anual del acumulado",
         "maxFmt": "27,219",
         "maxRaw": 27218.64,
@@ -2585,20 +2585,35 @@
           "1T-26",
           "2T-26"
         ],
-        "semaforo": "malo",
-        "yoyText": "—",
-        "yoyLabel": "—"
+        "semaforo": "bueno",
+        "flujoRaw": 10464.95,
+        "flujoText": "10,465",
+        "flujoP": "2T-26"
       },
-      "analysis": [
-        "En el segundo trimestre de 2026, la IED acumulada se ubicó en $10,465 millones de dólares (acumulado ene-jun, millones de dólares), con una variación anual elevada de -4.00% frente al mismo periodo del año anterior. Este resultado refleja una marcada contracción respecto al primer trimestre de 2026 (+2.00%), y deja al indicador por encima del promedio del periodo mostrado de $7,696 millones de dólares.",
-        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de $27,219 millones de dólares (primer trimestre de 2024) y un mínimo de −$3,990 millones de dólares (cuarto trimestre de 2025). El resultado más reciente se ubicó por encima del promedio del periodo mostrado. El último dato fue superior al del inicio del periodo mostrado. En su composición, el rubro predominante fue reinversión de utilidades (≈66% del total), lo que refleja sobre todo la permanencia de capital ya instalado más que la llegada de proyectos nuevos."
-      ],
+      "yoy": {
+        "mag": -3.5000000000000004,
+        "pos": false,
+        "text": "-3.5%",
+        "label": "Var. anual del flujo"
+      },
+      "annualVar": {
+        "mag": -3.5000000000000004,
+        "pos": false,
+        "text": "-3.5%",
+        "label": "Var. anual del flujo"
+      },
       "resumen": [
-        "En segundo trimestre de 2026, la IED acumulada se ubicó en $10,465 millones de dólares (acumulado ene-jun, millones de dólares). El valor de var. anual del acumulado fue de -4.0% frente al mismo periodo del año anterior.",
-        "En la serie mostrada, el indicador oscila entre un máximo de $27,219 millones de dólares (primer trimestre de 2024) y un mínimo de −$3,990 millones de dólares (cuarto trimestre de 2025). El último dato se ubica dentro del rango observado en el periodo mostrado.",
-        "La variación se clasifica como adversa según la lectura económica del indicador."
+        "Entre enero y junio de 2026, México recibió $34,968 millones de dólares de IED, una variación anual del 2.1% más que en el mismo periodo del año previo.",
+        "Durante el segundo trimestre de 2026, el flujo exclusivo fue de aproximadamente $10,465 millones de dólares.",
+        "La IED acumulada se compone de Reinversión de utilidades 88.5%, Nuevas inversiones 7.8% y Cuentas entre compañías 3.7% del acumulado.",
+        "Manufacturas concentró 38.6% de la IED acumulada."
       ],
-      "annualVar": null
+      "analysis": [
+        "Entre enero y junio de 2026, México recibió $34,968 millones de dólares de IED, una variación anual del 2.1% más que en el mismo periodo del año previo.",
+        "Durante el segundo trimestre de 2026, el flujo exclusivo fue de aproximadamente $10,465 millones de dólares.",
+        "La IED acumulada se compone de Reinversión de utilidades 88.5%, Nuevas inversiones 7.8% y Cuentas entre compañías 3.7% del acumulado.",
+        "Manufacturas concentró 38.6% de la IED acumulada."
+      ]
     },
     "DESOCUP": {
       "kpi": {
@@ -2926,8 +2941,8 @@
         "ultimoFmt": "3.1%",
         "ultimoRaw": 3.12,
         "ultimoP": "Jul 26",
-        "varText": "-0.3 puntos porcentuales",
-        "varMag": -0.25,
+        "varText": "-0.2 puntos porcentuales",
+        "varMag": -0.2459769999999999,
         "pos": false,
         "varColor": "#9b2247",
         "varLabel": "Cambio de la inflación anual respecto al mes previo",
@@ -3031,16 +3046,16 @@
           4.317429,
           3.512423,
           3.568777,
-          3.76,
-          3.57,
-          3.8,
-          3.69,
-          3.79,
-          4.02,
-          4.59,
-          4.45,
-          3.94,
-          3.37,
+          3.760288,
+          3.566521,
+          3.799191,
+          3.691944,
+          3.791301,
+          4.023038,
+          4.586774,
+          4.448503,
+          3.938948,
+          3.365977,
           3.12
         ],
         "periods": [
@@ -3153,11 +3168,11 @@
         "yoyLabel": "—"
       },
       "analysis": [
-        "En julio de 2026, la inflación general anual se ubicó en 3.1%, con una variación de -0.3 puntos porcentuales frente al mes previo. La inflación anual disminuyó respecto del mes previo. Se ubicó por debajo del promedio del periodo mostrado (4.9%).",
+        "En julio de 2026, la inflación general anual se ubicó en 3.1%, con una variación de -0.2 puntos porcentuales frente al mes previo. La inflación anual disminuyó respecto del mes previo. Se ubicó por debajo del promedio del periodo mostrado (4.9%).",
         "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 8.7% (septiembre de 2022) y un mínimo de 2.1% (abril de 2020). El resultado más reciente se ubicó por debajo del promedio del periodo mostrado. El último dato fue inferior al del inicio del periodo mostrado. Con ello, la inflación se mantiene dentro del intervalo de variabilidad del Banco de México (3 % ±1 punto), aunque todavía por encima de la meta puntual de 3 %."
       ],
       "resumen": [
-        "En julio de 2026, la inflación general anual se ubicó en 3.1%. El valor de cambio de la inflación anual respecto al mes previo fue de -0.3 puntos porcentuales frente al mes previo.",
+        "En julio de 2026, la inflación general anual se ubicó en 3.1%. El valor de cambio de la inflación anual respecto al mes previo fue de -0.2 puntos porcentuales frente al mes previo.",
         "En la serie mostrada, el indicador oscila entre un máximo de 8.7% (septiembre de 2022) y un mínimo de 2.1% (abril de 2020). El último dato se ubica dentro del rango observado en el periodo mostrado.",
         "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
       ],
@@ -3168,16 +3183,16 @@
         "assessment": "adverso",
         "dir": "down",
         "ultimoFmt": "107.1",
-        "ultimoRaw": 107.1,
+        "ultimoRaw": 107.08,
         "ultimoP": "May 26",
         "varText": "-0.4%",
-        "varMag": -0.4,
+        "varMag": -0.4092,
         "pos": false,
         "varColor": "#9b2247",
         "varLabel": "Var. mensual desest.",
-        "maxFmt": "113.7",
-        "maxRaw": 113.7,
-        "maxP": "Nov 24",
+        "maxFmt": "113.5",
+        "maxRaw": 113.52,
+        "maxP": "Jul 24",
         "minFmt": "38.4",
         "minRaw": 38.42,
         "minP": "May 95",
@@ -3564,26 +3579,26 @@
           113.52,
           112.47,
           110.98,
-          113.1,
-          113.7,
-          109.7,
-          107.4,
-          107.3,
-          107.9,
-          105.6,
-          106.8,
-          105.6,
-          107.5,
-          103.9,
-          101.0,
-          102.2,
-          102.8,
-          103.6,
-          102.3,
-          101.1,
-          102.0,
-          107.4,
-          107.1
+          109.31,
+          109.8,
+          106.09,
+          105.2,
+          105.94,
+          106.09,
+          102.19,
+          104.55,
+          102.97,
+          104.84,
+          101.93,
+          102.03,
+          103.03,
+          103.61,
+          104.06,
+          103.02,
+          102.66,
+          103.26,
+          107.52,
+          107.08
         ],
         "periods": [
           "Ene 93",
@@ -3991,7 +4006,7 @@
         "semaforo": "malo",
         "yoyText": "+2.4%",
         "yoyLabel": "Var. anual desest.",
-        "acumRaw": -0.005,
+        "acumRaw": -0.004976,
         "acumText": "-0.5%",
         "acumLabel": "Acumulado ene-mes",
         "cards": [
@@ -3999,18 +4014,18 @@
             "name": "Construcción",
             "nivelRaw": 106.03,
             "nivelText": "106.0",
-            "momRaw": -0.024,
+            "momRaw": -0.024024,
             "momText": "-2.4%",
-            "yoyRaw": 0.02,
+            "yoyRaw": 0.020304,
             "yoyText": "2.0%"
           },
           {
             "name": "Maquinaria y equipo",
             "nivelRaw": 108.19,
             "nivelText": "108.2",
-            "momRaw": 0.015,
+            "momRaw": 0.015392,
             "momText": "1.5%",
-            "yoyRaw": 0.025,
+            "yoyRaw": 0.025012,
             "yoyText": "2.5%"
           },
           {
@@ -4019,7 +4034,7 @@
             "nivelText": "95.2",
             "momRaw": null,
             "momText": "—",
-            "yoyRaw": -0.054,
+            "yoyRaw": -0.054435,
             "yoyText": "-5.4%"
           },
           {
@@ -4028,7 +4043,7 @@
             "nivelText": "118.0",
             "momRaw": null,
             "momText": "—",
-            "yoyRaw": 0.118,
+            "yoyRaw": 0.117552,
             "yoyText": "11.8%"
           },
           {
@@ -4037,7 +4052,7 @@
             "nivelText": "93.1",
             "momRaw": null,
             "momText": "—",
-            "yoyRaw": -0.077,
+            "yoyRaw": -0.077236,
             "yoyText": "-7.7%"
           },
           {
@@ -4046,7 +4061,7 @@
             "nivelText": "89.4",
             "momRaw": null,
             "momText": "—",
-            "yoyRaw": -0.05,
+            "yoyRaw": -0.049835,
             "yoyText": "-5.0%"
           },
           {
@@ -4055,7 +4070,7 @@
             "nivelText": "97.4",
             "momRaw": null,
             "momText": "—",
-            "yoyRaw": -0.091,
+            "yoyRaw": -0.090731,
             "yoyText": "-9.1%"
           },
           {
@@ -4064,7 +4079,7 @@
             "nivelText": "119.1",
             "momRaw": null,
             "momText": "—",
-            "yoyRaw": 0.089,
+            "yoyRaw": 0.089304,
             "yoyText": "8.9%"
           },
           {
@@ -4073,7 +4088,7 @@
             "nivelText": "138.0",
             "momRaw": null,
             "momText": "—",
-            "yoyRaw": 0.071,
+            "yoyRaw": 0.071329,
             "yoyText": "7.1%"
           },
           {
@@ -4082,25 +4097,25 @@
             "nivelText": "117.1",
             "momRaw": null,
             "momText": "—",
-            "yoyRaw": 0.097,
+            "yoyRaw": 0.097433,
             "yoyText": "9.7%"
           }
         ]
       },
       "yoy": {
-        "mag": 2.4,
+        "mag": 2.4198999999999997,
         "pos": true,
         "text": "+2.4%",
         "label": "Var. anual desest."
       },
       "annualVar": {
-        "mag": 2.4,
+        "mag": 2.4198999999999997,
         "pos": true,
         "text": "+2.4%",
         "label": "Var. anual desest."
       },
       "resumen": [
-        "En mayo de 2026, la formación bruta de capital fijo se ubicó en 107.1 (índice base 2018=100). La variación mensual desestacionalizada fue de -0.4% respecto al mes previo, por lo que el indicador retrocedió.",
+        "En mayo de 2026, la formación bruta de capital fijo se ubicó en 107.08 (índice base 2018=100). La variación mensual desestacionalizada fue de -0.4% respecto al mes previo, por lo que el indicador retrocedió.",
         "A tasa anual, el IMFBCF avanzó +2.4%.",
         "El acumulado ene-may, en cifras originales, fue de -0.5%.",
         "A tasa anual, No residencial (11.8%) y Maquinaria, equipo y otros importados (9.7%) avanzaron, mientras que Equipo de transporte nacional (-5.0%) y Residencial (-5.4%) retrocedieron."
@@ -9519,21 +9534,26 @@
       "kpi": {
         "ultimoP": "SEMANA AL 28 Ago 26",
         "ultimoRaw": 258564.1,
-        "ultimoFmt": "258,564 mdd",
-        "varText": "−45 mdd",
+        "ultimoFmt": "$258,564 millones de dólares",
+        "varText": "−$45 mdd",
         "varMag": -44.7,
-        "varLabel": "Cambio semanal",
+        "varLabel": "Var. semanal",
         "pos": false,
         "varColor": "#9b2247",
         "yoyText": "+5.8%",
-        "yoyLabel": "Variación anual",
+        "yoyLabel": "Var. anual",
         "yoyRaw": 0.057959,
         "yoyMag": 0.057959,
         "yoyPos": true,
         "yoyColor": "#1e5b4f",
-        "acumText": "+6,435 mdd",
-        "acumPctText": "+2.6%",
-        "acumLabel": "Cambio YTD",
+        "acumText": "+2.6%",
+        "acumLabel": "YTD ene-aug",
+        "maxRaw": 258608.8,
+        "minRaw": 172796.8,
+        "maxP": "21 Ago 26",
+        "minP": "9 Feb 18",
+        "maxFmt": "$258,609 millones de dólares",
+        "minFmt": "$172,797 millones de dólares",
         "lastI": 451,
         "series": [
           172904.4,
@@ -10451,19 +10471,19 @@
         "mag": 0.057959,
         "pos": true,
         "text": "+5.8%",
-        "label": "Variación anual"
+        "label": "Var. anual"
       },
       "annualVar": {
         "mag": 0.057959,
         "pos": true,
         "text": "+5.8%",
-        "label": "Variación anual"
+        "label": "Var. anual"
       },
       "resumen": [
-        "Al 28 de agosto de 2026, la reserva internacional se ubicó en 258,564 mdd.",
-        "La variación semanal fue de −45 mdd respecto a la semana previa.",
-        "A tasa anual, la reserva varió +5.8%.",
-        "En lo que va del año, el cambio acumulado fue de +6,435 mdd (+2.6%) respecto al cierre del año previo."
+        "En la semana al 28 Ago 26, las reservas internacionales se ubicaron en $258,564 millones de dólares.",
+        "La variación semanal fue de −$45 mdd respecto a la semana previa.",
+        "A tasa anual, las reservas variaron +5.8%.",
+        "El acumulado en el año (YTD ene-aug) fue de +2.6%."
       ],
       "analysis": []
     },
