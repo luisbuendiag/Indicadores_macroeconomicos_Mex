@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-04T16:48:54+00:00",
+  "generated_at": "2026-09-04T18:56:17+00:00",
   "indicadores": [
     {
       "indicador": "Estimación Oportuna del Producto Interno Bruto Trimestral",
@@ -274,8 +274,8 @@
       "frecuencia": "Mensual",
       "unidad": "Índice base 2018=100 / Porcentaje",
       "ajuste_estacional": "Cifras desestacionalizadas y originales",
-      "ultima_observacion": "May 26",
-      "periodo_referencia": "May 26",
+      "ultima_observacion": "Jun 26",
+      "periodo_referencia": "Jun 26",
       "fecha_publicacion": "5 de agosto de 2026",
       "fecha_consulta": "2026-09-04",
       "fecha_actualizacion_archivo": "2026-09-04",
@@ -338,12 +338,12 @@
       "observaciones": ""
     },
     {
-      "indicador": "Tipo de cambio FIX",
+      "indicador": "Tipo de cambio FIX (pesos por dólar)",
       "clave": "TIPOCAMBIO",
       "clasificacion": "complementario",
-      "fuente": "Banco de México",
+      "fuente": "Banco de México (SIE)",
       "serie": "SF43718",
-      "frecuencia": "Diaria — días hábiles bancarios",
+      "frecuencia": "Diaria",
       "unidad": "Pesos por dólar",
       "ajuste_estacional": "No aplica",
       "ultima_observacion": "2026-09-03",
@@ -365,7 +365,7 @@
       "indicador": "Objetivo para la Tasa de Interes Interbancaria a un dia",
       "clave": "TASA",
       "clasificacion": "complementario",
-      "fuente": "Banco de México",
+      "fuente": "Banco de México (SIE)",
       "serie": "SF61745",
       "frecuencia": "Diaria",
       "unidad": "Porcentaje anual",
