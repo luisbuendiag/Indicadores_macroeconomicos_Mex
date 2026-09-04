@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-03T21:01:13+00:00",
+    "generated_at": "2026-09-04T03:04:11+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-09-03T15:01:13-06:00",
+    "last_update_ct": "2026-09-03T21:04:11-06:00",
     "periodo_referencia_reciente": {
       "period": "Ago 26",
       "period_long": "Ago 26"
@@ -1532,7 +1532,8 @@
         "frecuencia": "Trimestral",
         "unidad": "Millones de pesos (a precios de 2018)",
         "ajuste_estacional": "Serie original"
-      }
+      },
+      "boletin_validado": true
     },
     "PIBSEC": {
       "key": "PIBSEC",
@@ -4333,7 +4334,8 @@
         "72 Servicios de alojamiento temporal y de preparación de alimentos y bebidas": -0.027000000000000003,
         "81 Otros servicios excepto actividades gubernamentales": 0.01,
         "93 Actividades legislativas, gubernamentales, de impartición de justicia y de organismos internacionales y extraterritoriales": 0.035
-      }
+      },
+      "boletin_validado": true
     },
     "IGAE": {
       "key": "IGAE",
@@ -10938,7 +10940,8 @@
           "count": null
         }
       ],
-      "sigla": "IGAE"
+      "sigla": "IGAE",
+      "boletin_validado": true
     },
     "IMAI": {
       "key": "IMAI",
@@ -21247,7 +21250,8 @@
           "label": "Máximo",
           "count": null
         }
-      ]
+      ],
+      "boletin_validado": true
     },
     "CONSUMO": {
       "key": "CONSUMO",
@@ -22441,7 +22445,8 @@
           "label": "Máximo",
           "count": null
         }
-      ]
+      ],
+      "boletin_validado": true
     },
     "IED": {
       "key": "IED",
@@ -23704,15 +23709,15 @@
       "fecha_consulta": "2026-09-03",
       "metrics": {
         "kpi": {
-          "assessment": "favorable",
-          "dir": "up",
-          "ultimoFmt": "34,968",
-          "ultimoRaw": 34968,
-          "ultimoP": "Ene-Jun 26",
-          "varText": "+2.1%",
-          "varMag": 2.1,
-          "pos": true,
-          "varColor": "#1e5b4f",
+          "assessment": "adverso",
+          "dir": "down",
+          "ultimoFmt": "10,465",
+          "ultimoRaw": 10464.95,
+          "ultimoP": "2T-26",
+          "varText": "-4.0%",
+          "varMag": -4.0,
+          "pos": false,
+          "varColor": "#9b2247",
           "varLabel": "Var. anual del acumulado",
           "maxFmt": "27,219",
           "maxRaw": 27218.64,
@@ -23943,22 +23948,15 @@
             "1T-26",
             "2T-26"
           ],
-          "semaforo": "bueno",
-          "flujoRaw": 10464.95,
-          "flujoText": "10,465",
-          "flujoP": "2T-26"
+          "semaforo": "malo",
+          "yoyText": "—",
+          "yoyLabel": "—"
         },
-        "yoy": {
-          "mag": -3.5000000000000004,
-          "pos": false,
-          "text": "-3.5%",
-          "label": "Var. anual del flujo"
-        },
+        "yoy": null,
         "resumen": [
-          "Entre enero y junio de 2026, México recibió $34,968 millones de dólares de IED, una variación anual del 2.1% más que en el mismo periodo del año previo.",
-          "Durante el segundo trimestre de 2026, el flujo exclusivo fue de aproximadamente $10,465 millones de dólares.",
-          "La IED acumulada se compone de Reinversión de utilidades 88.5%, Nuevas inversiones 7.8% y Cuentas entre compañías 3.7% del acumulado.",
-          "Manufacturas concentró 38.6% de la IED acumulada."
+          "En segundo trimestre de 2026, la IED acumulada se ubicó en $10,465 millones de dólares (acumulado ene-jun, millones de dólares). El valor de var. anual del acumulado fue de -4.0% frente al mismo periodo del año anterior.",
+          "En la serie mostrada, el indicador oscila entre un máximo de $27,219 millones de dólares (primer trimestre de 2024) y un mínimo de −$3,990 millones de dólares (cuarto trimestre de 2025). El último dato se ubica dentro del rango observado en el periodo mostrado.",
+          "La variación se clasifica como adversa según la lectura económica del indicador."
         ]
       },
       "periodo_referencia_oficial": "2° trimestre 2026",
@@ -25952,7 +25950,8 @@
           "label": "Máximo",
           "count": null
         }
-      ]
+      ],
+      "boletin_validado": true
     },
     "INPC": {
       "key": "INPC",
@@ -28737,7 +28736,8 @@
           "label": "Máximo",
           "count": null
         }
-      ]
+      ],
+      "boletin_validado": true
     },
     "IMFBCF": {
       "key": "IMFBCF",
@@ -49533,7 +49533,8 @@
           "count": null
         }
       ],
-      "sigla": "IOAE"
+      "sigla": "IOAE",
+      "boletin_validado": true
     },
     "EMIM": {
       "key": "EMIM",
@@ -55925,23 +55926,24 @@
           "remuneraciones_index": 144.1,
           "remuneraciones_anual": 0.038
         }
-      }
+      },
+      "boletin_validado": true
     },
     "TIPOCAMBIO": {
       "key": "TIPOCAMBIO",
-      "nombre": "Tipo de cambio FIX (pesos por dólar)",
+      "nombre": "Tipo de cambio FIX",
       "descripcion": "Tipo de cambio de referencia (peso por dólar) determinado por el Banco de México, utilizado para solventar obligaciones denominadas en dólares.",
-      "frecuencia": "Diaria",
+      "frecuencia": "Diaria — días hábiles bancarios",
       "unidad": "Pesos por dólar",
       "ajuste_estacional": "No aplica",
       "grupo": "financiero",
       "publicacion": "Días hábiles",
       "proximo": "Siguiente día hábil",
       "fuente": {
-        "nombre": "Banco de México (SIE)",
-        "serie": "SF43718",
+        "nombre": "Banco de México",
         "link": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
-        "metodo": "Banxico SIE API"
+        "metodo": "Banxico SIE API",
+        "serie": "SF43718"
       },
       "columns": [
         {
@@ -87230,10 +87232,10 @@
       "publicacion": "Días de anuncio de política monetaria",
       "proximo": "Siguiente reunión programada",
       "fuente": {
-        "nombre": "Banco de México (SIE)",
-        "serie": "SF61745",
+        "nombre": "Banco de México",
         "link": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
-        "metodo": "Banxico SIE API"
+        "metodo": "Banxico SIE API",
+        "serie": "SF61745"
       },
       "columns": [
         {
@@ -127015,9 +127017,9 @@
       "proximo": "Siguiente publicación semanal",
       "fuente": {
         "nombre": "Banco de México — SIE / Estado de cuenta semanal",
-        "serie": "SF43707",
         "link": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/estado-cuenta-semanal-reserva.html",
-        "metodo": "Banxico SIE API"
+        "metodo": "Banxico SIE API",
+        "serie": "SF43707"
       },
       "columns": [
         {
@@ -137036,7 +137038,7 @@
       "nombre_corto": "EMOE",
       "umbral": 50,
       "indicador_principal": "IGOEC",
-      "boletin_validado": false
+      "boletin_validado": true
     },
     "BCMM": {
       "key": "BCMM",
@@ -157459,7 +157461,8 @@
           "label": "Máximo",
           "count": null
         }
-      ]
+      ],
+      "boletin_validado": true
     },
     "INPP": {
       "key": "INPP",

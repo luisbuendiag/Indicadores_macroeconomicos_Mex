@@ -6,6 +6,8 @@ import { ORDER, LABELS, SIGLA } from "./config.js";
 const MES_NOMBRES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
 const DIA_CORTOS = ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"];
 
+const FILE_ICON = (letter) => `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" role="img"><title>${letter}</title><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/><text x="12" y="17" font-size="8" font-family="sans-serif" font-weight="700" text-anchor="middle" fill="currentColor">${letter}</text></svg>`;
+
 const DEFAULT_CATEGORIES = {
   "Actividad económica": "#0d47a1",
   "Precios": "#b71c1c",
@@ -437,12 +439,16 @@ function renderHighlights(ctx) {
     left.append(el("div", { class: "muted" }, "Sin próximas publicaciones registradas."));
   }
 
-  const upcomingList = el("div", {});
+  const upcomingList = el("div", { class: "cal-upcoming-list" });
   upcoming.slice(1).forEach((c) => {
+    const src = shortSource(c);
     const row = el("div", { class: "cal-list-row" },
-      el("span", { class: "date" }, c.fecha_publicacion || "—"),
-      el("span", {}, `${c.indicador} · ${c.periodo_referencia}`),
-      statusChip(c.estatus)
+      el("span", { class: "cal-row-date" }, c.fecha_publicacion || "—"),
+      el("div", { class: "cal-row-main" },
+        el("span", { class: "cal-row-title" }, c.indicador),
+        c.periodo_referencia ? el("span", { class: "cal-row-period" }, ` · ${c.periodo_referencia}`) : null
+      ),
+      src ? el("span", { class: "cal-row-source" }, src) : null
     );
     if (c.clave && ctx.getInd(c.clave)) {
       row.classList.add("clickable");
@@ -457,14 +463,18 @@ function renderHighlights(ctx) {
   const right = el("div", { class: "panel" });
   right.append(el("h3", {}, "Últimas publicaciones"));
   const recent = recentPublications(ctx, 8);
-  const recentList = el("div", {});
+  const recentList = el("div", { class: "cal-recent-list" });
   if (recent.length) {
     recent.forEach((c) => {
       const dls = deliverableBar(c.deliverables);
+      const actions = dls ? el("div", { class: "cal-row-actions" }, dls) : null;
       const row = el("div", { class: "cal-list-row" },
-        el("span", { class: "date" }, c.fecha_publicacion || "—"),
-        el("span", {}, `${c.indicador} · ${c.periodo_referencia}`),
-        dls
+        el("span", { class: "cal-row-date" }, c.fecha_publicacion || "—"),
+        el("div", { class: "cal-row-main" },
+          el("span", { class: "cal-row-title" }, c.indicador),
+          c.periodo_referencia ? el("span", { class: "cal-row-period" }, ` · ${c.periodo_referencia}`) : null
+        ),
+        actions
       );
       row.classList.add("clickable");
       row.addEventListener("click", () => openCalEvent(ctx, c));
@@ -500,18 +510,21 @@ function deliverableBar(list) {
 function deliverableBtn(d) {
   const fmt = (d.format || d.type || "enlace").toString().toLowerCase();
   let kind = "Enlace";
-  if (fmt.includes("pdf")) kind = "PDF";
-  else if (fmt.includes("doc") || fmt.includes("word")) kind = "Word";
-  else if (fmt.includes("xls") || fmt.includes("excel")) kind = "Excel";
+  let cls = "cal-dl-link";
+  let letter = "↗";
+  if (fmt.includes("pdf")) { kind = "PDF"; cls = "cal-dl-pdf"; letter = "P"; }
+  else if (fmt.includes("doc") || fmt.includes("word")) { kind = "Word"; cls = "cal-dl-word"; letter = "W"; }
+  else if (fmt.includes("xls") || fmt.includes("excel")) { kind = "Excel"; cls = "cal-dl-excel"; letter = "E"; }
   const label = d.label || d.name || kind;
   return el("a", {
-    class: "cal-dl-btn",
+    class: `cal-dl-btn ${cls}`,
     href: d.url || "#",
     target: "_blank",
     rel: "noopener",
-    title: `${label}${d.size ? ` (${d.size})` : ""}`,
+    title: `${label}${d.size ? ` · ${d.size}` : ""}`,
     onclick: (e) => { e.stopPropagation(); },
   },
+    el("span", { class: "cal-dl-icon", html: FILE_ICON(letter) }),
     el("span", { class: "cal-dl-kind" }, kind),
     d.size ? el("span", { class: "cal-dl-size" }, d.size) : null
   );
