@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-09-04T03:19:53+00:00",
-  "as_of": "2026-09-03",
+  "generated_at": "2026-09-04T04:12:28+00:00",
+  "as_of": "2026-09-04",
   "fuente": "Calendario oficial de difusión",
   "sources": {
     "INEGI Sala de Prensa": {
       "status": "ok",
       "count": 1449,
-      "message": "Modo offline: 1449 eventos leídos de caché",
-      "consulted_at": null,
+      "message": "1449 eventos consultados del INEGI",
+      "consulted_at": "2026-09-04",
       "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/"
     },
     "Banco de México calendario": {
       "status": "ok",
       "count": 180,
-      "message": "Modo offline: 180 eventos leídos de caché",
-      "consulted_at": null,
+      "message": "180 eventos consultados de Banxico",
+      "consulted_at": "2026-09-04",
       "url": "https://www.banxico.org.mx/publicaciones-y-prensa/calendario-de-publicaciones-banco-de-mexico/"
     },
     "Secretaría de Economía (manual)": {
@@ -13454,7 +13454,7 @@
       "publication_date_display": "4 de septiembre de 2026",
       "reference_period": "Junio de 2026",
       "frequency": "Mensual",
-      "status": "próximo",
+      "status": "publicado",
       "source": "INEGI Sala de Prensa",
       "institution": "INEGI",
       "category": "Consumo e inversión",
@@ -13483,7 +13483,7 @@
       "publication_date_display": "4 de septiembre de 2026",
       "reference_period": "Junio de 2026",
       "frequency": "Mensual",
-      "status": "próximo",
+      "status": "publicado",
       "source": "INEGI Sala de Prensa",
       "institution": "INEGI",
       "category": "Consumo e inversión",
@@ -19451,64 +19451,6 @@
   ],
   "upcoming": [
     {
-      "indicator": "CONSUMO",
-      "program": "Indicador Mensual del Consumo Privado (IMCP). Año base 2018. Cifras preliminares",
-      "product": "Indicador Mensual del Consumo Privado",
-      "publication_date": "2026-09-04",
-      "publication_date_display": "4 de septiembre de 2026",
-      "reference_period": "Junio de 2026",
-      "frequency": "Mensual",
-      "status": "próximo",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Consumo e inversión",
-      "sigla": "IMCP",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 9,
-      "fecha_iso": "2026-09-04"
-    },
-    {
-      "indicator": "IMFBCF",
-      "program": "Indicador Mensual de la Formación Bruta de Capital Fijo (IMFBCF). Año base 2018. Cifras preliminares",
-      "product": "Indicador Mensual de la Formación Bruta de Capital Fijo",
-      "publication_date": "2026-09-04",
-      "publication_date_display": "4 de septiembre de 2026",
-      "reference_period": "Junio de 2026",
-      "frequency": "Mensual",
-      "status": "próximo",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Consumo e inversión",
-      "sigla": "IMFBCF",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 9,
-      "fecha_iso": "2026-09-04"
-    },
-    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México",
       "product": "Estado de cuenta del Banco de México",
@@ -20029,9 +19971,125 @@
       "anio": 2026,
       "mes": 10,
       "fecha_iso": "2026-10-06"
+    },
+    {
+      "indicator": "INPC",
+      "program": "Índice Nacional de Precios al Consumidor (INPC). Base 2ª Quincena Julio 2018. Actualización de Canasta y Ponderadores 2024. Mensual. Cifras definitivas",
+      "product": "Índice Nacional de Precios al Consumidor",
+      "publication_date": "2026-10-08",
+      "publication_date_display": "8 de octubre de 2026",
+      "reference_period": "Septiembre de 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Precios",
+      "sigla": "INPC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 10,
+      "fecha_iso": "2026-10-08"
+    },
+    {
+      "indicator": "INPP",
+      "program": "Índice Nacional de Precios Productor (INPP). Año base julio 2019. Actualización 2025. Cifras definitivas",
+      "product": "Índice Nacional de Precios Productor",
+      "publication_date": "2026-10-08",
+      "publication_date_display": "8 de octubre de 2026",
+      "reference_period": "Septiembre de 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Precios",
+      "sigla": "INPP",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 10,
+      "fecha_iso": "2026-10-08"
     }
   ],
   "recent": [
+    {
+      "indicator": "IMFBCF",
+      "program": "Indicador Mensual de la Formación Bruta de Capital Fijo (IMFBCF). Año base 2018. Cifras preliminares",
+      "product": "Indicador Mensual de la Formación Bruta de Capital Fijo",
+      "publication_date": "2026-09-04",
+      "publication_date_display": "4 de septiembre de 2026",
+      "reference_period": "Junio de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Consumo e inversión",
+      "sigla": "IMFBCF",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 9,
+      "fecha_iso": "2026-09-04"
+    },
+    {
+      "indicator": "CONSUMO",
+      "program": "Indicador Mensual del Consumo Privado (IMCP). Año base 2018. Cifras preliminares",
+      "product": "Indicador Mensual del Consumo Privado",
+      "publication_date": "2026-09-04",
+      "publication_date_display": "4 de septiembre de 2026",
+      "reference_period": "Junio de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Consumo e inversión",
+      "sigla": "IMCP",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 9,
+      "fecha_iso": "2026-09-04"
+    },
     {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México de la semana al 28 de agosto de 2026",
@@ -20679,92 +20737,6 @@
       "anio": 2026,
       "mes": 8,
       "fecha_iso": "2026-08-06"
-    },
-    {
-      "indicator": "IMFBCF",
-      "program": "Indicador Mensual de la Formación Bruta de Capital Fijo (IMFBCF). Año base 2018. Cifras preliminares",
-      "product": "Indicador Mensual de la Formación Bruta de Capital Fijo",
-      "publication_date": "2026-08-05",
-      "publication_date_display": "5 de agosto de 2026",
-      "reference_period": "Mayo de 2026",
-      "frequency": "Mensual",
-      "status": "publicado",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Consumo e inversión",
-      "sigla": "IMFBCF",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_08.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_08.pdf",
-          "label": "Boletín PDF",
-          "size": "0.29 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "word",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_08.docx",
-          "label": "Boletín Word",
-          "size": "0.22 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "excel",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_08.xlsx",
-          "label": "Boletín Excel",
-          "size": "0.03 MB"
-        }
-      ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 8,
-      "fecha_iso": "2026-08-05"
-    },
-    {
-      "indicator": "CONSUMO",
-      "program": "Indicador Mensual del Consumo Privado (IMCP). Año base 2018. Cifras preliminares",
-      "product": "Indicador Mensual del Consumo Privado",
-      "publication_date": "2026-08-05",
-      "publication_date_display": "5 de agosto de 2026",
-      "reference_period": "Mayo de 2026",
-      "frequency": "Mensual",
-      "status": "publicado",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Consumo e inversión",
-      "sigla": "IMCP",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_08.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_08.pdf",
-          "label": "Boletín PDF",
-          "size": "0.26 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "word",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_08.docx",
-          "label": "Boletín Word",
-          "size": "0.21 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "excel",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_08.xlsx",
-          "label": "Boletín Excel",
-          "size": "0.03 MB"
-        }
-      ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 8,
-      "fecha_iso": "2026-08-05"
     }
   ],
   "categories": {

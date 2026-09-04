@@ -1,8 +1,8 @@
 {
   "_comment": "Generado por scripts/build_calendar.py a partir de fuentes oficiales y respaldos. No editar a mano.",
   "fuente": "INEGI Sala de Prensa | Banco de México calendario | Secretaría de Economía (manual)",
-  "actualizado": "2026-09-03",
-  "as_of": "2026-09-03",
+  "actualizado": "2026-09-04",
+  "as_of": "2026-09-04",
   "anios": [
     2025,
     2026,
@@ -6070,7 +6070,7 @@
       "anio": 2026,
       "mes": 9,
       "periodo_referencia": "Junio de 2026",
-      "estatus": "próximo",
+      "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
     },
@@ -6087,7 +6087,7 @@
       "anio": 2026,
       "mes": 9,
       "periodo_referencia": "Junio de 2026",
-      "estatus": "próximo",
+      "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
     },

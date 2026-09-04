@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-04T03:12:50+00:00",
-  "last_update_ct": "2026-09-03T21:12:17-06:00",
+  "generated_at": "2026-09-04T03:22:22+00:00",
+  "last_update_ct": "2026-09-03T21:19:47-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -2346,15 +2346,15 @@
     },
     "IED": {
       "kpi": {
-        "assessment": "adverso",
-        "dir": "down",
-        "ultimoFmt": "10,465",
-        "ultimoRaw": 10464.95,
-        "ultimoP": "2T-26",
-        "varText": "-4.0%",
-        "varMag": -4.0,
-        "pos": false,
-        "varColor": "#9b2247",
+        "assessment": "favorable",
+        "dir": "up",
+        "ultimoFmt": "34,968",
+        "ultimoRaw": 34968,
+        "ultimoP": "Ene-Jun 26",
+        "varText": "+2.1%",
+        "varMag": 2.1,
+        "pos": true,
+        "varColor": "#1e5b4f",
         "varLabel": "Var. anual del acumulado",
         "maxFmt": "27,219",
         "maxRaw": 27218.64,
@@ -2585,20 +2585,35 @@
           "1T-26",
           "2T-26"
         ],
-        "semaforo": "malo",
-        "yoyText": "—",
-        "yoyLabel": "—"
+        "semaforo": "bueno",
+        "flujoRaw": 10464.95,
+        "flujoText": "10,465",
+        "flujoP": "2T-26"
       },
-      "analysis": [
-        "En el segundo trimestre de 2026, la IED acumulada se ubicó en $10,465 millones de dólares (acumulado ene-jun, millones de dólares), con una variación anual elevada de -4.00% frente al mismo periodo del año anterior. Este resultado refleja una marcada contracción respecto al primer trimestre de 2026 (+2.00%), y deja al indicador por encima del promedio del periodo mostrado de $7,696 millones de dólares.",
-        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de $27,219 millones de dólares (primer trimestre de 2024) y un mínimo de −$3,990 millones de dólares (cuarto trimestre de 2025). El resultado más reciente se ubicó por encima del promedio del periodo mostrado. El último dato fue superior al del inicio del periodo mostrado. En su composición, el rubro predominante fue reinversión de utilidades (≈66% del total), lo que refleja sobre todo la permanencia de capital ya instalado más que la llegada de proyectos nuevos."
-      ],
+      "yoy": {
+        "mag": -3.5000000000000004,
+        "pos": false,
+        "text": "-3.5%",
+        "label": "Var. anual del flujo"
+      },
+      "annualVar": {
+        "mag": -3.5000000000000004,
+        "pos": false,
+        "text": "-3.5%",
+        "label": "Var. anual del flujo"
+      },
       "resumen": [
-        "En segundo trimestre de 2026, la IED acumulada se ubicó en $10,465 millones de dólares (acumulado ene-jun, millones de dólares). El valor de var. anual del acumulado fue de -4.0% frente al mismo periodo del año anterior.",
-        "En la serie mostrada, el indicador oscila entre un máximo de $27,219 millones de dólares (primer trimestre de 2024) y un mínimo de −$3,990 millones de dólares (cuarto trimestre de 2025). El último dato se ubica dentro del rango observado en el periodo mostrado.",
-        "La variación se clasifica como adversa según la lectura económica del indicador."
+        "Entre enero y junio de 2026, México recibió $34,968 millones de dólares de IED, una variación anual del 2.1% más que en el mismo periodo del año previo.",
+        "Durante el segundo trimestre de 2026, el flujo exclusivo fue de aproximadamente $10,465 millones de dólares.",
+        "La IED acumulada se compone de Reinversión de utilidades 88.5%, Nuevas inversiones 7.8% y Cuentas entre compañías 3.7% del acumulado.",
+        "Manufacturas concentró 38.6% de la IED acumulada."
       ],
-      "annualVar": null
+      "analysis": [
+        "Entre enero y junio de 2026, México recibió $34,968 millones de dólares de IED, una variación anual del 2.1% más que en el mismo periodo del año previo.",
+        "Durante el segundo trimestre de 2026, el flujo exclusivo fue de aproximadamente $10,465 millones de dólares.",
+        "La IED acumulada se compone de Reinversión de utilidades 88.5%, Nuevas inversiones 7.8% y Cuentas entre compañías 3.7% del acumulado.",
+        "Manufacturas concentró 38.6% de la IED acumulada."
+      ]
     },
     "DESOCUP": {
       "kpi": {
