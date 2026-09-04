@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-09-04T12:57:49+00:00",
+  "generated_at": "2026-09-04T16:48:58+00:00",
   "as_of": "2026-09-04",
   "fuente": "Calendario oficial de difusión",
   "sources": {
     "INEGI Sala de Prensa": {
       "status": "ok",
       "count": 1449,
-      "message": "1449 eventos consultados del INEGI",
-      "consulted_at": "2026-09-04",
+      "message": "Modo offline: 1449 eventos leídos de caché",
+      "consulted_at": null,
       "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/"
     },
     "Banco de México calendario": {
       "status": "ok",
       "count": 180,
-      "message": "180 eventos consultados de Banxico",
-      "consulted_at": "2026-09-04",
+      "message": "Modo offline: 180 eventos leídos de caché",
+      "consulted_at": null,
       "url": "https://www.banxico.org.mx/publicaciones-y-prensa/calendario-de-publicaciones-banco-de-mexico/"
     },
     "Secretaría de Economía (manual)": {
@@ -13460,28 +13460,14 @@
       "category": "Consumo e inversión",
       "sigla": "IMCP",
       "type": "event",
-      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_09.pdf",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_09.pdf",
-          "label": "Boletín PDF",
-          "size": "0.26 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "word",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_09.docx",
-          "label": "Boletín Word",
-          "size": "0.22 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "excel",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_09.xlsx",
-          "label": "Boletín Excel",
-          "size": "0.03 MB"
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
         }
       ],
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
@@ -13503,28 +13489,14 @@
       "category": "Consumo e inversión",
       "sigla": "IMFBCF",
       "type": "event",
-      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_09.pdf",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_09.pdf",
-          "label": "Boletín PDF",
-          "size": "0.28 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "word",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_09.docx",
-          "label": "Boletín Word",
-          "size": "0.22 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "excel",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_09.xlsx",
-          "label": "Boletín Excel",
-          "size": "0.03 MB"
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
         }
       ],
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
@@ -20074,28 +20046,14 @@
       "category": "Consumo e inversión",
       "sigla": "IMFBCF",
       "type": "event",
-      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_09.pdf",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_09.pdf",
-          "label": "Boletín PDF",
-          "size": "0.28 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "word",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_09.docx",
-          "label": "Boletín Word",
-          "size": "0.22 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "excel",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_09.xlsx",
-          "label": "Boletín Excel",
-          "size": "0.03 MB"
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
         }
       ],
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
@@ -20117,28 +20075,14 @@
       "category": "Consumo e inversión",
       "sigla": "IMCP",
       "type": "event",
-      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_09.pdf",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_09.pdf",
-          "label": "Boletín PDF",
-          "size": "0.26 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "word",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_09.docx",
-          "label": "Boletín Word",
-          "size": "0.22 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "excel",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_09.xlsx",
-          "label": "Boletín Excel",
-          "size": "0.03 MB"
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
         }
       ],
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",

@@ -4,6 +4,7 @@ import { ORDER, LABELS, SIGLA } from "./config.js";
 
 
 const MES_NOMBRES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+const MES_CORTOS = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
 const DIA_CORTOS = ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"];
 
 const FILE_ICON = (letter) => `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" role="img"><title>${letter}</title><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/><text x="12" y="17" font-size="8" font-family="sans-serif" font-weight="700" text-anchor="middle" fill="currentColor">${letter}</text></svg>`;
@@ -63,6 +64,12 @@ export function displayDate(iso) {
   const d = parseIso(iso);
   if (!d) return iso || "—";
   return `${d.getDate()} de ${MES_NOMBRES[d.getMonth()]} de ${d.getFullYear()}`;
+}
+
+export function shortDate(iso) {
+  const d = parseIso(iso);
+  if (!d) return iso || "—";
+  return `${String(d.getDate()).padStart(2, "0")} ${MES_CORTOS[d.getMonth()]} ${String(d.getFullYear()).slice(-2)}`;
 }
 
 // Para comparaciones sin problemas de zona horaria
@@ -426,15 +433,20 @@ function renderHighlights(ctx) {
   const wrap = el("div", { class: "cal-highlights" });
 
   // Próximas publicaciones
-  const left = el("div", { class: "panel cal-hero" });
+  const left = el("div", { class: "panel cal-upcoming" });
+  left.append(el("h3", {}, "Próximas publicaciones"));
   const upcoming = upcomingPublications(ctx, 8);
   const nextOne = upcoming[0];
-  left.append(el("div", { class: "cal-hero-lbl" }, "Próximas publicaciones"));
+
+  // Hero compacto de la siguiente publicación
   if (nextOne) {
-    left.append(el("div", { class: "cal-hero-date" }, nextOne.fecha_publicacion));
-    left.append(el("div", { class: "cal-hero-ind" }, `${nextOne.indicador} · ${nextOne.periodo_referencia}`));
-    left.append(el("div", { class: "cal-hero-src" }, `${nextOne.producto} — ${nextOne.institucion}`));
-    left.append(statusChip(nextOne.estatus));
+    const hero = el("div", { class: "cal-hero-sm" });
+    hero.append(el("div", { class: "cal-hero-sm-label" }, "Próxima publicación"));
+    hero.append(el("div", { class: "cal-hero-sm-date" }, nextOne.fecha_publicacion));
+    hero.append(el("div", { class: "cal-hero-sm-main" }, `${nextOne.indicador} · ${nextOne.periodo_referencia}`));
+    hero.append(el("div", { class: "cal-hero-sm-src" }, `${nextOne.producto} — ${nextOne.institucion}`));
+    hero.append(statusChip(nextOne.estatus));
+    left.append(hero);
   } else {
     left.append(el("div", { class: "muted" }, "Sin próximas publicaciones registradas."));
   }
@@ -443,10 +455,10 @@ function renderHighlights(ctx) {
   upcoming.slice(1).forEach((c) => {
     const src = shortSource(c);
     const row = el("div", { class: "cal-list-row" },
-      el("span", { class: "cal-row-date" }, c.fecha_publicacion || "—"),
+      el("span", { class: "cal-row-date" }, shortDate(c.fecha_iso)),
       el("div", { class: "cal-row-main" },
         el("span", { class: "cal-row-title" }, c.indicador),
-        c.periodo_referencia ? el("span", { class: "cal-row-period" }, ` · ${c.periodo_referencia}`) : null
+        c.periodo_referencia ? el("span", { class: "cal-row-period" }, c.periodo_referencia) : null
       ),
       src ? el("span", { class: "cal-row-source" }, src) : null
     );
@@ -460,19 +472,22 @@ function renderHighlights(ctx) {
   wrap.append(left);
 
   // Últimas publicaciones
-  const right = el("div", { class: "panel" });
+  const right = el("div", { class: "panel cal-recent" });
   right.append(el("h3", {}, "Últimas publicaciones"));
   const recent = recentPublications(ctx, 8);
   const recentList = el("div", { class: "cal-recent-list" });
   if (recent.length) {
     recent.forEach((c) => {
-      const dls = deliverableBar(c.deliverables);
-      const actions = dls ? el("div", { class: "cal-row-actions" }, dls) : null;
+      let actions = null;
+      if (c.deliverables?.length) {
+        actions = el("div", { class: "cal-row-actions" });
+        c.deliverables.forEach((d) => actions.append(deliverableBtn(d)));
+      }
       const row = el("div", { class: "cal-list-row" },
-        el("span", { class: "cal-row-date" }, c.fecha_publicacion || "—"),
+        el("span", { class: "cal-row-date" }, shortDate(c.fecha_iso)),
         el("div", { class: "cal-row-main" },
           el("span", { class: "cal-row-title" }, c.indicador),
-          c.periodo_referencia ? el("span", { class: "cal-row-period" }, ` · ${c.periodo_referencia}`) : null
+          c.periodo_referencia ? el("span", { class: "cal-row-period" }, c.periodo_referencia) : null
         ),
         actions
       );
