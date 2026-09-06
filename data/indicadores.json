@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-04T18:56:16+00:00",
+    "generated_at": "2026-09-04T22:12:26+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-09-04T12:56:16-06:00",
+    "last_update_ct": "2026-09-04T16:12:26-06:00",
     "periodo_referencia_reciente": {
       "period": "Ago 26",
       "period_long": "Ago 26"
@@ -501,7 +501,7 @@
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "ACTUALIZADO",
+      "estado": "ERROR DE FUENTE",
       "origen_dato": "api",
       "fecha_publicacion": "30 de julio de 2026",
       "periodo_referencia": "2T-26 P",
@@ -513,7 +513,7 @@
         "periodo_referencia": "Cuarto trimestre de 2024",
         "tipo": "calculada"
       },
-      "motivo_frescura": "El periodo cargado (2T-26) coincide con el último periodo esperado (2T-26).",
+      "motivo_frescura": "El pipeline reportó un error para PIB y el dato podría no estar actualizado.",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_07.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/PIB/PIB_datos.xlsx",
@@ -3903,7 +3903,7 @@
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "ACTUALIZADO",
+      "estado": "ERROR DE FUENTE",
       "origen_dato": "api",
       "fecha_publicacion": "24 de agosto de 2026",
       "periodo_referencia": "2T-26",
@@ -4265,7 +4265,7 @@
         "periodo_referencia": "3er trimestre 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (2T-26) coincide con el último periodo esperado (2° trimestre 2026).",
+      "motivo_frescura": "El pipeline reportó un error para PIBSEC y el dato podría no estar actualizado.",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_08.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/PIBSEC/PIBSEC_datos.xlsx",
@@ -10040,7 +10040,7 @@
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "ACTUALIZADO",
+      "estado": "ERROR DE FUENTE",
       "origen_dato": "api",
       "fecha_publicacion": "24 de agosto de 2026",
       "periodo_referencia": "Jun 26",
@@ -10896,7 +10896,7 @@
         "periodo_referencia": "Julio de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (Jun 26) coincide con el último periodo esperado (Junio de 2026).",
+      "motivo_frescura": "El pipeline reportó un error para IGAE y el dato podría no estar actualizado.",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_08.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/IGAE/IGAE_datos.xlsx",
@@ -20308,7 +20308,7 @@
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "ACTUALIZADO",
+      "estado": "ERROR DE FUENTE",
       "origen_dato": "api",
       "fecha_publicacion": "11 de agosto de 2026",
       "periodo_referencia": "Jun 26",
@@ -21205,7 +21205,7 @@
         "periodo_referencia": "Julio de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (Jun 26) coincide con el último periodo esperado (Junio de 2026).",
+      "motivo_frescura": "El pipeline reportó un error para IMAI y el dato podría no estar actualizado.",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_08.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/IMAI/IMAI_datos.xlsx",
@@ -22307,7 +22307,7 @@
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "ACTUALIZADO",
+      "estado": "ERROR DE FUENTE",
       "origen_dato": "api",
       "fecha_publicacion": "5 de agosto de 2026",
       "periodo_referencia": "May 26",
@@ -22399,7 +22399,7 @@
         "periodo_referencia": "Junio de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (May 26) coincide con el último periodo esperado (Mayo de 2026).",
+      "motivo_frescura": "El pipeline reportó un error para CONSUMO y el dato podría no estar actualizado.",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_08.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/CONSUMO/CONSUMO_datos.xlsx",
@@ -23697,7 +23697,7 @@
       "requiere_token": null,
       "serie_confirmada": false,
       "clasificacion": "principal",
-      "estado": "ACTUALIZADO",
+      "estado": "ERROR DE FUENTE",
       "origen_dato": "respaldo",
       "fecha_publicacion": "24 de agosto de 2026",
       "periodo_referencia": "2T-26",
@@ -23968,7 +23968,7 @@
         "periodo_referencia": "3° trimestre 2026",
         "tipo": "no_anunciada"
       },
-      "motivo_frescura": "El periodo cargado (2T-26) coincide con el último periodo esperado (2° trimestre 2026).",
+      "motivo_frescura": "El pipeline reportó un error para IED y el dato podría no estar actualizado.",
       "url_boletin_oficial": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa",
       "xlsx_disponible": true,
       "xlsx_causa": null,
@@ -25591,7 +25591,7 @@
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "ACTUALIZADO",
+      "estado": "ERROR DE FUENTE",
       "origen_dato": "api",
       "fecha_publicacion": "27 de agosto de 2026",
       "periodo_referencia": "Jul 26",
@@ -25910,7 +25910,7 @@
         "periodo_referencia": "Agosto de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo esperado (Julio de 2026).",
+      "motivo_frescura": "El pipeline reportó un error para DESOCUP y el dato podría no estar actualizado.",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_08.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/DESOCUP/DESOCUP_datos.xlsx",
@@ -28443,7 +28443,7 @@
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "ACTUALIZADO",
+      "estado": "ERROR DE FUENTE",
       "origen_dato": "api",
       "fecha_publicacion": "7 de agosto de 2026",
       "periodo_referencia": "Jul 26",
@@ -28695,7 +28695,7 @@
         "periodo_referencia": "Agosto de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo esperado (Julio de 2026).",
+      "motivo_frescura": "El pipeline reportó un error para INPC y el dato podría no estar actualizado.",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_08.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/INPC/INPC_datos.xlsx",
@@ -47055,7 +47055,7 @@
       "requiere_token": null,
       "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "ACTUALIZADO",
+      "estado": "ERROR DE FUENTE",
       "origen_dato": "api",
       "fecha_publicacion": "5 de agosto de 2026",
       "periodo_referencia": "Jun 26",
@@ -48007,7 +48007,7 @@
         "periodo_referencia": "Julio de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (Jun 26) coincide con el último periodo esperado (Junio de 2026).",
+      "motivo_frescura": "El pipeline reportó un error para IMFBCF y el dato podría no estar actualizado.",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_08.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/IMFBCF/IMFBCF_datos.xlsx",
@@ -49348,7 +49348,7 @@
       "requiere_token": null,
       "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "ACTUALIZADO",
+      "estado": "ERROR DE FUENTE",
       "origen_dato": "api",
       "fecha_publicacion": "20 de agosto de 2026",
       "periodo_referencia": "Jul 26",
@@ -49538,7 +49538,7 @@
         "periodo_referencia": "Agosto de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo esperado (Julio de 2026).",
+      "motivo_frescura": "El pipeline reportó un error para IOAE y el dato podría no estar actualizado.",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_08.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/IOAE/IOAE_datos.xlsx",
@@ -55079,7 +55079,7 @@
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "ACTUALIZADO",
+      "estado": "ERROR DE FUENTE",
       "origen_dato": "api",
       "fecha_publicacion": "17 de agosto de 2026",
       "periodo_referencia": "Jun 26",
@@ -55674,7 +55674,7 @@
         "periodo_referencia": "Julio de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (Jun 26) coincide con el último periodo esperado (Junio de 2026).",
+      "motivo_frescura": "El pipeline reportó un error para EMIM y el dato podría no estar actualizado.",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_08.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/EMIM/EMIM_datos.xlsx",
@@ -69089,39 +69089,45 @@
           "values": [
             16.956
           ]
+        },
+        {
+          "period": "2026-09-04",
+          "values": [
+            16.8748
+          ]
         }
       ],
-      "last_observation": "2026-09-03",
+      "last_observation": "2026-09-04",
       "last_updated": "2026-09-04",
       "last_checked": "2026-09-04",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
-      "estado": "ACTUALIZADO",
+      "estado": "ERROR DE FUENTE",
       "origen_dato": "api",
       "fecha_publicacion": null,
-      "periodo_referencia": "2026-09-03",
+      "periodo_referencia": "2026-09-04",
       "fecha_consulta": "2026-09-04",
       "source_origin": "api",
       "metrics": {
         "kpi": {
-          "ultimoP": "3 Sep 26",
-          "ultimoRaw": 16.956,
-          "ultimoFmt": "$16.96",
-          "varText": "-0.17%",
-          "varMag": -0.001719,
+          "ultimoP": "4 Sep 26",
+          "ultimoRaw": 16.8748,
+          "ultimoFmt": "$16.87",
+          "varText": "-0.48%",
+          "varMag": -0.004789,
           "varLabel": "Cambio diario",
           "pos": false,
           "varColor": "#9b2247",
-          "monthlyText": "-0.35%",
+          "monthlyText": "-0.82%",
           "monthlyLabel": "Cambio mensual",
-          "yoyText": "-9.26%",
+          "yoyText": "-10.04%",
           "yoyLabel": "Cambio anual",
-          "yoyRaw": -0.092646,
-          "yoyMag": -0.092646,
+          "yoyRaw": -0.10038,
+          "yoyMag": -0.10038,
           "yoyPos": false,
           "yoyColor": "#9b2247",
-          "range12mText": "$16.90 — $18.76",
+          "range12mText": "$16.87 — $18.76",
           "range12mLabel": "Rango 12 meses mínimo — máximo",
           "maxRaw": 25.1185,
           "minRaw": 16.3357,
@@ -69129,7 +69135,7 @@
           "minP": "8 Abr 24",
           "maxFmt": "$25.12",
           "minFmt": "$16.34",
-          "lastI": 2181,
+          "lastI": 2182,
           "series": [
             19.4899,
             19.3717,
@@ -71312,7 +71318,8 @@
             17.0147,
             16.9755,
             16.9852,
-            16.956
+            16.956,
+            16.8748
           ],
           "periods": [
             "2018-01-02",
@@ -73496,29 +73503,30 @@
             "2026-08-31",
             "2026-09-01",
             "2026-09-02",
-            "2026-09-03"
+            "2026-09-03",
+            "2026-09-04"
           ],
           "assessment": "neutral",
           "dir": "down",
           "semaforo": "estable"
         },
         "yoy": {
-          "mag": -0.092646,
+          "mag": -0.10038,
           "pos": false,
-          "text": "-9.26%",
+          "text": "-10.04%",
           "label": "Cambio anual"
         },
         "resumen": [
-          "En 3 de septiembre de 2026, el tipo de cambio FIX se ubicó en $16.96 (pesos por dólar).",
-          "El cambio diario fue de -0.17% respecto al día hábil previo.",
-          "Respecto al último día hábil del mes previo, el FIX registró un cambio mensual de -0.35%.",
-          "A tasa anual, el FIX varió -9.26%; en los últimos 12 meses osciló entre $16.90 — $18.76."
+          "En 4 de septiembre de 2026, el tipo de cambio FIX se ubicó en $16.87 (pesos por dólar).",
+          "El cambio diario fue de -0.48% respecto al día hábil previo.",
+          "Respecto al último día hábil del mes previo, el FIX registró un cambio mensual de -0.82%.",
+          "A tasa anual, el FIX varió -10.04%; en los últimos 12 meses osciló entre $16.87 — $18.76."
         ]
       },
       "periodo_referencia_oficial": "Sep 26",
       "fecha_publicacion_oficial": null,
       "proxima_publicacion": null,
-      "motivo_frescura": "El periodo cargado (2026-09-03) coincide con el último periodo esperado (Sep 26).",
+      "motivo_frescura": "El pipeline reportó un error para TIPOCAMBIO y el dato podría no estar actualizado.",
       "url_boletin_oficial": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/TIPOCAMBIO/TIPOCAMBIO_datos.xlsx",
@@ -86597,7 +86605,7 @@
           ]
         }
       ],
-      "fecha_ultima_observacion": "2026-09-03",
+      "fecha_ultima_observacion": "2026-09-04",
       "url_fuente_oficial": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
       "fecha_ultima_publicacion": null,
       "regla_publicacion": null,
@@ -87261,7 +87269,7 @@
         {
           "period": "Sep 26",
           "values": [
-            16.956
+            16.8748
           ]
         }
       ]
@@ -106239,7 +106247,7 @@
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
-      "estado": "ACTUALIZADO",
+      "estado": "ERROR DE FUENTE",
       "origen_dato": "api",
       "fecha_publicacion": null,
       "periodo_referencia": "2026-09-04",
@@ -106319,7 +106327,7 @@
       "periodo_referencia_oficial": "Sep 26",
       "fecha_publicacion_oficial": null,
       "proxima_publicacion": null,
-      "motivo_frescura": "El periodo cargado (2026-09-04) coincide con el último periodo esperado (Sep 26).",
+      "motivo_frescura": "El pipeline reportó un error para TASA y el dato podría no estar actualizado.",
       "url_boletin_oficial": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/{8DA3F519-341F-480E-1D4E-1AEE71DD08DA}.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/TASA/TASA_datos.xlsx",
@@ -127068,9 +127076,9 @@
       "proximo": "Siguiente publicación semanal",
       "fuente": {
         "nombre": "Banco de México — SIE / Estado de cuenta semanal",
-        "serie": "SF43707",
         "link": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/estado-cuenta-semanal-reserva.html",
-        "metodo": "Banxico SIE API"
+        "metodo": "Banxico SIE API",
+        "serie": "SF43707"
       },
       "columns": [
         {
@@ -131170,7 +131178,7 @@
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
-      "estado": "ACTUALIZADO",
+      "estado": "ERROR DE FUENTE",
       "origen_dato": "api",
       "fecha_publicacion": null,
       "periodo_referencia": "Semana al 28 Ago 26",
@@ -132124,7 +132132,7 @@
       "periodo_referencia_oficial": "Ago 26",
       "fecha_publicacion_oficial": null,
       "proxima_publicacion": null,
-      "motivo_frescura": "El periodo cargado (2026-08-28) coincide con el último periodo esperado (Ago 26).",
+      "motivo_frescura": "El pipeline reportó un error para RESERVAS y el dato podría no estar actualizado.",
       "url_boletin_oficial": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{CCBFCEE4-FB9B-F179-93C3-F376FBE5491F}.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/RESERVAS/RESERVAS_datos.xlsx",
@@ -136809,7 +136817,7 @@
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "ACTUALIZADO",
+      "estado": "ERROR DE FUENTE",
       "origen_dato": "api",
       "fecha_publicacion": "1 de septiembre de 2026",
       "periodo_referencia": "Ago 26",
@@ -137069,7 +137077,7 @@
         "periodo_referencia": "Septiembre de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (Ago 26) coincide con el último periodo esperado (Agosto de 2026).",
+      "motivo_frescura": "El pipeline reportó un error para EMOE y el dato podría no estar actualizado.",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_09.pdf",
       "xlsx_disponible": true,
       "xlsx_causa": null,
@@ -156268,7 +156276,7 @@
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "ACTUALIZADO",
+      "estado": "ERROR DE FUENTE",
       "origen_dato": "api",
       "fecha_publicacion": "27 de agosto de 2026",
       "periodo_referencia": "Jul 26",
@@ -157469,7 +157477,7 @@
         "periodo_referencia": "Agosto de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo esperado (Julio de 2026).",
+      "motivo_frescura": "El pipeline reportó un error para BCMM y el dato podría no estar actualizado.",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_08.pdf",
       "xlsx_disponible": true,
       "xlsx_causa": null,
@@ -159703,7 +159711,7 @@
           "count": null
         }
       ],
-      "estado": "ACTUALIZADO",
+      "estado": "ERROR DE FUENTE",
       "origen_dato": "api",
       "fecha_publicacion": "07 de agosto de 2026",
       "periodo_referencia": "Jul 26",
@@ -159962,7 +159970,7 @@
         "periodo_referencia": "Agosto de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo esperado (Julio de 2026).",
+      "motivo_frescura": "El pipeline reportó un error para INPP y el dato podría no estar actualizado.",
       "url_fuente_oficial": "https://www.inegi.org.mx/programas/inpp/2019a/",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_07.pdf",
       "fecha_ultima_publicacion": "7 de agosto de 2026",
