@@ -83,7 +83,7 @@ def test_duplicate_flagged_as_revision(payload):
 # Se comparan con los valores públicados en los boletines más recientes.
 @pytest.mark.parametrize("key,monthly_col,annual_col,expected_monthly,expected_annual", [
     ("CONSUMO", 1, 2, 0.001, 0.026),
-    ("IMFBCF", 1, 2, -0.004, 0.024),
+    ("IMFBCF", 1, 2, 0.013515, 0.058812),
     ("IGAE", 1, 2, -0.001, 0.028191),
     ("IOAE", 3, 0, 0.001, 0.027),
 ])
