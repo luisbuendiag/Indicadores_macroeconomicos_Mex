@@ -748,6 +748,11 @@ tbody tr:last-child td { font-weight: 600; color: var(--dkgreen); }
   white-space: nowrap;
   justify-self: end;
 }
+.cal-upcoming .cal-row-source {
+  background: #d4e3d9;
+  color: #14473b;
+  border: 1px solid rgba(30,91,79,.18);
+}
 
 /* Últimas publicaciones: zona de acciones */
 .cal-recent-list .cal-list-row { grid-template-columns: 80px minmax(0, 1fr) minmax(220px, 300px); }
