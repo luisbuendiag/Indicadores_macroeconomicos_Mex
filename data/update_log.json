@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-09-07T20:13:03+00:00",
+  "started_at": "2026-09-07T21:55:34+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -114,8 +114,11 @@
   ],
   "changes": [
     "IGAE: fuente normalizada a serie total 737121",
+    "TIPOCAMBIO: actualizado nombre",
+    "TIPOCAMBIO: actualizado fuente",
     "TASA: actualizado nombre",
     "TASA: actualizado descripcion",
+    "TASA: actualizado fuente",
     "RESERVAS: actualizado fuente",
     "columnas override PIB: 4 columnas",
     "columnas override PIBSEC: 12 columnas",
@@ -350,7 +353,7 @@
     "frescura: BCMM -> ACTUALIZADO",
     "frescura: INPP -> ACTUALIZADO",
     "frescura: SIC -> ACTUALIZADO",
-    "meta: last_update_ct=2026-09-07T15:09:44-06:00"
+    "meta: last_update_ct=2026-09-07T16:55:25-06:00"
   ],
   "consultas": [
     {
@@ -2384,5 +2387,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-09-07T21:09:46+00:00"
+  "finished_at": "2026-09-07T22:55:26+00:00"
 }
