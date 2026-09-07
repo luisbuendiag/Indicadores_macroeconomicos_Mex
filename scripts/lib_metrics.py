@@ -2241,11 +2241,12 @@ def _reservas_metrics(ind: dict, kpicfg: dict, offline: bool = False) -> dict[st
         ytd_bullet += " respecto al cierre del año previo."
         bullets.append(ytd_bullet)
 
-    # Botón de producto: apuntar al estado de cuenta semanal de Banxico.
-    # Descubrir el PDF del comunicado más reciente; si falla, usar la página estable.
-    url_final = _discover_reservas_url() if not offline else RESERVAS_ESTADO_CUENTA_URL
+    # Botón de producto: usar la página estable del estado de cuenta semanal de
+    # Banxico. El PDF dinámico resulta frágil (algunos clientes son redirigidos a
+    # un `anterior.banxico.org.mx` que responde 404), por lo que preferimos el
+    # endpoint de publicaciones vigente.
     ind["boletin_label"] = "ESTADO DE CUENTA"
-    ind["url_boletin_oficial"] = url_final
+    ind["url_boletin_oficial"] = RESERVAS_ESTADO_CUENTA_URL
     ind["periodo_referencia"] = kpi["ultimoP"]
     ind["last_observation"] = last_p
     fuente = ind.get("fuente") or {}

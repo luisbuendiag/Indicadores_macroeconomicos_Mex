@@ -3,7 +3,9 @@ from __future__ import annotations
 
 import json
 import re
+import socket
 from pathlib import Path
+from urllib import error as urllib_error
 from urllib import request as urllib_request
 
 import openpyxl
@@ -171,8 +173,15 @@ def test_reservas_url_responde_200():
     url = payload["indicators"]["RESERVAS"].get("url_boletin_oficial", "")
     assert url
     req = urllib_request.Request(url, method="HEAD", headers={"User-Agent": "Mozilla/5.0"})
-    with urllib_request.urlopen(req, timeout=20) as r:
-        assert r.status == 200
+    try:
+        with urllib_request.urlopen(req, timeout=20) as r:
+            assert r.status == 200
+    except urllib_error.HTTPError as e:
+        if e.code in (404, 410):
+            pytest.fail(f"URL final responde {e.code}")
+        pytest.skip(f"HTTP {e.code} desde el endpoint (probable bloqueo temporal)")
+    except (urllib_error.URLError, socket.timeout, OSError):
+        pytest.skip("sin conectividad al endpoint externo")
 
 
 def test_reservas_periodo_sin_doble_semana():
