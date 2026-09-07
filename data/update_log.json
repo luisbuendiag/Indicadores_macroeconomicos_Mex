@@ -1,12 +1,15 @@
 {
-  "started_at": "2026-09-07T15:02:06+00:00",
+  "started_at": "2026-09-07T15:04:20+00:00",
   "mode": "offline",
   "network_calls": false,
   "warnings": [],
   "changes": [
     "IGAE: fuente normalizada a serie total 737121",
+    "TIPOCAMBIO: actualizado nombre",
+    "TIPOCAMBIO: actualizado fuente",
     "TASA: actualizado nombre",
     "TASA: actualizado descripcion",
+    "TASA: actualizado fuente",
     "RESERVAS: actualizado fuente",
     "columnas override PIB: 4 columnas",
     "columnas override PIBSEC: 12 columnas",
@@ -63,10 +66,10 @@
     "boletín: BCMM descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_08.pdf",
     "frescura: BCMM -> ACTUALIZADO",
     "frescura: INPP -> ACTUALIZADO",
-    "meta: last_update_ct=2026-09-07T09:03:13-06:00"
+    "meta: last_update_ct=2026-09-07T09:05:14-06:00"
   ],
   "consultas": [],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-09-07T15:03:15+00:00"
+  "finished_at": "2026-09-07T15:05:16+00:00"
 }
