@@ -3,6 +3,7 @@
   "principal": [
     "PIB",
     "PIBSEC",
+    "SIC",
     "IOAE",
     "IGAE",
     "IMAI",
@@ -13,10 +14,10 @@
     "INPP",
     "CONSUMO",
     "IMFBCF",
-    "IED",
     "BCMM"
   ],
   "complementario": [
+    "IED",
     "TIPOCAMBIO",
     "TASA",
     "RESERVAS"
@@ -178,6 +179,145 @@
           "id": "5a",
           "label": "5 años",
           "count": 20
+        },
+        {
+          "id": "max",
+          "label": "Máximo",
+          "count": null
+        }
+      ]
+    },
+    "SIC": {
+      "requiere_token": "INEGI",
+      "serie_confirmada": true,
+      "clasificacion": "principal",
+      "nombre": "Sistema de Indicadores Cíclicos",
+      "sigla": "SIC",
+      "descripcion": "Sistema de Indicadores Cíclicos (SIC) del INEGI: el Indicador Coincidente refleja el estado general de la economía y sus puntos de giro, y el Indicador Adelantado busca anticiparlos. Ambos se construyen con los componentes cíclicos de sus variables, referenciados a su tendencia de largo plazo (ciclo de crecimiento, línea en 100 puntos).",
+      "frecuencia": "Mensual",
+      "unidad": "Puntos",
+      "ajuste_estacional": "Componentes cíclicos estimados mediante métodos econométricos; series referenciadas a su tendencia de largo plazo (=100 puntos)",
+      "grupo": "actividad",
+      "publicacion": "Primeros días del mes, con aproximadamente dos meses de rezago (cifras preliminares)",
+      "caracter": "Cifras preliminares sujetas a revisión",
+      "fuente": {
+        "nombre": "INEGI — Sistema de Indicadores Cíclicos (SIC)",
+        "link": "https://www.inegi.org.mx/app/relojcicloseconomicos/",
+        "metodo": "INEGI BIE API",
+        "serie": "214293 (Coincidente), 214307 (Adelantado) y componentes oficiales"
+      },
+      "columns": [
+        {
+          "label": "Indicador Coincidente (puntos)",
+          "index": 0,
+          "fmt": "idx"
+        },
+        {
+          "label": "Indicador Adelantado (puntos)",
+          "index": 1,
+          "fmt": "idx"
+        },
+        {
+          "label": "Dif. mensual Coincidente (puntos)",
+          "index": 2,
+          "fmt": "emoe"
+        },
+        {
+          "label": "Dif. a 12 meses Coincidente (puntos)",
+          "index": 3,
+          "fmt": "emoe"
+        },
+        {
+          "label": "Dif. mensual Adelantado (puntos)",
+          "index": 4,
+          "fmt": "emoe"
+        },
+        {
+          "label": "Dif. a 12 meses Adelantado (puntos)",
+          "index": 5,
+          "fmt": "emoe"
+        },
+        {
+          "label": "Comp. Coincidente: IGAE (puntos)",
+          "index": 6,
+          "fmt": "idx"
+        },
+        {
+          "label": "Comp. Coincidente: Actividad industrial (puntos)",
+          "index": 7,
+          "fmt": "idx"
+        },
+        {
+          "label": "Comp. Coincidente: Ingresos por suministro de bienes y servicios al por menor (puntos)",
+          "index": 8,
+          "fmt": "idx"
+        },
+        {
+          "label": "Comp. Coincidente: Asegurados permanentes en el IMSS (puntos)",
+          "index": 9,
+          "fmt": "idx"
+        },
+        {
+          "label": "Comp. Coincidente: Tasa de desocupación urbana (serie inversa, puntos)",
+          "index": 10,
+          "fmt": "idx"
+        },
+        {
+          "label": "Comp. Coincidente: Importaciones totales (puntos)",
+          "index": 11,
+          "fmt": "idx"
+        },
+        {
+          "label": "Comp. Adelantado: Tendencia del empleo en las manufacturas (puntos)",
+          "index": 12,
+          "fmt": "idx"
+        },
+        {
+          "label": "Comp. Adelantado: Momento adecuado para invertir (puntos)",
+          "index": 13,
+          "fmt": "idx"
+        },
+        {
+          "label": "Comp. Adelantado: Índice de Precios y Cotizaciones de la BMV real (puntos)",
+          "index": 14,
+          "fmt": "idx"
+        },
+        {
+          "label": "Comp. Adelantado: Tipo de cambio real bilateral con EUA (serie inversa, puntos)",
+          "index": 15,
+          "fmt": "idx"
+        },
+        {
+          "label": "Comp. Adelantado: TIIE (serie inversa, puntos)",
+          "index": 16,
+          "fmt": "idx"
+        },
+        {
+          "label": "Comp. Adelantado: S&P 500 de EUA (puntos)",
+          "index": 17,
+          "fmt": "idx"
+        }
+      ],
+      "windows": [
+        {
+          "id": "1a",
+          "label": "1 año",
+          "count": 12
+        },
+        {
+          "id": "3a",
+          "label": "3 años",
+          "count": 36
+        },
+        {
+          "id": "5a",
+          "label": "5 años",
+          "count": 60
+        },
+        {
+          "id": "10a",
+          "label": "10 años",
+          "count": 120
         },
         {
           "id": "max",
@@ -1473,7 +1613,7 @@
     "IED": {
       "requiere_token": null,
       "serie_confirmada": false,
-      "clasificacion": "principal",
+      "clasificacion": "complementario",
       "fuente": {
         "nombre": "Secretaría de Economía — Dirección General de Inversión Extranjera / RNIE",
         "link": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa",
@@ -1547,13 +1687,41 @@
         "serie": "701401 (IGOEC), 701570 (Manufacturas), 701407 (Construcción), 701826 (Comercio), 701975 (Servicios)"
       },
       "columns": [
-        { "label": "IGOEC", "index": 0, "fmt": "idx" },
-        { "label": "Cambio mensual IGOEC (puntos)", "index": 1, "fmt": "emoe" },
-        { "label": "Cambio anual IGOEC (puntos)", "index": 2, "fmt": "emoe" },
-        { "label": "Manufacturas", "index": 3, "fmt": "idx" },
-        { "label": "Construcción", "index": 4, "fmt": "idx" },
-        { "label": "Comercio", "index": 5, "fmt": "idx" },
-        { "label": "Servicios privados no financieros", "index": 6, "fmt": "idx" }
+        {
+          "label": "IGOEC",
+          "index": 0,
+          "fmt": "idx"
+        },
+        {
+          "label": "Cambio mensual IGOEC (puntos)",
+          "index": 1,
+          "fmt": "emoe"
+        },
+        {
+          "label": "Cambio anual IGOEC (puntos)",
+          "index": 2,
+          "fmt": "emoe"
+        },
+        {
+          "label": "Manufacturas",
+          "index": 3,
+          "fmt": "idx"
+        },
+        {
+          "label": "Construcción",
+          "index": 4,
+          "fmt": "idx"
+        },
+        {
+          "label": "Comercio",
+          "index": 5,
+          "fmt": "idx"
+        },
+        {
+          "label": "Servicios privados no financieros",
+          "index": 6,
+          "fmt": "idx"
+        }
       ]
     },
     "BCMM": {

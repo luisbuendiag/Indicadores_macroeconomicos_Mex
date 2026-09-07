@@ -298,7 +298,8 @@ def _category_for_key(key: str | None) -> str:
     if key in rules:
         return rules[key].get("category", "Financiero")
     mapping = {
-        "PIB": "Actividad económica", "PIBSEC": "Actividad económica", "IOAE": "Actividad económica",
+        "PIB": "Actividad económica", "PIBSEC": "Actividad económica", "SIC": "Actividad económica",
+        "IOAE": "Actividad económica",
         "IGAE": "Actividad económica", "IMAI": "Actividad económica", "EMIM": "Actividad económica",
         "INPC": "Precios", "INPP": "Precios", "CONSUMO": "Consumo e inversión",
         "IMFBCF": "Consumo e inversión", "DESOCUP": "Mercado laboral", "EMOE": "Mercado laboral",
@@ -315,7 +316,8 @@ def _frequency_for_key(key: str | None) -> str:
         if ind:
             return ind.get("frequency", "Mensual")
     mapping = {
-        "PIB": "Trimestral", "PIBSEC": "Trimestral", "IOAE": "Mensual", "IGAE": "Mensual",
+        "PIB": "Trimestral", "PIBSEC": "Trimestral", "SIC": "Mensual", "IOAE": "Mensual",
+        "IGAE": "Mensual",
         "IMAI": "Mensual", "EMIM": "Mensual", "INPC": "Mensual", "INPP": "Mensual",
         "CONSUMO": "Mensual", "IMFBCF": "Mensual", "DESOCUP": "Mensual", "EMOE": "Mensual",
         "BCMM": "Mensual", "IED": "Trimestral", "TIPOCAMBIO": "Diaria",

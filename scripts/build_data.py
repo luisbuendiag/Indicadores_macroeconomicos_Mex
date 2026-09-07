@@ -1157,6 +1157,52 @@ def compute_tasa_metrics(payload: dict) -> list[str]:
     return changes
 
 
+def compute_sic_metrics(payload: dict) -> list[str]:
+    """Alinea el periodo de referencia del SIC con sus indicadores compuestos.
+
+    Algunas componentes del SIC (p. ej. TIIE, S&P 500, índices de confianza)
+    tienen cobertura uno o dos meses más reciente que el Indicador Coincidente
+    y el Adelantado. Para que el periodo de referencia del indicador coincida
+    con el del boletín oficial, se recortan las filas finales en las que ambos
+    indicadores compuestos no tienen cifra.
+    """
+    changes: list[str] = []
+    ind = payload["indicators"].get("SIC")
+    if not ind:
+        return changes
+    obs = ind.get("observations", [])
+    if not obs:
+        return changes
+
+    def _headline_missing(o: dict) -> bool:
+        vals = o.get("values", [])
+        c = vals[0] if len(vals) > 0 else None
+        a = vals[1] if len(vals) > 1 else None
+        return c is None and a is None
+
+    trimmed = 0
+    while obs and _headline_missing(obs[-1]):
+        obs.pop()
+        trimmed += 1
+    if trimmed:
+        ind["observations"] = obs
+        changes.append(
+            f"SIC: {trimmed} periodo(s) finales sin cifra de los indicadores compuestos; "
+            "se conservan sólo dentro del periodo de referencia del boletín oficial"
+        )
+    # El periodo de referencia oficial del boletín es el del Indicador
+    # Coincidente; el Adelantado puede ir un mes adelante. `last_observation`
+    # usa el último mes con cifra del Coincidente para que la frescura compare
+    # contra el calendario oficial sin señalar un adelanto espurio.
+    last_coinc = next(
+        (o for o in reversed(obs) if (o.get("values") or [None])[0] is not None),
+        obs[-1] if obs else None,
+    )
+    if last_coinc:
+        ind["last_observation"] = last_coinc["period"]
+    return changes
+
+
 def run(offline: bool = False) -> int:
     log = {"started_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
            "mode": "offline" if offline else "online",
@@ -1277,6 +1323,10 @@ def run(offline: bool = False) -> int:
 
     # TASA: decisiones de política monetaria y metadatos de régimen.
     log["changes"].extend(compute_tasa_metrics(payload))
+
+    # SIC: el periodo de referencia es el de los indicadores compuestos
+    # (Coincidente y Adelantado), no el de las componentes con más cobertura.
+    log["changes"].extend(compute_sic_metrics(payload))
 
     # Frescura, calendario, métricas compartidas y metadatos temporales.
     log["changes"].extend(apply_freshness_and_meta(payload, log, offline=offline))

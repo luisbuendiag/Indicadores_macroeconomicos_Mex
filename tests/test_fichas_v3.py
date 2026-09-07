@@ -58,10 +58,10 @@ def test_balance_saldo_vs_variacion_distinct():
 
 
 EXPECTED_PRINCIPAL = [
-    "PIB", "PIBSEC", "IOAE", "IGAE", "IMAI", "EMIM", "EMOE", "DESOCUP",
-    "INPC", "INPP", "CONSUMO", "IMFBCF", "IED", "BCMM",
+    "PIB", "PIBSEC", "SIC", "IOAE", "IGAE", "IMAI", "EMIM", "EMOE", "DESOCUP",
+    "INPC", "INPP", "CONSUMO", "IMFBCF", "BCMM",
 ]
-EXPECTED_COMPLEMENTARIOS = ["TIPOCAMBIO", "TASA", "RESERVAS"]
+EXPECTED_COMPLEMENTARIOS = ["IED", "TIPOCAMBIO", "TASA", "RESERVAS"]
 
 
 def _parse_js_array(name):
@@ -77,7 +77,7 @@ def test_principal_indicators_exact_order():
 
 
 def test_complementarios_exact():
-    """Entorno financiero solo tiene 3 indicadores."""
+    """Entorno financiero tiene 4 indicadores: IED (SE) y variables de Banxico."""
     claves = _parse_js_array("COMPLEMENTARIOS")
     assert claves == EXPECTED_COMPLEMENTARIOS, f"COMPLEMENTARIOS incorrecto: {claves}"
 
@@ -128,12 +128,15 @@ def test_financial_cards_open_individual_view():
     entorno_render = re.search(r"function renderEntorno\(\).*?(?=\nfunction |\Z)", APP, re.S)
     assert entorno_render
     assert "panoramaCard(ind)" in entorno_render.group(0)
-    # Solo los 3 complementarios aparecen en la sección financiera.
-    for k in ["TIPOCAMBIO", "TASA", "RESERVAS"]:
+    # Los 4 complementarios aparecen en la sección financiera.
+    for k in ["IED", "TIPOCAMBIO", "TASA", "RESERVAS"]:
         assert f'"{k}"' in CONFIG
-    # IED y EMOE ya NO son financieros.
-    for k in ["IED", "EMOE"]:
+    # IED es complementario (Entorno financiero); EMOE y SIC son principales.
+    assert "IED" in _parse_js_array("COMPLEMENTARIOS")
+    assert "IED" not in _parse_js_array("PRINCIPAL")
+    for k in ["EMOE", "SIC"]:
         assert k not in _parse_js_array("COMPLEMENTARIOS")
+        assert k in _parse_js_array("PRINCIPAL")
 
 
 def test_product_buttons_evaluated_independently():
@@ -171,10 +174,11 @@ def test_navegacion_prev_next_por_seccion():
 
     assert nav(EXPECTED_PRINCIPAL, "EMIM") == ("IMAI", "EMOE")
     assert nav(EXPECTED_PRINCIPAL, "EMOE") == ("EMIM", "DESOCUP")
-    assert nav(EXPECTED_PRINCIPAL, "IMFBCF") == ("CONSUMO", "IED")
-    assert nav(EXPECTED_PRINCIPAL, "IED") == ("IMFBCF", "BCMM")
-    assert nav(EXPECTED_PRINCIPAL, "BCMM") == ("IED", None)
-    assert nav(EXPECTED_COMPLEMENTARIOS, "TIPOCAMBIO") == (None, "TASA")
+    assert nav(EXPECTED_PRINCIPAL, "IMFBCF") == ("CONSUMO", "BCMM")
+    assert nav(EXPECTED_PRINCIPAL, "SIC") == ("PIBSEC", "IOAE")
+    assert nav(EXPECTED_PRINCIPAL, "BCMM") == ("IMFBCF", None)
+    assert nav(EXPECTED_COMPLEMENTARIOS, "IED") == (None, "TIPOCAMBIO")
+    assert nav(EXPECTED_COMPLEMENTARIOS, "TIPOCAMBIO") == ("IED", "TASA")
     assert nav(EXPECTED_COMPLEMENTARIOS, "TASA") == ("TIPOCAMBIO", "RESERVAS")
     assert nav(EXPECTED_COMPLEMENTARIOS, "RESERVAS") == ("TASA", None)
 

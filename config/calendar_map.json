@@ -148,6 +148,17 @@
         "sigla": "EMOE",
         "usar_para_frescura": true,
         "preferred_program_contains": ["Indicadores de Confianza Empresarial"]
+      },
+      "SIC": {
+        "acronyms": ["SIC"],
+        "program_contains": ["Sistema de Indicadores Cíclicos"],
+        "program_exclude": [],
+        "product": "Sistema de Indicadores Cíclicos",
+        "frequency": "Mensual",
+        "category": "Actividad económica",
+        "institution": "INEGI",
+        "sigla": "SIC",
+        "usar_para_frescura": true
       }
     }
   },

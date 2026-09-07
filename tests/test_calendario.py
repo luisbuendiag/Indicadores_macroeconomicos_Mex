@@ -261,7 +261,8 @@ def test_categorias_y_filtros_indicadores_reclasificados(calendario_nuevo):
     """Las categorías e instituciones reflejan la clasificación permanente V3.
 
     - EMOE: Panorama (confianza empresarial), INEGI, mensual.
-    - IED:  Panorama (inversión), Secretaría de Economía/RNIE, trimestral.
+    - SIC:  Panorama (actividad económica), INEGI, mensual.
+    - IED:  Entorno financiero (inversión), Secretaría de Economía/RNIE, trimestral.
     - FIX:  Financiero, diario/regla, Banco de México.
     - TASA: Financiero, decisiones de política monetaria, Banco de México.
     - RESERVAS: Financiero, semanal, Banco de México.
@@ -281,11 +282,11 @@ def test_categorias_y_filtros_indicadores_reclasificados(calendario_nuevo):
         assert "opinión empresarial" in text or "confianza empresarial" in text, \
             f"EMOE no refleja confianza empresarial: {text}"
 
-    # IED es Panorama (inversión), SE-RNIE, trimestral.
+    # IED es Entorno financiero (inversión), SE-RNIE, trimestral.
     ied = _items_for(calendario_nuevo, "IED")
     assert ied, "No hay eventos IED"
     for e in ied:
-        assert e["indicator"] in principal, "IED debe ser indicador principal/Panorama"
+        assert e["indicator"] in complementario, "IED debe ser indicador complementario/Entorno financiero"
         assert e["institution"] == "Secretaría de Economía", f"IED institución incorrecta: {e['institution']}"
         assert e["frequency"] == "Trimestral", f"IED frecuencia incorrecta: {e['frequency']}"
         text = f"{e.get('program', '')} {e.get('product', '')}".lower()

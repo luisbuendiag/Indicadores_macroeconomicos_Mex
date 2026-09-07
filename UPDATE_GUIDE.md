@@ -28,6 +28,8 @@ Los IDs del BIE se dejaron en `null` en `config/series.json` para no consultar u
 equivocada. Con el token ya cargado:
 1. Ubica el ID de cada serie en el catálogo del BIE (PIB, IGAE, IMAI, INPC, ENOE, balanza,
    consumo, y el desglose de producción industrial: manufacturas, construcción, minería, energía).
+   El SIC ya está confirmado: `214293` (Coincidente), `214307` (Adelantado) y las
+   12 componentes oficiales (`214295`–`214319`), todas en `config/series.json`.
 2. Colócalos en `config/series.json` (campo `serie`, y `confirmar: false`).
 3. Completa la normalización por indicador en `scripts/sources/inegi.py` (mapear la
    respuesta del BIE al esquema `observations`), validando contra datos reales.

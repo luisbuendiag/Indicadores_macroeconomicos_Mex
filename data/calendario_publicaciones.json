@@ -3636,6 +3636,23 @@
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{38B252E7-1BB5-5478-202B-7CF6F0C834DB}.pdf"
     },
     {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "8 de enero de 2026",
+      "fecha_iso": "2026-01-08",
+      "anio": 2026,
+      "mes": 1,
+      "periodo_referencia": "Octubre de 2025",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_01.pdf",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
       "clave": "INPP",
       "indicador": "Índice Nacional de Precios Productor",
       "producto": "Índice Nacional de Precios Productor",
@@ -3955,6 +3972,23 @@
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
     },
     {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "5 de febrero de 2026",
+      "fecha_iso": "2026-02-05",
+      "anio": 2026,
+      "mes": 2,
+      "periodo_referencia": "Noviembre de 2025",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_02.pdf",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
       "clave": "TASA",
       "indicador": "Tasa de interés objetivo",
       "producto": "Anuncio de la Decisión de Política Monetaria",
@@ -4236,6 +4270,23 @@
       "periodo_referencia": "27 de febrero de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{5E716F8C-2B55-CAD5-9C2C-1FC936E50D13}.pdf"
+    },
+    {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "4 de marzo de 2026",
+      "fecha_iso": "2026-03-04",
+      "anio": 2026,
+      "mes": 3,
+      "periodo_referencia": "Diciembre de 2025",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_03.pdf",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IMFBCF",
@@ -4556,6 +4607,23 @@
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
     },
     {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "6 de abril de 2026",
+      "fecha_iso": "2026-04-06",
+      "anio": 2026,
+      "mes": 4,
+      "periodo_referencia": "Enero de 2026",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_04.pdf",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
       "clave": "RESERVAS",
       "indicador": "Reservas internacionales",
       "producto": "Estado de cuenta del Banco de México",
@@ -4857,6 +4925,23 @@
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
     },
     {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "6 de mayo de 2026",
+      "fecha_iso": "2026-05-06",
+      "anio": 2026,
+      "mes": 5,
+      "periodo_referencia": "Febrero de 2026",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_05.pdf",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
       "clave": "TASA",
       "indicador": "Tasa de interés objetivo",
       "producto": "Anuncio de la Decisión de Política Monetaria",
@@ -5138,6 +5223,23 @@
       "periodo_referencia": "29 de mayo de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{6B8E611D-17BB-DCA9-304E-8456C55920C0}.pdf"
+    },
+    {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "3 de junio de 2026",
+      "fecha_iso": "2026-06-03",
+      "anio": 2026,
+      "mes": 6,
+      "periodo_referencia": "Marzo de 2026",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_06.pdf",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IMFBCF",
@@ -5422,6 +5524,23 @@
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_07.pdf",
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+    },
+    {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "3 de julio de 2026",
+      "fecha_iso": "2026-07-03",
+      "anio": 2026,
+      "mes": 7,
+      "periodo_referencia": "Abril de 2026",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_07.pdf",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IMFBCF",
@@ -5723,6 +5842,23 @@
       "periodo_referencia": "31 de julio de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{053FE157-1460-9BD6-9381-7516FE09F083}.pdf"
+    },
+    {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "4 de agosto de 2026",
+      "fecha_iso": "2026-08-04",
+      "anio": 2026,
+      "mes": 8,
+      "periodo_referencia": "Mayo de 2026",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_08.pdf",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IMFBCF",
@@ -6092,6 +6228,23 @@
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
     },
     {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "4 de septiembre de 2026",
+      "fecha_iso": "2026-09-04",
+      "anio": 2026,
+      "mes": 9,
+      "periodo_referencia": "Junio de 2026",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_09.pdf",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
       "clave": "RESERVAS",
       "indicador": "Reservas internacionales",
       "producto": "Estado de cuenta del Banco de México",
@@ -6340,6 +6493,23 @@
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+    },
+    {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "2 de octubre de 2026",
+      "fecha_iso": "2026-10-02",
+      "anio": 2026,
+      "mes": 10,
+      "periodo_referencia": "Julio de 2026",
+      "estatus": "próximo",
+      "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IMFBCF",
@@ -6641,6 +6811,23 @@
       "periodo_referencia": "30 de octubre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/"
+    },
+    {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "4 de noviembre de 2026",
+      "fecha_iso": "2026-11-04",
+      "anio": 2026,
+      "mes": 11,
+      "periodo_referencia": "Agosto de 2026",
+      "estatus": "próximo",
+      "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IMFBCF",
@@ -6958,6 +7145,23 @@
       "periodo_referencia": "27 de noviembre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/"
+    },
+    {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "3 de diciembre de 2026",
+      "fecha_iso": "2026-12-03",
+      "anio": 2026,
+      "mes": 12,
+      "periodo_referencia": "Septiembre de 2026",
+      "estatus": "próximo",
+      "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IMFBCF",
@@ -7294,6 +7498,23 @@
       "comentario": "Información de Interés Nacional. Incluye boletín de indicador."
     },
     {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "8 de enero de 2027",
+      "fecha_iso": "2027-01-08",
+      "anio": 2027,
+      "mes": 1,
+      "periodo_referencia": "Octubre de 2027",
+      "estatus": "próximo",
+      "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
       "clave": "BCMM",
       "indicador": "Balanza Comercial de Mercancías de México",
       "producto": "Balanza Comercial de Mercancías de México",
@@ -7543,6 +7764,23 @@
       "periodo_referencia": "29 de enero de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/"
+    },
+    {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "4 de febrero de 2027",
+      "fecha_iso": "2027-02-04",
+      "anio": 2027,
+      "mes": 2,
+      "periodo_referencia": "Noviembre de 2026",
+      "estatus": "próximo",
+      "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IMFBCF",
@@ -7829,6 +8067,23 @@
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/"
     },
     {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "3 de marzo de 2027",
+      "fecha_iso": "2027-03-03",
+      "anio": 2027,
+      "mes": 3,
+      "periodo_referencia": "Diciembre de 2026",
+      "estatus": "próximo",
+      "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
       "clave": "DESOCUP",
       "indicador": "Indicadores de ocupación y empleo",
       "producto": "Encuesta Nacional de Ocupación y Empleo / Indicadores de Ocupación y Empleo",
@@ -8111,6 +8366,23 @@
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+    },
+    {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "5 de abril de 2027",
+      "fecha_iso": "2027-04-05",
+      "anio": 2027,
+      "mes": 4,
+      "periodo_referencia": "Enero de 2027",
+      "estatus": "próximo",
+      "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IMFBCF",
@@ -8431,6 +8703,23 @@
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/"
     },
     {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "4 de mayo de 2027",
+      "fecha_iso": "2027-05-04",
+      "anio": 2027,
+      "mes": 5,
+      "periodo_referencia": "Febrero de 2027",
+      "estatus": "próximo",
+      "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
       "clave": "IMFBCF",
       "indicador": "Indicador Mensual de la Formación Bruta de Capital Fijo",
       "producto": "Indicador Mensual de la Formación Bruta de Capital Fijo",
@@ -8730,6 +9019,23 @@
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+    },
+    {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "3 de junio de 2027",
+      "fecha_iso": "2027-06-03",
+      "anio": 2027,
+      "mes": 6,
+      "periodo_referencia": "Marzo de 2027",
+      "estatus": "próximo",
+      "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IMFBCF",

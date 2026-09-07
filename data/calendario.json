@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-09-07T18:57:35+00:00",
+  "generated_at": "2026-09-07T20:09:40+00:00",
   "as_of": "2026-09-07",
   "fuente": "Calendario oficial de difusión",
   "sources": {
     "INEGI Sala de Prensa": {
       "status": "ok",
       "count": 1449,
-      "message": "1449 eventos consultados del INEGI",
-      "consulted_at": "2026-09-07",
+      "message": "Modo offline: 1449 eventos leídos de caché",
+      "consulted_at": null,
       "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/"
     },
     "Banco de México calendario": {
       "status": "ok",
       "count": 180,
-      "message": "180 eventos consultados de Banxico",
-      "consulted_at": "2026-09-07",
+      "message": "Modo offline: 180 eventos leídos de caché",
+      "consulted_at": null,
       "url": "https://www.banxico.org.mx/publicaciones-y-prensa/calendario-de-publicaciones-banco-de-mexico/"
     },
     "Secretaría de Economía (manual)": {
@@ -8145,6 +8145,49 @@
       "fecha_iso": "2026-01-08"
     },
     {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos. Cifras preliminares",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2026-01-08",
+      "publication_date_display": "8 de enero de 2026",
+      "reference_period": "Octubre de 2025",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_01.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_01.pdf",
+          "label": "Boletín PDF",
+          "size": "0.48 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_01.docx",
+          "label": "Boletín Word",
+          "size": "0.46 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_01.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.02 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 1,
+      "fecha_iso": "2026-01-08"
+    },
+    {
       "indicator": "BCMM",
       "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
       "product": "Balanza Comercial de Mercancías de México",
@@ -8785,6 +8828,49 @@
       "fecha_iso": "2026-02-05"
     },
     {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos. Cifras preliminares",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2026-02-05",
+      "publication_date_display": "5 de febrero de 2026",
+      "reference_period": "Noviembre de 2025",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_02.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_02.pdf",
+          "label": "Boletín PDF",
+          "size": "0.48 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_02.docx",
+          "label": "Boletín Word",
+          "size": "0.46 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_02.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.02 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 2,
+      "fecha_iso": "2026-02-05"
+    },
+    {
       "indicator": "TASA",
       "program": "El objetivo para la Tasa de Interés Interbancaria a 1 día (tasa objetivo) se mantiene sin cambio en 7.00 por ciento",
       "product": "Anuncio de la Decisión de Política Monetaria",
@@ -9402,6 +9488,49 @@
       "anio": 2026,
       "mes": 3,
       "fecha_iso": "2026-03-03"
+    },
+    {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos. Cifras preliminares",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2026-03-04",
+      "publication_date_display": "4 de marzo de 2026",
+      "reference_period": "Diciembre de 2025",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_03.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_03.pdf",
+          "label": "Boletín PDF",
+          "size": "0.46 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_03.docx",
+          "label": "Boletín Word",
+          "size": "0.46 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_03.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.02 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 3,
+      "fecha_iso": "2026-03-04"
     },
     {
       "indicator": "CONSUMO",
@@ -10123,6 +10252,49 @@
       "fecha_iso": "2026-04-06"
     },
     {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos. Cifras preliminares",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2026-04-06",
+      "publication_date_display": "6 de abril de 2026",
+      "reference_period": "Enero de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_04.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_04.pdf",
+          "label": "Boletín PDF",
+          "size": "0.46 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_04.docx",
+          "label": "Boletín Word",
+          "size": "0.46 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_04.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.02 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 4,
+      "fecha_iso": "2026-04-06"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México de la semana al 1 de abril y del mes de marzo de 2026",
       "product": "Estado de cuenta del Banco de México",
@@ -10792,6 +10964,49 @@
       "fecha_iso": "2026-05-06"
     },
     {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos. Cifras preliminares",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2026-05-06",
+      "publication_date_display": "6 de mayo de 2026",
+      "reference_period": "Febrero de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_05.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_05.pdf",
+          "label": "Boletín PDF",
+          "size": "0.46 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_05.docx",
+          "label": "Boletín Word",
+          "size": "0.46 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_05.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.02 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 5,
+      "fecha_iso": "2026-05-06"
+    },
+    {
       "indicator": "INPC",
       "program": "Índice Nacional de Precios al Consumidor (INPC). Base 2ª Quincena Julio 2018. Actualización de Canasta y Ponderadores 2024. Mensual. Cifras definitivas",
       "product": "Índice Nacional de Precios al Consumidor",
@@ -11409,6 +11624,49 @@
       "anio": 2026,
       "mes": 6,
       "fecha_iso": "2026-06-02"
+    },
+    {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos. Cifras preliminares",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2026-06-03",
+      "publication_date_display": "3 de junio de 2026",
+      "reference_period": "Marzo de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_06.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_06.pdf",
+          "label": "Boletín PDF",
+          "size": "0.47 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_06.docx",
+          "label": "Boletín Word",
+          "size": "0.46 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_06.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.02 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 6,
+      "fecha_iso": "2026-06-03"
     },
     {
       "indicator": "CONSUMO",
@@ -12042,6 +12300,49 @@
       "anio": 2026,
       "mes": 7,
       "fecha_iso": "2026-07-01"
+    },
+    {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos. Cifras preliminares",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2026-07-03",
+      "publication_date_display": "3 de julio de 2026",
+      "reference_period": "Abril de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_07.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_07.pdf",
+          "label": "Boletín PDF",
+          "size": "0.47 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_07.docx",
+          "label": "Boletín Word",
+          "size": "0.46 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_07.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.02 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 7,
+      "fecha_iso": "2026-07-03"
     },
     {
       "indicator": "CONSUMO",
@@ -12708,6 +13009,49 @@
         }
       ],
       "comentario": null,
+      "anio": 2026,
+      "mes": 8,
+      "fecha_iso": "2026-08-04"
+    },
+    {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos. Cifras preliminares",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2026-08-04",
+      "publication_date_display": "4 de agosto de 2026",
+      "reference_period": "Mayo de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_08.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_08.pdf",
+          "label": "Boletín PDF",
+          "size": "0.46 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_08.docx",
+          "label": "Boletín Word",
+          "size": "0.46 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_08.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.02 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 8,
       "fecha_iso": "2026-08-04"
@@ -13533,6 +13877,49 @@
       "fecha_iso": "2026-09-04"
     },
     {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos. Cifras preliminares",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2026-09-04",
+      "publication_date_display": "4 de septiembre de 2026",
+      "reference_period": "Junio de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_09.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_09.pdf",
+          "label": "Boletín PDF",
+          "size": "0.46 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_09.docx",
+          "label": "Boletín Word",
+          "size": "0.47 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_09.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.02 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 9,
+      "fecha_iso": "2026-09-04"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México",
       "product": "Estado de cuenta del Banco de México",
@@ -13966,6 +14353,35 @@
       "anio": 2026,
       "mes": 10,
       "fecha_iso": "2026-10-01"
+    },
+    {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos. Cifras preliminares",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2026-10-02",
+      "publication_date_display": "2 de octubre de 2026",
+      "reference_period": "Julio de 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 10,
+      "fecha_iso": "2026-10-02"
     },
     {
       "indicator": "CONSUMO",
@@ -14485,6 +14901,35 @@
         }
       ],
       "comentario": null,
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-04"
+    },
+    {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos. Cifras preliminares",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2026-11-04",
+      "publication_date_display": "4 de noviembre de 2026",
+      "reference_period": "Agosto de 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-04"
@@ -15039,6 +15484,35 @@
       "anio": 2026,
       "mes": 12,
       "fecha_iso": "2026-12-01"
+    },
+    {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos. Cifras preliminares",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2026-12-03",
+      "publication_date_display": "3 de diciembre de 2026",
+      "reference_period": "Septiembre de 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 12,
+      "fecha_iso": "2026-12-03"
     },
     {
       "indicator": "CONSUMO",
@@ -15621,6 +16095,35 @@
       "fecha_iso": "2027-01-07"
     },
     {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos. Cifras preliminares",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2027-01-08",
+      "publication_date_display": "8 de enero de 2027",
+      "reference_period": "Octubre de 2027",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2027,
+      "mes": 1,
+      "fecha_iso": "2027-01-08"
+    },
+    {
       "indicator": "BCMM",
       "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
       "product": "Balanza Comercial de Mercancías de México",
@@ -16054,6 +16557,35 @@
       "anio": 2027,
       "mes": 2,
       "fecha_iso": "2027-02-03"
+    },
+    {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos. Cifras preliminares",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2027-02-04",
+      "publication_date_display": "4 de febrero de 2027",
+      "reference_period": "Noviembre de 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2027,
+      "mes": 2,
+      "fecha_iso": "2027-02-04"
     },
     {
       "indicator": "CONSUMO",
@@ -16549,6 +17081,35 @@
       "fecha_iso": "2027-03-02"
     },
     {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos. Cifras preliminares",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2027-03-03",
+      "publication_date_display": "3 de marzo de 2027",
+      "reference_period": "Diciembre de 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2027,
+      "mes": 3,
+      "fecha_iso": "2027-03-03"
+    },
+    {
       "indicator": "DESOCUP",
       "program": "Encuesta Nacional de Ocupación y Empleo (ENOE), población de 15 años y más de edad. Indicadores de Ocupación y Empleo. Cifras definitivas",
       "product": "Encuesta Nacional de Ocupación y Empleo / Indicadores de Ocupación y Empleo",
@@ -17040,6 +17601,35 @@
       "anio": 2027,
       "mes": 4,
       "fecha_iso": "2027-04-01"
+    },
+    {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos. Cifras preliminares",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2027-04-05",
+      "publication_date_display": "5 de abril de 2027",
+      "reference_period": "Enero de 2027",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2027,
+      "mes": 4,
+      "fecha_iso": "2027-04-05"
     },
     {
       "indicator": "CONSUMO",
@@ -17593,6 +18183,35 @@
       "fecha_iso": "2027-05-04"
     },
     {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos. Cifras preliminares",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2027-05-04",
+      "publication_date_display": "4 de mayo de 2027",
+      "reference_period": "Febrero de 2027",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2027,
+      "mes": 5,
+      "fecha_iso": "2027-05-04"
+    },
+    {
       "indicator": "CONSUMO",
       "program": "Indicador Mensual del Consumo Privado (IMCP). Año base 2018. Cifras preliminares",
       "product": "Indicador Mensual del Consumo Privado",
@@ -18110,6 +18729,35 @@
         }
       ],
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "anio": 2027,
+      "mes": 6,
+      "fecha_iso": "2027-06-03"
+    },
+    {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos. Cifras preliminares",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2027-06-03",
+      "publication_date_display": "3 de junio de 2027",
+      "reference_period": "Marzo de 2027",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 6,
       "fecha_iso": "2027-06-03"
@@ -19914,6 +20562,35 @@
       "fecha_iso": "2026-10-01"
     },
     {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos. Cifras preliminares",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2026-10-02",
+      "publication_date_display": "2 de octubre de 2026",
+      "reference_period": "Julio de 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 10,
+      "fecha_iso": "2026-10-02"
+    },
+    {
       "indicator": "CONSUMO",
       "program": "Indicador Mensual del Consumo Privado (IMCP). Año base 2018. Cifras preliminares",
       "product": "Indicador Mensual del Consumo Privado",
@@ -20028,38 +20705,52 @@
       "anio": 2026,
       "mes": 10,
       "fecha_iso": "2026-10-08"
-    },
-    {
-      "indicator": "INPP",
-      "program": "Índice Nacional de Precios Productor (INPP). Año base julio 2019. Actualización 2025. Cifras definitivas",
-      "product": "Índice Nacional de Precios Productor",
-      "publication_date": "2026-10-08",
-      "publication_date_display": "8 de octubre de 2026",
-      "reference_period": "Septiembre de 2026",
-      "frequency": "Mensual",
-      "status": "próximo",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Precios",
-      "sigla": "INPP",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 10,
-      "fecha_iso": "2026-10-08"
     }
   ],
   "recent": [
+    {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos. Cifras preliminares",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2026-09-04",
+      "publication_date_display": "4 de septiembre de 2026",
+      "reference_period": "Junio de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_09.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_09.pdf",
+          "label": "Boletín PDF",
+          "size": "0.46 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_09.docx",
+          "label": "Boletín Word",
+          "size": "0.47 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_09.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.02 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 9,
+      "fecha_iso": "2026-09-04"
+    },
     {
       "indicator": "IMFBCF",
       "program": "Indicador Mensual de la Formación Bruta de Capital Fijo (IMFBCF). Año base 2018. Cifras preliminares",
@@ -20764,35 +21455,6 @@
       "anio": 2026,
       "mes": 8,
       "fecha_iso": "2026-08-07"
-    },
-    {
-      "indicator": "TASA",
-      "program": "El objetivo para la Tasa de Interés Interbancaria a 1 día (tasa objetivo) se mantiene sin cambio en 6.50 por ciento",
-      "product": "Anuncio de la Decisión de Política Monetaria",
-      "publication_date": "2026-08-06",
-      "publication_date_display": "6 de agosto de 2026",
-      "reference_period": "6 de agosto de 2026",
-      "frequency": "Decisiones de política monetaria",
-      "status": "publicado",
-      "source": "Banco de México calendario",
-      "institution": "Banco de México",
-      "category": "Financiero",
-      "sigla": "TASA",
-      "type": "event",
-      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/{8DA3F519-341F-480E-1D4E-1AEE71DD08DA}.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/{8DA3F519-341F-480E-1D4E-1AEE71DD08DA}.pdf",
-          "label": "El objetivo para la Tasa de Interés Interbancaria a 1 día (tasa objetivo) se mantiene sin cambio en 6.50 por ciento",
-          "size": null
-        }
-      ],
-      "comentario": null,
-      "anio": 2026,
-      "mes": 8,
-      "fecha_iso": "2026-08-06"
     }
   ],
   "categories": {

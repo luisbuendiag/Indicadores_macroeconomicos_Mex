@@ -22,6 +22,7 @@ const DEFAULT_CATEGORIES = {
 const CATEGORY_BY_CLAVE = {
   PIB: "Actividad económica",
   PIBSEC: "Actividad económica",
+  SIC: "Actividad económica",
   IGAE: "Actividad económica",
   IMAI: "Actividad económica",
   IOAE: "Actividad económica",

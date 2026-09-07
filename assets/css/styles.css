@@ -441,6 +441,8 @@ tbody tr:last-child td { font-weight: 600; color: var(--dkgreen); }
 .bcmm-levels { height: 480px; }
 .emoe-main { height: 400px; }
 .emoe-sectors { height: 460px; }
+.sic-main { height: 400px; }
+.sic-comps { height: 680px; }
 .bcmm-variation { height: 580px; }
 .imfbcf-levels { height: 780px; }
 .imfbcf-variation { height: 420px; }

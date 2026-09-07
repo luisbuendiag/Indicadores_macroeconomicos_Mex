@@ -31,6 +31,7 @@ RANGES = {
     "IMAI": (50, 130),
     "EMIM": (50, 130),
     "CONSUMO": (70, 140),
+    "SIC": (60, 140),          # componente cíclico en puntos (tendencia de largo plazo = 100)
     "IED": (-5_000, 60_000),
     "DESOCUP": (0.0, 25.0),   # porcentaje (0-25%)
     "INPC": (90, 160),        # índice base 2018=100 (serie primaria = col 0)
@@ -83,13 +84,15 @@ def validate(payload: dict):
     #    valores idénticos con muchos decimales compartidos entre indicadores.
     value_index = defaultdict(list)
     # 3) Duplicados exactos entre series NO relacionadas (col 0 / serie primaria).
-    #    Se compara con 4 decimales y se ignora valores redondeados a <= 4 decimales
-    #    para evitar falsos positivos con índices enteros o a un solo decimal.
+    #    Se exige que el valor tenga más de 4 decimales significativos y se compara
+    #    con 6 decimales: series en puntos/índices concentradas cerca de 100 (SIC,
+    #    IGAE, IMAI) producen colisiones fortuitas si se redondea a 4 decimales,
+    #    mientras que un dato realmente copiado coincide a precisión completa.
     for key, ind in inds.items():
         for o in ind["observations"]:
             v = primary_series(ind)[ind["observations"].index(o)]
             if isinstance(v, (int, float)) and abs(v) > 5 and (abs(v - round(v, 4)) > 1e-6):
-                value_index[round(v, 4)].append((key, o["period"], 0))
+                value_index[round(v, 6)].append((key, o["period"], 0))
     for v, hits in value_index.items():
         distinct_inds = {h[0] for h in hits}
         if len(distinct_inds) > 1:
@@ -100,6 +103,10 @@ def validate(payload: dict):
     for key, ind in inds.items():
         ser = primary_series(ind)
         if ser and ser[-1] is None:
+            # SIC: el último periodo puede tener sólo el Adelantado (va un mes
+            # adelante del Coincidente); se exime si algún compuesto tiene cifra.
+            if key == "SIC" and any(v is not None for v in (ind["observations"][-1].get("values") or [])[:2]):
+                continue
             warnings.append(f"[{key}] el último dato de la serie primaria es nulo.")
 
     # 5) Rango/unidades plausibles

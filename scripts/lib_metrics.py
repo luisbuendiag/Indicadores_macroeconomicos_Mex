@@ -2408,6 +2408,176 @@ def _ied_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     }
 
 
+
+def _sic_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
+    """KPI y resumen del SIC: Coincidente como principal, Adelantado como secundario.
+
+    Los dos indicadores compuestos se miden en puntos (componente cíclico
+    referenciado a la tendencia de largo plazo = 100). Las diferencias mensual
+    y a 12 meses se almacenan en puntos, como las reporta el boletín oficial.
+    """
+    cfg = kpicfg.get("SIC") or {}
+    colors = get_cfg().get("COLORS", {})
+    obs = ind.get("observations", [])
+    if not obs:
+        return None
+
+    def _last(col: int):
+        for i in range(len(obs) - 1, -1, -1):
+            v = obs[i].get("values", [])
+            if len(v) > col and v[col] is not None:
+                return i, v[col]
+        return None, None
+
+    def _prev_period_of(i: int | None) -> str | None:
+        return obs[i - 1].get("period") if i is not None and i > 0 else None
+
+    def _pts(v: float | None) -> str:
+        if v is None:
+            return "—"
+        return ("+" if v >= 0 else "−") + F._to_fixed(abs(v), 2, 2) + " puntos"
+
+    def _pos_trend(v: float | None) -> str:
+        if v is None:
+            return ""
+        if v > 100:
+            return "por encima de"
+        if v < 100:
+            return "por debajo de"
+        return "en"
+
+    def _verb(v: float | None) -> str:
+        if v is None:
+            return "un nivel sin cambio"
+        if v > 0:
+            return "un alza"
+        if v < 0:
+            return "una baja"
+        return "un nivel sin cambio"
+
+    i_c, val_c = _last(0)
+    i_a, val_a = _last(1)
+    if val_c is None and val_a is None:
+        return None
+    dm_c = _val_at(ind, i_c, 2) if i_c is not None else None
+    da_c = _val_at(ind, i_c, 3) if i_c is not None else None
+    dm_a = _val_at(ind, i_a, 4) if i_a is not None else None
+    da_a = _val_at(ind, i_a, 5) if i_a is not None else None
+    p_c = obs[i_c].get("period") if i_c is not None else None
+    p_a = obs[i_a].get("period") if i_a is not None else None
+    p_c_prev = _prev_period_of(i_c)
+    p_a_prev = _prev_period_of(i_a)
+
+    bullets = []
+    if val_c is not None:
+        bullets.append(
+            f"En {en_frase(p_c)}, el Indicador Coincidente se ubicó en "
+            f"{F._to_fixed(val_c, 1, 1)} puntos, {_pos_trend(val_c)} su tendencia "
+            f"de largo plazo (100 puntos), y registró {_verb(dm_c)} de "
+            f"{F._to_fixed(abs(dm_c), 2, 2) if dm_c is not None else '—'} puntos "
+            f"respecto a {per_long(p_c_prev) if p_c_prev else 'el mes previo'}."
+        )
+    if val_a is not None:
+        bullets.append(
+            f"En {en_frase(p_a)}, el Indicador Adelantado se ubicó en "
+            f"{F._to_fixed(val_a, 1, 1)} puntos, {_pos_trend(val_a)} su tendencia "
+            f"de largo plazo, con {_verb(dm_a)} de "
+            f"{F._to_fixed(abs(dm_a), 2, 2) if dm_a is not None else '—'} puntos "
+            f"respecto a {per_long(p_a_prev) if p_a_prev else 'el mes previo'}; "
+            "este indicador busca anticipar los puntos de giro del Coincidente."
+        )
+
+    # Componentes del Coincidente con mayor alza/baja mensual (diferencia en puntos).
+    comp_names = {
+        6: "el IGAE", 7: "el indicador de la actividad industrial",
+        8: "los ingresos por suministro al por menor",
+        9: "los asegurados permanentes en el IMSS",
+        10: "la tasa de desocupación urbana", 11: "las importaciones totales",
+    }
+    comp_diffs = []
+    for col, name in comp_names.items():
+        i, v = _last(col)
+        if i is None or v is None:
+            continue
+        for j in range(i - 1, -1, -1):
+            pv = obs[j].get("values", [])
+            if len(pv) > col and pv[col] is not None:
+                comp_diffs.append((name, v - pv[col], col == 10))
+                break
+    if comp_diffs:
+        alza = max(comp_diffs, key=lambda t: t[1])
+        baja = min(comp_diffs, key=lambda t: t[1])
+        partes = []
+        if alza[1] > 0:
+            partes.append(f"las mayores alzas mensuales correspondieron a {alza[0]} (+{F._to_fixed(alza[1], 2, 2)} puntos)")
+        if baja[1] < 0:
+            nota = " (serie inversa a la actividad económica)" if baja[2] else ""
+            partes.append(f"y el mayor descenso fue el de {baja[0]} (−{F._to_fixed(abs(baja[1]), 2, 2)} puntos){nota}")
+        if partes:
+            bullets.append(
+                "Entre los componentes del Coincidente, " + ", ".join(partes) + "."
+            )
+
+    # KPI: Coincidente como cifra principal.
+    ref_i = i_c if i_c is not None else i_a
+    ref_val = val_c if val_c is not None else val_a
+    ref_p = p_c if p_c is not None else p_a
+    ref_dm = dm_c if dm_c is not None else dm_a
+    series = [o.get("values", [None])[0] if o.get("values") else None for o in obs]
+    periods = [o.get("period") for o in obs]
+    idxs = [i for i, v in enumerate(series) if v is not None]
+    max_i = max(idxs, key=lambda i: series[i]) if idxs else 0
+    min_i = min(idxs, key=lambda i: series[i]) if idxs else 0
+    dm_dir = "flat" if ref_dm is None else ("up" if ref_dm > 0.005 else ("down" if ref_dm < -0.005 else "flat"))
+    assess = "favorable" if dm_dir == "up" else ("adverso" if dm_dir == "down" else "neutral")
+
+    kpi = {
+        "assessment": assess,
+        "dir": dm_dir,
+        "ultimoFmt": F.fmt_val(ref_val, "idx") + " puntos",
+        "ultimoRaw": ref_val,
+        "ultimoP": ref_p,
+        "varText": _pts(ref_dm),
+        "varMag": ref_dm,
+        "pos": (ref_dm or 0) >= 0,
+        "varColor": colors.get("GREEN") if (ref_dm or 0) >= 0 else colors.get("CRIMSON"),
+        "varLabel": "Dif. mensual",
+        "maxFmt": (F.fmt_val(series[max_i], "idx") + " puntos") if idxs else "—",
+        "maxRaw": series[max_i] if idxs else None,
+        "maxP": periods[max_i],
+        "minFmt": (F.fmt_val(series[min_i], "idx") + " puntos") if idxs else "—",
+        "minRaw": series[min_i] if idxs else None,
+        "minP": periods[min_i],
+        "lastI": ref_i,
+        "series": series,
+        "periods": periods,
+        "semaforo": {"favorable": "bueno", "adverso": "malo"}.get(assess, "estable"),
+        "coincidente": {
+            "valor": val_c, "valorFmt": F.fmt_val(val_c, "idx") + " puntos", "periodo": p_c,
+            "difMensual": dm_c, "difMensualText": _pts(dm_c),
+            "difAnual": da_c, "difAnualText": _pts(da_c),
+        },
+        "adelantado": {
+            "valor": val_a, "valorFmt": F.fmt_val(val_a, "idx") + " puntos", "periodo": p_a,
+            "difMensual": dm_a, "difMensualText": _pts(dm_a),
+            "difAnual": da_a, "difAnualText": _pts(da_a),
+        },
+    }
+    yoy = {
+        "mag": da_c,
+        "pos": (da_c or 0) >= 0,
+        "text": _pts(da_c),
+        "label": "Dif. a 12 meses",
+    }
+    return {
+        "kpi": kpi,
+        "yoy": yoy,
+        "annualVar": yoy,
+        "resumen": bullets[:4],
+        "analysis": bullets[:4],
+    }
+
+
 def compute_all_metrics(payload: dict | None = None, kpicfg: dict | None = None, offline: bool = False) -> dict[str, dict[str, Any]]:
     """Calcula kpi, analysis y annualVar para todos los indicadores."""
     if payload is None:
@@ -2471,6 +2641,11 @@ def compute_all_metrics(payload: dict | None = None, kpicfg: dict | None = None,
             reservas = _reservas_metrics(ind, kpicfg, offline=offline)
             if reservas:
                 out[key] = reservas
+                continue
+        if key == "SIC" and len(ind.get("columns", [])) >= 18:
+            sic = _sic_metrics(ind, kpicfg)
+            if sic:
+                out[key] = sic
                 continue
         if key == "IED" and ind.get("metrics", {}).get("acumulado"):
             ied = _ied_metrics(ind, kpicfg)

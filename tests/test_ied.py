@@ -68,21 +68,20 @@ def test_componentes_flujo_from_manual():
     assert comp["Cuentas entre compañías"] > 0
 
 
-def test_ied_is_principal_and_position():
-    """IED es principal, no complementario, y va después de IMFBCF y antes de BCMM."""
+def test_ied_is_complementario_and_position():
+    """IED es complementario (Entorno financiero), primero de la lista y sin duplicarse."""
     meta = _meta()
-    assert "IED" in meta["principal"]
-    assert "IED" not in meta["complementario"]
-    idx = meta["principal"].index("IED")
-    assert meta["principal"][idx - 1] == "IMFBCF"
-    assert meta["principal"][idx + 1] == "BCMM"
+    assert "IED" not in meta["principal"]
+    assert "IED" in meta["complementario"]
+    assert meta["complementario"][0] == "IED"
+    assert meta["complementario"].index("IED") < meta["complementario"].index("TIPOCAMBIO")
 
 
 def test_ied_kpi_is_acumulado_not_flujo():
     """El KPI principal de IED es el acumulado (34 968 mdd), no el flujo trimestral (10 465 mdd)."""
     meta = _meta()
-    if "IED" not in meta["principal"]:
-        pytest.skip("IED no está en principal todavía")
+    if "IED" not in meta["complementario"]:
+        pytest.skip("IED no está en complementario todavía")
     # Verificar directamente el conector (sin depender del pipeline de métricas).
     res = ied.fetch()
     assert res.ok, res.warnings

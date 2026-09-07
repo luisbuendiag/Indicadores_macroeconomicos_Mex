@@ -477,6 +477,13 @@ def _obs_ym_set(ind: dict | None) -> set[str]:
     if not ind:
         return out
     for o in ind.get("observations", []) or []:
+        # SIC: el periodo de referencia oficial del boletín es el del Indicador
+        # Coincidente (columna 0); un mes final con sólo el Adelantado no cuenta
+        # como "ya publicado" para el calendario.
+        if ind.get("key") == "SIC":
+            vals = o.get("values") or []
+            if not vals or vals[0] is None:
+                continue
         p = _clean_period(o.get("period"))
         ym = _period_to_ym_flexible(p)
         if ym:

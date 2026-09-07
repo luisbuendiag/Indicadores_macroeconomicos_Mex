@@ -7,7 +7,8 @@ puede tener una o varias series (por columnas del dashboard). Soporta:
     de dicts con 'serie' y 'columna_objetivo'.
   - factor: multiplica el valor de la API (p. ej. 0.01 para pasar de % a fracción).
   - transform: 'yoy' (variación anual %), 'mom' (variación mensual %),
-    'qoq' (variación trimestral %), 'diff_yoy_pp' (cambio de la inflación anual
+    'qoq' (variación trimestral %), 'yoy_abs' (diferencia absoluta respecto
+    al mismo mes del año anterior, p. ej. puntos), 'diff_yoy_pp' (cambio de la inflación anual
     respecto al mes previo, en puntos porcentuales),
     'mom_abs' (diferencia absoluta respecto al mes previo, p. ej. puntos).
 
@@ -150,6 +151,10 @@ def _transform_observations(obs: list[dict], transform: str | None) -> list[dict
             prev = _ym_minus_months(o["ym"], 1)
             if prev and prev in by_ym and by_ym[prev] is not None:
                 val = o["value"] - by_ym[prev]
+        elif transform == "yoy_abs":
+            prev = _ym_minus_months(o["ym"], 12)
+            if prev and prev in by_ym and by_ym[prev] is not None:
+                val = o["value"] - by_ym[prev]
         elif transform == "diff_yoy_pp":
             # Primero calcular yoy
             prev_y = _ym_minus_months(o["ym"], 12)
@@ -211,9 +216,9 @@ def _fetch_one(spec: dict, token: str, start_year: int) -> dict | None:
         return None
     obs, meta = parsed
 
-    # Para transformaciones yoy/mom/qoq/mom_abs necesitamos observaciones previas.
+    # Para transformaciones yoy/mom/qoq/mom_abs/yoy_abs necesitamos observaciones previas.
     transform = spec.get("transform")
-    if transform in ("yoy", "qoq", "mom", "mom_abs"):
+    if transform in ("yoy", "qoq", "mom", "mom_abs", "yoy_abs"):
         # extendemos el inicio un año atrás para tener el periodo previo
         start = max(1, start_year - 1)
     else:

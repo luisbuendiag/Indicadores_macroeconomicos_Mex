@@ -42,6 +42,28 @@
       "comp": "frente al trimestre anterior",
       "goodSign": 1
     },
+    "SIC": {
+      "valCol": 0,
+      "valFmt": "idx",
+      "varCol": 2,
+      "varFmt": "emoe",
+      "varLabel": "Dif. mensual",
+      "yoyCol": 3,
+      "yoyFmt": "emoe",
+      "yoyLabel": "Dif. a 12 meses",
+      "mainLabel": "Indicador Coincidente",
+      "noun": "Indicador Coincidente",
+      "art": "el",
+      "grupo": "ciclo",
+      "assess": "growth",
+      "ctx": " (tendencia de largo plazo = 100 puntos)",
+      "vw": "diferencia mensual",
+      "vg": "m",
+      "comp": "frente al mes previo",
+      "goodSign": 1,
+      "umbral": 100,
+      "unit": "puntos"
+    },
     "IGAE": {
       "valCol": 0,
       "valFmt": "idx",
@@ -361,6 +383,7 @@
   "PRINCIPAL": [
     "PIB",
     "PIBSEC",
+    "SIC",
     "IOAE",
     "IGAE",
     "IMAI",
@@ -371,10 +394,10 @@
     "INPP",
     "CONSUMO",
     "IMFBCF",
-    "IED",
     "BCMM"
   ],
   "COMPLEMENTARIOS": [
+    "IED",
     "TIPOCAMBIO",
     "TASA",
     "RESERVAS"
@@ -382,6 +405,7 @@
   "LABELS": {
     "PIB": "PIB oportuno",
     "PIBSEC": "PIB trimestral a precios constantes",
+    "SIC": "Sistema de Indicadores Cíclicos",
     "IGAE": "IGAE",
     "IMAI": "IMAI",
     "BCMM": "Balanza comercial",
@@ -401,6 +425,7 @@
   "SIGLA": {
     "PIB": "PIB",
     "PIBSEC": "PIBT",
+    "SIC": "SIC",
     "IGAE": "IGAE",
     "IMAI": "IMAI",
     "BCMM": "BCMM",
@@ -420,6 +445,7 @@
   "CAPTIONS": {
     "PIB": "Variación trimestral desestacionalizada del PIB oportuno (barras) y su variación anual desestacionalizada (línea). Ambas en porcentaje.",
     "PIBSEC": "Niveles del PIB y las grandes actividades económicas (small multiples, arriba) y variaciones trimestrales y anuales agrupadas (abajo). Las variaciones a partir de 2021 provienen del boletín PIBT; antes se calculan a partir de los niveles originales.",
+    "SIC": "Indicadores Coincidente y Adelantado del INEGI (componentes cíclicos en puntos) con la línea de tendencia de largo plazo en 100, y el ciclo de sus componentes oficiales.",
     "IGAE": "Niveles del IGAE y actividades primarias, secundarias y terciarias (small multiples, arriba) y variación anual original agrupada (abajo). La variación mensual desestacionalizada proviene del boletín oficial.",
     "IMAI": "Niveles desestacionalizados del IMAI y sus cuatro sectores (small multiples, arriba) y variaciones mensuales y anuales desestacionalizadas agrupadas (abajo). Las variaciones del mes más reciente provienen del boletín oficial.",
     "CONSUMO": "Índice de volumen físico del consumo privado (línea verde), variación mensual desestacionalizada (línea guinda) y variación anual desestacionalizada (línea oro), ambas en eje derecho.",

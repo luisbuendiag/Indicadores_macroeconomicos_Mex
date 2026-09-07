@@ -27,6 +27,7 @@
 | **PIB por actividad** (primarias/secundarias/terciarias) | PIB Sectorial | INEGI (SCNM) | BIE series por gran división | Trimestral | INEGI BIE API | 1T-26 P | ~50 días | Serie original a prec. 2018 |
 | **IGAE** (índice 2018=100 + secundarias + terciarias) | IGAE | INEGI | BIE IGAE (global/secund./terc.) | Mensual | INEGI BIE API | Abr-26 P | ~55 días | Serie original; base 2018=100 |
 | **IMAI** (índice 2018=100 + var. mensual) | IMAI | INEGI | BIE IMAI | Mensual | INEGI BIE API | Abr-26 P | ~40 días | Serie original; base 2018=100 |
+| **SIC** (Coincidente + Adelantado + 12 componentes) | Indicadores Cíclicos (SIC) | INEGI | BIE-BISE `214293` (Coincidente), `214307` (Adelantado) + componentes `214295`-`214319` | Mensual | INEGI BIE API | Jun-26 (Coinc.) / Jul-26 (Adel.) | ~35 días | Componentes cíclicos en **puntos** (tendencia de largo plazo = 100); diferencias mensual/anual en puntos |
 | **Exportaciones** | Exportaciones | INEGI (Balanza) | BIE balanza — exportaciones | Mensual | INEGI BIE API | May-26 O | ~30–45 días | mdd; O=oportuna |
 | **Importaciones** | Balanza comercial | INEGI (Balanza) | BIE balanza — importaciones | Mensual | INEGI BIE API | May-26 O | ~30–45 días | mdd |
 | **Balanza comercial** (saldo X−M) | Balanza comercial | INEGI | derivado (X − M) | Mensual | Calculado | May-26 O | ~30–45 días | mdd |

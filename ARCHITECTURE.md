@@ -35,12 +35,16 @@ y **validaciones**, priorizando estabilidad, auditabilidad y facilidad de manten
   públicos; los de INEGI se dejan en `null` hasta confirmarlos con el token).
 - `assets/js/config.js`: presentación (paleta, `KPICFG`, `CAPTIONS`, secciones, ventanas).
 
-### 3. Lógica de análisis (`assets/js/metrics.js`)
+### 3. Lógica de análisis (`assets/js/metrics.js`, espejo en `scripts/lib_metrics.py`)
 - `computeKPI(ind)`: último valor, variación (varias semánticas: yoy, mensual, pp, abs),
   máximo/mínimo, semáforo.
 - `analysis(ind, k)`: 2 bullets deterministas (nivel, tendencia, promedio, rango,
   dirección reciente) + reglas específicas (INPC vs objetivo Banxico, composición IED,
   superávit/déficit, contexto de desempleo). No afirma causalidad.
+- **SIC** usa una ruta especializada (`_sic_metrics` en `lib_metrics.py` y bloque
+  `SIC` en `computeKPI`): el Coincidente es la cifra principal, el Adelantado la
+  secundaria; ambos en **puntos** (tendencia de largo plazo = 100) y sus
+  diferencias en puntos con signo, nunca en porcentajes.
 
 ### 4. Gráficas (`assets/js/charts.js`)
 - `buildOption(ind, windowId)` traduce cada indicador a una opción de ECharts
@@ -56,7 +60,8 @@ y **validaciones**, priorizando estabilidad, auditabilidad y facilidad de manten
 ```
 extract_legacy.py   (una vez) bundle original -> indicadores.json + csv + manifest
 build_data.py       conectores -> overrides -> validación -> respaldo/publicación
-  sources/inegi.py      INEGI BIE (requiere INEGI_TOKEN + IDs confirmados)
+  sources/inegi.py      INEGI BIE (requiere INEGI_TOKEN + IDs confirmados;
+                        incluye SIC con transformaciones mom_abs/yoy_abs en puntos)
   sources/banxico.py    Banxico SIE (requiere BANXICO_TOKEN)
   sources/worldbank.py  World Bank (sin token; contexto anual)
 validate.py         validaciones críticas/advertencias + revisiones

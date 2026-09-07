@@ -50,15 +50,17 @@ def test_revision_detection():
     assert any("revisión" in n for n in notes)
 
 
-def test_ied_and_bcmm_are_principal_and_not_duplicated():
-    """Con la nueva clasificación, IED y BCMM son principales y no deben marcarse como duplicados."""
+def test_ied_and_bcmm_classification_and_not_duplicated():
+    """Con la nueva clasificación, BCMM es principal, IED es complementario
+    (Entorno financiero) y ninguno debe marcarse como duplicado."""
     import json
     from pathlib import Path
     meta_path = Path(__file__).resolve().parents[1] / "config" / "indicadores_meta.json"
     meta = json.loads(meta_path.read_text(encoding="utf-8"))
-    assert "IED" in meta["principal"]
     assert "BCMM" in meta["principal"]
-    assert "IED" not in meta.get("complementario", [])
+    assert "SIC" in meta["principal"]
+    assert "IED" in meta.get("complementario", [])
+    assert "IED" not in meta["principal"]
     assert "BCMM" not in meta.get("complementario", [])
 
     # Validar el payload real: no debe haber errores críticos ni duplicados entre IED/BCMM.

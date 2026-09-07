@@ -35,7 +35,7 @@ function proseVal(ind, v) {
   if (k === "PIBSEC") return (v / 1e6).toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " billones de pesos";
   if (k === "RESERVAS") return Math.abs(Math.round(v)).toLocaleString("es-MX") + " mdd";
   if (k === "IED" || k === "BALANZA" || k === "BCMM") return money(v, "millones de dólares");
-  if (k === "IGAE" || k === "IMAI" || k === "CONSUMO" || k === "EMIM" || k === "EMOE") return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + " puntos";
+  if (k === "IGAE" || k === "IMAI" || k === "CONSUMO" || k === "EMIM" || k === "EMOE" || k === "SIC") return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + " puntos";
   if (k === "DESOCUP") return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
   if (k === "INPC" || k === "INPP" || k === "TASA") return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
   if (k === "TIPOCAMBIO") return "$" + v.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -466,6 +466,31 @@ export function computeKPI(ind) {
     }
   }
 
+  // SIC: adjunta los dos indicadores compuestos con sus diferencias en puntos.
+  if (ind.key === "SIC") {
+    const obs = ind.observations || [];
+    const ptsText = (x) => x == null ? "—" : (x > 0 ? "+" : "−") + Math.abs(x).toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " puntos";
+    const lastOf = (col) => {
+      for (let i = obs.length - 1; i >= 0; i--) {
+        const v = obs[i].values;
+        if (v && v[col] != null) return { i, val: v[col], period: obs[i].period };
+      }
+      return null;
+    };
+    const block = (lv, difCol, anualCol) => {
+      if (!lv) return null;
+      const dm = valAt(ind, lv.i, difCol);
+      const da = valAt(ind, lv.i, anualCol);
+      return {
+        valor: lv.val, valorFmt: fmtVal(lv.val, "idx") + " puntos", periodo: lv.period,
+        difMensual: dm, difMensualText: ptsText(dm),
+        difAnual: da, difAnualText: ptsText(da),
+      };
+    };
+    out.coincidente = block(lastOf(0), 2, 3);
+    out.adelantado = block(lastOf(1), 4, 5);
+  }
+
   return out;
 }
 
@@ -474,6 +499,7 @@ function varValFmt(mag, cfg) {
   const s = mag > 0 ? "+" : "";
   if (cfg.varMode === "abs-prev") return s + Math.round(mag).toLocaleString("es-MX") + " mdd";
   if (cfg.varMode === "pp-prev") { const d = cfg.ppLong ? 1 : 2; return s + mag.toLocaleString("es-MX", { minimumFractionDigits: d, maximumFractionDigits: d }) + (cfg.ppLong ? " puntos porcentuales" : " pp"); }
+  if (cfg.varFmt === "emoe" || cfg.varFmt === "pts" || cfg.unit === "puntos") return s + mag.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " puntos";
   return s + mag.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + "%";
 }
 
@@ -530,6 +556,21 @@ export function analysis(ind, k) {
     if (k && k.analysis) return k.analysis;
     const kk = computeDesocupKPI(ind);
     return kk ? kk.analysis : [];
+  }
+  if (ind.key === "SIC") {
+    const bullets = [];
+    const pts = (x) => x == null ? "—" : Math.abs(x).toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const pos = (v) => v > 100 ? "por encima de" : (v < 100 ? "por debajo de" : "en");
+    const verb = (d) => d > 0 ? "un alza" : (d < 0 ? "una baja" : "un nivel sin cambio");
+    const c = k && k.coincidente;
+    const a = k && k.adelantado;
+    if (c && c.valor != null) {
+      bullets.push(`En ${enFrase(c.periodo)}, el Indicador Coincidente se ubicó en ${fmtVal(c.valor, "idx")} puntos, ${pos(c.valor)} su tendencia de largo plazo (100 puntos), y registró ${verb(c.difMensual)} de ${pts(c.difMensual)} puntos respecto al mes anterior.`);
+    }
+    if (a && a.valor != null) {
+      bullets.push(`En ${enFrase(a.periodo)}, el Indicador Adelantado se ubicó en ${fmtVal(a.valor, "idx")} puntos, ${pos(a.valor)} su tendencia de largo plazo, con ${verb(a.difMensual)} de ${pts(a.difMensual)} puntos respecto al mes previo; este indicador busca anticipar los puntos de giro del Coincidente.`);
+    }
+    return bullets;
   }
   const cfg = KPICFG[ind.key];
   const valid = k.series.filter((v) => v != null);

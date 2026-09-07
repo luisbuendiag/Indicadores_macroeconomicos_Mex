@@ -58,28 +58,39 @@ Orden exacto:
 
 1. **PIB** (EOPIBT)
 2. **PIBSEC** (PIB trimestral a precios constantes, sigla PIBT)
-3. **IOAE**
-4. **IGAE**
-5. **IMAI**
-6. **EMIM**
-7. **EMOE** (Encuesta Mensual de Opinión Empresarial)
-8. **DESOCUP** (ENOE)
-9. **INPC**
-10. **INPP**
-11. **CONSUMO** (IMCP)
-12. **IMFBCF**
-13. **IED** (Inversión Extranjera Directa)
+3. **SIC** (Sistema de Indicadores Cíclicos)
+4. **IOAE**
+5. **IGAE**
+6. **IMAI**
+7. **EMIM**
+8. **EMOE** (Encuesta Mensual de Opinión Empresarial)
+9. **DESOCUP** (ENOE)
+10. **INPC**
+11. **INPP**
+12. **CONSUMO** (IMCP)
+13. **IMFBCF**
 14. **BCMM** (Balanza comercial)
 
-Conceptualmente, Panorama macroeconómico agrupa indicadores de actividad, industria, opinión empresarial, mercado laboral, precios, consumo, inversión y sector externo.
+Conceptualmente, Panorama macroeconómico agrupa indicadores de actividad, ciclos económicos, industria, opinión empresarial, mercado laboral, precios, consumo, inversión y sector externo.
 
-### Entorno financiero (indicadores complementarios, 3)
+### Entorno financiero (indicadores complementarios, 4)
 
-1. **TIPOCAMBIO** (FIX)
-2. **TASA** (tasa objetivo)
-3. **RESERVAS** (reservas internacionales)
+1. **IED** (Inversión Extranjera Directa, Secretaría de Economía)
+2. **TIPOCAMBIO** (FIX)
+3. **TASA** (tasa objetivo)
+4. **RESERVAS** (reservas internacionales)
 
-Entorno financiero contiene únicamente variables monetarias y financieras de **Banco de México**. **IED** y **EMOE no pertenecen a Entorno financiero**; ambos son indicadores principales del Panorama macroeconómico porque IED es inversión real hacia la economía y EMOE es opinión/confianza empresarial.
+Entorno financiero contiene la inversión externa reportada por la **Secretaría de Economía** y las variables monetarias y financieras de **Banco de México**. **IED pertenece a Entorno financiero** (no es principal); **EMOE y SIC no pertenecen a Entorno financiero**, ambos son indicadores principales del Panorama macroeconómico.
+
+## SIC (Sistema de Indicadores Cíclicos)
+
+- El indicador `SIC` es el *Sistema de Indicadores Cíclicos* del INEGI (boletín con los Indicadores Compuestos Coincidente y Adelantado), frecuencia mensual.
+- La fuente de verdad es el **BIE-BISE del INEGI**: 14 series oficiales — el Indicador Coincidente (`214293`), el Indicador Adelantado (`214307`) y las 12 componentes oficiales (6 de cada compuesto: `214295`, `214297`, `214299`, `214301`, `214303`, `214305` del Coincidente; `214309`, `214311`, `214313`, `214315`, `214317`, `214319` del Adelantado).
+- El esquema tiene **18 columnas**: 0-1 (compuestos, puntos), 2-5 (diferencias mensual y a 12 meses de cada compuesto, en **puntos** vía `mom_abs`/`yoy_abs`), 6-17 (componentes cíclicos oficiales, puntos).
+- Los valores son **puntos** referenciados a la tendencia de largo plazo (=100), **no** porcentajes ni índices base; las diferencias se expresan en puntos con signo (`emoe` en columnas, `pts`/`pts-signed` en KPI/prosa).
+- Las componentes **Tasa de desocupación urbana (TDU), Tipo de cambio real (TCR) y TIIE** son *inversas* a la actividad económica, como indica el boletín oficial.
+- El **periodo de referencia** del SIC se alinea al último mes con cifra de los compuestos; los componentes adelantados con cobertura más reciente se conservan dentro de su periodo (ver `compute_sic_metrics` en `scripts/build_data.py`).
+- Referencia metodológica oficial: `https://www.inegi.org.mx/programas/sic/` y el Reloj de los ciclos económicos (`https://www.inegi.org.mx/app/relojcicloseconomicos/`).
 
 ### Series EMOE confirmadas (para evitar regresión)
 

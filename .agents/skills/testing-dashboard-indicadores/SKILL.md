@@ -31,23 +31,26 @@ No backend at runtime — the app reads `data/*.json`. Fully testable locally wi
 - **Exactly 14 principal indicators** on the panorama, in this order:
   1. PIB (EOPIBT)
   2. PIBSEC (PIB trimestral a precios constantes, sigla PIBT)
-  3. IOAE
-  4. IGAE
-  5. IMAI
-  6. EMIM
-  7. EMOE (Encuesta Mensual de Opinión Empresarial)
-  8. DESOCUP (ENOE)
-  9. INPC
-  10. INPP
-  11. CONSUMO (IMCP)
-  12. IMFBCF
-  13. IED (Inversión Extranjera Directa)
+  3. SIC (Sistema de Indicadores Cíclicos)
+  4. IOAE
+  5. IGAE
+  6. IMAI
+  7. EMIM
+  8. EMOE (Encuesta Mensual de Opinión Empresarial)
+  9. DESOCUP (ENOE)
+  10. INPC
+  11. INPP
+  12. CONSUMO (IMCP)
+  13. IMFBCF
   14. BCMM (Balanza comercial)
   Source of truth: `assets/js/config.js` `PRINCIPAL`.
 
-- **Complementarios (TIPOCAMBIO, TASA, RESERVAS)** must appear ONLY in
-  "Entorno financiero", never in the panorama. IED and EMOE are now principal
-  indicators in Panorama macroeconómico.
+- **Complementarios (IED, TIPOCAMBIO, TASA, RESERVAS)** must appear ONLY in
+  "Entorno financiero", never in the panorama. IED (Secretaría de Economía)
+  es ahora complementario; SIC y EMOE son principales del Panorama.
+- **SIC**: la ficha muestra el Indicador Coincidente como cifra principal, el
+  Adelantado como secundario, diferencias mensuales/anuales en **puntos** (nunca
+  en %) y las 12 componentes oficiales en small multiples con referencia 100.
 - **Honest states** per indicator: badges "Dato de respaldo" / "En revisión" /
   "Pendiente de token". Without tokens, indicators with a backup series show "dato de
   respaldo" (NOT "actualizado automáticamente"). Scaffolds (IMFBCF/IOAE/EMIM) must show a
@@ -70,9 +73,18 @@ No backend at runtime — the app reads `data/*.json`. Fully testable locally wi
 
 A partir de la V3, la separación entre Panorama macroeconómico y Entorno financiero se define de la siguiente manera:
 
-- **Panorama macroeconómico** reúne indicadores de actividad, industria, opinión empresarial, mercado laboral, precios, consumo, inversión y sector externo. Por ello **IED** (inversión real hacia la economía) y **EMOE** (opinión/confianza empresarial) son indicadores principales del Panorama.
-- **Entorno financiero** contiene únicamente variables monetarias y financieras de **Banco de México**: **TIPOCAMBIO** (FIX), **TASA** (tasa objetivo) y **RESERVAS** (reservas internacionales).
-- **Ni IED ni EMOE pertenecen a Entorno financiero.**
+- **Panorama macroeconómico** reúne indicadores de actividad, ciclos económicos (SIC), industria, opinión empresarial, mercado laboral, precios, consumo, inversión y sector externo. Por ello **SIC** (indicadores cíclicos oficiales) y **EMOE** (opinión/confianza empresarial) son indicadores principales del Panorama.
+- **Entorno financiero** contiene la inversión externa de la **Secretaría de Economía** (**IED**) y las variables monetarias y financieras de **Banco de México**: **TIPOCAMBIO** (FIX), **TASA** (tasa objetivo) y **RESERVAS** (reservas internacionales).
+- **Ni EMOE ni SIC pertenecen a Entorno financiero; IED sí.**
+
+### Series oficiales del SIC (BIE-BISE, regresión a vigilar)
+
+- Indicador Coincidente: `214293`
+- Indicador Adelantado: `214307`
+- Componentes del Coincidente: `214295`, `214297`, `214299`, `214301`, `214303`, `214305`
+- Componentes del Adelantado: `214309`, `214311`, `214313`, `214315`, `214317`, `214319`
+- Unidad: puntos (tendencia de largo plazo = 100); las diferencias mensual/anual
+  se calculan con `mom_abs`/`yoy_abs` en `scripts/sources/inegi.py`.
 
 ### Series EMOE confirmadas (regresión a vigilar)
 

@@ -1,5 +1,5 @@
 // Configuración de presentación (paleta, indicadores, navegación). Módulo ES.
-// V3: Panorama macroeconómico (14 principales) + Entorno financiero (3 complementarios).
+// V3: Panorama macroeconómico (14 principales) + Entorno financiero (4 complementarios).
 
 export const COLORS = {
   GREEN: "#1e5b4f",
@@ -14,17 +14,18 @@ export const COLORS = {
 };
 
 // Indicadores principales del Panorama macroeconómico.
-export const PRINCIPAL = ["PIB", "PIBSEC", "IOAE", "IGAE", "IMAI", "EMIM", "EMOE", "DESOCUP", "INPC", "INPP", "CONSUMO", "IMFBCF", "IED", "BCMM"];
+export const PRINCIPAL = ["PIB", "PIBSEC", "SIC", "IOAE", "IGAE", "IMAI", "EMIM", "EMOE", "DESOCUP", "INPC", "INPP", "CONSUMO", "IMFBCF", "BCMM"];
 
-// Indicadores complementarios del Entorno financiero (Banco de México).
-export const COMPLEMENTARIOS = ["TIPOCAMBIO", "TASA", "RESERVAS"];
+// Indicadores complementarios del Entorno financiero (inversión externa y variables financieras).
+export const COMPLEMENTARIOS = ["IED", "TIPOCAMBIO", "TASA", "RESERVAS"];
 
 // Orden lógico completo (principal + complementario).
 export const ORDER = [...PRINCIPAL, ...COMPLEMENTARIOS];
 
 // Etiqueta corta para navegación y tarjetas.
 export const LABELS = {
-  PIB: "PIB oportuno", PIBSEC: "PIB trimestral a precios constantes", IGAE: "IGAE", IMAI: "IMAI",
+  PIB: "PIB oportuno", PIBSEC: "PIB trimestral a precios constantes", SIC: "Sistema de Indicadores Cíclicos",
+  IGAE: "IGAE", IMAI: "IMAI",
   BCMM: "Balanza comercial", DESOCUP: "Indicadores de ocupación y empleo", INPC: "INPC",
   INPP: "Índice Nacional de Precios Productor",
   CONSUMO: "Consumo privado", IMFBCF: "Formación bruta de capital fijo",
@@ -35,7 +36,7 @@ export const LABELS = {
 
 // Sigla oficial. Si una clave no tiene sigla corta, se usa la clave.
 export const SIGLA = {
-  PIB: "PIB", PIBSEC: "PIBT", IGAE: "IGAE", IMAI: "IMAI",
+  PIB: "PIB", PIBSEC: "PIBT", SIC: "SIC", IGAE: "IGAE", IMAI: "IMAI",
   BCMM: "BCMM", DESOCUP: "ENOE", INPC: "INPC",
   INPP: "INPP",
   CONSUMO: "IMCP", IMFBCF: "IMFBCF", IOAE: "IOAE", EMIM: "EMIM", EMOE: "EMOE",
@@ -48,6 +49,7 @@ export const SIGLA = {
 export const KPICFG = {
   PIB: { valCol: 0, valFmt: "pct-frac", varCol: 1, varFmt: "pct-frac", varLabel: "Var. anual desest.", yoyCol: 2, yoyFmt: "pct-frac", yoyLabel: "Var. anual original", mainLabel: "Var. trimestral desest.", noun: "PIB oportuno", art: "el", grupo: "growth", assess: "growth", ctx: "", vw: "variación trimestral desestacionalizada", vg: "f", comp: "frente al trimestre anterior", goodSign: 1 },
   PIBSEC: { valCol: 5, valFmt: "bill", varCol: 6, varFmt: "pct-frac", varLabel: "Var. trim. PIB", yoyCol: 7, yoyFmt: "pct-frac", yoyLabel: "Var. anual PIB", mainLabel: "Nivel del PIB", qoqLabel: "Trim.", yoyLabelShort: "Anual", noun: "Producto Interno Bruto Trimestral", art: "el", grupo: "growth", assess: "growth", ctx: " a precios constantes de 2018", vw: "nivel del PIB y variaciones trimestrales y anuales por actividad económica", vg: "m", comp: "frente al trimestre anterior", goodSign: 1 },
+  SIC: { valCol: 0, valFmt: "idx", varCol: 2, varFmt: "emoe", varLabel: "Dif. mensual", yoyCol: 3, yoyFmt: "emoe", yoyLabel: "Dif. a 12 meses", mainLabel: "Indicador Coincidente", noun: "Indicador Coincidente", art: "el", grupo: "ciclo", assess: "growth", ctx: " (tendencia de largo plazo = 100 puntos)", vw: "diferencia mensual", vg: "m", comp: "frente al mes previo", goodSign: 1, umbral: 100, unit: "puntos" },
   IGAE: { valCol: 0, valFmt: "idx", varCol: 1, varFmt: "pct-frac", varLabel: "Var. mensual desest.", yoyCol: 2, yoyFmt: "pct-frac", yoyLabel: "Var. anual original", mainLabel: "Índice", noun: "Indicador Global de la Actividad Económica", art: "el", grupo: "growth", assess: "growth", ctx: " (índice base 2018=100)", vw: "variación mensual desestacionalizada", vg: "f", comp: "frente al mes previo", goodSign: 1 },
   IMAI: { valCol: 0, valFmt: "idx", varCol: 1, varFmt: "pct-frac", varLabel: "Var. mensual desest.", yoyCol: 2, yoyFmt: "pct-frac", yoyLabel: "Var. anual desest.", mainLabel: "Índice", acumCol: 5, acumFmt: "pct-frac", acumLabel: "Acumulado ene-mes", noun: "Indicador Mensual de la Actividad Industrial", art: "el", grupo: "growth", assess: "growth", ctx: " (índice base 2018=100)", vw: "variación mensual desestacionalizada", vg: "m", comp: "frente al mes previo", goodSign: 1 },
   CONSUMO: { valCol: 0, valFmt: "idx", varCol: 1, varFmt: "pct-frac", varLabel: "Var. mensual desest.", yoyCol: 2, yoyFmt: "pct-frac", yoyLabel: "Var. anual desest.", acumCol: 4, acumFmt: "pct-frac", acumLabel: "Acumulado ene-mes", mainLabel: "Índice", noun: "consumo privado", art: "el", grupo: "growth", assess: "growth", ctx: " (índice base 2018=100)", vw: "variación mensual desestacionalizada", vg: "f", comp: "frente al mes previo", goodSign: 1 },
@@ -68,6 +70,7 @@ export const KPICFG = {
 export const CAPTIONS = {
   PIB: "Variación trimestral desestacionalizada del PIB oportuno (barras) y su variación anual desestacionalizada (línea). Ambas en porcentaje.",
   PIBSEC: "Niveles del PIB y las grandes actividades económicas (small multiples, arriba) y variaciones trimestrales y anuales agrupadas (abajo). Las variaciones a partir de 2021 provienen del boletín PIBT; antes se calculan a partir de los niveles originales.",
+  SIC: "Indicadores Coincidente y Adelantado del INEGI (componentes cíclicos en puntos) con la línea de tendencia de largo plazo en 100, y el ciclo de sus componentes oficiales.",
   IGAE: "Niveles del IGAE y actividades primarias, secundarias y terciarias (small multiples, arriba) y variación anual original agrupada (abajo). La variación mensual desestacionalizada proviene del boletín oficial.",
   IMAI: "Niveles desestacionalizados del IMAI y sus cuatro sectores (small multiples, arriba) y variaciones mensuales y anuales desestacionalizadas agrupadas (abajo). Las variaciones del mes más reciente provienen del boletín oficial.",
   CONSUMO: "Índice de volumen físico del consumo privado (línea verde), variación mensual desestacionalizada (línea guinda) y variación anual desestacionalizada (línea oro), ambas en eje derecho.",

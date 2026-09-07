@@ -20,16 +20,16 @@ def test_file_exists():
 
 
 def test_meta_counts_match_new_classification():
-    """El perfil V3 tiene 14 principales y 3 complementarios."""
+    """El perfil V3 tiene 14 principales (con SIC) y 4 complementarios (con IED)."""
     meta_path = ROOT / "config" / "indicadores_meta.json"
     meta = json.loads(meta_path.read_text(encoding="utf-8"))
     assert len(meta["principal"]) == 14, f"Se esperaban 14 principales, hay {len(meta['principal'])}"
     assert meta["principal"] == [
-        "PIB", "PIBSEC", "IOAE", "IGAE", "IMAI", "EMIM", "EMOE", "DESOCUP",
-        "INPC", "INPP", "CONSUMO", "IMFBCF", "IED", "BCMM",
+        "PIB", "PIBSEC", "SIC", "IOAE", "IGAE", "IMAI", "EMIM", "EMOE", "DESOCUP",
+        "INPC", "INPP", "CONSUMO", "IMFBCF", "BCMM",
     ]
-    assert len(meta["complementario"]) == 3, f"Se esperaban 3 complementarios, hay {len(meta['complementario'])}"
-    assert meta["complementario"] == ["TIPOCAMBIO", "TASA", "RESERVAS"]
+    assert len(meta["complementario"]) == 4, f"Se esperaban 4 complementarios, hay {len(meta['complementario'])}"
+    assert meta["complementario"] == ["IED", "TIPOCAMBIO", "TASA", "RESERVAS"]
 
 
 def test_meta_and_order(payload):
@@ -80,10 +80,13 @@ def test_duplicate_flagged_as_revision(payload):
 
 
 # Regresión: variaciones oficiales del boletín INEGI.
-# Se comparan con los valores públicados en los boletines más recientes.
+# Se comparan con los valores publicados en los boletines más recientes.
+# NOTA: las expectativas corresponden al último periodo cargado (Jun-26 para
+# CONSUMO/IMFBCF/IGAE y Jul-26 para IOAE al 2026-09-07); al incorporarse un mes
+# nuevo o una revisión oficial hay que actualizar las constantes.
 @pytest.mark.parametrize("key,monthly_col,annual_col,expected_monthly,expected_annual", [
-    ("CONSUMO", 1, 2, 0.001, 0.026),
-    ("IMFBCF", 1, 2, 0.013515, 0.058812),
+    ("CONSUMO", 1, 2, -0.004, 0.016),
+    ("IMFBCF", 1, 2, 0.013, 0.059),
     ("IGAE", 1, 2, -0.001, 0.028191),
     ("IOAE", 3, 0, 0.001, 0.027),
 ])

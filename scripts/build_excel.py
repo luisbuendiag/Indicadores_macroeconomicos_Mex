@@ -1023,6 +1023,7 @@ def add_desocup_sheets(wb, payload):
 # Orden: Panorama macroeconómico (14), Entorno financiero (3).
 NEW_SHEETS = {
     "PIBSEC": "PIB Sectorial",
+    "SIC": "Indicadores Cíclicos (SIC)",
     "IOAE": "IOAE",
     "IGAE": "IGAE",
     "IMAI": "IMAI",
@@ -1228,11 +1229,11 @@ def main():
         wb.remove(wb["Subsectores EMIM"])
     add_pib_sheets(wb, payload)
     # Parte 1 del Panorama: actividad, industria y opinión empresarial.
-    pan_1 = ["PIBSEC", "IOAE", "IGAE", "IMAI", "EMIM", "EMOE"]
+    pan_1 = ["PIBSEC", "SIC", "IOAE", "IGAE", "IMAI", "EMIM", "EMOE"]
     add_indicator_sheets(wb, payload, keys=pan_1)
     add_desocup_sheets(wb, payload)
     # Parte 2 del Panorama y Entorno financiero.
-    pan_2 = ["INPC", "INPP", "CONSUMO", "IMFBCF", "IED", "BCMM", "TIPOCAMBIO", "TASA", "RESERVAS"]
+    pan_2 = ["INPC", "INPP", "CONSUMO", "IMFBCF", "BCMM", "IED", "TIPOCAMBIO", "TASA", "RESERVAS"]
     add_indicator_sheets(wb, payload, keys=pan_2)
     add_metodologia(wb, payload)
     add_control(wb, payload, manifest, log, calendar)

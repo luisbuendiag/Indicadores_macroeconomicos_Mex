@@ -124,6 +124,14 @@ function chartSpec(ind, obs) {
       ],
       leftName: "Variación anual (%)", rightName: "Var. mensual (%)", leftFmt: "pct", rightFmt: "pct"
     };
+    case "SIC": return {
+      periods: P,
+      lines: [
+        { name: "Indicador Coincidente", values: col(0), color: G, refLine: 100 },
+        { name: "Indicador Adelantado", values: col(1), color: Go },
+      ],
+      leftName: "Puntos (100 = tendencia de largo plazo)", leftFmt: "idx"
+    };
     case "RESERVAS": return { periods: P, lines: [{ name: "Reservas internacionales", values: col(0), color: G }], leftName: "Millones de dólares", leftFmt: "compact" };
     case "TIPOCAMBIO": return { periods: P, lines: [{ name: "Tipo de cambio FIX", values: col(0), color: G }], leftName: "Pesos por dólar", leftFmt: "idx" };
     case "TASA": return { periods: P, lines: [{ name: "Tasa objetivo (%)", values: col(0), color: G, step: "start" }], leftName: "Porcentaje (%)", leftFmt: "pct" };
@@ -548,6 +556,89 @@ export function buildEmoeSectors(obs) {
       },
     },
     toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "EMOE-sectores", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+  };
+}
+
+// ---------------- SIC: small multiples (componentes cíclicos) ----------------
+// Componentes oficiales del Sistema de Indicadores Cíclicos (boletín INEGI).
+// Las series marcadas como inversas se comportan de forma contraria a la
+// actividad económica (lo señala el propio boletín).
+const SIC_COMPONENTS = {
+  coincidente: [
+    { key: "IGAE", col: 6, top: "IGAE" },
+    { key: "IAI", col: 7, top: "Indicador de la actividad industrial" },
+    { key: "ISBM", col: 8, top: "Ingresos por suministro al por menor" },
+    { key: "IMSS", col: 9, top: "Asegurados permanentes en el IMSS" },
+    { key: "TDU", col: 10, top: "Tasa de desocupación urbana (inversa)" },
+    { key: "IMP", col: 11, top: "Importaciones totales" },
+  ],
+  adelantado: [
+    { key: "TEM", col: 12, top: "Tendencia del empleo en manufacturas" },
+    { key: "CEM", col: 13, top: "Momento adecuado para invertir" },
+    { key: "IPC", col: 14, top: "IPC de la BMV (real)" },
+    { key: "TCR", col: 15, top: "Tipo de cambio real bilateral (inversa)" },
+    { key: "TIIE", col: 16, top: "TIIE (inversa)" },
+    { key: "SP5", col: 17, top: "S&P 500 de EUA" },
+  ],
+};
+const SIC_COMP_COLORS = [G, COLORS.CRIMSON, Go, COLORS.TEAL, COLORS.WINE, COLORS.DKGREEN];
+
+export function buildSicComponents(obs, group) {
+  const comps = SIC_COMPONENTS[group] || [];
+  const periods = obs.map((o) => o.period);
+  const grids = [], xAxes = [], yAxes = [], series = [], titles = [];
+  const rotate = periods.length > 12;
+  comps.forEach((cfg, i) => {
+    const row = Math.floor(i / 2);
+    const colIdx = i % 2;
+    const left = colIdx === 0 ? "4%" : "54%";
+    const top = 20 + row * 205;
+    const height = 165;
+    const width = "42%";
+    grids.push({ left, top, width, height, containLabel: false });
+    xAxes.push({
+      gridIndex: i, type: "category", data: periods, boundaryGap: false,
+      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 },
+      axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+    });
+    yAxes.push({
+      gridIndex: i, type: "value", name: "Puntos", nameLocation: "middle", nameGap: 34,
+      nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 10, fontWeight: 500 },
+      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) },
+      splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
+    });
+    const values = obs.map((o) => (o.values && o.values.length > cfg.col ? o.values[cfg.col] : null) ?? null);
+    const s = {
+      name: cfg.top, type: "line", xAxisIndex: i, yAxisIndex: i,
+      data: values, smooth: false, symbol: "circle", symbolSize: 3,
+      lineStyle: { color: SIC_COMP_COLORS[i % SIC_COMP_COLORS.length], width: 2 },
+      itemStyle: { color: SIC_COMP_COLORS[i % SIC_COMP_COLORS.length] },
+      areaStyle: { color: SIC_COMP_COLORS[i % SIC_COMP_COLORS.length], opacity: 0.08 },
+      markLine: { symbol: "none", data: [{ yAxis: 100, name: "Tendencia de largo plazo", lineStyle: { color: COLORS.GRAY, type: "dashed", width: 1 }, label: { show: false } }], animation: false },
+    };
+    lastHighlight(s, periods, values, SIC_COMP_COLORS[i % SIC_COMP_COLORS.length], (v) => v == null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+    series.push(s);
+    const yRange = computeYRange(values, { padding: 0.08, includeZero: false, ref: 100 });
+    if (yRange) { yAxes[i].min = yRange.min; yAxes[i].max = yRange.max; yAxes[i].scale = true; }
+    titles.push({ text: cfg.top, left, top: top - 18, textStyle: { color: "#3d403b", fontFamily: FONT, fontSize: 12, fontWeight: 600 } });
+  });
+  return {
+    animation: false, color: SIC_COMP_COLORS,
+    title: titles, grid: grids, xAxis: xAxes, yAxis: yAxes, series,
+    tooltip: {
+      trigger: "axis", backgroundColor: "#fff", borderColor: "#ddd7c6", borderWidth: 1,
+      textStyle: { color: COLORS.INK, fontFamily: FONT, fontSize: 12 },
+      extraCssText: "box-shadow:0 5px 16px rgba(0,0,0,.13);border-radius:9px;",
+      formatter: (params) => {
+        if (!params || !params.length) return "";
+        const p = params[0];
+        const v = p.value;
+        const val = v == null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " puntos";
+        return `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${val}</span></div>`;
+      },
+    },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "SIC-componentes-" + group, pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
   };
 }
 
