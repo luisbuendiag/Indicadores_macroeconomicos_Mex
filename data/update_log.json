@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-09-06T19:31:00+00:00",
+  "started_at": "2026-09-07T13:19:52+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -157,7 +157,7 @@
     "banxico_sie: actualizado IMFBCF (última obs Jun 26, sin cambio de periodo)",
     "banxico_sie: actualizado IMFBCF (última obs Jun 26, sin cambio de periodo)",
     "banxico: actualizado TIPOCAMBIO (última obs 2026-09-04, sin cambio de periodo)",
-    "banxico: actualizado TASA (última obs 2026-09-06, dato nuevo)",
+    "banxico: actualizado TASA (última obs 2026-09-07, dato nuevo)",
     "banxico: actualizado RESERVAS (última obs 2026-08-28, sin cambio de periodo)",
     "inegi: actualizado PIB (última obs 1T-26, dato nuevo)",
     "inegi: actualizado PIBSEC (última obs 2T-26, sin cambio de periodo)",
@@ -294,7 +294,7 @@
     "TASA: calendario de publicaciones con 24 eventos",
     "TASA: 13 decisiones de politica monetaria construidas",
     "TASA: 47 regímenes detectados",
-    "calendario: regenerado con as_of=2026-09-06",
+    "calendario: regenerado con as_of=2026-09-07",
     "métricas: data/metrics.json regenerado",
     "frescura: PIB -> ACTUALIZADO",
     "frescura: PIBSEC -> ACTUALIZADO",
@@ -313,7 +313,7 @@
     "frescura: EMOE -> ACTUALIZADO",
     "frescura: BCMM -> ACTUALIZADO",
     "frescura: INPP -> ACTUALIZADO",
-    "meta: last_update_ct=2026-09-06T14:19:09-06:00"
+    "meta: last_update_ct=2026-09-07T07:49:00-06:00"
   ],
   "consultas": [
     {
@@ -812,10 +812,10 @@
       "fuente": "banxico",
       "indicador": "TASA",
       "serie": "SF61745",
-      "observaciones": 3159,
-      "ultima_observacion": "2026-09-06",
+      "observaciones": 3160,
+      "ultima_observacion": "2026-09-07",
       "ultimo_valor": 6.5,
-      "observacion_previa": "2026-09-04",
+      "observacion_previa": "2026-09-06",
       "actualizacion_fuente": null,
       "dato_nuevo": true,
       "resultado": "consulta válida"
@@ -2131,5 +2131,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-09-06T20:19:10+00:00"
+  "finished_at": "2026-09-07T13:49:01+00:00"
 }
