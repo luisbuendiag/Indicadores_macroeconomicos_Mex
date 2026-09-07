@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-09-07T16:13:52+00:00",
+  "started_at": "2026-09-07T18:09:36+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -42,7 +42,7 @@
     "INEGI EMIM: 233 observaciones (serie 702139, base BIE-BISE); última Jun 26 = 0.003052; actualización BIE 17/08/2026 12:00:00 a. m..",
     "INEGI EMIM: 222 observaciones (serie 702139, base BIE-BISE); última Jun 26 = -0.014985; actualización BIE 17/08/2026 12:00:00 a. m..",
     "INEGI EMIM: 234 observaciones (serie 702185, base BIE-BISE); última Jun 26 = 97.8; actualización BIE 17/08/2026 12:00:00 a. m..",
-    "INEGI EMIM: 233 observaciones (serie 702185, base BIE-BISE); última Jun 26 = 0.01875; actualización BIE 17/08/2026 12:00:00 a. m..",
+    "INEGI EMIM: error de consulta (serie 702185): Remote end closed connection without response",
     "INEGI EMIM: 222 observaciones (serie 702185, base BIE-BISE); última Jun 26 = -0.001021; actualización BIE 17/08/2026 12:00:00 a. m..",
     "INEGI EMOE: 104 observaciones (serie 701401, base BIE-BISE); última Ago 26 = 48.232912; actualización BIE 01/09/2026 12:00:00 a. m..",
     "INEGI EMOE: 104 observaciones (serie 701401, base BIE-BISE); última Ago 26 = 0.029301; actualización BIE 01/09/2026 12:00:00 a. m..",
@@ -50,7 +50,7 @@
     "INEGI EMOE: 104 observaciones (serie 701570, base BIE-BISE); última Ago 26 = 47.997733; actualización BIE 01/09/2026 12:00:00 a. m..",
     "INEGI EMOE: 104 observaciones (serie 701407, base BIE-BISE); última Ago 26 = 47.498528; actualización BIE 01/09/2026 12:00:00 a. m..",
     "INEGI EMOE: 104 observaciones (serie 701826, base BIE-BISE); última Ago 26 = 48.000377; actualización BIE 01/09/2026 12:00:00 a. m..",
-    "INEGI EMOE: 104 observaciones (serie 701975, base BIE-BISE); última Ago 26 = 48.608038; actualización BIE 01/09/2026 12:00:00 a. m..",
+    "INEGI EMOE: error de consulta (serie 701975): Remote end closed connection without response",
     "INEGI BCMM: 559 observaciones (serie 33223, base BIE-BISE); última Jul 26 = 81420.015; actualización BIE 27/08/2026 12:00:00 a. m..",
     "INEGI BCMM: 559 observaciones (serie 33226, base BIE-BISE); última Jul 26 = 82267.552; actualización BIE 27/08/2026 12:00:00 a. m..",
     "INEGI BCMM: 211 observaciones (serie 6204198547, base BISE); última Jul 26 = 81420.015; actualización BIE 27/08/2026 12:00:00 a. m..",
@@ -92,7 +92,9 @@
     "INEGI INPP: 83 observaciones (serie 1801005, base BIE-BISE); última Jul 26 = 10.177846; actualización BIE 07/08/2026 12:00:00 a. m..",
     "INEGI INPP: 103 observaciones (serie 1801007, base BIE-BISE); última Jul 26 = 5.78763; actualización BIE 07/08/2026 12:00:00 a. m..",
     "INEGI INPP: 103 observaciones (serie 1801008, base BIE-BISE); última Jul 26 = 1.586369; actualización BIE 07/08/2026 12:00:00 a. m..",
-    "INEGI INPP: 103 observaciones (serie 1801009, base BIE-BISE); última Jul 26 = 4.191698; actualización BIE 07/08/2026 12:00:00 a. m.."
+    "INEGI INPP: 103 observaciones (serie 1801009, base BIE-BISE); última Jul 26 = 4.191698; actualización BIE 07/08/2026 12:00:00 a. m..",
+    "EMIM: ERROR DE FUENTE – El pipeline reportó un error para EMIM y el dato podría no estar actualizado.",
+    "EMOE: ERROR DE FUENTE – El pipeline reportó un error para EMOE y el dato podría no estar actualizado."
   ],
   "changes": [
     "IGAE: fuente normalizada a serie total 737121",
@@ -156,7 +158,7 @@
     "banxico_sie: actualizado IMFBCF (última obs Jun 26, sin cambio de periodo)",
     "banxico_sie: actualizado IMFBCF (última obs Jun 26, sin cambio de periodo)",
     "banxico_sie: actualizado IMFBCF (última obs Jun 26, sin cambio de periodo)",
-    "banxico: actualizado TIPOCAMBIO (última obs 2026-09-04, sin cambio de periodo)",
+    "banxico: actualizado TIPOCAMBIO (última obs 2026-09-07, dato nuevo)",
     "banxico: actualizado TASA (última obs 2026-09-07, sin cambio de periodo)",
     "banxico: actualizado RESERVAS (última obs 2026-08-28, sin cambio de periodo)",
     "inegi: actualizado PIB (última obs 1T-26, dato nuevo)",
@@ -198,8 +200,6 @@
     "inegi: actualizado EMIM (última obs Jun 26, sin cambio de periodo)",
     "inegi: actualizado EMIM (última obs Jun 26, sin cambio de periodo)",
     "inegi: actualizado EMIM (última obs Jun 26, sin cambio de periodo)",
-    "inegi: actualizado EMIM (última obs Jun 26, sin cambio de periodo)",
-    "inegi: actualizado EMOE (última obs Ago 26, sin cambio de periodo)",
     "inegi: actualizado EMOE (última obs Ago 26, sin cambio de periodo)",
     "inegi: actualizado EMOE (última obs Ago 26, sin cambio de periodo)",
     "inegi: actualizado EMOE (última obs Ago 26, sin cambio de periodo)",
@@ -306,14 +306,14 @@
     "frescura: INPC -> ACTUALIZADO",
     "frescura: IMFBCF -> ACTUALIZADO",
     "frescura: IOAE -> ACTUALIZADO",
-    "frescura: EMIM -> ACTUALIZADO",
+    "frescura: EMIM -> ERROR DE FUENTE",
     "frescura: TIPOCAMBIO -> ACTUALIZADO",
     "frescura: TASA -> ACTUALIZADO",
     "frescura: RESERVAS -> ACTUALIZADO",
-    "frescura: EMOE -> ACTUALIZADO",
+    "frescura: EMOE -> ERROR DE FUENTE",
     "frescura: BCMM -> ACTUALIZADO",
     "frescura: INPP -> ACTUALIZADO",
-    "meta: last_update_ct=2026-09-07T11:12:20-06:00"
+    "meta: last_update_ct=2026-09-07T12:57:16-06:00"
   ],
   "consultas": [
     {
@@ -800,12 +800,12 @@
       "fuente": "banxico",
       "indicador": "TIPOCAMBIO",
       "serie": "SF43718",
-      "observaciones": 2183,
-      "ultima_observacion": "2026-09-04",
-      "ultimo_valor": 16.8748,
+      "observaciones": 2184,
+      "ultima_observacion": "2026-09-07",
+      "ultimo_valor": 16.9237,
       "observacion_previa": "2026-09-04",
       "actualizacion_fuente": null,
-      "dato_nuevo": false,
+      "dato_nuevo": true,
       "resultado": "consulta válida"
     },
     {
@@ -1292,18 +1292,6 @@
       "fuente": "inegi",
       "indicador": "EMIM",
       "serie": "702185",
-      "observaciones": 233,
-      "ultima_observacion": "Jun 26",
-      "ultimo_valor": 0.01875,
-      "observacion_previa": "Jun 26",
-      "actualizacion_fuente": "17/08/2026 12:00:00 a. m.",
-      "dato_nuevo": false,
-      "resultado": "consulta válida"
-    },
-    {
-      "fuente": "inegi",
-      "indicador": "EMIM",
-      "serie": "702185",
       "observaciones": 222,
       "ultima_observacion": "Jun 26",
       "ultimo_valor": -0.001021,
@@ -1379,18 +1367,6 @@
       "observaciones": 104,
       "ultima_observacion": "Ago 26",
       "ultimo_valor": 48.000377,
-      "observacion_previa": "Ago 26",
-      "actualizacion_fuente": "01/09/2026 12:00:00 a. m.",
-      "dato_nuevo": false,
-      "resultado": "consulta válida"
-    },
-    {
-      "fuente": "inegi",
-      "indicador": "EMOE",
-      "serie": "701975",
-      "observaciones": 104,
-      "ultima_observacion": "Ago 26",
-      "ultimo_valor": 48.608038,
       "observacion_previa": "Ago 26",
       "actualizacion_fuente": "01/09/2026 12:00:00 a. m.",
       "dato_nuevo": false,
@@ -2131,5 +2107,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-09-07T17:12:22+00:00"
+  "finished_at": "2026-09-07T18:57:17+00:00"
 }
