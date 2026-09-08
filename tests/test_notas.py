@@ -160,3 +160,65 @@ def test_nota_y_boletin_no_apuntan_al_mismo_archivo():
         nota = ind.get("url_nota_individual") or ""
         assert nota and boletin != nota, f"{key}: BOLETÍN y NOTA apuntan a lo mismo"
         assert nota.endswith(".docx")
+
+
+# ---------------------------------------------------------------------------
+# Nota PIB reconstruida (2T-2026): DOCX nativo, Noto Sans 11 pt, sin modo de
+# compatibilidad. Regresión contra la conversión defectuosa pdf2docx.
+# ---------------------------------------------------------------------------
+
+PIB_DOCS = [
+    MACHOTE_DIR / "PIB_machote.docx",
+    ROOT / "downloads/indicadores/PIB/nota/PIB_nota.docx",
+]
+
+
+def _part(path: Path, name: str) -> str:
+    with zipfile.ZipFile(path) as z:
+        return z.read(name).decode("utf-8", "ignore")
+
+
+@pytest.mark.parametrize("path", PIB_DOCS)
+def test_pib_docx_nativo_sin_modo_compatibilidad(path):
+    assert path.exists(), f"Falta {path}"
+    settings = _part(path, "word/settings.xml")
+    # compatibilityMode 15 = Word 2013+ (sin "Modo de compatibilidad");
+    # useFELayout es un artefacto de pdf2docx que rompe la retícula.
+    assert "useFELayout" not in settings
+    import re
+    compat = re.findall(r'compatibilityMode"[^>]*w:val="(\d+)"', settings)
+    assert not compat or min(int(v) for v in compat) >= 15, compat
+
+
+@pytest.mark.parametrize("path", PIB_DOCS)
+def test_pib_docx_tipografia_noto_sans_11pt(path):
+    styles = _part(path, "word/styles.xml")
+    # docDefaults y Normal apuntan a Noto Sans; el cuerpo es 11 pt (w:sz=22).
+    assert 'w:ascii="Noto Sans"' in styles
+    import re
+    normal = re.search(r'w:styleId="Normal".*?</w:style>', styles, re.S)
+    assert normal and 'w:ascii="Noto Sans"' in normal.group(0)
+    assert '<w:sz w:val="22"/>' in normal.group(0), "Normal debe ser 11 pt"
+    # Ninguna fuente heredada de la conversión (Cambria) ni Times/Calibri.
+    for bad in ("Cambria", "Times New Roman", "Calibri"):
+        assert bad not in styles, f"{bad} sigue presente en {path.name}"
+    font_table = _part(path, "word/fontTable.xml")
+    assert "Noto Sans" in font_table
+
+
+@pytest.mark.parametrize("path", PIB_DOCS)
+def test_pib_docx_estructura_limpia(path):
+    """Sin objetos flotantes del conversor: el cuerpo sólo usa imágenes en
+    línea y un salto de página explícito que garantiza 2 páginas."""
+    doc = _part(path, "word/document.xml")
+    assert "txbxContent" not in doc, "cuadros de texto flotantes del conversor"
+    assert "<wp:anchor" not in doc, "imágenes flotantes fuera de la retícula"
+    # exactamente un salto de página explícito -> 2 páginas
+    assert doc.count('w:br w:type="page"') == 1
+    with zipfile.ZipFile(path) as z:
+        media = [n for n in z.namelist() if n.startswith("word/media/")]
+    # gráficas (2 png) + recursos institucionales de la plantilla (2 jpg)
+    base = {n.rsplit("/", 1)[-1] for n in media}
+    assert len(media) == 4, media
+    assert {"image1.jpg", "image2.jpg"} <= base  # logo / pie institucional
+    assert sum(1 for n in base if n.endswith(".png")) == 2  # las 2 gráficas

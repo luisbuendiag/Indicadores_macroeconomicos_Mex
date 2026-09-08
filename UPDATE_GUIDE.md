@@ -98,3 +98,22 @@ El dashboard original queda intacto para revertir en cualquier momento:
   deshabilitado; no generar contenido artificial para ellos.
 - La generación automatizada de notas (boletín → datos → machote → .docx nuevo)
   es una fase futura y aún no está implementada.
+
+### Regla tipográfica para notas (obligatoria)
+
+Toda nota institucional —presente o futura— debe cumplir:
+
+- **Fuente base: Noto Sans**; cuerpo **11 pt** (incluye párrafos, bullets,
+  análisis, notas metodológicas, fuentes al pie y texto de tablas).
+- **DOCX nativo** (Office Open XML moderno): nunca modo de compatibilidad,
+  `.doc`, RTF ni PDF embebido; `settings.xml` con `compatibilityMode=15` y sin
+  `w:useFELayout`.
+- **Nunca usar una conversión mecánica PDF→Word** (pdf2docx y similares) como
+  machote o nota final: rasteriza páginas, rompe la retícula y deja objetos
+  flotantes. Si la nota origen sólo existe en PDF, reconstruir desde
+  `_PLANTILLA_MAESTRA.docx` y extraer las gráficas del PDF como imágenes
+  (referencia: `scripts/rebuild_pib_nota.py`).
+- Partir siempre de `data/source/notas_machote/_PLANTILLA_MAESTRA.docx` para
+  conservar encabezado, logos, barras, paleta verde/vino/dorado, pie con el
+  gráfico "2026 año de Margarita Maza", márgenes y proporciones de página.
+- Extensión objetivo: máximo 2 páginas.

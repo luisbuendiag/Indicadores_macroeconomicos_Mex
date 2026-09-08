@@ -6,7 +6,7 @@
       "machote": "data/source/notas_machote/PIB_machote.docx",
       "periodo": "2T-26",
       "titulo": "Estimación Oportuna del PIB Trimestral",
-      "fuente_original": "PIBOT_JUL_2026.pdf (Boletín de Indicador del 30 de julio de 2026, reconstruido a Word)"
+      "fuente_original": "Boletín de Indicador del 30 de julio de 2026 (PIBOT_JUL_2026.pdf); reconstruido a DOCX nativo desde _PLANTILLA_MAESTRA.docx vía scripts/rebuild_pib_nota.py — sin conversión pdf2docx"
     },
     "PIBSEC": {
       "machote": "data/source/notas_machote/PIBT_machote.docx",

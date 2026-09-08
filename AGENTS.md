@@ -110,3 +110,12 @@ Entorno financiero contiene la inversión externa reportada por la **Secretaría
 - Metadatos por indicador en `data/indicadores.json`: `ind['nota'] = {available, format:'docx', path, periodo, generated_from:'machote', automatic:false}` además de `nota_disponible`/`url_nota_individual`/`nota_causa` para el frontend.
 - `historico/` opcional dentro de `downloads/indicadores/{KEY}/nota/` queda previsto para ediciones pasadas; el botón siempre apunta a la vigente.
 - Automatización futura (no implementada): nuevo boletín → datos oficiales → copiar machote → actualizar contenidos/gráficas → validar → `lib_notas.update_nota_vigente`. Sin llamadas a IA en esta fase.
+
+### Regla tipográfica de notas
+
+- **Noto Sans** como fuente base; **cuerpo 11 pt**; DOCX nativo
+  (`compatibilityMode=15`, sin `w:useFELayout`); nunca una conversión
+  PDF→Word como producto final — si el origen es PDF, reconstruir desde
+  `_PLANTILLA_MAESTRA.docx` (ver `scripts/rebuild_pib_nota.py`).
+- La nota PIB (2T-2026) fue reconstruida así el 08-sep-2026; sus gráficas
+  viven en `data/source/notas_machote/assets/pib/` como assets del machote.
