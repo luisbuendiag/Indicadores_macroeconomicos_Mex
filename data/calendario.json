@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-08T12:48:15+00:00",
+  "generated_at": "2026-09-08T16:40:17+00:00",
   "as_of": "2026-09-08",
   "fuente": "Calendario oficial de difusión",
   "sources": {
@@ -13921,7 +13921,7 @@
     },
     {
       "indicator": "RESERVAS",
-      "program": "Estado de cuenta del Banco de México",
+      "program": "Estado de cuenta del Banco de México de la semana al 4 de septiembre y del mes de agosto de 2026",
       "product": "Estado de cuenta del Banco de México",
       "publication_date": "2026-09-08",
       "publication_date_display": "8 de septiembre de 2026",
@@ -13933,13 +13933,13 @@
       "category": "Financiero",
       "sigla": "RESERVAS",
       "type": "event",
-      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{1726A33D-73DE-54CE-8DA7-75D8F31FCA13}.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
-          "label": "Boletín / página oficial",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{1726A33D-73DE-54CE-8DA7-75D8F31FCA13}.pdf",
+          "label": "Estado de cuenta del Banco de México de la semana al 4 de septiembre y del mes de agosto de 2026",
           "size": null
         }
       ],
@@ -20710,7 +20710,7 @@
   "recent": [
     {
       "indicator": "RESERVAS",
-      "program": "Estado de cuenta del Banco de México",
+      "program": "Estado de cuenta del Banco de México de la semana al 4 de septiembre y del mes de agosto de 2026",
       "product": "Estado de cuenta del Banco de México",
       "publication_date": "2026-09-08",
       "publication_date_display": "8 de septiembre de 2026",
@@ -20722,13 +20722,13 @@
       "category": "Financiero",
       "sigla": "RESERVAS",
       "type": "event",
-      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{1726A33D-73DE-54CE-8DA7-75D8F31FCA13}.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
-          "label": "Boletín / página oficial",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{1726A33D-73DE-54CE-8DA7-75D8F31FCA13}.pdf",
+          "label": "Estado de cuenta del Banco de México de la semana al 4 de septiembre y del mes de agosto de 2026",
           "size": null
         }
       ],

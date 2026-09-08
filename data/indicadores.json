@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-08T12:47:57+00:00",
+    "generated_at": "2026-09-08T16:39:56+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-09-08T06:47:57-06:00",
+    "last_update_ct": "2026-09-08T10:39:56-06:00",
     "periodo_referencia_reciente": {
       "period": "Ago 26",
       "period_long": "Ago 26"
@@ -131342,9 +131342,18 @@
             6434.5,
             0.057959
           ]
+        },
+        {
+          "period": "2026-09-04",
+          "values": [
+            258034.6,
+            -529.5,
+            5905.0,
+            0.051206
+          ]
         }
       ],
-      "last_observation": "2026-08-28",
+      "last_observation": "2026-09-04",
       "last_updated": "2026-09-08",
       "last_checked": "2026-09-08",
       "requiere_token": "BANXICO",
@@ -131353,29 +131362,29 @@
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
       "fecha_publicacion": null,
-      "periodo_referencia": "Semana al 28 Ago 26",
+      "periodo_referencia": "Semana al 4 Sep 26",
       "fecha_consulta": "2026-09-08",
       "source_origin": "api",
       "metrics": {
         "kpi": {
-          "ultimoP": "Semana al 28 Ago 26",
-          "ultimoRaw": 258564.1,
-          "ultimoFmt": "258,564 mdd",
-          "varText": "−45 mdd",
-          "varMag": -44.7,
+          "ultimoP": "Semana al 4 Sep 26",
+          "ultimoRaw": 258034.6,
+          "ultimoFmt": "258,035 mdd",
+          "varText": "−529 mdd",
+          "varMag": -529.5,
           "varLabel": "Cambio semanal",
           "pos": false,
           "varColor": "#9b2247",
-          "yoyText": "+5.8%",
+          "yoyText": "+5.1%",
           "yoyLabel": "Variación anual",
-          "yoyRaw": 0.057959,
-          "yoyMag": 0.057959,
+          "yoyRaw": 0.051206,
+          "yoyMag": 0.051206,
           "yoyPos": true,
           "yoyColor": "#1e5b4f",
-          "acumText": "+6,435 mdd",
-          "acumPctText": "+2.6%",
+          "acumText": "+5,905 mdd",
+          "acumPctText": "+2.3%",
           "acumLabel": "Cambio YTD",
-          "lastI": 451,
+          "lastI": 452,
           "series": [
             172904.4,
             172951.2,
@@ -131828,7 +131837,8 @@
             257087.4,
             257416.8,
             258608.8,
-            258564.1
+            258564.1,
+            258034.6
           ],
           "periods": [
             "2018-01-05",
@@ -132282,29 +132292,30 @@
             "2026-08-07",
             "2026-08-14",
             "2026-08-21",
-            "2026-08-28"
+            "2026-08-28",
+            "2026-09-04"
           ],
           "assessment": "neutral",
           "dir": "down",
           "semaforo": "estable"
         },
         "yoy": {
-          "mag": 0.057959,
+          "mag": 0.051206,
           "pos": true,
-          "text": "+5.8%",
+          "text": "+5.1%",
           "label": "Variación anual"
         },
         "resumen": [
-          "Al 28 de agosto de 2026, la reserva internacional se ubicó en 258,564 mdd.",
-          "La variación semanal fue de −45 mdd respecto a la semana previa.",
-          "A tasa anual, la reserva varió +5.8%.",
-          "En lo que va del año, el cambio acumulado fue de +6,435 mdd (+2.6%) respecto al cierre del año previo."
+          "Al 4 de septiembre de 2026, la reserva internacional se ubicó en 258,035 mdd.",
+          "La variación semanal fue de −529 mdd respecto a la semana previa.",
+          "A tasa anual, la reserva varió +5.1%.",
+          "En lo que va del año, el cambio acumulado fue de +5,905 mdd (+2.3%) respecto al cierre del año previo."
         ]
       },
       "periodo_referencia_oficial": "Ago 26",
       "fecha_publicacion_oficial": null,
       "proxima_publicacion": null,
-      "motivo_frescura": "El periodo cargado (2026-08-28) coincide con el último periodo esperado (Ago 26).",
+      "motivo_frescura": "El dashboard tiene 2026-09-04, que está adelantado al periodo esperado (Ago 26); se recomienda revisar el calendario.",
       "url_boletin_oficial": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/estado-cuenta-semanal-reserva.html",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/RESERVAS/RESERVAS_datos.xlsx",
@@ -135021,7 +135032,7 @@
           ]
         }
       ],
-      "fecha_ultima_observacion": "2026-08-28",
+      "fecha_ultima_observacion": "2026-09-04",
       "url_fuente_oficial": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/estado-cuenta-semanal-reserva.html",
       "fecha_ultima_publicacion": null,
       "regla_publicacion": null,
@@ -135675,6 +135686,12 @@
           "period": "Ago 26",
           "values": [
             258564.1
+          ]
+        },
+        {
+          "period": "Sep 26",
+          "values": [
+            258034.6
           ]
         }
       ],
