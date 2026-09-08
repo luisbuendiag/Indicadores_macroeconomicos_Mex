@@ -143,11 +143,11 @@ tr.clickable:hover td { background: var(--soft); }
 .cal-controls { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; margin: 12px 0; }
 .cal-view-toggle { display: inline-flex; gap: 6px; }
 .cal-highlights { display: grid; grid-template-columns: 1fr 1.4fr; gap: 16px; margin-bottom: 6px; }
-.cal-hero { background: var(--dkgreen, #002f2a); color: #f0ece1; }
-.cal-hero-lbl { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; opacity: .85; }
-.cal-hero-date { font-family: var(--serif); font-size: 26px; font-weight: 600; margin: 4px 0; }
+.cal-hero { background: var(--dkgreen, #002f2a); color: #fff; }
+.cal-hero-lbl { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: rgba(255,255,255,.82); }
+.cal-hero-date { font-family: var(--serif); font-size: 26px; font-weight: 600; margin: 4px 0; color: #fff; }
 .cal-hero-ind { font-size: 15px; font-weight: 600; }
-.cal-hero-src { font-size: 12px; opacity: .8; margin-top: 4px; }
+.cal-hero-src { font-size: 12px; color: rgba(255,255,255,.88); margin-top: 4px; }
 .cal-legend { display: flex; flex-wrap: wrap; gap: 12px; margin: 6px 0 14px; font-size: 12px; }
 .cal-leg-item { display: inline-flex; align-items: center; gap: 6px; }
 .cal-leg-dot { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
@@ -233,7 +233,10 @@ td.cal-cell.empty { background: var(--soft); }
 .mini .lbl { font-family: var(--mono); font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 6px; color: var(--muted2); }
 .mini .num { font-family: var(--mono); font-size: 21px; font-weight: 600; line-height: 1.05; color: inherit; }
 .mini .sub { font-size: 10.5px; margin-top: 4px; color: var(--muted); }
-.mini.dark .lbl { color: #9db8b0; } .mini.dark .num { color: #fff; } .mini.dark .sub { color: #bcd0c9; }
+/* Tarjetas KPI oscuras: esquema invertido de alto contraste. La cifra queda
+   siempre en blanco — nunca verde/vino semántico — y labels/secundarios usan
+   blanco atenuado. El !important en .num blinda la regla contra estilos inline. */
+.mini.dark .lbl { color: rgba(255,255,255,.82); } .mini.dark .num { color: #fff !important; } .mini.dark .sub { color: rgba(255,255,255,.88); }
 
 .chart-caption { font-size: 12.5px; color: var(--muted); margin: 4px 0 6px; line-height: 1.45; }
 .chart-box { width: 100%; height: 400px; }

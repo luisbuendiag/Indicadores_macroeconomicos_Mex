@@ -676,9 +676,8 @@ function renderIndicatorView(key) {
   // KPIs
   let mini;
   if (ind.key === "PIB") {
-    const qoqColor = (k.qoqRaw >= 0 ? COLORS.GREEN : COLORS.CRIMSON);
     mini = el("div", { class: "mini-kpis" },
-      el("div", { class: "mini dark" }, el("div", { class: "lbl" }, k.qoqLabel), el("div", { class: "num", style: `color:${qoqColor}` }, k.qoqText), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),
+      el("div", { class: "mini dark" }, el("div", { class: "lbl" }, k.qoqLabel), el("div", { class: "num" }, k.qoqText), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),
       el("div", { class: "mini" }, el("div", { class: "lbl" }, k.yoyDesestLabel), el("div", { class: "num", style: `color:${k.yoyDesestRaw >= 0 ? COLORS.GREEN : COLORS.CRIMSON}` }, k.yoyDesestText), el("div", { class: "sub" }, "Frente al mismo trimestre del año previo")),
       el("div", { class: "mini" }, el("div", { class: "lbl" }, k.yoyOrigLabel), el("div", { class: "num", style: `color:${k.yoyOrigRaw >= 0 ? COLORS.GREEN : COLORS.CRIMSON}` }, k.yoyOrigText), el("div", { class: "sub" }, "Cifras originales")),
       k.ytdRaw != null ? el("div", { class: "mini" }, el("div", { class: "lbl" }, k.ytdLabel), el("div", { class: "num", style: `color:${k.ytdRaw >= 0 ? COLORS.GREEN : COLORS.CRIMSON}` }, k.ytdText), el("div", { class: "sub" }, "Variación acumulada")) : null,
@@ -714,7 +713,7 @@ function renderIndicatorView(key) {
     mini = el("div", { class: "mini-kpis" },
       ...k.cards.map((c, i) => el("div", { class: `mini${i === 0 ? " dark" : ""}` },
         el("div", { class: "lbl" }, c.name),
-        el("div", { class: "num", style: `color:${c.yoyColor}` }, c.text),
+        el("div", { class: "num", style: i === 0 ? null : `color:${c.yoyColor}` }, c.text),
         c.name !== "Var. anual exportaciones" ? el("div", { class: "sub" }, c.yoyText) : null
       ))
     );
@@ -772,11 +771,10 @@ function renderIndicatorView(key) {
       c.difAnual != null ? el("div", { class: "mini" }, el("div", { class: "lbl" }, "Dif. a 12 meses coincidente"), el("div", { class: "num", style: `color:${dmColor(c.difAnual)}` }, c.difAnualText), el("div", { class: "sub" }, "Respecto al mismo mes del año previo")) : null,
     );
   } else if (ind.key === "IOAE") {
-    const annualColor = k.ultimoRaw >= 0 ? COLORS.GREEN : COLORS.CRIMSON;
     const monthlyColor = k.varColor;
     const errorColor = (k.latestErrorPP == null || Math.abs(k.latestErrorPP) <= 0.5) ? COLORS.GREEN : (Math.abs(k.latestErrorPP) <= 1.5 ? COLORS.GOLD : COLORS.CRIMSON);
     mini = el("div", { class: "mini-kpis" },
-      el("div", { class: "mini dark" }, el("div", { class: "lbl" }, "Nowcast anual del IGAE"), el("div", { class: "num", style: `color:${annualColor}` }, k.ultimoFmt), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),
+      el("div", { class: "mini dark" }, el("div", { class: "lbl" }, "Nowcast anual del IGAE"), el("div", { class: "num" }, k.ultimoFmt), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),
       el("div", { class: "mini" }, el("div", { class: "lbl" }, cfg.varLabel), el("div", { class: "num", style: `color:${monthlyColor}` }, k.varText), el("div", { class: "sub" }, cfg.comp)),
       k.icWidthText ? el("div", { class: "mini" }, el("div", { class: "lbl" }, "Amplitud del IC 95%"), el("div", { class: "num" }, k.icWidthText), el("div", { class: "sub" }, `Límite inferior · superior`)) : null,
       k.latestObservedText ? el("div", { class: "mini" }, el("div", { class: "lbl" }, "IGAE observado"), el("div", { class: "num" }, k.latestObservedText), el("div", { class: "sub" }, `Publicado: ${k.latestObservedP}`)) : null,

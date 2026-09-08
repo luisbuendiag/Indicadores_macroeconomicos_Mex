@@ -197,7 +197,7 @@ def test_reservas_css_herencia_color_claro():
     """El valor .num hereda color; en tarjetas oscuras es blanco."""
     css = (ROOT / "assets" / "css" / "styles.css").read_text(encoding="utf-8")
     assert ".mini .num {" in css and "color: inherit" in css
-    assert ".mini.dark .num { color: #fff; }" in css
+    assert ".mini.dark .num { color: #fff !important; }" in css
 
 
 def test_reservas_no_inline_color_oscuro_saldo():

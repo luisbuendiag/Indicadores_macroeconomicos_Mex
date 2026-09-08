@@ -152,6 +152,21 @@ def test_nota_disabled_tooltip():
     assert "Nota institucional en preparación" in APP
 
 
+def test_dark_kpi_cards_use_inverted_contrast():
+    """Tarjetas KPI oscuras (fondo verde institucional): esquema invertido.
+    La cifra principal siempre es blanca; nunca verde/vino semántico dentro
+    de una tarjeta oscura."""
+    assert ".mini.dark .num { color: #fff !important; }" in CSS
+    assert ".mini.dark .lbl { color: rgba(255,255,255,.82); }" in CSS
+    assert ".mini.dark .sub { color: rgba(255,255,255,.88); }" in CSS
+    dark_lines = [l for l in APP.splitlines() if 'class: "mini dark"' in l]
+    assert dark_lines, "deben existir tarjetas KPI oscuras"
+    for l in dark_lines:
+        assert 'num", style:' not in l, f"color semántico inline en tarjeta oscura: {l.strip()[:120]}"
+    # BCMM pinta la cifra con color semántico sólo en tarjetas claras.
+    assert 'style: i === 0 ? null : `color:${c.yoyColor}`' in APP
+
+
 def test_individual_excel_routes():
     for k in INDICADORES["indicators"]:
         ind = INDICADORES["indicators"][k]
