@@ -24,6 +24,10 @@ y un pipeline de actualización automática. Sitio estático compatible con GitH
   causalidad no demostrada).
 - **Excel actualizado** en `downloads/` con las hojas originales + Resumen ejecutivo,
   Metodología y fuentes, y Control de actualizaciones.
+- **Notas institucionales en Word** por indicador: el botón NOTA descarga el
+  `.docx` vigente desde `downloads/indicadores/{KEY}/nota/{KEY}_nota.docx`;
+  los machotes permanentes y la plantilla maestra viven en
+  `data/source/notas_machote/` (el pipeline nunca los sobrescribe).
 - **Pipeline** con conectores para INEGI (BIE), Banco de México (SIE) y World Bank,
   validaciones de calidad, modo de respaldo sin tokens y GitHub Actions.
 
@@ -51,7 +55,9 @@ scripts/
   lib_data.py              Utilidades compartidas
   sources/                 Conectores INEGI / Banxico / World Bank
 config/series.json         Mapa indicador -> series de cada fuente
-downloads/                 Excel publicado
+config/notas_map.json      Mapa indicador -> nota institucional (machote + metadatos)
+data/source/notas_machote/ Machotes .docx por indicador + plantilla maestra
+downloads/                 Excel publicado + notas vigentes .docx por indicador
 legacy/                    Respaldo del dashboard original
 tests/                     Pruebas (pytest)
 .github/workflows/         CI: pruebas, actualización de datos, despliegue a Pages

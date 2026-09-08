@@ -15,6 +15,7 @@ import argparse
 import json
 import re
 import sys
+import zipfile
 from collections import defaultdict
 from pathlib import Path
 
@@ -119,6 +120,31 @@ def validate(payload: dict):
                 continue
             if not (rng[0] <= v <= rng[1]):
                 warnings.append(f"[{key}] valor fuera de rango plausible en {o['period']}: {v} (esperado {rng}).")
+
+    # 6) Notas institucionales: el botón NOTA siempre descarga un .docx real.
+    #    Si el indicador declara nota disponible, el archivo debe existir, tener
+    #    extensión .docx y ser un ZIP Office válido (word/document.xml).
+    for key, ind in inds.items():
+        nota = ind.get("nota") or {}
+        available = bool(ind.get("nota_disponible") or nota.get("available"))
+        if not available:
+            continue
+        rel = nota.get("path") or ind.get("url_nota_individual")
+        if not rel:
+            errors.append(f"[{key}] nota declarada disponible sin ruta de descarga.")
+            continue
+        p = ROOT / rel
+        if not str(rel).endswith(".docx"):
+            errors.append(f"[{key}] la nota debe ser .docx (nunca PDF u otro formato): {rel}.")
+        elif not p.exists():
+            errors.append(f"[{key}] falta el archivo de la nota: {rel}.")
+        else:
+            try:
+                with zipfile.ZipFile(p) as z:
+                    if "word/document.xml" not in z.namelist():
+                        errors.append(f"[{key}] {rel} no es un documento Word válido (falta word/document.xml).")
+            except (zipfile.BadZipFile, OSError) as e:
+                errors.append(f"[{key}] {rel} no es un .docx válido: {e}.")
 
     return errors, warnings
 

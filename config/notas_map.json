@@ -1,0 +1,90 @@
+{
+  "descripcion": "Mapa indicador -> nota institucional vigente y machote permanente. La nota vigente se sirve desde downloads/indicadores/{KEY}/nota/{KEY}_nota.docx; el machote (estructura editorial congelada) vive en data/source/notas_machote/ y NUNCA se sobrescribe por el pipeline. La automatización futura (boletín -> datos -> machote -> docx) reutilizará este mapa sin llamadas externas a IA.",
+  "plantilla_maestra": "data/source/notas_machote/_PLANTILLA_MAESTRA.docx",
+  "notas": {
+    "PIB": {
+      "machote": "data/source/notas_machote/PIB_machote.docx",
+      "periodo": "2T-26",
+      "titulo": "Estimación Oportuna del PIB Trimestral",
+      "fuente_original": "PIBOT_JUL_2026.pdf (Boletín de Indicador del 30 de julio de 2026, reconstruido a Word)"
+    },
+    "PIBSEC": {
+      "machote": "data/source/notas_machote/PIBT_machote.docx",
+      "periodo": "1T-26",
+      "titulo": "PIB trimestral a precios constantes",
+      "fuente_original": "Boletin_PIBConstante_mayo2026.docx"
+    },
+    "SIC": {
+      "machote": "data/source/notas_machote/SIC_machote.docx",
+      "periodo": "May-Jun 26",
+      "titulo": "Sistema de Indicadores Cíclicos",
+      "fuente_original": "Nota_SIC_MayoJunio2026.docx"
+    },
+    "IOAE": {
+      "machote": "data/source/notas_machote/IOAE_machote.docx",
+      "periodo": "Jul-26",
+      "titulo": "Indicador Oportuno de la Actividad Económica",
+      "fuente_original": "Boletin_IOAE_0826.docx"
+    },
+    "IGAE": {
+      "machote": "data/source/notas_machote/IGAE_machote.docx",
+      "periodo": "Abr-26",
+      "titulo": "Indicador Global de la Actividad Económica",
+      "fuente_original": "Boletin_IGAE_Junio26_2.docx (edición del reporte 23-jun-2026)"
+    },
+    "IMAI": {
+      "machote": "data/source/notas_machote/IMAI_machote.docx",
+      "periodo": "Jun-26",
+      "titulo": "Indicador Mensual de la Actividad Industrial",
+      "fuente_original": "Nota_IMAI_Junio2026.docx"
+    },
+    "EMIM": {
+      "machote": "data/source/notas_machote/EMIM_machote.docx",
+      "periodo": "Jun-26",
+      "titulo": "Encuesta Mensual de la Industria Manufacturera",
+      "fuente_original": "Nota_EMIM_Junio2026.docx"
+    },
+    "EMOE": {
+      "machote": "data/source/notas_machote/EMOE_machote.docx",
+      "periodo": "Jul-26",
+      "titulo": "Encuesta Mensual de Opinión Empresarial",
+      "fuente_original": "Final_Nota_EMOE_Julio2026.docx"
+    },
+    "DESOCUP": {
+      "machote": "data/source/notas_machote/ENOE_machote.docx",
+      "periodo": "Jul-26",
+      "titulo": "Encuesta Nacional de Ocupación y Empleo",
+      "fuente_original": "Nota_ENOE_Julio2026.docx"
+    },
+    "INPC": {
+      "machote": "data/source/notas_machote/INPC_machote.docx",
+      "periodo": "1Q-Ago-26",
+      "titulo": "Índice Nacional de Precios al Consumidor",
+      "fuente_original": "Nota_INPC_1qAgosto2026.docx"
+    },
+    "INPP": {
+      "machote": "data/source/notas_machote/INPP_machote.docx",
+      "periodo": "Jul-26",
+      "titulo": "Índice Nacional de Precios Productor",
+      "fuente_original": "Nota_INPC_INPP_julio2026.docx (nota conjunta INPC+INPP)"
+    },
+    "CONSUMO": {
+      "machote": "data/source/notas_machote/IMCP_machote.docx",
+      "periodo": "May-26",
+      "titulo": "Indicador Mensual del Consumo Privado",
+      "fuente_original": "Nota_IMCP_mayo2026.docx"
+    },
+    "IMFBCF": {
+      "machote": "data/source/notas_machote/IMFBCF_machote.docx",
+      "periodo": "Abr-26",
+      "titulo": "Indicador Mensual de la Formación Bruta de Capital Fijo",
+      "fuente_original": "Nota_IMFBCF_0726.docx"
+    },
+    "BCMM": {
+      "machote": "data/source/notas_machote/BCMM_machote.docx",
+      "periodo": "Jul-26",
+      "titulo": "Balanza Comercial de Mercancías de México",
+      "fuente_original": "Nota__BalanzaComercial_Julio2026.docx"
+    }
+  }
+}

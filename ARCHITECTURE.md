@@ -85,3 +85,25 @@ fetch_news.py       RSS oficiales (a prueba de fallos)
   compilación → compatible con GitHub Pages y fácil de auditar.
 - **Datos fuera del código**: cambiar cifras nunca requiere tocar JS.
 - **Dependencias mínimas** en Python (`openpyxl`, `pytest`); conectores con `urllib` estándar.
+
+## Notas institucionales (.docx)
+
+La descarga de notas sigue una arquitectura de tres capas:
+
+- **Plantilla maestra** (`data/source/notas_machote/_PLANTILLA_MAESTRA.docx`):
+  diseño institucional común (tipografía, márgenes, encabezados, paleta
+  verde/vino/dorado, pie institucional). Fuente de verdad visual.
+- **Machote por indicador** (`data/source/notas_machote/{NOMBRE}_machote.docx`):
+  estructura editorial específica del producto. El pipeline nunca lo sobrescribe.
+- **Nota vigente** (`downloads/indicadores/{KEY}/nota/{KEY}_nota.docx`):
+  el `.docx` que descarga el botón NOTA; siempre Word, máximo ~2 páginas.
+
+`config/notas_map.json` asocia cada indicador con su machote y metadatos.
+`scripts/lib_notas.py` (`provision_notes`) aprovisiona la nota vigente desde el
+machote sólo cuando falta el archivo, valida que sea un `.docx` real
+(`word/document.xml`) y estampa `ind['nota']`/`nota_disponible` en el payload;
+`scripts/build_data.py` lo invoca antes de validar, y `scripts/build_notes.py`
+expone el mismo paso como CLI. `scripts/validate.py` falla en crítico si una
+nota declarada disponible no es un `.docx` válido. La ruta
+`downloads/indicadores/{KEY}/nota/historico/` queda prevista para ediciones
+anteriores (fase futura).

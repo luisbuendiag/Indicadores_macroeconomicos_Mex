@@ -65,7 +65,7 @@ jobs:
       - name: Regenerar Excel
         run: python scripts/build_excel.py
 
-      - name: Regenerar notas (no-op mientras falte plantilla aprobada)
+      - name: Aprovisionar notas institucionales (.docx)
         run: python scripts/build_notes.py
 
       - name: Validar (estricto para el reporte de CI)

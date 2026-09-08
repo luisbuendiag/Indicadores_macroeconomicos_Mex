@@ -99,3 +99,14 @@ Entorno financiero contiene la inversión externa reportada por la **Secretaría
 - Construcción: `701407`
 - Comercio: `701826`
 - Servicios privados no financieros: `701975`
+
+## Notas institucionales (botón NOTA)
+
+- **Regla maestra**: el botón NOTA siempre descarga un Word `.docx` (`application/vnd.openxmlformats-officedocument.wordprocessingml.document`); nunca PDF, HTML, enlace a boletín ni preview.
+- **Tres piezas**: `data/source/notas_machote/` guarda los machotes por indicador (`{NOMBRE}_machote.docx`) y `_PLANTILLA_MAESTRA.docx` (fuente de verdad visual institucional); `downloads/indicadores/{KEY}/nota/{KEY}_nota.docx` es la **nota vigente** que descarga el usuario; `config/notas_map.json` mapea indicador → machote + metadatos.
+- **El pipeline jamás escribe en `data/source/notas_machote/`**: los machotes son entradas de sólo lectura (`lib_notas.provision_notes` sólo copia *desde* el machote cuando falta la nota vigente).
+- **BOLETÍN ≠ NOTA**: BOLETÍN abre el producto oficial INEGI/Banxico/SE; NOTA descarga el documento institucional de la Subsecretaría. Nunca apuntan al mismo archivo.
+- Notas vigentes hoy: PIB, PIBSEC (PIBT), SIC, IOAE, IGAE, IMAI, EMIM, EMOE, DESOCUP (ENOE), INPC, INPP, CONSUMO (IMCP), IMFBCF, BCMM — 14 en total. IED, TIPOCAMBIO, TASA y RESERVAS no tienen nota todavía y el botón queda deshabilitado (`nota_disponible=false`, `nota_causa` informativo).
+- Metadatos por indicador en `data/indicadores.json`: `ind['nota'] = {available, format:'docx', path, periodo, generated_from:'machote', automatic:false}` además de `nota_disponible`/`url_nota_individual`/`nota_causa` para el frontend.
+- `historico/` opcional dentro de `downloads/indicadores/{KEY}/nota/` queda previsto para ediciones pasadas; el botón siempre apunta a la vigente.
+- Automatización futura (no implementada): nuevo boletín → datos oficiales → copiar machote → actualizar contenidos/gráficas → validar → `lib_notas.update_nota_vigente`. Sin llamadas a IA en esta fase.

@@ -56,7 +56,7 @@ function estadoBadge(ind) {
 
 // ---------------- Productos por indicador ----------------
 function xlsxUrl(ind) { return ind.url_excel_individual || `downloads/indicadores/${ind.key}/${ind.key}_datos.xlsx`; }
-function notaUrl(ind) { return ind.url_nota_individual || `downloads/indicadores/${ind.key}/${ind.key}_nota.docx`; }
+function notaUrl(ind) { return ind.url_nota_individual || `downloads/indicadores/${ind.key}/nota/${ind.key}_nota.docx`; }
 
 function openExternalLink(url) {
   if (!url) return;
@@ -135,11 +135,11 @@ function productToolbar(ind) {
   const boletinEnabled = !!boletinUrl;
   const boletinLabel = ind.boletin_label || "BOLETÍN";
 
-  // Nota: deshabilitada mientras no exista plantilla aprobada.
+  // Nota institucional: habilitada sólo cuando existe el .docx vigente.
   const notaReady = !!ind.nota_disponible;
   const notaTitle = notaReady
     ? "Descargar nota DOCX"
-    : (ind.nota_causa || "Nota pendiente de plantilla aprobada");
+    : (ind.nota_causa || "Nota institucional en preparación");
 
   // Excel: activo si se generó el archivo individual.
   const xlsxReady = !!ind.xlsx_disponible;

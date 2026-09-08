@@ -149,7 +149,7 @@ def test_product_buttons_evaluated_independently():
 
 
 def test_nota_disabled_tooltip():
-    assert "Nota pendiente de plantilla aprobada" in APP
+    assert "Nota institucional en preparación" in APP
 
 
 def test_individual_excel_routes():

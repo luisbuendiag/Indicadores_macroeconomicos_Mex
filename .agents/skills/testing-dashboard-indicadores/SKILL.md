@@ -109,3 +109,17 @@ Record browser interactions; annotate setup/test_start/assertion. Maximize first
 - None required for local UI/data testing (offline mode uses backup data).
 - To test real automation (not yet verified): `INEGI_TOKEN`, `BANXICO_TOKEN` (GitHub
   Secrets / local `.env`). Series IDs in `config/series.json` must be confirmed first.
+
+## Botón NOTA (fase de notas)
+
+- Cada ficha muestra **CALENDARIO / BOLETÍN / NOTA / EXCEL**. NOTA descarga
+  directamente `downloads/indicadores/{KEY}/nota/{KEY}_nota.docx` (Word `.docx`,
+  atributo `download`); nunca PDF ni visor externo.
+- Habilitado cuando `ind.nota_disponible === true` (hoy los 14 indicadores del
+  Panorama); deshabilitado con tooltip "Nota institucional en preparación" para
+  IED, TIPOCAMBIO, TASA y RESERVAS.
+- BOLETÍN (producto oficial INEGI/Banxico) y NOTA (documento institucional de la
+  Subsecretaría) son productos distintos y nunca comparten URL.
+- Los machotes permanentes viven en `data/source/notas_machote/` y el pipeline
+  no los modifica; al probar descargas verifica que el archivo servido sea un
+  `.docx` real (firma `PK`, contiene `word/document.xml`).

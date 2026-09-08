@@ -93,3 +93,13 @@ Según su utilidad para la **Secretaría de Economía** (foco: industria, comerc
 4. Definir ventana histórica objetivo por serie (p. ej. desde 2018 o 2015 para mejor contexto).
 
 > Los tokens **nunca** se guardan en el repositorio; solo como secretos de GitHub Actions y variables locales en `.env` (git-ignorado).
+
+## Notas institucionales (procedencia)
+
+Los machotes en `data/source/notas_machote/` provienen de las notas
+institucionales ya existentes de la Subsecretaría de Industria y Comercio.
+La nota vigente del **PIB** se reconstruyó a Word a partir del PDF oficial de la
+Subsecretaría (`PIBOT_JUL_2026.pdf`, Boletín de Indicador del 30-jul-2026);
+IGAE, IMFBCF y BCMM ya contaban con versiones `.docx` editables. La nota de
+**INPP** proviene de la nota conjunta INPC+INPP de julio 2026 (única disponible).
+El detalle por indicador está en `config/notas_map.json` (`fuente_original`).

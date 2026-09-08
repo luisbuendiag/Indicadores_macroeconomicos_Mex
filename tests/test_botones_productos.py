@@ -78,7 +78,7 @@ def test_excel_files_exist_for_all_available():
 def test_nota_disabled_cause():
     src = product_toolbar_source()
     assert 'productBtn("NOTA"' in src
-    assert "Nota pendiente de plantilla aprobada" in src
+    assert "Nota institucional en preparación" in src
     assert "notaReady = !!ind.nota_disponible" in src
 
 
@@ -132,7 +132,7 @@ def test_inegi_indicators_have_specific_pdf_bulletin():
 def test_nota_files_exist_for_all_available():
     for k, ind in INDICADORES["indicators"].items():
         if ind.get("nota_disponible"):
-            path = ROOT / "downloads" / "indicadores" / k / f"{k}_nota.docx"
+            path = ROOT / "downloads" / "indicadores" / k / "nota" / f"{k}_nota.docx"
             assert path.exists(), f"Falta nota de {k}: {path}"
 
 

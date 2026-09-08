@@ -27,6 +27,7 @@ import lib_data as L
 import lib_freshness
 import lib_kpicfg
 import lib_metrics
+import lib_notas
 from sources import (banxico, banxico_policy, banxico_sie, ied, inegi,
                      inegi_bulletin, inegi_inpc, inegi_inpp, worldbank)
 import validate as V
@@ -1330,6 +1331,18 @@ def run(offline: bool = False) -> int:
 
     # Frescura, calendario, métricas compartidas y metadatos temporales.
     log["changes"].extend(apply_freshness_and_meta(payload, log, offline=offline))
+
+    # Notas institucionales: aprovisiona los .docx vigentes (copiando desde el
+    # machote sólo cuando falten) y estampa los metadatos de descarga.
+    notas_report = lib_notas.provision_notes(payload)
+    n_notas = len(notas_report["provided"]) + len(notas_report["existing"])
+    log["changes"].append(
+        f"notas: {n_notas} vigentes ({len(notas_report['provided'])} provisionadas desde machote)"
+    )
+    if notas_report["missing_machote"]:
+        log["warnings"].append("notas sin machote válido: " + ", ".join(notas_report["missing_machote"]))
+    if notas_report["invalid"]:
+        log["warnings"].append("notas .docx inválidas: " + ", ".join(notas_report["invalid"]))
 
     payload["meta"]["generated_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
 

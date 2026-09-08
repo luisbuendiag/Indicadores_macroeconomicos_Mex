@@ -83,3 +83,18 @@ El dashboard original queda intacto para revertir en cualquier momento:
 
 `update-data.yml` corre en días hábiles (13:00 UTC) y por `workflow_dispatch`.
 `deploy-pages.yml` publica a GitHub Pages al hacer push a `main`.
+
+## 7. Notas institucionales (botón NOTA)
+
+- La nota vigente de cada indicador vive en `downloads/indicadores/{KEY}/nota/{KEY}_nota.docx`
+  y siempre es un Word `.docx` descargable directo (atributo `download`).
+- Para actualizar una nota manualmente: edita una copia del machote
+  `data/source/notas_machote/{NOMBRE}_machote.docx`, guarda el `.docx` resultante
+  en la ruta de la nota vigente y actualiza `periodo` en `config/notas_map.json`.
+  **Nunca edites el machote en su lugar**: es la estructura editorial congelada.
+- `python scripts/build_notes.py` (o `build_data.py`) aprovisiona la nota desde
+  el machote sólo si falta el archivo vigente; no sobrescribe notas existentes.
+- Indicadores sin nota (IED, TIPOCAMBIO, TASA, RESERVAS) muestran el botón
+  deshabilitado; no generar contenido artificial para ellos.
+- La generación automatizada de notas (boletín → datos → machote → .docx nuevo)
+  es una fase futura y aún no está implementada.

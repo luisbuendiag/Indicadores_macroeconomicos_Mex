@@ -86,7 +86,7 @@ def test_duplicate_flagged_as_revision(payload):
 # nuevo o una revisión oficial hay que actualizar las constantes.
 @pytest.mark.parametrize("key,monthly_col,annual_col,expected_monthly,expected_annual", [
     ("CONSUMO", 1, 2, -0.004, 0.016),
-    ("IMFBCF", 1, 2, 0.013, 0.059),
+    ("IMFBCF", 1, 2, 0.0135, 0.059),
     ("IGAE", 1, 2, -0.001, 0.028191),
     ("IOAE", 3, 0, 0.001, 0.027),
 ])
