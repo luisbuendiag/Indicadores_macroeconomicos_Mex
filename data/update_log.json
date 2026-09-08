@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-09-08T02:01:33+00:00",
+  "started_at": "2026-09-08T12:00:22+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -21,7 +21,7 @@
     "INEGI SIC: 559 observaciones (serie 214301, base BIE-BISE); última Jul 26 = 99.479992; actualización BIE 14/08/2026 12:00:00 a. m..",
     "INEGI SIC: 475 observaciones (serie 214303, base BIE-BISE); última Jul 26 = 100.970948; actualización BIE 27/08/2026 12:00:00 a. m..",
     "INEGI SIC: 559 observaciones (serie 214305, base BIE-BISE); última Jul 26 = 101.591978; actualización BIE 27/08/2026 12:00:00 a. m..",
-    "INEGI SIC: 559 observaciones (serie 214309, base BIE-BISE); última Jul 26 = 100.235256; actualización BIE 07/08/2026 12:00:00 a. m..",
+    "INEGI SIC: 560 observaciones (serie 214309, base BIE-BISE); última Ago 26 = 100.339636; actualización BIE 08/09/2026 12:00:00 a. m..",
     "INEGI SIC: 272 observaciones (serie 214311, base BIE-BISE); última Ago 26 = 99.225604; actualización BIE 01/09/2026 12:00:00 a. m..",
     "INEGI SIC: 547 observaciones (serie 214313, base BIE-BISE); última Jul 26 = 100.496782; actualización BIE 11/08/2026 12:00:00 a. m..",
     "INEGI SIC: 559 observaciones (serie 214315, base BIE-BISE); última Jul 26 = 99.712586; actualización BIE 14/08/2026 12:00:00 a. m..",
@@ -114,8 +114,11 @@
   ],
   "changes": [
     "IGAE: fuente normalizada a serie total 737121",
+    "TIPOCAMBIO: actualizado nombre",
+    "TIPOCAMBIO: actualizado fuente",
     "TASA: actualizado nombre",
     "TASA: actualizado descripcion",
+    "TASA: actualizado fuente",
     "RESERVAS: actualizado fuente",
     "columnas override PIB: 4 columnas",
     "columnas override PIBSEC: 12 columnas",
@@ -173,7 +176,7 @@
     "banxico_sie: actualizado IMFBCF (última obs Jun 26, sin cambio de periodo)",
     "banxico_sie: actualizado IMFBCF (última obs Jun 26, sin cambio de periodo)",
     "banxico: actualizado TIPOCAMBIO (última obs 2026-09-07, sin cambio de periodo)",
-    "banxico: actualizado TASA (última obs 2026-09-08, dato nuevo)",
+    "banxico: actualizado TASA (última obs 2026-09-08, sin cambio de periodo)",
     "banxico: actualizado RESERVAS (última obs 2026-08-28, sin cambio de periodo)",
     "inegi: actualizado PIB (última obs 1T-26, dato nuevo)",
     "inegi: actualizado PIBSEC (última obs 2T-26, sin cambio de periodo)",
@@ -192,7 +195,7 @@
     "inegi: actualizado SIC (última obs Jul 26, dato nuevo)",
     "inegi: actualizado SIC (última obs Jul 26, dato nuevo)",
     "inegi: actualizado SIC (última obs Jul 26, dato nuevo)",
-    "inegi: actualizado SIC (última obs Jul 26, dato nuevo)",
+    "inegi: actualizado SIC (última obs Ago 26, dato nuevo)",
     "inegi: actualizado SIC (última obs Ago 26, dato nuevo)",
     "inegi: actualizado SIC (última obs Ago 26, dato nuevo)",
     "inegi: actualizado SIC (última obs Ago 26, dato nuevo)",
@@ -350,7 +353,7 @@
     "frescura: BCMM -> ACTUALIZADO",
     "frescura: INPP -> ACTUALIZADO",
     "frescura: SIC -> ACTUALIZADO",
-    "meta: last_update_ct=2026-09-07T21:09:02-06:00",
+    "meta: last_update_ct=2026-09-08T06:47:57-06:00",
     "notas: 14 vigentes (0 provisionadas desde machote)"
   ],
   "consultas": [
@@ -853,9 +856,9 @@
       "observaciones": 3161,
       "ultima_observacion": "2026-09-08",
       "ultimo_valor": 6.5,
-      "observacion_previa": "2026-09-07",
+      "observacion_previa": "2026-09-08",
       "actualizacion_fuente": null,
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1078,11 +1081,11 @@
       "fuente": "inegi",
       "indicador": "SIC",
       "serie": "214309",
-      "observaciones": 559,
-      "ultima_observacion": "Jul 26",
-      "ultimo_valor": 100.235256,
+      "observaciones": 560,
+      "ultima_observacion": "Ago 26",
+      "ultimo_valor": 100.339636,
       "observacion_previa": "Jun 26",
-      "actualizacion_fuente": "07/08/2026 12:00:00 a. m.",
+      "actualizacion_fuente": "08/09/2026 12:00:00 a. m.",
       "dato_nuevo": true,
       "resultado": "consulta válida"
     },
@@ -2385,5 +2388,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-09-08T03:09:03+00:00"
+  "finished_at": "2026-09-08T12:47:58+00:00"
 }
