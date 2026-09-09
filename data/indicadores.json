@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-09T18:06:48+00:00",
+    "generated_at": "2026-09-09T22:22:34+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-09-09T12:06:48-06:00",
+    "last_update_ct": "2026-09-09T16:22:34-06:00",
     "periodo_referencia_reciente": {
       "period": "Ago 26",
       "period_long": "Ago 26"
@@ -69262,9 +69262,15 @@
           "values": [
             16.9202
           ]
+        },
+        {
+          "period": "2026-09-09",
+          "values": [
+            16.8947
+          ]
         }
       ],
-      "last_observation": "2026-09-08",
+      "last_observation": "2026-09-09",
       "last_updated": "2026-09-09",
       "last_checked": "2026-09-09",
       "requiere_token": "BANXICO",
@@ -69273,28 +69279,28 @@
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
       "fecha_publicacion": null,
-      "periodo_referencia": "2026-09-08",
+      "periodo_referencia": "2026-09-09",
       "fecha_consulta": "2026-09-09",
       "source_origin": "api",
       "metrics": {
         "kpi": {
-          "ultimoP": "8 Sep 26",
-          "ultimoRaw": 16.9202,
-          "ultimoFmt": "$16.92",
-          "varText": "-0.02%",
-          "varMag": -0.000207,
+          "ultimoP": "9 Sep 26",
+          "ultimoRaw": 16.8947,
+          "ultimoFmt": "$16.89",
+          "varText": "-0.15%",
+          "varMag": -0.001507,
           "varLabel": "Cambio diario",
           "pos": false,
           "varColor": "#9b2247",
-          "monthlyText": "-0.56%",
+          "monthlyText": "-0.71%",
           "monthlyLabel": "Cambio mensual",
-          "yoyText": "-9.30%",
+          "yoyText": "-9.34%",
           "yoyLabel": "Cambio anual",
-          "yoyRaw": -0.092994,
-          "yoyMag": -0.092994,
+          "yoyRaw": -0.093403,
+          "yoyMag": -0.093403,
           "yoyPos": false,
           "yoyColor": "#9b2247",
-          "range12mText": "$16.87 — $18.66",
+          "range12mText": "$16.87 — $18.64",
           "range12mLabel": "Rango 12 meses mínimo — máximo",
           "maxRaw": 25.1185,
           "minRaw": 16.3357,
@@ -69302,7 +69308,7 @@
           "minP": "8 Abr 24",
           "maxFmt": "$25.12",
           "minFmt": "$16.34",
-          "lastI": 2184,
+          "lastI": 2185,
           "series": [
             19.4899,
             19.3717,
@@ -71488,7 +71494,8 @@
             16.956,
             16.8748,
             16.9237,
-            16.9202
+            16.9202,
+            16.8947
           ],
           "periods": [
             "2018-01-02",
@@ -73675,29 +73682,30 @@
             "2026-09-03",
             "2026-09-04",
             "2026-09-07",
-            "2026-09-08"
+            "2026-09-08",
+            "2026-09-09"
           ],
           "assessment": "neutral",
-          "dir": "flat",
+          "dir": "down",
           "semaforo": "estable"
         },
         "yoy": {
-          "mag": -0.092994,
+          "mag": -0.093403,
           "pos": false,
-          "text": "-9.30%",
+          "text": "-9.34%",
           "label": "Cambio anual"
         },
         "resumen": [
-          "En 8 de septiembre de 2026, el tipo de cambio FIX se ubicó en $16.92 (pesos por dólar).",
-          "El cambio diario fue de -0.02% respecto al día hábil previo.",
-          "Respecto al último día hábil del mes previo, el FIX registró un cambio mensual de -0.56%.",
-          "A tasa anual, el FIX varió -9.30%; en los últimos 12 meses osciló entre $16.87 — $18.66."
+          "En 9 de septiembre de 2026, el tipo de cambio FIX se ubicó en $16.89 (pesos por dólar).",
+          "El cambio diario fue de -0.15% respecto al día hábil previo.",
+          "Respecto al último día hábil del mes previo, el FIX registró un cambio mensual de -0.71%.",
+          "A tasa anual, el FIX varió -9.34%; en los últimos 12 meses osciló entre $16.87 — $18.64."
         ]
       },
       "periodo_referencia_oficial": "Sep 26",
       "fecha_publicacion_oficial": null,
       "proxima_publicacion": null,
-      "motivo_frescura": "El periodo cargado (2026-09-08) coincide con el último periodo esperado (Sep 26).",
+      "motivo_frescura": "El periodo cargado (2026-09-09) coincide con el último periodo esperado (Sep 26).",
       "url_boletin_oficial": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/TIPOCAMBIO/TIPOCAMBIO_datos.xlsx",
@@ -86776,7 +86784,7 @@
           ]
         }
       ],
-      "fecha_ultima_observacion": "2026-09-08",
+      "fecha_ultima_observacion": "2026-09-09",
       "url_fuente_oficial": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
       "fecha_ultima_publicacion": null,
       "regla_publicacion": null,
@@ -87440,7 +87448,7 @@
         {
           "period": "Sep 26",
           "values": [
-            16.9202
+            16.8947
           ]
         }
       ],
