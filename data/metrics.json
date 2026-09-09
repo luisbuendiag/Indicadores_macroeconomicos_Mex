@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-08T21:39:26+00:00",
-  "last_update_ct": "2026-09-08T12:44:41-06:00",
+  "generated_at": "2026-09-09T12:14:20+00:00",
+  "last_update_ct": "2026-09-08T16:30:18-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -2939,14 +2939,14 @@
     "INPC": {
       "kpi": {
         "assessment": "neutral",
-        "dir": "down",
-        "ultimoFmt": "3.1%",
-        "ultimoRaw": 3.12,
-        "ultimoP": "Jul 26",
-        "varText": "-0.2 puntos porcentuales",
-        "varMag": -0.2459769999999999,
-        "pos": false,
-        "varColor": "#9b2247",
+        "dir": "up",
+        "ultimoFmt": "3.3%",
+        "ultimoRaw": 3.26,
+        "ultimoP": "Ago 26",
+        "varText": "+0.1 puntos porcentuales",
+        "varMag": 0.14236999999999966,
+        "pos": true,
+        "varColor": "#1e5b4f",
         "varLabel": "Cambio de la inflación anual respecto al mes previo",
         "maxFmt": "8.7%",
         "maxRaw": 8.69975,
@@ -2954,7 +2954,7 @@
         "minFmt": "2.1%",
         "minRaw": 2.148149,
         "minP": "Abr 20",
-        "lastI": 102,
+        "lastI": 103,
         "series": [
           5.545835,
           5.339217,
@@ -3058,7 +3058,8 @@
           4.448503,
           3.938948,
           3.365977,
-          3.12
+          3.11763,
+          3.26
         ],
         "periods": [
           "Ene 18",
@@ -3163,18 +3164,19 @@
           "Abr 26",
           "May 26",
           "Jun 26",
-          "Jul 26"
+          "Jul 26",
+          "Ago 26"
         ],
         "semaforo": "estable",
         "yoyText": "—",
         "yoyLabel": "—"
       },
       "analysis": [
-        "En julio de 2026, la inflación general anual se ubicó en 3.1%, con una variación de -0.2 puntos porcentuales frente al mes previo. La inflación anual disminuyó respecto del mes previo. Se ubicó por debajo del promedio del periodo mostrado (4.9%).",
+        "En agosto de 2026, la inflación general anual se ubicó en 3.3%, con una variación de +0.1 puntos porcentuales frente al mes previo. La inflación anual aumentó respecto del mes previo. Se ubicó por debajo del promedio del periodo mostrado (4.9%).",
         "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 8.7% (septiembre de 2022) y un mínimo de 2.1% (abril de 2020). El resultado más reciente se ubicó por debajo del promedio del periodo mostrado. El último dato fue inferior al del inicio del periodo mostrado. Con ello, la inflación se mantiene dentro del intervalo de variabilidad del Banco de México (3 % ±1 punto), aunque todavía por encima de la meta puntual de 3 %."
       ],
       "resumen": [
-        "En julio de 2026, la inflación general anual se ubicó en 3.1%. El valor de cambio de la inflación anual respecto al mes previo fue de -0.2 puntos porcentuales frente al mes previo.",
+        "En agosto de 2026, la inflación general anual se ubicó en 3.3%. El valor de cambio de la inflación anual respecto al mes previo fue de +0.1 puntos porcentuales frente al mes previo.",
         "En la serie mostrada, el indicador oscila entre un máximo de 8.7% (septiembre de 2022) y un mínimo de 2.1% (abril de 2020). El último dato se ubica dentro del rango observado en el periodo mostrado.",
         "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
       ],
@@ -11949,14 +11951,14 @@
     "INPP": {
       "kpi": {
         "assessment": "neutral",
-        "dir": "flat",
-        "ultimoFmt": "2.6%",
-        "ultimoRaw": 2.562589,
-        "ultimoP": "Jul 26",
-        "varText": "0.0%",
-        "varMag": -0.032918,
-        "pos": false,
-        "varColor": "#9b2247",
+        "dir": "up",
+        "ultimoFmt": "3.0%",
+        "ultimoRaw": 2.988427,
+        "ultimoP": "Ago 26",
+        "varText": "+0.1%",
+        "varMag": 0.061508,
+        "pos": true,
+        "varColor": "#1e5b4f",
         "varLabel": "Var. mensual",
         "maxFmt": "10.5%",
         "maxRaw": 10.49687,
@@ -11964,7 +11966,7 @@
         "minFmt": "-0.8%",
         "minRaw": -0.840709,
         "minP": "Jun 23",
-        "lastI": 102,
+        "lastI": 103,
         "series": [
           null,
           null,
@@ -12068,7 +12070,8 @@
           2.526981,
           2.934554,
           2.104653,
-          2.562589
+          2.562589,
+          2.988427
         ],
         "periods": [
           "Ene 18",
@@ -12173,26 +12176,27 @@
           "Abr 26",
           "May 26",
           "Jun 26",
-          "Jul 26"
+          "Jul 26",
+          "Ago 26"
         ],
         "semaforo": "estable",
-        "yoyText": "+2.6%",
+        "yoyText": "+3.0%",
         "yoyLabel": "Var. anual"
       },
       "analysis": [
-        "En julio de 2026, el Índice Nacional de Precios Productor se ubicó en 2.6%, con una variación anual de -0.03% frente al mes previo. La variación anual de precios productor disminuyó respecto del mes previo. Se ubicó por debajo del promedio del periodo mostrado (4.5%).",
+        "En agosto de 2026, el Índice Nacional de Precios Productor se ubicó en 3.0%, con una variación anual de +0.06% frente al mes previo. La variación anual de precios productor aumentó respecto del mes previo. Se ubicó por debajo del promedio del periodo mostrado (4.5%).",
         "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 10.5% (abril de 2022) y un mínimo de -0.8% (junio de 2023). El resultado más reciente se ubicó por debajo del promedio del periodo mostrado. El último dato fue superior al del inicio del periodo mostrado."
       ],
       "resumen": [
-        "En julio de 2026, el Índice Nacional de Precios Productor se ubicó en 2.6%. El valor de var. mensual fue de 0.0% frente al mes previo.",
-        "La var. anual se situó en +2.6%, lo que refleja la comparación contra julio de 2026 del año previo.",
+        "En agosto de 2026, el Índice Nacional de Precios Productor se ubicó en 3.0%. El valor de var. mensual fue de +0.1% frente al mes previo.",
+        "La var. anual se situó en +3.0%, lo que refleja la comparación contra agosto de 2026 del año previo.",
         "En la serie mostrada, el indicador oscila entre un máximo de 10.5% (abril de 2022) y un mínimo de -0.8% (junio de 2023). El último dato se ubica dentro del rango observado en el periodo mostrado.",
         "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
       ],
       "annualVar": {
-        "mag": 2.562589,
+        "mag": 2.988427,
         "pos": true,
-        "text": "+2.6%",
+        "text": "+3.0%",
         "label": "Var. anual"
       }
     },

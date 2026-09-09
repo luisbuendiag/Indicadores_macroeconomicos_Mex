@@ -1,8 +1,8 @@
 {
   "_comment": "Generado por scripts/build_calendar.py a partir de fuentes oficiales y respaldos. No editar a mano.",
   "fuente": "INEGI Sala de Prensa | Banco de México calendario | Secretaría de Economía (manual)",
-  "actualizado": "2026-09-08",
-  "as_of": "2026-09-08",
+  "actualizado": "2026-09-09",
+  "as_of": "2026-09-09",
   "anios": [
     2025,
     2026,
@@ -6273,8 +6273,8 @@
       "anio": 2026,
       "mes": 9,
       "periodo_referencia": "Agosto de 2026",
-      "estatus": "próximo",
-      "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_09.pdf",
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
     },
     {
@@ -6290,8 +6290,8 @@
       "anio": 2026,
       "mes": 9,
       "periodo_referencia": "Agosto de 2026",
-      "estatus": "próximo",
-      "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_09.pdf",
       "comentario": "Información de Interés Nacional. Incluye boletín de indicador."
     },
     {
