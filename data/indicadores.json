@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-09T13:03:38+00:00",
+    "generated_at": "2026-09-09T18:06:48+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-09-09T07:03:38-06:00",
+    "last_update_ct": "2026-09-09T12:06:48-06:00",
     "periodo_referencia_reciente": {
       "period": "Ago 26",
       "period_long": "Ago 26"
