@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-09-10T22:26:13+00:00",
-  "as_of": "2026-09-10",
+  "generated_at": "2026-09-11T12:58:07+00:00",
+  "as_of": "2026-09-11",
   "fuente": "Calendario oficial de difusión",
   "sources": {
     "INEGI Sala de Prensa": {
       "status": "ok",
       "count": 1449,
       "message": "1449 eventos consultados del INEGI",
-      "consulted_at": "2026-09-10",
+      "consulted_at": "2026-09-11",
       "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/"
     },
     "Banco de México calendario": {
       "status": "ok",
       "count": 180,
       "message": "180 eventos consultados de Banxico",
-      "consulted_at": "2026-09-10",
+      "consulted_at": "2026-09-11",
       "url": "https://www.banxico.org.mx/publicaciones-y-prensa/calendario-de-publicaciones-banco-de-mexico/"
     },
     "Secretaría de Economía (manual)": {
@@ -14071,20 +14071,34 @@
       "publication_date_display": "11 de septiembre de 2026",
       "reference_period": "Julio de 2026",
       "frequency": "Mensual",
-      "status": "próximo",
+      "status": "publicado",
       "source": "INEGI Sala de Prensa",
       "institution": "INEGI",
       "category": "Actividad económica",
       "sigla": "IMAI",
       "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_09.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_09.pdf",
+          "label": "Boletín PDF",
+          "size": "0.25 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_09.docx",
+          "label": "Boletín Word",
+          "size": "0.23 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_09.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.15 MB"
         }
       ],
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
@@ -20155,35 +20169,6 @@
   ],
   "upcoming": [
     {
-      "indicator": "IMAI",
-      "program": "Indicador Mensual de la Actividad Industrial (IMAI). Año base 2018. Cifras preliminares",
-      "product": "Indicador Mensual de la Actividad Industrial",
-      "publication_date": "2026-09-11",
-      "publication_date_display": "11 de septiembre de 2026",
-      "reference_period": "Julio de 2026",
-      "frequency": "Mensual",
-      "status": "próximo",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Actividad económica",
-      "sigla": "IMAI",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 9,
-      "fecha_iso": "2026-09-11"
-    },
-    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México",
       "product": "Estado de cuenta del Banco de México",
@@ -20733,9 +20718,81 @@
       "anio": 2026,
       "mes": 10,
       "fecha_iso": "2026-10-13"
+    },
+    {
+      "indicator": "EMIM",
+      "program": "Encuesta Mensual de la Industria Manufacturera (EMIM). Serie 2018. Cifras preliminares",
+      "product": "Encuesta Mensual de la Industria Manufacturera",
+      "publication_date": "2026-10-16",
+      "publication_date_display": "16 de octubre de 2026",
+      "reference_period": "Agosto de 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "EMIM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 10,
+      "fecha_iso": "2026-10-16"
     }
   ],
   "recent": [
+    {
+      "indicator": "IMAI",
+      "program": "Indicador Mensual de la Actividad Industrial (IMAI). Año base 2018. Cifras preliminares",
+      "product": "Indicador Mensual de la Actividad Industrial",
+      "publication_date": "2026-09-11",
+      "publication_date_display": "11 de septiembre de 2026",
+      "reference_period": "Julio de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMAI",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_09.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_09.pdf",
+          "label": "Boletín PDF",
+          "size": "0.25 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_09.docx",
+          "label": "Boletín Word",
+          "size": "0.23 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_09.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.15 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 9,
+      "fecha_iso": "2026-09-11"
+    },
     {
       "indicator": "BCMM",
       "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
@@ -21440,35 +21497,6 @@
       "anio": 2026,
       "mes": 8,
       "fecha_iso": "2026-08-17"
-    },
-    {
-      "indicator": "RESERVAS",
-      "program": "Estado de cuenta del Banco de México de la semana al 7 de agosto de 2026",
-      "product": "Estado de cuenta del Banco de México",
-      "publication_date": "2026-08-11",
-      "publication_date_display": "11 de agosto de 2026",
-      "reference_period": "7 de agosto de 2026",
-      "frequency": "Semanal",
-      "status": "publicado",
-      "source": "Banco de México calendario",
-      "institution": "Banco de México",
-      "category": "Financiero",
-      "sigla": "RESERVAS",
-      "type": "event",
-      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{7F402CA5-65AA-7F3E-00E8-C56E2E3FEFFC}.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{7F402CA5-65AA-7F3E-00E8-C56E2E3FEFFC}.pdf",
-          "label": "Estado de cuenta del Banco de México de la semana al 7 de agosto de 2026",
-          "size": null
-        }
-      ],
-      "comentario": null,
-      "anio": 2026,
-      "mes": 8,
-      "fecha_iso": "2026-08-11"
     }
   ],
   "categories": {
