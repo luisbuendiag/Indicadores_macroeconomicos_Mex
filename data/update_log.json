@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-09-14T13:43:17+00:00",
+  "started_at": "2026-09-14T18:26:22+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -175,8 +175,8 @@
     "banxico_sie: actualizado IMFBCF (última obs Jun 26, sin cambio de periodo)",
     "banxico_sie: actualizado IMFBCF (última obs Jun 26, sin cambio de periodo)",
     "banxico_sie: actualizado IMFBCF (última obs Jun 26, sin cambio de periodo)",
-    "banxico: actualizado TIPOCAMBIO (última obs 2026-09-11, sin cambio de periodo)",
-    "banxico: actualizado TASA (última obs 2026-09-14, dato nuevo)",
+    "banxico: actualizado TIPOCAMBIO (última obs 2026-09-14, dato nuevo)",
+    "banxico: actualizado TASA (última obs 2026-09-14, sin cambio de periodo)",
     "banxico: actualizado RESERVAS (última obs 2026-09-04, sin cambio de periodo)",
     "inegi: actualizado PIB (última obs 1T-26, dato nuevo)",
     "inegi: actualizado PIBSEC (última obs 2T-26, sin cambio de periodo)",
@@ -353,7 +353,7 @@
     "frescura: BCMM -> ACTUALIZADO",
     "frescura: INPP -> ACTUALIZADO",
     "frescura: SIC -> ACTUALIZADO",
-    "meta: last_update_ct=2026-09-14T08:25:02-06:00",
+    "meta: last_update_ct=2026-09-14T13:27:00-06:00",
     "notas: 14 vigentes (0 provisionadas desde machote)"
   ],
   "consultas": [
@@ -841,12 +841,12 @@
       "fuente": "banxico",
       "indicador": "TIPOCAMBIO",
       "serie": "SF43718",
-      "observaciones": 2188,
-      "ultima_observacion": "2026-09-11",
-      "ultimo_valor": 16.9707,
+      "observaciones": 2189,
+      "ultima_observacion": "2026-09-14",
+      "ultimo_valor": 17.1277,
       "observacion_previa": "2026-09-11",
       "actualizacion_fuente": null,
-      "dato_nuevo": false,
+      "dato_nuevo": true,
       "resultado": "consulta válida"
     },
     {
@@ -856,9 +856,9 @@
       "observaciones": 3167,
       "ultima_observacion": "2026-09-14",
       "ultimo_valor": 6.5,
-      "observacion_previa": "2026-09-11",
+      "observacion_previa": "2026-09-14",
       "actualizacion_fuente": null,
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -2388,5 +2388,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-09-14T14:25:04+00:00"
+  "finished_at": "2026-09-14T19:27:01+00:00"
 }
