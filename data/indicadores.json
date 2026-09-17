@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-16T22:47:50+00:00",
+    "generated_at": "2026-09-17T13:28:30+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-09-16T16:47:50-06:00",
+    "last_update_ct": "2026-09-17T07:28:30-06:00",
     "periodo_referencia_reciente": {
       "period": "Ago 26",
       "period_long": "Ago 26"
@@ -3906,8 +3906,8 @@
         }
       ],
       "last_observation": "2T-26",
-      "last_updated": "2026-09-16",
-      "last_checked": "2026-09-16",
+      "last_updated": "2026-09-17",
+      "last_checked": "2026-09-17",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -3916,7 +3916,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "24 de agosto de 2026",
       "periodo_referencia": "2T-26",
-      "fecha_consulta": "2026-09-16",
+      "fecha_consulta": "2026-09-17",
       "metrics": {
         "kpi": {
           "assessment": "adverso",
@@ -10051,8 +10051,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-09-16",
-      "last_checked": "2026-09-16",
+      "last_updated": "2026-09-17",
+      "last_checked": "2026-09-17",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -10061,7 +10061,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "24 de agosto de 2026",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-09-16",
+      "fecha_consulta": "2026-09-17",
       "metrics": {
         "kpi": {
           "assessment": "adverso",
@@ -20326,8 +20326,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-09-16",
-      "last_checked": "2026-09-16",
+      "last_updated": "2026-09-17",
+      "last_checked": "2026-09-17",
       "source_origin": "api",
       "data_quality": [],
       "requiere_token": "INEGI",
@@ -20337,7 +20337,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "11 de agosto de 2026",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-09-16",
+      "fecha_consulta": "2026-09-17",
       "metrics": {
         "kpi": {
           "assessment": "favorable",
@@ -23776,8 +23776,8 @@
         }
       ],
       "last_observation": "2T-26",
-      "last_updated": "2026-09-16",
-      "last_checked": "2026-09-16",
+      "last_updated": "2026-09-17",
+      "last_checked": "2026-09-17",
       "source_origin": "api",
       "requiere_token": null,
       "serie_confirmada": false,
@@ -23786,7 +23786,7 @@
       "origen_dato": "respaldo",
       "fecha_publicacion": "24 de agosto de 2026",
       "periodo_referencia": "2T-26",
-      "fecha_consulta": "2026-09-16",
+      "fecha_consulta": "2026-09-17",
       "metrics": {
         "kpi": {
           "assessment": "favorable",
@@ -25675,8 +25675,8 @@
         }
       ],
       "last_observation": "Jul 26",
-      "last_updated": "2026-09-16",
-      "last_checked": "2026-09-16",
+      "last_updated": "2026-09-17",
+      "last_checked": "2026-09-17",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -25685,7 +25685,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "27 de agosto de 2026",
       "periodo_referencia": "Jul 26",
-      "fecha_consulta": "2026-09-16",
+      "fecha_consulta": "2026-09-17",
       "metrics": {
         "kpi": {
           "ultimoP": "Jul 26",
@@ -28558,8 +28558,8 @@
         }
       ],
       "last_observation": "Ago 26",
-      "last_updated": "2026-09-16",
-      "last_checked": "2026-09-16",
+      "last_updated": "2026-09-17",
+      "last_checked": "2026-09-17",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -28568,7 +28568,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "7 de agosto de 2026",
       "periodo_referencia": "Ago 26",
-      "fecha_consulta": "2026-09-16",
+      "fecha_consulta": "2026-09-17",
       "metrics": {
         "kpi": {
           "assessment": "neutral",
@@ -47181,8 +47181,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-09-16",
-      "last_checked": "2026-09-16",
+      "last_updated": "2026-09-17",
+      "last_checked": "2026-09-17",
       "requiere_token": null,
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -47190,7 +47190,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "4 de septiembre de 2026",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-09-16",
+      "fecha_consulta": "2026-09-17",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -55218,29 +55218,52 @@
             0.006,
             0.022
           ]
+        },
+        {
+          "period": "Jul 26",
+          "values": [
+            112.2,
+            0.01355,
+            0.018149,
+            null,
+            null,
+            98.4,
+            -0.002028,
+            -0.013039,
+            null,
+            null,
+            100.5,
+            0.027607,
+            -0.008876,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
         }
       ],
-      "last_observation": "Jun 26",
-      "last_updated": "2026-09-16",
-      "last_checked": "2026-09-16",
+      "last_observation": "Jul 26",
+      "last_updated": "2026-09-17",
+      "last_checked": "2026-09-17",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
       "fecha_publicacion": "17 de agosto de 2026",
-      "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-09-16",
+      "periodo_referencia": "Jul 26",
+      "fecha_consulta": "2026-09-17",
       "source_origin": "api",
       "metrics": {
         "kpi": {
-          "assessment": "favorable",
-          "dir": "up",
-          "ultimoFmt": "110.7",
-          "ultimoRaw": 110.7,
-          "ultimoP": "Jun 26",
-          "varText": "+0.1%",
-          "varMag": 0.1,
+          "assessment": "neutral",
+          "dir": "flat",
+          "ultimoFmt": "112.2",
+          "ultimoRaw": 112.2,
+          "ultimoP": "Jul 26",
+          "varText": "—",
+          "varMag": null,
           "pos": true,
           "varColor": "#1e5b4f",
           "varLabel": "Var. mensual desest.",
@@ -55250,7 +55273,7 @@
           "minFmt": "64.0",
           "minRaw": 64.0,
           "minP": "Abr 20",
-          "lastI": 233,
+          "lastI": 234,
           "series": [
             90.3,
             85.6,
@@ -55485,7 +55508,8 @@
             115.4,
             111.2,
             110.4,
-            110.7
+            110.7,
+            112.2
           ],
           "periods": [
             "Ene 07",
@@ -55721,71 +55745,72 @@
             "Mar 26",
             "Abr 26",
             "May 26",
-            "Jun 26"
+            "Jun 26",
+            "Jul 26"
           ],
-          "semaforo": "bueno",
-          "yoyText": "-2.4%",
+          "semaforo": "neutral",
+          "yoyText": "—",
           "yoyLabel": "Var. anual desest.",
           "cards": [
             {
               "name": "Producción",
               "idxCol": 0,
-              "idxRaw": 110.7,
-              "idxText": "110.7",
+              "idxRaw": 112.2,
+              "idxText": "112.2",
               "origMomCol": 1,
-              "origMomRaw": 0.002717,
-              "origMomText": "+0.3%",
+              "origMomRaw": 0.01355,
+              "origMomText": "+1.4%",
               "origYoyCol": 2,
-              "origYoyRaw": -0.010724,
-              "origYoyText": "-1.1%",
+              "origYoyRaw": 0.018149,
+              "origYoyText": "+1.8%",
               "desestMomCol": 3,
-              "desestMomRaw": 0.001,
-              "desestMomText": "+0.1%",
+              "desestMomRaw": null,
+              "desestMomText": "—",
               "desestYoyCol": 4,
-              "desestYoyRaw": -0.024,
-              "desestYoyText": "-2.4%"
+              "desestYoyRaw": null,
+              "desestYoyText": "—"
             },
             {
               "name": "Personal ocupado",
               "idxCol": 5,
-              "idxRaw": 98.6,
-              "idxText": "98.6",
+              "idxRaw": 98.4,
+              "idxText": "98.4",
               "origMomCol": 6,
-              "origMomRaw": 0.003052,
-              "origMomText": "+0.3%",
+              "origMomRaw": -0.002028,
+              "origMomText": "-0.2%",
               "origYoyCol": 7,
-              "origYoyRaw": -0.014985,
-              "origYoyText": "-1.5%",
+              "origYoyRaw": -0.013039,
+              "origYoyText": "-1.3%",
               "desestMomCol": 8,
-              "desestMomRaw": 0.001,
-              "desestMomText": "+0.1%",
+              "desestMomRaw": null,
+              "desestMomText": "—",
               "desestYoyCol": 9,
-              "desestYoyRaw": -0.015,
-              "desestYoyText": "-1.5%"
+              "desestYoyRaw": null,
+              "desestYoyText": "—"
             },
             {
               "name": "Horas trabajadas",
               "idxCol": 10,
-              "idxRaw": 97.8,
-              "idxText": "97.8",
+              "idxRaw": 100.5,
+              "idxText": "100.5",
               "origMomCol": 11,
-              "origMomRaw": 0.01875,
-              "origMomText": "+1.9%",
+              "origMomRaw": 0.027607,
+              "origMomText": "+2.8%",
               "origYoyCol": 12,
-              "origYoyRaw": -0.001021,
-              "origYoyText": "-0.1%",
+              "origYoyRaw": -0.008876,
+              "origYoyText": "-0.9%",
               "desestMomCol": 13,
-              "desestMomRaw": 0.001,
-              "desestMomText": "+0.1%",
+              "desestMomRaw": null,
+              "desestMomText": "—",
               "desestYoyCol": 14,
-              "desestYoyRaw": -0.015,
-              "desestYoyText": "-1.5%"
+              "desestYoyRaw": null,
+              "desestYoyText": "—"
             },
             {
               "name": "Remuneraciones medias reales",
               "idxCol": 15,
-              "idxRaw": 119.7,
-              "idxText": "119.7",
+              "idxRaw": null,
+              "idxText": "—",
               "origMomCol": null,
               "origMomRaw": null,
               "origMomText": "—",
@@ -55793,35 +55818,29 @@
               "origYoyRaw": null,
               "origYoyText": "—",
               "desestMomCol": 16,
-              "desestMomRaw": 0.006,
-              "desestMomText": "+0.6%",
+              "desestMomRaw": null,
+              "desestMomText": "—",
               "desestYoyCol": 17,
-              "desestYoyRaw": 0.022,
-              "desestYoyText": "+2.2%"
+              "desestYoyRaw": null,
+              "desestYoyText": "—"
             }
           ]
         },
-        "yoy": {
-          "mag": -2.4,
-          "pos": false,
-          "text": "-2.4%",
-          "label": "Var. anual desest."
-        },
+        "yoy": null,
         "resumen": [
-          "En junio de 2026, el índice de producción se ubicó en 110.7 puntos. La variación mensual desestacionalizada fue +0.1% y la anual desestacionalizada -2.4% (anual original: -1.1%).",
-          "En el lado laboral, el personal ocupado 98.6 puntos (-1.5% anual original, -1.5% desest.) y las horas trabajadas 97.8 puntos (-0.1% anual original, -1.5% desest.).",
-          "Las remuneraciones medias reales se ubicaron en 119.7 puntos, con variación anual desestacionalizada de +2.2%.",
+          "En julio de 2026, el índice de producción se ubicó en 112.2 puntos. La variación mensual desestacionalizada fue — (anual original: +1.8%).",
+          "En el lado laboral, el personal ocupado 98.4 puntos (-1.3% anual original) y las horas trabajadas 100.5 puntos (-0.9% anual original).",
           "A nivel subsectorial, los mayores dinamismos anuales fueron Fabricación de equipo de computación (+6.8%), Industria química (+5.1%), Fabricación de maquinaria (+3.8%); los mayores retrocesos: Fabricación de productos derivados del petróleo (-5.0%), Fabricación de insumos textiles (-3.9%), Fabricación de muebles (-3.9%)."
         ]
       },
-      "periodo_referencia_oficial": "Junio de 2026",
-      "fecha_publicacion_oficial": "17 de agosto de 2026",
+      "periodo_referencia_oficial": "Julio de 2026",
+      "fecha_publicacion_oficial": "17 de septiembre de 2026",
       "proxima_publicacion": {
-        "fecha_publicacion": "17 de septiembre de 2026",
-        "periodo_referencia": "Julio de 2026",
+        "fecha_publicacion": "16 de octubre de 2026",
+        "periodo_referencia": "Agosto de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (Jun 26) coincide con el último periodo esperado (Junio de 2026).",
+      "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo esperado (Julio de 2026).",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_08.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/EMIM/EMIM_datos.xlsx",
@@ -55830,7 +55849,7 @@
       "nota_causa": null,
       "url_nota_individual": "downloads/indicadores/EMIM/nota/EMIM_nota.docx",
       "url_fuente_oficial": "https://www.inegi.org.mx/programas/emim/",
-      "fecha_ultima_publicacion": "17 de agosto de 2026",
+      "fecha_ultima_publicacion": "17 de septiembre de 2026",
       "regla_publicacion": null,
       "periodo_boletin": "Jun 26",
       "numero_boletin": "490/26",
@@ -69295,8 +69314,8 @@
         }
       ],
       "last_observation": "2026-09-15",
-      "last_updated": "2026-09-16",
-      "last_checked": "2026-09-16",
+      "last_updated": "2026-09-17",
+      "last_checked": "2026-09-17",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
@@ -69304,7 +69323,7 @@
       "origen_dato": "api",
       "fecha_publicacion": null,
       "periodo_referencia": "2026-09-15",
-      "fecha_consulta": "2026-09-16",
+      "fecha_consulta": "2026-09-17",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -106527,19 +106546,25 @@
           "values": [
             6.5
           ]
+        },
+        {
+          "period": "2026-09-17",
+          "values": [
+            6.5
+          ]
         }
       ],
-      "last_observation": "2026-09-16",
-      "last_updated": "2026-09-16",
-      "last_checked": "2026-09-16",
+      "last_observation": "2026-09-17",
+      "last_updated": "2026-09-17",
+      "last_checked": "2026-09-17",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
       "fecha_publicacion": null,
-      "periodo_referencia": "2026-09-16",
-      "fecha_consulta": "2026-09-16",
+      "periodo_referencia": "2026-09-17",
+      "fecha_consulta": "2026-09-17",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -106615,7 +106640,7 @@
       "periodo_referencia_oficial": "Sep 26",
       "fecha_publicacion_oficial": null,
       "proxima_publicacion": null,
-      "motivo_frescura": "El periodo cargado (2026-09-16) coincide con el último periodo esperado (Sep 26).",
+      "motivo_frescura": "El periodo cargado (2026-09-17) coincide con el último periodo esperado (Sep 26).",
       "url_boletin_oficial": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/{8DA3F519-341F-480E-1D4E-1AEE71DD08DA}.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/TASA/TASA_datos.xlsx",
@@ -125544,7 +125569,7 @@
           ]
         }
       ],
-      "fecha_ultima_observacion": "2026-09-16",
+      "fecha_ultima_observacion": "2026-09-17",
       "url_fuente_oficial": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
       "fecha_ultima_publicacion": null,
       "regla_publicacion": null,
@@ -131484,8 +131509,8 @@
         }
       ],
       "last_observation": "2026-09-11",
-      "last_updated": "2026-09-16",
-      "last_checked": "2026-09-16",
+      "last_updated": "2026-09-17",
+      "last_checked": "2026-09-17",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
@@ -131493,7 +131518,7 @@
       "origen_dato": "api",
       "fecha_publicacion": null,
       "periodo_referencia": "Semana al 11 Sep 26",
-      "fecha_consulta": "2026-09-16",
+      "fecha_consulta": "2026-09-17",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -137138,8 +137163,8 @@
         }
       ],
       "last_observation": "Ago 26",
-      "last_updated": "2026-09-16",
-      "last_checked": "2026-09-16",
+      "last_updated": "2026-09-17",
+      "last_checked": "2026-09-17",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -137147,7 +137172,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "1 de septiembre de 2026",
       "periodo_referencia": "Ago 26",
-      "fecha_consulta": "2026-09-16",
+      "fecha_consulta": "2026-09-17",
       "metrics": {
         "kpi": {
           "assessment": "neutral",
@@ -156605,8 +156630,8 @@
         }
       ],
       "last_observation": "Jul 26",
-      "last_updated": "2026-09-16",
-      "last_checked": "2026-09-16",
+      "last_updated": "2026-09-17",
+      "last_checked": "2026-09-17",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -156614,7 +156639,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "27 de agosto de 2026",
       "periodo_referencia": "Jul 26",
-      "fecha_consulta": "2026-09-16",
+      "fecha_consulta": "2026-09-17",
       "metrics": {
         "kpi": {
           "ultimoRaw": -847.537,
@@ -160041,8 +160066,8 @@
         }
       ],
       "last_observation": "Ago 26",
-      "last_updated": "2026-09-16",
-      "last_checked": "2026-09-16",
+      "last_updated": "2026-09-17",
+      "last_checked": "2026-09-17",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -160077,7 +160102,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "07 de agosto de 2026",
       "periodo_referencia": "Ago 26",
-      "fecha_consulta": "2026-09-16",
+      "fecha_consulta": "2026-09-17",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -173326,8 +173351,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-09-16",
-      "last_checked": "2026-09-16",
+      "last_updated": "2026-09-17",
+      "last_checked": "2026-09-17",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -173362,7 +173387,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "4 de septiembre de 2026",
       "periodo_referencia": "Ago 26",
-      "fecha_consulta": "2026-09-16",
+      "fecha_consulta": "2026-09-17",
       "source_origin": "api",
       "metrics": {
         "kpi": {

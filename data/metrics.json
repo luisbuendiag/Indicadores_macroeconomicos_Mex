@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-16T21:57:46+00:00",
-  "last_update_ct": "2026-09-16T12:28:50-06:00",
+  "generated_at": "2026-09-17T12:29:46+00:00",
+  "last_update_ct": "2026-09-16T16:47:50-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -4311,13 +4311,13 @@
     },
     "EMIM": {
       "kpi": {
-        "assessment": "favorable",
-        "dir": "up",
-        "ultimoFmt": "110.7",
-        "ultimoRaw": 110.7,
-        "ultimoP": "Jun 26",
-        "varText": "+0.1%",
-        "varMag": 0.1,
+        "assessment": "neutral",
+        "dir": "flat",
+        "ultimoFmt": "112.2",
+        "ultimoRaw": 112.2,
+        "ultimoP": "Jul 26",
+        "varText": "—",
+        "varMag": null,
         "pos": true,
         "varColor": "#1e5b4f",
         "varLabel": "Var. mensual desest.",
@@ -4327,7 +4327,7 @@
         "minFmt": "64.0",
         "minRaw": 64.0,
         "minP": "Abr 20",
-        "lastI": 233,
+        "lastI": 234,
         "series": [
           90.3,
           85.6,
@@ -4562,7 +4562,8 @@
           115.4,
           111.2,
           110.4,
-          110.7
+          110.7,
+          112.2
         ],
         "periods": [
           "Ene 07",
@@ -4798,71 +4799,72 @@
           "Mar 26",
           "Abr 26",
           "May 26",
-          "Jun 26"
+          "Jun 26",
+          "Jul 26"
         ],
-        "semaforo": "bueno",
-        "yoyText": "-2.4%",
+        "semaforo": "neutral",
+        "yoyText": "—",
         "yoyLabel": "Var. anual desest.",
         "cards": [
           {
             "name": "Producción",
             "idxCol": 0,
-            "idxRaw": 110.7,
-            "idxText": "110.7",
+            "idxRaw": 112.2,
+            "idxText": "112.2",
             "origMomCol": 1,
-            "origMomRaw": 0.002717,
-            "origMomText": "+0.3%",
+            "origMomRaw": 0.01355,
+            "origMomText": "+1.4%",
             "origYoyCol": 2,
-            "origYoyRaw": -0.010724,
-            "origYoyText": "-1.1%",
+            "origYoyRaw": 0.018149,
+            "origYoyText": "+1.8%",
             "desestMomCol": 3,
-            "desestMomRaw": 0.001,
-            "desestMomText": "+0.1%",
+            "desestMomRaw": null,
+            "desestMomText": "—",
             "desestYoyCol": 4,
-            "desestYoyRaw": -0.024,
-            "desestYoyText": "-2.4%"
+            "desestYoyRaw": null,
+            "desestYoyText": "—"
           },
           {
             "name": "Personal ocupado",
             "idxCol": 5,
-            "idxRaw": 98.6,
-            "idxText": "98.6",
+            "idxRaw": 98.4,
+            "idxText": "98.4",
             "origMomCol": 6,
-            "origMomRaw": 0.003052,
-            "origMomText": "+0.3%",
+            "origMomRaw": -0.002028,
+            "origMomText": "-0.2%",
             "origYoyCol": 7,
-            "origYoyRaw": -0.014985,
-            "origYoyText": "-1.5%",
+            "origYoyRaw": -0.013039,
+            "origYoyText": "-1.3%",
             "desestMomCol": 8,
-            "desestMomRaw": 0.001,
-            "desestMomText": "+0.1%",
+            "desestMomRaw": null,
+            "desestMomText": "—",
             "desestYoyCol": 9,
-            "desestYoyRaw": -0.015,
-            "desestYoyText": "-1.5%"
+            "desestYoyRaw": null,
+            "desestYoyText": "—"
           },
           {
             "name": "Horas trabajadas",
             "idxCol": 10,
-            "idxRaw": 97.8,
-            "idxText": "97.8",
+            "idxRaw": 100.5,
+            "idxText": "100.5",
             "origMomCol": 11,
-            "origMomRaw": 0.01875,
-            "origMomText": "+1.9%",
+            "origMomRaw": 0.027607,
+            "origMomText": "+2.8%",
             "origYoyCol": 12,
-            "origYoyRaw": -0.001021,
-            "origYoyText": "-0.1%",
+            "origYoyRaw": -0.008876,
+            "origYoyText": "-0.9%",
             "desestMomCol": 13,
-            "desestMomRaw": 0.001,
-            "desestMomText": "+0.1%",
+            "desestMomRaw": null,
+            "desestMomText": "—",
             "desestYoyCol": 14,
-            "desestYoyRaw": -0.015,
-            "desestYoyText": "-1.5%"
+            "desestYoyRaw": null,
+            "desestYoyText": "—"
           },
           {
             "name": "Remuneraciones medias reales",
             "idxCol": 15,
-            "idxRaw": 119.7,
-            "idxText": "119.7",
+            "idxRaw": null,
+            "idxText": "—",
             "origMomCol": null,
             "origMomRaw": null,
             "origMomText": "—",
@@ -4870,35 +4872,24 @@
             "origYoyRaw": null,
             "origYoyText": "—",
             "desestMomCol": 16,
-            "desestMomRaw": 0.006,
-            "desestMomText": "+0.6%",
+            "desestMomRaw": null,
+            "desestMomText": "—",
             "desestYoyCol": 17,
-            "desestYoyRaw": 0.022,
-            "desestYoyText": "+2.2%"
+            "desestYoyRaw": null,
+            "desestYoyText": "—"
           }
         ]
       },
-      "yoy": {
-        "mag": -2.4,
-        "pos": false,
-        "text": "-2.4%",
-        "label": "Var. anual desest."
-      },
-      "annualVar": {
-        "mag": -2.4,
-        "pos": false,
-        "text": "-2.4%",
-        "label": "Var. anual desest."
-      },
+      "yoy": null,
+      "annualVar": null,
       "resumen": [
-        "En junio de 2026, el índice de producción se ubicó en 110.7 puntos. La variación mensual desestacionalizada fue +0.1% y la anual desestacionalizada -2.4% (anual original: -1.1%).",
-        "En el lado laboral, el personal ocupado 98.6 puntos (-1.5% anual original, -1.5% desest.) y las horas trabajadas 97.8 puntos (-0.1% anual original, -1.5% desest.).",
-        "Las remuneraciones medias reales se ubicaron en 119.7 puntos, con variación anual desestacionalizada de +2.2%.",
+        "En julio de 2026, el índice de producción se ubicó en 112.2 puntos. La variación mensual desestacionalizada fue — (anual original: +1.8%).",
+        "En el lado laboral, el personal ocupado 98.4 puntos (-1.3% anual original) y las horas trabajadas 100.5 puntos (-0.9% anual original).",
         "A nivel subsectorial, los mayores dinamismos anuales fueron Fabricación de equipo de computación (+6.8%), Industria química (+5.1%), Fabricación de maquinaria (+3.8%); los mayores retrocesos: Fabricación de productos derivados del petróleo (-5.0%), Fabricación de insumos textiles (-3.9%), Fabricación de muebles (-3.9%)."
       ],
       "analysis": [
-        "En junio de 2026, la Encuesta Mensual de la Industria Manufacturera se ubicó en 110.7 puntos (índice base 2018=100), con una variación mensual desestacionalizada de +0.10% frente al mes previo. La variación mensual publicada por el INEGI muestra que el indicador aumentó respecto del mes previo. El nivel mostrado es la serie original; la variación mensual se calcula sobre cifras desestacionalizadas.",
-        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 115.5 puntos (marzo de 2023) y un mínimo de 64.0 puntos (abril de 2020). El resultado más reciente se ubicó por encima del promedio del periodo mostrado. El último dato fue inferior al del inicio del periodo mostrado. Esta comparación se realiza sobre la serie original, que incorpora efectos estacionales."
+        "En julio de 2026, la Encuesta Mensual de la Industria Manufacturera se ubicó en 112.2 puntos (índice base 2018=100), con una variación mensual desestacionalizada de — frente al mes previo. La variación mensual publicada por el INEGI muestra que el indicador se mantuvo sin cambio respecto del mes previo. El nivel mostrado es la serie original; la variación mensual se calcula sobre cifras desestacionalizadas.",
+        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 115.5 puntos (marzo de 2023) y un mínimo de 64.0 puntos (abril de 2020). El resultado más reciente se ubicó por encima del promedio del periodo mostrado. El último dato se mantuvo cercano al del inicio del periodo mostrado."
       ]
     },
     "TIPOCAMBIO": {
