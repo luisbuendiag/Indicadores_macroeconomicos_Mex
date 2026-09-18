@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-17T22:51:15+00:00",
+    "generated_at": "2026-09-18T12:57:46+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-09-17T16:51:15-06:00",
+    "last_update_ct": "2026-09-18T06:57:46-06:00",
     "periodo_referencia_reciente": {
       "period": "Ago 26",
       "period_long": "Ago 26"
@@ -1513,7 +1513,13 @@
           {
             "period": "1T-26",
             "values": [
-              24973976.071
+              24963384.137
+            ]
+          },
+          {
+            "period": "2T-26",
+            "values": [
+              26144132.442
             ]
           }
         ],
@@ -3878,7 +3884,7 @@
             15120485.521,
             -0.004,
             0.011,
-            24973976.071,
+            24963384.137,
             -0.006,
             0.004,
             -0.017,
@@ -3895,7 +3901,7 @@
             15749814.826,
             0.014,
             0.023,
-            null,
+            26144132.442,
             0.014,
             0.019,
             0.024,
@@ -3906,8 +3912,8 @@
         }
       ],
       "last_observation": "2T-26",
-      "last_updated": "2026-09-17",
-      "last_checked": "2026-09-17",
+      "last_updated": "2026-09-18",
+      "last_checked": "2026-09-18",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -3916,26 +3922,26 @@
       "origen_dato": "api",
       "fecha_publicacion": "24 de agosto de 2026",
       "periodo_referencia": "2T-26",
-      "fecha_consulta": "2026-09-17",
+      "fecha_consulta": "2026-09-18",
       "metrics": {
         "kpi": {
-          "assessment": "adverso",
-          "dir": "down",
-          "ultimoFmt": "24.97 billones de pesos de 2018",
-          "ultimoRaw": 24973976.071,
-          "ultimoP": "1T-26",
-          "varText": "-0.6%",
-          "varMag": -0.6,
-          "pos": false,
-          "varColor": "#9b2247",
+          "assessment": "favorable",
+          "dir": "up",
+          "ultimoFmt": "26.14 billones de pesos de 2018",
+          "ultimoRaw": 26144132.442,
+          "ultimoP": "2T-26",
+          "varText": "+1.4%",
+          "varMag": 1.4000000000000001,
+          "pos": true,
+          "varColor": "#1e5b4f",
           "varLabel": "Var. trim. PIB",
           "maxFmt": "26.14 billones de pesos de 2018",
-          "maxRaw": 26135644.696,
-          "maxP": "4T-25",
+          "maxRaw": 26144132.442,
+          "maxP": "2T-26",
           "minFmt": "13.29 billones de pesos de 2018",
           "minRaw": 13287443.87,
           "minP": "2T-95",
-          "lastI": 132,
+          "lastI": 133,
           "series": [
             13759053.956,
             13889145.022,
@@ -4069,8 +4075,8 @@
             25618678.767,
             25422850.191,
             26135644.696,
-            24973976.071,
-            null
+            24963384.137,
+            26144132.442
           ],
           "periods": [
             "1T-93",
@@ -4208,62 +4214,62 @@
             "1T-26",
             "2T-26"
           ],
-          "semaforo": "malo",
+          "semaforo": "bueno",
           "cards": [
             {
               "name": "PIB",
               "full": "PIB total",
-              "nivelRaw": 24973976.071,
-              "nivelText": "24.97 billones de pesos de 2018",
-              "qoqRaw": -0.006,
-              "qoqText": "-0.6%",
-              "yoyRaw": 0.004,
-              "yoyText": "+0.4%"
+              "nivelRaw": 26144132.442,
+              "nivelText": "26.14 billones de pesos de 2018",
+              "qoqRaw": 0.014,
+              "qoqText": "+1.4%",
+              "yoyRaw": 0.019,
+              "yoyText": "+1.9%"
             },
             {
               "name": "primarias",
               "full": "Actividades primarias",
-              "nivelRaw": 788493.942,
-              "nivelText": "0.79 billones de pesos de 2018",
-              "qoqRaw": -0.017,
-              "qoqText": "-1.7%",
-              "yoyRaw": 0.003,
-              "yoyText": "+0.3%"
+              "nivelRaw": 898248.914,
+              "nivelText": "0.90 billones de pesos de 2018",
+              "qoqRaw": 0.024,
+              "qoqText": "+2.4%",
+              "yoyRaw": 0.048,
+              "yoyText": "+4.8%"
             },
             {
               "name": "secundarias",
               "full": "Actividades secundarias",
-              "nivelRaw": 7632084.217,
-              "nivelText": "7.63 billones de pesos de 2018",
-              "qoqRaw": -0.01,
-              "qoqText": "-1.0%",
-              "yoyRaw": -0.011,
-              "yoyText": "-1.1%"
+              "nivelRaw": 7978687.666,
+              "nivelText": "7.98 billones de pesos de 2018",
+              "qoqRaw": 0.016,
+              "qoqText": "+1.6%",
+              "yoyRaw": 0.009,
+              "yoyText": "+0.9%"
             },
             {
               "name": "terciarias",
               "full": "Actividades terciarias",
-              "nivelRaw": 15120485.521,
-              "nivelText": "15.12 billones de pesos de 2018",
-              "qoqRaw": -0.004,
-              "qoqText": "-0.4%",
-              "yoyRaw": 0.011,
-              "yoyText": "+1.1%"
+              "nivelRaw": 15749814.826,
+              "nivelText": "15.75 billones de pesos de 2018",
+              "qoqRaw": 0.014,
+              "qoqText": "+1.4%",
+              "yoyRaw": 0.023,
+              "yoyText": "+2.3%"
             }
           ],
-          "yoyText": "+0.4%",
+          "yoyText": "+1.9%",
           "yoyLabel": "Var. anual PIB"
         },
         "yoy": {
-          "mag": 0.4,
+          "mag": 1.9,
           "pos": true,
-          "text": "+0.4%",
+          "text": "+1.9%",
           "label": "Var. anual PIB"
         },
         "resumen": [
-          "En primer trimestre de 2026, el PIB trimestral a precios constantes se ubicó en 24.97 billones de pesos de 2018. La variación trimestral fue -0.6% y la anual +0.4% frente al mismo trimestre del año previo.",
-          "El desempeño por actividad a tasa trimestral fue: primarias -1.7%, secundarias -1.0%, terciarias -0.4%.",
-          "A tasa anual, primarias creció +0.3%, secundarias contrajo -1.1% y terciarias creció +1.1%.",
+          "En segundo trimestre de 2026, el PIB trimestral a precios constantes se ubicó en 26.14 billones de pesos de 2018. La variación trimestral fue +1.4% y la anual +1.9% frente al mismo trimestre del año previo.",
+          "El desempeño por actividad a tasa trimestral fue: primarias +2.4%, secundarias +1.6%, terciarias +1.4%.",
+          "A tasa anual, primarias creció +4.8%, secundarias creció +0.9% y terciarias creció +2.3%.",
           "A nivel subsectorial, los mayores dinamismos anuales fueron Comercio al por mayor (+6.7%), Minería (+3.8%), Servicios de esparcimiento culturales (+3.1%); los mayores retrocesos: Servicios de alojamiento temporal (-2.7%), Servicios profesionales (-1.6%), Corporativos (-1.6%)."
         ]
       },
@@ -10051,8 +10057,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-09-17",
-      "last_checked": "2026-09-17",
+      "last_updated": "2026-09-18",
+      "last_checked": "2026-09-18",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -10061,7 +10067,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "24 de agosto de 2026",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-09-17",
+      "fecha_consulta": "2026-09-18",
       "metrics": {
         "kpi": {
           "assessment": "adverso",
@@ -20326,8 +20332,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-09-17",
-      "last_checked": "2026-09-17",
+      "last_updated": "2026-09-18",
+      "last_checked": "2026-09-18",
       "source_origin": "api",
       "data_quality": [],
       "requiere_token": "INEGI",
@@ -20337,7 +20343,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "11 de agosto de 2026",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-09-17",
+      "fecha_consulta": "2026-09-18",
       "metrics": {
         "kpi": {
           "assessment": "favorable",
@@ -23776,8 +23782,8 @@
         }
       ],
       "last_observation": "2T-26",
-      "last_updated": "2026-09-17",
-      "last_checked": "2026-09-17",
+      "last_updated": "2026-09-18",
+      "last_checked": "2026-09-18",
       "source_origin": "api",
       "requiere_token": null,
       "serie_confirmada": false,
@@ -23786,7 +23792,7 @@
       "origen_dato": "respaldo",
       "fecha_publicacion": "24 de agosto de 2026",
       "periodo_referencia": "2T-26",
-      "fecha_consulta": "2026-09-17",
+      "fecha_consulta": "2026-09-18",
       "metrics": {
         "kpi": {
           "assessment": "favorable",
@@ -25675,8 +25681,8 @@
         }
       ],
       "last_observation": "Jul 26",
-      "last_updated": "2026-09-17",
-      "last_checked": "2026-09-17",
+      "last_updated": "2026-09-18",
+      "last_checked": "2026-09-18",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -25685,7 +25691,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "27 de agosto de 2026",
       "periodo_referencia": "Jul 26",
-      "fecha_consulta": "2026-09-17",
+      "fecha_consulta": "2026-09-18",
       "metrics": {
         "kpi": {
           "ultimoP": "Jul 26",
@@ -28558,8 +28564,8 @@
         }
       ],
       "last_observation": "Ago 26",
-      "last_updated": "2026-09-17",
-      "last_checked": "2026-09-17",
+      "last_updated": "2026-09-18",
+      "last_checked": "2026-09-18",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -28568,7 +28574,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "7 de agosto de 2026",
       "periodo_referencia": "Ago 26",
-      "fecha_consulta": "2026-09-17",
+      "fecha_consulta": "2026-09-18",
       "metrics": {
         "kpi": {
           "assessment": "neutral",
@@ -47181,8 +47187,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-09-17",
-      "last_checked": "2026-09-17",
+      "last_updated": "2026-09-18",
+      "last_checked": "2026-09-18",
       "requiere_token": null,
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -47190,7 +47196,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "4 de septiembre de 2026",
       "periodo_referencia": "Jun 26",
-      "fecha_consulta": "2026-09-17",
+      "fecha_consulta": "2026-09-18",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -55244,8 +55250,8 @@
         }
       ],
       "last_observation": "Jul 26",
-      "last_updated": "2026-09-17",
-      "last_checked": "2026-09-17",
+      "last_updated": "2026-09-18",
+      "last_checked": "2026-09-18",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -55253,7 +55259,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "17 de agosto de 2026",
       "periodo_referencia": "Jul 26",
-      "fecha_consulta": "2026-09-17",
+      "fecha_consulta": "2026-09-18",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -69320,8 +69326,8 @@
         }
       ],
       "last_observation": "2026-09-17",
-      "last_updated": "2026-09-17",
-      "last_checked": "2026-09-17",
+      "last_updated": "2026-09-18",
+      "last_checked": "2026-09-18",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
@@ -69329,7 +69335,7 @@
       "origen_dato": "api",
       "fecha_publicacion": null,
       "periodo_referencia": "2026-09-17",
-      "fecha_consulta": "2026-09-17",
+      "fecha_consulta": "2026-09-18",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -106560,19 +106566,25 @@
           "values": [
             6.5
           ]
+        },
+        {
+          "period": "2026-09-18",
+          "values": [
+            6.5
+          ]
         }
       ],
-      "last_observation": "2026-09-17",
-      "last_updated": "2026-09-17",
-      "last_checked": "2026-09-17",
+      "last_observation": "2026-09-18",
+      "last_updated": "2026-09-18",
+      "last_checked": "2026-09-18",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
       "fecha_publicacion": null,
-      "periodo_referencia": "2026-09-17",
-      "fecha_consulta": "2026-09-17",
+      "periodo_referencia": "2026-09-18",
+      "fecha_consulta": "2026-09-18",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -106648,7 +106660,7 @@
       "periodo_referencia_oficial": "Sep 26",
       "fecha_publicacion_oficial": null,
       "proxima_publicacion": null,
-      "motivo_frescura": "El periodo cargado (2026-09-17) coincide con el último periodo esperado (Sep 26).",
+      "motivo_frescura": "El periodo cargado (2026-09-18) coincide con el último periodo esperado (Sep 26).",
       "url_boletin_oficial": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/{8DA3F519-341F-480E-1D4E-1AEE71DD08DA}.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/TASA/TASA_datos.xlsx",
@@ -125577,7 +125589,7 @@
           ]
         }
       ],
-      "fecha_ultima_observacion": "2026-09-17",
+      "fecha_ultima_observacion": "2026-09-18",
       "url_fuente_oficial": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
       "fecha_ultima_publicacion": null,
       "regla_publicacion": null,
@@ -131517,8 +131529,8 @@
         }
       ],
       "last_observation": "2026-09-11",
-      "last_updated": "2026-09-17",
-      "last_checked": "2026-09-17",
+      "last_updated": "2026-09-18",
+      "last_checked": "2026-09-18",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
@@ -131526,7 +131538,7 @@
       "origen_dato": "api",
       "fecha_publicacion": null,
       "periodo_referencia": "Semana al 11 Sep 26",
-      "fecha_consulta": "2026-09-17",
+      "fecha_consulta": "2026-09-18",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -137171,8 +137183,8 @@
         }
       ],
       "last_observation": "Ago 26",
-      "last_updated": "2026-09-17",
-      "last_checked": "2026-09-17",
+      "last_updated": "2026-09-18",
+      "last_checked": "2026-09-18",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -137180,7 +137192,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "1 de septiembre de 2026",
       "periodo_referencia": "Ago 26",
-      "fecha_consulta": "2026-09-17",
+      "fecha_consulta": "2026-09-18",
       "metrics": {
         "kpi": {
           "assessment": "neutral",
@@ -156638,8 +156650,8 @@
         }
       ],
       "last_observation": "Jul 26",
-      "last_updated": "2026-09-17",
-      "last_checked": "2026-09-17",
+      "last_updated": "2026-09-18",
+      "last_checked": "2026-09-18",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -156647,7 +156659,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "27 de agosto de 2026",
       "periodo_referencia": "Jul 26",
-      "fecha_consulta": "2026-09-17",
+      "fecha_consulta": "2026-09-18",
       "metrics": {
         "kpi": {
           "ultimoRaw": -847.537,
@@ -160074,8 +160086,8 @@
         }
       ],
       "last_observation": "Ago 26",
-      "last_updated": "2026-09-17",
-      "last_checked": "2026-09-17",
+      "last_updated": "2026-09-18",
+      "last_checked": "2026-09-18",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -160110,7 +160122,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "07 de agosto de 2026",
       "periodo_referencia": "Ago 26",
-      "fecha_consulta": "2026-09-17",
+      "fecha_consulta": "2026-09-18",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -173359,8 +173371,8 @@
         }
       ],
       "last_observation": "Jun 26",
-      "last_updated": "2026-09-17",
-      "last_checked": "2026-09-17",
+      "last_updated": "2026-09-18",
+      "last_checked": "2026-09-18",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -173395,7 +173407,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "4 de septiembre de 2026",
       "periodo_referencia": "Ago 26",
-      "fecha_consulta": "2026-09-17",
+      "fecha_consulta": "2026-09-18",
       "source_origin": "api",
       "metrics": {
         "kpi": {

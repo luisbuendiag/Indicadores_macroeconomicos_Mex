@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-17T21:58:59+00:00",
-  "last_update_ct": "2026-09-17T12:39:35-06:00",
+  "generated_at": "2026-09-18T12:08:29+00:00",
+  "last_update_ct": "2026-09-17T16:51:15-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -157,23 +157,23 @@
     },
     "PIBSEC": {
       "kpi": {
-        "assessment": "adverso",
-        "dir": "down",
-        "ultimoFmt": "24.97 billones de pesos de 2018",
-        "ultimoRaw": 24973976.071,
-        "ultimoP": "1T-26",
-        "varText": "-0.6%",
-        "varMag": -0.6,
-        "pos": false,
-        "varColor": "#9b2247",
+        "assessment": "favorable",
+        "dir": "up",
+        "ultimoFmt": "26.14 billones de pesos de 2018",
+        "ultimoRaw": 26144132.442,
+        "ultimoP": "2T-26",
+        "varText": "+1.4%",
+        "varMag": 1.4000000000000001,
+        "pos": true,
+        "varColor": "#1e5b4f",
         "varLabel": "Var. trim. PIB",
         "maxFmt": "26.14 billones de pesos de 2018",
-        "maxRaw": 26135644.696,
-        "maxP": "4T-25",
+        "maxRaw": 26144132.442,
+        "maxP": "2T-26",
         "minFmt": "13.29 billones de pesos de 2018",
         "minRaw": 13287443.87,
         "minP": "2T-95",
-        "lastI": 132,
+        "lastI": 133,
         "series": [
           13759053.956,
           13889145.022,
@@ -307,8 +307,8 @@
           25618678.767,
           25422850.191,
           26135644.696,
-          24973976.071,
-          null
+          24963384.137,
+          26144132.442
         ],
         "periods": [
           "1T-93",
@@ -446,72 +446,72 @@
           "1T-26",
           "2T-26"
         ],
-        "semaforo": "malo",
+        "semaforo": "bueno",
         "cards": [
           {
             "name": "PIB",
             "full": "PIB total",
-            "nivelRaw": 24973976.071,
-            "nivelText": "24.97 billones de pesos de 2018",
-            "qoqRaw": -0.006,
-            "qoqText": "-0.6%",
-            "yoyRaw": 0.004,
-            "yoyText": "+0.4%"
+            "nivelRaw": 26144132.442,
+            "nivelText": "26.14 billones de pesos de 2018",
+            "qoqRaw": 0.014,
+            "qoqText": "+1.4%",
+            "yoyRaw": 0.019,
+            "yoyText": "+1.9%"
           },
           {
             "name": "primarias",
             "full": "Actividades primarias",
-            "nivelRaw": 788493.942,
-            "nivelText": "0.79 billones de pesos de 2018",
-            "qoqRaw": -0.017,
-            "qoqText": "-1.7%",
-            "yoyRaw": 0.003,
-            "yoyText": "+0.3%"
+            "nivelRaw": 898248.914,
+            "nivelText": "0.90 billones de pesos de 2018",
+            "qoqRaw": 0.024,
+            "qoqText": "+2.4%",
+            "yoyRaw": 0.048,
+            "yoyText": "+4.8%"
           },
           {
             "name": "secundarias",
             "full": "Actividades secundarias",
-            "nivelRaw": 7632084.217,
-            "nivelText": "7.63 billones de pesos de 2018",
-            "qoqRaw": -0.01,
-            "qoqText": "-1.0%",
-            "yoyRaw": -0.011,
-            "yoyText": "-1.1%"
+            "nivelRaw": 7978687.666,
+            "nivelText": "7.98 billones de pesos de 2018",
+            "qoqRaw": 0.016,
+            "qoqText": "+1.6%",
+            "yoyRaw": 0.009,
+            "yoyText": "+0.9%"
           },
           {
             "name": "terciarias",
             "full": "Actividades terciarias",
-            "nivelRaw": 15120485.521,
-            "nivelText": "15.12 billones de pesos de 2018",
-            "qoqRaw": -0.004,
-            "qoqText": "-0.4%",
-            "yoyRaw": 0.011,
-            "yoyText": "+1.1%"
+            "nivelRaw": 15749814.826,
+            "nivelText": "15.75 billones de pesos de 2018",
+            "qoqRaw": 0.014,
+            "qoqText": "+1.4%",
+            "yoyRaw": 0.023,
+            "yoyText": "+2.3%"
           }
         ],
-        "yoyText": "+0.4%",
+        "yoyText": "+1.9%",
         "yoyLabel": "Var. anual PIB"
       },
       "yoy": {
-        "mag": 0.4,
+        "mag": 1.9,
         "pos": true,
-        "text": "+0.4%",
+        "text": "+1.9%",
         "label": "Var. anual PIB"
       },
       "annualVar": {
-        "mag": 0.4,
+        "mag": 1.9,
         "pos": true,
-        "text": "+0.4%",
+        "text": "+1.9%",
         "label": "Var. anual PIB"
       },
       "resumen": [
-        "En primer trimestre de 2026, el PIB trimestral a precios constantes se ubicó en 24.97 billones de pesos de 2018. La variación trimestral fue -0.6% y la anual +0.4% frente al mismo trimestre del año previo.",
-        "El desempeño por actividad a tasa trimestral fue: primarias -1.7%, secundarias -1.0%, terciarias -0.4%.",
-        "A tasa anual, primarias creció +0.3%, secundarias contrajo -1.1% y terciarias creció +1.1%.",
+        "En segundo trimestre de 2026, el PIB trimestral a precios constantes se ubicó en 26.14 billones de pesos de 2018. La variación trimestral fue +1.4% y la anual +1.9% frente al mismo trimestre del año previo.",
+        "El desempeño por actividad a tasa trimestral fue: primarias +2.4%, secundarias +1.6%, terciarias +1.4%.",
+        "A tasa anual, primarias creció +4.8%, secundarias creció +0.9% y terciarias creció +2.3%.",
         "A nivel subsectorial, los mayores dinamismos anuales fueron Comercio al por mayor (+6.7%), Minería (+3.8%), Servicios de esparcimiento culturales (+3.1%); los mayores retrocesos: Servicios de alojamiento temporal (-2.7%), Servicios profesionales (-1.6%), Corporativos (-1.6%)."
       ],
       "analysis": [
-        "En primer trimestre de 2026, el PIB trimestral a precios constantes se ubicó en 24.97 billones de pesos de 2018. La variación trimestral fue -0.6% y la anual +0.4% frente al mismo trimestre del año previo."
+        "En segundo trimestre de 2026, el PIB trimestral a precios constantes se ubicó en 26.14 billones de pesos de 2018. La variación trimestral fue +1.4% y la anual +1.9% frente al mismo trimestre del año previo."
       ]
     },
     "IGAE": {
