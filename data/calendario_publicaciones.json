@@ -92,6 +92,23 @@
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{E6BF6565-74A8-3303-183E-C31D6698AA05}.pdf"
     },
     {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "9 de enero de 2025",
+      "fecha_iso": "2025-01-09",
+      "anio": 2025,
+      "mes": 1,
+      "periodo_referencia": "Octubre de 2024",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic_cya/sic2025_01.pdf",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
       "clave": "INPP",
       "indicador": "Índice Nacional de Precios Productor",
       "producto": "Índice Nacional de Precios Productor",
@@ -411,6 +428,23 @@
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{6DBE6E61-6D68-0B26-08E5-4F1227EBB7BC}.pdf"
     },
     {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "5 de febrero de 2025",
+      "fecha_iso": "2025-02-05",
+      "anio": 2025,
+      "mes": 2,
+      "periodo_referencia": "Noviembre de 2024",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_02.pdf",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
       "clave": "TASA",
       "indicador": "Tasa de interés objetivo",
       "producto": "Anuncio de la Decisión de Política Monetaria",
@@ -712,6 +746,23 @@
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
     },
     {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "5 de marzo de 2025",
+      "fecha_iso": "2025-03-05",
+      "anio": 2025,
+      "mes": 3,
+      "periodo_referencia": "Diciembre de 2024",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_03.pdf",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
       "clave": "INPP",
       "indicador": "Índice Nacional de Precios Productor",
       "producto": "Índice Nacional de Precios Productor",
@@ -994,6 +1045,23 @@
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imcp/imcpmi2025_04.pdf",
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+    },
+    {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "3 de abril de 2025",
+      "fecha_iso": "2025-04-03",
+      "anio": 2025,
+      "mes": 4,
+      "periodo_referencia": "Enero de 2025",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_04.pdf",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -1297,6 +1365,23 @@
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{E51F57FA-2D6F-A527-96E1-E2F774B87B7E}.pdf"
     },
     {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "6 de mayo de 2025",
+      "fecha_iso": "2025-05-06",
+      "anio": 2025,
+      "mes": 5,
+      "periodo_referencia": "Febrero de 2025",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_05.pdf",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
       "clave": "INPP",
       "indicador": "Índice Nacional de Precios Productor",
       "producto": "Índice Nacional de Precios Productor",
@@ -1598,6 +1683,23 @@
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
     },
     {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "4 de junio de 2025",
+      "fecha_iso": "2025-06-04",
+      "anio": 2025,
+      "mes": 6,
+      "periodo_referencia": "Marzo de 2025",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_06.pdf",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
       "clave": "INPP",
       "indicador": "Índice Nacional de Precios Productor",
       "producto": "Índice Nacional de Precios Productor",
@@ -1882,6 +1984,23 @@
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
     },
     {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "4 de julio de 2025",
+      "fecha_iso": "2025-07-04",
+      "anio": 2025,
+      "mes": 7,
+      "periodo_referencia": "Abril de 2025",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_07.pdf",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
       "clave": "RESERVAS",
       "indicador": "Reservas internacionales",
       "producto": "Estado de cuenta del Banco de México",
@@ -2131,6 +2250,23 @@
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ice/ice2025_08.pdf",
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+    },
+    {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "4 de agosto de 2025",
+      "fecha_iso": "2025-08-04",
+      "anio": 2025,
+      "mes": 8,
+      "periodo_referencia": "Mayo de 2025",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_08.pdf",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IMFBCF",
@@ -2484,6 +2620,23 @@
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
     },
     {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "4 de septiembre de 2025",
+      "fecha_iso": "2025-09-04",
+      "anio": 2025,
+      "mes": 9,
+      "periodo_referencia": "Junio de 2025",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_09.pdf",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
       "clave": "BCMM",
       "indicador": "Balanza Comercial de Mercancías de México",
       "producto": "Balanza Comercial de Mercancías de México",
@@ -2768,6 +2921,23 @@
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
     },
     {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "3 de octubre de 2025",
+      "fecha_iso": "2025-10-03",
+      "anio": 2025,
+      "mes": 10,
+      "periodo_referencia": "Julio de 2025",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_10.pdf",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
       "clave": "RESERVAS",
       "indicador": "Reservas internacionales",
       "producto": "Estado de cuenta del Banco de México",
@@ -3033,6 +3203,23 @@
       "periodo_referencia": "31 de octubre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{DDF3D92F-ECF5-A085-97F6-0993778BCE02}.pdf"
+    },
+    {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "4 de noviembre de 2025",
+      "fecha_iso": "2025-11-04",
+      "anio": 2025,
+      "mes": 11,
+      "periodo_referencia": "Agosto de 2025",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_11.pdf",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IMFBCF",
@@ -3368,6 +3555,23 @@
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imcp/imcpmi2025_12.pdf",
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+    },
+    {
+      "clave": "SIC",
+      "indicador": "Sistema de Indicadores Cíclicos",
+      "producto": "Sistema de Indicadores Cíclicos",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "4 de diciembre de 2025",
+      "fecha_iso": "2025-12-04",
+      "anio": 2025,
+      "mes": 12,
+      "periodo_referencia": "Septiembre de 2025",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_12.pdf",
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "BCMM",

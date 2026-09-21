@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-21T19:20:04+00:00",
+  "generated_at": "2026-09-21T23:17:44+00:00",
   "as_of": "2026-09-21",
   "fuente": "Calendario oficial de difusión",
   "sources": {
     "INEGI Sala de Prensa": {
       "status": "ok",
-      "count": 1450,
-      "message": "1450 eventos consultados del INEGI",
+      "count": 1490,
+      "message": "1490 eventos consultados del INEGI",
       "consulted_at": "2026-09-21",
       "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/"
     },
@@ -76,7 +76,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2025-01-03",
       "publication_date_display": "3 de enero de 2025",
@@ -233,8 +233,51 @@
       "fecha_iso": "2025-01-09"
     },
     {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2025-01-09",
+      "publication_date_display": "9 de enero de 2025",
+      "reference_period": "Octubre de 2024",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic_cya/sic2025_01.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic_cya/sic2025_01.pdf",
+          "label": "Boletín PDF",
+          "size": "0.45 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic_cya/sic2025_01.docx",
+          "label": "Boletín Word",
+          "size": "0.46 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic_cya/sic2025_01.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.02 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2025,
+      "mes": 1,
+      "fecha_iso": "2025-01-09"
+    },
+    {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2025-01-10",
       "publication_date_display": "10 de enero de 2025",
@@ -716,7 +759,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2025-02-04",
       "publication_date_display": "4 de febrero de 2025",
@@ -873,6 +916,49 @@
       "fecha_iso": "2025-02-05"
     },
     {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2025-02-05",
+      "publication_date_display": "5 de febrero de 2025",
+      "reference_period": "Noviembre de 2024",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_02.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_02.pdf",
+          "label": "Boletín PDF",
+          "size": "0.42 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_02.docx",
+          "label": "Boletín Word",
+          "size": "0.46 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_02.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.02 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2025,
+      "mes": 2,
+      "fecha_iso": "2025-02-05"
+    },
+    {
       "indicator": "TASA",
       "program": "El objetivo para la Tasa de Interés Interbancaria a 1 día (tasa objetivo) disminuye en 50 puntos base",
       "product": "Anuncio de la Decisión de Política Monetaria",
@@ -989,7 +1075,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2025-02-10",
       "publication_date_display": "10 de febrero de 2025",
@@ -1392,7 +1478,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2025-03-03",
       "publication_date_display": "3 de marzo de 2025",
@@ -1549,6 +1635,49 @@
       "fecha_iso": "2025-03-05"
     },
     {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2025-03-05",
+      "publication_date_display": "5 de marzo de 2025",
+      "reference_period": "Diciembre de 2024",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_03.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_03.pdf",
+          "label": "Boletín PDF",
+          "size": "0.43 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_03.docx",
+          "label": "Boletín Word",
+          "size": "0.46 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_03.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.02 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2025,
+      "mes": 3,
+      "fecha_iso": "2025-03-05"
+    },
+    {
       "indicator": "INPC",
       "program": "Índice Nacional de Precios al Consumidor (INPC). Base 2ª Quincena Julio 2018. Actualización de Canasta y Ponderadores 2024. Mensual. Cifras definitivas",
       "product": "Índice Nacional de Precios al Consumidor",
@@ -1636,7 +1765,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2025-03-10",
       "publication_date_display": "10 de marzo de 2025",
@@ -2025,7 +2154,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2025-04-01",
       "publication_date_display": "1 de abril de 2025",
@@ -2182,6 +2311,49 @@
       "fecha_iso": "2025-04-03"
     },
     {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2025-04-03",
+      "publication_date_display": "3 de abril de 2025",
+      "reference_period": "Enero de 2025",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_04.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_04.pdf",
+          "label": "Boletín PDF",
+          "size": "0.42 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_04.docx",
+          "label": "Boletín Word",
+          "size": "0.45 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_04.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.02 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2025,
+      "mes": 4,
+      "fecha_iso": "2025-04-03"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México de la semana al 4 de abril y del mes de marzo de 2025",
       "product": "Estado de cuenta del Banco de México",
@@ -2212,7 +2384,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2025-04-09",
       "publication_date_display": "9 de abril de 2025",
@@ -2694,7 +2866,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2025-05-02",
       "publication_date_display": "2 de mayo de 2025",
@@ -2851,6 +3023,49 @@
       "fecha_iso": "2025-05-06"
     },
     {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2025-05-06",
+      "publication_date_display": "6 de mayo de 2025",
+      "reference_period": "Febrero de 2025",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_05.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_05.pdf",
+          "label": "Boletín PDF",
+          "size": "0.42 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_05.docx",
+          "label": "Boletín Word",
+          "size": "0.45 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_05.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.02 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2025,
+      "mes": 5,
+      "fecha_iso": "2025-05-06"
+    },
+    {
       "indicator": "INPC",
       "program": "Índice Nacional de Precios al Consumidor (INPC). Base 2ª Quincena Julio 2018. Actualización de Canasta y Ponderadores 2024. Mensual. Cifras definitivas",
       "product": "Índice Nacional de Precios al Consumidor",
@@ -2938,7 +3153,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2025-05-09",
       "publication_date_display": "9 de mayo de 2025",
@@ -3370,7 +3585,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2025-06-02",
       "publication_date_display": "2 de junio de 2025",
@@ -3527,6 +3742,49 @@
       "fecha_iso": "2025-06-04"
     },
     {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2025-06-04",
+      "publication_date_display": "4 de junio de 2025",
+      "reference_period": "Marzo de 2025",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_06.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_06.pdf",
+          "label": "Boletín PDF",
+          "size": "0.47 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_06.docx",
+          "label": "Boletín Word",
+          "size": "0.45 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_06.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.02 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2025,
+      "mes": 6,
+      "fecha_iso": "2025-06-04"
+    },
+    {
       "indicator": "INPC",
       "program": "Índice Nacional de Precios al Consumidor (INPC). Base 2ª Quincena Julio 2018. Actualización de Canasta y Ponderadores 2024. Mensual. Cifras definitivas",
       "product": "Índice Nacional de Precios al Consumidor",
@@ -3614,7 +3872,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2025-06-10",
       "publication_date_display": "10 de junio de 2025",
@@ -4003,7 +4261,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2025-07-01",
       "publication_date_display": "1 de julio de 2025",
@@ -4160,6 +4418,49 @@
       "fecha_iso": "2025-07-03"
     },
     {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2025-07-04",
+      "publication_date_display": "4 de julio de 2025",
+      "reference_period": "Abril de 2025",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_07.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_07.pdf",
+          "label": "Boletín PDF",
+          "size": "0.47 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_07.docx",
+          "label": "Boletín Word",
+          "size": "0.46 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_07.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.02 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2025,
+      "mes": 7,
+      "fecha_iso": "2025-07-04"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México de la semana al 4 de julio y del mes de junio de 2025",
       "product": "Estado de cuenta del Banco de México",
@@ -4276,7 +4577,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2025-07-10",
       "publication_date_display": "10 de julio de 2025",
@@ -4456,7 +4757,7 @@
     },
     {
       "indicator": "IGAE",
-      "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018. Cifras preliminares",
+      "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018",
       "product": "Indicador Global de la Actividad Económica",
       "publication_date": "2025-07-22",
       "publication_date_display": "22 de julio de 2025",
@@ -4636,7 +4937,7 @@
     },
     {
       "indicator": "PIB",
-      "program": "Estimación Oportuna del PIB Trimestral. Base 2018. Cifras preliminares",
+      "program": "Estimación Oportuna del PIB Trimestral. Base 2018",
       "product": "Estimación Oportuna del Producto Interno Bruto Trimestral",
       "publication_date": "2025-07-30",
       "publication_date_display": "30 de julio de 2025",
@@ -4672,7 +4973,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2025-08-01",
       "publication_date_display": "1 de agosto de 2025",
@@ -4712,6 +5013,49 @@
       "anio": 2025,
       "mes": 8,
       "fecha_iso": "2025-08-01"
+    },
+    {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2025-08-04",
+      "publication_date_display": "4 de agosto de 2025",
+      "reference_period": "Mayo de 2025",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_08.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_08.pdf",
+          "label": "Boletín PDF",
+          "size": "0.47 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_08.docx",
+          "label": "Boletín Word",
+          "size": "0.46 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_08.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.02 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2025,
+      "mes": 8,
+      "fecha_iso": "2025-08-04"
     },
     {
       "indicator": "CONSUMO",
@@ -4945,7 +5289,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2025-08-08",
       "publication_date_display": "8 de agosto de 2025",
@@ -5154,7 +5498,7 @@
     },
     {
       "indicator": "IGAE",
-      "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018. Cifras preliminares",
+      "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018",
       "product": "Indicador Global de la Actividad Económica",
       "publication_date": "2025-08-22",
       "publication_date_display": "22 de agosto de 2025",
@@ -5348,7 +5692,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2025-09-01",
       "publication_date_display": "1 de septiembre de 2025",
@@ -5505,8 +5849,51 @@
       "fecha_iso": "2025-09-04"
     },
     {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2025-09-04",
+      "publication_date_display": "4 de septiembre de 2025",
+      "reference_period": "Junio de 2025",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_09.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_09.pdf",
+          "label": "Boletín PDF",
+          "size": "0.47 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_09.docx",
+          "label": "Boletín Word",
+          "size": "0.46 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_09.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.02 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2025,
+      "mes": 9,
+      "fecha_iso": "2025-09-04"
+    },
+    {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2025-09-09",
       "publication_date_display": "9 de septiembre de 2025",
@@ -5801,7 +6188,7 @@
     },
     {
       "indicator": "IGAE",
-      "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018. Cifras preliminares",
+      "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018",
       "product": "Indicador Global de la Actividad Económica",
       "publication_date": "2025-09-23",
       "publication_date_display": "23 de septiembre de 2025",
@@ -6010,7 +6397,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2025-10-01",
       "publication_date_display": "1 de octubre de 2025",
@@ -6138,6 +6525,49 @@
       "fecha_iso": "2025-10-03"
     },
     {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2025-10-03",
+      "publication_date_display": "3 de octubre de 2025",
+      "reference_period": "Julio de 2025",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_10.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_10.pdf",
+          "label": "Boletín PDF",
+          "size": "0.48 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_10.docx",
+          "label": "Boletín Word",
+          "size": "0.46 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_10.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.02 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2025,
+      "mes": 10,
+      "fecha_iso": "2025-10-03"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México de la semana al 3 de octubre y del mes de septiembre de 2025",
       "product": "Estado de cuenta del Banco de México",
@@ -6168,7 +6598,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2025-10-09",
       "publication_date_display": "9 de octubre de 2025",
@@ -6463,7 +6893,7 @@
     },
     {
       "indicator": "IGAE",
-      "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018. Cifras preliminares",
+      "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018",
       "product": "Indicador Global de la Actividad Económica",
       "publication_date": "2025-10-22",
       "publication_date_display": "22 de octubre de 2025",
@@ -6614,7 +7044,7 @@
     },
     {
       "indicator": "PIB",
-      "program": "Estimación Oportuna del PIB Trimestral. Base 2018. Cifras preliminares",
+      "program": "Estimación Oportuna del PIB Trimestral. Base 2018",
       "product": "Estimación Oportuna del Producto Interno Bruto Trimestral",
       "publication_date": "2025-10-30",
       "publication_date_display": "30 de octubre de 2025",
@@ -6650,7 +7080,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2025-11-03",
       "publication_date_display": "3 de noviembre de 2025",
@@ -6716,6 +7146,49 @@
         }
       ],
       "comentario": null,
+      "anio": 2025,
+      "mes": 11,
+      "fecha_iso": "2025-11-04"
+    },
+    {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2025-11-04",
+      "publication_date_display": "4 de noviembre de 2025",
+      "reference_period": "Agosto de 2025",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_11.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_11.pdf",
+          "label": "Boletín PDF",
+          "size": "0.48 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_11.docx",
+          "label": "Boletín Word",
+          "size": "0.46 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_11.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.02 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 11,
       "fecha_iso": "2025-11-04"
@@ -6923,7 +7396,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2025-11-10",
       "publication_date_display": "10 de noviembre de 2025",
@@ -7132,7 +7605,7 @@
     },
     {
       "indicator": "IGAE",
-      "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018. Cifras preliminares",
+      "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018",
       "product": "Indicador Global de la Actividad Económica",
       "publication_date": "2025-11-21",
       "publication_date_display": "21 de noviembre de 2025",
@@ -7326,7 +7799,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2025-12-02",
       "publication_date_display": "2 de diciembre de 2025",
@@ -7483,8 +7956,51 @@
       "fecha_iso": "2025-12-03"
     },
     {
+      "indicator": "SIC",
+      "program": "Sistema de Indicadores Cíclicos",
+      "product": "Sistema de Indicadores Cíclicos",
+      "publication_date": "2025-12-04",
+      "publication_date_display": "4 de diciembre de 2025",
+      "reference_period": "Septiembre de 2025",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "SIC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_12.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_12.pdf",
+          "label": "Boletín PDF",
+          "size": "0.48 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_12.docx",
+          "label": "Boletín Word",
+          "size": "0.46 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/sic_cya/sic2025_12.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.02 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2025,
+      "mes": 12,
+      "fecha_iso": "2025-12-04"
+    },
+    {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2025-12-09",
       "publication_date_display": "9 de diciembre de 2025",
@@ -7808,7 +8324,7 @@
     },
     {
       "indicator": "IGAE",
-      "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018. Cifras preliminares",
+      "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018",
       "product": "Indicador Global de la Actividad Económica",
       "publication_date": "2025-12-22",
       "publication_date_display": "22 de diciembre de 2025",
@@ -7988,7 +8504,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2026-01-02",
       "publication_date_display": "2 de enero de 2026",
@@ -8189,7 +8705,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2026-01-09",
       "publication_date_display": "9 de enero de 2026",
@@ -8671,7 +9187,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2026-02-03",
       "publication_date_display": "3 de febrero de 2026",
@@ -8901,7 +9417,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2026-02-09",
       "publication_date_display": "9 de febrero de 2026",
@@ -9419,7 +9935,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2026-03-02",
       "publication_date_display": "2 de marzo de 2026",
@@ -9620,7 +10136,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2026-03-09",
       "publication_date_display": "9 de marzo de 2026",
@@ -10124,7 +10640,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2026-04-01",
       "publication_date_display": "1 de abril de 2026",
@@ -10411,7 +10927,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2026-04-10",
       "publication_date_display": "10 de abril de 2026",
@@ -10807,7 +11323,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2026-05-04",
       "publication_date_display": "4 de mayo de 2026",
@@ -11123,7 +11639,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2026-05-11",
       "publication_date_display": "11 de mayo de 2026",
@@ -11555,7 +12071,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2026-06-01",
       "publication_date_display": "1 de junio de 2026",
@@ -11871,7 +12387,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2026-06-10",
       "publication_date_display": "10 de junio de 2026",
@@ -12260,7 +12776,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2026-07-01",
       "publication_date_display": "1 de julio de 2026",
@@ -12547,7 +13063,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2026-07-10",
       "publication_date_display": "10 de julio de 2026",
@@ -12907,7 +13423,7 @@
     },
     {
       "indicator": "PIB",
-      "program": "Estimación Oportuna del PIB Trimestral. Base 2018. Cifras preliminares",
+      "program": "Estimación Oportuna del PIB Trimestral. Base 2018",
       "product": "Estimación Oportuna del Producto Interno Bruto Trimestral",
       "publication_date": "2026-07-30",
       "publication_date_display": "30 de julio de 2026",
@@ -12943,7 +13459,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2026-08-03",
       "publication_date_display": "3 de agosto de 2026",
@@ -13259,7 +13775,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2026-08-10",
       "publication_date_display": "10 de agosto de 2026",
@@ -13720,7 +14236,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2026-09-01",
       "publication_date_display": "1 de septiembre de 2026",
@@ -14036,7 +14552,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2026-09-10",
       "publication_date_display": "10 de septiembre de 2026",
@@ -14383,7 +14899,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2026-10-01",
       "publication_date_display": "1 de octubre de 2026",
@@ -14586,7 +15102,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2026-10-09",
       "publication_date_display": "9 de octubre de 2026",
@@ -14876,7 +15392,7 @@
     },
     {
       "indicator": "PIB",
-      "program": "Estimación Oportuna del PIB Trimestral. Base 2018. Cifras preliminares",
+      "program": "Estimación Oportuna del PIB Trimestral. Base 2018",
       "product": "Estimación Oportuna del Producto Interno Bruto Trimestral",
       "publication_date": "2026-10-30",
       "publication_date_display": "30 de octubre de 2026",
@@ -14905,7 +15421,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2026-11-03",
       "publication_date_display": "3 de noviembre de 2026",
@@ -15079,7 +15595,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2026-11-09",
       "publication_date_display": "9 de noviembre de 2026",
@@ -15485,7 +16001,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2026-12-01",
       "publication_date_display": "1 de diciembre de 2026",
@@ -15659,7 +16175,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2026-12-09",
       "publication_date_display": "9 de diciembre de 2026",
@@ -16036,7 +16552,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2027-01-04",
       "publication_date_display": "4 de enero de 2027",
@@ -16181,7 +16697,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2027-01-11",
       "publication_date_display": "11 de enero de 2027",
@@ -16529,7 +17045,7 @@
     },
     {
       "indicator": "PIB",
-      "program": "Estimación Oportuna del PIB Trimestral. Base 2018. Cifras preliminares",
+      "program": "Estimación Oportuna del PIB Trimestral. Base 2018",
       "product": "Estimación Oportuna del Producto Interno Bruto Trimestral",
       "publication_date": "2027-01-29",
       "publication_date_display": "29 de enero de 2027",
@@ -16558,7 +17074,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2027-02-02",
       "publication_date_display": "2 de febrero de 2027",
@@ -16703,7 +17219,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2027-02-09",
       "publication_date_display": "9 de febrero de 2027",
@@ -17080,7 +17596,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2027-03-01",
       "publication_date_display": "1 de marzo de 2027",
@@ -17254,7 +17770,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2027-03-09",
       "publication_date_display": "9 de marzo de 2027",
@@ -17631,7 +18147,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2027-04-01",
       "publication_date_display": "1 de abril de 2027",
@@ -17863,7 +18379,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2027-04-09",
       "publication_date_display": "9 de abril de 2027",
@@ -18153,7 +18669,7 @@
     },
     {
       "indicator": "PIB",
-      "program": "Estimación Oportuna del PIB Trimestral. Base 2018. Cifras preliminares",
+      "program": "Estimación Oportuna del PIB Trimestral. Base 2018",
       "product": "Estimación Oportuna del Producto Interno Bruto Trimestral",
       "publication_date": "2027-04-30",
       "publication_date_display": "30 de abril de 2027",
@@ -18182,7 +18698,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2027-05-03",
       "publication_date_display": "3 de mayo de 2027",
@@ -18414,7 +18930,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2027-05-10",
       "publication_date_display": "10 de mayo de 2027",
@@ -18704,7 +19220,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2027-06-01",
       "publication_date_display": "1 de junio de 2027",
@@ -18907,7 +19423,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2027-06-09",
       "publication_date_display": "9 de junio de 2027",
@@ -20387,7 +20903,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2026-10-01",
       "publication_date_display": "1 de octubre de 2026",
@@ -20590,7 +21106,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2026-10-09",
       "publication_date_display": "9 de octubre de 2026",
@@ -20881,7 +21397,7 @@
     },
     {
       "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Cifras revisadas",
+      "program": "Balanza Comercial de Mercancías de México",
       "product": "Balanza Comercial de Mercancías de México",
       "publication_date": "2026-09-10",
       "publication_date_display": "10 de septiembre de 2026",
@@ -21183,7 +21699,7 @@
     },
     {
       "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial. Cifras preliminares",
+      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
       "publication_date": "2026-09-01",
       "publication_date_display": "1 de septiembre de 2026",
