@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-09-18T22:14:07+00:00",
-  "as_of": "2026-09-18",
+  "generated_at": "2026-09-21T14:32:51+00:00",
+  "as_of": "2026-09-21",
   "fuente": "Calendario oficial de difusión",
   "sources": {
     "INEGI Sala de Prensa": {
       "status": "ok",
       "count": 1450,
       "message": "1450 eventos consultados del INEGI",
-      "consulted_at": "2026-09-18",
+      "consulted_at": "2026-09-21",
       "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/"
     },
     "Banco de México calendario": {
       "status": "ok",
       "count": 180,
       "message": "180 eventos consultados de Banxico",
-      "consulted_at": "2026-09-18",
+      "consulted_at": "2026-09-21",
       "url": "https://www.banxico.org.mx/publicaciones-y-prensa/calendario-de-publicaciones-banco-de-mexico/"
     },
     "Secretaría de Economía (manual)": {
