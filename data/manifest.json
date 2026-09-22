@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-22T13:06:12+00:00",
+  "generated_at": "2026-09-22T18:46:24+00:00",
   "indicadores": [
     {
       "indicador": "Estimación Oportuna del Producto Interno Bruto Trimestral",
@@ -418,8 +418,8 @@
       "frecuencia": "Semanal",
       "unidad": "Millones de dólares",
       "ajuste_estacional": "No aplica",
-      "ultima_observacion": "2026-09-11",
-      "periodo_referencia": "Semana al 11 Sep 26",
+      "ultima_observacion": "2026-09-18",
+      "periodo_referencia": "Semana al 18 Sep 26",
       "fecha_publicacion": "Semanal (martes)",
       "fecha_consulta": "2026-09-22",
       "fecha_actualizacion_archivo": "2026-09-22",

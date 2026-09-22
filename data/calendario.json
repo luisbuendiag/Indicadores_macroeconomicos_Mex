@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-22T13:07:16+00:00",
+  "generated_at": "2026-09-22T18:46:42+00:00",
   "as_of": "2026-09-22",
   "fuente": "Calendario oficial de difusión",
   "sources": {
@@ -14732,7 +14732,7 @@
     },
     {
       "indicator": "RESERVAS",
-      "program": "Estado de cuenta del Banco de México",
+      "program": "Estado de cuenta del Banco de México de la semana al 18 de septiembre de 2026",
       "product": "Estado de cuenta del Banco de México",
       "publication_date": "2026-09-22",
       "publication_date_display": "22 de septiembre de 2026",
@@ -14744,13 +14744,13 @@
       "category": "Financiero",
       "sigla": "RESERVAS",
       "type": "event",
-      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{E5B01EDB-929C-C7EC-4698-597F375834BB}.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
-          "label": "Boletín / página oficial",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{E5B01EDB-929C-C7EC-4698-597F375834BB}.pdf",
+          "label": "Estado de cuenta del Banco de México de la semana al 18 de septiembre de 2026",
           "size": null
         }
       ],
@@ -21289,7 +21289,7 @@
   "recent": [
     {
       "indicator": "RESERVAS",
-      "program": "Estado de cuenta del Banco de México",
+      "program": "Estado de cuenta del Banco de México de la semana al 18 de septiembre de 2026",
       "product": "Estado de cuenta del Banco de México",
       "publication_date": "2026-09-22",
       "publication_date_display": "22 de septiembre de 2026",
@@ -21301,13 +21301,13 @@
       "category": "Financiero",
       "sigla": "RESERVAS",
       "type": "event",
-      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{E5B01EDB-929C-C7EC-4698-597F375834BB}.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
-          "label": "Boletín / página oficial",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{E5B01EDB-929C-C7EC-4698-597F375834BB}.pdf",
+          "label": "Estado de cuenta del Banco de México de la semana al 18 de septiembre de 2026",
           "size": null
         }
       ],
