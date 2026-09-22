@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-09-21T23:17:44+00:00",
-  "as_of": "2026-09-21",
+  "generated_at": "2026-09-22T13:07:16+00:00",
+  "as_of": "2026-09-22",
   "fuente": "Calendario oficial de difusión",
   "sources": {
     "INEGI Sala de Prensa": {
       "status": "ok",
       "count": 1490,
       "message": "1490 eventos consultados del INEGI",
-      "consulted_at": "2026-09-21",
+      "consulted_at": "2026-09-22",
       "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/"
     },
     "Banco de México calendario": {
       "status": "ok",
       "count": 180,
       "message": "180 eventos consultados de Banxico",
-      "consulted_at": "2026-09-21",
+      "consulted_at": "2026-09-22",
       "url": "https://www.banxico.org.mx/publicaciones-y-prensa/calendario-de-publicaciones-banco-de-mexico/"
     },
     "Secretaría de Economía (manual)": {
@@ -14702,20 +14702,27 @@
       "publication_date_display": "22 de septiembre de 2026",
       "reference_period": "Agosto de 2026",
       "frequency": "Mensual",
-      "status": "próximo",
+      "status": "publicado",
       "source": "INEGI Sala de Prensa",
       "institution": "INEGI",
       "category": "Actividad económica",
       "sigla": "IOAE",
       "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_09.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_09.pdf",
+          "label": "Boletín PDF",
+          "size": "0.25 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_09.docx",
+          "label": "Boletín Word",
+          "size": "0.23 MB"
         }
       ],
       "comentario": "Incluye boletín de indicador. Estas fechas son preliminares, están sujetas al indicador de la actividad industrial de los Estados Unidos cuyo calendario de publicación para 2026 aún no está disponible.",
@@ -14731,7 +14738,7 @@
       "publication_date_display": "22 de septiembre de 2026",
       "reference_period": "18 de septiembre de 2026",
       "frequency": "Semanal",
-      "status": "próximo",
+      "status": "publicado",
       "source": "Banco de México calendario",
       "institution": "Banco de México",
       "category": "Financiero",
@@ -20699,64 +20706,6 @@
   ],
   "upcoming": [
     {
-      "indicator": "IOAE",
-      "program": "Indicador Oportuno de la Actividad Económica. Cifras preliminares",
-      "product": "Indicador Oportuno de la Actividad Económica",
-      "publication_date": "2026-09-22",
-      "publication_date_display": "22 de septiembre de 2026",
-      "reference_period": "Agosto de 2026",
-      "frequency": "Mensual",
-      "status": "próximo",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Actividad económica",
-      "sigla": "IOAE",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": "Incluye boletín de indicador. Estas fechas son preliminares, están sujetas al indicador de la actividad industrial de los Estados Unidos cuyo calendario de publicación para 2026 aún no está disponible.",
-      "anio": 2026,
-      "mes": 9,
-      "fecha_iso": "2026-09-22"
-    },
-    {
-      "indicator": "RESERVAS",
-      "program": "Estado de cuenta del Banco de México",
-      "product": "Estado de cuenta del Banco de México",
-      "publication_date": "2026-09-22",
-      "publication_date_display": "22 de septiembre de 2026",
-      "reference_period": "18 de septiembre de 2026",
-      "frequency": "Semanal",
-      "status": "próximo",
-      "source": "Banco de México calendario",
-      "institution": "Banco de México",
-      "category": "Financiero",
-      "sigla": "RESERVAS",
-      "type": "event",
-      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": null,
-      "anio": 2026,
-      "mes": 9,
-      "fecha_iso": "2026-09-22"
-    },
-    {
       "indicator": "IGAE",
       "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018. Cifras preliminares",
       "product": "Indicador Global de la Actividad Económica",
@@ -21277,9 +21226,132 @@
       "anio": 2026,
       "mes": 10,
       "fecha_iso": "2026-10-20"
+    },
+    {
+      "indicator": "DESOCUP",
+      "program": "Encuesta Nacional de Ocupación y Empleo (ENOE), población de 15 años y más de edad. Indicadores de Ocupación y Empleo. Cifras definitivas",
+      "product": "Encuesta Nacional de Ocupación y Empleo / Indicadores de Ocupación y Empleo",
+      "publication_date": "2026-10-22",
+      "publication_date_display": "22 de octubre de 2026",
+      "reference_period": "Septiembre de 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Mercado laboral",
+      "sigla": "ENOE",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 10,
+      "fecha_iso": "2026-10-22"
+    },
+    {
+      "indicator": "IGAE",
+      "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018. Cifras preliminares",
+      "product": "Indicador Global de la Actividad Económica",
+      "publication_date": "2026-10-23",
+      "publication_date_display": "23 de octubre de 2026",
+      "reference_period": "Agosto de 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IGAE",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 10,
+      "fecha_iso": "2026-10-23"
     }
   ],
   "recent": [
+    {
+      "indicator": "RESERVAS",
+      "program": "Estado de cuenta del Banco de México",
+      "product": "Estado de cuenta del Banco de México",
+      "publication_date": "2026-09-22",
+      "publication_date_display": "22 de septiembre de 2026",
+      "reference_period": "18 de septiembre de 2026",
+      "frequency": "Semanal",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Financiero",
+      "sigla": "RESERVAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 9,
+      "fecha_iso": "2026-09-22"
+    },
+    {
+      "indicator": "IOAE",
+      "program": "Indicador Oportuno de la Actividad Económica. Cifras preliminares",
+      "product": "Indicador Oportuno de la Actividad Económica",
+      "publication_date": "2026-09-22",
+      "publication_date_display": "22 de septiembre de 2026",
+      "reference_period": "Agosto de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IOAE",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_09.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_09.pdf",
+          "label": "Boletín PDF",
+          "size": "0.25 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_09.docx",
+          "label": "Boletín Word",
+          "size": "0.23 MB"
+        }
+      ],
+      "comentario": "Incluye boletín de indicador. Estas fechas son preliminares, están sujetas al indicador de la actividad industrial de los Estados Unidos cuyo calendario de publicación para 2026 aún no está disponible.",
+      "anio": 2026,
+      "mes": 9,
+      "fecha_iso": "2026-09-22"
+    },
     {
       "indicator": "EMIM",
       "program": "Encuesta Mensual de la Industria Manufacturera (EMIM). Serie 2018. Cifras preliminares",
@@ -21962,71 +22034,6 @@
       "anio": 2026,
       "mes": 8,
       "fecha_iso": "2026-08-24"
-    },
-    {
-      "indicator": "IED",
-      "program": "Flujos de inversión extranjera directa",
-      "product": "Flujos de inversión extranjera directa",
-      "publication_date": "2026-08-24",
-      "publication_date_display": "24 de agosto de 2026",
-      "reference_period": "2° trimestre 2026",
-      "frequency": "Trimestral",
-      "status": "publicado",
-      "source": "Secretaría de Economía (manual)",
-      "institution": "Secretaría de Economía",
-      "category": "Inversión",
-      "sigla": "IED",
-      "type": "event",
-      "url": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa",
-          "label": "Comunicado",
-          "size": null
-        }
-      ],
-      "comentario": null,
-      "anio": 2026,
-      "mes": 8,
-      "fecha_iso": "2026-08-24"
-    },
-    {
-      "indicator": "IOAE",
-      "program": "Indicador Oportuno de la Actividad Económica. Cifras preliminares",
-      "product": "Indicador Oportuno de la Actividad Económica",
-      "publication_date": "2026-08-20",
-      "publication_date_display": "20 de agosto de 2026",
-      "reference_period": "Julio de 2026",
-      "frequency": "Mensual",
-      "status": "publicado",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Actividad económica",
-      "sigla": "IOAE",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_08.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_08.pdf",
-          "label": "Boletín PDF",
-          "size": "0.25 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "word",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_08.docx",
-          "label": "Boletín Word",
-          "size": "0.24 MB"
-        }
-      ],
-      "comentario": "Incluye boletín de indicador. Estas fechas son preliminares, están sujetas al indicador de la actividad industrial de los Estados Unidos cuyo calendario de publicación para 2026 aún no está disponible.",
-      "anio": 2026,
-      "mes": 8,
-      "fecha_iso": "2026-08-20"
     }
   ],
   "categories": {

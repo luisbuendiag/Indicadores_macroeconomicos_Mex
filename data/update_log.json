@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-09-21T22:28:11+00:00",
+  "started_at": "2026-09-22T12:24:55+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -17,7 +17,7 @@
     "INEGI SIC: 547 observaciones (serie 214307, base BIE-BISE); última Jul 26 = 1.013072; actualización BIE 04/09/2026 12:00:00 a. m..",
     "INEGI SIC: 558 observaciones (serie 214295, base BIE-BISE); última Jun 26 = 100.289746; actualización BIE 24/08/2026 12:00:00 a. m..",
     "INEGI SIC: 559 observaciones (serie 214297, base BIE-BISE); última Jul 26 = 100.158475; actualización BIE 11/09/2026 12:00:00 a. m..",
-    "INEGI SIC: 486 observaciones (serie 214299, base BIE-BISE); última Jun 26 = 99.71626; actualización BIE 21/08/2026 12:00:00 a. m..",
+    "INEGI SIC: 487 observaciones (serie 214299, base BIE-BISE); última Jul 26 = 99.693964; actualización BIE 22/09/2026 12:00:00 a. m..",
     "INEGI SIC: 560 observaciones (serie 214301, base BIE-BISE); última Ago 26 = 99.528155; actualización BIE 11/09/2026 12:00:00 a. m..",
     "INEGI SIC: 475 observaciones (serie 214303, base BIE-BISE); última Jul 26 = 100.970948; actualización BIE 27/08/2026 12:00:00 a. m..",
     "INEGI SIC: 559 observaciones (serie 214305, base BIE-BISE); última Jul 26 = 101.591978; actualización BIE 27/08/2026 12:00:00 a. m..",
@@ -176,7 +176,7 @@
     "banxico_sie: actualizado IMFBCF (última obs Jun 26, sin cambio de periodo)",
     "banxico_sie: actualizado IMFBCF (última obs Jun 26, sin cambio de periodo)",
     "banxico: actualizado TIPOCAMBIO (última obs 2026-09-21, sin cambio de periodo)",
-    "banxico: actualizado TASA (última obs 2026-09-21, sin cambio de periodo)",
+    "banxico: actualizado TASA (última obs 2026-09-22, dato nuevo)",
     "banxico: actualizado RESERVAS (última obs 2026-09-11, sin cambio de periodo)",
     "inegi: actualizado PIB (última obs 2T-26, dato nuevo)",
     "inegi: actualizado PIBSEC (última obs 2T-26, sin cambio de periodo)",
@@ -333,7 +333,7 @@
     "TASA: 13 decisiones de politica monetaria construidas",
     "TASA: 47 regímenes detectados",
     "SIC: 1 periodo(s) finales sin cifra de los indicadores compuestos; se conservan sólo dentro del periodo de referencia del boletín oficial",
-    "calendario: regenerado con as_of=2026-09-21",
+    "calendario: regenerado con as_of=2026-09-22",
     "métricas: data/metrics.json regenerado",
     "frescura: PIB -> ACTUALIZADO",
     "frescura: PIBSEC -> ACTUALIZADO",
@@ -353,7 +353,7 @@
     "frescura: BCMM -> ACTUALIZADO",
     "frescura: INPP -> ACTUALIZADO",
     "frescura: SIC -> ACTUALIZADO",
-    "meta: last_update_ct=2026-09-21T17:16:53-06:00",
+    "meta: last_update_ct=2026-09-22T07:06:11-06:00",
     "notas: 14 vigentes (0 provisionadas desde machote)"
   ],
   "consultas": [
@@ -853,12 +853,12 @@
       "fuente": "banxico",
       "indicador": "TASA",
       "serie": "SF61745",
-      "observaciones": 3174,
-      "ultima_observacion": "2026-09-21",
+      "observaciones": 3175,
+      "ultima_observacion": "2026-09-22",
       "ultimo_valor": 6.5,
       "observacion_previa": "2026-09-21",
       "actualizacion_fuente": null,
-      "dato_nuevo": false,
+      "dato_nuevo": true,
       "resultado": "consulta válida"
     },
     {
@@ -1033,11 +1033,11 @@
       "fuente": "inegi",
       "indicador": "SIC",
       "serie": "214299",
-      "observaciones": 486,
+      "observaciones": 487,
       "ultima_observacion": "Jul 26",
-      "ultimo_valor": 99.71626,
+      "ultimo_valor": 99.693964,
       "observacion_previa": "Jun 26",
-      "actualizacion_fuente": "21/08/2026 12:00:00 a. m.",
+      "actualizacion_fuente": "22/09/2026 12:00:00 a. m.",
       "dato_nuevo": true,
       "resultado": "consulta válida"
     },
@@ -2388,5 +2388,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-09-21T23:16:54+00:00"
+  "finished_at": "2026-09-22T13:06:12+00:00"
 }

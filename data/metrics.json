@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-21T22:30:08+00:00",
-  "last_update_ct": "2026-09-21T13:19:44-06:00",
+  "generated_at": "2026-09-22T12:26:57+00:00",
+  "last_update_ct": "2026-09-21T17:16:53-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -13385,12 +13385,12 @@
       "resumen": [
         "En junio de 2026, el Indicador Coincidente se ubicó en 99.9 puntos, por debajo de su tendencia de largo plazo (100 puntos), y registró un alza de 0.06 puntos respecto a mayo de 2026.",
         "En julio de 2026, el Indicador Adelantado se ubicó en 100.8 puntos, por encima de su tendencia de largo plazo, con un alza de 0.03 puntos respecto a junio de 2026; este indicador busca anticipar los puntos de giro del Coincidente.",
-        "Entre los componentes del Coincidente, las mayores alzas mensuales correspondieron a las importaciones totales (+0.36 puntos), y el mayor descenso fue el de los ingresos por suministro al por menor (−0.08 puntos)."
+        "Entre los componentes del Coincidente, las mayores alzas mensuales correspondieron a las importaciones totales (+0.36 puntos), y el mayor descenso fue el de los ingresos por suministro al por menor (−0.07 puntos)."
       ],
       "analysis": [
         "En junio de 2026, el Indicador Coincidente se ubicó en 99.9 puntos, por debajo de su tendencia de largo plazo (100 puntos), y registró un alza de 0.06 puntos respecto a mayo de 2026.",
         "En julio de 2026, el Indicador Adelantado se ubicó en 100.8 puntos, por encima de su tendencia de largo plazo, con un alza de 0.03 puntos respecto a junio de 2026; este indicador busca anticipar los puntos de giro del Coincidente.",
-        "Entre los componentes del Coincidente, las mayores alzas mensuales correspondieron a las importaciones totales (+0.36 puntos), y el mayor descenso fue el de los ingresos por suministro al por menor (−0.08 puntos)."
+        "Entre los componentes del Coincidente, las mayores alzas mensuales correspondieron a las importaciones totales (+0.36 puntos), y el mayor descenso fue el de los ingresos por suministro al por menor (−0.07 puntos)."
       ]
     }
   }
