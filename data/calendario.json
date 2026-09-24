@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-24T18:58:14+00:00",
+  "generated_at": "2026-09-24T23:09:02+00:00",
   "as_of": "2026-09-24",
   "fuente": "Calendario oficial de difusión",
   "sources": {
@@ -14804,7 +14804,7 @@
     },
     {
       "indicator": "TASA",
-      "program": "Anuncio de la Decisión de Política Monetaria",
+      "program": "El objetivo para la Tasa de Interés Interbancaria a 1 día (tasa objetivo) se mantiene sin cambio en 6.50 por ciento",
       "product": "Anuncio de la Decisión de Política Monetaria",
       "publication_date": "2026-09-24",
       "publication_date_display": "24 de septiembre de 2026",
@@ -14816,13 +14816,13 @@
       "category": "Financiero",
       "sigla": "TASA",
       "type": "event",
-      "url": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/{7D0BDB6E-E519-9C69-04AA-ABD4D31E4850}.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
-          "label": "Boletín / página oficial",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/{7D0BDB6E-E519-9C69-04AA-ABD4D31E4850}.pdf",
+          "label": "El objetivo para la Tasa de Interés Interbancaria a 1 día (tasa objetivo) se mantiene sin cambio en 6.50 por ciento",
           "size": null
         }
       ],
@@ -21303,7 +21303,7 @@
   "recent": [
     {
       "indicator": "TASA",
-      "program": "Anuncio de la Decisión de Política Monetaria",
+      "program": "El objetivo para la Tasa de Interés Interbancaria a 1 día (tasa objetivo) se mantiene sin cambio en 6.50 por ciento",
       "product": "Anuncio de la Decisión de Política Monetaria",
       "publication_date": "2026-09-24",
       "publication_date_display": "24 de septiembre de 2026",
@@ -21315,13 +21315,13 @@
       "category": "Financiero",
       "sigla": "TASA",
       "type": "event",
-      "url": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/{7D0BDB6E-E519-9C69-04AA-ABD4D31E4850}.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
-          "label": "Boletín / página oficial",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/{7D0BDB6E-E519-9C69-04AA-ABD4D31E4850}.pdf",
+          "label": "El objetivo para la Tasa de Interés Interbancaria a 1 día (tasa objetivo) se mantiene sin cambio en 6.50 por ciento",
           "size": null
         }
       ],
