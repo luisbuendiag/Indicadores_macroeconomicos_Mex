@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-09-24T23:09:02+00:00",
-  "as_of": "2026-09-24",
+  "generated_at": "2026-09-25T13:30:49+00:00",
+  "as_of": "2026-09-25",
   "fuente": "Calendario oficial de difusión",
   "sources": {
     "INEGI Sala de Prensa": {
       "status": "ok",
       "count": 1490,
       "message": "1490 eventos consultados del INEGI",
-      "consulted_at": "2026-09-24",
+      "consulted_at": "2026-09-25",
       "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/"
     },
     "Banco de México calendario": {
       "status": "ok",
       "count": 180,
       "message": "180 eventos consultados de Banxico",
-      "consulted_at": "2026-09-24",
+      "consulted_at": "2026-09-25",
       "url": "https://www.banxico.org.mx/publicaciones-y-prensa/calendario-de-publicaciones-banco-de-mexico/"
     },
     "Secretaría de Economía (manual)": {
@@ -14839,20 +14839,34 @@
       "publication_date_display": "25 de septiembre de 2026",
       "reference_period": "Agosto de 2026",
       "frequency": "Mensual",
-      "status": "próximo",
+      "status": "publicado",
       "source": "INEGI Sala de Prensa",
       "institution": "INEGI",
       "category": "Mercado laboral",
       "sigla": "ENOE",
       "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_09.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_09.pdf",
+          "label": "Boletín PDF",
+          "size": "0.42 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_09.docx",
+          "label": "Boletín Word",
+          "size": "0.39 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_09.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.03 MB"
         }
       ],
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
@@ -20720,35 +20734,6 @@
   ],
   "upcoming": [
     {
-      "indicator": "DESOCUP",
-      "program": "Encuesta Nacional de Ocupación y Empleo (ENOE), población de 15 años y más de edad. Indicadores de Ocupación y Empleo. Cifras definitivas",
-      "product": "Encuesta Nacional de Ocupación y Empleo / Indicadores de Ocupación y Empleo",
-      "publication_date": "2026-09-25",
-      "publication_date_display": "25 de septiembre de 2026",
-      "reference_period": "Agosto de 2026",
-      "frequency": "Mensual",
-      "status": "próximo",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Mercado laboral",
-      "sigla": "ENOE",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 9,
-      "fecha_iso": "2026-09-25"
-    },
-    {
       "indicator": "BCMM",
       "program": "Balanza Comercial de Mercancías de México. Información oportuna. Cifras preliminares",
       "product": "Balanza Comercial de Mercancías de México",
@@ -21298,9 +21283,81 @@
       "anio": 2026,
       "mes": 10,
       "fecha_iso": "2026-10-27"
+    },
+    {
+      "indicator": "PIB",
+      "program": "Estimación Oportuna del PIB Trimestral. Base 2018",
+      "product": "Estimación Oportuna del Producto Interno Bruto Trimestral",
+      "publication_date": "2026-10-30",
+      "publication_date_display": "30 de octubre de 2026",
+      "reference_period": "Tercer trimestre de 2026",
+      "frequency": "Trimestral",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "PIB",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 10,
+      "fecha_iso": "2026-10-30"
     }
   ],
   "recent": [
+    {
+      "indicator": "DESOCUP",
+      "program": "Encuesta Nacional de Ocupación y Empleo (ENOE), población de 15 años y más de edad. Indicadores de Ocupación y Empleo. Cifras definitivas",
+      "product": "Encuesta Nacional de Ocupación y Empleo / Indicadores de Ocupación y Empleo",
+      "publication_date": "2026-09-25",
+      "publication_date_display": "25 de septiembre de 2026",
+      "reference_period": "Agosto de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Mercado laboral",
+      "sigla": "ENOE",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_09.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_09.pdf",
+          "label": "Boletín PDF",
+          "size": "0.42 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_09.docx",
+          "label": "Boletín Word",
+          "size": "0.39 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_09.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.03 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 9,
+      "fecha_iso": "2026-09-25"
+    },
     {
       "indicator": "TASA",
       "program": "El objetivo para la Tasa de Interés Interbancaria a 1 día (tasa objetivo) se mantiene sin cambio en 6.50 por ciento",
@@ -22002,49 +22059,6 @@
         }
       ],
       "comentario": null,
-      "anio": 2026,
-      "mes": 8,
-      "fecha_iso": "2026-08-25"
-    },
-    {
-      "indicator": "DESOCUP",
-      "program": "Encuesta Nacional de Ocupación y Empleo (ENOE), población de 15 años y más de edad. Cifras definitivas",
-      "product": "Encuesta Nacional de Ocupación y Empleo / Indicadores de Ocupación y Empleo",
-      "publication_date": "2026-08-25",
-      "publication_date_display": "25 de agosto de 2026",
-      "reference_period": "Segundo trimestre de 2026",
-      "frequency": "Mensual",
-      "status": "publicado",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Mercado laboral",
-      "sigla": "ENOE",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/enoe/enoe2026_08.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/enoe/enoe2026_08.pdf",
-          "label": "Boletín PDF",
-          "size": "0.51 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "word",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/enoe/enoe2026_08.docx",
-          "label": "Boletín Word",
-          "size": "0.36 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "excel",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/enoe/enoe2026_08.xlsx",
-          "label": "Boletín Excel",
-          "size": "0.03 MB"
-        }
-      ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 8,
       "fecha_iso": "2026-08-25"

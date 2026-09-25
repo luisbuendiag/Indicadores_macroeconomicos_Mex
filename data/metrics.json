@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-24T22:03:29+00:00",
-  "last_update_ct": "2026-09-24T12:57:56-06:00",
+  "generated_at": "2026-09-25T12:38:39+00:00",
+  "last_update_ct": "2026-09-24T17:08:48-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -2623,31 +2623,31 @@
     },
     "DESOCUP": {
       "kpi": {
-        "ultimoP": "Jul 26",
-        "ultimoRaw": 2.898233,
-        "ultimoFmt": "2.9%",
-        "varText": "0.0 p.p.",
-        "varRaw": -0.00029,
-        "varMag": -0.00029,
-        "pos": false,
-        "varColor": "#9b2247",
+        "ultimoP": "Ago 26",
+        "ultimoRaw": 3.010724,
+        "ultimoFmt": "3.0%",
+        "varText": "+0.1 p.p.",
+        "varRaw": 0.112491,
+        "varMag": 0.112491,
+        "pos": true,
+        "varColor": "#1e5b4f",
         "varLabel": "Cambio mensual",
         "yoyText": "+0.1 p.p.",
-        "yoyRaw": 0.125408,
-        "yoyMag": 0.125408,
+        "yoyRaw": 0.078479,
+        "yoyMag": 0.078479,
         "yoyPos": true,
         "yoyColor": "#1e5b4f",
         "yoyLabel": "Cambio anual",
-        "assessment": "neutral",
-        "dir": "flat",
-        "semaforo": "estable",
+        "assessment": "adverso",
+        "dir": "up",
+        "semaforo": "malo",
         "maxRaw": 5.492159,
         "maxP": "Jun 20",
         "minRaw": 2.222196,
         "minP": "Mar 25",
         "maxFmt": "5.5%",
         "minFmt": "2.2%",
-        "lastI": 102,
+        "lastI": 103,
         "series": [
           3.364517,
           3.173574,
@@ -2751,7 +2751,8 @@
           2.455787,
           2.761933,
           2.898523,
-          2.898233
+          2.898233,
+          3.010724
         ],
         "periods": [
           "Ene 18",
@@ -2856,56 +2857,57 @@
           "Abr 26",
           "May 26",
           "Jun 26",
-          "Jul 26"
+          "Jul 26",
+          "Ago 26"
         ],
         "cards": [
           {
             "name": "Desocupación",
             "art": "la",
             "col": 0,
-            "nivelRaw": 2.898233,
-            "nivelText": "2.9%",
-            "momRaw": -0.00029,
-            "momText": "0.0 p.p.",
-            "yoyRaw": 0.125408,
+            "nivelRaw": 3.010724,
+            "nivelText": "3.0%",
+            "momRaw": 0.112491,
+            "momText": "+0.1 p.p.",
+            "yoyRaw": 0.078479,
             "yoyText": "+0.1 p.p.",
-            "ultimoP": "Jul 26"
+            "ultimoP": "Ago 26"
           },
           {
             "name": "Participación",
             "art": "la",
             "col": 1,
-            "nivelRaw": 59.204081,
-            "nivelText": "59.2%",
-            "momRaw": 0.366651,
-            "momText": "+0.4 p.p.",
-            "yoyRaw": -0.972892,
-            "yoyText": "-1.0 p.p.",
-            "ultimoP": "Jul 26"
+            "nivelRaw": 59.267225,
+            "nivelText": "59.3%",
+            "momRaw": 0.063144,
+            "momText": "+0.1 p.p.",
+            "yoyRaw": 0.442397,
+            "yoyText": "+0.4 p.p.",
+            "ultimoP": "Ago 26"
           },
           {
             "name": "Informalidad",
             "art": "la",
             "col": 2,
-            "nivelRaw": 56.19622,
-            "nivelText": "56.2%",
-            "momRaw": 1.176331,
-            "momText": "+1.2 p.p.",
-            "yoyRaw": 0.079063,
-            "yoyText": "+0.1 p.p.",
-            "ultimoP": "Jul 26"
+            "nivelRaw": 55.04394,
+            "nivelText": "55.0%",
+            "momRaw": -1.15228,
+            "momText": "-1.2 p.p.",
+            "yoyRaw": 0.218932,
+            "yoyText": "+0.2 p.p.",
+            "ultimoP": "Ago 26"
           },
           {
             "name": "Subocupación",
             "art": "la",
             "col": 3,
-            "nivelRaw": 6.653023,
-            "nivelText": "6.7%",
-            "momRaw": 0.10258,
-            "momText": "+0.1 p.p.",
-            "yoyRaw": -0.687167,
-            "yoyText": "-0.7 p.p.",
-            "ultimoP": "Jul 26"
+            "nivelRaw": 7.019899,
+            "nivelText": "7.0%",
+            "momRaw": 0.366876,
+            "momText": "+0.4 p.p.",
+            "yoyRaw": -0.03346,
+            "yoyText": "0.0 p.p.",
+            "ultimoP": "Ago 26"
           }
         ],
         "poblacion": {
@@ -2916,25 +2918,25 @@
         }
       },
       "analysis": [
-        "En julio de 2026, la tasa de desocupación fue 2.9% (0.0 p.p. respecto al mes anterior; +0.1 p.p. respecto al mismo mes del año previo).",
-        "Las demás tasas laborales se ubicaron: participación 59.2% (+0.4 p.p.), informalidad 56.2% (+1.2 p.p.), subocupación 6.7% (+0.1 p.p.).",
+        "En agosto de 2026, la tasa de desocupación fue 3.0% (+0.1 p.p. respecto al mes anterior; +0.1 p.p. respecto al mismo mes del año previo).",
+        "Las demás tasas laborales se ubicaron: participación 59.3% (+0.1 p.p.), informalidad 55.0% (-1.2 p.p.), subocupación 7.0% (+0.4 p.p.).",
         "La población ocupada se ubicó en 60.0 millones de personas en el segundo trimestre de 2026 (dato trimestral).",
-        "Respecto al mismo mes del año previo, la participación cambió -1.0 p.p. y la informalidad +0.1 p.p.."
+        "Respecto al mismo mes del año previo, la participación cambió +0.4 p.p. y la informalidad +0.2 p.p.."
       ],
       "resumen": [
-        "En julio de 2026, la tasa de desocupación fue 2.9% (0.0 p.p. respecto al mes anterior; +0.1 p.p. respecto al mismo mes del año previo).",
-        "Las demás tasas laborales se ubicaron: participación 59.2% (+0.4 p.p.), informalidad 56.2% (+1.2 p.p.), subocupación 6.7% (+0.1 p.p.).",
+        "En agosto de 2026, la tasa de desocupación fue 3.0% (+0.1 p.p. respecto al mes anterior; +0.1 p.p. respecto al mismo mes del año previo).",
+        "Las demás tasas laborales se ubicaron: participación 59.3% (+0.1 p.p.), informalidad 55.0% (-1.2 p.p.), subocupación 7.0% (+0.4 p.p.).",
         "La población ocupada se ubicó en 60.0 millones de personas en el segundo trimestre de 2026 (dato trimestral).",
-        "Respecto al mismo mes del año previo, la participación cambió -1.0 p.p. y la informalidad +0.1 p.p.."
+        "Respecto al mismo mes del año previo, la participación cambió +0.4 p.p. y la informalidad +0.2 p.p.."
       ],
       "annualVar": {
-        "mag": 0.125408,
+        "mag": 0.078479,
         "pos": true,
         "text": "+0.1 p.p.",
         "label": "Cambio anual"
       },
       "yoy": {
-        "mag": 0.125408,
+        "mag": 0.078479,
         "pos": true,
         "text": "+0.1 p.p.",
         "label": "Cambio anual"
@@ -9381,7 +9383,7 @@
         "nextDecisionP": "2026-11-05",
         "nextDecisionText": "5 Nov 26",
         "nextDecisionLabel": "Próxima decisión",
-        "comunicado_url": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
+        "comunicado_url": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/{7D0BDB6E-E519-9C69-04AA-ABD4D31E4850}.pdf",
         "lastI": 13,
         "series": [
           9.5,
@@ -9580,7 +9582,7 @@
           "new_rate": 6.5,
           "decision": "sin cambio",
           "change_bp": 0.0,
-          "comunicado_url": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
+          "comunicado_url": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/{7D0BDB6E-E519-9C69-04AA-ABD4D31E4850}.pdf",
           "reference_period": "24 de septiembre de 2026"
         }
       ]
@@ -13421,12 +13423,12 @@
       "resumen": [
         "En junio de 2026, el Indicador Coincidente se ubicó en 99.9 puntos, por debajo de su tendencia de largo plazo (100 puntos), y registró un alza de 0.06 puntos respecto a mayo de 2026.",
         "En julio de 2026, el Indicador Adelantado se ubicó en 100.8 puntos, por encima de su tendencia de largo plazo, con un alza de 0.03 puntos respecto a junio de 2026; este indicador busca anticipar los puntos de giro del Coincidente.",
-        "Entre los componentes del Coincidente, las mayores alzas mensuales correspondieron a las importaciones totales (+0.36 puntos), y el mayor descenso fue el de los ingresos por suministro al por menor (−0.07 puntos)."
+        "Entre los componentes del Coincidente, las mayores alzas mensuales correspondieron a las importaciones totales (+0.36 puntos), y el mayor descenso fue el de la tasa de desocupación urbana (−0.08 puntos) (serie inversa a la actividad económica)."
       ],
       "analysis": [
         "En junio de 2026, el Indicador Coincidente se ubicó en 99.9 puntos, por debajo de su tendencia de largo plazo (100 puntos), y registró un alza de 0.06 puntos respecto a mayo de 2026.",
         "En julio de 2026, el Indicador Adelantado se ubicó en 100.8 puntos, por encima de su tendencia de largo plazo, con un alza de 0.03 puntos respecto a junio de 2026; este indicador busca anticipar los puntos de giro del Coincidente.",
-        "Entre los componentes del Coincidente, las mayores alzas mensuales correspondieron a las importaciones totales (+0.36 puntos), y el mayor descenso fue el de los ingresos por suministro al por menor (−0.07 puntos)."
+        "Entre los componentes del Coincidente, las mayores alzas mensuales correspondieron a las importaciones totales (+0.36 puntos), y el mayor descenso fue el de la tasa de desocupación urbana (−0.08 puntos) (serie inversa a la actividad económica)."
       ]
     }
   }
