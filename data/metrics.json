@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-25T22:02:29+00:00",
-  "last_update_ct": "2026-09-25T12:53:21-06:00",
+  "generated_at": "2026-09-28T15:03:46+00:00",
+  "last_update_ct": "2026-09-25T17:06:41-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -10801,55 +10801,55 @@
     },
     "BCMM": {
       "kpi": {
-        "ultimoRaw": -847.537,
-        "ultimoFmt": "déficit de 848 mdd",
-        "ultimoP": "Jul 26",
-        "varText": "−$4,907 mdd",
-        "varMag": -4907.064,
+        "ultimoRaw": 605.359,
+        "ultimoFmt": "superávit de 605 mdd",
+        "ultimoP": "Ago 26",
+        "varText": "+$1,453 mdd",
+        "varMag": 1452.896,
         "varLabel": "Variación mensual del saldo",
-        "pos": false,
-        "varColor": "#9b2247",
-        "yoyText": "-947.0%",
+        "pos": true,
+        "varColor": "#1e5b4f",
+        "yoyText": "+129.0%",
         "yoyLabel": "Var. anual saldo",
-        "yoyRaw": -9.470141,
-        "acumText": "$471,387 mdd",
+        "yoyRaw": 1.289774,
+        "acumText": "—",
         "acumLabel": "Acum. ene-mes exportaciones",
-        "acumRaw": 471387.14,
+        "acumRaw": null,
         "cards": [
           {
             "name": "Exportaciones",
-            "raw": 81420.015,
-            "text": "$81,420 mdd",
-            "yoy": 0.4374,
-            "yoyText": "+43.7%",
+            "raw": 78010.452,
+            "text": "$78,010 mdd",
+            "yoy": 0.4038,
+            "yoyText": "+40.4%",
             "yoyColor": "#1e5b4f"
           },
           {
             "name": "Importaciones",
-            "raw": 82267.552,
-            "text": "$82,268 mdd",
-            "yoy": 0.4503,
-            "yoyText": "+45.0%",
+            "raw": 77405.093,
+            "text": "$77,405 mdd",
+            "yoy": 0.3424,
+            "yoyText": "+34.2%",
             "yoyColor": "#1e5b4f"
           },
           {
             "name": "Saldo comercial",
-            "raw": -847.537,
-            "text": "déficit de 848 mdd",
-            "yoy": -9.470141,
-            "yoyText": "-947.0%",
-            "yoyColor": "#9b2247"
+            "raw": 605.359,
+            "text": "superávit de 605 mdd",
+            "yoy": 1.289774,
+            "yoyText": "+129.0%",
+            "yoyColor": "#1e5b4f"
           },
           {
             "name": "Var. anual exportaciones",
-            "raw": 0.4374,
-            "text": "+43.7%",
-            "yoy": 0.4374,
-            "yoyText": "+43.7%",
+            "raw": 0.4038,
+            "text": "+40.4%",
+            "yoy": 0.4038,
+            "yoyText": "+40.4%",
             "yoyColor": "#1e5b4f"
           }
         ],
-        "lastI": 558,
+        "lastI": 559,
         "series": [
           -62.4,
           -152.4,
@@ -11409,7 +11409,8 @@
           4551.682,
           2182.805,
           4059.527,
-          -847.537
+          -847.537,
+          605.359
         ],
         "periods": [
           "Ene 80",
@@ -11970,31 +11971,32 @@
           "Abr 26",
           "May 26",
           "Jun 26",
-          "Jul 26"
+          "Jul 26",
+          "Ago 26"
         ],
         "assessment": "neutral",
         "semaforo": "estable"
       },
       "yoy": {
-        "mag": -9.470141,
-        "pos": false,
-        "text": "-947.0%",
+        "mag": 1.289774,
+        "pos": true,
+        "text": "+129.0%",
         "label": "Var. anual saldo"
       },
       "annualVar": {
-        "mag": -9.470141,
-        "pos": false,
-        "text": "-947.0%",
+        "mag": 1.289774,
+        "pos": true,
+        "text": "+129.0%",
         "label": "Var. anual saldo"
       },
       "resumen": [
-        "En julio de 2026, el saldo comercial registró un déficit de 848 mdd. La variación mensual del saldo fue de -4,907 mdd respecto al mes previo y la anual de -947.0%.",
-        "Las exportaciones se ubicaron en $81,420 mdd (+43.7%) y las importaciones en $82,268 mdd (+45.0%).",
-        "De las exportaciones totales, petroleras +2.4%, no petroleras +97.6% proviene del comercio exterior.",
-        "Las importaciones por tipo de bien se componen de consumo +11.6%, intermedios +81.6% y capital +6.8%."
+        "En agosto de 2026, el saldo comercial registró un superávit de 605 mdd. La variación mensual del saldo fue de +1,453 mdd respecto al mes previo y la anual de +129.0%.",
+        "Las exportaciones se ubicaron en $78,010 mdd (+40.4%) y las importaciones en $77,405 mdd (+34.2%).",
+        "De las exportaciones totales, petroleras +2.0%, no petroleras +98.0% proviene del comercio exterior.",
+        "Las importaciones por tipo de bien se componen de consumo +11.8%, intermedios +81.7% y capital +6.5%."
       ],
       "analysis": [
-        "En julio de 2026, el saldo comercial registró un déficit de 848 mdd. La variación mensual del saldo fue de -4,907 mdd respecto al mes previo y la anual de -947.0%."
+        "En agosto de 2026, el saldo comercial registró un superávit de 605 mdd. La variación mensual del saldo fue de +1,453 mdd respecto al mes previo y la anual de +129.0%."
       ]
     },
     "INPP": {
@@ -13425,12 +13427,12 @@
       "resumen": [
         "En junio de 2026, el Indicador Coincidente se ubicó en 99.9 puntos, por debajo de su tendencia de largo plazo (100 puntos), y registró un alza de 0.06 puntos respecto a mayo de 2026.",
         "En julio de 2026, el Indicador Adelantado se ubicó en 100.8 puntos, por encima de su tendencia de largo plazo, con un alza de 0.03 puntos respecto a junio de 2026; este indicador busca anticipar los puntos de giro del Coincidente.",
-        "Entre los componentes del Coincidente, las mayores alzas mensuales correspondieron a las importaciones totales (+0.36 puntos), y el mayor descenso fue el de la tasa de desocupación urbana (−0.08 puntos) (serie inversa a la actividad económica)."
+        "Entre los componentes del Coincidente, las mayores alzas mensuales correspondieron a las importaciones totales (+0.29 puntos), y el mayor descenso fue el de la tasa de desocupación urbana (−0.08 puntos) (serie inversa a la actividad económica)."
       ],
       "analysis": [
         "En junio de 2026, el Indicador Coincidente se ubicó en 99.9 puntos, por debajo de su tendencia de largo plazo (100 puntos), y registró un alza de 0.06 puntos respecto a mayo de 2026.",
         "En julio de 2026, el Indicador Adelantado se ubicó en 100.8 puntos, por encima de su tendencia de largo plazo, con un alza de 0.03 puntos respecto a junio de 2026; este indicador busca anticipar los puntos de giro del Coincidente.",
-        "Entre los componentes del Coincidente, las mayores alzas mensuales correspondieron a las importaciones totales (+0.36 puntos), y el mayor descenso fue el de la tasa de desocupación urbana (−0.08 puntos) (serie inversa a la actividad económica)."
+        "Entre los componentes del Coincidente, las mayores alzas mensuales correspondieron a las importaciones totales (+0.29 puntos), y el mayor descenso fue el de la tasa de desocupación urbana (−0.08 puntos) (serie inversa a la actividad económica)."
       ]
     }
   }
