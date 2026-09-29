@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-29T14:34:13+00:00",
+    "generated_at": "2026-09-29T19:24:15+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-09-29T08:34:13-06:00",
+    "last_update_ct": "2026-09-29T13:24:15-06:00",
     "periodo_referencia_reciente": {
       "period": "Ago 26",
       "period_long": "Ago 26"
@@ -69430,9 +69430,15 @@
           "values": [
             17.8413
           ]
+        },
+        {
+          "period": "2026-09-29",
+          "values": [
+            18.071
+          ]
         }
       ],
-      "last_observation": "2026-09-28",
+      "last_observation": "2026-09-29",
       "last_updated": "2026-09-29",
       "last_checked": "2026-09-29",
       "requiere_token": "BANXICO",
@@ -69441,25 +69447,25 @@
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
       "fecha_publicacion": null,
-      "periodo_referencia": "2026-09-28",
+      "periodo_referencia": "2026-09-29",
       "fecha_consulta": "2026-09-29",
       "source_origin": "api",
       "metrics": {
         "kpi": {
-          "ultimoP": "28 Sep 26",
-          "ultimoRaw": 17.8413,
-          "ultimoFmt": "$17.84",
-          "varText": "+0.74%",
-          "varMag": 0.007414,
+          "ultimoP": "29 Sep 26",
+          "ultimoRaw": 18.071,
+          "ultimoFmt": "$18.07",
+          "varText": "+1.29%",
+          "varMag": 0.012875,
           "varLabel": "Cambio diario",
           "pos": true,
           "varColor": "#1e5b4f",
-          "monthlyText": "+4.86%",
+          "monthlyText": "+6.21%",
           "monthlyLabel": "Cambio mensual",
-          "yoyText": "-2.94%",
+          "yoyText": "-1.52%",
           "yoyLabel": "Cambio anual",
-          "yoyRaw": -0.029441,
-          "yoyMag": -0.029441,
+          "yoyRaw": -0.015242,
+          "yoyMag": -0.015242,
           "yoyPos": false,
           "yoyColor": "#9b2247",
           "range12mText": "$16.87 — $18.62",
@@ -69470,7 +69476,7 @@
           "minP": "8 Abr 24",
           "maxFmt": "$25.12",
           "minFmt": "$16.34",
-          "lastI": 2197,
+          "lastI": 2198,
           "series": [
             19.4899,
             19.3717,
@@ -71669,7 +71675,8 @@
             17.503,
             17.6425,
             17.71,
-            17.8413
+            17.8413,
+            18.071
           ],
           "periods": [
             "2018-01-02",
@@ -73869,29 +73876,30 @@
             "2026-09-23",
             "2026-09-24",
             "2026-09-25",
-            "2026-09-28"
+            "2026-09-28",
+            "2026-09-29"
           ],
           "assessment": "neutral",
           "dir": "up",
           "semaforo": "estable"
         },
         "yoy": {
-          "mag": -0.029441,
+          "mag": -0.015242,
           "pos": false,
-          "text": "-2.94%",
+          "text": "-1.52%",
           "label": "Cambio anual"
         },
         "resumen": [
-          "En 28 de septiembre de 2026, el tipo de cambio FIX se ubicó en $17.84 (pesos por dólar).",
-          "El cambio diario fue de +0.74% respecto al día hábil previo.",
-          "Respecto al último día hábil del mes previo, el FIX registró un cambio mensual de +4.86%.",
-          "A tasa anual, el FIX varió -2.94%; en los últimos 12 meses osciló entre $16.87 — $18.62."
+          "En 29 de septiembre de 2026, el tipo de cambio FIX se ubicó en $18.07 (pesos por dólar).",
+          "El cambio diario fue de +1.29% respecto al día hábil previo.",
+          "Respecto al último día hábil del mes previo, el FIX registró un cambio mensual de +6.21%.",
+          "A tasa anual, el FIX varió -1.52%; en los últimos 12 meses osciló entre $16.87 — $18.62."
         ]
       },
       "periodo_referencia_oficial": "Sep 26",
       "fecha_publicacion_oficial": null,
       "proxima_publicacion": null,
-      "motivo_frescura": "El periodo cargado (2026-09-28) coincide con el último periodo esperado (Sep 26).",
+      "motivo_frescura": "El periodo cargado (2026-09-29) coincide con el último periodo esperado (Sep 26).",
       "url_boletin_oficial": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/TIPOCAMBIO/TIPOCAMBIO_datos.xlsx",
@@ -86970,7 +86978,7 @@
           ]
         }
       ],
-      "fecha_ultima_observacion": "2026-09-28",
+      "fecha_ultima_observacion": "2026-09-29",
       "url_fuente_oficial": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
       "fecha_ultima_publicacion": null,
       "regla_publicacion": null,
@@ -87634,7 +87642,7 @@
         {
           "period": "Sep 26",
           "values": [
-            17.8413
+            18.071
           ]
         }
       ],
@@ -131735,9 +131743,18 @@
             5108.6,
             0.043442
           ]
+        },
+        {
+          "period": "2026-09-25",
+          "values": [
+            256542.8,
+            -695.4,
+            4413.2,
+            0.039343
+          ]
         }
       ],
-      "last_observation": "2026-09-18",
+      "last_observation": "2026-09-25",
       "last_updated": "2026-09-29",
       "last_checked": "2026-09-29",
       "requiere_token": "BANXICO",
@@ -131746,29 +131763,29 @@
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
       "fecha_publicacion": null,
-      "periodo_referencia": "Semana al 18 Sep 26",
+      "periodo_referencia": "Semana al 25 Sep 26",
       "fecha_consulta": "2026-09-29",
       "source_origin": "api",
       "metrics": {
         "kpi": {
-          "ultimoP": "Semana al 18 Sep 26",
-          "ultimoRaw": 257238.2,
-          "ultimoFmt": "257,238 mdd",
-          "varText": "−316 mdd",
-          "varMag": -315.7,
+          "ultimoP": "Semana al 25 Sep 26",
+          "ultimoRaw": 256542.8,
+          "ultimoFmt": "256,543 mdd",
+          "varText": "−695 mdd",
+          "varMag": -695.4,
           "varLabel": "Cambio semanal",
           "pos": false,
           "varColor": "#9b2247",
-          "yoyText": "+4.3%",
+          "yoyText": "+3.9%",
           "yoyLabel": "Variación anual",
-          "yoyRaw": 0.043442,
-          "yoyMag": 0.043442,
+          "yoyRaw": 0.039343,
+          "yoyMag": 0.039343,
           "yoyPos": true,
           "yoyColor": "#1e5b4f",
-          "acumText": "+5,109 mdd",
-          "acumPctText": "+2.0%",
+          "acumText": "+4,413 mdd",
+          "acumPctText": "+1.8%",
           "acumLabel": "Cambio YTD",
-          "lastI": 454,
+          "lastI": 455,
           "series": [
             172904.4,
             172951.2,
@@ -132224,7 +132241,8 @@
             258564.1,
             258034.6,
             257553.9,
-            257238.2
+            257238.2,
+            256542.8
           ],
           "periods": [
             "2018-01-05",
@@ -132681,29 +132699,30 @@
             "2026-08-28",
             "2026-09-04",
             "2026-09-11",
-            "2026-09-18"
+            "2026-09-18",
+            "2026-09-25"
           ],
           "assessment": "neutral",
           "dir": "down",
           "semaforo": "estable"
         },
         "yoy": {
-          "mag": 0.043442,
+          "mag": 0.039343,
           "pos": true,
-          "text": "+4.3%",
+          "text": "+3.9%",
           "label": "Variación anual"
         },
         "resumen": [
-          "Al 18 de septiembre de 2026, la reserva internacional se ubicó en 257,238 mdd.",
-          "La variación semanal fue de −316 mdd respecto a la semana previa.",
-          "A tasa anual, la reserva varió +4.3%.",
-          "En lo que va del año, el cambio acumulado fue de +5,109 mdd (+2.0%) respecto al cierre del año previo."
+          "Al 25 de septiembre de 2026, la reserva internacional se ubicó en 256,543 mdd.",
+          "La variación semanal fue de −695 mdd respecto a la semana previa.",
+          "A tasa anual, la reserva varió +3.9%.",
+          "En lo que va del año, el cambio acumulado fue de +4,413 mdd (+1.8%) respecto al cierre del año previo."
         ]
       },
       "periodo_referencia_oficial": "Sep 26",
       "fecha_publicacion_oficial": null,
       "proxima_publicacion": null,
-      "motivo_frescura": "El periodo cargado (2026-09-18) coincide con el último periodo esperado (Sep 26).",
+      "motivo_frescura": "El periodo cargado (2026-09-25) coincide con el último periodo esperado (Sep 26).",
       "url_boletin_oficial": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/estado-cuenta-semanal-reserva.html",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/RESERVAS/RESERVAS_datos.xlsx",
@@ -135420,7 +135439,7 @@
           ]
         }
       ],
-      "fecha_ultima_observacion": "2026-09-18",
+      "fecha_ultima_observacion": "2026-09-25",
       "url_fuente_oficial": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/estado-cuenta-semanal-reserva.html",
       "fecha_ultima_publicacion": null,
       "regla_publicacion": null,
@@ -136079,7 +136098,7 @@
         {
           "period": "Sep 26",
           "values": [
-            257238.2
+            256542.8
           ]
         }
       ],
