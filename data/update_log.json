@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-09-30T18:19:11+00:00",
+  "started_at": "2026-09-30T22:49:37+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -175,7 +175,7 @@
     "banxico_sie: actualizado IMFBCF (última obs Jun 26, sin cambio de periodo)",
     "banxico_sie: actualizado IMFBCF (última obs Jun 26, sin cambio de periodo)",
     "banxico_sie: actualizado IMFBCF (última obs Jun 26, sin cambio de periodo)",
-    "banxico: actualizado TIPOCAMBIO (última obs 2026-09-30, dato nuevo)",
+    "banxico: actualizado TIPOCAMBIO (última obs 2026-09-30, sin cambio de periodo)",
     "banxico: actualizado TASA (última obs 2026-09-30, sin cambio de periodo)",
     "banxico: actualizado RESERVAS (última obs 2026-09-25, sin cambio de periodo)",
     "inegi: actualizado PIB (última obs 2T-26, dato nuevo)",
@@ -353,7 +353,7 @@
     "frescura: BCMM -> ACTUALIZADO",
     "frescura: INPP -> ACTUALIZADO",
     "frescura: SIC -> ACTUALIZADO",
-    "meta: last_update_ct=2026-09-30T13:20:14-06:00",
+    "meta: last_update_ct=2026-09-30T17:57:57-06:00",
     "notas: 14 vigentes (0 provisionadas desde machote)"
   ],
   "consultas": [
@@ -844,9 +844,9 @@
       "observaciones": 2200,
       "ultima_observacion": "2026-09-30",
       "ultimo_valor": 18.0692,
-      "observacion_previa": "2026-09-29",
+      "observacion_previa": "2026-09-30",
       "actualizacion_fuente": null,
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -2388,5 +2388,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-09-30T19:20:15+00:00"
+  "finished_at": "2026-09-30T23:57:58+00:00"
 }
