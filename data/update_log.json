@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-10-01T14:16:37+00:00",
+  "started_at": "2026-10-01T18:44:11+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -175,8 +175,8 @@
     "banxico_sie: actualizado IMFBCF (última obs Jun 26, sin cambio de periodo)",
     "banxico_sie: actualizado IMFBCF (última obs Jun 26, sin cambio de periodo)",
     "banxico_sie: actualizado IMFBCF (última obs Jun 26, sin cambio de periodo)",
-    "banxico: actualizado TIPOCAMBIO (última obs 2026-09-30, sin cambio de periodo)",
-    "banxico: actualizado TASA (última obs 2026-10-01, dato nuevo)",
+    "banxico: actualizado TIPOCAMBIO (última obs 2026-10-01, dato nuevo)",
+    "banxico: actualizado TASA (última obs 2026-10-01, sin cambio de periodo)",
     "banxico: actualizado RESERVAS (última obs 2026-09-25, sin cambio de periodo)",
     "inegi: actualizado PIB (última obs 2T-26, dato nuevo)",
     "inegi: actualizado PIBSEC (última obs 2T-26, sin cambio de periodo)",
@@ -236,13 +236,13 @@
     "inegi: actualizado EMIM (última obs Jul 26, sin cambio de periodo)",
     "inegi: actualizado EMIM (última obs Jul 26, sin cambio de periodo)",
     "inegi: actualizado EMIM (última obs Jul 26, sin cambio de periodo)",
-    "inegi: actualizado EMOE (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado EMOE (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado EMOE (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado EMOE (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado EMOE (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado EMOE (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado EMOE (última obs Sep 26, dato nuevo)",
+    "inegi: actualizado EMOE (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado EMOE (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado EMOE (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado EMOE (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado EMOE (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado EMOE (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado EMOE (última obs Sep 26, sin cambio de periodo)",
     "inegi: actualizado BCMM (última obs Ago 26, sin cambio de periodo)",
     "inegi: actualizado BCMM (última obs Ago 26, sin cambio de periodo)",
     "inegi: actualizado BCMM (última obs Ago 26, sin cambio de periodo)",
@@ -353,7 +353,7 @@
     "frescura: BCMM -> ACTUALIZADO",
     "frescura: INPP -> ACTUALIZADO",
     "frescura: SIC -> ACTUALIZADO",
-    "meta: last_update_ct=2026-10-01T09:00:49-06:00",
+    "meta: last_update_ct=2026-10-01T13:48:19-06:00",
     "notas: 14 vigentes (0 provisionadas desde machote)"
   ],
   "consultas": [
@@ -841,12 +841,12 @@
       "fuente": "banxico",
       "indicador": "TIPOCAMBIO",
       "serie": "SF43718",
-      "observaciones": 2200,
-      "ultima_observacion": "2026-09-30",
-      "ultimo_valor": 18.0692,
+      "observaciones": 2201,
+      "ultima_observacion": "2026-10-01",
+      "ultimo_valor": 18.3688,
       "observacion_previa": "2026-09-30",
       "actualizacion_fuente": null,
-      "dato_nuevo": false,
+      "dato_nuevo": true,
       "resultado": "consulta válida"
     },
     {
@@ -856,9 +856,9 @@
       "observaciones": 3184,
       "ultima_observacion": "2026-10-01",
       "ultimo_valor": 6.5,
-      "observacion_previa": "2026-09-30",
+      "observacion_previa": "2026-10-01",
       "actualizacion_fuente": null,
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1576,9 +1576,9 @@
       "observaciones": 105,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 48.342018,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "01/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1588,9 +1588,9 @@
       "observaciones": 105,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 0.109427,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "01/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1600,9 +1600,9 @@
       "observaciones": 92,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 0.188664,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "01/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1612,9 +1612,9 @@
       "observaciones": 105,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 47.882252,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "01/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1624,9 +1624,9 @@
       "observaciones": 105,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 47.76499,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "01/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1636,9 +1636,9 @@
       "observaciones": 105,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 48.881224,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "01/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1648,9 +1648,9 @@
       "observaciones": 105,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 48.395132,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "01/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -2388,5 +2388,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-10-01T15:00:50+00:00"
+  "finished_at": "2026-10-01T19:48:21+00:00"
 }
