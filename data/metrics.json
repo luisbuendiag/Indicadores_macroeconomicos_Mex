@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-30T22:51:44+00:00",
-  "last_update_ct": "2026-09-30T13:20:14-06:00",
+  "generated_at": "2026-10-01T14:19:10+00:00",
+  "last_update_ct": "2026-09-30T17:57:57-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -10558,12 +10558,12 @@
     "EMOE": {
       "kpi": {
         "assessment": "neutral",
-        "dir": "flat",
-        "ultimoFmt": "48.2 puntos",
-        "ultimoRaw": 48.232912,
-        "ultimoP": "Ago 26",
-        "varText": "+0.03 puntos",
-        "varMag": 0.029301,
+        "dir": "up",
+        "ultimoFmt": "48.3 puntos",
+        "ultimoRaw": 48.342018,
+        "ultimoP": "Sep 26",
+        "varText": "+0.11 puntos",
+        "varMag": 0.109427,
         "pos": true,
         "varColor": "#1e5b4f",
         "varLabel": "Cambio mensual",
@@ -10573,7 +10573,7 @@
         "minFmt": "33.9 puntos",
         "minRaw": 33.9,
         "minP": "May 20",
-        "lastI": 103,
+        "lastI": 104,
         "series": [
           48.793,
           48.915,
@@ -10678,7 +10678,8 @@
           48.225992,
           48.156973,
           48.203612,
-          48.232912
+          48.232591,
+          48.342018
         ],
         "periods": [
           "Ene 18",
@@ -10784,26 +10785,27 @@
           "May 26",
           "Jun 26",
           "Jul 26",
-          "Ago 26"
+          "Ago 26",
+          "Sep 26"
         ],
         "semaforo": "estable",
-        "yoyText": "-0.61 puntos",
+        "yoyText": "+0.19 puntos",
         "yoyLabel": "Cambio anual"
       },
       "analysis": [
-        "En agosto de 2026, el IGOEC se ubicó en 48.2 puntosumbral de referencia=50, con una cambio mensual marginal de +0.03% frente al mes previo. Este resultado refleja  respecto a julio de 2026 (+0.05%), y deja al indicador por debajo del promedio del periodo mostrado de 49.6 puntos.",
+        "En septiembre de 2026, el IGOEC se ubicó en 48.3 puntosumbral de referencia=50, con una cambio mensual marginal de +0.11% frente al mes previo. Este resultado refleja  respecto a agosto de 2026 (+0.03%), y deja al indicador por debajo del promedio del periodo mostrado de 49.6 puntos.",
         "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 56.5 puntos (julio de 2023) y un mínimo de 33.9 puntos (mayo de 2020). El resultado más reciente se ubicó por debajo del promedio del periodo mostrado. El último dato se mantuvo cercano al del inicio del periodo mostrado."
       ],
       "resumen": [
-        "En agosto de 2026, el IGOEC se ubicó en 48.2 puntos (umbral de referencia=50). El valor de cambio mensual fue de +0.03 puntos frente al mes previo.",
-        "El cambio anual se situó en -0.61 puntos, lo que refleja la comparación contra agosto de 2026 del año previo.",
+        "En septiembre de 2026, el IGOEC se ubicó en 48.3 puntos (umbral de referencia=50). El valor de cambio mensual fue de +0.11 puntos frente al mes previo.",
+        "El cambio anual se situó en +0.19 puntos, lo que refleja la comparación contra septiembre de 2026 del año previo.",
         "En la serie mostrada, el indicador oscila entre un máximo de 56.5 puntos (julio de 2023) y un mínimo de 33.9 puntos (mayo de 2020). El último dato se ubica dentro del rango observado en el periodo mostrado.",
         "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
       ],
       "annualVar": {
-        "mag": -0.608084,
-        "pos": false,
-        "text": "-0.61 puntos",
+        "mag": 0.188664,
+        "pos": true,
+        "text": "+0.19 puntos",
         "label": "Cambio anual"
       }
     },
