@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-10-06T00:36:49+00:00",
+  "started_at": "2026-10-06T13:59:17+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -21,7 +21,7 @@
     "INEGI SIC: 560 observaciones (serie 214301, base BIE-BISE); última Ago 26 = 99.528155; actualización BIE 11/09/2026 12:00:00 a. m..",
     "INEGI SIC: 476 observaciones (serie 214303, base BIE-BISE); última Ago 26 = 100.528134; actualización BIE 25/09/2026 12:00:00 a. m..",
     "INEGI SIC: 560 observaciones (serie 214305, base BIE-BISE); última Ago 26 = 101.628724; actualización BIE 28/09/2026 12:00:00 a. m..",
-    "INEGI SIC: 560 observaciones (serie 214309, base BIE-BISE); última Ago 26 = 100.339636; actualización BIE 08/09/2026 12:00:00 a. m..",
+    "INEGI SIC: 561 observaciones (serie 214309, base BIE-BISE); última Sep 26 = 100.556348; actualización BIE 06/10/2026 12:00:00 a. m..",
     "INEGI SIC: 273 observaciones (serie 214311, base BIE-BISE); última Sep 26 = 99.340273; actualización BIE 01/10/2026 12:00:00 a. m..",
     "INEGI SIC: 548 observaciones (serie 214313, base BIE-BISE); última Ago 26 = 100.318829; actualización BIE 10/09/2026 12:00:00 a. m..",
     "INEGI SIC: 560 observaciones (serie 214315, base BIE-BISE); última Ago 26 = 99.681284; actualización BIE 15/09/2026 12:00:00 a. m..",
@@ -110,8 +110,7 @@
     "INEGI INPP: 84 observaciones (serie 1801005, base BIE-BISE); última Ago 26 = 13.088118; actualización BIE 09/09/2026 12:00:00 a. m..",
     "INEGI INPP: 104 observaciones (serie 1801007, base BIE-BISE); última Ago 26 = 5.907611; actualización BIE 09/09/2026 12:00:00 a. m..",
     "INEGI INPP: 104 observaciones (serie 1801008, base BIE-BISE); última Ago 26 = 1.696848; actualización BIE 09/09/2026 12:00:00 a. m..",
-    "INEGI INPP: 104 observaciones (serie 1801009, base BIE-BISE); última Ago 26 = 4.90155; actualización BIE 09/09/2026 12:00:00 a. m..",
-    "World Bank PIB_ANUAL (NY.GDP.MKTP.KD) falló: HTTP Error 403: Forbidden."
+    "INEGI INPP: 104 observaciones (serie 1801009, base BIE-BISE); última Ago 26 = 4.90155; actualización BIE 09/09/2026 12:00:00 a. m.."
   ],
   "changes": [
     "IGAE: fuente normalizada a serie total 737121",
@@ -176,8 +175,8 @@
     "banxico_sie: actualizado IMFBCF (última obs Jul 26, sin cambio de periodo)",
     "banxico_sie: actualizado IMFBCF (última obs Jul 26, sin cambio de periodo)",
     "banxico_sie: actualizado IMFBCF (última obs Jul 26, sin cambio de periodo)",
-    "banxico: actualizado TIPOCAMBIO (última obs 2026-10-05, dato nuevo)",
-    "banxico: actualizado TASA (última obs 2026-10-06, dato nuevo)",
+    "banxico: actualizado TIPOCAMBIO (última obs 2026-10-05, sin cambio de periodo)",
+    "banxico: actualizado TASA (última obs 2026-10-06, sin cambio de periodo)",
     "banxico: actualizado RESERVAS (última obs 2026-09-25, sin cambio de periodo)",
     "inegi: actualizado PIB (última obs 2T-26, dato nuevo)",
     "inegi: actualizado PIBSEC (última obs 2T-26, sin cambio de periodo)",
@@ -196,7 +195,7 @@
     "inegi: actualizado SIC (última obs Ago 26, dato nuevo)",
     "inegi: actualizado SIC (última obs Ago 26, dato nuevo)",
     "inegi: actualizado SIC (última obs Ago 26, dato nuevo)",
-    "inegi: actualizado SIC (última obs Ago 26, dato nuevo)",
+    "inegi: actualizado SIC (última obs Sep 26, dato nuevo)",
     "inegi: actualizado SIC (última obs Sep 26, dato nuevo)",
     "inegi: actualizado SIC (última obs Sep 26, dato nuevo)",
     "inegi: actualizado SIC (última obs Sep 26, dato nuevo)",
@@ -354,7 +353,7 @@
     "frescura: BCMM -> ACTUALIZADO",
     "frescura: INPP -> ACTUALIZADO",
     "frescura: SIC -> ACTUALIZADO",
-    "meta: last_update_ct=2026-10-05T18:44:28-06:00",
+    "meta: last_update_ct=2026-10-06T08:05:46-06:00",
     "notas: 14 vigentes (0 provisionadas desde machote)"
   ],
   "consultas": [
@@ -845,9 +844,9 @@
       "observaciones": 2203,
       "ultima_observacion": "2026-10-05",
       "ultimo_valor": 18.1343,
-      "observacion_previa": "2026-10-02",
+      "observacion_previa": "2026-10-05",
       "actualizacion_fuente": null,
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -857,9 +856,9 @@
       "observaciones": 3189,
       "ultima_observacion": "2026-10-06",
       "ultimo_valor": 6.5,
-      "observacion_previa": "2026-10-05",
+      "observacion_previa": "2026-10-06",
       "actualizacion_fuente": null,
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1082,11 +1081,11 @@
       "fuente": "inegi",
       "indicador": "SIC",
       "serie": "214309",
-      "observaciones": 560,
-      "ultima_observacion": "Ago 26",
-      "ultimo_valor": 100.339636,
+      "observaciones": 561,
+      "ultima_observacion": "Sep 26",
+      "ultimo_valor": 100.556348,
       "observacion_previa": "Jul 26",
-      "actualizacion_fuente": "08/09/2026 12:00:00 a. m.",
+      "actualizacion_fuente": "06/10/2026 12:00:00 a. m.",
       "dato_nuevo": true,
       "resultado": "consulta válida"
     },
@@ -2389,5 +2388,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-10-06T00:44:30+00:00"
+  "finished_at": "2026-10-06T14:05:47+00:00"
 }
