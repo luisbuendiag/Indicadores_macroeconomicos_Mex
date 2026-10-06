@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-10-06T13:59:17+00:00",
+  "started_at": "2026-10-06T18:50:06+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -175,9 +175,9 @@
     "banxico_sie: actualizado IMFBCF (última obs Jul 26, sin cambio de periodo)",
     "banxico_sie: actualizado IMFBCF (última obs Jul 26, sin cambio de periodo)",
     "banxico_sie: actualizado IMFBCF (última obs Jul 26, sin cambio de periodo)",
-    "banxico: actualizado TIPOCAMBIO (última obs 2026-10-05, sin cambio de periodo)",
+    "banxico: actualizado TIPOCAMBIO (última obs 2026-10-06, dato nuevo)",
     "banxico: actualizado TASA (última obs 2026-10-06, sin cambio de periodo)",
-    "banxico: actualizado RESERVAS (última obs 2026-09-25, sin cambio de periodo)",
+    "banxico: actualizado RESERVAS (última obs 2026-10-02, dato nuevo)",
     "inegi: actualizado PIB (última obs 2T-26, dato nuevo)",
     "inegi: actualizado PIBSEC (última obs 2T-26, sin cambio de periodo)",
     "inegi: actualizado PIBSEC (última obs 2T-26, sin cambio de periodo)",
@@ -353,7 +353,7 @@
     "frescura: BCMM -> ACTUALIZADO",
     "frescura: INPP -> ACTUALIZADO",
     "frescura: SIC -> ACTUALIZADO",
-    "meta: last_update_ct=2026-10-06T08:05:46-06:00",
+    "meta: last_update_ct=2026-10-06T12:56:42-06:00",
     "notas: 14 vigentes (0 provisionadas desde machote)"
   ],
   "consultas": [
@@ -841,12 +841,12 @@
       "fuente": "banxico",
       "indicador": "TIPOCAMBIO",
       "serie": "SF43718",
-      "observaciones": 2203,
-      "ultima_observacion": "2026-10-05",
-      "ultimo_valor": 18.1343,
+      "observaciones": 2204,
+      "ultima_observacion": "2026-10-06",
+      "ultimo_valor": 17.967,
       "observacion_previa": "2026-10-05",
       "actualizacion_fuente": null,
-      "dato_nuevo": false,
+      "dato_nuevo": true,
       "resultado": "consulta válida"
     },
     {
@@ -865,12 +865,12 @@
       "fuente": "banxico",
       "indicador": "RESERVAS",
       "serie": "SF43707",
-      "observaciones": 456,
-      "ultima_observacion": "2026-09-25",
-      "ultimo_valor": 256542.8,
+      "observaciones": 457,
+      "ultima_observacion": "2026-10-02",
+      "ultimo_valor": 256039.8,
       "observacion_previa": "2026-09-25",
       "actualizacion_fuente": null,
-      "dato_nuevo": false,
+      "dato_nuevo": true,
       "resultado": "consulta válida"
     },
     {
@@ -2388,5 +2388,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-10-06T14:05:47+00:00"
+  "finished_at": "2026-10-06T18:56:44+00:00"
 }
