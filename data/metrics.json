@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-07T14:18:51+00:00",
-  "last_update_ct": "2026-10-06T17:01:05-06:00",
+  "generated_at": "2026-10-07T19:17:43+00:00",
+  "last_update_ct": "2026-10-07T08:23:07-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -4913,20 +4913,20 @@
     },
     "TIPOCAMBIO": {
       "kpi": {
-        "ultimoP": "6 Oct 26",
-        "ultimoRaw": 17.967,
-        "ultimoFmt": "$17.97",
-        "varText": "-0.92%",
-        "varMag": -0.009226,
+        "ultimoP": "7 Oct 26",
+        "ultimoRaw": 17.978,
+        "ultimoFmt": "$17.98",
+        "varText": "+0.06%",
+        "varMag": 0.000612,
         "varLabel": "Cambio diario",
-        "pos": false,
-        "varColor": "#9b2247",
-        "monthlyText": "-0.57%",
+        "pos": true,
+        "varColor": "#1e5b4f",
+        "monthlyText": "-0.50%",
         "monthlyLabel": "Cambio mensual",
-        "yoyText": "-2.10%",
+        "yoyText": "-2.17%",
         "yoyLabel": "Cambio anual",
-        "yoyRaw": -0.021021,
-        "yoyMag": -0.021021,
+        "yoyRaw": -0.021669,
+        "yoyMag": -0.021669,
         "yoyPos": false,
         "yoyColor": "#9b2247",
         "range12mText": "$16.87 — $18.62",
@@ -4937,7 +4937,7 @@
         "minP": "8 Abr 24",
         "maxFmt": "$25.12",
         "minFmt": "$16.34",
-        "lastI": 2203,
+        "lastI": 2204,
         "series": [
           19.4899,
           19.3717,
@@ -7142,7 +7142,8 @@
           18.3688,
           18.1903,
           18.1343,
-          17.967
+          17.967,
+          17.978
         ],
         "periods": [
           "2018-01-02",
@@ -9348,29 +9349,30 @@
           "2026-10-01",
           "2026-10-02",
           "2026-10-05",
-          "2026-10-06"
+          "2026-10-06",
+          "2026-10-07"
         ],
         "assessment": "neutral",
-        "dir": "down",
+        "dir": "up",
         "semaforo": "estable"
       },
       "yoy": {
-        "mag": -0.021021,
+        "mag": -0.021669,
         "pos": false,
-        "text": "-2.10%",
+        "text": "-2.17%",
         "label": "Cambio anual"
       },
       "annualVar": {
-        "mag": -0.021021,
+        "mag": -0.021669,
         "pos": false,
-        "text": "-2.10%",
+        "text": "-2.17%",
         "label": "Cambio anual"
       },
       "resumen": [
-        "En 6 de octubre de 2026, el tipo de cambio FIX se ubicó en $17.97 (pesos por dólar).",
-        "El cambio diario fue de -0.92% respecto al día hábil previo.",
-        "Respecto al último día hábil del mes previo, el FIX registró un cambio mensual de -0.57%.",
-        "A tasa anual, el FIX varió -2.10%; en los últimos 12 meses osciló entre $16.87 — $18.62."
+        "En 7 de octubre de 2026, el tipo de cambio FIX se ubicó en $17.98 (pesos por dólar).",
+        "El cambio diario fue de +0.06% respecto al día hábil previo.",
+        "Respecto al último día hábil del mes previo, el FIX registró un cambio mensual de -0.50%.",
+        "A tasa anual, el FIX varió -2.17%; en los últimos 12 meses osciló entre $16.87 — $18.62."
       ],
       "analysis": []
     },
