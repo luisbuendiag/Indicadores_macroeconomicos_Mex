@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-10-08T23:46:20+00:00",
-  "as_of": "2026-10-08",
+  "generated_at": "2026-10-09T14:16:59+00:00",
+  "as_of": "2026-10-09",
   "fuente": "Calendario oficial de difusión",
   "sources": {
     "INEGI Sala de Prensa": {
       "status": "ok",
       "count": 1489,
       "message": "1489 eventos consultados del INEGI",
-      "consulted_at": "2026-10-08",
+      "consulted_at": "2026-10-09",
       "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/"
     },
     "Banco de México calendario": {
       "status": "ok",
       "count": 180,
       "message": "180 eventos consultados de Banxico",
-      "consulted_at": "2026-10-08",
+      "consulted_at": "2026-10-09",
       "url": "https://www.banxico.org.mx/publicaciones-y-prensa/calendario-de-publicaciones-banco-de-mexico/"
     },
     "Secretaría de Economía (manual)": {
@@ -15234,18 +15234,18 @@
       "publication_date_display": "9 de octubre de 2026",
       "reference_period": "Agosto de 2026",
       "frequency": "Mensual",
-      "status": "próximo",
+      "status": "publicado",
       "source": "INEGI Sala de Prensa",
       "institution": "INEGI",
       "category": "Sector externo",
       "sigla": "BCMM",
       "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "url": "https://www.inegi.org.mx/app/tabulados/?nc=452",
       "deliverables": [
         {
           "type": "comunicado",
           "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "url": "https://www.inegi.org.mx/app/tabulados/?nc=452",
           "label": "Boletín / página oficial",
           "size": null
         }
@@ -20825,35 +20825,6 @@
   ],
   "upcoming": [
     {
-      "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México",
-      "product": "Balanza Comercial de Mercancías de México",
-      "publication_date": "2026-10-09",
-      "publication_date_display": "9 de octubre de 2026",
-      "reference_period": "Agosto de 2026",
-      "frequency": "Mensual",
-      "status": "próximo",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Sector externo",
-      "sigla": "BCMM",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, reporte de resultados ni boletín de indicadores.",
-      "anio": 2026,
-      "mes": 10,
-      "fecha_iso": "2026-10-09"
-    },
-    {
       "indicator": "IMAI",
       "program": "Indicador Mensual de la Actividad Industrial (IMAI). Año base 2018. Cifras preliminares",
       "product": "Indicador Mensual de la Actividad Industrial",
@@ -21403,9 +21374,67 @@
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-09"
+    },
+    {
+      "indicator": "RESERVAS",
+      "program": "Estado de cuenta del Banco de México",
+      "product": "Estado de cuenta del Banco de México",
+      "publication_date": "2026-11-10",
+      "publication_date_display": "10 de noviembre de 2026",
+      "reference_period": "6 de noviembre de 2026",
+      "frequency": "Semanal",
+      "status": "próximo",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Financiero",
+      "sigla": "RESERVAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-10"
     }
   ],
   "recent": [
+    {
+      "indicator": "BCMM",
+      "program": "Balanza Comercial de Mercancías de México",
+      "product": "Balanza Comercial de Mercancías de México",
+      "publication_date": "2026-10-09",
+      "publication_date_display": "9 de octubre de 2026",
+      "reference_period": "Agosto de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Sector externo",
+      "sigla": "BCMM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/tabulados/?nc=452",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/tabulados/?nc=452",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, reporte de resultados ni boletín de indicadores.",
+      "anio": 2026,
+      "mes": 10,
+      "fecha_iso": "2026-10-09"
+    },
     {
       "indicator": "INPP",
       "program": "Índice Nacional de Precios Productor (INPP). Año base julio 2019. Actualización 2025. Cifras definitivas",
@@ -22121,49 +22150,6 @@
         }
       ],
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 9,
-      "fecha_iso": "2026-09-09"
-    },
-    {
-      "indicator": "INPC",
-      "program": "Índice Nacional de Precios al Consumidor (INPC). Base 2ª Quincena Julio 2018. Actualización de Canasta y Ponderadores 2024. Mensual. Cifras definitivas",
-      "product": "Índice Nacional de Precios al Consumidor",
-      "publication_date": "2026-09-09",
-      "publication_date_display": "9 de septiembre de 2026",
-      "reference_period": "Agosto de 2026",
-      "frequency": "Mensual",
-      "status": "publicado",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Precios",
-      "sigla": "INPC",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_09.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_09.pdf",
-          "label": "Boletín PDF",
-          "size": "0.28 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "word",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_09.docx",
-          "label": "Boletín Word",
-          "size": "0.32 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "excel",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_09.xlsx",
-          "label": "Boletín Excel",
-          "size": "0.03 MB"
-        }
-      ],
-      "comentario": "Información de Interés Nacional. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 9,
       "fecha_iso": "2026-09-09"
