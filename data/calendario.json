@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-10-09T23:10:33+00:00",
-  "as_of": "2026-10-09",
+  "generated_at": "2026-10-12T16:40:41+00:00",
+  "as_of": "2026-10-12",
   "fuente": "Calendario oficial de difusión",
   "sources": {
     "INEGI Sala de Prensa": {
       "status": "ok",
       "count": 1489,
       "message": "1489 eventos consultados del INEGI",
-      "consulted_at": "2026-10-09",
+      "consulted_at": "2026-10-12",
       "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/"
     },
     "Banco de México calendario": {
       "status": "ok",
       "count": 180,
       "message": "180 eventos consultados de Banxico",
-      "consulted_at": "2026-10-09",
+      "consulted_at": "2026-10-12",
       "url": "https://www.banxico.org.mx/publicaciones-y-prensa/calendario-de-publicaciones-banco-de-mexico/"
     },
     "Secretaría de Economía (manual)": {
@@ -15263,20 +15263,34 @@
       "publication_date_display": "12 de octubre de 2026",
       "reference_period": "Agosto de 2026",
       "frequency": "Mensual",
-      "status": "próximo",
+      "status": "publicado",
       "source": "INEGI Sala de Prensa",
       "institution": "INEGI",
       "category": "Actividad económica",
       "sigla": "IMAI",
       "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+          "label": "Boletín PDF",
+          "size": "0.26 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.docx",
+          "label": "Boletín Word",
+          "size": "0.23 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.15 MB"
         }
       ],
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
@@ -20825,35 +20839,6 @@
   ],
   "upcoming": [
     {
-      "indicator": "IMAI",
-      "program": "Indicador Mensual de la Actividad Industrial (IMAI). Año base 2018. Cifras preliminares",
-      "product": "Indicador Mensual de la Actividad Industrial",
-      "publication_date": "2026-10-12",
-      "publication_date_display": "12 de octubre de 2026",
-      "reference_period": "Agosto de 2026",
-      "frequency": "Mensual",
-      "status": "próximo",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Actividad económica",
-      "sigla": "IMAI",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 10,
-      "fecha_iso": "2026-10-12"
-    },
-    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México",
       "product": "Estado de cuenta del Banco de México",
@@ -21403,9 +21388,81 @@
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-10"
+    },
+    {
+      "indicator": "IMAI",
+      "program": "Indicador Mensual de la Actividad Industrial (IMAI). Año base 2018. Cifras preliminares",
+      "product": "Indicador Mensual de la Actividad Industrial",
+      "publication_date": "2026-11-11",
+      "publication_date_display": "11 de noviembre de 2026",
+      "reference_period": "Septiembre de 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMAI",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-11"
     }
   ],
   "recent": [
+    {
+      "indicator": "IMAI",
+      "program": "Indicador Mensual de la Actividad Industrial (IMAI). Año base 2018. Cifras preliminares",
+      "product": "Indicador Mensual de la Actividad Industrial",
+      "publication_date": "2026-10-12",
+      "publication_date_display": "12 de octubre de 2026",
+      "reference_period": "Agosto de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMAI",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+          "label": "Boletín PDF",
+          "size": "0.26 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.docx",
+          "label": "Boletín Word",
+          "size": "0.23 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.15 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 10,
+      "fecha_iso": "2026-10-12"
+    },
     {
       "indicator": "BCMM",
       "program": "Balanza Comercial de Mercancías de México",
@@ -22110,49 +22167,6 @@
       "anio": 2026,
       "mes": 9,
       "fecha_iso": "2026-09-10"
-    },
-    {
-      "indicator": "INPP",
-      "program": "Índice Nacional de Precios Productor (INPP). Año base julio 2019. Actualización 2025. Cifras definitivas",
-      "product": "Índice Nacional de Precios Productor",
-      "publication_date": "2026-09-09",
-      "publication_date_display": "9 de septiembre de 2026",
-      "reference_period": "Agosto de 2026",
-      "frequency": "Mensual",
-      "status": "publicado",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Precios",
-      "sigla": "INPP",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_09.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_09.pdf",
-          "label": "Boletín PDF",
-          "size": "0.33 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "word",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_09.docx",
-          "label": "Boletín Word",
-          "size": "0.33 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "excel",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_09.xlsx",
-          "label": "Boletín Excel",
-          "size": "0.03 MB"
-        }
-      ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 9,
-      "fecha_iso": "2026-09-09"
     }
   ],
   "categories": {
