@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-13T14:56:58+00:00",
+  "generated_at": "2026-10-13T19:53:23+00:00",
   "indicadores": [
     {
       "indicador": "Estimación Oportuna del Producto Interno Bruto Trimestral",
@@ -136,7 +136,7 @@
       "fecha_consulta": "2026-10-13",
       "fecha_actualizacion_archivo": "2026-10-13",
       "metodo_actualizacion": "INEGI BIE API",
-      "estado": "ERROR DE FUENTE",
+      "estado": "ACTUALIZADO",
       "origen_dato": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -370,8 +370,8 @@
       "frecuencia": "Diaria",
       "unidad": "Pesos por dólar",
       "ajuste_estacional": "No aplica",
-      "ultima_observacion": "2026-10-12",
-      "periodo_referencia": "2026-10-12",
+      "ultima_observacion": "2026-10-13",
+      "periodo_referencia": "2026-10-13",
       "fecha_publicacion": "Días hábiles",
       "fecha_consulta": "2026-10-13",
       "fecha_actualizacion_archivo": "2026-10-13",
@@ -418,8 +418,8 @@
       "frecuencia": "Semanal",
       "unidad": "Millones de dólares",
       "ajuste_estacional": "No aplica",
-      "ultima_observacion": "2026-10-02",
-      "periodo_referencia": "Semana al 2 Oct 26",
+      "ultima_observacion": "2026-10-09",
+      "periodo_referencia": "Semana al 9 Oct 26",
       "fecha_publicacion": "Semanal (martes)",
       "fecha_consulta": "2026-10-13",
       "fecha_actualizacion_archivo": "2026-10-13",

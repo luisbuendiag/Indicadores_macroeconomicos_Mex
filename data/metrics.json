@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-13T14:53:31+00:00",
-  "last_update_ct": "2026-10-12T19:14:24-06:00",
+  "generated_at": "2026-10-13T19:49:56+00:00",
+  "last_update_ct": "2026-10-13T08:56:57-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -4915,20 +4915,20 @@
     },
     "TIPOCAMBIO": {
       "kpi": {
-        "ultimoP": "12 Oct 26",
-        "ultimoRaw": 18.2542,
-        "ultimoFmt": "$18.25",
-        "varText": "-0.88%",
-        "varMag": -0.008802,
+        "ultimoP": "13 Oct 26",
+        "ultimoRaw": 18.3528,
+        "ultimoFmt": "$18.35",
+        "varText": "+0.54%",
+        "varMag": 0.005401,
         "varLabel": "Cambio diario",
-        "pos": false,
-        "varColor": "#9b2247",
-        "monthlyText": "+1.02%",
+        "pos": true,
+        "varColor": "#1e5b4f",
+        "monthlyText": "+1.57%",
         "monthlyLabel": "Cambio mensual",
-        "yoyText": "-1.63%",
+        "yoyText": "-0.47%",
         "yoyLabel": "Cambio anual",
-        "yoyRaw": -0.016301,
-        "yoyMag": -0.016301,
+        "yoyRaw": -0.004729,
+        "yoyMag": -0.004729,
         "yoyPos": false,
         "yoyColor": "#9b2247",
         "range12mText": "$16.87 — $18.62",
@@ -4939,7 +4939,7 @@
         "minP": "8 Abr 24",
         "maxFmt": "$25.12",
         "minFmt": "$16.34",
-        "lastI": 2207,
+        "lastI": 2208,
         "series": [
           19.4899,
           19.3717,
@@ -7148,7 +7148,8 @@
           17.978,
           18.1128,
           18.4163,
-          18.2542
+          18.2542,
+          18.3528
         ],
         "periods": [
           "2018-01-02",
@@ -9358,29 +9359,30 @@
           "2026-10-07",
           "2026-10-08",
           "2026-10-09",
-          "2026-10-12"
+          "2026-10-12",
+          "2026-10-13"
         ],
         "assessment": "neutral",
-        "dir": "down",
+        "dir": "up",
         "semaforo": "estable"
       },
       "yoy": {
-        "mag": -0.016301,
+        "mag": -0.004729,
         "pos": false,
-        "text": "-1.63%",
+        "text": "-0.47%",
         "label": "Cambio anual"
       },
       "annualVar": {
-        "mag": -0.016301,
+        "mag": -0.004729,
         "pos": false,
-        "text": "-1.63%",
+        "text": "-0.47%",
         "label": "Cambio anual"
       },
       "resumen": [
-        "En 12 de octubre de 2026, el tipo de cambio FIX se ubicó en $18.25 (pesos por dólar).",
-        "El cambio diario fue de -0.88% respecto al día hábil previo.",
-        "Respecto al último día hábil del mes previo, el FIX registró un cambio mensual de +1.02%.",
-        "A tasa anual, el FIX varió -1.63%; en los últimos 12 meses osciló entre $16.87 — $18.62."
+        "En 13 de octubre de 2026, el tipo de cambio FIX se ubicó en $18.35 (pesos por dólar).",
+        "El cambio diario fue de +0.54% respecto al día hábil previo.",
+        "Respecto al último día hábil del mes previo, el FIX registró un cambio mensual de +1.57%.",
+        "A tasa anual, el FIX varió -0.47%; en los últimos 12 meses osciló entre $16.87 — $18.62."
       ],
       "analysis": []
     },
@@ -9617,24 +9619,24 @@
     },
     "RESERVAS": {
       "kpi": {
-        "ultimoP": "Semana al 2 Oct 26",
-        "ultimoRaw": 256039.8,
-        "ultimoFmt": "256,040 mdd",
-        "varText": "−503 mdd",
-        "varMag": -503.0,
+        "ultimoP": "Semana al 9 Oct 26",
+        "ultimoRaw": 256344.4,
+        "ultimoFmt": "256,344 mdd",
+        "varText": "+305 mdd",
+        "varMag": 304.6,
         "varLabel": "Cambio semanal",
-        "pos": false,
-        "varColor": "#9b2247",
-        "yoyText": "+3.4%",
+        "pos": true,
+        "varColor": "#1e5b4f",
+        "yoyText": "+3.3%",
         "yoyLabel": "Variación anual",
-        "yoyRaw": 0.03353,
-        "yoyMag": 0.03353,
+        "yoyRaw": 0.03261,
+        "yoyMag": 0.03261,
         "yoyPos": true,
         "yoyColor": "#1e5b4f",
-        "acumText": "+3,910 mdd",
-        "acumPctText": "+1.6%",
+        "acumText": "+4,215 mdd",
+        "acumPctText": "+1.7%",
         "acumLabel": "Cambio YTD",
-        "lastI": 456,
+        "lastI": 457,
         "series": [
           172904.4,
           172951.2,
@@ -10092,7 +10094,8 @@
           257553.9,
           257238.2,
           256542.8,
-          256039.8
+          256039.8,
+          256344.4
         ],
         "periods": [
           "2018-01-05",
@@ -10551,29 +10554,30 @@
           "2026-09-11",
           "2026-09-18",
           "2026-09-25",
-          "2026-10-02"
+          "2026-10-02",
+          "2026-10-09"
         ],
         "assessment": "neutral",
-        "dir": "down",
+        "dir": "up",
         "semaforo": "estable"
       },
       "yoy": {
-        "mag": 0.03353,
+        "mag": 0.03261,
         "pos": true,
-        "text": "+3.4%",
+        "text": "+3.3%",
         "label": "Variación anual"
       },
       "annualVar": {
-        "mag": 0.03353,
+        "mag": 0.03261,
         "pos": true,
-        "text": "+3.4%",
+        "text": "+3.3%",
         "label": "Variación anual"
       },
       "resumen": [
-        "Al 2 de octubre de 2026, la reserva internacional se ubicó en 256,040 mdd.",
-        "La variación semanal fue de −503 mdd respecto a la semana previa.",
-        "A tasa anual, la reserva varió +3.4%.",
-        "En lo que va del año, el cambio acumulado fue de +3,910 mdd (+1.6%) respecto al cierre del año previo."
+        "Al 9 de octubre de 2026, la reserva internacional se ubicó en 256,344 mdd.",
+        "La variación semanal fue de +305 mdd respecto a la semana previa.",
+        "A tasa anual, la reserva varió +3.3%.",
+        "En lo que va del año, el cambio acumulado fue de +4,215 mdd (+1.7%) respecto al cierre del año previo."
       ],
       "analysis": []
     },
