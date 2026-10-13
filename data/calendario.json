@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-10-12T21:46:06+00:00",
-  "as_of": "2026-10-12",
+  "generated_at": "2026-10-13T01:14:41+00:00",
+  "as_of": "2026-10-13",
   "fuente": "Calendario oficial de difusión",
   "sources": {
     "INEGI Sala de Prensa": {
       "status": "ok",
       "count": 1489,
       "message": "1489 eventos consultados del INEGI",
-      "consulted_at": "2026-10-12",
+      "consulted_at": "2026-10-13",
       "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/"
     },
     "Banco de México calendario": {
       "status": "ok",
       "count": 180,
       "message": "180 eventos consultados de Banxico",
-      "consulted_at": "2026-10-12",
+      "consulted_at": "2026-10-13",
       "url": "https://www.banxico.org.mx/publicaciones-y-prensa/calendario-de-publicaciones-banco-de-mexico/"
     },
     "Secretaría de Economía (manual)": {
@@ -15306,7 +15306,7 @@
       "publication_date_display": "13 de octubre de 2026",
       "reference_period": "9 de octubre de 2026",
       "frequency": "Semanal",
-      "status": "próximo",
+      "status": "publicado",
       "source": "Banco de México calendario",
       "institution": "Banco de México",
       "category": "Financiero",
@@ -20839,35 +20839,6 @@
   ],
   "upcoming": [
     {
-      "indicator": "RESERVAS",
-      "program": "Estado de cuenta del Banco de México",
-      "product": "Estado de cuenta del Banco de México",
-      "publication_date": "2026-10-13",
-      "publication_date_display": "13 de octubre de 2026",
-      "reference_period": "9 de octubre de 2026",
-      "frequency": "Semanal",
-      "status": "próximo",
-      "source": "Banco de México calendario",
-      "institution": "Banco de México",
-      "category": "Financiero",
-      "sigla": "RESERVAS",
-      "type": "event",
-      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": null,
-      "anio": 2026,
-      "mes": 10,
-      "fecha_iso": "2026-10-13"
-    },
-    {
       "indicator": "EMIM",
       "program": "Encuesta Mensual de la Industria Manufacturera (EMIM). Serie 2018. Cifras preliminares",
       "product": "Encuesta Mensual de la Industria Manufacturera",
@@ -21417,9 +21388,67 @@
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-11"
+    },
+    {
+      "indicator": "EMIM",
+      "program": "Encuesta Mensual de la Industria Manufacturera (EMIM). Serie 2018. Cifras preliminares",
+      "product": "Encuesta Mensual de la Industria Manufacturera",
+      "publication_date": "2026-11-17",
+      "publication_date_display": "17 de noviembre de 2026",
+      "reference_period": "Septiembre de 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "EMIM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-17"
     }
   ],
   "recent": [
+    {
+      "indicator": "RESERVAS",
+      "program": "Estado de cuenta del Banco de México",
+      "product": "Estado de cuenta del Banco de México",
+      "publication_date": "2026-10-13",
+      "publication_date_display": "13 de octubre de 2026",
+      "reference_period": "9 de octubre de 2026",
+      "frequency": "Semanal",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Financiero",
+      "sigla": "RESERVAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 10,
+      "fecha_iso": "2026-10-13"
+    },
     {
       "indicator": "IMAI",
       "program": "Indicador Mensual de la Actividad Industrial (IMAI). Año base 2018. Cifras preliminares",
@@ -22138,35 +22167,6 @@
       "anio": 2026,
       "mes": 9,
       "fecha_iso": "2026-09-11"
-    },
-    {
-      "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México",
-      "product": "Balanza Comercial de Mercancías de México",
-      "publication_date": "2026-09-10",
-      "publication_date_display": "10 de septiembre de 2026",
-      "reference_period": "Julio de 2026",
-      "frequency": "Mensual",
-      "status": "publicado",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Sector externo",
-      "sigla": "BCMM",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/tabulados/?nc=452",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/tabulados/?nc=452",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
-      "anio": 2026,
-      "mes": 9,
-      "fecha_iso": "2026-09-10"
     }
   ],
   "categories": {
