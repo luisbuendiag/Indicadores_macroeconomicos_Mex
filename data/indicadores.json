@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-10-13T01:14:24+00:00",
+    "generated_at": "2026-10-13T14:56:57+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-10-12T19:14:24-06:00",
+    "last_update_ct": "2026-10-13T08:56:57-06:00",
     "periodo_referencia_reciente": {
       "period": "Sep 26",
       "period_long": "Sep 26"
@@ -20378,7 +20378,7 @@
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
-      "estado": "ACTUALIZADO",
+      "estado": "ERROR DE FUENTE",
       "origen_dato": "api",
       "fecha_publicacion": "11 de agosto de 2026",
       "periodo_referencia": "Jul 26",
@@ -21277,7 +21277,7 @@
         "periodo_referencia": "Agosto de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo esperado (Julio de 2026).",
+      "motivo_frescura": "El pipeline reportó un error para IMAI y el dato podría no estar actualizado.",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_08.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/IMAI/IMAI_datos.xlsx",

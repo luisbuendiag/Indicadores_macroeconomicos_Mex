@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-13T01:14:26+00:00",
+  "generated_at": "2026-10-13T14:56:58+00:00",
   "indicadores": [
     {
       "indicador": "Estimación Oportuna del Producto Interno Bruto Trimestral",
@@ -136,7 +136,7 @@
       "fecha_consulta": "2026-10-13",
       "fecha_actualizacion_archivo": "2026-10-13",
       "metodo_actualizacion": "INEGI BIE API",
-      "estado": "ACTUALIZADO",
+      "estado": "ERROR DE FUENTE",
       "origen_dato": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,

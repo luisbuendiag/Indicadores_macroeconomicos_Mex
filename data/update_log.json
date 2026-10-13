@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-10-13T01:08:08+00:00",
+  "started_at": "2026-10-13T14:50:57+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -36,7 +36,7 @@
     "INEGI IMAI: 103 observaciones (serie 737235, base BIE-BISE); última Jul 26 = 0.024153; actualización BIE 24/09/2026 12:00:00 a. m..",
     "INEGI IMAI: 403 observaciones (serie 737231, base BIE-BISE); última Jul 26 = 103.461358; actualización BIE 24/09/2026 12:00:00 a. m..",
     "INEGI IMAI: 103 observaciones (serie 737232, base BIE-BISE); última Jul 26 = 0.024986; actualización BIE 24/09/2026 12:00:00 a. m..",
-    "INEGI IMAI: 403 observaciones (serie 737240, base BIE-BISE); última Jul 26 = 89.420414; actualización BIE 24/09/2026 12:00:00 a. m..",
+    "INEGI IMAI: error de consulta (serie 737240): HTTP Error 403: Forbidden",
     "INEGI IMAI: 403 observaciones (serie 737247, base BIE-BISE); última Jul 26 = 66.774473; actualización BIE 24/09/2026 12:00:00 a. m..",
     "INEGI IMAI: 403 observaciones (serie 737254, base BIE-BISE); última Jul 26 = 109.130072; actualización BIE 24/09/2026 12:00:00 a. m..",
     "INEGI IMAI: 403 observaciones (serie 737261, base BIE-BISE); última Jul 26 = 106.49378; actualización BIE 24/09/2026 12:00:00 a. m..",
@@ -110,7 +110,8 @@
     "INEGI INPP: 85 observaciones (serie 1801005, base BIE-BISE); última Sep 26 = 23.84357; actualización BIE 08/10/2026 12:00:00 a. m..",
     "INEGI INPP: 105 observaciones (serie 1801007, base BIE-BISE); última Sep 26 = 5.712014; actualización BIE 08/10/2026 12:00:00 a. m..",
     "INEGI INPP: 105 observaciones (serie 1801008, base BIE-BISE); última Sep 26 = 2.484374; actualización BIE 08/10/2026 12:00:00 a. m..",
-    "INEGI INPP: 105 observaciones (serie 1801009, base BIE-BISE); última Sep 26 = 5.862128; actualización BIE 08/10/2026 12:00:00 a. m.."
+    "INEGI INPP: 105 observaciones (serie 1801009, base BIE-BISE); última Sep 26 = 5.862128; actualización BIE 08/10/2026 12:00:00 a. m..",
+    "IMAI: ERROR DE FUENTE – El pipeline reportó un error para IMAI y el dato podría no estar actualizado."
   ],
   "changes": [
     "IGAE: fuente normalizada a serie total 737121",
@@ -176,7 +177,7 @@
     "banxico_sie: actualizado IMFBCF (última obs Jul 26, sin cambio de periodo)",
     "banxico_sie: actualizado IMFBCF (última obs Jul 26, sin cambio de periodo)",
     "banxico: actualizado TIPOCAMBIO (última obs 2026-10-12, sin cambio de periodo)",
-    "banxico: actualizado TASA (última obs 2026-10-13, dato nuevo)",
+    "banxico: actualizado TASA (última obs 2026-10-13, sin cambio de periodo)",
     "banxico: actualizado RESERVAS (última obs 2026-10-02, sin cambio de periodo)",
     "inegi: actualizado PIB (última obs 2T-26, dato nuevo)",
     "inegi: actualizado PIBSEC (última obs 2T-26, sin cambio de periodo)",
@@ -205,7 +206,6 @@
     "inegi: actualizado IGAE (última obs Jul 26, sin cambio de periodo)",
     "inegi: actualizado IGAE (última obs Jul 26, sin cambio de periodo)",
     "inegi: actualizado IGAE (última obs Jul 26, sin cambio de periodo)",
-    "inegi: actualizado IMAI (última obs Jul 26, sin cambio de periodo)",
     "inegi: actualizado IMAI (última obs Jul 26, sin cambio de periodo)",
     "inegi: actualizado IMAI (última obs Jul 26, sin cambio de periodo)",
     "inegi: actualizado IMAI (última obs Jul 26, sin cambio de periodo)",
@@ -338,7 +338,7 @@
     "frescura: PIB -> ACTUALIZADO",
     "frescura: PIBSEC -> ACTUALIZADO",
     "frescura: IGAE -> ACTUALIZADO",
-    "frescura: IMAI -> ACTUALIZADO",
+    "frescura: IMAI -> ERROR DE FUENTE",
     "frescura: CONSUMO -> ACTUALIZADO",
     "frescura: IED -> ACTUALIZADO",
     "frescura: DESOCUP -> ACTUALIZADO",
@@ -353,7 +353,7 @@
     "frescura: BCMM -> ACTUALIZADO",
     "frescura: INPP -> ACTUALIZADO",
     "frescura: SIC -> ACTUALIZADO",
-    "meta: last_update_ct=2026-10-12T19:14:24-06:00",
+    "meta: last_update_ct=2026-10-13T08:56:57-06:00",
     "notas: 14 vigentes (0 provisionadas desde machote)"
   ],
   "consultas": [
@@ -856,9 +856,9 @@
       "observaciones": 3196,
       "ultima_observacion": "2026-10-13",
       "ultimo_valor": 6.5,
-      "observacion_previa": "2026-10-12",
+      "observacion_previa": "2026-10-13",
       "actualizacion_fuente": null,
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1252,18 +1252,6 @@
       "observaciones": 103,
       "ultima_observacion": "Jul 26",
       "ultimo_valor": 0.024986,
-      "observacion_previa": "Jul 26",
-      "actualizacion_fuente": "24/09/2026 12:00:00 a. m.",
-      "dato_nuevo": false,
-      "resultado": "consulta válida"
-    },
-    {
-      "fuente": "inegi",
-      "indicador": "IMAI",
-      "serie": "737240",
-      "observaciones": 403,
-      "ultima_observacion": "Jul 26",
-      "ultimo_valor": 89.420414,
       "observacion_previa": "Jul 26",
       "actualizacion_fuente": "24/09/2026 12:00:00 a. m.",
       "dato_nuevo": false,
@@ -2388,5 +2376,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-10-13T01:14:26+00:00"
+  "finished_at": "2026-10-13T14:56:59+00:00"
 }
