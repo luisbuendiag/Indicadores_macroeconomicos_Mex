@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-10-16T21:56:09+00:00",
+  "started_at": "2026-10-19T14:24:35+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -175,8 +175,8 @@
     "banxico_sie: actualizado IMFBCF (última obs Jul 26, sin cambio de periodo)",
     "banxico_sie: actualizado IMFBCF (última obs Jul 26, sin cambio de periodo)",
     "banxico_sie: actualizado IMFBCF (última obs Jul 26, sin cambio de periodo)",
-    "banxico: actualizado TIPOCAMBIO (última obs 2026-10-16, dato nuevo)",
-    "banxico: actualizado TASA (última obs 2026-10-16, sin cambio de periodo)",
+    "banxico: actualizado TIPOCAMBIO (última obs 2026-10-16, sin cambio de periodo)",
+    "banxico: actualizado TASA (última obs 2026-10-19, dato nuevo)",
     "banxico: actualizado RESERVAS (última obs 2026-10-09, sin cambio de periodo)",
     "inegi: actualizado PIB (última obs 2T-26, dato nuevo)",
     "inegi: actualizado PIBSEC (última obs 2T-26, sin cambio de periodo)",
@@ -333,7 +333,7 @@
     "TASA: 14 decisiones de politica monetaria construidas",
     "TASA: 47 regímenes detectados",
     "SIC: 1 periodo(s) finales sin cifra de los indicadores compuestos; se conservan sólo dentro del periodo de referencia del boletín oficial",
-    "calendario: regenerado con as_of=2026-10-16",
+    "calendario: regenerado con as_of=2026-10-19",
     "métricas: data/metrics.json regenerado",
     "frescura: PIB -> ACTUALIZADO",
     "frescura: PIBSEC -> ACTUALIZADO",
@@ -353,7 +353,7 @@
     "frescura: BCMM -> ACTUALIZADO",
     "frescura: INPP -> ACTUALIZADO",
     "frescura: SIC -> ACTUALIZADO",
-    "meta: last_update_ct=2026-10-16T16:02:03-06:00",
+    "meta: last_update_ct=2026-10-19T08:30:26-06:00",
     "notas: 14 vigentes (0 provisionadas desde machote)"
   ],
   "consultas": [
@@ -844,21 +844,21 @@
       "observaciones": 2212,
       "ultima_observacion": "2026-10-16",
       "ultimo_valor": 18.493,
-      "observacion_previa": "2026-10-15",
+      "observacion_previa": "2026-10-16",
       "actualizacion_fuente": null,
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
       "fuente": "banxico",
       "indicador": "TASA",
       "serie": "SF61745",
-      "observaciones": 3199,
-      "ultima_observacion": "2026-10-16",
+      "observaciones": 3202,
+      "ultima_observacion": "2026-10-19",
       "ultimo_valor": 6.5,
       "observacion_previa": "2026-10-16",
       "actualizacion_fuente": null,
-      "dato_nuevo": false,
+      "dato_nuevo": true,
       "resultado": "consulta válida"
     },
     {
@@ -2388,5 +2388,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-10-16T22:02:05+00:00"
+  "finished_at": "2026-10-19T14:30:26+00:00"
 }
