@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-10-21T22:16:23+00:00",
-  "as_of": "2026-10-21",
+  "generated_at": "2026-10-22T12:55:32+00:00",
+  "as_of": "2026-10-22",
   "fuente": "Calendario oficial de difusión",
   "sources": {
     "INEGI Sala de Prensa": {
       "status": "ok",
       "count": 1489,
       "message": "1489 eventos consultados del INEGI",
-      "consulted_at": "2026-10-21",
+      "consulted_at": "2026-10-22",
       "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/"
     },
     "Banco de México calendario": {
       "status": "ok",
       "count": 180,
       "message": "180 eventos consultados de Banxico",
-      "consulted_at": "2026-10-21",
+      "consulted_at": "2026-10-22",
       "url": "https://www.banxico.org.mx/publicaciones-y-prensa/calendario-de-publicaciones-banco-de-mexico/"
     },
     "Secretaría de Economía (manual)": {
@@ -15443,20 +15443,34 @@
       "publication_date_display": "22 de octubre de 2026",
       "reference_period": "Septiembre de 2026",
       "frequency": "Mensual",
-      "status": "próximo",
+      "status": "publicado",
       "source": "INEGI Sala de Prensa",
       "institution": "INEGI",
       "category": "Mercado laboral",
       "sigla": "ENOE",
       "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_10.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_10.pdf",
+          "label": "Boletín PDF",
+          "size": "0.42 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_10.docx",
+          "label": "Boletín Word",
+          "size": "0.39 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_10.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.03 MB"
         }
       ],
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
@@ -20860,35 +20874,6 @@
   ],
   "upcoming": [
     {
-      "indicator": "DESOCUP",
-      "program": "Encuesta Nacional de Ocupación y Empleo (ENOE), población de 15 años y más de edad. Indicadores de Ocupación y Empleo. Cifras definitivas",
-      "product": "Encuesta Nacional de Ocupación y Empleo / Indicadores de Ocupación y Empleo",
-      "publication_date": "2026-10-22",
-      "publication_date_display": "22 de octubre de 2026",
-      "reference_period": "Septiembre de 2026",
-      "frequency": "Mensual",
-      "status": "próximo",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Mercado laboral",
-      "sigla": "ENOE",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 10,
-      "fecha_iso": "2026-10-22"
-    },
-    {
       "indicator": "IGAE",
       "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018. Cifras preliminares",
       "product": "Indicador Global de la Actividad Económica",
@@ -21438,9 +21423,81 @@
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-23"
+    },
+    {
+      "indicator": "PIBSEC",
+      "program": "PIB trimestral por actividad económica, precios constantes",
+      "product": "PIB trimestral por actividad económica, precios constantes",
+      "publication_date": "2026-11-23",
+      "publication_date_display": "23 de noviembre de 2026",
+      "reference_period": "3er trimestre 2026",
+      "frequency": "Trimestral",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "PIBSEC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-23"
     }
   ],
   "recent": [
+    {
+      "indicator": "DESOCUP",
+      "program": "Encuesta Nacional de Ocupación y Empleo (ENOE), población de 15 años y más de edad. Indicadores de Ocupación y Empleo. Cifras definitivas",
+      "product": "Encuesta Nacional de Ocupación y Empleo / Indicadores de Ocupación y Empleo",
+      "publication_date": "2026-10-22",
+      "publication_date_display": "22 de octubre de 2026",
+      "reference_period": "Septiembre de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Mercado laboral",
+      "sigla": "ENOE",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_10.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_10.pdf",
+          "label": "Boletín PDF",
+          "size": "0.42 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_10.docx",
+          "label": "Boletín Word",
+          "size": "0.39 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_10.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.03 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 10,
+      "fecha_iso": "2026-10-22"
+    },
     {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México de la semana al 16 de octubre de 2026",
@@ -22142,42 +22199,6 @@
         }
       ],
       "comentario": null,
-      "anio": 2026,
-      "mes": 9,
-      "fecha_iso": "2026-09-22"
-    },
-    {
-      "indicator": "IOAE",
-      "program": "Indicador Oportuno de la Actividad Económica. Cifras preliminares",
-      "product": "Indicador Oportuno de la Actividad Económica",
-      "publication_date": "2026-09-22",
-      "publication_date_display": "22 de septiembre de 2026",
-      "reference_period": "Agosto de 2026",
-      "frequency": "Mensual",
-      "status": "publicado",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Actividad económica",
-      "sigla": "IOAE",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_09.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_09.pdf",
-          "label": "Boletín PDF",
-          "size": "0.25 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "word",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_09.docx",
-          "label": "Boletín Word",
-          "size": "0.23 MB"
-        }
-      ],
-      "comentario": "Incluye boletín de indicador. Estas fechas son preliminares, están sujetas al indicador de la actividad industrial de los Estados Unidos cuyo calendario de publicación para 2026 aún no está disponible.",
       "anio": 2026,
       "mes": 9,
       "fecha_iso": "2026-09-22"
