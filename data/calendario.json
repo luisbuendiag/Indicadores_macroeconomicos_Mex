@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-10-22T22:16:27+00:00",
-  "as_of": "2026-10-22",
+  "generated_at": "2026-10-23T12:33:21+00:00",
+  "as_of": "2026-10-23",
   "fuente": "Calendario oficial de difusión",
   "sources": {
     "INEGI Sala de Prensa": {
       "status": "ok",
       "count": 1489,
       "message": "1489 eventos consultados del INEGI",
-      "consulted_at": "2026-10-22",
+      "consulted_at": "2026-10-23",
       "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/"
     },
     "Banco de México calendario": {
       "status": "ok",
       "count": 180,
       "message": "180 eventos consultados de Banxico",
-      "consulted_at": "2026-10-22",
+      "consulted_at": "2026-10-23",
       "url": "https://www.banxico.org.mx/publicaciones-y-prensa/calendario-de-publicaciones-banco-de-mexico/"
     },
     "Secretaría de Economía (manual)": {
@@ -15486,20 +15486,34 @@
       "publication_date_display": "23 de octubre de 2026",
       "reference_period": "Agosto de 2026",
       "frequency": "Mensual",
-      "status": "próximo",
+      "status": "publicado",
       "source": "INEGI Sala de Prensa",
       "institution": "INEGI",
       "category": "Actividad económica",
       "sigla": "IGAE",
       "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+          "label": "Boletín PDF",
+          "size": "0.27 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.docx",
+          "label": "Boletín Word",
+          "size": "0.17 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.03 MB"
         }
       ],
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
@@ -20874,35 +20888,6 @@
   ],
   "upcoming": [
     {
-      "indicator": "IGAE",
-      "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018. Cifras preliminares",
-      "product": "Indicador Global de la Actividad Económica",
-      "publication_date": "2026-10-23",
-      "publication_date_display": "23 de octubre de 2026",
-      "reference_period": "Agosto de 2026",
-      "frequency": "Mensual",
-      "status": "próximo",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Actividad económica",
-      "sigla": "IGAE",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 10,
-      "fecha_iso": "2026-10-23"
-    },
-    {
       "indicator": "BCMM",
       "program": "Balanza Comercial de Mercancías de México. Información oportuna. Cifras preliminares",
       "product": "Balanza Comercial de Mercancías de México",
@@ -21452,9 +21437,81 @@
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-23"
+    },
+    {
+      "indicator": "RESERVAS",
+      "program": "Estado de cuenta del Banco de México",
+      "product": "Estado de cuenta del Banco de México",
+      "publication_date": "2026-11-24",
+      "publication_date_display": "24 de noviembre de 2026",
+      "reference_period": "20 de noviembre de 2026",
+      "frequency": "Semanal",
+      "status": "próximo",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Financiero",
+      "sigla": "RESERVAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-24"
     }
   ],
   "recent": [
+    {
+      "indicator": "IGAE",
+      "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018. Cifras preliminares",
+      "product": "Indicador Global de la Actividad Económica",
+      "publication_date": "2026-10-23",
+      "publication_date_display": "23 de octubre de 2026",
+      "reference_period": "Agosto de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IGAE",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+          "label": "Boletín PDF",
+          "size": "0.27 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.docx",
+          "label": "Boletín Word",
+          "size": "0.17 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.03 MB"
+        }
+      ],
+      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 10,
+      "fecha_iso": "2026-10-23"
+    },
     {
       "indicator": "DESOCUP",
       "program": "Encuesta Nacional de Ocupación y Empleo (ENOE), población de 15 años y más de edad. Indicadores de Ocupación y Empleo. Cifras definitivas",
@@ -22173,35 +22230,6 @@
       "anio": 2026,
       "mes": 9,
       "fecha_iso": "2026-09-24"
-    },
-    {
-      "indicator": "RESERVAS",
-      "program": "Estado de cuenta del Banco de México de la semana al 18 de septiembre de 2026",
-      "product": "Estado de cuenta del Banco de México",
-      "publication_date": "2026-09-22",
-      "publication_date_display": "22 de septiembre de 2026",
-      "reference_period": "18 de septiembre de 2026",
-      "frequency": "Semanal",
-      "status": "publicado",
-      "source": "Banco de México calendario",
-      "institution": "Banco de México",
-      "category": "Financiero",
-      "sigla": "RESERVAS",
-      "type": "event",
-      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{E5B01EDB-929C-C7EC-4698-597F375834BB}.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{E5B01EDB-929C-C7EC-4698-597F375834BB}.pdf",
-          "label": "Estado de cuenta del Banco de México de la semana al 18 de septiembre de 2026",
-          "size": null
-        }
-      ],
-      "comentario": null,
-      "anio": 2026,
-      "mes": 9,
-      "fecha_iso": "2026-09-22"
     }
   ],
   "categories": {
