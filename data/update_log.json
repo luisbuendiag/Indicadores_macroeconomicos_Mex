@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-10-27T13:01:10+00:00",
+  "started_at": "2026-10-27T18:36:02+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -175,9 +175,9 @@
     "banxico_sie: actualizado IMFBCF (última obs Jul 26, sin cambio de periodo)",
     "banxico_sie: actualizado IMFBCF (última obs Jul 26, sin cambio de periodo)",
     "banxico_sie: actualizado IMFBCF (última obs Jul 26, sin cambio de periodo)",
-    "banxico: actualizado TIPOCAMBIO (última obs 2026-10-26, sin cambio de periodo)",
-    "banxico: actualizado TASA (última obs 2026-10-27, dato nuevo)",
-    "banxico: actualizado RESERVAS (última obs 2026-10-16, sin cambio de periodo)",
+    "banxico: actualizado TIPOCAMBIO (última obs 2026-10-27, dato nuevo)",
+    "banxico: actualizado TASA (última obs 2026-10-27, sin cambio de periodo)",
+    "banxico: actualizado RESERVAS (última obs 2026-10-23, dato nuevo)",
     "inegi: actualizado PIB (última obs 2T-26, dato nuevo)",
     "inegi: actualizado PIBSEC (última obs 2T-26, sin cambio de periodo)",
     "inegi: actualizado PIBSEC (última obs 2T-26, sin cambio de periodo)",
@@ -243,32 +243,32 @@
     "inegi: actualizado EMOE (última obs Sep 26, sin cambio de periodo)",
     "inegi: actualizado EMOE (última obs Sep 26, sin cambio de periodo)",
     "inegi: actualizado EMOE (última obs Sep 26, sin cambio de periodo)",
-    "inegi: actualizado BCMM (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado BCMM (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado BCMM (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado BCMM (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado BCMM (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado BCMM (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado BCMM (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado BCMM (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado BCMM (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado BCMM (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado BCMM (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado BCMM (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado BCMM (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado BCMM (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado BCMM (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado BCMM (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado BCMM (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado BCMM (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado BCMM (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado BCMM (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado BCMM (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado BCMM (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado BCMM (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado BCMM (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado BCMM (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado BCMM (última obs Sep 26, dato nuevo)",
+    "inegi: actualizado BCMM (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado BCMM (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado BCMM (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado BCMM (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado BCMM (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado BCMM (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado BCMM (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado BCMM (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado BCMM (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado BCMM (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado BCMM (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado BCMM (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado BCMM (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado BCMM (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado BCMM (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado BCMM (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado BCMM (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado BCMM (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado BCMM (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado BCMM (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado BCMM (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado BCMM (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado BCMM (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado BCMM (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado BCMM (última obs Sep 26, sin cambio de periodo)",
+    "inegi: actualizado BCMM (última obs Sep 26, sin cambio de periodo)",
     "inegi_inpc: actualizado INPC (última obs Sep 26, sin cambio de periodo)",
     "inegi_inpc: actualizado INPC (última obs Sep 26, sin cambio de periodo)",
     "inegi_inpc: actualizado INPC (última obs Sep 26, sin cambio de periodo)",
@@ -325,8 +325,7 @@
     "IGAE: variaciones anuales calculadas para 1568 celdas",
     "IMAI: esquema de 14 columnas aplicado; acumulado calculado para 0 periodos",
     "BCMM: saldo derivado para 561 periodos",
-    "BCMM: variaciones anuales calculadas para 1 celdas",
-    "BCMM: acumulados ene-mes calculados para 560 periodos",
+    "BCMM: acumulados ene-mes calculados para 561 periodos",
     "DESOCUP: población ocupada en millones calculada para 34 periodos",
     "DESOCUP: etiquetas trimestrales agregadas a 34 observaciones",
     "IOAE: 67 observaciones con IGAE observado anual",
@@ -354,7 +353,7 @@
     "frescura: BCMM -> ACTUALIZADO",
     "frescura: INPP -> ACTUALIZADO",
     "frescura: SIC -> ACTUALIZADO",
-    "meta: last_update_ct=2026-10-27T07:08:33-06:00",
+    "meta: last_update_ct=2026-10-27T12:41:55-06:00",
     "notas: 14 vigentes (0 provisionadas desde machote)"
   ],
   "consultas": [
@@ -842,12 +841,12 @@
       "fuente": "banxico",
       "indicador": "TIPOCAMBIO",
       "serie": "SF43718",
-      "observaciones": 2218,
-      "ultima_observacion": "2026-10-26",
-      "ultimo_valor": 18.5798,
+      "observaciones": 2219,
+      "ultima_observacion": "2026-10-27",
+      "ultimo_valor": 18.6525,
       "observacion_previa": "2026-10-26",
       "actualizacion_fuente": null,
-      "dato_nuevo": false,
+      "dato_nuevo": true,
       "resultado": "consulta válida"
     },
     {
@@ -857,21 +856,21 @@
       "observaciones": 3210,
       "ultima_observacion": "2026-10-27",
       "ultimo_valor": 6.5,
-      "observacion_previa": "2026-10-26",
+      "observacion_previa": "2026-10-27",
       "actualizacion_fuente": null,
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
       "fuente": "banxico",
       "indicador": "RESERVAS",
       "serie": "SF43707",
-      "observaciones": 459,
-      "ultima_observacion": "2026-10-16",
-      "ultimo_valor": 257076.5,
+      "observaciones": 460,
+      "ultima_observacion": "2026-10-23",
+      "ultimo_valor": 257015.6,
       "observacion_previa": "2026-10-16",
       "actualizacion_fuente": null,
-      "dato_nuevo": false,
+      "dato_nuevo": true,
       "resultado": "consulta válida"
     },
     {
@@ -1661,9 +1660,9 @@
       "observaciones": 561,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 77796.636,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "27/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1673,9 +1672,9 @@
       "observaciones": 561,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 78402.714,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "27/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1685,9 +1684,9 @@
       "observaciones": 213,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 77796.636,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "27/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1697,9 +1696,9 @@
       "observaciones": 213,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 78402.714,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "27/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1709,9 +1708,9 @@
       "observaciones": 213,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 0.3793,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "27/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1721,9 +1720,9 @@
       "observaciones": 213,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 0.3314,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "27/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1733,9 +1732,9 @@
       "observaciones": 213,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 1803.223,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "27/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1745,9 +1744,9 @@
       "observaciones": 213,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 5157.49,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "27/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1757,9 +1756,9 @@
       "observaciones": 213,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 75993.412,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "27/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1769,9 +1768,9 @@
       "observaciones": 213,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 73245.224,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "27/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1781,9 +1780,9 @@
       "observaciones": 213,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 0.0963,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "27/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1793,9 +1792,9 @@
       "observaciones": 213,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 0.3096,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "27/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1805,9 +1804,9 @@
       "observaciones": 213,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 0.3878,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "27/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1817,9 +1816,9 @@
       "observaciones": 213,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 0.333,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "27/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1829,9 +1828,9 @@
       "observaciones": 213,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 9822.622,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "27/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1841,9 +1840,9 @@
       "observaciones": 213,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 63103.272,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "27/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1853,9 +1852,9 @@
       "observaciones": 213,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 5476.821,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "27/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1865,9 +1864,9 @@
       "observaciones": 213,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 0.1144,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "27/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1877,9 +1876,9 @@
       "observaciones": 213,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 0.3882,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "27/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1889,9 +1888,9 @@
       "observaciones": 213,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 0.1866,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "27/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1901,9 +1900,9 @@
       "observaciones": 213,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 72772.868,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "27/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1913,9 +1912,9 @@
       "observaciones": 213,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 1285.858,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "27/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1925,9 +1924,9 @@
       "observaciones": 213,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 1934.686,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "27/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1937,9 +1936,9 @@
       "observaciones": 213,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 0.3896,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "27/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1949,9 +1948,9 @@
       "observaciones": 213,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 0.0464,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "27/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -1961,9 +1960,9 @@
       "observaciones": 213,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 0.6676,
-      "observacion_previa": "Ago 26",
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": "27/10/2026 12:00:00 a. m.",
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -2389,5 +2388,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-10-27T13:08:35+00:00"
+  "finished_at": "2026-10-27T18:41:56+00:00"
 }
