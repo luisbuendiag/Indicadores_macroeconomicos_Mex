@@ -772,7 +772,7 @@ function renderIndicatorView(key) {
     );
   } else if (ind.key === "IMOAM") {
     const v = ind.observations[k.lastI].values;
-    mini.append(
+    mini = el("div", { class: "mini-kpis" },
       el("div", { class: "mini" }, el("div", { class: "lbl" }, "Índice estimado"), el("div", { class: "num" }, fmtVal(v[0], "idx")), el("div", { class: "sub" }, "Base 2018=100; cifras originales")),
       el("div", { class: "mini" }, el("div", { class: "lbl" }, "Variación anual estimada"), el("div", { class: "num" }, fmtVal(v[3], "pct-frac")), el("div", { class: "sub" }, "Respecto al mismo mes del año anterior")),
       el("div", { class: "mini" }, el("div", { class: "lbl" }, "IC 95% del índice"), el("div", { class: "num" }, `${fmtVal(v[1], "idx")} a ${fmtVal(v[2], "idx")}`), el("div", { class: "sub" }, "Estimación experimental")),
