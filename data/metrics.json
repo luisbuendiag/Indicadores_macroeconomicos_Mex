@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-28T18:44:52+00:00",
-  "last_update_ct": "2026-10-28T07:56:48-06:00",
+  "generated_at": "2026-10-28T21:26:24+00:00",
+  "last_update_ct": "2026-10-28T12:49:36-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -516,13 +516,13 @@
     },
     "IGAE": {
       "kpi": {
-        "assessment": "neutral",
-        "dir": "flat",
+        "assessment": "favorable",
+        "dir": "up",
         "ultimoFmt": "108.3",
         "ultimoRaw": 108.317094,
         "ultimoP": "Ago 26",
-        "varText": "—",
-        "varMag": null,
+        "varText": "+0.6%",
+        "varMag": 0.6,
         "pos": true,
         "varColor": "#1e5b4f",
         "varLabel": "Var. mensual desest.",
@@ -1345,7 +1345,7 @@
           "Jul 26",
           "Ago 26"
         ],
-        "semaforo": "neutral",
+        "semaforo": "bueno",
         "yoyText": "+3.3%",
         "yoyLabel": "Var. anual original"
       },
@@ -1362,13 +1362,13 @@
         "label": "Var. anual original"
       },
       "resumen": [
-        "En agosto de 2026, el Indicador Global de la Actividad Económica se ubicó en 108.3 puntos (índice base 2018=100). El valor de var. mensual desest. fue de — frente al mes previo.",
+        "En agosto de 2026, el Indicador Global de la Actividad Económica se ubicó en 108.3 puntos (índice base 2018=100). El valor de var. mensual desest. fue de +0.6% frente al mes previo.",
         "La var. anual original se situó en +3.3%, lo que refleja la comparación contra agosto de 2026 del año previo.",
         "En la serie mostrada, el indicador oscila entre un máximo de 109.3 puntos (julio de 2026) y un mínimo de 53.9 puntos (abril de 1995). El último dato se ubica dentro del rango observado en el periodo mostrado.",
-        "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
+        "La variación se clasifica como favorable según la lectura económica del indicador."
       ],
       "analysis": [
-        "En agosto de 2026, el Indicador Global de la Actividad Económica se ubicó en 108.3 puntos (índice base 2018=100), con una variación mensual desestacionalizada de — frente al mes previo. La variación mensual publicada por el INEGI muestra que el indicador se mantuvo sin cambio respecto del mes previo. El nivel mostrado es la serie original; la variación mensual se calcula sobre cifras desestacionalizadas.",
+        "En agosto de 2026, el Indicador Global de la Actividad Económica se ubicó en 108.3 puntos (índice base 2018=100), con una variación mensual desestacionalizada de +0.60% frente al mes previo. La variación mensual publicada por el INEGI muestra que el indicador aumentó respecto del mes previo. El nivel mostrado es la serie original; la variación mensual se calcula sobre cifras desestacionalizadas.",
         "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 109.3 puntos (julio de 2026) y un mínimo de 53.9 puntos (abril de 1995). El resultado más reciente se ubicó por encima del promedio del periodo mostrado. El último dato se mantuvo cercano al del inicio del periodo mostrado."
       ]
     },
@@ -2206,7 +2206,7 @@
         "semaforo": "bueno",
         "yoyText": "+3.6%",
         "yoyLabel": "Var. anual desest.",
-        "acumRaw": 0.008415,
+        "acumRaw": 0.008,
         "acumText": "+0.8%",
         "acumLabel": "Acumulado ene-mes",
         "cards": [
@@ -2270,15 +2270,15 @@
     },
     "CONSUMO": {
       "kpi": {
-        "assessment": "adverso",
-        "dir": "down",
-        "ultimoFmt": "113.4",
-        "ultimoRaw": 113.4,
-        "ultimoP": "Jun 26",
-        "varText": "-0.4%",
-        "varMag": -0.4,
-        "pos": false,
-        "varColor": "#9b2247",
+        "assessment": "neutral",
+        "dir": "flat",
+        "ultimoFmt": "113.2",
+        "ultimoRaw": 113.2,
+        "ultimoP": "Jul 26",
+        "varText": "0.0%",
+        "varMag": 0.0,
+        "pos": true,
+        "varColor": "#1e5b4f",
         "varLabel": "Var. mensual desest.",
         "maxFmt": "114.4",
         "maxRaw": 114.4,
@@ -2286,7 +2286,7 @@
         "minFmt": "108.6",
         "minRaw": 108.6,
         "minP": "Ene 25",
-        "lastI": 20,
+        "lastI": 21,
         "series": [
           110.5,
           111.0,
@@ -2308,7 +2308,8 @@
           113.6,
           113.7,
           114.0,
-          113.4
+          113.4,
+          113.2
         ],
         "periods": [
           "Oct 24",
@@ -2331,26 +2332,27 @@
           "Mar 26",
           "Abr 26",
           "May 26",
-          "Jun 26"
+          "Jun 26",
+          "Jul 26"
         ],
-        "semaforo": "malo",
-        "yoyText": "+1.6%",
+        "semaforo": "estable",
+        "yoyText": "+1.1%",
         "yoyLabel": "Var. anual desest."
       },
       "analysis": [
-        "En junio de 2026, el consumo privado se ubicó en 113.4 puntos (índice base 2018=100), con una variación mensual desestacionalizada de -0.40% frente al mes previo. La variación mensual publicada por el INEGI muestra que el indicador disminuyó respecto del mes previo. El nivel mostrado es la serie original; la variación mensual se calcula sobre cifras desestacionalizadas.",
+        "En julio de 2026, el consumo privado se ubicó en 113.2 puntos (índice base 2018=100), con una variación mensual desestacionalizada de 0.00% frente al mes previo. La variación mensual publicada por el INEGI muestra que el indicador se mantuvo prácticamente sin cambio respecto del mes previo. El nivel mostrado es la serie original; la variación mensual se calcula sobre cifras desestacionalizadas.",
         "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 114.4 puntos (diciembre de 2025) y un mínimo de 108.6 puntos (enero de 2025). El resultado más reciente se ubicó por encima del promedio del periodo mostrado. El último dato se mantuvo cercano al del inicio del periodo mostrado."
       ],
       "resumen": [
-        "En junio de 2026, el consumo privado se ubicó en 113.4 puntos (índice base 2018=100). El valor de var. mensual desest. fue de -0.4% frente al mes previo.",
-        "La var. anual desest. se situó en +1.6%, lo que refleja la comparación contra junio de 2026 del año previo.",
+        "En julio de 2026, el consumo privado se ubicó en 113.2 puntos (índice base 2018=100). El valor de var. mensual desest. fue de 0.0% frente al mes previo.",
+        "La var. anual desest. se situó en +1.1%, lo que refleja la comparación contra julio de 2026 del año previo.",
         "En la serie mostrada, el indicador oscila entre un máximo de 114.4 puntos (diciembre de 2025) y un mínimo de 108.6 puntos (enero de 2025). El último dato se ubica dentro del rango observado en el periodo mostrado.",
-        "La variación se clasifica como adversa según la lectura económica del indicador."
+        "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
       ],
       "annualVar": {
-        "mag": 1.6,
+        "mag": 1.0999999999999999,
         "pos": true,
-        "text": "+1.6%",
+        "text": "+1.1%",
         "label": "Var. anual desest."
       }
     },
@@ -2956,7 +2958,7 @@
         "ultimoRaw": 3.45,
         "ultimoP": "Sep 26",
         "varText": "+0.2 puntos porcentuales",
-        "varMag": 0.18805800000000028,
+        "varMag": 0.1900000000000004,
         "pos": true,
         "varColor": "#1e5b4f",
         "varLabel": "Cambio de la inflación anual respecto al mes previo",
@@ -3060,18 +3062,18 @@
           4.317429,
           3.512423,
           3.568777,
-          3.760288,
-          3.566521,
-          3.799191,
-          3.691944,
-          3.791301,
-          4.023038,
-          4.586774,
-          4.448503,
-          3.938948,
-          3.365977,
-          3.11763,
-          3.261942,
+          3.76,
+          3.57,
+          3.8,
+          3.69,
+          3.79,
+          4.02,
+          4.59,
+          4.45,
+          3.94,
+          3.37,
+          3.12,
+          3.26,
           3.45
         ],
         "periods": [
@@ -3201,16 +3203,16 @@
         "assessment": "favorable",
         "dir": "up",
         "ultimoFmt": "110.5",
-        "ultimoRaw": 110.49,
+        "ultimoRaw": 110.5,
         "ultimoP": "Jul 26",
         "varText": "+1.4%",
-        "varMag": 1.367,
+        "varMag": 1.4000000000000001,
         "pos": true,
         "varColor": "#1e5b4f",
         "varLabel": "Var. mensual desest.",
-        "maxFmt": "113.1",
-        "maxRaw": 113.14,
-        "maxP": "Jul 24",
+        "maxFmt": "113.7",
+        "maxRaw": 113.7,
+        "maxP": "Nov 24",
         "minFmt": "38.4",
         "minRaw": 38.42,
         "minP": "May 95",
@@ -3597,28 +3599,28 @@
           113.14,
           112.34,
           110.86,
-          109.22,
-          109.72,
-          106.05,
-          105.18,
-          106.05,
-          106.28,
-          102.5,
-          105.0,
-          103.03,
-          104.2,
-          101.76,
-          101.9,
-          102.91,
-          103.53,
-          104.02,
-          103.1,
-          102.79,
-          103.49,
-          107.99,
-          107.56,
-          109.0,
-          110.49
+          113.1,
+          113.7,
+          109.7,
+          107.4,
+          107.3,
+          107.9,
+          105.6,
+          106.8,
+          105.6,
+          107.5,
+          103.9,
+          101.0,
+          102.2,
+          102.8,
+          103.6,
+          102.3,
+          101.1,
+          102.0,
+          107.4,
+          107.1,
+          108.7,
+          110.5
         ],
         "periods": [
           "Ene 93",
@@ -4028,7 +4030,7 @@
         "semaforo": "bueno",
         "yoyText": "+6.0%",
         "yoyLabel": "Var. anual desest.",
-        "acumRaw": 0.0165,
+        "acumRaw": 0.017,
         "acumText": "+1.7%",
         "acumLabel": "Acumulado ene-mes",
         "cards": [
@@ -4036,18 +4038,18 @@
             "name": "Construcción",
             "nivelRaw": 108.1,
             "nivelText": "108.1",
-            "momRaw": -0.015303,
+            "momRaw": -0.015,
             "momText": "-1.5%",
-            "yoyRaw": 0.068921,
+            "yoyRaw": 0.069,
             "yoyText": "6.9%"
           },
           {
             "name": "Maquinaria y equipo",
             "nivelRaw": 112.52,
             "nivelText": "112.5",
-            "momRaw": 0.044948,
+            "momRaw": 0.045,
             "momText": "4.5%",
-            "yoyRaw": 0.049235,
+            "yoyRaw": 0.049,
             "yoyText": "4.9%"
           },
           {
@@ -4056,7 +4058,7 @@
             "nivelText": "103.8",
             "momRaw": null,
             "momText": "—",
-            "yoyRaw": 0.09245,
+            "yoyRaw": 0.092,
             "yoyText": "9.2%"
           },
           {
@@ -4065,7 +4067,7 @@
             "nivelText": "111.2",
             "momRaw": null,
             "momText": "—",
-            "yoyRaw": 0.040131,
+            "yoyRaw": 0.04,
             "yoyText": "4.0%"
           },
           {
@@ -4074,7 +4076,7 @@
             "nivelText": "95.2",
             "momRaw": null,
             "momText": "—",
-            "yoyRaw": -0.030932,
+            "yoyRaw": -0.031,
             "yoyText": "-3.1%"
           },
           {
@@ -4083,7 +4085,7 @@
             "nivelText": "93.0",
             "momRaw": null,
             "momText": "—",
-            "yoyRaw": -0.007579,
+            "yoyRaw": -0.008,
             "yoyText": "-0.8%"
           },
           {
@@ -4092,7 +4094,7 @@
             "nivelText": "97.9",
             "momRaw": null,
             "momText": "—",
-            "yoyRaw": -0.05338,
+            "yoyRaw": -0.053,
             "yoyText": "-5.3%"
           },
           {
@@ -4101,7 +4103,7 @@
             "nivelText": "125.1",
             "momRaw": null,
             "momText": "—",
-            "yoyRaw": 0.098823,
+            "yoyRaw": 0.099,
             "yoyText": "9.9%"
           },
           {
@@ -4110,7 +4112,7 @@
             "nivelText": "143.5",
             "momRaw": null,
             "momText": "—",
-            "yoyRaw": -0.079351,
+            "yoyRaw": -0.079,
             "yoyText": "-7.9%"
           },
           {
@@ -4119,25 +4121,25 @@
             "nivelText": "123.0",
             "momRaw": null,
             "momText": "—",
-            "yoyRaw": 0.139787,
+            "yoyRaw": 0.14,
             "yoyText": "14.0%"
           }
         ]
       },
       "yoy": {
-        "mag": 6.0365,
+        "mag": 6.0,
         "pos": true,
         "text": "+6.0%",
         "label": "Var. anual desest."
       },
       "annualVar": {
-        "mag": 6.0365,
+        "mag": 6.0,
         "pos": true,
         "text": "+6.0%",
         "label": "Var. anual desest."
       },
       "resumen": [
-        "En julio de 2026, la formación bruta de capital fijo se ubicó en 110.49 (índice base 2018=100). La variación mensual desestacionalizada fue de +1.4% respecto al mes previo, por lo que el indicador avanzó.",
+        "En julio de 2026, la formación bruta de capital fijo se ubicó en 110.5 (índice base 2018=100). La variación mensual desestacionalizada fue de +1.4% respecto al mes previo, por lo que el indicador avanzó.",
         "A tasa anual, el IMFBCF avanzó +6.0%.",
         "El acumulado ene-jul, en cifras originales, fue de +1.7%.",
         "A tasa anual, Maquinaria, equipo y otros importados (14.0%) y Maquinaria y equipo importado (9.9%) avanzaron, mientras que Equipo de transporte nacional (-0.8%) y Maquinaria y equipo nacional (-3.1%) retrocedieron."
@@ -4148,9 +4150,9 @@
       "kpi": {
         "assessment": "favorable",
         "dir": "up",
-        "ultimoFmt": "2.7%",
-        "ultimoRaw": 0.027,
-        "ultimoP": "Jul 26",
+        "ultimoFmt": "3.7%",
+        "ultimoRaw": 0.037,
+        "ultimoP": "Sep 26",
         "varText": "+0.1%",
         "varMag": 0.1,
         "pos": true,
@@ -4162,7 +4164,7 @@
         "minFmt": "-4.0%",
         "minRaw": -0.04,
         "minP": "Ene 21",
-        "lastI": 66,
+        "lastI": 68,
         "series": [
           -0.04,
           -0.04,
@@ -4230,7 +4232,9 @@
           0.003,
           0.011,
           0.017,
-          0.027
+          0.027,
+          0.025,
+          0.037
         ],
         "periods": [
           "Ene 21",
@@ -4299,52 +4303,43 @@
           "Abr 26",
           "May 26",
           "Jun 26",
-          "Jul 26"
+          "Jul 26",
+          "Ago 26",
+          "Sep 26"
         ],
         "semaforo": "bueno",
-        "icWidth": 1.7999999999999998,
-        "icWidthText": "±1.80 pp",
+        "icWidth": 2.3000000000000003,
+        "icWidthText": "±2.30 pp",
         "monthlyText": "+0.1%",
-        "observedRaw": 0.03408,
-        "observedText": "+3.4%",
-        "errorRaw": 0.0070799999999999995,
-        "errorText": "+0.708 p.p.",
-        "errorPP": 0.708,
-        "latestObservedP": "Jul 26",
-        "latestObservedText": "+3.4%",
-        "latestErrorPP": 0.708,
-        "latestErrorText": "+0.708 p.p.",
-        "rmseN": 67,
-        "rmseText": "1.88 pp",
-        "yoyText": "+3.4%",
-        "yoyLabel": "IGAE observado"
+        "latestObservedP": "Ago 26",
+        "latestObservedText": "+3.3%",
+        "latestErrorPP": 0.8334999999999995,
+        "latestErrorText": "+0.833 p.p.",
+        "rmseN": 68,
+        "rmseText": "1.87 pp",
+        "yoyText": "—",
+        "yoyLabel": "—"
       },
       "analysis": [
-        "En julio de 2026, el indicador oportuno de la actividad económica se ubicó en 2.7% (variación anual estimada con intervalo de confianza al 95%), con un variación mensual estimada marginal de +0.10% frente al mes previo. Este resultado refleja una ligera desaceleración respecto a junio de 2026 (+0.20%), y deja al indicador por encima del promedio del periodo mostrado de 2.6%.",
+        "En septiembre de 2026, el indicador oportuno de la actividad económica se ubicó en 3.7% (variación anual estimada con intervalo de confianza al 95%), con un variación mensual estimada marginal de +0.10% frente al mes previo. Este resultado refleja un ritmo de expansión estable respecto a agosto de 2026 (+0.10%), y deja al indicador por encima del promedio del periodo mostrado de 2.6%.",
         "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 24.8% (mayo de 2021) y un mínimo de -4.0% (enero de 2021). El resultado más reciente se ubicó por encima del promedio del periodo mostrado. El último dato fue superior al del inicio del periodo mostrado."
       ],
       "resumen": [
-        "En julio de 2026, el indicador oportuno de la actividad económica se ubicó en 2.7% (variación anual estimada con intervalo de confianza al 95%). El valor de var. mensual estimada fue de +0.1% frente al mes previo.",
-        "La igae observado se situó en +3.4%, lo que refleja la comparación contra julio de 2026 del año previo.",
+        "En septiembre de 2026, el indicador oportuno de la actividad económica se ubicó en 3.7% (variación anual estimada con intervalo de confianza al 95%). El valor de var. mensual estimada fue de +0.1% frente al mes previo.",
         "En la serie mostrada, el indicador oscila entre un máximo de 24.8% (mayo de 2021) y un mínimo de -4.0% (enero de 2021). El último dato se ubica dentro del rango observado en el periodo mostrado.",
         "La variación se clasifica como favorable según la lectura económica del indicador."
       ],
-      "annualVar": {
-        "mag": 3.408,
-        "pos": true,
-        "text": "+3.4%",
-        "label": "IGAE observado"
-      }
+      "annualVar": null
     },
     "EMIM": {
       "kpi": {
-        "assessment": "neutral",
-        "dir": "flat",
+        "assessment": "favorable",
+        "dir": "up",
         "ultimoFmt": "113.7",
         "ultimoRaw": 113.7,
         "ultimoP": "Ago 26",
-        "varText": "—",
-        "varMag": null,
+        "varText": "+1.7%",
+        "varMag": 1.7000000000000002,
         "pos": true,
         "varColor": "#1e5b4f",
         "varLabel": "Var. mensual desest.",
@@ -4831,8 +4826,8 @@
           "Jul 26",
           "Ago 26"
         ],
-        "semaforo": "neutral",
-        "yoyText": "—",
+        "semaforo": "bueno",
+        "yoyText": "+4.1%",
         "yoyLabel": "Var. anual desest.",
         "cards": [
           {
@@ -4847,11 +4842,11 @@
             "origYoyRaw": 0.040256,
             "origYoyText": "+4.0%",
             "desestMomCol": 3,
-            "desestMomRaw": null,
-            "desestMomText": "—",
+            "desestMomRaw": 0.017,
+            "desestMomText": "+1.7%",
             "desestYoyCol": 4,
-            "desestYoyRaw": null,
-            "desestYoyText": "—"
+            "desestYoyRaw": 0.041,
+            "desestYoyText": "+4.1%"
           },
           {
             "name": "Personal ocupado",
@@ -4865,11 +4860,11 @@
             "origYoyRaw": -0.010081,
             "origYoyText": "-1.0%",
             "desestMomCol": 8,
-            "desestMomRaw": null,
-            "desestMomText": "—",
+            "desestMomRaw": -0.001,
+            "desestMomText": "-0.1%",
             "desestYoyCol": 9,
-            "desestYoyRaw": null,
-            "desestYoyText": "—"
+            "desestYoyRaw": -0.01,
+            "desestYoyText": "-1.0%"
           },
           {
             "name": "Horas trabajadas",
@@ -4883,17 +4878,17 @@
             "origYoyRaw": -0.010152,
             "origYoyText": "-1.0%",
             "desestMomCol": 13,
-            "desestMomRaw": null,
-            "desestMomText": "—",
+            "desestMomRaw": 0.0,
+            "desestMomText": "0.0%",
             "desestYoyCol": 14,
-            "desestYoyRaw": null,
-            "desestYoyText": "—"
+            "desestYoyRaw": -0.006,
+            "desestYoyText": "-0.6%"
           },
           {
             "name": "Remuneraciones medias reales",
             "idxCol": 15,
-            "idxRaw": null,
-            "idxText": "—",
+            "idxRaw": 119.1,
+            "idxText": "119.1",
             "origMomCol": null,
             "origMomRaw": null,
             "origMomText": "—",
@@ -4901,23 +4896,34 @@
             "origYoyRaw": null,
             "origYoyText": "—",
             "desestMomCol": 16,
-            "desestMomRaw": null,
-            "desestMomText": "—",
+            "desestMomRaw": -0.002,
+            "desestMomText": "-0.2%",
             "desestYoyCol": 17,
-            "desestYoyRaw": null,
-            "desestYoyText": "—"
+            "desestYoyRaw": 0.027,
+            "desestYoyText": "+2.7%"
           }
         ]
       },
-      "yoy": null,
-      "annualVar": null,
+      "yoy": {
+        "mag": 4.1000000000000005,
+        "pos": true,
+        "text": "+4.1%",
+        "label": "Var. anual desest."
+      },
+      "annualVar": {
+        "mag": 4.1000000000000005,
+        "pos": true,
+        "text": "+4.1%",
+        "label": "Var. anual desest."
+      },
       "resumen": [
-        "En agosto de 2026, el índice de producción se ubicó en 113.7 puntos. La variación mensual desestacionalizada fue — (anual original: +4.0%).",
-        "En el lado laboral, el personal ocupado 98.2 puntos (-1.0% anual original) y las horas trabajadas 97.5 puntos (-1.0% anual original).",
-        "A nivel subsectorial, los mayores dinamismos anuales fueron Fabricación de equipo de computación (+6.8%), Industria química (+5.1%), Fabricación de maquinaria (+3.8%); los mayores retrocesos: Fabricación de productos derivados del petróleo (-5.0%), Fabricación de insumos textiles (-3.9%), Fabricación de muebles (-3.9%)."
+        "En agosto de 2026, el índice de producción se ubicó en 113.7 puntos. La variación mensual desestacionalizada fue +1.7% y la anual desestacionalizada +4.1% (anual original: +4.0%).",
+        "En el lado laboral, el personal ocupado 98.2 puntos (-1.0% anual original, -1.0% desest.) y las horas trabajadas 97.5 puntos (-1.0% anual original, -0.6% desest.).",
+        "Las remuneraciones medias reales se ubicaron en 119.1 puntos, con variación anual desestacionalizada de +2.7%.",
+        "A nivel subsectorial, los mayores dinamismos anuales fueron Fabricación de productos derivados del petróleo (+23.5%), Fabricación de equipo de computación (+5.8%), Fabricación de maquinaria (+4.0%); los mayores retrocesos: Fabricación de muebles (-8.5%), Fabricación de prendas de vestir (-3.9%), Otras industrias manufactureras (-3.8%)."
       ],
       "analysis": [
-        "En agosto de 2026, la Encuesta Mensual de la Industria Manufacturera se ubicó en 113.7 puntos (índice base 2018=100), con una variación mensual desestacionalizada de — frente al mes previo. La variación mensual publicada por el INEGI muestra que el indicador se mantuvo sin cambio respecto del mes previo. El nivel mostrado es la serie original; la variación mensual se calcula sobre cifras desestacionalizadas.",
+        "En agosto de 2026, la Encuesta Mensual de la Industria Manufacturera se ubicó en 113.7 puntos (índice base 2018=100), con una variación mensual desestacionalizada de +1.70% frente al mes previo. La variación mensual publicada por el INEGI muestra que el indicador aumentó respecto del mes previo. El nivel mostrado es la serie original; la variación mensual se calcula sobre cifras desestacionalizadas.",
         "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 115.5 puntos (marzo de 2023) y un mínimo de 64.0 puntos (abril de 2020). El resultado más reciente se ubicó por encima del promedio del periodo mostrado. El último dato fue superior al del inicio del periodo mostrado. Esta comparación se realiza sobre la serie original, que incorpora efectos estacionales."
       ]
     },
