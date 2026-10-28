@@ -23,6 +23,7 @@
     "IOAE",
     "IGAE",
     "IMAI",
+    "IMOAM",
     "EMIM",
     "EMOE",
     "DESOCUP",
@@ -175526,6 +175527,461 @@
         "generated_from": "machote",
         "automatic": false
       }
+    },
+    "IMOAM": {
+      "key": "IMOAM",
+      "nombre": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "descripcion": "Estimación experimental anticipada del IMAI manufacturero, a partir de cifras originales (sin ajuste estacional). Publica índice base 2018=100 y variación anual estimada, con intervalos de confianza al 95%. No es una observación definitiva del IMAI ni de la EMIM.",
+      "frecuencia": "Mensual",
+      "unidad": "Índice 2018=100 y variación anual",
+      "ajuste_estacional": "Cifras originales; estimación experimental",
+      "grupo": "actividad",
+      "publicacion": "Según calendario oficial de difusión del INEGI",
+      "proximo": "Por confirmar con el calendario oficial",
+      "fuente": {
+        "nombre": "INEGI",
+        "link": "https://www.inegi.org.mx/investigacion/imoam/",
+        "metodo": "Boletines oficiales de prensa del INEGI (PDF)",
+        "serie": null
+      },
+      "columns": [
+        {
+          "label": "Índice estimado (2018=100)",
+          "index": 0,
+          "fmt": "idx"
+        },
+        {
+          "label": "IC95 inferior del índice",
+          "index": 1,
+          "fmt": "idx"
+        },
+        {
+          "label": "IC95 superior del índice",
+          "index": 2,
+          "fmt": "idx"
+        },
+        {
+          "label": "Variación anual estimada (%)",
+          "index": 3,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "IC95 inferior anual (%)",
+          "index": 4,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "IC95 superior anual (%)",
+          "index": 5,
+          "fmt": "pct-frac"
+        }
+      ],
+      "observations": [
+        {
+          "period": "Dic 24",
+          "values": [
+            98.6,
+            95.8,
+            101.5,
+            -0.004,
+            -0.032,
+            0.025
+          ],
+          "pub_date": "2025-01-24",
+          "caracter": "estimado"
+        },
+        {
+          "period": "Ene 25",
+          "values": [
+            105.1,
+            102.2,
+            108.2,
+            0.004,
+            -0.024,
+            0.033
+          ],
+          "pub_date": "2025-02-24",
+          "caracter": "estimado"
+        },
+        {
+          "period": "Feb 25",
+          "values": [
+            101.7,
+            98.9,
+            104.6,
+            -0.024,
+            -0.051,
+            0.004
+          ],
+          "pub_date": "2025-03-24",
+          "caracter": "estimado"
+        },
+        {
+          "period": "Mar 25",
+          "values": [
+            111.1,
+            107.9,
+            114.3,
+            0.035,
+            0.006,
+            0.065
+          ],
+          "pub_date": "2025-04-22",
+          "caracter": "estimado"
+        },
+        {
+          "period": "Abr 25",
+          "values": [
+            107.2,
+            104.2,
+            110.3,
+            -0.021,
+            -0.049,
+            0.007
+          ],
+          "pub_date": "2025-05-23",
+          "caracter": "estimado"
+        },
+        {
+          "period": "May 25",
+          "values": [
+            109.1,
+            105.9,
+            112.3,
+            0.004,
+            -0.025,
+            0.035
+          ],
+          "pub_date": "2025-06-23",
+          "caracter": "estimado"
+        },
+        {
+          "period": "Jun 25",
+          "values": [
+            108.4,
+            105.4,
+            111.5,
+            0.003,
+            -0.025,
+            0.032
+          ],
+          "pub_date": "2025-07-25",
+          "caracter": "estimado"
+        },
+        {
+          "period": "Jul 25",
+          "values": [
+            109.3,
+            106.3,
+            112.4,
+            0.006,
+            -0.022,
+            0.035
+          ],
+          "pub_date": "2025-08-25",
+          "caracter": "estimado"
+        },
+        {
+          "period": "Ago 25",
+          "values": [
+            108.2,
+            105.2,
+            111.3,
+            -0.023,
+            -0.05,
+            0.005
+          ],
+          "pub_date": "2025-09-23",
+          "caracter": "estimado"
+        },
+        {
+          "period": "Sep 25",
+          "values": [
+            106.0,
+            103.1,
+            109.1,
+            -0.013,
+            -0.04,
+            0.016
+          ],
+          "pub_date": "2025-10-24",
+          "caracter": "estimado"
+        },
+        {
+          "period": "Oct 25",
+          "values": [
+            111.3,
+            108.0,
+            114.6,
+            0.001,
+            -0.029,
+            0.031
+          ],
+          "pub_date": "2025-11-24",
+          "caracter": "estimado"
+        },
+        {
+          "period": "Nov 25",
+          "values": [
+            104.9,
+            101.8,
+            108.1,
+            -0.018,
+            -0.047,
+            0.012
+          ],
+          "pub_date": "2025-12-22",
+          "caracter": "estimado"
+        },
+        {
+          "period": "Dic 25",
+          "values": [
+            97.2,
+            94.4,
+            100.0,
+            -0.011,
+            -0.039,
+            0.018
+          ],
+          "pub_date": "2026-01-22",
+          "caracter": "estimado"
+        },
+        {
+          "period": "Ene 26",
+          "values": [
+            104.0,
+            101.0,
+            107.1,
+            0.001,
+            -0.027,
+            0.031
+          ],
+          "pub_date": "2026-02-20",
+          "caracter": "estimado"
+        },
+        {
+          "period": "Feb 26",
+          "values": [
+            99.3,
+            96.2,
+            102.5,
+            -0.046,
+            -0.076,
+            -0.015
+          ],
+          "pub_date": "2026-03-23",
+          "caracter": "estimado"
+        },
+        {
+          "period": "Mar 26",
+          "values": [
+            112.0,
+            108.7,
+            115.3,
+            0.01,
+            -0.019,
+            0.04
+          ],
+          "pub_date": "2026-04-22",
+          "caracter": "estimado"
+        },
+        {
+          "period": "Abr 26",
+          "values": [
+            107.9,
+            105.0,
+            110.9,
+            0.013,
+            -0.014,
+            0.042
+          ],
+          "pub_date": "2026-05-20",
+          "caracter": "estimado"
+        },
+        {
+          "period": "May 26",
+          "values": [
+            108.3,
+            105.2,
+            111.5,
+            -0.001,
+            -0.03,
+            0.028
+          ],
+          "pub_date": "2026-06-23",
+          "caracter": "estimado"
+        },
+        {
+          "period": "Jun 26",
+          "values": [
+            107.1,
+            104.2,
+            110.1,
+            -0.008,
+            -0.035,
+            0.02
+          ],
+          "pub_date": "2026-07-23",
+          "caracter": "estimado"
+        },
+        {
+          "period": "Jul 26",
+          "values": [
+            108.2,
+            105.2,
+            111.2,
+            0.02,
+            -0.008,
+            0.049
+          ],
+          "pub_date": "2026-08-21",
+          "caracter": "estimado"
+        },
+        {
+          "period": "Ago 26",
+          "values": [
+            108.0,
+            105.1,
+            111.1,
+            0.016,
+            -0.012,
+            0.044
+          ],
+          "pub_date": "2026-09-23",
+          "caracter": "estimado"
+        },
+        {
+          "period": "Sep 26",
+          "values": [
+            108.0,
+            105.1,
+            111.1,
+            0.019,
+            -0.009,
+            0.047
+          ],
+          "pub_date": "2026-10-28",
+          "caracter": "estimado"
+        }
+      ],
+      "last_observation": "Sep 26",
+      "last_updated": "2026-10-28",
+      "last_checked": "2026-10-28",
+      "requiere_token": null,
+      "serie_confirmada": true,
+      "clasificacion": "principal",
+      "sigla": "IMOAM",
+      "estado": "ACTUALIZADO",
+      "origen_dato": "api",
+      "fecha_publicacion": "28 de octubre de 2026",
+      "periodo_referencia": "Sep 26",
+      "fecha_consulta": "2026-10-28",
+      "source_origin": "api",
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_10.pdf",
+      "periodo_boletin": "Sep 26",
+      "numero_boletin": "639/26",
+      "tipo_documento": "PDF",
+      "producto_boletin": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "boletin_validado": true,
+      "metrics": {
+        "kpi": {
+          "assessment": "favorable",
+          "dir": "up",
+          "ultimoFmt": "108.0",
+          "ultimoRaw": 108.0,
+          "ultimoP": "Sep 26",
+          "varText": "+1.9%",
+          "varMag": 1.9,
+          "pos": true,
+          "varColor": "#1e5b4f",
+          "varLabel": "Var. anual estimada",
+          "maxFmt": "112.0",
+          "maxRaw": 112.0,
+          "maxP": "Mar 26",
+          "minFmt": "97.2",
+          "minRaw": 97.2,
+          "minP": "Dic 25",
+          "lastI": 21,
+          "series": [
+            98.6,
+            105.1,
+            101.7,
+            111.1,
+            107.2,
+            109.1,
+            108.4,
+            109.3,
+            108.2,
+            106.0,
+            111.3,
+            104.9,
+            97.2,
+            104.0,
+            99.3,
+            112.0,
+            107.9,
+            108.3,
+            107.1,
+            108.2,
+            108.0,
+            108.0
+          ],
+          "periods": [
+            "Dic 24",
+            "Ene 25",
+            "Feb 25",
+            "Mar 25",
+            "Abr 25",
+            "May 25",
+            "Jun 25",
+            "Jul 25",
+            "Ago 25",
+            "Sep 25",
+            "Oct 25",
+            "Nov 25",
+            "Dic 25",
+            "Ene 26",
+            "Feb 26",
+            "Mar 26",
+            "Abr 26",
+            "May 26",
+            "Jun 26",
+            "Jul 26",
+            "Ago 26",
+            "Sep 26"
+          ],
+          "semaforo": "bueno",
+          "yoyText": "—",
+          "yoyLabel": "—"
+        },
+        "yoy": null,
+        "resumen": [
+          "En septiembre de 2026, el IMOAM se ubicó en 108.0 puntos (índice base 2018=100, estimación experimental, cifras originales). El valor de var. anual estimada fue de +1.9% frente al mismo mes del año anterior.",
+          "En la serie mostrada, el indicador oscila entre un máximo de 112.0 puntos (marzo de 2026) y un mínimo de 97.2 puntos (diciembre de 2025). El último dato se ubica dentro del rango observado en el periodo mostrado.",
+          "La variación se clasifica como favorable según la lectura económica del indicador."
+        ]
+      },
+      "periodo_referencia_oficial": "Sep 26",
+      "fecha_publicacion_oficial": "28 de octubre de 2026",
+      "proxima_publicacion": null,
+      "motivo_frescura": "El periodo cargado (Sep 26) coincide con el último periodo esperado (Sep 26).",
+      "url_fuente_oficial": "https://www.inegi.org.mx/investigacion/imoam/",
+      "fecha_ultima_publicacion": "28 de octubre de 2026",
+      "regla_publicacion": null,
+      "nota": {
+        "available": true,
+        "format": "docx",
+        "path": "downloads/indicadores/IMOAM/nota/IMOAM_nota.docx",
+        "periodo": "Sep-26",
+        "generated_from": "machote",
+        "automatic": false
+      },
+      "nota_disponible": true,
+      "nota_causa": null,
+      "url_nota_individual": "downloads/indicadores/IMOAM/nota/IMOAM_nota.docx",
+      "xlsx_disponible": true,
+      "url_excel_individual": "downloads/indicadores/IMOAM/IMOAM_datos.xlsx",
+      "xlsx_causa": null
     }
   }
 }

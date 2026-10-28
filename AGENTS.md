@@ -52,7 +52,7 @@
 
 A partir de la V3, la clasificación permanente del dashboard separa los indicadores en dos grupos:
 
-### Panorama macroeconómico (indicadores principales, 14)
+### Panorama macroeconómico (indicadores principales, 15)
 
 Orden exacto:
 
@@ -62,14 +62,15 @@ Orden exacto:
 4. **IOAE**
 5. **IGAE**
 6. **IMAI**
-7. **EMIM**
-8. **EMOE** (Encuesta Mensual de Opinión Empresarial)
-9. **DESOCUP** (ENOE)
-10. **INPC**
-11. **INPP**
-12. **CONSUMO** (IMCP)
-13. **IMFBCF**
-14. **BCMM** (Balanza comercial)
+7. **IMOAM**
+8. **EMIM**
+9. **EMOE** (Encuesta Mensual de Opinión Empresarial)
+10. **DESOCUP** (ENOE)
+11. **INPC**
+12. **INPP**
+13. **CONSUMO** (IMCP)
+14. **IMFBCF**
+15. **BCMM** (Balanza comercial)
 
 Conceptualmente, Panorama macroeconómico agrupa indicadores de actividad, ciclos económicos, industria, opinión empresarial, mercado laboral, precios, consumo, inversión y sector externo.
 
@@ -106,7 +107,7 @@ Entorno financiero contiene la inversión externa reportada por la **Secretaría
 - **Tres piezas**: `data/source/notas_machote/` guarda los machotes por indicador (`{NOMBRE}_machote.docx`) y `_PLANTILLA_MAESTRA.docx` (fuente de verdad visual institucional); `downloads/indicadores/{KEY}/nota/{KEY}_nota.docx` es la **nota vigente** que descarga el usuario; `config/notas_map.json` mapea indicador → machote + metadatos.
 - **El pipeline jamás escribe en `data/source/notas_machote/`**: los machotes son entradas de sólo lectura (`lib_notas.provision_notes` sólo copia *desde* el machote cuando falta la nota vigente).
 - **BOLETÍN ≠ NOTA**: BOLETÍN abre el producto oficial INEGI/Banxico/SE; NOTA descarga el documento institucional de la Subsecretaría. Nunca apuntan al mismo archivo.
-- Notas vigentes hoy: PIB, PIBSEC (PIBT), SIC, IOAE, IGAE, IMAI, EMIM, EMOE, DESOCUP (ENOE), INPC, INPP, CONSUMO (IMCP), IMFBCF, BCMM — 14 en total. IED, TIPOCAMBIO, TASA y RESERVAS no tienen nota todavía y el botón queda deshabilitado (`nota_disponible=false`, `nota_causa` informativo).
+- Notas vigentes hoy: PIB, PIBSEC (PIBT), SIC, IOAE, IGAE, IMAI, IMOAM, EMIM, EMOE, DESOCUP (ENOE), INPC, INPP, CONSUMO (IMCP), IMFBCF, BCMM — 15 en total. IED, TIPOCAMBIO, TASA y RESERVAS no tienen nota todavía y el botón queda deshabilitado (`nota_disponible=false`, `nota_causa` informativo).
 - Metadatos por indicador en `data/indicadores.json`: `ind['nota'] = {available, format:'docx', path, periodo, generated_from:'machote', automatic:false}` además de `nota_disponible`/`url_nota_individual`/`nota_causa` para el frontend.
 - `historico/` opcional dentro de `downloads/indicadores/{KEY}/nota/` queda previsto para ediciones pasadas; el botón siempre apunta a la vigente.
 - Automatización futura (no implementada): nuevo boletín → datos oficiales → copiar machote → actualizar contenidos/gráficas → validar → `lib_notas.update_nota_vigente`. Sin llamadas a IA en esta fase.
@@ -119,3 +120,10 @@ Entorno financiero contiene la inversión externa reportada por la **Secretaría
   `_PLANTILLA_MAESTRA.docx` (ver `scripts/rebuild_pib_nota.py`).
 - La nota PIB (2T-2026) fue reconstruida así el 08-sep-2026; sus gráficas
   viven en `data/source/notas_machote/assets/pib/` como assets del machote.
+
+## IMOAM
+
+- Estimación experimental del IMAI manufacturero con cifras originales; índice 2018=100 y variación anual estimada. No calcular variación mensual desestacionalizada.
+- Fuente: boletines oficiales INEGI, conector `scripts/sources/imoam.py`, sin token. Seis columnas: índice, IC95 inferior/superior del índice, variación anual e IC95 inferior/superior anual. Variaciones como fracciones.
+- Ubicación: Panorama, inmediatamente después de IMAI. Incluye Excel, CSV, calendario y nota Word. Las notas permanecen de actualización editorial manual, como las demás.
+

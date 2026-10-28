@@ -35,7 +35,7 @@ function proseVal(ind, v) {
   if (k === "PIBSEC") return (v / 1e6).toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " billones de pesos";
   if (k === "RESERVAS") return Math.abs(Math.round(v)).toLocaleString("es-MX") + " mdd";
   if (k === "IED" || k === "BALANZA" || k === "BCMM") return money(v, "millones de dólares");
-  if (k === "IGAE" || k === "IMAI" || k === "CONSUMO" || k === "EMIM" || k === "EMOE" || k === "SIC") return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + " puntos";
+  if (k === "IMOAM" || k === "IGAE" || k === "IMAI" || k === "CONSUMO" || k === "EMIM" || k === "EMOE" || k === "SIC") return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + " puntos";
   if (k === "DESOCUP") return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
   if (k === "INPC" || k === "INPP" || k === "TASA") return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
   if (k === "TIPOCAMBIO") return "$" + v.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -540,7 +540,7 @@ export function annualVar(ind, k) {
   // No se calcula variación anual del nivel cuando: (a) el valor ya es una tasa,
   // (b) la variación primaria ya es interanual (evita duplicar), o
   // (c) la interanual del saldo no tiene lectura económica clara.
-  if (["INPC", "INPP", "TASA", "DESOCUP", "IED", "BALANZA", "IOAE"].includes(ind.key)) return null;
+  if (["INPC", "INPP", "TASA", "DESOCUP", "IED", "BALANZA", "IOAE", "IMOAM"].includes(ind.key)) return null;
   const vals = k.series;
   const lag = ind.frecuencia === "Trimestral" ? 4 : 12;
   const cur = vals[k.lastI];
@@ -552,6 +552,10 @@ export function annualVar(ind, k) {
 
 // Genera 2-3 bullets de análisis determinista, auditables.
 export function analysis(ind, k) {
+  if (ind.key === "IMOAM") {
+    const v = ind.observations[k.lastI].values;
+    return [`En ${enFrase(k.periods[k.lastI])}, el IMOAM estima un índice de ${fmtVal(v[0], "idx")} puntos y una variación anual de ${fmtVal(v[3], "pct-frac")}.`, `El intervalo de confianza al 95% de la variación anual va de ${fmtVal(v[4], "pct-frac")} a ${fmtVal(v[5], "pct-frac")}.`, "Estimación experimental con cifras originales; anticipa el IMAI manufacturero y está sujeta a incertidumbre. No representa crecimiento mensual desestacionalizado."];
+  }
   if (ind.key === "DESOCUP") {
     if (k && k.analysis) return k.analysis;
     const kk = computeDesocupKPI(ind);

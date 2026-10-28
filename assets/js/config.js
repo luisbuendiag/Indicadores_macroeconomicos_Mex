@@ -1,5 +1,5 @@
 // Configuración de presentación (paleta, indicadores, navegación). Módulo ES.
-// V3: Panorama macroeconómico (14 principales) + Entorno financiero (4 complementarios).
+// V3: Panorama macroeconómico (15 principales) + Entorno financiero (4 complementarios).
 
 export const COLORS = {
   GREEN: "#1e5b4f",
@@ -14,7 +14,7 @@ export const COLORS = {
 };
 
 // Indicadores principales del Panorama macroeconómico.
-export const PRINCIPAL = ["PIB", "PIBSEC", "SIC", "IOAE", "IGAE", "IMAI", "EMIM", "EMOE", "DESOCUP", "INPC", "INPP", "CONSUMO", "IMFBCF", "BCMM"];
+export const PRINCIPAL = ["PIB", "PIBSEC", "SIC", "IOAE", "IGAE", "IMAI", "IMOAM", "EMIM", "EMOE", "DESOCUP", "INPC", "INPP", "CONSUMO", "IMFBCF", "BCMM"];
 
 // Indicadores complementarios del Entorno financiero (inversión externa y variables financieras).
 export const COMPLEMENTARIOS = ["IED", "TIPOCAMBIO", "TASA", "RESERVAS"];
@@ -29,7 +29,7 @@ export const LABELS = {
   BCMM: "Balanza comercial", DESOCUP: "Indicadores de ocupación y empleo", INPC: "INPC",
   INPP: "Índice Nacional de Precios Productor",
   CONSUMO: "Consumo privado", IMFBCF: "Formación bruta de capital fijo",
-  IOAE: "IOAE", EMIM: "EMIM", EMOE: "Encuesta Mensual de Opinión Empresarial",
+  IMOAM: "IMOAM", IOAE: "IOAE", EMIM: "EMIM", EMOE: "Encuesta Mensual de Opinión Empresarial",
   IED: "Inversión Extranjera Directa", TIPOCAMBIO: "Tipo de cambio FIX", TASA: "Tasa objetivo de Banco de México",
   RESERVAS: "Reservas internacionales",
 };
@@ -39,7 +39,7 @@ export const SIGLA = {
   PIB: "PIB", PIBSEC: "PIBT", SIC: "SIC", IGAE: "IGAE", IMAI: "IMAI",
   BCMM: "BCMM", DESOCUP: "ENOE", INPC: "INPC",
   INPP: "INPP",
-  CONSUMO: "IMCP", IMFBCF: "IMFBCF", IOAE: "IOAE", EMIM: "EMIM", EMOE: "EMOE",
+  CONSUMO: "IMCP", IMFBCF: "IMFBCF", IMOAM: "IMOAM", IOAE: "IOAE", EMIM: "EMIM", EMOE: "EMOE",
   IED: "IED", TIPOCAMBIO: "FIX", TASA: "TASA OBJETIVO", RESERVAS: "RESERVAS",
 };
 
@@ -54,6 +54,7 @@ export const KPICFG = {
   IMAI: { valCol: 0, valFmt: "idx", varCol: 1, varFmt: "pct-frac", varLabel: "Var. mensual desest.", yoyCol: 2, yoyFmt: "pct-frac", yoyLabel: "Var. anual desest.", mainLabel: "Índice", acumCol: 5, acumFmt: "pct-frac", acumLabel: "Acumulado ene-mes", noun: "Indicador Mensual de la Actividad Industrial", art: "el", grupo: "growth", assess: "growth", ctx: " (índice base 2018=100)", vw: "variación mensual desestacionalizada", vg: "m", comp: "frente al mes previo", goodSign: 1 },
   CONSUMO: { valCol: 0, valFmt: "idx", varCol: 1, varFmt: "pct-frac", varLabel: "Var. mensual desest.", yoyCol: 2, yoyFmt: "pct-frac", yoyLabel: "Var. anual desest.", acumCol: 4, acumFmt: "pct-frac", acumLabel: "Acumulado ene-mes", mainLabel: "Índice", noun: "consumo privado", art: "el", grupo: "growth", assess: "growth", ctx: " (índice base 2018=100)", vw: "variación mensual desestacionalizada", vg: "f", comp: "frente al mes previo", goodSign: 1 },
   IMFBCF: { valCol: 0, valFmt: "idx", varCol: 1, varFmt: "pct-frac", varLabel: "Var. mensual desest.", yoyCol: 2, yoyFmt: "pct-frac", yoyLabel: "Var. anual desest.", acumCol: 27, acumFmt: "pct-frac", acumLabel: "Acumulado ene-mes", mainLabel: "Índice", noun: "formación bruta de capital fijo", art: "la", grupo: "growth", assess: "growth", ctx: " (índice base 2018=100)", vw: "variación mensual desestacionalizada", vg: "f", comp: "frente al mes previo", goodSign: 1 },
+  IMOAM: { valCol: 0, valFmt: "idx", varCol: 3, varFmt: "pct-frac", varLabel: "Var. anual estimada", mainLabel: "Índice estimado", noun: "IMOAM", art: "el", grupo: "growth", assess: "growth", ctx: " (índice base 2018=100, estimación experimental, cifras originales)", vw: "variación anual estimada", vg: "f", comp: "frente al mismo mes del año anterior", goodSign: 1 },
   IOAE: { valCol: 0, valFmt: "pct-frac", varCol: 3, varFmt: "pct-frac", varLabel: "Var. mensual estimada", yoyCol: 12, yoyFmt: "pct-frac", yoyLabel: "IGAE observado", mainLabel: "Nowcast anual del IGAE", noun: "indicador oportuno de la actividad económica", art: "el", grupo: "growth", assess: "growth", ctx: " (variación anual estimada con intervalo de confianza al 95%)", vw: "variación mensual estimada", vg: "m", comp: "frente al mes previo", goodSign: 1 },
   EMIM: { valCol: 0, valFmt: "idx", varCol: 3, varFmt: "pct-frac", varLabel: "Var. mensual desest.", yoyCol: 4, yoyFmt: "pct-frac", yoyLabel: "Var. anual desest.", mainLabel: "Producción", origMomCol: 1, origYoyCol: 2, noun: "Encuesta Mensual de la Industria Manufacturera", art: "la", grupo: "growth", assess: "growth", ctx: " (índice base 2018=100)", vw: "variación mensual desestacionalizada", vg: "f", comp: "frente al mes previo", goodSign: 1 },
   DESOCUP: { valCol: 0, valFmt: "pct-raw", varMode: "pp-prev", varLabel: "Cambio mensual", yoyMode: "pp-yoy", yoyLabel: "Cambio anual", mainLabel: "Tasa de desocupación", noun: "tasa de desocupación", art: "la", grupo: "desoc", assess: "unemployment", ctx: "", vw: "variación", vg: "f", comp: "frente al mes previo", goodSign: -1 },
@@ -75,6 +76,7 @@ export const CAPTIONS = {
   IMAI: "Niveles desestacionalizados del IMAI y sus cuatro sectores (small multiples, arriba) y variaciones mensuales y anuales desestacionalizadas agrupadas (abajo). Las variaciones del mes más reciente provienen del boletín oficial.",
   CONSUMO: "Índice de volumen físico del consumo privado (línea verde), variación mensual desestacionalizada (línea guinda) y variación anual desestacionalizada (línea oro), ambas en eje derecho.",
   IMFBCF: "Niveles desestacionalizados del IMFBCF y sus componentes (construcción, maquinaria y equipo, nacional e importado; small multiples, arriba) y variaciones mensuales y anuales agrupadas (abajo). Las variaciones del mes más reciente provienen del boletín oficial; las series históricas se obtienen de Banco de México (SIE).",
+  IMOAM: "Índice estimado del IMAI manufacturero (base 2018=100) y variación anual estimada, con sus intervalos de confianza al 95%. Estadística experimental con cifras originales; cada punto corresponde a la estimación publicada para ese mes.",
   IOAE: "Nowcast anual del IGAE con intervalo de confianza al 95%, variación mensual estimada y contraste con el IGAE observado una vez publicado.",
   EMIM: "Evolución de la producción, personal ocupado, horas trabajadas y remuneraciones medias reales de la industria manufacturera. Las variaciones históricas son cifras originales calculadas a partir de los índices BIE; las desestacionalizadas provienen del boletín oficial para el mes más reciente.",
   IED: "Acumulado anual de inversión extranjera directa, flujo exclusivo del trimestre y componentes. Incluye desgloses por tipo de inversión, país de origen, sector económico y entidad federativa.",

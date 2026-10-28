@@ -48,6 +48,20 @@
         "sigla": "IMAI",
         "usar_para_frescura": true
       },
+      "IMOAM": {
+  "acronyms": [
+    "IMOAM"
+  ],
+  "program_contains": [
+    "Indicador Mensual Oportuno de la Actividad Manufacturera"
+  ],
+  "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+  "frequency": "Mensual",
+  "category": "Actividad económica",
+  "institution": "INEGI",
+  "sigla": "IMOAM",
+  "usar_para_frescura": true
+},
       "IOAE": {
         "acronyms": ["IOAE"],
         "program_contains": ["Indicador Oportuno de la Actividad Económica"],

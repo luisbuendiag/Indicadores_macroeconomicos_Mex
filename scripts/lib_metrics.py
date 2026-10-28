@@ -81,7 +81,7 @@ def prose_val(key: str, v: float | int | None) -> str:
     if key in ("IED", "BALANZA", "BCMM"):
         sign = "−" if v < 0 else ""
         return sign + "$" + F._to_fixed(abs(F._js_round(v)), 0, 0) + " millones de dólares"
-    if key in ("IGAE", "IMAI", "CONSUMO", "EMIM", "EMOE"):
+    if key in ("IMOAM", "IGAE", "IMAI", "CONSUMO", "EMIM", "EMOE"):
         return F._to_fixed(v, 1, 1) + " puntos"
     if key == "DESOCUP":
         return F._to_fixed(v, 1, 1) + "%"
@@ -405,7 +405,7 @@ def annual_var(ind: dict, kpi: dict, kpicfg: dict | None = None) -> dict[str, An
             "label": cfg.get("yoyLabel", "Var. anual"),
         }
 
-    if ind["key"] in ("INPC", "INPP", "TASA", "DESOCUP", "IED", "BALANZA", "IOAE"):
+    if ind["key"] in ("INPC", "INPP", "TASA", "DESOCUP", "IED", "BALANZA", "IOAE", "IMOAM"):
         return None
 
     vals = kpi["series"]
@@ -434,6 +434,9 @@ def analysis(ind: dict, kpi: dict, kpicfg: dict | None = None) -> list[str]:
         return []
 
     key = ind["key"]
+    if key == "IMOAM":
+        v = ind["observations"][kpi["lastI"]]["values"]
+        return [f"En {en_frase(kpi['periods'][kpi['lastI']])}, el IMOAM estima un índice de {fmt_val(v[0], 'idx')} puntos y una variación anual de {fmt_val(v[3], 'pct-frac')}.", f"El intervalo de confianza al 95% de la variación anual va de {fmt_val(v[4], 'pct-frac')} a {fmt_val(v[5], 'pct-frac')}.", "Estimación experimental con cifras originales; anticipa el IMAI manufacturero y está sujeta a incertidumbre. No representa crecimiento mensual desestacionalizado."]
     valid = [v for v in kpi["series"] if v is not None]
     if not valid:
         return []
