@@ -770,6 +770,14 @@ function renderIndicatorView(key) {
       el("div", { class: "mini" }, el("div", { class: "lbl" }, "Dif. mensual adelantado"), el("div", { class: "num", style: `color:${dmColor(a.difMensual)}` }, a.difMensualText || "—"), el("div", { class: "sub" }, "Respecto al mes inmediato anterior")),
       c.difAnual != null ? el("div", { class: "mini" }, el("div", { class: "lbl" }, "Dif. a 12 meses coincidente"), el("div", { class: "num", style: `color:${dmColor(c.difAnual)}` }, c.difAnualText), el("div", { class: "sub" }, "Respecto al mismo mes del año previo")) : null,
     );
+  } else if (ind.key === "IMOAM") {
+    const v = ind.observations[k.lastI].values;
+    mini.append(
+      el("div", { class: "mini" }, el("div", { class: "lbl" }, "Índice estimado"), el("div", { class: "num" }, fmtVal(v[0], "idx")), el("div", { class: "sub" }, "Base 2018=100; cifras originales")),
+      el("div", { class: "mini" }, el("div", { class: "lbl" }, "Variación anual estimada"), el("div", { class: "num" }, fmtVal(v[3], "pct-frac")), el("div", { class: "sub" }, "Respecto al mismo mes del año anterior")),
+      el("div", { class: "mini" }, el("div", { class: "lbl" }, "IC 95% del índice"), el("div", { class: "num" }, `${fmtVal(v[1], "idx")} a ${fmtVal(v[2], "idx")}`), el("div", { class: "sub" }, "Estimación experimental")),
+      el("div", { class: "mini" }, el("div", { class: "lbl" }, "IC 95% anual"), el("div", { class: "num" }, `${fmtVal(v[4], "pct-frac")} a ${fmtVal(v[5], "pct-frac")}`), el("div", { class: "sub" }, "Intervalo de confianza"))
+    );
   } else if (ind.key === "IOAE") {
     const monthlyColor = k.varColor;
     const errorColor = (k.latestErrorPP == null || Math.abs(k.latestErrorPP) <= 0.5) ? COLORS.GREEN : (Math.abs(k.latestErrorPP) <= 1.5 ? COLORS.GOLD : COLORS.CRIMSON);

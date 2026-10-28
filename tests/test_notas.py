@@ -30,9 +30,9 @@ import lib_notas  # noqa: E402
 PAYLOAD = json.loads((ROOT / "data" / "indicadores.json").read_text(encoding="utf-8"))
 MAP = json.loads((ROOT / "config" / "notas_map.json").read_text(encoding="utf-8"))
 
-# Las 14 notas institucionales existentes (llave interna del dashboard).
+# Las 15 notas institucionales existentes (llave interna del dashboard).
 CON_NOTA = [
-    "PIB", "PIBSEC", "SIC", "IOAE", "IGAE", "IMAI", "EMIM", "EMOE",
+    "PIB", "PIBSEC", "SIC", "IOAE", "IGAE", "IMAI", "IMOAM", "EMIM", "EMOE",
     "DESOCUP", "INPC", "INPP", "CONSUMO", "IMFBCF", "BCMM",
 ]
 # Indicadores sin nota institucional por ahora.
@@ -50,10 +50,10 @@ def _docx_ok(path: Path) -> bool:
         return False
 
 
-def test_mapa_cubre_exactamente_las_14_notas():
+def test_mapa_cubre_exactamente_las_15_notas():
     notas = MAP.get("notas", {})
     assert sorted(notas.keys()) == sorted(CON_NOTA), (
-        f"notas_map no coincide con las 14 notas: {sorted(notas.keys())}"
+        f"notas_map no coincide con las 15 notas: {sorted(notas.keys())}"
     )
     for k in SIN_NOTA:
         assert k not in notas, f"{k} no debería tener nota todavía"

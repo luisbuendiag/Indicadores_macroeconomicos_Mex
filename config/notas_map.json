@@ -85,6 +85,12 @@
       "periodo": "Jul-26",
       "titulo": "Balanza Comercial de Mercancías de México",
       "fuente_original": "Nota__BalanzaComercial_Julio2026.docx"
+    },
+    "IMOAM": {
+      "machote": "data/source/notas_machote/IMOAM_machote.docx",
+      "periodo": "Sep-26",
+      "titulo": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "fuente_original": "INEGI, boletín 639/26"
     }
   }
 }

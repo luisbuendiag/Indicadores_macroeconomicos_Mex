@@ -58,7 +58,7 @@ def test_balance_saldo_vs_variacion_distinct():
 
 
 EXPECTED_PRINCIPAL = [
-    "PIB", "PIBSEC", "SIC", "IOAE", "IGAE", "IMAI", "EMIM", "EMOE", "DESOCUP",
+    "PIB", "PIBSEC", "SIC", "IOAE", "IGAE", "IMAI", "IMOAM", "EMIM", "EMOE", "DESOCUP",
     "INPC", "INPP", "CONSUMO", "IMFBCF", "BCMM",
 ]
 EXPECTED_COMPLEMENTARIOS = ["IED", "TIPOCAMBIO", "TASA", "RESERVAS"]
@@ -71,7 +71,7 @@ def _parse_js_array(name):
 
 
 def test_principal_indicators_exact_order():
-    """PRINCIPAL debe coincidir exacto con los 14 indicadores del Panorama."""
+    """PRINCIPAL debe coincidir exacto con los 15 indicadores del Panorama."""
     claves = _parse_js_array("PRINCIPAL")
     assert claves == EXPECTED_PRINCIPAL, f"PRINCIPAL incorrecto: {claves}"
 
@@ -187,7 +187,7 @@ def test_navegacion_prev_next_por_seccion():
         next_ = section[idx + 1] if idx < len(section) - 1 else None
         return prev, next_
 
-    assert nav(EXPECTED_PRINCIPAL, "EMIM") == ("IMAI", "EMOE")
+    assert nav(EXPECTED_PRINCIPAL, "EMIM") == ("IMOAM", "EMOE")
     assert nav(EXPECTED_PRINCIPAL, "EMOE") == ("EMIM", "DESOCUP")
     assert nav(EXPECTED_PRINCIPAL, "IMFBCF") == ("CONSUMO", "BCMM")
     assert nav(EXPECTED_PRINCIPAL, "SIC") == ("PIBSEC", "IOAE")

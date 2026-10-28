@@ -14,8 +14,8 @@ y un pipeline de actualización automática. Sitio estático compatible con GitH
 - **Portada ejecutiva** para entender la coyuntura en <2 min: tarjetas KPI (6–10),
   indicadores que mejoraron / se deterioraron, alertas, próximo dato por publicarse,
   resumen ejecutivo por reglas y botón de descarga del Excel.
-- **Secciones**: Panorama macroeconómico (14 indicadores principales: PIB, PIBT,
-  SIC, IOAE, IGAE, IMAI, EMIM, EMOE, ENOE, INPC, INPP, IMCP, IMFBCF, BCMM),
+- **Secciones**: Panorama macroeconómico (15 indicadores principales: PIB, PIBT,
+  SIC, IOAE, IGAE, IMAI, IMOAM, EMIM, EMOE, ENOE, INPC, INPP, IMCP, IMFBCF, BCMM),
   Entorno financiero (IED de la SE, tipo de cambio, tasa objetivo y reservas de
   Banxico), Calendario, Fuentes y metodología, y Descargas.
 - **Gráficas ECharts** responsivas, con tooltips, leyendas ejecutivas, exportación a

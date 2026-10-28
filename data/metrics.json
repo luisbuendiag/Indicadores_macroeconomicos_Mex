@@ -13510,6 +13510,89 @@
         "En agosto de 2026, el Indicador Adelantado se ubicó en 100.8 puntos, por encima de su tendencia de largo plazo, con un alza de 0.02 puntos respecto a julio de 2026; este indicador busca anticipar los puntos de giro del Coincidente.",
         "Entre los componentes del Coincidente, las mayores alzas mensuales correspondieron a las importaciones totales (+0.22 puntos), y el mayor descenso fue el de la tasa de desocupación urbana (−0.10 puntos) (serie inversa a la actividad económica)."
       ]
+    },
+    "IMOAM": {
+      "kpi": {
+        "assessment": "favorable",
+        "dir": "up",
+        "ultimoFmt": "108.0",
+        "ultimoRaw": 108.0,
+        "ultimoP": "Sep 26",
+        "varText": "+1.9%",
+        "varMag": 1.9,
+        "pos": true,
+        "varColor": "#1e5b4f",
+        "varLabel": "Var. anual estimada",
+        "maxFmt": "112.0",
+        "maxRaw": 112.0,
+        "maxP": "Mar 26",
+        "minFmt": "97.2",
+        "minRaw": 97.2,
+        "minP": "Dic 25",
+        "lastI": 21,
+        "series": [
+          98.6,
+          105.1,
+          101.7,
+          111.1,
+          107.2,
+          109.1,
+          108.4,
+          109.3,
+          108.2,
+          106.0,
+          111.3,
+          104.9,
+          97.2,
+          104.0,
+          99.3,
+          112.0,
+          107.9,
+          108.3,
+          107.1,
+          108.2,
+          108.0,
+          108.0
+        ],
+        "periods": [
+          "Dic 24",
+          "Ene 25",
+          "Feb 25",
+          "Mar 25",
+          "Abr 25",
+          "May 25",
+          "Jun 25",
+          "Jul 25",
+          "Ago 25",
+          "Sep 25",
+          "Oct 25",
+          "Nov 25",
+          "Dic 25",
+          "Ene 26",
+          "Feb 26",
+          "Mar 26",
+          "Abr 26",
+          "May 26",
+          "Jun 26",
+          "Jul 26",
+          "Ago 26",
+          "Sep 26"
+        ],
+        "semaforo": "bueno",
+        "yoyText": "—",
+        "yoyLabel": "—"
+      },
+      "analysis": [
+        "En septiembre de 2026, el IMOAM estima un índice de 108.0 puntos y una variación anual de 1.9%.",
+        "El intervalo de confianza al 95% de la variación anual va de -0.9% a 4.7%.",
+        "Estimación experimental con cifras originales; anticipa el IMAI manufacturero y está sujeta a incertidumbre. No representa crecimiento mensual desestacionalizado."
+      ],
+      "resumen": [
+        "En septiembre de 2026, el IMOAM se ubicó en 108.0 puntos (índice base 2018=100, estimación experimental, cifras originales). El valor de var. anual estimada fue de +1.9% frente al mismo mes del año anterior.",
+        "En la serie mostrada, el indicador oscila entre un máximo de 112.0 puntos (marzo de 2026) y un mínimo de 97.2 puntos (diciembre de 2025). El último dato se ubica dentro del rango observado en el periodo mostrado.",
+        "La variación se clasifica como favorable según la lectura económica del indicador."
+      ],
+      "annualVar": null
     }
   }
 }

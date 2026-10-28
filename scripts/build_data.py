@@ -29,7 +29,7 @@ import lib_kpicfg
 import lib_metrics
 import lib_notas
 from sources import (banxico, banxico_policy, banxico_sie, ied, inegi,
-                     inegi_bulletin, inegi_inpc, inegi_inpp, worldbank)
+                     inegi_bulletin, imoam, inegi_inpc, inegi_inpp, worldbank)
 import validate as V
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -1239,7 +1239,7 @@ def run(offline: bool = False) -> int:
 
         # inegi_bulletin se ejecuta primero para evitar throttling del sitio de prensa
         # después de las llamadas masivas al BIE.
-        for name, mod in (("banxico_sie", banxico_sie), ("inegi_bulletin", inegi_bulletin), ("banxico", banxico), ("inegi", inegi), ("inegi_inpc", inegi_inpc), ("inegi_inpp", inegi_inpp), ("ied", ied), ("worldbank", worldbank)):
+        for name, mod in (("banxico_sie", banxico_sie), ("inegi_bulletin", inegi_bulletin), ("imoam", imoam), ("banxico", banxico), ("inegi", inegi), ("inegi_inpc", inegi_inpc), ("inegi_inpp", inegi_inpp), ("ied", ied), ("worldbank", worldbank)):
             log["network_calls"] = True
             try:
                 res = mod.fetch(config)
@@ -1254,7 +1254,7 @@ def run(offline: bool = False) -> int:
                 continue
             if res.ok:
                 for key, ind in res.data.items():
-                    if name in ("inegi", "inegi_bulletin", "inegi_inpc", "inegi_inpp", "banxico_sie"):
+                    if name in ("inegi", "inegi_bulletin", "inegi_inpc", "inegi_inpp", "banxico_sie", "imoam"):
                         items = ind if isinstance(ind, list) else [ind]
                         consultas = []
                         for it in items:
@@ -1482,7 +1482,7 @@ def apply_freshness_and_meta(payload: dict, log: dict, as_of: date | None = None
         # cuando aún no se tiene una URL directa a un PDF de boletín.
         es_inegi = (ind.get("fuente", {}).get("nombre") or "").upper().startswith("INEGI")
         url_actual = ind.get("url_boletin_oficial") or ""
-        if es_inegi and ("saladeprensa/boletines" not in url_actual or not ind.get("url_boletin_oficial") or not ind.get("boletin_validado")):
+        if not offline and es_inegi and ("saladeprensa/boletines" not in url_actual or not ind.get("url_boletin_oficial") or not ind.get("boletin_validado")):
             try:
                 desc = inegi_bulletin.discover_bulletin_url(key, ind.get("last_observation"))
                 if desc:

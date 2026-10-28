@@ -7,6 +7,7 @@
     "IOAE",
     "IGAE",
     "IMAI",
+    "IMOAM",
     "EMIM",
     "EMOE",
     "DESOCUP",
@@ -1910,6 +1911,58 @@
           "count": null
         }
       ]
+    },
+    "IMOAM": {
+      "nombre": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "sigla": "IMOAM",
+      "descripcion": "Estimación experimental anticipada del IMAI manufacturero, a partir de cifras originales (sin ajuste estacional). Publica índice base 2018=100 y variación anual estimada, con intervalos de confianza al 95%. No es una observación definitiva del IMAI ni de la EMIM.",
+      "frecuencia": "Mensual",
+      "unidad": "Índice 2018=100 y variación anual",
+      "ajuste_estacional": "Cifras originales; estimación experimental",
+      "grupo": "actividad",
+      "publicacion": "Según calendario oficial de difusión del INEGI",
+      "proximo": "Por confirmar con el calendario oficial",
+      "requiere_token": null,
+      "serie_confirmada": true,
+      "clasificacion": "principal",
+      "fuente": {
+        "nombre": "INEGI",
+        "link": "https://www.inegi.org.mx/investigacion/imoam/",
+        "metodo": "Boletines oficiales de prensa del INEGI (PDF)",
+        "serie": null
+      },
+      "columns": [
+        {
+          "label": "Índice estimado (2018=100)",
+          "index": 0,
+          "fmt": "idx"
+        },
+        {
+          "label": "IC95 inferior del índice",
+          "index": 1,
+          "fmt": "idx"
+        },
+        {
+          "label": "IC95 superior del índice",
+          "index": 2,
+          "fmt": "idx"
+        },
+        {
+          "label": "Variación anual estimada (%)",
+          "index": 3,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "IC95 inferior anual (%)",
+          "index": 4,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "IC95 superior anual (%)",
+          "index": 5,
+          "fmt": "pct-frac"
+        }
+      ]
     }
   },
   "scaffolds": {
@@ -2563,6 +2616,58 @@
           "id": "max",
           "label": "Máximo",
           "count": null
+        }
+      ]
+    },
+    "IMOAM": {
+      "nombre": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "sigla": "IMOAM",
+      "descripcion": "Estimación experimental anticipada del IMAI manufacturero, a partir de cifras originales (sin ajuste estacional). Publica índice base 2018=100 y variación anual estimada, con intervalos de confianza al 95%. No es una observación definitiva del IMAI ni de la EMIM.",
+      "frecuencia": "Mensual",
+      "unidad": "Índice 2018=100 y variación anual",
+      "ajuste_estacional": "Cifras originales; estimación experimental",
+      "grupo": "actividad",
+      "publicacion": "Según calendario oficial de difusión del INEGI",
+      "proximo": "Por confirmar con el calendario oficial",
+      "requiere_token": null,
+      "serie_confirmada": true,
+      "clasificacion": "principal",
+      "fuente": {
+        "nombre": "INEGI",
+        "link": "https://www.inegi.org.mx/investigacion/imoam/",
+        "metodo": "Boletines oficiales de prensa del INEGI (PDF)",
+        "serie": null
+      },
+      "columns": [
+        {
+          "label": "Índice estimado (2018=100)",
+          "index": 0,
+          "fmt": "idx"
+        },
+        {
+          "label": "IC95 inferior del índice",
+          "index": 1,
+          "fmt": "idx"
+        },
+        {
+          "label": "IC95 superior del índice",
+          "index": 2,
+          "fmt": "idx"
+        },
+        {
+          "label": "Variación anual estimada (%)",
+          "index": 3,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "IC95 inferior anual (%)",
+          "index": 4,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "IC95 superior anual (%)",
+          "index": 5,
+          "fmt": "pct-frac"
         }
       ]
     }

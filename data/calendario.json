@@ -32,6 +32,35 @@
   ],
   "events": [
     {
+      "indicator": "IED",
+      "program": "Flujos de inversión extranjera directa",
+      "product": "Flujos de inversión extranjera directa",
+      "publication_date": null,
+      "publication_date_display": "Por anunciar",
+      "reference_period": "3° trimestre 2026",
+      "frequency": "Trimestral",
+      "status": "próximo",
+      "source": "Secretaría de Economía (manual)",
+      "institution": "Secretaría de Economía",
+      "category": "Inversión",
+      "sigla": "IED",
+      "type": "event",
+      "url": "https://www.gob.mx/se",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.gob.mx/se",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Próxima fecha oficial no anunciada",
+      "anio": null,
+      "mes": null,
+      "fecha_iso": null
+    },
+    {
       "indicator": "DESOCUP",
       "program": "Encuesta Nacional de Ocupación y Empleo (ENOE), población de 15 años y más de edad. Indicadores de Ocupación y Empleo. Cifras definitivas",
       "product": "Encuesta Nacional de Ocupación y Empleo / Indicadores de Ocupación y Empleo",
@@ -609,6 +638,35 @@
         }
       ],
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "anio": 2025,
+      "mes": 1,
+      "fecha_iso": "2025-01-24"
+    },
+    {
+      "indicator": "IMOAM",
+      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM)",
+      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "publication_date": "2025-01-24",
+      "publication_date_display": "24 de enero de 2025",
+      "reference_period": "Dic 24",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI boletín oficial",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMOAM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imoam/imoam2025_01.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imoam/imoam2025_01.pdf",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
       "anio": 2025,
       "mes": 1,
       "fecha_iso": "2025-01-24"
@@ -1326,6 +1384,35 @@
       "fecha_iso": "2025-02-21"
     },
     {
+      "indicator": "IMOAM",
+      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM)",
+      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "publication_date": "2025-02-24",
+      "publication_date_display": "24 de febrero de 2025",
+      "reference_period": "Ene 25",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI boletín oficial",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMOAM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imoam/imoam2025_02.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imoam/imoam2025_02.pdf",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2025,
+      "mes": 2,
+      "fecha_iso": "2025-02-24"
+    },
+    {
       "indicator": "DESOCUP",
       "program": "Encuesta Nacional de Ocupación y Empleo (ENOE), población de 15 años y más de edad. Cifras definitivas",
       "product": "Encuesta Nacional de Ocupación y Empleo / Indicadores de Ocupación y Empleo",
@@ -2016,6 +2103,35 @@
       "fecha_iso": "2025-03-24"
     },
     {
+      "indicator": "IMOAM",
+      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM)",
+      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "publication_date": "2025-03-24",
+      "publication_date_display": "24 de marzo de 2025",
+      "reference_period": "Feb 25",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI boletín oficial",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMOAM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imoam/imoam2025_03.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imoam/imoam2025_03.pdf",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2025,
+      "mes": 3,
+      "fecha_iso": "2025-03-24"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México de la semana al 21 de marzo de 2025",
       "product": "Estado de cuenta del Banco de México",
@@ -2611,6 +2727,35 @@
       "anio": 2025,
       "mes": 4,
       "fecha_iso": "2025-04-16"
+    },
+    {
+      "indicator": "IMOAM",
+      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM)",
+      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "publication_date": "2025-04-22",
+      "publication_date_display": "22 de abril de 2025",
+      "reference_period": "Mar 25",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI boletín oficial",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMOAM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imoam/imoam2025_04.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imoam/imoam2025_04.pdf",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2025,
+      "mes": 4,
+      "fecha_iso": "2025-04-22"
     },
     {
       "indicator": "IOAE",
@@ -3469,6 +3614,35 @@
       "fecha_iso": "2025-05-23"
     },
     {
+      "indicator": "IMOAM",
+      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM)",
+      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "publication_date": "2025-05-23",
+      "publication_date_display": "23 de mayo de 2025",
+      "reference_period": "Abr 25",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI boletín oficial",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMOAM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imoam/imoam2025_05.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imoam/imoam2025_05.pdf",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2025,
+      "mes": 5,
+      "fecha_iso": "2025-05-23"
+    },
+    {
       "indicator": "DESOCUP",
       "program": "Encuesta Nacional de Ocupación y Empleo (ENOE), población de 15 años y más de edad. Cifras definitivas",
       "product": "Encuesta Nacional de Ocupación y Empleo / Indicadores de Ocupación y Empleo",
@@ -4118,6 +4292,35 @@
         }
       ],
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "anio": 2025,
+      "mes": 6,
+      "fecha_iso": "2025-06-23"
+    },
+    {
+      "indicator": "IMOAM",
+      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM)",
+      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "publication_date": "2025-06-23",
+      "publication_date_display": "23 de junio de 2025",
+      "reference_period": "May 25",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI boletín oficial",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMOAM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imoam/imoam2025_06.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imoam/imoam2025_06.pdf",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
       "anio": 2025,
       "mes": 6,
       "fecha_iso": "2025-06-23"
@@ -4826,6 +5029,35 @@
       "anio": 2025,
       "mes": 7,
       "fecha_iso": "2025-07-22"
+    },
+    {
+      "indicator": "IMOAM",
+      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM)",
+      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "publication_date": "2025-07-25",
+      "publication_date_display": "25 de julio de 2025",
+      "reference_period": "Jun 25",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI boletín oficial",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMOAM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imoam/imoam2025_07.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imoam/imoam2025_07.pdf",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2025,
+      "mes": 7,
+      "fecha_iso": "2025-07-25"
     },
     {
       "indicator": "BCMM",
@@ -5540,6 +5772,35 @@
       "fecha_iso": "2025-08-22"
     },
     {
+      "indicator": "IMOAM",
+      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM)",
+      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "publication_date": "2025-08-25",
+      "publication_date_display": "25 de agosto de 2025",
+      "reference_period": "Jul 25",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI boletín oficial",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMOAM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imoam/imoam2025_08.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imoam/imoam2025_08.pdf",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2025,
+      "mes": 8,
+      "fecha_iso": "2025-08-25"
+    },
+    {
       "indicator": "DESOCUP",
       "program": "Encuesta Nacional de Ocupación y Empleo (ENOE), población de 15 años y más de edad. Cifras definitivas",
       "product": "Encuesta Nacional de Ocupación y Empleo / Indicadores de Ocupación y Empleo",
@@ -6225,6 +6486,35 @@
         }
       ],
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "anio": 2025,
+      "mes": 9,
+      "fecha_iso": "2025-09-23"
+    },
+    {
+      "indicator": "IMOAM",
+      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM)",
+      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "publication_date": "2025-09-23",
+      "publication_date_display": "23 de septiembre de 2025",
+      "reference_period": "Ago 25",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI boletín oficial",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMOAM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imoam/imoam2025_09.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imoam/imoam2025_09.pdf",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
       "anio": 2025,
       "mes": 9,
       "fecha_iso": "2025-09-23"
@@ -6933,6 +7223,35 @@
       "anio": 2025,
       "mes": 10,
       "fecha_iso": "2025-10-22"
+    },
+    {
+      "indicator": "IMOAM",
+      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM)",
+      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "publication_date": "2025-10-24",
+      "publication_date_display": "24 de octubre de 2025",
+      "reference_period": "Sep 25",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI boletín oficial",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMOAM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imoam/imoam2025_10.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imoam/imoam2025_10.pdf",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2025,
+      "mes": 10,
+      "fecha_iso": "2025-10-24"
     },
     {
       "indicator": "BCMM",
@@ -7645,6 +7964,35 @@
       "anio": 2025,
       "mes": 11,
       "fecha_iso": "2025-11-21"
+    },
+    {
+      "indicator": "IMOAM",
+      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM)",
+      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "publication_date": "2025-11-24",
+      "publication_date_display": "24 de noviembre de 2025",
+      "reference_period": "Oct 25",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI boletín oficial",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMOAM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imoam/imoam2025_11.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imoam/imoam2025_11.pdf",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2025,
+      "mes": 11,
+      "fecha_iso": "2025-11-24"
     },
     {
       "indicator": "RESERVAS",
@@ -8366,6 +8714,35 @@
       "fecha_iso": "2025-12-22"
     },
     {
+      "indicator": "IMOAM",
+      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM)",
+      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "publication_date": "2025-12-22",
+      "publication_date_display": "22 de diciembre de 2025",
+      "reference_period": "Nov 25",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI boletín oficial",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMOAM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imoam/imoam2025_12.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imoam/imoam2025_12.pdf",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2025,
+      "mes": 12,
+      "fecha_iso": "2025-12-22"
+    },
+    {
       "indicator": "BCMM",
       "program": "Balanza Comercial de Mercancías de México. Información oportuna. Cifras preliminares",
       "product": "Balanza Comercial de Mercancías de México",
@@ -8997,6 +9374,35 @@
       "anio": 2026,
       "mes": 1,
       "fecha_iso": "2026-01-21"
+    },
+    {
+      "indicator": "IMOAM",
+      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM)",
+      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "publication_date": "2026-01-22",
+      "publication_date_display": "22 de enero de 2026",
+      "reference_period": "Dic 25",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI boletín oficial",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMOAM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_01.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_01.pdf",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 1,
+      "fecha_iso": "2026-01-22"
     },
     {
       "indicator": "IGAE",
@@ -9673,6 +10079,35 @@
       "anio": 2026,
       "mes": 2,
       "fecha_iso": "2026-02-17"
+    },
+    {
+      "indicator": "IMOAM",
+      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM)",
+      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "publication_date": "2026-02-20",
+      "publication_date_display": "20 de febrero de 2026",
+      "reference_period": "Ene 26",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI boletín oficial",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMOAM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_02.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_02.pdf",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 2,
+      "fecha_iso": "2026-02-20"
     },
     {
       "indicator": "IOAE",
@@ -10430,6 +10865,35 @@
       "fecha_iso": "2026-03-20"
     },
     {
+      "indicator": "IMOAM",
+      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM)",
+      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "publication_date": "2026-03-23",
+      "publication_date_display": "23 de marzo de 2026",
+      "reference_period": "Feb 26",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI boletín oficial",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMOAM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_03.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_03.pdf",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 3,
+      "fecha_iso": "2026-03-23"
+    },
+    {
       "indicator": "IGAE",
       "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018. Cifras preliminares",
       "product": "Indicador Global de la Actividad Económica",
@@ -11133,6 +11597,35 @@
       "anio": 2026,
       "mes": 4,
       "fecha_iso": "2026-04-21"
+    },
+    {
+      "indicator": "IMOAM",
+      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM)",
+      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "publication_date": "2026-04-22",
+      "publication_date_display": "22 de abril de 2026",
+      "reference_period": "Mar 26",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI boletín oficial",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMOAM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_04.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_04.pdf",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 4,
+      "fecha_iso": "2026-04-22"
     },
     {
       "indicator": "DESOCUP",
@@ -11845,6 +12338,35 @@
       "anio": 2026,
       "mes": 5,
       "fecha_iso": "2026-05-19"
+    },
+    {
+      "indicator": "IMOAM",
+      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM)",
+      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "publication_date": "2026-05-20",
+      "publication_date_display": "20 de mayo de 2026",
+      "reference_period": "Abr 26",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI boletín oficial",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMOAM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_05.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_05.pdf",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 5,
+      "fecha_iso": "2026-05-20"
     },
     {
       "indicator": "IGAE",
@@ -12609,6 +13131,35 @@
       "fecha_iso": "2026-06-23"
     },
     {
+      "indicator": "IMOAM",
+      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM)",
+      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "publication_date": "2026-06-23",
+      "publication_date_display": "23 de junio de 2026",
+      "reference_period": "May 26",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI boletín oficial",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMOAM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_06.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_06.pdf",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 6,
+      "fecha_iso": "2026-06-23"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México de la semana al 19 de junio de 2026",
       "product": "Estado de cuenta del Banco de México",
@@ -13314,6 +13865,35 @@
       "fecha_iso": "2026-07-23"
     },
     {
+      "indicator": "IMOAM",
+      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM)",
+      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "publication_date": "2026-07-23",
+      "publication_date_display": "23 de julio de 2026",
+      "reference_period": "Jun 26",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI boletín oficial",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMOAM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_07.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_07.pdf",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 7,
+      "fecha_iso": "2026-07-23"
+    },
+    {
       "indicator": "DESOCUP",
       "program": "Encuesta Nacional de Ocupación y Empleo (ENOE), población de 15 años y más de edad. Indicadores de Ocupación y Empleo. Cifras definitivas",
       "product": "Encuesta Nacional de Ocupación y Empleo / Indicadores de Ocupación y Empleo",
@@ -13981,6 +14561,35 @@
       "anio": 2026,
       "mes": 8,
       "fecha_iso": "2026-08-20"
+    },
+    {
+      "indicator": "IMOAM",
+      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM)",
+      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "publication_date": "2026-08-21",
+      "publication_date_display": "21 de agosto de 2026",
+      "reference_period": "Jul 26",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI boletín oficial",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMOAM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_08.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_08.pdf",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 8,
+      "fecha_iso": "2026-08-21"
     },
     {
       "indicator": "IED",
@@ -14758,6 +15367,35 @@
       "anio": 2026,
       "mes": 9,
       "fecha_iso": "2026-09-22"
+    },
+    {
+      "indicator": "IMOAM",
+      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM)",
+      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "publication_date": "2026-09-23",
+      "publication_date_display": "23 de septiembre de 2026",
+      "reference_period": "Ago 26",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI boletín oficial",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMOAM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_09.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_09.pdf",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 9,
+      "fecha_iso": "2026-09-23"
     },
     {
       "indicator": "IGAE",
@@ -15585,6 +16223,35 @@
       "anio": 2026,
       "mes": 10,
       "fecha_iso": "2026-10-27"
+    },
+    {
+      "indicator": "IMOAM",
+      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM)",
+      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "publication_date": "2026-10-28",
+      "publication_date_display": "28 de octubre de 2026",
+      "reference_period": "Sep 26",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI boletín oficial",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMOAM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_10.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_10.pdf",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 10,
+      "fecha_iso": "2026-10-28"
     },
     {
       "indicator": "PIB",
@@ -20834,35 +21501,6 @@
       "anio": 2027,
       "mes": 12,
       "fecha_iso": "2027-12-28"
-    },
-    {
-      "indicator": "IED",
-      "program": "Flujos de inversión extranjera directa",
-      "product": "Flujos de inversión extranjera directa",
-      "publication_date": null,
-      "publication_date_display": "Por anunciar",
-      "reference_period": "3° trimestre 2026",
-      "frequency": "Trimestral",
-      "status": "próximo",
-      "source": "Secretaría de Economía (manual)",
-      "institution": "Secretaría de Economía",
-      "category": "Inversión",
-      "sigla": "IED",
-      "type": "event",
-      "url": "https://www.gob.mx/se",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.gob.mx/se",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": "Próxima fecha oficial no anunciada",
-      "anio": null,
-      "mes": null,
-      "fecha_iso": null
     }
   ],
   "rules": [

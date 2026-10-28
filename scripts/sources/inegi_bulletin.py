@@ -49,6 +49,7 @@ except ImportError:  # pragma: no cover
     pdfplumber = None
 
 BULLETIN_URLS = {
+    "IMOAM": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/imoam/imoam{year}_{mm}.pdf",
     "IOAE": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/ioae/ioae{year}_{mm}.pdf",
     "CONSUMO": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/imcp/imcpmi{year}_{mm}.pdf",
     "IMFBCF": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/ifb/imfbcf{year}_{mm}.pdf",
@@ -68,6 +69,7 @@ BULLETIN_URLS = {
 
 # Mapeo de claves del dashboard a los productos de boletines.
 KEY_TO_KIND = {
+    "IMOAM": "IMOAM",
     "PIB": "EOPIBT",
     "PIBSEC": "PIBT",
     "IGAE": "IGAE",
@@ -84,6 +86,7 @@ KEY_TO_KIND = {
 
 # Nombres oficiales del producto de Sala de Prensa, para el mapeo.
 PRODUCTO_NOMBRE = {
+    "IMOAM": "Indicador Mensual Oportuno de la Actividad Manufacturera",
     "PIB": "Estimación Oportuna del Producto Interno Bruto Trimestral (EOPIBT)",
     "PIBSEC": "Producto Interno Bruto por sector de actividad (PIBT)",
     "IGAE": "Indicador Global de la Actividad Económica",
@@ -100,6 +103,7 @@ PRODUCTO_NOMBRE = {
 
 # Alias de producto para la validación por contenido.
 PRODUCTO_ALIASES = {
+    "IMOAM": ("INDICADOR MENSUAL OPORTUNO", "IMOAM"),
     "INPC": ("ÍNDICE NACIONAL DE PRECIOS", "INPC"),
     "EMOE": ("INDICADORES DE CONFIANZA EMPRESARIAL", "IGOEC", "ENCUESTA MENSUAL DE OPINIÓN EMPRESARIAL"),
     "IOOE": ("ENCUESTA NACIONAL DE OCUPACIÓN", "ENOE", "IOOE", "DESOCUPACIÓN"),

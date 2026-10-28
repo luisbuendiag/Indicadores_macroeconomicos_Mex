@@ -111,6 +111,14 @@ function chartSpec(ind, obs) {
     case "BALANZA": return { periods: P, bars: [{ name: "Exportaciones", values: col(0), color: G }, { name: "Importaciones", values: col(1), color: SEC }], lines: [{ name: "Saldo (X − M)", values: saldo, color: Go, axis: "right" }], leftName: "Millones de dólares", rightName: "Saldo (mdd)", leftFmt: "compact", rightFmt: "compact" };
     case "IMFBCF": return { periods: P, lines: [{ name: "Índice (inversión)", values: col(0), color: G }, { name: "Var. mensual (%)", values: col(1).map((v) => v == null ? null : v * 100), color: SEC, axis: "right" }], leftName: "Índice (2018=100)", rightName: "Var. mensual (%)", leftFmt: "idx", rightFmt: "pct" };
     case "EMIM": return { periods: P, lines: [{ name: "Producción (índice)", values: col(0), color: G }, { name: "Var. mensual (%)", values: col(1).map((v) => v == null ? null : v * 100), color: SEC, axis: "right" }], leftName: "Índice", rightName: "Var. mensual (%)", leftFmt: "idx", rightFmt: "pct" };
+    case "IMOAM": return { periods: P, lines: [
+      { name: "Índice estimado", values: col(0), color: G },
+      { name: "IC95 inferior índice", values: col(1), color: REF, dash: true },
+      { name: "IC95 superior índice", values: col(2), color: REF, dash: true },
+      { name: "Var. anual estimada (%)", values: col(3).map(v => v == null ? null : v * 100), color: Go, axis: "right" },
+      { name: "IC95 inferior anual (%)", values: col(4).map(v => v == null ? null : v * 100), color: SEC, dash: true, axis: "right" },
+      { name: "IC95 superior anual (%)", values: col(5).map(v => v == null ? null : v * 100), color: SEC, dash: true, axis: "right" }
+    ], leftName: "Índice (2018=100)", rightName: "Variación anual (%)", leftFmt: "idx", rightFmt: "pct" };
     case "IOAE": return {
       periods: P,
       lines: [
