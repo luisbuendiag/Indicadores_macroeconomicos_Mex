@@ -1,0 +1,76 @@
+﻿variable,valor,unidad,periodo,serie,ubicacion,fuente
+Manufacturas Manufacturas level,48.0,puntos,2026-09,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Manufacturas Manufacturas mom,0.0,puntos,2026-09,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Manufacturas Manufacturas yoy,-1.3,puntos,2026-09,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Construcción Construcción level,47.8,puntos,2026-09,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Construcción Construcción mom,0.4,puntos,2026-09,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Construcción Construcción yoy,1.3,puntos,2026-09,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Comercio Comercio level,48.9,puntos,2026-09,original,"p. 4, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Comercio Comercio mom,0.7,puntos,2026-09,original,"p. 4, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Comercio Comercio yoy,0.7,puntos,2026-09,original,"p. 4, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Servicios no financieros Servicios no financieros level,48.4,puntos,2026-09,original,"p. 4, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Servicios no financieros Servicios no financieros mom,-0.2,puntos,2026-09,original,"p. 4, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Servicios no financieros Servicios no financieros yoy,-2.1,puntos,2026-09,original,"p. 4, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Manufacturas Momento para invertir level,34.3,puntos,2026-09,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Manufacturas Momento para invertir mom,0.0,puntos,2026-09,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Manufacturas Momento para invertir yoy,-3.1,puntos,2026-09,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Manufacturas Situación presente del país level,47.8,puntos,2026-09,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Manufacturas Situación presente del país mom,0.0,puntos,2026-09,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Manufacturas Situación presente del país yoy,-1.2,puntos,2026-09,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Manufacturas Situación futura del país level,52.2,puntos,2026-09,original,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Manufacturas Situación futura del país mom,0.3,puntos,2026-09,original,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Manufacturas Situación futura del país yoy,-0.4,puntos,2026-09,original,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Manufacturas Situación presente de la empresa level,50.1,puntos,2026-09,original,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Manufacturas Situación presente de la empresa mom,-0.2,puntos,2026-09,original,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Manufacturas Situación presente de la empresa yoy,-0.7,puntos,2026-09,original,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Manufacturas Situación futura de la empresa level,55.4,puntos,2026-09,original,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Manufacturas Situación futura de la empresa mom,-0.5,puntos,2026-09,original,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Manufacturas Situación futura de la empresa yoy,-0.9,puntos,2026-09,original,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Construcción Momento para invertir level,25.5,puntos,2026-09,desestacionalizada,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Construcción Momento para invertir mom,-1.1,puntos,2026-09,desestacionalizada,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Construcción Momento para invertir yoy,3.0,puntos,2026-09,desestacionalizada,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Construcción Situación presente del país level,47.3,puntos,2026-09,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Construcción Situación presente del país mom,0.7,puntos,2026-09,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Construcción Situación presente del país yoy,2.8,puntos,2026-09,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Construcción Situación futura del país level,54.4,puntos,2026-09,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Construcción Situación futura del país mom,0.0,puntos,2026-09,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Construcción Situación futura del país yoy,1.0,puntos,2026-09,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Construcción Situación presente de la empresa level,49.9,puntos,2026-09,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Construcción Situación presente de la empresa mom,0.1,puntos,2026-09,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Construcción Situación presente de la empresa yoy,-0.5,puntos,2026-09,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Construcción Situación futura de la empresa level,61.0,puntos,2026-09,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Construcción Situación futura de la empresa mom,1.3,puntos,2026-09,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Construcción Situación futura de la empresa yoy,0.1,puntos,2026-09,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Comercio Momento para invertir level,32.1,puntos,2026-09,original,"p. 4, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Comercio Momento para invertir mom,0.9,puntos,2026-09,original,"p. 4, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Comercio Momento para invertir yoy,1.9,puntos,2026-09,original,"p. 4, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Comercio Situación presente del país level,47.9,puntos,2026-09,original,"p. 4, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Comercio Situación presente del país mom,0.5,puntos,2026-09,original,"p. 4, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Comercio Situación presente del país yoy,1.0,puntos,2026-09,original,"p. 4, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Comercio Situación futura del país level,54.5,puntos,2026-09,original,"p. 4, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Comercio Situación futura del país mom,1.2,puntos,2026-09,original,"p. 4, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Comercio Situación futura del país yoy,0.9,puntos,2026-09,original,"p. 4, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Comercio Situación presente de la empresa level,51.4,puntos,2026-09,original,"p. 4, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Comercio Situación presente de la empresa mom,0.1,puntos,2026-09,original,"p. 4, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Comercio Situación presente de la empresa yoy,0.1,puntos,2026-09,original,"p. 4, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Comercio Situación futura de la empresa level,58.6,puntos,2026-09,original,"p. 4, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Comercio Situación futura de la empresa mom,0.8,puntos,2026-09,original,"p. 4, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Comercio Situación futura de la empresa yoy,-0.5,puntos,2026-09,original,"p. 4, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Servicios no financieros Momento para invertir level,33.1,puntos,2026-09,original,"p. 4, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Servicios no financieros Momento para invertir mom,-1.1,puntos,2026-09,original,"p. 4, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Servicios no financieros Momento para invertir yoy,-3.9,puntos,2026-09,original,"p. 4, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Servicios no financieros Situación presente del país level,46.8,puntos,2026-09,original,"p. 4, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Servicios no financieros Situación presente del país mom,0.3,puntos,2026-09,original,"p. 4, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Servicios no financieros Situación presente del país yoy,-1.8,puntos,2026-09,original,"p. 4, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Servicios no financieros Situación futura del país level,54.4,puntos,2026-09,original,"p. 4, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Servicios no financieros Situación futura del país mom,0.3,puntos,2026-09,original,"p. 4, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Servicios no financieros Situación futura del país yoy,-2.2,puntos,2026-09,original,"p. 4, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Servicios no financieros Situación presente de la empresa level,50.6,puntos,2026-09,original,"p. 4, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Servicios no financieros Situación presente de la empresa mom,0.2,puntos,2026-09,original,"p. 4, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Servicios no financieros Situación presente de la empresa yoy,-1.0,puntos,2026-09,original,"p. 4, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Servicios no financieros Situación futura de la empresa level,57.1,puntos,2026-09,original,"p. 4, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Servicios no financieros Situación futura de la empresa mom,-0.7,puntos,2026-09,original,"p. 4, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+Servicios no financieros Situación futura de la empresa yoy,-1.9,puntos,2026-09,original,"p. 4, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+IGOEC level,48.4,puntos,2026-09,desestacionalizada,p. 1,https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+IGOEC mom,0.1,puntos,2026-09,desestacionalizada,p. 1,https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
+IGOEC yoy,-1.0,puntos,2026-09,desestacionalizada,p. 1,https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf
