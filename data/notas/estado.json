@@ -1,0 +1,18 @@
+{
+  "IMOAM": {
+    "status": "vigente",
+    "message": "Nota generada y validada por reglas Python",
+    "target_period": "Sep 26",
+    "published": {
+      "periodo": "Sep 26",
+      "generated_at": "2026-10-29T02:35:14+00:00",
+      "source_sha256": "3eb0f16b4520bfe26b9fbe5e9f61e18814d5c33de1e99b2a8d1c48ac2e5a89cd",
+      "fingerprint": "cf6d489a2d7cf887fc245103291645f9d27d1e81fcf183aa45560f95f376cd27",
+      "docx_sha256": "5f20f22f532c881ef57ca630f45d02131e9e82017d5076336ee823364d0f9991",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_10.pdf",
+      "review_model": "reglas-python-1",
+      "review_kind": "reglas_python",
+      "archive": "data/notas/IMOAM/cf6d489a2d7cf887fc245103291645f9d27d1e81fcf183aa45560f95f376cd27-5f20f22f532c"
+    }
+  }
+}
