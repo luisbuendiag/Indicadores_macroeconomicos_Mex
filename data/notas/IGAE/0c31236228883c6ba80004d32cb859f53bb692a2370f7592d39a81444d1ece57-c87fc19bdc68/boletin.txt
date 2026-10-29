@@ -1,0 +1,247 @@
+BOLETÍN DE INDICADOR 635/26
+INDICADOR GLOBAL DE LA ACTIVIDAD
+ECONÓMICA (IGAE)
+23 de octubre de 2026
+Página 1/5
+Próxima publicación: 23 de noviembre de 2026
+IGAE Variación Variación
+índice 2018=100 mensual anual
+agosto agosto agosto
+108.4 ▲ 0.6 % ▲ 3.5 %
+Aumentó 0.6 % el IGAE a tasa mensual
+y 3.5 % a tasa anual, en agosto de 2026
+El Indicador Global de la Actividad Económica (IGAE) permite conocer y dar seguimiento a la
+evolución del sector real de la economía en el corto plazo.
+I. CIFRAS DESESTACIONALIZADAS
+En agosto de 2026 y con cifras desestacionalizadas,1 el IGAE creció 0.6 % respecto al mes
+previo, en términos reales (ver gráfica 1). A tasa anual ascendió 3.5 por ciento.
+Gráfica 1
+Variación del Indicador Global de la Actividad Económica
+cifras desestacionalizadas
+agosto de 2024–agosto de 2026
+(variación porcentual real mensual)
+1.6 1.4
+1.0 1.0
+0.7 0.8
+0.8 0.5 0.5 0.4 0.4 0.5 0.6
+0.3 0.2 0.2
+0.0
+-0.3 -0.3 -0.3 -0.1 -0.2 0.0
+-0.8
+-0.8 -0.9 -0.9 -0.9
+-1.0
+-1.6
+A S O N D E F M A M J J A S O N D E F M A M J J A
+2024 2025 2026
+Nota: Serie elaborada mediante métodos econométricos.
+Fuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Indicador Global de la Actividad Económica (IGAE), 2026.
+1 La mayoría de las series económicas se ve afectada por factores estacionales y de calendario. El ajuste de los datos por dichos factores
+permite obtener las cifras desestacionalizadas.
+La tendencia-ciclo es la combinación de los componentes de tendencia y ciclo. La tendencia se refiere a la evolución de largo plazo de la
+serie de tiempo, y el ciclo, a las desviaciones alrededor de la tendencia. Así, el análisis de las series ajustadas ayuda a realizar un mejor
+diagnóstico de la evolución de las variables.
+
+BOLETÍN DE INDICADOR 635/26
+INDICADOR GLOBAL DE LA ACTIVIDAD
+ECONÓMICA (IGAE)
+23 de octubre de 2026
+Página 2/5
+Según componente, en agosto pasado, las actividades primarias incrementaron 3.5 %;
+las secundarias, 0.6 % y las terciarias, 0.2 %, a tasa mensual.
+A tasa anual, las actividades terciarias aumentaron 3.7 % y las secundarias, 3.6 por ciento.
+Las primarias cayeron 3.3 % (ver cuadro 1).
+Cuadro 1
+Índice y variación del Indicador Global de la Actividad Económica según dominios
+cifras desestacionalizadas
+agosto de 2026
+(índice y variación porcentual mensual y anual)
+Variación porcentual real
+Índice respecto a:
+Indicador, actividades y sectores económicos
+2018=100 julio agosto
+de 2026 de 2025
+Indicador Global de la Actividad Económica 108.4 0.6 3.5
+Actividades primarias 109.1 3.5 -3.3
+Actividades secundarias 103.4 0.6 3.6
+21 Minería 87.7 -1.6 -0.8
+22 Generación, transmisión, distribución y comercialización de
+energía eléctrica, suministro de agua y de gas natural por ductos 67.8 1.2 1.4
+al consumidor final
+23 Construcción 109.2 0.0 7.9
+31-33 Industrias manufactureras 108.2 1.2 3.2
+Actividades terciarias 111.2 0.2 3.7
+43 Comercio al por mayor 115.8 0.4 12.2
+46 Comercio al por menor 123.3 0.3 2.4
+48-49 Transportes, correos y almacenamiento 118.6 -0.3 2.8
+51 Información en medios masivos 134.2 1.0 4.7
+52 Servicios financieros y de seguros 120.4 1.4 3.7
+53 Servicios inmobiliarios y de alquiler de bienes muebles e
+115.4 0.1 0.7
+intangibles
+54 Servicios profesionales, científicos y técnicos 146.5 -1.3 0.0
+56 Servicios de apoyo a los negocios y manejo de residuos, y
+27.6 -0.1 -2.6
+servicios de remediación
+61 Servicios educativos 102.0 0.3 0.8
+62 Servicios de salud y de asistencia social 117.5 0.8 3.8
+71 Servicios de esparcimiento culturales y deportivos, y otros
+109.0 -3.3 -0.5
+servicios recreativos
+72 Servicios de alojamiento temporal y de preparación de alimentos
+92.6 0.5 -3.1
+y bebidas
+81 Otros servicios excepto actividades gubernamentales 104.8 2.7 7.1
+93 Actividades legislativas, gubernamentales, de impartición de
+100.9 -1.8 2.4
+justicia y de organismos internacionales y extraterritoriales
+Nota: Cifras elaboradas mediante métodos econométricos.
+Las series desestacionalizadas de los agregados del IGAE se calculan de manera independiente a la de sus componentes.
+Fuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Indicador Global de la Actividad Económica (IGAE), 2026.
+
+BOLETÍN DE INDICADOR 635/26
+INDICADOR GLOBAL DE LA ACTIVIDAD
+ECONÓMICA (IGAE)
+23 de octubre de 2026
+Página 3/5
+La gráfica 2 muestra el comportamiento del IGAE y el de los grupos de actividad, con cifras
+desestacionalizadas y su tendencia-ciclo.
+Gráfica 2
+Serie desestacionalizada y de tendencia-ciclo
+del Indicador Global de la Actividad Económica y sus componentes
+enero de 2022–agosto de 2026
+(índice 2018=100)
+Indicador Global de la Actividad Económica Actividades primarias
+109.0
+120.0
+106.0
+110.0
+103.0
+100.0
+100.0
+97.0 90.0
+2022 2023 2024 2025 2026 2022 2023 2024 2025 2026
+Actividades secundarias Actividades terciarias
+106.0
+110.0
+103.0
+105.0
+100.0
+100.0
+97.0 95.0
+2022 2023 2024 2025 2026 2022 2023 2024 2025 2026
+Serie desestacionalizada Serie tendencia-ciclo
+Nota: Series elaboradas mediante métodos econométricos.
+Fuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Indicador Global de la Actividad Econó mica (IGAE), 2026.
+
+BOLETÍN DE INDICADOR 635/26
+INDICADOR GLOBAL DE LA ACTIVIDAD
+ECONÓMICA (IGAE)
+23 de octubre de 2026
+Página 4/5
+II. CIFRAS ORIGINALES
+Cuadro 2
+Variación del Indicador Global de la Actividad Económica según dominios
+a agosto de 20261/
+(variación porcentual real anual)
+Variación porcentual anual respecto a:
+Indicador, actividades, sectores y subsectores económicos agosto ene.-ago.
+de 2025 de 2025
+Indicador Global de la Actividad Económica 3.3 1.7
+Actividades primarias -2.6 1.2
+111 Agricultura -6.1 -0.6
+112 Cría y explotación de animales 2.9 4.5
+Actividades secundarias 3.5 0.8
+21 Minería -0.8 2.9
+Generación, transmisión, distribución y comercialización de energía
+22 eléctrica, suministro de agua y de gas natural por ductos al consumidor 1.6 0.2
+final
+23 Construcción 7.5 3.5
+31-33 Industrias manufactureras 3.2 -0.3
+Actividades terciarias 3.6 2.2
+43 Comercio al por mayor 12.1 8.2
+46 Comercio al por menor 2.4 1.5
+48-49 Transportes, correos y almacenamiento 2.7 1.0
+51 Información en medios masivos 5.0 1.7
+52 Servicios financieros y de seguros 4.0 2.3
+53 Servicios inmobiliarios y de alquiler de bienes muebles e intangibles 0.8 0.7
+54 Servicios profesionales, científicos y técnicos -0.9 -1.1
+Servicios de apoyo a los negocios y manejo de residuos, y servicios de
+56 -2.8 -1.2
+remediación
+61 Servicios educativos 0.7 0.4
+62 Servicios de salud y de asistencia social 3.8 3.5
+Servicios de esparcimiento culturales y deportivos, y otros servicios
+71 -0.5 1.3
+recreativos
+Servicios de alojamiento temporal y de preparación de alimentos y
+72 -2.8 -2.7
+bebidas
+81 Otros servicios excepto actividades gubernamentales 7.3 2.1
+Actividades legislativas, gubernamentales, de impartición de justicia y
+93 2.0 3.5
+de organismos internacionales y extraterritoriales
+Nota: El IGAE no incluye la totalidad de los sectores, por lo que su tasa de crecimiento puede diferir de la que registre el Producto Interno
+Bruto Trimestral (PIBT).
+1/ Cifras preliminares.
+Fuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Indicador Global de la Actividad Económica (IGAE), 2026.
+
+BOLETÍN DE INDICADOR 635/26
+INDICADOR GLOBAL DE LA ACTIVIDAD
+ECONÓMICA (IGAE)
+23 de octubre de 2026
+Página 5/5
+III. FICHA METODOLÓGICA
+El Indicador Global de la Actividad Económica (IGAE) permite conocer y dar seguimiento a la evolución del sector
+Antecedentes
+real de la economía en el corto plazo. Este proporciona valiosa información para la toma de decisiones.
+Los datos mensuales del IGAE están disponibles desde enero de 1993 y se expresan en índices de volumen
+Año base
+físico tipo Laspeyres, con base fija en el año 2018.
+Estadísticas mensuales que elabora el Instituto, como la Encuesta Mensual de la Industria Manufacturera (EMIM),
+Encuesta Nacional de Empresas Constructoras (ENEC), Encuesta Mensual sobre Empresas Comerciales (EMEC),
+Encuesta Mensual de Servicios (EMS), estadística de la Industria Minerometalúrgica (EIMM) y la Encuesta
+Fuentes Nacional de Ocupación y Empleo (ENOE), los índices nacionales de precios y los registros administrativos, así
+como las estadísticas económicas y sociales compiladas por el Instituto. Para las actividades agropecuarias, de
+energía, gas, agua, servicios financieros y del gobierno, se incluyen los registros administrativos provenientes
+de las empresas y Unidades del Estado.
+Cobertura geográfica Nacional
+Periodicidad Mensual
+El indicador sigue los conceptos, criterios metodológicos, clasificadores y datos fuente que se emplean en los
+cálculos del Indicador Mensual de la Actividad Industrial (IMAI) y del Producto Interno Bruto Trimestral y Anual,
+en la medida en que la información estadística lo permite. Además, se consideran los lineamientos
+internacionales sobre contabilidad nacional del Sistema de Cuentas Nacionales 2008 y del Manual de Cuentas
+Nacionales Trimestrales 2017.
+El IGAE tiene una representatividad de 94.8 % del Valor Agregado Bruto alcanzado en 2018, año base de los
+productos del Sistema de Cuentas Nacionales de México (SCNM).
+Se calculan índices de volumen físico para 664 clases de actividad económica del Sistema de Clasificación
+Industrial de América del Norte (SCIAN) 2018. Al interior de las clases se realizan mediciones específicas para la
+Cálculo del IGAE actividad formal, informal, artesanado formal e informal y bienes para procesamiento. Se elaboran índices del
+volumen de producción por clase de actividad económica. Los índices se utilizan para extrapolar el valor
+agregado bruto registrado por cada clase de actividad en el año base 2018, se ajustan a los valores nacionales
+anuales con la técnica proporcional Denton y por agregación de las actividades económicas se obtienen los
+dos subsectores, 18 sectores, tres actividades económicas y el total del indicador.
+Por no contar con información mensual oportuna, se excluyen las actividades de Pesca, aprovechamiento
+forestal; Cajas de ahorro popular, Sociedades financieras de objeto múltiple; Agentes, ajustadores y gestores de
+seguros y fianzas; Servicios de administración de bienes raíces; Servicios de alquiler de marcas registradas,
+patentes y franquicias; Corporativos, Tenedoras de acciones; Artistas, escritores y técnicos independientes;
+Asociaciones y organizaciones religiosas, entre otras.
+Las series originales se ajustan estacionalmente mediante el paquete estadístico X-13ARIMA-SEATS.
+Para conocer la metodología, consúltese la siguiente liga:
+Ajuste estacional y https://www.inegi.org.mx/app/biblioteca/ficha.html?upc=702825099060
+modelos Las especificaciones de los modelos están disponibles en el Banco de Información Económica (BIE).
+Seleccione «Indicadores económicos de coyuntura, Indicador Global de la Actividad Económica» y vaya al icono
+de información correspondiente a las «series desestacionalizadas y de tendencia-ciclo».
+El IGAE se publica 53 días naturales después de concluido el mes de referencia conforme al Calendario de
+Publicación de resultados
+Difusión de Información Estadística y Geográfica y de Interés Nacional.
+En la integración del IGAE, de agosto de 2026, se consideró la información estadística de las encuestas
+económicas (ENEC, EMIM, EMEC y EMS), de la EIMM, de la ENOE, de los registros administrativos y de los datos
+primarios que divulga el Instituto. Para las actividades agropecuarias, petroleras, de energía, gas y agua, de
+servicios financieros y del gobierno, se incluyeron los registros administrativos provenientes de las empresas y
+Nota al público usuario
+Unidades del Estado que se recibieron oportunamente vía correo electrónico e internet. Esto permitió la
+generación de estadísticas con niveles altos de cobertura.
+El INEGI invita a conocer la metodología del IGAE en la siguiente liga:
+https://www.inegi.org.mx/programas/igae/2018/
+La información estadística y geográfica que genera el INEGI es un bien público y nos permite
+a todas y a todos tomar mejores decisiones. ¡Conócela, úsala y compártela!

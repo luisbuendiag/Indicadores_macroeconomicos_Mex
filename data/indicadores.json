@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-10-29T14:11:45+00:00",
+    "generated_at": "2026-10-29T15:50:53+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-10-29T08:11:45-06:00",
+    "last_update_ct": "2026-10-29T09:50:53-06:00",
     "periodo_referencia_reciente": {
       "period": "Sep 26",
       "period_long": "Sep 26"
@@ -11001,9 +11001,15 @@
         "available": true,
         "format": "docx",
         "path": "downloads/indicadores/IGAE/nota/IGAE_nota.docx",
-        "periodo": "Abr-26",
-        "generated_from": "machote",
-        "automatic": false
+        "periodo": "Ago 26",
+        "generated_from": "boletin_validado",
+        "automatic": true,
+        "generated_at": "2026-10-29T15:52:06+00:00",
+        "source_sha256": "3632ec20e073674e8f854b434428ad79a135528a6741c23acb007ed04908c416",
+        "fingerprint": "0c31236228883c6ba80004d32cb859f53bb692a2370f7592d39a81444d1ece57",
+        "status": "vigente",
+        "target_period": "Ago 26",
+        "message": "Nota generada y validada por reglas Python"
       },
       "boletin_cifras": {
         "2024-11": {
@@ -21569,9 +21575,15 @@
         "available": true,
         "format": "docx",
         "path": "downloads/indicadores/IMAI/nota/IMAI_nota.docx",
-        "periodo": "Jun-26",
-        "generated_from": "machote",
-        "automatic": false
+        "periodo": "Ago 26",
+        "generated_from": "boletin_validado",
+        "automatic": true,
+        "generated_at": "2026-10-29T15:51:59+00:00",
+        "source_sha256": "218b52f8b323957f1e9fa9a641bdcb03700c34d692367953e6e758acf5b50d57",
+        "fingerprint": "e9001317f5a233bc9af1dad97431dc6211de4462fe913a607a2935b9a3eb41ec",
+        "status": "vigente",
+        "target_period": "Ago 26",
+        "message": "Nota generada y validada por reglas Python"
       },
       "boletin_cifras": {
         "2024-11": {
@@ -178290,9 +178302,9 @@
         "periodo": "Sep 26",
         "generated_from": "boletin_validado",
         "automatic": true,
-        "generated_at": "2026-10-29T02:35:14+00:00",
+        "generated_at": "2026-10-29T15:51:54+00:00",
         "source_sha256": "3eb0f16b4520bfe26b9fbe5e9f61e18814d5c33de1e99b2a8d1c48ac2e5a89cd",
-        "fingerprint": "cf6d489a2d7cf887fc245103291645f9d27d1e81fcf183aa45560f95f376cd27",
+        "fingerprint": "aa8a162e987a94a22d96a0b3f97f5b4e2dd353348f25ec5db71fe41c8aabdeae",
         "status": "vigente",
         "target_period": "Sep 26",
         "message": "Nota generada y validada por reglas Python"

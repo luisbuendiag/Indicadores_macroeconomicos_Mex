@@ -1,0 +1,21 @@
+﻿variable,valor,unidad,periodo,serie,ubicacion,fuente
+Indicador Global de la Actividad Económica index,108.4,puntos,2026-08,desestacionalizada,"páginas 1–2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf
+Indicador Global de la Actividad Económica mom,0.6,porcentaje,2026-08,desestacionalizada,"páginas 1–2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf
+Indicador Global de la Actividad Económica yoy,3.5,porcentaje,2026-08,desestacionalizada,"páginas 1–2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf
+Indicador Global de la Actividad Económica original,3.3,porcentaje,2026-08,original,"página 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf
+Indicador Global de la Actividad Económica ytd,1.7,porcentaje,2026-08,original,"página 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf
+Actividades primarias index,109.1,puntos,2026-08,desestacionalizada,"páginas 1–2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf
+Actividades primarias mom,3.5,porcentaje,2026-08,desestacionalizada,"páginas 1–2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf
+Actividades primarias yoy,-3.3,porcentaje,2026-08,desestacionalizada,"páginas 1–2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf
+Actividades primarias original,-2.6,porcentaje,2026-08,original,"página 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf
+Actividades primarias ytd,1.2,porcentaje,2026-08,original,"página 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf
+Actividades secundarias index,103.4,puntos,2026-08,desestacionalizada,"páginas 1–2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf
+Actividades secundarias mom,0.6,porcentaje,2026-08,desestacionalizada,"páginas 1–2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf
+Actividades secundarias yoy,3.6,porcentaje,2026-08,desestacionalizada,"páginas 1–2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf
+Actividades secundarias original,3.5,porcentaje,2026-08,original,"página 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf
+Actividades secundarias ytd,0.8,porcentaje,2026-08,original,"página 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf
+Actividades terciarias index,111.2,puntos,2026-08,desestacionalizada,"páginas 1–2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf
+Actividades terciarias mom,0.2,porcentaje,2026-08,desestacionalizada,"páginas 1–2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf
+Actividades terciarias yoy,3.7,porcentaje,2026-08,desestacionalizada,"páginas 1–2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf
+Actividades terciarias original,3.6,porcentaje,2026-08,original,"página 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf
+Actividades terciarias ytd,2.2,porcentaje,2026-08,original,"página 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf

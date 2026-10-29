@@ -1,0 +1,22 @@
+﻿variable,valor,unidad,periodo,serie,ubicacion,fuente
+Actividad industrial index,103.4,puntos,2026-08,desestacionalizada,"páginas 1–2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf
+Actividad industrial mom,0.6,porcentaje,2026-08,desestacionalizada,"páginas 1–2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf
+Actividad industrial yoy,3.6,porcentaje,2026-08,desestacionalizada,"páginas 1–2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf
+Actividad industrial original,3.5,porcentaje,2026-08,original,"página 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf
+Actividad industrial ytd,0.8,porcentaje,2026-08,original,"página 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf
+Minería mom,-1.6,porcentaje,2026-08,desestacionalizada,"páginas 1–2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf
+Minería yoy,-0.8,porcentaje,2026-08,desestacionalizada,"páginas 1–2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf
+Minería original,-0.8,porcentaje,2026-08,original,"página 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf
+Minería ytd,2.9,porcentaje,2026-08,original,"página 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf
+"Generación, transmisión mom",1.2,porcentaje,2026-08,desestacionalizada,"páginas 1–2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf
+"Generación, transmisión yoy",1.4,porcentaje,2026-08,desestacionalizada,"páginas 1–2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf
+"Generación, transmisión original",1.6,porcentaje,2026-08,original,"página 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf
+"Generación, transmisión ytd",0.2,porcentaje,2026-08,original,"página 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf
+Construcción mom,0.0,porcentaje,2026-08,desestacionalizada,"páginas 1–2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf
+Construcción yoy,7.9,porcentaje,2026-08,desestacionalizada,"páginas 1–2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf
+Construcción original,7.5,porcentaje,2026-08,original,"página 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf
+Construcción ytd,3.5,porcentaje,2026-08,original,"página 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf
+Industrias manufactureras mom,1.2,porcentaje,2026-08,desestacionalizada,"páginas 1–2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf
+Industrias manufactureras yoy,3.2,porcentaje,2026-08,desestacionalizada,"páginas 1–2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf
+Industrias manufactureras original,3.2,porcentaje,2026-08,original,"página 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf
+Industrias manufactureras ytd,-0.3,porcentaje,2026-08,original,"página 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf

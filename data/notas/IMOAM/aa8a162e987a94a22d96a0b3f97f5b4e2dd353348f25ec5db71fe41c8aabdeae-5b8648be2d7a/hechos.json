@@ -1,0 +1,55 @@
+{
+  "indicator": "IMOAM",
+  "ym": "2026-09",
+  "period": "Sep 26",
+  "publication_date": "2026-10-28",
+  "bulletin": "639/26",
+  "values": [
+    108.0,
+    105.1,
+    111.1,
+    0.019,
+    -0.009000000000000001,
+    0.047
+  ],
+  "base": null,
+  "pages": [
+    "BOLETÍN DE INDICADOR 639/26\nINDICADOR MENSUAL OPORTUNO\nDE LA ACTIVIDAD MANUFACTURERA (IMOAM)\n28 de octubre de 2026\nPágina 1/4\nVariación\nÍndice\nanual\n108.0 ▲ 1.9 %\nEn septiembre de 2026, el IMOAM estima un aumento de la actividad manufacturera\nde 1.9 % respecto a septiembre de 2025\nEn septiembre de 2026, el Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM)\ntiene un valor de 108.0 puntos, como cálculo anticipado del Indicador Mensual de la Actividad\nIndustrial (IMAI) del sector manufacturero. Este nivel corresponde a una variación estimada\nanual de 1.9 por ciento. En el cuadro 1 se presentan los intervalos de confianza de ambas\nestimaciones.\nCuadro 1\nEstimaciones del Indicador Mensual Oportuno de la Actividad Manufacturera\nseptiembre de 2026\nIntervalo de confianza a 95 %\nDato Estimación puntual\nLímite inferior Límite superior\nÍndice 108.0 105.1 111.1\nVariación anual 1.9 % -0.9 % 4.7 %\nNota: A partir de cifras originales.\nFuente: INEGI. Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM), septiembre de 2026.\nA continuación, se observan los resultados del cálculo del IMOAM. La gráfica 1 muestra el IMOAM\njunto con los valores del IMAI correspondientes al sector manufacturero. La gráfica 2 contiene\nlas variaciones porcentuales anuales del IMOAM junto con las variaciones anuales del\nIMAI de dicho sector.",
+    "BOLETÍN DE INDICADOR 639/26\nINDICADOR MENSUAL OPORTUNO\nDE LA ACTIVIDAD MANUFACTURERA (IMOAM)\n28 de octubre de 2026\nPágina 2/4\nGráfica 1\nÍndices del Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM)\ne Indicador Mensual de la Actividad Industrial (IMAI) del sector manufacturero\nenero de 2019-septiembre de 2026\nNota: El Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM) se obtiene a partir de un modelo de diferencias logarítmicas.\nFuente: INEGI. Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM), septiembre de 2026.\nGráfica 2\nVariaciones anuales del Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM)\ne Indicador Mensual de la Actividad Industrial (IMAI) del sector manufacturero\nenero de 2019-septiembre de 2026\nFuente: INEGI. Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM), septiembre de 2026.",
+    "BOLETÍN DE INDICADOR 639/26\nINDICADOR MENSUAL OPORTUNO\nDE LA ACTIVIDAD MANUFACTURERA (IMOAM)\n28 de octubre de 2026\nPágina 3/4\nI. EVALUACIÓN HISTÓRICA DE LAS ESTIMACIONES DEL IMOAM\nEl IMOAM comenzó a calcularse en agosto de 2015. Desde entonces, su desempeño se evalúa\nmes con mes. El IMOAM se compara con el IMAI del sector manufacturero, y la diferencia entre\nambos indicadores es estadísticamente cercana a cero. En 90 % de las ocasiones, el IMAI del\nsector manufacturero quedó dentro del intervalo de confianza de 95 % del IMOAM. En la\ngráfica 3 se muestra la comparación para el periodo entre enero de 2019 y agosto de 2026.\nGráfica 3\nComparación histórica entre el Indicador Mensual Oportuno de la Actividad Manufacturera\n(IMOAM) y el Indicador Mensual de la Actividad Industrial (IMAI) del sector manufacturero\n2019-2026\nFuente: INEGI. Indicador Mensual Oportuno de la Actividad Manufacturera (IMOAM), 2019 a 2026.",
+    "BOLETÍN DE INDICADOR 639/26\nINDICADOR MENSUAL OPORTUNO\nDE LA ACTIVIDAD MANUFACTURERA (IMOAM)\n28 de octubre de 2026\nPágina 4/4\nII. FICHA METODOLÓGICA\nEl Instituto Nacional de Estadística y Geografía (INEGI), por medio de Cuentas\nNacionales, publica el Indicador Mensual de la Actividad Industrial (IMAI) para el\nsector manufacturero alrededor de 40 días después de que termina el mes de\nreferencia. Con este indicador, el INEGI ofrece información macroeconómica\nrelevante para la toma de decisiones económicas. El Indicador Mensual Oportuno\nde la Actividad Manufacturera (IMOAM) es una estadística experimental que\ngenera el INEGI para estimar con anticipación el próximo valor mensual del\nIMAI del sector manufacturero, alrededor de 18 días antes de que se publique.\nAntecedentes\nPara ello, se construye un modelo estadístico en el que se utilizan datos del\nRegistro Estadístico de Negocios en México (RENEM) vinculados con registros\nadministrativos de consumos de energía eléctrica que provienen de la Comisión\nFederal de Electricidad (CFE) y del Centro Nacional de Control de Energía\n(CENACE). Se parte de la hipótesis de que la producción en el sector\nmanufacturero es proporcional a su consumo de energía eléctrica. La\nconstrucción de dicho modelo estadístico es posible gracias a la oportunidad con\nla que CFE proporciona datos al INEGI.\nPoner a disposición del público usuario una estimación anticipada del próximo\nObjetivo\nvalor mensual del IMAI del sector manufacturero.\nUnidad de observación Empresa formal en el sector manufacturero de México\nEl IMOAM modela el comportamiento de la serie mensual original (sin ajuste\nestacional) del IMAI en el sector manufacturero. El propósito es brindar\nMétodo para generar la\ninformación oportuna sobre la evolución de este sector mediante datos\nestadística\nmensuales que se obtienen del aprovechamiento de registros administrativos de\nla CFE y del CENACE.\nVariable de respuesta: IMAI en el sector manufacturero\nVariables explicativas:\n• Indicador de Consumo de Energía Eléctrica (ICEE) en el sector\nVariables manufacturero, construido a partir de datos de registros administrativos\nprovenientes de la CFE y del CENACE.\n• Variables dummy que se usan para modelar eventos estacionales y\nsituaciones especiales.\nLa información para construir las variables del modelo estadístico se obtiene del\nCaptación de datos área de Cuentas Nacionales en el INEGI, así como de registros administrativos\nmensuales de la CFE y del CENACE.\nProcesamiento de datos El modelo estadístico se construye por medio del software estadístico R.\nPor cuestiones de confidencialidad, no se publica la serie mensual del ICEE.\nNota al público usuario Las estimaciones que genera el modelo estadístico IMOAM se publican por medio\nde este boletín en el portal del Instituto, así como en sus redes sociales.\nPara más información sobre este proyecto, consúltese el portal del Instituto:\nLigas de interés\nhttps://www.inegi.org.mx/investigacion/imoam/\nLa información estadística y geográfica que genera el INEGI es un bien público y nos permite\na todas y a todos tomar mejores decisiones. ¡Conócela, úsala y compártela!"
+  ],
+  "source_sha256": "3eb0f16b4520bfe26b9fbe5e9f61e18814d5c33de1e99b2a8d1c48ac2e5a89cd",
+  "evidence": [
+    "Índice 108.0 105.1 111.1",
+    "Variación anual 1.9 % -0.9 % 4.7"
+  ],
+  "raw_values": [
+    "108.0",
+    "105.1",
+    "111.1",
+    "1.9",
+    "-0.9",
+    "4.7"
+  ],
+  "series": "original",
+  "statistical_status": "estimado",
+  "context": {
+    "coverage": 90.0,
+    "calculation_start": "2015-08",
+    "evaluation_start": "2019-01",
+    "evaluation_end": "2026-08",
+    "days_ahead": 18,
+    "imai_lag": 40,
+    "observation_unit": "Empresa formal en el sector manufacturero de México",
+    "evidence": {
+      "coverage": "En 90 % de las ocasiones",
+      "start": "comenzó a calcularse en agosto de 2015",
+      "window": "entre enero de 2019 y agosto de 2026",
+      "ahead": "alrededor de 18 días antes",
+      "lag": "alrededor de 40 días después",
+      "unit": "Unidad de observación Empresa formal en el sector manufacturero de México"
+    }
+  },
+  "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_10.pdf"
+}

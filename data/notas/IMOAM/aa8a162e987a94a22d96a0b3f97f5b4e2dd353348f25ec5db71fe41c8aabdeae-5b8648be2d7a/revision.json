@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "result": {
+    "datos": true,
+    "logica": true,
+    "estructura": true,
+    "render": true,
+    "issues": []
+  },
+  "kind": "reglas_python",
+  "model": "reglas-python-1",
+  "limits": [
+    "Controles de estructura y geometría; sin revisión visual humana ni análisis editorial por IA."
+  ]
+}
