@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-10-29T02:34:32+00:00",
+    "generated_at": "2026-10-29T03:50:43+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-10-28T20:34:32-06:00",
+    "last_update_ct": "2026-10-28T21:50:43-06:00",
     "periodo_referencia_reciente": {
       "period": "Sep 26",
       "period_long": "Sep 26"
@@ -11005,6 +11005,206 @@
         "generated_from": "machote",
         "automatic": false
       },
+      "boletin_cifras": {
+        "2024-11": {
+          "1": {
+            "value": 0.004,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+            "publication_date": "23 de octubre de 2026",
+            "series": "IGAE_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2024-12": {
+          "1": {
+            "value": -0.01,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+            "publication_date": "23 de octubre de 2026",
+            "series": "IGAE_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2025-01": {
+          "1": {
+            "value": -0.002,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+            "publication_date": "23 de octubre de 2026",
+            "series": "IGAE_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2025-02": {
+          "1": {
+            "value": 0.01,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+            "publication_date": "23 de octubre de 2026",
+            "series": "IGAE_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2025-03": {
+          "1": {
+            "value": -0.004,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+            "publication_date": "23 de octubre de 2026",
+            "series": "IGAE_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2025-04": {
+          "1": {
+            "value": 0.005,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+            "publication_date": "23 de octubre de 2026",
+            "series": "IGAE_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2025-05": {
+          "1": {
+            "value": 0.0,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+            "publication_date": "23 de octubre de 2026",
+            "series": "IGAE_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2025-06": {
+          "1": {
+            "value": 0.002,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+            "publication_date": "23 de octubre de 2026",
+            "series": "IGAE_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2025-07": {
+          "1": {
+            "value": -0.009000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+            "publication_date": "23 de octubre de 2026",
+            "series": "IGAE_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2025-08": {
+          "1": {
+            "value": 0.006,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+            "publication_date": "23 de octubre de 2026",
+            "series": "IGAE_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2025-09": {
+          "1": {
+            "value": -0.006,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+            "publication_date": "23 de octubre de 2026",
+            "series": "IGAE_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2025-10": {
+          "1": {
+            "value": 0.01,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+            "publication_date": "23 de octubre de 2026",
+            "series": "IGAE_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2025-11": {
+          "1": {
+            "value": -0.002,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+            "publication_date": "23 de octubre de 2026",
+            "series": "IGAE_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2025-12": {
+          "1": {
+            "value": 0.004,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+            "publication_date": "23 de octubre de 2026",
+            "series": "IGAE_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2026-01": {
+          "1": {
+            "value": -0.009000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+            "publication_date": "23 de octubre de 2026",
+            "series": "IGAE_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2026-02": {
+          "1": {
+            "value": 0.001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+            "publication_date": "23 de octubre de 2026",
+            "series": "IGAE_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2026-03": {
+          "1": {
+            "value": 0.004,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+            "publication_date": "23 de octubre de 2026",
+            "series": "IGAE_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2026-04": {
+          "1": {
+            "value": 0.012,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+            "publication_date": "23 de octubre de 2026",
+            "series": "IGAE_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2026-05": {
+          "1": {
+            "value": -0.003,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+            "publication_date": "23 de octubre de 2026",
+            "series": "IGAE_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2026-06": {
+          "1": {
+            "value": -0.001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+            "publication_date": "23 de octubre de 2026",
+            "series": "IGAE_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2026-07": {
+          "1": {
+            "value": 0.008,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+            "publication_date": "23 de octubre de 2026",
+            "series": "IGAE_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2026-08": {
+          "1": {
+            "value": 0.006,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+            "publication_date": "23 de octubre de 2026",
+            "series": "IGAE_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        }
+      },
       "boletin_validado": true
     },
     "IMAI": {
@@ -21372,6 +21572,2026 @@
         "periodo": "Jun-26",
         "generated_from": "machote",
         "automatic": false
+      },
+      "boletin_cifras": {
+        "2024-11": {
+          "0": {
+            "value": 103.3,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "1": {
+            "value": 0.001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "2": {
+            "value": -0.009000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "4": {
+            "value": -0.013999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "5": {
+            "value": 0.005,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "10": {
+            "value": -0.045,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "11": {
+            "value": 0.028999999999999998,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "12": {
+            "value": -0.044000000000000004,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "13": {
+            "value": 0.005,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "14": {
+            "value": 0.004,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "15": {
+            "value": 0.008,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "16": {
+            "value": -0.018000000000000002,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "17": {
+            "value": 0.006999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2024-12": {
+          "0": {
+            "value": 101.4,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "1": {
+            "value": -0.013999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "2": {
+            "value": -0.024,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "4": {
+            "value": -0.027000000000000003,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "5": {
+            "value": 0.002,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "10": {
+            "value": -0.062,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "11": {
+            "value": 0.018000000000000002,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "12": {
+            "value": -0.071,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "13": {
+            "value": -0.003,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "14": {
+            "value": -0.01,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "15": {
+            "value": -0.019,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "16": {
+            "value": -0.021,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "17": {
+            "value": -0.012,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2025-01": {
+          "0": {
+            "value": 100.8,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "1": {
+            "value": -0.004,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "2": {
+            "value": -0.027999999999999997,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "10": {
+            "value": -0.086,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "11": {
+            "value": 0.01,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "12": {
+            "value": -0.064,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "13": {
+            "value": -0.009000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "14": {
+            "value": -0.018000000000000002,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "15": {
+            "value": -0.008,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "16": {
+            "value": 0.001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "17": {
+            "value": -0.003,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2025-02": {
+          "0": {
+            "value": 103.2,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "1": {
+            "value": 0.025,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "2": {
+            "value": 0.004,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "4": {
+            "value": -0.013000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "5": {
+            "value": -0.021,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "10": {
+            "value": -0.063,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "11": {
+            "value": -0.011000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "12": {
+            "value": 0.005,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "13": {
+            "value": 0.018000000000000002,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "14": {
+            "value": 0.008,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "15": {
+            "value": -0.004,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "16": {
+            "value": 0.027999999999999997,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "17": {
+            "value": 0.028999999999999998,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2025-03": {
+          "0": {
+            "value": 102.5,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "1": {
+            "value": -0.009000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "2": {
+            "value": -0.013000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "4": {
+            "value": 0.019,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "5": {
+            "value": -0.006999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "10": {
+            "value": -0.10099999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "11": {
+            "value": -0.034,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "12": {
+            "value": 0.021,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "13": {
+            "value": -0.01,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "14": {
+            "value": -0.027000000000000003,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "15": {
+            "value": -0.011000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "16": {
+            "value": 0.008,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "17": {
+            "value": -0.011000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2025-04": {
+          "0": {
+            "value": 102.5,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "1": {
+            "value": 0.001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "2": {
+            "value": -0.006999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "4": {
+            "value": -0.04,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "5": {
+            "value": -0.016,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "10": {
+            "value": -0.068,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "11": {
+            "value": -0.001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "12": {
+            "value": -0.027000000000000003,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "13": {
+            "value": 0.013999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "14": {
+            "value": 0.013000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "15": {
+            "value": 0.001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "16": {
+            "value": -0.02,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "17": {
+            "value": 0.006999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2025-05": {
+          "0": {
+            "value": 103.3,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "1": {
+            "value": 0.006,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "2": {
+            "value": -0.004,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "4": {
+            "value": -0.008,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "5": {
+            "value": -0.013999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "10": {
+            "value": -0.084,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "11": {
+            "value": -0.038,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "12": {
+            "value": -0.01,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "13": {
+            "value": 0.013999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "14": {
+            "value": -0.011000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "15": {
+            "value": 0.004,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "16": {
+            "value": 0.027999999999999997,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "17": {
+            "value": 0.001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2025-06": {
+          "0": {
+            "value": 103.2,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "1": {
+            "value": -0.001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "2": {
+            "value": -0.008,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "4": {
+            "value": -0.004,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "5": {
+            "value": -0.013000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "10": {
+            "value": -0.085,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "11": {
+            "value": -0.038,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "12": {
+            "value": 0.015,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "13": {
+            "value": 0.0,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "14": {
+            "value": -0.013999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "15": {
+            "value": -0.002,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "16": {
+            "value": -0.002,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "17": {
+            "value": 0.003,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2025-07": {
+          "0": {
+            "value": 101.6,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "1": {
+            "value": -0.012,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "2": {
+            "value": -0.027999999999999997,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "4": {
+            "value": -0.027000000000000003,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "5": {
+            "value": -0.015,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "10": {
+            "value": -0.059000000000000004,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "11": {
+            "value": -0.037000000000000005,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "12": {
+            "value": -0.040999999999999995,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "13": {
+            "value": -0.018000000000000002,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "14": {
+            "value": 0.019,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "15": {
+            "value": -0.001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "16": {
+            "value": -0.012,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "17": {
+            "value": -0.016,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2025-08": {
+          "0": {
+            "value": 101.1,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "1": {
+            "value": -0.003,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "2": {
+            "value": -0.027000000000000003,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "4": {
+            "value": -0.036000000000000004,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "5": {
+            "value": -0.017,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "10": {
+            "value": -0.07,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "11": {
+            "value": -0.024,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "12": {
+            "value": -0.032,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "13": {
+            "value": -0.017,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "14": {
+            "value": -0.006999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "15": {
+            "value": 0.013000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "16": {
+            "value": -0.022000000000000002,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "17": {
+            "value": 0.002,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2025-09": {
+          "0": {
+            "value": 99.5,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "1": {
+            "value": -0.004,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "2": {
+            "value": -0.033,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "4": {
+            "value": -0.024,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "5": {
+            "value": -0.018000000000000002,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "10": {
+            "value": -0.032,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "11": {
+            "value": -0.002,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "12": {
+            "value": -0.07200000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "13": {
+            "value": -0.023,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "14": {
+            "value": 0.006999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "15": {
+            "value": 0.004,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "16": {
+            "value": -0.025,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "17": {
+            "value": 0.002,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2025-10": {
+          "0": {
+            "value": 100.5,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "1": {
+            "value": 0.006999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "2": {
+            "value": -0.006999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "4": {
+            "value": -0.004,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "5": {
+            "value": -0.017,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "10": {
+            "value": -0.006999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "11": {
+            "value": 0.017,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "12": {
+            "value": 0.015,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "13": {
+            "value": -0.013999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "14": {
+            "value": 0.006999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "15": {
+            "value": 0.016,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "16": {
+            "value": 0.038,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "17": {
+            "value": -0.003,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2025-11": {
+          "0": {
+            "value": 101.4,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "1": {
+            "value": 0.006,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "2": {
+            "value": -0.001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "4": {
+            "value": -0.008,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "5": {
+            "value": -0.016,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "10": {
+            "value": -0.01,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "11": {
+            "value": 0.011000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "12": {
+            "value": 0.03,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "13": {
+            "value": -0.008,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "14": {
+            "value": 0.0,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "15": {
+            "value": 0.0,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "16": {
+            "value": 0.016,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "17": {
+            "value": 0.005,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2025-12": {
+          "0": {
+            "value": 101.7,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "1": {
+            "value": 0.002,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "2": {
+            "value": 0.015,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "4": {
+            "value": 0.024,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "5": {
+            "value": -0.013000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "10": {
+            "value": 0.005,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "11": {
+            "value": 0.039,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "12": {
+            "value": 0.068,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "13": {
+            "value": 0.001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "14": {
+            "value": 0.005,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "15": {
+            "value": 0.006999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "16": {
+            "value": 0.012,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "17": {
+            "value": -0.001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2026-01": {
+          "0": {
+            "value": 100.3,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "1": {
+            "value": -0.011000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "2": {
+            "value": -0.001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "10": {
+            "value": 0.01,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "11": {
+            "value": 0.006,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "12": {
+            "value": 0.05,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "13": {
+            "value": -0.017,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "14": {
+            "value": -0.011000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "15": {
+            "value": -0.019,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "16": {
+            "value": -0.011000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "17": {
+            "value": -0.011000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2026-02": {
+          "0": {
+            "value": 100.7,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "1": {
+            "value": 0.004,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "2": {
+            "value": -0.013000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "4": {
+            "value": -0.013000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "5": {
+            "value": -0.012,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "10": {
+            "value": 0.009000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "11": {
+            "value": -0.013999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "12": {
+            "value": 0.012,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "13": {
+            "value": -0.023,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "14": {
+            "value": 0.006,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "15": {
+            "value": -0.013999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "16": {
+            "value": 0.003,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "17": {
+            "value": 0.006999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2026-03": {
+          "0": {
+            "value": 99.9,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "1": {
+            "value": -0.006,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "2": {
+            "value": -0.015,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "4": {
+            "value": -0.013000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "5": {
+            "value": -0.012,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "10": {
+            "value": 0.057999999999999996,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "11": {
+            "value": 0.003,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "12": {
+            "value": -0.053,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "13": {
+            "value": -0.016,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "14": {
+            "value": 0.017,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "15": {
+            "value": 0.003,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "16": {
+            "value": -0.033,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "17": {
+            "value": -0.002,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2026-04": {
+          "0": {
+            "value": 102.4,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "1": {
+            "value": 0.021,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "2": {
+            "value": 0.018000000000000002,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "4": {
+            "value": 0.023,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "5": {
+            "value": -0.003,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "10": {
+            "value": 0.034,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "11": {
+            "value": -0.003,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "12": {
+            "value": 0.102,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "13": {
+            "value": -0.003,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "14": {
+            "value": -0.006999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "15": {
+            "value": -0.003,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "16": {
+            "value": 0.076,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "17": {
+            "value": 0.012,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2026-05": {
+          "0": {
+            "value": 101.6,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "1": {
+            "value": -0.008,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "2": {
+            "value": 0.0,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "4": {
+            "value": -0.006999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "5": {
+            "value": -0.004,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "10": {
+            "value": 0.04,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "11": {
+            "value": -0.008,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "12": {
+            "value": -0.006,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "13": {
+            "value": -0.005,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "14": {
+            "value": -0.001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "15": {
+            "value": -0.005,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "16": {
+            "value": -0.037000000000000005,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "17": {
+            "value": -0.001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2026-06": {
+          "0": {
+            "value": 102.0,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "1": {
+            "value": 0.002,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "2": {
+            "value": 0.008,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "4": {
+            "value": 0.017,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "5": {
+            "value": 0.0,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "10": {
+            "value": 0.07,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "11": {
+            "value": 0.006999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "12": {
+            "value": 0.042,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "13": {
+            "value": -0.012,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "14": {
+            "value": 0.006,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "15": {
+            "value": 0.009000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "16": {
+            "value": 0.03,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "17": {
+            "value": -0.006,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2026-07": {
+          "0": {
+            "value": 102.5,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "1": {
+            "value": 0.005,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "2": {
+            "value": 0.024,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "4": {
+            "value": 0.027000000000000003,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "5": {
+            "value": 0.004,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "10": {
+            "value": 0.016,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "11": {
+            "value": 0.006999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "12": {
+            "value": 0.067,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "13": {
+            "value": 0.013000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "14": {
+            "value": -0.018000000000000002,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "15": {
+            "value": 0.0,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "16": {
+            "value": 0.009000000000000001,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "17": {
+            "value": 0.006999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        },
+        "2026-08": {
+          "0": {
+            "value": 103.4,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "1": {
+            "value": 0.006,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "2": {
+            "value": 0.036000000000000004,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "4": {
+            "value": 0.035,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "5": {
+            "value": 0.008,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "10": {
+            "value": -0.008,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "11": {
+            "value": 0.013999999999999999,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "12": {
+            "value": 0.079,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "13": {
+            "value": 0.032,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "14": {
+            "value": -0.016,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "15": {
+            "value": 0.012,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "16": {
+            "value": 0.0,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          },
+          "17": {
+            "value": 0.012,
+            "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+            "publication_date": "12 de octubre de 2026",
+            "series": "IMAI_pdf",
+            "method": "INEGI boletín PDF"
+          }
+        }
       },
       "boletin_validado": true
     },
