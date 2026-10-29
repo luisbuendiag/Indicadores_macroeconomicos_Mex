@@ -53,14 +53,14 @@
     "target_period": "Ago 26",
     "published": {
       "periodo": "Ago 26",
-      "generated_at": "2026-10-29T16:43:20+00:00",
+      "generated_at": "2026-10-29T16:48:21+00:00",
       "source_sha256": "86d30223c1e309b04e3af442fa978bea3747299d008433c5e930a3d0614e8241",
-      "fingerprint": "a3749e49c4fd427c94fa70073417b4d01141f87df1e1185964fea51ea8be84ff",
-      "docx_sha256": "74b989c39624a58d8e810a0a64a623cd2f5779198dcc192fac9131f817a63863",
+      "fingerprint": "8904c20c925522fd32526a258fa10b0dbd413f6cf482055e0a6f4da21a674ec3",
+      "docx_sha256": "ff0380edeb31e28f6b2553145fc34d08b860d22300f4b236a77e072a0c6bf3e5",
       "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf",
       "review_model": "encuestas-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/EMIM/a3749e49c4fd427c94fa70073417b4d01141f87df1e1185964fea51ea8be84ff-74b989c39624"
+      "archive": "data/notas/EMIM/8904c20c925522fd32526a258fa10b0dbd413f6cf482055e0a6f4da21a674ec3-ff0380edeb31"
     }
   },
   "EMOE": {
@@ -69,14 +69,14 @@
     "target_period": "Sep 26",
     "published": {
       "periodo": "Sep 26",
-      "generated_at": "2026-10-29T16:43:25+00:00",
+      "generated_at": "2026-10-29T16:48:26+00:00",
       "source_sha256": "74eb4d326c4aac1556ff2b4eeaa6a673fb4b21f603bb018e5a334076fdd9000c",
-      "fingerprint": "959400fd190ae35c1c713d0ce444266aa9712533025c17d235d4d8fc0db88b2d",
-      "docx_sha256": "15e1d4777f53c84b58180e2a4fa8f96e5e30ce7c0a7e5eafff9343990e015e77",
+      "fingerprint": "8b129271c7d0a7aa32c47c58ef59d632f4e2ccc97449426d3f41af564e2c0942",
+      "docx_sha256": "0ee56a48d4cbaecb5be861867dc41f1b0c230086bacf8d536531f29f52ff1c41",
       "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf",
       "review_model": "encuestas-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/EMOE/959400fd190ae35c1c713d0ce444266aa9712533025c17d235d4d8fc0db88b2d-15e1d4777f53"
+      "archive": "data/notas/EMOE/8b129271c7d0a7aa32c47c58ef59d632f4e2ccc97449426d3f41af564e2c0942-0ee56a48d4cb"
     }
   }
 }

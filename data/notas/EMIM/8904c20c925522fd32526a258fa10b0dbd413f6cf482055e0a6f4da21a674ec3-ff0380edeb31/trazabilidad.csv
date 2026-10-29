@@ -1,0 +1,101 @@
+﻿variable,valor,unidad,periodo,serie,ubicacion,fuente
+ Producción index,113.7,puntos,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Producción mom,1.7,porcentaje,2026-08,desestacionalizada,"p. 3, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Producción yoy,4.1,porcentaje,2026-08,desestacionalizada,"p. 3, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Producción original,4.0,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Personal ocupado index,98.2,puntos,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Personal ocupado mom,-0.1,porcentaje,2026-08,desestacionalizada,"p. 3, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Personal ocupado yoy,-1.0,porcentaje,2026-08,desestacionalizada,"p. 3, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Personal ocupado original,-1.0,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Horas trabajadas index,97.5,puntos,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Horas trabajadas mom,0.0,porcentaje,2026-08,desestacionalizada,"p. 3, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Horas trabajadas yoy,-0.6,porcentaje,2026-08,desestacionalizada,"p. 3, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Horas trabajadas original,-1.0,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Remuneraciones medias reales index,119.1,puntos,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Remuneraciones medias reales mom,-0.2,porcentaje,2026-08,desestacionalizada,"p. 3, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Remuneraciones medias reales yoy,2.7,porcentaje,2026-08,desestacionalizada,"p. 3, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Remuneraciones medias reales original,2.1,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Alimentos production,-1.4,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Alimentos employment,-0.5,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Alimentos hours,-0.4,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Alimentos pay,2.4,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Bebidas y tabaco production,2.0,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Bebidas y tabaco employment,-0.1,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Bebidas y tabaco hours,-0.2,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Bebidas y tabaco pay,-1.7,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Insumos textiles production,0.8,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Insumos textiles employment,-2.0,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Insumos textiles hours,-5.5,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Insumos textiles pay,-1.6,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Productos textiles production,-2.3,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Productos textiles employment,-4.0,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Productos textiles hours,-3.4,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Productos textiles pay,-0.5,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Prendas de vestir production,-3.9,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Prendas de vestir employment,-2.6,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Prendas de vestir hours,-3.1,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Prendas de vestir pay,-0.7,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Cuero y piel production,-0.5,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Cuero y piel employment,-1.3,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Cuero y piel hours,-0.6,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Cuero y piel pay,2.6,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Madera production,1.3,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Madera employment,1.4,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Madera hours,1.1,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Madera pay,0.6,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Papel production,-1.4,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Papel employment,-2.8,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Papel hours,-3.4,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Papel pay,0.5,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Impresión production,-2.3,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Impresión employment,-1.9,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Impresión hours,-2.5,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Impresión pay,3.2,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Petróleo y carbón production,23.5,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Petróleo y carbón employment,0.1,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Petróleo y carbón hours,0.6,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Petróleo y carbón pay,0.3,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Química production,2.2,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Química employment,-0.6,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Química hours,-0.4,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Química pay,0.6,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Plástico y hule production,-1.7,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Plástico y hule employment,-2.7,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Plástico y hule hours,-4.5,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Plástico y hule pay,2.2,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Minerales no metálicos production,-0.8,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Minerales no metálicos employment,-1.5,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Minerales no metálicos hours,-1.3,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Minerales no metálicos pay,1.2,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Metálicas básicas production,3.8,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Metálicas básicas employment,1.1,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Metálicas básicas hours,1.3,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Metálicas básicas pay,-0.6,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Productos metálicos production,-0.9,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Productos metálicos employment,-1.0,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Productos metálicos hours,-0.7,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Productos metálicos pay,1.5,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Maquinaria y equipo production,4.0,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Maquinaria y equipo employment,3.1,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Maquinaria y equipo hours,1.7,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Maquinaria y equipo pay,1.0,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Computación y electrónica production,5.8,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Computación y electrónica employment,3.7,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Computación y electrónica hours,0.4,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Computación y electrónica pay,-1.6,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Equipo eléctrico production,2.1,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Equipo eléctrico employment,-0.3,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Equipo eléctrico hours,0.5,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Equipo eléctrico pay,4.8,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Equipo de transporte production,1.7,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Equipo de transporte employment,-1.9,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Equipo de transporte hours,-1.2,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Equipo de transporte pay,4.0,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Muebles production,-8.5,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Muebles employment,-5.6,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Muebles hours,-6.0,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Muebles pay,4.1,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Otras manufacturas production,-3.8,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Otras manufacturas employment,-2.3,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Otras manufacturas hours,0.2,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
+ Otras manufacturas pay,3.3,porcentaje,2026-08,original,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf
