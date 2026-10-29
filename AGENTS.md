@@ -152,3 +152,14 @@ Entorno financiero contiene la inversión externa reportada por la **Secretaría
   coincidan con las revisiones del BIE. Dos páginas, tablas y dos gráficas.
 - Publicación solo desde URL oficial; nunca desde un PDF local. Conservar la
   nota anterior si cambia metodología, periodo, tabla, membrete o render.
+
+## Notas automáticas de encuestas
+
+- EMIM y EMOE usan `build_survey_notes.py`, sin servicios de IA. EMIM lee las
+  cuatro variables ajustadas y el universo completo de 21 subsectores originales.
+- EMOE corresponde exclusivamente al boletín ICE/IGOEC (`ice`), no pedidos ni
+  tendencia. Conservar tipos de serie por sector y componente; cambios en puntos.
+- Dos páginas con cuadros nativos y dos gráficas. No reconstruir historias de
+  gráficas PDF ni calcular aportaciones sin ponderadores. No publicar un PDF local.
+- Cambios en producto, cuadros, universo, método, periodo o render conservan la
+  nota previa. Configuración y variables de pausa deben seguir respetándose.

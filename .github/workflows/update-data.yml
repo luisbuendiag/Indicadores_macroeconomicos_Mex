@@ -90,6 +90,14 @@ jobs:
           NOTES_WORK_DIR: ${{ runner.temp }}/notas-imoam
         run: python scripts/build_activity_notes.py --publish
 
+      - name: Generar y validar notas EMIM y EMOE con Python
+        if: ${{ vars.NOTES_PILOT_ENABLED != 'false' }}
+        timeout-minutes: 12
+        env:
+          NOTES_AUTO_PUBLISH: ${{ vars.NOTES_AUTO_PUBLISH || 'true' }}
+          NOTES_WORK_DIR: ${{ runner.temp }}/notas-imoam
+        run: python scripts/build_survey_notes.py --publish
+
       - name: Conservar revisión del piloto de notas
         if: ${{ always() && vars.NOTES_PILOT_ENABLED != 'false' }}
         uses: actions/upload-artifact@v4

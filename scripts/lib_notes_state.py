@@ -46,7 +46,7 @@ def validate_published(ind: dict, root: Path = ROOT) -> list[str]:
     try:
         state=load_state(root/'data/notas/estado.json').get(ind['key'],{})
         pub=state.get('published',{})
-        if ind['key'] not in ('IMOAM','IMAI','IGAE') or not pub or pub.get('fingerprint')!=note.get('fingerprint'):
+        if ind['key'] not in ('IMOAM','IMAI','IGAE','EMIM','EMOE') or not pub or pub.get('fingerprint')!=note.get('fingerprint'):
             raise ValueError('Falta identidad de la publicación automática')
         archive=(root/pub['archive']).resolve()
         if not archive.is_relative_to((root/f'data/notas/{ind["key"]}').resolve()):
