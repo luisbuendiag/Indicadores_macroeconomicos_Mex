@@ -90,3 +90,17 @@ Adaptación versionada de Skill_Notas_Boletines_INEGI_Economía 1.0.0, con prior
 a la instrucción del usuario de dos páginas y su referencia ENOE. Actualizar la
 skill de ChatGPT no actualiza automáticamente las reglas de Actions. Cada nuevo
 indicador requiere extractor, análisis, tablas, gráficas y pruebas específicos.
+
+## Extensión IMAI e IGAE
+
+`build_activity_notes.py --publish` procesa ambos después de IMOAM, sin API de IA.
+La extracción lee las cinco páginas y separa cuadro 1 desestacionalizado de cuadro 2
+original; valida periodo, producto, base y carácter preliminar. Usa la edición
+fechada del boletín, no sustituye las series BIE vigentes. Contrasta la fotografía
+registrada por el pipeline cuando existe y corresponde a la misma URL.
+
+Cada Word contiene dos páginas, tres tablas, dos gráficas de componentes, resumen,
+bullets y notas. Los límites de los controles geométricos locales también aplican.
+Los errores conservan la nota anterior. Archivo, hashes, metadatos y rollback se
+comparten con IMOAM; el validador admite únicamente los tres indicadores habilitados.
+La configuración de pausa de Actions se comparte con el piloto.
