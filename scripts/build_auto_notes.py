@@ -76,25 +76,27 @@ def publish(root: Path, work: Path, facts: dict, fp: str, url: str, review: dict
     Antes de Git, los archivos de servicio se reemplazan con rollback en caso de error.
     El historial de fuentes usa una ruta inmutable por fingerprint.
     """
+    key=facts['indicator']
     payload_path=root/'data/indicadores.json'
     payload=json.loads(payload_path.read_text(encoding='utf-8'))
-    I.align(facts,payload['indicators']['IMOAM'])
-    if payload['indicators']['IMOAM'].get('url_boletin_oficial') != url:
+    if key=='IMOAM':I.align(facts,payload['indicators'][key])
+    elif facts['period']!=payload['indicators'][key]['last_observation']:raise ValueError('Periodo de nota distinto a la ficha')
+    if payload['indicators'][key].get('url_boletin_oficial') != url:
         raise ValueError('El boletín de la ficha cambió durante la revisión')
-    dest=root/'downloads/indicadores/IMOAM/nota/IMOAM_nota.docx'
-    if not lib_notas.is_valid_docx(work/'IMOAM_nota.docx'):raise ValueError('Candidata Word inválida')
-    archive=root/'data/notas/IMOAM'/(fp+'-'+S.digest(work/'IMOAM_nota.docx')[:12])
+    dest=root/f'downloads/indicadores/{key}/nota/{key}_nota.docx'
+    if not lib_notas.is_valid_docx(work/f'{key}_nota.docx'):raise ValueError('Candidata Word inválida')
+    archive=root/f'data/notas/{key}'/(fp+'-'+S.digest(work/f'{key}_nota.docx')[:12])
     archive.mkdir(parents=True,exist_ok=True)
-    for name in ('boletin.pdf','boletin.txt','hechos.json','trazabilidad.csv','revision.json','IMOAM_nota.docx'):
+    for name in ('boletin.pdf','boletin.txt','hechos.json','trazabilidad.csv','revision.json',f'{key}_nota.docx'):
         src=work/name;target=archive/name
         if target.exists() and S.digest(target)!=S.digest(src):raise ValueError('Intento de sobrescribir historial inmutable')
         if not target.exists():atomic(target,src.read_bytes())
     stamp=datetime.now(timezone.utc).isoformat(timespec='seconds')
     published=dict(periodo=facts['period'],generated_at=stamp,source_sha256=facts['source_sha256'],fingerprint=fp,
-                   docx_sha256=S.digest(work/'IMOAM_nota.docx'),source_url=url,review_model=review['model'],review_kind=review['kind'],archive=str(archive.relative_to(root)))
+                   docx_sha256=S.digest(work/f'{key}_nota.docx'),source_url=url,review_model=review['model'],review_kind=review['kind'],archive=str(archive.relative_to(root)))
     state=dict(status='vigente',message='Nota generada y validada por reglas Python',target_period=facts['period'],published=published)
-    states=S.load_state(root/'data/notas/estado.json');states['IMOAM']=state
-    ind=payload['indicators']['IMOAM']
+    states=S.load_state(root/'data/notas/estado.json');states[key]=state
+    ind=payload['indicators'][key]
     ind['nota']={**ind.get('nota',{}),**{k:published[k] for k in ('periodo','generated_at','source_sha256','fingerprint')},
                  'available':True,'format':'docx','path':str(dest.relative_to(root)),'automatic':True,'generated_from':'boletin_validado',
                  'status':'vigente','target_period':facts['period'],'message':state['message']}
@@ -102,7 +104,7 @@ def publish(root: Path, work: Path, facts: dict, fp: str, url: str, review: dict
     paths=[dest,root/'data/notas/estado.json',payload_path]
     backups={p:p.read_bytes() if p.exists() else None for p in paths}
     try:
-        atomic(dest,(work/'IMOAM_nota.docx').read_bytes());write_json(paths[1],states);write_json(payload_path,payload)
+        atomic(dest,(work/f'{key}_nota.docx').read_bytes());write_json(paths[1],states);write_json(payload_path,payload)
     except Exception:
         for path,data in backups.items():
             if data is None:path.unlink(missing_ok=True)

@@ -46,13 +46,13 @@ def validate_published(ind: dict, root: Path = ROOT) -> list[str]:
     try:
         state=load_state(root/'data/notas/estado.json').get(ind['key'],{})
         pub=state.get('published',{})
-        if ind['key']!='IMOAM' or not pub or pub.get('fingerprint')!=note.get('fingerprint'):
+        if ind['key'] not in ('IMOAM','IMAI','IGAE') or not pub or pub.get('fingerprint')!=note.get('fingerprint'):
             raise ValueError('Falta identidad de la publicación automática')
         archive=(root/pub['archive']).resolve()
-        if not archive.is_relative_to((root/'data/notas/IMOAM').resolve()):
+        if not archive.is_relative_to((root/f'data/notas/{ind["key"]}').resolve()):
             raise ValueError('Historial de nota fuera de la ruta permitida')
         doc=root/note['path']
-        if digest(doc)!=pub['docx_sha256'] or digest(archive/'IMOAM_nota.docx')!=pub['docx_sha256']:
+        if digest(doc)!=pub['docx_sha256'] or digest(archive/f'{ind["key"]}_nota.docx')!=pub['docx_sha256']:
             raise ValueError('Word distinto a la versión validada')
         if digest(archive/'boletin.pdf')!=pub['source_sha256'] or note.get('source_sha256')!=pub['source_sha256']:
             raise ValueError('Boletín distinto a la evidencia validada')

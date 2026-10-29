@@ -144,3 +144,11 @@ Entorno financiero contiene la inversión externa reportada por la **Secretaría
   archiva fuente, hechos, trazabilidad, revisión y Word bajo `data/notas/IMOAM/`.
   `provision_notes` debe preservar los metadatos publicados; validar sus hashes.
 - El Word de ejemplo en docs es una muestra; cada publicación registra sus controles locales.
+
+## Notas automáticas de actividad
+
+- IMAI e IGAE usan `build_activity_notes.py`, cuadros 1 y 2 del boletín completo.
+- Conservar originales/desestacionalizados y edición fechada; no forzar que
+  coincidan con las revisiones del BIE. Dos páginas, tablas y dos gráficas.
+- Publicación solo desde URL oficial; nunca desde un PDF local. Conservar la
+  nota anterior si cambia metodología, periodo, tabla, membrete o render.
