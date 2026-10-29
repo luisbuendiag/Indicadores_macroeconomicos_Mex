@@ -1,0 +1,145 @@
+﻿variable,valor,unidad,periodo,serie,ubicacion,fuente
+total Total mom,1.37,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+total Total yoy,4.05,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+total Total prior_yoy,3.06,porcentaje,2025-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+primarias Primarias mom,4.45,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+primarias Primarias yoy,0.86,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+primarias Primarias prior_yoy,0.48,porcentaje,2025-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+secundarias Secundarias mom,1.5,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+secundarias Secundarias yoy,4.01,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+secundarias Secundarias prior_yoy,2.54,porcentaje,2025-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+mineria Minería mom,13.27,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+mineria Minería yoy,23.84,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+mineria Minería prior_yoy,1.58,porcentaje,2025-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+"energia Energía, agua y gas mom",0.02,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+"energia Energía, agua y gas yoy",-6.08,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+"energia Energía, agua y gas prior_yoy",3.25,porcentaje,2025-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+construccion Construcción mom,0.17,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+construccion Construcción yoy,5.71,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+construccion Construcción prior_yoy,3.42,porcentaje,2025-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+manufacturas Manufacturas mom,0.7,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+manufacturas Manufacturas yoy,2.48,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+manufacturas Manufacturas prior_yoy,2.44,porcentaje,2025-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+terciarias Terciarias mom,0.76,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+terciarias Terciarias yoy,4.52,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+terciarias Terciarias prior_yoy,4.22,porcentaje,2025-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_0 Petróleo crudo mom,34.04,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_0 Petróleo crudo incidence,0.587,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_1 Gasolina mom,7.54,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_1 Gasolina incidence,0.144,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_2 Aves mom,27.99,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_2 Aves incidence,0.1,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_3 Transporte aéreo de pasajeros mom,8.57,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_3 Transporte aéreo de pasajeros incidence,0.064,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_4 Primaria mom,6.0,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_4 Primaria incidence,0.054,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_5 Carne de ave en canal mom,6.92,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_5 Carne de ave en canal incidence,0.048,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_6 Jitomate (incluye jitomate de invernadero) mom,32.03,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_6 Jitomate (incluye jitomate de invernadero) incidence,0.042,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_7 Diésel mom,11.52,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_7 Diésel incidence,0.031,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_8 Secundaria mom,5.44,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_8 Secundaria incidence,0.028,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_9 Maíz mom,6.73,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_9 Maíz incidence,0.024,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_10 Gas natural mom,3.72,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_10 Gas natural incidence,0.021,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_11 Preprimaria mom,5.95,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_11 Preprimaria incidence,0.02,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_12 Combustóleo mom,6.32,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_12 Combustóleo incidence,0.02,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_13 Vivienda propia y rentada mom,0.33,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_13 Vivienda propia y rentada incidence,0.019,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_14 Universidad mom,1.5,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_0_14 Universidad incidence,0.016,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_0 Aguacate mom,-12.92,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_0 Aguacate incidence,-0.026,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_1 Oro mom,-1.84,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_1 Oro incidence,-0.021,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_2 Papa mom,-17.18,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_2 Papa incidence,-0.012,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_3 Plata mom,-0.88,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_3 Plata incidence,-0.008,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_4 Autobús foráneo mom,-0.77,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_4 Autobús foráneo incidence,-0.006,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_5 Lámina de acero mom,-1.27,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_5 Lámina de acero incidence,-0.005,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_6 Hoteles mom,-0.37,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_6 Hoteles incidence,-0.005,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_7 Polietileno mom,-6.33,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_7 Polietileno incidence,-0.004,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_8 Manzana mom,-12.6,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_8 Manzana incidence,-0.004,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_9 Pepino mom,-11.8,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_9 Pepino incidence,-0.004,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_10 Notarios mom,-10.51,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_10 Notarios incidence,-0.004,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_11 Frigoríficos industriales mom,-1.21,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_11 Frigoríficos industriales incidence,-0.003,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_12 Cine mom,-3.39,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_12 Cine incidence,-0.003,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_13 Copra mom,-12.02,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_13 Copra incidence,-0.003,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_14 Café mom,-7.01,porcentaje,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+generico_1_14 Café incidence,-0.003,puntos porcentuales,2026-09,publicada,"p. 5, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+finales Finales mom,1.14,porcentaje,2026-09,publicada,"p. 7, cuadro 6",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+finales Finales yoy,3.97,porcentaje,2026-09,publicada,"p. 7, cuadro 6",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+finales Finales incidence,1.137,puntos porcentuales,2026-09,publicada,"p. 7, cuadro 6",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+interna Demanda interna mom,0.8,porcentaje,2026-09,publicada,"p. 7, cuadro 6",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+interna Demanda interna yoy,4.29,porcentaje,2026-09,publicada,"p. 7, cuadro 6",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+interna Demanda interna incidence,0.593,puntos porcentuales,2026-09,publicada,"p. 7, cuadro 6",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+consumo Consumo mom,1.09,porcentaje,2026-09,publicada,"p. 7, cuadro 6",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+consumo Consumo yoy,4.21,porcentaje,2026-09,publicada,"p. 7, cuadro 6",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+consumo Consumo incidence,0.586,puntos porcentuales,2026-09,publicada,"p. 7, cuadro 6",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+capital Formación de capital mom,0.04,porcentaje,2026-09,publicada,"p. 7, cuadro 6",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+capital Formación de capital yoy,4.48,porcentaje,2026-09,publicada,"p. 7, cuadro 6",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+capital Formación de capital incidence,0.007,puntos porcentuales,2026-09,publicada,"p. 7, cuadro 6",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+exportacion Exportaciones mom,2.07,porcentaje,2026-09,publicada,"p. 7, cuadro 6",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+exportacion Exportaciones yoy,3.12,porcentaje,2026-09,publicada,"p. 7, cuadro 6",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+exportacion Exportaciones incidence,0.544,puntos porcentuales,2026-09,publicada,"p. 7, cuadro 6",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+total Uso intermedio mom,1.94,porcentaje,2026-09,publicada,"p. 5, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+total Uso intermedio yoy,4.25,porcentaje,2026-09,publicada,"p. 5, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+total Uso intermedio prior_yoy,3.41,porcentaje,2025-09,publicada,"p. 5, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+primarias Primarias mom,5.86,porcentaje,2026-09,publicada,"p. 5, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+primarias Primarias yoy,-1.88,porcentaje,2026-09,publicada,"p. 5, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+primarias Primarias prior_yoy,-0.33,porcentaje,2025-09,publicada,"p. 5, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+secundarias Secundarias mom,2.29,porcentaje,2026-09,publicada,"p. 5, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+secundarias Secundarias yoy,5.2,porcentaje,2026-09,publicada,"p. 5, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+secundarias Secundarias prior_yoy,3.77,porcentaje,2025-09,publicada,"p. 5, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+mineria Minería mom,10.9,porcentaje,2026-09,publicada,"p. 5, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+mineria Minería yoy,22.33,porcentaje,2026-09,publicada,"p. 5, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+mineria Minería prior_yoy,6.02,porcentaje,2025-09,publicada,"p. 5, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+"energia Energía, agua y gas mom",0.04,porcentaje,2026-09,publicada,"p. 5, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+"energia Energía, agua y gas yoy",-8.11,porcentaje,2026-09,publicada,"p. 5, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+"energia Energía, agua y gas prior_yoy",2.87,porcentaje,2025-09,publicada,"p. 5, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+manufacturas Manufacturas mom,1.03,porcentaje,2026-09,publicada,"p. 5, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+manufacturas Manufacturas yoy,4.29,porcentaje,2026-09,publicada,"p. 5, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+manufacturas Manufacturas prior_yoy,3.44,porcentaje,2025-09,publicada,"p. 5, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+terciarias Terciarias mom,0.24,porcentaje,2026-09,publicada,"p. 5, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+terciarias Terciarias yoy,3.98,porcentaje,2026-09,publicada,"p. 5, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+terciarias Terciarias prior_yoy,3.63,porcentaje,2025-09,publicada,"p. 5, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+total Finales mom,1.14,porcentaje,2026-09,publicada,"p. 6, cuadro 5",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+total Finales yoy,3.97,porcentaje,2026-09,publicada,"p. 6, cuadro 5",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+total Finales prior_yoy,2.94,porcentaje,2025-09,publicada,"p. 6, cuadro 5",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+primarias Primarias mom,2.53,porcentaje,2026-09,publicada,"p. 6, cuadro 5",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+primarias Primarias yoy,4.96,porcentaje,2026-09,publicada,"p. 6, cuadro 5",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+primarias Primarias prior_yoy,2.0,porcentaje,2025-09,publicada,"p. 6, cuadro 5",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+secundarias Secundarias mom,1.19,porcentaje,2026-09,publicada,"p. 6, cuadro 5",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+secundarias Secundarias yoy,3.54,porcentaje,2026-09,publicada,"p. 6, cuadro 5",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+secundarias Secundarias prior_yoy,2.13,porcentaje,2025-09,publicada,"p. 6, cuadro 5",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+mineria Minería mom,16.12,porcentaje,2026-09,publicada,"p. 6, cuadro 5",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+mineria Minería yoy,25.64,porcentaje,2026-09,publicada,"p. 6, cuadro 5",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+mineria Minería prior_yoy,-3.83,porcentaje,2025-09,publicada,"p. 6, cuadro 5",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+"energia Energía, agua y gas mom",-0.05,porcentaje,2026-09,publicada,"p. 6, cuadro 5",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+"energia Energía, agua y gas yoy",3.88,porcentaje,2026-09,publicada,"p. 6, cuadro 5",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+"energia Energía, agua y gas prior_yoy",5.38,porcentaje,2025-09,publicada,"p. 6, cuadro 5",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+construccion Construcción mom,0.17,porcentaje,2026-09,publicada,"p. 6, cuadro 5",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+construccion Construcción yoy,5.71,porcentaje,2026-09,publicada,"p. 6, cuadro 5",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+construccion Construcción prior_yoy,3.42,porcentaje,2025-09,publicada,"p. 6, cuadro 5",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+manufacturas Manufacturas mom,0.57,porcentaje,2026-09,publicada,"p. 6, cuadro 5",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+manufacturas Manufacturas yoy,1.78,porcentaje,2026-09,publicada,"p. 6, cuadro 5",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+manufacturas Manufacturas prior_yoy,2.12,porcentaje,2025-09,publicada,"p. 6, cuadro 5",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+terciarias Terciarias mom,0.94,porcentaje,2026-09,publicada,"p. 6, cuadro 5",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+terciarias Terciarias yoy,4.71,porcentaje,2026-09,publicada,"p. 6, cuadro 5",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf
+terciarias Terciarias prior_yoy,4.45,porcentaje,2025-09,publicada,"p. 6, cuadro 5",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf

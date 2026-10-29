@@ -110,5 +110,37 @@
       "review_kind": "reglas_python",
       "archive": "data/notas/IMFBCF/bf51bc22f00543d37c12f08d533e5a6cc1492c419b08f9765167d852a039d378-11cb2ad71d92"
     }
+  },
+  "INPC": {
+    "status": "vigente",
+    "message": "Nota generada y validada por reglas Python",
+    "target_period": "Sep 26",
+    "published": {
+      "periodo": "Sep 26",
+      "generated_at": "2026-10-29T20:15:25+00:00",
+      "source_sha256": "9c72b5e957b9f68f49a05c3efb4cffd1b40eca9f0647d27c61529c7e8ead6e84",
+      "fingerprint": "38cf36206e34fa7e5aa04b0dc2645a074da7c0af0cc013d23f7ac13575acb027",
+      "docx_sha256": "467aaf089a8fb75484ca81efb0b18cb1aac7e582c4a0e340e8f1544b15ce064b",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf",
+      "review_model": "precios-python-1",
+      "review_kind": "reglas_python",
+      "archive": "data/notas/INPC/38cf36206e34fa7e5aa04b0dc2645a074da7c0af0cc013d23f7ac13575acb027-467aaf089a8f"
+    }
+  },
+  "INPP": {
+    "status": "vigente",
+    "message": "Nota generada y validada por reglas Python",
+    "target_period": "Sep 26",
+    "published": {
+      "periodo": "Sep 26",
+      "generated_at": "2026-10-29T20:15:32+00:00",
+      "source_sha256": "2f4df1eee4583c1d8c62eb2419dd81b8d46c1f31a2266c24c67dcf4afb38c4d7",
+      "fingerprint": "f675af47777dc1dec904aec6d183f93950b23795c2af2b44060202da48f2d35e",
+      "docx_sha256": "41ec859f033819ee86d9ab6bf9459d308045f70619897fedb6224b59eafc80c6",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf",
+      "review_model": "precios-python-1",
+      "review_kind": "reglas_python",
+      "archive": "data/notas/INPP/f675af47777dc1dec904aec6d183f93950b23795c2af2b44060202da48f2d35e-41ec859f0338"
+    }
   }
 }

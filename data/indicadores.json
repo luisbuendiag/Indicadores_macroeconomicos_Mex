@@ -31293,9 +31293,15 @@
         "available": true,
         "format": "docx",
         "path": "downloads/indicadores/INPC/nota/INPC_nota.docx",
-        "periodo": "1Q-Ago-26",
-        "generated_from": "machote",
-        "automatic": false
+        "periodo": "Sep 26",
+        "generated_from": "boletin_validado",
+        "automatic": true,
+        "generated_at": "2026-10-29T20:15:25+00:00",
+        "source_sha256": "9c72b5e957b9f68f49a05c3efb4cffd1b40eca9f0647d27c61529c7e8ead6e84",
+        "fingerprint": "38cf36206e34fa7e5aa04b0dc2645a074da7c0af0cc013d23f7ac13575acb027",
+        "status": "vigente",
+        "target_period": "Sep 26",
+        "message": "Nota generada y validada por reglas Python"
       },
       "boletin_validado": true
     },
@@ -163635,7 +163641,7 @@
       },
       "motivo_frescura": "El periodo cargado (Sep 26) coincide con el último periodo esperado (Septiembre de 2026).",
       "url_fuente_oficial": "https://www.inegi.org.mx/programas/inpp/2019a/",
-      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_09.pdf",
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf",
       "fecha_ultima_publicacion": "8 de octubre de 2026",
       "regla_publicacion": null,
       "periodo_boletin": "Sep 26",
@@ -163651,10 +163657,18 @@
         "available": true,
         "format": "docx",
         "path": "downloads/indicadores/INPP/nota/INPP_nota.docx",
-        "periodo": "Jul-26",
-        "generated_from": "machote",
-        "automatic": false
-      }
+        "periodo": "Sep 26",
+        "generated_from": "boletin_validado",
+        "automatic": true,
+        "generated_at": "2026-10-29T20:15:32+00:00",
+        "source_sha256": "2f4df1eee4583c1d8c62eb2419dd81b8d46c1f31a2266c24c67dcf4afb38c4d7",
+        "fingerprint": "f675af47777dc1dec904aec6d183f93950b23795c2af2b44060202da48f2d35e",
+        "status": "vigente",
+        "target_period": "Sep 26",
+        "message": "Nota generada y validada por reglas Python"
+      },
+      "numero_boletin": "620/26",
+      "boletin_validado": true
     },
     "SIC": {
       "key": "SIC",
