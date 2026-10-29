@@ -48,7 +48,7 @@ def extract(pdf,key):
         if not base:raise ValueError('Base ausente')
         f.update(rows=rows,sectors=sectors,base=base[1],total_evidence=total)
     else:
-        if 'centrado en 50' not in pages[6] or 'promedio\nponderado' not in pages[0]:raise ValueError('Cambió la metodología de confianza')
+        if 'centrado en 50' not in pages[6] or 'promedio ponderado' not in re.sub(r'\s+',' ',pages[0]):raise ValueError('Cambió la metodología de confianza')
         m=re.search('('+NUM+r')\s*puntos\s*[▲▼]?\s*('+NUM+r')\s*puntos\s*[▲▼]?\s*('+NUM+r')\s*puntos',pages[0])
         if not m:raise ValueError('IGOEC ausente')
         globalrow=dict(label='IGOEC',level=float(m[1]),mom=float(m[2]),yoy=float(m[3]),series='desestacionalizada',location='p. 1',evidence=m[0])
@@ -60,6 +60,7 @@ def extract(pdf,key):
             if 'cifras '+('desestacionalizadas' if series=='desestacionalizada' else 'originales') not in block:raise ValueError('Cambió el ajuste estacional sectorial')
             if tableid==1 and 'Componente no sujeto a desestacionalización' not in block:raise ValueError('Revisar ajuste de componentes manufactureros')
             if tableid==2 and 'Componente ajustado por efecto estacional' not in block:raise ValueError('Revisar ajuste del componente de inversión')
+            if re.findall(r'(?m)^([a-e])\)',block)!=list('abcde'):raise ValueError('Cambió el orden de componentes de confianza')
             matches=list(re.finditer('('+NUM+r')\s+('+NUM+r')\s+('+NUM+r')\s+(\d+)\s+por\s+(arriba|debajo)',block))
             if len(matches)!=6:raise ValueError('Cuadro de confianza incompleto')
             for i,m in enumerate(matches):

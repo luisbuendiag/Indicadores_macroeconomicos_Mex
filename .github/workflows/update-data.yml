@@ -29,9 +29,11 @@ permissions:
   pages: write
   id-token: write
 
+# Un push nuevo vuelve obsoleta una corrida anterior; las corridas programadas
+# se conservan. [notes-only] usa la ficha vigente y omite solo las tareas de datos.
 concurrency:
   group: update-data-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: ${{ github.event_name == 'push' }}
 
 jobs:
   update:
@@ -49,20 +51,24 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Ejecutar pipeline de datos
+        if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[notes-only]') }}
         env:
           INEGI_TOKEN: ${{ secrets.INEGI_TOKEN }}
           BANXICO_TOKEN: ${{ secrets.BANXICO_TOKEN }}
         run: python scripts/build_data.py
 
       - name: Regenerar calendario de publicaciones
+        if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[notes-only]') }}
         run: python scripts/build_calendar.py
         continue-on-error: true
         timeout-minutes: 30
 
       - name: Recopilar noticias oficiales (a prueba de fallos)
+        if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[notes-only]') }}
         run: python scripts/fetch_news.py || true
 
       - name: Regenerar Excel
+        if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[notes-only]') }}
         run: python scripts/build_excel.py
 
       - name: Aprovisionar notas institucionales (.docx)

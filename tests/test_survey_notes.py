@@ -87,3 +87,16 @@ def test_configuration_pause_preserves_served_word(monkeypatch,tmp_path,flag):
         monkeypatch.setattr(R.A,'publish',lambda *a:pytest.fail('No publicar con configuración pausada'))
         assert R.run('EMIM',tmp_path,True)['status']=='validada_sin_publicar'
     assert dest.read_bytes()==b'previous-word'
+
+
+def test_emoe_line_wrap_does_not_change_methodology(monkeypatch):
+    pages=fixture(monkeypatch,'EMOE');pages[0]=pages[0].replace('promedio\nponderado','promedio ponderado')
+    assert N.extract(b'fixture','EMOE')['globalrow']['level']==48.4
+    pages[1]=pages[1].replace('a) Momento','z) Momento')
+    with pytest.raises(ValueError):N.extract(b'fixture','EMOE')
+
+
+def test_generators_are_compatible_with_workflow_python_311():
+    import ast
+    for name in ['notas_encuestas.py','notas_encuestas_word.py','build_survey_notes.py']:
+        ast.parse((ROOT/'scripts'/name).read_text(),feature_version=(3,11))

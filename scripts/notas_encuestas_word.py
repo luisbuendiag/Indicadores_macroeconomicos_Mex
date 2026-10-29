@@ -105,7 +105,9 @@ def build(f,url,template,out):
     else:
         p(f'En {period_text(f["ym"])}, el IGOEC registró {hero["level"]:.1f} puntos, con una diferencia mensual de {hero["mom"]:.1f} puntos y anual de {hero["yoy"]:.1f} puntos, en cifras desestacionalizadas.')
         positive=[r['label'].lower() for r in rows if r['mom']>0];negative=[r['label'].lower() for r in rows if r['mom']<0]
-        bullet(f'Sectores con aumento mensual: {', '.join(positive) if positive else 'ninguno'}. Sectores con disminución: {', '.join(negative) if negative else 'ninguno'}.')
+        gains=', '.join(positive) if positive else 'ninguno'
+        losses=', '.join(negative) if negative else 'ninguno'
+        bullet(f'Sectores con aumento mensual: {gains}. Sectores con disminución: {losses}.')
         below=sum(r['level']<50 for r in rows)
         bullet(f'{below} de cuatro indicadores sectoriales se ubicaron por debajo del umbral de 50 puntos. Las opiniones describen percepciones empresariales, no producción observada.')
         h('Confianza por sector');table(data[0]);note('D: desestacionalizada. O: original, sin patrón estacional definido en esta edición. Fuente: cuadros 1–4, pp. 2–4. Las diferencias están en puntos, no en porcentajes.')

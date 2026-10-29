@@ -33,3 +33,9 @@ periodo previo. Se respetan `enabled`, `auto_publish`, `NOTES_PILOT_ENABLED` y
 Pruebas: `python -m pytest -q tests/test_survey_notes.py` y la selección de
 regresión de notas, snapshots y validación. Revisión local de una edición:
 `python scripts/build_survey_notes.py --key EMIM --pdf /ruta/boletin.pdf`.
+
+Las integraciones con mensaje `[notes-only]` ejecutan la misma publicación
+sobre las fichas vigentes, descargando de nuevo los boletines, sin recalcular
+datos, calendario, noticias ni Excel. Se mantienen los cotejos de periodo,
+fuente y QA. Las corridas programadas siguen ejecutando el flujo completo.
+Un push más reciente cancela una corrida obsoleta antes de publicar.
