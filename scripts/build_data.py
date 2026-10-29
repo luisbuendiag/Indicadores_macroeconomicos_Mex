@@ -695,6 +695,20 @@ def apply_inegi_total(payload: dict, key: str, item: dict, prev_last: str | None
     if ind is None:
         return None
 
+    # Una edición del boletín es una fotografía fechada. BIE puede revisarse
+    # después; conservar ambas fuentes sin forzar igualdad de sus versiones.
+    if key in ('IMAI', 'IGAE') and 'saladeprensa/boletines' in item.get('link', ''):
+        snapshots = ind.setdefault('boletin_cifras', {})
+        for source_row in item.get('api_total', []):
+            if source_row.get('value') is None:
+                continue
+            edition = snapshots.setdefault(source_row['ym'], {})
+            edition[str(item['target_column'])] = {
+                'value': source_row['value'], 'url': item['link'],
+                'publication_date': item.get('fecha_publicacion'),
+                'series': item.get('serie'), 'method': item.get('metodo'),
+            }
+
     tcol = item["target_column"]
     ncol = max(len(ind.get("columns") or []), tcol + 1)
     api_by_ym = {o["ym"]: o["value"] for o in item["api_total"]}
