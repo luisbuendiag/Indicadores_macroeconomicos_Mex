@@ -61,7 +61,7 @@ def build(f,url,template,out):
                     for r in x.runs:r.font.name='Noto Sans';r.font.size=Pt(10);r.bold=hero or i==0;r.font.color.rgb=RGBColor.from_string('FFFFFF' if hero or i==0 else '000000')
         return t
     def plot(name,labels,vals,title,unit,other=None):
-        with plt.rc_context({'font.family':'Noto Sans','font.size':9}):
+        with plt.rc_context({'font.family':'Noto Sans','font.size':9,'axes.unicode_minus':False}):
             fig,ax=plt.subplots(figsize=(6.1,1.75 if len(vals)<=4 else 1.9));ys=list(range(len(vals)))
             if other is None:ax.barh(ys,vals,color=['#235B4C' if v>=0 else '#611232' for v in vals])
             else:
