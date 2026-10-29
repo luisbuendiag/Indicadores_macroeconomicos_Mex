@@ -177,3 +177,19 @@ Entorno financiero contiene la inversión externa reportada por la **Secretaría
   `notas_layout.py` contiene elementos visuales reutilizables sin alterar machotes.
 - Cotejar portada/cuadros, periodo, base, estatus y totales repetidos. Los fallos
   preservan el Word anterior. Respetar las pausas globales y no publicar PDF local.
+
+## Notas automáticas de precios
+
+- `build_price_notes.py` genera INPC mensual e INPP incluido petróleo. INPC admite
+  exclusivamente el boletín mensual `inpc_2q`; no sustituirlo por la primera quincena.
+- INPP fecha el archivo por publicación, un mes después de la referencia. El conector
+  comprueba el periodo dentro del PDF; nunca asigna un mes a un archivo solo por existir.
+- Variaciones en porcentaje, incidencias oficiales en puntos porcentuales (tres decimales).
+  La inflación del mismo mes de un año antes no es la del mes inmediato anterior.
+- Los genéricos se leen por columnas para conservar sus etiquetas multilínea. Mostrar
+  tres incidencias positivas y tres negativas entre la selección publicada; no asumir
+  que esta selección es la canasta completa ni que reconstruye la inflación total.
+- La corrección de URL del INPP se publica con la nota validada, con control de carrera
+  y rollback. No modifica observaciones BIE ni las confunde con la edición del boletín.
+- Dos páginas, resumen gris, tablas nativas y dos gráficas. Conservar pausas, machotes
+  de solo lectura, evidencias, periodos, membrete y la última nota ante fallos.

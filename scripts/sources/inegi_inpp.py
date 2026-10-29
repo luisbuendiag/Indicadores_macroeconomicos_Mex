@@ -61,25 +61,33 @@ def _head_ok(url: str, timeout: int = 15) -> bool:
             return False
 
 
+def expected_bulletin_url(period: str | None) -> str | None:
+    """El archivo se fecha por publicación: referencia diciembre -> enero siguiente."""
+    ym=inegi.label_to_ym(period) if period else None
+    if not ym:return None
+    year,month=map(int,ym.split('-'));year+=month//12;month=month%12+1
+    return f'https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/inpp/inpp{year}_{month:02d}.pdf'
+
+
+def _first_page(url: str) -> str:
+    import io,pdfplumber
+    with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':USER_AGENT}),timeout=25) as response:
+        if response.url!=url:raise ValueError('Destino de boletín distinto al solicitado')
+        data=response.read(20_000_001)
+    if len(data)>20_000_000 or not data.startswith(b'%PDF'):raise ValueError('PDF no válido')
+    with pdfplumber.open(io.BytesIO(data)) as doc:return doc.pages[0].extract_text() or ''
+
+
 def _discover_bulletin(period: str | None) -> dict | None:
-    """Descubre la URL del boletín oficial del INPP para el periodo dado."""
-    ym = inegi.label_to_ym(period) if period else None
-    if not ym:
-        return None
-    year, month = int(ym.split("-")[0]), int(ym.split("-")[1])
-    # Busca el PDF del mes de referencia; si no, el inmediato anterior.
-    for m in range(month, 0, -1):
-        url = f"https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/inpp/inpp{year}_{m:02d}.pdf"
-        if _head_ok(url):
-            return {
-                "url": url,
-                "periodo_boletin": period,
-                "tipo_documento": "PDF",
-                "producto_boletin": "Índice Nacional de Precios Productor",
-                "metodo": "INEGI boletín PDF",
-            }
-        time.sleep(0.3)
-    return None
+    """Nunca atribuir al periodo solicitado un PDF de otro mes por existir su URL."""
+    from . import inegi_bulletin as B
+    url=expected_bulletin_url(period)
+    if not url:return None
+    try:
+        text=_first_page(url);ref=B._extract_data_month(text)
+        if '(INPP)' not in text or not ref or f'{ref[0]:04d}-{ref[1]:02d}'!=inegi.label_to_ym(period):return None
+        return dict(url=url,periodo_boletin=period,tipo_documento='PDF',producto_boletin='Índice Nacional de Precios Productor',metodo='INEGI boletín PDF')
+    except Exception:return None
 
 
 def fetch(config: dict | None = None, start_year: int = 2018) -> SourceResult:
