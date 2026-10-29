@@ -30,6 +30,8 @@ def extract(pdf: bytes) -> dict:
         raise ValueError('La publicación tiene fecha futura')
     # La edición puede no especificar base en texto: no se presume 2018.
     match = re.search(r'(?:base\s*)?((?:19|20)\d{2})\s*=\s*100', whole, re.I)
+    if not re.search(r'confianza\s+a\s+95\s*%', first, re.I):
+        raise ValueError('Revisar el nivel de confianza de la nueva edición')
     vals = [r['value'] for r in rows]
     table_pattern = r'Índice\s+(-?\d+[.,]\d+)\s+(-?\d+[.,]\d+)\s+(-?\d+[.,]\d+)'
     annual_pattern = r'Variación anual\s+(-?\d+[.,]\d+)\s*%?\s+(-?\d+[.,]\d+)\s*%?\s+(-?\d+[.,]\d+)'
@@ -40,7 +42,33 @@ def extract(pdf: bytes) -> dict:
                 publication_date=pub_date.isoformat(), bulletin=B._extract_bulletin_meta(first, pub).get('numero_boletin'),
                 values=vals, base=match.group(1) if match else None, pages=pages,
                 source_sha256=hashlib.sha256(pdf).hexdigest(), evidence=quotes, raw_values=raw_values,
-                series='original', statistical_status='estimado')
+                series='original', statistical_status='estimado', context=context_from_pages(pages))
+
+
+def context_from_pages(pages: list[str]) -> dict:
+    """Datos adicionales solo si constan expresamente en esta edición."""
+    if len(pages) < 4:
+        raise ValueError('Faltan evaluación histórica o ficha metodológica del IMOAM')
+    history, method = pages[2], pages[3]
+    def required(pattern, text):
+        m = re.search(pattern, text, re.I)
+        if not m: raise ValueError('Cambio en el bloque de evaluación o metodología; revisar extracción')
+        return m
+    coverage = required(r'En\s+(\d+(?:[.,]\d+)?)\s*%\s+de las ocasiones', history)
+    start = required(r'comenzó a calcularse en\s+(\w+) de (\d{4})', history)
+    window = required(r'entre\s+(\w+) de (\d{4}) y\s+(\w+) de (\d{4})', history)
+    ahead = required(r'alrededor de\s+(\d+)\s+días antes', method)
+    lag = required(r'alrededor de\s+(\d+)\s+días después', method)
+    unit = required(r'Unidad de observación\s+(Empresa formal[^\n]+)', method)
+    def ym(month,year): return f'{int(year):04d}-{B.MES[month.lower()]:02d}'
+    return dict(coverage=float(coverage.group(1).replace(',','.')),
+                calculation_start=ym(start.group(1),start.group(2)),
+                evaluation_start=ym(window.group(1),window.group(2)),
+                evaluation_end=ym(window.group(3),window.group(4)),
+                days_ahead=int(ahead.group(1)),imai_lag=int(lag.group(1)),
+                observation_unit=unit.group(1),
+                evidence=dict(coverage=coverage.group(),start=start.group(),window=window.group(),
+                              ahead=ahead.group(),lag=lag.group(),unit=unit.group()))
 
 
 def align(facts: dict, indicator: dict) -> None:
@@ -85,11 +113,28 @@ def paragraphs(facts: dict) -> list[tuple[str, str]]:
 
 
 def trace(facts: dict, url: str) -> list[dict]:
-    return [dict(variable=label, valor=(str(Decimal(facts['raw_values'][i]) / (100 if i>=3 else 1)) if facts.get('raw_values') else str(v)), unidad='fracción' if i >= 3 else 'puntos',
+    rows = [dict(variable=label, valor=(str(Decimal(facts['raw_values'][i]) / (100 if i>=3 else 1)) if facts.get('raw_values') else str(v)), unidad='fracción' if i >= 3 else 'puntos',
                  periodo=facts['ym'], comparacion='mismo mes del año anterior' if i>=3 else 'nivel del índice',
                  serie='original', estatus='estimado', fuente=url, ubicacion='página 1, cuadro 1',
                  calculo='valor porcentual / 100' if i>=3 else 'lectura directa', evidencia=facts['evidence'][i//3])
             for i,(label,v) in enumerate(zip(LABELS,facts['values']))]
+    v=facts['values']
+    for label,value,unit,formula in [
+        ('Amplitud del IC del índice',number(v[2]-v[1]),'puntos','límite superior - límite inferior'),
+        ('Amplitud del IC anual',number((v[5]-v[4])*100),'puntos porcentuales','(límite superior - límite inferior) * 100')]:
+        rows.append(dict(variable=label,valor=value,unidad=unit,periodo=facts['ym'],comparacion='amplitud del intervalo',serie='original',estatus='cálculo derivado',fuente=url,ubicacion='página 1, cuadro 1',calculo=formula,evidencia='; '.join(facts['evidence'])))
+    c=facts.get('context')
+    if c:
+        extras=[('Cobertura histórica reportada',str(c['coverage']),'porcentaje','coverage',3),
+                ('Inicio del cálculo',c['calculation_start'],'periodo','start',3),
+                ('Ventana de evaluación',c['evaluation_start']+'/'+c['evaluation_end'],'periodos','window',3),
+                ('Adelanto aproximado frente al IMAI',str(c['days_ahead']),'días','ahead',4),
+                ('Rezago aproximado del IMAI tras cierre del mes',str(c['imai_lag']),'días','lag',4),
+                ('Unidad de observación',c['observation_unit'],'descripción','unit',4)]
+        for label,value,unit,evidence,page in extras:
+            rows.append(dict(variable=label,valor=value,unidad=unit,periodo=(c['evaluation_start']+'/'+c['evaluation_end'] if page==3 else facts['ym']),comparacion='evaluación histórica' if page==3 else 'oportunidad o cobertura del indicador',serie='original' if page==4 else 'evaluación histórica del INEGI',estatus='metodología o evaluación reportada',fuente=url,ubicacion=f'página {page}',calculo='lectura directa',evidencia=c['evidence'][evidence]))
+    return rows
+
 
 
 def write_evidence(directory: Path, facts: dict, pdf: bytes, url: str) -> None:

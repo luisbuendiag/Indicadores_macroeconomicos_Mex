@@ -14,7 +14,10 @@ activado por defecto y no requiere modificar el frontend para descargar Word.
 4. La identidad de la candidata combina PDF, plantilla, reglas, código,
    configuración y modelo. Detecta una revisión del mismo mes. Una publicación
    sin cambios no vuelve a generar el Word ni a llamar a la API.
-5. Genera Word editable con texto controlado y gráfica de punto e intervalo.
+5. Genera Word editable de exactamente dos páginas, con tabla inicial y tarjetas
+   KPI como la referencia ENOE, resumen, bullets, tres tablas de apoyo, gráfica
+   de intervalo y esquema de oportunidad. Extrae evaluación histórica y metodología
+   de las páginas 3–4; traza catorce registros, incluidos dos cálculos de amplitud.
    No inventa base, ajuste estacional, causalidad, récords ni resultados observados.
 6. Renderiza todas las páginas con LibreOffice/Poppler y comprueba extensión,
    límites de texto y presencia de Noto Sans. La auditoría visual por modelo recibe
@@ -106,11 +109,11 @@ no se publican como productos finales. Las fuentes y notas aprobadas quedan en
 ## Fuentes, pruebas y revisión pendiente
 
 Reglas: Skill_Notas_Boletines_INEGI_Economía 1.0.0 (2026-10-28), módulo IMOAM y
-contratos de análisis, redacción y QA; formato institucional sobre la plantilla del
-repositorio. Cambiar la skill del chat no modifica estas reglas sin un nuevo PR.
+contratos de análisis, redacción y QA; presentación sobre la referencia ENOE
+aportada por el usuario y la plantilla visual derivada, conservada en el repositorio. Cambiar la skill del chat no modifica estas reglas sin un nuevo PR.
 
 La muestra `docs/examples/notas/IMOAM_nota_piloto.docx` se generó con el boletín
-639/26 (28 de octubre de 2026), se renderizó y se inspeccionó visualmente. No
+639/26 (28 de octubre de 2026), tiene dos páginas; se renderizó y se inspeccionó visualmente. No
 sustituye el Word de producción ni constituye una aprobación de la API. Las
 pruebas de API usan respuestas simuladas. Falta comprobar una ejecución real en
 Actions con las credenciales/modelo elegidos antes de activar publicación automática.

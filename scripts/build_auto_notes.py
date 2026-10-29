@@ -148,6 +148,8 @@ def run(root: Path=ROOT, publish_requested=False, record_status=False, pdf_path:
         draft=W.build(facts,url,root/cfg['template'],work/'IMOAM_nota.docx')
         (work/'nota.txt').write_text(draft,encoding='utf-8')
         _,note_pages=W.render(work/'IMOAM_nota.docx',cfg['max_note_pages'])
+        if len(note_pages) < cfg.get('min_note_pages', 1):
+            raise ValueError('La nota no alcanza las dos páginas de contenido requeridas')
         source_pages=W.raster(work/'boletin.pdf',work/'fuente-pagina')
         if not reviewer and not (os.environ.get('OPENAI_API_KEY') and os.environ.get('NOTES_REVIEW_MODEL')):
             state.update(status='pendiente_configuracion',message='Candidata preparada; falta configurar la revisión automática por API')

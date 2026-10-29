@@ -1,6 +1,6 @@
 # Piloto de notas IMOAM
 
-Versión editorial 1.0 — 28 de octubre de 2026.
+Versión editorial 1.1 — 28 de octubre de 2026.
 Adaptación para ejecución del módulo IMOAM de Skill_Notas_Boletines_INEGI_Economía
 (plugin notas-boletines-inegi-economia, versión 1.0.0, 2026-10-28).
 La instalación o actualización del plugin en ChatGPT no actualiza este archivo;
@@ -26,12 +26,21 @@ certeza de crecimiento. Menor caída no equivale a expansión. No atribuir
 causalidad. El piloto redacta párrafos controlados a partir de cifras verificadas;
 el revisor por API revisa esos párrafos y no agrega cifras ni redacta resultados.
 
-Una página preferente, máximo dos justificadas. Word nativo editable, conservar
-encabezado/pie de la plantilla institucional. Noto Sans; cuerpo 11 pt justificado,
-interlineado sencillo, espaciado 0/0. Título centrado 12 pt verde #10312B;
-subtítulos 11 pt verde #246454 unidos al párrafo siguiente, sin líneas inferiores.
-Fuentes 8 pt gris #666666 cursiva. Flujo continuo, sin saltos manuales de página.
-Gráfica de punto e intervalo con datos trazados, sin imagen generativa.
+Dos páginas sustantivas por instrucción del usuario. La referencia ENOE aportada
+manda en presentación: tabla inicial con fecha, producto, periodo y dos tarjetas
+KPI; conservar su encabezado/pie. Plantilla visual derivada de esa referencia,
+entrada de solo lectura. Word editable, Noto Sans, cuerpo 11 pt, sencillo 0/0;
+notas y fuentes 8 pt. Tablas nativas, bullets nativos y visuales legibles.
+Resumen ejecutivo, cuadro de estimación e IC95, gráfica de punto e intervalo,
+evaluación histórica, esquema de oportunidad, cobertura y notas de interpretación.
+Flujo continuo sin saltos manuales; bloquear si no son exactamente dos páginas.
+
+Leer y trazar también evaluación y ficha metodológica: cobertura histórica,
+ventana evaluada, inicio del cálculo, plazos aproximados y unidad de observación.
+Reextraer en cada edición; no congelar esos números en el texto. Las amplitudes
+se calculan por diferencia de límites. La cobertura histórica es desempeño pasado,
+no probabilidad de certeza de la estimación actual. El esquema de publicación
+no tiene escala exacta. No inventar una serie temporal a partir de una gráfica.
 
 Auditoría A datos, B lógica, C redacción, D presentación. Renderizar todas las
 páginas; revisar título, fuente, membrete, tablas/gráficas, legibilidad, recortes,

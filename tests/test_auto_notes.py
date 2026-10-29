@@ -221,7 +221,12 @@ def test_complete_official_bulletin_is_traced_without_assumed_base(monkeypatch):
     assert len(facts['pages'])==4 and 'FICHA METODOLÓGICA' in facts['pages'][3]
     assert facts['base'] is None
     trace=I.trace(facts,URL)
-    assert len(trace)==6 and all(r['ubicacion']=='página 1, cuadro 1' for r in trace)
+    assert len(trace)==14 and all(r['ubicacion']=='página 1, cuadro 1' for r in trace[:8])
+    assert facts['context']['coverage']==90
+    assert facts['context']['evaluation_start']=='2019-01'
+    assert facts['context']['evaluation_end']=='2026-08'
+    assert facts['context']['days_ahead']==18 and facts['context']['imai_lag']==40
+    assert trace[6]['valor']=='6.0' and trace[7]['valor']=='5.6'
     assert trace[3]['calculo']=='valor porcentual / 100'
 
 @pytest.mark.parametrize('change',['method','series','blank'])
@@ -276,3 +281,20 @@ assert.ok(children[0].text.includes('Ago-26'));assert.ok(children[0].text.includ
 '''
     import subprocess
     subprocess.run([node,'-e',script],cwd=ROOT,check=True,capture_output=True,text=True)
+
+
+def test_missing_evaluation_requires_review():
+    pages=json.loads((ROOT/'tests/fixtures/imoam2026_10_pages.json').read_text())
+    pages[2]=pages[2].replace('90 %','noventa por ciento')
+    with pytest.raises(ValueError): I.context_from_pages(pages[:3])
+    with pytest.raises(ValueError): I.context_from_pages(['','','',''])
+
+
+def test_two_pages_required_before_publication(sandbox):
+    cfg=json.loads((sandbox/'config/notas_automaticas.json').read_text())
+    cfg['min_note_pages']=2
+    (sandbox/'config/notas_automaticas.json').write_text(json.dumps(cfg))
+    old=old_doc(sandbox)
+    result=A.run(sandbox,True,True,reviewer=approve)
+    assert result['status']=='error' and old_doc(sandbox)==old
+    assert 'dos páginas' in result['message']
