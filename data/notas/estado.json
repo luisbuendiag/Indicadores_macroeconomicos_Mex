@@ -78,5 +78,37 @@
       "review_kind": "reglas_python",
       "archive": "data/notas/EMOE/8b129271c7d0a7aa32c47c58ef59d632f4e2ccc97449426d3f41af564e2c0942-0ee56a48d4cb"
     }
+  },
+  "CONSUMO": {
+    "status": "vigente",
+    "message": "Nota generada y validada por reglas Python",
+    "target_period": "Jul 26",
+    "published": {
+      "periodo": "Jul 26",
+      "generated_at": "2026-10-29T18:00:12+00:00",
+      "source_sha256": "585befdb839d40ed8015e1f7a0415cc984e12255a9c378583ee10d8fca8a0da3",
+      "fingerprint": "aae77fad876cd8767e7e75495b11776fa902b8af4c9e43ca70eacd1349784069",
+      "docx_sha256": "9efc86012571ee47f15dd6881ee633c5eb42c12cf1550ff019260ae147dd403c",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf",
+      "review_model": "demanda-python-1",
+      "review_kind": "reglas_python",
+      "archive": "data/notas/CONSUMO/aae77fad876cd8767e7e75495b11776fa902b8af4c9e43ca70eacd1349784069-9efc86012571"
+    }
+  },
+  "IMFBCF": {
+    "status": "vigente",
+    "message": "Nota generada y validada por reglas Python",
+    "target_period": "Jul 26",
+    "published": {
+      "periodo": "Jul 26",
+      "generated_at": "2026-10-29T18:00:17+00:00",
+      "source_sha256": "2268722e42d9629392bdeb2ad64fee45595e426447256c622288a35b44a34fb6",
+      "fingerprint": "bf51bc22f00543d37c12f08d533e5a6cc1492c419b08f9765167d852a039d378",
+      "docx_sha256": "11cb2ad71d9202b3cc4e695ea163c7a979e803a1e8e142f28fedfa834bdfd629",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf",
+      "review_model": "demanda-python-1",
+      "review_kind": "reglas_python",
+      "archive": "data/notas/IMFBCF/bf51bc22f00543d37c12f08d533e5a6cc1492c419b08f9765167d852a039d378-11cb2ad71d92"
+    }
   }
 }

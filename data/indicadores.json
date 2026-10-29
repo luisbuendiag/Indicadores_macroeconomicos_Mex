@@ -24892,9 +24892,15 @@
         "available": true,
         "format": "docx",
         "path": "downloads/indicadores/CONSUMO/nota/CONSUMO_nota.docx",
-        "periodo": "May-26",
-        "generated_from": "machote",
-        "automatic": false
+        "periodo": "Jul 26",
+        "generated_from": "boletin_validado",
+        "automatic": true,
+        "generated_at": "2026-10-29T18:00:12+00:00",
+        "source_sha256": "585befdb839d40ed8015e1f7a0415cc984e12255a9c378583ee10d8fca8a0da3",
+        "fingerprint": "aae77fad876cd8767e7e75495b11776fa902b8af4c9e43ca70eacd1349784069",
+        "status": "vigente",
+        "target_period": "Jul 26",
+        "message": "Nota generada y validada por reglas Python"
       },
       "boletin_validado": true
     },
@@ -50655,9 +50661,15 @@
         "available": true,
         "format": "docx",
         "path": "downloads/indicadores/IMFBCF/nota/IMFBCF_nota.docx",
-        "periodo": "Abr-26",
-        "generated_from": "machote",
-        "automatic": false
+        "periodo": "Jul 26",
+        "generated_from": "boletin_validado",
+        "automatic": true,
+        "generated_at": "2026-10-29T18:00:17+00:00",
+        "source_sha256": "2268722e42d9629392bdeb2ad64fee45595e426447256c622288a35b44a34fb6",
+        "fingerprint": "bf51bc22f00543d37c12f08d533e5a6cc1492c419b08f9765167d852a039d378",
+        "status": "vigente",
+        "target_period": "Jul 26",
+        "message": "Nota generada y validada por reglas Python"
       },
       "boletin_validado": true
     },

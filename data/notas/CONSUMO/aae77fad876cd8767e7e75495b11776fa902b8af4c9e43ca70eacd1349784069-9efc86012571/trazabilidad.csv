@@ -1,0 +1,38 @@
+﻿variable,valor,unidad,periodo,serie,ubicacion,fuente
+total index,113.2,puntos,2026-07,desestacionalizada,"p. 1, portada",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+total Consumo privado mom,0.0,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+total Consumo privado yoy,1.1,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+nacional Nacional mom,-0.1,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+nacional Nacional yoy,1.0,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+nacional_bienes Bienes nacionales mom,-0.2,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+nacional_bienes Bienes nacionales yoy,1.4,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+nacional_servicios Servicios nacionales mom,0.2,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+nacional_servicios Servicios nacionales yoy,0.6,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+importado Bienes importados mom,1.4,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+importado Bienes importados yoy,1.6,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+importado_bienes Bienes importados (detalle) mom,1.4,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+importado_bienes Bienes importados (detalle) yoy,1.6,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+total Consumo privado original,1.1,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+total Consumo privado ytd,2.0,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+nacional Nacional original,1.0,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+nacional Nacional ytd,0.3,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+nacional_bienes Bienes nacionales original,1.4,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+nacional_bienes Bienes nacionales ytd,0.3,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+nacional_duradero Duraderos nacionales original,4.0,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+nacional_duradero Duraderos nacionales ytd,-4.0,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+nacional_semi Semiduraderos nacionales original,-0.5,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+nacional_semi Semiduraderos nacionales ytd,-2.8,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+nacional_no No duraderos nacionales original,1.4,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+nacional_no No duraderos nacionales ytd,1.6,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+nacional_servicios Servicios nacionales original,0.7,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+nacional_servicios Servicios nacionales ytd,0.3,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+importado Bienes importados original,0.1,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+importado Bienes importados ytd,8.1,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+importado_bienes Bienes importados (detalle) original,0.1,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+importado_bienes Bienes importados (detalle) ytd,8.1,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+importado_duradero Duraderos importados original,8.4,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+importado_duradero Duraderos importados ytd,12.9,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+importado_semi Semiduraderos importados original,-3.4,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+importado_semi Semiduraderos importados ytd,-2.1,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+importado_no No duraderos importados original,-3.4,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
+importado_no No duraderos importados ytd,10.0,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf
