@@ -125,7 +125,7 @@ Entorno financiero contiene la inversión externa reportada por la **Secretaría
 
 - Estimación experimental del IMAI manufacturero con cifras originales; índice 2018=100 y variación anual estimada. No calcular variación mensual desestacionalizada.
 - Fuente: boletines oficiales INEGI, conector `scripts/sources/imoam.py`, sin token. Seis columnas: índice, IC95 inferior/superior del índice, variación anual e IC95 inferior/superior anual. Variaciones como fracciones.
-- Ubicación: Panorama, inmediatamente después de IMAI. Incluye Excel, CSV, calendario y nota Word. Las notas permanecen de actualización editorial manual, como las demás.
+- Ubicación: Panorama, inmediatamente después de IMAI. Incluye Excel, CSV, calendario y nota Word. IMOAM cuenta con el piloto Python descrito abajo; las demás notas siguen su proceso editorial.
 
 
 ## Piloto de notas automáticas IMOAM
@@ -134,13 +134,13 @@ Entorno financiero contiene la inversión externa reportada por la **Secretaría
   manual. Los otros 14 Word no cambian. Nunca escribir en los machotes.
 - Reglas versionadas: `config/notas_reglas/IMOAM.md`; plantilla institucional existente.
   No fijar bases que no estén explícitas en el boletín. Leer todas sus páginas.
-- `NOTES_PILOT_ENABLED=true` habilita la etapa en Actions. Revisión por API requiere
-  secret `OPENAI_API_KEY` y variable `NOTES_REVIEW_MODEL` (visión + JSON Schema).
-  Únicamente `NOTES_AUTO_PUBLISH=true` y QA A–D aprobado habilitan sustitución.
-- Sin credenciales, con discrepancias, con fallo de render o rechazo, conservar el
-  Word anterior. No marcar una candidata como nota publicada. Candidatas y renders
-  viven en runner.temp en CI, nunca en el artefacto de Pages.
+- Piloto con Python sin API, modelos ni claves. `config/notas_automaticas.json`
+  habilita generación/publicación; `NOTES_PILOT_ENABLED=false` pausa el workflow
+  y `NOTES_AUTO_PUBLISH=false` impide sustituir el Word. Las pausas se respetan.
+- Solo datos/lógica/estructura/render aprobados permiten publicar. No presentarlos
+  como auditoría visual humana o por IA. Cambios metodológicos o discrepancias
+  conservan la nota previa y requieren revisión. Candidatas en runner.temp.
 - `data/notas/estado.json` conserva estado y última publicación. Cada publicación
   archiva fuente, hechos, trazabilidad, revisión y Word bajo `data/notas/IMOAM/`.
   `provision_notes` debe preservar los metadatos publicados; validar sus hashes.
-- El Word de ejemplo en docs no es una nota publicada ni una revisión por API real.
+- El Word de ejemplo en docs es una muestra; cada publicación registra sus controles locales.

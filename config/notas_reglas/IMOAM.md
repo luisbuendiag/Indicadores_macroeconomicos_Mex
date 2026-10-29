@@ -24,7 +24,7 @@ Priorizar lectura relevante y contrapeso material. Si el intervalo anual incluye
 cero o valores negativos, el texto debe explicar la incertidumbre y no afirmar
 certeza de crecimiento. Menor caída no equivale a expansión. No atribuir
 causalidad. El piloto redacta párrafos controlados a partir de cifras verificadas;
-el revisor por API revisa esos párrafos y no agrega cifras ni redacta resultados.
+los controles Python cotejan esos párrafos y no agregan cifras ni redactan resultados.
 
 Dos páginas sustantivas por instrucción del usuario. La referencia ENOE aportada
 manda en presentación: tabla inicial con fecha, producto, periodo y dos tarjetas
@@ -42,9 +42,10 @@ se calculan por diferencia de límites. La cobertura histórica es desempeño pa
 no probabilidad de certeza de la estimación actual. El esquema de publicación
 no tiene escala exacta. No inventar una serie temporal a partir de una gráfica.
 
-Auditoría A datos, B lógica, C redacción, D presentación. Renderizar todas las
-páginas; revisar título, fuente, membrete, tablas/gráficas, legibilidad, recortes,
-texto encimado y página vacía. El revisor recibe texto completo y páginas del
-boletín, hechos trazados y todas las páginas de la nota. Solo A–D satisfactorios
-sin incidencias permiten publicación automática. Ausencia de modelo/clave,
-rechazo, respuesta ambigua o fallo de render conserva la última nota publicada.
+Controles locales de datos, lógica, estructura y render: reextraer y cotejar PDF,
+trazabilidad, seis cifras del cuadro Word, texto nativo, secciones, tablas,
+bullets, visuales y dos páginas sustantivas. Validar imágenes y geometría.
+Registrar kind=reglas_python y versión; no llamarlo revisión humana ni por IA.
+La geometría no detecta todos los posibles solapamientos ni matices editoriales.
+Ante error, cambio metodológico o discrepancia, conservar la nota previa y
+marcar revisión pendiente. Nunca hacer llamadas a servicios de IA ni usar claves.

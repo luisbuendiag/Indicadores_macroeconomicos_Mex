@@ -184,10 +184,18 @@ def binary(name: str, env: str) -> str:
 
 
 def raster(pdf: Path, prefix: Path, dpi=120) -> list[Path]:
-    subprocess.run([binary('pdftoppm','NOTES_PDFTOPPM'),'-r',str(dpi),'-png',str(pdf),str(prefix)],check=True,capture_output=True,timeout=120)
-    pages=sorted(prefix.parent.glob(prefix.name+'-*.png'))
+    from PIL import Image
+    with pdfplumber.open(pdf) as doc: count=len(doc.pages)
+    pages=[]
+    for i in range(1,count+1):
+        target=prefix.parent/(prefix.name+'-'+str(i))
+        subprocess.run([binary('pdftoppm','NOTES_PDFTOPPM'),'-r',str(dpi),'-f',str(i),'-l',str(i),'-singlefile','-png',str(pdf),str(target)],check=True,capture_output=True,timeout=120)
+        page=target.with_suffix('.png')
+        with Image.open(page) as im: im.load()
+        pages.append(page)
     if not pages:raise ValueError('Render sin imágenes')
     return pages
+
 
 
 def render(docx: Path, max_pages=2) -> tuple[Path,list[Path]]:

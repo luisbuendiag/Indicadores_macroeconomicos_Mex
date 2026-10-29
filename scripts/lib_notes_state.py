@@ -59,9 +59,11 @@ def validate_published(ind: dict, root: Path = ROOT) -> list[str]:
         qa=load_state(archive/'revision.json')
         if qa.get('passed') is not True or qa.get('model')!=pub.get('review_model'):
             raise ValueError('Falta revisión aprobada de la nota')
+        if qa.get('kind')!='reglas_python' or pub.get('review_kind')!='reglas_python':
+            raise ValueError('La publicación no identifica controles locales')
         result=qa.get('result',{})
-        if any(result.get(k) is not True for k in ('datos','logica','editorial','visual')) or result.get('issues')!=[]:
-            raise ValueError('La nota no supera las cuatro capas de QA')
+        if set(result)!=set(('datos','logica','estructura','render','issues')) or any(result.get(k) is not True for k in ('datos','logica','estructura','render')) or result.get('issues')!=[]:
+            raise ValueError('La nota no supera los controles locales')
         facts=load_state(archive/'hechos.json')
         if facts['period']!=pub['periodo'] or facts['period']!=note.get('periodo'):
             raise ValueError('Periodo de nota incompatible con el boletín archivado')

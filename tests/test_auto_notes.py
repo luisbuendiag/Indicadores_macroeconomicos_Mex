@@ -29,7 +29,7 @@ def facts():
 def sandbox(tmp_path,monkeypatch,facts):
     root=tmp_path
     for folder in ('config','scripts','data','downloads/indicadores/IMOAM/nota'):(root/folder).mkdir(parents=True,exist_ok=True)
-    cfg=dict(template='template.docx',rules='config/reglas.md',max_source_pages=12,max_note_pages=2,max_output_tokens=3000)
+    cfg=dict(template='template.docx',rules='config/reglas.md',max_source_pages=12,max_note_pages=2)
     (root/'config/notas_automaticas.json').write_text(json.dumps(cfg))
     (root/'config/reglas.md').write_text('Reglas de precisión y Word institucional')
     for name in ('build_auto_notes.py','notas_imoam.py','notas_word.py','notas_review.py'):
@@ -41,7 +41,7 @@ def sandbox(tmp_path,monkeypatch,facts):
              nota={'available':True,'format':'docx','path':'downloads/indicadores/IMOAM/nota/IMOAM_nota.docx','periodo':'Ago-26','automatic':False},
              nota_disponible=True)
     (root/'data/indicadores.json').write_text(json.dumps({'indicators':{'IMOAM':ind,'OTHER':{'untouched':True}}}))
-    monkeypatch.delenv('OPENAI_API_KEY',raising=False);monkeypatch.setenv('NOTES_REVIEW_MODEL','configured-model')
+    monkeypatch.delenv('OPENAI_API_KEY',raising=False);monkeypatch.setenv('NOTES_REVIEW_MODEL',R.VERSION)
     monkeypatch.setenv('NOTES_AUTO_PUBLISH','true');monkeypatch.delenv('NOTES_WORK_DIR',raising=False)
     monkeypatch.setattr(A,'download',lambda url:b'boletin')
     monkeypatch.setattr(I,'extract',lambda pdf:copy.deepcopy(facts))
@@ -58,18 +58,20 @@ def sandbox(tmp_path,monkeypatch,facts):
 
 
 def approve(*args):
-    return {'passed':True,'result':dict(datos=True,logica=True,editorial=True,visual=True,issues=[]),'model':'configured-model'}
+    return {'passed':True,'result':dict(datos=True,logica=True,estructura=True,render=True,issues=[]),'model':R.VERSION,'kind':'reglas_python'}
 
 
 def old_doc(root):return (root/'downloads/indicadores/IMOAM/nota/IMOAM_nota.docx').read_bytes()
 
 
-def test_no_credentials_prepares_but_never_publishes(sandbox):
+def test_no_credentials_local_checks_can_publish(sandbox,monkeypatch):
+    monkeypatch.delenv('NOTES_REVIEW_MODEL',raising=False)
+    monkeypatch.setenv('OPENAI_API_KEY','unused-placeholder')
+    monkeypatch.setattr(A.R,'review',approve)
+    def no_external_call(*a,**k):pytest.fail('No debe llamar a una API')
+    monkeypatch.setattr(urllib.request,'urlopen',no_external_call)
     old=old_doc(sandbox)
-    state=A.run(sandbox,True,True)
-    assert state['status']=='pendiente_configuracion' and old_doc(sandbox)==old
-    assert list((sandbox/'.notes-work').rglob('trazabilidad.csv'))
-    assert json.loads((sandbox/'data/indicadores.json').read_text())['indicators']['OTHER']=={'untouched':True}
+    assert A.run(sandbox,True,True)['status']=='vigente' and old_doc(sandbox)!=old
 
 
 def test_success_is_atomic_traceable_and_not_repeated(sandbox):
@@ -113,7 +115,7 @@ def test_render_failure_keeps_previous(sandbox,monkeypatch):
 
 def test_qa_rejection_preserves_word_and_review_evidence(sandbox):
     old=old_doc(sandbox)
-    def reject(*a):return {'passed':False,'result':dict(datos=True,logica=True,editorial=True,visual=False,issues=['Texto encimado']),'model':'configured-model'}
+    def reject(*a):return {'passed':False,'result':dict(datos=True,logica=True,estructura=True,render=False,issues=['Texto encimado']),'model':R.VERSION,'kind':'reglas_python'}
     assert A.run(sandbox,True,True,reviewer=reject)['status']=='rechazada'
     assert old_doc(sandbox)==old and list((sandbox/'.notes-work').rglob('revision.json'))
 
@@ -164,34 +166,14 @@ def test_uncertainty_and_negative_results_are_not_hidden(facts):
     text=' '.join(p for _,p in I.paragraphs(facts))
     assert 'una disminución' in text and 'terreno negativo' in text and 'un aumento' not in text
 
-@pytest.mark.parametrize('result',[{},dict(datos='true',logica=True,editorial=True,visual=True,issues=[]),dict(datos=True,logica=True,editorial=True,visual=True,issues='ok')])
+@pytest.mark.parametrize('result',[{},dict(datos='true',logica=True,estructura=True,render=True,issues=[]),dict(datos=True,logica=True,estructura=True,render=True,issues='ok')])
 def test_qa_schema_must_be_complete_and_typed(result):
     with pytest.raises(ValueError):R.validate(result)
 
 
-def test_api_request_contains_entire_source_pages_and_note_images(tmp_path,monkeypatch,facts):
-    img=tmp_path/'page.png';img.write_bytes(b'PNG')
-    monkeypatch.setenv('OPENAI_API_KEY','test-placeholder');monkeypatch.setenv('NOTES_REVIEW_MODEL','configured-model')
-    captured=[]
-    def request(req,**kw):
-        captured.append(json.loads(req.data))
-        return io.BytesIO(json.dumps({'id':'test','status':'completed','output':[{'content':[{'type':'output_text','text':json.dumps(dict(datos=True,logica=True,editorial=True,visual=True,issues=[]))}]}]}).encode())
-    monkeypatch.setattr(R.urllib.request,'urlopen',request)
-    assert R.review(facts,'nota','reglas',[('Boletín página 1',img),('Nota página 1',img)])['passed']
-    req=captured[0]
-    assert req['store'] is False and req['text']['format']['strict'] is True
-    assert sum(x['type']=='input_image' for x in req['input'][0]['content'])==2
-    assert 'Metodología completa' in req['input'][0]['content'][0]['text']
 
-@pytest.mark.parametrize('response',[{'status':'incomplete','output':[]},{'status':'completed','output':[{'content':[{'type':'refusal'}]}]}])
-def test_api_incomplete_or_refused_cannot_approve(tmp_path,monkeypatch,facts,response):
-    monkeypatch.setenv('OPENAI_API_KEY','test-placeholder');monkeypatch.setenv('NOTES_REVIEW_MODEL','configured-model')
-    monkeypatch.setattr(R.urllib.request,'urlopen',lambda *a,**k:io.BytesIO(json.dumps(response).encode()))
-    with pytest.raises(ValueError):R.review(facts,'nota','reglas',[])
-
-
-def test_rejected_input_is_not_billed_repeatedly(sandbox):
-    def reject(*a):return {'passed':False,'result':dict(datos=False,logica=True,editorial=True,visual=True,issues=['Fuente ambigua']),'model':'configured-model'}
+def test_rejected_input_waits_for_intervention(sandbox):
+    def reject(*a):return {'passed':False,'result':dict(datos=False,logica=True,estructura=True,render=True,issues=['Fuente ambigua']),'model':R.VERSION,'kind':'reglas_python'}
     A.run(sandbox,True,True,reviewer=reject)
     def unexpected(*a):pytest.fail('No debe repetir una revisión rechazada sin cambios')
     assert A.run(sandbox,True,True,reviewer=unexpected)['unchanged']
@@ -202,7 +184,7 @@ def test_transport_failures_have_bounded_retries(sandbox):
     count=0
     def fail(*a):
         nonlocal count
-        count+=1;raise TimeoutError('API')
+        count+=1;raise TimeoutError('renderer')
     for _ in range(5):A.run(sandbox,True,True,reviewer=fail)
     assert count==3
 
@@ -298,3 +280,73 @@ def test_two_pages_required_before_publication(sandbox):
     result=A.run(sandbox,True,True,reviewer=approve)
     assert result['status']=='error' and old_doc(sandbox)==old
     assert 'dos páginas' in result['message']
+
+
+def test_publication_defaults_to_config_without_variables(sandbox,monkeypatch):
+    monkeypatch.delenv('NOTES_AUTO_PUBLISH',raising=False)
+    cfg=json.loads((sandbox/'config/notas_automaticas.json').read_text());cfg['auto_publish']=True
+    (sandbox/'config/notas_automaticas.json').write_text(json.dumps(cfg))
+    assert A.run(sandbox,True,True,reviewer=approve)['status']=='vigente'
+
+
+def test_no_paid_service_in_production_path():
+    src=(ROOT/'scripts/notas_review.py').read_text()
+    flow=(ROOT/'.github/workflows/update-data.yml').read_text()
+    assert 'urllib' not in src and 'api.openai.com' not in src
+    assert 'OPENAI_API_KEY' not in flow and 'NOTES_REVIEW_MODEL' not in flow
+
+
+def test_changed_methodology_requires_intervention():
+    pages=json.loads((ROOT/'tests/fixtures/imoam2026_10_pages.json').read_text())
+    pages[3]=pages[3].replace('CENACE','NUEVA FUENTE')
+    with pytest.raises(ValueError,match='metodológica'):I.context_from_pages(pages)
+
+@pytest.fixture
+def local_review_case(tmp_path,monkeypatch):
+    from PIL import Image
+    pages=json.loads((ROOT/'tests/fixtures/imoam2026_10_pages.json').read_text())
+    monkeypatch.setattr(I.pdfplumber,'open',lambda b:PDF(pages))
+    facts=I.extract(b'fixture')
+    I.write_evidence(tmp_path,facts,b'fixture',URL)
+    monkeypatch.setattr(I,'extract',lambda pdf:copy.deepcopy(facts))
+    shutil.copyfile(ROOT/'docs/examples/notas/IMOAM_nota_piloto.docx',tmp_path/'IMOAM_nota.docx')
+    doc=Document(tmp_path/'IMOAM_nota.docx')
+    from docx.oxml.ns import qn
+    draft=' '.join(t.text or '' for t in doc.element.body.iter(qn('w:t')))
+    images=[]
+    for label,count in [('Boletín oficial página',4),('Nota Word página',2)]:
+        for i in range(count):
+            p=tmp_path/(label.split()[0]+str(i)+'.png');Image.new('RGB',(1020,1320),'white').save(p);images.append((label,p))
+    (tmp_path/'IMOAM_nota.pdf').write_bytes(b'pdf-placeholder')
+    # Geometría simulada; el renderer real se comprueba en la ejecución integrada.
+    text=draft+' texto'*300
+    pdf=SimpleNamespace(pages=[SimpleNamespace(extract_text=lambda:text,chars=[],width=612,height=792) for _ in range(2)])
+    class RenderPDF:
+        def __enter__(self):return pdf
+        def __exit__(self,*a):pass
+    monkeypatch.setattr(R.pdfplumber,'open',lambda path:RenderPDF())
+    return tmp_path,facts,draft,images
+
+
+def test_local_validator_accepts_complete_candidate(local_review_case):
+    work,facts,draft,images=local_review_case
+    result=R.review(facts,draft,'reglas',images)
+    assert result['passed'] and result['kind']=='reglas_python'
+    assert result['limits'] and 'visual' not in result['result']
+
+
+@pytest.mark.parametrize('damage',['table','trace','page','bullets'])
+def test_local_validator_blocks_corrupted_candidate(local_review_case,damage):
+    work,facts,draft,images=local_review_case
+    if damage=='table':
+        d=Document(work/'IMOAM_nota.docx');d.tables[1].cell(1,1).text='999.0';d.save(work/'IMOAM_nota.docx')
+    if damage=='trace':
+        p=work/'trazabilidad.csv';p.write_text(p.read_text(encoding='utf-8-sig').replace('108.0','999.0'),encoding='utf-8-sig')
+    if damage=='page':images=images[:-1]
+    if damage=='bullets':
+        d=Document(work/'IMOAM_nota.docx')
+        from docx.oxml.ns import qn
+        for n in d.element.body.findall('.//'+qn('w:numPr')):n.getparent().remove(n)
+        d.save(work/'IMOAM_nota.docx')
+    result=R.review(facts,draft,'reglas',images)
+    assert not result['passed'] and result['result']['issues']
