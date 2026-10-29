@@ -1,7 +1,7 @@
 """Piloto IMOAM: generar, auditar y publicar solo cuando se habilita explícitamente.
 
-Sin --publish se prepara una candidata local. Sin clave/modelo o con QA rechazado
-nunca se reemplaza el Word publicado. No escribe en los machotes.
+Sin --publish se prepara una candidata local. Solo publica con controles locales
+aprobados. No usa API de IA ni escribe en los machotes.
 """
 from __future__ import annotations
 import argparse
@@ -25,7 +25,7 @@ import notas_review as R
 
 ROOT=Path(__file__).resolve().parents[1]
 CONFIG=ROOT/'config/notas_automaticas.json'
-VERSION='imoam-pilot-1'
+VERSION='imoam-python-2'
 
 
 def atomic(path: Path, data: bytes) -> None:
@@ -91,8 +91,8 @@ def publish(root: Path, work: Path, facts: dict, fp: str, url: str, review: dict
         if not target.exists():atomic(target,src.read_bytes())
     stamp=datetime.now(timezone.utc).isoformat(timespec='seconds')
     published=dict(periodo=facts['period'],generated_at=stamp,source_sha256=facts['source_sha256'],fingerprint=fp,
-                   docx_sha256=S.digest(work/'IMOAM_nota.docx'),source_url=url,review_model=review['model'],archive=str(archive.relative_to(root)))
-    state=dict(status='vigente',message='Nota generada y validada automáticamente',target_period=facts['period'],published=published)
+                   docx_sha256=S.digest(work/'IMOAM_nota.docx'),source_url=url,review_model=review['model'],review_kind=review['kind'],archive=str(archive.relative_to(root)))
+    state=dict(status='vigente',message='Nota generada y validada por reglas Python',target_period=facts['period'],published=published)
     states=S.load_state(root/'data/notas/estado.json');states['IMOAM']=state
     ind=payload['indicators']['IMOAM']
     ind['nota']={**ind.get('nota',{}),**{k:published[k] for k in ('periodo','generated_at','source_sha256','fingerprint')},
@@ -127,7 +127,9 @@ def run(root: Path=ROOT, publish_requested=False, record_status=False, pdf_path:
         if cfg.get('template_year') and int(facts['publication_date'][:4]) != cfg['template_year']:
             raise ValueError('Actualizar el membrete y su año antes de publicar esta edición')
         if len(facts['pages'])>cfg['max_source_pages']:raise ValueError('El boletín excede la cobertura del piloto')
-        fp=fingerprint(pdf,root/cfg['template'],root/cfg['rules'],os.environ.get('NOTES_REVIEW_MODEL',''),root)
+        if cfg.get('enabled') is False:
+            return {**state,'status':'deshabilitada','message':'Generación IMOAM deshabilitada en configuración'}
+        fp=fingerprint(pdf,root/cfg['template'],root/cfg['rules'],R.VERSION,root)
         state['candidate_fingerprint']=fp
         dest=root/'downloads/indicadores/IMOAM/nota/IMOAM_nota.docx'
         pub=previous.get('published',{})
@@ -151,22 +153,19 @@ def run(root: Path=ROOT, publish_requested=False, record_status=False, pdf_path:
         if len(note_pages) < cfg.get('min_note_pages', 1):
             raise ValueError('La nota no alcanza las dos páginas de contenido requeridas')
         source_pages=W.raster(work/'boletin.pdf',work/'fuente-pagina')
-        if not reviewer and not (os.environ.get('OPENAI_API_KEY') and os.environ.get('NOTES_REVIEW_MODEL')):
-            state.update(status='pendiente_configuracion',message='Candidata preparada; falta configurar la revisión automática por API')
+        images=[(f'Boletín oficial página {i+1}',p) for i,p in enumerate(source_pages)]+[(f'Nota Word página {i+1}',p) for i,p in enumerate(note_pages)]
+        state['review_attempts'] += 1
+        result=(reviewer or R.review)(facts,draft,(root/cfg['rules']).read_text(),images)
+        write_json(work/'revision.json',result)
+        if result.get('kind') != 'reglas_python' or result.get('model') != R.VERSION:
+            raise ValueError('Solo se aceptan controles locales identificados y versionados')
+        if result.get('passed') is not True or not R.validate(result['result']):
+            state.update(status='rechazada',message='Controles locales detectaron incidencias; requiere revisión y se conserva la última nota')
+        elif publish_requested and os.environ.get('NOTES_AUTO_PUBLISH','true' if cfg.get('auto_publish') else 'false')=='true':
+            return publish(root,work,facts,fp,url,result,previous)
         else:
-            images=[(f'Boletín oficial página {i+1}',p) for i,p in enumerate(source_pages)]+[(f'Nota Word página {i+1}',p) for i,p in enumerate(note_pages)]
-            state['review_attempts'] += 1
-            result=(reviewer or R.review)(facts,draft,(root/cfg['rules']).read_text(),images,cfg['max_output_tokens'])
-            write_json(work/'revision.json',result)
-            if not isinstance(result.get('passed'),bool) or not R.validate(result['result']):
-                state.update(status='rechazada',message='La revisión A–D detectó incidencias; se conserva la última nota')
-            elif result['passed'] is not True:
-                state.update(status='rechazada',message='La revisión no aprobó la publicación')
-            else:
-                write_json(work/'revision.json',result)
-                if publish_requested and os.environ.get('NOTES_AUTO_PUBLISH')=='true':
-                    return publish(root,work,facts,fp,url,result,previous)
-                state.update(status='validada_sin_publicar',message='Candidata validada; publicación automática deshabilitada')
+            state.update(status='validada_sin_publicar',message='Candidata validada por reglas Python; publicación deshabilitada')
+
     except Exception as exc:
         # No se guarda cuerpo de respuestas HTTP ni credenciales en archivos públicos.
         detail = str(exc)[:220] if type(exc) in (ValueError, RuntimeError) else type(exc).__name__

@@ -69,23 +69,21 @@ jobs:
         run: python scripts/build_notes.py
 
       - name: Instalar renderer y fuentes del piloto de notas
-        if: ${{ vars.NOTES_PILOT_ENABLED == 'true' }}
+        if: ${{ vars.NOTES_PILOT_ENABLED != 'false' }}
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends libreoffice-writer poppler-utils fonts-noto-core
 
-      - name: Generar y revisar nota IMOAM
-        if: ${{ vars.NOTES_PILOT_ENABLED == 'true' }}
+      - name: Generar y validar nota IMOAM con Python
+        if: ${{ vars.NOTES_PILOT_ENABLED != 'false' }}
         timeout-minutes: 12
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          NOTES_REVIEW_MODEL: ${{ vars.NOTES_REVIEW_MODEL }}
-          NOTES_AUTO_PUBLISH: ${{ vars.NOTES_AUTO_PUBLISH }}
+          NOTES_AUTO_PUBLISH: ${{ vars.NOTES_AUTO_PUBLISH || 'true' }}
           NOTES_WORK_DIR: ${{ runner.temp }}/notas-imoam
         run: python scripts/build_auto_notes.py --publish --record-status
 
       - name: Conservar revisión del piloto de notas
-        if: ${{ always() && vars.NOTES_PILOT_ENABLED == 'true' }}
+        if: ${{ always() && vars.NOTES_PILOT_ENABLED != 'false' }}
         uses: actions/upload-artifact@v4
         with:
           name: notas-imoam-qa

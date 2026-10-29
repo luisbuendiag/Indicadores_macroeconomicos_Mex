@@ -47,9 +47,13 @@ def extract(pdf: bytes) -> dict:
 
 def context_from_pages(pages: list[str]) -> dict:
     """Datos adicionales solo si constan expresamente en esta edición."""
-    if len(pages) < 4:
-        raise ValueError('Faltan evaluación histórica o ficha metodológica del IMOAM')
+    if len(pages) != 4:
+        raise ValueError('Cambió el número de páginas del IMOAM; revisar evaluación y metodología')
     history, method = pages[2], pages[3]
+    # El texto controlado solo aplica mientras sigan vigentes estos supuestos.
+    required_terms=('RENEM','CFE','CENACE','confidencialidad')
+    if not all(term.casefold() in method.casefold() for term in required_terms):
+        raise ValueError('Cambio en insumos o confidencialidad; requiere revisión metodológica')
     def required(pattern, text):
         m = re.search(pattern, text, re.I)
         if not m: raise ValueError('Cambio en el bloque de evaluación o metodología; revisar extracción')
