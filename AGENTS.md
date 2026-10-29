@@ -163,3 +163,17 @@ Entorno financiero contiene la inversión externa reportada por la **Secretaría
   gráficas PDF ni calcular aportaciones sin ponderadores. No publicar un PDF local.
 - Cambios en producto, cuadros, universo, método, periodo o render conservan la
   nota previa. Configuración y variables de pausa deben seguir respetándose.
+
+## Notas automáticas de consumo e inversión
+
+- `build_demand_notes.py` genera CONSUMO (IMCP) e IMFBCF desde las cuatro
+  páginas de cada boletín. Directorios/ficheros oficiales: `imcp/imcpmi` e
+  `ifb/imfbcf`. No sustituir las cifras del boletín por otra edición BIE/SIE.
+- Cuadros completos: ajustado y original; mantener jerarquía en filas repetidas
+  (bienes, origen, transporte, comprador). NA en compras netas no equivale a cero.
+- Para inversión, el comprador público/privado solo procede del cuadro original
+  publicado; no inferirlo de construcción ni presentarlo como IED o presupuesto.
+- Dos páginas con resumen gris, tablas nativas, dos gráficas y fuente fechada.
+  `notas_layout.py` contiene elementos visuales reutilizables sin alterar machotes.
+- Cotejar portada/cuadros, periodo, base, estatus y totales repetidos. Los fallos
+  preservan el Word anterior. Respetar las pausas globales y no publicar PDF local.

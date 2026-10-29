@@ -66,7 +66,7 @@ def test_nota_vigente_existe_y_es_docx_real(key):
     assert nota.get("available") is True
     assert nota.get("format") == "docx"
     if nota.get("automatic"):
-        assert key in {"IMOAM", "IMAI", "IGAE", "EMIM", "EMOE"}, "Indicador sin generador automático"
+        assert key in {"IMOAM", "IMAI", "IGAE", "EMIM", "EMOE", "CONSUMO", "IMFBCF"}, "Indicador sin generador automático"
         import lib_notes_state
         pub = lib_notes_state.load_state().get(key, {}).get("published", {})
         assert pub and pub["fingerprint"] == nota.get("fingerprint")
