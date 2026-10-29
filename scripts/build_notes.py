@@ -10,7 +10,8 @@ Este script delega en ``lib_notas.provision_notes``, que:
   ``nota_causa`` en ``data/indicadores.json``;
 - jamás escribe en ``data/source/notas_machote/``.
 
-Fase futura (no implementada): nuevo boletín -> datos oficiales -> copiar
+El piloto automático IMOAM se ejecuta después con build_auto_notes.py.
+Para los otros indicadores sigue pendiente: nuevo boletín -> datos oficiales -> copiar
 machote -> actualizar contenidos/gráficas -> validar -> ``update_nota_vigente``.
 """
 from __future__ import annotations

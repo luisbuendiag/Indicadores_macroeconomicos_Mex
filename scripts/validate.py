@@ -11,6 +11,7 @@ Devuelve código de salida 0 si no hay errores críticos, 1 en caso contrario.
 """
 from __future__ import annotations
 
+import lib_notes_state
 import argparse
 import json
 import re
@@ -145,6 +146,9 @@ def validate(payload: dict):
                         errors.append(f"[{key}] {rel} no es un documento Word válido (falta word/document.xml).")
             except (zipfile.BadZipFile, OSError) as e:
                 errors.append(f"[{key}] {rel} no es un .docx válido: {e}.")
+
+    for ind in inds.values():
+        errors.extend(lib_notes_state.validate_published(ind, ROOT))
 
     return errors, warnings
 

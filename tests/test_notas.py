@@ -65,7 +65,14 @@ def test_nota_vigente_existe_y_es_docx_real(key):
     nota = ind.get("nota") or {}
     assert nota.get("available") is True
     assert nota.get("format") == "docx"
-    assert nota.get("automatic") is False
+    if nota.get("automatic"):
+        assert key == "IMOAM", "Sólo el piloto puede publicar notas automáticas"
+        import lib_notes_state
+        pub = lib_notes_state.load_state().get(key, {}).get("published", {})
+        assert pub and pub["fingerprint"] == nota.get("fingerprint")
+        assert pub["docx_sha256"] == lib_notes_state.digest(ROOT / nota["path"])
+    else:
+        assert nota.get("automatic") is False
     assert nota.get("periodo"), f"{key}: la nota no declara periodo"
     assert ind.get("nota_disponible") is True
     rel = nota.get("path") or ind.get("url_nota_individual")

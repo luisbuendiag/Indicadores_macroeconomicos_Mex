@@ -11,7 +11,10 @@ Arquitectura permanente de tres piezas:
 - ``config/notas_map.json`` — mapa indicador -> machote + metadatos de la nota
   vigente (periodo, título, fuente original).
 
-Automatización futura (fase siguiente, NO implementada): nuevo boletín ->
+Ruta histórica de notas manuales. El piloto IMOAM se ejecuta por separado en
+``build_auto_notes.py`` y conserva su identidad validada mediante
+``lib_notes_state.decorate``. Para los otros 14 indicadores sigue pendiente:
+nuevo boletín ->
 leer datos oficiales -> copiar el machote del indicador -> actualizar contenidos
 y gráficas -> validar el .docx resultante -> reemplazar la nota vigente. El
 punto de extensión previsto es ``update_nota_vigente``; en esta fase la nota
@@ -23,6 +26,8 @@ from __future__ import annotations
 import json
 import shutil
 import zipfile
+
+import lib_notes_state
 from pathlib import Path
 from typing import Any
 
@@ -133,4 +138,5 @@ def provision_notes(payload: dict) -> dict[str, Any]:
         ind["nota_disponible"] = ok
         ind["nota_causa"] = None if ok else CAUSA_SIN_NOTA
         ind["url_nota_individual"] = nota_vigente_rel(key) if ok else None
+        lib_notes_state.decorate(ind, ROOT)
     return report

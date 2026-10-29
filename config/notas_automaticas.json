@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "pilot": "IMOAM",
+  "template": "data/source/notas_machote/_PLANTILLA_NOTAS_VISUAL.docx",
+  "rules": "config/notas_reglas/IMOAM.md",
+  "max_source_pages": 12,
+  "max_note_pages": 2,
+  "max_output_tokens": 3000,
+  "template_year": 2026,
+  "min_note_pages": 2
+}

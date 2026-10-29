@@ -138,7 +138,7 @@ function productToolbar(ind) {
   // Nota institucional: habilitada sólo cuando existe el .docx vigente.
   const notaReady = !!ind.nota_disponible;
   const notaTitle = notaReady
-    ? "Descargar nota DOCX"
+    ? `Descargar nota DOCX${ind.nota?.status ? ` · ${ind.nota.periodo || "periodo por confirmar"} · ${ind.nota.message || ""}` : ""}`
     : (ind.nota_causa || "Nota institucional en preparación");
 
   // Excel: activo si se generó el archivo individual.
@@ -651,6 +651,10 @@ function renderIndicatorView(key) {
   sec.append(indicatorToolbar(key));
   const panel = el("div", { class: "panel ficha" });
   panel.append(fichaHeader(ind));
+  if (ind.nota?.status) {
+    const notePeriod = ind.nota.periodo || "por confirmar";
+    panel.append(el("div", { class: "notice", role: "status" }, `Nota descargable: ${notePeriod}. ${ind.nota.message || ""}`));
+  }
 
   if (!hasData(ind)) {
     panel.append(fichaPrintHead(ind, null));

@@ -24,3 +24,6 @@ data/downloads/
 # Sistema
 .DS_Store
 Thumbs.db
+
+# Candidatas de notas y renders de QA: nunca se publican en Pages
+.notes-work/
