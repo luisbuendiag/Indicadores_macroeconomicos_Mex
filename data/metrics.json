@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-10-29T23:22:31+00:00",
-  "last_update_ct": "2026-10-29T13:05:33-06:00",
+  "generated_at": "2026-10-30T14:05:24+00:00",
+  "last_update_ct": "2026-10-29T17:23:04-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
         "assessment": "favorable",
         "dir": "up",
-        "ultimoFmt": "+1.5%",
-        "ultimoRaw": 0.015,
-        "ultimoP": "2T-26 P",
-        "varText": "+2.1%",
-        "varMag": 2.1,
+        "ultimoFmt": "+0.9%",
+        "ultimoRaw": 0.009,
+        "ultimoP": "3T-26 P",
+        "varText": "+3.2%",
+        "varMag": 3.2,
         "pos": true,
         "varColor": "#1e5b4f",
         "varLabel": "Var. anual desest.",
@@ -20,7 +20,7 @@
         "minFmt": "-17.3%",
         "minRaw": -0.173,
         "minP": "2T-20 P",
-        "lastI": 45,
+        "lastI": 46,
         "series": [
           null,
           null,
@@ -67,7 +67,8 @@
           -0.003,
           0.008,
           -0.008,
-          0.015
+          0.015,
+          0.009
         ],
         "periods": [
           "1T-15 P",
@@ -115,44 +116,45 @@
           "3T-25 P",
           "4T-25 P",
           "1T-26 P",
-          "2T-26 P"
+          "2T-26 P",
+          "3T-26 P"
         ],
         "semaforo": "bueno",
-        "qoqRaw": 0.015,
-        "qoqText": "+1.5%",
+        "qoqRaw": 0.009,
+        "qoqText": "+0.9%",
         "qoqLabel": "Var. trimestral",
-        "yoyDesestRaw": 0.021,
-        "yoyDesestText": "+2.1%",
+        "yoyDesestRaw": 0.032,
+        "yoyDesestText": "+3.2%",
         "yoyDesestLabel": "Var. anual desest.",
-        "yoyOrigRaw": 0.022,
-        "yoyOrigText": "+2.2%",
+        "yoyOrigRaw": 0.032,
+        "yoyOrigText": "+3.2%",
         "yoyOrigLabel": "Var. anual original",
-        "ytdRaw": 0.012,
-        "ytdText": "+1.2%",
-        "ytdLabel": "Acumulado enero–junio",
-        "yoyText": "+2.2%",
+        "ytdRaw": 0.019,
+        "ytdText": "+1.9%",
+        "ytdLabel": "Acumulado enero–septiembre",
+        "yoyText": "+3.2%",
         "yoyLabel": "Var. anual original"
       },
       "yoy": {
-        "mag": 2.1999999999999997,
+        "mag": 3.2,
         "pos": true,
-        "text": "+2.2%",
+        "text": "+3.2%",
         "label": "Var. anual original"
       },
       "annualVar": {
-        "mag": 2.1999999999999997,
+        "mag": 3.2,
         "pos": true,
-        "text": "+2.2%",
+        "text": "+3.2%",
         "label": "Var. anual original"
       },
       "resumen": [
-        "En segundo trimestre de 2026, el PIB oportuno creció +1.5% respecto a primer trimestre de 2026; aceleró 2.3 p.p. respecto al trimestre previo.",
-        "La variación anual desestacionalizada fue +2.1% y la anual original +2.2% respecto a segundo trimestre de 2025.",
-        "Avance generalizado: las tres grandes actividades crecieron — primarias +3.3%, secundarias +1.6%, terciarias +1.5%.",
-        "El acumulado enero–junio de 2026 creció +1.2% frente al mismo periodo de 2025."
+        "En tercer trimestre de 2026, el PIB oportuno creció +0.9% respecto a segundo trimestre de 2026; desaceleró 0.6 p.p. respecto al trimestre previo.",
+        "La variación anual desestacionalizada fue +3.2% y la anual original +3.2% respecto a tercer trimestre de 2025.",
+        "El avance por actividad fue mixto — primarias -0.4%, secundarias +0.8%, terciarias +1.1%.",
+        "El acumulado enero–septiembre de 2026 creció +1.9% frente al mismo periodo de 2025."
       ],
       "analysis": [
-        "En segundo trimestre de 2026, el PIB oportuno creció +1.5% respecto a primer trimestre de 2026; aceleró 2.3 p.p. respecto al trimestre previo."
+        "En tercer trimestre de 2026, el PIB oportuno creció +0.9% respecto a segundo trimestre de 2026; desaceleró 0.6 p.p. respecto al trimestre previo."
       ]
     },
     "PIBSEC": {

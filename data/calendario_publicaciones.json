@@ -1,8 +1,8 @@
 {
   "_comment": "Generado por scripts/build_calendar.py a partir de fuentes oficiales y respaldos. No editar a mano.",
   "fuente": "INEGI Sala de Prensa | Banco de México calendario | Secretaría de Economía (manual)",
-  "actualizado": "2026-10-29",
-  "as_of": "2026-10-29",
+  "actualizado": "2026-10-30",
+  "as_of": "2026-10-30",
   "anios": [
     2025,
     2026,
@@ -7139,8 +7139,8 @@
       "anio": 2026,
       "mes": 10,
       "periodo_referencia": "Tercer trimestre de 2026",
-      "estatus": "próximo",
-      "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_10.pdf",
       "comentario": "Información de Interés Nacional. Incluye boletín de indicador."
     },
     {
