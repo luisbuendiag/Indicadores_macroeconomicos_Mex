@@ -1,8 +1,9 @@
 {
-  "started_at": "2026-10-30T22:48:35+00:00",
+  "started_at": "2026-11-02T16:52:16+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
+    "IMOAM: aún no se recuperó un boletín válido del mes corriente; comprobar calendario de difusión",
     "INEGI PIB: 134 observaciones (serie 737372, base BIE-BISE); última 2T-26 = 26144132.442; actualización BIE 18/09/2026 12:00:00 a. m..",
     "INEGI PIBSEC: 134 observaciones (serie 737372, base BIE-BISE); última 2T-26 = 26144132.442; actualización BIE 18/09/2026 12:00:00 a. m..",
     "INEGI PIBSEC: 134 observaciones (serie 735882, base BIE-BISE); última 2T-26 = 898248.914; actualización BIE 24/08/2026 12:00:00 a. m..",
@@ -94,6 +95,7 @@
     "INEGI BCMM: 213 observaciones (serie 6204198599, base BISE); última Sep 26 = 0.3896; actualización BIE 27/10/2026 12:00:00 a. m..",
     "INEGI BCMM: 213 observaciones (serie 6204198598, base BISE); última Sep 26 = 0.0464; actualización BIE 27/10/2026 12:00:00 a. m..",
     "INEGI BCMM: 213 observaciones (serie 6204198594, base BISE); última Sep 26 = 0.6676; actualización BIE 27/10/2026 12:00:00 a. m..",
+    "inegi_inpc boletín https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_11.pdf: No /Root object! - Is this really a PDF?",
     "INEGI INPP: 105 observaciones (serie 910492, base BIE-BISE); última Sep 26 = 136.976422; actualización BIE 08/10/2026 12:00:00 a. m..",
     "INEGI INPP: 85 observaciones (serie 1800002, base BIE-BISE); última Sep 26 = 1.366754; actualización BIE 08/10/2026 12:00:00 a. m..",
     "INEGI INPP: 85 observaciones (serie 1801002, base BIE-BISE); última Sep 26 = 4.052856; actualización BIE 08/10/2026 12:00:00 a. m..",
@@ -296,7 +298,7 @@
     "imoam: actualizado IMOAM (última obs Sep 26, sin cambio de periodo)",
     "imoam: actualizado IMOAM (última obs Sep 26, sin cambio de periodo)",
     "banxico: actualizado TIPOCAMBIO (última obs 2026-10-30, sin cambio de periodo)",
-    "banxico: actualizado TASA (última obs 2026-10-30, sin cambio de periodo)",
+    "banxico: actualizado TASA (última obs 2026-11-02, dato nuevo)",
     "banxico: actualizado RESERVAS (última obs 2026-10-23, sin cambio de periodo)",
     "inegi: actualizado PIB (última obs 2T-26, dato nuevo)",
     "inegi: actualizado PIBSEC (última obs 2T-26, sin cambio de periodo)",
@@ -455,7 +457,7 @@
     "TASA: 14 decisiones de politica monetaria construidas",
     "TASA: 47 regímenes detectados",
     "SIC: 1 periodo(s) finales sin cifra de los indicadores compuestos; se conservan sólo dentro del periodo de referencia del boletín oficial",
-    "calendario: regenerado con as_of=2026-10-30",
+    "calendario: regenerado con as_of=2026-11-02",
     "métricas: data/metrics.json regenerado",
     "frescura: PIB -> ACTUALIZADO",
     "frescura: PIBSEC -> ACTUALIZADO",
@@ -480,7 +482,7 @@
     "frescura: INPP -> ACTUALIZADO",
     "frescura: SIC -> ACTUALIZADO",
     "frescura: IMOAM -> ACTUALIZADO",
-    "meta: last_update_ct=2026-10-30T17:02:34-06:00",
+    "meta: last_update_ct=2026-11-02T11:07:03-06:00",
     "notas: 15 vigentes (0 provisionadas desde machote)"
   ],
   "consultas": [
@@ -2432,12 +2434,12 @@
       "fuente": "banxico",
       "indicador": "TASA",
       "serie": "SF61745",
-      "observaciones": 3213,
-      "ultima_observacion": "2026-10-30",
+      "observaciones": 3216,
+      "ultima_observacion": "2026-11-02",
       "ultimo_valor": 6.5,
       "observacion_previa": "2026-10-30",
       "actualizacion_fuente": null,
-      "dato_nuevo": false,
+      "dato_nuevo": true,
       "resultado": "consulta válida"
     },
     {
@@ -3967,5 +3969,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-10-30T23:02:35+00:00"
+  "finished_at": "2026-11-02T17:07:05+00:00"
 }
