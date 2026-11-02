@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-11-02T17:07:03+00:00",
+    "generated_at": "2026-11-02T22:27:20+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-11-02T11:07:03-06:00",
+    "last_update_ct": "2026-11-02T16:27:20-06:00",
     "periodo_referencia_reciente": {
       "period": "Sep 26",
       "period_long": "Sep 26"
@@ -72090,7 +72090,7 @@
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
-      "estado": "ACTUALIZADO",
+      "estado": "REZAGADO",
       "origen_dato": "api",
       "fecha_publicacion": null,
       "periodo_referencia": "2026-10-30",
@@ -76588,10 +76588,10 @@
           "A tasa anual, el FIX varió +1.39%; en los últimos 12 meses osciló entre $16.87 — $18.81."
         ]
       },
-      "periodo_referencia_oficial": "Oct 26",
+      "periodo_referencia_oficial": "Nov 26",
       "fecha_publicacion_oficial": null,
       "proxima_publicacion": null,
-      "motivo_frescura": "El periodo cargado (2026-10-30) coincide con el último periodo esperado (Oct 26).",
+      "motivo_frescura": "El periodo esperado es Nov 26, pero el dashboard aún muestra 2026-10-30.",
       "url_boletin_oficial": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/TIPOCAMBIO/TIPOCAMBIO_datos.xlsx",

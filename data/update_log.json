@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-11-02T16:52:16+00:00",
+  "started_at": "2026-11-02T22:13:14+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -110,7 +110,8 @@
     "INEGI INPP: 85 observaciones (serie 1801005, base BIE-BISE); última Sep 26 = 23.84357; actualización BIE 08/10/2026 12:00:00 a. m..",
     "INEGI INPP: 105 observaciones (serie 1801007, base BIE-BISE); última Sep 26 = 5.712014; actualización BIE 08/10/2026 12:00:00 a. m..",
     "INEGI INPP: 105 observaciones (serie 1801008, base BIE-BISE); última Sep 26 = 2.484374; actualización BIE 08/10/2026 12:00:00 a. m..",
-    "INEGI INPP: 105 observaciones (serie 1801009, base BIE-BISE); última Sep 26 = 5.862128; actualización BIE 08/10/2026 12:00:00 a. m.."
+    "INEGI INPP: 105 observaciones (serie 1801009, base BIE-BISE); última Sep 26 = 5.862128; actualización BIE 08/10/2026 12:00:00 a. m..",
+    "TIPOCAMBIO: REZAGADO – El periodo esperado es Nov 26, pero el dashboard aún muestra 2026-10-30."
   ],
   "changes": [
     "IGAE: fuente normalizada a serie total 737121",
@@ -298,7 +299,7 @@
     "imoam: actualizado IMOAM (última obs Sep 26, sin cambio de periodo)",
     "imoam: actualizado IMOAM (última obs Sep 26, sin cambio de periodo)",
     "banxico: actualizado TIPOCAMBIO (última obs 2026-10-30, sin cambio de periodo)",
-    "banxico: actualizado TASA (última obs 2026-11-02, dato nuevo)",
+    "banxico: actualizado TASA (última obs 2026-11-02, sin cambio de periodo)",
     "banxico: actualizado RESERVAS (última obs 2026-10-23, sin cambio de periodo)",
     "inegi: actualizado PIB (última obs 2T-26, dato nuevo)",
     "inegi: actualizado PIBSEC (última obs 2T-26, sin cambio de periodo)",
@@ -472,7 +473,7 @@
     "frescura: IMFBCF -> ACTUALIZADO",
     "frescura: IOAE -> ACTUALIZADO",
     "frescura: EMIM -> ACTUALIZADO",
-    "frescura: TIPOCAMBIO -> ACTUALIZADO",
+    "frescura: TIPOCAMBIO -> REZAGADO",
     "frescura: TASA -> ACTUALIZADO",
     "frescura: RESERVAS -> ACTUALIZADO",
     "boletín: EMOE descubierto https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf",
@@ -482,7 +483,7 @@
     "frescura: INPP -> ACTUALIZADO",
     "frescura: SIC -> ACTUALIZADO",
     "frescura: IMOAM -> ACTUALIZADO",
-    "meta: last_update_ct=2026-11-02T11:07:03-06:00",
+    "meta: last_update_ct=2026-11-02T16:27:20-06:00",
     "notas: 15 vigentes (0 provisionadas desde machote)"
   ],
   "consultas": [
@@ -2437,9 +2438,9 @@
       "observaciones": 3216,
       "ultima_observacion": "2026-11-02",
       "ultimo_valor": 6.5,
-      "observacion_previa": "2026-10-30",
+      "observacion_previa": "2026-11-02",
       "actualizacion_fuente": null,
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -3969,5 +3970,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-11-02T17:07:05+00:00"
+  "finished_at": "2026-11-02T22:27:21+00:00"
 }
