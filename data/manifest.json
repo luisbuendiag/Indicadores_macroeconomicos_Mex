@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-03T15:07:34+00:00",
+  "generated_at": "2026-11-03T20:16:52+00:00",
   "indicadores": [
     {
       "indicador": "Estimación Oportuna del Producto Interno Bruto Trimestral",
@@ -394,13 +394,13 @@
       "frecuencia": "Diaria",
       "unidad": "Pesos por dólar",
       "ajuste_estacional": "No aplica",
-      "ultima_observacion": "2026-10-30",
-      "periodo_referencia": "2026-10-30",
+      "ultima_observacion": "2026-11-03",
+      "periodo_referencia": "2026-11-03",
       "fecha_publicacion": "Días hábiles",
       "fecha_consulta": "2026-11-03",
       "fecha_actualizacion_archivo": "2026-11-03",
       "metodo_actualizacion": "Banxico SIE API",
-      "estado": "REZAGADO",
+      "estado": "ACTUALIZADO",
       "origen_dato": "api",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
