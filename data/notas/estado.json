@@ -66,17 +66,17 @@
   "EMOE": {
     "status": "vigente",
     "message": "Nota generada y validada por reglas Python",
-    "target_period": "Sep 26",
+    "target_period": "Oct 26",
     "published": {
-      "periodo": "Sep 26",
-      "generated_at": "2026-10-29T16:48:26+00:00",
-      "source_sha256": "74eb4d326c4aac1556ff2b4eeaa6a673fb4b21f603bb018e5a334076fdd9000c",
-      "fingerprint": "8b129271c7d0a7aa32c47c58ef59d632f4e2ccc97449426d3f41af564e2c0942",
-      "docx_sha256": "0ee56a48d4cbaecb5be861867dc41f1b0c230086bacf8d536531f29f52ff1c41",
-      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf",
+      "periodo": "Oct 26",
+      "generated_at": "2026-11-03T15:08:22+00:00",
+      "source_sha256": "2cc2af253f7023ddcf0ab6b25b006a56cf128c0444dd9543c35eb44cd34722f0",
+      "fingerprint": "c081fb5165e18f11f1e0ba058f3dc446b0bab74c0eb332e4b43e9f0dc93e5f3f",
+      "docx_sha256": "abae089aa3be3b9c85ec9ed06845147bc5050b464039baada77c3b3438b5e79c",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_11.pdf",
       "review_model": "encuestas-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/EMOE/8b129271c7d0a7aa32c47c58ef59d632f4e2ccc97449426d3f41af564e2c0942-0ee56a48d4cb"
+      "archive": "data/notas/EMOE/c081fb5165e18f11f1e0ba058f3dc446b0bab74c0eb332e4b43e9f0dc93e5f3f-abae089aa3be"
     }
   },
   "CONSUMO": {
