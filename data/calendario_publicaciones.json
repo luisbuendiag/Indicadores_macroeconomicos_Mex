@@ -7174,7 +7174,7 @@
       "mes": 11,
       "periodo_referencia": "30 de octubre de 2026",
       "estatus": "publicado",
-      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/"
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{B670D47E-871B-57FB-8803-D0ACDC500753}.pdf"
     },
     {
       "clave": "SIC",
@@ -7190,7 +7190,7 @@
       "mes": 11,
       "periodo_referencia": "Agosto de 2026",
       "estatus": "publicado",
-      "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_11.pdf",
       "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
