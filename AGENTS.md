@@ -193,3 +193,15 @@ Entorno financiero contiene la inversión externa reportada por la **Secretaría
   y rollback. No modifica observaciones BIE ni las confunde con la edición del boletín.
 - Dos páginas, resumen gris, tablas nativas y dos gráficas. Conservar pausas, machotes
   de solo lectura, evidencias, periodos, membrete y la última nota ante fallos.
+
+## Notas automáticas del PIB
+
+- `build_gdp_notes.py` genera PIB oportuno y PIBSEC trimestral por separado,
+  con sus periodos y ediciones propios. Leer el boletín completo de cuatro/cinco páginas.
+- Trimestral, anual y acumulada: tasas reales en porcentaje para Word; las
+  observaciones del dashboard conservan su escala fraccionaria y no se sobrescriben.
+- Cotejar portada y cuadro ajustado; preservar cuadro original completo con sus
+  siete columnas históricas y los 20 sectores SCIAN del PIBT. No inferir niveles
+  de gráficas ni contribuciones a partir de tasas. No presentar PIB oportuno como definitivo.
+- Dos páginas, resumen gris, tres tablas nativas, dos gráficas. Respetar pausas,
+  membrete y machotes de solo lectura; fallos preservan la nota publicada.
