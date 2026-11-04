@@ -1,0 +1,519 @@
+{
+  "indicator": "PIBSEC",
+  "period": "2T-26",
+  "quarter": 2,
+  "year": 2026,
+  "reference": "segundo trimestre de 2026",
+  "publication_date": "2026-08-24",
+  "bulletin": "500/26",
+  "base": "2018",
+  "rows": [
+    {
+      "id": "total",
+      "label": "PIB",
+      "mom": 1.4,
+      "yoy": 1.9,
+      "ytd": 1.2,
+      "series": "desestacionalizada",
+      "location": "p. 2, cuadro 1",
+      "evidence": "PIB 1.4 1.9 1.2"
+    },
+    {
+      "id": "primarias",
+      "label": "Actividades primarias",
+      "mom": 2.4,
+      "yoy": 4.8,
+      "ytd": 2.1,
+      "series": "desestacionalizada",
+      "location": "p. 2, cuadro 1",
+      "evidence": "Actividades primarias 2.4 4.8 2.1"
+    },
+    {
+      "id": "secundarias",
+      "label": "Actividades secundarias",
+      "mom": 1.6,
+      "yoy": 0.9,
+      "ytd": 0.1,
+      "series": "desestacionalizada",
+      "location": "p. 2, cuadro 1",
+      "evidence": "Actividades secundarias 1.6 0.9 0.1"
+    },
+    {
+      "id": "terciarias",
+      "label": "Actividades terciarias",
+      "mom": 1.4,
+      "yoy": 2.3,
+      "ytd": 1.7,
+      "series": "desestacionalizada",
+      "location": "p. 2, cuadro 1",
+      "evidence": "Actividades terciarias 1.4 2.3 1.7\n"
+    }
+  ],
+  "originals": [
+    {
+      "id": "total",
+      "label": "PIB",
+      "values": [
+        -0.1,
+        -0.2,
+        1.7,
+        0.5,
+        0.2,
+        2.1,
+        1.1
+      ],
+      "original": 2.1,
+      "ytd": 1.1,
+      "previous": 0.2,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "PIB total a precios de mercado -0.1 -0.2 1.7 0.5 0.2 2.1 1.1"
+    },
+    {
+      "id": "primarias",
+      "label": "Actividades primarias",
+      "values": [
+        -1.2,
+        -0.7,
+        6.8,
+        2.4,
+        -0.8,
+        4.8,
+        2.1
+      ],
+      "original": 4.8,
+      "ytd": 2.1,
+      "previous": -0.8,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "Actividades primarias -1.2 -0.7 6.8 2.4 -0.8 4.8 2.1"
+    },
+    {
+      "id": "11",
+      "label": "Agropecuario",
+      "values": [
+        -1.2,
+        -0.7,
+        6.8,
+        2.4,
+        -0.8,
+        4.8,
+        2.1
+      ],
+      "original": 4.8,
+      "ytd": 2.1,
+      "previous": -0.8,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "11 Agricultura, cría y explotación de animales,\n-1.2 -0.7 6.8 2.4 -0.8 4.8 2.1\naprovechamiento forestal, pesca y caza"
+    },
+    {
+      "id": "secundarias",
+      "label": "Actividades secundarias",
+      "values": [
+        -1.5,
+        -2.6,
+        0.4,
+        -1.2,
+        -1.1,
+        1.1,
+        0.0
+      ],
+      "original": 1.1,
+      "ytd": 0.0,
+      "previous": -1.1,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "Actividades secundarias -1.5 -2.6 0.4 -1.2 -1.1 1.1 0.0"
+    },
+    {
+      "id": "21",
+      "label": "Minería",
+      "values": [
+        -8.3,
+        -5.0,
+        -0.4,
+        -6.5,
+        2.7,
+        4.9,
+        3.8
+      ],
+      "original": 4.9,
+      "ytd": 3.8,
+      "previous": 2.7,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "21 Minería -8.3 -5.0 -0.4 -6.5 2.7 4.9 3.8"
+    },
+    {
+      "id": "22",
+      "label": "Energía, agua y gas",
+      "values": [
+        -2.2,
+        -1.4,
+        2.3,
+        -0.3,
+        -0.2,
+        -0.1,
+        -0.2
+      ],
+      "original": -0.1,
+      "ytd": -0.2,
+      "previous": -0.2,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "22 Generación, transmisión, distribución y\ncomercialización de energía eléctrica, suministro\n-2.2 -1.4 2.3 -0.3 -0.2 -0.1 -0.2\nde agua y de gas natural por ductos al\nconsumidor final"
+    },
+    {
+      "id": "23",
+      "label": "Construcción",
+      "values": [
+        -2.2,
+        -4.8,
+        4.1,
+        -1.1,
+        -0.7,
+        4.8,
+        2.1
+      ],
+      "original": 4.8,
+      "ytd": 2.1,
+      "previous": -0.7,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "23 Construcción -2.2 -4.8 4.1 -1.1 -0.7 4.8 2.1"
+    },
+    {
+      "id": "31-33",
+      "label": "Manufacturas",
+      "values": [
+        -0.1,
+        -1.6,
+        -0.6,
+        -0.4,
+        -1.8,
+        -0.4,
+        -1.1
+      ],
+      "original": -0.4,
+      "ytd": -1.1,
+      "previous": -1.8,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "31-33 Industrias manufactureras -0.1 -1.6 -0.6 -0.4 -1.8 -0.4 -1.1"
+    },
+    {
+      "id": "terciarias",
+      "label": "Actividades terciarias",
+      "values": [
+        0.6,
+        1.1,
+        2.0,
+        1.2,
+        0.9,
+        2.3,
+        1.6
+      ],
+      "original": 2.3,
+      "ytd": 1.6,
+      "previous": 0.9,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "Actividades terciarias 0.6 1.1 2.0 1.2 0.9 2.3 1.6"
+    },
+    {
+      "id": "43",
+      "label": "Comercio al por mayor",
+      "values": [
+        -8.3,
+        -4.1,
+        -1.0,
+        -4.7,
+        2.2,
+        11.3,
+        6.7
+      ],
+      "original": 11.3,
+      "ytd": 6.7,
+      "previous": 2.2,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "43 Comercio al por mayor -8.3 -4.1 -1.0 -4.7 2.2 11.3 6.7"
+    },
+    {
+      "id": "46",
+      "label": "Comercio al por menor",
+      "values": [
+        3.7,
+        4.1,
+        4.5,
+        4.3,
+        0.9,
+        0.9,
+        0.9
+      ],
+      "original": 0.9,
+      "ytd": 0.9,
+      "previous": 0.9,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "46 Comercio al por menor 3.7 4.1 4.5 4.3 0.9 0.9 0.9"
+    },
+    {
+      "id": "48-49",
+      "label": "Transportes y almacenamiento",
+      "values": [
+        0.7,
+        0.3,
+        1.0,
+        0.6,
+        0.4,
+        0.1,
+        0.2
+      ],
+      "original": 0.1,
+      "ytd": 0.2,
+      "previous": 0.4,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "48-49 Transportes, correos y almacenamiento 0.7 0.3 1.0 0.6 0.4 0.1 0.2"
+    },
+    {
+      "id": "51",
+      "label": "Información",
+      "values": [
+        4.5,
+        2.2,
+        1.1,
+        2.3,
+        0.7,
+        1.0,
+        0.8
+      ],
+      "original": 1.0,
+      "ytd": 0.8,
+      "previous": 0.7,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "51 Información en medios masivos 4.5 2.2 1.1 2.3 0.7 1.0 0.8"
+    },
+    {
+      "id": "52",
+      "label": "Financieros y seguros",
+      "values": [
+        2.3,
+        1.9,
+        3.7,
+        2.5,
+        2.1,
+        0.6,
+        1.3
+      ],
+      "original": 0.6,
+      "ytd": 1.3,
+      "previous": 2.1,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "52 Servicios financieros y de seguros 2.3 1.9 3.7 2.5 2.1 0.6 1.3"
+    },
+    {
+      "id": "53",
+      "label": "Inmobiliarios y alquiler",
+      "values": [
+        1.6,
+        1.4,
+        1.6,
+        1.6,
+        1.0,
+        0.5,
+        0.8
+      ],
+      "original": 0.5,
+      "ytd": 0.8,
+      "previous": 1.0,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "53 Servicios inmobiliarios y de alquiler de bienes\n1.6 1.4 1.6 1.6 1.0 0.5 0.8\nmuebles e intangibles"
+    },
+    {
+      "id": "54",
+      "label": "Profesionales y técnicos",
+      "values": [
+        8.8,
+        8.4,
+        5.4,
+        8.6,
+        -3.4,
+        0.2,
+        -1.6
+      ],
+      "original": 0.2,
+      "ytd": -1.6,
+      "previous": -3.4,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "54 Servicios profesionales, científicos y técnicos 8.8 8.4 5.4 8.6 -3.4 0.2 -1.6"
+    },
+    {
+      "id": "55",
+      "label": "Corporativos",
+      "values": [
+        3.3,
+        -1.1,
+        -1.7,
+        1.0,
+        -2.5,
+        -0.8,
+        -1.6
+      ],
+      "original": -0.8,
+      "ytd": -1.6,
+      "previous": -2.5,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "55 Corporativos 3.3 -1.1 -1.7 1.0 -2.5 -0.8 -1.6"
+    },
+    {
+      "id": "56",
+      "label": "Apoyo a negocios y residuos",
+      "values": [
+        13.0,
+        10.7,
+        8.5,
+        11.5,
+        -1.1,
+        1.5,
+        0.3
+      ],
+      "original": 1.5,
+      "ytd": 0.3,
+      "previous": -1.1,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "56 Servicios de apoyo a los negocios y manejo de\n13.0 10.7 8.5 11.5 -1.1 1.5 0.3\nresiduos, y servicios de remediación"
+    },
+    {
+      "id": "61",
+      "label": "Educación",
+      "values": [
+        1.3,
+        0.3,
+        1.1,
+        1.1,
+        0.4,
+        0.5,
+        0.4
+      ],
+      "original": 0.5,
+      "ytd": 0.4,
+      "previous": 0.4,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "61 Servicios educativos 1.3 0.3 1.1 1.1 0.4 0.5 0.4"
+    },
+    {
+      "id": "62",
+      "label": "Salud y asistencia social",
+      "values": [
+        3.3,
+        5.3,
+        4.9,
+        4.1,
+        3.3,
+        2.5,
+        2.9
+      ],
+      "original": 2.5,
+      "ytd": 2.9,
+      "previous": 3.3,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "62 Servicios de salud y de asistencia social 3.3 5.3 4.9 4.1 3.3 2.5 2.9"
+    },
+    {
+      "id": "71",
+      "label": "Esparcimiento",
+      "values": [
+        1.0,
+        13.2,
+        22.3,
+        11.0,
+        2.3,
+        3.7,
+        3.1
+      ],
+      "original": 3.7,
+      "ytd": 3.1,
+      "previous": 2.3,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "71 Servicios de esparcimiento culturales y\n1.0 13.2 22.3 11.0 2.3 3.7 3.1\ndeportivos, y otros servicios recreativos"
+    },
+    {
+      "id": "72",
+      "label": "Alojamiento y alimentos",
+      "values": [
+        -3.2,
+        -3.6,
+        -2.7,
+        -3.0,
+        -2.9,
+        -2.6,
+        -2.7
+      ],
+      "original": -2.6,
+      "ytd": -2.7,
+      "previous": -2.9,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "72 Servicios de alojamiento temporal y de\n-3.2 -3.6 -2.7 -3.0 -2.9 -2.6 -2.7\npreparación de alimentos y bebidas"
+    },
+    {
+      "id": "81",
+      "label": "Otros servicios",
+      "values": [
+        0.1,
+        -2.0,
+        0.3,
+        -1.0,
+        0.2,
+        1.8,
+        1.0
+      ],
+      "original": 1.8,
+      "ytd": 1.0,
+      "previous": 0.2,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "81 Otros servicios excepto actividades\n0.1 -2.0 0.3 -1.0 0.2 1.8 1.0\ngubernamentales"
+    },
+    {
+      "id": "93",
+      "label": "Gobierno y organismos",
+      "values": [
+        0.1,
+        -0.4,
+        1.6,
+        0.8,
+        2.8,
+        4.3,
+        3.5
+      ],
+      "original": 4.3,
+      "ytd": 3.5,
+      "previous": 2.8,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "93 Actividades legislativas, gubernamentales, de\nimpartición de justicia y de organismos 0.1 -0.4 1.6 0.8 2.8 4.3 3.5\ninternacionales y extraterritoriales"
+    }
+  ],
+  "pages": [
+    "BOLETÍN DE INDICADOR 500/26\nPRODUCTO INTERNO BRUTO TRIMESTRAL\nA PRECIOS CONSTANTES\n24 de agosto de 2026\nPágina 1/5\nPróxima publicación: 23 de noviembre de 2026\nActividades Actividades Actividades\nPIB\nprimarias secundarias terciarias\n2.° trimestre 2.° trimestre 2.° trimestre 2.° trimestre\nvariación variación variación variación\ntrimestral anual trimestral anual trimestral anual trimestral anual\n▲ 1.4 % ▲ 1.9 % ▲ 2.4 % ▲ 4.8 % ▲ 1.6 % ▲ 0.9 % ▲ 1.4 % ▲ 2.3 %\nAumentó el PIB 1.4 % a tasa trimestral\nen el segundo trimestre de 2026, en términos reales\nEl Producto Interno Bruto Trimestral (PIBT) ofrece, en el corto plazo, una visión oportuna,\ncompleta y coherente de la evolución de las actividades económicas del país.\nI. CIFRAS DESESTACIONALIZADAS\nEn el trimestre abril-junio de 2026 y con cifras desestacionalizadas,1 el Producto Interno Bruto\n(PIB) registró un avance de 1.4 % a tasa trimestral y de 1.9 % a tasa anual, en términos reales.2\nGráfica 1\nVariación del Producto Interno Bruto\ncifras desestacionalizadas\nprimer trimestre de 2021–segundo trimestre de 2026\n(variación porcentual real trimestral)\n1.4 1.4\n1.5 1.2 1.1 1.2\n1.0 0.8 0.9 0.8 0.7 1.0 0.8 0.9\n0.6 0.6\n0.4\n0.5\n0.2\n0.0\n-0.2 0.0 -0.1\n-0.5 -0.3\n-1.0 -0.9 -0.9\n-1.5\nI II III IV I II III IV I II III IV I II III IV I II III IV I II\n2021 2022 2023 2024 2025 2026\nNota: Serie elaborada mediante métodos econométricos.\nFuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Producto Interno Bruto Trimestral (PIBT), 2026.\n1 La mayoría de las series económicas se ve afectada por factores estacionales y de calendario. El ajuste de los datos por dichos factores\npermite obtener las cifras desestacionalizadas.\nLa tendencia-ciclo es la combinación de los componentes de tendencia y ciclo. La tendencia se refiere a la evolución de largo plazo de la\nserie de tiempo, y el ciclo, a las desviaciones alrededor de la tendencia. Así, el análisis de las series ajustadas ayuda a realizar un mejor\ndiagnóstico de la evolución de las variables.\n2 Para conocer el dato de la actividad económica del país, de junio de 2026, se sugiere consultar el boletín sobre el Indicador Global de la\nActividad Económica (IGAE) que se difunde paralelamente a este.",
+    "BOLETÍN DE INDICADOR 500/26\nPRODUCTO INTERNO BRUTO TRIMESTRAL\nA PRECIOS CONSTANTES\n24 de agosto de 2026\nPágina 2/5\nSegún componente, con series ajustadas por estacionalidad, el comportamiento a tasa\ntrimestral fue el siguiente: el PIB de las actividades primarias creció 2.4 %; las secundarias,\n1.6 %; y las terciarias, 1.4 por ciento.\nA tasa anual, las actividades primarias incrementaron 4.8 %; las terciarias, 2.3 %; y las\nsecundarias, 0.9 %, en términos reales, en el segundo trimestre de 2026.\nCuadro 1\nVariación del Producto Interno Bruto (PIB) y actividades económicas\ncifras desestacionalizadas\nal segundo trimestre de 2026\n(variación porcentual trimestral y anual)\nVariación porcentual real respecto a:\nPIB y actividades económicas 1.er trimestre 2.° trimestre 6 meses\nde 2026 de 2025 de 2025\nPIB 1.4 1.9 1.2\nActividades primarias 2.4 4.8 2.1\nActividades secundarias 1.6 0.9 0.1\nActividades terciarias 1.4 2.3 1.7\nNota: Cifras elaboradas mediante métodos econométricos.\nLa serie desestacionalizada del PIB se calcula de manera independiente a la de sus componentes.\nFuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Producto Interno Bruto Trimestral (PIBT), 2026.\nEn el periodo enero-junio de 2026, el PIB aumentó 1.2 % respecto al mismo lapso de 2025.",
+    "BOLETÍN DE INDICADOR 500/26\nPRODUCTO INTERNO BRUTO TRIMESTRAL\nA PRECIOS CONSTANTES\n24 de agosto de 2026\nPágina 3/5\nGráfica 2\nSerie desestacionalizada y de tendencia-ciclo\ndel Producto Interno Bruto (PIB) y actividades económicas\nprimer trimestre de 2021–segundo trimestre de 2026\n(miles de millones de pesos a precios de 2018)\nPIB Actividades primarias\n26 500 890\n870\n25 000\n850\n830\n23 500\n810\n22 000 790\n2021 2022 2023 2024 2025 2026 2021 2022 2023 2024 2025 2026\nActividades secundarias Actividades terciarias\n8 200 16 000\n8 000 15 500\n7 800 15 000\n7 600 14 500\n7 400 14 000\n7 200 13 500\n2021 2022 2023 2024 2025 2026 2021 2022 2023 2024 2025 2026\nSerie desestacionalizada Serie tendencia-ciclo\nNota: Series elaboradas mediante métodos econométricos.\nFuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Producto Interno Bruto Trimestral (PIBT), 2026.",
+    "BOLETÍN DE INDICADOR 500/26\nPRODUCTO INTERNO BRUTO TRIMESTRAL\nA PRECIOS CONSTANTES\n24 de agosto de 2026\nPágina 4/5\nII. CIFRAS ORIGINALES\nCuadro 2\nVariación del Producto Interno Bruto (PIB) según actividades y sectores económicos\nal segundo trimestre de 2026\n(variación porcentual real anual)\n20251/ 20261/\nPIB, actividades y sectores económicos 2.° 3.er 4.° 1.er2/ 2.° 6\nAnual\ntrimestre trimestre meses\nPIB total a precios de mercado -0.1 -0.2 1.7 0.5 0.2 2.1 1.1\nActividades primarias -1.2 -0.7 6.8 2.4 -0.8 4.8 2.1\n11 Agricultura, cría y explotación de animales,\n-1.2 -0.7 6.8 2.4 -0.8 4.8 2.1\naprovechamiento forestal, pesca y caza\nActividades secundarias -1.5 -2.6 0.4 -1.2 -1.1 1.1 0.0\n21 Minería -8.3 -5.0 -0.4 -6.5 2.7 4.9 3.8\n22 Generación, transmisión, distribución y\ncomercialización de energía eléctrica, suministro\n-2.2 -1.4 2.3 -0.3 -0.2 -0.1 -0.2\nde agua y de gas natural por ductos al\nconsumidor final\n23 Construcción -2.2 -4.8 4.1 -1.1 -0.7 4.8 2.1\n31-33 Industrias manufactureras -0.1 -1.6 -0.6 -0.4 -1.8 -0.4 -1.1\nActividades terciarias 0.6 1.1 2.0 1.2 0.9 2.3 1.6\n43 Comercio al por mayor -8.3 -4.1 -1.0 -4.7 2.2 11.3 6.7\n46 Comercio al por menor 3.7 4.1 4.5 4.3 0.9 0.9 0.9\n48-49 Transportes, correos y almacenamiento 0.7 0.3 1.0 0.6 0.4 0.1 0.2\n51 Información en medios masivos 4.5 2.2 1.1 2.3 0.7 1.0 0.8\n52 Servicios financieros y de seguros 2.3 1.9 3.7 2.5 2.1 0.6 1.3\n53 Servicios inmobiliarios y de alquiler de bienes\n1.6 1.4 1.6 1.6 1.0 0.5 0.8\nmuebles e intangibles\n54 Servicios profesionales, científicos y técnicos 8.8 8.4 5.4 8.6 -3.4 0.2 -1.6\n55 Corporativos 3.3 -1.1 -1.7 1.0 -2.5 -0.8 -1.6\n56 Servicios de apoyo a los negocios y manejo de\n13.0 10.7 8.5 11.5 -1.1 1.5 0.3\nresiduos, y servicios de remediación\n61 Servicios educativos 1.3 0.3 1.1 1.1 0.4 0.5 0.4\n62 Servicios de salud y de asistencia social 3.3 5.3 4.9 4.1 3.3 2.5 2.9\n71 Servicios de esparcimiento culturales y\n1.0 13.2 22.3 11.0 2.3 3.7 3.1\ndeportivos, y otros servicios recreativos\n72 Servicios de alojamiento temporal y de\n-3.2 -3.6 -2.7 -3.0 -2.9 -2.6 -2.7\npreparación de alimentos y bebidas\n81 Otros servicios excepto actividades\n0.1 -2.0 0.3 -1.0 0.2 1.8 1.0\ngubernamentales\n93 Actividades legislativas, gubernamentales, de\nimpartición de justicia y de organismos 0.1 -0.4 1.6 0.8 2.8 4.3 3.5\ninternacionales y extraterritoriales\n1/ Cifras preliminares.\n2/ Cifras revisadas.\nFuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Producto Interno Bruto Trimestral (PIBT), 2026.",
+    "BOLETÍN DE INDICADOR 500/26\nPRODUCTO INTERNO BRUTO TRIMESTRAL\nA PRECIOS CONSTANTES\n24 de agosto de 2026\nPágina 5/5\nIII. FICHA METODOLÓGICA\nEl Producto Interno Bruto Trimestral (PIBT), ofrece una visión oportuna y con periodicidad trimestral sobre la\nsituación económica del país, consistente con las cuentas nacionales anuales, siendo coherente, preciso,\nAntecedentes completo y razonablemente detallado, para determinar la evolución de las actividades económicas del país,\nmediante cifras sintéticas presentadas dentro de un marco contable, que se constituyen en fuente para el\nseguimiento de la economía y la construcción de modelos económicos.\nLos datos del PIB están disponibles desde el segundo trimestre de 1993 y una serie retropolada reducida de 1980\na 1992. Se expresan en millones de pesos a precios constantes de 2018, a precios corrientes, así como los\nAño base\níndices de precios implícitos 2018=100 y alcanza una representatividad de 97.7 % del valor agregado bruto del\naño base 2018.\nLas principales fuentes de información son las encuestas en establecimientos y en hogares —Encuesta Mensual\nde la Industria Manufacturera (EMIM), Encuesta Nacional de Empresas Constructoras (ENEC), Encuesta Mensual\nsobre Empresas Comerciales (EMEC), Encuesta Mensual de Servicios (EMS) y Encuesta Nacional de Ocupación\nFuentes y Empleo (ENOE)—, los índices nacionales de precios, los registros administrativos, las estadísticas económicas\ny sociales, y los datos primarios compilados por el Instituto. Para las actividades agropecuarias, petroleras, de\nenergía, gas y agua, de servicios financieros y del gobierno, se incluyeron los registros administrativos\nprovenientes de las empresas y Unidades del Estado.\nCobertura geográfica Nacional\nPeriodicidad Trimestral\nPara la elaboración del PIBT se siguen los conceptos, criterios metodológicos, clasificadores y datos fuente que\nse emplean en los cálculos anuales del PIB. Asimismo, se incorporan los lineamientos internacionales sobre\ncontabilidad nacional, establecidos en el Sistema de Cuentas Nacionales 2008 y en el Manual de Cuentas\nNacionales Trimestrales, edición 2017 (CNT 2017), entre otros.\nLos valores constantes se calculan con índices de volumen físico, tipo Laspeyres, con base fija en 2018 para un\ntotal de 749 clases de actividad del Sistema de Clasificación Industrial de América del Norte (SCIAN). Al interior\nde las clases se realizan mediciones específicas para la actividad formal, informal, artesanado formal e informal\nCálculo del PIB y bienes para procesamiento. Con los datos compilados se elaboran índices de producción, ingresos, ventas,\netc. que se utilizan para extrapolar los valores registrados en el año 2018.\nLos valores corrientes se obtienen a partir de los valores constantes, los cuales se inflactan con índices de\nprecios seleccionados por actividad económica.\nLos valores obtenidos se ajustan a los valores anuales con la técnica proporcional Denton, obteniéndose por\ndiferencia el valor agregado bruto a precios constantes de 2018 y a precios corrientes. Los totales se calculan\npor agregación en 86 ramas manufactureras, 72 subsectores, 20 sectores, tres grandes actividades económicas\ny el total del PIBT.\nLas series originales se ajustan estacionalmente mediante el paquete estadístico X-13ARIMA-SEATS. Para\nconocer la metodología, consúltese la siguiente liga:\nAjuste estacional y https://www.inegi.org.mx/app/biblioteca/ficha.html?upc=702825099060\nmodelos Las especificaciones de los modelos están disponibles en el Banco de Información Económica (BIE). Seleccione\n«Indicadores económicos de coyuntura, Producto Interno Bruto trimestral» y vaya al icono de información\ncorrespondiente a las «series desestacionalizadas y de tendencia-ciclo».\nPublicación de El PIBT se publica en promedio 53 días después de concluido el trimestre de referencia conforme al Calendario\nresultados de Difusión de Información Estadística y Geográfica y de Interés Nacional.\nEste producto se actualiza una vez que se dispone de la información estadística más reciente de las encuestas,\nlos registros administrativos y los datos primarios de 2026. Como resultado de incorporar esta información, se\nidentifican diferencias en los niveles de los valores, índices y variaciones que se publicaron oportunamente.\nEn la integración del PIBT, del segundo trimestre de 2026, se consideró la información estadística más reciente\nde las encuestas económicas (ENEC, EMIM, EMEC y EMS), de la estadística de la Industria Minerometalúrgica\nNota al público usuario\n(EIMM), de la ENOE, de los registros administrativos y los datos primarios que divulga el Instituto. Para las\nactividades agropecuarias, petroleras, de energía, gas y agua, de servicios financieros y del gobierno, se\nincluyeron los registros administrativos provenientes de las empresas y Unidades del Estado que se recibieron\noportunamente vía correo electrónico e internet. Esto permitió la generación de estadísticas con niveles altos de\ncobertura.\nEl INEGI invita conocer a mayor detalle la metodología del PIBT, en la siguiente liga:\nhttps://www.inegi.org.mx/programas/pib/2018\nLa información estadística y geográfica que genera el INEGI es un bien público y nos permite\na todas y a todos tomar mejores decisiones. ¡Conócela, úsala y compártela!"
+  ],
+  "source_sha256": "c0ae1673e9347a4e31d4cd2fde974b19e6293560c15b419c3656fbe85e987337",
+  "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_08.pdf"
+}

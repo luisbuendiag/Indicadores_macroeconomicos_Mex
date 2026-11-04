@@ -1556,9 +1556,15 @@
         "available": true,
         "format": "docx",
         "path": "downloads/indicadores/PIB/nota/PIB_nota.docx",
-        "periodo": "2T-26",
-        "generated_from": "machote",
-        "automatic": false
+        "periodo": "3T-26 P",
+        "generated_from": "boletin_validado",
+        "automatic": true,
+        "generated_at": "2026-11-04T18:09:01+00:00",
+        "source_sha256": "331bcfbadefa753281cd4705a76809c7fc2a20c0e8267e00236329e10bc0036a",
+        "fingerprint": "884d24d06d4726d3fd7750d0567df7a8ecf56ddd2566f317bedc63623a44752f",
+        "status": "vigente",
+        "target_period": "3T-26 P",
+        "message": "Nota generada y validada por reglas Python"
       },
       "boletin_validado": true
     },
@@ -4366,9 +4372,15 @@
         "available": true,
         "format": "docx",
         "path": "downloads/indicadores/PIBSEC/nota/PIBSEC_nota.docx",
-        "periodo": "1T-26",
-        "generated_from": "machote",
-        "automatic": false
+        "periodo": "2T-26",
+        "generated_from": "boletin_validado",
+        "automatic": true,
+        "generated_at": "2026-11-04T18:09:09+00:00",
+        "source_sha256": "c0ae1673e9347a4e31d4cd2fde974b19e6293560c15b419c3656fbe85e987337",
+        "fingerprint": "22f3d6b236fa1ff698fecf95007360dc00eeccb4797227e65f4767b7c6876e91",
+        "status": "vigente",
+        "target_period": "2T-26",
+        "message": "Nota generada y validada por reglas Python"
       },
       "boletin_validado": true
     },

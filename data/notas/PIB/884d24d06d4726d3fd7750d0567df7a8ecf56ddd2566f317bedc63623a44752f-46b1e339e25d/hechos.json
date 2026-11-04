@@ -1,0 +1,138 @@
+{
+  "indicator": "PIB",
+  "period": "3T-26 P",
+  "quarter": 3,
+  "year": 2026,
+  "reference": "tercer trimestre de 2026",
+  "publication_date": "2026-10-30",
+  "bulletin": "673/26",
+  "base": "2018",
+  "rows": [
+    {
+      "id": "total",
+      "label": "PIB",
+      "mom": 0.9,
+      "yoy": 3.2,
+      "ytd": 1.9,
+      "series": "desestacionalizada",
+      "location": "p. 2, cuadro 1",
+      "evidence": "Producto Interno Bruto Oportuno 0.9 3.2 1.9"
+    },
+    {
+      "id": "primarias",
+      "label": "Actividades primarias",
+      "mom": -0.4,
+      "yoy": 1.8,
+      "ytd": 2.0,
+      "series": "desestacionalizada",
+      "location": "p. 2, cuadro 1",
+      "evidence": "Actividades primarias -0.4 1.8 2.0"
+    },
+    {
+      "id": "secundarias",
+      "label": "Actividades secundarias",
+      "mom": 0.8,
+      "yoy": 3.1,
+      "ytd": 1.1,
+      "series": "desestacionalizada",
+      "location": "p. 2, cuadro 1",
+      "evidence": "Actividades secundarias 0.8 3.1 1.1"
+    },
+    {
+      "id": "terciarias",
+      "label": "Actividades terciarias",
+      "mom": 1.1,
+      "yoy": 3.3,
+      "ytd": 2.2,
+      "series": "desestacionalizada",
+      "location": "p. 2, cuadro 1",
+      "evidence": "Actividades terciarias 1.1 3.3 2.2\n"
+    }
+  ],
+  "originals": [
+    {
+      "id": "total",
+      "label": "PIB",
+      "values": [
+        -0.2,
+        1.7,
+        0.5,
+        0.2,
+        2.1,
+        3.2,
+        1.8
+      ],
+      "original": 3.2,
+      "ytd": 1.8,
+      "previous": 2.1,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "PIB y actividades económicas 3.er 4.o 1.er 2.o 3.er2/ 92/\nAnual\ntrimestre trimestre meses\nPIB -0.2 1.7 0.5 0.2 2.1 3.2 1.8"
+    },
+    {
+      "id": "primarias",
+      "label": "Actividades primarias",
+      "values": [
+        -0.7,
+        6.8,
+        2.4,
+        -0.8,
+        4.8,
+        2.2,
+        2.1
+      ],
+      "original": 2.2,
+      "ytd": 2.1,
+      "previous": 4.8,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "Actividades primarias -0.7 6.8 2.4 -0.8 4.8 2.2 2.1"
+    },
+    {
+      "id": "secundarias",
+      "label": "Actividades secundarias",
+      "values": [
+        -2.6,
+        0.4,
+        -1.2,
+        -1.1,
+        1.1,
+        3.0,
+        1.0
+      ],
+      "original": 3.0,
+      "ytd": 1.0,
+      "previous": 1.1,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "Actividades secundarias -2.6 0.4 -1.2 -1.1 1.1 3.0 1.0"
+    },
+    {
+      "id": "terciarias",
+      "label": "Actividades terciarias",
+      "values": [
+        1.1,
+        2.0,
+        1.2,
+        0.9,
+        2.3,
+        3.4,
+        2.2
+      ],
+      "original": 3.4,
+      "ytd": 2.2,
+      "previous": 2.3,
+      "series": "original",
+      "location": "cuadro 2",
+      "evidence": "Actividades terciarias 1.1 2.0 1.2 0.9 2.3 3.4 2.2"
+    }
+  ],
+  "pages": [
+    "BOLETÍN DE INDICADOR 673/26\nESTIMACIÓN OPORTUNA DEL PRODUCTO\nINTERNO BRUTO TRIMESTRAL (EOPIBT)\n30 de octubre de 2026\nPágina 1/4\nPróxima publicación: 29 de enero de 2027\nActividades Actividades Actividades\nPIB oportuno\nprimarias secundarias terciarias\n3.er trimestre 3.er trimestre 3.er trimestre 3.er trimestre\nvariación variación variación variación\ntrimestral anual trimestral anual trimestral anual trimestral anual\n▲ 0.9 % ▲ 3.2 % ▼-0.4 % ▲ 1.8 % ▲ 0.8 % ▲ 3.1 % ▲ 1.1 % ▲ 3.3 %\nAumentó el PIB oportuno 0.9 % en el tercer trimestre de 2026, a tasa trimestral\nLa Estimación Oportuna del Producto Interno Bruto Trimestral (EOPIBT) ofrece, en el corto\nplazo, una visión sobre la evolución de las actividades económicas del país, 30 días después\nde que concluye el trimestre de referencia. Lo anterior, con base en la información estadística\ndisponible, las técnicas estadísticas y modelos econométricos que mejor se ajustan a dicha\ninformación, así como en las recomendaciones internacionales vigentes. Los resultados son\nconsistentes con el Sistema de Cuentas Nacionales de México (SCNM).\nI. CIFRAS DESESTACIONALIZADAS\nEn el tercer trimestre de 2026 y con cifras ajustadas por estacionalidad,1 los resultados de la\nEOPIBT indican que el PIB oportuno incrementó 0.9 % en términos reales, respecto al trimestre\ninmediato anterior (ver gráfica 1). A tasa anual, creció 3.2 por ciento.\n1 La mayoría de las series económicas se ve afectada por factores estacionales y de calendario. El ajuste de los datos por dichos factores\npermite obtener las cifras desestacionalizadas.\nLa tendencia-ciclo es la combinación de los componentes de tendencia y ciclo. La tendencia se refiere a la evolución de largo plazo de la\nserie de tiempo, y el ciclo, a las desviaciones alrededor de la tendencia. Así, el análisis de las series ajustadas ayuda a realizar un mejor\ndiagnóstico de la evolución de las variables.",
+    "BOLETÍN DE INDICADOR 673/26\nESTIMACIÓN OPORTUNA DEL PRODUCTO\nINTERNO BRUTO TRIMESTRAL (EOPIBT)\n30 de octubre de 2026\nPágina 2/4\nGráfica 1\nVariación del Producto Interno Bruto\ncifras desestacionalizadas\nprimer trimestre de 2023–tercer trimestre de 2026\n(variación porcentual real trimestral)\n1.4\n1.2 1.0 0.9 0.9\n0.7 0.8\n0.8 0.6 0.6\n0.4\n0.4 0.2\n0.0\n-0.4 -0.2 0.0 -0.1\n-0.3\n-0.8\n-1.2 -0.9\nI II III IV I II III IV I II III IV I II III\n2023 2024 2025 2026\nCrecimiento histórico Estimación oportuna\nNota: Serie elaborada mediante métodos econométricos.\nFuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Estimación Oportuna del Producto Interno Bruto Trimestral\n(EOPIBT), 2026.\nEn el periodo julio-septiembre de 2026, la estimación oportuna del PIB de las actividades\nterciarias avanzó 1.1 % y el de las secundarias, 0.8 por ciento. El de las primarias disminuyó\n0.4 %, a tasa trimestral.\nEn el trimestre de referencia y a tasa anual, la estimación oportuna del PIB por actividad\neconómica fue la siguiente: el PIB de las terciarias creció 3.3 %; el de las secundarias, 3.1 %; y\nel de las primarias, 1.8 % (ver cuadro 1).\nCuadro 1\nVariación de la Estimación Oportuna del Producto Interno Bruto Trimestral\ncifras desestacionalizadas\nal tercer trimestre de 2026\n(variación porcentual trimestral y anual)\nVariación porcentual real respecto al:\nPIB y actividades económicas 2.o trimestre 3.er trimestre 9 meses\nde 2026 de 2025 de 2025\nProducto Interno Bruto Oportuno 0.9 3.2 1.9\nActividades primarias -0.4 1.8 2.0\nActividades secundarias 0.8 3.1 1.1\nActividades terciarias 1.1 3.3 2.2\nNota: Cifras elaboradas mediante métodos econométricos.\nCifras oportunas. La estimación oportuna no reemplaza a la estimación tradicional.\nLa serie desestacionalizada del PIB oportuno se calcula de manera independiente a la de sus componentes.\nFuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Estimación Oportuna del Producto Interno Bruto\nTrimestral (EOPIBT), 2026.\nEn el periodo enero-septiembre de 2026, el PIB oportuno incrementó 1.9 % respecto al mismo\nlapso de 2025.",
+    "BOLETÍN DE INDICADOR 673/26\nESTIMACIÓN OPORTUNA DEL PRODUCTO\nINTERNO BRUTO TRIMESTRAL (EOPIBT)\n30 de octubre de 2026\nPágina 3/4\nII. CIFRAS ORIGINALES\nA continuación, se presentan las variaciones anuales del PIB y actividades económicas, así\ncomo su estimación oportuna para el tercer trimestre de 2026 (ver gráfica 2 y cuadro 2).\nGráfica 2\nVariación del Producto Interno Bruto\ncifras originales\nprimer trimestre de 2023–tercer trimestre de 2026\n(variación porcentual real anual)\n3.8\n4.0\n3.3 3.3 3.2\n3.0\n2.1 2.2 2.1\n2.0 1.8 1.5 1.7\n1.0 0.4 0.6\n0.2\n0.0\n-0.1 -0.2\n-1.0\nI II III IV I II III IV I II III IV I II III\n2023 2024 2025 2026\nCrecimiento histórico Estimación oportuna\nFuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Estimación Oportuna del Producto Interno Bruto Trimestral\n(EOPIBT), 2026.\nCuadro 2\nVariación del Producto Interno Bruto (PIB)\ncifras originales\nal tercer trimestre de 2026\n(variación porcentual real anual)\n20251/ 20261/\nPIB y actividades económicas 3.er 4.o 1.er 2.o 3.er2/ 92/\nAnual\ntrimestre trimestre meses\nPIB -0.2 1.7 0.5 0.2 2.1 3.2 1.8\nActividades primarias -0.7 6.8 2.4 -0.8 4.8 2.2 2.1\nActividades secundarias -2.6 0.4 -1.2 -1.1 1.1 3.0 1.0\nActividades terciarias 1.1 2.0 1.2 0.9 2.3 3.4 2.2\n1/ Cifras preliminares.\n2/ Cifras oportunas. La estimación oportuna no reemplaza a la estimación tradicional.\nFuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Estimación Oportuna del Producto Interno Bruto\nTrimestral (EOPIBT), 2026.",
+    "BOLETÍN DE INDICADOR 673/26\nESTIMACIÓN OPORTUNA DEL PRODUCTO\nINTERNO BRUTO TRIMESTRAL (EOPIBT)\n30 de octubre de 2026\nPágina 4/4\nIII. FICHA METODOLÓGICA\nLa Estimación Oportuna del Producto Interno Bruto Trimestral (EOPIBT) ofrece una visión oportuna sobre\nla evolución de la economía mexicana, 30 días después de que concluye el trimestre de referencia.\nEsto con base en la información estadística disponible que se obtiene por los métodos estadísticos, fluir\nAntecedentes de bienes y modelos econométricos, así como en las recomendaciones internacionales vigentes.\nAunque utiliza la misma metodología y método de integración que el cálculo del PIB tradicional, no\npretende reemplazarlo, debido a que los resultados están sujetos a cambios conforme se recibe más\ninformación estadística.\nLos datos de la EOPIBT se expresan en variaciones anuales para el total y los agregados de las actividades\nAño base\nprimarias, secundarias y terciarias. Se generan a partir de los valores a precios constantes de 2018.\nLas principales fuentes de información para estimar los dos primeros meses del trimestre del PIB son las\nsiguientes: Encuesta Mensual de la Industria Manufacturera (EMIM), Encuesta Mensual sobre Empresas\nComerciales (EMEC), Encuesta Mensual de Opinión Empresarial (EMOE), Industria Minerometalúrgica\n(EIMM), Encuesta Nacional de Empresas Constructoras (ENEC), Encuesta Mensual de Servicios (EMS),\nEncuesta Nacional sobre Confianza del Consumidor (ENCO), Encuesta Nacional de Ocupación y Empleo\nFuentes\n(ENOE), registros administrativos y estadísticas sociodemográficas. Para las actividades agropecuarias,\npetroleras, de energía, gas y agua, de servicios financieros y del gobierno, se incluyen los registros\nadministrativos provenientes de las empresas y Unidades del Estado.\nPara el último mes, se utilizan las encuestas de opinión y los datos que se reciben de las fuentes\nanteriores, con una oportunidad de 28 días.\nCobertura geográfica Nacional\nPeriodicidad Trimestral\nPara la elaboración de la EOPIBT se siguen los conceptos, criterios metodológicos, clasificadores y datos\nfuente que se emplean en los cálculos trimestrales del PIB. Asimismo, se incorporan los lineamientos\ninternacionales sobre contabilidad nacional, establecidos en el Sistema de Cuentas Nacionales 2008 y\nlos Manuales de Cuentas Nacionales Trimestrales y de Estimaciones Rápidas edición 2017, entre otros.\nLos cálculos de la información faltante para la EOPIBT se realizan mediante modelos econométricos.\nEntre las virtudes de esta metodología está la precisión del dato estimado respecto al dato del cálculo\ntradicional. Esto se debe a que solo estima el 25.0 % del PIB en el trimestre de referencia y a la selección\nde los modelos que pronostican los datos faltantes. La estimación se hace a partir de las 622 clases de\nCálculo de la EOPIBT\nactividad que comprenden el Indicador Global de la Actividad Económica (IGAE) y que se tienen, de\nmanera mensual, disponibles hasta el segundo mes del trimestre de referencia. Los valores constantes\nse calculan con índices de volumen físico, tipo Laspeyres, con base fija en 2018 para un total de\n749 clases de actividad, al interior de las clases se realizan mediciones específicas para la actividad\nformal, informal, artesanado formal e informal y bienes para procesamiento. Los índices se utilizan para\nextrapolar los valores registrados en 2018.\nLos valores obtenidos se ajustan a los valores anuales con la técnica proporcional Denton. Los totales se\nobtienen por agregación en las tres grandes actividades económicas y el total del PIB.\nLas series originales se ajustan estacionalmente mediante el paquete estadístico X-13ARIMA-SEATS.\nPara conocer la metodología, consúltese la siguiente liga:\nAjuste estacional y https://www.inegi.org.mx/app/biblioteca/ficha.html?upc=702825099060\nmodelos Las especificaciones de los modelos están disponibles en el Banco de Información Económica (BIE).\nSeleccione «Indicadores económicos de coyuntura, Producto Interno Bruto» y vaya al icono de\ninformación correspondiente a las «series desestacionalizadas y de tendencia-ciclo».\nLa EOPIBT se publica 30 días después de concluido el trimestre de referencia conforme al Calendario de\nPublicación de resultados\nDifusión de Información Estadística y Geográfica y de Interés Nacional.\nPara la EOPIBT se consideró, de julio y agosto de 2026, la captación de las encuestas económicas (ENEC,\nEMIM, EMEC y EMS), de los registros administrativos y de los datos primarios que divulga el Instituto. Esto\npermitió la generación de estadísticas con niveles altos de cobertura para la generación de los modelos\nde estimación de septiembre de 2026. Para las actividades agropecuarias, de servicios financieros y del\nNota al público usuario\ngobierno, se incluyeron los registros administrativos provenientes de las empresas y Unidades del Estado\nque se recibieron oportunamente vía correo electrónico e internet.\nEl INEGI invita a conocer la metodología de la EOPIBT en la siguiente liga:\nhttps://www.inegi.org.mx/programas/pibo/2018/\nLa información estadística y geográfica que genera el INEGI es un bien público y nos permite\na todas y a todos tomar mejores decisiones. ¡Conócela, úsala y compártela!"
+  ],
+  "source_sha256": "331bcfbadefa753281cd4705a76809c7fc2a20c0e8267e00236329e10bc0036a",
+  "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_10.pdf"
+}

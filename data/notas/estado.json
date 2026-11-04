@@ -142,5 +142,37 @@
       "review_kind": "reglas_python",
       "archive": "data/notas/INPP/f675af47777dc1dec904aec6d183f93950b23795c2af2b44060202da48f2d35e-41ec859f0338"
     }
+  },
+  "PIB": {
+    "status": "vigente",
+    "message": "Nota generada y validada por reglas Python",
+    "target_period": "3T-26 P",
+    "published": {
+      "periodo": "3T-26 P",
+      "generated_at": "2026-11-04T18:09:01+00:00",
+      "source_sha256": "331bcfbadefa753281cd4705a76809c7fc2a20c0e8267e00236329e10bc0036a",
+      "fingerprint": "884d24d06d4726d3fd7750d0567df7a8ecf56ddd2566f317bedc63623a44752f",
+      "docx_sha256": "46b1e339e25d0e39a13d928d8fcf7939333faed9bfb73c504c0296b9926aa242",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_10.pdf",
+      "review_model": "pib-python-1",
+      "review_kind": "reglas_python",
+      "archive": "data/notas/PIB/884d24d06d4726d3fd7750d0567df7a8ecf56ddd2566f317bedc63623a44752f-46b1e339e25d"
+    }
+  },
+  "PIBSEC": {
+    "status": "vigente",
+    "message": "Nota generada y validada por reglas Python",
+    "target_period": "2T-26",
+    "published": {
+      "periodo": "2T-26",
+      "generated_at": "2026-11-04T18:09:09+00:00",
+      "source_sha256": "c0ae1673e9347a4e31d4cd2fde974b19e6293560c15b419c3656fbe85e987337",
+      "fingerprint": "22f3d6b236fa1ff698fecf95007360dc00eeccb4797227e65f4767b7c6876e91",
+      "docx_sha256": "387358a2c35c63c6a988ea8eb55b9718672b586b549232db0018a229107fe2c3",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_08.pdf",
+      "review_model": "pib-python-1",
+      "review_kind": "reglas_python",
+      "archive": "data/notas/PIBSEC/22f3d6b236fa1ff698fecf95007360dc00eeccb4797227e65f4767b7c6876e91-387358a2c35c"
+    }
   }
 }
