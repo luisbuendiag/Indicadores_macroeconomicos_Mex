@@ -220,3 +220,15 @@ Entorno financiero contiene la inversión externa reportada por la **Secretaría
 - Dos páginas, tres tablas, dos gráficas de cambios mensuales, resumen gris.
   Pausas, membrete institucional, machotes inmutables y evidencias como otros módulos.
   Cruce de 100 no constituye por sí solo declaración de recesión.
+
+## Nota automática del IOAE
+
+- `build_nowcast_notes.py` lee las seis páginas y los tres cuadros completos
+  (anual, mensual, nivel) para dos meses y tres actividades. No confundir
+  estimaciones IOAE con el dato previo observado de secundarias según IMAI.
+- El observado sin intervalo conserva bounds nulos, nunca cero. IC al 95% y
+  tipos de serie se verifican; destacar los intervalos que abarcan disminuciones.
+- Dos páginas, cinco tablas nativas y dos gráficas de intervalos. Niveles en
+  puntos del índice; variaciones en porcentaje, sin modificar fracciones del dashboard.
+- No inferir contribuciones ni significancia entre sectores desde puntos estimados.
+  Conservar pausas, evidencias, machotes y última nota válida ante fallos.
