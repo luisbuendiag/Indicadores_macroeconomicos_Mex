@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-05T15:30:50+00:00",
+  "generated_at": "2026-11-05T20:44:51+00:00",
   "as_of": "2026-11-05",
   "fuente": "Calendario oficial de difusión",
   "sources": {
@@ -302,8 +302,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2025,
       "mes": 1,
-      "fecha_iso": "2025-01-10",
-      "usar_para_frescura": false
+      "fecha_iso": "2025-01-10"
     },
     {
       "indicator": "IMAI",
@@ -1101,8 +1100,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2025,
       "mes": 2,
-      "fecha_iso": "2025-02-10",
-      "usar_para_frescura": false
+      "fecha_iso": "2025-02-10"
     },
     {
       "indicator": "IMAI",
@@ -1368,8 +1366,7 @@
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 2,
-      "fecha_iso": "2025-02-25",
-      "usar_para_frescura": false
+      "fecha_iso": "2025-02-25"
     },
     {
       "indicator": "RESERVAS",
@@ -1793,8 +1790,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2025,
       "mes": 3,
-      "fecha_iso": "2025-03-10",
-      "usar_para_frescura": false
+      "fecha_iso": "2025-03-10"
     },
     {
       "indicator": "RESERVAS",
@@ -2413,8 +2409,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2025,
       "mes": 4,
-      "fecha_iso": "2025-04-09",
-      "usar_para_frescura": false
+      "fecha_iso": "2025-04-09"
     },
     {
       "indicator": "INPC",
@@ -3183,8 +3178,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2025,
       "mes": 5,
-      "fecha_iso": "2025-05-09",
-      "usar_para_frescura": false
+      "fecha_iso": "2025-05-09"
     },
     {
       "indicator": "IMAI",
@@ -3515,8 +3509,7 @@
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 5,
-      "fecha_iso": "2025-05-27",
-      "usar_para_frescura": false
+      "fecha_iso": "2025-05-27"
     },
     {
       "indicator": "RESERVAS",
@@ -3904,8 +3897,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2025,
       "mes": 6,
-      "fecha_iso": "2025-06-10",
-      "usar_para_frescura": false
+      "fecha_iso": "2025-06-10"
     },
     {
       "indicator": "RESERVAS",
@@ -4610,8 +4602,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2025,
       "mes": 7,
-      "fecha_iso": "2025-07-10",
-      "usar_para_frescura": false
+      "fecha_iso": "2025-07-10"
     },
     {
       "indicator": "IMAI",
@@ -5323,8 +5314,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2025,
       "mes": 8,
-      "fecha_iso": "2025-08-08",
-      "usar_para_frescura": false
+      "fecha_iso": "2025-08-08"
     },
     {
       "indicator": "IMAI",
@@ -5590,8 +5580,7 @@
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 8,
-      "fecha_iso": "2025-08-26",
-      "usar_para_frescura": false
+      "fecha_iso": "2025-08-26"
     },
     {
       "indicator": "RESERVAS",
@@ -5929,8 +5918,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2025,
       "mes": 9,
-      "fecha_iso": "2025-09-09",
-      "usar_para_frescura": false
+      "fecha_iso": "2025-09-09"
     },
     {
       "indicator": "INPC",
@@ -6635,8 +6623,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2025,
       "mes": 10,
-      "fecha_iso": "2025-10-09",
-      "usar_para_frescura": false
+      "fecha_iso": "2025-10-09"
     },
     {
       "indicator": "INPC",
@@ -7434,8 +7421,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2025,
       "mes": 11,
-      "fecha_iso": "2025-11-10",
-      "usar_para_frescura": false
+      "fecha_iso": "2025-11-10"
     },
     {
       "indicator": "IMAI",
@@ -7730,8 +7716,7 @@
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 11,
-      "fecha_iso": "2025-11-26",
-      "usar_para_frescura": false
+      "fecha_iso": "2025-11-26"
     },
     {
       "indicator": "BCMM",
@@ -8040,8 +8025,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2025,
       "mes": 12,
-      "fecha_iso": "2025-12-09",
-      "usar_para_frescura": false
+      "fecha_iso": "2025-12-09"
     },
     {
       "indicator": "INPC",
@@ -8746,8 +8730,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2026,
       "mes": 1,
-      "fecha_iso": "2026-01-09",
-      "usar_para_frescura": false
+      "fecha_iso": "2026-01-09"
     },
     {
       "indicator": "IMAI",
@@ -9488,8 +9471,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2026,
       "mes": 2,
-      "fecha_iso": "2026-02-09",
-      "usar_para_frescura": false
+      "fecha_iso": "2026-02-09"
     },
     {
       "indicator": "INPC",
@@ -9899,8 +9881,7 @@
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 2,
-      "fecha_iso": "2026-02-24",
-      "usar_para_frescura": false
+      "fecha_iso": "2026-02-24"
     },
     {
       "indicator": "RESERVAS",
@@ -10238,8 +10219,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2026,
       "mes": 3,
-      "fecha_iso": "2026-03-09",
-      "usar_para_frescura": false
+      "fecha_iso": "2026-03-09"
     },
     {
       "indicator": "INPC",
@@ -11059,8 +11039,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2026,
       "mes": 4,
-      "fecha_iso": "2026-04-10",
-      "usar_para_frescura": false
+      "fecha_iso": "2026-04-10"
     },
     {
       "indicator": "IMAI",
@@ -11801,8 +11780,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2026,
       "mes": 5,
-      "fecha_iso": "2026-05-11",
-      "usar_para_frescura": false
+      "fecha_iso": "2026-05-11"
     },
     {
       "indicator": "IMAI",
@@ -12133,8 +12111,7 @@
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 5,
-      "fecha_iso": "2026-05-26",
-      "usar_para_frescura": false
+      "fecha_iso": "2026-05-26"
     },
     {
       "indicator": "IED",
@@ -12580,8 +12557,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2026,
       "mes": 6,
-      "fecha_iso": "2026-06-10",
-      "usar_para_frescura": false
+      "fecha_iso": "2026-06-10"
     },
     {
       "indicator": "IMAI",
@@ -13286,8 +13262,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2026,
       "mes": 7,
-      "fecha_iso": "2026-07-10",
-      "usar_para_frescura": false
+      "fecha_iso": "2026-07-10"
     },
     {
       "indicator": "IMAI",
@@ -14028,8 +14003,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2026,
       "mes": 8,
-      "fecha_iso": "2026-08-10",
-      "usar_para_frescura": false
+      "fecha_iso": "2026-08-10"
     },
     {
       "indicator": "IMAI",
@@ -14382,8 +14356,7 @@
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 8,
-      "fecha_iso": "2026-08-25",
-      "usar_para_frescura": false
+      "fecha_iso": "2026-08-25"
     },
     {
       "indicator": "RESERVAS",
@@ -14836,8 +14809,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2026,
       "mes": 9,
-      "fecha_iso": "2026-09-10",
-      "usar_para_frescura": false
+      "fecha_iso": "2026-09-10"
     },
     {
       "indicator": "IMAI",
@@ -15542,8 +15514,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, reporte de resultados ni boletín de indicadores.",
       "anio": 2026,
       "mes": 10,
-      "fecha_iso": "2026-10-09",
-      "usar_para_frescura": false
+      "fecha_iso": "2026-10-09"
     },
     {
       "indicator": "IMAI",
@@ -16144,7 +16115,7 @@
     },
     {
       "indicator": "TASA",
-      "program": "Anuncio de la Decisión de Política Monetaria",
+      "program": "El objetivo para la Tasa de Interés Interbancaria a 1 día (tasa objetivo) disminuye en 25 puntos base",
       "product": "Anuncio de la Decisión de Política Monetaria",
       "publication_date": "2026-11-05",
       "publication_date_display": "5 de noviembre de 2026",
@@ -16156,13 +16127,13 @@
       "category": "Financiero",
       "sigla": "TASA",
       "type": "event",
-      "url": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/{43236252-D06E-5231-27E8-058810A86A52}.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
-          "label": "Boletín / página oficial",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/{43236252-D06E-5231-27E8-058810A86A52}.pdf",
+          "label": "El objetivo para la Tasa de Interés Interbancaria a 1 día (tasa objetivo) disminuye en 25 puntos base",
           "size": null
         }
       ],
@@ -16198,8 +16169,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2026,
       "mes": 11,
-      "fecha_iso": "2026-11-09",
-      "usar_para_frescura": false
+      "fecha_iso": "2026-11-09"
     },
     {
       "indicator": "INPC",
@@ -16518,8 +16488,7 @@
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 11,
-      "fecha_iso": "2026-11-25",
-      "usar_para_frescura": false
+      "fecha_iso": "2026-11-25"
     },
     {
       "indicator": "DESOCUP",
@@ -16780,8 +16749,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2026,
       "mes": 12,
-      "fecha_iso": "2026-12-09",
-      "usar_para_frescura": false
+      "fecha_iso": "2026-12-09"
     },
     {
       "indicator": "INPC",
@@ -17303,8 +17271,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, reporte de resultados ni boletín de indicadores.",
       "anio": 2027,
       "mes": 1,
-      "fecha_iso": "2027-01-11",
-      "usar_para_frescura": false
+      "fecha_iso": "2027-01-11"
     },
     {
       "indicator": "IMAI",
@@ -17826,8 +17793,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, reporte de resultados ni boletín de indicadores.",
       "anio": 2027,
       "mes": 2,
-      "fecha_iso": "2027-02-09",
-      "usar_para_frescura": false
+      "fecha_iso": "2027-02-09"
     },
     {
       "indicator": "INPC",
@@ -18146,8 +18112,7 @@
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 2,
-      "fecha_iso": "2027-02-25",
-      "usar_para_frescura": false
+      "fecha_iso": "2027-02-25"
     },
     {
       "indicator": "BCMM",
@@ -18379,8 +18344,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, reporte de resultados ni boletín de indicadores.",
       "anio": 2027,
       "mes": 3,
-      "fecha_iso": "2027-03-09",
-      "usar_para_frescura": false
+      "fecha_iso": "2027-03-09"
     },
     {
       "indicator": "INPC",
@@ -18989,8 +18953,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2027,
       "mes": 4,
-      "fecha_iso": "2027-04-09",
-      "usar_para_frescura": false
+      "fecha_iso": "2027-04-09"
     },
     {
       "indicator": "IMAI",
@@ -19541,8 +19504,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2027,
       "mes": 5,
-      "fecha_iso": "2027-05-10",
-      "usar_para_frescura": false
+      "fecha_iso": "2027-05-10"
     },
     {
       "indicator": "RESERVAS",
@@ -19803,8 +19765,7 @@
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 5,
-      "fecha_iso": "2027-05-27",
-      "usar_para_frescura": false
+      "fecha_iso": "2027-05-27"
     },
     {
       "indicator": "EMOE",
@@ -20036,8 +19997,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, reporte de resultados ni boletín de indicadores.",
       "anio": 2027,
       "mes": 6,
-      "fecha_iso": "2027-06-09",
-      "usar_para_frescura": false
+      "fecha_iso": "2027-06-09"
     },
     {
       "indicator": "INPC",
@@ -21314,8 +21274,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2026,
       "mes": 11,
-      "fecha_iso": "2026-11-09",
-      "usar_para_frescura": false
+      "fecha_iso": "2026-11-09"
     },
     {
       "indicator": "INPC",
@@ -21634,8 +21593,7 @@
       "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 11,
-      "fecha_iso": "2026-11-25",
-      "usar_para_frescura": false
+      "fecha_iso": "2026-11-25"
     },
     {
       "indicator": "DESOCUP",
@@ -21873,7 +21831,7 @@
   "recent": [
     {
       "indicator": "TASA",
-      "program": "Anuncio de la Decisión de Política Monetaria",
+      "program": "El objetivo para la Tasa de Interés Interbancaria a 1 día (tasa objetivo) disminuye en 25 puntos base",
       "product": "Anuncio de la Decisión de Política Monetaria",
       "publication_date": "2026-11-05",
       "publication_date_display": "5 de noviembre de 2026",
@@ -21885,13 +21843,13 @@
       "category": "Financiero",
       "sigla": "TASA",
       "type": "event",
-      "url": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/{43236252-D06E-5231-27E8-058810A86A52}.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
-          "label": "Boletín / página oficial",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/{43236252-D06E-5231-27E8-058810A86A52}.pdf",
+          "label": "El objetivo para la Tasa de Interés Interbancaria a 1 día (tasa objetivo) disminuye en 25 puntos base",
           "size": null
         }
       ],
@@ -22524,8 +22482,7 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, reporte de resultados ni boletín de indicadores.",
       "anio": 2026,
       "mes": 10,
-      "fecha_iso": "2026-10-09",
-      "usar_para_frescura": false
+      "fecha_iso": "2026-10-09"
     },
     {
       "indicator": "INPP",
