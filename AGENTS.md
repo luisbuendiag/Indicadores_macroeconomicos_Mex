@@ -205,3 +205,18 @@ Entorno financiero contiene la inversión externa reportada por la **Secretaría
   de gráficas ni contribuciones a partir de tasas. No presentar PIB oportuno como definitivo.
 - Dos páginas, resumen gris, tres tablas nativas, dos gráficas. Respetar pausas,
   membrete y machotes de solo lectura; fallos preservan la nota publicada.
+
+## Nota automática del SIC
+
+- `build_cycle_notes.py` ingiere las trece páginas del SIC y los dos cuadros
+  completos de doce meses por siete columnas. La excepción de trece páginas es
+  propia del SIC; no amplía el piloto IMOAM. No reconstruir niveles desde gráficas.
+- Nivel en puntos, tendencia=100; diferencias mensuales en puntos, no porcentajes.
+  Coincidente y Adelantado conservan meses propios. TD urbana, TCR y TIIE son
+  componentes inversos: mantener sus signos oficiales y explicitar su relación.
+- URL por fecha oficial de publicación; comprobar fecha y periodo dentro del PDF.
+  La corrección de enlace se publica junto con la nota validada, con rollback y
+  control de carrera, sin sobrescribir observaciones BIE ni confundir ediciones.
+- Dos páginas, tres tablas, dos gráficas de cambios mensuales, resumen gris.
+  Pausas, membrete institucional, machotes inmutables y evidencias como otros módulos.
+  Cruce de 100 no constituye por sí solo declaración de recesión.
