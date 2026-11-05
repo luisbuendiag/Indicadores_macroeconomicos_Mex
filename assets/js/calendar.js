@@ -715,7 +715,7 @@ function drawCalBody(ctx) {
   if (next) {
     next.replaceChildren();
     const today = new Date().toLocaleDateString("en-CA", {timeZone:"America/Mexico_City"});
-    const upcoming = filterEvents(getEvents(ctx)).filter(e=>e.fecha_iso>=today).sort((a,b)=>a.fecha_iso.localeCompare(b.fecha_iso)).slice(0,3);
+    const upcoming = filterEvents(getEvents(ctx)).filter(e=>e.fecha_iso>today).sort((a,b)=>a.fecha_iso.localeCompare(b.fecha_iso)).slice(0,3);
     upcoming.forEach(e=>next.append(el("button", {class:"cal-next-item",type:"button",onclick:()=>openCalEvent(ctx,e)},
       el("span", {class:"cal-next-date"}, shortDate(e.fecha_iso)),
       el("strong", {}, e.sigla), el("span", {}, e.periodo_referencia), el("small", {}, e.frecuencia))));
