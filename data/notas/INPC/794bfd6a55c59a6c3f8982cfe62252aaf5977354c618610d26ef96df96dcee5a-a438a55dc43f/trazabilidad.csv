@@ -1,0 +1,122 @@
+﻿variable,valor,unidad,periodo,serie,ubicacion,fuente
+total index,146.075,puntos,2026-09,publicada,p. 1,https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+total General mom,0.42,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+total General yoy,3.45,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+total General prior_yoy,3.76,porcentaje,2025-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+total General incidence,0.421,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+total General annual_incidence,3.455,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+subyacente Subyacente mom,0.2,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+subyacente Subyacente yoy,3.75,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+subyacente Subyacente prior_yoy,4.28,porcentaje,2025-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+subyacente Subyacente incidence,0.156,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+subyacente Subyacente annual_incidence,2.904,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+mercancias Mercancías mom,0.14,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+mercancias Mercancías yoy,3.21,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+mercancias Mercancías prior_yoy,4.19,porcentaje,2025-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+mercancias Mercancías incidence,0.051,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+mercancias Mercancías annual_incidence,1.212,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+alimentos Alimentos procesados mom,0.13,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+alimentos Alimentos procesados yoy,4.57,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+alimentos Alimentos procesados prior_yoy,5.34,porcentaje,2025-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+alimentos Alimentos procesados incidence,0.023,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+alimentos Alimentos procesados annual_incidence,0.801,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+no_alimentos Mercancías no alimenticias mom,0.14,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+no_alimentos Mercancías no alimenticias yoy,2.03,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+no_alimentos Mercancías no alimenticias prior_yoy,3.21,porcentaje,2025-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+no_alimentos Mercancías no alimenticias incidence,0.028,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+no_alimentos Mercancías no alimenticias annual_incidence,0.411,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+servicios Servicios mom,0.26,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+servicios Servicios yoy,4.27,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+servicios Servicios prior_yoy,4.36,porcentaje,2025-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+servicios Servicios incidence,0.105,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+servicios Servicios annual_incidence,1.692,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+vivienda Vivienda mom,0.21,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+vivienda Vivienda yoy,3.55,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+vivienda Vivienda prior_yoy,3.39,porcentaje,2025-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+vivienda Vivienda incidence,0.039,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+vivienda Vivienda annual_incidence,0.642,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+educacion Educación mom,3.14,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+educacion Educación yoy,5.84,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+educacion Educación prior_yoy,5.84,porcentaje,2025-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+educacion Educación incidence,0.084,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+educacion Educación annual_incidence,0.157,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+otros_servicios Otros servicios mom,-0.09,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+otros_servicios Otros servicios yoy,4.73,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+otros_servicios Otros servicios prior_yoy,5.11,porcentaje,2025-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+otros_servicios Otros servicios incidence,-0.018,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+otros_servicios Otros servicios annual_incidence,0.894,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+no_subyacente No subyacente mom,1.2,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+no_subyacente No subyacente yoy,2.45,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+no_subyacente No subyacente prior_yoy,2.02,porcentaje,2025-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+no_subyacente No subyacente incidence,0.266,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+no_subyacente No subyacente annual_incidence,0.551,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+agro Agropecuarios mom,2.21,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+agro Agropecuarios yoy,0.79,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+agro Agropecuarios prior_yoy,2.76,porcentaje,2025-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+agro Agropecuarios incidence,0.215,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+agro Agropecuarios annual_incidence,0.08,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+frutas Frutas y verduras mom,4.4,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+frutas Frutas y verduras yoy,8.78,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+frutas Frutas y verduras prior_yoy,-4.86,porcentaje,2025-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+frutas Frutas y verduras incidence,0.179,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+frutas Frutas y verduras annual_incidence,0.354,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+pecuarios Pecuarios mom,0.63,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+pecuarios Pecuarios yoy,-4.46,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+pecuarios Pecuarios prior_yoy,8.45,porcentaje,2025-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+pecuarios Pecuarios incidence,0.036,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+pecuarios Pecuarios annual_incidence,-0.274,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+energia_tarifas Energéticos y tarifas mom,0.41,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+energia_tarifas Energéticos y tarifas yoy,3.81,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+energia_tarifas Energéticos y tarifas prior_yoy,1.42,porcentaje,2025-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+energia_tarifas Energéticos y tarifas incidence,0.051,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+energia_tarifas Energéticos y tarifas annual_incidence,0.471,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+energia Energéticos mom,0.55,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+energia Energéticos yoy,1.48,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+energia Energéticos prior_yoy,0.36,porcentaje,2025-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+energia Energéticos incidence,0.042,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+energia Energéticos annual_incidence,0.115,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+tarifas Tarifas autorizadas mom,0.18,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+tarifas Tarifas autorizadas yoy,7.79,porcentaje,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+tarifas Tarifas autorizadas prior_yoy,3.27,porcentaje,2025-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+tarifas Tarifas autorizadas incidence,0.009,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+tarifas Tarifas autorizadas annual_incidence,0.356,puntos porcentuales,2026-09,publicada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_0_0 Jitomate mom,30.25,porcentaje,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_0_0 Jitomate incidence,0.133,puntos porcentuales,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_0_1 Cebolla mom,23.0,porcentaje,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_0_1 Cebolla incidence,0.07,puntos porcentuales,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_0_2 Gas doméstico LP mom,3.14,porcentaje,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_0_2 Gas doméstico LP incidence,0.042,puntos porcentuales,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_0_3 Vivienda propia mom,0.22,porcentaje,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_0_3 Vivienda propia incidence,0.03,puntos porcentuales,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_0_4 Pollo mom,1.78,porcentaje,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_0_4 Pollo incidence,0.029,puntos porcentuales,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_0_5 Primaria mom,6.0,porcentaje,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_0_5 Primaria incidence,0.028,puntos porcentuales,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+"generico_0_6 Loncherías, fondas, torterías y taquerías mom",0.42,porcentaje,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+"generico_0_6 Loncherías, fondas, torterías y taquerías incidence",0.024,puntos porcentuales,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_0_7 Universidad mom,1.5,porcentaje,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_0_7 Universidad incidence,0.018,puntos porcentuales,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_0_8 Otras frutas mom,6.13,porcentaje,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_0_8 Otras frutas incidence,0.016,puntos porcentuales,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_0_9 Transporte aéreo mom,6.59,porcentaje,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_0_9 Transporte aéreo incidence,0.016,puntos porcentuales,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_1_0 Papa y otros tubérculos mom,-13.92,porcentaje,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_1_0 Papa y otros tubérculos incidence,-0.056,puntos porcentuales,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_1_1 Servicios profesionales mom,-16.44,porcentaje,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_1_1 Servicios profesionales incidence,-0.042,puntos porcentuales,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+"generico_1_2 Paquetes de internet, telefonía y televisión de paga mom",-2.06,porcentaje,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+"generico_1_2 Paquetes de internet, telefonía y televisión de paga incidence",-0.022,puntos porcentuales,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_1_3 Aguacate mom,-8.11,porcentaje,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_1_3 Aguacate incidence,-0.012,puntos porcentuales,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_1_4 Suavizantes y limpiadores mom,-1.3,porcentaje,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_1_4 Suavizantes y limpiadores incidence,-0.01,puntos porcentuales,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_1_5 Naranja mom,-5.65,porcentaje,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_1_5 Naranja incidence,-0.008,puntos porcentuales,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_1_6 Tequila mom,-2.62,porcentaje,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_1_6 Tequila incidence,-0.007,puntos porcentuales,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_1_7 Automóviles mom,-0.29,porcentaje,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_1_7 Automóviles incidence,-0.007,puntos porcentuales,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_1_8 Servicio de internet mom,-1.38,porcentaje,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_1_8 Servicio de internet incidence,-0.006,puntos porcentuales,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_1_9 Productos para el cabello mom,-0.78,porcentaje,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf
+generico_1_9 Productos para el cabello incidence,-0.006,puntos porcentuales,2026-09,publicada,"p. 4, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf

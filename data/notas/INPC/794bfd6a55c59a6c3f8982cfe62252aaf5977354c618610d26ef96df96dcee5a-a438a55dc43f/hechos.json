@@ -1,0 +1,549 @@
+{
+  "indicator": "INPC",
+  "ym": "2026-09",
+  "period": "Sep 26",
+  "publication_date": "2026-10-08",
+  "bulletin": "619/26",
+  "base": "Segunda quincena de julio de 2018=100",
+  "index": 146.075,
+  "rows": [
+    {
+      "id": "total",
+      "label": "General",
+      "mom": 0.42,
+      "yoy": 3.45,
+      "prior_yoy": 3.76,
+      "incidence": 0.421,
+      "annual_incidence": 3.455,
+      "values": [
+        0.05,
+        0.23,
+        0.42,
+        4.58,
+        3.76,
+        3.45,
+        0.049,
+        0.234,
+        0.421,
+        3.76,
+        3.455
+      ],
+      "location": "p. 2, cuadro 1",
+      "evidence": "Variación e incidencia del Índice Nacional de Precios al Consumidor (INPC) y sus componentes septiembre de los años que se indican (variación y puntos porcentuales) Variación porcentual Incidencia1/ Concepto mensual anual mensual anual 2024 2025 2026 2024 2025 2026 2024 2025 2026 2025 2026 INPC 0.05 0.23 0.42 4.58 3.76 3.45 0.049 0.234 0.421 3.760 3.455"
+    },
+    {
+      "id": "subyacente",
+      "label": "Subyacente",
+      "mom": 0.2,
+      "yoy": 3.75,
+      "prior_yoy": 4.28,
+      "incidence": 0.156,
+      "annual_incidence": 2.904,
+      "values": [
+        0.28,
+        0.33,
+        0.2,
+        3.91,
+        4.28,
+        3.75,
+        0.217,
+        0.256,
+        0.156,
+        3.298,
+        2.904
+      ],
+      "location": "p. 2, cuadro 1",
+      "evidence": "Subyacente 0.28 0.33 0.20 3.91 4.28 3.75 0.217 0.256 0.156 3.298 2.904"
+    },
+    {
+      "id": "mercancias",
+      "label": "Mercancías",
+      "mom": 0.14,
+      "yoy": 3.21,
+      "prior_yoy": 4.19,
+      "incidence": 0.051,
+      "annual_incidence": 1.212,
+      "values": [
+        0.21,
+        0.34,
+        0.14,
+        2.92,
+        4.19,
+        3.21,
+        0.077,
+        0.128,
+        0.051,
+        1.577,
+        1.212
+      ],
+      "location": "p. 2, cuadro 1",
+      "evidence": "Mercancías 0.21 0.34 0.14 2.92 4.19 3.21 0.077 0.128 0.051 1.577 1.212"
+    },
+    {
+      "id": "alimentos",
+      "label": "Alimentos procesados",
+      "mom": 0.13,
+      "yoy": 4.57,
+      "prior_yoy": 5.34,
+      "incidence": 0.023,
+      "annual_incidence": 0.801,
+      "values": [
+        0.06,
+        0.24,
+        0.13,
+        3.92,
+        5.34,
+        4.57,
+        0.011,
+        0.042,
+        0.023,
+        0.922,
+        0.801
+      ],
+      "location": "p. 2, cuadro 1",
+      "evidence": "Alimentos, bebidas y tabaco2/ 0.06 0.24 0.13 3.92 5.34 4.57 0.011 0.042 0.023 0.922 0.801"
+    },
+    {
+      "id": "no_alimentos",
+      "label": "Mercancías no alimenticias",
+      "mom": 0.14,
+      "yoy": 2.03,
+      "prior_yoy": 3.21,
+      "incidence": 0.028,
+      "annual_incidence": 0.411,
+      "values": [
+        0.33,
+        0.42,
+        0.14,
+        1.69,
+        3.21,
+        2.03,
+        0.066,
+        0.086,
+        0.028,
+        0.655,
+        0.411
+      ],
+      "location": "p. 2, cuadro 1",
+      "evidence": "Mercancías no alimenticias 0.33 0.42 0.14 1.69 3.21 2.03 0.066 0.086 0.028 0.655 0.411"
+    },
+    {
+      "id": "servicios",
+      "label": "Servicios",
+      "mom": 0.26,
+      "yoy": 4.27,
+      "prior_yoy": 4.36,
+      "incidence": 0.105,
+      "annual_incidence": 1.692,
+      "values": [
+        0.35,
+        0.32,
+        0.26,
+        5.1,
+        4.36,
+        4.27,
+        0.139,
+        0.128,
+        0.105,
+        1.72,
+        1.692
+      ],
+      "location": "p. 2, cuadro 1",
+      "evidence": "Servicios 0.35 0.32 0.26 5.10 4.36 4.27 0.139 0.128 0.105 1.720 1.692"
+    },
+    {
+      "id": "vivienda",
+      "label": "Vivienda",
+      "mom": 0.21,
+      "yoy": 3.55,
+      "prior_yoy": 3.39,
+      "incidence": 0.039,
+      "annual_incidence": 0.642,
+      "values": [
+        0.28,
+        0.23,
+        0.21,
+        4.05,
+        3.39,
+        3.55,
+        0.051,
+        0.042,
+        0.039,
+        0.614,
+        0.642
+      ],
+      "location": "p. 2, cuadro 1",
+      "evidence": "Vivienda3/ 0.28 0.23 0.21 4.05 3.39 3.55 0.051 0.042 0.039 0.614 0.642"
+    },
+    {
+      "id": "educacion",
+      "label": "Educación",
+      "mom": 3.14,
+      "yoy": 5.84,
+      "prior_yoy": 5.84,
+      "incidence": 0.084,
+      "annual_incidence": 0.157,
+      "values": [
+        2.85,
+        3.33,
+        3.14,
+        5.79,
+        5.84,
+        5.84,
+        0.073,
+        0.087,
+        0.084,
+        0.153,
+        0.157
+      ],
+      "location": "p. 2, cuadro 1",
+      "evidence": "Educación (colegiaturas) 2.85 3.33 3.14 5.79 5.84 5.84 0.073 0.087 0.084 0.153 0.157"
+    },
+    {
+      "id": "otros_servicios",
+      "label": "Otros servicios",
+      "mom": -0.09,
+      "yoy": 4.73,
+      "prior_yoy": 5.11,
+      "incidence": -0.018,
+      "annual_incidence": 0.894,
+      "values": [
+        0.08,
+        0.0,
+        -0.09,
+        6.07,
+        5.11,
+        4.73,
+        0.015,
+        -0.001,
+        -0.018,
+        0.953,
+        0.894
+      ],
+      "location": "p. 2, cuadro 1",
+      "evidence": "Otros servicios4/ 0.08 0.00 -0.09 6.07 5.11 4.73 0.015 -0.001 -0.018 0.953 0.894"
+    },
+    {
+      "id": "no_subyacente",
+      "label": "No subyacente",
+      "mom": 1.2,
+      "yoy": 2.45,
+      "prior_yoy": 2.02,
+      "incidence": 0.266,
+      "annual_incidence": 0.551,
+      "values": [
+        -0.72,
+        -0.1,
+        1.2,
+        6.5,
+        2.02,
+        2.45,
+        -0.167,
+        -0.022,
+        0.266,
+        0.462,
+        0.551
+      ],
+      "location": "p. 2, cuadro 1",
+      "evidence": "No subyacente -0.72 -0.10 1.20 6.50 2.02 2.45 -0.167 -0.022 0.266 0.462 0.551"
+    },
+    {
+      "id": "agro",
+      "label": "Agropecuarios",
+      "mom": 2.21,
+      "yoy": 0.79,
+      "prior_yoy": 2.76,
+      "incidence": 0.215,
+      "annual_incidence": 0.08,
+      "values": [
+        -1.65,
+        -0.14,
+        2.21,
+        6.76,
+        2.76,
+        0.79,
+        -0.172,
+        -0.014,
+        0.215,
+        0.283,
+        0.08
+      ],
+      "location": "p. 2, cuadro 1",
+      "evidence": "Agropecuarios -1.65 -0.14 2.21 6.76 2.76 0.79 -0.172 -0.014 0.215 0.283 0.080"
+    },
+    {
+      "id": "frutas",
+      "label": "Frutas y verduras",
+      "mom": 4.4,
+      "yoy": 8.78,
+      "prior_yoy": -4.86,
+      "incidence": 0.179,
+      "annual_incidence": 0.354,
+      "values": [
+        -3.43,
+        -0.1,
+        4.4,
+        7.65,
+        -4.86,
+        8.78,
+        -0.156,
+        -0.004,
+        0.179,
+        -0.213,
+        0.354
+      ],
+      "location": "p. 2, cuadro 1",
+      "evidence": "Frutas y verduras -3.43 -0.10 4.40 7.65 -4.86 8.78 -0.156 -0.004 0.179 -0.213 0.354"
+    },
+    {
+      "id": "pecuarios",
+      "label": "Pecuarios",
+      "mom": 0.63,
+      "yoy": -4.46,
+      "prior_yoy": 8.45,
+      "incidence": 0.036,
+      "annual_incidence": -0.274,
+      "values": [
+        -0.26,
+        -0.17,
+        0.63,
+        5.14,
+        8.45,
+        -4.46,
+        -0.016,
+        -0.01,
+        0.036,
+        0.497,
+        -0.274
+      ],
+      "location": "p. 2, cuadro 1",
+      "evidence": "Pecuarios -0.26 -0.17 0.63 5.14 8.45 -4.46 -0.016 -0.010 0.036 0.497 -0.274"
+    },
+    {
+      "id": "energia_tarifas",
+      "label": "Energéticos y tarifas",
+      "mom": 0.41,
+      "yoy": 3.81,
+      "prior_yoy": 1.42,
+      "incidence": 0.051,
+      "annual_incidence": 0.471,
+      "values": [
+        0.03,
+        -0.06,
+        0.41,
+        6.01,
+        1.42,
+        3.81,
+        0.004,
+        -0.008,
+        0.051,
+        0.179,
+        0.471
+      ],
+      "location": "p. 2, cuadro 1",
+      "evidence": "Energéticos y tarifas autorizadas por 0.03 -0.06 0.41 6.01 1.42 3.81 0.004 -0.008 0.051 0.179 0.471"
+    },
+    {
+      "id": "energia",
+      "label": "Energéticos",
+      "mom": 0.55,
+      "yoy": 1.48,
+      "prior_yoy": 0.36,
+      "incidence": 0.042,
+      "annual_incidence": 0.115,
+      "values": [
+        -0.19,
+        -0.11,
+        0.55,
+        6.92,
+        0.36,
+        1.48,
+        -0.015,
+        -0.009,
+        0.042,
+        0.029,
+        0.115
+      ],
+      "location": "p. 2, cuadro 1",
+      "evidence": "el gobierno Energéticos -0.19 -0.11 0.55 6.92 0.36 1.48 -0.015 -0.009 0.042 0.029 0.115"
+    },
+    {
+      "id": "tarifas",
+      "label": "Tarifas autorizadas",
+      "mom": 0.18,
+      "yoy": 7.79,
+      "prior_yoy": 3.27,
+      "incidence": 0.009,
+      "annual_incidence": 0.356,
+      "values": [
+        0.42,
+        0.03,
+        0.18,
+        3.93,
+        3.27,
+        7.79,
+        0.019,
+        0.001,
+        0.009,
+        0.15,
+        0.356
+      ],
+      "location": "p. 2, cuadro 1",
+      "evidence": "Tarifas autorizadas por el gobierno 0.42 0.03 0.18 3.93 3.27 7.79 0.019 0.001 0.009 0.150 0.356"
+    }
+  ],
+  "groups": [],
+  "destinations": [],
+  "generics": [
+    {
+      "id": "generico_0_0",
+      "label": "Jitomate",
+      "mom": 30.25,
+      "incidence": 0.133,
+      "location": "p. 4, cuadro 2"
+    },
+    {
+      "id": "generico_0_1",
+      "label": "Cebolla",
+      "mom": 23.0,
+      "incidence": 0.07,
+      "location": "p. 4, cuadro 2"
+    },
+    {
+      "id": "generico_0_2",
+      "label": "Gas doméstico LP",
+      "mom": 3.14,
+      "incidence": 0.042,
+      "location": "p. 4, cuadro 2"
+    },
+    {
+      "id": "generico_0_3",
+      "label": "Vivienda propia",
+      "mom": 0.22,
+      "incidence": 0.03,
+      "location": "p. 4, cuadro 2"
+    },
+    {
+      "id": "generico_0_4",
+      "label": "Pollo",
+      "mom": 1.78,
+      "incidence": 0.029,
+      "location": "p. 4, cuadro 2"
+    },
+    {
+      "id": "generico_0_5",
+      "label": "Primaria",
+      "mom": 6.0,
+      "incidence": 0.028,
+      "location": "p. 4, cuadro 2"
+    },
+    {
+      "id": "generico_0_6",
+      "label": "Loncherías, fondas, torterías y taquerías",
+      "mom": 0.42,
+      "incidence": 0.024,
+      "location": "p. 4, cuadro 2"
+    },
+    {
+      "id": "generico_0_7",
+      "label": "Universidad",
+      "mom": 1.5,
+      "incidence": 0.018,
+      "location": "p. 4, cuadro 2"
+    },
+    {
+      "id": "generico_0_8",
+      "label": "Otras frutas",
+      "mom": 6.13,
+      "incidence": 0.016,
+      "location": "p. 4, cuadro 2"
+    },
+    {
+      "id": "generico_0_9",
+      "label": "Transporte aéreo",
+      "mom": 6.59,
+      "incidence": 0.016,
+      "location": "p. 4, cuadro 2"
+    },
+    {
+      "id": "generico_1_0",
+      "label": "Papa y otros tubérculos",
+      "mom": -13.92,
+      "incidence": -0.056,
+      "location": "p. 4, cuadro 2"
+    },
+    {
+      "id": "generico_1_1",
+      "label": "Servicios profesionales",
+      "mom": -16.44,
+      "incidence": -0.042,
+      "location": "p. 4, cuadro 2"
+    },
+    {
+      "id": "generico_1_2",
+      "label": "Paquetes de internet, telefonía y televisión de paga",
+      "mom": -2.06,
+      "incidence": -0.022,
+      "location": "p. 4, cuadro 2"
+    },
+    {
+      "id": "generico_1_3",
+      "label": "Aguacate",
+      "mom": -8.11,
+      "incidence": -0.012,
+      "location": "p. 4, cuadro 2"
+    },
+    {
+      "id": "generico_1_4",
+      "label": "Suavizantes y limpiadores",
+      "mom": -1.3,
+      "incidence": -0.01,
+      "location": "p. 4, cuadro 2"
+    },
+    {
+      "id": "generico_1_5",
+      "label": "Naranja",
+      "mom": -5.65,
+      "incidence": -0.008,
+      "location": "p. 4, cuadro 2"
+    },
+    {
+      "id": "generico_1_6",
+      "label": "Tequila",
+      "mom": -2.62,
+      "incidence": -0.007,
+      "location": "p. 4, cuadro 2"
+    },
+    {
+      "id": "generico_1_7",
+      "label": "Automóviles",
+      "mom": -0.29,
+      "incidence": -0.007,
+      "location": "p. 4, cuadro 2"
+    },
+    {
+      "id": "generico_1_8",
+      "label": "Servicio de internet",
+      "mom": -1.38,
+      "incidence": -0.006,
+      "location": "p. 4, cuadro 2"
+    },
+    {
+      "id": "generico_1_9",
+      "label": "Productos para el cabello",
+      "mom": -0.78,
+      "incidence": -0.006,
+      "location": "p. 4, cuadro 2"
+    }
+  ],
+  "pages": [
+    "BOLETÍN DE INDICADOR 619/26\nÍNDICE NACIONAL DE PRECIOS\nAL CONSUMIDOR (INPC)\n8 de octubre de 2026\nPágina 1/6\nPróxima publicación mensual: 9 de noviembre de 2026\nInflación general Subyacente No subyacente\nseptiembre septiembre septiembre\nmensual anual mensual anual mensual anual\n▲ 0.42 % ▲ 3.45 % ▲ 0.20 % ▲ 3.75 % ▲ 1.20 % ▲ 2.45 %\nLa inflación anual fue de 3.45 % en septiembre de 2026\nEl Índice Nacional de Precios al Consumidor (INPC) es una medida del cambio promedio en los\nprecios de los productos que integran una canasta de bienes y servicios. Esta es representativa\ndel consumo de los hogares del país a lo largo del tiempo.\nEn septiembre de 2026, el INPC presentó un nivel de 146.075 puntos: aumentó 0.42 % respecto\nal mes anterior. Con este resultado, la inflación general anual se ubicó en 3.45 por ciento.\nEn el mismo mes de 2025, la inflación mensual fue de 0.23 % y la anual, de 3.76 %\n(ver gráfica 1).\nEl índice de precios subyacente, que excluye bienes y servicios con alta volatilidad o cuyos\nprecios no responden a condiciones de mercado, incrementó 0.20 % a tasa mensual.\nA su interior, los precios de las mercancías subieron 0.14 % y los de servicios, 0.26 por ciento.\nA tasa mensual, el índice de precios no subyacente creció 1.20 por ciento. Dentro de este,\nlos precios de frutas y verduras ascendieron 4.40 % y los de energéticos y tarifas autorizadas\npor el gobierno, 0.41 % (ver cuadro 1).\nGráfica 1\nVariación del Índice Nacional de Precios al Consumidor\nseptiembre de los años que se indican\n(variación porcentual mensual)\n0.62 0.62\n0.44\n0.42 0.42\n0.31\n0.26\n0.23 0.23\n0.05\n2017 2018 2019 2020 2021 2022 2023 2024 2025 2026\nFuente: INEGI. Índice Nacional de Precios al Consumidor (INPC), 2026.",
+    "BOLETÍN DE INDICADOR 619/26\nÍNDICE NACIONAL DE PRECIOS\nAL CONSUMIDOR (INPC)\n8 de octubre de 2026\nPágina 2/6\nEn el siguiente cuadro se presentan las variaciones e incidencias del INPC y sus componentes.\nCuadro 1\nVariación e incidencia del Índice Nacional de Precios al Consumidor (INPC) y sus componentes\nseptiembre de los años que se indican\n(variación y puntos porcentuales)\nVariación porcentual Incidencia1/\nConcepto mensual anual mensual anual\n2024 2025 2026 2024 2025 2026 2024 2025 2026 2025 2026\nINPC 0.05 0.23 0.42 4.58 3.76 3.45 0.049 0.234 0.421 3.760 3.455\nSubyacente 0.28 0.33 0.20 3.91 4.28 3.75 0.217 0.256 0.156 3.298 2.904\nMercancías 0.21 0.34 0.14 2.92 4.19 3.21 0.077 0.128 0.051 1.577 1.212\nAlimentos, bebidas y tabaco2/ 0.06 0.24 0.13 3.92 5.34 4.57 0.011 0.042 0.023 0.922 0.801\nMercancías no alimenticias 0.33 0.42 0.14 1.69 3.21 2.03 0.066 0.086 0.028 0.655 0.411\nServicios 0.35 0.32 0.26 5.10 4.36 4.27 0.139 0.128 0.105 1.720 1.692\nVivienda3/ 0.28 0.23 0.21 4.05 3.39 3.55 0.051 0.042 0.039 0.614 0.642\nEducación (colegiaturas) 2.85 3.33 3.14 5.79 5.84 5.84 0.073 0.087 0.084 0.153 0.157\nOtros servicios4/ 0.08 0.00 -0.09 6.07 5.11 4.73 0.015 -0.001 -0.018 0.953 0.894\nNo subyacente -0.72 -0.10 1.20 6.50 2.02 2.45 -0.167 -0.022 0.266 0.462 0.551\nAgropecuarios -1.65 -0.14 2.21 6.76 2.76 0.79 -0.172 -0.014 0.215 0.283 0.080\nFrutas y verduras -3.43 -0.10 4.40 7.65 -4.86 8.78 -0.156 -0.004 0.179 -0.213 0.354\nPecuarios -0.26 -0.17 0.63 5.14 8.45 -4.46 -0.016 -0.010 0.036 0.497 -0.274\nEnergéticos y tarifas autorizadas por\n0.03 -0.06 0.41 6.01 1.42 3.81 0.004 -0.008 0.051 0.179 0.471\nel gobierno\nEnergéticos -0.19 -0.11 0.55 6.92 0.36 1.48 -0.015 -0.009 0.042 0.029 0.115\nTarifas autorizadas por el gobierno 0.42 0.03 0.18 3.93 3.27 7.79 0.019 0.001 0.009 0.150 0.356\n1/ La incidencia se refiere a la contribución, en puntos porcentuales, de cada componente del INPC a la inflación general. Esta se calcula\nutilizando los ponderadores de cada subíndice, así como los precios relativos y sus respectivas variaciones. En ciertos casos, la suma\nde los componentes de algún grupo de subíndices puede presentar discrepancias por efectos de redondeo.\n2/ Incluye alimentos procesados, bebidas y tabaco. No incluye productos agropecuarios.\n3/ Incluye vivienda propia, renta de vivienda, servicio doméstico y otros servicios para el hogar.\n4/ Incluye loncherías, fondas y taquerías, restaurantes y similares, servicio de telefonía móvil, mantenimiento de automóvil, consulta\nmédica, servicios turísticos en paquete, entre otros.\nFuente:INEGI. Índice Nacional de Precios al Consumidor (INPC), 2026.\nEn la primera y segunda quincena de septiembre de 2026, el INPC registró niveles de 146.010\ny 146.140, respectivamente. Esto implicó un aumento quincenal de 0.09 por ciento.\nComponentes del INPC\nEn el noveno mes de 2026, la variación mensual de los índices subyacente y no subyacente\nfue de 0.20 y 1.20 %, en ese orden. En el mismo mes de 2025, fue de 0.33 y -0.10 %\n(ver gráfica 2).",
+    "BOLETÍN DE INDICADOR 619/26\nÍNDICE NACIONAL DE PRECIOS\nAL CONSUMIDOR (INPC)\n8 de octubre de 2026\nPágina 3/6\nGráfica 2\nVariación de los índices de precios subyacente y no subyacente\nseptiembre de los años que se indican\n(variación porcentual mensual)\n1.20\n1.10\n0.73 0.67 0.70\n0.28 0.41 0.32 0.30 0.32 0.46 0.47 0.36 0.28 0.33\n0.15 0.20\n-0.04 -0.10\n-0.72\n2017 2018 2019 2020 2021 2022 2023 2024 2025 2026\nSubyacente No subyacente\nFuente: INEGI. Índice Nacional de Precios al Consumidor (INPC), 2026.\nA tasa anual, en septiembre pasado, los índices subyacente y no subyacente ascendieron\n3.75 y 2.45 %, respectivamente. En el mismo mes de 2025, la variación anual fue de\n4.28 y de 2.02 %, en ese orden (ver gráfica 3).\nGráfica 3\nVariación del Índice Nacional de Precios al Consumidor (INPC) y sus componentes\nseptiembre de 2017–septiembre de 2026\n(variación porcentual anual)\n12.00\n9.00\n6.00\n3.75\n3.45\n3.00\n2.45\n0.00\n-3.00\nSEP SEP SEP SEP SEP SEP SEP SEP SEP SEP\n2017 2018 2019 2020 2021 2022 2023 2024 2025 2026\nINPC Subyacente No subyacente\nFuente: INEGI. Índice Nacional de Precios al Consumidor (INPC), 2026.\nProductos con mayor incidencia en el INPC\nEn septiembre de 2026, los productos genéricos cuyas variaciones de precios, al alza y a la\nbaja, destacaron por su incidencia sobre la inflación general fueron los siguientes: el jitomate,\nla cebolla y el gas doméstico LP, con incrementos en sus precios. En contraste, la papa y otros\ntubérculos, los servicios profesionales y los paquetes de internet, telefonía y televisión de paga\ndisminuyeron sus precios (ver cuadro 2).",
+    "BOLETÍN DE INDICADOR 619/26\nÍNDICE NACIONAL DE PRECIOS\nAL CONSUMIDOR (INPC)\n8 de octubre de 2026\nPágina 4/6\nCuadro 2\nVariación de productos genéricos con mayor incidencia\nen el Índice Nacional de Precios al Consumidor\nseptiembre de 2026\n(variación y puntos porcentuales)\nProductos genéricos Variación % Incidencia Productos genéricos Variación % Incidencia\ncon precios al alza mensual mensual1/ con precios a la baja mensual mensual1/\nJitomate 30.25 0.133 Papa y otros tubérculos -13.92 -0.056\nCebolla 23.00 0.070 Servicios profesionales -16.44 -0.042\nPaquetes de internet, telefonía y\nGas doméstico LP 3.14 0.042 -2.06 -0.022\ntelevisión de paga\nVivienda propia 0.22 0.030 Aguacate -8.11 -0.012\nPollo 1.78 0.029 Suavizantes y limpiadores -1.30 -0.010\nPrimaria 6.00 0.028 Naranja -5.65 -0.008\nLoncherías, fondas, torterías y\n0.42 0.024 Tequila -2.62 -0.007\ntaquerías\nUniversidad 1.50 0.018 Automóviles -0.29 -0.007\nOtras frutas 6.13 0.016 Servicio de internet -1.38 -0.006\nTransporte aéreo 6.59 0.016 Productos para el cabello -0.78 -0.006\n1/ La incidencia se refiere a la contribución, en puntos porcentuales, de cada componente del INPC a la inflación general.\nEsta se calcula utilizando los ponderadores de cada subíndice, así como los precios relativos y sus respectivas variaciones.\nFuente: INEGI. Índice Nacional de Precios al Consumidor (INPC), 2026.\nINPC según entidad y ciudad\nEn el siguiente cuadro, se presentan las entidades federativas y ciudades en las que el INPC\nalcanzó las mayores variaciones durante septiembre de 2026.\nCuadro 3\nVariaciones más significativas del Índice Nacional de Precios al Consumidor,\nsegún entidad federativa y ciudad1/\nseptiembre de 2026\n(variación porcentual)\nEntidad / Ciudad con variación Variación % Entidad / Ciudad con variación Variación %\npor arriba del promedio nacional mensual por debajo del promedio nacional mensual\nEntidades federativas\nTlaxcala 0.84 Baja California Sur 0.01\nColima 0.81 Quintana Roo 0.10\nPuebla 0.66 Coahuila 0.15\nZacatecas 0.65 Guanajuato 0.21\nAguascalientes 0.58 Hidalgo 0.26\nCiudades\nSan Andrés Tuxtla, Ver. 0.95 La Paz, B.C.S. 0.01\nTlaxcala, Tlax. 0.84 Monclova, Coah. 0.05\nZacatecas, Zac. 0.82 Cancún, Q. Roo 0.07\nColima, Col. 0.81 Saltillo, Coah. 0.09\nHuatabampo, Son. 0.77 Cortazar, Gto. 0.10\nPuebla, Pue. 0.72 Chetumal, Q. Roo 0.16\nCórdoba, Ver. 0.69 Torreón, Coah. 0.18\nAtlacomulco, Méx. 0.59 Pachuca, Hgo. 0.22\nChihuahua, Chih. 0.59 Matamoros, Tamps. 0.22\nAguascalientes, Ags. 0.58 Oaxaca, Oax. 0.27\n1/ Las desagregaciones del INPC solo tienen valor informativo.\nFuente:INEGI. Índice Nacional de Precios al Consumidor (INPC), 2026.",
+    "BOLETÍN DE INDICADOR 619/26\nÍNDICE NACIONAL DE PRECIOS\nAL CONSUMIDOR (INPC)\n8 de octubre de 2026\nPágina 5/6\nINPC según finalidades del consumo\nA continuación, se muestra el comportamiento de los subíndices que integran el INPC, para\nseptiembre de 2026, según la Clasificación del Consumo Individual por Finalidades.1 La anterior\nse utiliza a nivel internacional para los índices de precios al consumidor.\nCuadro 4\nVariación del Índice Nacional de Precios al Consumidor (INPC)\nclasificación del consumo individual por finalidades\nseptiembre de 2026\n(variación porcentual quincenal, mensual y anual)\nSegunda quincena Septiembre de 2026 en relación con:\nde septiembre de 2026\nConcepto en relación con la agosto septiembre\nquincena anterior de 2026 de 2025\nINPC 0.09 0.42 3.45\nAlimentos y bebidas no alcohólicas 0.23 1.12 2.55\nBebidas alcohólicas, tabaco y estupefacientes 0.47 -0.32 7.31\nRopa y calzado 0.47 0.83 2.53\nVivienda, agua, electricidad, gas y otros combustibles 0.24 0.40 3.33\nMobiliario, equipo doméstico y mantenimiento rutinario del hogar -0.02 0.12 2.72\nSalud 0.04 0.14 4.65\nTransporte 0.13 0.10 3.51\nInformación y comunicación -1.32 -0.72 -1.32\nRecreación, deporte y cultura 0.15 -0.13 2.97\nServicios educativos 0.00 3.12 5.85\nRestaurantes y servicios de alojamiento 0.02 0.30 6.19\nSeguros y servicios financieros 0.27 -0.15 5.88\nCuidado personal, protección social y bienes diversos1/ -0.17 -0.61 3.21\n1/ Incluye aparatos eléctricos para el cuidado personal, artículos de maquillaje, cremas y productos para higiene dental, cremas para\nla piel, entre otros.\nFuente:INEGI. Índice Nacional de Precios al Consumidor (INPC), 2026.\nCanasta de consumo mínimo\nEn septiembre de 2026, el Índice de Precios al Consumidor de la Canasta de Consumo Mínimo\n(IPCCCM)2 tuvo un incremento mensual de 0.59 y de 3.29 % a tasa anual. En el mismo periodo\nde 2025, subió 0.27 y 3.74 %, en ese orden.\n1 Organización Internacional del Trabajo, Fondo Monetario Internacional, Organización de Cooperación y Desarrollo Económicos, Oficina Estadística\nde las Comunidades Europeas, Naciones Unidas, Banco Mundial. Manual del Índice de Precios al Consumidor: Teoría y Práctica, p. 26.\n2 El propósito de la Canasta de Consumo Mínimo (CCM) es dar seguimiento a las variaciones de los precios de 170 bienes y servicios que la\nconforman, contenidos en las canastas alimentarias y no alimentarias definidas por el Consejo Nacional de Evaluación de la Política de\nDesarrollo Social (Coneval). El diseño de la CCM se elaboró entre el Coneval y el INEGI. La metodología puede consultarse en:\nhttps://www.inegi.org.mx/app/biblioteca/ficha.html?upc=702825196929",
+    "BOLETÍN DE INDICADOR 619/26\nÍNDICE NACIONAL DE PRECIOS\nAL CONSUMIDOR (INPC)\n8 de octubre de 2026\nPágina 6/6\nI. FICHA METODOLÓGICA\nEl Índice Nacional de Precios al Consumidor (INPC) es una medida del cambio promedio\nen los precios de los productos que integran una canasta de bienes y servicios\nrepresentativa del consumo de los hogares en el país, a lo largo del tiempo.\nAntecedentes\nEstos cambios de precios repercuten en el poder adquisitivo y en el bienestar de las y\nlos consumidores. Por esta razón, el INPC es un indicador de interés general para la\nsociedad.\nPeriodo base de\nSegunda quincena de julio de 2018=100\ncomparación\nSe integra por una muestra de alrededor de 123 mil artículos y servicios específicos,\nCanasta de bienes y agrupados en 292 productos genéricos (conjunto de bienes o servicios de la canasta del\nservicios INPC relativamente homogéneos, con un uso final común). Se compone de productos\nespecíficos o variedades con características similares.\nDefine la participación del gasto de un bien o servicio en la canasta representativa del\nEstructura de consumo de los hogares del país. La estructura de las ponderaciones se construyó con\nponderación información de la Encuesta Nacional de Ingresos y Gastos de los Hogares Estacional\n2022 (ENIGH Estacional 2022).\nLos puntos de venta son las unidades económicas o establecimientos donde las y los\ninvestigadores de precios cotizan cuánto cuestan los productos específicos que están\nMuestreo de puntos\nentre los 292 productos genéricos que contiene la canasta que los hogares adquieren en\nde venta\nel país. De estos, se seleccionaron 235 mediante un muestreo probabilístico y los\n57 restantes, con un muestreo no probabilístico.\nCobertura geográfica Las cotizaciones de productos se realizan en una muestra de establecimientos ubicados\nde las cotizaciones en 55 áreas geográficas de las 32 entidades federativas del país.\nEl INPC se calcula utilizando la fórmula de Laspeyres en dos etapas. En la primera,\nse calculan los índices elementales por genérico y área geográfica mediante el índice de\nCálculo del INPC\nJevons. En la segunda, se calculan los índices de precios de nivel superior con el índice\nde Laspeyres.\nEl cálculo y divulgación del INPC es tanto quincenal como mensual. Se publica los días\nPublicación de 10 y 25 de cada mes en el Diario Oficial de la Federación, o el día hábil anterior, en caso\nresultados de que estas fechas sean sábado, domingo o día festivo. El día previo se publica en el\nportal del INEGI.\nEl INEGI invita a conocer y usar las herramientas para el análisis y entendimiento de los\nNota al\níndices nacionales de precios, disponibles en la sección «Herramientas»:\npúblico usuario\nhttps://www.inegi.org.mx/programas/inpc/2018a/default.html#Herramientas\nLa certificación de los índices nacionales de precios se ha mantenido\ndesde 2011 mediante su Sistema de Gestión de la Calidad, el cual cumple\nCertificación\nsatisfactoriamente con el estándar internacional\nISO 9001:2015\nISO 9001:2015/NMX-CC-9001-IMNC-2015. El certificado se identifica con\nnúmero MBC/01484/SGC con vigencia a diciembre de 2026, otorgado por\nel organismo MB Certification México.\nLa información estadística y geográfica que genera el INEGI es un bien público y nos permite\na todas y a todos tomar mejores decisiones. ¡Conócela, úsala y compártela!"
+  ],
+  "source_sha256": "9c72b5e957b9f68f49a05c3efb4cffd1b40eca9f0647d27c61529c7e8ead6e84",
+  "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf"
+}

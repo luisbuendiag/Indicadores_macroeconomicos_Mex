@@ -1,0 +1,49 @@
+﻿variable,valor,unidad,periodo,serie,ubicacion,fuente
+total yoy point,3.2,porcentaje,2026-08,desestacionalizada; estimación IOAE,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+total yoy low,2.1,porcentaje,2026-08,desestacionalizada; estimación IOAE,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+total yoy high,4.3,porcentaje,2026-08,desestacionalizada; estimación IOAE,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+total mom point,0.5,porcentaje,2026-08,desestacionalizada; estimación IOAE,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+total mom low,-0.6,porcentaje,2026-08,desestacionalizada; estimación IOAE,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+total mom high,1.6,porcentaje,2026-08,desestacionalizada; estimación IOAE,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+total index point,108.3,puntos del índice,2026-08,desestacionalizada; estimación IOAE,"p. 2, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+total index low,107.1,puntos del índice,2026-08,desestacionalizada; estimación IOAE,"p. 2, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+total index high,109.4,puntos del índice,2026-08,desestacionalizada; estimación IOAE,"p. 2, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+total yoy point,3.7,porcentaje,2026-09,desestacionalizada; estimación IOAE,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+total yoy low,2.6,porcentaje,2026-09,desestacionalizada; estimación IOAE,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+total yoy high,4.9,porcentaje,2026-09,desestacionalizada; estimación IOAE,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+total mom point,0.1,porcentaje,2026-09,desestacionalizada; estimación IOAE,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+total mom low,-1.0,porcentaje,2026-09,desestacionalizada; estimación IOAE,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+total mom high,1.2,porcentaje,2026-09,desestacionalizada; estimación IOAE,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+total index point,108.4,puntos del índice,2026-09,desestacionalizada; estimación IOAE,"p. 2, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+total index low,107.1,puntos del índice,2026-09,desestacionalizada; estimación IOAE,"p. 2, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+total index high,109.6,puntos del índice,2026-09,desestacionalizada; estimación IOAE,"p. 2, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+secundarias yoy point,3.6,porcentaje,2026-08,desestacionalizada; observado IMAI,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+secundarias mom point,0.6,porcentaje,2026-08,desestacionalizada; observado IMAI,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+secundarias index point,103.4,puntos del índice,2026-08,desestacionalizada; observado IMAI,"p. 2, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+secundarias yoy point,3.6,porcentaje,2026-09,desestacionalizada; estimación IOAE,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+secundarias yoy low,1.4,porcentaje,2026-09,desestacionalizada; estimación IOAE,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+secundarias yoy high,5.9,porcentaje,2026-09,desestacionalizada; estimación IOAE,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+secundarias mom point,0.1,porcentaje,2026-09,desestacionalizada; estimación IOAE,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+secundarias mom low,-2.1,porcentaje,2026-09,desestacionalizada; estimación IOAE,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+secundarias mom high,2.2,porcentaje,2026-09,desestacionalizada; estimación IOAE,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+secundarias index point,103.4,puntos del índice,2026-09,desestacionalizada; estimación IOAE,"p. 2, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+secundarias index low,101.2,puntos del índice,2026-09,desestacionalizada; estimación IOAE,"p. 2, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+secundarias index high,105.7,puntos del índice,2026-09,desestacionalizada; estimación IOAE,"p. 2, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+terciarias yoy point,3.7,porcentaje,2026-08,desestacionalizada; estimación IOAE,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+terciarias yoy low,2.3,porcentaje,2026-08,desestacionalizada; estimación IOAE,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+terciarias yoy high,5.0,porcentaje,2026-08,desestacionalizada; estimación IOAE,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+terciarias mom point,0.3,porcentaje,2026-08,desestacionalizada; estimación IOAE,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+terciarias mom low,-1.1,porcentaje,2026-08,desestacionalizada; estimación IOAE,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+terciarias mom high,1.6,porcentaje,2026-08,desestacionalizada; estimación IOAE,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+terciarias index point,111.2,puntos del índice,2026-08,desestacionalizada; estimación IOAE,"p. 2, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+terciarias index low,109.7,puntos del índice,2026-08,desestacionalizada; estimación IOAE,"p. 2, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+terciarias index high,112.7,puntos del índice,2026-08,desestacionalizada; estimación IOAE,"p. 2, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+terciarias yoy point,4.0,porcentaje,2026-09,desestacionalizada; estimación IOAE,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+terciarias yoy low,2.6,porcentaje,2026-09,desestacionalizada; estimación IOAE,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+terciarias yoy high,5.4,porcentaje,2026-09,desestacionalizada; estimación IOAE,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+terciarias mom point,0.1,porcentaje,2026-09,desestacionalizada; estimación IOAE,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+terciarias mom low,-1.2,porcentaje,2026-09,desestacionalizada; estimación IOAE,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+terciarias mom high,1.4,porcentaje,2026-09,desestacionalizada; estimación IOAE,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+terciarias index point,111.3,puntos del índice,2026-09,desestacionalizada; estimación IOAE,"p. 2, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+terciarias index low,109.8,puntos del índice,2026-09,desestacionalizada; estimación IOAE,"p. 2, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf
+terciarias index high,112.8,puntos del índice,2026-09,desestacionalizada; estimación IOAE,"p. 2, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf

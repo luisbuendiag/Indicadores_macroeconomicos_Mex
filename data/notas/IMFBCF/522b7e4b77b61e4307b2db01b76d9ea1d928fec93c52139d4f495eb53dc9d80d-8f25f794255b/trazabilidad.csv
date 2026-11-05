@@ -1,0 +1,64 @@
+﻿variable,valor,unidad,periodo,serie,ubicacion,fuente
+total index,110.5,puntos,2026-07,desestacionalizada,"p. 1, portada",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+total Inversión fija total mom,1.4,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+total Inversión fija total yoy,6.0,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+construccion Construcción mom,-1.5,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+construccion Construcción yoy,6.9,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+residencial Residencial mom,0.7,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+residencial Residencial yoy,9.2,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+no_residencial No residencial mom,-3.9,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+no_residencial No residencial yoy,4.0,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+maquinaria Maquinaria y equipo mom,4.5,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+maquinaria Maquinaria y equipo yoy,4.9,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+nacional Maquinaria y equipo nacional mom,1.1,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+nacional Maquinaria y equipo nacional yoy,-3.1,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+nacional_transporte Transporte nacional mom,0.3,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+nacional_transporte Transporte nacional yoy,-0.8,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+nacional_otros Otra maquinaria nacional mom,2.1,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+nacional_otros Otra maquinaria nacional yoy,-5.3,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+importado Maquinaria y equipo importado mom,6.0,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+importado Maquinaria y equipo importado yoy,9.9,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+importado_transporte Transporte importado mom,-5.2,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+importado_transporte Transporte importado yoy,-7.9,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+importado_otros Otra maquinaria importada mom,7.8,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+importado_otros Otra maquinaria importada yoy,14.0,porcentaje,2026-07,desestacionalizada,"p. 2, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+total Inversión fija total original,6.6,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+total Inversión fija total ytd,1.7,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+construccion Construcción original,7.1,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+construccion Construcción ytd,4.1,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+residencial Residencial original,10.6,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+residencial Residencial ytd,3.9,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+no_residencial No residencial original,3.5,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+no_residencial No residencial ytd,4.3,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+maquinaria Maquinaria y equipo original,6.2,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+maquinaria Maquinaria y equipo ytd,-1.0,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+nacional Maquinaria y equipo nacional original,-2.5,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+nacional Maquinaria y equipo nacional ytd,-8.0,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+nacional_transporte Transporte nacional original,-1.1,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+nacional_transporte Transporte nacional ytd,-9.4,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+nacional_otros Otra maquinaria nacional original,-3.9,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+nacional_otros Otra maquinaria nacional ytd,-6.7,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+importado Maquinaria y equipo importado original,11.5,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+importado Maquinaria y equipo importado ytd,3.5,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+importado_transporte Transporte importado original,-6.5,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+importado_transporte Transporte importado ytd,-0.2,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+importado_otros Otra maquinaria importada original,14.9,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+importado_otros Otra maquinaria importada ytd,4.1,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+total_comprador Inversión fija total original,6.6,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+total_comprador Inversión fija total ytd,1.7,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+total_privada Inversión fija total privada original,6.7,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+total_privada Inversión fija total privada ytd,0.4,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+total_publica Inversión fija total pública original,6.2,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+total_publica Inversión fija total pública ytd,10.2,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+construccion_comprador Construcción original,7.1,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+construccion_comprador Construcción ytd,4.1,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+construccion_privada Construcción privada original,7.2,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+construccion_privada Construcción privada ytd,2.5,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+construccion_publica Construcción pública original,6.3,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+construccion_publica Construcción pública ytd,12.9,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+maquinaria_comprador Maquinaria y equipo original,6.2,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+maquinaria_comprador Maquinaria y equipo ytd,-1.0,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+maquinaria_privada Maquinaria y equipo privada original,6.2,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+maquinaria_privada Maquinaria y equipo privada ytd,-1.8,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+maquinaria_publica Maquinaria y equipo pública original,5.8,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf
+maquinaria_publica Maquinaria y equipo pública ytd,5.7,porcentaje,2026-07,original,"p. 3, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf

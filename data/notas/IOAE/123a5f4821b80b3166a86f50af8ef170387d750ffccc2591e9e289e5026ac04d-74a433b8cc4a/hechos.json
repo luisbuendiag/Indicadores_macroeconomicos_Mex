@@ -1,0 +1,254 @@
+{
+  "indicator": "IOAE",
+  "ym": "2026-09",
+  "period": "Sep 26",
+  "base": "2018",
+  "publication_date": "2026-10-20",
+  "bulletin": "629/26",
+  "rows": [
+    {
+      "id": "total",
+      "label": "IGAE",
+      "ym": "2026-08",
+      "status": "estimación IOAE",
+      "yoy": {
+        "id": "total",
+        "label": "IGAE",
+        "ym": "2026-08",
+        "status": "estimación IOAE",
+        "point": 3.2,
+        "low": 2.1,
+        "high": 4.3,
+        "location": "p. 1, cuadro 1",
+        "evidence": "agosto 3.2 2.1 4.3"
+      },
+      "mom": {
+        "id": "total",
+        "label": "IGAE",
+        "ym": "2026-08",
+        "status": "estimación IOAE",
+        "point": 0.5,
+        "low": -0.6,
+        "high": 1.6,
+        "location": "p. 2, cuadro 2",
+        "evidence": "agosto 0.5 -0.6 1.6"
+      },
+      "index": {
+        "id": "total",
+        "label": "IGAE",
+        "ym": "2026-08",
+        "status": "estimación IOAE",
+        "point": 108.3,
+        "low": 107.1,
+        "high": 109.4,
+        "location": "p. 2, cuadro 3",
+        "evidence": "agosto 108.3 107.1 109.4"
+      }
+    },
+    {
+      "id": "total",
+      "label": "IGAE",
+      "ym": "2026-09",
+      "status": "estimación IOAE",
+      "yoy": {
+        "id": "total",
+        "label": "IGAE",
+        "ym": "2026-09",
+        "status": "estimación IOAE",
+        "point": 3.7,
+        "low": 2.6,
+        "high": 4.9,
+        "location": "p. 1, cuadro 1",
+        "evidence": "septiembre 3.7 2.6 4.9"
+      },
+      "mom": {
+        "id": "total",
+        "label": "IGAE",
+        "ym": "2026-09",
+        "status": "estimación IOAE",
+        "point": 0.1,
+        "low": -1.0,
+        "high": 1.2,
+        "location": "p. 2, cuadro 2",
+        "evidence": "septiembre 0.1 -1.0 1.2"
+      },
+      "index": {
+        "id": "total",
+        "label": "IGAE",
+        "ym": "2026-09",
+        "status": "estimación IOAE",
+        "point": 108.4,
+        "low": 107.1,
+        "high": 109.6,
+        "location": "p. 2, cuadro 3",
+        "evidence": "septiembre 108.4 107.1 109.6"
+      }
+    },
+    {
+      "id": "secundarias",
+      "label": "Actividades secundarias",
+      "ym": "2026-08",
+      "status": "observado IMAI",
+      "yoy": {
+        "id": "secundarias",
+        "label": "Actividades secundarias",
+        "ym": "2026-08",
+        "status": "observado IMAI",
+        "point": 3.6,
+        "low": null,
+        "high": null,
+        "location": "p. 1, cuadro 1",
+        "evidence": "agosto 3.62/"
+      },
+      "mom": {
+        "id": "secundarias",
+        "label": "Actividades secundarias",
+        "ym": "2026-08",
+        "status": "observado IMAI",
+        "point": 0.6,
+        "low": null,
+        "high": null,
+        "location": "p. 2, cuadro 2",
+        "evidence": "agosto 0.62/"
+      },
+      "index": {
+        "id": "secundarias",
+        "label": "Actividades secundarias",
+        "ym": "2026-08",
+        "status": "observado IMAI",
+        "point": 103.4,
+        "low": null,
+        "high": null,
+        "location": "p. 2, cuadro 3",
+        "evidence": "agosto 103.42/"
+      }
+    },
+    {
+      "id": "secundarias",
+      "label": "Actividades secundarias",
+      "ym": "2026-09",
+      "status": "estimación IOAE",
+      "yoy": {
+        "id": "secundarias",
+        "label": "Actividades secundarias",
+        "ym": "2026-09",
+        "status": "estimación IOAE",
+        "point": 3.6,
+        "low": 1.4,
+        "high": 5.9,
+        "location": "p. 1, cuadro 1",
+        "evidence": "septiembre 3.6 1.4 5.9"
+      },
+      "mom": {
+        "id": "secundarias",
+        "label": "Actividades secundarias",
+        "ym": "2026-09",
+        "status": "estimación IOAE",
+        "point": 0.1,
+        "low": -2.1,
+        "high": 2.2,
+        "location": "p. 2, cuadro 2",
+        "evidence": "septiembre 0.1 -2.1 2.2"
+      },
+      "index": {
+        "id": "secundarias",
+        "label": "Actividades secundarias",
+        "ym": "2026-09",
+        "status": "estimación IOAE",
+        "point": 103.4,
+        "low": 101.2,
+        "high": 105.7,
+        "location": "p. 2, cuadro 3",
+        "evidence": "septiembre 103.4 101.2 105.7"
+      }
+    },
+    {
+      "id": "terciarias",
+      "label": "Actividades terciarias",
+      "ym": "2026-08",
+      "status": "estimación IOAE",
+      "yoy": {
+        "id": "terciarias",
+        "label": "Actividades terciarias",
+        "ym": "2026-08",
+        "status": "estimación IOAE",
+        "point": 3.7,
+        "low": 2.3,
+        "high": 5.0,
+        "location": "p. 1, cuadro 1",
+        "evidence": "agosto 3.7 2.3 5.0"
+      },
+      "mom": {
+        "id": "terciarias",
+        "label": "Actividades terciarias",
+        "ym": "2026-08",
+        "status": "estimación IOAE",
+        "point": 0.3,
+        "low": -1.1,
+        "high": 1.6,
+        "location": "p. 2, cuadro 2",
+        "evidence": "agosto 0.3 -1.1 1.6"
+      },
+      "index": {
+        "id": "terciarias",
+        "label": "Actividades terciarias",
+        "ym": "2026-08",
+        "status": "estimación IOAE",
+        "point": 111.2,
+        "low": 109.7,
+        "high": 112.7,
+        "location": "p. 2, cuadro 3",
+        "evidence": "agosto 111.2 109.7 112.7"
+      }
+    },
+    {
+      "id": "terciarias",
+      "label": "Actividades terciarias",
+      "ym": "2026-09",
+      "status": "estimación IOAE",
+      "yoy": {
+        "id": "terciarias",
+        "label": "Actividades terciarias",
+        "ym": "2026-09",
+        "status": "estimación IOAE",
+        "point": 4.0,
+        "low": 2.6,
+        "high": 5.4,
+        "location": "p. 1, cuadro 1",
+        "evidence": "septiembre 4.0 2.6 5.4\n"
+      },
+      "mom": {
+        "id": "terciarias",
+        "label": "Actividades terciarias",
+        "ym": "2026-09",
+        "status": "estimación IOAE",
+        "point": 0.1,
+        "low": -1.2,
+        "high": 1.4,
+        "location": "p. 2, cuadro 2",
+        "evidence": "septiembre 0.1 -1.2 1.4\n"
+      },
+      "index": {
+        "id": "terciarias",
+        "label": "Actividades terciarias",
+        "ym": "2026-09",
+        "status": "estimación IOAE",
+        "point": 111.3,
+        "low": 109.8,
+        "high": 112.8,
+        "location": "p. 2, cuadro 3",
+        "evidence": "septiembre 111.3 109.8 112.8\n"
+      }
+    }
+  ],
+  "pages": [
+    "BOLETÍN DE INDICADOR 629/26\nINDICADOR OPORTUNO\nDE LA ACTIVIDAD ECONÓMICA (IOAE)\n20 de octubre de 2026\nPágina 1/6\nPróxima publicación: 19 de noviembre de 2026\nIOAE\nseptiembre\nvariación\nanual mensual\n▲ 3.7 % ▲ 0.1 %\nEl IOAE anticipa un aumento anual de 3.7 %\ny mensual de 0.1 % del IGAE, para septiembre de 2026\nEl Indicador Oportuno de la Actividad Económica (IOAE) permite contar con estimaciones\neconométricas oportunas sobre la evolución del Indicador Global de la Actividad Económica\n(IGAE), así como de las actividades secundarias y terciarias. De esta forma, se adelanta\ncinco semanas a su publicación oficial al presentar resultados tres semanas después del mes\nde referencia, frente a las ocho semanas del IGAE.\nPara septiembre de 2026, el IOAE estima un crecimiento anual de 3.7 % en el IGAE. Según\ngrupos de actividad económica, se espera un alza de 4.0 % en las terciarias y de 3.6 % en las\nsecundarias respecto al mismo mes de 2025. Las estimaciones incluyen intervalos de\nconfianza a 95.0 % y corresponden a cifras desestacionalizadas (ver cuadro 1).\nCuadro 1\nEstimaciones del Indicador Oportuno de la Actividad Económica\ncifras desestacionalizadas\nagosto y septiembre de 2026\n(variación porcentual anual)\nIntervalo de confianza a 95.0 %\nConcepto Mes Nowcast1/\nInferior Superior\nagosto 3.2 2.1 4.3\nIGAE\nseptiembre 3.7 2.6 4.9\nagosto 3.62/\nActividades secundarias\nseptiembre 3.6 1.4 5.9\nagosto 3.7 2.3 5.0\nActividades terciarias\nseptiembre 4.0 2.6 5.4\nNota: Cifras elaboradas mediante métodos econométricos.\nLa serie del IOAE se calcula de manera independiente a la de sus componentes.\n1/ Estimación oportuna que aprovecha la asociación estadística entre la variable que se desea estimar\n—en este caso, el Indicador Global de la Actividad Económica (IGAE)— y otras variables más oportunas.\n2/ Se considera como valor observado, según el Indicador Mensual de la Actividad Industrial (IMAI).\nFuente: INEGI. Indicador Oportuno de la Actividad Económica (IOAE), 2026.",
+    "BOLETÍN DE INDICADOR 629/26\nINDICADOR OPORTUNO\nDE LA ACTIVIDAD ECONÓMICA (IOAE)\n20 de octubre de 2026\nPágina 2/6\nA tasa mensual, se anticipa un avance de 0.1 % en el IGAE, así como en las actividades\nsecundarias y terciarias, para septiembre de 2026 (ver cuadro 2).\nCuadro 2\nEstimaciones del Indicador Oportuno de la Actividad Económica\ncifras desestacionalizadas\nagosto y septiembre de 2026\n(variación porcentual mensual)\nIntervalo de confianza a 95.0 %\nConcepto Mes Nowcast1/\nInferior Superior\nagosto 0.5 -0.6 1.6\nIGAE\nseptiembre 0.1 -1.0 1.2\nagosto 0.62/\nActividades secundarias\nseptiembre 0.1 -2.1 2.2\nagosto 0.3 -1.1 1.6\nActividades terciarias\nseptiembre 0.1 -1.2 1.4\nNota: Cifras elaboradas mediante métodos econométricos.\nLa serie del IOAE se calcula de manera independiente a la de sus componentes.\n1/ Estimación oportuna que aprovecha la asociación estadística entre la variable que se desea estimar\n—en este caso, el Indicador Global de la Actividad Económica (IGAE)— y otras variables más oportunas.\n2/ Se considera como valor observado, según el Indicador Mensual de la Actividad Industrial (IMAI).\nFuente: INEGI. Indicador Oportuno de la Actividad Económica (IOAE), 2026.\nPara el noveno mes de 2026, el IOAE (base 2018=100) estima un nivel de 108.4 puntos en el\nIGAE, de 103.4 en las actividades secundarias y de 111.3 puntos en las terciarias (ver cuadro 3).\nCuadro 3\nEstimaciones del Indicador Oportuno de la Actividad Económica\ncifras desestacionalizadas\nagosto y septiembre de 2026\n(índice base 2018=100)\nIntervalo de confianza a 95.0 %\nConcepto Mes Nowcast1/\nInferior Superior\nagosto 108.3 107.1 109.4\nIGAE\nseptiembre 108.4 107.1 109.6\nagosto 103.42/\nActividades secundarias\nseptiembre 103.4 101.2 105.7\nagosto 111.2 109.7 112.7\nActividades terciarias\nseptiembre 111.3 109.8 112.8\nNota: Cifras elaboradas mediante métodos econométricos.\nLa serie del IOAE se calcula de manera independiente a la de sus componentes.\n1/ Estimación oportuna que aprovecha la asociación estadística entre la variable que se desea estimar\n—en este caso, el Indicador Global de la Actividad Económica (IGAE)— y otras variables más oportunas.\n2/ Se considera como valor observado, según el Indicador Mensual de la Actividad Industrial (IMAI).\nFuente: INEGI. Indicador Oportuno de la Actividad Económica (IOAE), 2026.",
+    "BOLETÍN DE INDICADOR 629/26\nINDICADOR OPORTUNO\nDE LA ACTIVIDAD ECONÓMICA (IOAE)\n20 de octubre de 2026\nPágina 3/6\nLas gráficas 1, 2 y 3 muestran las variaciones anuales del IOAE y de las actividades secundarias\ny terciarias, respectivamente. En cada caso, la línea turquesa representa la serie de interés, la\nlínea azul se refiere al ajuste de las estimaciones y la línea violeta muestra los nowcasts de\nagosto y septiembre de 2026.1 Las líneas punteadas de color naranja representan los\nintervalos de confianza a 95.0 por ciento.\nGráfica 1\nSerie desestacionalizada del Indicador Oportuno de la Actividad Económica:\nNowcast del Indicador Global de la Actividad Económica (IGAE)\nenero de 2021–septiembre de 2026\n(variación porcentual real respecto al mismo mes del año anterior: agosto y septiembre de 2026)\n30.0\n20.0\n10.0\n0.0\n-10.0\n2021 2022 2023 2024 2025 2026\nIGAE Ajuste Nowcasts Inferior Superior\nNota: Series elaboradas mediante métodos econométricos.\nFuente: INEGI. Indicador Oportuno de la Actividad Económica (IOAE), 2026.\nGráfica 2\nSerie desestacionalizada del Indicador Oportuno de la Actividad Económica:\nNowcast de las actividades secundarias\nenero de 2021–septiembre de 2026\n(variación porcentual real respecto al mismo mes del año anterior: septiembre de 2026)\n40.0\n30.0\n20.0\n10.0\n0.0\n-10.0\n2021 2022 2023 2024 2025 2026\nIGAE Ajuste Nowcasts Inferior Superior\nNota: Series elaboradas mediante métodos econométricos.\nFuente: INEGI. Indicador Oportuno de la Actividad Económica (IOAE), 2026.\n1 Para las actividades secundarias, la estimación se presenta únicamente para septiembre de 2026.",
+    "BOLETÍN DE INDICADOR 629/26\nINDICADOR OPORTUNO\nDE LA ACTIVIDAD ECONÓMICA (IOAE)\n20 de octubre de 2026\nPágina 4/6\nGráfica 3\nSerie desestacionalizada del Indicador Oportuno de la Actividad Económica:\nNowcast de las actividades terciarias\nenero de 2021–septiembre de 2026\n(variación porcentual real respecto al mismo mes del año anterior: agosto y septiembre de 2026)\n30.0\n20.0\n10.0\n0.0\n-10.0\n2021 2022 2023 2024 2025 2026\nIGAE Ajuste Nowcasts Inferior Superior\nNota: Series elaboradas mediante métodos econométricos.\nFuente: INEGI. Indicador Oportuno de la Actividad Económica (IOAE), 2026.\nLas gráficas 4 y 5 muestran las estimaciones para el IGAE, por medio del IOAE, de la variación\nporcentual real en relación con el mes anterior y del índice (base 2018=100), respectivamente.\nEn cada caso, la línea turquesa representa la serie de interés, la línea azul se refiere al ajuste\nde las estimaciones y la línea violeta muestra los nowcasts de agosto y septiembre de 2026.\nLas líneas punteadas de color naranja representan los intervalos de confianza a 95.0 por\nciento.\nGráfica 4\nSerie desestacionalizada del Indicador Oportuno de la Actividad Económica:\nNowcast del Indicador Global de la Actividad Económica (IGAE)\nenero de 2021–septiembre de 2026\n(variación porcentual real respecto al mes anterior: agosto y septiembre de 2026)\n2.0\n1.0\n0.0\n-1.0\n-2.0\n2021 2022 2023 2024 2025 2026\nIGAE Ajuste Nowcasts Inferior Superior\nNota: Series elaboradas mediante métodos econométricos.\nFuente: INEGI. Indicador Oportuno de la Actividad Económica (IOAE), 2026.",
+    "BOLETÍN DE INDICADOR 629/26\nINDICADOR OPORTUNO\nDE LA ACTIVIDAD ECONÓMICA (IOAE)\n20 de octubre de 2026\nPágina 5/6\nGráfica 5\nSerie desestacionalizada del Indicador Oportuno de la Actividad Económica:\nNowcast del Indicador Global de la Actividad Económica (IGAE)\nenero de 2021–septiembre de 2026\n(índice base 2018=100: agosto y septiembre de 2026)\n109.0\n106.0\n103.0\n100.0\n97.0\n94.0\n2021 2022 2023 2024 2025 2026\nIGAE Ajuste Nowcasts Inferior Superior\nNota: Series elaboradas mediante métodos econométricos.\nFuente: INEGI. Indicador Oportuno de la Actividad Económica (IOAE), 2026.",
+    "BOLETÍN DE INDICADOR 629/26\nINDICADOR OPORTUNO\nDE LA ACTIVIDAD ECONÓMICA (IOAE)\n20 de octubre de 2026\nPágina 6/6\nI. FICHA METODOLÓGICA\nEn 2019, la Dirección General Adjunta de Investigación inició el desarrollo de un\nmodelo de nowcasting para estimar el Producto Interno Bruto (PIB) trimestral.\nSin embargo, dada la necesidad de contar con estimaciones oportunas de corto\nplazo a causa del cierre económico por la COVID-19, se optó por enfocar la\nmodelación al Indicador Global de la Actividad Económica (IGAE), que presenta una\nAntecedentes\nmayor frecuencia respecto al PIB, al contar con periodicidad mensual, esto permitió\nobtener un indicador con mayor oportunidad. En consecuencia, desde octubre\n2020, el INEGI publica el Indicador Oportuno de la Actividad Económica (IOAE).\nEste proporciona estimaciones anticipadas del IGAE para los dos meses posteriores\na las últimas cifras publicadas.\nOfrecer estimaciones precisas y hasta con cinco semanas de antelación del IGAE,\nObjetivo\nlas actividades secundarias y las terciarias.\nLa selección de series temporales en los modelos de nowcasting se realiza con el\ncriterio de oportunidad y alta correlación con respecto al IGAE, es decir, se requiere\nque las series de tiempo se actualicen con mayor antelación que el IGAE y que,\nDatos\nademás, estén altamente correlacionadas de manera contemporánea con esta\núltima. En este sentido, se utiliza un amplio conjunto de series de tiempo\neconómicas y financieras, así como fuentes no tradicionales.\nCobertura geográfica Nacional\nPeriodicidad Mensual\nEl modelo de nowcasting del IOAE se basa en la estimación de un factor dinámico\noportuno y relacionado, de manera contemporánea, con el IGAE. El proceso de\nmodelación utiliza técnicas como Mínimos Cuadrados Parciales, Modelo de\nMétodos de\nFactores Dinámicos, regresiones con errores autocorrelacionados y técnicas de la\nestimación\nvalidación cruzada en series de tiempo. Además, se valida la consistencia\nestadística de las estimaciones verificando los supuestos en todo el proceso de\nmodelación.\nEl IOAE se publica hasta 22 días naturales después de concluido el mes de\nreferencia conforme al Calendario de Difusión de Información Estadística y\nGeográfica y de Interés Nacional. La publicación presenta estimaciones puntuales\nPublicación de\ny sus intervalos de confianza de 95.0 % en cifras desestacionalizadas para el IGAE,\nresultados\nlas actividades secundarias y terciarias. Se presentan las variaciones porcentuales\nanuales, mensuales y los niveles del índice (base 2018=100). Nótese que el IOAE\nno reemplaza el cálculo tradicional del IGAE.\nLas variables utilizadas en la metodología del IOAE se pueden consultar en detalle\nNota al público en la síntesis metodológica, disponible en:\nusuario https://www.inegi.org.mx/investigacion/ioae/#documentacion y en la sección de\ntabulados del IOAE, en: https://www.inegi.org.mx/investigacion/ioae/#tabulados\nPara más información sobre este proyecto, consúltese el portal del Instituto:\nLigas de interés\nhttps://www.inegi.org.mx/investigacion/ioae/\nLa información estadística y geográfica que genera el INEGI es un bien público y nos permite\na todas y a todos tomar mejores decisiones. ¡Conócela, úsala y compártela!"
+  ],
+  "source_sha256": "923e6de1a9af5d03eb871b99801f2fd989b84ce1e90383ef6c6f129be40be863",
+  "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf"
+}

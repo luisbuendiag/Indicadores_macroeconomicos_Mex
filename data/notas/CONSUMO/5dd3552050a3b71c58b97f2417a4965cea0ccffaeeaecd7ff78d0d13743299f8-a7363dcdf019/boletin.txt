@@ -1,0 +1,189 @@
+BOLETÍN DE INDICADOR 616/26
+INDICADOR MENSUAL DEL
+CONSUMO PRIVADO (IMCP)
+5 de octubre de 2026
+Página 1/4
+Próxima publicación: 5 de noviembre de 2026
+Consumo
+Variación Variación
+privado
+mensual anual
+índice 2018=100
+julio julio julio
+113.2 0.0 % ▲ 1.1 %
+No registró variación el consumo privado
+en julio de 2026, a tasa mensual
+El Indicador Mensual del Consumo Privado (IMCP) permite conocer la evolución del gasto que
+realizan los hogares en bienes y servicios de consumo, tanto de origen nacional como
+importado.
+I. CIFRAS DESESTACIONALIZADAS
+En julio de 2026 y con cifras desestacionalizadas,1 el IMCP no presentó variación frente al mes
+previo, en términos reales (ver gráfica 1). A tasa anual creció 1.1 por ciento.
+Gráfica 1
+Variación del consumo privado
+cifras desestacionalizadas
+julio de 2024–julio de 2026
+(variación porcentual real mensual)
+1.2 1.1 1.1
+1.0 1.0
+1.0 0.9 0.8 0.8
+0.6
+0.4 0.5
+0.2 0.2
+0.0
+0.0
+0.0
+-0.3 -0.2
+-0.5 -0.5 -0.5 -0.6 -0.5
+-1.0
+-1.0
+-1.5
+-2.0 -1.7
+J A S O N D E F M A M J J A S O N D E F M A M J J
+2024 2025 2026
+Nota: Serie elaborada mediante métodos econométricos.
+Fuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Indicador Mensual del Consumo Privado (IMCP), 2026.
+1 La mayoría de las series económicas se ve afectada por factores estacionales y de calendario. El ajuste de los datos por dichos factores
+permite obtener las cifras desestacionalizadas.
+La tendencia-ciclo es la combinación de los componentes de tendencia y ciclo. La tendencia se refiere a la evolución de largo plazo de la
+serie de tiempo, y el ciclo, a las desviaciones alrededor de la tendencia. Así, el análisis de las series ajustadas ayuda a realizar un mejor
+diagnóstico de la evolución de las variables.
+
+BOLETÍN DE INDICADOR 616/26
+INDICADOR MENSUAL DEL
+CONSUMO PRIVADO (IMCP)
+5 de octubre de 2026
+Página 2/4
+Según componentes, el gasto en bienes de origen importado creció 1.4 % y el consumo en
+bienes y servicios de origen nacional cayó 0.1 % (el de bienes disminuyó 0.2 % y el de
+servicios aumentó 0.2 %), a tasa mensual.
+En su comparación anual, el gasto en bienes de origen importado incrementó 1.6 % y en bienes
+y servicios nacionales, 1.0 % (el de bienes subió 1.4 % y el de servicios, 0.6 %), en julio de 2026
+(ver cuadro 1).
+Cuadro 1
+Variación del Indicador Mensual del Consumo Privado
+cifras desestacionalizadas
+julio de 2026
+(variación porcentual mensual y anual)
+Variación porcentual real respecto a:
+Consumo de bienes y
+servicios según origen junio julio
+de 2026 de 2025
+Consumo privado1/ 0.0 1.1
+Nacional -0.1 1.0
+Bienes -0.2 1.4
+Servicios 0.2 0.6
+Importado 1.4 1.6
+Bienes 1.4 1.6
+Nota: Cifras elaboradas mediante métodos econométricos.
+Las series desestacionalizadas de los principales agregados del IMCP se
+calculan de manera independiente a la de sus componentes.
+1/ Incluye las compras netas de residentes y no residentes.
+Fuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Indicador Mensual
+del Consumo Privado (IMCP), 2026.
+Gráfica 2
+Serie desestacionalizada del consumo privado según origen
+enero de 2022–julio de 2026
+(índice 2018=100)
+160.0
+140.0
+120.0
+100.0
+80.0
+2022 2023 2024 2025 2026
+Consumo privado Nacional Importado
+Nota: Series elaboradas mediante métodos econométricos.
+Fuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Indicador Mensual del Consumo Privado (IMCP), 2026.
+
+BOLETÍN DE INDICADOR 616/26
+INDICADOR MENSUAL DEL
+CONSUMO PRIVADO (IMCP)
+5 de octubre de 2026
+Página 3/4
+II. CIFRAS ORIGINALES
+Cuadro 2
+Variación del Indicador Mensual del Consumo Privado
+a julio de 20261/
+(variación porcentual anual)
+Variación porcentual real anual
+Consumo de bienes y respecto a:
+servicios según origen julio ene.-jul.
+de 2025 de 2025
+Consumo privado2/ 1.1 2.0
+Nacional 1.0 0.3
+Bienes 1.4 0.3
+Duradero 4.0 -4.0
+Semi duradero -0.5 -2.8
+No duradero 1.4 1.6
+Servicios 0.7 0.3
+Importado 0.1 8.1
+Bienes 0.1 8.1
+Duradero 8.4 12.9
+Semi duradero -3.4 -2.1
+No duradero -3.4 10.0
+Compras netas de residentes
+NA NA
+y no residentes
+1/ Cifras preliminares.
+2/ Incluye las compras netas de residentes y no residentes.
+NA No aplica.
+Fuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Indicador Mensual
+del Consumo Privado (IMCP), 2026.
+
+BOLETÍN DE INDICADOR 616/26
+INDICADOR MENSUAL DEL
+CONSUMO PRIVADO (IMCP)
+5 de octubre de 2026
+Página 4/4
+III. FICHA METODOLÓGICA
+El Indicador Mensual del Consumo Privado (IMCP) mide el comportamiento del gasto que realizan
+los hogares en bienes y servicios de consumo, tanto de origen nacional como importado.
+Antecedentes
+Este permite dar seguimiento mensual al componente más significativo del Producto Interno Bruto
+(PIB), por el lado de la demanda.
+Los datos del IMCP están disponibles en una serie larga desde enero de 1993 y se expresan en
+Año base
+índices de volumen físico, con base fija en el año 2018.
+Estadísticas mensuales que elabora el Instituto, como la Encuesta Mensual de la Industria
+Manufacturera (EMIM), Encuesta Mensual de Servicios (EMS), registros del comercio exterior,
+Encuestas de Viajeros Internacionales (EVI) e Índices Nacionales de Precios al Consumidor (INPC)
+Fuentes
+y Productor (INPP). Para las actividades agropecuarias, de energía, gas, agua, servicios financieros
+y del gobierno, se usaron los registros administrativos que provienen de las empresas y Unidades
+del Estado.
+Cobertura geográfica Nacional
+Periodicidad Mensual
+El indicador se elabora con el «Sistema de Clasificación Industrial de América del Norte» (SCIAN)
+2018. Se incluyen los criterios metodológicos, clasificadores y datos fuente que se emplean en los
+cálculos anuales y trimestrales del consumo privado total. El método de cálculo para los
+componentes es el siguiente: para el de origen nacional, se elaboran índices del volumen de ventas
+o de producción para cada clase de actividad, cuya producción se destina al consumo privado, de
+acuerdo con los Cuadros de Oferta y Utilización (COU) 2018. Los índices se utilizan para extrapolar
+Cálculo del IMCP el valor registrado en el año base; para el de origen importado, se suman las fracciones arancelarias
+importadas de bienes de consumo final valoradas en pesos. Los valores se deflactan con los
+índices que se construyen considerando los índices de precios de exportación de los bienes de
+consumo del Bureau of Labor Statistics de los Estados Unidos, ponderados por el tipo de cambio
+del peso mexicano frente al dólar americano. Por suma de los componentes más las compras netas
+de residentes y no residentes se obtiene el total del indicador que, para su publicación, se expresa
+en números índices 2018.
+Las series originales se ajustan estacionalmente mediante el paquete estadístico
+X-13ARIMA-SEATS. Para conocer la metodología, consúltese la siguiente liga:
+https://www.inegi.org.mx/app/biblioteca/ficha.html?upc=702825099060
+Ajuste estacional y
+Las especificaciones de los modelos están disponibles en el Banco de Información
+modelos
+Económica (BIE). Seleccione «Indicadores económicos de coyuntura, Indicador mensual del
+consumo privado» y vaya al icono de información correspondiente a las «series
+desestacionalizadas y de tendencia-ciclo».
+Publicación de El IMCP se publica los primeros días de cada mes conforme al Calendario de Difusión de
+resultados Información Estadística y Geográfica y de Interés Nacional.
+En la integración del IMCP, de julio de 2026, se consideró la última información estadística disponible
+de las encuestas económicas (EMIM, EMEC y EMS), los registros administrativos y los datos primarios
+que divulga el Instituto. Para las actividades agropecuarias, de energía, gas, agua, servicios
+Nota al financieros y del gobierno, se incluyeron los registros administrativos provenientes de las empresas
+público usuario y Unidades del Estado que se recibieron oportunamente vía correo electrónico e internet.
+Lo anterior permitió la generación de estadísticas con niveles altos de cobertura.
+El INEGI invita a conocer a mayor detalle la metodología del IMCP, en la siguiente liga:
+https://www.inegi.org.mx/temas/imcp/
+La información estadística y geográfica que genera el INEGI es un bien público y nos permite
+a todas y a todos tomar mejores decisiones. ¡Conócela, úsala y compártela!

@@ -1,0 +1,862 @@
+{
+  "indicator": "INPP",
+  "ym": "2026-09",
+  "period": "Sep 26",
+  "publication_date": "2026-10-08",
+  "bulletin": "620/26",
+  "base": "Julio de 2019=100",
+  "index": null,
+  "rows": [
+    {
+      "id": "total",
+      "label": "Total",
+      "mom": 1.37,
+      "yoy": 4.05,
+      "prior_yoy": 3.06,
+      "values": [
+        0.5,
+        0.23,
+        1.37,
+        5.13,
+        3.06,
+        4.05
+      ],
+      "location": "p. 2, cuadro 1",
+      "evidence": "Variación del Índice Nacional de Precios Productor producción total, incluido petróleo septiembre de los años que se indican (variación porcentual) Variación porcentual mensual Variación porcentual anual Actividad económica 2024 2025 2026 2024 2025 2026 Índice Nacional de Precios Productor 0.50 0.23 1.37 5.13 3.06 4.05"
+    },
+    {
+      "id": "primarias",
+      "label": "Primarias",
+      "mom": 4.45,
+      "yoy": 0.86,
+      "prior_yoy": 0.48,
+      "values": [
+        -1.09,
+        0.97,
+        4.45,
+        3.53,
+        0.48,
+        0.86
+      ],
+      "location": "p. 2, cuadro 1",
+      "evidence": "Actividades primarias -1.09 0.97 4.45 3.53 0.48 0.86"
+    },
+    {
+      "id": "secundarias",
+      "label": "Secundarias",
+      "mom": 1.5,
+      "yoy": 4.01,
+      "prior_yoy": 2.54,
+      "values": [
+        0.53,
+        0.05,
+        1.5,
+        4.89,
+        2.54,
+        4.01
+      ],
+      "location": "p. 2, cuadro 1",
+      "evidence": "Actividades secundarias 0.53 0.05 1.50 4.89 2.54 4.01"
+    },
+    {
+      "id": "mineria",
+      "label": "Minería",
+      "mom": 13.27,
+      "yoy": 23.84,
+      "prior_yoy": 1.58,
+      "values": [
+        0.45,
+        1.12,
+        13.27,
+        4.87,
+        1.58,
+        23.84
+      ],
+      "location": "p. 2, cuadro 1",
+      "evidence": "Minería 0.45 1.12 13.27 4.87 1.58 23.84"
+    },
+    {
+      "id": "energia",
+      "label": "Energía, agua y gas",
+      "mom": 0.02,
+      "yoy": -6.08,
+      "prior_yoy": 3.25,
+      "values": [
+        -0.03,
+        -0.5,
+        0.02,
+        3.96,
+        3.25,
+        -6.08
+      ],
+      "location": "p. 2, cuadro 1",
+      "evidence": "Generación, transmisión, distribución y comercialización de energía eléctrica, suministro de agua y de gas natural por -0.03 -0.50 0.02 3.96 3.25 -6.08"
+    },
+    {
+      "id": "construccion",
+      "label": "Construcción",
+      "mom": 0.17,
+      "yoy": 5.71,
+      "prior_yoy": 3.42,
+      "values": [
+        0.61,
+        0.36,
+        0.17,
+        4.07,
+        3.42,
+        5.71
+      ],
+      "location": "p. 2, cuadro 1",
+      "evidence": "ductos al consumidor final Construcción 0.61 0.36 0.17 4.07 3.42 5.71"
+    },
+    {
+      "id": "manufacturas",
+      "label": "Manufacturas",
+      "mom": 0.7,
+      "yoy": 2.48,
+      "prior_yoy": 2.44,
+      "values": [
+        0.55,
+        -0.07,
+        0.7,
+        5.12,
+        2.44,
+        2.48
+      ],
+      "location": "p. 2, cuadro 1",
+      "evidence": "Industrias manufactureras 0.55 -0.07 0.70 5.12 2.44 2.48"
+    },
+    {
+      "id": "terciarias",
+      "label": "Terciarias",
+      "mom": 0.76,
+      "yoy": 4.52,
+      "prior_yoy": 4.22,
+      "values": [
+        0.72,
+        0.48,
+        0.76,
+        5.88,
+        4.22,
+        4.52
+      ],
+      "location": "p. 2, cuadro 1",
+      "evidence": "Actividades terciarias 0.72 0.48 0.76 5.88 4.22 4.52"
+    }
+  ],
+  "groups": [
+    [
+      {
+        "id": "total",
+        "label": "Total",
+        "mom": 1.37,
+        "yoy": 4.05,
+        "prior_yoy": 3.06,
+        "values": [
+          0.5,
+          0.23,
+          1.37,
+          5.13,
+          3.06,
+          4.05
+        ],
+        "location": "p. 2, cuadro 1",
+        "evidence": "Variación del Índice Nacional de Precios Productor producción total, incluido petróleo septiembre de los años que se indican (variación porcentual) Variación porcentual mensual Variación porcentual anual Actividad económica 2024 2025 2026 2024 2025 2026 Índice Nacional de Precios Productor 0.50 0.23 1.37 5.13 3.06 4.05"
+      },
+      {
+        "id": "primarias",
+        "label": "Primarias",
+        "mom": 4.45,
+        "yoy": 0.86,
+        "prior_yoy": 0.48,
+        "values": [
+          -1.09,
+          0.97,
+          4.45,
+          3.53,
+          0.48,
+          0.86
+        ],
+        "location": "p. 2, cuadro 1",
+        "evidence": "Actividades primarias -1.09 0.97 4.45 3.53 0.48 0.86"
+      },
+      {
+        "id": "secundarias",
+        "label": "Secundarias",
+        "mom": 1.5,
+        "yoy": 4.01,
+        "prior_yoy": 2.54,
+        "values": [
+          0.53,
+          0.05,
+          1.5,
+          4.89,
+          2.54,
+          4.01
+        ],
+        "location": "p. 2, cuadro 1",
+        "evidence": "Actividades secundarias 0.53 0.05 1.50 4.89 2.54 4.01"
+      },
+      {
+        "id": "mineria",
+        "label": "Minería",
+        "mom": 13.27,
+        "yoy": 23.84,
+        "prior_yoy": 1.58,
+        "values": [
+          0.45,
+          1.12,
+          13.27,
+          4.87,
+          1.58,
+          23.84
+        ],
+        "location": "p. 2, cuadro 1",
+        "evidence": "Minería 0.45 1.12 13.27 4.87 1.58 23.84"
+      },
+      {
+        "id": "energia",
+        "label": "Energía, agua y gas",
+        "mom": 0.02,
+        "yoy": -6.08,
+        "prior_yoy": 3.25,
+        "values": [
+          -0.03,
+          -0.5,
+          0.02,
+          3.96,
+          3.25,
+          -6.08
+        ],
+        "location": "p. 2, cuadro 1",
+        "evidence": "Generación, transmisión, distribución y comercialización de energía eléctrica, suministro de agua y de gas natural por -0.03 -0.50 0.02 3.96 3.25 -6.08"
+      },
+      {
+        "id": "construccion",
+        "label": "Construcción",
+        "mom": 0.17,
+        "yoy": 5.71,
+        "prior_yoy": 3.42,
+        "values": [
+          0.61,
+          0.36,
+          0.17,
+          4.07,
+          3.42,
+          5.71
+        ],
+        "location": "p. 2, cuadro 1",
+        "evidence": "ductos al consumidor final Construcción 0.61 0.36 0.17 4.07 3.42 5.71"
+      },
+      {
+        "id": "manufacturas",
+        "label": "Manufacturas",
+        "mom": 0.7,
+        "yoy": 2.48,
+        "prior_yoy": 2.44,
+        "values": [
+          0.55,
+          -0.07,
+          0.7,
+          5.12,
+          2.44,
+          2.48
+        ],
+        "location": "p. 2, cuadro 1",
+        "evidence": "Industrias manufactureras 0.55 -0.07 0.70 5.12 2.44 2.48"
+      },
+      {
+        "id": "terciarias",
+        "label": "Terciarias",
+        "mom": 0.76,
+        "yoy": 4.52,
+        "prior_yoy": 4.22,
+        "values": [
+          0.72,
+          0.48,
+          0.76,
+          5.88,
+          4.22,
+          4.52
+        ],
+        "location": "p. 2, cuadro 1",
+        "evidence": "Actividades terciarias 0.72 0.48 0.76 5.88 4.22 4.52"
+      }
+    ],
+    [
+      {
+        "id": "total",
+        "label": "Uso intermedio",
+        "mom": 1.94,
+        "yoy": 4.25,
+        "prior_yoy": 3.41,
+        "values": [
+          -0.13,
+          0.1,
+          1.94,
+          3.77,
+          3.41,
+          4.25
+        ],
+        "location": "p. 5, cuadro 4",
+        "evidence": "Variación del Índice Nacional de Precios Productor mercancías y servicios de uso intermedio, incluido petróleo septiembre de los años que se indican (variación porcentual) Variación porcentual mensual Variación porcentual anual Actividad económica 2024 2025 2026 2024 2025 2026 Mercancías y servicios de uso intermedio -0.13 0.10 1.94 3.77 3.41 4.25"
+      },
+      {
+        "id": "primarias",
+        "label": "Primarias",
+        "mom": 5.86,
+        "yoy": -1.88,
+        "prior_yoy": -0.33,
+        "values": [
+          -0.5,
+          1.43,
+          5.86,
+          2.2,
+          -0.33,
+          -1.88
+        ],
+        "location": "p. 5, cuadro 4",
+        "evidence": "Actividades primarias -0.50 1.43 5.86 2.20 -0.33 -1.88"
+      },
+      {
+        "id": "secundarias",
+        "label": "Secundarias",
+        "mom": 2.29,
+        "yoy": 5.2,
+        "prior_yoy": 3.77,
+        "values": [
+          -0.36,
+          -0.11,
+          2.29,
+          2.81,
+          3.77,
+          5.2
+        ],
+        "location": "p. 5, cuadro 4",
+        "evidence": "Actividades secundarias -0.36 -0.11 2.29 2.81 3.77 5.20"
+      },
+      {
+        "id": "mineria",
+        "label": "Minería",
+        "mom": 10.9,
+        "yoy": 22.33,
+        "prior_yoy": 6.02,
+        "values": [
+          1.5,
+          1.46,
+          10.9,
+          8.27,
+          6.02,
+          22.33
+        ],
+        "location": "p. 5, cuadro 4",
+        "evidence": "Minería 1.50 1.46 10.90 8.27 6.02 22.33"
+      },
+      {
+        "id": "energia",
+        "label": "Energía, agua y gas",
+        "mom": 0.04,
+        "yoy": -8.11,
+        "prior_yoy": 2.87,
+        "values": [
+          0.06,
+          -0.55,
+          0.04,
+          3.8,
+          2.87,
+          -8.11
+        ],
+        "location": "p. 5, cuadro 4",
+        "evidence": "Generación, transmisión, distribución y comercialización de energía eléctrica, suministro de agua y de gas natural por 0.06 -0.55 0.04 3.80 2.87 -8.11"
+      },
+      {
+        "id": "manufacturas",
+        "label": "Manufacturas",
+        "mom": 1.03,
+        "yoy": 4.29,
+        "prior_yoy": 3.44,
+        "values": [
+          -0.85,
+          -0.31,
+          1.03,
+          1.48,
+          3.44,
+          4.29
+        ],
+        "location": "p. 5, cuadro 4",
+        "evidence": "ductos al consumidor final Industrias manufactureras -0.85 -0.31 1.03 1.48 3.44 4.29"
+      },
+      {
+        "id": "terciarias",
+        "label": "Terciarias",
+        "mom": 0.24,
+        "yoy": 3.98,
+        "prior_yoy": 3.63,
+        "values": [
+          0.4,
+          0.16,
+          0.24,
+          6.0,
+          3.63,
+          3.98
+        ],
+        "location": "p. 5, cuadro 4",
+        "evidence": "Actividades terciarias 0.40 0.16 0.24 6.00 3.63 3.98"
+      }
+    ],
+    [
+      {
+        "id": "total",
+        "label": "Finales",
+        "mom": 1.14,
+        "yoy": 3.97,
+        "prior_yoy": 2.94,
+        "values": [
+          0.74,
+          0.28,
+          1.14,
+          5.66,
+          2.94,
+          3.97
+        ],
+        "location": "p. 6, cuadro 5",
+        "evidence": "Variación del Índice Nacional de Precios Productor mercancías y servicios finales, incluido petróleo clasificación según origen septiembre de los años que se indican (variación porcentual) Variación porcentual mensual Variación porcentual anual Actividad económica 2024 2025 2026 2024 2025 2026 Mercancías y servicios finales 0.74 0.28 1.14 5.66 2.94 3.97"
+      },
+      {
+        "id": "primarias",
+        "label": "Primarias",
+        "mom": 2.53,
+        "yoy": 4.96,
+        "prior_yoy": 2.0,
+        "values": [
+          -1.72,
+          0.3,
+          2.53,
+          5.01,
+          2.0,
+          4.96
+        ],
+        "location": "p. 6, cuadro 5",
+        "evidence": "Actividades primarias -1.72 0.30 2.53 5.01 2.00 4.96"
+      },
+      {
+        "id": "secundarias",
+        "label": "Secundarias",
+        "mom": 1.19,
+        "yoy": 3.54,
+        "prior_yoy": 2.13,
+        "values": [
+          0.84,
+          0.11,
+          1.19,
+          5.62,
+          2.13,
+          3.54
+        ],
+        "location": "p. 6, cuadro 5",
+        "evidence": "Actividades secundarias 0.84 0.11 1.19 5.62 2.13 3.54"
+      },
+      {
+        "id": "mineria",
+        "label": "Minería",
+        "mom": 16.12,
+        "yoy": 25.64,
+        "prior_yoy": -3.83,
+        "values": [
+          -0.79,
+          0.73,
+          16.12,
+          1.02,
+          -3.83,
+          25.64
+        ],
+        "location": "p. 6, cuadro 5",
+        "evidence": "Minería -0.79 0.73 16.12 1.02 -3.83 25.64"
+      },
+      {
+        "id": "energia",
+        "label": "Energía, agua y gas",
+        "mom": -0.05,
+        "yoy": 3.88,
+        "prior_yoy": 5.38,
+        "values": [
+          -0.5,
+          -0.28,
+          -0.05,
+          4.88,
+          5.38,
+          3.88
+        ],
+        "location": "p. 6, cuadro 5",
+        "evidence": "Generación, transmisión, distribución y comercialización de energía eléctrica, suministro de agua y de gas natural por -0.50 -0.28 -0.05 4.88 5.38 3.88"
+      },
+      {
+        "id": "construccion",
+        "label": "Construcción",
+        "mom": 0.17,
+        "yoy": 5.71,
+        "prior_yoy": 3.42,
+        "values": [
+          0.61,
+          0.36,
+          0.17,
+          4.07,
+          3.42,
+          5.71
+        ],
+        "location": "p. 6, cuadro 5",
+        "evidence": "ductos al consumidor final Construcción 0.61 0.36 0.17 4.07 3.42 5.71"
+      },
+      {
+        "id": "manufacturas",
+        "label": "Manufacturas",
+        "mom": 0.57,
+        "yoy": 1.78,
+        "prior_yoy": 2.12,
+        "values": [
+          1.02,
+          0.02,
+          0.57,
+          6.37,
+          2.12,
+          1.78
+        ],
+        "location": "p. 6, cuadro 5",
+        "evidence": "Industrias manufactureras 1.02 0.02 0.57 6.37 2.12 1.78"
+      },
+      {
+        "id": "terciarias",
+        "label": "Terciarias",
+        "mom": 0.94,
+        "yoy": 4.71,
+        "prior_yoy": 4.45,
+        "values": [
+          0.85,
+          0.6,
+          0.94,
+          5.83,
+          4.45,
+          4.71
+        ],
+        "location": "p. 6, cuadro 5",
+        "evidence": "Actividades terciarias 0.85 0.60 0.94 5.83 4.45 4.71"
+      }
+    ]
+  ],
+  "destinations": [
+    {
+      "id": "finales",
+      "label": "Finales",
+      "mom": 1.14,
+      "incidence": 1.137,
+      "yoy": 3.97,
+      "values": [
+        1.29,
+        0.87,
+        1.14,
+        1.137,
+        3.59,
+        4.62,
+        3.97
+      ],
+      "location": "p. 7, cuadro 6",
+      "evidence": "Variación e incidencia del Índice Nacional de Precios Productor mercancías y servicios finales, incluido petróleo clasificación según destino septiembre de 2026 (variación y puntos porcentuales) Variación porcentual mensual Incidencia Variación porcentual anual Destino de la producción mensual Mercancías Servicios Total total1/ Mercancías Servicios Total Mercancías y servicios finales 1.29 0.87 1.14 1.137 3.59 4.62 3.97"
+    },
+    {
+      "id": "interna",
+      "label": "Demanda interna",
+      "mom": 0.8,
+      "incidence": 0.593,
+      "yoy": 4.29,
+      "values": [
+        0.73,
+        0.88,
+        0.8,
+        0.593,
+        3.96,
+        4.63,
+        4.29
+      ],
+      "location": "p. 7, cuadro 6",
+      "evidence": "Demanda interna 0.73 0.88 0.80 0.593 3.96 4.63 4.29"
+    },
+    {
+      "id": "consumo",
+      "label": "Consumo",
+      "mom": 1.09,
+      "incidence": 0.586,
+      "yoy": 4.21,
+      "values": [
+        1.26,
+        0.97,
+        1.09,
+        0.586,
+        3.43,
+        4.75,
+        4.21
+      ],
+      "location": "p. 7, cuadro 6",
+      "evidence": "Consumo2/ 1.26 0.97 1.09 0.586 3.43 4.75 4.21"
+    },
+    {
+      "id": "capital",
+      "label": "Formación de capital",
+      "mom": 0.04,
+      "incidence": 0.007,
+      "yoy": 4.48,
+      "values": [
+        0.02,
+        0.08,
+        0.04,
+        0.007,
+        4.68,
+        3.6,
+        4.48
+      ],
+      "location": "p. 7, cuadro 6",
+      "evidence": "Formación de capital 0.02 0.08 0.04 0.007 4.68 3.60 4.48"
+    },
+    {
+      "id": "exportacion",
+      "label": "Exportaciones",
+      "mom": 2.07,
+      "incidence": 0.544,
+      "yoy": 3.12,
+      "values": [
+        2.16,
+        0.6,
+        2.07,
+        0.544,
+        3.04,
+        4.39,
+        3.12
+      ],
+      "location": "p. 7, cuadro 6",
+      "evidence": "Exportaciones 2.16 0.60 2.07 0.544 3.04 4.39 3.12"
+    }
+  ],
+  "generics": [
+    {
+      "id": "generico_0_0",
+      "label": "Petróleo crudo",
+      "mom": 34.04,
+      "incidence": 0.587,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_0_1",
+      "label": "Gasolina",
+      "mom": 7.54,
+      "incidence": 0.144,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_0_2",
+      "label": "Aves",
+      "mom": 27.99,
+      "incidence": 0.1,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_0_3",
+      "label": "Transporte aéreo de pasajeros",
+      "mom": 8.57,
+      "incidence": 0.064,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_0_4",
+      "label": "Primaria",
+      "mom": 6.0,
+      "incidence": 0.054,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_0_5",
+      "label": "Carne de ave en canal",
+      "mom": 6.92,
+      "incidence": 0.048,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_0_6",
+      "label": "Jitomate (incluye jitomate de invernadero)",
+      "mom": 32.03,
+      "incidence": 0.042,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_0_7",
+      "label": "Diésel",
+      "mom": 11.52,
+      "incidence": 0.031,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_0_8",
+      "label": "Secundaria",
+      "mom": 5.44,
+      "incidence": 0.028,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_0_9",
+      "label": "Maíz",
+      "mom": 6.73,
+      "incidence": 0.024,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_0_10",
+      "label": "Gas natural",
+      "mom": 3.72,
+      "incidence": 0.021,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_0_11",
+      "label": "Preprimaria",
+      "mom": 5.95,
+      "incidence": 0.02,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_0_12",
+      "label": "Combustóleo",
+      "mom": 6.32,
+      "incidence": 0.02,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_0_13",
+      "label": "Vivienda propia y rentada",
+      "mom": 0.33,
+      "incidence": 0.019,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_0_14",
+      "label": "Universidad",
+      "mom": 1.5,
+      "incidence": 0.016,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_1_0",
+      "label": "Aguacate",
+      "mom": -12.92,
+      "incidence": -0.026,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_1_1",
+      "label": "Oro",
+      "mom": -1.84,
+      "incidence": -0.021,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_1_2",
+      "label": "Papa",
+      "mom": -17.18,
+      "incidence": -0.012,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_1_3",
+      "label": "Plata",
+      "mom": -0.88,
+      "incidence": -0.008,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_1_4",
+      "label": "Autobús foráneo",
+      "mom": -0.77,
+      "incidence": -0.006,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_1_5",
+      "label": "Lámina de acero",
+      "mom": -1.27,
+      "incidence": -0.005,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_1_6",
+      "label": "Hoteles",
+      "mom": -0.37,
+      "incidence": -0.005,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_1_7",
+      "label": "Polietileno",
+      "mom": -6.33,
+      "incidence": -0.004,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_1_8",
+      "label": "Manzana",
+      "mom": -12.6,
+      "incidence": -0.004,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_1_9",
+      "label": "Pepino",
+      "mom": -11.8,
+      "incidence": -0.004,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_1_10",
+      "label": "Notarios",
+      "mom": -10.51,
+      "incidence": -0.004,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_1_11",
+      "label": "Frigoríficos industriales",
+      "mom": -1.21,
+      "incidence": -0.003,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_1_12",
+      "label": "Cine",
+      "mom": -3.39,
+      "incidence": -0.003,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_1_13",
+      "label": "Copra",
+      "mom": -12.02,
+      "incidence": -0.003,
+      "location": "p. 5, cuadro 3"
+    },
+    {
+      "id": "generico_1_14",
+      "label": "Café",
+      "mom": -7.01,
+      "incidence": -0.003,
+      "location": "p. 5, cuadro 3"
+    }
+  ],
+  "pages": [
+    "BOLETÍN DE INDICADOR 620/26\nÍNDICE NACIONAL DE PRECIOS\nPRODUCTOR (INPP)\n8 de octubre de 2026\nPágina 1/8\nPróxima publicación: 9 de noviembre de 2026\nINPP total INPP de uso intermedio INPP finales\nseptiembre septiembre septiembre\nvariación variación variación\nmensual anual mensual anual mensual anual\n▲ 1.37 % ▲ 4.05 % ▲ 1.94 % ▲ 4.25 % ▲ 1.14 % ▲ 3.97 %\nAumentó 4.05 % el INPP total en septiembre de 2026, a tasa anual\nEl Índice Nacional de Precios Productor (INPP) mide la evolución de los precios de una canasta\nfija de bienes y servicios. La anterior es representativa de la producción nacional para el\nconsumo interno y para la exportación.\nEn septiembre de 2026, el INPP total, incluido petróleo, creció 1.37 % a tasa mensual y 4.05 %\na tasa anual. En el mismo mes de 2025, incrementó 0.23 % a tasa mensual y 3.06 %\na tasa anual.\nEl Índice de Mercancías y Servicios de Uso Intermedio, incluido petróleo, ascendió 1.94 %\na tasa mensual y 4.25 % a tasa anual. En el noveno mes de 2025, subió 0.10 y 3.41 %,\nrespectivamente.\nEl Índice de Mercancías y Servicios Finales, incluido petróleo, tuvo un alza de 1.14 % mensual\ny de 3.97 % anual. En septiembre de 2025, aumentó 0.28 % a tasa mensual y 2.94 % a\ntasa anual (ver gráfica 1).\nGráfica 1\nVariación del Índice Nacional de Precios Productor\nmercancías y servicios de uso intermedio, finales y producción total, incluido petróleo\nclasificación según origen\nseptiembre de 2017–septiembre de 2026\n(variación porcentual anual)\n15.00\n10.00\n4.25\n5.00\n4.05\n3.97\n0.00\n-5.00\nSEP SEP SEP SEP SEP SEP SEP SEP SEP SEP\n2017 2018 2019 2020 2021 2022 2023 2024 2025 2026\nProducción total Bienes intermedios Bienes finales\nFuente: INEGI. Índice Nacional de Precios Productor (INPP), 2026.",
+    "BOLETÍN DE INDICADOR 620/26\nÍNDICE NACIONAL DE PRECIOS\nPRODUCTOR (INPP)\n8 de octubre de 2026\nPágina 2/8\nCuadro 1\nVariación del Índice Nacional de Precios Productor\nproducción total, incluido petróleo\nseptiembre de los años que se indican\n(variación porcentual)\nVariación porcentual mensual Variación porcentual anual\nActividad económica\n2024 2025 2026 2024 2025 2026\nÍndice Nacional de Precios Productor 0.50 0.23 1.37 5.13 3.06 4.05\nActividades primarias -1.09 0.97 4.45 3.53 0.48 0.86\nActividades secundarias 0.53 0.05 1.50 4.89 2.54 4.01\nMinería 0.45 1.12 13.27 4.87 1.58 23.84\nGeneración, transmisión, distribución y comercialización de\nenergía eléctrica, suministro de agua y de gas natural por -0.03 -0.50 0.02 3.96 3.25 -6.08\nductos al consumidor final\nConstrucción 0.61 0.36 0.17 4.07 3.42 5.71\nIndustrias manufactureras 0.55 -0.07 0.70 5.12 2.44 2.48\nActividades terciarias 0.72 0.48 0.76 5.88 4.22 4.52\nFuente: INEGI. Índice Nacional de Precios Productor (INPP), 2026.\nINPP total según grupos de actividades\nEn septiembre de 2026, los precios de las actividades primarias crecieron 4.45 % a tasa\nmensual. El producto genérico con la contribución más significativa en el índice total de dichas\nactividades fue aves, con un incremento mensual de 27.99 por ciento.\nLos precios de las actividades secundarias, incluido petróleo, subieron 1.50 % a tasa mensual.\nLo anterior resultó de alzas en los precios del sector Minería (13.27 %); Generación,\ntransmisión, distribución y comercialización de energía eléctrica, suministro de agua y de gas\nnatural por ductos al consumidor final (0.02 %); Construcción (0.17 %); e Industrias\nmanufactureras (0.70 %).\nLos subsectores de Industrias manufactureras con el mayor ascenso mensual en sus precios\nfueron Fabricación de productos derivados del petróleo y del carbón, con 7.37 % e Industria\nalimentaria, con 0.85 por ciento.\nDurante septiembre de 2026, los precios de las actividades terciarias aumentaron 0.76 %\na tasa mensual. El sector Servicios educativos presentó el mayor crecimiento en sus precios,\ncon 3.92 % (ver cuadro 2).",
+    "BOLETÍN DE INDICADOR 620/26\nÍNDICE NACIONAL DE PRECIOS\nPRODUCTOR (INPP)\n8 de octubre de 2026\nPágina 3/8\nCuadro 2\nVariación e incidencia del Índice Nacional de Precios Productor\nmercancías y servicios de uso intermedio, finales y producción total, incluido petróleo\nclasificación según origen\nseptiembre de 2026\n(variación y puntos porcentuales)\nVariación porcentual Variación porcentual\nIncidencia mensual1/\nmensual anual\nActividad económica\nInter- Inter- Inter-\nFinales Total Finales Total Finales Total\nmedios medios medios\nÍndice Nacional de Precios Productor 1.94 1.14 1.37 4.25 3.97 4.05 1.935 1.137 1.367\nActividades primarias 5.86 2.53 4.45 -1.88 4.96 0.86 0.442 0.057 0.168\nAgricultura, cría y explotación de animales, aprovechamiento\n5.86 2.53 4.45 -1.88 4.96 0.86 0.442 0.057 0.168\nforestal, pesca y caza\nActividades secundarias 2.29 1.19 1.50 5.20 3.54 4.01 1.420 0.756 0.947\nMinería 10.90 16.12 13.27 22.33 25.64 23.84 0.931 0.463 0.597\nGeneración, transmisión, distribución y comercialización de energía\neléctrica, suministro de agua y de gas natural por ductos al 0.04 -0.05 0.02 -8.11 3.88 -6.08 0.002 0.000 0.000\nconsumidor final\nConstrucción2/ --- 0.17 0.17 --- 5.71 5.71 --- 0.021 0.015\nIndustrias manufactureras 1.03 0.57 0.70 4.29 1.78 2.48 0.487 0.273 0.334\nIndustria alimentaria 0.49 0.93 0.85 1.22 2.54 2.28 0.029 0.088 0.071\nIndustria de las bebidas y del tabaco 0.09 0.06 0.07 5.17 4.73 4.79 0.001 0.001 0.001\nFabricación de insumos textiles y acabado de textiles 0.01 0.03 0.01 0.59 1.26 0.83 0.000 0.000 0.000\nFabricación de productos textiles, excepto prendas de vestir 0.05 0.11 0.08 2.52 1.80 2.12 0.000 0.000 0.000\nFabricación de prendas de vestir 0.42 0.25 0.29 4.42 2.59 3.02 0.001 0.001 0.001\nCurtido y acabado de cuero y piel, y fabricación de productos de\n0.00 -0.06 -0.05 1.86 3.40 2.95 0.000 0.000 0.000\ncuero, piel y materiales sucedáneos\nIndustria de la madera 0.19 0.35 0.20 3.25 4.44 3.32 0.001 0.000 0.000\nIndustria del papel 0.08 0.06 0.07 1.86 3.23 2.33 0.002 0.000 0.001\nImpresión e industrias conexas 0.13 0.13 0.13 4.38 4.38 4.38 0.000 0.000 0.000\nFabricación de productos derivados del petróleo y del carbón 7.20 7.55 7.37 17.87 17.26 17.57 0.385 0.150 0.217\nIndustria química 0.37 0.41 0.39 1.43 2.99 2.10 0.021 0.007 0.011\nIndustria del plástico y del hule 0.16 -0.01 0.09 2.05 2.81 2.39 0.005 0.000 0.001\nFabricación de productos a base de minerales no metálicos -0.04 0.05 -0.02 4.74 6.30 5.06 -0.001 0.000 0.000\nIndustrias metálicas básicas 0.21 -0.88 -0.36 10.36 16.97 13.72 0.012 -0.022 -0.012\nFabricación de productos metálicos 0.10 0.09 0.10 3.50 2.21 2.69 0.002 0.001 0.001\nFabricación de maquinaria y equipo 0.05 0.05 0.05 0.69 0.61 0.61 0.000 0.002 0.001\nFabricación de equipo de computación, comunicación, medición y\n0.03 0.22 0.20 0.21 -4.06 -3.50 0.001 0.014 0.010\nde otros equipos, componentes y accesorios electrónicos\nFabricación de accesorios, aparatos eléctricos y equipo de\n0.65 0.32 0.37 2.67 2.00 2.10 0.009 0.010 0.010\ngeneración de energía eléctrica\nFabricación de equipo de transporte 0.27 0.13 0.15 -1.77 -1.39 -1.45 0.015 0.017 0.016\nFabricación de muebles, colchones y persianas 0.25 0.36 0.35 3.69 3.70 3.70 0.000 0.002 0.001\nOtras industrias manufactureras 0.31 0.24 0.26 4.06 2.00 2.72 0.004 0.002 0.003\nActividades terciarias 0.24 0.94 0.76 3.98 4.71 4.52 0.074 0.324 0.252\nTransportes, correos y almacenamiento 0.31 0.94 0.81 3.79 6.40 5.86 0.019 0.092 0.071\nInformación en medios masivos 0.16 0.02 0.06 1.91 1.83 1.85 0.003 0.000 0.001\nServicios inmobiliarios y de alquiler de bienes muebles e intangibles 0.02 0.34 0.28 2.31 3.28 3.10 0.001 0.028 0.020\nServicios profesionales, científicos y técnicos 0.05 -0.28 -0.02 3.90 3.60 3.84 0.002 -0.002 0.000\nServicios de apoyo a los negocios y manejo de residuos, y servicios\n0.38 1.35 0.43 5.07 4.72 5.06 0.030 0.002 0.010\nde remediación\nServicios educativos 1.41 3.99 3.92 5.00 6.11 6.08 0.005 0.183 0.132\nServicios de salud y de asistencia social 0.28 0.09 0.13 5.24 4.79 4.88 0.006 0.003 0.004\nServicios de esparcimiento culturales y deportivos, y otros servicios\n3.94 2.76 2.78 12.64 8.86 8.90 0.000 0.008 0.006\nrecreativos\nServicios de alojamiento temporal y de preparación de alimentos y\n0.25 0.12 0.13 4.10 2.82 2.92 0.002 0.005 0.004\nbebidas\nOtros servicios excepto actividades gubernamentales 0.41 0.28 0.32 5.12 5.60 5.44 0.006 0.003 0.004\n1/ La incidencia se refiere a la contribución, en puntos porcentuales, de cada componente del INPP en la variación porcentual del índice general.\nEsta se calcula utilizando los ponderadores de cada subíndice, así como los precios relativos y sus respectivas variaciones. En ciertos casos, la suma\nde los componentes de algún grupo de subíndices puede presentar discrepancias por efectos del redondeo.\n2/ Esta actividad no registra información, pues no genera bienes de uso intermedio.\nFuente: INEGI. Índice Nacional de Precios Productor (INPP), 2026.",
+    "BOLETÍN DE INDICADOR 620/26\nÍNDICE NACIONAL DE PRECIOS\nPRODUCTOR (INPP)\n8 de octubre de 2026\nPágina 4/8\nA tasa anual, en septiembre de 2026, los precios de las actividades primarias incrementaron\n0.86 %; los de las secundarias, 4.01 %; y los de las terciarias, 4.52 % (ver gráfica 2).\nGráfica 2\nVariación del Índice Nacional de Precios Productor\nproducción total, actividades primarias, secundarias y terciarias, incluido petróleo\nseptiembre de los años que se indican\n(variación porcentual anual)\n5.88\n5.13\n4.89\n4.52\n4.22 4.05 4.01\n3.53\n3.06\n2.54\n0.86\n0.48\n2024 2025 2026\nProducción total Actividades primarias Actividades secundarias Actividades terciarias\nFuente: INEGI. Índice Nacional de Precios Productor (INPP), 2026.\nGenéricos que más influyeron en el resultado del INPP\nEl siguiente cuadro presenta las variaciones en los precios de los productos genéricos que,\npor su contribución, destacaron en el comportamiento mensual del INPP total, incluido petróleo,\ndurante el noveno mes de 2026.",
+    "BOLETÍN DE INDICADOR 620/26\nÍNDICE NACIONAL DE PRECIOS\nPRODUCTOR (INPP)\n8 de octubre de 2026\nPágina 5/8\nCuadro 3\nVariación e incidencia del Índice Nacional de Precios Productor, incluido petróleo\ngenéricos con mayor incidencia\nseptiembre de 2026\n(variación y puntos porcentuales)\nVariación % Incidencia Variación % Incidencia\nProductos con precios al alza Productos con precios a la baja\nmensual mensual1/ mensual mensual1/\nPetróleo crudo 34.04 0.587 Aguacate -12.92 -0.026\nGasolina 7.54 0.144 Oro -1.84 -0.021\nAves 27.99 0.100 Papa -17.18 -0.012\nTransporte aéreo de pasajeros 8.57 0.064 Plata -0.88 -0.008\nPrimaria 6.00 0.054 Autobús foráneo -0.77 -0.006\nCarne de ave en canal 6.92 0.048 Lámina de acero -1.27 -0.005\nJitomate (incluye jitomate de\n32.03 0.042 Hoteles -0.37 -0.005\ninvernadero)\nDiésel 11.52 0.031 Polietileno -6.33 -0.004\nSecundaria 5.44 0.028 Manzana -12.60 -0.004\nMaíz 6.73 0.024 Pepino -11.80 -0.004\nGas natural 3.72 0.021 Notarios -10.51 -0.004\nPreprimaria 5.95 0.020 Frigoríficos industriales -1.21 -0.003\nCombustóleo 6.32 0.020 Cine -3.39 -0.003\nVivienda propia y rentada 0.33 0.019 Copra -12.02 -0.003\nUniversidad 1.50 0.016 Café -7.01 -0.003\n1/ La incidencia se refiere a la contribución, en puntos porcentuales, de cada componente del INPP en la variación porcentual del índice\ngeneral. Esta se calcula utilizando los ponderadores de cada subíndice, así como los precios relativos y sus respectivas variaciones.\nFuente: INEGI. Índice Nacional de Precios Productor (INPP), 2026.\nÍndice de mercancías y servicios de uso intermedio\nEn septiembre de 2026, según los grandes grupos de actividades económicas, los precios de\nlas primarias ascendieron 5.86 % a tasa mensual y disminuyeron 1.88 % a tasa anual. Los de\nlas secundarias subieron 2.29 % a tasa mensual y 5.20 % a tasa anual. Los precios de las\nactividades terciarias aumentaron 0.24 % a tasa mensual y 3.98 % a tasa anual (ver cuadro 4).\nCuadro 4\nVariación del Índice Nacional de Precios Productor\nmercancías y servicios de uso intermedio, incluido petróleo\nseptiembre de los años que se indican\n(variación porcentual)\nVariación porcentual mensual Variación porcentual anual\nActividad económica\n2024 2025 2026 2024 2025 2026\nMercancías y servicios de uso intermedio -0.13 0.10 1.94 3.77 3.41 4.25\nActividades primarias -0.50 1.43 5.86 2.20 -0.33 -1.88\nActividades secundarias -0.36 -0.11 2.29 2.81 3.77 5.20\nMinería 1.50 1.46 10.90 8.27 6.02 22.33\nGeneración, transmisión, distribución y comercialización de\nenergía eléctrica, suministro de agua y de gas natural por 0.06 -0.55 0.04 3.80 2.87 -8.11\nductos al consumidor final\nIndustrias manufactureras -0.85 -0.31 1.03 1.48 3.44 4.29\nActividades terciarias 0.40 0.16 0.24 6.00 3.63 3.98\nFuente: INEGI. Índice Nacional de Precios Productor (INPP), 2026.",
+    "BOLETÍN DE INDICADOR 620/26\nÍNDICE NACIONAL DE PRECIOS\nPRODUCTOR (INPP)\n8 de octubre de 2026\nPágina 6/8\nÍndice de mercancías y servicios finales\nSegún origen de la producción\nA partir de los grandes grupos de actividades económicas, los precios de las primarias\ncrecieron 2.53 %; los de las secundarias, 1.19 %; y los de las terciarias, 0.94 %, a tasa mensual.\nEn su comparación anual, los de las actividades primarias incrementaron 4.96 %; los de\nlas secundarias, 3.54 %; y los de las terciarias, 4.71 % (ver cuadro 5).\nCuadro 5\nVariación del Índice Nacional de Precios Productor\nmercancías y servicios finales, incluido petróleo\nclasificación según origen\nseptiembre de los años que se indican\n(variación porcentual)\nVariación porcentual mensual Variación porcentual anual\nActividad económica\n2024 2025 2026 2024 2025 2026\nMercancías y servicios finales 0.74 0.28 1.14 5.66 2.94 3.97\nActividades primarias -1.72 0.30 2.53 5.01 2.00 4.96\nActividades secundarias 0.84 0.11 1.19 5.62 2.13 3.54\nMinería -0.79 0.73 16.12 1.02 -3.83 25.64\nGeneración, transmisión, distribución y comercialización de\nenergía eléctrica, suministro de agua y de gas natural por -0.50 -0.28 -0.05 4.88 5.38 3.88\nductos al consumidor final\nConstrucción 0.61 0.36 0.17 4.07 3.42 5.71\nIndustrias manufactureras 1.02 0.02 0.57 6.37 2.12 1.78\nActividades terciarias 0.85 0.60 0.94 5.83 4.45 4.71\nFuente: INEGI. Índice Nacional de Precios Productor (INPP), 2026.",
+    "BOLETÍN DE INDICADOR 620/26\nÍNDICE NACIONAL DE PRECIOS\nPRODUCTOR (INPP)\n8 de octubre de 2026\nPágina 7/8\nSegún destino de la producción\nEn septiembre pasado, los precios de los bienes finales de demanda interna ascendieron\n0.80 % a tasa mensual y 4.29 % a tasa anual. A su interior, los precios de los bienes de\nconsumo subieron 1.09 % a tasa mensual y 4.21 % a tasa anual. Los que se destinaron a la\nformación de capital aumentaron 0.04 % a tasa mensual y 4.48 % a tasa anual. Por su parte,\nlos precios de los bienes para exportación registraron un alza de 2.07 % a tasa mensual y de\n3.12 % a tasa anual (ver cuadro 6).\nCuadro 6\nVariación e incidencia del Índice Nacional de Precios Productor\nmercancías y servicios finales, incluido petróleo\nclasificación según destino\nseptiembre de 2026\n(variación y puntos porcentuales)\nVariación porcentual mensual Incidencia Variación porcentual anual\nDestino de la producción mensual\nMercancías Servicios Total total1/ Mercancías Servicios Total\nMercancías y servicios finales 1.29 0.87 1.14 1.137 3.59 4.62 3.97\nDemanda interna 0.73 0.88 0.80 0.593 3.96 4.63 4.29\nConsumo2/ 1.26 0.97 1.09 0.586 3.43 4.75 4.21\nFormación de capital 0.02 0.08 0.04 0.007 4.68 3.60 4.48\nExportaciones 2.16 0.60 2.07 0.544 3.04 4.39 3.12\n1/ La incidencia se refiere a la contribución, en puntos porcentuales, de cada componente del INPP en la variación porcentual del\níndice general. Esta se calcula utilizando los ponderadores de cada subíndice, así como los precios relativos y sus respectivas\nvariaciones. En ciertos casos, la suma de los componentes de algún grupo de subíndices puede presentar discrepancias por\nefectos del redondeo.\n2/ Consumo privado más consumo de gobierno individualizado, es decir, gastos incurridos en beneficio de los hogares (atención de\nla salud, vivienda, educación, entre otros).\nFuente: INEGI. Índice Nacional de Precios Productor (INPP), 2026.",
+    "BOLETÍN DE INDICADOR 620/26\nÍNDICE NACIONAL DE PRECIOS\nPRODUCTOR (INPP)\n8 de octubre de 2026\nPágina 8/8\nI. FICHA METODOLÓGICA\nEl Índice Nacional de Precios Productor (INPP) es un indicador económico que mide la evolución de los precios de una canasta\nfija de bienes y servicios representativa de la producción nacional.\nAntecedentes El INPP integra un conjunto de índices que permiten medir la variación de los precios en bienes y servicios, por origen sectorial de\nla producción, y de acuerdo con su destino, en cuanto a bienes intermedios y finales. Estos últimos para el consumo, la formación\nde capital y las exportaciones.\nPeriodo base de comparación Julio de 2019=100\nLa canasta del INPP 2025 está integrada por 570 bienes y servicios genéricos: 64 correspondientes al sector primario; 399, al\nsecundario, y 107, al terciario, de acuerdo con las participaciones de los bienes y servicios en los valores de la producción nacional\nde los sectores económicos que considera el índice. Para que un producto genérico (bien o servicio) se integre a la canasta, su\nparticipación debe ser igual o mayor a 0.005 por ciento. En la nueva canasta del INPP 2025, 21 genéricos del INPP 2019 se fusionaron\nen 18 (por ejemplo: Pantalón para mujer y Faldas; Peaje de autobuses y Peaje de camiones; Libros de texto y Libros electrónicos,\netc.) debido a que disminuyeron sus valores de producción, por lo que no alcanzaron el nivel de participación mínima necesaria\nCanasta de bienes y servicios\nde 0.005 por ciento. Adicionalmente, 10 genéricos que ya se cotizaban como parte de otro genérico, se desagregaron para crear\ngenéricos independientes con ponderación propia (Etiquetas y autoadhesivos, Yeso, Telas no tejidas, etc.) debido al incremento\nen sus valores de producción; y se crearon 12 genéricos nuevos (Alarmas, Fibra de vidrio, Anuncios, etc.) debido a los incrementos\nen sus participaciones en la producción nacional (no cuentan con series históricas).\nPara más información de los cambios en la canasta, favor de consultar el documento metodológico del INPP 2025 en:\nhttps://www.inegi.org.mx/programas/inpp/2019a/\nSe determinó a partir de los valores de producción de los Censos Económicos (CE) 2019, la Matriz de Insumo-Producto (MIP)\n2018, y los Cuadros de Oferta y Utilización (COU) 2023 del Sistema de Cuentas Nacionales de México (SCNM). También se incluyó\ninformación de registros administrativos proporcionados por Petróleos Mexicanos (PEMEX), la Comisión Federal de Electricidad\nEstructura de ponderación (CFE), el Servicio de Información Agroalimentaria y Pesquera (SIAP) 2023, además de la Balanza Comercial de Mercancías de\nMéxico (BCMM) 2023, la Encuesta Mensual de la Industria Manufacturera (EMIM) 2023, entre otros. Con la actualización de las\nponderaciones se garantiza mantener la representatividad de la canasta y se evitan los eventuales sesgos por antigüedad del\níndice, conforme a las recomendaciones internacionales de buenas prácticas.\nTiene cobertura para 15 de 20 sectores de actividad económica del Sistema de Clasificación Industrial de América del Norte\nCobertura sectorial (SCIAN) 2018, 170 ramas, 278 subramas y 358 clases de actividad económica. Esto representa alrededor de 78.8 % del valor de\nla producción nacional registrada en los COU 2023.\nDe los 570 genéricos de la canasta del INPP 2025, 440 se cotizan de manera directa en las unidades económicas donde se\nproducen; 42 genéricos agropecuarios y pesqueros, que anteriormente se cotizaban a través del Sistema Nacional de Información\ne Integración de Mercados (SNIIM), se cotizan ahora en centros de distribución al mayoreo (centrales de abasto, rastros y centros\nde distribución pesqueros); para 39 genéricos que son ofertados por pequeños productores (panaderías, tortillerías, salones de\nDiseño estadístico para la belleza, etc.) se captan los precios de las fuentes de información del Índice Nacional de Precios al Consumidor (INPC); siete\nselección de unidades genéricos se obtienen del Índice de Costo de la Construcción (ICC), mientras que para los 42 genéricos restantes, los precios se\neconómicas a cotizar obtienen de registros administrativos de PEMEX, CFE, asociaciones de productores, entre otros. En el caso de los 440 genéricos\nde cotización directa en campo, se hace un muestreo probabilístico para seleccionar los establecimientos de 78 genéricos, y un\nmuestreo estadístico de corte, para la selección de las unidades económicas de los 362 genéricos restantes. Los precios de los\ngenéricos agropecuarios y pesqueros se obtienen de una muestra probabilística para 37 genéricos y no probabilística para cinco\ngenéricos.\nSe construye en tres etapas. La primera considera el cálculo de los índices elementales o índices de genéricos, los cuales están\nintegrados por bienes o servicios relativamente homogéneos denominados productos específicos. Los índices de los genéricos\nconstituyen los agregados de menor nivel para los que se dispone de ponderadores. En la segunda etapa, los índices de los\nproductos genéricos se promedian de forma ponderada, mediante el índice de Laspeyres, para construir los índices agregados\nCálculo del INPP d loe s n pi ove nl d s eu rap de ori ro er s. E an c te ul a c liá zalc du olo s d pe ol r IN uP nP f, a d ce to a r g do es t eo n d cae d 2 e0 n2 a5 m, s iee n a tog r pe ag ró a u en na la t ze ar rc loe r aa l e INta Pp Pa a q nu tee r ic oo r n (asi cs tt uió a le izn a m dou l eti np l aic ga or s e tol í n dd ei c 2e 0 1c 9o )n ,\na fin de dar continuidad a la serie. El INPP se empalmó, en julio de 2025, con la serie del INPP anterior, sin modificar el periodo de\nreferencia del indicador (julio de 2019=100), con lo cual los dos índices formaron un índice en cadena. Esta actualización atiende\na las buenas prácticas internacionales y a los lineamientos institucionales, y facilitará futuras actualizaciones de la canasta y los\nponderadores.\nEl cálculo y divulgación del INPP es mensual. Se publica en el portal de internet del INEGI, en la misma fecha que el INPC, según el\nCalendario de Difusión de Información Estadística y Geográfica y de Interés Nacional.\nYa que algunas fuentes de información pueden actualizar sus cifras después de haberse publicado el índice, los resultados del\nPublicación de resultados\nINPP son preliminares y susceptibles de actualización hasta cinco meses después de su publicación (por ejemplo, el petróleo).\nAsimismo, se publican por el lado de la oferta (por origen o por quién los produce) y por el lado de la demanda (por destino o por\nquién los consume), tanto para bienes finales como para bienes intermedios.\nNota al público usuario\nPara más detalle del diseño conceptual y metodológico del INPP, consúltese el portal del INEGI:\nhttps://www.inegi.org.mx/programas/inpp/2019a/\nLos índices nacionales de precios están certificados en el estándar internacional ISO 9001:2015/NMX-CC-\n9001-IMNC-2015 por MB Certification México, S. C., con número de certificado MBC/01484/SGC y vigencia\na diciembre de 2026. Mediante el Sistema de Gestión de la Calidad ISO 9001, la elaboración del INPP se\nCertificación ISO 9001:2015 enmarca en un modelo de mejora continua mediante la estandarización, documentación y administración\nde riesgos de sus procesos.\nLa información estadística y geográfica que genera el INEGI es un bien público y nos permite\na todas y a todos tomar mejores decisiones. ¡Conócela, úsala y compártela!"
+  ],
+  "source_sha256": "2f4df1eee4583c1d8c62eb2419dd81b8d46c1f31a2266c24c67dcf4afb38c4d7",
+  "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf"
+}

@@ -1,0 +1,712 @@
+BOLETÍN DE INDICADOR 634/26
+ENCUESTA NACIONAL DE
+OCUPACIÓN Y EMPLEO (ENOE)
+INDICADORES DE OCUPACIÓN Y EMPLEO
+22 de octubre de 2026
+Página 1/15
+Próxima publicación: 26 de noviembre de 2026
+Población Tasa de Tasa de
+Tasa de Tasa de
+económicamente participación informalidad
+desocupación subocupación
+activa económica laboral
+septiembre septiembre septiembre septiembre septiembre
+61.7 millones 58.5 % 2.8 % 6.7 % 54.3 %
+Sumó 61.7 millones de personas la población económicamente activa
+en septiembre de 2026: 359 mil personas menos que en septiembre de 2025
+La Encuesta Nacional de Ocupación y Empleo (ENOE) muestra el comportamiento del mercado
+laboral mexicano. Esta ofrece datos mensuales de la población económicamente activa (PEA),
+la ocupación, la informalidad laboral, la subocupación y la desocupación.1
+En septiembre de 2026, la tasa de participación económica (porcentaje de la población con
+trabajo, o que no tuvo, pero estaba en la búsqueda activa de uno) se ubicó en 58.5 por ciento.
+Para septiembre de 2025, fue de 59.6 por ciento.
+La tasa de desocupación se situó en 2.8 por ciento. En el mismo mes de 2025, fue de
+3.0 por ciento.
+La tasa de subocupación (porcentaje de población ocupada que buscó ofertar una mayor
+cantidad de tiempo de trabajo en su ocupación actual o en un empleo adicional) se estableció
+en 6.7 por ciento. En el noveno mes de 2025, fue de 7.3 por ciento.
+La tasa de condiciones críticas de ocupación —a partir de salarios mínimos equivalentes,
+base enero de 2026— fue de 37.5 por ciento. En septiembre de 2025, fue de 37.3 por ciento.
+Por su parte, la tasa de informalidad laboral se ubicó en 54.3 por ciento. En igual mes de 2025,
+fue de 54.9 % (ver gráfica 1).
+1 Las sumas de los componentes pueden no coincidir con los totales debido al redondeo de las cifras.
+
+BOLETÍN DE INDICADOR 634/26
+ENCUESTA NACIONAL DE
+OCUPACIÓN Y EMPLEO (ENOE)
+INDICADORES DE OCUPACIÓN Y EMPLEO
+22 de octubre de 2026
+Página 2/15
+Gráfica 1
+Indicadores de ocupación y desocupación, según sexo
+septiembre de 2025 y 2026
+(millones de personas y porcentaje)
+Población ocupada Tasa de ocupación
+(millones de personas) (porcentaje)1/
+60.2 60.0 97.0 96.9 97.1 97.2 97.3 97.1
+35.9 35.0
+24.4 25.0
+SEP-25 SEP-26 SEP-25 SEP-26
+Población desocupada Tasa de desocupación
+(millones de personas) (porcentaje)1/
+1.8 3.1
+1.8 3.0 2.9 2.8 2.9
+2.7
+1.1 1.1
+0.8
+0.7
+SEP-25 SEP-26 SEP-25 SEP-26
+Población subocupada Tasa de subocupación
+(millones de personas) (porcentaje)2/
+4.4 7.3 7.5
+4.0 7.0 6.7 6.9
+6.4
+2.7
+2.4
+1.7 1.6
+SEP-25 SEP-26 SEP-25 SEP-26
+(continúa)
+
+BOLETÍN DE INDICADOR 634/26
+ENCUESTA NACIONAL DE
+OCUPACIÓN Y EMPLEO (ENOE)
+INDICADORES DE OCUPACIÓN Y EMPLEO
+22 de octubre de 2026
+Página 3/15
+Tasa de condiciones críticas de ocupación3/ Tasa de informalidad laboral
+(porcentaje)2/ (porcentaje)2/
+55.3 55.3
+39.6 39.7 54.9
+37.3 37.5 54.6
+54.3
+34.0 34.4
+53.6
+SEP-25 SEP-26 SEP-25 SEP-26
+Total Mujeres Hombres
+(concluye)
+1/ Respecto a la población económicamente activa.
+2/ Respecto a la población ocupada.
+3/ A partir de salarios mínimos equivalentes, base enero de 2026.
+Fuente:INEGI. Encuesta Nacional de Ocupación y Empleo (ENOE), 2026.
+I. INDICADORES SELECCIONADOS
+Composición de la población de 15 años y más
+En septiembre de 2026, la PEA fue de 61.7 millones de personas de 15 años y más2 (lo que
+representó una tasa de participación de 58.5 %). Dicha cantidad significó una caída de
+359 mil personas en relación con septiembre de 2025. Según sexo, la tasa de participación
+económica de las mujeres fue de 45.7 % y la de hombres, de 73.0 por ciento. Respecto a
+septiembre de 2025, la participación de mujeres incrementó 0.1 puntos porcentuales y la de
+hombres disminuyó 2.4 puntos porcentuales.
+La población ocupada alcanzó 60.0 millones de personas3 (97.2 % de la PEA): un descenso
+anual de 267 mil personas. Según sexo, la ocupación de mujeres fue de 25.0 millones y la de
+hombres, de 35.0 millones: un alza anual en ellas de 578 mil y una baja en ellos de 845 mil.
+En el mes de referencia, la población desocupada fue de 1.8 millones de personas,
+esto significó una reducción anual de 92 mil. La desocupación de mujeres se ubicó en 704 mil:
+decreció en 83 mil respecto a septiembre del año anterior. La de hombres se situó en
+1.1 millones: cayó en 9 mil frente al noveno mes de 2025.
+La población no económicamente activa (PNEA) fue de 43.9 millones de personas4 (41.5 % de
+la población de 15 años y más): aumentó en 1.7 millones de personas respecto a septiembre
+2 Población que, durante la semana de referencia, realizó o tuvo un vínculo con una actividad económica (población ocupada), o buscó
+activamente hacerlo (población desocupada en las últimas cuatro semanas).
+3 Se refiere a la población que durante la semana de referencia realizó alguna actividad económica durante al menos una hora. Incluye a
+las y los ocupados que tenían trabajo, pero no lo desempeñaron temporalmente por alguna razón, sin que por ello perdieran el vínculo
+laboral con este, así como a quienes ayudaron en alguna actividad económica sin recibir un sueldo o salario.
+4 Población que durante la semana de referencia se dedicó al hogar, estudió, estaba jubilada o pensionada, tiene impedimentos personales
+o llevó a cabo otras actividades.
+
+BOLETÍN DE INDICADOR 634/26
+ENCUESTA NACIONAL DE
+OCUPACIÓN Y EMPLEO (ENOE)
+INDICADORES DE OCUPACIÓN Y EMPLEO
+22 de octubre de 2026
+Página 4/15
+de 2025. De esta categoría, 5.5 millones se declararon disponibles para trabajar, pero no
+llevaron a cabo acciones para hacerlo, por lo que constituyen el grupo que eventualmente
+podría participar en el mercado laboral. En términos relativos, la PNEA disponible representó
+12.5 por ciento. En septiembre de 2025, esta fue de 12.9 % (ver cuadro 1).
+Cuadro 1
+Población de 15 años y más, según condición de actividad económica,
+ocupación, disponibilidad para trabajar y sexo
+septiembre de 2025 y 2026
+(personas, porcentaje y diferencia anual)
+Condición de actividad económica, Septiembre Diferencia Septiembre Diferencia
+ocupación, disponibilidad 2025 2026 2026-2025 2025 2026 2026-2025
+para trabajar y sexo
+absolutos relativos
+Total 104 239 840 105 617 240 1 377 400 100.0 100.0
+Población económicamente activa (PEA)1/ 62 094 108 61 735 269 -358 839 59.6 58.5 -1.1
+Ocupada2/ 60 244 382 59 977 049 -267 333 97.0 97.2 0.1
+Desocupada2/ 1 849 726 1 758 220 -91 506 3.0 2.8 -0.1
+Población no económicamente activa (PNEA)1/ 42 145 732 43 881 971 1 736 239 40.4 41.5 1.1
+Disponible3/ 5 444 184 5 484 209 40 025 12.9 12.5 -0.4
+No disponible3/ 36 701 548 38 397 762 1 696 214 87.1 87.5 0.4
+Mujeres 55 275 533 56 230 213 954 680 100.0 100.0
+Población económicamente activa (PEA)1/ 25 178 907 25 674 440 495 533 45.6 45.7 0.1
+Ocupada2/ 24 392 481 24 970 618 578 137 96.9 97.3 0.4
+Desocupada2/ 786 426 703 822 -82 604 3.1 2.7 -0.4
+Población no económicamente activa (PNEA)1/ 30 096 626 30 555 773 459 147 54.4 54.3 -0.1
+Disponible3/ 3 591 895 3 463 718 -128 177 11.9 11.3 -0.6
+No disponible3/ 26 504 731 27 092 055 587 324 88.1 88.7 0.6
+Hombres 48 964 307 49 387 027 422 720 100.0 100.0
+Población económicamente activa (PEA)1/ 36 915 201 36 060 829 -854 372 75.4 73.0 -2.4
+Ocupada2/ 35 851 901 35 006 431 -845 470 97.1 97.1 0.0
+Desocupada2/ 1 063 300 1 054 398 -8 902 2.9 2.9 0.0
+Población no económicamente activa (PNEA)1/ 12 049 106 13 326 198 1 277 092 24.6 27.0 2.4
+Disponible3/ 1 852 289 2 020 491 168 202 15.4 15.2 -0.2
+No disponible3/ 10 196 817 11 305 707 1 108 890 84.6 84.8 0.2
+1/ Valor relativo respecto a la población de 15 años y más.
+2/ Valor relativo respecto a la PEA.
+3/ Valor relativo respecto a la PNEA.
+Fuente: INEGI. Encuesta Nacional de Ocupación y Empleo (ENOE), 2026.
+
+BOLETÍN DE INDICADOR 634/26
+ENCUESTA NACIONAL DE
+OCUPACIÓN Y EMPLEO (ENOE)
+INDICADORES DE OCUPACIÓN Y EMPLEO
+22 de octubre de 2026
+Página 5/15
+Características de la población ocupada
+Del total de la población ocupada (60.0 millones), 41.0 millones (68.4 %) operaron como
+trabajadoras o trabajadores subordinados y remunerados al ocupar una plaza o puesto de
+trabajo, lo que representó una disminución anual de 782 mil. Además, 13.4 millones (22.3 %)
+trabajaron de manera independiente o por su cuenta sin contratar empleadas o empleados:
+510 mil personas más respecto a septiembre de 2025. Por su parte, 3.7 millones (6.2 %) fueron
+personas empleadoras, cifra que subió en 81 mil. Finalmente, 1.9 millones de personas (3.1 %)
+se desempeñaron en los negocios o en las parcelas familiares, es decir, contribuyeron de
+manera directa a los procesos productivos, pero sin un acuerdo de remuneración monetaria.
+Lo anterior significó un descenso anual de 77 mil.
+Según sector de actividad económica, la población ocupada se distribuyó de la siguiente
+manera: los servicios concentraron 27.0 millones de personas (44.9 %); el comercio,
+11.9 millones (19.8 %); la industria manufacturera, 9.4 millones (15.7 %); la agricultura,
+ganadería, silvicultura, caza y pesca, 6.3 millones (10.6 %); la construcción, 4.6 millones
+(7.6 %); y otras actividades económicas —que incluyen la minería, electricidad, agua y
+suministro de gas—, 412 mil (0.7 %). Por su parte, 424 mil personas (0.7 %) no especificaron
+su actividad.
+En comparación con septiembre de 2025, los sectores con la mayor caída en su población
+ocupada fueron los siguientes: agricultura, ganadería, silvicultura, caza y pesca, con 199 mil;
+comercio, con 191 mil; y construcción, con 167 mil personas. En contraste, los que tuvieron
+el mayor crecimiento fueron servicios profesionales, financieros y corporativos, con
+195 mil personas más y servicios diversos, con 136 mil (ver cuadro 2).
+
+BOLETÍN DE INDICADOR 634/26
+ENCUESTA NACIONAL DE
+OCUPACIÓN Y EMPLEO (ENOE)
+INDICADORES DE OCUPACIÓN Y EMPLEO
+22 de octubre de 2026
+Página 6/15
+Cuadro 2
+Población ocupada según posición en la ocupación,
+sector de actividad económica y nivel de ingresos
+septiembre de 2025 y 2026
+(personas, porcentaje y diferencia anual)
+Posición en la ocupación, Septiembre Diferencia Septiembre Diferencia
+sector de actividad económica 2025 2026 2026-2025 2025 2026 2026-2025
+y nivel de ingresos
+absolutos relativos1/
+Posición en la ocupación 60 244 382 59 977 049 -267 333 100.0 100.0
+Trabajadores subordinados y remunerados 41 780 122 40 997 927 -782 195 69.4 68.4 -1.0
+Empleadores 3 625 355 3 706 694 81 339 6.0 6.2 0.2
+Trabajadores por cuenta propia 12 893 281 13 403 468 510 187 21.4 22.3 0.9
+Trabajadores no remunerados 1 945 624 1 868 960 -76 664 3.2 3.1 -0.1
+Sector de actividad económica 60 244 382 59 977 049 -267 333 100.0 100.0
+Primario 6 526 251 6 327 624 -198 627 10.8 10.6 -0.3
+Agricultura, ganadería, silvicultura, caza y pesca 6 526 251 6 327 624 -198 627 10.8 10.6 -0.3
+Secundario 14 574 109 14 399 014 -175 095 24.2 24.0 -0.2
+Industria extractiva y de la electricidad 349 218 412 381 63 163 0.6 0.7 0.1
+Industria manufacturera 9 488 567 9 417 574 -70 993 15.8 15.7 0.0
+Construcción 4 736 324 4 569 059 -167 265 7.9 7.6 -0.2
+Terciario 38 703 352 38 826 634 123 282 64.2 64.7 0.5
+Comercio 12 064 887 11 873 661 -191 226 20.0 19.8 -0.2
+Restaurantes y servicios de alojamiento 4 908 760 4 828 461 -80 299 8.1 8.1 -0.1
+Transportes, comunicaciones, correo y almacenamiento 3 531 106 3 533 123 2 017 5.9 5.9 0.0
+Servicios profesionales, financieros y corporativos 4 836 362 5 031 075 194 713 8.0 8.4 0.4
+Servicios sociales 4 937 833 4 926 565 -11 268 8.2 8.2 0.0
+Servicios diversos 6 117 662 6 254 023 136 361 10.2 10.4 0.3
+Gobierno y organismos internacionales 2 306 742 2 379 726 72 984 3.8 4.0 0.1
+No especificado 440 670 423 777 -16 893 0.7 0.7 0.0
+Nivel de ingresos2/ 60 244 382 59 977 049 -267 333 100.0 100.0
+Hasta un salario mínimo 27 691 608 26 870 669 -820 939 46.0 44.8 -1.2
+Más de 1 hasta 2 salarios mínimos 15 849 682 19 885 134 4 035 452 26.3 33.2 6.8
+Más de 2 hasta 3 salarios mínimos 3 276 280 3 288 291 12 011 5.4 5.5 0.0
+Más de 3 hasta 5 salarios mínimos 1 287 897 1 334 678 46 781 2.1 2.2 0.1
+Más de 5 salarios mínimos 389 326 386 164 -3 162 0.6 0.6 0.0
+No recibe ingresos 2 834 636 2 681 284 -153 352 4.7 4.5 -0.2
+No especificado 8 914 953 5 530 829 -3 384 124 14.8 9.2 -5.6
+1/ Porcentaje respecto a la población ocupada.
+2/ Por construcción, los indicadores de la ENOE que involucran a la población ocupada, u otra variable clasificada en rangos de salarios
+mínimos, son sensibles a los cambios en dichos salarios. Para la comparación en el tiempo de la población ocupada por nivel de
+ingreso, se presentan resultados a partir de salarios mínimos equivalentes, base enero de 2026. El INEGI pone a disposición de las
+y los usuarios cifras comparables en la siguiente liga: https://www.inegi.org.mx/programas/enoe/15ymas/#Tabulados.
+Fuente: INEGI. Encuesta Nacional de Ocupación y Empleo (ENOE), 2026.
+Indicadores de la población subocupada
+La información de la ENOE, para septiembre de 2026, muestra que la población subocupada
+(personas que declararon tener necesidad y disponibilidad para trabajar más horas de lo que
+su ocupación actual les demanda) fue de 4.0 millones de personas: 363 mil menos respecto a
+septiembre de 2025. La tasa de subocupación se ubicó en 6.7 % de la población ocupada,
+porcentaje inferior al 7.3 % registrado en el noveno mes de 2025. Según sexo, la tasa
+correspondiente en las mujeres fue de 6.4 % y en los hombres, de 6.9 por ciento.
+
+BOLETÍN DE INDICADOR 634/26
+ENCUESTA NACIONAL DE
+OCUPACIÓN Y EMPLEO (ENOE)
+INDICADORES DE OCUPACIÓN Y EMPLEO
+22 de octubre de 2026
+Página 7/15
+Según su lugar en la ocupación, las y los subocupados se concentraron en las y los
+trabajadores por cuenta propia, con 46.5 %: un incremento anual de 5.5 puntos porcentuales.
+Las y los trabajadores subordinados y remunerados representaron 41.0 %: una baja anual de
+5.9 puntos porcentuales.
+Informalidad laboral
+La población ocupada en la informalidad laboral considera, sin duplicar, a quienes son
+laboralmente vulnerables por la naturaleza de la unidad económica para la que trabajan.
+También contempla a las personas cuyo vínculo o dependencia laboral no reconoce su fuente
+de trabajo. Se incluyen —además de la población que trabaja en micronegocios no registrados
+o en el sector informal— otras modalidades análogas, como las y los ocupados por cuenta
+propia en la agricultura de subsistencia, así como a quienes laboran sin seguridad social y
+cuyos servicios los utilizan las unidades económicas registradas.
+En septiembre de 2026, la población ocupada en la informalidad laboral fue de
+32.6 millones de personas. La tasa de informalidad laboral 1 (TIL1) se estableció en 54.3 % de
+la población ocupada, porcentaje inferior al 54.9 % del noveno mes de 2025. La TIL1 urbana
+fue de 42.4 por ciento.
+Por otra parte, la ocupación en el sector informal fue de 17.6 millones de personas5 y significó
+29.4 % de la población ocupada —tasa de ocupación en el sector informal 1 (TOSI1)—,
+0.7 puntos porcentuales por arriba de la registrada en septiembre de 2025. La TOSI1 urbana fue
+de 25.9 por ciento.
+Indicadores de la población desocupada
+En septiembre de 2026, la población desocupada (población que no trabajó siquiera una hora
+durante la semana de referencia de la encuesta, pero manifestó su disposición para hacerlo y
+realizó alguna actividad para obtener empleo) fue de 1.8 millones de personas y representó
+2.8 % de la PEA —tasa de desocupación (TD)—. En las mujeres, esta medida fue de 2.7 % y en
+los hombres, de 2.9 por ciento. Respecto al mismo periodo de 2025, la TD total disminuyó
+0.1 puntos porcentuales y la de mujeres, 0.4, mientras que la de hombres se mantuvo.
+De las y los desocupados, 11.3 % no contaban con estudios completos de secundaria.
+Las personas con mayor nivel de instrucción representaron 88.7 por ciento.
+En cuanto a las características sociodemográficas de la población desocupada, según rangos
+etarios, la mayor proporción se concentró en el grupo de 25 a 44 años, con 46.8 por ciento.
+Siguió el grupo de 15 a 24 años, con 30.5 por ciento.
+5 Considera a todas las personas que trabajan para unidades económicas no agropecuarias que operan sin registros contables y que
+funcionan a partir de los recursos del hogar, o de la persona que encabeza la actividad sin que se constituya como empresa.
+De este modo, la actividad en cuestión no tiene una situación identificable e independiente de ese hogar o de la persona que la dirige y, por
+lo mismo, tiende a concretarse en una escala de operación muy pequeña.
+
+BOLETÍN DE INDICADOR 634/26
+ENCUESTA NACIONAL DE
+OCUPACIÓN Y EMPLEO (ENOE)
+INDICADORES DE OCUPACIÓN Y EMPLEO
+22 de octubre de 2026
+Página 8/15
+Respecto a la duración del desempleo, 40.0 % de esta población estuvo desocupada en un
+periodo de un mes o menos, mientras que 34.1 % no tuvo trabajo por más de un mes y hasta
+tres meses (ver cuadro 3).
+Cuadro 3
+Población desocupada según grupos de edad y duración de la desocupación
+septiembre de 2025 y 2026
+(personas, porcentaje y diferencia anual)
+Septiembre Diferencia Septiembre Diferencia
+Grupos de edad y 2025 2026 2026-2025 2025 2026 2026-2025
+duración de la desocupación
+absolutos relativos1/
+Grupos de edad 1 849 726 1 758 220 -91 506 100.0 100.0
+De 15 a 24 años 602 415 536 205 -66 210 32.6 30.5 -2.1
+De 25 a 44 años 905 610 822 237 -83 373 49.0 46.8 -2.2
+De 45 a 64 años 316 914 378 249 61 335 17.1 21.5 4.4
+De 65 años y más 24 787 21 436 -3 351 1.3 1.2 -0.1
+No especificado 0 93 93 0.0 0.0 0.0
+Duración de la desocupación 1 849 726 1 758 220 -91 506 100.0 100.0
+Hasta 1 mes 861 982 703 066 -158 916 46.6 40.0 -6.6
+Más de 1 mes hasta 3 meses 595 292 599 734 4 442 32.2 34.1 1.9
+Más de 3 meses hasta 6 meses 183 141 182 558 -583 9.9 10.4 0.5
+Más de 6 meses hasta 1 año 85 447 125 954 40 507 4.6 7.2 2.5
+Más de 1 año 29 179 58 156 28 977 1.6 3.3 1.7
+No especificado 94 685 88 752 -5 933 5.1 5.0 -0.1
+1/ Porcentaje respecto a la población desocupada.
+Fuente:INEGI. Encuesta Nacional de Ocupación y Empleo (ENOE), 2026.
+Tasas complementarias
+Con el fin de proporcionar a las y los usuarios más elementos que apoyen el análisis de las
+características del mercado laboral de nuestro país, el INEGI genera mensualmente un conjunto
+de indicadores complementarios sobre la calidad de inserción en el mercado laboral. Para ello,
+considera distintos aspectos que van más allá de las mediciones tradicionales y que recogen
+la heterogeneidad de circunstancias que se presentan en México. Los resultados de estas
+tasas no deben sumarse a lo que se desprende de otras, ya que un mismo grupo o segmento
+poblacional puede estar presente en más de una de estas. No todos los porcentajes que se
+mencionan se refieren al mismo denominador.
+− Tasa de ocupación parcial y desocupación (TOPD1): se situó en 9.2 % de la PEA,
+en septiembre de 2026, la tasa descendió en relación con la de igual mes de 2025
+(9.4 %).
+− Tasa de presión general (TPRG): se ubicó en 5.4 % de la PEA, tasa inferior a la de 5.9 %
+de septiembre de 2025.
+− Tasa de trabajo asalariado: fue de 65.8 % de la población ocupada, cayó frente a la del
+noveno mes de 2025 (66.6 %).
+− Tasa de condiciones críticas de ocupación (TCCO), con base en salarios mínimos
+equivalentes: se estableció en 37.5 % de la población ocupada y fue mayor que la de
+septiembre de 2025 (37.3 %). (Ver cuadro 4).
+
+BOLETÍN DE INDICADOR 634/26
+ENCUESTA NACIONAL DE
+OCUPACIÓN Y EMPLEO (ENOE)
+INDICADORES DE OCUPACIÓN Y EMPLEO
+22 de octubre de 2026
+Página 9/15
+Cuadro 4
+Tasas complementarias
+septiembre de 2025 y 2026
+(porcentaje y diferencia anual)
+Septiembre Diferencia
+Tasas
+2025 2026 2026-2025
+Tasa de participación económica1/ 59.6 58.5 -1.1
+Tasa de desocupación (TD)2/ 4/ 3.0 2.8 -0.1
+TD mujeres 3.1 2.7 -0.4
+TD hombres 2.9 2.9 0.0
+Tasa de ocupación parcial y desocupación2/ 5/ 9.4 9.2 -0.2
+Tasa de presión general2/ 6/ 5.9 5.4 -0.5
+Tasa de trabajo asalariado3/ 7/ 66.6 65.8 -0.8
+Tasa de subocupación3/ 8/ 7.3 6.7 -0.6
+Tasa de condiciones críticas de ocupación3/ 9/ 37.3 37.5 0.2
+Tasa de informalidad laboral 13/ 10/ 54.9 54.3 -0.6
+Tasa de ocupación en el sector informal 13/ 11/ 28.7 29.4 0.7
+1/ Población económicamente activa (PEA) como porcentaje de la población de 15 años y más.
+2/ Porcentaje respecto a la PEA.
+3/ Porcentaje respecto a la población ocupada.
+4/ Considera a la población que se encuentra sin trabajar, pero que busca trabajo.
+5/ Incorpora a la población desocupada y a la ocupada que trabajó menos de 15 horas a la semana.
+6/ Incluye, además de la población desocupada, a la ocupada que busca empleo. Con esto, la tasa
+es una medida global de la competencia por plazas de trabajo que está conformada por quienes
+quieren trabajar; por quienes tienen un empleo pero quieren cambiarlo; y por quienes buscan
+otro más para tener un segundo trabajo.
+7/ Representa a la población que percibe un sueldo, salario o jornal por las actividades realizadas
+de parte de la unidad económica para la que trabaja.
+8/ Constituye a la población ocupada que tiene la necesidad y disponibilidad de ofertar más tiempo
+de trabajo de lo que su ocupación actual le permite.
+9/ Indicador de condiciones inadecuadas de empleo desde el punto de vista del tiempo de trabajo,
+los ingresos o una combinación insatisfactoria de ambos. Incluye a las personas que trabajan
+menos de 35 horas a la semana por razones ajenas a sus decisiones, a quienes trabajan más
+de 35 horas semanales con ingresos mensuales inferiores al salario mínimo y a quienes laboran
+más de 48 horas semanales y que ganan hasta dos salarios mínimos. Por construcción, los
+indicadores de la ENOE que involucran a la población ocupada, u otra variable clasificada en
+rangos de salarios mínimos, son sensibles a los cambios en dichos salarios. Para la comparación
+en el tiempo de la tasa de condiciones críticas de ocupación, se presentan resultados a partir de
+salarios mínimos equivalentes, base enero de 2026. El INEGI pone a disposición de las y los
+usuarios cifras comparables en la siguiente liga:
+https://www.inegi.org.mx/programas/enoe/15ymas/#Tabulados.
+10/ Se refiere a la suma, sin duplicar, de las y los ocupados que son laboralmente vulnerables por la
+naturaleza de la unidad económica para la que trabajan, más aquellas personas cuyo vínculo o
+dependencia laboral no se reconoce por su fuente de trabajo. En esta tasa se incluyen —además
+del componente que labora en micronegocios no registrados o en el sector informal— otras
+modalidades análogas, como las y los ocupados por cuenta propia en la agricultura de
+subsistencia, así como a quienes laboran sin la protección de la seguridad social y cuyos
+servicios los utilizan las unidades económicas registradas.
+11/ Representa a la población ocupada que trabaja para una unidad económica que opera a partir
+de los recursos del hogar, pero sin constituirse como empresa, de modo que la actividad no tiene
+una situación identificable e independiente de ese hogar.
+Fuente:INEGI. Encuesta Nacional de Ocupación y Empleo (ENOE), 2026.
+
+BOLETÍN DE INDICADOR 634/26
+ENCUESTA NACIONAL DE
+OCUPACIÓN Y EMPLEO (ENOE)
+INDICADORES DE OCUPACIÓN Y EMPLEO
+22 de octubre de 2026
+Página 10/15
+Cuadro 5
+Indicadores seleccionados, según sexo
+septiembre de los años que se indican
+(millones de personas, porcentaje y diferencia anual)
+Septiembre Diferencia respecto al año anterior
+Concepto
+2021 2022 2023 2024 2025 2026 2022 2023 2024 2025 2026
+Población económicamente activa1/ 57.5 59.5 60.8 61.2 62.1 61.7 2.0 1.4 0.4 0.9 -0.4
+Población ocupada 55.1 57.5 59.1 59.4 60.2 60.0 2.4 1.6 0.3 0.8 -0.3
+Población desocupada 2.4 2.0 1.8 1.8 1.8 1.8 -0.4 -0.2 0.0 0.1 -0.1
+Tasa de participación económica2/ 58.4 59.6 60.4 60.0 59.6 58.5 1.3 0.7 -0.4 -0.4 -1.1
+Mujeres 43.2 45.3 46.4 46.5 45.6 45.7 2.1 1.1 0.1 -0.9 0.1
+Hombres 75.2 75.7 76.0 75.4 75.4 73.0 0.5 0.3 -0.6 0.0 -2.4
+Tasa de desocupación3/ 5/ 4.2 3.3 2.9 2.9 3.0 2.8 -0.8 -0.5 0.0 0.1 -0.1
+Mujeres 4.3 3.4 3.0 3.0 3.1 2.7 -0.9 -0.5 0.1 0.1 -0.4
+Hombres 4.1 3.3 2.8 2.9 2.9 2.9 -0.8 -0.5 0.0 0.0 0.0
+Tasa de subocupación4/ 6/ 12.3 7.9 8.2 8.2 7.3 6.7 -4.4 0.3 0.0 -0.9 -0.6
+Mujeres 12.0 7.5 7.8 7.7 7.0 6.4 -4.5 0.3 -0.2 -0.7 -0.5
+Hombres 12.4 8.1 8.4 8.5 7.5 6.9 -4.3 0.3 0.1 -1.0 -0.6
+Tasa de trabajo asalariado4/ 7/ 66.0 64.3 65.9 66.8 66.6 65.8 -1.7 1.6 0.9 -0.2 -0.8
+Mujeres 66.9 65.2 66.9 67.6 68.6 67.3 -1.7 1.7 0.7 1.0 -1.4
+Hombres 65.4 63.7 65.2 66.2 65.2 64.8 -1.7 1.6 0.9 -1.0 -0.4
+Tasa de informalidad laboral 14/ 8/ 56.2 55.6 54.3 54.2 54.9 54.3 -0.6 -1.3 -0.1 0.6 -0.6
+Mujeres 56.0 56.2 55.2 55.5 55.3 55.3 0.2 -1.0 0.4 -0.3 0.0
+Hombres 56.3 55.2 53.7 53.3 54.6 53.6 -1.1 -1.5 -0.4 1.3 -1.1
+1/ Millones de personas de 15 o más años.
+2/ Población económicamente activa (PEA) como porcentaje de la población de 15 o más años.
+3/ Porcentaje respecto a la PEA.
+4/ Porcentaje respecto a la población ocupada.
+5/ Considera a la población que se encuentra sin trabajar, pero que busca trabajo.
+6/ Constituye a la población ocupada que tiene la necesidad y disponibilidad de ofertar más tiempo de trabajo de lo que su ocupación
+actual le permite.
+7/ Representa a la población que percibe un sueldo, salario o jornal por las actividades realizadas de parte de la unidad económica
+para la que trabaja.
+8/ Se refiere a la suma, sin duplicar, de las y los ocupados que son laboralmente vulnerables por la naturaleza de la unidad
+económica para la que trabajan, más aquellas personas cuyo vínculo o dependencia laboral no se reconoce por su fuente de
+trabajo. En esta tasa se incluyen —además del componente que labora en micronegocios no registrados o en el sector informal—
+otras modalidades análogas, como las y los ocupados por cuenta propia en la agricultura de subsistencia, así como a quienes
+laboran sin la protección de la seguridad social y cuyos servicios los utilizan las unidades económicas registradas.
+Fuente: INEGI. Encuesta Nacional de Ocupación y Empleo, Nueva Edición (ENOEN) y Encuesta Nacional de Ocupación y Empleo (ENOE), 2026.
+
+BOLETÍN DE INDICADOR 634/26
+ENCUESTA NACIONAL DE
+OCUPACIÓN Y EMPLEO (ENOE)
+INDICADORES DE OCUPACIÓN Y EMPLEO
+22 de octubre de 2026
+Página 11/15
+II. DESAGREGACIONES SUBNACIONALES
+Cuadro 6
+Tasas complementarias
+septiembre de 2025 y 2026
+(porcentaje)
+Áreas más Áreas menos
+urbanizadas urbanizadas
+Agregado urbano
+(localidades de (localidades con
+de 32 ciudades
+100 mil y más menos de 100 mil
+Tasas
+habitantes) habitantes)
+septiembre
+2025 2026 2025 2026 2025 2026
+Tasa de participación económica1/ 61.3 59.6 57.8 57.3 61.1 59.9
+Tasa de desocupación (TD)2/ 4/ 3.7 3.3 2.2 2.3 3.7 3.2
+TD mujeres 3.8 3.3 2.3 2.0 3.9 3.3
+TD hombres 3.6 3.3 2.1 2.5 3.5 3.2
+Tasa de ocupación parcial y desocupación2/ 5/ 8.6 8.1 10.3 10.4 8.4 7.8
+Tasa de presión general2/ 6/ 7.0 6.0 4.7 4.8 6.8 5.7
+Tasa de trabajo asalariado3/ 7/ 72.8 72.1 60.0 59.3 72.5 71.4
+Tasa de subocupación3/ 8/ 6.7 5.7 7.9 7.8 6.2 5.5
+Tasa de condiciones críticas de ocupación3/ 9/ 33.9 34.4 40.9 40.7 33.2 34.0
+Tasa de informalidad laboral 13/ 10/ 41.5 40.0 69.0 69.1 43.4 42.4
+Tasa de ocupación en el sector informal 13/ 11/ 24.0 23.9 33.7 35.0 25.7 25.9
+1/ Población económicamente activa (PEA) como porcentaje de la población de 15 años y más.
+2/ Porcentaje respecto a la PEA.
+3/ Porcentaje respecto a la población ocupada.
+4/ Considera a la población que se encuentra sin trabajar, pero que busca trabajo.
+5/ Considera a la población desocupada y a la ocupada que trabajó menos de 15 horas a la semana.
+6/ Incluye, además de la población desocupada, a la ocupada que busca empleo. Con esto, la tasa es una
+medida global de la competencia por plazas de trabajo que está conformada por quienes quieren trabajar;
+por quienes tienen un empleo pero quieren cambiarlo; y por quienes buscan otro más para tener un
+segundo trabajo.
+7/ Representa a la población que percibe un sueldo, salario o jornal por las actividades realizadas de parte
+de la unidad económica para la que trabaja.
+8/ Población ocupada que tiene la necesidad y disponibilidad de ofertar más tiempo de trabajo de lo que su
+ocupación actual le permite.
+9/ Indicador de condiciones inadecuadas de empleo desde el punto de vista del tiempo de trabajo, los
+ingresos o una combinación insatisfactoria de ambos. Incluye a las personas que trabajan menos de
+35 horas a la semana por razones ajenas a sus decisiones, a quienes trabajan más de 35 horas semanales
+con ingresos mensuales inferiores al salario mínimo y a quienes laboran más de 48 horas semanales y
+que ganan hasta dos salarios mínimos. Por construcción, los indicadores de la ENOE que involucran a la
+población ocupada, u otra variable clasificada en rangos de salarios mínimos, son sensibles a los cambios
+en dichos salarios. Para la comparación en el tiempo de la tasa de condiciones críticas de ocupación, se
+presentan resultados a partir de salarios mínimos equivalentes, base enero de 2026. El INEGI pone a
+disposición de las y los usuarios cifras comparables en la siguiente liga:
+https://www.inegi.org.mx/programas/enoe/15ymas/#Tabulados.
+10/ Se refiere a la suma, sin duplicar, de las y los ocupados que son laboralmente vulnerables por la naturaleza
+de la unidad económica para la que trabajan, más aquellas personas cuyo vínculo o dependencia laboral
+no se reconoce por su fuente de trabajo. En esta tasa se incluyen —además del componente que labora
+en micronegocios no registrados o en el sector informal— otras modalidades análogas, como las y los
+ocupados por cuenta propia en la agricultura de subsistencia, así como a quienes laboran sin la protección
+de la seguridad social y cuyos servicios los utilizan las unidades económicas registradas.
+11/ Representa a la población ocupada que trabaja para una unidad económica que opera a partir de los
+recursos del hogar, pero sin constituirse como empresa, de modo que la actividad no tiene una situación
+identificable e independiente de ese hogar.
+Fuente:INEGI. Encuesta Nacional de Ocupación y Empleo (ENOE), 2026.
+
+BOLETÍN DE INDICADOR 634/26
+ENCUESTA NACIONAL DE
+OCUPACIÓN Y EMPLEO (ENOE)
+INDICADORES DE OCUPACIÓN Y EMPLEO
+22 de octubre de 2026
+Página 12/15
+III. CIFRAS DESESTACIONALIZADAS
+A continuación, se presentan indicadores relevantes de ocupación y desocupación, tanto a
+nivel nacional como para el agregado de 32 áreas urbanas, con cifras ajustadas
+estacionalmente.6
+Cuadro 7
+Tasas complementarias de ocupación y desocupación, según agregación
+cifras desestacionalizadas
+septiembre de 2026
+(porcentaje, diferencia mensual y anual)
+Diferencia en puntos
+porcentuales respecto a:
+Tasas según agregación Porcentaje
+agosto septiembre
+de 2026 de 2025
+Nacional
+Tasa de participación económica1/ 58.4 -0.8 -1.2
+Tasa de ocupación2/ 97.4 0.1 0.1
+Tasa de subocupación3/ 6.4 -0.4 -0.5
+Tasa de desocupación (TD)2/ 2.6 -0.1 -0.1
+TD mujeres 2.5 -0.2 -0.3
+TD hombres 2.7 0.0 0.0
+Tasa de informalidad laboral 13/ 54.3 -0.7 -0.6
+Tasa de ocupación en el sector informal 13/ 29.8 -0.4 0.7
+Agregado urbano de 32 ciudades
+Tasa de participación económica1/ 59.8 -0.5 -1.2
+Tasa de ocupación2/ 97.0 -0.1 0.4
+Tasa de subocupación3/ 5.4 -0.3 -0.7
+Tasa de desocupación (TD)2/ 3.0 0.1 -0.4
+TD mujeres 3.0 0.1 -0.6
+TD hombres 3.0 0.0 -0.3
+Tasa de informalidad laboral 13/ 43.0 -1.3 -1.0
+Tasa de ocupación en el sector informal 13/ 26.9 -0.4 0.4
+Nota: Cifras elaboradas mediante métodos econométricos.
+Las diferencias en puntos porcentuales resultan de considerar los indicadores con todos sus
+decimales.
+1/ Población económicamente activa (PEA) como porcentaje de la población de 15 años y más.
+2/ Porcentaje respecto a la PEA.
+3/ Porcentaje respecto a la población ocupada.
+Fuente: INEGI. Encuesta Nacional de Ocupación y Empleo (ENOE), 2026.
+6 La mayoría de las series económicas se ve afectada por factores estacionales y de calendario. El ajuste de los datos por dichos factores
+permite obtener las cifras desestacionalizadas.
+La tendencia-ciclo es la combinación de los componentes de tendencia y ciclo. La tendencia se refiere a la evolución de largo plazo de la
+serie de tiempo, y el ciclo, a las desviaciones alrededor de la tendencia. Así, el análisis de las series ajustadas ayuda a realizar un mejor
+diagnóstico de la evolución de las variables.
+
+BOLETÍN DE INDICADOR 634/26
+ENCUESTA NACIONAL DE
+OCUPACIÓN Y EMPLEO (ENOE)
+INDICADORES DE OCUPACIÓN Y EMPLEO
+22 de octubre de 2026
+Página 13/15
+Gráfica 2
+Serie desestacionalizada y de tendencia-ciclo
+de tasas complementarias de ocupación y desocupación, según agregación
+enero de 2022–septiembre de 20261/
+(porcentaje)
+Nacional Agregado urbano de 32 ciudades
+Tasa de participación económica
+(porcentaje)2/
+62.0 62.0
+8
+.9
+5
+60.0 4 60.0
+.8
+5
+58.0 58.0
+56.0 56.0
+54.0 54.0
+2022 2023 2024 2025 2026 2022 2023 2024 2025 2026
+Tasa de subocupación
+(porcentaje)3/
+11.0 11.0
+9.0 9.0
+4
+7.0 .6 7.0
+4
+.5
+5.0 5.0
+3.0 3.0
+2022 2023 2024 2025 2026 2022 2023 2024 2025 2026
+Tasa de desocupación
+(porcentaje)4/
+5.0 5.0
+4.0 4.0
+0
+6
+.3
+3.0 .2 3.0
+2.0 2.0
+1.0 1.0
+2022 2023 2024 2025 2026 2022 2023 2024 2025 2026
+(continúa)
+
+BOLETÍN DE INDICADOR 634/26
+ENCUESTA NACIONAL DE
+OCUPACIÓN Y EMPLEO (ENOE)
+INDICADORES DE OCUPACIÓN Y EMPLEO
+22 de octubre de 2026
+Página 14/15
+Tasa de informalidad laboral 1
+(porcentaje)3/
+56.0 3 .4 46.0
+5
+0
+.3
+4
+54.0 44.0
+52.0 42.0
+50.0 40.0
+2022 2023 2024 2025 2026 2022 2023 2024 2025 2026
+Tasa de ocupación en el sector informal 1
+(porcentaje)3/
+8
+.9
+2
+30.0 30.0
+9
+28.0 28.0 .6
+2
+26.0 26.0
+24.0 24.0
+2022 2023 2024 2025 2026 2022 2023 2024 2025 2026
+Serie desestacionalizada Serie tendencia-ciclo
+(concluye)
+Nota: Series elaboradas mediante métodos econométricos.
+1/ En las series históricas, los resultados correspondientes a noviembre de 2023 no contemplan información de Guerrero.
+2/ Respecto a la población de 15 años y más.
+3/ Respecto a la población ocupada.
+4/ Respecto a la población económicamente activa.
+Fuente: INEGI. Encuesta Nacional de Ocupación y Empleo (ENOE), 2026.
+
+BOLETÍN DE INDICADOR 634/26
+ENCUESTA NACIONAL DE
+OCUPACIÓN Y EMPLEO (ENOE)
+INDICADORES DE OCUPACIÓN Y EMPLEO
+22 de octubre de 2026
+Página 15/15
+IV. FICHA METODOLÓGICA
+La Encuesta Nacional de Ocupación y Empleo (ENOE) inició su levantamiento en enero
+de 2005. Se trata de la principal fuente de información sobre el mercado laboral
+Antecedentes
+mexicano, pues ofrece datos de la fuerza de trabajo, la ocupación, la informalidad laboral,
+la subocupación y la desocupación.
+El diseño conceptual de la encuesta sigue las resoluciones que se aprobaron en las
+Diseño conceptual Conferencias Internacionales de Estadísticas del Trabajo. Estas se realizaron cada
+cinco años de 1982 a 2008.
+Cobertura geográfica Nacional, áreas más y menos urbanizadas, 32 y 39 ciudades autorrepresentadas
+Cobertura temporal Encuesta continua que inició su levantamiento en enero de 2005.
+Periodicidad Mensual y trimestral
+Periodo de
+Semanal (de lunes a domingo, durante todo el año)
+levantamiento
+Marco de muestreo Marco de Muestreo de Viviendas del INEGI
+Esquema de
+Probabilístico, bietápico, estratificado y por conglomerados
+muestreo
+El tamaño de muestra se calculó con base en la tasa de desocupación para ofrecer
+estimaciones a todos los niveles de cobertura geográfica de la encuesta.
+Tamaño de muestra
+Actualmente, el tamaño de muestra trimestral es de poco más de 150 mil viviendas
+distribuidas en las 13 semanas en las que se divide el trimestre.
+El diseño de la encuesta es de panel rotatorio. La muestra se divide en cinco paneles y
+Rotación de la
+cada uno permanece en la muestra durante cinco trimestres. Al pasar este tiempo, se
+muestra
+sustituye por otro de características similares.
+Unidad de
+observación y La vivienda particular habitada
+muestreo
+Unidad de análisis El hogar y quienes residen en la vivienda.
+Las series originales se ajustan estacionalmente mediante el paquete estadístico
+X-13ARIMA-SEATS. Para conocer la metodología, consúltese la siguiente liga:
+https://www.inegi.org.mx/app/biblioteca/ficha.html?upc=702825099060
+Ajuste estacional y Las especificaciones de los modelos están disponibles en el Banco de Información
+modelos Económica (BIE). Seleccione «Indicadores económicos de coyuntura, Tasas de
+ocupación, desocupación y subocupación (resultados mensuales de la ENOE, 15 años y
+más)» y vaya al icono de información correspondiente a las «series desestacionalizadas
+y tendencia-ciclo».
+El cálculo y la divulgación de los indicadores de ocupación y empleo se hacen mensual
+Publicación de
+y trimestralmente. Los resultados se publican en los días establecidos en el Calendario
+resultados
+de Difusión de Información Estadística y Geográfica y de Interés Nacional.
+El INEGI invita a conocer y usar los diferentes productos para el análisis y entendimiento
+Nota al
+de los indicadores de ocupación y empleo, disponibles en:
+público usuario
+https://www.inegi.org.mx/programas/enoe/15ymas/
+La información estadística y geográfica que genera el INEGI es un bien público y nos permite
+a todas y a todos tomar mejores decisiones. ¡Conócela, úsala y compártela!
