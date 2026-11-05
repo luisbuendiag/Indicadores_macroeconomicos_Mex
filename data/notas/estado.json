@@ -174,5 +174,21 @@
       "review_kind": "reglas_python",
       "archive": "data/notas/PIBSEC/22f3d6b236fa1ff698fecf95007360dc00eeccb4797227e65f4767b7c6876e91-387358a2c35c"
     }
+  },
+  "SIC": {
+    "status": "vigente",
+    "message": "Nota generada y validada por reglas Python",
+    "target_period": "Ago 26",
+    "published": {
+      "periodo": "Ago 26",
+      "generated_at": "2026-11-05T01:19:02+00:00",
+      "source_sha256": "9cd66d06f78d8255e4f6bb3de4740b6adcacb6b8d927c5c108156bde7f6b3241",
+      "fingerprint": "5ceb65fafb12737108d1305a5f40988439aa72d0a4076354f3cd4c48801114fd",
+      "docx_sha256": "f151400b953358c5e37e0c88d36a121d6cd99b8af7d498b31266287bed1efeaa",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_11.pdf",
+      "review_model": "sic-python-1",
+      "review_kind": "reglas_python",
+      "archive": "data/notas/SIC/5ceb65fafb12737108d1305a5f40988439aa72d0a4076354f3cd4c48801114fd-f151400b9533"
+    }
   }
 }

@@ -176844,7 +176844,7 @@
       ],
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
-      "fecha_publicacion": "4 de septiembre de 2026",
+      "fecha_publicacion": "2026-11-04",
       "periodo_referencia": "Oct 26",
       "fecha_consulta": "2026-11-05",
       "source_origin": "api",
@@ -178034,7 +178034,7 @@
       },
       "motivo_frescura": "El periodo cargado (Ago 26) coincide con el último periodo esperado (Agosto de 2026).",
       "url_fuente_oficial": "https://www.inegi.org.mx/app/relojcicloseconomicos/",
-      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_09.pdf",
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_11.pdf",
       "fecha_ultima_publicacion": "4 de noviembre de 2026",
       "regla_publicacion": null,
       "xlsx_disponible": true,
@@ -178047,10 +178047,20 @@
         "available": true,
         "format": "docx",
         "path": "downloads/indicadores/SIC/nota/SIC_nota.docx",
-        "periodo": "May-Jun 26",
-        "generated_from": "machote",
-        "automatic": false
-      }
+        "periodo": "Ago 26",
+        "generated_from": "boletin_validado",
+        "automatic": true,
+        "generated_at": "2026-11-05T01:19:02+00:00",
+        "source_sha256": "9cd66d06f78d8255e4f6bb3de4740b6adcacb6b8d927c5c108156bde7f6b3241",
+        "fingerprint": "5ceb65fafb12737108d1305a5f40988439aa72d0a4076354f3cd4c48801114fd",
+        "status": "vigente",
+        "target_period": "Ago 26",
+        "message": "Nota generada y validada por reglas Python"
+      },
+      "periodo_boletin": "Ago 26",
+      "numero_boletin": "679/26",
+      "boletin_validado": true,
+      "producto_boletin": "Sistema de Indicadores Cíclicos"
     },
     "IMOAM": {
       "key": "IMOAM",
