@@ -894,3 +894,42 @@ th.sortable:hover { background: var(--line); }
 @media(max-width:480px){.calendar-agenda .cal-filters{grid-template-columns:1fr}.cal-export-row{flex-wrap:wrap}.calendar-agenda .cal-month{padding:12px}.cal-export-row .btn-primary{width:100%;justify-content:center}}
 
 .cal-next-heading {font-size:14px;color:var(--green);margin:16px 0 0;font-weight:600}
+
+/* Jerarquía del panel: periodo, visualización y filtros */
+.calendar-agenda .cal-controls {display:block;background:#fff;border:1px solid var(--line);border-radius:10px;padding:0;overflow:hidden}
+.cal-toolbar-head {display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 24px}
+.cal-period-block {display:flex;align-items:center;gap:22px;min-width:0}
+.cal-period-nav {display:flex;align-items:center;gap:6px;flex-shrink:0}
+.cal-period-nav .win-btn {min-width:38px;padding:6px 10px;background:white}
+.cal-period-title {font-size:24px;line-height:1.25;font-weight:700;color:var(--dkgreen);margin:0}
+.cal-result-count {font-size:12px;color:var(--muted);margin-top:5px}
+.cal-download-block {display:flex;flex-direction:column;align-items:flex-end;gap:6px;max-width:280px}
+.cal-download-block .btn {padding:10px 18px;font-size:13px}
+.cal-download-block small {font-size:10px;color:var(--muted);text-align:right;line-height:1.4}
+.cal-toolbar-views {display:flex;align-items:center;gap:28px;padding:14px 24px;border-top:1px solid var(--line-soft)}
+.cal-control-cluster {display:flex;align-items:center;gap:12px}
+.cal-control-label {font-size:11px;font-weight:600;color:var(--muted)}
+.calendar-agenda .cal-toolbar-views .cal-view-toggle {display:inline-flex;gap:0;border:1px solid #dce3de;border-radius:6px;overflow:hidden;padding:3px;background:#f4f7f5}
+.calendar-agenda .cal-toolbar-views .win-btn {border:0;border-radius:4px;background:transparent;min-height:32px;padding:5px 13px;font-size:12px;margin:0;box-shadow:none}
+.calendar-agenda .cal-toolbar-views .win-btn[aria-pressed="true"] {background:var(--green);color:#fff}
+.calendar-agenda .cal-toolbar-views .win-btn:focus-visible {outline-offset:-2px}
+.cal-toolbar-filters {padding:16px 24px 20px;border-top:1px solid var(--line-soft);background:#fafbfa}
+.cal-filter-heading {display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;min-height:22px;font-size:12px;color:var(--dkgreen);font-weight:600}
+.cal-reset {font:inherit;font-size:11px;font-weight:500;color:var(--green);border:0;background:none;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:2px 0}
+.calendar-agenda .cal-filters {grid-template-columns:1.6fr 1fr .85fr 1fr;gap:14px;width:100%}
+.calendar-agenda .cal-filter-group label {font-size:11px;color:var(--muted);font-weight:500}
+.calendar-agenda .cal-filter-group select {font-size:12px;min-height:38px;background:#fff;border-color:#dce3de}
+.cal-active-filters {display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.cal-active-filters[hidden],.cal-reset[hidden] {display:none}
+.cal-filter-chip {display:inline-flex;align-items:center;gap:12px;border:1px solid #d5e3d9;border-radius:5px;background:#edf4ef;color:var(--green);padding:5px 9px;font-family:var(--sans);font-size:11px;cursor:pointer}
+.cal-filter-chip:hover {background:#dfece3}
+.cal-filter-chip span:last-child {font-size:15px;line-height:1}
+.calendar-agenda .cal-export-status:empty {display:none}
+.calendar-agenda .cal-export-status:not(:empty) {padding:10px 24px;border-top:1px solid var(--line-soft);font-size:12px}
+.calendar-agenda .cal-category-legend {justify-content:flex-start;gap:8px 18px;padding:10px 4px;margin:0;font-size:11px;color:var(--muted)}
+.calendar-agenda .cal-category-legend .cal-leg-item {font-size:11px}
+.calendar-agenda .cal-category-legend .cal-leg-dot {width:7px;height:7px;border-radius:2px}
+@media(max-width:850px){.cal-toolbar-head{align-items:flex-start;gap:16px;padding:18px}.cal-period-block{gap:14px}.cal-period-title{font-size:21px}.cal-download-block{max-width:220px}.calendar-agenda .cal-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.cal-toolbar-views{padding:12px 18px;gap:20px}.cal-toolbar-filters{padding:14px 18px 18px}}
+@media(max-width:600px){.cal-toolbar-head{flex-direction:column;align-items:stretch}.cal-period-block{flex-direction:row-reverse;justify-content:space-between}.cal-period-title{font-size:20px}.cal-download-block{align-items:stretch;max-width:none}.cal-download-block .btn{justify-content:center}.cal-download-block small{text-align:center}.cal-toolbar-views{flex-wrap:wrap;gap:10px 20px}.cal-control-cluster{gap:8px}.cal-control-label{min-width:40px}.calendar-agenda .cal-filters{grid-template-columns:1fr}.cal-period-nav .win-btn{min-width:32px;padding:5px 8px}.cal-toolbar-filters{padding-bottom:16px}}
+
+.cal-period-nav .win-btn {color:var(--green);font-weight:600}

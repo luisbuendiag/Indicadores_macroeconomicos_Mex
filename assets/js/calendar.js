@@ -592,7 +592,7 @@ function renderControls(ctx) {
   ORDER.forEach((k) => {
     indSel.append(el("option", { value: k, selected: calState.indicator === k ? "" : null }, LABELS[k] || k));
   });
-  filters.append(filterGroup("Indicador", indSel));
+  filters.prepend(filterGroup("Indicador", indSel));
 
   // Vista mensual / tabular
   const viewToggle = el("div", { class: "cal-view-toggle", role: "group", "aria-label": "Vista del calendario" });
@@ -613,14 +613,14 @@ function renderControls(ctx) {
   });
 
   // Navegacion
-  const nav = el("div", { class: "cal-view-toggle" });
+  const nav = el("div", { class: "cal-period-nav", role:"group", "aria-label":"Navegar por meses" });
   nav.append(
-    el("button", { class: "win-btn", type: "button", onclick: () => shiftCurrent(ctx, -1) }, "← Mes anterior"),
+    el("button", { class: "win-btn cal-nav-arrow", type: "button", "aria-label":"Mes anterior", title:"Mes anterior", onclick: () => shiftCurrent(ctx, -1) }, "←"),
     el("button", { class: "win-btn", type: "button", onclick: () => resetCurrent(ctx) }, "Hoy"),
-    el("button", { class: "win-btn", type: "button", onclick: () => shiftCurrent(ctx, 1) }, "Mes siguiente →")
+    el("button", { class: "win-btn cal-nav-arrow", type: "button", "aria-label":"Mes siguiente", title:"Mes siguiente", onclick: () => shiftCurrent(ctx, 1) }, "→")
   );
 
-  const reset = el("button", { class: "btn btn-ghost", type: "button", onclick: () => {
+  const reset = el("button", { id:"cal-reset", class: "cal-reset", type: "button", onclick: () => {
     Object.assign(calState, { category: "", source: "", frequency: "", indicator: "" });
     renderCalendar(ctx);
   } }, "Limpiar filtros");
@@ -635,11 +635,21 @@ function renderControls(ctx) {
       document.getElementById("cal-export-status").textContent = "No se pudo generar el Word. Intenta de nuevo.";
       console.error("Calendar export", error);
     }
-  } }, "↓ Descargar Word editable");
-  wrap.append(filters, el("div", { class: "cal-view-row" }, viewToggle, rangeToggle, nav),
-    el("div", { class: "cal-export-row" }, reset, download),
-    el("div", { id: "cal-selection", class: "cal-selection", "aria-live": "polite" }),
-    el("div", { id: "cal-export-status", role: "status", class: "cal-export-status" }));
+  } }, "↓ Descargar Word");
+  wrap.append(
+    el("div", { class:"cal-toolbar-head" },
+      el("div", {class:"cal-period-block"}, nav, el("div",{},
+        el("h2", {id:"cal-period-title",class:"cal-period-title"}),
+        el("div", {id:"cal-selection",class:"cal-result-count","aria-live":"polite"}))),
+      el("div",{class:"cal-download-block"},download,
+        el("small",{},"Word editable con el periodo y los filtros seleccionados"))),
+    el("div", {class:"cal-toolbar-views"},
+      el("div",{class:"cal-control-cluster"},el("span",{class:"cal-control-label"},"Vista"),viewToggle),
+      el("div",{class:"cal-control-cluster"},el("span",{class:"cal-control-label"},"Periodo"),rangeToggle)),
+    el("div",{class:"cal-toolbar-filters"},
+      el("div",{class:"cal-filter-heading"},el("span",{},"Filtrar publicaciones"),reset),
+      filters,el("div",{id:"cal-active-filters",class:"cal-active-filters","aria-label":"Filtros activos"})),
+    el("div", {id:"cal-export-status",role:"status",class:"cal-export-status"}));
   return wrap;
 }
 
@@ -680,7 +690,26 @@ function drawCalBody(ctx) {
   const cur = ensureCurrent(ctx), last = addMonths(cur.getFullYear(), cur.getMonth()+1, calState.months-1);
   const range = `${MES_NOMBRES[cur.getMonth()]} ${cur.getFullYear()}${calState.months>1 ? ` – ${MES_NOMBRES[last.month-1]} ${last.year}` : ""}`;
   const selection = document.getElementById("cal-selection");
-  if (selection) selection.textContent = `${range} · ${items.length} publicaciones · ${selectionLabel()} · El Word incluye esta selección.`;
+  if (selection) selection.textContent = `${items.length} ${items.length===1 ? "publicación" : "publicaciones"}${selectionLabel()==="Todos los indicadores" ? " · Todos los indicadores" : " · Selección filtrada"}`;
+  const periodTitle=document.getElementById("cal-period-title");
+  if(periodTitle) periodTitle.textContent=range.charAt(0).toUpperCase()+range.slice(1);
+  const active=document.getElementById("cal-active-filters");
+  if(active) {
+    active.replaceChildren();
+    for(const [key,label,id] of [["indicator","Indicador","indicador"],["category","Categoría","categoria"],["source","Fuente","fuente"],["frequency","Frecuencia","frecuencia"]]) {
+      const value=calState[key];
+      const select=document.getElementById(`cal-filter-${id}`);
+      if(select) select.value=value;
+      if(!value) continue;
+      const text=key==="indicator" ? (SIGLA[value] || value) : value;
+      active.append(el("button",{type:"button",class:"cal-filter-chip","aria-label":`Quitar filtro ${label}: ${text}`,
+        onclick:()=>{calState[key]="";drawCalBody(ctx);document.getElementById(`cal-filter-${id}`)?.focus();}},
+        el("span",{},`${label}: ${text}`),el("span",{"aria-hidden":"true"},"×")));
+    }
+    active.hidden=!active.children.length;
+  }
+  const reset=document.getElementById("cal-reset");
+  if(reset) reset.hidden=!Object.values({category:calState.category,source:calState.source,frequency:calState.frequency,indicator:calState.indicator}).some(Boolean);
   const message = document.getElementById("cal-export-status"); if (message) message.textContent = "";
   const next = document.getElementById("cal-next");
   if (next) {
@@ -779,21 +808,19 @@ function drawCalMonths(ctx, host) {
 
   // Leyenda de categorias presentes
   const presentCats = [...new Set(events.map((e) => e.categoria).filter(Boolean))];
-  const legend = el("div", { class: "cal-legend" });
+  const legend = el("div", { class: "cal-legend cal-category-legend", "aria-label":"Categorías de publicaciones" });
   presentCats.forEach((cat) => {
     legend.append(el("span", { class: "cal-leg-item" },
       el("span", { class: "cal-leg-dot", style: `background:${categoryColor(ctx, cat)}` }),
       cat
     ));
   });
-  host.append(legend);
-
   const grid = el("div", { class: `cal-months ${calState.months === 3 ? "three" : ""}` });
   months.forEach(({ year, month }) => {
     const monthEvents = events.filter((e) => e.anio === year && e.mes === month);
     grid.append(monthCard(ctx, year, month, monthEvents));
   });
-  host.append(grid);
+  host.append(grid, legend);
 }
 
 function monthCard(ctx, year, month, events) {
