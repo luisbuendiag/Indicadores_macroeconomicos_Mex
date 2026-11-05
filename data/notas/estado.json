@@ -190,5 +190,21 @@
       "review_kind": "reglas_python",
       "archive": "data/notas/SIC/5ceb65fafb12737108d1305a5f40988439aa72d0a4076354f3cd4c48801114fd-f151400b9533"
     }
+  },
+  "IOAE": {
+    "status": "vigente",
+    "message": "Nota generada y validada por reglas Python",
+    "target_period": "Sep 26",
+    "published": {
+      "periodo": "Sep 26",
+      "generated_at": "2026-11-05T01:37:46+00:00",
+      "source_sha256": "923e6de1a9af5d03eb871b99801f2fd989b84ce1e90383ef6c6f129be40be863",
+      "fingerprint": "3d575a279f6f1758ccfa9d5ba0d389bc0cd4447b27587e05cd9c478e91eb6d8e",
+      "docx_sha256": "f52fd26bb35b82facf0d44908a7b6a123369a1e93d4b0b9d1c2b7e662029d49e",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf",
+      "review_model": "ioae-python-1",
+      "review_kind": "reglas_python",
+      "archive": "data/notas/IOAE/3d575a279f6f1758ccfa9d5ba0d389bc0cd4447b27587e05cd9c478e91eb6d8e-f52fd26bb35b"
+    }
   }
 }

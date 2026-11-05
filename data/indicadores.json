@@ -52276,9 +52276,15 @@
         "available": true,
         "format": "docx",
         "path": "downloads/indicadores/IOAE/nota/IOAE_nota.docx",
-        "periodo": "Jul-26",
-        "generated_from": "machote",
-        "automatic": false
+        "periodo": "Sep 26",
+        "generated_from": "boletin_validado",
+        "automatic": true,
+        "generated_at": "2026-11-05T01:37:46+00:00",
+        "source_sha256": "923e6de1a9af5d03eb871b99801f2fd989b84ce1e90383ef6c6f129be40be863",
+        "fingerprint": "3d575a279f6f1758ccfa9d5ba0d389bc0cd4447b27587e05cd9c478e91eb6d8e",
+        "status": "vigente",
+        "target_period": "Sep 26",
+        "message": "Nota generada y validada por reglas Python"
       },
       "boletin_validado": true
     },

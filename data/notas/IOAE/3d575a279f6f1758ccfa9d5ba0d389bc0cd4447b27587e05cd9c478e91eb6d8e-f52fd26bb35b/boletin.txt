@@ -1,0 +1,260 @@
+BOLETÍN DE INDICADOR 629/26
+INDICADOR OPORTUNO
+DE LA ACTIVIDAD ECONÓMICA (IOAE)
+20 de octubre de 2026
+Página 1/6
+Próxima publicación: 19 de noviembre de 2026
+IOAE
+septiembre
+variación
+anual mensual
+▲ 3.7 % ▲ 0.1 %
+El IOAE anticipa un aumento anual de 3.7 %
+y mensual de 0.1 % del IGAE, para septiembre de 2026
+El Indicador Oportuno de la Actividad Económica (IOAE) permite contar con estimaciones
+econométricas oportunas sobre la evolución del Indicador Global de la Actividad Económica
+(IGAE), así como de las actividades secundarias y terciarias. De esta forma, se adelanta
+cinco semanas a su publicación oficial al presentar resultados tres semanas después del mes
+de referencia, frente a las ocho semanas del IGAE.
+Para septiembre de 2026, el IOAE estima un crecimiento anual de 3.7 % en el IGAE. Según
+grupos de actividad económica, se espera un alza de 4.0 % en las terciarias y de 3.6 % en las
+secundarias respecto al mismo mes de 2025. Las estimaciones incluyen intervalos de
+confianza a 95.0 % y corresponden a cifras desestacionalizadas (ver cuadro 1).
+Cuadro 1
+Estimaciones del Indicador Oportuno de la Actividad Económica
+cifras desestacionalizadas
+agosto y septiembre de 2026
+(variación porcentual anual)
+Intervalo de confianza a 95.0 %
+Concepto Mes Nowcast1/
+Inferior Superior
+agosto 3.2 2.1 4.3
+IGAE
+septiembre 3.7 2.6 4.9
+agosto 3.62/
+Actividades secundarias
+septiembre 3.6 1.4 5.9
+agosto 3.7 2.3 5.0
+Actividades terciarias
+septiembre 4.0 2.6 5.4
+Nota: Cifras elaboradas mediante métodos econométricos.
+La serie del IOAE se calcula de manera independiente a la de sus componentes.
+1/ Estimación oportuna que aprovecha la asociación estadística entre la variable que se desea estimar
+—en este caso, el Indicador Global de la Actividad Económica (IGAE)— y otras variables más oportunas.
+2/ Se considera como valor observado, según el Indicador Mensual de la Actividad Industrial (IMAI).
+Fuente: INEGI. Indicador Oportuno de la Actividad Económica (IOAE), 2026.
+
+BOLETÍN DE INDICADOR 629/26
+INDICADOR OPORTUNO
+DE LA ACTIVIDAD ECONÓMICA (IOAE)
+20 de octubre de 2026
+Página 2/6
+A tasa mensual, se anticipa un avance de 0.1 % en el IGAE, así como en las actividades
+secundarias y terciarias, para septiembre de 2026 (ver cuadro 2).
+Cuadro 2
+Estimaciones del Indicador Oportuno de la Actividad Económica
+cifras desestacionalizadas
+agosto y septiembre de 2026
+(variación porcentual mensual)
+Intervalo de confianza a 95.0 %
+Concepto Mes Nowcast1/
+Inferior Superior
+agosto 0.5 -0.6 1.6
+IGAE
+septiembre 0.1 -1.0 1.2
+agosto 0.62/
+Actividades secundarias
+septiembre 0.1 -2.1 2.2
+agosto 0.3 -1.1 1.6
+Actividades terciarias
+septiembre 0.1 -1.2 1.4
+Nota: Cifras elaboradas mediante métodos econométricos.
+La serie del IOAE se calcula de manera independiente a la de sus componentes.
+1/ Estimación oportuna que aprovecha la asociación estadística entre la variable que se desea estimar
+—en este caso, el Indicador Global de la Actividad Económica (IGAE)— y otras variables más oportunas.
+2/ Se considera como valor observado, según el Indicador Mensual de la Actividad Industrial (IMAI).
+Fuente: INEGI. Indicador Oportuno de la Actividad Económica (IOAE), 2026.
+Para el noveno mes de 2026, el IOAE (base 2018=100) estima un nivel de 108.4 puntos en el
+IGAE, de 103.4 en las actividades secundarias y de 111.3 puntos en las terciarias (ver cuadro 3).
+Cuadro 3
+Estimaciones del Indicador Oportuno de la Actividad Económica
+cifras desestacionalizadas
+agosto y septiembre de 2026
+(índice base 2018=100)
+Intervalo de confianza a 95.0 %
+Concepto Mes Nowcast1/
+Inferior Superior
+agosto 108.3 107.1 109.4
+IGAE
+septiembre 108.4 107.1 109.6
+agosto 103.42/
+Actividades secundarias
+septiembre 103.4 101.2 105.7
+agosto 111.2 109.7 112.7
+Actividades terciarias
+septiembre 111.3 109.8 112.8
+Nota: Cifras elaboradas mediante métodos econométricos.
+La serie del IOAE se calcula de manera independiente a la de sus componentes.
+1/ Estimación oportuna que aprovecha la asociación estadística entre la variable que se desea estimar
+—en este caso, el Indicador Global de la Actividad Económica (IGAE)— y otras variables más oportunas.
+2/ Se considera como valor observado, según el Indicador Mensual de la Actividad Industrial (IMAI).
+Fuente: INEGI. Indicador Oportuno de la Actividad Económica (IOAE), 2026.
+
+BOLETÍN DE INDICADOR 629/26
+INDICADOR OPORTUNO
+DE LA ACTIVIDAD ECONÓMICA (IOAE)
+20 de octubre de 2026
+Página 3/6
+Las gráficas 1, 2 y 3 muestran las variaciones anuales del IOAE y de las actividades secundarias
+y terciarias, respectivamente. En cada caso, la línea turquesa representa la serie de interés, la
+línea azul se refiere al ajuste de las estimaciones y la línea violeta muestra los nowcasts de
+agosto y septiembre de 2026.1 Las líneas punteadas de color naranja representan los
+intervalos de confianza a 95.0 por ciento.
+Gráfica 1
+Serie desestacionalizada del Indicador Oportuno de la Actividad Económica:
+Nowcast del Indicador Global de la Actividad Económica (IGAE)
+enero de 2021–septiembre de 2026
+(variación porcentual real respecto al mismo mes del año anterior: agosto y septiembre de 2026)
+30.0
+20.0
+10.0
+0.0
+-10.0
+2021 2022 2023 2024 2025 2026
+IGAE Ajuste Nowcasts Inferior Superior
+Nota: Series elaboradas mediante métodos econométricos.
+Fuente: INEGI. Indicador Oportuno de la Actividad Económica (IOAE), 2026.
+Gráfica 2
+Serie desestacionalizada del Indicador Oportuno de la Actividad Económica:
+Nowcast de las actividades secundarias
+enero de 2021–septiembre de 2026
+(variación porcentual real respecto al mismo mes del año anterior: septiembre de 2026)
+40.0
+30.0
+20.0
+10.0
+0.0
+-10.0
+2021 2022 2023 2024 2025 2026
+IGAE Ajuste Nowcasts Inferior Superior
+Nota: Series elaboradas mediante métodos econométricos.
+Fuente: INEGI. Indicador Oportuno de la Actividad Económica (IOAE), 2026.
+1 Para las actividades secundarias, la estimación se presenta únicamente para septiembre de 2026.
+
+BOLETÍN DE INDICADOR 629/26
+INDICADOR OPORTUNO
+DE LA ACTIVIDAD ECONÓMICA (IOAE)
+20 de octubre de 2026
+Página 4/6
+Gráfica 3
+Serie desestacionalizada del Indicador Oportuno de la Actividad Económica:
+Nowcast de las actividades terciarias
+enero de 2021–septiembre de 2026
+(variación porcentual real respecto al mismo mes del año anterior: agosto y septiembre de 2026)
+30.0
+20.0
+10.0
+0.0
+-10.0
+2021 2022 2023 2024 2025 2026
+IGAE Ajuste Nowcasts Inferior Superior
+Nota: Series elaboradas mediante métodos econométricos.
+Fuente: INEGI. Indicador Oportuno de la Actividad Económica (IOAE), 2026.
+Las gráficas 4 y 5 muestran las estimaciones para el IGAE, por medio del IOAE, de la variación
+porcentual real en relación con el mes anterior y del índice (base 2018=100), respectivamente.
+En cada caso, la línea turquesa representa la serie de interés, la línea azul se refiere al ajuste
+de las estimaciones y la línea violeta muestra los nowcasts de agosto y septiembre de 2026.
+Las líneas punteadas de color naranja representan los intervalos de confianza a 95.0 por
+ciento.
+Gráfica 4
+Serie desestacionalizada del Indicador Oportuno de la Actividad Económica:
+Nowcast del Indicador Global de la Actividad Económica (IGAE)
+enero de 2021–septiembre de 2026
+(variación porcentual real respecto al mes anterior: agosto y septiembre de 2026)
+2.0
+1.0
+0.0
+-1.0
+-2.0
+2021 2022 2023 2024 2025 2026
+IGAE Ajuste Nowcasts Inferior Superior
+Nota: Series elaboradas mediante métodos econométricos.
+Fuente: INEGI. Indicador Oportuno de la Actividad Económica (IOAE), 2026.
+
+BOLETÍN DE INDICADOR 629/26
+INDICADOR OPORTUNO
+DE LA ACTIVIDAD ECONÓMICA (IOAE)
+20 de octubre de 2026
+Página 5/6
+Gráfica 5
+Serie desestacionalizada del Indicador Oportuno de la Actividad Económica:
+Nowcast del Indicador Global de la Actividad Económica (IGAE)
+enero de 2021–septiembre de 2026
+(índice base 2018=100: agosto y septiembre de 2026)
+109.0
+106.0
+103.0
+100.0
+97.0
+94.0
+2021 2022 2023 2024 2025 2026
+IGAE Ajuste Nowcasts Inferior Superior
+Nota: Series elaboradas mediante métodos econométricos.
+Fuente: INEGI. Indicador Oportuno de la Actividad Económica (IOAE), 2026.
+
+BOLETÍN DE INDICADOR 629/26
+INDICADOR OPORTUNO
+DE LA ACTIVIDAD ECONÓMICA (IOAE)
+20 de octubre de 2026
+Página 6/6
+I. FICHA METODOLÓGICA
+En 2019, la Dirección General Adjunta de Investigación inició el desarrollo de un
+modelo de nowcasting para estimar el Producto Interno Bruto (PIB) trimestral.
+Sin embargo, dada la necesidad de contar con estimaciones oportunas de corto
+plazo a causa del cierre económico por la COVID-19, se optó por enfocar la
+modelación al Indicador Global de la Actividad Económica (IGAE), que presenta una
+Antecedentes
+mayor frecuencia respecto al PIB, al contar con periodicidad mensual, esto permitió
+obtener un indicador con mayor oportunidad. En consecuencia, desde octubre
+2020, el INEGI publica el Indicador Oportuno de la Actividad Económica (IOAE).
+Este proporciona estimaciones anticipadas del IGAE para los dos meses posteriores
+a las últimas cifras publicadas.
+Ofrecer estimaciones precisas y hasta con cinco semanas de antelación del IGAE,
+Objetivo
+las actividades secundarias y las terciarias.
+La selección de series temporales en los modelos de nowcasting se realiza con el
+criterio de oportunidad y alta correlación con respecto al IGAE, es decir, se requiere
+que las series de tiempo se actualicen con mayor antelación que el IGAE y que,
+Datos
+además, estén altamente correlacionadas de manera contemporánea con esta
+última. En este sentido, se utiliza un amplio conjunto de series de tiempo
+económicas y financieras, así como fuentes no tradicionales.
+Cobertura geográfica Nacional
+Periodicidad Mensual
+El modelo de nowcasting del IOAE se basa en la estimación de un factor dinámico
+oportuno y relacionado, de manera contemporánea, con el IGAE. El proceso de
+modelación utiliza técnicas como Mínimos Cuadrados Parciales, Modelo de
+Métodos de
+Factores Dinámicos, regresiones con errores autocorrelacionados y técnicas de la
+estimación
+validación cruzada en series de tiempo. Además, se valida la consistencia
+estadística de las estimaciones verificando los supuestos en todo el proceso de
+modelación.
+El IOAE se publica hasta 22 días naturales después de concluido el mes de
+referencia conforme al Calendario de Difusión de Información Estadística y
+Geográfica y de Interés Nacional. La publicación presenta estimaciones puntuales
+Publicación de
+y sus intervalos de confianza de 95.0 % en cifras desestacionalizadas para el IGAE,
+resultados
+las actividades secundarias y terciarias. Se presentan las variaciones porcentuales
+anuales, mensuales y los niveles del índice (base 2018=100). Nótese que el IOAE
+no reemplaza el cálculo tradicional del IGAE.
+Las variables utilizadas en la metodología del IOAE se pueden consultar en detalle
+Nota al público en la síntesis metodológica, disponible en:
+usuario https://www.inegi.org.mx/investigacion/ioae/#documentacion y en la sección de
+tabulados del IOAE, en: https://www.inegi.org.mx/investigacion/ioae/#tabulados
+Para más información sobre este proyecto, consúltese el portal del Instituto:
+Ligas de interés
+https://www.inegi.org.mx/investigacion/ioae/
+La información estadística y geográfica que genera el INEGI es un bien público y nos permite
+a todas y a todos tomar mejores decisiones. ¡Conócela, úsala y compártela!
