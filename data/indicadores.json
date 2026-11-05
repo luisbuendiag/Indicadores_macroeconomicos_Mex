@@ -28472,9 +28472,15 @@
         "available": true,
         "format": "docx",
         "path": "downloads/indicadores/DESOCUP/nota/DESOCUP_nota.docx",
-        "periodo": "Jul-26",
-        "generated_from": "machote",
-        "automatic": false
+        "periodo": "Sep 26",
+        "generated_from": "boletin_validado",
+        "automatic": true,
+        "generated_at": "2026-11-05T02:35:40+00:00",
+        "source_sha256": "44727848a17ce04c95395b00f3634889a9129805d854dc5aee240aa7f9605b21",
+        "fingerprint": "c388390ad74d56c1b9921b2aef1a58d117994756d371bee63e53172e092ce646",
+        "status": "vigente",
+        "target_period": "Sep 26",
+        "message": "Nota generada y validada por reglas Python"
       },
       "boletin_validado": true
     },
