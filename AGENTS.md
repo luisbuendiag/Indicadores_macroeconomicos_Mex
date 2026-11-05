@@ -232,3 +232,18 @@ Entorno financiero contiene la inversión externa reportada por la **Secretaría
   puntos del índice; variaciones en porcentaje, sin modificar fracciones del dashboard.
 - No inferir contribuciones ni significancia entre sectores desde puntos estimados.
   Conservar pausas, evidencias, machotes y última nota válida ante fallos.
+
+## Nota automática ENOE
+
+- `build_labor_notes.py` procesa DESOCUP desde el boletín mensual completo de
+  quince páginas; no el trimestral. Cobertura propia, sin ampliar el piloto IMOAM.
+- Cuadros 1, 2, 4 y 7: población por sexo, ocupación, tasas originales y ajustadas
+  nacionales/urbanas. Los espacios de millares se validan con diferencias y totales;
+  una partición ambigua impide publicar. PEA = ocupados + desocupados.
+- Denominadores distintos: 15 años y más, PEA, ocupados y PNEA. Porcentajes no
+  equivalen a puntos porcentuales. Conservar diferencias oficiales con precisión
+  completa, sin recalcularlas desde tasas redondeadas. No confundir TIL1 y TOSI1.
+- Dos páginas, cuatro tablas y dos gráficas. Una caída de desocupación no prueba
+  empleo neto: revisar PEA, participación y ocupados. No equiparar personas ENOE
+  a puestos IMSS ni empalmar ENOE/ENOEN/ETOE. Base salarial leída del boletín.
+- Respetar pausas, machotes y evidencias; fallos preservan el Word anterior.
