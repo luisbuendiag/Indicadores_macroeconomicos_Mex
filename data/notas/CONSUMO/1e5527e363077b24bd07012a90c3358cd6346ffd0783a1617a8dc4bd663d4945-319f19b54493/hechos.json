@@ -1,0 +1,184 @@
+{
+  "indicator": "CONSUMO",
+  "ym": "2026-08",
+  "period": "Ago 26",
+  "publication_date": "2026-11-05",
+  "bulletin": "683/26",
+  "base": "2018",
+  "index": 114.0,
+  "rows": [
+    {
+      "id": "total",
+      "label": "Consumo privado",
+      "mom": 0.5,
+      "yoy": 1.4,
+      "series": "desestacionalizada",
+      "location": "p. 2, cuadro 1",
+      "evidence": "Consumo privado1/ 0.5 1.4"
+    },
+    {
+      "id": "nacional",
+      "label": "Nacional",
+      "mom": 0.6,
+      "yoy": 1.1,
+      "series": "desestacionalizada",
+      "location": "p. 2, cuadro 1",
+      "evidence": "Nacional 0.6 1.1"
+    },
+    {
+      "id": "nacional_bienes",
+      "label": "Bienes nacionales",
+      "mom": 0.7,
+      "yoy": 1.1,
+      "series": "desestacionalizada",
+      "location": "p. 2, cuadro 1",
+      "evidence": "Bienes 0.7 1.1"
+    },
+    {
+      "id": "nacional_servicios",
+      "label": "Servicios nacionales",
+      "mom": 0.4,
+      "yoy": 1.0,
+      "series": "desestacionalizada",
+      "location": "p. 2, cuadro 1",
+      "evidence": "Servicios 0.4 1.0"
+    },
+    {
+      "id": "importado",
+      "label": "Bienes importados",
+      "mom": 0.0,
+      "yoy": 0.7,
+      "series": "desestacionalizada",
+      "location": "p. 2, cuadro 1",
+      "evidence": "Importado 0.0 0.7"
+    },
+    {
+      "id": "importado_bienes",
+      "label": "Bienes importados (detalle)",
+      "mom": 0.0,
+      "yoy": 0.7,
+      "series": "desestacionalizada",
+      "location": "p. 2, cuadro 1",
+      "evidence": "Bienes 0.0 0.7\n"
+    }
+  ],
+  "originals": [
+    {
+      "id": "total",
+      "label": "Consumo privado",
+      "original": 1.3,
+      "ytd": 1.9,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Consumo privado2/ 1.3 1.9"
+    },
+    {
+      "id": "nacional",
+      "label": "Nacional",
+      "original": 1.0,
+      "ytd": 0.4,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Nacional 1.0 0.4"
+    },
+    {
+      "id": "nacional_bienes",
+      "label": "Bienes nacionales",
+      "original": 0.9,
+      "ytd": 0.4,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Bienes 0.9 0.4"
+    },
+    {
+      "id": "nacional_duradero",
+      "label": "Duraderos nacionales",
+      "original": 2.5,
+      "ytd": -3.0,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Duradero 2.5 -3.0"
+    },
+    {
+      "id": "nacional_semi",
+      "label": "Semiduraderos nacionales",
+      "original": 3.7,
+      "ytd": -2.0,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Semi duradero 3.7 -2.0"
+    },
+    {
+      "id": "nacional_no",
+      "label": "No duraderos nacionales",
+      "original": 0.2,
+      "ytd": 1.4,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "No duradero 0.2 1.4"
+    },
+    {
+      "id": "nacional_servicios",
+      "label": "Servicios nacionales",
+      "original": 1.1,
+      "ytd": 0.4,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Servicios 1.1 0.4"
+    },
+    {
+      "id": "importado",
+      "label": "Bienes importados",
+      "original": 1.5,
+      "ytd": 7.2,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Importado 1.5 7.2"
+    },
+    {
+      "id": "importado_bienes",
+      "label": "Bienes importados (detalle)",
+      "original": 1.5,
+      "ytd": 7.2,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Bienes 1.5 7.2"
+    },
+    {
+      "id": "importado_duradero",
+      "label": "Duraderos importados",
+      "original": 15.8,
+      "ytd": 13.3,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Duradero 15.8 13.3"
+    },
+    {
+      "id": "importado_semi",
+      "label": "Semiduraderos importados",
+      "original": -7.5,
+      "ytd": -2.8,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Semi duradero -7.5 -2.8"
+    },
+    {
+      "id": "importado_no",
+      "label": "No duraderos importados",
+      "original": -3.2,
+      "ytd": 8.2,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "No duradero -3.2 8.2"
+    }
+  ],
+  "pages": [
+    "BOLETÍN DE INDICADOR 683/26\nINDICADOR MENSUAL DEL\nCONSUMO PRIVADO (IMCP)\n5 de noviembre de 2026\nPágina 1/4\nPróxima publicación: 4 de diciembre de 2026\nConsumo\nVariación Variación\nprivado\nmensual anual\níndice 2018=100\nagosto agosto agosto\n114.0 ▲0.5 % ▲1.4 %\nAumentó 0.5 % el consumo privado\nen agosto de 2026, a tasa mensual\nEl Indicador Mensual del Consumo Privado (IMCP) permite conocer la evolución del gasto que\nrealizan los hogares en bienes y servicios de consumo, tanto de origen nacional como\nimportado.\nI. CIFRAS DESESTACIONALIZADAS\nEn agosto de 2026 y con cifras desestacionalizadas,1 el IMCP incrementó 0.5 % frente al mes\nprevio, en términos reales (ver gráfica 1). A tasa anual, creció 1.4 por ciento.\nGráfica 1\nVariación del consumo privado\ncifras desestacionalizadas\nagosto de 2024–agosto de 2026\n(variación porcentual real mensual)\n1.2 1.1 1.2\n1.0 1.0\n1.0 0.8 0.8\n0.4 0.5 0.4 0.5\n0.3 0.2 0.1\n0.0\n0.0\n-0.3 -0.2\n-0.6 -0.5 -0.5 -0.6 -0.5\n-1.0\n-1.0\n-1.5\n-2.0 -1.7\nA S O N D E F M A M J J A S O N D E F M A M J J A\n2024 2025 2026\nNota: Serie elaborada mediante métodos econométricos.\nFuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Indicador Mensual del Consumo Privado (IMCP), 2026.\n1 La mayoría de las series económicas se ve afectada por factores estacionales y de calendario. El ajuste de los datos por dichos factores\npermite obtener las cifras desestacionalizadas.\nLa tendencia-ciclo es la combinación de los componentes de tendencia y ciclo. La tendencia se refiere a la evolución de largo plazo de la\nserie de tiempo, y el ciclo, a las desviaciones alrededor de la tendencia. Así, el análisis de las series ajustadas ayuda a realizar un mejor\ndiagnóstico de la evolución de las variables.",
+    "BOLETÍN DE INDICADOR 683/26\nINDICADOR MENSUAL DEL\nCONSUMO PRIVADO (IMCP)\n5 de noviembre de 2026\nPágina 2/4\nSegún componentes, el gasto en bienes y servicios de origen nacional creció 0.6 % (el de\nbienes aumentó 0.7 % y el de servicios, 0.4 %) y el consumo en bienes de origen importado\nno presentó variación, a tasa mensual.\nEn su comparación anual, el gasto en bienes y servicios nacionales ascendió 1.1 % (el de\nbienes subió 1.1 % y el de servicios, 1.0 %) y en bienes de origen importado incrementó 0.7 %,\nen agosto de 2026 (ver cuadro 1).\nCuadro 1\nVariación del Indicador Mensual del Consumo Privado\ncifras desestacionalizadas\nagosto de 2026\n(variación porcentual mensual y anual)\nVariación porcentual real respecto a:\nConsumo de bienes y\nservicios según origen julio agosto\nde 2026 de 2025\nConsumo privado1/ 0.5 1.4\nNacional 0.6 1.1\nBienes 0.7 1.1\nServicios 0.4 1.0\nImportado 0.0 0.7\nBienes 0.0 0.7\nNota: Cifras elaboradas mediante métodos econométricos.\nLas series desestacionalizadas de los principales agregados del IMCP se\ncalculan de manera independiente a las de sus componentes.\n1/ Incluye las compras netas de residentes y no residentes.\nFuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Indicador Mensual\ndel Consumo Privado (IMCP), 2026.\nGráfica 2\nSerie desestacionalizada del consumo privado según origen\nenero de 2022–agosto de 2026\n(índice 2018=100)\n180.0\n160.0\n140.0\n120.0\n100.0\n80.0\n2022 2023 2024 2025 2026\nConsumo privado Nacional Importado\nNota: Series elaboradas mediante métodos econométricos.\nFuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Indicador Mensual del Consumo Privado (IMCP), 2026.",
+    "BOLETÍN DE INDICADOR 683/26\nINDICADOR MENSUAL DEL\nCONSUMO PRIVADO (IMCP)\n5 de noviembre de 2026\nPágina 3/4\nII. CIFRAS ORIGINALES\nCuadro 2\nVariación del Indicador Mensual del Consumo Privado\na agosto de 20261/\n(variación porcentual anual)\nVariación porcentual real anual\nConsumo de bienes y respecto a:\nservicios según origen agosto ene.-ago.\nde 2025 de 2025\nConsumo privado2/ 1.3 1.9\nNacional 1.0 0.4\nBienes 0.9 0.4\nDuradero 2.5 -3.0\nSemi duradero 3.7 -2.0\nNo duradero 0.2 1.4\nServicios 1.1 0.4\nImportado 1.5 7.2\nBienes 1.5 7.2\nDuradero 15.8 13.3\nSemi duradero -7.5 -2.8\nNo duradero -3.2 8.2\nCompras netas de residentes\nNA NA\ny no residentes\n1/ Cifras preliminares.\n2/ Incluye las compras netas de residentes y no residentes.\nNA No aplica.\nFuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Indicador Mensual\ndel Consumo Privado (IMCP), 2026.",
+    "BOLETÍN DE INDICADOR 683/26\nINDICADOR MENSUAL DEL\nCONSUMO PRIVADO (IMCP)\n5 de noviembre de 2026\nPágina 4/4\nIII. FICHA METODOLÓGICA\nEl Indicador Mensual del Consumo Privado (IMCP) mide el comportamiento del gasto que realizan\nlos hogares en bienes y servicios de consumo, tanto de origen nacional como importado.\nAntecedentes\nEste permite dar seguimiento mensual al componente más significativo del Producto Interno Bruto\n(PIB), por el lado de la demanda.\nLos datos del IMCP están disponibles en una serie larga desde enero de 1993 y se expresan en\nAño base\níndices de volumen físico, con base fija en el año 2018.\nEstadísticas mensuales que elabora el Instituto, como la Encuesta Mensual de la Industria\nManufacturera (EMIM), Encuesta Mensual de Servicios (EMS), registros del comercio exterior,\nEncuestas de Viajeros Internacionales (EVI) e Índices Nacionales de Precios al Consumidor (INPC)\nFuentes\ny Productor (INPP). Para las actividades agropecuarias, de energía, gas, agua, servicios financieros\ny del gobierno, se usaron los registros administrativos que provienen de las empresas y Unidades\ndel Estado.\nCobertura geográfica Nacional\nPeriodicidad Mensual\nEl indicador se elabora con el «Sistema de Clasificación Industrial de América del Norte» (SCIAN)\n2018. Se incluyen los criterios metodológicos, clasificadores y datos fuente que se emplean en los\ncálculos anuales y trimestrales del consumo privado total. El método de cálculo para los\ncomponentes es el siguiente: para el de origen nacional, se elaboran índices del volumen de ventas\no de producción para cada clase de actividad, cuya producción se destina al consumo privado, de\nacuerdo con los Cuadros de Oferta y Utilización (COU) 2018. Los índices se utilizan para extrapolar\nCálculo del IMCP el valor registrado en el año base; para el de origen importado, se suman las fracciones arancelarias\nimportadas de bienes de consumo final valoradas en pesos. Los valores se deflactan con los\níndices que se construyen considerando los índices de precios de exportación de los bienes de\nconsumo del Bureau of Labor Statistics de los Estados Unidos, ponderados por el tipo de cambio\ndel peso mexicano frente al dólar americano. Por suma de los componentes más las compras netas\nde residentes y no residentes se obtiene el total del indicador que, para su publicación, se expresa\nen números índices 2018.\nLas series originales se ajustan estacionalmente mediante el paquete estadístico\nX-13ARIMA-SEATS. Para conocer la metodología, consúltese la siguiente liga:\nhttps://www.inegi.org.mx/app/biblioteca/ficha.html?upc=702825099060\nAjuste estacional y\nLas especificaciones de los modelos están disponibles en el Banco de Información\nmodelos\nEconómica (BIE). Seleccione «Indicadores económicos de coyuntura, Indicador mensual del\nconsumo privado» y vaya al icono de información correspondiente a las «series\ndesestacionalizadas y de tendencia-ciclo».\nPublicación de El IMCP se publica los primeros días de cada mes conforme al Calendario de Difusión de\nresultados Información Estadística y Geográfica y de Interés Nacional.\nEn la integración del IMCP, de agosto de 2026, se consideró la última información estadística\ndisponible de las encuestas económicas (EMIM, EMEC y EMS), de los registros administrativos y de\nlos datos primarios que divulga el Instituto. Para las actividades agropecuarias, de energía, gas,\nagua, servicios financieros y del gobierno, se incluyeron los registros administrativos provenientes\nNota al\nde las empresas y Unidades del Estado que se recibieron oportunamente vía correo electrónico e\npúblico usuario\ninternet.\nLo anterior permitió la generación de estadísticas con niveles altos de cobertura.\nEl INEGI invita a conocer a mayor detalle la metodología del IMCP, en la siguiente liga:\nhttps://www.inegi.org.mx/temas/imcp/\nLa información estadística y geográfica que genera el INEGI es un bien público y nos permite\na todas y a todos tomar mejores decisiones. ¡Conócela, úsala y compártela!"
+  ],
+  "source_sha256": "e85e1f3d7533f9786702bad2ee0054b992653289ef5c3158a71cd4a1453c8be5",
+  "cover_evidence": "\n114.0 ▲0.5 % ▲1.4 %",
+  "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_11.pdf"
+}

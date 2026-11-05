@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-11-05T00:26:33+00:00",
+    "generated_at": "2026-11-05T15:30:28+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-11-04T18:26:32-06:00",
+    "last_update_ct": "2026-11-05T09:30:28-06:00",
     "periodo_referencia_reciente": {
       "period": "Oct 26",
       "period_long": "Oct 26"
@@ -24762,9 +24762,51 @@
             -0.034,
             0.1
           ]
+        },
+        {
+          "period": "Ago 26",
+          "values": [
+            114.0,
+            0.005,
+            0.014,
+            0.013,
+            0.019,
+            0.006,
+            0.011,
+            0.007,
+            0.011,
+            0.004,
+            0.01,
+            0.0,
+            0.007,
+            0.0,
+            0.007,
+            0.01,
+            0.004,
+            0.009,
+            0.004,
+            0.011,
+            0.004,
+            0.015,
+            0.072,
+            0.015,
+            0.072,
+            0.025,
+            -0.03,
+            0.037,
+            -0.02,
+            0.002,
+            0.014,
+            0.158,
+            0.133,
+            -0.075,
+            -0.028,
+            -0.032,
+            0.082
+          ]
         }
       ],
-      "last_observation": "Jul 26",
+      "last_observation": "Ago 26",
       "last_updated": "2026-11-05",
       "last_checked": "2026-11-05",
       "source_origin": "api",
@@ -24774,18 +24816,18 @@
       "clasificacion": "principal",
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
-      "fecha_publicacion": "5 de octubre de 2026",
-      "periodo_referencia": "Jul 26",
+      "fecha_publicacion": "5 de noviembre de 2026",
+      "periodo_referencia": "Ago 26",
       "fecha_consulta": "2026-11-05",
       "metrics": {
         "kpi": {
-          "assessment": "neutral",
-          "dir": "flat",
-          "ultimoFmt": "113.2",
-          "ultimoRaw": 113.2,
-          "ultimoP": "Jul 26",
-          "varText": "0.0%",
-          "varMag": 0.0,
+          "assessment": "favorable",
+          "dir": "up",
+          "ultimoFmt": "114.0",
+          "ultimoRaw": 114.0,
+          "ultimoP": "Ago 26",
+          "varText": "+0.5%",
+          "varMag": 0.5,
           "pos": true,
           "varColor": "#1e5b4f",
           "varLabel": "Var. mensual desest.",
@@ -24795,7 +24837,7 @@
           "minFmt": "108.6",
           "minRaw": 108.6,
           "minP": "Ene 25",
-          "lastI": 21,
+          "lastI": 22,
           "series": [
             110.5,
             111.0,
@@ -24818,7 +24860,8 @@
             113.7,
             114.0,
             113.4,
-            113.2
+            113.2,
+            114.0
           ],
           "periods": [
             "Oct 24",
@@ -24842,34 +24885,35 @@
             "Abr 26",
             "May 26",
             "Jun 26",
-            "Jul 26"
+            "Jul 26",
+            "Ago 26"
           ],
-          "semaforo": "estable",
-          "yoyText": "+1.1%",
+          "semaforo": "bueno",
+          "yoyText": "+1.4%",
           "yoyLabel": "Var. anual desest."
         },
         "yoy": {
-          "mag": 1.0999999999999999,
+          "mag": 1.4000000000000001,
           "pos": true,
-          "text": "+1.1%",
+          "text": "+1.4%",
           "label": "Var. anual desest."
         },
         "resumen": [
-          "En julio de 2026, el consumo privado se ubicó en 113.2 puntos (índice base 2018=100). El valor de var. mensual desest. fue de 0.0% frente al mes previo.",
-          "La var. anual desest. se situó en +1.1%, lo que refleja la comparación contra julio de 2026 del año previo.",
+          "En agosto de 2026, el consumo privado se ubicó en 114.0 puntos (índice base 2018=100). El valor de var. mensual desest. fue de +0.5% frente al mes previo.",
+          "La var. anual desest. se situó en +1.4%, lo que refleja la comparación contra agosto de 2026 del año previo.",
           "En la serie mostrada, el indicador oscila entre un máximo de 114.4 puntos (diciembre de 2025) y un mínimo de 108.6 puntos (enero de 2025). El último dato se ubica dentro del rango observado en el periodo mostrado.",
-          "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
+          "La variación se clasifica como favorable según la lectura económica del indicador."
         ]
       },
-      "periodo_referencia_oficial": "Julio de 2026",
-      "fecha_publicacion_oficial": "5 de octubre de 2026",
+      "periodo_referencia_oficial": "Agosto de 2026",
+      "fecha_publicacion_oficial": "5 de noviembre de 2026",
       "proxima_publicacion": {
-        "fecha_publicacion": "5 de noviembre de 2026",
-        "periodo_referencia": "Agosto de 2026",
+        "fecha_publicacion": "4 de diciembre de 2026",
+        "periodo_referencia": "Septiembre de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo esperado (Julio de 2026).",
-      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf",
+      "motivo_frescura": "El periodo cargado (Ago 26) coincide con el último periodo esperado (Agosto de 2026).",
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_11.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/CONSUMO/CONSUMO_datos.xlsx",
       "xlsx_causa": null,
@@ -24877,10 +24921,10 @@
       "nota_causa": null,
       "url_nota_individual": "downloads/indicadores/CONSUMO/nota/CONSUMO_nota.docx",
       "url_fuente_oficial": "https://www.inegi.org.mx/programas/imcp/",
-      "fecha_ultima_publicacion": "5 de octubre de 2026",
+      "fecha_ultima_publicacion": "5 de noviembre de 2026",
       "regla_publicacion": null,
-      "periodo_boletin": "Jul 26",
-      "numero_boletin": "616/26",
+      "periodo_boletin": "Ago 26",
+      "numero_boletin": "683/26",
       "tipo_documento": "PDF",
       "producto_boletin": "Indicador Mensual del Consumo Privado",
       "sigla": "IMCP",
@@ -24915,14 +24959,14 @@
         "available": true,
         "format": "docx",
         "path": "downloads/indicadores/CONSUMO/nota/CONSUMO_nota.docx",
-        "periodo": "Jul 26",
+        "periodo": "Ago 26",
         "generated_from": "boletin_validado",
         "automatic": true,
-        "generated_at": "2026-11-05T02:54:41+00:00",
-        "source_sha256": "585befdb839d40ed8015e1f7a0415cc984e12255a9c378583ee10d8fca8a0da3",
-        "fingerprint": "5dd3552050a3b71c58b97f2417a4965cea0ccffaeeaecd7ff78d0d13743299f8",
+        "generated_at": "2026-11-05T16:12:08+00:00",
+        "source_sha256": "e85e1f3d7533f9786702bad2ee0054b992653289ef5c3158a71cd4a1453c8be5",
+        "fingerprint": "1e5527e363077b24bd07012a90c3358cd6346ffd0783a1617a8dc4bd663d4945",
         "status": "vigente",
-        "target_period": "Jul 26",
+        "target_period": "Ago 26",
         "message": "Nota generada y validada por reglas Python"
       },
       "boletin_validado": true
@@ -49687,9 +49731,54 @@
             0.062,
             -0.01
           ]
+        },
+        {
+          "period": "Ago 26",
+          "values": [
+            108.3,
+            -0.018,
+            0.061,
+            null,
+            0.0,
+            0.079,
+            null,
+            -0.035,
+            0.036,
+            null,
+            0.086,
+            null,
+            0.062,
+            null,
+            -0.005,
+            null,
+            -0.021,
+            null,
+            0.017,
+            null,
+            0.068,
+            null,
+            0.212,
+            null,
+            0.038,
+            null,
+            0.057,
+            0.022,
+            null,
+            0.076,
+            0.046,
+            null,
+            0.089,
+            0.045,
+            null,
+            0.064,
+            0.047,
+            null,
+            0.035,
+            -0.005
+          ]
         }
       ],
-      "last_observation": "Jul 26",
+      "last_observation": "Ago 26",
       "last_updated": "2026-11-05",
       "last_checked": "2026-11-05",
       "requiere_token": null,
@@ -49697,21 +49786,21 @@
       "clasificacion": "principal",
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
-      "fecha_publicacion": "5 de octubre de 2026",
-      "periodo_referencia": "Jul 26",
+      "fecha_publicacion": "5 de noviembre de 2026",
+      "periodo_referencia": "Ago 26",
       "fecha_consulta": "2026-11-05",
       "source_origin": "api",
       "metrics": {
         "kpi": {
-          "assessment": "favorable",
-          "dir": "up",
-          "ultimoFmt": "110.5",
-          "ultimoRaw": 110.5,
-          "ultimoP": "Jul 26",
-          "varText": "+1.4%",
-          "varMag": 1.4000000000000001,
-          "pos": true,
-          "varColor": "#1e5b4f",
+          "assessment": "adverso",
+          "dir": "down",
+          "ultimoFmt": "108.3",
+          "ultimoRaw": 108.3,
+          "ultimoP": "Ago 26",
+          "varText": "-1.8%",
+          "varMag": -1.7999999999999998,
+          "pos": false,
+          "varColor": "#9b2247",
           "varLabel": "Var. mensual desest.",
           "maxFmt": "113.7",
           "maxRaw": 113.7,
@@ -49719,7 +49808,7 @@
           "minFmt": "38.4",
           "minRaw": 38.42,
           "minP": "May 95",
-          "lastI": 402,
+          "lastI": 403,
           "series": [
             54.56,
             55.73,
@@ -50123,7 +50212,8 @@
             107.4,
             107.1,
             108.7,
-            110.5
+            110.5,
+            108.3
           ],
           "periods": [
             "Ene 93",
@@ -50528,129 +50618,130 @@
             "Abr 26",
             "May 26",
             "Jun 26",
-            "Jul 26"
+            "Jul 26",
+            "Ago 26"
           ],
-          "semaforo": "bueno",
-          "yoyText": "+6.0%",
+          "semaforo": "malo",
+          "yoyText": "+6.1%",
           "yoyLabel": "Var. anual desest.",
-          "acumRaw": 0.017,
-          "acumText": "+1.7%",
+          "acumRaw": 0.022,
+          "acumText": "+2.2%",
           "acumLabel": "Acumulado ene-mes",
           "cards": [
             {
               "name": "Construcción",
-              "nivelRaw": 108.1,
-              "nivelText": "108.1",
-              "momRaw": -0.015,
-              "momText": "-1.5%",
-              "yoyRaw": 0.069,
-              "yoyText": "6.9%"
+              "nivelRaw": null,
+              "nivelText": "—",
+              "momRaw": 0.0,
+              "momText": "0.0%",
+              "yoyRaw": 0.079,
+              "yoyText": "7.9%"
             },
             {
               "name": "Maquinaria y equipo",
-              "nivelRaw": 112.52,
-              "nivelText": "112.5",
-              "momRaw": 0.045,
-              "momText": "4.5%",
-              "yoyRaw": 0.049,
-              "yoyText": "4.9%"
+              "nivelRaw": null,
+              "nivelText": "—",
+              "momRaw": -0.035,
+              "momText": "-3.5%",
+              "yoyRaw": 0.036,
+              "yoyText": "3.6%"
             },
             {
               "name": "Residencial",
-              "nivelRaw": 103.75,
-              "nivelText": "103.8",
+              "nivelRaw": null,
+              "nivelText": "—",
               "momRaw": null,
               "momText": "—",
-              "yoyRaw": 0.092,
-              "yoyText": "9.2%"
+              "yoyRaw": 0.086,
+              "yoyText": "8.6%"
             },
             {
               "name": "No residencial",
-              "nivelRaw": 111.19,
-              "nivelText": "111.2",
+              "nivelRaw": null,
+              "nivelText": "—",
               "momRaw": null,
               "momText": "—",
-              "yoyRaw": 0.04,
-              "yoyText": "4.0%"
+              "yoyRaw": 0.062,
+              "yoyText": "6.2%"
             },
             {
               "name": "Maquinaria y equipo nacional",
-              "nivelRaw": 95.24,
-              "nivelText": "95.2",
+              "nivelRaw": null,
+              "nivelText": "—",
               "momRaw": null,
               "momText": "—",
-              "yoyRaw": -0.031,
-              "yoyText": "-3.1%"
+              "yoyRaw": -0.005,
+              "yoyText": "-0.5%"
             },
             {
               "name": "Equipo de transporte nacional",
-              "nivelRaw": 92.97,
-              "nivelText": "93.0",
+              "nivelRaw": null,
+              "nivelText": "—",
               "momRaw": null,
               "momText": "—",
-              "yoyRaw": -0.008,
-              "yoyText": "-0.8%"
+              "yoyRaw": -0.021,
+              "yoyText": "-2.1%"
             },
             {
               "name": "Maquinaria, equipo y otros nacionales",
-              "nivelRaw": 97.89,
-              "nivelText": "97.9",
+              "nivelRaw": null,
+              "nivelText": "—",
               "momRaw": null,
               "momText": "—",
-              "yoyRaw": -0.053,
-              "yoyText": "-5.3%"
+              "yoyRaw": 0.017,
+              "yoyText": "1.7%"
             },
             {
               "name": "Maquinaria y equipo importado",
-              "nivelRaw": 125.09,
-              "nivelText": "125.1",
+              "nivelRaw": null,
+              "nivelText": "—",
               "momRaw": null,
               "momText": "—",
-              "yoyRaw": 0.099,
-              "yoyText": "9.9%"
+              "yoyRaw": 0.068,
+              "yoyText": "6.8%"
             },
             {
               "name": "Equipo de transporte importado",
-              "nivelRaw": 143.52,
-              "nivelText": "143.5",
+              "nivelRaw": null,
+              "nivelText": "—",
               "momRaw": null,
               "momText": "—",
-              "yoyRaw": -0.079,
-              "yoyText": "-7.9%"
+              "yoyRaw": 0.212,
+              "yoyText": "21.2%"
             },
             {
               "name": "Maquinaria, equipo y otros importados",
-              "nivelRaw": 123.04,
-              "nivelText": "123.0",
+              "nivelRaw": null,
+              "nivelText": "—",
               "momRaw": null,
               "momText": "—",
-              "yoyRaw": 0.14,
-              "yoyText": "14.0%"
+              "yoyRaw": 0.038,
+              "yoyText": "3.8%"
             }
           ]
         },
         "yoy": {
-          "mag": 6.0,
+          "mag": 6.1,
           "pos": true,
-          "text": "+6.0%",
+          "text": "+6.1%",
           "label": "Var. anual desest."
         },
         "resumen": [
-          "En julio de 2026, la formación bruta de capital fijo se ubicó en 110.5 (índice base 2018=100). La variación mensual desestacionalizada fue de +1.4% respecto al mes previo, por lo que el indicador avanzó.",
-          "A tasa anual, el IMFBCF avanzó +6.0%.",
-          "El acumulado ene-jul, en cifras originales, fue de +1.7%.",
-          "A tasa anual, Maquinaria, equipo y otros importados (14.0%) y Maquinaria y equipo importado (9.9%) avanzaron, mientras que Equipo de transporte nacional (-0.8%) y Maquinaria y equipo nacional (-3.1%) retrocedieron."
+          "En agosto de 2026, la formación bruta de capital fijo se ubicó en 108.3 (índice base 2018=100). La variación mensual desestacionalizada fue de -1.8% respecto al mes previo, por lo que el indicador retrocedió.",
+          "A tasa anual, el IMFBCF avanzó +6.1%.",
+          "El acumulado ene-ago, en cifras originales, fue de +2.2%.",
+          "A tasa anual, Equipo de transporte importado (21.2%) y Residencial (8.6%) avanzaron, mientras que Maquinaria y equipo nacional (-0.5%) y Equipo de transporte nacional (-2.1%) retrocedieron."
         ]
       },
-      "periodo_referencia_oficial": "Julio de 2026",
-      "fecha_publicacion_oficial": "5 de octubre de 2026",
+      "periodo_referencia_oficial": "Agosto de 2026",
+      "fecha_publicacion_oficial": "5 de noviembre de 2026",
       "proxima_publicacion": {
-        "fecha_publicacion": "5 de noviembre de 2026",
-        "periodo_referencia": "Agosto de 2026",
+        "fecha_publicacion": "4 de diciembre de 2026",
+        "periodo_referencia": "Septiembre de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (Jul 26) coincide con el último periodo esperado (Julio de 2026).",
-      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf",
+      "motivo_frescura": "El periodo cargado (Ago 26) coincide con el último periodo esperado (Agosto de 2026).",
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_11.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/IMFBCF/IMFBCF_datos.xlsx",
       "xlsx_causa": null,
@@ -50658,10 +50749,10 @@
       "nota_causa": null,
       "url_nota_individual": "downloads/indicadores/IMFBCF/nota/IMFBCF_nota.docx",
       "url_fuente_oficial": "https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?accion=consultarCuadro&idCuadro=CR363",
-      "fecha_ultima_publicacion": "5 de octubre de 2026",
+      "fecha_ultima_publicacion": "5 de noviembre de 2026",
       "regla_publicacion": null,
-      "periodo_boletin": "Jul 26",
-      "numero_boletin": "615/26",
+      "periodo_boletin": "Ago 26",
+      "numero_boletin": "682/26",
       "tipo_documento": "PDF",
       "producto_boletin": "Indicador Mensual de la Formación Bruta de Capital Fijo",
       "windows": [
@@ -50696,14 +50787,14 @@
         "available": true,
         "format": "docx",
         "path": "downloads/indicadores/IMFBCF/nota/IMFBCF_nota.docx",
-        "periodo": "Jul 26",
+        "periodo": "Ago 26",
         "generated_from": "boletin_validado",
         "automatic": true,
-        "generated_at": "2026-11-05T02:54:46+00:00",
-        "source_sha256": "2268722e42d9629392bdeb2ad64fee45595e426447256c622288a35b44a34fb6",
-        "fingerprint": "522b7e4b77b61e4307b2db01b76d9ea1d928fec93c52139d4f495eb53dc9d80d",
+        "generated_at": "2026-11-05T16:12:12+00:00",
+        "source_sha256": "e654e8a3c392a35434fb7d34e8d0f568b3add24a314d010a6ee04d3935b6acb7",
+        "fingerprint": "d534d9ec93d8f2485592ab20c6d06c3355e1be976661d1e44fe7a60e1e246a7f",
         "status": "vigente",
-        "target_period": "Jul 26",
+        "target_period": "Ago 26",
         "message": "Nota generada y validada por reglas Python"
       },
       "boletin_validado": true
@@ -109752,8 +109843,8 @@
           "ultimoP": "VIGENTE DESDE 8 May 26",
           "ultimoRaw": 6.5,
           "ultimoFmt": "6.50%",
-          "decisionP": "2026-09-24",
-          "decisionText": "24 Sep 26",
+          "decisionP": "2026-11-05",
+          "decisionText": "5 Nov 26",
           "decisionLabel": "Última decisión",
           "decisionRaw": "sin cambio",
           "decisionDisplay": "SIN CAMBIO",
@@ -109771,11 +109862,11 @@
           "vigenteDesdeP": "2026-05-08",
           "vigenteDesdeText": "8 May 26",
           "vigenteDesdeLabel": "Vigente desde",
-          "nextDecisionP": "2026-11-05",
-          "nextDecisionText": "5 Nov 26",
+          "nextDecisionP": "2026-12-17",
+          "nextDecisionText": "17 Dic 26",
           "nextDecisionLabel": "Próxima decisión",
-          "comunicado_url": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/{7D0BDB6E-E519-9C69-04AA-ABD4D31E4850}.pdf",
-          "lastI": 13,
+          "comunicado_url": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
+          "lastI": 14,
           "series": [
             9.5,
             9.0,
@@ -109787,6 +109878,7 @@
             7.0,
             7.0,
             6.75,
+            6.5,
             6.5,
             6.5,
             6.5,
@@ -109806,7 +109898,8 @@
             "2026-05-08",
             "2026-06-25",
             "2026-08-06",
-            "2026-09-24"
+            "2026-09-24",
+            "2026-11-05"
           ],
           "assessment": "neutral",
           "dir": "down",
@@ -109815,16 +109908,16 @@
         "yoy": null,
         "resumen": [
           "La tasa objetivo de Banco de México se mantiene en 6.50%.",
-          "En su decisión del 24 de septiembre de 2026, la Junta de Gobierno mantuvo sin cambio el objetivo.",
+          "En su decisión del 5 de noviembre de 2026, la Junta de Gobierno mantuvo sin cambio el objetivo.",
           "El último ajuste ocurrió el 7 de mayo de 2026, cuando redujo la tasa en 25 pb; el nuevo nivel entró en vigor el 8 de mayo de 2026.",
-          "La próxima decisión programada es el 5 de noviembre de 2026."
+          "La próxima decisión programada es el 17 de diciembre de 2026."
         ]
       },
       "periodo_referencia_oficial": "Nov 26",
       "fecha_publicacion_oficial": null,
       "proxima_publicacion": null,
       "motivo_frescura": "El periodo cargado (2026-11-05) coincide con el último periodo esperado (Nov 26).",
-      "url_boletin_oficial": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/{7D0BDB6E-E519-9C69-04AA-ABD4D31E4850}.pdf",
+      "url_boletin_oficial": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/TASA/TASA_datos.xlsx",
       "xlsx_causa": null,
@@ -129581,6 +129674,17 @@
           "change_bp": 0.0,
           "comunicado_url": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/{7D0BDB6E-E519-9C69-04AA-ABD4D31E4850}.pdf",
           "reference_period": "24 de septiembre de 2026"
+        },
+        {
+          "announcement_date": "2026-11-05",
+          "effective_date": "2026-11-05",
+          "announcement_date_display": "5 de noviembre de 2026",
+          "previous_rate": 6.5,
+          "new_rate": 6.5,
+          "decision": "sin cambio",
+          "change_bp": 0.0,
+          "comunicado_url": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
+          "reference_period": "5 de noviembre de 2026"
         }
       ],
       "regimen": [
@@ -130284,7 +130388,7 @@
           "publication_date_display": "5 de noviembre de 2026",
           "reference_period": "5 de noviembre de 2026",
           "frequency": "Decisiones de política monetaria",
-          "status": "próximo",
+          "status": "publicado",
           "source": "Banco de México calendario",
           "institution": "Banco de México",
           "category": "Financiero",
@@ -130569,7 +130673,7 @@
       ],
       "tasa_vigente": 6.5,
       "vigente_desde": "2026-05-08",
-      "ultima_decision": "2026-09-24",
+      "ultima_decision": "2026-11-05",
       "ultimo_ajuste": {
         "announcement_date": "2026-05-07",
         "effective_date": "2026-05-08",
@@ -178077,7 +178181,6 @@
       },
       "periodo_boletin": "Ago 26",
       "numero_boletin": "679/26",
-      "boletin_validado": true,
       "producto_boletin": "Sistema de Indicadores Cíclicos"
     },
     "IMOAM": {

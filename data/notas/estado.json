@@ -82,33 +82,33 @@
   "CONSUMO": {
     "status": "vigente",
     "message": "Nota generada y validada por reglas Python",
-    "target_period": "Jul 26",
+    "target_period": "Ago 26",
     "published": {
-      "periodo": "Jul 26",
-      "generated_at": "2026-11-05T02:54:41+00:00",
-      "source_sha256": "585befdb839d40ed8015e1f7a0415cc984e12255a9c378583ee10d8fca8a0da3",
-      "fingerprint": "5dd3552050a3b71c58b97f2417a4965cea0ccffaeeaecd7ff78d0d13743299f8",
-      "docx_sha256": "a7363dcdf0193a8dcf2a0e5281667f61115c51708ae6cf8276ffaa160147f6ea",
-      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf",
+      "periodo": "Ago 26",
+      "generated_at": "2026-11-05T16:12:08+00:00",
+      "source_sha256": "e85e1f3d7533f9786702bad2ee0054b992653289ef5c3158a71cd4a1453c8be5",
+      "fingerprint": "1e5527e363077b24bd07012a90c3358cd6346ffd0783a1617a8dc4bd663d4945",
+      "docx_sha256": "319f19b5449356cb28280b9ee1bfcf21b6ed8a719906e41d04bee58b4f268676",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_11.pdf",
       "review_model": "demanda-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/CONSUMO/5dd3552050a3b71c58b97f2417a4965cea0ccffaeeaecd7ff78d0d13743299f8-a7363dcdf019"
+      "archive": "data/notas/CONSUMO/1e5527e363077b24bd07012a90c3358cd6346ffd0783a1617a8dc4bd663d4945-319f19b54493"
     }
   },
   "IMFBCF": {
     "status": "vigente",
     "message": "Nota generada y validada por reglas Python",
-    "target_period": "Jul 26",
+    "target_period": "Ago 26",
     "published": {
-      "periodo": "Jul 26",
-      "generated_at": "2026-11-05T02:54:46+00:00",
-      "source_sha256": "2268722e42d9629392bdeb2ad64fee45595e426447256c622288a35b44a34fb6",
-      "fingerprint": "522b7e4b77b61e4307b2db01b76d9ea1d928fec93c52139d4f495eb53dc9d80d",
-      "docx_sha256": "8f25f794255bd09a9d19f86a80480b3fcc7b713b94638125eec43ac0d04faab8",
-      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf",
+      "periodo": "Ago 26",
+      "generated_at": "2026-11-05T16:12:12+00:00",
+      "source_sha256": "e654e8a3c392a35434fb7d34e8d0f568b3add24a314d010a6ee04d3935b6acb7",
+      "fingerprint": "d534d9ec93d8f2485592ab20c6d06c3355e1be976661d1e44fe7a60e1e246a7f",
+      "docx_sha256": "eafdc5795e4b635bad6d0c96c0ded015dd8e931c49d178a2ad0c01cf42332c74",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_11.pdf",
       "review_model": "demanda-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/IMFBCF/522b7e4b77b61e4307b2db01b76d9ea1d928fec93c52139d4f495eb53dc9d80d-8f25f794255b"
+      "archive": "data/notas/IMFBCF/d534d9ec93d8f2485592ab20c6d06c3355e1be976661d1e44fe7a60e1e246a7f-eafdc5795e4b"
     }
   },
   "INPC": {

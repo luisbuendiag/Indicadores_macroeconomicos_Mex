@@ -1,0 +1,301 @@
+{
+  "indicator": "IMFBCF",
+  "ym": "2026-08",
+  "period": "Ago 26",
+  "publication_date": "2026-11-05",
+  "bulletin": "682/26",
+  "base": "2018",
+  "index": 108.3,
+  "rows": [
+    {
+      "id": "total",
+      "label": "Inversión fija total",
+      "mom": -1.8,
+      "yoy": 6.1,
+      "series": "desestacionalizada",
+      "location": "p. 2, cuadro 1",
+      "evidence": "Formación bruta de capital fijo -1.8 6.1"
+    },
+    {
+      "id": "construccion",
+      "label": "Construcción",
+      "mom": 0.0,
+      "yoy": 7.9,
+      "series": "desestacionalizada",
+      "location": "p. 2, cuadro 1",
+      "evidence": "Construcción 0.0 7.9"
+    },
+    {
+      "id": "residencial",
+      "label": "Residencial",
+      "mom": 0.0,
+      "yoy": 8.6,
+      "series": "desestacionalizada",
+      "location": "p. 2, cuadro 1",
+      "evidence": "Residencial 0.0 8.6"
+    },
+    {
+      "id": "no_residencial",
+      "label": "No residencial",
+      "mom": 0.3,
+      "yoy": 6.2,
+      "series": "desestacionalizada",
+      "location": "p. 2, cuadro 1",
+      "evidence": "No residencial 0.3 6.2"
+    },
+    {
+      "id": "maquinaria",
+      "label": "Maquinaria y equipo",
+      "mom": -3.5,
+      "yoy": 3.6,
+      "series": "desestacionalizada",
+      "location": "p. 2, cuadro 1",
+      "evidence": "Maquinaria y equipo -3.5 3.6"
+    },
+    {
+      "id": "nacional",
+      "label": "Maquinaria y equipo nacional",
+      "mom": 0.5,
+      "yoy": -0.5,
+      "series": "desestacionalizada",
+      "location": "p. 2, cuadro 1",
+      "evidence": "Nacional 0.5 -0.5"
+    },
+    {
+      "id": "nacional_transporte",
+      "label": "Transporte nacional",
+      "mom": 0.2,
+      "yoy": -2.1,
+      "series": "desestacionalizada",
+      "location": "p. 2, cuadro 1",
+      "evidence": "Equipo de transporte 0.2 -2.1"
+    },
+    {
+      "id": "nacional_otros",
+      "label": "Otra maquinaria nacional",
+      "mom": 1.1,
+      "yoy": 1.7,
+      "series": "desestacionalizada",
+      "location": "p. 2, cuadro 1",
+      "evidence": "Maquinaria, equipo y otros bienes 1.1 1.7"
+    },
+    {
+      "id": "importado",
+      "label": "Maquinaria y equipo importado",
+      "mom": -5.8,
+      "yoy": 6.8,
+      "series": "desestacionalizada",
+      "location": "p. 2, cuadro 1",
+      "evidence": "Importado -5.8 6.8"
+    },
+    {
+      "id": "importado_transporte",
+      "label": "Transporte importado",
+      "mom": 4.4,
+      "yoy": 21.2,
+      "series": "desestacionalizada",
+      "location": "p. 2, cuadro 1",
+      "evidence": "Equipo de transporte 4.4 21.2"
+    },
+    {
+      "id": "importado_otros",
+      "label": "Otra maquinaria importada",
+      "mom": -7.5,
+      "yoy": 3.8,
+      "series": "desestacionalizada",
+      "location": "p. 2, cuadro 1",
+      "evidence": "Maquinaria, equipo y otros bienes -7.5 3.8\n"
+    }
+  ],
+  "originals": [
+    {
+      "id": "total",
+      "label": "Inversión fija total",
+      "original": 5.7,
+      "ytd": 2.2,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Formación bruta de capital fijo 5.7 2.2"
+    },
+    {
+      "id": "construccion",
+      "label": "Construcción",
+      "original": 7.6,
+      "ytd": 4.6,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Construcción 7.6 4.6"
+    },
+    {
+      "id": "residencial",
+      "label": "Residencial",
+      "original": 8.9,
+      "ytd": 4.5,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Residencial 8.9 4.5"
+    },
+    {
+      "id": "no_residencial",
+      "label": "No residencial",
+      "original": 6.4,
+      "ytd": 4.7,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "No residencial 6.4 4.7"
+    },
+    {
+      "id": "maquinaria",
+      "label": "Maquinaria y equipo",
+      "original": 3.5,
+      "ytd": -0.5,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Maquinaria y equipo 3.5 -0.5"
+    },
+    {
+      "id": "nacional",
+      "label": "Maquinaria y equipo nacional",
+      "original": 1.0,
+      "ytd": -6.9,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Nacional 1.0 -6.9"
+    },
+    {
+      "id": "nacional_transporte",
+      "label": "Transporte nacional",
+      "original": -1.1,
+      "ytd": -8.3,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Equipo de transporte -1.1 -8.3"
+    },
+    {
+      "id": "nacional_otros",
+      "label": "Otra maquinaria nacional",
+      "original": 3.1,
+      "ytd": -5.5,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Maquinaria, equipo y otros bienes 3.1 -5.5"
+    },
+    {
+      "id": "importado",
+      "label": "Maquinaria y equipo importado",
+      "original": 5.2,
+      "ytd": 3.7,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Importado 5.2 3.7"
+    },
+    {
+      "id": "importado_transporte",
+      "label": "Transporte importado",
+      "original": 21.5,
+      "ytd": 2.5,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Equipo de transporte 21.5 2.5"
+    },
+    {
+      "id": "importado_otros",
+      "label": "Otra maquinaria importada",
+      "original": 2.4,
+      "ytd": 3.9,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Maquinaria, equipo y otros bienes 2.4 3.9"
+    },
+    {
+      "id": "total_comprador",
+      "label": "Inversión fija total",
+      "original": 5.7,
+      "ytd": 2.2,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Formación bruta de capital fijo 5.7 2.2"
+    },
+    {
+      "id": "total_privada",
+      "label": "Inversión fija total privada",
+      "original": 4.8,
+      "ytd": 0.9,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Privada 4.8 0.9"
+    },
+    {
+      "id": "total_publica",
+      "label": "Inversión fija total pública",
+      "original": 11.1,
+      "ytd": 10.8,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Pública 11.1 10.8"
+    },
+    {
+      "id": "construccion_comprador",
+      "label": "Construcción",
+      "original": 7.6,
+      "ytd": 4.6,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Construcción 7.6 4.6"
+    },
+    {
+      "id": "construccion_privada",
+      "label": "Construcción privada",
+      "original": 6.1,
+      "ytd": 2.9,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Privada 6.1 2.9"
+    },
+    {
+      "id": "construccion_publica",
+      "label": "Construcción pública",
+      "original": 15.5,
+      "ytd": 13.9,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Pública 15.5 13.9"
+    },
+    {
+      "id": "maquinaria_comprador",
+      "label": "Maquinaria y equipo",
+      "original": 3.5,
+      "ytd": -0.5,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Maquinaria y equipo 3.5 -0.5"
+    },
+    {
+      "id": "maquinaria_privada",
+      "label": "Maquinaria y equipo privada",
+      "original": 3.3,
+      "ytd": -1.2,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Privada 3.3 -1.2"
+    },
+    {
+      "id": "maquinaria_publica",
+      "label": "Maquinaria y equipo pública",
+      "original": 4.6,
+      "ytd": 5.5,
+      "series": "original",
+      "location": "p. 3, cuadro 2",
+      "evidence": "Pública 4.6 5.5\n"
+    }
+  ],
+  "pages": [
+    "BOLETÍN DE INDICADOR 682/26\nINDICADOR MENSUAL DE LA FORMACIÓN\nBRUTA DE CAPITAL FIJO (IMFBCF)\n5 de noviembre de 2026\nPágina 1/4\nPróxima publicación: 4 de diciembre de 2026\nInversión Variación Variación\nmensual anual\níndice 2018=100\nagosto agosto agosto\n108.3 ▼-1.8 % ▲6.1 %\nDisminuyó 1.8 % la inversión fija bruta en agosto de 2026, a tasa mensual\nEl Indicador Mensual de la Formación Bruta de Capital Fijo (IMFBCF) permite conocer el\ncomportamiento de la inversión en activos fijos en el corto plazo.\nI. CIFRAS DESESTACIONALIZADAS\nEn agosto de 2026 y con cifras desestacionalizadas,1 la formación bruta de capital fijo\ndescendió 1.8 % respecto al mes previo, en términos reales (ver gráfica 1). A tasa anual,\naumentó 6.1 por ciento.\nGráfica 1\nVariación de la formación bruta de capital fijo\ncifras desestacionalizadas\nagosto de 2024–agosto de 2026\n(variación porcentual real mensual)\n4.3\n4.5\n3.0 2.4\n1.5 0.4 0.8 0.2 1.0 0.9 0.6 0.5 0.6 1.3 1.4\n0.0\n-0.4 -0.1 -0.3 -0.5\n-1.5 -0.8 -0.9\n-1.4-1.5\n-1.9 -1.7 -1.8\n-3.0\n-3.3\n-4.5 -3.6\nA S O N D E F M A M J J A S O N D E F M A M J J A\n2024 2025 2026\nNota: Serie elaborada mediante métodos econométricos.\nFuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Indicador Mensual de la Formación Bruta de Capital\nFijo (IMFBCF), 2026.\n1 La mayoría de las series económicas se ve afectada por factores estacionales y de calendario. El ajuste de los datos por dichos factores\npermite obtener las cifras desestacionalizadas.\nLa tendencia-ciclo es la combinación de los componentes de tendencia y ciclo. La tendencia se refiere a la evolución de largo plazo de la\nserie de tiempo, y el ciclo, a las desviaciones alrededor de la tendencia. Así, el análisis de las series ajustadas ayuda a realizar un mejor\ndiagnóstico de la evolución de las variables.",
+    "BOLETÍN DE INDICADOR 682/26\nINDICADOR MENSUAL DE LA FORMACIÓN\nBRUTA DE CAPITAL FIJO (IMFBCF)\n5 de noviembre de 2026\nPágina 2/4\nSegún componentes, los gastos en maquinaria y equipo —de origen nacional e importado—\ndisminuyeron 3.5 % y los de construcción se mantuvieron sin cambio, a tasa mensual, en\nagosto de 2026.\nA tasa anual y con series desestacionalizadas, los gastos en construcción incrementaron 7.9 %\ny en maquinaria y equipo, 3.6 %, en el mes de referencia (ver cuadro 1).\nCuadro 1\nVariación del Indicador Mensual de la Formación Bruta de Capital Fijo\ncifras desestacionalizadas\nagosto de 2026\n(variación porcentual mensual y anual)\nVariación porcentual real respecto a:\nInversión según tipo de bien y origen julio agosto\nde 2026 de 2025\nFormación bruta de capital fijo -1.8 6.1\nConstrucción 0.0 7.9\nResidencial 0.0 8.6\nNo residencial 0.3 6.2\nMaquinaria y equipo -3.5 3.6\nNacional 0.5 -0.5\nEquipo de transporte 0.2 -2.1\nMaquinaria, equipo y otros bienes 1.1 1.7\nImportado -5.8 6.8\nEquipo de transporte 4.4 21.2\nMaquinaria, equipo y otros bienes -7.5 3.8\nNota: Cifras elaboradas mediante métodos econométricos.\nLas series desestacionalizadas de los agregados del IMFBCF se calculan de manera\nindependiente a las de sus componentes.\nFuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Indicador Mensual de la Formación\nBruta de Capital Fijo (IMFBCF), 2026.\nGráfica 2\nSerie desestacionalizada de la formación bruta de capital fijo, según tipo de bien\nenero de 2022–agosto de 2026\n(índice 2018=100)\n120.0\n110.0\n100.0\n90.0\n80.0\n2022 2023 2024 2025 2026\nFormación bruta de capital fijo Construcción Maquinaria y equipo\nNota: Series elaboradas mediante métodos econométricos.\nFuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Indicador Mensual de la Formación Bruta de Capital\nFijo (IMFBCF), 2026.",
+    "BOLETÍN DE INDICADOR 682/26\nINDICADOR MENSUAL DE LA FORMACIÓN\nBRUTA DE CAPITAL FIJO (IMFBCF)\n5 de noviembre de 2026\nPágina 3/4\nII. CIFRAS ORIGINALES\nCuadro 2\nVariación del Indicador Mensual de la Formación Bruta de Capital Fijo\na agosto de 20261/\n(variación porcentual anual)\nVariación porcentual real anual\nInversión según tipo de bien y origen, respecto a:\ny de comprador agosto ene.-ago.\nde 2025 de 2025\nTipo de bien y origen\nFormación bruta de capital fijo 5.7 2.2\nConstrucción 7.6 4.6\nResidencial 8.9 4.5\nNo residencial 6.4 4.7\nMaquinaria y equipo 3.5 -0.5\nNacional 1.0 -6.9\nEquipo de transporte -1.1 -8.3\nMaquinaria, equipo y otros bienes 3.1 -5.5\nImportado 5.2 3.7\nEquipo de transporte 21.5 2.5\nMaquinaria, equipo y otros bienes 2.4 3.9\nTipo de bien y de comprador\nFormación bruta de capital fijo 5.7 2.2\nPrivada 4.8 0.9\nPública 11.1 10.8\nConstrucción 7.6 4.6\nPrivada 6.1 2.9\nPública 15.5 13.9\nMaquinaria y equipo 3.5 -0.5\nPrivada 3.3 -1.2\nPública 4.6 5.5\n1/ Cifras preliminares.\nFuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Indicador Mensual de la Formación\nBruta de Capital Fijo (IMFBCF), 2026.",
+    "BOLETÍN DE INDICADOR 682/26\nINDICADOR MENSUAL DE LA FORMACIÓN\nBRUTA DE CAPITAL FIJO (IMFBCF)\n5 de noviembre de 2026\nPágina 4/4\nIII. FICHA METODOLÓGICA\nEl Indicador Mensual de la Formación Bruta de Capital Fijo (IMFBCF) proporciona información mensual y permite\nconocer el comportamiento de la inversión en activos fijos en el corto plazo. Este se integra por los bienes que\nAntecedentes se utilizan en el proceso productivo de manera continua durante más de un año y que están sujetos a derechos\nde propiedad. El IMFBCF señala cómo una parte del valor agregado bruto en la economía se invierte, en lugar de\nconsumirse.\nLos datos mensuales del IMFBCF están disponibles desde enero de 1993 y se expresan en índices de volumen\nAño base\nfísico con base fija en el año 2018.\nEstadísticas mensuales que elabora el Instituto, como la Encuesta Nacional de Empresas Constructoras (ENEC),\nEncuesta Mensual de la Industria Manufacturera (EMIM), Balanza Comercial de Mercancías de México (BCMM),\ninformación proveniente de la Asociación Mexicana de la Industria Automotriz y de la Asociación Nacional de\nFuentes\nProductores de Autobuses, Camiones y Tractocamiones, A. C. Para la actividad de las plantaciones agrícolas,\nel ganado reproductor y la perforación de pozos, se incluyeron los registros administrativos que provienen de las\nempresas y Unidades del Estado.\nCobertura geográfica Nacional\nPeriodicidad Mensual\nPara el cálculo se utiliza el Sistema de Clasificación Industrial de América del Norte (SCIAN) 2018, así como los\ncriterios metodológicos, clasificadores y datos fuente que se emplean en los cálculos anuales y trimestrales de\nla Formación Bruta de Capital Fijo (FBCF).\nEl IMFBCF tiene una representatividad de 97.5 % del valor alcanzado en 2018, año base de los productos del\nSistema de Cuentas Nacionales de México (SCNM).\nEl cálculo de construcción tiene como fuente principal de información los registros del valor de la producción de\n23 tipos de obra de la ENEC: incluye las clases económicas dedicadas a la construcción de obras de los\nsubsectores 236, Edificación; 237, Construcción de obras de ingeniería civil; y 238, Trabajos especializados para\nla construcción, incluidos en el Indicador Mensual de la Actividad Industrial (IMAI), más la clase de Perforación\nde pozos petroleros y de gas, clasificada en la minería, y las plantaciones en la agricultura, con una duración\nmayor a un año.\nCálculo del IMFBCF\nPara el cálculo de la maquinaria y equipo de origen nacional se elaboran índices del volumen de ventas o de\nproducción para cada clase de actividad cuya producción se destina a la FBCF, de acuerdo con los Cuadros de\nOferta y Utilización (COU) 2018. También se incluye al ganado reproductor y los activos intangibles.\nPara el cálculo de origen importado se suman las fracciones arancelarias importadas de bienes de capital\nvaloradas en pesos. Los valores se deflactan con los índices que se construyen con base en los precios de\nexportación de los bienes de capital del Bureau of Labor Statistics de los Estados Unidos, ponderados por el tipo\nde cambio del peso mexicano frente al dólar americano.\nLos índices de ventas o de producción, según sea el caso, se utilizan para extrapolar el valor registrado por cada\nclase de actividad en el año base. Por suma de los componentes se obtiene el total del indicador que, para su\npublicación, se expresa en números índices 2018=100. A partir de la actualización del año base a 2018, los\ncálculos incluyen la medición y presentación de la FBCF según tipo de bien y comprador (privado y público).\nLas series originales se ajustan estacionalmente mediante el paquete estadístico X-13ARIMA-SEATS.\nPara conocer la metodología, consúltese la siguiente liga:\nAjuste estacional y https://www.inegi.org.mx/app/biblioteca/ficha.html?upc=702825099060\nmodelos Las especificaciones de los modelos están disponibles en el Banco de Información Económica (BIE).\nSeleccione «Indicadores económicos de coyuntura, Indicador mensual de la formación bruta de capital fijo» y\nvaya al icono de información correspondiente a las «series desestacionalizadas y de tendencia-ciclo».\nEl IMFBCF se publica los primeros días de cada mes conforme al Calendario de Difusión de Información\nPublicación de resultados\nEstadística y Geográfica y de Interés Nacional.\nEn la integración del IMFBCF, de agosto de 2026, se consideró la última información estadística disponible de las\nencuestas económicas (ENEC y EMIM), de los registros administrativos y de los datos primarios que divulga el\nInstituto. Para las actividades agropecuarias, de energía, gas, agua, servicios financieros y del gobierno, se\nincluyeron los registros administrativos provenientes de las empresas y Unidades del Estado que se recibieron\nNota al público usuario\noportunamente vía correo electrónico e internet. Lo anterior permitió la generación de estadísticas con niveles\naltos de cobertura.\nEl INEGI invita a conocer la metodología del IMFBCF en la siguiente liga:\nhttps://www.inegi.org.mx/programas/ifb/2018/\nLa información estadística y geográfica que genera el INEGI es un bien público y nos permite\na todas y a todos tomar mejores decisiones. ¡Conócela, úsala y compártela!"
+  ],
+  "source_sha256": "e654e8a3c392a35434fb7d34e8d0f568b3add24a314d010a6ee04d3935b6acb7",
+  "cover_evidence": "\n108.3 ▼-1.8 % ▲6.1 %",
+  "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_11.pdf"
+}
