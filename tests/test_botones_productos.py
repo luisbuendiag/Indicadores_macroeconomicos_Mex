@@ -42,7 +42,7 @@ def test_product_btn_data_product_kind():
 def test_calendar_enabled_only_with_data():
     src = product_toolbar_source()
     assert "function calendarioDisponible(ind)" in APP
-    assert "const calEnabled = calendarioDisponible(ind)" in src
+    assert 'if(calendarioDisponible(ind)) dates.append(productBtn("Ver calendario"' in APP
 
 
 def test_boletin_prefiere_url_boletin_oficial_y_calendario_inegi_y_bie_solo_tecnico():
@@ -63,7 +63,7 @@ def test_boletin_opens_external_with_rel():
 
 def test_excel_download_uses_individual_file():
     src = product_toolbar_source()
-    assert 'productBtn("EXCEL"' in src
+    assert 'productBtn("Excel"' in src
     assert "xlsxUrl(ind)" in src
     assert "downloadProduct" in src
 
@@ -77,7 +77,7 @@ def test_excel_files_exist_for_all_available():
 
 def test_nota_disabled_cause():
     src = product_toolbar_source()
-    assert 'productBtn("NOTA"' in src
+    assert 'productBtn("Descargar nota Word"' in src
     assert "Nota institucional en preparación" in src
     assert "notaReady = !!ind.nota_disponible" in src
 
@@ -85,7 +85,7 @@ def test_nota_disabled_cause():
 def test_nota_does_not_affect_other_buttons():
     # Cada botón se evalúa con su propia variable; NOTA no modifica calEnabled/boletinEnabled/xlsxReady.
     src = product_toolbar_source()
-    assert "calEnabled = calendarioDisponible" in src
+    assert "if(calendarioDisponible(ind))" in APP
     assert "boletinEnabled = !!boletinUrl" in src
     assert "xlsxReady = !!ind.xlsx_disponible" in src
     assert "notaReady = !!ind.nota_disponible" in src
@@ -154,5 +154,5 @@ def test_financial_indicators_have_products():
 
 def test_calendar_opens_filtered_panel():
     assert "function openCalendarioFiltro(ind)" in APP
-    assert "openCalendarioFiltro" in product_toolbar_source()
+    assert '()=>openCalendarioFiltro(ind),"calendario"' in APP
     assert "buildCalendarioPanel(ind)" in APP

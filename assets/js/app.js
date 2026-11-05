@@ -106,12 +106,6 @@ function productBtn(label, icon, enabled, title, onClick, kind) {
 function productToolbar(ind) {
   const bar = el("div", { class: "product-bar", "data-key": ind.key });
 
-  // Calendario: activo si hay información de calendario o regla de publicación.
-  const calEnabled = calendarioDisponible(ind);
-  const calTitle = calEnabled
-    ? `Ver calendario de publicaciones de ${ind.nombre}`
-    : "Sin calendario o regla de publicación";
-
   // Boletín: prioridad 1 = url_boletin_oficial; 2 = calendario Sala de Prensa INEGI;
   // 3 = url_fuente_oficial/BIE solo como último respaldo técnico. Así el botón
   // BOLETÍN no lleva normalmente al BIE, que es fuente de datos, no Sala de Prensa.
@@ -133,12 +127,11 @@ function productToolbar(ind) {
     }
   }
   const boletinEnabled = !!boletinUrl;
-  const boletinLabel = ind.boletin_label || "BOLETÍN";
 
   // Nota institucional: habilitada sólo cuando existe el .docx vigente.
   const notaReady = !!ind.nota_disponible;
   const notaTitle = notaReady
-    ? `Descargar nota DOCX${ind.nota?.status ? ` · ${ind.nota.periodo || "periodo por confirmar"} · ${ind.nota.message || ""}` : ""}`
+    ? `Descargar nota Word · ${ind.nota?.periodo || ind.periodo_referencia || ""}`
     : (ind.nota_causa || "Nota institucional en preparación");
 
   // Excel: activo si se generó el archivo individual.
@@ -148,11 +141,12 @@ function productToolbar(ind) {
     : (ind.xlsx_causa || "Excel individual no generado");
 
   bar.append(
-    productBtn("CALENDARIO", "", calEnabled, calTitle, () => openCalendarioFiltro(ind), "calendario"),
-    productBtn(boletinLabel, "", boletinEnabled, boletinTitle, () => openBoletin(boletinUrl), "boletin"),
-    productBtn("NOTA", "", notaReady, notaTitle, () => downloadProduct(notaUrl(ind), `${ind.key}_nota.docx`), "nota"),
-    productBtn("EXCEL", "", xlsxReady, xlsxTitle, () => downloadProduct(xlsxUrl(ind), `${ind.key}_datos.xlsx`), "excel")
+    productBtn(ind.boletin_label || "Boletín oficial", "", boletinEnabled, boletinTitle, () => openBoletin(boletinUrl), "boletin"),
+    productBtn("Descargar nota Word", "↓", notaReady, notaTitle, () => downloadProduct(notaUrl(ind), `${ind.key}_nota.docx`), "nota"),
+    productBtn("Excel", "↓", xlsxReady, xlsxTitle, () => downloadProduct(xlsxUrl(ind), `${ind.key}_datos.xlsx`), "excel")
   );
+  const noteButton = bar.querySelector('[data-product="nota"]');
+  if (noteButton) bar.prepend(noteButton);
   return bar;
 }
 
@@ -434,10 +428,10 @@ function indicatorToolbar(key) {
   const wrap = el("div", { class: "ind-toolbar-wrap" });
   const nav = el("div", { class: "ind-nav" });
   nav.append(el("a", { class: "nav-link", href: `#${backTarget}`, onclick: (e) => { e.preventDefault(); setView(backTarget); } }, backLabel));
-  if (prev) nav.append(el("a", { class: "nav-link", href: `#${prev}`, onclick: (e) => { e.preventDefault(); setView(prev); } }, `‹ ${LABELS[prev]}`));
-  if (next) nav.append(el("a", { class: "nav-link", href: `#${next}`, onclick: (e) => { e.preventDefault(); setView(next); } }, `${LABELS[next]} ›`));
+  if (prev) nav.append(el("a", { title: LABELS[prev], class: "nav-link", href: `#${prev}`, onclick: (e) => { e.preventDefault(); setView(prev); } }, `‹ ${SIGLA[prev] || LABELS[prev]}`));
+  if (next) nav.append(el("a", { title: LABELS[next], class: "nav-link", href: `#${next}`, onclick: (e) => { e.preventDefault(); setView(next); } }, `${SIGLA[next] || LABELS[next]} ›`));
   wrap.append(nav);
-  if (ind) wrap.append(productToolbar(ind));
+
   return wrap;
 }
 
@@ -464,44 +458,69 @@ function componentStatusTable(title, components) {
 
 function fichaHeader(ind) {
   const head = el("div", { class: "ficha-head" });
-  const desc = [ind.descripcion || "", ind.frecuencia ? `Frecuencia: ${ind.frecuencia}.` : ""].filter(Boolean).join(" ").trim();
-  const isTasa = ind.key === "TASA";
-  const isReservas = ind.key === "RESERVAS";
-  let eyebrow;
-  if (isTasa) {
-    eyebrow = `${SIGLA[ind.key]} · VIGENTE DESDE ${perShort(ind.vigente_desde) || "—"}`;
-  } else if (isReservas) {
-    eyebrow = `${SIGLA[ind.key]} · ${ind.periodo_referencia || perShort(ind.last_observation) || "—"}`;
-  } else {
-    eyebrow = `${SIGLA[ind.key]} · ${ind.last_observation || "—"}`;
-  }
-  const left = el("div", {},
-    el("div", { class: "fh-sigla" }, eyebrow),
-    el("h2", { class: "fh-name" }, ind.nombre),
-    el("p", { class: "fh-desc" }, desc || ind.descripcion || ""));
-  const meta = el("div", { class: "fh-meta" });
-  const pubDato = fechaPubDato(ind);
-  const rez = rezagoHabitual(ind);
-  const rows = [
-    ["Periodo de referencia", ind.periodo_referencia || ind.last_observation || "—"],
-    pubDato ? ["Fecha de publicación del dato", pubDato] : null,
-    rez ? ["Rezago habitual", rez] : null,
-    ind.frecuencia ? ["Frecuencia", ind.frecuencia] : null,
-    ind.frecuencia_original ? ["Frecuencia original", ind.frecuencia_original] : null,
-    ind.fecha_ultima_observacion ? ["Última observación original", ind.fecha_ultima_observacion] : null,
-    ["Fecha de consulta de la fuente", ind.fecha_consulta || ind.last_updated || "—"],
-    ["Fuente oficial", ind.fuente?.nombre || "—"],
-  ].filter(Boolean);
-  const np = ind.proxima_publicacion || nextPublication(ind.key);
-  if (np) {
-    const nextLabel = ind.key === "TASA" ? "Próxima decisión de política monetaria" : "Próxima publicación";
-    const nextValue = ind.key === "TASA" ? np.fecha_publicacion : `${np.fecha_publicacion} · ${np.periodo_referencia}`;
-    rows.push([nextLabel, nextValue]);
-  }
-  rows.forEach(([k, v]) => meta.append(el("div", { class: "fh-item" }, el("span", { class: "k" }, k), el("span", { class: "v" }, v))));
-  meta.append(el("div", { class: "fh-item" }, el("span", { class: "k" }, "Estado de actualización"), el("span", { class: "v" }, estadoBadge(ind))));
-  head.append(left, meta);
+  const period=ind.periodo_referencia || ind.last_observation || "—";
+  const source=ind.fuente?.nombre || "Fuente oficial";
+  const institution=/INEGI/i.test(source) ? "INEGI" : /Banco de M[eé]xico|Banxico/i.test(source) ? "Banco de México" : /Secretar[ií]a de Econom[ií]a/i.test(source) ? "Secretaría de Economía" : source;
+  const identity=el("div",{class:"fh-identity"},
+    el("div",{class:"fh-sigla"},SIGLA[ind.key] || ind.key),
+    el("h2",{class:"fh-name"},ind.nombre),
+    el("div",{class:"fh-context"},el("span",{class:"fh-period"},period),
+      el("span",{class:"fh-source"},institution),estadoBadge(ind)));
+  const top=el("div",{class:"fh-top"},identity,productToolbar(ind));
+  const dates=el("div",{class:"fh-dates"});
+  const pub=fechaPubDato(ind);
+  if(pub) dates.append(el("div",{},el("span",{class:"fh-date-label"},"Publicado"),el("span",{},pub)));
+  const np=ind.proxima_publicacion || nextPublication(ind.key);
+  if(np) dates.append(el("div",{},el("span",{class:"fh-date-label"},ind.key==="TASA" ? "Próxima decisión" : "Próxima publicación"),
+    el("span",{},np.fecha_publicacion || "Por anunciar")));
+  if(calendarioDisponible(ind)) dates.append(productBtn("Ver calendario","",true,"Consultar calendario del indicador",()=>openCalendarioFiltro(ind),"calendario"));
+  const details=el("details",{class:"fh-details"},el("summary",{},"Acerca del indicador y la fuente"));
+  if(ind.descripcion) details.append(el("p",{class:"fh-desc"},ind.descripcion));
+  const rows=[
+    ["Frecuencia",ind.frecuencia], ind.frecuencia_original !== ind.frecuencia ? ["Frecuencia original",ind.frecuencia_original] : null,
+    institution !== source ? ["Fuente",source] : null,
+    ["Última observación original",ind.fecha_ultima_observacion],
+    ["Rezago habitual",rezagoHabitual(ind)],
+    ["Consulta de la fuente",ind.fecha_consulta || ind.last_updated],
+    np?.periodo_referencia ? ["Periodo de la próxima publicación",np.periodo_referencia] : null
+  ].filter(r=>r && r[1]);
+  const metadata=el("dl",{class:"fh-technical"});
+  rows.forEach(([key,value])=>metadata.append(el("div",{},el("dt",{},key),el("dd",{},value))));
+  details.append(metadata);
+  if(ind.fuente?.link) details.append(el("a",{href:ind.fuente.link,target:"_blank",rel:"noopener noreferrer"},"Consultar fuente oficial ↗"));
+  head.append(top,dates,details);
   return head;
+}
+
+function indicatorCaption(ind, last = null) {
+  const text=(CAPTIONS[ind.key] || "").replace(/small multiples, /g, "");
+  return last && last !== ind.last_observation && last !== ind.periodo_referencia ? `${text} Datos hasta ${last}.`.trim() : text;
+}
+
+// Separar cifra y unidad sin convertir valores ni cambiar su precisión.
+function refineMetricCards(mini, ind, k) {
+  mini.querySelectorAll(".num").forEach(node=>{
+    const text=node.textContent;
+    const match=text.match(/^([+−-]?[\d,.]+)\s+((?:billones|millones|mdd|mdp|pesos|puntos|personas|USD|MXN)\b.*)$/i);
+    if(match) node.replaceChildren(el("span",{class:"metric-value"},match[1])," ",el("span",{class:"metric-unit"},match[2]));
+    if(text.length>24 && !match) node.classList.add("metric-long");
+  });
+  if(ind.key === "INPP" && KPICFG.INPP.valCol === KPICFG.INPP.yoyCol) {
+    const cards=[...mini.querySelectorAll(".mini")];
+    const firstValue=cards[0]?.querySelector(".num")?.textContent;
+    cards.slice(1).forEach(card=>{
+      if(/^(var\.?|variación) anual$/i.test(card.querySelector(".lbl")?.textContent || "") && card.querySelector(".num")?.textContent===firstValue) card.remove();
+    });
+  }
+  const sharedPeriod=ind.periodo_referencia || ind.last_observation;
+  mini.querySelectorAll(".sub").forEach(node=>{
+    if(node.textContent===`Periodo: ${sharedPeriod}` || node.textContent===`Periodo: ${k.ultimoP}` && k.ultimoP===sharedPeriod) node.remove();
+  });
+  const np=ind.proxima_publicacion || nextPublication(ind.key);
+  if(np) mini.querySelectorAll(".mini").forEach(card=>{
+    const label=card.querySelector(".lbl")?.textContent || "";
+    if(label==="Próxima publicación" && card.querySelector(".num")?.textContent===np.fecha_publicacion) card.remove();
+  });
 }
 
 // ---------------- Impresión: lenguaje visual tipo "Nota" (EMIM) ----------------
@@ -651,9 +670,9 @@ function renderIndicatorView(key) {
   sec.append(indicatorToolbar(key));
   const panel = el("div", { class: "panel ficha" });
   panel.append(fichaHeader(ind));
-  if (ind.nota?.status) {
-    const notePeriod = ind.nota.periodo || "por confirmar";
-    panel.append(el("div", { class: "notice", role: "status" }, `Nota descargable: ${notePeriod}. ${ind.nota.message || ""}`));
+  if (ind.nota?.status && ind.nota.status !== "vigente") {
+    panel.append(el("div", {class:"ficha-note-status",role:"status"},
+      `Nota disponible: ${ind.nota.periodo || "periodo por confirmar"}. Consulta su periodo antes de utilizarla.`));
   }
 
   if (!hasData(ind)) {
@@ -708,7 +727,7 @@ function renderIndicatorView(key) {
     );
   } else if (ind.key === "IMAI" && k.cards) {
     mini = el("div", { class: "mini-kpis" },
-      el("div", { class: "mini dark" }, el("div", { class: "lbl" }, "Cifra actual"), el("div", { class: "num" }, k.ultimoFmt), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),
+      el("div", { class: "mini dark" }, el("div", { class: "lbl" }, cfg.mainLabel || "Cifra actual"), el("div", { class: "num" }, k.ultimoFmt), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),
       el("div", { class: "mini" }, el("div", { class: "lbl" }, cfg.varLabel), el("div", { class: "num", style: `color:${k.varColor}` }, k.varText), el("div", { class: "sub" }, cfg.comp)),
       yoy ? el("div", { class: "mini" }, el("div", { class: "lbl" }, yoy.label || "Variación anual"), el("div", { class: "num", style: `color:${yoy.pos ? COLORS.GREEN : COLORS.CRIMSON}` }, yoy.text), el("div", { class: "sub" }, "Frente al periodo de referencia")) : null,
       k.acumText ? el("div", { class: "mini" }, el("div", { class: "lbl" }, k.acumLabel || "Acumulado"), el("div", { class: "num", style: `color:${k.acumPos ? COLORS.GREEN : COLORS.CRIMSON}` }, k.acumText), el("div", { class: "sub" }, "Acumulado ene-mes, cifras originales")) : null,
@@ -795,7 +814,7 @@ function renderIndicatorView(key) {
     );
   } else {
     mini = el("div", { class: "mini-kpis" },
-      el("div", { class: "mini dark" }, el("div", { class: "lbl" }, "Cifra actual"), el("div", { class: "num" }, k.ultimoFmt), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),
+      el("div", { class: "mini dark" }, el("div", { class: "lbl" }, cfg.mainLabel || "Cifra actual"), el("div", { class: "num" }, k.ultimoFmt), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),
       el("div", { class: "mini" }, el("div", { class: "lbl" }, cfg.varLabel), el("div", { class: "num", style: `color:${k.varColor}` }, k.varText), el("div", { class: "sub" }, cfg.comp)),
       yoy ? el("div", { class: "mini" }, el("div", { class: "lbl" }, yoy.label || "Variación anual"), el("div", { class: "num", style: `color:${yoy.pos ? COLORS.GREEN : COLORS.CRIMSON}` }, yoy.text), el("div", { class: "sub" }, "Frente al periodo de referencia")) : null,
       k.acumText ? el("div", { class: "mini" }, el("div", { class: "lbl" }, k.acumLabel || "Acumulado"), el("div", { class: "num", style: `color:${k.acumPos ? COLORS.GREEN : COLORS.CRIMSON}` }, k.acumText), el("div", { class: "sub" }, "Acumulado ene-mes, cifras originales")) : null,
@@ -803,10 +822,11 @@ function renderIndicatorView(key) {
       el("div", { class: "mini" }, el("div", { class: "lbl" }, "Mínimo de la serie"), el("div", { class: "num", style: `color:${COLORS.CRIMSON}` }, k.minFmt), el("div", { class: "sub" }, `Periodo: ${k.minP}`)),
     );
   }
+  refineMetricCards(mini, ind, k);
   panel.append(mini);
 
   // window toggle + chart
-  panel.append(el("div", { class: "chart-caption", id: `caption-${ind.key}` }, `${CAPTIONS[ind.key] || ""} Datos hasta ${ind.last_observation || "—"}.`.trim()));
+  panel.append(el("div", { class: "chart-caption", id: `caption-${ind.key}` }, indicatorCaption(ind)));
   const chartMain = el("div", { class: "chart-main" });
   const emimMulti = ind.key === "EMIM" && (k.cards || (ind.columns && ind.columns.length > 15));
   const imfbcfMulti = ind.key === "IMFBCF" && (ind.columns && ind.columns.length > 15);
@@ -1523,7 +1543,7 @@ function mountPibsecCharts(ind) {
   const cap = document.getElementById(`caption-${ind.key}`);
   if (cap) {
     const last = obs.length ? obs[obs.length - 1].period : (ind.last_observation || "—");
-    cap.textContent = `${CAPTIONS[ind.key] || ""} Datos hasta ${last}.`.trim();
+    cap.textContent = indicatorCaption(ind, last);
   }
 }
 
@@ -1550,7 +1570,7 @@ function mountIgaeCharts(ind) {
   const cap = document.getElementById(`caption-${ind.key}`);
   if (cap) {
     const last = obs.length ? obs[obs.length - 1].period : (ind.last_observation || "—");
-    cap.textContent = `${CAPTIONS[ind.key] || ""} Datos hasta ${last}.`.trim();
+    cap.textContent = indicatorCaption(ind, last);
   }
 }
 
@@ -1577,7 +1597,7 @@ function mountImaiCharts(ind) {
   const cap = document.getElementById(`caption-${ind.key}`);
   if (cap) {
     const last = obs.length ? obs[obs.length - 1].period : (ind.last_observation || "—");
-    cap.textContent = `${CAPTIONS[ind.key] || ""} Datos hasta ${last}.`.trim();
+    cap.textContent = indicatorCaption(ind, last);
   }
 }
 
@@ -1604,7 +1624,7 @@ function mountEmimCharts(ind) {
   const cap = document.getElementById(`caption-${ind.key}`);
   if (cap) {
     const last = obs.length ? obs[obs.length - 1].period : (ind.last_observation || "—");
-    cap.textContent = `${CAPTIONS[ind.key] || ""} Datos hasta ${last}.`.trim();
+    cap.textContent = indicatorCaption(ind, last);
   }
 }
 
@@ -1631,7 +1651,7 @@ function mountEmoeCharts(ind) {
   const cap = document.getElementById(`caption-${ind.key}`);
   if (cap) {
     const last = obs.length ? obs[obs.length - 1].period : (ind.last_observation || "—");
-    cap.textContent = `${CAPTIONS[ind.key] || ""} Datos hasta ${last}.`.trim();
+    cap.textContent = indicatorCaption(ind, last);
   }
 }
 
@@ -1663,7 +1683,7 @@ function mountSicCharts(ind) {
   const cap = document.getElementById(`caption-${ind.key}`);
   if (cap) {
     const last = obs.length ? obs[obs.length - 1].period : (ind.last_observation || "—");
-    cap.textContent = `${CAPTIONS[ind.key] || ""} Datos hasta ${last}.`.trim();
+    cap.textContent = indicatorCaption(ind, last);
   }
 }
 
@@ -1690,7 +1710,7 @@ function mountReservasCharts(ind) {
   const cap = document.getElementById(`caption-${ind.key}`);
   if (cap) {
     const last = obs.length ? obs[obs.length - 1].period : (ind.last_observation || "—");
-    cap.textContent = `${CAPTIONS[ind.key] || ""} Datos hasta ${last}.`.trim();
+    cap.textContent = indicatorCaption(ind, last);
   }
 }
 
@@ -1716,7 +1736,7 @@ function mountBcmmCharts(ind) {
   const cap = document.getElementById(`caption-${ind.key}`);
   if (cap) {
     const last = obs.length ? obs[obs.length - 1].period : (ind.last_observation || "—");
-    cap.textContent = `${CAPTIONS[ind.key] || ""} Datos hasta ${last}.`.trim();
+    cap.textContent = indicatorCaption(ind, last);
   }
 }
 
@@ -1748,7 +1768,7 @@ function mountDesocupCharts(ind) {
   const cap = document.getElementById(`caption-${ind.key}`);
   if (cap) {
     const last = ratesObs.length ? ratesObs[ratesObs.length - 1].period : (ind.last_observation || "—");
-    cap.textContent = `${CAPTIONS[ind.key] || ""} Datos hasta ${last}.`.trim();
+    cap.textContent = indicatorCaption(ind, last);
   }
 }
 
@@ -1773,7 +1793,7 @@ function mountImfbcfCharts(ind) {
   const cap = document.getElementById(`caption-${ind.key}`);
   if (cap) {
     const last = obs.length ? obs[obs.length - 1].period : (ind.last_observation || "—");
-    cap.textContent = `${CAPTIONS[ind.key] || ""} Datos hasta ${last}.`.trim();
+    cap.textContent = indicatorCaption(ind, last);
   }
 }
 
@@ -1882,7 +1902,7 @@ function mountChart(ind) {
   if (cap) {
     const obs = applyWindow(ind, winId);
     const last = obs.length ? obs[obs.length - 1].period : (ind.last_observation || "—");
-    cap.textContent = `${CAPTIONS[ind.key] || ""} Datos hasta ${last}.`.trim();
+    cap.textContent = indicatorCaption(ind, last);
   }
 }
 function mountAllCharts() { ORDER.map(getInd).filter(Boolean).forEach((ind) => { if (KPICFG[ind.key] && hasData(ind)) mountChart(ind); }); }
