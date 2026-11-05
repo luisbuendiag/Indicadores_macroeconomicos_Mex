@@ -247,3 +247,20 @@ Entorno financiero contiene la inversión externa reportada por la **Secretaría
   empleo neto: revisar PEA, participación y ocupados. No equiparar personas ENOE
   a puestos IMSS ni empalmar ENOE/ENOEN/ETOE. Base salarial leída del boletín.
 - Respetar pausas, machotes y evidencias; fallos preservan el Word anterior.
+
+## Nota automática BCMM y cobertura de notas
+
+- `build_trade_notes.py` completa los 15 indicadores de Panorama. Lee nueve
+  páginas del boletín oportuno, cuadros 1–3 completos y tasas/saldos ajustados
+  del texto. El cuadro histórico se lee por columnas geométricas, no dividiendo
+  enteros por espacios de millares. Cotejar portada, totales y saldos.
+- Dólares corrientes: flujos nominales de mercancías, no volúmenes ni servicios.
+  Separar originales/desestacionalizados y mes/acumulado. No expresar el cambio
+  de signo de un saldo como crecimiento porcentual. S.S. permanece nulo, no cero.
+- Mercados: cuota acumulada de exportaciones no petroleras; no es cuota mensual
+  ni de todas las exportaciones. Mantener jerarquías automotriz/no automotriz y
+  petróleo en consumo/intermedios. No inferir récords, causas ni aportaciones.
+- Dos páginas, cuatro tablas nativas y dos gráficas; todas las pausas y evidencia.
+- El compositor compartido normaliza fuentes alternativas Noto Sans conservando
+  el machote de solo lectura. Los tests de recursos institucionales verifican los
+  archivos enlazados y sus hashes, no extensiones o nombres antiguos de imágenes.

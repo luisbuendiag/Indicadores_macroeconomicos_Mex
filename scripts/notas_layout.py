@@ -13,6 +13,11 @@ class Layout:
             if n.tag!=qn('w:sectPr'):self.doc.element.body.remove(n)
         for st in self.doc.styles:
             if st.type==1:st.font.name='Noto Sans';st.font.size=Pt(11)
+        # Normalizar también fuentes alternativas heredadas, sin alterar el machote.
+        for fonts in self.doc.styles.element.iter(qn('w:rFonts')):
+            for slot in ('ascii','hAnsi','eastAsia','cs'):fonts.set(qn('w:'+slot),'Noto Sans')
+            for attr in list(fonts.attrib):
+                if attr.endswith('Theme'):del fonts.attrib[attr]
         ns=self.doc.part.numbering_part.element
         aid=max([int(n.get(qn('w:abstractNumId'))) for n in ns.findall(qn('w:abstractNum'))]+[-1])+1
         self.nid=max([int(n.get(qn('w:numId'))) for n in ns.findall(qn('w:num'))]+[0])+1

@@ -66,7 +66,7 @@ def test_nota_vigente_existe_y_es_docx_real(key):
     assert nota.get("available") is True
     assert nota.get("format") == "docx"
     if nota.get("automatic"):
-        assert key in {"IMOAM", "IMAI", "IGAE", "EMIM", "EMOE", "CONSUMO", "IMFBCF", "INPC", "INPP", "PIB", "PIBSEC", "SIC", "IOAE", "DESOCUP"}, "Indicador sin generador automático"
+        assert key in {"IMOAM", "IMAI", "IGAE", "EMIM", "EMOE", "CONSUMO", "IMFBCF", "INPC", "INPP", "PIB", "PIBSEC", "SIC", "IOAE", "DESOCUP", "BCMM"}, "Indicador sin generador automático"
         import lib_notes_state
         pub = lib_notes_state.load_state().get(key, {}).get("published", {})
         assert pub and pub["fingerprint"] == nota.get("fingerprint")
@@ -224,8 +224,23 @@ def test_pib_docx_estructura_limpia(path):
     assert doc.count('w:br w:type="page"') == 1
     with zipfile.ZipFile(path) as z:
         media = [n for n in z.namelist() if n.startswith("word/media/")]
-    # gráficas (2 png) + recursos institucionales de la plantilla (2 jpg)
-    base = {n.rsplit("/", 1)[-1] for n in media}
+    # Dos gráficas en el cuerpo y dos recursos institucionales realmente
+    # enlazados a encabezado/pie. El formato/nombre del archivo no es un invariante.
+    from docx import Document
+    import posixpath
+    import re
+    import xml.etree.ElementTree as ET
     assert len(media) == 4, media
-    assert {"image1.jpg", "image2.jpg"} <= base  # logo / pie institucional
-    assert sum(1 for n in base if n.endswith(".png")) == 2  # las 2 gráficas
+    assert len(Document(path).inline_shapes) == 2
+    def institutional_hashes(source):
+        with zipfile.ZipFile(source) as z:
+            targets=set()
+            for name in z.namelist():
+                if not re.fullmatch(r'word/_rels/(?:header|footer)\d+\.xml\.rels',name):continue
+                for rel in ET.fromstring(z.read(name)):
+                    if rel.get('Type','').endswith('/image'):
+                        targets.add(posixpath.normpath(posixpath.join('word',rel.get('Target'))).lstrip('/'))
+            return {hashlib.sha256(z.read(target)).hexdigest() for target in targets}
+    actual=institutional_hashes(path)
+    approved=institutional_hashes(MACHOTE_DIR/'PIB_machote.docx') | institutional_hashes(MACHOTE_DIR/'_PLANTILLA_NOTAS_VISUAL.docx')
+    assert len(actual)==2 and actual <= approved, 'Encabezado/pie distintos de los machotes aprobados'
