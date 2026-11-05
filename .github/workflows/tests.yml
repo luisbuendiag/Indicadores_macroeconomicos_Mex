@@ -14,6 +14,11 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install -r requirements.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Calendario y exportación Word
+        run: node --test tests/calendar_ui.test.mjs
       - name: Validación de datos
         run: python scripts/validate.py
       - name: Pruebas unitarias

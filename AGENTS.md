@@ -264,3 +264,21 @@ Entorno financiero contiene la inversión externa reportada por la **Secretaría
 - El compositor compartido normaliza fuentes alternativas Noto Sans conservando
   el machote de solo lectura. Los tests de recursos institucionales verifican los
   archivos enlazados y sus hashes, no extensiones o nombres antiguos de imágenes.
+
+
+## Calendario y Word editable
+
+- Las claves internas (`CONSUMO`, `DESOCUP`, `PIBSEC`) no se sustituyen por las
+  siglas visibles (`IMCP`, `ENOE`, `PIBT`). Todos los filtros, fichas y descargas
+  usan la clave interna.
+- Calendario, agenda, tabla y exportación DOCX comparten `selectRange`: mismos
+  meses, filtros y corte. El Word se genera en el navegador desde el mismo
+  snapshot; no requiere API, servidor ni credenciales. Tablas OOXML nativas.
+- La fecha transcurrida no confirma disponibilidad de boletín ni de nota. No
+  enlazar una nota vigente desde otro periodo o una publicación futura.
+- ENOE trimestral y difusión BCMM sin boletín se distinguen y no actualizan
+  la frescura de la ficha mensual. Conservar publicaciones de periodos distintos
+  aunque coincidan clave y fecha. No inventar horarios.
+- Probar con `node --test tests/calendar_ui.test.mjs` (Node 24) y pytest
+  `tests/test_calendario.py tests/test_calendar_products.py`. Revisar el DOCX
+  renderizado cuando cambie su compositor.

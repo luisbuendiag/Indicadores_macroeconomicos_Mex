@@ -3,7 +3,7 @@ import { ORDER, PRINCIPAL, COMPLEMENTARIOS, LABELS, SIGLA, CAPTIONS, WINDOWS, IE
 import { computeKPI, analysis, annualVar } from "./metrics.js";
 import { buildOption, rangeStats, applyWindow, buildPibsecLevels, buildPibsecVariations, buildIgaeLevels, buildIgaeVariations, buildImaiLevels, buildImaiVariations, buildEmimLevels, buildEmimVariations, buildBcmmLevels, buildBcmmVariations, buildImfbcfLevels, buildImfbcfVariations, buildDesocupRates, buildDesocupPoblacion, buildEmoeSectors, buildSicComponents, buildReservasLevel, buildReservasChange } from "./charts.js";
 import { fmtVal, perLong, perShort } from "./format.js";
-import * as cal from "./calendar.js";
+import * as cal from "./calendar.js?v=calendario-word-20261105";
 
 const state = {
   data: null, manifest: null, noticias: null, calendario: null,

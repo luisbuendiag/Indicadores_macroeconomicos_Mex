@@ -137,7 +137,7 @@ def _match_inegi_indicator(program: str, cfg: dict) -> str | None:
 def _map_inegi_events(raw_events: list[dict], cfg: dict, warnings: list[str]) -> list[dict]:
     """Mapea y desduplica eventos del INEGI."""
     ind_cfg = cfg.get("inegi", {}).get("indicators", {})
-    groups: dict[tuple[str, date], list[dict]] = {}
+    groups: dict[tuple[str, date, str], list[dict]] = {}
     for ev in raw_events:
         key = _match_inegi_indicator(ev["program"], cfg)
         if not key:
@@ -148,12 +148,13 @@ def _map_inegi_events(raw_events: list[dict], cfg: dict, warnings: list[str]) ->
         if _program_excluded(ev["program"], cfg.get("inegi", {}).get("exclude_substrings", [])):
             continue
         d = ev["date"]
-        if (key, d) not in groups:
-            groups[(key, d)] = []
-        groups[(key, d)].append(ev)
+        group_key = (key, d, ev.get("period") or "")
+        if group_key not in groups:
+            groups[group_key] = []
+        groups[group_key].append(ev)
 
     events: list[dict] = []
-    for (key, d), items in groups.items():
+    for (key, d, _period), items in groups.items():
         meta = ind_cfg.get(key, {})
         preferred = meta.get("preferred_program_contains", [])
         best = max(items, key=lambda x: _score_program(x["program"], preferred))
@@ -458,7 +459,7 @@ def _build_events(as_of: date, offline: bool) -> tuple[list[dict], list[dict], d
             if ev.get("indicator") == "PIBSEC":
                 events.append(ev)
 
-    events = _dedup_events(events)
+    events = [_precise_event(e) for e in _dedup_events(events)]
 
     # Reglas
     rules: list[dict] = []
@@ -504,6 +505,22 @@ def _build_events(as_of: date, offline: bool) -> tuple[list[dict], list[dict], d
         "Secretaría de Economía (manual)": {**se_status},
     }
     return events, rules, sources_status
+
+
+def _precise_event(ev: dict) -> dict:
+    """Preserva la identidad del producto y la periodicidad del evento concreto."""
+    ev = dict(ev)
+    period = ev.get("period") or ""
+    if ev.get("indicator") == "DESOCUP" and re.search(r"trimestre|[1-4]T\b", period, re.I):
+        ev["frequency"] = "Trimestral"
+        ev["product"] = "ENOE · Resultados trimestrales"
+        ev["usar_para_frescura"] = False  # La ficha DESOCUP y su nota son mensuales.
+    elif ev.get("indicator") == "DESOCUP":
+        ev["product"] = "ENOE · Indicadores mensuales de ocupación y empleo"
+    if ev.get("indicator") == "BCMM" and "no se elabora" in (ev.get("comentario") or "").lower():
+        ev["product"] = "BCMM · Difusión de datos sin boletín"
+        ev["usar_para_frescura"] = False
+    return ev
 
 
 def _new_status(ev: dict, as_of: date) -> str:

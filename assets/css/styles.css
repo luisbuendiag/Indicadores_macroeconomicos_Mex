@@ -855,3 +855,42 @@ tbody tr:last-child td { font-weight: 600; color: var(--dkgreen); }
 
 th.sortable { cursor: pointer; user-select: none; }
 th.sortable:hover { background: var(--line); }
+
+/* Agenda institucional y exportación editable */
+.calendar-agenda {font-family:var(--sans)}
+.calendar-agenda .cal-controls {background:#f7f9f8;padding:18px;border:1px solid var(--line);border-radius:8px;margin-bottom:18px}
+.calendar-agenda .cal-filters {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.calendar-agenda .cal-filter-group {min-width:0}
+.calendar-agenda .cal-filter-group label {font-family:var(--sans);font-size:12px;letter-spacing:0;text-transform:none;font-weight:600;color:var(--dkgreen)}
+.calendar-agenda select {width:100%;font-family:var(--sans);min-height:40px}
+.calendar-agenda .win-btn {font-family:var(--sans);font-size:13px;min-height:38px}
+.cal-export-row {display:flex;justify-content:space-between;gap:12px;margin-top:16px}
+.cal-selection {font-size:12px;color:var(--muted);margin-top:12px}
+.cal-export-status {font-size:12px;color:var(--green)}
+#cal-next {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0}
+.cal-next-item {display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;text-align:left;padding:13px 16px;background:white;border:1px solid var(--line);border-top:3px solid var(--green);border-radius:6px;font:inherit;color:var(--dkgreen);cursor:pointer}
+.cal-next-date {width:100%;font-size:12px;color:var(--muted)}
+.cal-next-item span:not(.cal-next-date),.cal-next-item small {font-size:12px}
+.calendar-agenda .cal-months.three {grid-template-columns:1fr}
+.calendar-agenda .cal-month {padding:20px;border-radius:8px}
+.calendar-agenda .cal-month-title {font-family:var(--sans);font-size:22px;text-transform:capitalize;margin-bottom:14px}
+.calendar-agenda .cal-grid {table-layout:fixed;width:100%}
+.calendar-agenda .cal-grid th {font-family:var(--sans);font-size:11px;background:#edf3f0;color:var(--green)}
+.calendar-agenda .cal-cell {height:105px;vertical-align:top;padding:6px}
+.calendar-agenda .cal-cell.empty {background:#f7f8f7}
+.calendar-agenda .cal-today {background:#f0f6f2;box-shadow:inset 0 0 0 2px var(--green)}
+.calendar-agenda .cal-daynum {font-family:var(--sans);font-size:12px;font-weight:600;margin-bottom:5px}
+.calendar-agenda .cal-chip {width:100%;text-align:left;display:flex;flex-direction:column;align-items:flex-start;gap:2px;border:1px solid #e1e8e3;border-left:3px solid var(--event-color);background:#f4f7f5;color:var(--dkgreen);padding:6px;font-family:var(--sans);font-size:11px;white-space:normal;line-height:1.35}
+.calendar-agenda .cal-chip-period {font-size:10px;color:#545f59;font-weight:400}
+.calendar-agenda .cal-chip:hover,.cal-agenda-event:hover,.cal-next-item:hover {background:#e9f1ec}
+.calendar-agenda button:focus-visible {outline:2px solid var(--gold);outline-offset:2px}
+.cal-agenda-day {margin-bottom:18px;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.cal-agenda-day h3 {background:#edf3f0;padding:10px 16px;font-size:15px;color:var(--dkgreen)}
+.cal-agenda-event {width:100%;display:grid;grid-template-columns:110px 1fr 190px;gap:6px 16px;align-items:center;text-align:left;background:white;border:0;border-top:1px solid var(--line);padding:14px 16px;font-family:var(--sans);color:var(--ink);cursor:pointer}
+.cal-agenda-event strong {color:var(--green)}
+.cal-agenda-event small {grid-column:2/-1;color:var(--muted)}
+.cal-agenda-name {font-size:13px}
+@media(max-width:800px){.calendar-agenda .cal-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.cal-agenda-event{grid-template-columns:90px 1fr}.cal-agenda-event>span:last-of-type{grid-column:2}#cal-next{grid-template-columns:1fr}.cal-next-item:nth-child(n+2){display:none}}
+@media(max-width:480px){.calendar-agenda .cal-filters{grid-template-columns:1fr}.cal-export-row{flex-wrap:wrap}.calendar-agenda .cal-month{padding:12px}.cal-export-row .btn-primary{width:100%;justify-content:center}}
+
+.cal-next-heading {font-size:14px;color:var(--green);margin:16px 0 0;font-weight:600}

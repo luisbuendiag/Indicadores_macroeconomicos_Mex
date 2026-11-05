@@ -1,14 +1,20 @@
 // assets/js/calendar.js - Modulo de calendario de publicaciones (ES)
 // UI/UX redisenada para data/calendario.json; compatible con data/calendario_publicaciones.json
+import { downloadCalendar } from "./calendar-export.js?v=calendario-word-20261105";
 import { ORDER, LABELS, SIGLA } from "./config.js";
 
 
 const MES_NOMBRES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
 const MES_CORTOS = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
-const DIA_CORTOS = ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"];
+const DIA_CORTOS = ["lun", "mar", "mié", "jue", "vie", "sáb", "dom"];
 
 const FILE_ICON = (letter) => `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" role="img"><title>${letter}</title><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/><text x="12" y="17" font-size="8" font-family="sans-serif" font-weight="700" text-anchor="middle" fill="currentColor">${letter}</text></svg>`;
 
+const SHORT_LABELS = {
+  IMAI:"Actividad industrial", IGAE:"Actividad económica", IMOAM:"Actividad manufacturera oportuna",
+  IOAE:"Actividad económica oportuna", EMIM:"Industria manufacturera", CONSUMO:"Consumo privado",
+  INPC:"Precios al consumidor", INPP:"Precios al productor", EMOE:"Confianza empresarial"
+};
 const DEFAULT_CATEGORIES = {
   "Actividad económica": "#0d47a1",
   "Precios": "#b71c1c",
@@ -111,8 +117,8 @@ function rawRules(ctx) {
   return [];
 }
 
-function normalizeEvent(e) {
-  const clave = (e.clave || e.sigla || e.indicator || "").toString().trim();
+export function normalizeEvent(e) {
+  const clave = (e.clave || e.indicator || e.sigla || "").toString().trim();
   const isRule = (e.type === "rule" || e.estatus === "regla");
   const fechaIso = e.fecha_iso || e.publication_date || e.fecha || null;
   let anio = e.anio;
@@ -132,8 +138,13 @@ function normalizeEvent(e) {
     fecha_iso: fechaIso,
     anio,
     mes,
-    periodo_referencia: e.periodo_referencia || e.reference_period || e.period || "",
-    frecuencia: e.frecuencia || e.frequency || "",
+    periodo_referencia: referenceLabel(e),
+    periodo_referencia_fuente: e.periodo_referencia || e.reference_period || e.period || "",
+    frecuencia: /trimestre/i.test(e.periodo_referencia || e.reference_period || e.period || "") ? "Trimestral" : (e.frecuencia || e.frequency || ""),
+    sigla: SIGLA[clave] || clave,
+    nombre_corto: (e.producto || e.product || "").includes("trimestrales") ? "Resultados trimestrales" :
+      (e.producto || e.product || "").includes("sin boletín") ? "Datos sin boletín" : (SHORT_LABELS[clave] || LABELS[clave] || clave),
+    situacion: publicationSituation(e),
     estatus: e.estatus || e.status || "",
     source: src,
     institucion: e.institucion || e.institution || src,
@@ -395,8 +406,9 @@ export function renderCalendar(ctx) {
     return;
   }
 
+  sec.classList.add("calendar-agenda");
   renderHeaderAndLegend(ctx, sec);
-  sec.append(renderHighlights(ctx));
+  sec.append(el("h3", {class:"cal-next-heading"}, "Próximas publicaciones"), el("div", { id: "cal-next" }));
   sec.append(renderControls(ctx));
   sec.append(el("div", { id: "cal-body" }));
   drawCalBody(ctx);
@@ -406,15 +418,10 @@ function renderHeaderAndLegend(ctx, sec) {
   const cal = getCal(ctx);
   const sourceMap = cal.sources || {};
   const asOf = asOfIso(ctx);
-  const generated = cal.generated_at || cal.actualizado || null;
-
-  const generatedText = generated
-    ? new Date(generated).toLocaleString("es-MX", { timeZone: "America/Mexico_City" })
-    : "—";
   const asOfText = asOf ? displayDate(asOf) : "—";
 
   const sub = el("div", { class: "section-sub" },
-    `Fuente: ${cal.fuente || "Calendario oficial de difusión"} · actualizado el ${generatedText} · as_of ${asOfText}.`
+    `Calendarios de INEGI, Banco de México y Secretaría de Economía · Corte del calendario: ${asOfText}.`
   );
 
   const srcChips = el("div", { class: "cal-legend" });
@@ -422,7 +429,7 @@ function renderHeaderAndLegend(ctx, sec) {
     const dotCls = sourceDotClass(info.status);
     const chip = el("span", { class: "cal-leg-item", title: info.message || `${name}: ${info.status || "ok"}` },
       el("span", { class: `cal-src-dot ${dotCls}` }),
-      `${name}${info.count ? ` (${info.count})` : ""}`
+      name
     );
     srcChips.append(chip);
   });
@@ -589,7 +596,7 @@ function renderControls(ctx) {
 
   // Vista mensual / tabular
   const viewToggle = el("div", { class: "cal-view-toggle", role: "group", "aria-label": "Vista del calendario" });
-  [["mensual", "Vista mensual"], ["tabla", "Vista tabular"]].forEach(([m, lbl]) => {
+  [["mensual", "Calendario"], ["agenda", "Agenda"], ["tabla", "Tabla"]].forEach(([m, lbl]) => {
     viewToggle.append(el("button", {
       class: "win-btn", type: "button", "aria-pressed": String(calState.mode === m),
       onclick: () => { calState.mode = m; drawCalBody(ctx); },
@@ -613,13 +620,34 @@ function renderControls(ctx) {
     el("button", { class: "win-btn", type: "button", onclick: () => shiftCurrent(ctx, 1) }, "Mes siguiente →")
   );
 
-  wrap.append(filters, el("div", { class: "cal-view-row" }, viewToggle, rangeToggle, nav));
+  const reset = el("button", { class: "btn btn-ghost", type: "button", onclick: () => {
+    Object.assign(calState, { category: "", source: "", frequency: "", indicator: "" });
+    renderCalendar(ctx);
+  } }, "Limpiar filtros");
+  const download = el("button", { id: "cal-word", class: "btn btn-primary", type: "button", onclick: () => {
+    const cur = ensureCurrent(ctx);
+    try {
+      downloadCalendar({ events: visibleEvents(ctx), year: cur.getFullYear(), month: cur.getMonth()+1,
+        count: calState.months, asOf: asOfIso(ctx) || "", filters: selectionLabel() },
+        `Calendario_${monthKey(cur.getFullYear(),cur.getMonth()+1)}_${calState.months}meses.docx`);
+      document.getElementById("cal-export-status").textContent = "Word generado con el periodo y los filtros seleccionados.";
+    } catch (error) {
+      document.getElementById("cal-export-status").textContent = "No se pudo generar el Word. Intenta de nuevo.";
+      console.error("Calendar export", error);
+    }
+  } }, "↓ Descargar Word editable");
+  wrap.append(filters, el("div", { class: "cal-view-row" }, viewToggle, rangeToggle, nav),
+    el("div", { class: "cal-export-row" }, reset, download),
+    el("div", { id: "cal-selection", class: "cal-selection", "aria-live": "polite" }),
+    el("div", { id: "cal-export-status", role: "status", class: "cal-export-status" }));
   return wrap;
 }
 
 function filterGroup(label, select) {
+  const id = `cal-filter-${label.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")}`;
+  select.id=id;
   return el("div", { class: "cal-filter-group" },
-    el("label", {}, label),
+    el("label", {for:id}, label),
     select
   );
 }
@@ -648,7 +676,27 @@ function drawCalBody(ctx) {
   const host = document.getElementById("cal-body");
   if (!host) return;
   host.innerHTML = "";
-  if (calState.mode === "tabla") drawCalTable(ctx, host);
+  const items = visibleEvents(ctx);
+  const cur = ensureCurrent(ctx), last = addMonths(cur.getFullYear(), cur.getMonth()+1, calState.months-1);
+  const range = `${MES_NOMBRES[cur.getMonth()]} ${cur.getFullYear()}${calState.months>1 ? ` – ${MES_NOMBRES[last.month-1]} ${last.year}` : ""}`;
+  const selection = document.getElementById("cal-selection");
+  if (selection) selection.textContent = `${range} · ${items.length} publicaciones · ${selectionLabel()} · El Word incluye esta selección.`;
+  const message = document.getElementById("cal-export-status"); if (message) message.textContent = "";
+  const next = document.getElementById("cal-next");
+  if (next) {
+    next.replaceChildren();
+    const today = new Date().toLocaleDateString("en-CA", {timeZone:"America/Mexico_City"});
+    const upcoming = filterEvents(getEvents(ctx)).filter(e=>e.fecha_iso>=today).sort((a,b)=>a.fecha_iso.localeCompare(b.fecha_iso)).slice(0,3);
+    upcoming.forEach(e=>next.append(el("button", {class:"cal-next-item",type:"button",onclick:()=>openCalEvent(ctx,e)},
+      el("span", {class:"cal-next-date"}, shortDate(e.fecha_iso)),
+      el("strong", {}, e.sigla), el("span", {}, e.periodo_referencia), el("small", {}, e.frecuencia))));
+  }
+  document.querySelectorAll(".cal-view-toggle button[aria-pressed]").forEach(b=>{
+    const mode = {Calendario:"mensual",Agenda:"agenda",Tabla:"tabla"}[b.textContent];
+    b.setAttribute("aria-pressed", String(mode ? calState.mode===mode : calState.months===Number(b.textContent.split(" ")[0])));
+  });
+  if (calState.mode === "agenda") drawAgenda(ctx, host, items);
+  else if (calState.mode === "tabla") drawCalTable(ctx, host);
   else drawCalMonths(ctx, host);
 }
 
@@ -662,8 +710,64 @@ function filterEvents(events) {
   });
 }
 
+function selectionLabel() {
+  return [calState.category, calState.source, calState.frequency,
+    calState.indicator ? (SIGLA[calState.indicator] || calState.indicator) : ""].filter(Boolean).join(" · ") || "Todos los indicadores";
+}
+
+export function selectRange(events, year, month, count, filters = {}) {
+  const start = monthKey(year, month), last = addMonths(year, month, count);
+  const end = monthKey(last.year, last.month);
+  return events.filter(e => {
+    const m = (e.fecha_iso || "").slice(0,7);
+    return m >= start && m < end && (!filters.category || e.categoria===filters.category)
+      && (!filters.source || shortSource(e)===filters.source)
+      && (!filters.frequency || e.frecuencia===filters.frequency)
+      && (!filters.indicator || e.clave===filters.indicator);
+  }).sort((a,b)=>(a.fecha_iso||"").localeCompare(b.fecha_iso||"") || a.clave.localeCompare(b.clave));
+}
+
+function visibleEvents(ctx) {
+  const cur=ensureCurrent(ctx);
+  return selectRange(getEvents(ctx),cur.getFullYear(),cur.getMonth()+1,calState.months,calState);
+}
+
+function drawAgenda(ctx, host, items) {
+  if (!items.length) {host.append(el("div", {class:"panel muted"}, "Sin publicaciones para el periodo y los filtros seleccionados.")); return;}
+  let previous="", group;
+  for(const e of items) {
+    if(e.fecha_iso!==previous) {
+      group=el("section",{class:"cal-agenda-day"},el("h3",{},e.fecha_publicacion)); host.append(group); previous=e.fecha_iso;
+    }
+    group.append(el("button",{type:"button",class:"cal-agenda-event",onclick:()=>openCalEvent(ctx,e)},
+      el("strong",{},e.sigla),el("span",{class:"cal-agenda-name"},e.producto),
+      el("span",{},e.periodo_referencia),el("small",{},`${shortSource(e)} · ${e.frecuencia} · ${e.situacion}`)));
+  }
+}
+
+// An elapsed scheduled date is not evidence that a bulletin was published.
+export function referenceLabel(e) {
+  const ref=e.periodo_referencia || e.reference_period || e.period || "";
+  const iso=e.fecha_iso || e.publication_date || "";
+  const match=ref.toLowerCase().match(/^([a-záéíóú]+) de (\d{4})$/);
+  if(match && iso) {
+    const month=MES_NOMBRES.indexOf(match[1])+1;
+    if(month && monthKey(Number(match[2]),month)>iso.slice(0,7)) return "Periodo por confirmar";
+  }
+  return ref;
+}
+
+export function publicationSituation(e) {
+  const confirmed = e.publication_confirmed === true;
+  const d = e.fecha_iso || e.publication_date || "";
+  const today = new Date().toLocaleDateString("en-CA", {timeZone:"America/Mexico_City"});
+  if (confirmed) return "Publicación confirmada";
+  if (!d || d === "9999-12-31") return "Fecha por anunciar";
+  return d < today ? "Fecha transcurrida · consultar fuente" : "Programada";
+}
+
 function drawCalMonths(ctx, host) {
-  const events = filterEvents(getEvents(ctx));
+  const events = visibleEvents(ctx);
   if (!events.length) { host.append(el("div", { class: "panel muted" }, "Sin publicaciones para el filtro seleccionado.")); return; }
 
   const cur = ensureCurrent(ctx);
@@ -706,7 +810,7 @@ function monthCard(ctx, year, month, events) {
     }
   });
 
-  const isMobile = typeof window !== "undefined" && window.innerWidth <= 600;
+  const isMobile = typeof window !== "undefined" && window.innerWidth <= 760;
 
   if (isMobile) {
     const list = el("div", { class: "cal-mobile-list" });
@@ -729,7 +833,7 @@ function monthCard(ctx, year, month, events) {
   const table = el("table", { class: "cal-grid" });
   table.append(el("thead", {}, el("tr", {}, ...DIA_CORTOS.map((d) => el("th", {}, d)))));
   const first = new Date(year, month - 1, 1);
-  const startDow = first.getDay();
+  const startDow = (first.getDay() + 6) % 7;
   const daysIn = new Date(year, month, 0).getDate();
   const tb = el("tbody");
   let day = 1 - startDow;
@@ -738,17 +842,19 @@ function monthCard(ctx, year, month, events) {
     for (let i = 0; i < 7; i++, day++) {
       if (day < 1 || day > daysIn) { tr.append(el("td", { class: "cal-cell empty" })); continue; }
       const dayEvents = byDay.get(day) || [];
-      const cell = el("td", { class: "cal-cell" });
+      const dayIso = `${year}-${String(month).padStart(2,"0")}-${String(day).padStart(2,"0")}`;
+      const today = new Date().toLocaleDateString("en-CA", {timeZone:"America/Mexico_City"});
+      const cell = el("td", { class: `cal-cell${dayIso === today ? " cal-today" : ""}` });
       const num = el("div", { class: "cal-daynum" }, String(day));
       const chips = el("div", { class: "chips" });
       const visible = dayEvents.slice(0, 3);
       const hidden = dayEvents.slice(3);
       visible.forEach((ev) => chips.append(renderChip(ctx, ev)));
       if (hidden.length) {
-        const more = el("div", { class: "cal-more", title: `${hidden.length} más` }, `+${hidden.length} más`);
+        const more = el("button", { type: "button", class: "cal-more", title: `${hidden.length} más` }, `+${hidden.length} más`);
         more.addEventListener("click", (evClick) => {
           evClick.stopPropagation();
-          openCalDay(ctx, `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`, dayEvents);
+          openCalDay(ctx, dayIso, dayEvents);
         });
         chips.append(more);
       }
@@ -765,17 +871,17 @@ function monthCard(ctx, year, month, events) {
 function renderChip(ctx, ev, { stacked = false } = {}) {
   const color = categoryColor(ctx, ev.categoria);
   const sigla = SIGLA[ev.clave] || ev.sigla || ev.clave;
-  const chip = el("div", {
-    class: "cal-chip",
-    style: `background:${color};color:#fff`,
-    title: `${ev.indicador} · ${ev.periodo_referencia}`,
-  }, sigla);
+  const chip = el("button", {
+    type: "button", class: "cal-chip", style: `--event-color:${color}`,
+    title: `${ev.producto} · ${ev.periodo_referencia} · ${ev.frecuencia}`,
+  }, el("strong", {}, sigla), el("span", {class:"cal-chip-period"}, ev.nombre_corto), el("span", {class:"cal-chip-period"}, ev.periodo_referencia || ev.frecuencia));
   chip.addEventListener("click", (e) => { e.stopPropagation(); openCalEvent(ctx, ev); });
   return chip;
 }
 
 function drawCalTable(ctx, host) {
-  let items = filterEvents(getEvents(ctx));
+  let items = visibleEvents(ctx);
+  if (!items.length) {host.append(el("div",{class:"panel muted"},"Sin publicaciones para el periodo y los filtros seleccionados.")); return;}
   items = sortTable(items, calState.sort);
 
   const table = el("table");
@@ -796,7 +902,7 @@ function drawCalTable(ctx, host) {
       el("td", {}, c.periodo_referencia || "—"),
       el("td", {}, c.frecuencia || "—"),
       el("td", {}, shortSource(c) || c.institucion || "—"),
-      el("td", {}, statusChip(c.estatus)),
+      el("td", {}, c.situacion),
       el("td", {}, deliverableBar(c.deliverables))
     );
     tr.addEventListener("click", () => openCalEvent(ctx, c));
@@ -865,7 +971,7 @@ function openCalEvent(ctx, ev) {
     ["Fuente", shortSource(ev) || ev.source],
     ["Institución", ev.institucion],
     ["Categoría", ev.categoria],
-    ["Estatus", statusChip(ev.estatus)],
+    ["Situación", ev.situacion],
   ].forEach(([k, v]) => meta.append(el("div", {}, el("strong", {}, `${k}:`), " ", v || "—")));
   wrap.append(meta);
 
@@ -876,12 +982,23 @@ function openCalEvent(ctx, ev) {
     wrap.append(actions);
   }
 
+  if (ev.periodo_referencia === "Periodo por confirmar") wrap.append(el("p",{class:"notice"},
+    `La fuente indica “${ev.periodo_referencia_fuente}”, posterior a la fecha de publicación. Consultar la fuente antes de utilizar ese periodo.`));
   if (ev.comentario) {
     wrap.append(el("h3", {}, "Notas"));
     wrap.append(el("p", {}, ev.comentario));
   }
 
+  if (ev.url_boletin && /^https?:\/\//i.test(ev.url_boletin)) wrap.append(el("a", {
+    class:"btn btn-ghost", href:ev.url_boletin, target:"_blank", rel:"noopener noreferrer"
+  }, "Consultar fuente oficial"));
   const ind = ctx.getInd(ev.clave);
+  // Only link a current institutional note when its edition matches this event.
+  const sameEdition = ind && ev.fecha_publicacion === (ind.fecha_publicacion_oficial || ind.fecha_publicacion)
+    && ev.periodo_referencia === ind.periodo_referencia_oficial;
+  if (sameEdition && ind.nota?.available && ind.nota?.status === "vigente" && ind.url_nota_individual) {
+    wrap.append(el("a", {class:"btn btn-ghost", href:ind.url_nota_individual, download:""}, "Descargar nota Word"));
+  }
   if (ind) {
     wrap.append(el("button", {
       class: "btn btn-primary",
