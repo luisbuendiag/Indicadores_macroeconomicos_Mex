@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-11-06T14:49:13+00:00",
+  "started_at": "2026-11-06T15:31:38+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -455,7 +455,7 @@
     "IOAE: 68 observaciones con IGAE observado anual",
     "TASA: calendario de publicaciones con 24 eventos",
     "TASA: 15 decisiones de politica monetaria construidas",
-    "TASA: 48 regímenes detectados",
+    "TASA: 73 regímenes detectados",
     "SIC: 1 periodo(s) finales sin cifra de los indicadores compuestos; se conservan sólo dentro del periodo de referencia del boletín oficial",
     "calendario: regenerado con as_of=2026-11-06",
     "métricas: data/metrics.json regenerado",
@@ -482,7 +482,7 @@
     "frescura: INPP -> ACTUALIZADO",
     "frescura: SIC -> ACTUALIZADO",
     "frescura: IMOAM -> ACTUALIZADO",
-    "meta: last_update_ct=2026-11-06T09:02:33-06:00",
+    "meta: last_update_ct=2026-11-06T09:47:56-06:00",
     "notas: 15 vigentes (0 provisionadas desde machote)"
   ],
   "consultas": [
@@ -2422,7 +2422,7 @@
       "fuente": "banxico",
       "indicador": "TIPOCAMBIO",
       "serie": "SF43718",
-      "observaciones": 2225,
+      "observaciones": 8793,
       "ultima_observacion": "2026-11-05",
       "ultimo_valor": 18.7147,
       "observacion_previa": "2026-11-05",
@@ -2434,7 +2434,7 @@
       "fuente": "banxico",
       "indicador": "TASA",
       "serie": "SF61745",
-      "observaciones": 3220,
+      "observaciones": 6769,
       "ultima_observacion": "2026-11-06",
       "ultimo_valor": 6.25,
       "observacion_previa": "2026-11-06",
@@ -2446,7 +2446,7 @@
       "fuente": "banxico",
       "indicador": "RESERVAS",
       "serie": "SF43707",
-      "observaciones": 461,
+      "observaciones": 1610,
       "ultima_observacion": "2026-10-30",
       "ultimo_valor": 257166.1,
       "observacion_previa": "2026-10-30",
@@ -3969,5 +3969,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-11-06T15:02:34+00:00"
+  "finished_at": "2026-11-06T15:48:07+00:00"
 }
