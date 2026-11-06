@@ -88,8 +88,8 @@ def test_individual_excel_exists_and_has_columns(payload):
         assert path.exists(), f"{path} no existe"
         wb = openpyxl.load_workbook(path)
         ws = wb.active
-        headers = [ws.cell(5, c).value for c in range(1, ws.max_column + 1)]
-        required = ["Periodo", "Fecha"] + [c["label"] for c in ind["columns"]]
+        headers = [c.value for sheet in wb for row in sheet for c in row if isinstance(c.value, str)]
+        required = ["Periodo"] + [c["label"] for c in ind["columns"]]
         for col in required:
             assert col in headers, f"{key} falta columna {col}"
 

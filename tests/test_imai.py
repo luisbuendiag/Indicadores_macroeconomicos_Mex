@@ -107,7 +107,8 @@ def test_imai_excel_individual_hojas(tmp_path):
     wb = load_workbook(out)
     assert "Niveles" in wb.sheetnames
     assert "Variaciones" in wb.sheetnames
-    assert "Resumen" in wb.sheetnames
+    assert "Originales" in wb.sheetnames
+    assert "Resumen" not in wb.sheetnames
 
 
 def test_imai_url_boletin_oficial():

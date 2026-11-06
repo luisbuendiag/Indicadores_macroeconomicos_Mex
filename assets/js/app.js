@@ -1503,7 +1503,7 @@ function renderDownloads() {
   sec.append(el("div", { class: "section-title" }, "Descargas"));
   sec.append(el("div", { class: "section-sub" }, "Última versión validada de los datos y la documentación."));
   sec.append(el("div",{class:"download-feature"},
-    el("div",{},el("span",{class:"download-format"},"XLSX · Editable"),el("h3",{},"Base de indicadores"),el("p",{},"Series por indicador, síntesis, fuentes y control de actualizaciones.")),
+    el("div",{},el("span",{class:"download-format"},"XLSX · Editable"),el("h3",{},"Base de indicadores"),el("p",{},"Series históricas, fórmulas y gráficas editables.")),
     el("a",{class:"btn btn-primary",href:"downloads/Indicadores_Macroeconomicos_Mexico_Actualizado.xlsx",download:"Indicadores_Macroeconomicos_Mexico_Actualizado.xlsx"},"↓ Descargar Excel")));
   const technical=el("details",{class:"technical-downloads"},el("summary",{},"Datos y documentación técnica"));
   const grid=el("div",{class:"dl-grid"});

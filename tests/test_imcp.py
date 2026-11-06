@@ -145,7 +145,7 @@ def test_imcp_fuente_usa_boletin_pdf_no_ids_bie():
 def test_imcp_excel_hoja_agregada():
     from openpyxl import load_workbook
     wb = load_workbook(ROOT / "downloads" / "Indicadores_Macroeconomicos_Mexico_Actualizado.xlsx", read_only=True)
-    assert "Consumo Privado" in wb.sheetnames
+    assert "IMCP" in wb.sheetnames
 
 
 def test_imcp_excel_individual_existe():

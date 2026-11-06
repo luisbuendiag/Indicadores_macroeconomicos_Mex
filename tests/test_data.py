@@ -263,22 +263,13 @@ def test_pibt_nivel_tradicional_separado(payload):
 
 
 def test_pib_excel_separates_oportuno_and_nivel():
-    """El Excel individual de PIB separa inequívocamente EOPIBT y PIBT."""
+    """EOPIBT conserva solo variaciones; niveles pertenecen al archivo PIBT."""
     xlsx = ROOT / "downloads" / "indicadores" / "PIB" / "PIB_datos.xlsx"
-    assert xlsx.exists(), xlsx
     wb = openpyxl.load_workbook(xlsx)
-    assert "PIB oportuno" in wb.sheetnames
-    assert "Nivel PIB" in wb.sheetnames
-    ws = wb["PIB oportuno"]
-    # No debe existir una columna llamada Nivel para almacenar variaciones.
-    headers = [ws.cell(row=4, column=c).value for c in range(1, ws.max_column + 1)]
-    headers = [h for h in headers if isinstance(h, str)]
-    assert any("trimestral" in h.lower() for h in headers)
-    assert any("anual" in h.lower() for h in headers)
-    assert not any(h.strip() == "Nivel" for h in headers)
-    ws2 = wb["Nivel PIB"]
-    headers2 = [ws2.cell(row=4, column=c).value for c in range(1, ws2.max_column + 1)]
-    assert any((h or "").strip() == "Nivel" for h in headers2)
+    assert wb.sheetnames == ["PIB oportuno"]
+    headers = [c.value for row in wb.active for c in row if c.value is not None]
+    assert any("trimestral" in h.lower() for h in headers if isinstance(h,str))
+    assert "Nivel PIB" not in wb.sheetnames
 
 
 def test_pib_no_interpolated_gaps(payload):

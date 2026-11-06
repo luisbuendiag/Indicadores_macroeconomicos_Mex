@@ -1,1256 +1,498 @@
-"""Genera downloads/Indicadores_Macroeconomicos_Mexico_Actualizado.xlsx.
+"""Excel históricos: un mismo modelo para el libro general y los individuales.
 
-Parte del Excel base (data/source/Indicadores_base.xlsx), conserva sus hojas
-originales SIN alterarlas innecesariamente y agrega tres hojas nuevas:
-  - "Síntesis de coyuntura"
-  - "Metodología y fuentes"
-  - "Control de actualizaciones"
-
-No usa rutas locales ni fórmulas frágiles: los cálculos se resuelven con
-fórmulas de Excel autocontenidas cuando aportan (promedios, máximos), sobre
-rangos internos del propio libro.
+No descarga fuentes ni cambia observaciones. Publica un conjunto validado, sin
+resúmenes narrativos, y conserva los productos vigentes ante un fallo.
 """
 from __future__ import annotations
-
 import argparse
-import json
-import sys
-from datetime import date, datetime, timezone
+from collections import defaultdict
+from datetime import date, datetime
 from pathlib import Path
+import hashlib
+import json
+import math
+import os
+import re
+import tempfile
+import zipfile
+import xml.etree.ElementTree as ET
 
 import openpyxl
+from openpyxl.chart import LineChart, Reference, Series
+from openpyxl.chart.axis import DateAxis
+from openpyxl.chart.series import SeriesLabel
+from openpyxl.chart.data_source import StrRef, StrData, StrVal
+from openpyxl.chart.text import RichText
+from openpyxl.drawing.text import CharacterProperties, Font as DrawingFont, Paragraph, ParagraphProperties
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
-from openpyxl.utils import get_column_letter
+from openpyxl.utils import get_column_letter as letter
+from openpyxl.worksheet.table import Table, TableStyleInfo
+from openpyxl.workbook.properties import CalcProperties
 
 import lib_data as L
-from lib_kpicfg import get_cfg
-from lib_metrics import annual_var, compute_var, fmt_val, primary_series
-from sources import inegi
+from lib_kpicfg import get_cfg  # compatibilidad con consumidores existentes
+from excel_layout import SHEETS, DERIVED, EXCLUDED, NOTES
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE_XLSX = ROOT / "data" / "source" / "Indicadores_base.xlsx"
-OUT_DIR = ROOT / "downloads"
-OUT_XLSX = OUT_DIR / "Indicadores_Macroeconomicos_Mexico_Actualizado.xlsx"
-
-DKGREEN = "FF002F2A"
-GREEN = "FF1E5B4F"
-GOLD = "FFA57F2C"
-LINE = "FFE6E0D2"
-PAPER = "FFF7F5EF"
-
-TITLE = Font(name="Calibri", size=15, bold=True, color=DKGREEN)
-H = Font(name="Calibri", size=11, bold=True, color="FFFFFFFF")
-LBL = Font(name="Calibri", size=10, bold=True, color=DKGREEN)
-TXT = Font(name="Calibri", size=10, color="FF161A1D")
-MUT = Font(name="Calibri", size=9, color="FF6C6F6A", italic=True)
-HEAD_FILL = PatternFill("solid", fgColor=DKGREEN)
-BAND_FILL = PatternFill("solid", fgColor=PAPER)
-THIN = Side(style="thin", color=LINE)
-BORDER = Border(left=THIN, right=THIN, top=THIN, bottom=THIN)
-WRAP = Alignment(wrap_text=True, vertical="top")
-
-IND_DIR = ROOT / "downloads" / "indicadores"
-PILOT_KEYS = ["IGAE", "INPC"]
+OUT_DIR = ROOT / 'downloads'
+IND_DIR = OUT_DIR / 'indicadores'
+OUT_XLSX = OUT_DIR / 'Indicadores_Macroeconomicos_Mexico_Actualizado.xlsx'
+FONT = 'Noto Sans'
+INK = '161A1D'
+GREEN = '1E5B4F'
+SIGLA = {'PIBSEC':'PIBT', 'DESOCUP':'ENOE', 'CONSUMO':'IMCP', 'TIPOCAMBIO':'FIX'}
+CHARTS = {
+ 'PIB': [[0],[1,2]], 'PIBSEC': [[5],[6,7]], 'SIC': [[0],[1]], 'IGAE': [[0],[1,2]],
+ 'IMAI': [[0],[1,2]], 'IMOAM': [[0,1,2],[3,4,5]], 'IOAE': [[0,1,2],[3]],
+ 'EMIM': [[0],[3,4]], 'EMOE': [[0],[3,4,5,6]], 'DESOCUP': [[0,3],[5]],
+ 'INPC': [[2,5],[16,17]], 'INPP': [[0,4],[2,6]], 'CONSUMO': [[0],[1,2]],
+ 'IMFBCF': [[0,3,6],[1,2]], 'BCMM': [[0,1],[2]], 'IED': [[0],[1,2,3]],
+ 'TIPOCAMBIO': [[0]], 'TASA': [[0]], 'RESERVAS': [[0],[1]],
+}
 
 
-def _period_date(period: str) -> date | None:
-    """Convierte una etiqueta de periodo (ej. 'Abr 26 P', '1T-26') en una fecha de inicio."""
-    ym = inegi.label_to_ym(period)
-    if not ym:
-        return None
-    return date.fromisoformat(ym + "-01")
+def _period_date(value: str | date) -> date:
+    if isinstance(value, datetime): return value.date()
+    if isinstance(value, date): return value
+    text = str(value).strip()
+    try: return date.fromisoformat(text[:10])
+    except ValueError: pass
+    q = re.match(r'([1-4])T[- ](\d{2}|\d{4})(?:\s|$)', text)
+    if q:
+        y = int(q[2]); y = y + (1900 if y >= 70 else 2000) if y < 100 else y
+        return date(y, (int(q[1])-1)*3+1, 1)
+    months = {'ene':1,'feb':2,'mar':3,'abr':4,'may':5,'jun':6,'jul':7,'ago':8,'sep':9,'oct':10,'nov':11,'dic':12}
+    m = re.match(r'([A-Za-z]{3})\s+(\d{2}|\d{4})(?:\s|$)', text)
+    if m and m[1].lower() in months:
+        y = int(m[2]); y = y + (1900 if y >= 70 else 2000) if y < 100 else y
+        return date(y, months[m[1].lower()], 1)
+    raise ValueError(f'Periodo no reconocido: {value!r}')
 
 
-def _caracter_dato(period: str) -> str:
-    p = period.strip()
-    if p.endswith(" P"):
-        return "Preliminar"
-    if p.endswith(" R"):
-        return "Revisado"
-    return "Definitivo"
+def _xl_fmt(fmt):
+    return {'pct-frac':'0.0%', 'pct-raw':'0.0"%"', 'idx':'#,##0.0', 'emoe':'0.00',
+            'usd':'#,##0.0', 'num':'#,##0', 'fx':'0.0000', 'pp':'0.000" p.p."',
+            'text':'@', 'bill':'#,##0.0', 'mdd':'#,##0.0', 'mdd-signed':'+#,##0.0;-#,##0.0;0.0'}.get(fmt, '#,##0.0')
 
 
-def _xl_fmt(fmt: str) -> str:
-    """Formato numérico de Excel según el descriptor de config."""
-    # Variaciones fraccionarias (0.015 = 1.5%) se muestran con % nativo de Excel.
-    # Valores ya en puntos porcentuales (4.5) usan % literal para no multiplicar.
-    if fmt == "num" or fmt == "usd":
-        return "#,##0"
-    if fmt == "mdd":
-        return '#,##0" mdd"'
-    if fmt == "mdd-signed":
-        return '+#,##0" mdd";-#,##0" mdd";0" mdd"'
-    if fmt == "bill":
-        return "#,##0.00"
-    if fmt == "pct-frac":
-        return "0.0%"
-    if fmt == "pct-raw":
-        return '0.0"%"'
-    if fmt == "pp":
-        return '0.000" p.p."'
-    if fmt == "idx" or fmt == "emoe":
-        return "#,##0.00" if fmt == "emoe" else "#,##0.0"
-    if fmt == "fx":
-        return "$#,##0.00"
-    if fmt == "text":
-        return "@"
-    return "#,##0.0"
+def _shift(d, months):
+    y,m = divmod(d.year*12+d.month-1-months,12)
+    return date(y,m+1,1)
 
 
-def _prev_valid_i(idxs: list[int], i: int) -> int | None:
-    """Devuelve el índice válido inmediatamente anterior a i."""
-    for j in range(i - 1, -1, -1):
-        if j in idxs:
-            return j
+def _number(value):
+    return isinstance(value,(int,float)) and not isinstance(value,bool) and math.isfinite(value)
+
+
+def _records(ind):
+    records={}
+    for observation in ind.get('observations',[]):
+        d=_period_date(observation['period'])
+        if d in records: raise ValueError(f"{ind['key']}: periodo duplicado {d}")
+        records[d]=observation
+    return dict(sorted(records.items()))
+
+
+def _recipe(key, index, d, records):
+    rule=DERIVED.get(key,{}).get(index)
+    if not rule: return None
+    source,lag,operation=rule
+    def val(day):
+        v=records.get(day,{}).get('values',[])
+        return v[source] if source<len(v) else None
+    previous=_shift(d,lag)
+    if _number(val(d)) and _number(val(previous)) and (operation=='diff' or val(previous)>0):
+        return (source,[d],[previous],operation)
     return None
 
 
-def _bucket_variation(var_info: dict | None, yoy_info: dict | None, freq: str, cfg: dict) -> dict[str, str]:
-    """Asigna var_text e yoy_text a las columnas mensual/trimestral/anual."""
-    buckets = {"mensual": None, "trimestral": None, "anual": None}
-    freq_l = (freq or "").lower()
-
-    def place(info, label):
-        if not info or not info.get("text") or info["text"] == "—":
-            return
-        lbl = (label or "").lower()
-        if "anual" in lbl and "trimestral" not in lbl:
-            buckets["anual"] = info["text"]
-        elif "trimestral" in lbl:
-            buckets["trimestral"] = info["text"]
-        elif "mensual" in lbl or "mes" in lbl:
-            buckets["mensual"] = info["text"]
-        elif "semanal" in lbl or "semana" in lbl:
-            # Agrupación mensual: conservamos la lectura del periodo en la columna mensual.
-            if "mensual" in freq_l:
-                buckets["mensual"] = info["text"]
-        elif "diaria" in lbl or "diario" in lbl:
-            if "mensual" in freq_l:
-                buckets["mensual"] = info["text"]
-        elif freq_l.startswith("trimestral"):
-            buckets["trimestral"] = info["text"]
-        elif "mensual" in freq_l:
-            buckets["mensual"] = info["text"]
-
-    # Variación principal
-    if cfg.get("varCol") is not None:
-        place(var_info, cfg.get("varLabel"))
-    elif cfg.get("varMode") == "pct-yoy":
-        if var_info and var_info.get("text"):
-            buckets["anual"] = var_info["text"]
-    elif "trimestral" in freq_l:
-        buckets["trimestral"] = var_info["text"] if var_info and var_info.get("text") and var_info["text"] != "—" else None
-    elif "mensual" in freq_l or "semanal" in freq_l or "diaria" in freq_l or "diario" in freq_l:
-        buckets["mensual"] = var_info["text"] if var_info and var_info.get("text") and var_info["text"] != "—" else None
-
-    # Variación secundaria (anual / trimestral)
-    if yoy_info:
-        place(yoy_info, cfg.get("yoyLabel"))
-    return buckets
+def _text_properties(size=10):
+    return RichText(p=[Paragraph(pPr=ParagraphProperties(defRPr=CharacterProperties(
+        latin=DrawingFont(typeface=FONT),sz=size*100)))])
 
 
-def _build_pibsec_workbook(ind: dict, out_path: Path):
-    """Genera el Excel individual de PIBSEC con dos hojas claras: Niveles y Variaciones."""
-    wb = openpyxl.Workbook()
-    wb.remove(wb.active)
+class Model:
+    def __init__(self):
+        self.wb=openpyxl.Workbook(); self.wb.remove(self.wb.active)
+        self.wb.calculation=CalcProperties(calcId=191029,fullCalcOnLoad=True,forceFullCalc=True,calcMode='auto')
+        self.coords={}; self.headers={}; self.pending=[]; self.coverage=[]; self.chart_plans=[]
+        self.numeric_sources=0; self.formulas=0; self.table_id=0
 
-    title = ind.get("nombre", "PIBSEC")
-    src = ind.get("fuente", {}).get("nombre", "INEGI")
-    url = ind.get("url_boletin_oficial") or ind.get("fuente", {}).get("link") or "—"
-    pub = ind.get("fecha_publicacion") or "—"
-    header_note = f"Fuente: {src} · Frecuencia: Trimestral · Unidad: millones de pesos a precios de 2018 · Boletín: {url} · Fecha de publicación: {pub}"
+    def sheet(self,name,ind,frequency=None):
+        ws=self.wb.create_sheet(name)
+        ws.sheet_view.showGridLines=False; ws.sheet_view.zoomScale=90
+        ws.freeze_panes=None
+        ws.column_dimensions['A'].width=17
+        for c in range(2,7): ws.column_dimensions[letter(c)].width=23
+        ws.column_dimensions['G'].width=3
+        for c in range(8,15): ws.column_dimensions[letter(c)].width=11
+        for r in (1,2,3,4,5): ws.merge_cells(start_row=r,start_column=1,end_row=r,end_column=6)
+        ws['A1']=ind.get('nombre',ind['key']); ws['A1'].font=Font(name=FONT,size=14,bold=True,color=INK)
+        ws.row_dimensions[1].height=42
+        source=ind.get('fuente',{}); source_name=source.get('nombre') or 'Fuente oficial'
+        ws['A3']=f"Fuente: {source_name}"
+        url=source.get('link') or ind.get('url_fuente_oficial') or ind.get('url_boletin_oficial')
+        if url: ws['A3'].hyperlink=url
+        pub=ind.get('fecha_publicacion') or ind.get('fecha_publicacion_oficial')
+        consult=ind.get('fecha_consulta') or ind.get('last_checked') or ind.get('last_updated') or ''
+        unit=ind.get('unidad','')
+        if ind['key']=='DESOCUP':unit='Personas' if frequency=='Trimestral' else 'Porcentaje'
+        if ind['key']=='PIBSEC':unit='Porcentaje' if name=='Variaciones' else 'Millones de pesos de 2018' if name=='Niveles' else 'Millones de pesos de 2018 y porcentaje, según bloque'
+        ws['A2']=f"Frecuencia: {frequency or ind.get('frecuencia','')}   Unidad: {unit}"
+        ws['A4']=f"Consulta: {consult}"+(f"   Última edición: {pub}" if pub else '')
+        ws['A5']=NOTES.get(ind['key'],'')
+        for r in (2,3,4,5):
+            ws.cell(r,1).font=Font(name=FONT,size=9,color='4C5650')
+            ws.row_dimensions[r].height=30 if ws.cell(r,1).value else 8
+        for row in ws.iter_rows(min_row=1,max_row=5):
+            for cell in row: cell.alignment=Alignment(vertical='center',wrap_text=True)
+        ws.print_options.horizontalCentered=False
+        ws.sheet_properties.pageSetUpPr.fitToPage=True
+        ws.page_setup.orientation='landscape'; ws.page_setup.paperSize=ws.PAPERSIZE_A4
+        ws.page_setup.fitToWidth=1; ws.page_setup.fitToHeight=0
+        return ws
 
-    # Mapeos de columnas para PIBSEC: 0-2 niveles actividades, 3-4 terciarias var, 5 nivel PIB, 6-11 var total/prim/sec.
-    def _make_sheet(sheet_name, include_cols, billions=False):
-        ws = wb.create_sheet(sheet_name)
-        ws.sheet_view.showGridLines = False
-        ws["A1"] = f"{title} — {sheet_name}"
-        ws["A1"].font = TITLE
-        ws["A2"] = header_note
-        ws["A2"].font = MUT
-        ws["A3"] = "Los niveles se presentan en billones de pesos de 2018 (valor / 1,000,000) y las variaciones en porcentaje."
-        ws["A3"].font = MUT
-
-        headers = ["Periodo", "Fecha"] + [ind["columns"][c]["label"] for c in include_cols]
-        r0 = 5
-        for i, h in enumerate(headers, start=1):
-            ws.cell(row=r0, column=i, value=h)
-        _style_header(ws, r0, len(headers))
-
-        r = r0 + 1
-        for o in ind.get("observations", []):
-            d = _period_date(o["period"])
-            ws.cell(row=r, column=1, value=o["period"]).font = TXT
-            ws.cell(row=r, column=2, value=d).font = TXT
-            if d:
-                ws.cell(row=r, column=2).number_format = "yyyy-mm-dd"
-            for j, col_i in enumerate(include_cols, start=3):
-                v = o["values"][col_i] if col_i < len(o["values"]) else None
-                cell = ws.cell(row=r, column=j, value=(v / 1e6 if v is not None and billions else v))
-                cell.font = TXT
-                if v is not None:
-                    if billions:
-                        cell.number_format = '#,##0.00" billones de pesos de 2018"'
+    def block(self,ws,ind,title,indices,row,records=None,columns=None,register=True):
+        key=ind['key']; records=records if records is not None else _records(ind)
+        by_index={c['index']:c for c in (columns or ind['columns'])}
+        indices=[i for i in indices if i in by_index]
+        # Cuatro variables por bloque para evitar tablas de 40 columnas.
+        for offset in range(0,len(indices),4):
+            ids=indices[offset:offset+4]
+            data=[]
+            for d,o in records.items():
+                vals=o.get('values',[])
+                values=[vals[i] if i<len(vals) else None for i in ids]
+                recipes=[_recipe(key,i,d,records) if v is None else None for i,v in zip(ids,values)] if register else [None]*len(ids)
+                if any(v is not None for v in values) or any(recipes): data.append((d,o,values,recipes))
+            if not data: continue
+            block_title=title+(f' ({offset//4+1})' if len(indices)>4 else '')
+            ws.merge_cells(start_row=row,start_column=1,end_row=row,end_column=6)
+            ws.cell(row,1,block_title).font=Font(name=FONT,size=11,bold=True,color=INK)
+            ws.cell(row,1).alignment=Alignment(wrap_text=True,vertical='center'); ws.row_dimensions[row].height=32
+            meta_row=row+1
+            # Cobertura por serie, registrada fuera del libro descargable.
+            coverage=[]
+            for i in ids:
+                dates=[d for d,o,values,recipes in data if (o.get('values',[None]*(i+1))+[None]*(i+1))[i] is not None]
+                if dates:
+                    coverage.append({'key':key,'sheet':ws.title,'column':i,'label':by_index[i]['label'],
+                                     'first':dates[0].isoformat(),'last':dates[-1].isoformat(),'count':len(dates)})
+            self.coverage.extend(coverage)
+            ws.merge_cells(start_row=meta_row,start_column=1,end_row=meta_row,end_column=6)
+            meta=f"{data[0][0].isoformat()} a {data[-1][0].isoformat()}"
+            if any(any(x[3]) for x in data): meta+='   Las celdas con fórmula calculan tasas desde los niveles de esta misma serie.'
+            ws.cell(meta_row,1,meta).font=Font(name=FONT,size=9,color='58615B')
+            ws.cell(meta_row,1).alignment=Alignment(wrap_text=True,vertical='center');ws.row_dimensions[meta_row].height=28
+            header=meta_row+1
+            status=any(re.search(r'\s[PR]$',o['period']) for _,o,_,_ in data)
+            labels=['Periodo']+[by_index[i]['label'] for i in ids]+(['Carácter publicado'] if status else [])
+            for c,label in enumerate(labels,1):
+                cell=ws.cell(header,c,label);cell.font=Font(name=FONT,size=10,bold=True,color=INK)
+                cell.fill=PatternFill('solid',fgColor='EBEEEB')
+                cell.alignment=Alignment(vertical='center',wrap_text=True)
+                cell.border=Border(bottom=Side(style='thin',color='CCD2CD'))
+            ws.row_dimensions[header].height=44
+            for n,(d,o,values,recipes) in enumerate(data,header+1):
+                period=ws.cell(n,1,d)
+                quarterly='trimestral' in (ind.get('_excel_frequency') or ind.get('frecuencia','')).lower() and key!='DESOCUP'
+                if key=='DESOCUP' and ws.title.endswith('Población ocupada'): quarterly=True
+                period.number_format=('yyyy' if ind.get('_excel_frequency','').startswith('Anual') else f'"{(d.month-1)//3+1}T "yyyy' if quarterly else 'yyyy-mm-dd' if key in ('TIPOCAMBIO','TASA','RESERVAS') or re.match(r'\d{4}-\d{2}-\d{2}',o['period']) else 'mmm yyyy')
+                for c,(i,value,recipe) in enumerate(zip(ids,values,recipes),2):
+                    if value is not None and by_index[i].get('fmt')!='text' and not _number(value):
+                        raise ValueError(f'{key}: valor no numérico en {by_index[i]["label"]}, {d}')
+                    cell=ws.cell(n,c,value)
+                    if by_index[i].get('fmt')=='text' and value and re.fullmatch(r'\d{4}-\d{2}-\d{2}',str(value)):
+                        cell.value=date.fromisoformat(value);cell.number_format='yyyy-mm-dd'
+                    elif by_index[i].get('fmt')=='text' and str(value).startswith('https://'):
+                        cell.hyperlink=value;cell.value='Comunicado oficial'
                     else:
-                        cell.number_format = _xl_fmt(ind["columns"][col_i].get("fmt", "num"))
-                if r % 2 == 0:
-                    cell.fill = BAND_FILL
-            r += 1
-        ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=len(headers))
-        ws.merge_cells(start_row=2, start_column=1, end_row=2, end_column=len(headers))
-        ws.merge_cells(start_row=3, start_column=1, end_row=3, end_column=len(headers))
-        _autow(ws, [16, 13] + [26] * len(include_cols))
-
-    _make_sheet("Niveles", [5, 0, 1, 2], billions=True)
-    _make_sheet("Variaciones", [6, 7, 8, 9, 10, 11, 3, 4], billions=False)
-    wb.save(out_path)
-
-
-def _build_imai_workbook(ind: dict, out_path: Path) -> None:
-    """Genera el Excel individual de IMAI con tres hojas: Niveles, Variaciones y Resumen."""
-    wb = openpyxl.Workbook()
-    wb.remove(wb.active)
-
-    title = ind.get("nombre", "IMAI")
-    src = ind.get("fuente", {}).get("nombre", "INEGI")
-    url = ind.get("url_boletin_oficial") or ind.get("fuente", {}).get("link") or "—"
-    pub = ind.get("fecha_publicacion") or "—"
-    header_note = f"Fuente: {src} · Frecuencia: Mensual · Unidad: índice base 2018=100 / % · Boletín: {url} · Fecha de publicación: {pub}"
-
-    def _make_sheet(sheet_name, include_cols, note):
-        ws = wb.create_sheet(sheet_name)
-        ws.sheet_view.showGridLines = False
-        ws["A1"] = f"{title} — {sheet_name}"
-        ws["A1"].font = TITLE
-        ws["A2"] = header_note
-        ws["A2"].font = MUT
-        ws["A3"] = note
-        ws["A3"].font = MUT
-
-        headers = ["Periodo", "Fecha"] + [ind["columns"][c]["label"] for c in include_cols]
-        r0 = 5
-        for i, h in enumerate(headers, start=1):
-            ws.cell(row=r0, column=i, value=h)
-        _style_header(ws, r0, len(headers))
-
-        r = r0 + 1
-        for o in ind.get("observations", []):
-            d = _period_date(o["period"])
-            ws.cell(row=r, column=1, value=o["period"]).font = TXT
-            ws.cell(row=r, column=2, value=d).font = TXT
-            if d:
-                ws.cell(row=r, column=2).number_format = "yyyy-mm-dd"
-            for j, col_i in enumerate(include_cols, start=3):
-                v = o["values"][col_i] if col_i < len(o["values"]) else None
-                cell = ws.cell(row=r, column=j, value=v)
-                cell.font = TXT
-                if v is not None:
-                    cell.number_format = _xl_fmt(ind["columns"][col_i].get("fmt", "num"))
-                if r % 2 == 0:
-                    cell.fill = BAND_FILL
-            r += 1
-        ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=len(headers))
-        ws.merge_cells(start_row=2, start_column=1, end_row=2, end_column=len(headers))
-        ws.merge_cells(start_row=3, start_column=1, end_row=3, end_column=len(headers))
-        _autow(ws, [16, 13] + [24] * len(include_cols))
-
-    _make_sheet(
-        "Niveles", [0, 6, 7, 8, 9],
-        "Los niveles son índices desestacionalizados con base 2018=100."
-    )
-    _make_sheet(
-        "Variaciones",
-        [1, 2, 14, 15, 16, 17, 10, 11, 12, 13],
-        "Las variaciones son porcentajes: mensuales (cols 1 y 14-17) y anuales (cols 2 y 10-13), cifras desestacionalizadas."
-    )
-
-    # Resumen con los KPIs y componentes del último periodo.
-    ws = wb.create_sheet("Resumen")
-    ws.sheet_view.showGridLines = False
-    ws["A1"] = f"{title} — Resumen"
-    ws["A1"].font = TITLE
-    ws["A2"] = header_note
-    ws["A2"].font = MUT
-    ws["A3"] = "Lectura del periodo más reciente. Los porcentajes son cifras desestacionalizadas; el acumulado es original."
-    ws["A3"].font = MUT
-
-    metrics = ind.get("metrics", {})
-    kpi = metrics.get("kpi", {})
-    r0 = 5
-    headers = ["Concepto", "Valor", "Periodo"]
-    for i, h in enumerate(headers, start=1):
-        ws.cell(row=r0, column=i, value=h)
-    _style_header(ws, r0, len(headers))
-
-    rows = []
-    if kpi:
-        rows.append(["Índice", kpi.get("ultimoFmt"), kpi.get("ultimoP")])
-        rows.append(["Var. mensual desest.", kpi.get("varText"), kpi.get("ultimoP")])
-        rows.append(["Var. anual desest.", kpi.get("yoyText"), kpi.get("ultimoP")])
-        rows.append(["Acumulado ene-mes", kpi.get("acumText"), kpi.get("ultimoP")])
-    for c in kpi.get("cards", []):
-        rows.append([c["name"] + " — índice", c.get("nivelText"), kpi.get("ultimoP")])
-        rows.append([c["name"] + " — var. mensual", c.get("momText"), kpi.get("ultimoP")])
-        rows.append([c["name"] + " — var. anual", c.get("yoyText"), kpi.get("ultimoP")])
-
-    r = r0 + 1
-    for row in rows:
-        for j, v in enumerate(row, start=1):
-            cell = ws.cell(row=r, column=j, value=v)
-            cell.font = TXT
-            if r % 2 == 0:
-                cell.fill = BAND_FILL
-        r += 1
-    ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=len(headers))
-    ws.merge_cells(start_row=2, start_column=1, end_row=2, end_column=len(headers))
-    ws.merge_cells(start_row=3, start_column=1, end_row=3, end_column=len(headers))
-    _autow(ws, [40, 24, 20])
-    wb.save(out_path)
-
-
-def _build_imfbcf_workbook(ind: dict, out_path: Path) -> None:
-    """Genera el Excel individual de IMFBCF con cuatro hojas: Niveles, Variaciones, Originales y Resumen."""
-    wb = openpyxl.Workbook()
-    wb.remove(wb.active)
-
-    title = ind.get("nombre", "IMFBCF")
-    src = ind.get("fuente", {}).get("nombre", "Banco de México / INEGI")
-    url = ind.get("url_boletin_oficial") or ind.get("fuente", {}).get("link") or "—"
-    pub = ind.get("fecha_publicacion") or "—"
-    header_note = f"Fuente: {src} · Frecuencia: Mensual · Unidad: índice base 2018=100 / % · Boletín: {url} · Fecha de publicación: {pub}"
-
-    def _make_sheet(sheet_name, include_cols, note):
-        ws = wb.create_sheet(sheet_name)
-        ws.sheet_view.showGridLines = False
-        ws["A1"] = f"{title} — {sheet_name}"
-        ws["A1"].font = TITLE
-        ws["A2"] = header_note
-        ws["A2"].font = MUT
-        ws["A3"] = note
-        ws["A3"].font = MUT
-
-        headers = ["Periodo", "Fecha"] + [ind["columns"][c]["label"] for c in include_cols]
-        r0 = 5
-        for i, h in enumerate(headers, start=1):
-            ws.cell(row=r0, column=i, value=h)
-        _style_header(ws, r0, len(headers))
-
-        r = r0 + 1
-        for o in ind.get("observations", []):
-            d = _period_date(o["period"])
-            ws.cell(row=r, column=1, value=o["period"]).font = TXT
-            ws.cell(row=r, column=2, value=d).font = TXT
-            if d:
-                ws.cell(row=r, column=2).number_format = "yyyy-mm-dd"
-            for j, col_i in enumerate(include_cols, start=3):
-                v = o["values"][col_i] if col_i < len(o["values"]) else None
-                cell = ws.cell(row=r, column=j, value=v)
-                cell.font = TXT
-                if v is not None:
-                    cell.number_format = _xl_fmt(ind["columns"][col_i].get("fmt", "num"))
-                if r % 2 == 0:
-                    cell.fill = BAND_FILL
-            r += 1
-        ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=len(headers))
-        ws.merge_cells(start_row=2, start_column=1, end_row=2, end_column=len(headers))
-        ws.merge_cells(start_row=3, start_column=1, end_row=3, end_column=len(headers))
-        _autow(ws, [16, 13] + [28] * len(include_cols))
-
-    _make_sheet(
-        "Niveles",
-        [0, 3, 6, 9, 11, 13, 15, 17, 19, 21, 23],
-        "Niveles desestacionalizados con base 2018=100 del total y componentes."
-    )
-    _make_sheet(
-        "Variaciones",
-        [1, 2, 4, 5, 7, 8, 10, 12, 14, 16, 18, 20, 22, 24],
-        "Variaciones porcentuales mensuales y anuales desestacionalizadas."
-    )
-    _make_sheet(
-        "Originales",
-        [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39],
-        "Índices originales, variaciones anuales y acumulados ene-mes."
-    )
-
-    # Resumen
-    ws = wb.create_sheet("Resumen")
-    ws.sheet_view.showGridLines = False
-    ws["A1"] = f"{title} — Resumen"
-    ws["A1"].font = TITLE
-    ws["A2"] = header_note
-    ws["A2"].font = MUT
-    ws["A3"] = "Lectura del periodo más reciente. Los porcentajes son cifras desestacionalizadas; el acumulado es original."
-    ws["A3"].font = MUT
-
-    metrics = ind.get("metrics", {})
-    kpi = metrics.get("kpi", {})
-    r0 = 5
-    headers = ["Concepto", "Valor", "Periodo"]
-    for i, h in enumerate(headers, start=1):
-        ws.cell(row=r0, column=i, value=h)
-    _style_header(ws, r0, len(headers))
-
-    rows = []
-    if kpi:
-        rows.append(["Índice total", kpi.get("ultimoFmt"), kpi.get("ultimoP")])
-        rows.append(["Var. mensual desest.", kpi.get("varText"), kpi.get("ultimoP")])
-        rows.append(["Var. anual desest.", kpi.get("yoyText"), kpi.get("ultimoP")])
-        rows.append(["Acumulado ene-mes", kpi.get("acumText"), kpi.get("ultimoP")])
-    for c in kpi.get("cards", []):
-        rows.append([c["name"] + " — índice", c.get("nivelText"), kpi.get("ultimoP")])
-        rows.append([c["name"] + " — var. mensual", c.get("momText"), kpi.get("ultimoP")])
-        rows.append([c["name"] + " — var. anual", c.get("yoyText"), kpi.get("ultimoP")])
-
-    r = r0 + 1
-    for row in rows:
-        for j, v in enumerate(row, start=1):
-            cell = ws.cell(row=r, column=j, value=v)
-            cell.font = TXT
-            if r % 2 == 0:
-                cell.fill = BAND_FILL
-        r += 1
-    ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=len(headers))
-    ws.merge_cells(start_row=2, start_column=1, end_row=2, end_column=len(headers))
-    ws.merge_cells(start_row=3, start_column=1, end_row=3, end_column=len(headers))
-    _autow(ws, [44, 24, 20])
-    wb.save(out_path)
-
-
-def _build_pib_workbook(ind: dict, out_path: Path):
-    """Genera el Excel individual de PIB con dos hojas: PIB oportuno y Nivel PIB."""
-    wb = openpyxl.Workbook()
-    wb.remove(wb.active)
-    add_pib_sheets(wb, {"indicators": {"PIB": ind}})
-    wb.save(out_path)
-
-
-def _write_subset_sheet(ws, ind: dict, title: str, subtitle: str, include_indices: list[int]) -> None:
-    """Escribe una hoja con un subconjunto de columnas del indicador."""
-    ws.sheet_view.showGridLines = False
-    ws["A1"] = title
-    ws["A1"].font = TITLE
-    ws["A2"] = subtitle
-    ws["A2"].font = MUT
-    all_cols = ind.get("columns", [])
-    cols = [all_cols[i] for i in include_indices if i < len(all_cols)]
-    headers = ["Periodo", "Fecha"] + [c["label"] for c in cols] + [
-        "Carácter del dato", "Fuente", "URL del boletín", "Fecha de publicación"
-    ]
-    r0 = 4
-    for i, h in enumerate(headers, start=1):
-        ws.cell(row=r0, column=i, value=h)
-    _style_header(ws, r0, len(headers))
-
-    obs = ind.get("observations", [])
-    r = r0 + 1
-    for o in obs:
-        period = o["period"]
-        d = _period_date(period)
-        ws.cell(row=r, column=1, value=period).font = TXT
-        ws.cell(row=r, column=2, value=d).font = TXT
-        if d:
-            ws.cell(row=r, column=2).number_format = "yyyy-mm-dd"
-        values = list(o.get("values", []))
-        for j, idx in enumerate(include_indices, start=3):
-            if idx < len(values) and j - 3 < len(cols):
-                v = values[idx]
-                cell = ws.cell(row=r, column=j, value=v)
-                cell.font = TXT
-                cell.border = BORDER
-                cell.number_format = _xl_fmt(cols[j - 3].get("fmt", "num"))
-                if r % 2 == 0:
-                    cell.fill = BAND_FILL
-        meta_start = 3 + len(cols)
-        meta = [
-            _caracter_dato(period),
-            ind.get("fuente", {}).get("nombre", "—"),
-            ind.get("url_boletin_oficial") or ind.get("fuente", {}).get("link") or "—",
-            ind.get("fecha_publicacion") or "—",
-        ]
-        for j, v in enumerate(meta, start=meta_start):
-            cell = ws.cell(row=r, column=j, value=v)
-            cell.font = TXT
-            cell.border = BORDER
-            if r % 2 == 0:
-                cell.fill = BAND_FILL
-        r += 1
-
-    ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=len(headers))
-    ws.merge_cells(start_row=2, start_column=1, end_row=2, end_column=len(headers))
-    _autow(ws, [16, 13] + [26] * len(cols) + [16, 28, 55, 22])
-
-
-def _build_bcmm_workbook(ind: dict, out_path: Path) -> None:
-    """Genera el Excel individual de BCMM con 4 hojas temáticas."""
-    wb = openpyxl.Workbook()
-    wb.remove(wb.active)
-    src = ind.get("fuente", {}).get("nombre", "INEGI")
-    url = ind.get("url_boletin_oficial") or ind.get("fuente", {}).get("link") or "—"
-    pub = ind.get("fecha_publicacion") or "—"
-    sub = f"Fuente: {src} · Frecuencia: Mensual · Unidad: millones de dólares · Boletín: {url} · Fecha de publicación: {pub}"
-
-    ws1 = wb.create_sheet("Comercio total")
-    _write_subset_sheet(ws1, ind, f"{ind.get('nombre', 'BCMM')} — Comercio total", sub, [0, 1, 2, 26, 27, 28])
-    ws2 = wb.create_sheet("Variaciones anuales")
-    _write_subset_sheet(ws2, ind, f"{ind.get('nombre', 'BCMM')} — Variaciones anuales", sub, [3, 4, 5, 10, 11, 12, 13, 17, 18, 19, 23, 24, 25])
-    ws3 = wb.create_sheet("Petrolero y no petrolero")
-    _write_subset_sheet(ws3, ind, f"{ind.get('nombre', 'BCMM')} — Petrolero y no petrolero", sub, [0, 1, 6, 7, 8, 9, 20, 21, 22])
-    ws4 = wb.create_sheet("Importaciones por tipo")
-    _write_subset_sheet(ws4, ind, f"{ind.get('nombre', 'BCMM')} — Importaciones por tipo de bien", sub, [1, 14, 15, 16, 17, 18, 19])
-    wb.save(out_path)
-
-
-def _build_individual_workbook(ind: dict, cfg: dict, kpicfg: dict, out_path: Path):
-    """Genera un Excel con una sola hoja visible por indicador."""
-    wb = openpyxl.Workbook()
-    wb.remove(wb.active)
-    ws = wb.create_sheet(ind["key"])
-    _write_indicator_sheet(ws, ind)
-    wb.save(out_path)
-
-
-def _write_indicator_sheet(ws, ind: dict, sheet_title: str | None = None) -> None:
-    """Escribe la hoja de datos principal de un indicador."""
-    ws.sheet_view.showGridLines = False
-    ws["A1"] = sheet_title or ind.get("nombre", ind["key"])
-    ws["A1"].font = TITLE
-    ws["A2"] = (f"Fuente: {ind.get('fuente', {}).get('nombre', '—')} · "
-                f"Frecuencia: {ind.get('frecuencia', '—')} · "
-                f"Unidad: {ind.get('unidad', '—')}")
-    ws["A2"].font = MUT
-    ws["A3"] = (f"URL del boletín / serie: {ind.get('url_boletin_oficial') or ind.get('fuente', {}).get('link') or '—'} · "
-                f"Fecha de publicación: {ind.get('fecha_publicacion') or '—'}")
-    ws["A3"].font = MUT
-
-    cols = ind.get("columns", [])
-    headers = ["Periodo", "Fecha"] + [c["label"] for c in cols] + [
-        "Carácter del dato", "Fuente", "URL del boletín", "Fecha de publicación"
-    ]
-    r0 = 5
-    for i, h in enumerate(headers, start=1):
-        ws.cell(row=r0, column=i, value=h)
-    _style_header(ws, r0, len(headers))
-
-    obs = ind.get("observations", [])
-    r = r0 + 1
-    for o in obs:
-        period = o["period"]
-        d = _period_date(period)
-        ws.cell(row=r, column=1, value=period).font = TXT
-        ws.cell(row=r, column=2, value=d).font = TXT
-        if d:
-            ws.cell(row=r, column=2).number_format = "yyyy-mm-dd"
-
-        values = list(o.get("values", []))
-        for j, v in enumerate(values, start=3):
-            if j - 3 < len(cols):
-                cell = ws.cell(row=r, column=j, value=v)
-                cell.font = TXT
-                cell.border = BORDER
-                cell.number_format = _xl_fmt(cols[j - 3].get("fmt", "num"))
-                if r % 2 == 0:
-                    cell.fill = BAND_FILL
-
-        meta_start = 3 + len(cols)
-        meta = [
-            _caracter_dato(period),
-            ind.get("fuente", {}).get("nombre", "—"),
-            ind.get("url_boletin_oficial") or ind.get("fuente", {}).get("link") or "—",
-            ind.get("fecha_publicacion") or "—",
-        ]
-        for j, v in enumerate(meta, start=meta_start):
-            cell = ws.cell(row=r, column=j, value=v)
-            cell.font = TXT
-            cell.border = BORDER
-            if r % 2 == 0:
-                cell.fill = BAND_FILL
-
-        r += 1
-
-    ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=len(headers))
-    ws.merge_cells(start_row=2, start_column=1, end_row=2, end_column=len(headers))
-    ws.merge_cells(start_row=3, start_column=1, end_row=3, end_column=len(headers))
-    _autow(ws, [16, 13] + [22] * len(cols) + [16, 28, 55, 22])
-
-
-def _write_emim_subsector_sheet(ws, ind: dict) -> None:
-    """Escribe la hoja de subsectores del EMIM."""
-    ws.sheet_view.showGridLines = False
-    ws["A1"] = f"{ind.get('nombre', 'EMIM')} — Desempeño por subsector"
-    ws["A1"].font = TITLE
-    ws["A2"] = (f"Fuente: {ind.get('fuente', {}).get('nombre', '—')} · "
-                f"Periodo: {ind.get('last_observation', '—')} · "
-                "Nota: variaciones anuales en cifras originales.")
-    ws["A2"].font = MUT
-
-    headers = ["Código", "Subsector",
-               "Producción índice", "Producción anual (%)",
-               "Personal índice", "Personal anual (%)",
-               "Horas índice", "Horas anual (%)",
-               "Remuneraciones índice", "Remuneraciones anual (%)"]
-    r0 = 4
-    for i, h in enumerate(headers, start=1):
-        ws.cell(row=r0, column=i, value=h)
-    _style_header(ws, r0, len(headers))
-
-    detail = ind.get("subsectores_detalle") or ind.get("subsectores")
-    if not detail:
-        ws.cell(row=r0 + 1, column=1, value="Sin datos de subsectores disponibles.").font = MUT
-        ws.merge_cells(start_row=r0 + 1, start_column=1, end_row=r0 + 1, end_column=len(headers))
-        _autow(ws, [12, 55, 18, 18, 18, 18, 18, 18, 24, 24])
-        return
-
-    sample = next(iter(detail.values()), {})
-    if not isinstance(sample, dict):
-        ws.cell(row=r0 + 1, column=1, value="Sin detalle de subsectores disponible.").font = MUT
-        ws.merge_cells(start_row=r0 + 1, start_column=1, end_row=r0 + 1, end_column=len(headers))
-        _autow(ws, [12, 55, 18, 18, 18, 18, 18, 18, 24, 24])
-        return
-
-    r = r0 + 1
-    for code in sorted(detail.keys(), key=lambda c: int(c) if isinstance(c, str) and c.isdigit() else str(c)):
-        info = detail[code]
-        if not isinstance(info, dict):
-            continue
-        values = [
-            code,
-            info.get("nombre", ""),
-            info.get("produccion_index"),
-            info.get("produccion_anual"),
-            info.get("personal_index"),
-            info.get("personal_anual"),
-            info.get("horas_index"),
-            info.get("horas_anual"),
-            info.get("remuneraciones_index"),
-            info.get("remuneraciones_anual"),
-        ]
-        for i, v in enumerate(values, start=1):
-            cell = ws.cell(row=r, column=i, value=v)
-            cell.font = TXT
-            cell.border = BORDER
-            if i in (3, 5, 7, 9):
-                cell.number_format = _xl_fmt("idx")
-            elif i in (4, 6, 8, 10):
-                cell.number_format = _xl_fmt("pct-frac")
-            if r % 2 == 0:
-                cell.fill = BAND_FILL
-        r += 1
-
-    ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=len(headers))
-    ws.merge_cells(start_row=2, start_column=1, end_row=2, end_column=len(headers))
-    _autow(ws, [12, 55, 18, 18, 18, 18, 18, 18, 24, 24])
-
-
-def build_emim_workbook(ind: dict, out_path: Path) -> None:
-    """Genera el Excel individual de EMIM con dos hojas: Indicadores y Subsectores."""
-    wb = openpyxl.Workbook()
-    wb.remove(wb.active)
-    ws1 = wb.create_sheet("Indicadores")
-    _write_indicator_sheet(ws1, ind, sheet_title=ind.get("nombre", "EMIM"))
-    ws2 = wb.create_sheet("Subsectores")
-    _write_emim_subsector_sheet(ws2, ind)
-    wb.save(out_path)
-
-
-def _build_desocup_workbook(ind: dict, out_path: Path) -> None:
-    """Genera el Excel de DESOCUP con dos hojas: tasas laborales y población ocupada."""
-    wb = openpyxl.Workbook()
-    wb.remove(wb.active)
-    src = ind.get("fuente", {}).get("nombre", "INEGI")
-    url = ind.get("url_boletin_oficial") or ind.get("fuente", {}).get("link") or "—"
-    pub = ind.get("fecha_publicacion") or "—"
-
-    # Tasas laborales mensuales (columnas 0-3).
-    sub_tasas = f"Fuente: {src} · Frecuencia: Mensual · Unidad: porcentaje · Boletín: {url} · Fecha de publicación: {pub}"
-    ws1 = wb.create_sheet("Tasas laborales")
-    _write_subset_sheet(ws1, ind, f"{ind.get('nombre', 'DESOCUP')} — Tasas laborales", sub_tasas, [0, 1, 2, 3])
-
-    # Población ocupada trimestral (columnas 4-5).
-    sub_pob = f"Fuente: {src} · Frecuencia: Trimestral · Unidad: millones de personas · Boletín: {url} · Fecha de publicación: {pub}"
-    ws2 = wb.create_sheet("Población ocupada")
-    _write_subset_sheet(ws2, ind, f"{ind.get('nombre', 'DESOCUP')} — Población ocupada", sub_pob, [4, 5])
-
-    wb.save(out_path)
-
-
-def _build_ied_workbook(ind: dict, out_path: Path) -> None:
-    """Genera el Excel de IED con dos hojas: Flujo trimestral y Acumulado comparable."""
-    wb = openpyxl.Workbook()
-    wb.remove(wb.active)
-    src = ind.get("fuente", {}).get("nombre", "Secretaría de Economía")
-    url = ind.get("url_boletin_oficial") or ind.get("fuente", {}).get("link") or "—"
-    pub = ind.get("fecha_publicacion") or "—"
-    corte = ind.get("metrics", {}).get("acumulado", {}).get("corte", "Ene-Jun")
-
-    # Hoja 1: flujo trimestral (observations principal).
-    ws1 = wb.create_sheet("Flujo trimestral")
-    _write_indicator_sheet(ws1, ind, sheet_title=f"{ind.get('nombre', 'IED')} — Flujo trimestral")
-    ws1["A2"] = f"Fuente: {src} · Frecuencia: Trimestral · Unidad: millones de dólares · Corte: {corte} · Boletín: {url} · Fecha de publicación: {pub}"
-
-    # Hoja 2: acumulado comparable al mismo corte.
-    ws2 = wb.create_sheet("Acumulado comparable")
-    ws2.sheet_view.showGridLines = False
-    ws2["A1"] = f"{ind.get('nombre', 'IED')} — Acumulado al mismo corte de cada año ({corte})"
-    ws2["A1"].font = TITLE
-    ws2["A2"] = f"Fuente: {src} · Frecuencia: Trimestral · Unidad: millones de dólares · Boletín: {url} · Fecha de publicación: {pub}"
-    ws2["A2"].font = MUT
-    ws2["A3"] = f"Solo se incluye el corte {corte} de cada año para mantener la comparabilidad."
-    ws2["A3"].font = MUT
-
-    cols = [
-        {"label": "IED acumulada", "fmt": "usd"},
-        {"label": "Nuevas inversiones", "fmt": "usd"},
-        {"label": "Reinversión de utilidades", "fmt": "usd"},
-        {"label": "Cuentas entre compañías", "fmt": "usd"},
-        {"label": "Var. anual acumulada", "fmt": "pct-frac"},
-    ]
-    headers = ["Año", "Corte"] + [c["label"] for c in cols]
-    r0 = 5
-    for i, h in enumerate(headers, start=1):
-        ws2.cell(row=r0, column=i, value=h)
-    _style_header(ws2, r0, len(headers))
-
-    obs = ind.get("observations_acumulado", [])
-    r = r0 + 1
-    for o in obs:
-        ws2.cell(row=r, column=1, value=o["period"]).font = TXT
-        ws2.cell(row=r, column=2, value=o["period_acumulado"]).font = TXT
-        values = o.get("values", [])
-        for j, v in enumerate(values, start=3):
-            if j - 3 < len(cols):
-                cell = ws2.cell(row=r, column=j, value=v)
-                cell.font = TXT
-                cell.border = BORDER
-                cell.number_format = _xl_fmt(cols[j - 3].get("fmt", "num"))
-                if r % 2 == 0:
-                    cell.fill = BAND_FILL
-        r += 1
-
-    ws2.merge_cells(start_row=1, start_column=1, end_row=1, end_column=len(headers))
-    ws2.merge_cells(start_row=2, start_column=1, end_row=2, end_column=len(headers))
-    ws2.merge_cells(start_row=3, start_column=1, end_row=3, end_column=len(headers))
-    _autow(ws2, [10, 16] + [26] * len(cols))
-    wb.save(out_path)
-
-
-def _build_tasa_workbook(ind: dict, out_path: Path) -> None:
-    """Genera el Excel de TASA con dos hojas: Serie diaria y Decisiones."""
-    wb = openpyxl.Workbook()
-    wb.remove(wb.active)
-    src = ind.get("fuente", {}).get("nombre", "Banco de México")
-    url = ind.get("url_boletin_oficial") or ind.get("fuente", {}).get("link") or "—"
-    pub = ind.get("fecha_publicacion") or "—"
-
-    # Serie diaria
-    ws1 = wb.create_sheet("Serie diaria")
-    _write_subset_sheet(ws1, ind, f"{ind.get('nombre', 'TASA')} — Serie diaria",
-                        f"Fuente: {src} · Frecuencia: Diaria · Unidad: {ind.get('unidad', 'Porcentaje anual')} · Boletín: {url} · Fecha de publicación: {pub}",
-                        [0])
-
-    # Decisiones de política monetaria
-    ws2 = wb.create_sheet("Decisiones")
-    ws2.sheet_view.showGridLines = False
-    ws2["A1"] = f"{ind.get('nombre', 'TASA')} — Historial de decisiones de política monetaria"
-    ws2["A1"].font = TITLE
-    ws2["A2"] = f"Fuente: {src} · Calendario de Banxico"
-    ws2["A2"].font = MUT
-    headers = ["Fecha anuncio", "Vigencia", "Decisión", "Cambio (pb)", "Tasa previa (%)", "Nueva tasa (%)", "Comunicado"]
-    r0 = 4
-    for i, h in enumerate(headers, start=1):
-        ws2.cell(row=r0, column=i, value=h)
-    _style_header(ws2, r0, len(headers))
-    r = r0 + 1
-    for d in reversed(ind.get("policy_decisions", [])):
-        ad = d.get("announcement_date")
-        ed = d.get("effective_date")
-        ws2.cell(row=r, column=1, value=date.fromisoformat(ad) if ad else None).number_format = "yyyy-mm-dd"
-        ws2.cell(row=r, column=2, value=date.fromisoformat(ed) if ed else None).number_format = "yyyy-mm-dd"
-        ws2.cell(row=r, column=3, value=d.get("decision", "—"))
-        ws2.cell(row=r, column=4, value=d.get("change_bp"))
-        ws2.cell(row=r, column=5, value=d.get("previous_rate"))
-        ws2.cell(row=r, column=6, value=d.get("new_rate"))
-        ws2.cell(row=r, column=7, value=d.get("comunicado_url", "—"))
-        for c in range(1, 8):
-            cell = ws2.cell(row=r, column=c)
-            cell.font = TXT
-            cell.border = BORDER
-            if r % 2 == 0:
-                cell.fill = BAND_FILL
-        r += 1
-    ws2.merge_cells(start_row=1, start_column=1, end_row=1, end_column=len(headers))
-    ws2.merge_cells(start_row=2, start_column=1, end_row=2, end_column=len(headers))
-    _autow(ws2, [16, 16, 14, 16, 18, 18, 55])
-    wb.save(out_path)
-
-
-def build_individual_files(payload: dict, pilot: list[str] | None = None):
-    """Genera un archivo Excel por indicador y actualiza flags en el payload.
-
-    Si `pilot` se provee, solo genera archivos para esas claves y marca los
-    demás como no disponibles para no dejar enlaces rotos en el repositorio.
-    """
-    kpicfg = get_cfg("KPICFG")
-    IND_DIR.mkdir(parents=True, exist_ok=True)
-    pilot_set = set(pilot) if pilot else None
-    for key, ind in payload["indicators"].items():
-        cfg = kpicfg.get(key)
-        out_dir = IND_DIR / key
-        out_path = out_dir / f"{key}_datos.xlsx"
-        if pilot_set and key not in pilot_set:
-            ind["xlsx_disponible"] = False
-            ind["xlsx_causa"] = "Producto en fase piloto; próximamente disponible"
-            ind["url_excel_individual"] = None
-            if out_path.exists():
-                out_path.unlink()
-            continue
-        out_dir.mkdir(parents=True, exist_ok=True)
-        if not ind.get("observations") or not cfg:
-            ind["xlsx_disponible"] = False
-            ind["xlsx_causa"] = "Sin observaciones o sin configuración de métricas"
-            ind["url_excel_individual"] = None
-            continue
-        try:
-            if key == "PIB":
-                _build_pib_workbook(ind, out_path)
-            elif key == "PIBSEC":
-                _build_pibsec_workbook(ind, out_path)
-            elif key == "EMIM" and len(ind.get("columns", [])) >= 18:
-                build_emim_workbook(ind, out_path)
-            elif key == "IMAI" and len(ind.get("columns", [])) >= 18:
-                _build_imai_workbook(ind, out_path)
-            elif key == "IMFBCF" and len(ind.get("columns", [])) >= 40:
-                _build_imfbcf_workbook(ind, out_path)
-            elif key == "BCMM" and len(ind.get("columns", [])) >= 29:
-                _build_bcmm_workbook(ind, out_path)
-            elif key == "DESOCUP" and len(ind.get("columns", [])) >= 6:
-                _build_desocup_workbook(ind, out_path)
-            elif key == "IED" and ind.get("observations_acumulado"):
-                _build_ied_workbook(ind, out_path)
-            elif key == "TASA" and ind.get("policy_decisions"):
-                _build_tasa_workbook(ind, out_path)
+                        cell.number_format=_xl_fmt(by_index[i].get('fmt'))
+                        if key.startswith('TASA') and by_index[i].get('fmt')=='pct-raw':cell.number_format='0.00"%"'
+                    if _number(value): self.numeric_sources+=1
+                    if register:
+                        self.coords[(key,i,d)]=(ws.title,cell.coordinate)
+                        self.headers[(key,i)]=(ws.title,ws.cell(header,c).coordinate)
+                        if recipe: self.pending.append((cell,key,recipe))
+                if status:
+                    m=re.search(r'\s([PR])$',o['period'])
+                    ws.cell(n,len(labels),{'P':'Preliminar','R':'Revisado'}[m[1]] if m else None)
+                for cell in ws[n][:len(labels)]:
+                    cell.font=Font(name=FONT,size=10,color=INK)
+                    cell.alignment=Alignment(vertical='center',horizontal='left' if cell.column==1 else 'right')
+                ws.row_dimensions[n].height=18
+            self.table_id+=1
+            table=Table(displayName=f'Serie{self.table_id}',ref=f'A{header}:{letter(len(labels))}{header+len(data)}')
+            table.tableStyleInfo=TableStyleInfo(name='TableStyleLight1',showRowStripes=False,showColumnStripes=False)
+            ws.add_table(table)
+            row=header+len(data)+4
+        return row
+
+    def finish_formulas(self):
+        def ref(key,index,d):
+            s,c=self.coords[(key,index,d)];return f"'{s.replace(chr(39),chr(39)*2)}'!{c}"
+        for cell,key,(source,current,previous,operation) in self.pending:
+            keys=[(key,source,d) for d in current+previous]
+            if not all(k in self.coords for k in keys): continue
+            cur=[ref(key,source,d) for d in current]; prev=[ref(key,source,d) for d in previous]
+            a=f"SUM({','.join(cur)})" if len(cur)>1 else cur[0]
+            b=f"SUM({','.join(prev)})" if len(prev)>1 else prev[0]
+            check=','.join(cur+prev)
+            if operation=='diff': result=f'{a}-{b}';valid=f'COUNT({check})={len(keys)}'
             else:
-                _build_individual_workbook(ind, cfg, kpicfg, out_path)
-            ind["xlsx_disponible"] = True
-            ind["url_excel_individual"] = str(out_path.relative_to(ROOT))
-            ind["xlsx_causa"] = None
-        except Exception as e:
-            ind["xlsx_disponible"] = False
-            ind["xlsx_causa"] = f"Error al generar Excel: {e}"
-            ind["url_excel_individual"] = None
+                result=f'({a}/{b}-1)'+('*100' if operation=='pct-raw' else '')
+                valid=f'AND(COUNT({check})={len(keys)},{b}>0)'
+            cell.value=f'=IF({valid},{result},"")';self.formulas+=1
+
+    def chart(self,key,columns,ws,anchor,frequency):
+        maps=[{d:coord for (k,i,d),coord in self.coords.items() if k==key and i==col} for col in columns]
+        if any(not m for m in maps): return False
+        dates=sorted(set.intersection(*(set(m) for m in maps)))
+        if len(dates)<2:return False
+        count=260 if frequency=='Diaria' else 156 if frequency=='Semanal' else 40 if frequency=='Trimestral' else 60
+        dates=dates[-count:]
+        for m in maps:
+            rows=[openpyxl.utils.cell.coordinate_from_string(m[d][1])[1] for d in dates]
+            if rows!=list(range(rows[0],rows[-1]+1)):return False
+        chart=LineChart();chart.width=19;chart.height=10
+        first_sheet,first_cell=maps[0][dates[0]];last_cell=maps[0][dates[-1]][1]
+        fr=openpyxl.utils.cell.coordinate_from_string(first_cell)[1];lr=openpyxl.utils.cell.coordinate_from_string(last_cell)[1]
+        cols={c['index']:c for c in self._indicators[key]['columns']}
+        labels=[cols[c]['label'] for c in columns]
+        chart.title=labels[0] if len(columns)==1 else ('Estimación e IC 95%' if key in ('IMOAM','IOAE') else ' / '.join(labels))
+        chart.x_axis=DateAxis(crossAx=100);chart.x_axis.number_format='yyyy' if frequency.startswith('Anual') else 'mmm-yy';chart.x_axis.tickLblPos='low'
+        span=(dates[-1].year-dates[0].year)*12+dates[-1].month-dates[0].month
+        chart.x_axis.majorTimeUnit='years' if span>=120 else 'months'
+        chart.x_axis.majorUnit=2 if span>=120 else 6 if span>=24 else 3 if span>=6 else 1
+        chart.y_axis.crossAx=chart.x_axis.axId
+        chart.x_axis.scaling.min=openpyxl.utils.datetime.to_excel(dates[0])
+        chart.x_axis.scaling.max=openpyxl.utils.datetime.to_excel(dates[-1])
+        chart.x_axis.title=f'{dates[0].isoformat()} a {dates[-1].isoformat()}'
+        fmt=cols[columns[0]].get('fmt','num')
+        chart.y_axis.numFmt='0.00"%"' if key.startswith('TASA') and fmt=='pct-raw' else _xl_fmt(fmt)
+        chart.y_axis.title='Porcentaje' if fmt.startswith('pct') else 'Puntos porcentuales' if fmt=='pp' else 'Pesos por dólar' if fmt=='fx' else 'Millones de dólares' if fmt=='usd' else 'Puntos' if fmt in ('idx','emoe') else 'Nivel'
+        if key=='PIBSEC' and columns[0] in (0,1,2,5):chart.y_axis.title='Millones de pesos de 2018'
+        if key=='DESOCUP' and columns==[5]:chart.y_axis.title='Personas'
+        for n,(column,m) in enumerate(zip(columns,maps)):
+            sheet,cell=m[dates[0]];column_letter,rownum=openpyxl.utils.cell.coordinate_from_string(cell)
+            ref=Reference(self.wb[sheet],min_col=openpyxl.utils.cell.column_index_from_string(column_letter),min_row=rownum,max_row=rownum+len(dates)-1)
+            ser=Series(ref)
+            hs,hc=self.headers[(key,column)]
+            ser.tx=SeriesLabel(strRef=StrRef(f=f"'{hs.replace(chr(39),chr(39)*2)}'!${re.sub(r'[0-9]','',hc)}${re.sub(r'[^0-9]','',hc)}",strCache=StrData(ptCount=1,pt=[StrVal(idx=0,v=labels[n])])))
+            ser.graphicalProperties.line.solidFill=['1E5B4F','7D8780','B2BAB4','4A5550'][n%4]
+            ser.graphicalProperties.line.width=22000;ser.marker.symbol='none';ser.smooth=False
+            chart.series.append(ser)
+        chart.set_categories(Reference(self.wb[first_sheet],min_col=1,min_row=fr,max_row=lr))
+        chart.display_blanks='gap';chart.legend.position='b'
+        chart.txPr=_text_properties();chart.x_axis.txPr=_text_properties(9);chart.y_axis.txPr=_text_properties(9);chart.legend.txPr=_text_properties(9)
+        for title in (chart.title,chart.x_axis.title,chart.y_axis.title):
+            if title and title.tx and title.tx.rich:
+                for paragraph in title.tx.rich.p:
+                    paragraph.pPr=ParagraphProperties(defRPr=CharacterProperties(latin=DrawingFont(typeface=FONT),sz=1000))
+                    for run in paragraph.r:run.rPr=CharacterProperties(latin=DrawingFont(typeface=FONT),sz=1000)
+        ws.add_chart(chart,anchor)
+        return True
+
+    def finish_charts(self):
+        for key,ws,frequency,indices,anchors in self.chart_plans:
+            count=0;used=set()
+            candidates=CHARTS.get(key,[])
+            for cols in candidates:
+                if not all(c in indices for c in cols):continue
+                anchor=anchors[min(count,len(anchors)-1)]
+                if count:anchor=f"H{max(int(re.sub(r'[^0-9]', '',anchor)),int(re.sub(r'[^0-9]', '',anchors[0]))+23)}"
+                if self.chart(key,cols,ws,anchor,frequency):count+=1;used.update(cols)
+                if count==2:break
+            if not count and indices:
+                for col in indices:
+                    if self.chart(key,[col],ws,anchors[0],frequency):break
 
 
-def _style_header(ws, row, ncols):
-    for c in range(1, ncols + 1):
-        cell = ws.cell(row=row, column=c)
-        cell.font = H
-        cell.fill = HEAD_FILL
-        cell.alignment = Alignment(horizontal="left", vertical="center")
-        cell.border = BORDER
+def _special(ind,name):
+    key=ind['key']
+    if key=='IED' and name=='Acumulado comparable':
+        cut=ind.get('metrics',{}).get('acumulado',{}).get('corte','')
+        records={}
+        for o in ind.get('observations_acumulado',[]):
+            year=int(o['period']); records[date(year,1,1)]={'period':str(year),'values':o['values']}
+        columns=[{'index':i,'label':label,'fmt':fmt} for i,(label,fmt) in enumerate([
+            ('IED acumulada (mdd)','usd'),('Nuevas inversiones (mdd)','usd'),('Reinversión de utilidades (mdd)','usd'),
+            ('Cuentas entre compañías (mdd)','usd'),('Variación anual del acumulado (%)','pct-frac')])]
+        return records,columns,f'Acumulado comparable {cut} (millones de dólares y %)', 'Anual al mismo corte'
+    if key=='TASA' and name=='Decisiones':
+        records={date.fromisoformat(d['announcement_date']):{'period':d['announcement_date'],'values':[
+            d.get('effective_date'), d.get('change_bp'),d.get('previous_rate'),d.get('new_rate'),d.get('comunicado_url')]} for d in ind.get('policy_decisions',[])}
+        columns=[{'index':i,'label':label,'fmt':fmt} for i,(label,fmt) in enumerate([
+            ('Entrada en vigor','text'),('Cambio (pb)','num'),('Tasa previa (%)','pct-raw'),('Nueva tasa (%)','pct-raw'),('Comunicado','text')])]
+        return records,columns,'Decisiones por fecha de anuncio', 'Por decisión'
+    return None
 
 
-def _autow(ws, widths):
-    for i, w in enumerate(widths, start=1):
-        ws.column_dimensions[get_column_letter(i)].width = w
+def build_workbook(indicators,general=False):
+    model=Model();model._indicators={i['key']:i for i in indicators}
+    for ind in indicators:
+        key=ind['key']
+        if key in ('PIBSEC','IGAE','IMAI','IMOAM','EMIM','CONSUMO','IMFBCF') and '2018' not in ind.get('unidad',''):
+            raise ValueError(f'{key}: cambió o falta la base del índice/precios; revisar antes de exportar')
+        specs=SHEETS.get(key,[(key,[(ind.get('nombre',key),[c['index'] for c in ind['columns']])])])
+        regular=[(name,groups) for name,groups in specs if groups]
+        if general:
+            ordinary=[(n,g) for n,g in regular if not (key=='DESOCUP' and n=='Población ocupada')]
+            rest=[(n,g) for n,g in regular if (key=='DESOCUP' and n=='Población ocupada')]
+            regular=[(SIGLA.get(key,key),[group for _,groups in ordinary for group in groups])]+rest
+        for name,groups in regular:
+            frequency=('Trimestral' if name=='Población ocupada' else 'Mensual') if key=='DESOCUP' else ind.get('frecuencia','Mensual')
+            ws=model.sheet(name,ind,frequency)
+            row=7;anchors=[];indices=[]
+            for title,ids in groups:
+                ids=[i for i in ids if i<len(ind['columns'])]
+                if not ids:continue
+                anchors.append(f'H{row}');indices.extend(ids)
+                row=model.block(ws,ind,title,ids,row)
+            model.chart_plans.append((key,ws,frequency,indices,anchors or ['H7']))
+        for name,groups in specs:
+            if groups:continue
+            special=_special(ind,name)
+            if not special or not special[0]:continue
+            records,columns,title,frequency=special
+            sheet_name=f"{SIGLA.get(key,key)} {name}" if general else name
+            ws=model.sheet(sheet_name[:31],ind,frequency)
+            ws['A5']=title
+            alias=f'{key}_{name}'
+            special_ind={**ind,'key':alias,'columns':columns,'_excel_frequency':frequency}
+            model._indicators[alias]=special_ind
+            CHARTS[alias]=[[0],[1,2,3]] if key=='IED' else [[3]]
+            model.block(ws,special_ind,title,list(range(len(columns))),7,records,columns)
+            numeric_indices=[c['index'] for c in columns if c['fmt']!='text']
+            model.chart_plans.append((alias,ws,frequency,numeric_indices,['H7','H30']))
+    model.finish_formulas();model.finish_charts()
+    return model
 
 
-def add_resumen(wb, payload, manifest):
-    ws = wb.create_sheet("Síntesis de coyuntura", 0)
-    ws.sheet_view.showGridLines = False
-    ws["A1"] = "Indicadores macroeconómicos de México — Síntesis de coyuntura"
-    ws["A1"].font = TITLE
-    ws["A2"] = f"Generado: {datetime.now(timezone.utc).strftime('%d/%m/%Y %H:%M UTC')}"
-    ws["A2"].font = MUT
-    headers = ["Indicador", "Fuente", "Frecuencia", "Última observación", "Último valor", "Variación", "Unidad"]
-    r0 = 4
-    for i, h in enumerate(headers, start=1):
-        ws.cell(row=r0, column=i, value=h)
-    _style_header(ws, r0, len(headers))
-    order = payload.get("order") or list(payload["indicators"].keys())
-    r = r0 + 1
-    for key in order:
-        ind = payload["indicators"].get(key)
-        if not ind:
-            continue
-        kpi = (ind.get("metrics") or {}).get("kpi")
-        if kpi:
-            periodo = kpi.get("ultimoP") or ind.get("last_observation")
-            val = kpi.get("ultimoFmt")
-            var = kpi.get("varText")
-        else:
-            obs = ind["observations"]
-            last = obs[-1] if obs else {"values": [None]}
-            val = last["values"][0] if last["values"] else None
-            var = last["values"][1] if len(last.get("values", [])) > 1 else None
-            periodo = ind.get("last_observation")
-        row_vals = [ind.get("nombre"), ind.get("fuente", {}).get("nombre"), ind.get("frecuencia"),
-                    periodo, val, var, ind.get("unidad")]
-        for i, v in enumerate(row_vals, start=1):
-            cell = ws.cell(row=r, column=i, value=v)
-            cell.font = TXT
-            cell.border = BORDER
-            if r % 2 == 0:
-                cell.fill = BAND_FILL
-        r += 1
-    ws["A" + str(r + 1)] = ("Nota: cifras oficiales sujetas a revisión. Análisis por reglas deterministas; "
-                            "no se atribuye causalidad. La fuente de la tasa de desocupación es INEGI/ENOE. "
-                            "Los indicadores en estado 'pendiente de token' o 'dato de respaldo' no se "
-                            "presentan como actualización automática (ver 'Control de actualizaciones').")
-    ws["A" + str(r + 1)].font = MUT
-    ws["A" + str(r + 1)].alignment = WRAP
-    ws.merge_cells(start_row=r + 1, start_column=1, end_row=r + 2, end_column=7)
-    _autow(ws, [42, 30, 14, 20, 16, 14, 30])
+def validate_workbook(path):
+    wb=openpyxl.load_workbook(path,data_only=False)
+    if wb._external_links:raise ValueError(f'{path.name}: vínculos externos')
+    report={'sheets':len(wb.worksheets),'charts':0,'formulas':0}
+    for ws in wb:
+        if ws.freeze_panes or ws.sheet_view.pane:raise ValueError(f'{path.name}: paneles inmovilizados')
+        for row in ws:
+            for c in row:
+                if c.value is None:continue
+                if c.data_type=='e':raise ValueError(f'{ws.title}!{c.coordinate}: {c.value}')
+                if c.font.name!=FONT:raise ValueError(f'{ws.title}!{c.coordinate}: fuente no homologada')
+                if c.data_type=='f':
+                    report['formulas']+=1
+                    if '#REF!' in c.value:raise ValueError(f'Referencia rota: {c.coordinate}')
+        report['charts']+=len(ws._charts)
+        for name,table in ws.tables.items():
+            # El filtro debe cubrir exactamente el rango de la tabla.
+            if not table:raise ValueError(f'Tabla vacía: {name}')
+    def bounds(reference):
+        sheet,area=reference.rsplit('!',1);sheet=sheet.strip("'").replace("''","'")
+        if sheet not in wb.sheetnames:raise ValueError(f'Hoja referenciada inexistente: {sheet}')
+        min_col,min_row,max_col,max_row=openpyxl.utils.cell.range_boundaries(area)
+        if max_row>wb[sheet].max_row or max_col>wb[sheet].max_column:
+            raise ValueError(f'Referencia fuera de los datos: {reference}')
+        return max_row-min_row+1
+    ns={'c':'http://schemas.openxmlformats.org/drawingml/2006/chart'}
+    with zipfile.ZipFile(path) as z:
+        if z.testzip():raise ValueError(f'{path.name}: ZIP corrupto')
+        for name in z.namelist():
+            if name.startswith('xl/charts/chart') and name.endswith('.xml'):
+                xml=ET.fromstring(z.read(name))
+                for series in xml.findall('.//c:ser',ns):
+                    vals=series.find('c:val/c:numRef/c:f',ns)
+                    cats=series.find('c:cat/c:numRef/c:f',ns)
+                    if vals is None or cats is None:raise ValueError(f'{name}: gráfica sin referencias reales')
+                    if bounds(vals.text)!=bounds(cats.text):raise ValueError(f'{name}: periodos desalineados')
+    wb.close();return report
 
 
-def add_metodologia(wb, payload):
-    ws = wb.create_sheet("Metodología y fuentes")
-    ws.sheet_view.showGridLines = False
-    ws["A1"] = "Metodología y fuentes"
-    ws["A1"].font = TITLE
-    headers = ["Indicador", "Fuente oficial", "Serie", "Unidad", "Ajuste estacional",
-               "Frecuencia", "Método de actualización", "Enlace"]
-    r0 = 3
-    for i, h in enumerate(headers, start=1):
-        ws.cell(row=r0, column=i, value=h)
-    _style_header(ws, r0, len(headers))
-    order = payload.get("order") or list(payload["indicators"].keys())
-    r = r0 + 1
-    for key in order:
-        ind = payload["indicators"].get(key)
-        if not ind:
-            continue
-        f = ind.get("fuente", {})
-        vals = [ind.get("nombre"), f.get("nombre"), f.get("serie") or "—", ind.get("unidad"),
-                ind.get("ajuste_estacional"), ind.get("frecuencia"), f.get("metodo"), f.get("link")]
-        for i, v in enumerate(vals, start=1):
-            cell = ws.cell(row=r, column=i, value=v)
-            cell.font = TXT
-            cell.border = BORDER
-            cell.alignment = WRAP
-            if r % 2 == 0:
-                cell.fill = BAND_FILL
-        r += 1
-    _autow(ws, [40, 34, 12, 26, 18, 14, 26, 40])
+def _save_single(ind,path):
+    model=build_workbook([ind]);model.wb.save(path);validate_workbook(path)
 
 
-def _next_pub_map(calendar):
-    """clave -> primera publicación próxima, no anunciada o evento futuro."""
-    out = {}
-    def _sort_key(x):
-        iso = x.get("fecha_iso")
-        return (iso or "", 0 if iso else 1)
-    items = sorted((calendar or {}).get("items", []), key=_sort_key)
-    for it in items:
-        if it.get("estatus") in ("próximo", "no_anunciada", "evento") and it.get("clave") not in out:
-            out[it["clave"]] = it
-    return out
+# Entradas anteriores conservadas para las integraciones y las pruebas.
+def _build_individual_workbook(ind,cfg,kpicfg,out_path):_save_single(ind,out_path)
+def _build_pib_workbook(ind,out_path):_save_single(ind,out_path)
+def _build_pibsec_workbook(ind,out_path):_save_single(ind,out_path)
+def _build_imai_workbook(ind,out_path):_save_single(ind,out_path)
+def _build_imfbcf_workbook(ind,out_path):_save_single(ind,out_path)
+def _build_bcmm_workbook(ind,out_path):_save_single(ind,out_path)
+def build_emim_workbook(ind,out_path):_save_single(ind,out_path)
+def _build_desocup_workbook(ind,out_path):_save_single(ind,out_path)
+def _build_ied_workbook(ind,out_path):_save_single(ind,out_path)
+def _build_tasa_workbook(ind,out_path):_save_single(ind,out_path)
 
 
-def add_control(wb, payload, manifest, log, calendar=None):
-    ws = wb.create_sheet("Control de actualizaciones")
-    ws.sheet_view.showGridLines = False
-    ws["A1"] = "Control de actualizaciones"
-    ws["A1"].font = TITLE
-    ws["A2"] = (f"Última corrida del pipeline: {log.get('finished_at', '—')} · "
-                f"resultado: {log.get('result', '—')} · modo: {log.get('mode', '—')}")
-    ws["A2"].font = MUT
-    headers = ["Indicador", "Clasificación", "Estado", "Origen del dato", "Requiere token",
-               "Serie confirmada", "Última observación", "Periodo de referencia",
-               "Fecha de publicación", "Próxima publicación (calendario)", "Fecha de consulta",
-               "Actualización archivo", "Revisión detectada", "Observaciones de calidad"]
-    nextpub = _next_pub_map(calendar)
-    r0 = 4
-    for i, h in enumerate(headers, start=1):
-        ws.cell(row=r0, column=i, value=h)
-    _style_header(ws, r0, len(headers))
-    rows = {m["clave"]: m for m in manifest.get("indicadores", [])}
-    order = payload.get("order") or list(payload["indicators"].keys())
-    r = r0 + 1
-    for key in order:
-        m = rows.get(key)
-        if not m:
-            continue
-        np = nextpub.get(key)
-        np_txt = f"{np['fecha_publicacion']} · {np['periodo_referencia']}" if np else "—"
-        vals = [m["indicador"], m.get("clasificacion"), m.get("estado"), m.get("origen_dato"),
-                m.get("requiere_token") or "—", "Sí" if m.get("serie_confirmada") else "No",
-                m["ultima_observacion"], m.get("periodo_referencia"), m.get("fecha_publicacion"),
-                np_txt, m["fecha_consulta"], m["fecha_actualizacion_archivo"],
-                "Sí" if m["revision_detectada"] else "No", m["observaciones"]]
-        for i, v in enumerate(vals, start=1):
-            cell = ws.cell(row=r, column=i, value=v)
-            cell.font = TXT
-            cell.border = BORDER
-            cell.alignment = WRAP
-            if m["revision_detectada"]:
-                cell.fill = PatternFill("solid", fgColor="FFF6E2E8")
-            elif r % 2 == 0:
-                cell.fill = BAND_FILL
-        r += 1
-    # Advertencias del pipeline
-    r += 2
-    ws.cell(row=r, column=1, value="Advertencias del pipeline:").font = LBL
-    for w in log.get("warnings", []):
-        r += 1
-        ws.cell(row=r, column=1, value="• " + w).font = MUT
-    _autow(ws, [40, 15, 26, 14, 14, 15, 18, 18, 26, 28, 16, 18, 16, 50])
+def generate(payload,out_dir=None):
+    """Construye y valida todo en staging antes de reemplazar el conjunto vigente."""
+    out_dir=Path(out_dir or OUT_DIR);out_dir.mkdir(parents=True,exist_ok=True)
+    order=payload.get('order') or list(payload['indicators'])
+    missing=[k for k in order if not payload['indicators'].get(k,{}).get('observations')]
+    if missing:raise ValueError('Sin historia para: '+', '.join(missing))
+    indicators=[payload['indicators'][k] for k in order]
+    report={};staged=[]
+    with tempfile.TemporaryDirectory(prefix='.excel-',dir=out_dir) as tmp:
+        stage=Path(tmp)
+        for ind in indicators:
+            key=ind['key'];model=build_workbook([ind]);path=stage/f'{key}_datos.xlsx';model.wb.save(path)
+            report[key]={**validate_workbook(path),'coverage':model.coverage,'omitted_redundancy':EXCLUDED.get(key,{})}
+            staged.append((path,out_dir/'indicadores'/key/path.name))
+        master=build_workbook(indicators,general=True);path=stage/OUT_XLSX.name;master.wb.save(path)
+        report['general']=validate_workbook(path)
+        source_fields=('columns','observations','observations_acumulado','policy_decisions')
+        snapshot={i['key']:{f:i.get(f) for f in source_fields} for i in indicators}
+        report['general']['input_sha256']=hashlib.sha256(json.dumps(snapshot,sort_keys=True,ensure_ascii=False).encode()).hexdigest()
+        staged.append((path,out_dir/path.name))
+        for source,target in staged:
+            validate_workbook(source)
+            report_key='general' if source.name==OUT_XLSX.name else source.stem.removesuffix('_datos')
+            report[report_key]['sha256']=hashlib.sha256(source.read_bytes()).hexdigest()
+        previous_path=L.DATA_DIR/'excel'/'estado.json'
+        if out_dir==OUT_DIR and previous_path.exists():
+            previous=json.loads(previous_path.read_text())
+            for key,item in report.items():
+                old={(c['key'],c['column']):c for c in previous.get(key,{}).get('coverage',[])}
+                for c in item.get('coverage',[]):
+                    if (c['key'],c['column']) in old:
+                        was=old[c['key'],c['column']]
+                        if c['first']>was['first'] or c['last']<was['last'] or c['count']<was['count']:
+                            raise ValueError(f'{key}: se acortó la historia de {c["label"]}; se conserva la publicación anterior')
+        # Ningún archivo se sustituye si falló alguna generación o validación anterior.
+        for source,target in staged:
+            target.parent.mkdir(parents=True,exist_ok=True);os.replace(source,target)
+    return report
 
 
-def add_desocup_sheets(wb, payload):
-    """Crea hojas separadas para tasas laborales (mensuales) y población ocupada (trimestral)."""
-    ind = payload["indicators"].get("DESOCUP")
-    if not ind:
-        return
-    for name in ("Tasas laborales", "Población ocupada"):
-        if name in wb.sheetnames:
-            wb.remove(wb[name])
-
-    src = ind.get("fuente", {}).get("nombre", "INEGI")
-    url = ind.get("url_boletin_oficial") or ind.get("fuente", {}).get("link") or "—"
-    pub = ind.get("fecha_publicacion") or "—"
-
-    # Tasas laborales mensuales (columnas 0-3).
-    sub_tasas = f"Fuente: {src} · Frecuencia: Mensual · Unidad: porcentaje · Boletín: {url} · Fecha de publicación: {pub}"
-    ws1 = wb.create_sheet("Tasas laborales")
-    _write_subset_sheet(ws1, ind, f"{ind.get('nombre', 'DESOCUP')} — Tasas laborales", sub_tasas, [0, 1, 2, 3])
-
-    # Población ocupada trimestral (columnas 4-5).
-    sub_pob = f"Fuente: {src} · Frecuencia: Trimestral · Unidad: millones de personas · Boletín: {url} · Fecha de publicación: {pub}"
-    ws2 = wb.create_sheet("Población ocupada")
-    _write_subset_sheet(ws2, ind, f"{ind.get('nombre', 'DESOCUP')} — Población ocupada", sub_pob, [4, 5])
+def build_individual_files(payload,pilot=None):
+    indicators=payload['indicators']
+    for key,ind in indicators.items():
+        if pilot and key not in pilot:continue
+        if not ind.get('observations'):continue
+        path=IND_DIR/key/f'{key}_datos.xlsx';path.parent.mkdir(parents=True,exist_ok=True)
+        _save_single(ind,path)
+        ind.update(xlsx_disponible=True,xlsx_causa=None,url_excel_individual=f'downloads/indicadores/{key}/{key}_datos.xlsx')
 
 
-# Hojas de datos a crear (o recrear) para indicadores principales y complementarios.
-# Orden: Panorama macroeconómico (14), Entorno financiero (3).
-NEW_SHEETS = {
-    "PIBSEC": "PIB Sectorial",
-    "SIC": "Indicadores Cíclicos (SIC)",
-    "IMOAM": "IMOAM",
-    "IOAE": "IOAE",
-    "IGAE": "IGAE",
-    "IMAI": "IMAI",
-    "EMIM": "EMIM (Manufactura)",
-    "EMOE": "EMOE (Confianza empresarial)",
-    "INPC": "INPC",
-    "INPP": "INPP",
-    "CONSUMO": "Consumo Privado",
-    "IMFBCF": "Formación bruta capital fijo",
-    "IED": "IED",
-    "BCMM": "Balanza comercial",
-    "TIPOCAMBIO": "Tipo de cambio FIX",
-    "TASA": "Tasa objetivo",
-    "RESERVAS": "Reservas internacionales",
-}
-
-# Hojas heredadas del libro base que ya no corresponden al perfil V3.
-LEGACY_SHEETS = ["Exportaciones", "PIB", "Tasa de desocupación", "INPC (Inflación)"]
+def main(argv=None):
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output-dir',type=Path,default=OUT_DIR)
+    args=parser.parse_args(argv if argv is not None else ([] if 'pytest' in sys.modules else None))
+    payload=L.load_data()
+    report=generate(payload,args.output_dir)
+    if args.output_dir==OUT_DIR:
+        before=json.dumps(payload,ensure_ascii=False)
+        for key in report:
+            if key=='general':continue
+            payload['indicators'][key].update(xlsx_disponible=True,xlsx_causa=None,url_excel_individual=f'downloads/indicadores/{key}/{key}_datos.xlsx')
+        if json.dumps(payload,ensure_ascii=False)!=before:
+            L.DATA_FILE.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n')
+        report_path=L.DATA_DIR/'excel'/'estado.json';report_path.parent.mkdir(parents=True,exist_ok=True)
+        report_path.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+    print(f'OK: {len(report)-1} Excel individuales y libro general; '+str(sum(v['charts'] for v in report.values()))+' gráficas nativas.')
+    return 0
 
 
-def add_indicator_sheets(wb, payload, keys=None):
-    """Crea o recrea hojas de datos para los indicadores principales. Si aún no
-    tienen observaciones (scaffold pendiente de token), la hoja queda con los
-    encabezados y una nota honesta, sin cifras inventadas."""
-    for key, sheet_name in (NEW_SHEETS.items() if keys is None else [(k, NEW_SHEETS[k]) for k in keys if k in NEW_SHEETS]):
-        ind = payload["indicators"].get(key)
-        if not ind:
-            continue
-        if sheet_name in wb.sheetnames:
-            wb.remove(wb[sheet_name])
-        ws = wb.create_sheet(sheet_name)
-        ws.sheet_view.showGridLines = False
-        ws["A1"] = ind.get("nombre")
-        ws["A1"].font = TITLE
-        ws["A2"] = (f"Fuente: {ind.get('fuente', {}).get('nombre', '—')} · "
-                    f"Frecuencia: {ind.get('frecuencia', '—')} · Unidad: {ind.get('unidad', '—')} · "
-                    f"Estado: {ind.get('estado', '—')}")
-        ws["A2"].font = MUT
-        cols = ind.get("columns", [])
-        headers = ["Periodo"] + [c["label"] for c in cols]
-        r0 = 4
-        for i, h in enumerate(headers, start=1):
-            ws.cell(row=r0, column=i, value=h)
-        _style_header(ws, r0, len(headers))
-        obs = ind.get("observations", []) or []
-        if not obs:
-            note = ("Sin observaciones cargadas todavía. "
-                    f"Se activará al configurar {ind.get('requiere_token', 'el token')}_TOKEN "
-                    "y confirmar la serie oficial. No se muestran cifras estimadas ni inventadas.")
-            ws.cell(row=r0 + 1, column=1, value=note).font = MUT
-            ws.merge_cells(start_row=r0 + 1, start_column=1, end_row=r0 + 2, end_column=max(2, len(headers)))
-            ws.cell(row=r0 + 1, column=1).alignment = WRAP
-        else:
-            r = r0 + 1
-            for o in obs:
-                ws.cell(row=r, column=1, value=o["period"]).font = TXT
-                for i, v in enumerate(o["values"], start=2):
-                    cell = ws.cell(row=r, column=i, value=v)
-                    cell.font = TXT
-                    if i - 2 < len(cols):
-                        cell.number_format = _xl_fmt(cols[i - 2].get("fmt", "num"))
-                r += 1
-        _autow(ws, [16] + [22] * len(cols))
-
-        if key == "EMIM" and len(ind.get("columns", [])) >= 18:
-            sub_name = "Subsectores EMIM"
-            if sub_name in wb.sheetnames:
-                wb.remove(wb[sub_name])
-            ws2 = wb.create_sheet(sub_name)
-            _write_emim_subsector_sheet(ws2, ind)
-
-
-def add_pib_sheets(wb, payload):
-    """Crea las hojas separadas PIB oportuno (EOPIBT) y Nivel PIB (PIBT)."""
-    ind = payload["indicators"].get("PIB")
-    if not ind:
-        return
-    for name in ("PIB oportuno", "Nivel PIB"):
-        if name in wb.sheetnames:
-            wb.remove(wb[name])
-
-    # Hoja 1: PIB oportuno (variaciones)
-    ws = wb.create_sheet("PIB oportuno")
-    ws.sheet_view.showGridLines = False
-    ws["A1"] = ind.get("nombre")
-    ws["A1"].font = TITLE
-    ws["A2"] = (f"Fuente: {ind.get('fuente', {}).get('nombre', '—')} · "
-                f"Frecuencia: {ind.get('frecuencia', '—')} · Unidad: {ind.get('unidad', '—')} · "
-                f"Estado: {ind.get('estado', '—')}")
-    ws["A2"].font = MUT
-
-    cols = [
-        {"label": "Var. trimestral desest. (%)", "fmt": "pct-frac"},
-        {"label": "Var. anual desest. (%)", "fmt": "pct-frac"},
-        {"label": "Var. anual original (%)", "fmt": "pct-frac"},
-        {"label": "Acumulado (%)", "fmt": "pct-frac"},
-    ]
-    headers = ["Periodo", "Fecha"] + [c["label"] for c in cols] + ["Carácter", "Fuente", "URL boletín", "Fecha publicación"]
-    r0 = 4
-    for i, h in enumerate(headers, start=1):
-        ws.cell(row=r0, column=i, value=h)
-    _style_header(ws, r0, len(headers))
-
-    obs = ind.get("observations", [])
-    r = r0 + 1
-    for o in obs:
-        d = _period_date(o["period"])
-        ws.cell(row=r, column=1, value=o["period"]).font = TXT
-        ws.cell(row=r, column=2, value=d).font = TXT
-        if d:
-            ws.cell(row=r, column=2).number_format = "yyyy-mm-dd"
-        for i, v in enumerate(o["values"], start=3):
-            cell = ws.cell(row=r, column=i, value=v)
-            cell.font = TXT
-            cell.number_format = _xl_fmt(cols[i - 3].get("fmt", "num"))
-        ws.cell(row=r, column=7, value=_caracter_dato(o["period"])).font = TXT
-        ws.cell(row=r, column=8, value=ind.get("fuente", {}).get("nombre", "—")).font = TXT
-        ws.cell(row=r, column=9, value=ind.get("url_boletin_oficial") or ind.get("fuente", {}).get("link") or "—").font = TXT
-        ws.cell(row=r, column=10, value=ind.get("fecha_publicacion") or "—").font = TXT
-        if r % 2 == 0:
-            for c in range(1, len(headers) + 1):
-                ws.cell(row=r, column=c).fill = BAND_FILL
-        r += 1
-    _autow(ws, [16, 13, 24, 22, 24, 18, 14, 28, 55, 22])
-
-    # Hoja 2: Nivel PIB
-    pibt = ind.get("pibt")
-    ws2 = wb.create_sheet("Nivel PIB")
-    ws2.sheet_view.showGridLines = False
-    if pibt:
-        ws2["A1"] = "PIB trimestral a precios constantes de 2018"
-        ws2["A1"].font = TITLE
-        ws2["A2"] = (f"Fuente: {pibt.get('fuente', {}).get('nombre', '—')} · "
-                     f"Serie: {pibt.get('fuente', {}).get('serie', '—')} · "
-                     f"Frecuencia: {pibt.get('frecuencia', '—')} · "
-                     f"Unidad: {pibt.get('unidad', '—')}")
-        ws2["A2"].font = MUT
-        pibt_cols = ["Periodo", "Fecha", "Nivel", "Unidad", "Carácter", "Fuente", "Serie"]
-        r0 = 4
-        for i, h in enumerate(pibt_cols, start=1):
-            ws2.cell(row=r0, column=i, value=h)
-        _style_header(ws2, r0, len(pibt_cols))
-        pibt_obs = pibt.get("observations", [])
-        r = r0 + 1
-        for o in pibt_obs:
-            d = _period_date(o["period"])
-            ws2.cell(row=r, column=1, value=o["period"]).font = TXT
-            ws2.cell(row=r, column=2, value=d).font = TXT
-            if d:
-                ws2.cell(row=r, column=2).number_format = "yyyy-mm-dd"
-            ws2.cell(row=r, column=3, value=o["values"][0]).number_format = _xl_fmt("bill")
-            ws2.cell(row=r, column=4, value=pibt.get("unidad", "—")).font = TXT
-            ws2.cell(row=r, column=5, value=_caracter_dato(o["period"])).font = TXT
-            ws2.cell(row=r, column=6, value=pibt.get("fuente", {}).get("nombre", "—")).font = TXT
-            ws2.cell(row=r, column=7, value=pibt.get("fuente", {}).get("serie", "—")).font = TXT
-            if r % 2 == 0:
-                for c in range(1, len(pibt_cols) + 1):
-                    ws2.cell(row=r, column=c).fill = BAND_FILL
-            r += 1
-        _autow(ws2, [16, 13, 18, 40, 14, 18, 18])
-    else:
-        ws2["A1"] = "Nivel PIB"
-        ws2["A1"].font = TITLE
-        ws2["A2"] = "Sin datos de nivel PIBT disponibles todavía."
-        ws2["A2"].font = MUT
-
-
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--pilot", action="store_true", help="Genera archivos individuales solo para IGAE e INPC")
-    # Al ser importado por pytest, evita que los argumentos de pytest (-q) lleguen aquí.
-    if "pytest" in sys.modules:
-        args = ap.parse_args([])
-    else:
-        args = ap.parse_args()
-
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-    payload = L.load_data()
-    manifest = json.loads((L.DATA_DIR / "manifest.json").read_text(encoding="utf-8"))
-    log_path = L.DATA_DIR / "update_log.json"
-    log = json.loads(log_path.read_text(encoding="utf-8")) if log_path.exists() else {}
-
-    if BASE_XLSX.exists():
-        wb = openpyxl.load_workbook(BASE_XLSX)
-    else:
-        wb = openpyxl.Workbook()
-        wb.remove(wb.active)
-
-    cal_path = L.DATA_DIR / "calendario_publicaciones.json"
-    calendar = json.loads(cal_path.read_text(encoding="utf-8")) if cal_path.exists() else {}
-
-    # No alterar las hojas originales, salvo las que se recrean o quedaron obsoletas.
-    for name in ("Resumen ejecutivo", "Síntesis de coyuntura", "Metodología y fuentes", "Control de actualizaciones"):
-        if name in wb.sheetnames:
-            wb.remove(wb[name])
-    for name in NEW_SHEETS.values():
-        if name in wb.sheetnames:
-            wb.remove(wb[name])
-    for name in LEGACY_SHEETS:
-        if name in wb.sheetnames:
-            wb.remove(wb[name])
-    if "Subsectores EMIM" in wb.sheetnames:
-        wb.remove(wb["Subsectores EMIM"])
-    add_pib_sheets(wb, payload)
-    # Parte 1 del Panorama: actividad, industria y opinión empresarial.
-    pan_1 = ["PIBSEC", "SIC", "IOAE", "IGAE", "IMAI", "IMOAM", "EMIM", "EMOE"]
-    add_indicator_sheets(wb, payload, keys=pan_1)
-    add_desocup_sheets(wb, payload)
-    # Parte 2 del Panorama y Entorno financiero.
-    pan_2 = ["INPC", "INPP", "CONSUMO", "IMFBCF", "BCMM", "IED", "TIPOCAMBIO", "TASA", "RESERVAS"]
-    add_indicator_sheets(wb, payload, keys=pan_2)
-    add_metodologia(wb, payload)
-    add_control(wb, payload, manifest, log, calendar)
-    add_resumen(wb, payload, manifest)  # queda como primera hoja (índice 0)
-
-    wb.save(OUT_XLSX)
-    print(f"OK: {OUT_XLSX.relative_to(ROOT)} ({OUT_XLSX.stat().st_size} bytes) · hojas: {wb.sheetnames}")
-
-    # Archivos individuales por indicador (actualiza flags en indicadores.json).
-    build_individual_files(payload, pilot=PILOT_KEYS if args.pilot else None)
-    (L.DATA_DIR / "indicadores.json").write_text(
-        json.dumps(payload, ensure_ascii=False, indent=2, default=str) + "\n",
-        encoding="utf-8",
-    )
-    print(f"OK: archivos individuales generados en {IND_DIR.relative_to(ROOT)}")
-
-
-if __name__ == "__main__":
-    main()
+import sys
+if __name__=='__main__':raise SystemExit(main())

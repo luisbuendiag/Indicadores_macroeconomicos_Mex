@@ -48,29 +48,15 @@ def test_apply_overrides_nulls_duplicate(tmp_path):
     assert feb_imai["values"][0] is None
 
 
-def test_excel_has_new_sheets(tmp_path):
-    build_calendar.main()  # calendario oficial disponible para la hoja de control
-    build_excel.main()
-    out = ROOT / "downloads" / "Indicadores_Macroeconomicos_Mexico_Actualizado.xlsx"
-    assert out.exists()
-    wb = openpyxl.load_workbook(out, read_only=True)
-    for req in ("Síntesis de coyuntura", "Metodología y fuentes", "Control de actualizaciones"):
-        assert req in wb.sheetnames
-    assert "Resumen ejecutivo" not in wb.sheetnames
-    # La hoja "Exportaciones" quedó obsoleta; BCMM se presenta como "Balanza comercial".
-    assert "Exportaciones" not in wb.sheetnames
-    # 24 hojas: 14 principales + divisiones (PIB en 2, DESOCUP en 2, EMIM en 2)
-    # + 4 complementarios del Entorno financiero + 3 hojas fijas.
-    assert len(wb.sheetnames) == 24
-    # Las hojas principales y financieras clave deben existir.
-    for orig in (
-        "PIB oportuno", "Nivel PIB", "Indicadores Cíclicos (SIC)", "IGAE",
-        "Balanza comercial", "INPC", "INPP",
-        "Tasas laborales", "Población ocupada", "Formación bruta capital fijo",
-        "IOAE", "EMIM (Manufactura)", "Subsectores EMIM", "EMOE (Confianza empresarial)",
-        "IED", "Tipo de cambio FIX", "Tasa objetivo", "Reservas internacionales",
-    ):
-        assert orig in wb.sheetnames
+def test_excel_has_historical_sheets_only(tmp_path):
+    payload=json.loads((ROOT / "data/indicadores.json").read_text())
+    report=build_excel.generate(payload,tmp_path)
+    wb=openpyxl.load_workbook(tmp_path/build_excel.OUT_XLSX.name)
+    assert len(wb.sheetnames)==22
+    assert len(report)==20
+    assert not {"Resumen ejecutivo","Síntesis de coyuntura","Metodología y fuentes","Control de actualizaciones"}.intersection(wb.sheetnames)
+    assert {"PIB","PIBT","SIC","IGAE","BCMM","INPC","INPP","ENOE","Población ocupada","IMFBCF","IOAE","EMIM","EMOE","IED","FIX","TASA","RESERVAS"} <= set(wb.sheetnames)
+    assert all(ws._charts for ws in wb)
 
 
 def test_calendar_build_and_schema():
@@ -89,11 +75,10 @@ def test_calendar_build_and_schema():
     assert isos == sorted(isos, key=lambda x: (x or "", 0 if x else 1))
 
 
-def test_control_sheet_reflects_calendar():
-    build_calendar.main()
-    build_excel.main()
-    out = ROOT / "downloads" / "Indicadores_Macroeconomicos_Mexico_Actualizado.xlsx"
-    wb = openpyxl.load_workbook(out, read_only=True)
-    ws = wb["Control de actualizaciones"]
-    headers = [c.value for c in list(ws.iter_rows(min_row=4, max_row=4))[0]]
-    assert "Próxima publicación (calendario)" in headers
+def test_sources_live_with_the_history_not_in_admin_tabs(tmp_path):
+    payload=json.loads((ROOT / "data/indicadores.json").read_text())
+    model=build_excel.build_workbook([payload['indicators']['IGAE']])
+    ws=model.wb.active
+    assert ws['A3'].hyperlink
+    assert 'Fuente:' in ws['A3'].value
+    assert not any('Control' in name or 'Metodología' in name for name in model.wb.sheetnames)

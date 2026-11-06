@@ -282,3 +282,24 @@ Entorno financiero contiene la inversión externa reportada por la **Secretaría
 - Probar con `node --test tests/calendar_ui.test.mjs` (Node 24) y pytest
   `tests/test_calendario.py tests/test_calendar_products.py`. Revisar el DOCX
   renderizado cuando cambie su compositor.
+
+
+## Excel históricos automáticos
+
+- `scripts/excel_layout.py` define bloques por indicador; `build_excel.py` aplica
+  el mismo modelo al general y los 19 individuales. No duplicar tablas ni añadir
+  síntesis, metodología, control o desgloses de un solo corte como historia.
+- Noto Sans, fondo blanco, encabezados grises, fechas numéricas y gráficos nativos
+  vinculados a celdas. Sin paneles inmovilizados ni fuentes repetidas por fila.
+- Originales y desestacionalizadas no se intercambian. Solo completar huecos de
+  tasas cuando existan niveles comparables de la MISMA serie; fórmulas Excel
+  visibles, con denominadores positivos y periodos exactos, sin rellenar ceros.
+- P/R solo según etiqueta publicada; ausencia de marca no significa definitivo.
+  Población ENOE trimestral usa trimestres, FIX/tasa fechas diarias y reservas semanales.
+- El porcentaje de cambio del saldo BCMM no se exporta; la población en personas
+  no se duplica en millones. Toda otra celda fuente no vacía debe preservarse.
+- Las tablas crecen con las observaciones; las gráficas muestran una ventana reciente
+  y retienen referencias reales. La fecha del último boletín no se atribuye a toda
+  la historia. Cobertura y hashes quedan en `data/excel/estado.json`, fuera del XLSX.
+- Generar y validar en staging antes de sustituir archivos; fallos impiden publicar.
+  Ejecutar `python -m pytest -q tests/test_excel_historico.py` al cambiar el exportador.

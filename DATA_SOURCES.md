@@ -103,3 +103,25 @@ Subsecretaría (`PIBOT_JUL_2026.pdf`, Boletín de Indicador del 30-jul-2026);
 IGAE, IMFBCF y BCMM ya contaban con versiones `.docx` editables. La nota de
 **INPP** proviene de la nota conjunta INPC+INPP de julio 2026 (única disponible).
 El detalle por indicador está en `config/notas_map.json` (`fuente_original`).
+
+
+### Excel históricos descargables
+
+El libro general y los archivos por indicador comparten la especificación de
+`excel_layout.py`. Incluyen la historia disponible de cada variable, sus unidades,
+fuente y gráficas editables. Las tasas ya cargadas no se sustituyen. Los huecos solo
+se completan mediante fórmulas cuando hay niveles de la misma serie y periodo
+comparable; se indica junto al bloque. Las coberturas pueden diferir entre columnas.
+
+Las fechas son valores Excel. Las series trimestrales se muestran como trimestres,
+y las diarias y semanales con su fecha efectiva. Solo se conserva el carácter P/R
+que figure en la fuente, sin asumir que todo dato sin marca es definitivo.
+El flujo y los acumulados de IED se separan. No se representa la variación del saldo
+comercial como crecimiento porcentual. Los detalles de un solo corte no se presentan
+como historia de subsectores.
+
+Cada ejecución del pipeline regenera las tablas y referencias de gráficas, valida
+el conjunto y publica solo si pasan los controles. `data/excel/estado.json` registra
+coberturas y hashes; no añade pestañas administrativas a los libros del usuario.
+Los archivos descargados son fotografías del momento de descarga, sin macros ni
+conexiones externas. La versión vigente se obtiene nuevamente desde el dashboard.

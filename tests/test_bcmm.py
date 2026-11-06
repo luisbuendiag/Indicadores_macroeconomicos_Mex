@@ -83,7 +83,6 @@ def test_bcmm_excel_individual_hojas():
     wb = openpyxl.load_workbook(xlsx)
     assert wb.sheetnames == [
         "Comercio total",
-        "Variaciones anuales",
-        "Petrolero y no petrolero",
-        "Importaciones por tipo",
+        "Exportaciones",
+        "Importaciones",
     ]

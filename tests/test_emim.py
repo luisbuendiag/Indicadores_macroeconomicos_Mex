@@ -192,7 +192,7 @@ def test_emim_metrics_has_cards_and_resumen():
     assert any("producción" in b.lower() for b in metrics["resumen"])
 
 
-def test_build_emim_workbook_writes_two_sheets(tmp_path):
+def test_build_emim_workbook_separates_original_and_adjusted_history(tmp_path):
     ind = _emim_ind()
     ind["subsectores"] = _emim_subsectores_detalle()
     out = tmp_path / "EMIM_datos.xlsx"
@@ -200,7 +200,8 @@ def test_build_emim_workbook_writes_two_sheets(tmp_path):
     assert out.exists()
     wb = openpyxl.load_workbook(out, read_only=True)
     assert "Indicadores" in wb.sheetnames
-    assert "Subsectores" in wb.sheetnames
+    assert "Desestacionalizadas" in wb.sheetnames
+    assert "Subsectores" not in wb.sheetnames
 
 
 def test_validate_emim_18_columns():

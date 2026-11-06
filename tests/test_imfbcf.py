@@ -97,7 +97,7 @@ def test_imfbcf_excel_individual_hojas(tmp_path):
     assert "Niveles" in wb.sheetnames
     assert "Variaciones" in wb.sheetnames
     assert "Originales" in wb.sheetnames
-    assert "Resumen" in wb.sheetnames
+    assert "Resumen" not in wb.sheetnames
 
 
 def test_imfbcf_fuente_banxico_inegi():
