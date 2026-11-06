@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-11-05T23:56:59+00:00",
+  "started_at": "2026-11-06T01:20:00+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -298,7 +298,7 @@
     "imoam: actualizado IMOAM (última obs Sep 26, sin cambio de periodo)",
     "imoam: actualizado IMOAM (última obs Sep 26, sin cambio de periodo)",
     "banxico: actualizado TIPOCAMBIO (última obs 2026-11-05, sin cambio de periodo)",
-    "banxico: actualizado TASA (última obs 2026-11-06, dato nuevo)",
+    "banxico: actualizado TASA (última obs 2026-11-06, sin cambio de periodo)",
     "banxico: actualizado RESERVAS (última obs 2026-10-30, sin cambio de periodo)",
     "inegi: actualizado PIB (última obs 2T-26, dato nuevo)",
     "inegi: actualizado PIBSEC (última obs 2T-26, sin cambio de periodo)",
@@ -482,7 +482,7 @@
     "frescura: INPP -> ACTUALIZADO",
     "frescura: SIC -> ACTUALIZADO",
     "frescura: IMOAM -> ACTUALIZADO",
-    "meta: last_update_ct=2026-11-05T18:10:15-06:00",
+    "meta: last_update_ct=2026-11-05T19:33:33-06:00",
     "notas: 15 vigentes (0 provisionadas desde machote)"
   ],
   "consultas": [
@@ -2437,9 +2437,9 @@
       "observaciones": 3220,
       "ultima_observacion": "2026-11-06",
       "ultimo_valor": 6.25,
-      "observacion_previa": "2026-11-05",
+      "observacion_previa": "2026-11-06",
       "actualizacion_fuente": null,
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -3969,5 +3969,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-11-06T00:10:16+00:00"
+  "finished_at": "2026-11-06T01:33:34+00:00"
 }
