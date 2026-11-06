@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-11-06T02:06:48+00:00",
+  "started_at": "2026-11-06T14:49:13+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -21,7 +21,7 @@
     "INEGI SIC: 561 observaciones (serie 214301, base BIE-BISE); última Sep 26 = 99.558649; actualización BIE 12/10/2026 12:00:00 a. m..",
     "INEGI SIC: 477 observaciones (serie 214303, base BIE-BISE); última Sep 26 = 100.434894; actualización BIE 22/10/2026 12:00:00 a. m..",
     "INEGI SIC: 561 observaciones (serie 214305, base BIE-BISE); última Sep 26 = 101.618013; actualización BIE 27/10/2026 12:00:00 a. m..",
-    "INEGI SIC: 561 observaciones (serie 214309, base BIE-BISE); última Sep 26 = 100.556348; actualización BIE 06/10/2026 12:00:00 a. m..",
+    "INEGI SIC: 562 observaciones (serie 214309, base BIE-BISE); última Oct 26 = 100.517374; actualización BIE 06/11/2026 12:00:00 a. m..",
     "INEGI SIC: 274 observaciones (serie 214311, base BIE-BISE); última Oct 26 = 99.434514; actualización BIE 03/11/2026 12:00:00 a. m..",
     "INEGI SIC: 549 observaciones (serie 214313, base BIE-BISE); última Sep 26 = 100.124138; actualización BIE 09/10/2026 12:00:00 a. m..",
     "INEGI SIC: 561 observaciones (serie 214315, base BIE-BISE); última Sep 26 = 99.721377; actualización BIE 16/10/2026 12:00:00 a. m..",
@@ -317,7 +317,7 @@
     "inegi: actualizado SIC (última obs Sep 26, dato nuevo)",
     "inegi: actualizado SIC (última obs Sep 26, dato nuevo)",
     "inegi: actualizado SIC (última obs Sep 26, dato nuevo)",
-    "inegi: actualizado SIC (última obs Sep 26, dato nuevo)",
+    "inegi: actualizado SIC (última obs Oct 26, dato nuevo)",
     "inegi: actualizado SIC (última obs Oct 26, dato nuevo)",
     "inegi: actualizado SIC (última obs Oct 26, dato nuevo)",
     "inegi: actualizado SIC (última obs Oct 26, dato nuevo)",
@@ -482,7 +482,7 @@
     "frescura: INPP -> ACTUALIZADO",
     "frescura: SIC -> ACTUALIZADO",
     "frescura: IMOAM -> ACTUALIZADO",
-    "meta: last_update_ct=2026-11-05T20:21:44-06:00",
+    "meta: last_update_ct=2026-11-06T09:02:33-06:00",
     "notas: 15 vigentes (0 provisionadas desde machote)"
   ],
   "consultas": [
@@ -2662,11 +2662,11 @@
       "fuente": "inegi",
       "indicador": "SIC",
       "serie": "214309",
-      "observaciones": 561,
-      "ultima_observacion": "Sep 26",
-      "ultimo_valor": 100.556348,
+      "observaciones": 562,
+      "ultima_observacion": "Oct 26",
+      "ultimo_valor": 100.517374,
       "observacion_previa": "Ago 26",
-      "actualizacion_fuente": "06/10/2026 12:00:00 a. m.",
+      "actualizacion_fuente": "06/11/2026 12:00:00 a. m.",
       "dato_nuevo": true,
       "resultado": "consulta válida"
     },
@@ -3969,5 +3969,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-11-06T02:21:45+00:00"
+  "finished_at": "2026-11-06T15:02:34+00:00"
 }
