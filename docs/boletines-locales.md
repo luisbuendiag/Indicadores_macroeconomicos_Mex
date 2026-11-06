@@ -1,9 +1,11 @@
 # Notas desde boletines recibidos
 
-En la ficha IMAI, **Cargar boletín** abre un panel integrado en el dashboard. Permite seleccionar o arrastrar y soltar un único PDF. El lector se mantiene aislado dentro de un iframe del mismo sitio (`cargar-boletin.html?embedded=1`), conserva su CSP y se destruye al cerrar el panel. El piloto lee un PDF con texto seleccionable, cinco páginas y hasta 20 MB. Extrae el periodo, fecha declarada, índice base 2018 y cuadros ajustados y originales; presenta las cifras y prepara un Word editable con tres tablas y dos gráficas.
+Disponible en IMAI, IGAE, IMOAM y EMIM mediante **Cargar boletín**. La selección y el arrastre de un único PDF se procesan dentro de la ficha, en un lector aislado del mismo sitio. Cuando la nota está lista se oculta la zona de carga; **Borrar archivo** restablece la selección y revoca la descarga temporal.
 
-El PDF se procesa en memoria del navegador. No hay cargas, almacenamiento, analítica, llamadas a IA ni cambios en datos o notas oficiales. Las dependencias y la plantilla institucional se sirven desde el mismo sitio. Limpiar el archivo elimina la selección y revoca la descarga temporal. El Word identifica el resultado como documento de trabajo, no certifica publicación oficial.
+El archivo permanece en memoria del navegador. No hay cargas al servidor, almacenamiento, analítica ni llamadas a IA. No se alteran las cifras o notas oficiales del dashboard. Los PDF preliminares conservan su fecha declarada, incluso futura, y el Word identifica la versión recibida.
 
-La plantilla institucional vigente es de 2026: se rechazan otros años y estructuras no reconocidas. No se admite OCR, PDF escaneado ni otro indicador. La fecha declarada puede ser futura para permitir versiones preliminares. Si faltan cifras o no coinciden portada y cuadros, se detiene la generación. Antes de distribuir una nota debe revisarse contra el archivo recibido. Los PDF preliminares con una estructura distinta requieren validación y adaptación.
+Cada módulo lee sus cuadros, verifica periodos y coteja la portada. IMAI e IGAE separan tasas ajustadas, originales y acumuladas; EMIM conserva las cuatro variables y valida los 21 subsectores originales; IMOAM presenta estimaciones originales con IC al 95%, sin inventar una base o variación mensual ajustada.
 
-Pruebas: `node --test tests/bulletin_upload.test.mjs`. La ampliación a otros indicadores exige extractores, reglas y documentos de prueba propios; no basta habilitar el botón. El flujo Python de publicación oficial permanece separado.
+Se admiten archivos de hasta 20 MB con texto seleccionable: cinco páginas para IMAI, IGAE y EMIM; cuatro para IMOAM. El membrete vigente es de 2026. Cambios de estructura, datos ambiguos o controles fallidos detienen la generación. No se admite OCR.
+
+Pruebas: `node --test tests/bulletin_upload.test.mjs tests/bulletin_products.test.mjs`. La ampliación requiere reglas y ejemplos propios de cada indicador. El flujo Python de publicación oficial permanece separado.

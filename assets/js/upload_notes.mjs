@@ -1,12 +1,15 @@
 import {pdfFromFiles} from './bulletin_files.mjs';
 import {getDocument,GlobalWorkerOptions} from '../vendor/pdfjs/pdf.min.mjs';
-import {parseImai} from './bulletin_imai.mjs';
-import {buildDocx} from './bulletin_docx.mjs';
-import {drawComponentChart,chartBytes} from './bulletin_charts.mjs';
+import {parseBulletin,PRODUCTS} from './bulletin_parsers.mjs';
+import {buildDocx} from './bulletin_docx.mjs?v=actividad-manufactura-20261106';
+import {drawNoteChart,chartBytes} from './bulletin_charts.mjs?v=actividad-manufactura-20261106';
 GlobalWorkerOptions.workerSrc=new URL('../vendor/pdfjs/pdf.worker.min.mjs',import.meta.url).href;
 const $=id=>document.getElementById(id),fileInput=$('bulletin-file'),status=$('upload-status');
 let template,facts=null,task=null,version=0;const urls=new Set();
 const dropZone=$('drop-zone');
+const key=new URLSearchParams(location.search).get('indicator')||'IMAI',product=Object.hasOwn(PRODUCTS,key)?PRODUCTS[key]:null;
+if(product){document.title='Crear nota desde PDF · '+key;$('product-name').textContent=key+' · '+product.name;$('upload-hint').textContent=`PDF con texto seleccionable · ${product.pages} páginas · máximo 20 MB`;document.querySelector('.back').href='./#'+key;document.querySelector('.back').textContent='← Volver a '+key;}
+
 if(new URLSearchParams(location.search).get('embedded')==='1') {
  document.body.classList.add('embedded');
  const workspace=document.querySelector('.workspace');
@@ -24,9 +27,14 @@ function lines(items){
 }
 function show(f){
  $('facts-meta').replaceChildren();
- for(const [label,value] of [['Periodo',f.period],['Fecha declarada',f.publicationDate],['Índice base '+f.base+'=100',f.index.toFixed(1)+' puntos']]){const box=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=value;box.append(dt,dd);$('facts-meta').append(box);}
+ const meta=[['Periodo',f.period],['Fecha del boletín',f.publicationDate]];if(f.index!==undefined)meta.push([f.base?'Índice base '+f.base+'=100':'Índice estimado',f.index.toFixed(1)+' puntos']);else meta.push(['Variables','Producción, empleo, horas y remuneraciones']);
+ for(const [label,value] of meta){const box=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=value;box.append(dt,dd);$('facts-meta').append(box);}
  $('facts-rows').replaceChildren();
- for(const row of f.rows){const tr=document.createElement('tr');for(const v of [row.label.startsWith('Generación')?'Energía, agua y gas':row.label,row.mom.toFixed(1)+'%',row.yoy.toFixed(1)+'%']){const td=document.createElement('td');td.textContent=v;tr.append(td);}$('facts-rows').append(tr);}
+ const estimated=f.indicator==='IMOAM';
+ $('preview-caption').textContent=estimated?'Estimación e intervalo de confianza al 95%':'Cifras desestacionalizadas';
+ $('preview-head').replaceChildren();for(const label of estimated?['Variable','Estimación','Inferior','Superior']:['Actividad','Mensual','Anual']){const th=document.createElement('th');th.scope='col';th.textContent=label;$('preview-head').append(th);}
+ const preview=estimated?[['Índice',...f.indexInterval.map(v=>v.toFixed(1))],['Variación anual',...f.annualInterval.map(v=>v.toFixed(1)+'%')]]:f.rows.map(row=>[row.label.startsWith('Generación')?'Energía, agua y gas':row.label,row.mom.toFixed(1)+'%',row.yoy.toFixed(1)+'%']);
+ for(const row of preview){const tr=document.createElement('tr');for(const v of row){const td=document.createElement('td');td.textContent=v;tr.append(td);}$('facts-rows').append(tr);}
  $('facts-panel').hidden=false;
 }
 async function receiveFiles(files){
@@ -36,13 +44,13 @@ async function receiveFiles(files){
   const file=pdfFromFiles(files);if(!file)return;
   $('selected-file').textContent=file.name;
   if(file.size>20*1024*1024||file.size<8)throw new Error('Selecciona un PDF de hasta 20 MB.');
-  message('Leyendo las cinco páginas y comprobando los cuadros…');
+  message('Leyendo el boletín y comprobando las cifras…');
   const bytes=new Uint8Array(await file.arrayBuffer());if(new TextDecoder().decode(bytes.subarray(0,5))!=='%PDF-')throw new Error('El archivo no es un PDF válido.');
   if(run!==version)return;
   task=getDocument({data:bytes,isEvalSupported:false,disableFontFace:true,useSystemFonts:false,disableAutoFetch:true,disableStream:true,useWorkerFetch:false});
   const parsingTask=task;const timer=setTimeout(()=>parsingTask.destroy(),30000);let pages;
-  try{const pdf=await task.promise;if(pdf.numPages!==5)throw new Error('El piloto IMAI requiere un boletín de cinco páginas.');pages=[];for(let i=1;i<=5;i++){const page=await pdf.getPage(i);const content=await page.getTextContent();if(content.items.length>50000)throw new Error('El documento es demasiado complejo.');pages.push(lines(content.items));}}finally{clearTimeout(timer);}
-  if(run!==version)return;facts=parseImai(pages);show(facts);message('Preparando tablas y gráficas del Word…');await prepareNote(facts,run);if(run===version){dropZone.hidden=true;message('Nota preparada. Revisa el periodo y las cifras antes de descargarla.');const title=$('facts-title');title.tabIndex=-1;title.focus();}
+  try{const pdf=await task.promise;if(pdf.numPages!==product.pages)throw new Error(`El boletín ${key} requiere ${product.pages} páginas.`);pages=[];for(let i=1;i<=product.pages;i++){const page=await pdf.getPage(i);const content=await page.getTextContent();if(content.items.length>50000)throw new Error('El documento es demasiado complejo.');pages.push(lines(content.items));}}finally{clearTimeout(timer);}
+  if(run!==version)return;facts=parseBulletin(key,pages);show(facts);message('Preparando tablas y gráficas del Word…');await prepareNote(facts,run);if(run===version){dropZone.hidden=true;message('Nota preparada. Revisa el periodo y las cifras antes de descargarla.');const title=$('facts-title');title.tabIndex=-1;title.focus();}
  }catch(error){if(run===version){facts=null;$('facts-panel').hidden=true;message(error.name==='PasswordException'?'El PDF está protegido. Utiliza una copia sin contraseña.':error.message||'No se pudo leer el PDF. No se generó la nota.',true);}}
  finally{if(run===version){await task?.destroy();task=null;}}
 }
@@ -63,12 +71,13 @@ for(const eventName of ['dragenter','dragover','dragleave','drop']){
 for(const eventName of ['dragover','drop'])document.addEventListener(eventName,event=>event.preventDefault());
 $('clear-file').addEventListener('click',()=>{release();message('Archivo borrado. Puedes seleccionar otro boletín.');});
 async function prepareNote(f,run){
- const pngs={};for(const field of ['mom','yoy']){const canvas=document.createElement('canvas');drawComponentChart(canvas,f,field);pngs[field]=await chartBytes(canvas);canvas.width=canvas.height=0;}
+ const pngs={};for(const field of ['mom','yoy']){const canvas=document.createElement('canvas');drawNoteChart(canvas,f,field);pngs[field]=await chartBytes(canvas);canvas.width=canvas.height=0;}
  if(run!==version)return;
  const bytes=buildDocx(f,template,pngs),blob=new Blob([bytes],{type:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'}),url=URL.createObjectURL(blob);urls.add(url);
- const link=$('generate-note');link.href=url;link.download=`IMAI_nota_${f.ym}_recibida.docx`;link.setAttribute('aria-disabled','false');
+ const link=$('generate-note');link.href=url;link.download=`${f.indicator}_nota_${f.ym}_recibida.docx`;link.setAttribute('aria-disabled','false');
 }
 window.addEventListener('pagehide',release);
 try{
+ if(!product)throw new Error('Indicador no disponible.');
  const response=await fetch('data/source/notas_machote/_PLANTILLA_NOTAS_VISUAL.docx',{cache:'force-cache'});if(!response.ok)throw new Error('No se pudo cargar la plantilla institucional.');template=new Uint8Array(await response.arrayBuffer());await document.fonts.load('11px "Noto Sans"');await document.fonts.load('600 11px "Noto Sans"');fileInput.disabled=false;message('Listo para recibir el boletín.');
 }catch(error){message(error.message,true);}

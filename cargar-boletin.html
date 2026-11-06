@@ -8,21 +8,21 @@
 </head><body>
 <main class="workspace">
  <a class="back" href="./#IMAI">← Volver a IMAI</a>
- <header><p class="eyebrow">IMAI · NOTA DE TRABAJO</p><h1>Del boletín a tu nota Word</h1><p class="intro">Carga el PDF recibido y prepara una nota editable con tablas y gráficas.</p></header>
+ <header><p class="eyebrow" id="product-name">IMAI</p><h1>Crear nota Word</h1><p class="intro">Carga el PDF recibido y prepara una nota editable con tablas y gráficas.</p></header>
  <section id="drop-zone" class="upload-card" aria-labelledby="upload-title">
   <div><h2 id="upload-title">Arrastra tu PDF aquí</h2><p>También puedes seleccionarlo con el botón. El archivo se procesa en este navegador. No se sube al servidor ni modifica el dashboard.</p></div>
   <label class="file-label" for="bulletin-file">Seleccionar PDF</label><input id="bulletin-file" type="file" accept=".pdf,application/pdf" disabled>
   <p id="selected-file" class="selected-file" aria-live="polite"></p>
-  <p class="hint">Piloto IMAI · PDF con texto seleccionable · 5 páginas · máximo 20 MB</p>
+  <p class="hint" id="upload-hint">PDF con texto seleccionable · 5 páginas · máximo 20 MB</p>
  </section>
  <p id="upload-status" role="status" aria-live="polite">Preparando el formato de la nota…</p>
  <section id="facts-panel" hidden aria-labelledby="facts-title">
   <div class="result-head"><div><p class="eyebrow">ARCHIVO RECIBIDO</p><h2 id="facts-title">Revisa el periodo y las cifras</h2></div><button id="clear-file" class="secondary" type="button">Borrar archivo</button></div>
   <dl id="facts-meta"></dl>
-  <div class="table-wrap"><table><caption>Cifras desestacionalizadas</caption><thead><tr><th scope="col">Actividad</th><th scope="col">Mensual</th><th scope="col">Anual</th></tr></thead><tbody id="facts-rows"></tbody></table></div>
+  <div class="table-wrap"><table><caption id="preview-caption">Cifras desestacionalizadas</caption><thead><tr id="preview-head"><th scope="col">Actividad</th><th scope="col">Mensual</th><th scope="col">Anual</th></tr></thead><tbody id="facts-rows"></tbody></table></div>
   <div class="actions"><a id="generate-note" class="download" aria-disabled="true">↓ Descargar nota Word</a><span>Dos páginas · tablas editables · versión recibida</span></div>
  </section>
- <p class="footnote">La fecha y las cifras se toman del archivo. Esta herramienta no acredita que el boletín haya sido publicado oficialmente. Si cambia su estructura o no se lee con seguridad, no genera la nota.</p>
+ <p class="footnote">Las cifras corresponden al PDF recibido. Revisa la nota antes de compartirla.</p>
 </main>
-<script type="module" src="assets/js/upload_notes.mjs?v=compact-ready-20261106"></script>
+<script type="module" src="assets/js/upload_notes.mjs?v=actividad-manufactura-20261106"></script>
 </body></html>

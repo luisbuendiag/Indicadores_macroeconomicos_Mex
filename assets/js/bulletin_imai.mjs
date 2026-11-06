@@ -1,10 +1,10 @@
-/* Reglas del piloto IMAI. Archivo aportado, independiente del corte publicado. */
+/* Reglas de extracción del IMAI. Archivo aportado, independiente del corte publicado. */
 export const LABELS=['Actividad industrial','Minería','Generación, transmisión','Construcción','Industrias manufactureras'];
 export const MONTHS=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 const clean=s=>s.normalize('NFKC').replace(/[−–]/g,'-').replace(/\u00a0/g,' ');
 const fail=m=>{throw new Error(m);};
 export function parseImai(pages){
- if(pages.length!==5||pages.some(p=>!p.trim()))fail('El piloto reconoce boletines IMAI de cinco páginas con texto seleccionable. No se generó la nota.');
+ if(pages.length!==5||pages.some(p=>!p.trim()))fail('Se requieren boletines IMAI de cinco páginas con texto seleccionable. No se generó la nota.');
  pages=pages.map(clean);const cover=pages[0];
  if(!/\(\s*IMAI\s*\)/.test(cover)||!/ACTIVIDAD INDUSTRIAL/i.test(cover))fail('El archivo no corresponde al IMAI.');
  const publication=cover.match(/(\d{1,2})\s+de\s+(\p{L}+)\s+de\s+(\d{4})/iu);
