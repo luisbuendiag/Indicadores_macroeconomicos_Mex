@@ -1123,3 +1123,6 @@ th.sortable:hover { background: var(--line); }
 }
 [hidden] {display:none!important}
 @media print {.history-toolbar {display:none}.range-card {display:none}.history-data tbody tr[hidden] {display:table-row!important}}
+
+/* Local bulletin workspace, opened only on request inside the indicator. */
+.bulletin-upload-panel{margin-top:20px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}.bulletin-panel-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 20px;background:#f4f6f4;border-bottom:1px solid var(--line)}.bulletin-panel-heading h3{margin:0;font:600 15px var(--sans);color:var(--dkgreen)}.bulletin-panel-close{font:600 12px var(--sans);background:#fff;border:1px solid var(--line);padding:7px 12px}.bulletin-upload-frame{display:block;border:0;width:100%;height:380px;background:#fff}@media(max-width:600px){.bulletin-panel-heading{padding:12px 16px}.bulletin-upload-frame{height:440px}}@media print{.bulletin-upload-panel{display:none!important}}

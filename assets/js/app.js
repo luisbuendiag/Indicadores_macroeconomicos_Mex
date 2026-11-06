@@ -150,9 +150,23 @@ function productToolbar(ind) {
     productBtn("Excel", "↓", xlsxReady, xlsxTitle, () => downloadProduct(xlsxUrl(ind), `${ind.key}_datos.xlsx`), "excel")
   );
   if (ind.key === "IMAI") {
-    bar.append(productBtn("Cargar boletín", "↑", true, "Crear una nota Word desde un PDF, sin subirlo al servidor", () => {
-      window.open("cargar-boletin.html", "_blank", "noopener,noreferrer");
-    }, "cargar-boletin"));
+    const uploadButton = productBtn("Cargar boletín", "↑", true, "Crear una nota Word desde un PDF, sin subirlo al servidor", () => {
+      const head = bar.closest(".ficha-head");
+      if (!head) return;
+      const previous = head.querySelector(".bulletin-upload-panel");
+      if (previous) { previous.remove(); uploadButton.setAttribute("aria-expanded", "false"); return; }
+      const close = () => { panel.remove(); uploadButton.setAttribute("aria-expanded", "false"); uploadButton.focus(); };
+      const panel = el("section", { class: "bulletin-upload-panel", id: "bulletin-upload-IMAI", "aria-label": "Crear nota desde un boletín IMAI" });
+      const closeButton = el("button", { type: "button", class: "btn bulletin-panel-close", onclick: close, "aria-label": "Cerrar carga de boletín" }, "Cerrar ×");
+      const frame = el("iframe", { src: "cargar-boletin.html?embedded=1", title: "Generador local de notas IMAI", class: "bulletin-upload-frame", referrerpolicy: "no-referrer" });
+      panel.append(el("div", { class: "bulletin-panel-heading" }, el("h3", {}, "Nota desde un boletín recibido"), closeButton), frame);
+      head.append(panel);
+      uploadButton.setAttribute("aria-expanded", "true");
+      closeButton.focus();
+    }, "cargar-boletin");
+    uploadButton.setAttribute("aria-expanded", "false");
+    uploadButton.setAttribute("aria-controls", "bulletin-upload-IMAI");
+    bar.append(uploadButton);
   }
   const noteButton = bar.querySelector('[data-product="nota"]');
   if (noteButton) bar.prepend(noteButton);
