@@ -421,7 +421,7 @@ function renderHeaderAndLegend(ctx, sec) {
   const asOfText = asOf ? displayDate(asOf) : "—";
 
   const sub = el("div", { class: "section-sub" },
-    `Calendarios de INEGI, Banco de México y Secretaría de Economía · Corte del calendario: ${asOfText}.`
+    `Corte del calendario: ${asOfText}.`
   );
 
   const srcChips = el("div", { class: "cal-legend" });
@@ -434,7 +434,8 @@ function renderHeaderAndLegend(ctx, sec) {
     srcChips.append(chip);
   });
 
-  sec.append(sub, srcChips);
+  const context=el("div",{class:"cal-source-context"},sub,srcChips);
+  sec.append(context);
 }
 
 function renderHighlights(ctx) {
@@ -825,7 +826,7 @@ function drawCalMonths(ctx, host) {
 
 function monthCard(ctx, year, month, events) {
   const card = el("div", { class: "panel cal-month" });
-  card.append(el("div", { class: "cal-month-title" }, `${MES_NOMBRES[month - 1]} ${year}`));
+  if(calState.months !== 1) card.append(el("div", { class: "cal-month-title" }, `${MES_NOMBRES[month - 1]} ${year}`));
 
   const byDay = new Map();
   events.forEach((p) => {

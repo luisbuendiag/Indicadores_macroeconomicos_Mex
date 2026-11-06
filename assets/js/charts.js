@@ -275,11 +275,11 @@ export function buildOption(ind, windowId) {
       extraCssText: "box-shadow:0 5px 16px rgba(0,0,0,.13);border-radius:9px;",
       formatter: (params) => {
         if (!params || !params.length) return "";
-        let html = `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${params[0].axisValue}</div>`;
+        let html = `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${params[0].axisValue}</div>`;
         params.forEach((p) => {
           const s = series.find((se) => se.name === p.seriesName);
           const fmt = s ? s._fmt : "num";
-          html += `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${tipFormatter(fmt)(p.value)}</span></div>`;
+          html += `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${tipFormatter(fmt)(p.value)}</span></div>`;
         });
         return html;
       },
@@ -347,7 +347,7 @@ function lastHighlight(series, periods, values, color, formatter) {
         itemStyle: { color: COLORS.INK, borderColor: color, borderWidth: 2 },
         label: {
           show: true, position: "top", distance: 4, color: "#3d403b",
-          fontFamily: "'IBM Plex Mono',monospace", fontSize: 10,
+          fontFamily: "'Noto Sans',sans-serif", fontSize: 10,
           formatter: (p) => fmt(p.value),
         },
         data: [{ coord: [periods[i], values[i]] }],
@@ -410,8 +410,8 @@ export function buildPibsecLevels(obs) {
         const p = params[0];
         const v = p.value;
         const val = v == null ? "—" : (v / 1e6).toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " billones de pesos de 2018";
-        return `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
-          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${val}</span></div>`;
+        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
       },
     },
     toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "PIBT-niveles", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
@@ -429,7 +429,7 @@ const PIBSEC_VAR = [
 function pctTip(value, name, color) {
   if (value == null) return "";
   const s = value >= 0 ? "+" : "";
-  return `<div style="display:flex;align-items:center;gap:8px;margin:2px 0"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:${color}"></span><span style="flex:1;color:#5c5f5a;font-size:11px">${name}</span><span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${s}${value.toFixed(2)}%</span></div>`;
+  return `<div style="display:flex;align-items:center;gap:8px;margin:2px 0"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:${color}"></span><span style="flex:1;color:#5c5f5a;font-size:11px">${name}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${s}${value.toFixed(2)}%</span></div>`;
 }
 
 export function buildPibsecVariations(obs) {
@@ -487,7 +487,7 @@ export function buildPibsecVariations(obs) {
       formatter: (params) => {
         if (!params || !params.length) return "";
         const p0 = params[0];
-        let html = `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p0.axisValue}</div>`;
+        let html = `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p0.axisValue}</div>`;
         params.forEach((p) => {
           const cfg = PIBSEC_VAR.find((c) => c.name === p.seriesName);
           html += pctTip(p.value, p.seriesName, cfg ? cfg.color : COLORS.GRAY);
@@ -559,8 +559,8 @@ export function buildEmoeSectors(obs) {
         const p = params[0];
         const v = p.value;
         const val = v == null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " puntos";
-        return `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
-          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${val}</span></div>`;
+        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
       },
     },
     toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "EMOE-sectores", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
@@ -642,8 +642,8 @@ export function buildSicComponents(obs, group) {
         const p = params[0];
         const v = p.value;
         const val = v == null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " puntos";
-        return `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
-          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${val}</span></div>`;
+        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
       },
     },
     toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "SIC-componentes-" + group, pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
@@ -708,8 +708,8 @@ export function buildIgaeLevels(obs) {
         const p = params[0];
         const v = p.value;
         const val = v == null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-        return `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
-          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${val}</span></div>`;
+        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
       },
     },
     toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "IGAE-niveles", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
@@ -759,7 +759,7 @@ export function buildIgaeVariations(obs) {
       formatter: (params) => {
         if (!params || !params.length) return "";
         const p0 = params[0];
-        let html = `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p0.axisValue}</div>`;
+        let html = `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p0.axisValue}</div>`;
         params.forEach((p) => {
           const cfg = IGAE_VAR.find((c) => c.name === p.seriesName);
           html += pctTip(p.value, p.seriesName, cfg ? cfg.color : COLORS.GRAY);
@@ -831,8 +831,8 @@ export function buildImaiLevels(obs) {
         const p = params[0];
         const v = p.value;
         const val = v == null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-        return `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
-          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${val}</span></div>`;
+        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
       },
     },
     toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "IMAI-niveles", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
@@ -904,7 +904,7 @@ export function buildImaiVariations(obs) {
       formatter: (params) => {
         if (!params || !params.length) return "";
         const p0 = params[0];
-        let html = `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p0.axisValue}</div>`;
+        let html = `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p0.axisValue}</div>`;
         params.forEach((p) => {
           const cfg = IMAI_VAR.find((c) => c.name === p.seriesName);
           html += pctTip(p.value, p.seriesName, cfg ? cfg.color : COLORS.GRAY);
@@ -984,8 +984,8 @@ export function buildImfbcfLevels(obs) {
         const p = params[0];
         const v = p.value;
         const val = v == null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-        return `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
-          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${val}</span></div>`;
+        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
       },
     },
     toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "IMFBCF-niveles", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
@@ -1060,7 +1060,7 @@ export function buildImfbcfVariations(obs) {
       formatter: (params) => {
         if (!params || !params.length) return "";
         const p0 = params[0];
-        let html = `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p0.axisValue}</div>`;
+        let html = `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p0.axisValue}</div>`;
         params.forEach((p) => {
           const cfg = IMFBCF_VAR.find((c) => c.name === p.seriesName);
           html += pctTip(p.value, p.seriesName, cfg ? cfg.color : COLORS.GRAY);
@@ -1131,8 +1131,8 @@ export function buildEmimLevels(obs) {
         const p = params[0];
         const v = p.value;
         const val = v == null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-        return `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
-          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${val}</span></div>`;
+        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
       },
     },
     toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "EMIM-niveles", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
@@ -1207,7 +1207,7 @@ export function buildEmimVariations(obs) {
       formatter: (params) => {
         if (!params || !params.length) return "";
         const p0 = params[0];
-        let html = `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p0.axisValue}</div>`;
+        let html = `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p0.axisValue}</div>`;
         params.forEach((p) => {
           const cfg = EMIM_VAR.find((c) => p.seriesName === c.name || p.seriesName === `${c.name} (desest.)`);
           html += pctTip(p.value, p.seriesName, cfg ? cfg.color : COLORS.GRAY);
@@ -1266,7 +1266,7 @@ function moneyTip(value, name, color) {
   if (value == null) return "";
   const s = value < 0 ? "−" : "";
   const txt = s + "$" + Math.abs(value).toLocaleString("es-MX", { maximumFractionDigits: 0 }) + " mdd";
-  return `<div style="display:flex;align-items:center;gap:8px;margin:2px 0"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:${color}"></span><span style="flex:1;color:#5c5f5a;font-size:11px">${name}</span><span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${txt}</span></div>`;
+  return `<div style="display:flex;align-items:center;gap:8px;margin:2px 0"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:${color}"></span><span style="flex:1;color:#5c5f5a;font-size:11px">${name}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${txt}</span></div>`;
 }
 
 export function buildBcmmLevels(obs) {
@@ -1320,7 +1320,7 @@ export function buildBcmmLevels(obs) {
       formatter: (params) => {
         if (!params || !params.length) return "";
         const p0 = params[0];
-        let html = `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p0.axisValue}</div>`;
+        let html = `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p0.axisValue}</div>`;
         params.forEach((p) => {
           html += moneyTip(p.value, p.seriesName, p.color);
         });
@@ -1412,7 +1412,7 @@ export function buildBcmmVariations(obs) {
       formatter: (params) => {
         if (!params || !params.length) return "";
         const p0 = params[0];
-        let html = `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p0.axisValue}</div>`;
+        let html = `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p0.axisValue}</div>`;
         params.forEach((p) => {
           html += pctTip(p.value, p.seriesName, p.color);
         });
@@ -1481,8 +1481,8 @@ export function buildDesocupRates(ind, obs) {
         const p = params[0];
         const v = p.value;
         const val = v == null ? "—" : v.toFixed(1) + "%";
-        return `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
-          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${val}</span></div>`;
+        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
       },
     },
     toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "desocup-rates", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
@@ -1525,8 +1525,8 @@ export function buildDesocupPoblacion(ind, obs) {
         const p = params[0];
         const v = p.value;
         const val = v == null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + " millones de personas";
-        return `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
-          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">Población ocupada</span><span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${val}</span></div>`;
+        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">Población ocupada</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
       },
     },
     toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "desocup-poblacion", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
@@ -1552,8 +1552,8 @@ export function buildReservasLevel(obs) {
         const p = params[0];
         const v = p.value;
         const val = v == null ? "—" : fmtVal(v, "mdd");
-        return `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
-          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">Reserva internacional</span><span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${val}</span></div>`;
+        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">Reserva internacional</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
       },
     },
     toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "reservas-nivel", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
@@ -1599,8 +1599,8 @@ export function buildReservasChange(obs) {
         const p = params[0];
         const v = p.value;
         const val = v == null ? "—" : fmtVal(v, "mdd-signed");
-        return `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
-          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">Cambio semanal</span><span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${val}</span></div>`;
+        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">Cambio semanal</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
       },
     },
     toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "reservas-cambio", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },

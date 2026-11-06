@@ -70,12 +70,12 @@ export const KPICFG = {
 
 export const CAPTIONS = {
   PIB: "Variación trimestral desestacionalizada del PIB oportuno (barras) y su variación anual desestacionalizada (línea). Ambas en porcentaje.",
-  PIBSEC: "Niveles del PIB y las grandes actividades económicas (small multiples, arriba) y variaciones trimestrales y anuales agrupadas (abajo). Las variaciones a partir de 2021 provienen del boletín PIBT; antes se calculan a partir de los niveles originales.",
+  PIBSEC: "Niveles en billones de pesos de 2018; variaciones trimestrales y anuales en porcentaje. Las variaciones a partir de 2021 provienen del boletín PIBT; antes se calculan a partir de los niveles originales.",
   SIC: "Indicadores Coincidente y Adelantado del INEGI (componentes cíclicos en puntos) con la línea de tendencia de largo plazo en 100, y el ciclo de sus componentes oficiales.",
-  IGAE: "Niveles del IGAE y actividades primarias, secundarias y terciarias (small multiples, arriba) y variación anual original agrupada (abajo). La variación mensual desestacionalizada proviene del boletín oficial.",
-  IMAI: "Niveles desestacionalizados del IMAI y sus cuatro sectores (small multiples, arriba) y variaciones mensuales y anuales desestacionalizadas agrupadas (abajo). Las variaciones del mes más reciente provienen del boletín oficial.",
+  IGAE: "Índices base 2018=100 y variaciones anuales originales. La variación mensual desestacionalizada proviene del boletín oficial.",
+  IMAI: "Índices base 2018=100 y variaciones mensuales y anuales desestacionalizadas. Las variaciones del mes más reciente provienen del boletín oficial.",
   CONSUMO: "Índice de volumen físico del consumo privado (línea verde), variación mensual desestacionalizada (línea guinda) y variación anual desestacionalizada (línea oro), ambas en eje derecho.",
-  IMFBCF: "Niveles desestacionalizados del IMFBCF y sus componentes (construcción, maquinaria y equipo, nacional e importado; small multiples, arriba) y variaciones mensuales y anuales agrupadas (abajo). Las variaciones del mes más reciente provienen del boletín oficial; las series históricas se obtienen de Banco de México (SIE).",
+  IMFBCF: "Índices base 2018=100 y variaciones mensuales y anuales desestacionalizadas. Las variaciones del mes más reciente provienen del boletín oficial; las series históricas se obtienen de Banco de México (SIE).",
   IMOAM: "Índice estimado del IMAI manufacturero (base 2018=100) y variación anual estimada, con sus intervalos de confianza al 95%. Estadística experimental con cifras originales; cada punto corresponde a la estimación publicada para ese mes.",
   IOAE: "Nowcast anual del IGAE con intervalo de confianza al 95%, variación mensual estimada y contraste con el IGAE observado una vez publicado.",
   EMIM: "Evolución de la producción, personal ocupado, horas trabajadas y remuneraciones medias reales de la industria manufacturera. Las variaciones históricas son cifras originales calculadas a partir de los índices BIE; las desestacionalizadas provienen del boletín oficial para el mes más reciente.",

@@ -3,7 +3,7 @@ import { ORDER, PRINCIPAL, COMPLEMENTARIOS, LABELS, SIGLA, CAPTIONS, WINDOWS, IE
 import { computeKPI, analysis, annualVar } from "./metrics.js";
 import { buildOption, rangeStats, applyWindow, buildPibsecLevels, buildPibsecVariations, buildIgaeLevels, buildIgaeVariations, buildImaiLevels, buildImaiVariations, buildEmimLevels, buildEmimVariations, buildBcmmLevels, buildBcmmVariations, buildImfbcfLevels, buildImfbcfVariations, buildDesocupRates, buildDesocupPoblacion, buildEmoeSectors, buildSicComponents, buildReservasLevel, buildReservasChange } from "./charts.js";
 import { fmtVal, perLong, perShort } from "./format.js";
-import * as cal from "./calendar.js?v=calendario-proximas-20261105";
+import * as cal from "./calendar.js?v=editorial-20261106";
 
 const state = {
   data: null, manifest: null, noticias: null, calendario: null,
@@ -47,6 +47,10 @@ function calendarioDisponible(ind) { return cal.calendarioDisponible(calCtx(), i
 function openCalendarioFiltro(ind) { cal.openCalendarioFiltro(calCtx(), ind); }
 function buildCalendarioPanel(ind) { return cal.buildCalendarioPanel(calCtx(), ind); }
 function renderCalendar() { cal.renderCalendar(calCtx()); }
+
+function sourceInstitution(source) {
+  return /INEGI/i.test(source) ? "INEGI" : /Banco de M[eé]xico|Banxico/i.test(source) ? "Banco de México" : /Secretar[ií]a de Econom[ií]a/i.test(source) ? "Secretaría de Economía" : source;
+}
 
 function estadoBadge(ind) {
   const est = ind.estado || "no disponible";
@@ -192,7 +196,6 @@ function closeModal() {
 function renderHeader() {
   const meta = state.data.meta || {};
   const lastUpdate = meta.last_update_ct;
-  const ref = meta.periodo_referencia_reciente;
   if (lastUpdate) {
     const d = new Date(lastUpdate);
     $("#meta-update").textContent = d.toLocaleDateString("es-MX", { timeZone: "America/Mexico_City", day: "2-digit", month: "long", year: "numeric" });
@@ -201,7 +204,6 @@ function renderHeader() {
     $("#meta-update").textContent = "—";
     $("#meta-update").removeAttribute("title");
   }
-  $("#meta-period").textContent = ref ? ref.period_long : "—";
 }
 
 // ---------------- Navigation ----------------
@@ -220,7 +222,12 @@ function renderNav() {
 
 function setView(id) {
   state.active = id;
-  document.querySelectorAll(".tab").forEach((t) => t.setAttribute("aria-selected", String(t.id === `tab-${id}`)));
+  const section=PRINCIPAL.includes(id) ? "panorama" : COMPLEMENTARIOS.includes(id) ? "entorno" : id;
+  document.querySelectorAll(".tab").forEach(t=>{
+    const selected=t.id === `tab-${section}`;
+    t.setAttribute("aria-selected",String(selected));
+    t.setAttribute("aria-controls",selected ? `view-${id}` : `view-${t.id.slice(4)}`);
+  });
   document.querySelectorAll(".view").forEach((s) => s.classList.toggle("active", s.id === `view-${id}`));
   document.body.setAttribute("data-view", id);
   if (`#${id}` !== window.location.hash) { try { history.replaceState(null, "", `#${id}`); } catch (e) { /* file:// */ } }
@@ -254,7 +261,7 @@ function panoramaCard(ind) {
   const cfg = KPICFG[ind.key];
   const metrics = ind.metrics || {};
   const k = metrics.kpi || computeKPI(ind);
-  const stateBadge = estadoBadge(ind);
+  const stateBadge = ind.estado === "ACTUALIZADO" ? null : estadoBadge(ind);
   const sigla = SIGLA[ind.key] || ind.key;
   const fullName = ind.nombre || LABELS[ind.key];
   let period = k ? k.ultimoP : (ind.last_observation || "—");
@@ -265,7 +272,7 @@ function panoramaCard(ind) {
     stateBadge
   );
   const name = el("div", { class: "mc-name" }, fullName);
-  const eyebrow = el("div", { class: "mc-eyebrow" }, `${sigla} · ${period}`);
+  const eyebrow = el("div", { class: "mc-eyebrow" }, period);
 
   if (!k) {
     return el("button", { class: "matrix-card na", type: "button", onclick: () => setView(ind.key) },
@@ -302,6 +309,7 @@ function panoramaCard(ind) {
       el("div", { class: `mc-delta ${deltaCls}` }, el("span", { class: "d-val" }, k.varText), el("span", { class: "d-lbl" }, k.varLabel || cfg.varLabel)),
       secondKpi ? el("div", { class: "mc-delta neutral" }, el("span", { class: "d-val" }, secondKpi.text), el("span", { class: "d-lbl" }, secondKpi.label)) : null),
   );
+  splitMetricValue(card.querySelector(".mc-value"));
   return card;
 }
 
@@ -322,32 +330,11 @@ function classifyPanorama() {
   return { avances, retrocesos, senales };
 }
 
-function coyunturaBullets() {
-  const bullets = [];
-  const igae = getInd("IGAE");
-  if (hasData(igae)) { const k = computeKPI(igae); if (k) bullets.push(`La actividad económica (IGAE) se ubicó en ${fmtVal(k.ultimoRaw, "idx")} puntos en ${k.ultimoP}, con una ${k.varText} ${k.varLabel.toLowerCase()}.`); }
-  const sic = getInd("SIC");
-  if (hasData(sic)) { const k = computeKPI(sic); if (k && k.coincidente) bullets.push(`El Indicador Coincidente del SIC se ubicó en ${k.coincidente.valorFmt || (fmtVal(k.ultimoRaw, "idx") + " puntos")} en ${k.coincidente.periodo || k.ultimoP} (${k.coincidente.difMensualText || k.varText} mensual), ${k.ultimoRaw >= 100 ? "por encima" : "por debajo"} de su tendencia de largo plazo.`); }
-  const pib = getInd("PIB");
-  if (hasData(pib)) { const k = computeKPI(pib); if (k) bullets.push(`El PIB registró un crecimiento anual de ${k.varText} en ${k.ultimoP}.`); }
-  const bal = getInd("BCMM");
-  if (hasData(bal)) { const k = computeKPI(bal); if (k) bullets.push(`La balanza comercial cerró ${k.ultimoP} con un ${k.ultimoRaw >= 0 ? "superávit" : "déficit"} de ${fmtVal(Math.abs(k.ultimoRaw), "usd")} mdd (saldo = exportaciones − importaciones); su variación mensual del saldo fue de ${k.varText} y la anual de ${k.yoyText}.`); }
-  const inpc = getInd("INPC");
-  if (hasData(inpc)) { const k = computeKPI(inpc); if (k) bullets.push(`La inflación general anual fue de ${fmtVal(k.ultimoRaw, "pct-raw")} en ${k.ultimoP} (variación de ${k.varText} frente al mes previo); su clasificación depende del contexto de política monetaria, no del signo por sí solo.`); }
-  const inpp = getInd("INPP");
-  if (hasData(inpp)) { const k = computeKPI(inpp); if (k) bullets.push(`La variación anual del Índice Nacional de Precios Productor fue de ${fmtVal(k.ultimoRaw, "pct-raw")} en ${k.ultimoP} (${k.varText} mensual); refleja la evolución de los precios de producción, distinta a la inflación al consumidor.`); }
-  const des = getInd("DESOCUP");
-  if (hasData(des)) { const k = computeKPI(des); if (k) bullets.push(`La tasa de desocupación fue de ${k.ultimoFmt} de la PEA en ${k.ultimoP} (${k.varText} mensual; ${k.yoyText} anual).`); }
-  return bullets;
-}
-
 function renderPanorama() {
   const sec = $("#view-panorama");
   sec.innerHTML = "";
-  const meta = state.data.meta || {};
-  const ref = meta.periodo_referencia_reciente;
   sec.append(el("div", { class: "section-title" }, "Panorama macroeconómico"));
-  sec.append(el("div", { class: "section-sub" }, `Actualizado el ${meta.last_update_ct ? new Date(meta.last_update_ct).toLocaleDateString("es-MX", { timeZone: "America/Mexico_City" }) : "—"} · periodo de referencia: ${ref ? ref.period_long : "—"}. Selecciona un indicador para ver su ficha.`));
+
 
   // Alerta discreta de estado global (rezagos y errores de fuente).
   const rezagados = principalInds().filter((i) => i.estado === "REZAGADO");
@@ -371,19 +358,19 @@ function renderPanorama() {
 
   const { avances, retrocesos, senales } = classifyPanorama();
   const movBox = el("div", { class: "panel" });
-  movBox.append(el("h3", {}, "Movimientos del periodo"));
-  movBox.append(el("p", { class: "caption" }, "Clasificación solo cuando el signo tiene un significado económico claro; no todo aumento es favorable ni toda caída es desfavorable."));
-  const movGrid = el("div", { class: "mov-grid" });
-  movGrid.append(movList("Avances", avances, "up"));
-  movGrid.append(movList("Retrocesos", retrocesos, "down"));
-  movGrid.append(movList("Señales de atención", senales, "warn"));
-  movBox.append(movGrid);
+  movBox.append(el("h3", {}, "Balance de movimientos"));
+  const counts = el("div", {class:"movement-counts"});
+  [["Favorables",avances.length,"up"],["Adversos",retrocesos.length,"down"],["Sin clasificación",principalInds().filter(hasData).length-avances.length-retrocesos.length,"neutral"]].forEach(([label,count,cls])=>
+    counts.append(el("div",{class:`movement-count ${cls}`},el("strong",{},String(count)),el("span",{},label))));
+  movBox.append(counts,el("p",{class:"caption"},"Según la comparación propia de cada indicador; los periodos de referencia pueden diferir."));
+  if(senales.length) movBox.append(el("ul",{class:"attention-list"},...senales.slice(0,2).map(text=>el("li",{},text))));
+  movBox.append(el("a",{class:"acceso-link",href:"#metodologia"},"Criterios de interpretación →"));
   cols.append(movBox);
 
   const next = el("div", { class: "panel" });
   next.append(el("h3", {}, "Próximos datos por publicarse"));
   const nlist = el("div", {});
-  const upcoming = upcomingPublications(8);
+  const upcoming = upcomingPublications(3);
   if (upcoming.length) {
     upcoming.forEach((c) => {
       const row = el("div", { class: "cal-item" }, el("span", { class: "date" }, c.fecha_publicacion || "—"), el("span", {}, `${c.indicador} · ${c.periodo_referencia || ""}`));
@@ -394,19 +381,9 @@ function renderPanorama() {
     principalInds().forEach((ind) => { if (ind.proximo) nlist.append(el("div", { class: "cal-item" }, el("span", { class: "date" }, ind.proximo), el("span", {}, `${LABELS[ind.key]} · ${ind.fuente?.nombre || ""}`))); });
     if (!nlist.children.length) nlist.append(el("div", { class: "muted" }, "Sin fechas confirmadas. Ver Calendario de publicaciones."));
   }
-  next.append(nlist);
+  next.append(nlist,el("a",{class:"acceso-link",href:"#calendario"},"Ver calendario completo →"));
   cols.append(next);
   sec.append(cols);
-}
-
-function movList(title, items, cls) {
-  const box = el("div", { class: `mov-col ${cls}` });
-  box.append(el("div", { class: "mov-title" }, title, el("span", { class: "mov-count" }, String(items.length))));
-  if (!items.length) { box.append(el("div", { class: "muted" }, "—")); return box; }
-  const ul = el("ul", {});
-  items.forEach((t) => ul.append(el("li", {}, t)));
-  box.append(ul);
-  return box;
 }
 
 // ---------------- Indicator view ----------------
@@ -460,7 +437,7 @@ function fichaHeader(ind) {
   const head = el("div", { class: "ficha-head" });
   const period=ind.periodo_referencia || ind.last_observation || "—";
   const source=ind.fuente?.nombre || "Fuente oficial";
-  const institution=/INEGI/i.test(source) ? "INEGI" : /Banco de M[eé]xico|Banxico/i.test(source) ? "Banco de México" : /Secretar[ií]a de Econom[ií]a/i.test(source) ? "Secretaría de Economía" : source;
+  const institution=sourceInstitution(source);
   const identity=el("div",{class:"fh-identity"},
     el("div",{class:"fh-sigla"},SIGLA[ind.key] || ind.key),
     el("h2",{class:"fh-name"},ind.nombre),
@@ -497,13 +474,17 @@ function indicatorCaption(ind, last = null) {
   return last && last !== ind.last_observation && last !== ind.periodo_referencia ? `${text} Datos hasta ${last}.`.trim() : text;
 }
 
+function splitMetricValue(node) {
+  const text=node.textContent;
+  const match=text.match(/^([+−-]?[\d,.]+)\s+((?:billones|millones|mdd|mdp|pesos|puntos|personas|USD|MXN)\b.*)$/i);
+  if(match) node.replaceChildren(el("span",{class:"metric-value"},match[1])," ",el("span",{class:"metric-unit"},match[2]));
+  if(text.length>24 && !match) node.classList.add("metric-long");
+}
+
 // Separar cifra y unidad sin convertir valores ni cambiar su precisión.
 function refineMetricCards(mini, ind, k) {
   mini.querySelectorAll(".num").forEach(node=>{
-    const text=node.textContent;
-    const match=text.match(/^([+−-]?[\d,.]+)\s+((?:billones|millones|mdd|mdp|pesos|puntos|personas|USD|MXN)\b.*)$/i);
-    if(match) node.replaceChildren(el("span",{class:"metric-value"},match[1])," ",el("span",{class:"metric-unit"},match[2]));
-    if(text.length>24 && !match) node.classList.add("metric-long");
+    splitMetricValue(node);
   });
   if(ind.key === "INPP" && KPICFG.INPP.valCol === KPICFG.INPP.yoyCol) {
     const cards=[...mini.querySelectorAll(".mini")];
@@ -823,6 +804,9 @@ function renderIndicatorView(key) {
     );
   }
   refineMetricCards(mini, ind, k);
+  const extremes=[...mini.querySelectorAll(".mini")].filter(card=>/^(Máximo|Mínimo) de la serie$/.test(card.querySelector(".lbl")?.textContent || ""));
+  const extremesDetails=extremes.length ? el("details",{class:"indicator-extra historical-metrics"},
+    el("summary",{},"Extremos de la serie disponible"),el("div",{class:"mini-kpis"},...extremes)) : null;
   panel.append(mini);
 
   // window toggle + chart
@@ -925,32 +909,43 @@ function renderIndicatorView(key) {
     panel.append(fichaCompareTable(ind, k, cfg, yoy));
   }
 
-  // Síntesis / Principales resultados: fuente única Python (lib_metrics).
-  const readingKeys = ["PIB", "PIBSEC", "SIC", "IGAE", "IMAI", "EMOE", "IED", "TASA", "RESERVAS"];
-  const syn = el("div", { class: "ficha-block" });
-  syn.append(el("h3", { class: "block-sub" }, readingKeys.includes(ind.key) ? "Lectura del indicador" : "Evolución reciente"));
-  if (readingKeys.includes(ind.key)) {
-    const ul = el("ul", { class: "reading-bullets" });
-    resumen.slice(0, 4).forEach((b) => ul.append(el("li", {}, b)));
-    syn.append(ul);
-  } else {
-    resumen.forEach((b) => syn.append(el("p", { class: "prose" }, b)));
-  }
-  const results = (resumen.length > 1 && !readingKeys.includes(ind.key))
-    ? el("div", { class: "ficha-block print-highlight" },
-        el("h3", { class: "block-sub" }, "Principales resultados"),
-        ...resumen.slice(0, 2).map((b) => el("p", { class: "prose" }, b)))
-    : null;
-
-  // Segunda página en impresión: análisis, desglose y tabla de datos.
-  // En pantalla el análisis va tras la gráfica; en impresión se agrupa en la 2ª página.
+  // Una lectura única; omitir frases automáticas que no añaden información.
+  const readings = [...new Set(resumen)].filter(text=>
+    !/^La variación (se clasifica|no tiene)|^En la serie mostrada,/.test(text))
+    .map(text=>text.replace(/contra [a-záéíóú]+ de \d{4} del año previo/g,"contra el mismo mes del año previo"));
+  // PIBT ya presenta estas mismas cifras en las tarjetas y el desglose.
   const page2 = el("div", { class: "ficha-page2" });
-  page2.append(syn);
-  if (results) page2.append(results);
+  if(ind.key === "PIBSEC" && k.cards?.length > 1) {
+    const sectors=k.cards.slice(1).filter(card=>card.qoqRaw != null && card.yoyRaw != null);
+    if(sectors.length) {
+      const quarterly=[...sectors].sort((a,b)=>b.qoqRaw-a.qoqRaw)[0];
+      const annual=[...sectors].sort((a,b)=>b.yoyRaw-a.yoyRaw)[0];
+      const box=el("div",{class:"ficha-block indicator-reading"},el("h3",{class:"block-sub"},"Lectura del indicador"));
+      const reading=el("p",{class:"prose"},"Las ",el("strong",{},quarterly.full.toLowerCase()));
+      if(quarterly === annual) reading.append(" registran la mayor variación trimestral y anual entre las grandes actividades.");
+      else reading.append(" registran la mayor variación trimestral; las ",el("strong",{},annual.full.toLowerCase()),", la mayor variación anual.");
+      box.append(reading);
+      page2.append(box);
+    }
+  } else if(readings.length) {
+    const syn=el("div",{class:"ficha-block indicator-reading"},el("h3",{class:"block-sub"},"Lectura del indicador"));
+    const ul=el("ul",{class:"reading-bullets"});
+    readings.forEach(text=>{
+      const li=el("li");
+      // Un solo énfasis numérico por conclusión; texto siempre escapado.
+      const match=text.match(/[+−-]?\d[\d,.]*\s*(?:%|p\.p\.|puntos|mdd|millones|billones|pb)\b|[+−-]?\d[\d,.]*%/);
+      if(match) li.append(text.slice(0,match.index),el("strong",{},match[0]),text.slice(match.index+match[0].length));
+      else li.append(text);
+      ul.append(li);
+    });
+    syn.append(ul); page2.append(syn);
+  }
 
   // Desglose (breakdown) por componentes cuando aplica
   const bd = (ind.key === "PIBSEC") ? pibsecActivityBlock(ind, k) : breakdown(ind, k);
   if (bd) page2.append(bd);
+
+  if(extremesDetails) page2.append(extremesDetails);
 
   // Tabla
   const tbl = el("div", { class: "ficha-block" });
@@ -960,9 +955,11 @@ function renderIndicatorView(key) {
 
   // Bloques exclusivos de la ficha del PIB Oportuno.
   if (ind.key === "PIB") {
-    page2.append(pibHistoryBlock(ind));
+    const history=el("details",{class:"indicator-extra"},el("summary",{},"Cobertura histórica y nivel tradicional del PIB"),pibHistoryBlock(ind));
     const pibt = pibtBlock(ind);
-    if (pibt) page2.append(pibt);
+    if(pibt) history.append(pibt);
+    history.addEventListener("toggle",()=>{if(history.open) state.charts.pibt?.resize();});
+    page2.append(history);
   }
 
   panel.append(page2);
@@ -971,9 +968,6 @@ function renderIndicatorView(key) {
   const src = el("div", { class: "notes" });
   if (ind.notas && ind.notas.length) src.append(el("div", {}, ind.notas.join("  ·  ")));
   src.append(el("div", {}, `Fuente: ${ind.fuente?.nombre || "—"} · Unidad: ${ind.unidad || "—"} · Ajuste: ${ind.ajuste_estacional || "—"}`, ind.fuente?.link ? el("span", {}, " · ", el("a", { href: ind.fuente.link, target: "_blank", rel: "noopener" }, "serie oficial ↗")) : null));
-  const np = ind.proxima_publicacion || nextPublication(ind.key);
-  if (np) src.append(el("div", {}, `Próxima publicación: ${np.fecha_publicacion} · ${np.periodo_referencia}${np.institucion ? " (" + np.institucion + ")" : ""}`));
-  else if (ind.proximo) src.append(el("div", {}, `Próxima publicación: ${ind.proximo}`));
   panel.append(src);
 
   sec.append(panel);
@@ -1342,9 +1336,9 @@ function mountPibtChart(pibt) {
       formatter: (params) => {
         if (!params || !params.length) return "";
         const p = params[0];
-        return `<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
+        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
           + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">Nivel del PIB</span>`
-          + `<span style="font-family:'IBM Plex Mono',monospace;font-weight:600">${fmtVal(p.value, "bill")}</span></div>`;
+          + `<span style="font-family:'Noto Sans',sans-serif;font-weight:600">${fmtVal(p.value, "bill")}</span></div>`;
       },
     },
     toolbox: {
@@ -1409,7 +1403,7 @@ function renderTable(ind, k) {
     });
     table.append(tbody);
     wrap.append(table);
-    return wrap;
+    return historyControls(wrap,table,ind.key);
   }
   table.append(el("thead", {}, el("tr", {}, el("th", {}, "Periodo"), ...ind.columns.map((c) => el("th", {}, c.label)))));
   const series = k ? k.series : [];
@@ -1420,15 +1414,32 @@ function renderTable(ind, k) {
     idxs.forEach((i) => { if (series[i] > series[maxI]) maxI = i; if (series[i] < series[minI]) minI = i; });
   }
   const tbody = el("tbody");
-  const obsRows = ind.key === "RESERVAS" ? [...ind.observations].reverse() : ind.observations;
+  const obsRows = [...ind.observations].reverse();
   obsRows.forEach((o, ri) => {
-    const originalI = ind.key === "RESERVAS" ? ind.observations.length - 1 - ri : ri;
+    const originalI = ind.observations.length - 1 - ri;
     const cls = originalI === maxI ? "max" : (originalI === minI ? "min" : "");
     tbody.append(el("tr", { class: cls }, el("td", {}, o.period), ...ind.columns.map((c) => el("td", {}, fmtVal(o.values[c.index], c.fmt)))));
   });
   table.append(tbody);
   wrap.append(table);
-  return wrap;
+  return historyControls(wrap,table,ind.key);
+}
+
+function historyControls(wrap,table,key) {
+  const rows=[...table.querySelectorAll("tbody tr")];
+  const box=el("div",{class:"history-data"});
+  const info=el("span",{class:"muted"});
+  const toolbar=el("div",{class:"history-toolbar"},info);
+  let expanded=!!state.openTables[key];
+  wrap.id=`history-${key}`;
+  const update=()=>{
+    rows.forEach((row,i)=>{ row.hidden=!expanded && i>=12; });
+    info.textContent=expanded || rows.length<=12 ? `${rows.length} observaciones · más recientes primero` : `12 de ${rows.length} observaciones · más recientes primero`;
+    if(button) {button.textContent=expanded ? "Ver solo recientes" : "Ver serie completa";button.setAttribute("aria-expanded",String(expanded));}
+  };
+  const button=rows.length>12 ? el("button",{class:"btn btn-ghost",type:"button","aria-controls":wrap.id,onclick:()=>{expanded=!expanded;state.openTables[key]=expanded;update();}},"Ver serie completa") : null;
+  if(button) toolbar.append(button);
+  update();box.append(toolbar,wrap);return box;
 }
 
 // ---------------- Entorno financiero (complementarios) ----------------
@@ -1436,7 +1447,7 @@ function renderEntorno() {
   const sec = $("#view-entorno");
   sec.innerHTML = "";
   sec.append(el("div", { class: "section-title" }, "Entorno financiero"));
-  sec.append(el("div", { class: "section-sub" }, "Inversión externa (Secretaría de Economía) y variables monetarias y financieras de Banco de México: tipo de cambio FIX, tasa objetivo y reservas internacionales."));
+
   const grid = el("div", { class: "matrix" });
   COMPLEMENTARIOS.map(getInd).filter(Boolean).forEach((ind) => grid.append(panoramaCard(ind)));
   sec.append(grid);
@@ -1449,28 +1460,40 @@ function renderMethodology() {
   const sec = $("#view-metodologia");
   sec.innerHTML = "";
   sec.append(el("div", { class: "section-title" }, "Fuentes y metodología"));
-  sec.append(el("div", { class: "section-sub" }, "Estado de actualización, fuente y serie por indicador. La metodología de análisis usa reglas transparentes sobre las cifras oficiales; toda afirmación es rastreable al dato mostrado."));
+  sec.append(el("div", { class: "section-sub" }, "Cobertura de las series y estado de actualización por indicador."));
   const table = el("table");
-  table.append(el("thead", {}, el("tr", {}, ...["Indicador", "Fuente", "Serie", "Frecuencia", "Últ. consulta", "Últ. observación", "Estado"].map((h) => el("th", {}, h)))));
+  table.append(el("thead", {}, el("tr", {}, ...["Indicador", "Fuente", "Frecuencia", "Consulta de la fuente", "Última observación", "Estado"].map((h) => el("th", {}, h)))));
   const tb = el("tbody");
   ORDER.map(getInd).filter(Boolean).forEach((ind) => {
     tb.append(el("tr", {},
-      el("td", {}, ind.nombre), el("td", {}, ind.fuente?.nombre || "—"),
-      el("td", {}, ind.fuente?.serie || (ind.serie_confirmada ? "—" : "por confirmar")),
+      el("td", {}, el("a",{href:`#${ind.key}`},ind.nombre)), el("td", {title:ind.fuente?.nombre || ""},sourceInstitution(ind.fuente?.nombre || "—")),
       el("td", {}, ind.frecuencia || "—"), el("td", {}, ind.fecha_consulta || ind.last_updated || "—"),
       el("td", {}, ind.last_observation || "—"), el("td", {}, estadoBadge(ind))));
   });
   table.append(tb);
   sec.append(el("div", { class: "panel", style: "padding:0;overflow:hidden" }, el("div", { class: "table-wrap", style: "max-height:none;border:none" }, table)));
-  sec.append(el("div", { class: "panel" },
-    el("h3", {}, "Notas metodológicas"),
-    el("ul", { class: "summary-list" },
-      el("li", {}, el("span", { class: "mark" }), el("span", {}, "Series originales (sin ajuste estacional) salvo indicación en contrario; las variaciones mensuales de series originales pueden incorporar efectos de calendario.")),
-      el("li", {}, el("span", { class: "mark" }), el("span", {}, "El saldo de la balanza comercial es exportaciones menos importaciones; la “variación del saldo” compara ese saldo con el mes previo y no debe confundirse con el nivel del saldo.")),
-      el("li", {}, el("span", { class: "mark" }), el("span", {}, "La inflación se reporta como variación anual del INPC; una reducción no se clasifica automáticamente como “mejora” sin considerar el objetivo del Banco de México.")),
-      el("li", {}, el("span", { class: "mark" }), el("span", {}, "El INPP mide precios de producción (con y sin petróleo), distinto al INPC que mide precios al consumidor; sus componentes reflejan presiones en distintas etapas de la cadena de valor.")),
-      el("li", {}, el("span", { class: "mark" }), el("span", {}, "Cuando falta un token o una serie no está confirmada, se conserva el último dato validado y se señala el estado, sin presentarlo como actualización definitiva.")),
-    )));
+  const topics=[
+    ["Series, unidades y comparaciones",[
+      "Series originales (sin ajuste estacional) salvo indicación en contrario. Las variaciones mensuales de series originales pueden incorporar efectos de calendario.",
+      "Los periodos de referencia pertenecen a cada indicador. La fecha de actualización del dashboard no corresponde al periodo de todas las series.",
+      "Los extremos del rango seleccionado no equivalen necesariamente a récords históricos."]],
+    ["Interpretación de los movimientos",[
+      "Una variación positiva no siempre es favorable. La clasificación utiliza el criterio económico de cada indicador; las variables sin interpretación inequívoca se mantienen neutrales.",
+      "El saldo comercial es exportaciones menos importaciones; el cambio del saldo no es el nivel del saldo.",
+      "La inflación se reporta como variación anual del INPC. Una reducción no se clasifica automáticamente como mejora sin considerar el objetivo del Banco de México.",
+      "El INPP mide precios de producción y el INPC precios al consumidor; reflejan etapas distintas de la cadena de valor."]],
+    ["Actualización y disponibilidad",[
+      "Cuando la fuente no está disponible o la serie no está confirmada, se conserva el último dato validado y se señala su estado.",
+      "Una fecha transcurrida del calendario no confirma por sí sola que el boletín o la nota estén disponibles."]]
+  ];
+  const methods=el("div",{class:"method-topics"});
+  topics.forEach(([title,paragraphs])=>methods.append(el("details",{class:"method-topic"},el("summary",{},title),...paragraphs.map(text=>el("p",{},text)))));
+  const technical=el("details",{class:"method-topic"},el("summary",{},"Detalle técnico de las series"));
+  const seriesTable=el("table",{},el("thead",{},el("tr",{},el("th",{},"Indicador"),el("th",{},"Fuente"),el("th",{},"Serie"))));
+  const seriesBody=el("tbody");
+  ORDER.map(getInd).filter(Boolean).forEach(ind=>seriesBody.append(el("tr",{},el("td",{},SIGLA[ind.key] || ind.key),el("td",{},ind.fuente?.nombre || "—"),el("td",{},ind.fuente?.serie || (ind.serie_confirmada ? "—" : "Por confirmar")))));
+  seriesTable.append(seriesBody);technical.append(el("div",{class:"table-wrap"},seriesTable));methods.append(technical);
+  sec.append(methods);
 }
 
 // ---------------- Downloads ----------------
@@ -1479,23 +1502,28 @@ function renderDownloads() {
   sec.innerHTML = "";
   sec.append(el("div", { class: "section-title" }, "Descargas"));
   sec.append(el("div", { class: "section-sub" }, "Última versión validada de los datos y la documentación."));
-  const grid = el("div", { class: "dl-grid" });
-  const items = [
-    ["Excel actualizado", "Todas las hojas de datos + Síntesis, Metodología y fuentes y Control de actualizaciones.", "downloads/Indicadores_Macroeconomicos_Mexico_Actualizado.xlsx", "Descargar .xlsx"],
-    ["Datos (JSON)", "Capa de datos normalizada que alimenta el tablero.", "data/indicadores.json", "Ver JSON"],
-    ["Datos (CSV)", "Un archivo CSV por indicador.", "data/csv/", "Ver carpeta CSV"],
-    ["Manifest de actualización", "Estado, fuente y última observación por indicador.", "data/manifest.json", "Ver manifest"],
-    ["Fuentes y metodología", "Documento de fuentes oficiales y método de actualización.", "DATA_SOURCES.md", "Ver documento"],
+  sec.append(el("div",{class:"download-feature"},
+    el("div",{},el("span",{class:"download-format"},"XLSX · Editable"),el("h3",{},"Base de indicadores"),el("p",{},"Series por indicador, síntesis, fuentes y control de actualizaciones.")),
+    el("a",{class:"btn btn-primary",href:"downloads/Indicadores_Macroeconomicos_Mexico_Actualizado.xlsx",download:"Indicadores_Macroeconomicos_Mexico_Actualizado.xlsx"},"↓ Descargar Excel")));
+  const technical=el("details",{class:"technical-downloads"},el("summary",{},"Datos y documentación técnica"));
+  const grid=el("div",{class:"dl-grid"});
+  const items=[
+    ["Datos JSON","Base normalizada del dashboard.","data/indicadores.json","Ver JSON"],
+    ["Control de actualización","Estado y última observación por indicador.","data/manifest.json","Ver control"],
+    ["Documentación de fuentes","Referencias oficiales y método de actualización.","DATA_SOURCES.md","Ver documento"]
   ];
-  items.forEach(([t, d, href, cta]) => grid.append(el("div", { class: "dl-card" }, el("h4", {}, t), el("p", {}, d), el("a", { class: "btn btn-ghost", href, target: "_blank", rel: "noopener" }, cta))));
-  sec.append(grid);
+  items.forEach(([title,description,href,cta])=>grid.append(el("div",{class:"dl-card"},el("h4",{},title),el("p",{},description),el("a",{class:"acceso-link",href,target:"_blank",rel:"noopener noreferrer"},cta+" ↗"))));
+  const csv=el("details",{class:"csv-downloads"},el("summary",{},"CSV por indicador"));
+  ORDER.map(getInd).filter(Boolean).forEach(ind=>csv.append(el("a",{href:`data/csv/${ind.key}.csv`,download:`${ind.key}.csv`},SIGLA[ind.key] || ind.key)));
+  technical.append(grid,csv);sec.append(technical);
 }
 
 // ---------------- Rango visible ----------------
 function buildRangeCard(ind, winId) {
   const obs = applyWindow(ind, winId);
   const st = rangeStats(ind, obs);
-  const wrap = el("div", { class: "range-card" });
+  const wrap = el("details", { class: "range-card" });
+  wrap.append(el("summary",{},"Estadísticas del rango seleccionado"));
   const table = el("table", { class: "range-table" });
   const thead = el("thead", {}, el("tr", {},
     el("th", {}, "Periodo"),
@@ -1912,7 +1940,7 @@ function resizeVisibleCharts() { Object.entries(state.charts).forEach(([key, c])
 function buildViewShells() {
   const host = $("#sections");
   host.innerHTML = "";
-  VIEWS.forEach((v) => host.append(el("section", { class: `view${v.id === state.active ? " active" : ""}`, id: `view-${v.id}`, role: "tabpanel", "aria-labelledby": `tab-${v.id}` })));
+  VIEWS.forEach((v) => host.append(el("section", { class: `view${v.id === state.active ? " active" : ""}`, id: `view-${v.id}`, role: "tabpanel", "aria-labelledby": `tab-${PRINCIPAL.includes(v.id) ? "panorama" : COMPLEMENTARIOS.includes(v.id) ? "entorno" : v.id}` })));
 }
 
 function renderAll() {
