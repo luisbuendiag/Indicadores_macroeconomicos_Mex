@@ -1,5 +1,6 @@
+import {demandCore} from './bulletin_demand.mjs';
 import {unzipSync,zipSync,strFromU8,strToU8} from '../vendor/fflate/fflate.mjs';
-import {selectedSectors} from './bulletin_parsers.mjs';
+import {selectedSectors} from './bulletin_parsers.mjs?v=consumo-inversion-20261106';
 import {narrative} from './bulletin_imai.mjs';
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
 const r=(s,{size=22,bold=false,color='000000',italic=false}={})=>`<w:r><w:rPr><w:rFonts w:ascii="Noto Sans" w:hAnsi="Noto Sans" w:cs="Noto Sans"/><w:sz w:val="${size}"/><w:szCs w:val="${size}"/><w:color w:val="${color}"/>${bold?'<w:b/>':''}${italic?'<w:i/>':''}</w:rPr><w:t xml:space="preserve">${esc(s)}</w:t></w:r>`;
@@ -14,14 +15,15 @@ function table(rows,widths){
 }
 function image(id,n){
  const cx=5610000,cy=1800000;
- return `<w:p><w:pPr><w:spacing w:before="0" w:after="0"/><w:jc w:val="center"/></w:pPr><w:r><w:drawing><wp:inline distT="0" distB="0" distL="0" distR="0"><wp:extent cx="${cx}" cy="${cy}"/><wp:docPr id="${n}" name="Gráfica ${n}" descr="Variaciones de los componentes del IMAI"/><wp:cNvGraphicFramePr/><a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:nvPicPr><pic:cNvPr id="0" name="${id}.png"/><pic:cNvPicPr/></pic:nvPicPr><pic:blipFill><a:blip r:embed="${id}"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill><pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="${cx}" cy="${cy}"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr></pic:pic></a:graphicData></a:graphic></wp:inline></w:drawing></w:r></w:p>`;
+ return `<w:p><w:pPr><w:spacing w:before="0" w:after="0"/><w:jc w:val="center"/></w:pPr><w:r><w:drawing><wp:inline distT="0" distB="0" distL="0" distR="0"><wp:extent cx="${cx}" cy="${cy}"/><wp:docPr id="${n}" name="Gráfica ${n}" descr="Comparación de las cifras publicadas en el boletín"/><wp:cNvGraphicFramePr/><a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:nvPicPr><pic:cNvPr id="0" name="${id}.png"/><pic:cNvPicPr/></pic:nvPicPr><pic:blipFill><a:blip r:embed="${id}"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill><pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="${cx}" cy="${cy}"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr></pic:pic></a:graphicData></a:graphic></wp:inline></w:drawing></w:r></w:p>`;
 }
 export function buildDocx(f,template,pngs){
  const files=unzipSync(template),xml=strFromU8(files['word/document.xml']);
  const section=xml.match(/<w:sectPr\b[\s\S]*?<\/w:sectPr>/)?.[0];
  if(!section||!files['word/header1.xml']||!pngs.mom||!pngs.yoy)throw new Error('No se pudo preparar el formato institucional.');
  let body;
- if(f.indicator==='EMIM')body=emimBody(f);
+ if(f.indicator==='CONSUMO'||f.indicator==='IMFBCF')body=demandBody(f);
+ else if(f.indicator==='EMIM')body=emimBody(f);
  else if(f.indicator==='IMOAM')body=imoamBody(f);
  else {
  const texts=f.indicator==='IGAE'?igaeNarrative(f):narrative(f),short=r=>r.label.startsWith('Generación')?'Energía, agua y gas':r.label;
@@ -84,4 +86,20 @@ function imoamBody(f){
  b+=source(f,'Evaluación histórica, página 3; ficha metodológica, página 4.');
  b+=p('La cobertura histórica corresponde a la evaluación del INEGI y no constituye una probabilidad para el resultado del mes estimado.');
  b+=h('Notas y fuente')+p('El modelo utiliza registros de consumo eléctrico de la CFE y el CENACE vinculados con el RENEM. La serie estimada es original, sin ajuste estacional; no se calcula una variación mensual ajustada.')+source(f,'Cuadro 1 y ficha metodológica, páginas 1 y 4.',true);return b;
+}
+function demandBody(f){
+ const cp=f.indicator==='CONSUMO',n=v=>v.toFixed(1),core=demandCore(f),get=(id,original=false)=>f[original?'originals':'rows'].find(r=>r.id===id),t=get('total'),o=get('total',true);
+ let b=title(f)+table([['Periodo de referencia','Fecha del boletín'],[f.period,f.publicationDate],['Índice desestacionalizado',`${n(f.index)} puntos · base ${f.base}=100`]],[4419,4419]);
+ b+=h('Resumen ejecutivo')+p(`En ${f.period}, ${cp?'el consumo privado':'la inversión fija'} ${t.mom===0?'no cambió respecto al mes previo':`varió ${n(t.mom)}% mensual`}; en la comparación anual registró ${n(t.yoy)}%, en términos reales y con cifras desestacionalizadas.`);
+ if(cp)b+=p(`El consumo nacional varió ${n(get('nacional').mom)}% mensual: bienes, ${n(get('nacional_bienes').mom)}%, y servicios, ${n(get('nacional_servicios').mom)}%. Los bienes importados registraron ${n(get('importado').mom)}%.`,{list:true});
+ else b+=p(`Construcción registró ${n(get('construccion').mom)}% mensual y maquinaria y equipo, ${n(get('maquinaria').mom)}%. Dentro de esta última, el componente nacional varió ${n(get('nacional').mom)}% y el importado, ${n(get('importado').mom)}%.`,{list:true});
+ b+=h('Cifras desestacionalizadas')+table([['Componente','Mensual (%)','Anual (%)'],...core.map(r=>[r.label,n(r.mom),n(r.yoy)])],[5250,1794,1794])+source(f,'Cuadro 1, página 2. Agregados y desgloses; las tasas no son sumandos.');
+ b+=gap()+image('uploadMom',901)+note('Comparación con el mes previo; las barras no representan contribuciones.');
+ b+=h('Balance del año')+p(`En cifras originales, el total varió ${n(o.original)}% anual y ${n(o.ytd)}% de enero a ${f.period.split(' de ')[0]}, frente a los mismos periodos del año anterior.`);
+ const originals=cp?f.originals.filter(r=>r.id!=='importado_bienes'):[get('total',true),get('construccion',true),get('maquinaria',true)];
+ b+=h('Cifras originales y acumulado')+table([['Componente','Anual (%)','Enero–mes (%)'],...originals.map(r=>[r.label,n(r.original),n(r.ytd)])],[5250,1794,1794])+source(f,'Cuadro 2, página 3. Cifras preliminares.');
+ if(!cp)b+=h('Inversión total por comprador')+table([['Comprador','Anual (%)','Enero–mes (%)'],...['privada','publica'].map((id,i)=>{const r=get('total_'+id,true);return [i===0?'Privado':'Público',n(r.original),n(r.ytd)];})],[5250,1794,1794]);
+ b+=(cp?h('Bienes por durabilidad y origen'):gap())+image('uploadYoy',902)+note(cp?'Variación real de enero al mes de referencia. Las categorías de bienes no incluyen servicios.':'Variación real de enero al mes de referencia. Las tasas no son participaciones ni contribuciones.');
+ b+=h('Notas y fuente')+p(cp?'El IMCP mide gasto de los hogares en bienes y servicios. Los bienes importados no equivalen a producción nacional. Las compras netas de residentes y no residentes se incluyen en el total; en el cuadro original figuran como NA (no aplica), sin sustituirse por cero.':'El IMFBCF mide inversión en activos fijos, no IED ni ejecución presupuestaria. Equipo nacional e importado se refiere a maquinaria y equipo. El comprador público o privado se identifica en el cuadro original del boletín.');
+ b+=note('Los agregados ajustados se calculan de forma independiente a sus componentes. El acumulado es una tasa publicada, no el promedio de las tasas mensuales.')+source(f,'Cuadros 1–2, páginas 2–3; metodología, página 4.',true);return b;
 }

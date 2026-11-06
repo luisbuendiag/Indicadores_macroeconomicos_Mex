@@ -1,9 +1,12 @@
+import {parseDemand} from './bulletin_demand.mjs';
 import {parseImai,MONTHS} from './bulletin_imai.mjs';
 export const PRODUCTS={
  IMAI:{name:'Indicador Mensual de la Actividad Industrial',pages:5},
  IGAE:{name:'Indicador Global de la Actividad Económica',pages:5},
  IMOAM:{name:'Indicador Mensual Oportuno de la Actividad Manufacturera',pages:4},
- EMIM:{name:'Encuesta Mensual de la Industria Manufacturera',pages:5}
+ EMIM:{name:'Encuesta Mensual de la Industria Manufacturera',pages:5},
+ CONSUMO:{name:'Indicador Mensual del Consumo Privado',alias:'IMCP',pages:4},
+ IMFBCF:{name:'Indicador Mensual de la Formación Bruta de Capital Fijo',pages:4}
 };
 export const SECTORS={'311':'Alimentos','312':'Bebidas y tabaco','313':'Insumos textiles','314':'Productos textiles','315':'Prendas de vestir','316':'Cuero y piel','321':'Madera','322':'Papel','323':'Impresión','324':'Petróleo y carbón','325':'Química','326':'Plástico y hule','327':'Minerales no metálicos','331':'Metálicas básicas','332':'Productos metálicos','333':'Maquinaria y equipo','334':'Computación y electrónica','335':'Equipo eléctrico','336':'Equipo de transporte','337':'Muebles','339':'Otras manufacturas'};
 const fail=m=>{throw new Error(m);};
@@ -14,7 +17,7 @@ function unique(text,pattern,label){const all=[...text.matchAll(new RegExp(patte
 function context(key,input){
  const product=PRODUCTS[key];if(!product)fail('Indicador no disponible.');
  if(input.length!==product.pages||input.some(p=>!p.trim()))fail(`El boletín ${key} debe contener ${product.pages} páginas con texto seleccionable.`);
- const pages=input.map(clean),cover=pages[0];if(!new RegExp('\\(\\s*'+key+'\\s*\\)').test(cover))fail('El archivo no corresponde a '+key+'.');
+ const pages=input.map(clean),cover=pages[0];if(!new RegExp('\\(\\s*'+(product.alias||key)+'\\s*\\)').test(cover))fail('El archivo no corresponde a '+key+'.');
  const pub=cover.match(/(\d{1,2})\s+de\s+(\p{L}+)\s+de\s+(\d{4})/iu),ref=cover.match(/\ben\s+(\p{L}+)\s+de\s+(\d{4})/iu);
  if(!pub||!ref)fail('No se identificaron la fecha y el periodo del boletín.');
  const pm=MONTHS.indexOf(pub[2].toLowerCase())+1,py=+pub[3],pd=+pub[1],month=MONTHS.indexOf(ref[1].toLowerCase())+1,year=+ref[2],date=new Date(Date.UTC(py,pm-1,pd));
@@ -58,5 +61,5 @@ export function parseImoam(pages){
  if(!cov||!win||!ahead||!['RENEM','CFE','CENACE','confidencialidad'].every(x=>f.pages[3].includes(x)))fail('Cambió el bloque de evaluación o metodología del IMOAM.');
  f.coverage=Number(cov[1].replace(',','.'));if(f.coverage<0||f.coverage>100)fail('La evaluación histórica es inválida.');f.evaluation=`${win[1]} de ${win[2]} a ${win[3]} de ${win[4]}`;f.daysAhead=+ahead[1];return f;
 }
-export function parseBulletin(key,pages){if(key==='IMAI')return {...parseImai(pages),name:PRODUCTS.IMAI.name};if(key==='IGAE')return parseIgae(pages);if(key==='EMIM')return parseEmim(pages);if(key==='IMOAM')return parseImoam(pages);fail('Indicador no disponible.');}
+export function parseBulletin(key,pages){if(key==='CONSUMO'||key==='IMFBCF')return parseDemand(context(key,pages));if(key==='IMAI')return {...parseImai(pages),name:PRODUCTS.IMAI.name};if(key==='IGAE')return parseIgae(pages);if(key==='EMIM')return parseEmim(pages);if(key==='IMOAM')return parseImoam(pages);fail('Indicador no disponible.');}
 export function selectedSectors(f){return [...f.sectors].sort((a,b)=>b.production-a.production||a.code.localeCompare(b.code)).filter((_,i,a)=>i<3||i>=a.length-3);}

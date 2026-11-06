@@ -1,14 +1,15 @@
+import {demandCore} from './bulletin_demand.mjs';
 import {pdfFromFiles} from './bulletin_files.mjs';
 import {getDocument,GlobalWorkerOptions} from '../vendor/pdfjs/pdf.min.mjs';
-import {parseBulletin,PRODUCTS} from './bulletin_parsers.mjs';
-import {buildDocx} from './bulletin_docx.mjs?v=actividad-manufactura-20261106';
-import {drawNoteChart,chartBytes} from './bulletin_charts.mjs?v=actividad-manufactura-20261106';
+import {parseBulletin,PRODUCTS} from './bulletin_parsers.mjs?v=consumo-inversion-20261106';
+import {buildDocx} from './bulletin_docx.mjs?v=consumo-inversion-20261106';
+import {drawNoteChart,chartBytes} from './bulletin_charts.mjs?v=consumo-inversion-20261106';
 GlobalWorkerOptions.workerSrc=new URL('../vendor/pdfjs/pdf.worker.min.mjs',import.meta.url).href;
 const $=id=>document.getElementById(id),fileInput=$('bulletin-file'),status=$('upload-status');
 let template,facts=null,task=null,version=0;const urls=new Set();
 const dropZone=$('drop-zone');
 const key=new URLSearchParams(location.search).get('indicator')||'IMAI',product=Object.hasOwn(PRODUCTS,key)?PRODUCTS[key]:null;
-if(product){document.title='Crear nota desde PDF · '+key;$('product-name').textContent=key+' · '+product.name;$('upload-hint').textContent=`PDF con texto seleccionable · ${product.pages} páginas · máximo 20 MB`;document.querySelector('.back').href='./#'+key;document.querySelector('.back').textContent='← Volver a '+key;}
+if(product){document.title='Crear nota desde PDF · '+(product.alias||key);$('product-name').textContent=(product.alias||key)+' · '+product.name;$('upload-hint').textContent=`PDF con texto seleccionable · ${product.pages} páginas · máximo 20 MB`;document.querySelector('.back').href='./#'+key;document.querySelector('.back').textContent='← Volver a '+key;}
 
 if(new URLSearchParams(location.search).get('embedded')==='1') {
  document.body.classList.add('embedded');
@@ -33,7 +34,7 @@ function show(f){
  const estimated=f.indicator==='IMOAM';
  $('preview-caption').textContent=estimated?'Estimación e intervalo de confianza al 95%':'Cifras desestacionalizadas';
  $('preview-head').replaceChildren();for(const label of estimated?['Variable','Estimación','Inferior','Superior']:['Actividad','Mensual','Anual']){const th=document.createElement('th');th.scope='col';th.textContent=label;$('preview-head').append(th);}
- const preview=estimated?[['Índice',...f.indexInterval.map(v=>v.toFixed(1))],['Variación anual',...f.annualInterval.map(v=>v.toFixed(1)+'%')]]:f.rows.map(row=>[row.label.startsWith('Generación')?'Energía, agua y gas':row.label,row.mom.toFixed(1)+'%',row.yoy.toFixed(1)+'%']);
+ const preview=estimated?[['Índice',...f.indexInterval.map(v=>v.toFixed(1))],['Variación anual',...f.annualInterval.map(v=>v.toFixed(1)+'%')]]:(f.indicator==='CONSUMO'||f.indicator==='IMFBCF'?demandCore(f):f.rows).map(row=>[row.label.startsWith('Generación')?'Energía, agua y gas':row.label,row.mom.toFixed(1)+'%',row.yoy.toFixed(1)+'%']);
  for(const row of preview){const tr=document.createElement('tr');for(const v of row){const td=document.createElement('td');td.textContent=v;tr.append(td);}$('facts-rows').append(tr);}
  $('facts-panel').hidden=false;
 }

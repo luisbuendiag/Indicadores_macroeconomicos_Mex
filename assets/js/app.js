@@ -149,7 +149,7 @@ function productToolbar(ind) {
     productBtn("Descargar nota Word", "↓", notaReady, notaTitle, () => downloadProduct(notaUrl(ind), `${ind.key}_nota.docx`), "nota"),
     productBtn("Excel", "↓", xlsxReady, xlsxTitle, () => downloadProduct(xlsxUrl(ind), `${ind.key}_datos.xlsx`), "excel")
   );
-  if (["IMAI", "IGAE", "IMOAM", "EMIM"].includes(ind.key)) {
+  if (["IMAI", "IGAE", "IMOAM", "EMIM", "CONSUMO", "IMFBCF"].includes(ind.key)) {
     const uploadButton = productBtn("Cargar boletín", "↑", true, "Crear una nota Word desde un PDF, sin subirlo al servidor", () => {
       const head = bar.closest(".ficha-head");
       if (!head) return;
@@ -158,7 +158,7 @@ function productToolbar(ind) {
       const close = () => { panel.remove(); uploadButton.setAttribute("aria-expanded", "false"); uploadButton.focus(); };
       const panel = el("section", { class: "bulletin-upload-panel", id: `bulletin-upload-${ind.key}`, "aria-label": `Crear nota desde un boletín ${ind.key}` });
       const closeButton = el("button", { type: "button", class: "btn bulletin-panel-close", onclick: close, "aria-label": "Cerrar carga de boletín" }, "Cerrar ×");
-      const frame = el("iframe", { src: `cargar-boletin.html?embedded=1&indicator=${ind.key}&v=actividad-manufactura-20261106`, title: `Generador local de notas ${ind.key}`, class: "bulletin-upload-frame", referrerpolicy: "no-referrer" });
+      const frame = el("iframe", { src: `cargar-boletin.html?embedded=1&indicator=${ind.key}&v=consumo-inversion-20261106`, title: `Generador local de notas ${ind.key}`, class: "bulletin-upload-frame", referrerpolicy: "no-referrer" });
       panel.append(el("div", { class: "bulletin-panel-heading" }, el("h3", {}, "Nota desde un boletín recibido"), closeButton), frame);
       head.append(panel);
       uploadButton.setAttribute("aria-expanded", "true");
