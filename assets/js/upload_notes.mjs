@@ -16,7 +16,7 @@ if(new URLSearchParams(location.search).get('embedded')==='1') {
  }).observe(workspace);
 }
 function message(text,error=false){status.textContent=text;status.classList.toggle('error',error);}
-function release(){version++;$('generate-note').removeAttribute('href');$('generate-note').setAttribute('aria-disabled','true');task?.destroy();task=null;facts=null;fileInput.value='';$('selected-file').textContent='';$('facts-panel').hidden=true;$('facts-rows').replaceChildren();$('facts-meta').replaceChildren();for(const url of urls)URL.revokeObjectURL(url);urls.clear();}
+function release(){dropZone.hidden=false;version++;$('generate-note').removeAttribute('href');$('generate-note').setAttribute('aria-disabled','true');task?.destroy();task=null;facts=null;fileInput.value='';$('selected-file').textContent='';$('facts-panel').hidden=true;$('facts-rows').replaceChildren();$('facts-meta').replaceChildren();for(const url of urls)URL.revokeObjectURL(url);urls.clear();}
 function lines(items){
  const rows=[];
  for(const item of items){if(!('str'in item)||!item.str.trim())continue;const y=item.transform[5],x=item.transform[4];let row=rows.find(r=>Math.abs(r.y-y)<2);if(!row){row={y,items:[]};rows.push(row);}row.items.push({x,text:item.str});}
@@ -42,7 +42,7 @@ async function receiveFiles(files){
   task=getDocument({data:bytes,isEvalSupported:false,disableFontFace:true,useSystemFonts:false,disableAutoFetch:true,disableStream:true,useWorkerFetch:false});
   const parsingTask=task;const timer=setTimeout(()=>parsingTask.destroy(),30000);let pages;
   try{const pdf=await task.promise;if(pdf.numPages!==5)throw new Error('El piloto IMAI requiere un boletín de cinco páginas.');pages=[];for(let i=1;i<=5;i++){const page=await pdf.getPage(i);const content=await page.getTextContent();if(content.items.length>50000)throw new Error('El documento es demasiado complejo.');pages.push(lines(content.items));}}finally{clearTimeout(timer);}
-  if(run!==version)return;facts=parseImai(pages);show(facts);message('Preparando tablas y gráficas del Word…');await prepareNote(facts,run);if(run===version)message('Nota preparada. Revisa el periodo y las cifras antes de descargarla.');
+  if(run!==version)return;facts=parseImai(pages);show(facts);message('Preparando tablas y gráficas del Word…');await prepareNote(facts,run);if(run===version){dropZone.hidden=true;message('Nota preparada. Revisa el periodo y las cifras antes de descargarla.');const title=$('facts-title');title.tabIndex=-1;title.focus();}
  }catch(error){if(run===version){facts=null;$('facts-panel').hidden=true;message(error.name==='PasswordException'?'El PDF está protegido. Utiliza una copia sin contraseña.':error.message||'No se pudo leer el PDF. No se generó la nota.',true);}}
  finally{if(run===version){await task?.destroy();task=null;}}
 }

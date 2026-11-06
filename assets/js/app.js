@@ -158,7 +158,7 @@ function productToolbar(ind) {
       const close = () => { panel.remove(); uploadButton.setAttribute("aria-expanded", "false"); uploadButton.focus(); };
       const panel = el("section", { class: "bulletin-upload-panel", id: "bulletin-upload-IMAI", "aria-label": "Crear nota desde un boletín IMAI" });
       const closeButton = el("button", { type: "button", class: "btn bulletin-panel-close", onclick: close, "aria-label": "Cerrar carga de boletín" }, "Cerrar ×");
-      const frame = el("iframe", { src: "cargar-boletin.html?embedded=1", title: "Generador local de notas IMAI", class: "bulletin-upload-frame", referrerpolicy: "no-referrer" });
+      const frame = el("iframe", { src: "cargar-boletin.html?embedded=1&v=compact-ready-20261106", title: "Generador local de notas IMAI", class: "bulletin-upload-frame", referrerpolicy: "no-referrer" });
       panel.append(el("div", { class: "bulletin-panel-heading" }, el("h3", {}, "Nota desde un boletín recibido"), closeButton), frame);
       head.append(panel);
       uploadButton.setAttribute("aria-expanded", "true");
