@@ -93,6 +93,10 @@ def test_publication_preserves_previous_word(monkeypatch,tmp_path,case):
     else:
         cfg['auto_publish']=False;(tmp_path/'config/notas_automaticas.json').write_text(json.dumps(cfg))
         fixture(monkeypatch,'CONSUMO');monkeypatch.setattr(R,'download',lambda *a:b'fixture')
+        # La fuente de prueba de octubre refiere julio: no depende del corte vivo.
+        payload=json.loads((tmp_path/'data/indicadores.json').read_text())
+        payload['indicators']['CONSUMO']['last_observation']='Jul 26'
+        (tmp_path/'data/indicadores.json').write_text(json.dumps(payload))
         template=tmp_path/cfg['template'];template.parent.mkdir(parents=True);shutil.copyfile(ROOT/cfg['template'],template)
         for name in ['build_demand_notes.py','notas_demanda.py','notas_demanda_word.py','notas_layout.py','notas_word.py','build_auto_notes.py']:
             p=tmp_path/'scripts'/name;p.parent.mkdir(exist_ok=True);shutil.copyfile(ROOT/'scripts'/name,p)

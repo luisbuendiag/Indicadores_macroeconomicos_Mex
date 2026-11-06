@@ -20,6 +20,21 @@ def _sample_manual() -> dict:
     return json.loads((DATA_DIR / "ied_manual_2026_2t.json").read_text(encoding="utf-8"))
 
 
+@pytest.fixture(autouse=True)
+def official_layout_fixture(monkeypatch,tmp_path):
+    """Caso fechado 2T-26: prueba el parser y el ensamblado sin depender de red."""
+    import openpyxl
+    monkeypatch.setattr(ied,'DOWNLOADS_DIR',tmp_path)
+    wb=openpyxl.Workbook();ws=wb.active
+    for r,row in enumerate([(2025,'Enero - marzo',23416.57,23416.57),
+                            (2025,'Enero - junio',34264.57,34264.57),
+                            (2026,'Enero - marzo',24503.05,24503.05),
+                            (2026,'Enero - junio',34968,34968)],4):
+        for c,value in enumerate(row,1):ws.cell(r,c,value)
+    wb.save(tmp_path/'Datos_originales_y_actualizacion.xlsx')
+    monkeypatch.setattr(ied,'_download',lambda *a:False)
+
+
 def test_period_to_quarter():
     assert ied._period_to_quarter("Enero - marzo") == (1, 3)
     assert ied._period_to_quarter("Enero-marzo") == (1, 3)
@@ -219,3 +234,10 @@ def test_labels_and_separation():
     assert ind["metrics"]["acumulado"]["valor"] != ind["metrics"]["flujo_trimestral"]["valor"]
     assert round(ind["metrics"]["acumulado"]["variacion_anual_pct"], 3) == 0.021
     assert round(ind["metrics"]["flujo_trimestral"]["variacion_anual_pct"], 3) == -0.035
+
+
+def test_missing_history_preserves_previous_indicator(monkeypatch,tmp_path):
+    (tmp_path/'Datos_originales_y_actualizacion.xlsx').unlink()
+    result=ied.fetch()
+    assert not result.ok and not result.data
+    assert any('se conserva el indicador previo' in warning for warning in result.warnings)

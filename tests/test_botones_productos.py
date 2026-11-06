@@ -108,9 +108,9 @@ def test_active_and_disabled_visuals_differ():
 
 def test_ima_test_case_buttons():
     imai = INDICADORES["indicators"]["IMAI"]
-    assert imai["last_observation"] == "Jun 26"
+    assert imai["last_observation"] == imai["observations"][-1]["period"]
     assert imai.get("url_boletin_oficial")
-    assert imai["url_boletin_oficial"].endswith("imai2026_08.pdf")
+    assert re.search(r"/imai\d{4}_\d{2}\.pdf$", imai["url_boletin_oficial"])
     assert imai.get("xlsx_disponible")
     assert imai.get("url_excel_individual") == "downloads/indicadores/IMAI/IMAI_datos.xlsx"
     # Calendario IMAI existe.

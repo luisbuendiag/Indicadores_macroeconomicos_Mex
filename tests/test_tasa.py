@@ -19,40 +19,33 @@ def test_tasa_nombre_y_no_tiie():
     assert "no confundir con la tiie" in ind["descripcion"].lower()
 
 
-def test_tasa_vigente_6_50():
-    ind = _load()
-    assert ind.get("tasa_vigente") == pytest.approx(6.5, rel=1e-6)
-    assert ind["metrics"]["kpi"]["ultimoFmt"] == "6.50%"
+def test_tasa_vigente_coincide_con_serie_y_decision():
+    ind=_load()
+    assert ind['tasa_vigente']==pytest.approx(ind['observations'][-1]['values'][0])
+    assert ind['metrics']['kpi']['ultimoFmt']==f"{ind['tasa_vigente']:.2f}%"
+    assert ind['tasa_vigente']==ind['policy_decisions'][-1]['new_rate']
 
 
-def test_tasa_ultima_decision_sin_cambio():
-    ind = _load()
-    last = ind["policy_decisions"][-1]
-    assert last["announcement_date"] == "2026-08-06"
-    assert last["decision"] == "sin cambio"
-    assert last["new_rate"] == pytest.approx(6.5, rel=1e-6)
+def test_tasa_ultima_decision_y_cambio_en_pb():
+    decisions=_load()['policy_decisions']
+    assert [d['announcement_date'] for d in decisions]==sorted(set(d['announcement_date'] for d in decisions))
+    for d in decisions:
+        assert d['change_bp']==pytest.approx((d['new_rate']-d['previous_rate'])*100)
+        assert d['effective_date']>=d['announcement_date']
+        assert d['decision']==('recorte' if d['change_bp']<0 else 'alza' if d['change_bp']>0 else 'sin cambio')
 
 
-def test_tasa_ultimo_ajuste_7_may_2026():
-    ind = _load()
-    adj = ind["ultimo_ajuste"]
-    assert adj["announcement_date"] == "2026-05-07"
-    assert adj["decision"] == "recorte"
-    assert adj["change_bp"] == pytest.approx(-25.0, rel=1e-6)
-    assert adj["effective_date"] == "2026-05-08"
+def test_tasa_ultimo_ajuste_y_vigencia():
+    ind=_load()
+    adjusted=[d for d in ind['policy_decisions'] if d['change_bp']!=0]
+    assert ind['ultimo_ajuste']==adjusted[-1]
+    assert ind['vigente_desde']==adjusted[-1]['effective_date']
 
 
-def test_tasa_vigencia_8_may_2026():
-    ind = _load()
-    assert ind["vigente_desde"] == "2026-05-08"
-
-
-def test_tasa_proxima_decision_24_sep_2026():
-    ind = _load()
-    cal = ind.get("calendario_publicaciones", [])
-    prox = [e for e in cal if (e.get("status") or "").lower() in ("próximo", "proximo", "programado")]
-    assert prox
-    assert any((e.get("publication_date") or e.get("fecha_iso")) == "2026-09-24" for e in prox)
+def test_tasa_proxima_decision_posterior_a_la_ultima():
+    ind=_load(); kpi=ind['metrics']['kpi']
+    assert kpi['nextDecisionP']>ind['policy_decisions'][-1]['announcement_date']
+    assert any((e.get('publication_date') or e.get('fecha_iso'))==kpi['nextDecisionP'] for e in ind['calendario_publicaciones'])
 
 
 def test_tasa_no_cambio_diario_kpi():
@@ -73,10 +66,10 @@ def test_tasa_resumen_bullets():
     ind = _load()
     resumen = ind["metrics"]["resumen"]
     assert len(resumen) <= 4
-    assert any("6.50%" in b for b in resumen)
-    assert any("6 de agosto de 2026" in b for b in resumen)
-    assert any("7 de mayo de 2026" in b for b in resumen)
-    assert any("24 de septiembre de 2026" in b for b in resumen)
+    from lib_format import per_long
+    assert any(f"{ind['tasa_vigente']:.2f}%" in b for b in resumen)
+    assert any('último ajuste' in b.lower() for b in resumen)
+    assert any('próxima decisión' in b.lower() for b in resumen)
 
 
 def test_tasa_decisions_tiene_comunicados():

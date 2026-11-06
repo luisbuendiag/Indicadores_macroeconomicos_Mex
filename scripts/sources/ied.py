@@ -543,7 +543,9 @@ def fetch(config: dict | None = None) -> SourceResult:
     if flujos_path.exists():
         ti_1t = _parse_flujos_ti(flujos_path, warnings)
 
-    if not resumen_path.exists() and not manual:
+    if not resumen_path.exists():
+        # Un manual puntual no sustituye una serie histórica ni sus denominadores.
+        warnings.append('ied: sin resumen histórico; se conserva el indicador previo')
         return SourceResult(False, warnings=warnings)
 
     ind = _build_indicator(resumen_path, manual, ti_1t, warnings)

@@ -125,3 +125,17 @@ el conjunto y publica solo si pasan los controles. `data/excel/estado.json` regi
 coberturas y hashes; no añade pestañas administrativas a los libros del usuario.
 Los archivos descargados son fotografías del momento de descarga, sin macros ni
 conexiones externas. La versión vigente se obtiene nuevamente desde el dashboard.
+
+### Historia financiera y diseño de gráficas
+
+El conector SIE consulta la historia completa disponible de SF43718, SF61745 y
+SF43707, sin recorte inicial en 2018. Conserva fechas, frecuencia y unidades de
+cada clave oficial. Si se solicita un rango explícito, se respeta ese rango.
+El pipeline mantiene la última publicación válida si una fuente falla. No se
+empalman series con distinta cobertura: CR362 (consumo en el mercado interior)
+no sustituye automáticamente al IMCP de cobertura actual.
+
+Las gráficas nativas usan líneas para niveles y columnas para variaciones del
+PIB y cambios semanales de reservas. Las series individuales no repiten una
+leyenda; los intervalos se distinguen con líneas punteadas y las fechas se
+espacian según la ventana. Tablas e historia completa conservan sus valores.

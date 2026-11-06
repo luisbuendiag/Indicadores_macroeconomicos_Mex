@@ -83,7 +83,7 @@ def test_reservas_resumen_bullets():
     r = payload["indicators"]["RESERVAS"]
     resumen = r["metrics"]["resumen"]
     assert len(resumen) == 4
-    assert "258,564 mdd" in resumen[0]
+    assert f"{r["observations"][-1]["values"][0]:,.0f} mdd" in resumen[0]
     assert "variación semanal" in resumen[1].lower()
     assert "tasa anual" in resumen[2].lower() or "anual" in resumen[2].lower()
     assert "acumulado" in resumen[3].lower()
@@ -161,10 +161,10 @@ def test_reservas_format_lib():
 def test_reservas_excel_sheet():
     """El libro Excel contiene la hoja de reservas con 4 columnas de datos."""
     wb = openpyxl.load_workbook(XLSX_FILE)
-    assert "Reservas internacionales" in wb.sheetnames
-    ws = wb["Reservas internacionales"]
-    headers = [ws.cell(4, c).value for c in range(1, ws.max_column + 1)]
-    assert headers == ["Periodo", "Reserva internacional", "Cambio semanal", "Cambio YTD", "Variación anual"]
+    assert "RESERVAS" in wb.sheetnames
+    ws = wb["RESERVAS"]
+    headers = {c.value for row in ws for c in row if isinstance(c.value,str)}
+    assert {"Periodo", "Reserva internacional", "Cambio semanal", "Cambio YTD", "Variación anual"} <= headers
 
 
 def test_reservas_url_responde_200():

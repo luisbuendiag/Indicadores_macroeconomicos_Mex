@@ -79,40 +79,24 @@ def test_duplicate_flagged_as_revision(payload):
     assert imai_feb["values"][0] != cons_feb["values"][0]
 
 
-# Regresión: variaciones oficiales del boletín INEGI.
-# Se comparan con los valores publicados en los boletines más recientes.
-# NOTA: las expectativas corresponden al último periodo cargado (Jun-26 para
-# CONSUMO/IMFBCF/IGAE y Jul-26 para IOAE al 2026-09-07); al incorporarse un mes
-# nuevo o una revisión oficial hay que actualizar las constantes.
-@pytest.mark.parametrize("key,monthly_col,annual_col,expected_monthly,expected_annual", [
-    ("CONSUMO", 1, 2, -0.004, 0.016),
-    ("IMFBCF", 1, 2, 0.0135, 0.059),
-    ("IGAE", 1, 2, -0.001, 0.028191),
-    ("IOAE", 3, 0, 0.001, 0.027),
+# Los parsers tienen regresiones fechadas en tests/fixtures. Aquí se comprueba
+# que el corte vivo mantiene tasas fraccionarias y su contrato con la ficha.
+@pytest.mark.parametrize("key,monthly_col,annual_col", [
+    ("CONSUMO",1,2),("IMFBCF",1,2),("IGAE",1,2),("IOAE",3,0),
 ])
-def test_bulletin_variations_monthly_and_annual(payload, key, monthly_col, annual_col, expected_monthly, expected_annual):
-    ind = payload["indicators"][key]
-    last = ind["observations"][-1]
-    assert last["values"][monthly_col] == pytest.approx(expected_monthly, rel=1e-2, abs=1e-4)
-    assert last["values"][annual_col] == pytest.approx(expected_annual, rel=1e-2, abs=1e-4)
+def test_bulletin_variations_monthly_and_annual(payload,key,monthly_col,annual_col):
+    ind=payload["indicators"][key]
+    for col in (monthly_col,annual_col):
+        assert ind['columns'][col]['fmt']=='pct-frac'
+        value=ind['observations'][-1]['values'][col]
+        assert isinstance(value,(float,int)) and -1<value<1
 
 
 def test_pib_bulletin_variations(payload):
-    pib = payload["indicators"]["PIB"]
-    last = pib["observations"][-1]
-    penult = pib["observations"][-2]
-    # Última fila: estimación oportuna 2T-26 (variaciones, no nivel).
-    assert last["period"] == "2T-26 P"
-    assert last["values"][0] == pytest.approx(0.015, abs=1e-4)  # qoq
-    assert last["values"][1] == pytest.approx(0.021, abs=1e-4)  # yoy desest
-    assert last["values"][2] == pytest.approx(0.022, abs=1e-4)  # yoy orig
-    assert last["values"][3] == pytest.approx(0.012, abs=1e-4)  # acumulado
-    # Penúltima fila: 1T-26.
-    assert penult["period"] == "1T-26 P"
-    assert penult["values"][0] == pytest.approx(-0.008, abs=1e-4)
-    assert penult["values"][1] == pytest.approx(0.002, abs=1e-4)
-    assert penult["values"][2] == pytest.approx(0.001, abs=1e-4)
-    assert penult["values"][3] == pytest.approx(0.004, abs=1e-4)
+    # Regresión fechada del boletín 470/26: no confundirla con el último corte.
+    obs={o['period']:o['values'] for o in payload['indicators']['PIB']['observations']}
+    assert obs['2T-26 P']==pytest.approx([.015,.021,.022,.012],abs=1e-4)
+    assert obs['1T-26 P']==pytest.approx([-.008,.002,.001,.004],abs=1e-4)
 
 
 def test_pibsec_terciarias_bulletin_variations(payload):
@@ -151,12 +135,11 @@ def test_pib_eopibt_dashboard(payload):
     assert pib["nombre"] == "Estimación Oportuna del Producto Interno Bruto Trimestral"
     assert pib["unidad"] == "Porcentaje"
 
-    # Último periodo y KPIs del boletín 470/26
-    assert kpi["ultimoP"] == "2T-26 P"
-    assert kpi["qoqText"] == "+1.5%"
-    assert kpi["yoyDesestText"] == "+2.1%"
-    assert kpi["yoyOrigText"] == "+2.2%"
-    assert kpi["ytdText"] == "+1.2%"
+    last=pib['observations'][-1]
+    assert kpi['ultimoP']==last['period']
+    for col,field in enumerate(['qoqText','yoyDesestText','yoyOrigText','ytdText']):
+        value=last['values'][col]
+        assert kpi[field]==(('+' if value>0 else '')+f'{value*100:.1f}%')
 
     # No se muestra un nivel en billones como cifra actual
     assert "billones" not in kpi["ultimoFmt"]
@@ -183,31 +166,30 @@ def test_pib_eopibt_dashboard(payload):
 
     # El boletín PDF se conserva como fuente oficial
     assert pib.get("url_boletin_oficial")
-    assert "pib_eo2026_07.pdf" in pib["url_boletin_oficial"]
+    assert re.search(r"/pib_eo\d{4}_\d{2}\.pdf$",pib["url_boletin_oficial"])
 
 
 def test_pib_sector_scaling(payload):
-    """Las variaciones por actividad se almacenan como fracción y se presentan como 3.3%, no 330%."""
-    pib = payload["indicators"]["PIB"]
-    sectores = pib.get("sectores", {})
-    assert pytest.approx(sectores["primarias"]["qoq"], abs=1e-4) == 0.033
-    assert pytest.approx(sectores["secundarias"]["qoq"], abs=1e-4) == 0.016
-    assert pytest.approx(sectores["terciarias"]["qoq"], abs=1e-4) == 0.015
-    # Los valores anuales también se almacenan en escala fraccionaria.
-    assert sectores["primarias"].get("yoy") is None or pytest.approx(sectores["primarias"]["yoy"], abs=1e-4) == 0.073
+    from lib_format import fmt_val
+    sectors=payload['indicators']['PIB']['sectores']
+    for name in ('primarias','secundarias','terciarias'):
+        raw=sectors[name]['qoq']
+        assert -1<raw<1
+        assert float(fmt_val(raw,'pct-frac').rstrip('%'))==pytest.approx(raw*100,abs=.051)
 
 
 def test_pib_resumen_uses_consistent_percentages(payload):
-    pib = payload["indicators"]["PIB"]
-    resumen = pib.get("metrics", {}).get("resumen", [])
-    sector_bullet = next((b for b in resumen if "Avance generalizado" in b or "actividad económica" in b), "")
-    assert sector_bullet
-    assert "+3.3%" in sector_bullet
-    assert "+1.6%" in sector_bullet
-    assert "+1.5%" in sector_bullet
-    assert "330%" not in sector_bullet
-    assert "160%" not in sector_bullet
-    assert "150%" not in sector_bullet
+    pib=payload['indicators']['PIB']
+    from lib_format import fmt_val
+    text=' '.join(pib['metrics']['resumen'])
+    assert 'acumulado' in text.lower()
+    for field in ('qoq','yoy'):
+        for sector in pib['sectores'].values():
+            value=sector.get(field)
+            if value is not None:
+                # Nunca mostrar una tasa fraccionaria multiplicada dos veces.
+                wrong=f'{value*10000:.1f}%'
+                if abs(value)>.001: assert wrong not in text
 
 
 def test_pib_historial_ampliado(payload):
@@ -218,12 +200,14 @@ def test_pib_historial_ampliado(payload):
     assert {w["id"] for w in wins} == {"1a", "2a", "3a", "5a", "max"}
     obs = pib["observations"]
     assert obs
-    assert len(obs) == 46, f"EOPIBT debe tener 46 observaciones, tiene {len(obs)}"
+    assert len(obs)>=46
+    dates=[(int(o["period"][3:5]),int(o["period"][0])) for o in obs]
+    assert dates==sorted(set(dates))
     assert obs[0]["period"] == "1T-15 P"
-    assert obs[-1]["period"] == "2T-26 P"
+    assert obs[-1]["period"]==pib["last_observation"]
 
     # Las ventanas deben estar definidas por número exacto de observaciones.
-    expected = {"1a": 4, "2a": 8, "3a": 12, "5a": 20, "max": 46}
+    expected = {"1a": 4, "2a": 8, "3a": 12, "5a": 20, "max": len(obs)}
     counts = {w["id"]: (len(obs) if w["id"] == "max" else w["count"]) for w in wins}
     assert counts == expected, f"Ventanas incorrectas: {counts}"
 

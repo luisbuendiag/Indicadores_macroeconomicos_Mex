@@ -178,3 +178,20 @@ def test_policy_rate_keeps_two_decimal_places(payload):
     m=X.build_workbook([payload['indicators']['TASA']])
     for (key,index,day),(sheet,address) in m.coords.items():
         if key=='TASA':assert m.wb[sheet][address].number_format=='0.00"%"'
+
+
+def test_charts_have_clear_types_legends_and_boundaries(payload):
+    from openpyxl.chart import BarChart,LineChart
+    for key in ('PIB','RESERVAS','IMOAM','INPC'):
+        m=X.build_workbook([payload['indicators'][key]])
+        charts=[c for ws in m.wb for c in ws._charts]
+        if key in ('PIB','RESERVAS'):assert any(isinstance(c,BarChart) for c in charts)
+        else:assert all(isinstance(c,LineChart) for c in charts)
+        for c in charts:
+            if len(c.series)==1:assert c.legend is None
+            assert c.width==21 and c.height==11
+            assert c.y_axis.majorGridlines.spPr.line.solidFill.srgbClr=='E4E8E5'
+            assert c.x_axis.scaling.min<c.x_axis.scaling.max
+            assert c.y_axis.crossAx==c.x_axis.axId
+        if key=='IMOAM':
+            assert all(s.graphicalProperties.line.prstDash=='sysDot' for c in charts for s in c.series[1:])

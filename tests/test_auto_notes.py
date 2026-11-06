@@ -254,12 +254,13 @@ def test_note_notice_renders_period_and_pending_message():
     script=r'''
 const fs=require('node:fs'),assert=require('node:assert/strict');
 const src=fs.readFileSync('assets/js/app.js','utf8');
-const part=src.split('  if (ind.nota?.status) {')[1].split('\n  }')[0];
+const part=src.split('  if (ind.nota?.status && ind.nota.status !== "vigente") {')[1].split('\n  }')[0];
 const render=new Function('ind','panel','el',part);
 const children=[];
 render({nota:{status:'pendiente',periodo:'Ago-26',message:'Actualizando nota'}},{append:x=>children.push(x)},(tag,attrs,text)=>({tag,attrs,text}));
 assert.equal(children.length,1);assert.equal(children[0].attrs.role,'status');
-assert.ok(children[0].text.includes('Ago-26'));assert.ok(children[0].text.includes('Actualizando nota'));
+assert.ok(children[0].text.includes('Ago-26'));assert.ok(children[0].text.includes('Consulta su periodo'));
+
 '''
     import subprocess
     subprocess.run([node,'-e',script],cwd=ROOT,check=True,capture_output=True,text=True)

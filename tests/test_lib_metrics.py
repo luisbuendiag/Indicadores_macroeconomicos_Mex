@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import json
+import copy
+import pytest
 
 import lib_data as L
 import lib_format as F
@@ -9,7 +11,14 @@ import lib_metrics as M
 
 
 def _payload():
-    return L.load_data()
+    payload=copy.deepcopy(L.load_data())
+    i=payload['indicators']['IGAE']
+    i['observations']=[{'period':'Abr 25','values':[100,None,None]+[None]*6},
+                       {'period':'Abr 26','values':[53.9,None,None]+[None]*6},
+                       {'period':'May 26','values':[108.5,None,None]+[None]*6},
+                       {'period':'Jun 26','values':[107.4,-.001,.028191]+[None]*6}]
+    i['last_observation']='Jun 26'
+    return payload
 
 
 def test_igae_kpi():
@@ -34,7 +43,7 @@ def test_igae_analysis():
     assert "107.4 puntos" in a[0]
     assert "-0.10%" in a[0]
     assert "108.5 puntos (mayo de 2026)" in a[1]
-    assert "53.9 puntos (abril de 1995)" in a[1]
+    assert "53.9 puntos (abril de 2026)" in a[1]
 
 
 def test_inpc_kpi():
@@ -74,9 +83,10 @@ def test_desocup_kpi():
     payload = _payload()
     metrics = M.compute_all_metrics(payload)
     kpi = metrics["DESOCUP"]["kpi"]
-    assert kpi["ultimoFmt"] == "2.9%"
-    assert kpi["varText"] == "0.0 p.p."
-    assert kpi["yoyText"] == "+0.1 p.p."
+    obs=payload['indicators']['DESOCUP']['observations']
+    last,previous=obs[-1]['values'][0],obs[-2]['values'][0]
+    assert kpi['ultimoFmt']==F.fmt_val(last,'pct-raw')
+    assert kpi['varMag']==pytest.approx(last-previous)
     assert kpi["assessment"] in ("favorable", "adverso", "neutral")
     assert kpi["semaforo"] in ("bueno", "malo", "estable")
 
@@ -108,9 +118,11 @@ def test_pib_yoy_trimestral():
     payload = _payload()
     metrics = M.compute_all_metrics(payload)
     kpi = metrics["PIB"]["kpi"]
-    assert kpi["ultimoFmt"] == "+1.5%"
-    assert kpi["varText"] == "+2.1%"
-    assert kpi["varLabel"] == "Var. anual desest."
-    assert kpi["yoyText"] == "+2.2%"
-    assert kpi["yoyLabel"] == "Var. anual original"
-    assert kpi["ytdText"] == "+1.2%"
+    values=payload['indicators']['PIB']['observations'][-1]['values']
+    def pct(v): return ('+' if v>0 else '')+F.fmt_val(v,'pct-frac')
+    assert kpi['ultimoFmt']==pct(values[0])
+    assert kpi['varText']==pct(values[1])
+    assert kpi['varLabel']=='Var. anual desest.'
+    assert kpi['yoyText']==pct(values[2])
+    assert kpi['yoyLabel']=='Var. anual original'
+    assert kpi['ytdText']==pct(values[3])

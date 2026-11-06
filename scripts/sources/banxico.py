@@ -77,7 +77,7 @@ def _infer_frecuencia(meta: dict, key: str) -> str:
     return meta.get("frecuencia") or "Diaria"
 
 
-def fetch(config: dict, start: str = "2018-01-01", end: str | None = None) -> SourceResult:
+def fetch(config: dict, start: str | None = None, end: str | None = None) -> SourceResult:
     token = os.environ.get("BANXICO_TOKEN")
     if not token:
         return SourceResult(False, warnings=[
@@ -91,7 +91,9 @@ def fetch(config: dict, start: str = "2018-01-01", end: str | None = None) -> So
         serie = meta.get("serie")
         if not serie:
             continue
-        url = BASE.format(series=serie, start=start, end=end, token=token)
+        # Sin corte inicial artificial: la misma clave oficial define su historia.
+        url = (BASE.format(series=serie,start=start,end=end,token=token) if start else
+               f"https://www.banxico.org.mx/SieAPIRest/service/v1/series/{serie}/datos?token={token}")
         try:
             raw = http_get_json(url)
             datos = raw.get("bmx", {}).get("series", [{}])[0].get("datos", [])

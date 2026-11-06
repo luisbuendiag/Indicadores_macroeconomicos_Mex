@@ -303,3 +303,10 @@ Entorno financiero contiene la inversión externa reportada por la **Secretaría
   la historia. Cobertura y hashes quedan en `data/excel/estado.json`, fuera del XLSX.
 - Generar y validar en staging antes de sustituir archivos; fallos impiden publicar.
   Ejecutar `python -m pytest -q tests/test_excel_historico.py` al cambiar el exportador.
+
+- Las regresiones de boletines/decisiones con cifras fijas deben usar una edición
+  fechada o fixtures aislados, nunca asumir que sigue siendo el último periodo.
+- Las pruebas de pipeline deben restaurar archivos que modifican; las pruebas
+  de ensamblado IED usan un XLSX temporal con el esquema oficial sin depender de red.
+- Consultar la historia completa SIE de cada clave confirmada. No empalmar CR362
+  (mercado interior) con IMCP actual sin verificar cobertura y metodología.

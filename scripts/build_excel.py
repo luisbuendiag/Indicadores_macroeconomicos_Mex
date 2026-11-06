@@ -9,6 +9,7 @@ from collections import defaultdict
 from datetime import date, datetime
 from pathlib import Path
 import hashlib
+import io
 import json
 import math
 import os
@@ -18,7 +19,9 @@ import zipfile
 import xml.etree.ElementTree as ET
 
 import openpyxl
-from openpyxl.chart import LineChart, Reference, Series
+from openpyxl.chart import LineChart, BarChart, Reference, Series
+from openpyxl.chart.axis import ChartLines
+from openpyxl.chart.shapes import GraphicalProperties
 from openpyxl.chart.axis import DateAxis
 from openpyxl.chart.series import SeriesLabel
 from openpyxl.chart.data_source import StrRef, StrData, StrVal
@@ -108,7 +111,7 @@ def _recipe(key, index, d, records):
 
 def _text_properties(size=10):
     return RichText(p=[Paragraph(pPr=ParagraphProperties(defRPr=CharacterProperties(
-        latin=DrawingFont(typeface=FONT),sz=size*100)))])
+        latin=DrawingFont(typeface=FONT),sz=size*100,solidFill='4C5650')))])
 
 
 class Model:
@@ -251,26 +254,56 @@ class Model:
         if len(dates)<2:return False
         count=260 if frequency=='Diaria' else 156 if frequency=='Semanal' else 40 if frequency=='Trimestral' else 60
         dates=dates[-count:]
+        # Un dato aislado no es una tendencia. Evitar líneas vacías y falsos históricos.
+        for m in maps:
+            populated=[self.wb[m[d][0]][m[d][1]] for d in dates]
+            if sum(_number(c.value) or c.data_type=='f' for c in populated)<2:return False
         for m in maps:
             rows=[openpyxl.utils.cell.coordinate_from_string(m[d][1])[1] for d in dates]
             if rows!=list(range(rows[0],rows[-1]+1)):return False
-        chart=LineChart();chart.width=19;chart.height=10
+        bar=(key=='PIB' and columns==[0]) or (key=='RESERVAS' and columns==[1]) or (key=='IED' and columns==[1,2,3]) or (key=='PIBSEC' and columns==[6,7])
+        chart=BarChart() if bar else LineChart()
+        chart.width=21;chart.height=11
+        if bar:
+            chart.type='col';chart.grouping='clustered';chart.overlap=0;chart.gapWidth=65
+        chart.graphical_properties=GraphicalProperties(solidFill='FFFFFF',ln=GraphicalProperties().ln)
+        chart.graphical_properties.line.noFill=True
         first_sheet,first_cell=maps[0][dates[0]];last_cell=maps[0][dates[-1]][1]
         fr=openpyxl.utils.cell.coordinate_from_string(first_cell)[1];lr=openpyxl.utils.cell.coordinate_from_string(last_cell)[1]
         cols={c['index']:c for c in self._indicators[key]['columns']}
         labels=[cols[c]['label'] for c in columns]
-        chart.title=labels[0] if len(columns)==1 else ('Estimación e IC 95%' if key in ('IMOAM','IOAE') else ' / '.join(labels))
+        titles={('EMIM',(3,4)):'Producción manufacturera: variaciones',('EMOE',(3,4,5,6)):'Confianza empresarial por sector',
+                ('IGAE',(1,2)):'Actividad económica: variaciones',('IMFBCF',(1,2)):'Inversión fija: variaciones',
+                ('INPC',(16,17)):'Incidencias en la inflación mensual',('INPP',(0,4)):'Precios al productor: índices',
+                ('INPP',(2,6)):'Precios al productor: variación anual',
+                ('PIB',(0,)):'PIB oportuno: variación trimestral',('PIB',(1,2)):'PIB oportuno: variación anual',
+                ('PIBSEC',(5,)):'PIB a precios constantes',('PIBSEC',(6,7)):'PIB: variaciones trimestral y anual',
+                ('INPC',(2,5)):'Inflación anual: general y subyacente',('IMFBCF',(0,3,6)):'Inversión fija: total y componentes',
+                ('BCMM',(0,1)):'Exportaciones e importaciones',('BCMM',(2,)):'Saldo comercial',
+                ('CONSUMO',(1,2)):'Consumo privado: variaciones',('IMAI',(1,2)):'Actividad industrial: variaciones',
+                ('IED',(1,2,3)):'IED por tipo de inversión',('DESOCUP',(0,3)):'Desocupación y subocupación',
+                ('TASA',(0,)):'Tasa objetivo',('TIPOCAMBIO',(0,)):'Tipo de cambio FIX',
+                ('RESERVAS',(0,)):'Reservas internacionales',('RESERVAS',(1,)):'Cambio semanal de las reservas'}
+        chart.title=titles.get((key,tuple(columns)),labels[0] if len(columns)==1 else 'Estimación e IC 95%' if key in ('IMOAM','IOAE') else ' / '.join(labels))
         chart.x_axis=DateAxis(crossAx=100);chart.x_axis.number_format='yyyy' if frequency.startswith('Anual') else 'mmm-yy';chart.x_axis.tickLblPos='low'
         span=(dates[-1].year-dates[0].year)*12+dates[-1].month-dates[0].month
-        chart.x_axis.majorTimeUnit='years' if span>=120 else 'months'
-        chart.x_axis.majorUnit=2 if span>=120 else 6 if span>=24 else 3 if span>=6 else 1
+        chart.x_axis.majorTimeUnit='years' if span>=60 else 'months'
+        chart.x_axis.majorUnit=2 if span>=96 else 1 if span>=60 else 12 if span>=36 else 6 if span>=18 else 3 if span>=6 else 1
         chart.y_axis.crossAx=chart.x_axis.axId
         chart.x_axis.scaling.min=openpyxl.utils.datetime.to_excel(dates[0])
         chart.x_axis.scaling.max=openpyxl.utils.datetime.to_excel(dates[-1])
-        chart.x_axis.title=f'{dates[0].isoformat()} a {dates[-1].isoformat()}'
+        chart.x_axis.title=None
+        chart.x_axis.majorTickMark='none';chart.x_axis.minorTickMark='none'
+        chart.y_axis.majorTickMark='none';chart.y_axis.minorTickMark='none'
+        chart.y_axis.majorGridlines=ChartLines(spPr=GraphicalProperties(ln=GraphicalProperties().ln))
+        chart.y_axis.majorGridlines.spPr.line.solidFill='E4E8E5'
+        chart.y_axis.majorGridlines.spPr.line.width=6350
+        chart.x_axis.spPr=GraphicalProperties();chart.x_axis.spPr.line.solidFill='BBC4BE'
+        chart.y_axis.spPr=GraphicalProperties();chart.y_axis.spPr.line.noFill=True
         fmt=cols[columns[0]].get('fmt','num')
         chart.y_axis.numFmt='0.00"%"' if key.startswith('TASA') and fmt=='pct-raw' else _xl_fmt(fmt)
-        chart.y_axis.title='Porcentaje' if fmt.startswith('pct') else 'Puntos porcentuales' if fmt=='pp' else 'Pesos por dólar' if fmt=='fx' else 'Millones de dólares' if fmt=='usd' else 'Puntos' if fmt in ('idx','emoe') else 'Nivel'
+        chart.y_axis.title='Porcentaje' if fmt.startswith('pct') else 'Puntos porcentuales' if fmt=='pp' else 'Pesos por dólar' if fmt=='fx' else 'Millones de dólares' if fmt in ('usd','mdd','mdd-signed') else 'Puntos' if fmt in ('idx','emoe') else 'Nivel'
+        if fmt=='pp':chart.y_axis.numFmt='0.000'
         if key=='PIBSEC' and columns[0] in (0,1,2,5):chart.y_axis.title='Millones de pesos de 2018'
         if key=='DESOCUP' and columns==[5]:chart.y_axis.title='Personas'
         for n,(column,m) in enumerate(zip(columns,maps)):
@@ -279,17 +312,29 @@ class Model:
             ser=Series(ref)
             hs,hc=self.headers[(key,column)]
             ser.tx=SeriesLabel(strRef=StrRef(f=f"'{hs.replace(chr(39),chr(39)*2)}'!${re.sub(r'[0-9]','',hc)}${re.sub(r'[^0-9]','',hc)}",strCache=StrData(ptCount=1,pt=[StrVal(idx=0,v=labels[n])])))
-            ser.graphicalProperties.line.solidFill=['1E5B4F','7D8780','B2BAB4','4A5550'][n%4]
-            ser.graphicalProperties.line.width=22000;ser.marker.symbol='none';ser.smooth=False
+            palette=['1E5B4F','A5853D','77828A','B4BCB8']
+            color=palette[n%4]
+            if key in ('IMOAM','IOAE') and n>0:color='98A49D'
+            if bar:
+                ser.graphicalProperties.solidFill=color
+                ser.graphicalProperties.line.noFill=True
+            else:
+                ser.graphicalProperties.line.solidFill=color
+                ser.graphicalProperties.line.width=28575 if n==0 else 19050
+                if key in ('IMOAM','IOAE') and n>0:ser.graphicalProperties.line.prstDash='sysDot'
+                ser.marker.symbol='none';ser.smooth=False
             chart.series.append(ser)
         chart.set_categories(Reference(self.wb[first_sheet],min_col=1,min_row=fr,max_row=lr))
         chart.display_blanks='gap';chart.legend.position='b'
-        chart.txPr=_text_properties();chart.x_axis.txPr=_text_properties(9);chart.y_axis.txPr=_text_properties(9);chart.legend.txPr=_text_properties(9)
+        chart.legend.overlay=False
+        if len(columns)==1:chart.legend=None
+        chart.txPr=_text_properties();chart.x_axis.txPr=_text_properties(9);chart.y_axis.txPr=_text_properties(9);
+        if chart.legend:chart.legend.txPr=_text_properties(9)
         for title in (chart.title,chart.x_axis.title,chart.y_axis.title):
             if title and title.tx and title.tx.rich:
                 for paragraph in title.tx.rich.p:
-                    paragraph.pPr=ParagraphProperties(defRPr=CharacterProperties(latin=DrawingFont(typeface=FONT),sz=1000))
-                    for run in paragraph.r:run.rPr=CharacterProperties(latin=DrawingFont(typeface=FONT),sz=1000)
+                    paragraph.pPr=ParagraphProperties(defRPr=CharacterProperties(latin=DrawingFont(typeface=FONT),sz=1200 if title is chart.title else 900,b=title is chart.title))
+                    for run in paragraph.r:run.rPr=CharacterProperties(latin=DrawingFont(typeface=FONT),sz=1200 if title is chart.title else 900,b=title is chart.title)
         ws.add_chart(chart,anchor)
         return True
 
@@ -312,6 +357,8 @@ def _special(ind,name):
     key=ind['key']
     if key=='IED' and name=='Acumulado comparable':
         cut=ind.get('metrics',{}).get('acumulado',{}).get('corte','')
+        if not cut and ind.get('observations_acumulado'):
+            cut=ind['observations_acumulado'][-1].get('period_acumulado','').rsplit(' ',1)[0]
         records={}
         for o in ind.get('observations_acumulado',[]):
             year=int(o['period']); records[date(year,1,1)]={'period':str(year),'values':o['values']}
@@ -425,6 +472,15 @@ def _build_ied_workbook(ind,out_path):_save_single(ind,out_path)
 def _build_tasa_workbook(ind,out_path):_save_single(ind,out_path)
 
 
+def _save_staged(workbook,path):
+    # Cerrar el ZIP en memoria y persistirlo completo antes de leerlo/renombrarlo.
+    buffer=io.BytesIO();workbook.save(buffer);content=buffer.getvalue()
+    with zipfile.ZipFile(io.BytesIO(content)) as archive:
+        if archive.testzip():raise ValueError('Excel incompleto en staging')
+    with path.open('wb') as stream:
+        stream.write(content);stream.flush();os.fsync(stream.fileno())
+
+
 def generate(payload,out_dir=None):
     """Construye y valida todo en staging antes de reemplazar el conjunto vigente."""
     out_dir=Path(out_dir or OUT_DIR);out_dir.mkdir(parents=True,exist_ok=True)
@@ -436,10 +492,10 @@ def generate(payload,out_dir=None):
     with tempfile.TemporaryDirectory(prefix='.excel-',dir=out_dir) as tmp:
         stage=Path(tmp)
         for ind in indicators:
-            key=ind['key'];model=build_workbook([ind]);path=stage/f'{key}_datos.xlsx';model.wb.save(path)
+            key=ind['key'];model=build_workbook([ind]);path=stage/f'{key}_datos.xlsx';_save_staged(model.wb,path)
             report[key]={**validate_workbook(path),'coverage':model.coverage,'omitted_redundancy':EXCLUDED.get(key,{})}
             staged.append((path,out_dir/'indicadores'/key/path.name))
-        master=build_workbook(indicators,general=True);path=stage/OUT_XLSX.name;master.wb.save(path)
+        master=build_workbook(indicators,general=True);path=stage/OUT_XLSX.name;_save_staged(master.wb,path)
         report['general']=validate_workbook(path)
         source_fields=('columns','observations','observations_acumulado','policy_decisions')
         snapshot={i['key']:{f:i.get(f) for f in source_fields} for i in indicators}

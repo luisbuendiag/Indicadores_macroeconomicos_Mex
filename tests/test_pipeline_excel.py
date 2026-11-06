@@ -12,6 +12,15 @@ import lib_data as L
 ROOT = Path(__file__).resolve().parents[1]
 
 
+@pytest.fixture(autouse=True)
+def preserve_pipeline_files():
+    # Los tests de integración pueden escribir: restaurar también cuando fallan.
+    paths=list((ROOT/'data').rglob('*.json'))+[ROOT/'config/kpicfg.json']
+    original={p:p.read_bytes() for p in paths}
+    yield
+    for p,content in original.items():p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(content)
+
+
 def test_offline_pipeline_ok():
     rc = build_data.run(offline=True)
     assert rc == 0
