@@ -83,7 +83,7 @@ def test_reservas_resumen_bullets():
     r = payload["indicators"]["RESERVAS"]
     resumen = r["metrics"]["resumen"]
     assert len(resumen) == 4
-    assert f"{r["observations"][-1]["values"][0]:,.0f} mdd" in resumen[0]
+    assert f"{r['observations'][-1]['values'][0]:,.0f} mdd" in resumen[0]
     assert "variación semanal" in resumen[1].lower()
     assert "tasa anual" in resumen[2].lower() or "anual" in resumen[2].lower()
     assert "acumulado" in resumen[3].lower()
