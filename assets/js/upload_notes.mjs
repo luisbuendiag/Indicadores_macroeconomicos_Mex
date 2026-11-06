@@ -1,9 +1,10 @@
+import {priceCore} from './bulletin_prices.mjs';
 import {demandCore} from './bulletin_demand.mjs';
 import {pdfFromFiles} from './bulletin_files.mjs';
 import {getDocument,GlobalWorkerOptions} from '../vendor/pdfjs/pdf.min.mjs';
-import {parseBulletin,PRODUCTS} from './bulletin_parsers.mjs?v=consumo-inversion-20261106';
-import {buildDocx} from './bulletin_docx.mjs?v=consumo-inversion-20261106';
-import {drawNoteChart,chartBytes} from './bulletin_charts.mjs?v=consumo-inversion-20261106';
+import {parseBulletin,PRODUCTS} from './bulletin_parsers.mjs?v=precios-20261106';
+import {buildDocx} from './bulletin_docx.mjs?v=precios-20261106';
+import {drawNoteChart,chartBytes} from './bulletin_charts.mjs?v=precios-20261106';
 GlobalWorkerOptions.workerSrc=new URL('../vendor/pdfjs/pdf.worker.min.mjs',import.meta.url).href;
 const $=id=>document.getElementById(id),fileInput=$('bulletin-file'),status=$('upload-status');
 let template,facts=null,task=null,version=0;const urls=new Set();
@@ -28,13 +29,13 @@ function lines(items){
 }
 function show(f){
  $('facts-meta').replaceChildren();
- const meta=[['Periodo',f.period],['Fecha del boletín',f.publicationDate]];if(f.index!==undefined)meta.push([f.base?'Índice base '+f.base+'=100':'Índice estimado',f.index.toFixed(1)+' puntos']);else meta.push(['Variables','Producción, empleo, horas y remuneraciones']);
+ const meta=[['Periodo',f.period],['Fecha del boletín',f.publicationDate]];if(f.index!=null)meta.push([f.indicator==='INPC'?f.base:(f.base?'Índice base '+f.base+'=100':'Índice estimado'),f.index.toFixed(f.indicator==='INPC'?3:1)+' puntos']);else meta.push(f.indicator==='INPP'?['Cobertura','Total incluido petróleo']:['Variables','Producción, empleo, horas y remuneraciones']);
  for(const [label,value] of meta){const box=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=value;box.append(dt,dd);$('facts-meta').append(box);}
  $('facts-rows').replaceChildren();
- const estimated=f.indicator==='IMOAM';
- $('preview-caption').textContent=estimated?'Estimación e intervalo de confianza al 95%':'Cifras desestacionalizadas';
+ const estimated=f.indicator==='IMOAM',prices=f.indicator==='INPC'||f.indicator==='INPP';
+ $('preview-caption').textContent=estimated?'Estimación e intervalo de confianza al 95%':prices?'Variaciones de precios':'Cifras desestacionalizadas';
  $('preview-head').replaceChildren();for(const label of estimated?['Variable','Estimación','Inferior','Superior']:['Actividad','Mensual','Anual']){const th=document.createElement('th');th.scope='col';th.textContent=label;$('preview-head').append(th);}
- const preview=estimated?[['Índice',...f.indexInterval.map(v=>v.toFixed(1))],['Variación anual',...f.annualInterval.map(v=>v.toFixed(1)+'%')]]:(f.indicator==='CONSUMO'||f.indicator==='IMFBCF'?demandCore(f):f.rows).map(row=>[row.label.startsWith('Generación')?'Energía, agua y gas':row.label,row.mom.toFixed(1)+'%',row.yoy.toFixed(1)+'%']);
+ const preview=estimated?[['Índice',...f.indexInterval.map(v=>v.toFixed(1))],['Variación anual',...f.annualInterval.map(v=>v.toFixed(1)+'%')]]:(prices?priceCore(f):f.indicator==='CONSUMO'||f.indicator==='IMFBCF'?demandCore(f):f.rows).map(row=>[row.label.startsWith('Generación')?'Energía, agua y gas':row.label,row.mom.toFixed(prices?2:1)+'%',row.yoy.toFixed(prices?2:1)+'%']);
  for(const row of preview){const tr=document.createElement('tr');for(const v of row){const td=document.createElement('td');td.textContent=v;tr.append(td);}$('facts-rows').append(tr);}
  $('facts-panel').hidden=false;
 }
@@ -49,9 +50,9 @@ async function receiveFiles(files){
   const bytes=new Uint8Array(await file.arrayBuffer());if(new TextDecoder().decode(bytes.subarray(0,5))!=='%PDF-')throw new Error('El archivo no es un PDF válido.');
   if(run!==version)return;
   task=getDocument({data:bytes,isEvalSupported:false,disableFontFace:true,useSystemFonts:false,disableAutoFetch:true,disableStream:true,useWorkerFetch:false});
-  const parsingTask=task;const timer=setTimeout(()=>parsingTask.destroy(),30000);let pages;
-  try{const pdf=await task.promise;if(pdf.numPages!==product.pages)throw new Error(`El boletín ${key} requiere ${product.pages} páginas.`);pages=[];for(let i=1;i<=product.pages;i++){const page=await pdf.getPage(i);const content=await page.getTextContent();if(content.items.length>50000)throw new Error('El documento es demasiado complejo.');pages.push(lines(content.items));}}finally{clearTimeout(timer);}
-  if(run!==version)return;facts=parseBulletin(key,pages);show(facts);message('Preparando tablas y gráficas del Word…');await prepareNote(facts,run);if(run===version){dropZone.hidden=true;message('Nota preparada. Revisa el periodo y las cifras antes de descargarla.');const title=$('facts-title');title.tabIndex=-1;title.focus();}
+  const parsingTask=task;const timer=setTimeout(()=>parsingTask.destroy(),30000);let pages,layout;
+  try{const pdf=await task.promise;if(pdf.numPages!==product.pages)throw new Error(`El boletín ${key} requiere ${product.pages} páginas.`);pages=[];for(let i=1;i<=product.pages;i++){const page=await pdf.getPage(i);const content=await page.getTextContent();if(content.items.length>50000)throw new Error('El documento es demasiado complejo.');pages.push(lines(content.items));if((key==='INPC'&&i===4)||(key==='INPP'&&i===5)){const v=page.getViewport({scale:1});layout={width:v.width,items:content.items.filter(i=>i.str?.trim()).map(i=>({text:i.str,x0:i.transform[4],x1:i.transform[4]+i.width,top:v.height-i.transform[5]}))};}}}finally{clearTimeout(timer);}
+  if(run!==version)return;facts=parseBulletin(key,pages,layout);show(facts);message('Preparando tablas y gráficas del Word…');await prepareNote(facts,run);if(run===version){dropZone.hidden=true;message('Nota preparada. Revisa el periodo y las cifras antes de descargarla.');const title=$('facts-title');title.tabIndex=-1;title.focus();}
  }catch(error){if(run===version){facts=null;$('facts-panel').hidden=true;message(error.name==='PasswordException'?'El PDF está protegido. Utiliza una copia sin contraseña.':error.message||'No se pudo leer el PDF. No se generó la nota.',true);}}
  finally{if(run===version){await task?.destroy();task=null;}}
 }

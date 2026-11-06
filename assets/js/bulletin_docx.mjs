@@ -1,6 +1,7 @@
+import {priceCore,selectedPrices} from './bulletin_prices.mjs';
 import {demandCore} from './bulletin_demand.mjs';
 import {unzipSync,zipSync,strFromU8,strToU8} from '../vendor/fflate/fflate.mjs';
-import {selectedSectors} from './bulletin_parsers.mjs?v=consumo-inversion-20261106';
+import {selectedSectors} from './bulletin_parsers.mjs?v=precios-20261106';
 import {narrative} from './bulletin_imai.mjs';
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
 const r=(s,{size=22,bold=false,color='000000',italic=false}={})=>`<w:r><w:rPr><w:rFonts w:ascii="Noto Sans" w:hAnsi="Noto Sans" w:cs="Noto Sans"/><w:sz w:val="${size}"/><w:szCs w:val="${size}"/><w:color w:val="${color}"/>${bold?'<w:b/>':''}${italic?'<w:i/>':''}</w:rPr><w:t xml:space="preserve">${esc(s)}</w:t></w:r>`;
@@ -22,7 +23,8 @@ export function buildDocx(f,template,pngs){
  const section=xml.match(/<w:sectPr\b[\s\S]*?<\/w:sectPr>/)?.[0];
  if(!section||!files['word/header1.xml']||!pngs.mom||!pngs.yoy)throw new Error('No se pudo preparar el formato institucional.');
  let body;
- if(f.indicator==='CONSUMO'||f.indicator==='IMFBCF')body=demandBody(f);
+ if(f.indicator==='INPC'||f.indicator==='INPP')body=priceBody(f);
+ else if(f.indicator==='CONSUMO'||f.indicator==='IMFBCF')body=demandBody(f);
  else if(f.indicator==='EMIM')body=emimBody(f);
  else if(f.indicator==='IMOAM')body=imoamBody(f);
  else {
@@ -102,4 +104,19 @@ function demandBody(f){
  b+=(cp?h('Bienes por durabilidad y origen'):gap())+image('uploadYoy',902)+note(cp?'Variación real de enero al mes de referencia. Las categorías de bienes no incluyen servicios.':'Variación real de enero al mes de referencia. Las tasas no son participaciones ni contribuciones.');
  b+=h('Notas y fuente')+p(cp?'El IMCP mide gasto de los hogares en bienes y servicios. Los bienes importados no equivalen a producción nacional. Las compras netas de residentes y no residentes se incluyen en el total; en el cuadro original figuran como NA (no aplica), sin sustituirse por cero.':'El IMFBCF mide inversión en activos fijos, no IED ni ejecución presupuestaria. Equipo nacional e importado se refiere a maquinaria y equipo. El comprador público o privado se identifica en el cuadro original del boletín.');
  b+=note('Los agregados ajustados se calculan de forma independiente a sus componentes. El acumulado es una tasa publicada, no el promedio de las tasas mensuales.')+source(f,'Cuadros 1–2, páginas 2–3; metodología, página 4.',true);return b;
+}
+function priceBody(f){
+ const cp=f.indicator==='INPC',n=v=>v.toFixed(2),t=f.rows[0],selected=selectedPrices(f),diff=t.yoy-t.priorYoy;
+ let b=title(f)+table([['Periodo de referencia','Fecha del boletín'],[f.period,f.publicationDate],[cp?'Nivel del índice':'Cobertura',cp?`${f.index.toFixed(3)} puntos`:'Total incluido petróleo']],[4419,4419]);
+ b+=h('Resumen ejecutivo')+p(`En ${f.period}, la variación anual del ${f.indicator} fue ${n(t.yoy)}%, frente a ${n(t.priorYoy)}% en el mismo mes del año anterior: una diferencia de ${n(diff)} puntos porcentuales.`);
+ if(cp){const s=f.rows.find(r=>r.id==='subyacente'),u=f.rows.find(r=>r.id==='no_subyacente');b+=p(`La inflación mensual fue ${n(t.mom)}%. La subyacente registró ${n(s.yoy)}% anual y la no subyacente, ${n(u.yoy)}%.`,{list:true});}
+ else{const i=f.groups[1][0],e=f.groups[2][0];b+=p(`Uso intermedio: ${n(i.mom)}% mensual y ${n(i.yoy)}% anual. Bienes y servicios finales: ${n(e.mom)}% y ${n(e.yoy)}%, respectivamente; cobertura incluido petróleo.`,{list:true});}
+ b+=h('Variaciones por componente')+table([['Componente','Mensual (%)','Anual (%)'],...priceCore(f).map(r=>[r.label,n(r.mom),n(r.yoy)])],[5250,1794,1794])+source(f,'Cuadro 1, página 2. Tasas de precios; las filas incluyen agregados y desgloses.');
+ b+=gap()+image('uploadMom',901)+note('Comparación con el mismo mes del año anterior. Las barras no son contribuciones.');
+ b+=h('Productos con mayor incidencia mensual')+table([['Producto genérico','Mensual (%)','Incidencia (pp)'],...selected.map(r=>[r.label,n(r.mom),r.incidence.toFixed(3)])],[5250,1794,1794])+source(f,cp?'Cuadro 2, página 4.':'Cuadro 3, página 5.');
+ b+=note('Tres mayores incidencias positivas y tres negativas entre los genéricos destacados por INEGI. La selección no abarca toda la canasta ni reconstruye la variación total.');
+ b+=gap()+image('uploadYoy',902)+note('Incidencias oficiales en puntos porcentuales; una variación de precio mayor no implica una incidencia mayor.');
+ if(!cp){const i=f.destinations.find(r=>r.id==='interna'),e=f.destinations.find(r=>r.id==='exportacion');b+=h('Precios finales por destino')+p(`La demanda interna registró ${n(i.yoy)}% anual y las exportaciones, ${n(e.yoy)}%. Son cambios de precios, no de valores o volúmenes exportados.`)+source(f,'Cuadro 6, página 7.');}
+ b+=h('Notas y fuente')+p(cp?'El INPC mide precios de una canasta representativa del consumo de los hogares. Una inflación menor no implica que baje el nivel de precios. La comparación anual previa corresponde al mismo mes de un año antes, no al mes inmediato anterior.':'El INPP mide precios de producción, no volumen productivo ni un traslado automático al INPC. Esta nota conserva la cobertura incluido petróleo. Los resultados son preliminares y pueden actualizarse hasta cinco meses después de su publicación.');
+ b+=note(`Base: ${f.base}. Las incidencias pueden diferir del total por redondeo.`)+source(f,`Resultados y cuadros de esta edición; ficha metodológica, página ${f.pages.length}.`,true);return b;
 }

@@ -1,0 +1,48 @@
+import {MONTHS} from './bulletin_imai.mjs';
+const CP=[['total','INPC','General'],['subyacente','Subyacente','Subyacente'],['mercancias','Mercancías','Mercancías'],['alimentos','Alimentos, bebidas y tabaco','Alimentos procesados'],['no_alimentos','Mercancías no alimenticias','Mercancías no alimenticias'],['servicios','Servicios','Servicios'],['vivienda','Vivienda','Vivienda'],['educacion','Educación (colegiaturas)','Educación'],['otros_servicios','Otros servicios','Otros servicios'],['no_subyacente','No subyacente','No subyacente'],['agro','Agropecuarios','Agropecuarios'],['frutas','Frutas y verduras','Frutas y verduras'],['pecuarios','Pecuarios','Pecuarios'],['energia_tarifas','Energéticos y tarifas autorizadas por','Energéticos y tarifas'],['energia','Energéticos','Energéticos'],['tarifas','Tarifas autorizadas por el gobierno','Tarifas autorizadas']];
+const PP=[['total','Índice Nacional de Precios Productor','Total'],['primarias','Actividades primarias','Primarias'],['secundarias','Actividades secundarias','Secundarias'],['mineria','Minería','Minería'],['energia','energía eléctrica, suministro de agua y de gas natural por','Energía, agua y gas'],['construccion','Construcción','Construcción'],['manufacturas','Industrias manufactureras','Manufacturas'],['terciarias','Actividades terciarias','Terciarias']];
+const fail=m=>{throw new Error(m);},clean=s=>s.normalize('NFKC').replace(/[−–]/g,'-').replace(/\u00a0/g,' '),escape=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+function table(page,num){const b=page.split(new RegExp('Cuadro\\s+'+num+'\\b'))[1]?.split(/(?:1\/\s*)?La incidencia|Fuente:/)[0];if(!b)fail('No se encontró el cuadro '+num+'.');return b.replace(/^\s*\d+\/\s*$/gm,'');}
+function rows(text,spec,count,fields){
+ const pattern='(?<![\\d.])'+Array(count).fill('(-?\\d+\\.\\d+)').join('\\s+')+'(?![\\d.])',matches=[...text.matchAll(new RegExp(pattern,'g'))];if(matches.length!==spec.length)fail('Cambió el número de filas o columnas del cuadro.');let last=0;
+ return matches.map((m,i)=>{const [id,prefix,label]=spec[i],before=text.slice(last,m.index).replace(/\s+/g,' ').trim();if(!new RegExp(escape(prefix)+'(?:\\d+/)?$').test(before))fail('Cambió el orden o la identidad de la fila '+id+'.');last=m.index+m[0].length;const values=m.slice(1).map(Number);return {id,label,values,...Object.fromEntries(Object.entries(fields).map(([k,pos])=>[k,values[pos]]))};});
+}
+function historical(b,f,repeats){if(!b.includes(f.period.split(' de ')[0]+' de los años'))fail('El periodo del cuadro no coincide con la portada.');const y=+f.ym.slice(0,4),wanted=Array(repeats).fill([y-2,y-1,y]).flat();if(repeats===3)wanted.push(y-1,y);const found=[...b.matchAll(/\b20\d{2}\b/g)].map(m=>+m[0]);if(found.join(',')!==wanted.join(','))fail('Cambió el orden de las columnas históricas.');}
+export function priceGenerics(layout,key){
+ if(!layout||!Number.isFinite(layout.width)||layout.width<=0||!Array.isArray(layout.items))fail('No se pudo leer la posición de los productos genéricos.');
+ const items=layout.items.map(i=>({...i,text:clean(i.text).trim()}));if(items.some(i=>![i.x0,i.x1,i.top].every(Number.isFinite)))fail('Las posiciones del cuadro son inválidas.');
+ const foot=layout.foot??Math.min(...items.filter(i=>/^La incidencia se refiere/.test(i.text)).map(i=>i.top));if(!Number.isFinite(foot))fail('No se encontró la nota de incidencia del cuadro.');
+ const out=[],expected=key==='INPC'?10:15;
+ for(let side=0;side<2;side++){
+  const words=items.filter(i=>i.top<foot-3&&i.x0>=layout.width*side/2&&i.x0<layout.width*(side+1)/2).sort((a,b)=>a.top-b.top||a.x0-b.x0),nums=words.filter(i=>/^-?\d+\.\d+$/.test(i.text));
+  if(nums.length!==expected*2)fail('Cambió el cuadro de productos genéricos.');
+  const pairs=Array.from({length:expected},(_,i)=>nums.slice(2*i,2*i+2));
+  pairs.forEach(([a,b],i)=>{if(Math.abs(a.top-b.top)>3||a.x0>=b.x0||!/^[-]?\d+\.\d{2}$/.test(a.text)||!/^[-]?\d+\.\d{3}$/.test(b.text))fail('Una variación o incidencia tiene columnas ambiguas.');
+   const lo=i?(pairs[i-1][0].top+a.top)/2:a.top-8,hi=i+1<expected?(pairs[i+1][0].top+a.top)/2:a.top+9,label=words.filter(w=>lo<=w.top&&w.top<hi&&w.x1<a.x0-2).map(w=>w.text).join(' ').replace(/\s+/g,' ').trim(),mom=+a.text,incidence=+b.text;
+   if(!label||/mensual|genéricos|incidencia/i.test(label)||(side===0&&(mom<0||incidence<0))||(side===1&&(mom>0||incidence>0)))fail('La etiqueta o el signo del producto genérico es incompatible.');out.push({id:`generico_${side}_${i}`,label,mom,incidence});
+  });
+ }
+ if(new Set(out.map(r=>r.label)).size!==out.length)fail('Hay productos genéricos duplicados.');return out;
+}
+export function parsePrices(key,input,layout){
+ const cp=key==='INPC',count=cp?6:8;if(input.length!==count||input.some(p=>!p.trim()))fail(`El boletín ${key} requiere ${count} páginas con texto seleccionable.`);
+ const pages=input.map(clean),cover=pages[0],pub=cover.match(/(\d{1,2})\s+de\s+(\p{L}+)\s+de\s+(\d{4})/iu),ref=cover.match(/\ben\s+(\p{L}+)\s+de\s+(\d{4})/iu),number=cover.match(/BOLETÍN\s+DE\s+INDICADOR\s+(\d+\s*\/\s*\d+)/i)?.[1].replace(/\s/g,'');
+ if(!pub||!ref||!number)fail('No se identificaron la fecha y el periodo del boletín.');const pm=MONTHS.indexOf(pub[2].toLowerCase())+1,py=+pub[3],pd=+pub[1],month=MONTHS.indexOf(ref[1].toLowerCase())+1,year=+ref[2],date=new Date(Date.UTC(py,pm-1,pd));
+ if(!pm||!month||date.getUTCMonth()!==pm-1||date.getUTCDate()!==pd||year*12+month>=py*12+pm)fail('Las fechas del archivo son incompatibles.');if(py!==2026)fail('Se requiere actualizar el membrete institucional para ese año.');
+ for(let i=0;i<count;i++){const p=pages[i],d=p.match(/\d{1,2}\s+de\s+\p{L}+\s+de\s+\d{4}/u)?.[0];if(d!==pub[0]||!new RegExp('\\(\\s*'+key+'\\s*\\)').test(p.slice(0,p.indexOf(d)))||!new RegExp('Página\\s+'+(i+1)+'\\s*/\\s*'+count+'\\b').test(p)||p.match(/BOLETÍN\s+DE\s+INDICADOR\s+(\d+\s*\/\s*\d+)/i)?.[1].replace(/\s/g,'')!==number)fail('Las páginas no pertenecen a la misma edición o producto.');}
+ const f={indicator:key,name:cp?'Índice Nacional de Precios al Consumidor':'Índice Nacional de Precios Productor',pages,ym:`${year}-${String(month).padStart(2,'0')}`,period:`${MONTHS[month-1]} de ${year}`,publicationDate:`${py}-${String(pm).padStart(2,'0')}-${String(pd).padStart(2,'0')}`,bulletin:number};
+ const method=pages.at(-1);if(!/FICHA METODOLÓGICA/.test(method)||!method.includes('Laspeyres'))fail('Cambió la ficha metodológica del indicador.');
+ let headline;
+ if(cp){
+  if(!cover.includes('Próxima publicación mensual'))fail('Se requiere el boletín mensual del INPC, no el quincenal.');const idx=cover.match(/nivel de\s+(-?\d+\.\d+)\s+puntos/),base=method.match(/Segunda quincena de julio de \d{4}\s*=\s*100/);
+  if(!idx||+idx[1]<=0||!base)fail('No se validó el índice o su periodo base.');f.index=+idx[1];f.base=base[0];const b=table(pages[1],1);historical(b,f,3);if(!/mensual anual mensual anual/.test(b.replace(/\s+/g,' ')))fail('Cambió la identidad de las columnas del INPC.');f.rows=rows(b,CP,11,{mom:2,yoy:5,priorYoy:4,incidence:8,annualIncidence:10});f.groups=[];f.destinations=[];headline=['total','subyacente','no_subyacente'].map(id=>f.rows.find(r=>r.id===id));
+ }else{
+  if(!cover.includes('incluido petróleo')||!method.includes('preliminares')||!method.includes('cinco meses'))fail('Cambió la cobertura o el estatus del INPP.');const base=method.match(/Periodo base de comparación\s+(\p{L}+ de \d{4}\s*=\s*100)/u);if(!base)fail('No se identificó el periodo base del INPP.');f.base=base[1];f.index=null;
+  f.groups=[[1,1,PP],[4,4,[['total','Mercancías y servicios de uso intermedio','Uso intermedio'],...PP.slice(1).filter(r=>r[0]!=='construccion')]],[5,5,[['total','Mercancías y servicios finales','Finales'],...PP.slice(1)]]].map(([page,num,spec])=>{const b=table(pages[page],num);historical(b,f,2);if(!b.includes('incluido petróleo'))fail('Cambió la cobertura del cuadro.');return rows(b,spec,6,{mom:2,yoy:5,priorYoy:4});});f.rows=f.groups[0];headline=f.groups.map(g=>g[0]);
+  const b=table(pages[6],6);if(!b.replace(/\s+/g,' ').includes(f.period)||!b.includes('incluido petróleo'))fail('El destino corresponde a otro periodo o cobertura.');f.destinations=rows(b,[['finales','Mercancías y servicios finales','Finales'],['interna','Demanda interna','Demanda interna'],['consumo','Consumo','Consumo'],['capital','Formación de capital','Formación de capital'],['exportacion','Exportaciones','Exportaciones']],7,{mom:2,incidence:3,yoy:6});if(f.destinations[0].mom!==headline[2].mom||f.destinations[0].yoy!==headline[2].yoy)fail('Los totales finales no coinciden entre cuadros.');
+ }
+ const hero=cover.match(/(?:^|\n)[▲▼]?\s*(-?\d+\.\d+)\s*%\s*[▲▼]?\s*(-?\d+\.\d+)\s*%\s*[▲▼]?\s*(-?\d+\.\d+)\s*%\s*[▲▼]?\s*(-?\d+\.\d+)\s*%\s*[▲▼]?\s*(-?\d+\.\d+)\s*%\s*[▲▼]?\s*(-?\d+\.\d+)\s*%/);
+ if(!hero||hero.slice(1).map(Number).join(',')!==headline.flatMap(r=>[r.mom,r.yoy]).join(','))fail('La portada no coincide con las tasas de los cuadros.');const genericBlock=table(pages[cp?3:4],cp?2:3);if(!genericBlock.replace(/\s+/g,' ').includes(f.period))fail('El cuadro de genéricos corresponde a otro periodo.');f.generics=priceGenerics(layout,key);if(selectedPrices(f).length!==6)fail('Se requieren tres incidencias positivas y tres negativas.');return f;
+}
+export function priceCore(f){return (f.indicator==='INPC'?['total','subyacente','mercancias','servicios','no_subyacente','agro','energia_tarifas']:f.rows.map(r=>r.id)).map(id=>f.rows.find(r=>r.id===id));}
+export function selectedPrices(f){return [...f.generics.filter(r=>r.incidence>0).sort((a,b)=>b.incidence-a.incidence||a.id.localeCompare(b.id)).slice(0,3),...f.generics.filter(r=>r.incidence<0).sort((a,b)=>a.incidence-b.incidence||a.id.localeCompare(b.id)).slice(0,3)];}

@@ -1,8 +1,9 @@
+import {selectedPrices} from './bulletin_prices.mjs';
 import {demandPair} from './bulletin_demand.mjs';
-import {selectedSectors} from './bulletin_parsers.mjs?v=consumo-inversion-20261106';
+import {selectedSectors} from './bulletin_parsers.mjs?v=precios-20261106';
 // Gráficas locales; ninguna imagen ni cifra se envía a servicios externos.
 export function drawComponentChart(canvas,facts,field){
- const rows=facts.chartRows||facts.rows.slice(1),ctx=canvas.getContext('2d');canvas.width=1840;canvas.height=590;
+ const digits=facts.chartDigits??1,suffix=facts.chartSuffix??'%',rows=facts.chartRows||facts.rows.slice(1),ctx=canvas.getContext('2d');canvas.width=1840;canvas.height=590;
  ctx.fillStyle='#FFFFFF';ctx.fillRect(0,0,1840,590);
  const values=rows.map(r=>r[field]),low=Math.min(0,...values),high=Math.max(0,...values),span=Math.max(high-low,1);
  const min=low-span*.16,max=high+span*.18,x0=590,x1=1745,y0=140,y1=440,x=v=>x0+(v-min)/(max-min)*(x1-x0);
@@ -11,20 +12,24 @@ export function drawComponentChart(canvas,facts,field){
  ctx.font='30px "Noto Sans"';ctx.textBaseline='middle';
  for(let i=0;i<5;i++){
   const v=min+(max-min)*i/4,xx=x(v);ctx.strokeStyle='#E4E8E5';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(xx,y0-30);ctx.lineTo(xx,y1+35);ctx.stroke();
-  ctx.fillStyle='#4C5650';ctx.fillText(v.toFixed(1)+'%',xx,505);
+  ctx.fillStyle='#4C5650';ctx.fillText(v.toFixed(digits)+suffix,xx,505);
  }
  ctx.strokeStyle='#67756C';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(x(0),y0-30);ctx.lineTo(x(0),y1+35);ctx.stroke();
  rows.forEach((r,i)=>{
   const yy=y0+i*(300/Math.max(rows.length-1,1)),label=r.label.startsWith('Generación')?'Energía, agua y gas':r.label;
-  ctx.textAlign='right';ctx.fillStyle='#161A1D';ctx.font='32px "Noto Sans"';ctx.fillText(label,x0-30,yy);
-  const xx=x(r[field]),zero=x(0);ctx.fillStyle=r[field]>=0?'#246454':'#9B2247';ctx.fillRect(Math.min(xx,zero),yy-22,Math.max(Math.abs(xx-zero),2),44);
-  ctx.fillStyle='#161A1D';ctx.textAlign=r[field]>=0?'left':'right';ctx.font='600 32px "Noto Sans"';ctx.fillText(r[field].toFixed(1)+'%',xx+(r[field]>=0?12:-12),yy);
+  ctx.textAlign='right';ctx.fillStyle='#161A1D';ctx.font='32px "Noto Sans"';if(facts.chartWrap){const words=label.split(' '),lines=[''];for(const w of words){const i=lines.length-1;if(ctx.measureText(lines[i]+' '+w).width>530&&lines[i])lines.push(w);else lines[i]+=(lines[i]?' ':'')+w;}ctx.font='30px "Noto Sans"';lines.forEach((s,j)=>ctx.fillText(s,x0-30,yy+(j-(lines.length-1)/2)*33));}else ctx.fillText(label,x0-30,yy);
+  const xx=x(r[field]),zero=x(0);ctx.fillStyle=r[field]>=0?(facts.chartPositive||'#246454'):(facts.chartNegative||'#9B2247');ctx.fillRect(Math.min(xx,zero),yy-22,Math.max(Math.abs(xx-zero),2),44);
+  ctx.fillStyle='#161A1D';ctx.textAlign=r[field]>=0?'left':'right';ctx.font='600 32px "Noto Sans"';ctx.fillText(r[field].toFixed(digits)+suffix,xx+(r[field]>=0?12:-12),yy);
  });
  ctx.textAlign='center';ctx.font='30px "Noto Sans"';ctx.fillStyle='#4C5650';ctx.fillText(facts.chartAxis||'Variación real (%)',1160,565);
 }
 export async function chartBytes(canvas){const b=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));if(!b)throw new Error('No se pudo generar la gráfica.');return new Uint8Array(await b.arrayBuffer());}
 
 export function drawNoteChart(canvas,f,field){
+ if(f.indicator==='INPC'||f.indicator==='INPP'){
+  const incidence=field==='yoy',ids=f.indicator==='INPC'?['mercancias','servicios','agro','energia_tarifas']:['primarias','secundarias','terciarias'];
+  return drawComponentChart(canvas,{...f,chartRows:incidence?selectedPrices(f):ids.map(id=>f.rows.find(r=>r.id===id)),chartDigits:incidence?3:2,chartSuffix:incidence?'':'%',chartPositive:'#9B2247',chartNegative:'#246454',chartWrap:true,chartTitle:incidence?'Incidencias publicadas en la variación mensual':'Variación anual de precios por componente',chartAxis:incidence?'Incidencia mensual (puntos porcentuales)':'Variación anual (%)'},incidence?'incidence':'yoy');
+ }
  if(f.indicator==='CONSUMO'||f.indicator==='IMFBCF'){
   if(field==='yoy')return pairChart(canvas,demandPair(f));
   const ids=f.indicator==='CONSUMO'?['nacional_bienes','nacional_servicios','importado']:['residencial','no_residencial','nacional','importado'];
