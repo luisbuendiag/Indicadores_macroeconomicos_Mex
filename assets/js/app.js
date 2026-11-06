@@ -149,6 +149,11 @@ function productToolbar(ind) {
     productBtn("Descargar nota Word", "↓", notaReady, notaTitle, () => downloadProduct(notaUrl(ind), `${ind.key}_nota.docx`), "nota"),
     productBtn("Excel", "↓", xlsxReady, xlsxTitle, () => downloadProduct(xlsxUrl(ind), `${ind.key}_datos.xlsx`), "excel")
   );
+  if (ind.key === "IMAI") {
+    bar.append(productBtn("Cargar boletín", "↑", true, "Crear una nota Word desde un PDF, sin subirlo al servidor", () => {
+      window.open("cargar-boletin.html", "_blank", "noopener,noreferrer");
+    }, "cargar-boletin"));
+  }
   const noteButton = bar.querySelector('[data-product="nota"]');
   if (noteButton) bar.prepend(noteButton);
   return bar;

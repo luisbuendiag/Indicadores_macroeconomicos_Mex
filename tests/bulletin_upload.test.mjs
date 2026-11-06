@@ -1,0 +1,27 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {parseImai,narrative} from '../assets/js/bulletin_imai.mjs';
+import {buildDocx} from '../assets/js/bulletin_docx.mjs';
+import {unzipSync,strFromU8} from '../assets/vendor/fflate/fflate.mjs';
+const fixture=()=>JSON.parse(fs.readFileSync(new URL('fixtures/imai2026_10_pages.json',import.meta.url)));
+const root=new URL('../',import.meta.url),read=p=>fs.readFileSync(new URL(p,root),'utf8');
+test('lee los cinco sectores, sus signos, periodos y tipos de serie',()=>{const f=parseImai(fixture());assert.equal(f.period,'agosto de 2026');assert.equal(f.index,103.4);assert.equal(f.base,'2018');assert.equal(f.publicationDate,'2026-10-12');assert.deepEqual(f.rows.map(r=>[r.mom,r.yoy,r.original,r.ytd]),[[.6,3.6,3.5,.8],[-1.6,-.8,-.8,2.9],[1.2,1.4,1.6,.2],[0,7.9,7.5,3.5],[1.2,3.2,3.2,-.3]]);});
+test('un boletín recibido puede estar fechado después de hoy',()=>{const p=fixture().map(x=>x.replaceAll('12 de octubre de 2026','11 de noviembre de 2026'));assert.equal(parseImai(p).publicationDate,'2026-11-11');});
+test('el periodo no depende de la ficha pública',()=>{const p=fixture().map(x=>x.replaceAll('agosto','septiembre'));assert.equal(parseImai(p).ym,'2026-09');assert.ok(!read('assets/js/upload_notes.mjs').includes('indicadores.json'));});
+test('rechaza otro indicador, escaneos y páginas incompletas',()=>{assert.throws(()=>parseImai(fixture().map(x=>x.replaceAll('(IMAI)','(IGAE)'))));assert.throws(()=>parseImai(fixture().slice(0,4)));assert.throws(()=>parseImai(['','','','','']));});
+test('portada y cuadro ajustado deben coincidir',()=>{const p=fixture();p[0]=p[0].replace('103.4 ▲ 0.6 %','103.4 ▲ 0.7 %');assert.throws(()=>parseImai(p),/portada/);});
+test('un cuadro de otro periodo impide generar',()=>{const p=fixture();p[3]=p[3].replace('a agosto de 2026','a julio de 2026');assert.throws(()=>parseImai(p),/periodos/);});
+test('una base contradictoria y un membrete de otro año requieren revisión',()=>{const p=fixture();p[1]=p[1].replace('índice 2018=100','índice 2013=100');assert.throws(()=>parseImai(p),/bases/);assert.throws(()=>parseImai(fixture().map(x=>x.replaceAll('2026','2027'))),/membrete/);});
+test('no confunde el sector 22 con el subsector 221',()=>{const p=fixture();p[3]=p[3].replace('221 1.6 0.2','221 99.9 88.8');assert.equal(parseImai(p).rows[2].original,1.6);});
+test('una fila ajustada duplicada se rechaza',()=>{const p=fixture();p[1]=p[1].replace('Minería -1.6 -0.8','Minería -1.6 -0.8\nMinería -2.6 -0.9');assert.throws(()=>parseImai(p),/inequívoca/);});
+test('la redacción mantiene negativos, empates y el conteo no ponderado',()=>{const t=narrative(parseImai(fixture()));assert.match(t.bullets[0],/Energía, agua y gas y Industrias manufactureras/);assert.match(t.bullets[1],/-0.8%/);assert.match(t.balance,/3 de los cuatro/);assert.match(t.balance,/no está ponderado/);});
+test('Word conserva membrete y tablas editables, sin PDF adjunto',()=>{
+ const template=new Uint8Array(fs.readFileSync(new URL('data/source/notas_machote/_PLANTILLA_NOTAS_VISUAL.docx',root))),before=unzipSync(template);
+ const png=new Uint8Array([137,80,78,71]);const zip=unzipSync(buildDocx(parseImai(fixture()),template,{mom:png,yoy:png})),xml=strFromU8(zip['word/document.xml']);
+ assert.equal((xml.match(/<w:tbl>/g)||[]).length,3);assert.equal((xml.match(/<w:drawing>/g)||[]).length,2);assert.match(xml,/Versión recibida/);assert.match(xml,/-0.8/);assert.match(xml,/Noto Sans/);assert.ok(!xml.includes('w:type="page"'));assert.match(xml,/cuatro componentes|componentes/);
+ for(const key of Object.keys(before).filter(x=>/^word\/(header|footer)/.test(x)))assert.deepEqual(zip[key],before[key]);
+ assert.ok(!Object.keys(zip).some(x=>x.endsWith('.pdf')));assert.ok(!strFromU8(zip['docProps/core.xml']).includes('creator'));
+});
+test('la pantalla local no envía ni persiste el archivo',()=>{const html=read('cargar-boletin.html'),js=read('assets/js/upload_notes.mjs');assert.match(html,/connect-src 'self'/);assert.match(html,/form-action 'none'/);assert.ok(!/localStorage|sessionStorage|indexedDB|sendBeacon|XMLHttpRequest|WebSocket/.test(js));assert.equal((js.match(/\bfetch\(/g)||[]).length,1);assert.match(js,/fetch\('data\/source\/notas_machote/);assert.ok(!/method\s*:\s*['"]POST/.test(js));assert.match(js,/20\*1024\*1024/);});
+test('solo IMAI ofrece el piloto y se abre sin opener',()=>{const js=read('assets/js/app.js');assert.match(js,/if \(ind.key === "IMAI"\) \{/);assert.match(js,/window.open\("cargar-boletin.html", "_blank", "noopener,noreferrer"\)/);});

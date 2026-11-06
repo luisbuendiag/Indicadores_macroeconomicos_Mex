@@ -17,8 +17,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "24"
-      - name: Calendario y exportación Word
-        run: node --test tests/calendar_ui.test.mjs
+      - name: Calendario y notas Word locales
+        run: node --test tests/calendar_ui.test.mjs tests/bulletin_upload.test.mjs
       - name: Validación de datos
         run: python scripts/validate.py
       - name: Pruebas unitarias
