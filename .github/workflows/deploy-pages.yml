@@ -29,6 +29,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Liberar despliegue anterior bloqueado
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const args = {...context.repo, pages_deployment_id: '0d5b093247b5998cb8949b6f232a18d06e368499'};
+            try {
+              const {data} = await github.request('GET /repos/{owner}/{repo}/pages/deployments/{pages_deployment_id}', args);
+              core.info(`Estado de la publicación anterior: ${data.status}`);
+              if (['deployment_in_progress', 'deployment_queued'].includes(data.status)) {
+                await github.request('POST /repos/{owner}/{repo}/pages/deployments/{pages_deployment_id}/cancel', args);
+              }
+            } catch (error) {
+              if (![404, 409, 422].includes(error.status)) throw error;
+              core.info('La publicación anterior ya no requiere cancelación.');
+            }
       - uses: actions/configure-pages@v5
       - name: Empaquetar sitio
         uses: actions/upload-pages-artifact@v3
