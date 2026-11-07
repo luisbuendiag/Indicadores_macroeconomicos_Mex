@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-11-06T23:15:25+00:00",
+  "started_at": "2026-11-06T23:48:30+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -457,7 +457,7 @@
     "TASA: 15 decisiones de politica monetaria construidas",
     "TASA: 73 regímenes detectados",
     "SIC: 1 periodo(s) finales sin cifra de los indicadores compuestos; se conservan sólo dentro del periodo de referencia del boletín oficial",
-    "calendario: regenerado con as_of=2026-11-06",
+    "calendario: regenerado con as_of=2026-11-07",
     "métricas: data/metrics.json regenerado",
     "frescura: PIB -> ACTUALIZADO",
     "frescura: PIBSEC -> ACTUALIZADO",
@@ -482,7 +482,7 @@
     "frescura: INPP -> ACTUALIZADO",
     "frescura: SIC -> ACTUALIZADO",
     "frescura: IMOAM -> ACTUALIZADO",
-    "meta: last_update_ct=2026-11-06T17:30:36-06:00",
+    "meta: last_update_ct=2026-11-06T18:03:27-06:00",
     "notas: 15 vigentes (0 provisionadas desde machote)"
   ],
   "consultas": [
@@ -3969,5 +3969,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-11-06T23:30:47+00:00"
+  "finished_at": "2026-11-07T00:03:38+00:00"
 }
