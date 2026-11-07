@@ -1,6 +1,7 @@
+import {gdpOriginalCore,selectedGdp} from './bulletin_gdp.mjs';
 import {selectedPrices} from './bulletin_prices.mjs';
 import {demandPair} from './bulletin_demand.mjs';
-import {selectedSectors} from './bulletin_parsers.mjs?v=precios-20261106';
+import {selectedSectors} from './bulletin_parsers.mjs?v=pib-20261107';
 // Gráficas locales; ninguna imagen ni cifra se envía a servicios externos.
 export function drawComponentChart(canvas,facts,field){
  const digits=facts.chartDigits??1,suffix=facts.chartSuffix??'%',rows=facts.chartRows||facts.rows.slice(1),ctx=canvas.getContext('2d');canvas.width=1840;canvas.height=590;
@@ -26,6 +27,10 @@ export function drawComponentChart(canvas,facts,field){
 export async function chartBytes(canvas){const b=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));if(!b)throw new Error('No se pudo generar la gráfica.');return new Uint8Array(await b.arrayBuffer());}
 
 export function drawNoteChart(canvas,f,field){
+ if(f.indicator==='PIB'||f.indicator==='PIBSEC'){
+  const current=field==='mom',rows=current?f.rows.slice(1):f.indicator==='PIB'?gdpOriginalCore(f).slice(1):selectedGdp(f);
+  return drawComponentChart(canvas,{...f,chartRows:rows,chartWrap:true,chartTitle:current?'Variación trimestral por actividad':f.indicator==='PIB'?'Variación anual por actividad':'Mayores y menores tasas sectoriales',chartAxis:current?'Variación real trimestral (%) · cifras desestacionalizadas':'Variación real anual (%) · cifras originales'},current?'mom':'original');
+ }
  if(f.indicator==='INPC'||f.indicator==='INPP'){
   const incidence=field==='yoy',ids=f.indicator==='INPC'?['mercancias','servicios','agro','energia_tarifas']:['primarias','secundarias','terciarias'];
   return drawComponentChart(canvas,{...f,chartRows:incidence?selectedPrices(f):ids.map(id=>f.rows.find(r=>r.id===id)),chartDigits:incidence?3:2,chartSuffix:incidence?'':'%',chartPositive:'#9B2247',chartNegative:'#246454',chartWrap:true,chartTitle:incidence?'Incidencias publicadas en la variación mensual':'Variación anual de precios por componente',chartAxis:incidence?'Incidencia mensual (puntos porcentuales)':'Variación anual (%)'},incidence?'incidence':'yoy');

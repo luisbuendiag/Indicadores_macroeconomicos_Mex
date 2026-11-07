@@ -1,3 +1,4 @@
+import {parseGdp} from './bulletin_gdp.mjs';
 import {parsePrices} from './bulletin_prices.mjs';
 import {parseDemand} from './bulletin_demand.mjs';
 import {parseImai,MONTHS} from './bulletin_imai.mjs';
@@ -9,7 +10,9 @@ export const PRODUCTS={
  CONSUMO:{name:'Indicador Mensual del Consumo Privado',alias:'IMCP',pages:4},
  IMFBCF:{name:'Indicador Mensual de la Formación Bruta de Capital Fijo',pages:4},
  INPC:{name:'Índice Nacional de Precios al Consumidor',pages:6},
- INPP:{name:'Índice Nacional de Precios Productor',pages:8}
+ INPP:{name:'Índice Nacional de Precios Productor',pages:8},
+ PIB:{name:'Estimación Oportuna del Producto Interno Bruto Trimestral',alias:'PIB oportuno',pages:4},
+ PIBSEC:{name:'Producto Interno Bruto Trimestral a precios constantes',alias:'PIBT',pages:5}
 };
 export const SECTORS={'311':'Alimentos','312':'Bebidas y tabaco','313':'Insumos textiles','314':'Productos textiles','315':'Prendas de vestir','316':'Cuero y piel','321':'Madera','322':'Papel','323':'Impresión','324':'Petróleo y carbón','325':'Química','326':'Plástico y hule','327':'Minerales no metálicos','331':'Metálicas básicas','332':'Productos metálicos','333':'Maquinaria y equipo','334':'Computación y electrónica','335':'Equipo eléctrico','336':'Equipo de transporte','337':'Muebles','339':'Otras manufacturas'};
 const fail=m=>{throw new Error(m);};
@@ -64,5 +67,5 @@ export function parseImoam(pages){
  if(!cov||!win||!ahead||!['RENEM','CFE','CENACE','confidencialidad'].every(x=>f.pages[3].includes(x)))fail('Cambió el bloque de evaluación o metodología del IMOAM.');
  f.coverage=Number(cov[1].replace(',','.'));if(f.coverage<0||f.coverage>100)fail('La evaluación histórica es inválida.');f.evaluation=`${win[1]} de ${win[2]} a ${win[3]} de ${win[4]}`;f.daysAhead=+ahead[1];return f;
 }
-export function parseBulletin(key,pages,layout){if(key==='INPC'||key==='INPP')return parsePrices(key,pages,layout);if(key==='CONSUMO'||key==='IMFBCF')return parseDemand(context(key,pages));if(key==='IMAI')return {...parseImai(pages),name:PRODUCTS.IMAI.name};if(key==='IGAE')return parseIgae(pages);if(key==='EMIM')return parseEmim(pages);if(key==='IMOAM')return parseImoam(pages);fail('Indicador no disponible.');}
+export function parseBulletin(key,pages,layout){if(key==='PIB'||key==='PIBSEC')return parseGdp(key,pages);if(key==='INPC'||key==='INPP')return parsePrices(key,pages,layout);if(key==='CONSUMO'||key==='IMFBCF')return parseDemand(context(key,pages));if(key==='IMAI')return {...parseImai(pages),name:PRODUCTS.IMAI.name};if(key==='IGAE')return parseIgae(pages);if(key==='EMIM')return parseEmim(pages);if(key==='IMOAM')return parseImoam(pages);fail('Indicador no disponible.');}
 export function selectedSectors(f){return [...f.sectors].sort((a,b)=>b.production-a.production||a.code.localeCompare(b.code)).filter((_,i,a)=>i<3||i>=a.length-3);}

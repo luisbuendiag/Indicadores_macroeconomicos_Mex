@@ -1,7 +1,8 @@
+import {gdpOriginalCore,selectedGdp} from './bulletin_gdp.mjs';
 import {priceCore,selectedPrices} from './bulletin_prices.mjs';
 import {demandCore} from './bulletin_demand.mjs';
 import {unzipSync,zipSync,strFromU8,strToU8} from '../vendor/fflate/fflate.mjs';
-import {selectedSectors} from './bulletin_parsers.mjs?v=precios-20261106';
+import {selectedSectors} from './bulletin_parsers.mjs?v=pib-20261107';
 import {narrative} from './bulletin_imai.mjs';
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
 const r=(s,{size=22,bold=false,color='000000',italic=false}={})=>`<w:r><w:rPr><w:rFonts w:ascii="Noto Sans" w:hAnsi="Noto Sans" w:cs="Noto Sans"/><w:sz w:val="${size}"/><w:szCs w:val="${size}"/><w:color w:val="${color}"/>${bold?'<w:b/>':''}${italic?'<w:i/>':''}</w:rPr><w:t xml:space="preserve">${esc(s)}</w:t></w:r>`;
@@ -23,7 +24,8 @@ export function buildDocx(f,template,pngs){
  const section=xml.match(/<w:sectPr\b[\s\S]*?<\/w:sectPr>/)?.[0];
  if(!section||!files['word/header1.xml']||!pngs.mom||!pngs.yoy)throw new Error('No se pudo preparar el formato institucional.');
  let body;
- if(f.indicator==='INPC'||f.indicator==='INPP')body=priceBody(f);
+ if(f.indicator==='PIB'||f.indicator==='PIBSEC')body=gdpBody(f);
+ else if(f.indicator==='INPC'||f.indicator==='INPP')body=priceBody(f);
  else if(f.indicator==='CONSUMO'||f.indicator==='IMFBCF')body=demandBody(f);
  else if(f.indicator==='EMIM')body=emimBody(f);
  else if(f.indicator==='IMOAM')body=imoamBody(f);
@@ -119,4 +121,18 @@ function priceBody(f){
  if(!cp){const i=f.destinations.find(r=>r.id==='interna'),e=f.destinations.find(r=>r.id==='exportacion');b+=h('Precios finales por destino')+p(`La demanda interna registró ${n(i.yoy)}% anual y las exportaciones, ${n(e.yoy)}%. Son cambios de precios, no de valores o volúmenes exportados.`)+source(f,'Cuadro 6, página 7.');}
  b+=h('Notas y fuente')+p(cp?'El INPC mide precios de una canasta representativa del consumo de los hogares. Una inflación menor no implica que baje el nivel de precios. La comparación anual previa corresponde al mismo mes de un año antes, no al mes inmediato anterior.':'El INPP mide precios de producción, no volumen productivo ni un traslado automático al INPC. Esta nota conserva la cobertura incluido petróleo. Los resultados son preliminares y pueden actualizarse hasta cinco meses después de su publicación.');
  b+=note(`Base: ${f.base}. Las incidencias pueden diferir del total por redondeo.`)+source(f,`Resultados y cuadros de esta edición; ficha metodológica, página ${f.pages.length}.`,true);return b;
+}
+function gdpBody(f){
+ const op=f.indicator==='PIB',n=v=>v.toFixed(1),t=f.rows[0],o=gdpOriginalCore(f),sectors=f.rows.slice(1),neg=sectors.filter(r=>r.mom<0),up=sectors.filter(r=>r.mom>0).length,flat=sectors.filter(r=>r.mom===0).length;
+ let b=title(f)+table([['Periodo de referencia','Fecha del boletín'],[f.periodCode,f.publicationDate],['Carácter',f.status]],[4419,4419]);
+ b+=h('Resumen ejecutivo')+p(`En el ${f.period}, ${op?'se estimó una variación del PIB de':'el PIB varió'} ${n(t.mom)}% respecto al trimestre previo y ${n(t.yoy)}% frente al mismo trimestre del año anterior, en términos reales y con cifras desestacionalizadas.`);
+ b+=p(neg.length?`Las ${neg.map(r=>r.label.toLowerCase()).join(' y ')} registraron ${neg.map(r=>n(r.mom)+'%').join(' y ')} trimestral. ${up} de las tres grandes actividades crecieron frente al trimestre previo; conteo no ponderado.`:flat?`${up} de las tres grandes actividades crecieron y ${flat} no registraron cambio frente al trimestre previo; conteo no ponderado.`:'Las tres grandes actividades aumentaron frente al trimestre previo.',{list:true});
+ b+=h('Cifras desestacionalizadas')+table([['Actividad','Trimestral (%)','Anual (%)','Acumulado (%)'],...f.rows.map(r=>[r.label,n(r.mom),n(r.yoy),n(r.ytd)])],[3600,1746,1746,1746])+source(f,'Cuadro 1, página 2. El acumulado compara enero al trimestre de referencia con el mismo lapso del año anterior.');
+ b+=gap()+image('uploadMom',901)+note('Comparación con el trimestre previo; las tasas no son contribuciones ni tasas anualizadas.');
+ b+=h('Balance del año')+p(`El PIB acumuló ${n(t.ytd)}% con ajuste estacional y ${n(o[0].ytd)}% en cifras originales. Corresponden al mismo intervalo y a tratamientos estadísticos distintos; no se promedian tasas trimestrales.`);
+ b+=h('Resultados con cifras originales')+table([['Actividad','Anual (%)','Enero–trimestre (%)'],...o.map(r=>[r.label,n(r.original),n(r.ytd)])],[4650,1794,2394])+source(f,`Cuadro 2, página ${op?3:4}. Cifras preliminares${op?' y oportunas para el trimestre actual':''}.`);
+ b+=h(op?'Variación anual de las actividades':'Contrastes sectoriales')+image('uploadYoy',902)+note(op?'Comparación con el mismo trimestre del año anterior, cifras originales.':'Tres mayores y tres menores variaciones anuales entre los 20 sectores publicados; cifras originales, no contribuciones al PIB.');
+ if(!op){const all=f.originals.filter(r=>!['total','primarias','secundarias','terciarias'].includes(r.id)),m=all.find(r=>r.id==='31-33');b+=p(`${all.filter(r=>r.original>0).length} de los 20 sectores registraron crecimiento anual; conteo no ponderado. Las manufacturas variaron ${n(m.original)}% anual y ${n(m.ytd)}% en el acumulado, con cifras originales.`,{list:true});}
+ b+=h('Notas y fuente')+p(op?'La estimación oportuna está sujeta a cambios al incorporarse información y no reemplaza al cálculo trimestral. Se conserva como estimación, sin atribuirle desgloses sectoriales que no publica.':'El cálculo trimestral incorpora información más reciente. La edición conserva cifras preliminares y revisiones históricas señaladas en el boletín; no se presenta todo el cuadro como definitivo.');
+ b+=note(`Precios constantes de ${f.base}. Los agregados se ajustan de forma independiente; las tasas de sus componentes no se suman ni se promedian para reconstruir el total.`)+source(f,`Cuadros 1–2; ficha metodológica, página ${f.pages.length}.`,true);return b;
 }
