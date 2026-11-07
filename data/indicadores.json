@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-11-07T00:03:27+00:00",
+    "generated_at": "2026-11-07T23:20:10+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-11-06T18:03:27-06:00",
+    "last_update_ct": "2026-11-07T17:20:10-06:00",
     "periodo_referencia_reciente": {
       "period": "Oct 26",
       "period_long": "Oct 26"
@@ -506,8 +506,8 @@
         }
       ],
       "last_observation": "3T-26 P",
-      "last_updated": "2026-11-06",
-      "last_checked": "2026-11-06",
+      "last_updated": "2026-11-07",
+      "last_checked": "2026-11-07",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -516,7 +516,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "30 de octubre de 2026",
       "periodo_referencia": "3T-26 P",
-      "fecha_consulta": "2026-11-06",
+      "fecha_consulta": "2026-11-07",
       "periodo_referencia_oficial": "2T-26",
       "fecha_publicacion_oficial": null,
       "proxima_publicacion": {
@@ -24807,8 +24807,8 @@
         }
       ],
       "last_observation": "Ago 26",
-      "last_updated": "2026-11-06",
-      "last_checked": "2026-11-06",
+      "last_updated": "2026-11-07",
+      "last_checked": "2026-11-07",
       "source_origin": "api",
       "data_quality": [],
       "requiere_token": "INEGI",
@@ -24818,7 +24818,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "5 de noviembre de 2026",
       "periodo_referencia": "Ago 26",
-      "fecha_consulta": "2026-11-06",
+      "fecha_consulta": "2026-11-07",
       "metrics": {
         "kpi": {
           "assessment": "favorable",
@@ -49779,8 +49779,8 @@
         }
       ],
       "last_observation": "Ago 26",
-      "last_updated": "2026-11-06",
-      "last_checked": "2026-11-06",
+      "last_updated": "2026-11-07",
+      "last_checked": "2026-11-07",
       "requiere_token": null,
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -49788,7 +49788,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "5 de noviembre de 2026",
       "periodo_referencia": "Ago 26",
-      "fecha_consulta": "2026-11-06",
+      "fecha_consulta": "2026-11-07",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -52127,8 +52127,8 @@
         }
       ],
       "last_observation": "Sep 26",
-      "last_updated": "2026-11-06",
-      "last_checked": "2026-11-06",
+      "last_updated": "2026-11-07",
+      "last_checked": "2026-11-07",
       "requiere_token": null,
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -52136,7 +52136,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "20 de octubre de 2026",
       "periodo_referencia": "Sep 26",
-      "fecha_consulta": "2026-11-06",
+      "fecha_consulta": "2026-11-07",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -269375,8 +269375,8 @@
         }
       ],
       "last_observation": "Sep 26",
-      "last_updated": "2026-11-06",
-      "last_checked": "2026-11-06",
+      "last_updated": "2026-11-07",
+      "last_checked": "2026-11-07",
       "requiere_token": null,
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -269385,7 +269385,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "28 de octubre de 2026",
       "periodo_referencia": "Sep 26",
-      "fecha_consulta": "2026-11-06",
+      "fecha_consulta": "2026-11-07",
       "source_origin": "api",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_10.pdf",
       "periodo_boletin": "Sep 26",
