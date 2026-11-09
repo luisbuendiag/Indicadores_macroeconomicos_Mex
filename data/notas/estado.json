@@ -112,9 +112,8 @@
     }
   },
   "INPC": {
-    "status": "vigente",
-    "message": "Nota generada y validada por reglas Python",
-    "target_period": "Sep 26",
+    "status": "error",
+    "target_period": "Oct 26",
     "published": {
       "periodo": "Sep 26",
       "generated_at": "2026-11-05T02:54:51+00:00",
@@ -125,22 +124,23 @@
       "review_model": "precios-python-1",
       "review_kind": "reglas_python",
       "archive": "data/notas/INPC/794bfd6a55c59a6c3f8982cfe62252aaf5977354c618610d26ef96df96dcee5a-a438a55dc43f"
-    }
+    },
+    "message": "No se publicó la candidata: Cambió la estructura del boletín"
   },
   "INPP": {
     "status": "vigente",
     "message": "Nota generada y validada por reglas Python",
-    "target_period": "Sep 26",
+    "target_period": "Oct 26",
     "published": {
-      "periodo": "Sep 26",
-      "generated_at": "2026-11-05T02:54:57+00:00",
-      "source_sha256": "2f4df1eee4583c1d8c62eb2419dd81b8d46c1f31a2266c24c67dcf4afb38c4d7",
-      "fingerprint": "be481567a7e4e06430236a29170e5e0f22c37152bd4bdb2cf34062f7523c5617",
-      "docx_sha256": "4e8cd94b4aed08a920ca494f572644f55a52692a375594421bc2f70e625457bf",
-      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf",
+      "periodo": "Oct 26",
+      "generated_at": "2026-11-09T14:37:05+00:00",
+      "source_sha256": "68366413ebfc12da992cb89ce472a2cfab6196667974d52fd394af685b7a55b4",
+      "fingerprint": "799e54d34ddd12858c06c8943da7eef3b6b97d5c7be696c189422684ad6fd8b9",
+      "docx_sha256": "4fdfa0f295f493184e15fb66b3e29b04070d6d6a4fd0f2b519ace8e6cf09171e",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_11.pdf",
       "review_model": "precios-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/INPP/be481567a7e4e06430236a29170e5e0f22c37152bd4bdb2cf34062f7523c5617-4e8cd94b4aed"
+      "archive": "data/notas/INPP/799e54d34ddd12858c06c8943da7eef3b6b97d5c7be696c189422684ad6fd8b9-4fdfa0f295f4"
     }
   },
   "PIB": {

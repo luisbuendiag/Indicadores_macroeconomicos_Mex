@@ -1,8 +1,8 @@
 {
   "_comment": "Generado por scripts/build_calendar.py a partir de fuentes oficiales y respaldos. No editar a mano.",
   "fuente": "INEGI Sala de Prensa | Banco de México calendario | Secretaría de Economía (manual)",
-  "actualizado": "2026-11-07",
-  "as_of": "2026-11-07",
+  "actualizado": "2026-11-09",
+  "as_of": "2026-11-09",
   "anios": [
     2025,
     2026,
@@ -56,7 +56,7 @@
       "periodo_referencia": "Diciembre de 2024",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ice/ice2025_01.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "DESOCUP",
@@ -73,7 +73,7 @@
       "periodo_referencia": "Noviembre de 2024",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/iooe/IOE2025_01.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -174,7 +174,7 @@
       "periodo_referencia": "Noviembre de 2024",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imai/imai2025_01.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -207,7 +207,7 @@
       "periodo_referencia": "Octubre de 2024",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ifb/IMFBCF2025_01.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -224,7 +224,7 @@
       "periodo_referencia": "Octubre de 2024",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imcp/imcpmi2025_01.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "EMIM",
@@ -241,7 +241,7 @@
       "periodo_referencia": "Noviembre de 2024",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/emim/emim2025_01.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IOAE",
@@ -291,7 +291,7 @@
       "periodo_referencia": "Noviembre de 2024",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/igae/igae2025_01.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "BCMM",
@@ -341,7 +341,7 @@
       "periodo_referencia": "Diciembre de 2024",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/iooe/ioe2025_01_29.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "PIB",
@@ -375,7 +375,7 @@
       "periodo_referencia": "Enero de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ice/ice2025_02.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IMFBCF",
@@ -392,7 +392,7 @@
       "periodo_referencia": "Noviembre de 2024",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ifb/imfbcf2025_02.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -409,7 +409,7 @@
       "periodo_referencia": "Noviembre de 2024",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imcp/imcpmi2025_02.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -526,7 +526,7 @@
       "periodo_referencia": "Diciembre de 2024",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imai/imai2025_02.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -559,7 +559,7 @@
       "periodo_referencia": "Diciembre de 2024",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/emim/emim2025_02.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IOAE",
@@ -609,7 +609,7 @@
       "periodo_referencia": "Diciembre de 2024",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/igae/igae2025_02.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "DESOCUP",
@@ -626,7 +626,7 @@
       "periodo_referencia": "Cuarto trimestre de 2024",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/enoe/enoe2025_02.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -676,7 +676,7 @@
       "periodo_referencia": "Enero de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/iooe/ioe2025_02.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "EMOE",
@@ -693,7 +693,7 @@
       "periodo_referencia": "Febrero de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ice/ice2025_03.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -726,7 +726,7 @@
       "periodo_referencia": "Diciembre de 2024",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ifb/IMFBCF2025_03.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -743,7 +743,7 @@
       "periodo_referencia": "Diciembre de 2024",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imcp/imcpmi2025_03.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "SIC",
@@ -844,7 +844,7 @@
       "periodo_referencia": "Enero de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imai/imai2025_03.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "EMIM",
@@ -861,7 +861,7 @@
       "periodo_referencia": "Enero de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/emim/emim2025_03.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -911,7 +911,7 @@
       "periodo_referencia": "Enero de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/igae/igae2025_03.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -977,7 +977,7 @@
       "periodo_referencia": "Febrero de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/iooe/ioe2025_03.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "EMOE",
@@ -994,7 +994,7 @@
       "periodo_referencia": "Marzo de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ice/ice2025_04.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -1027,7 +1027,7 @@
       "periodo_referencia": "Enero de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ifb/imfbcf2025_04.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -1044,7 +1044,7 @@
       "periodo_referencia": "Enero de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imcp/imcpmi2025_04.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "SIC",
@@ -1145,7 +1145,7 @@
       "periodo_referencia": "Febrero de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imai/imai2025_04.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -1178,7 +1178,7 @@
       "periodo_referencia": "Febrero de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/emim/emim2025_04.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IOAE",
@@ -1228,7 +1228,7 @@
       "periodo_referencia": "Febrero de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/igae/igae2025_04.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "BCMM",
@@ -1262,7 +1262,7 @@
       "periodo_referencia": "Marzo de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/iooe/ioe2025_04.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -1312,7 +1312,7 @@
       "periodo_referencia": "Abril de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ice/ice2025_05.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IMFBCF",
@@ -1329,7 +1329,7 @@
       "periodo_referencia": "Febrero de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ifb/imfbcf2025_05.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -1346,7 +1346,7 @@
       "periodo_referencia": "Febrero de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imcp/imcpmi2025_05.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -1447,7 +1447,7 @@
       "periodo_referencia": "Marzo de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imai/imai2025_05.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -1480,7 +1480,7 @@
       "periodo_referencia": "Marzo de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/emim/emim2025_05.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "TASA",
@@ -1546,7 +1546,7 @@
       "periodo_referencia": "Marzo de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/igae/igae2025_05.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "BCMM",
@@ -1580,7 +1580,7 @@
       "periodo_referencia": "Primer trimestre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/enoe/enoe2025_05.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -1613,7 +1613,7 @@
       "periodo_referencia": "Abril de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/iooe/ioe2025_05.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "EMOE",
@@ -1630,7 +1630,7 @@
       "periodo_referencia": "Mayo de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ice/ice2025_06.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -1663,7 +1663,7 @@
       "periodo_referencia": "Marzo de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ifb/imfbcf2025_06.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -1680,7 +1680,7 @@
       "periodo_referencia": "Marzo de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imcp/imcpmi2025_06.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "SIC",
@@ -1781,7 +1781,7 @@
       "periodo_referencia": "Abril de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imai/imai2025_06.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "EMIM",
@@ -1798,7 +1798,7 @@
       "periodo_referencia": "Abril de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/emim/emim2025_06.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -1848,7 +1848,7 @@
       "periodo_referencia": "Abril de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/igae/igae2025_06.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -1914,7 +1914,7 @@
       "periodo_referencia": "Mayo de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/iooe/IOE2025_06.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "EMOE",
@@ -1931,7 +1931,7 @@
       "periodo_referencia": "Junio de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ice/ice2025_07.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -1964,7 +1964,7 @@
       "periodo_referencia": "Abril de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ifb/imfbcf2025_07.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -1981,7 +1981,7 @@
       "periodo_referencia": "Abril de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imcp/imcpmi2025_07.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "SIC",
@@ -2082,7 +2082,7 @@
       "periodo_referencia": "Mayo de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imai/imai2025_07.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -2115,7 +2115,7 @@
       "periodo_referencia": "Mayo de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/emim/emim2025_07.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IOAE",
@@ -2149,7 +2149,7 @@
       "periodo_referencia": "Mayo de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/igae/igae2025_07.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -2199,7 +2199,7 @@
       "periodo_referencia": "Junio de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/iooe/IOE2025_07.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -2249,7 +2249,7 @@
       "periodo_referencia": "Julio de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ice/ice2025_08.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "SIC",
@@ -2283,7 +2283,7 @@
       "periodo_referencia": "Mayo de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ifb/imfbcf2025_08.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -2300,7 +2300,7 @@
       "periodo_referencia": "Mayo de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imcp/imcpmi2025_08.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -2400,7 +2400,7 @@
       "periodo_referencia": "Junio de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imai/imai2025_08.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -2433,7 +2433,7 @@
       "periodo_referencia": "Junio de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/emim/emim2025_08.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IOAE",
@@ -2483,7 +2483,7 @@
       "periodo_referencia": "Junio de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/igae/igae2025_08.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "DESOCUP",
@@ -2500,7 +2500,7 @@
       "periodo_referencia": "Segundo trimestre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/enoe/enoe2025_08.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -2550,7 +2550,7 @@
       "periodo_referencia": "Julio de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/iooe/IOE2025_08.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "EMOE",
@@ -2567,7 +2567,7 @@
       "periodo_referencia": "Agosto de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ice/ice2025_09.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -2600,7 +2600,7 @@
       "periodo_referencia": "Junio de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ifb/imfbcf2025_09.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -2617,7 +2617,7 @@
       "periodo_referencia": "Junio de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imcp/imcpmi2025_09.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "SIC",
@@ -2684,7 +2684,7 @@
       "periodo_referencia": "Agosto de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/inpp/inpp2025_09.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales."
     },
     {
       "clave": "INPC",
@@ -2718,7 +2718,7 @@
       "periodo_referencia": "Julio de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imai/imai2025_09.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "EMIM",
@@ -2735,7 +2735,7 @@
       "periodo_referencia": "Julio de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/emim/emim2025_09.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -2785,7 +2785,7 @@
       "periodo_referencia": "Julio de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/igae/igae2025_09.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -2851,7 +2851,7 @@
       "periodo_referencia": "Agosto de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/iooe/IOE2025_09.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -2884,7 +2884,7 @@
       "periodo_referencia": "Septiembre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ice/ice2025_10.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IMFBCF",
@@ -2901,7 +2901,7 @@
       "periodo_referencia": "Julio de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ifb/imfbcf2025_10.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -2918,7 +2918,7 @@
       "periodo_referencia": "Julio de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imcp/imcpmi2025_10.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "SIC",
@@ -2985,7 +2985,7 @@
       "periodo_referencia": "Septiembre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/inpp/inpp2025_10.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales."
     },
     {
       "clave": "INPC",
@@ -3019,7 +3019,7 @@
       "periodo_referencia": "Agosto de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imai/imai2025_10.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -3052,7 +3052,7 @@
       "periodo_referencia": "Agosto de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/emim/emim2025_10.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IOAE",
@@ -3102,7 +3102,7 @@
       "periodo_referencia": "Agosto de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/igae/igae2025_10.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "BCMM",
@@ -3136,7 +3136,7 @@
       "periodo_referencia": "Septiembre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/iooe/IOE2025_10.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -3186,7 +3186,7 @@
       "periodo_referencia": "Octubre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ice/ice2025_11.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -3236,7 +3236,7 @@
       "periodo_referencia": "Agosto de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ifb/imfbcf2025_11.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -3253,7 +3253,7 @@
       "periodo_referencia": "Agosto de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imcp/imcpmi2025_11.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "TASA",
@@ -3286,7 +3286,7 @@
       "periodo_referencia": "Octubre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/inpp/inpp2025_11.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales."
     },
     {
       "clave": "INPC",
@@ -3337,7 +3337,7 @@
       "periodo_referencia": "Septiembre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imai/imai2025_11.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -3370,7 +3370,7 @@
       "periodo_referencia": "Septiembre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/emim/emim2025_11.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -3420,7 +3420,7 @@
       "periodo_referencia": "Septiembre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/igae/igae2025_11.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -3453,7 +3453,7 @@
       "periodo_referencia": "Tercer trimestre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/enoe/enoe2025_11.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "BCMM",
@@ -3487,7 +3487,7 @@
       "periodo_referencia": "Octubre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/iooe/IOE2025_11.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "EMOE",
@@ -3504,7 +3504,7 @@
       "periodo_referencia": "Noviembre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ice/ice2025_12.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -3537,7 +3537,7 @@
       "periodo_referencia": "Septiembre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ifb/imfbcf2025_12.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -3554,7 +3554,7 @@
       "periodo_referencia": "Septiembre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imcp/imcpmi2025_12.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "SIC",
@@ -3621,7 +3621,7 @@
       "periodo_referencia": "Noviembre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/inpp/inpp2025_12.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales."
     },
     {
       "clave": "INPC",
@@ -3655,7 +3655,7 @@
       "periodo_referencia": "Octubre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/imai/imai2025_12.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -3688,7 +3688,7 @@
       "periodo_referencia": "Octubre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/emim/emim2025_12.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IOAE",
@@ -3738,7 +3738,7 @@
       "periodo_referencia": "Octubre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/igae/igae2025_12.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "BCMM",
@@ -3788,7 +3788,7 @@
       "periodo_referencia": "Noviembre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/iooe/IOE2025_12.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -3821,7 +3821,7 @@
       "periodo_referencia": "Diciembre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_01.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -3871,7 +3871,7 @@
       "periodo_referencia": "Diciembre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_01.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales."
     },
     {
       "clave": "INPC",
@@ -3922,7 +3922,7 @@
       "periodo_referencia": "Noviembre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_01.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -3955,7 +3955,7 @@
       "periodo_referencia": "Octubre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_01.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -3972,7 +3972,7 @@
       "periodo_referencia": "Octubre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_01.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "EMIM",
@@ -3989,7 +3989,7 @@
       "periodo_referencia": "Noviembre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_01.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -4055,7 +4055,7 @@
       "periodo_referencia": "Noviembre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_01.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "DESOCUP",
@@ -4072,7 +4072,7 @@
       "periodo_referencia": "Diciembre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_01.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "BCMM",
@@ -4139,7 +4139,7 @@
       "periodo_referencia": "Enero de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_02.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -4172,7 +4172,7 @@
       "periodo_referencia": "Noviembre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_02.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -4189,7 +4189,7 @@
       "periodo_referencia": "Noviembre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_02.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "SIC",
@@ -4256,7 +4256,7 @@
       "periodo_referencia": "Enero de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_02.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales."
     },
     {
       "clave": "INPC",
@@ -4306,7 +4306,7 @@
       "periodo_referencia": "Diciembre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_02.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "EMIM",
@@ -4323,7 +4323,7 @@
       "periodo_referencia": "Diciembre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_02.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -4405,7 +4405,7 @@
       "periodo_referencia": "Diciembre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_02.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "DESOCUP",
@@ -4422,7 +4422,7 @@
       "periodo_referencia": "Cuarto trimestre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/enoe/enoe2026_02.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -4455,7 +4455,7 @@
       "periodo_referencia": "Enero de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_02.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "BCMM",
@@ -4489,7 +4489,7 @@
       "periodo_referencia": "Febrero de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_03.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -4539,7 +4539,7 @@
       "periodo_referencia": "Diciembre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_03.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -4556,7 +4556,7 @@
       "periodo_referencia": "Diciembre de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_03.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "BCMM",
@@ -4590,7 +4590,7 @@
       "periodo_referencia": "Febrero de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_03.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales."
     },
     {
       "clave": "INPC",
@@ -4640,7 +4640,7 @@
       "periodo_referencia": "Enero de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_03.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "EMIM",
@@ -4657,7 +4657,7 @@
       "periodo_referencia": "Enero de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_03.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -4723,7 +4723,7 @@
       "periodo_referencia": "Enero de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_03.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -4789,7 +4789,7 @@
       "periodo_referencia": "Febrero de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_03.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -4822,7 +4822,7 @@
       "periodo_referencia": "Marzo de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_04.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IMFBCF",
@@ -4839,7 +4839,7 @@
       "periodo_referencia": "Enero de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_04.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -4856,7 +4856,7 @@
       "periodo_referencia": "Enero de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_04.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "SIC",
@@ -4906,7 +4906,7 @@
       "periodo_referencia": "Marzo de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_04.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales."
     },
     {
       "clave": "INPC",
@@ -4957,7 +4957,7 @@
       "periodo_referencia": "Febrero de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_04.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -4990,7 +4990,7 @@
       "periodo_referencia": "Febrero de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_04.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IOAE",
@@ -5056,7 +5056,7 @@
       "periodo_referencia": "Febrero de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_04.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "DESOCUP",
@@ -5073,7 +5073,7 @@
       "periodo_referencia": "Marzo de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_04.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "BCMM",
@@ -5140,7 +5140,7 @@
       "periodo_referencia": "Abril de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_05.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -5173,7 +5173,7 @@
       "periodo_referencia": "Febrero de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_05.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -5190,7 +5190,7 @@
       "periodo_referencia": "Febrero de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_05.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "SIC",
@@ -5240,7 +5240,7 @@
       "periodo_referencia": "Abril de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_05.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales."
     },
     {
       "clave": "INPC",
@@ -5291,7 +5291,7 @@
       "periodo_referencia": "Marzo de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_05.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -5324,7 +5324,7 @@
       "periodo_referencia": "Marzo de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_05.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IOAE",
@@ -5390,7 +5390,7 @@
       "periodo_referencia": "Marzo de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_05.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "BCMM",
@@ -5440,7 +5440,7 @@
       "periodo_referencia": "Primer trimestre de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/enoe/enoe2026_05.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -5473,7 +5473,7 @@
       "periodo_referencia": "Abril de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_05.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "EMOE",
@@ -5490,7 +5490,7 @@
       "periodo_referencia": "Mayo de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_06.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -5540,7 +5540,7 @@
       "periodo_referencia": "Marzo de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_06.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -5557,7 +5557,7 @@
       "periodo_referencia": "Marzo de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_06.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -5590,7 +5590,7 @@
       "periodo_referencia": "Mayo de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_06.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales."
     },
     {
       "clave": "INPC",
@@ -5641,7 +5641,7 @@
       "periodo_referencia": "Abril de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_06.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "EMIM",
@@ -5658,7 +5658,7 @@
       "periodo_referencia": "Abril de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_06.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -5708,7 +5708,7 @@
       "periodo_referencia": "Abril de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_06.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IMOAM",
@@ -5757,7 +5757,7 @@
       "periodo_referencia": "Mayo de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_06.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "TASA",
@@ -5823,7 +5823,7 @@
       "periodo_referencia": "Junio de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_07.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "SIC",
@@ -5857,7 +5857,7 @@
       "periodo_referencia": "Abril de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_07.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -5874,7 +5874,7 @@
       "periodo_referencia": "Abril de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_07.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -5907,7 +5907,7 @@
       "periodo_referencia": "Junio de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_07.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales."
     },
     {
       "clave": "INPC",
@@ -5958,7 +5958,7 @@
       "periodo_referencia": "Mayo de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_07.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -5991,7 +5991,7 @@
       "periodo_referencia": "Mayo de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_07.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IOAE",
@@ -6041,7 +6041,7 @@
       "periodo_referencia": "Mayo de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_07.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IMOAM",
@@ -6074,7 +6074,7 @@
       "periodo_referencia": "Junio de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_07.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "BCMM",
@@ -6141,7 +6141,7 @@
       "periodo_referencia": "Julio de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_08.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -6191,7 +6191,7 @@
       "periodo_referencia": "Mayo de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_08.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -6208,7 +6208,7 @@
       "periodo_referencia": "Mayo de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_08.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "TASA",
@@ -6241,7 +6241,7 @@
       "periodo_referencia": "Julio de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_08.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales."
     },
     {
       "clave": "INPC",
@@ -6292,7 +6292,7 @@
       "periodo_referencia": "Junio de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_08.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -6325,7 +6325,7 @@
       "periodo_referencia": "Junio de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_08.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -6407,7 +6407,7 @@
       "periodo_referencia": "Junio de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_08.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "PIBSEC",
@@ -6440,7 +6440,7 @@
       "periodo_referencia": "Segundo trimestre de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/enoe/enoe2026_08.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -6490,7 +6490,7 @@
       "periodo_referencia": "Julio de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_08.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "EMOE",
@@ -6507,7 +6507,7 @@
       "periodo_referencia": "Agosto de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_09.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -6540,7 +6540,7 @@
       "periodo_referencia": "Junio de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_09.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -6557,7 +6557,7 @@
       "periodo_referencia": "Junio de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_09.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "SIC",
@@ -6607,7 +6607,7 @@
       "periodo_referencia": "Agosto de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_09.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales."
     },
     {
       "clave": "INPC",
@@ -6658,7 +6658,7 @@
       "periodo_referencia": "Julio de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_09.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -6691,7 +6691,7 @@
       "periodo_referencia": "Julio de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_09.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IOAE",
@@ -6757,7 +6757,7 @@
       "periodo_referencia": "Julio de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_09.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "TASA",
@@ -6790,7 +6790,7 @@
       "periodo_referencia": "Agosto de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_09.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "BCMM",
@@ -6840,7 +6840,7 @@
       "periodo_referencia": "Septiembre de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "SIC",
@@ -6874,7 +6874,7 @@
       "periodo_referencia": "Julio de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_10.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -6891,7 +6891,7 @@
       "periodo_referencia": "Julio de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_10.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -6924,7 +6924,7 @@
       "periodo_referencia": "Septiembre de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales."
     },
     {
       "clave": "INPC",
@@ -6975,7 +6975,7 @@
       "periodo_referencia": "Agosto de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -7008,7 +7008,7 @@
       "periodo_referencia": "Agosto de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IOAE",
@@ -7058,7 +7058,7 @@
       "periodo_referencia": "Septiembre de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_10.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IGAE",
@@ -7075,7 +7075,7 @@
       "periodo_referencia": "Agosto de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "BCMM",
@@ -7158,7 +7158,7 @@
       "periodo_referencia": "Octubre de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_11.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -7208,7 +7208,7 @@
       "periodo_referencia": "Agosto de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_11.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -7225,7 +7225,7 @@
       "periodo_referencia": "Agosto de 2026",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_11.pdf",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "TASA",
@@ -7256,8 +7256,8 @@
       "anio": 2026,
       "mes": 11,
       "periodo_referencia": "Septiembre de 2026",
-      "estatus": "próximo",
-      "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/app/tabulados/?nc=452",
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados."
     },
     {
@@ -7273,9 +7273,9 @@
       "anio": 2026,
       "mes": 11,
       "periodo_referencia": "Octubre de 2026",
-      "estatus": "próximo",
-      "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_11.pdf",
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales."
     },
     {
       "clave": "INPC",
@@ -7290,8 +7290,8 @@
       "anio": 2026,
       "mes": 11,
       "periodo_referencia": "Octubre de 2026",
-      "estatus": "próximo",
-      "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_11.pdf",
       "comentario": "Información de Interés Nacional. Incluye boletín de indicador."
     },
     {
@@ -7325,7 +7325,7 @@
       "periodo_referencia": "Septiembre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "EMIM",
@@ -7342,7 +7342,7 @@
       "periodo_referencia": "Septiembre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -7392,7 +7392,7 @@
       "periodo_referencia": "Septiembre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "PIBSEC",
@@ -7441,7 +7441,7 @@
       "periodo_referencia": "Tercer trimestre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "DESOCUP",
@@ -7458,7 +7458,7 @@
       "periodo_referencia": "Octubre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "BCMM",
@@ -7492,7 +7492,7 @@
       "periodo_referencia": "Noviembre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -7542,7 +7542,7 @@
       "periodo_referencia": "Septiembre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -7559,7 +7559,7 @@
       "periodo_referencia": "Septiembre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -7609,7 +7609,7 @@
       "periodo_referencia": "Noviembre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales."
     },
     {
       "clave": "INPC",
@@ -7643,7 +7643,7 @@
       "periodo_referencia": "Octubre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -7676,7 +7676,7 @@
       "periodo_referencia": "Octubre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "TASA",
@@ -7759,7 +7759,7 @@
       "periodo_referencia": "Octubre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "DESOCUP",
@@ -7776,7 +7776,7 @@
       "periodo_referencia": "Noviembre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -7809,7 +7809,7 @@
       "periodo_referencia": "Diciembre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -7842,7 +7842,7 @@
       "periodo_referencia": "Diciembre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales."
     },
     {
       "clave": "INPC",
@@ -7910,7 +7910,7 @@
       "periodo_referencia": "Noviembre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -7943,7 +7943,7 @@
       "periodo_referencia": "Octubre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -7960,7 +7960,7 @@
       "periodo_referencia": "Octubre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "EMIM",
@@ -7977,7 +7977,7 @@
       "periodo_referencia": "Noviembre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -8027,7 +8027,7 @@
       "periodo_referencia": "Diciembre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IGAE",
@@ -8044,7 +8044,7 @@
       "periodo_referencia": "Noviembre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "BCMM",
@@ -8111,7 +8111,7 @@
       "periodo_referencia": "Enero de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -8161,7 +8161,7 @@
       "periodo_referencia": "Noviembre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -8178,7 +8178,7 @@
       "periodo_referencia": "Noviembre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "BCMM",
@@ -8228,7 +8228,7 @@
       "periodo_referencia": "Enero de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales."
     },
     {
       "clave": "INPC",
@@ -8262,7 +8262,7 @@
       "periodo_referencia": "Diciembre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "TASA",
@@ -8295,7 +8295,7 @@
       "periodo_referencia": "Diciembre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -8361,7 +8361,7 @@
       "periodo_referencia": "Diciembre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "DESOCUP",
@@ -8378,7 +8378,7 @@
       "periodo_referencia": "Cuarto trimestre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "BCMM",
@@ -8412,7 +8412,7 @@
       "periodo_referencia": "Febrero de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -8462,7 +8462,7 @@
       "periodo_referencia": "Enero de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IMFBCF",
@@ -8479,7 +8479,7 @@
       "periodo_referencia": "Diciembre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -8496,7 +8496,7 @@
       "periodo_referencia": "Diciembre de 2026",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "BCMM",
@@ -8546,7 +8546,7 @@
       "periodo_referencia": "Febrero de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales."
     },
     {
       "clave": "INPC",
@@ -8580,7 +8580,7 @@
       "periodo_referencia": "Enero de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "EMIM",
@@ -8597,7 +8597,7 @@
       "periodo_referencia": "Enero de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -8696,7 +8696,7 @@
       "periodo_referencia": "Enero de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -8729,7 +8729,7 @@
       "periodo_referencia": "Marzo de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "SIC",
@@ -8763,7 +8763,7 @@
       "periodo_referencia": "Enero de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -8780,7 +8780,7 @@
       "periodo_referencia": "Enero de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "DESOCUP",
@@ -8797,7 +8797,7 @@
       "periodo_referencia": "Febrero de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -8830,7 +8830,7 @@
       "periodo_referencia": "Marzo de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales."
     },
     {
       "clave": "INPC",
@@ -8881,7 +8881,7 @@
       "periodo_referencia": "Febrero de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -8914,7 +8914,7 @@
       "periodo_referencia": "Febrero de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IOAE",
@@ -8964,7 +8964,7 @@
       "periodo_referencia": "Febrero de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "BCMM",
@@ -9014,7 +9014,7 @@
       "periodo_referencia": "Marzo de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "PIB",
@@ -9048,7 +9048,7 @@
       "periodo_referencia": "Abril de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -9098,7 +9098,7 @@
       "periodo_referencia": "Febrero de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -9115,7 +9115,7 @@
       "periodo_referencia": "Febrero de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "TASA",
@@ -9148,7 +9148,7 @@
       "periodo_referencia": "Abril de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales."
     },
     {
       "clave": "INPC",
@@ -9215,7 +9215,7 @@
       "periodo_referencia": "Marzo de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "EMIM",
@@ -9232,7 +9232,7 @@
       "periodo_referencia": "Marzo de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IOAE",
@@ -9282,7 +9282,7 @@
       "periodo_referencia": "Marzo de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "BCMM",
@@ -9332,7 +9332,7 @@
       "periodo_referencia": "Primer trimestre de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "EMOE",
@@ -9349,7 +9349,7 @@
       "periodo_referencia": "Mayo de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -9382,7 +9382,7 @@
       "periodo_referencia": "Abril de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "SIC",
@@ -9416,7 +9416,7 @@
       "periodo_referencia": "Marzo de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "CONSUMO",
@@ -9433,7 +9433,7 @@
       "periodo_referencia": "Marzo de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -9483,7 +9483,7 @@
       "periodo_referencia": "Mayo de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales."
     },
     {
       "clave": "INPC",
@@ -9517,7 +9517,7 @@
       "periodo_referencia": "Abril de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "RESERVAS",
@@ -9550,7 +9550,7 @@
       "periodo_referencia": "Abril de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "IOAE",
@@ -9600,7 +9600,7 @@
       "periodo_referencia": "Abril de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador."
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "TASA",

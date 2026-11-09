@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-11-07T23:20:28+00:00",
-  "as_of": "2026-11-07",
+  "generated_at": "2026-11-09T14:32:12+00:00",
+  "as_of": "2026-11-09",
   "fuente": "Calendario oficial de difusión",
   "sources": {
     "INEGI Sala de Prensa": {
       "status": "ok",
       "count": 1489,
       "message": "1489 eventos consultados del INEGI",
-      "consulted_at": "2026-11-07",
+      "consulted_at": "2026-11-09",
       "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/"
     },
     "Banco de México calendario": {
       "status": "ok",
       "count": 180,
       "message": "180 eventos consultados de Banxico",
-      "consulted_at": "2026-11-07",
+      "consulted_at": "2026-11-09",
       "url": "https://www.banxico.org.mx/publicaciones-y-prensa/calendario-de-publicaciones-banco-de-mexico/"
     },
     "Secretaría de Economía (manual)": {
@@ -69,7 +69,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 1,
       "fecha_iso": "2025-01-03"
@@ -112,7 +112,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 1,
       "fecha_iso": "2025-01-03"
@@ -342,7 +342,7 @@
           "size": "0.13 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 1,
       "fecha_iso": "2025-01-10"
@@ -414,7 +414,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 1,
       "fecha_iso": "2025-01-15"
@@ -457,7 +457,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 1,
       "fecha_iso": "2025-01-15"
@@ -500,7 +500,7 @@
           "size": "0.05 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 1,
       "fecha_iso": "2025-01-16"
@@ -608,7 +608,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 1,
       "fecha_iso": "2025-01-24"
@@ -716,7 +716,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 1,
       "fecha_iso": "2025-01-29"
@@ -795,7 +795,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 2,
       "fecha_iso": "2025-02-04"
@@ -838,7 +838,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 2,
       "fecha_iso": "2025-02-05"
@@ -881,7 +881,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 2,
       "fecha_iso": "2025-02-05"
@@ -1140,7 +1140,7 @@
           "size": "0.13 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 2,
       "fecha_iso": "2025-02-11"
@@ -1212,7 +1212,7 @@
           "size": "0.05 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 2,
       "fecha_iso": "2025-02-17"
@@ -1320,7 +1320,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 2,
       "fecha_iso": "2025-02-21"
@@ -1363,7 +1363,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 2,
       "fecha_iso": "2025-02-25"
@@ -1471,7 +1471,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 2,
       "fecha_iso": "2025-02-27"
@@ -1514,7 +1514,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 3,
       "fecha_iso": "2025-03-03"
@@ -1586,7 +1586,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 3,
       "fecha_iso": "2025-03-05"
@@ -1629,7 +1629,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 3,
       "fecha_iso": "2025-03-05"
@@ -1859,7 +1859,7 @@
           "size": "0.13 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 3,
       "fecha_iso": "2025-03-13"
@@ -1902,7 +1902,7 @@
           "size": "0.04 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 3,
       "fecha_iso": "2025-03-18"
@@ -2010,7 +2010,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 3,
       "fecha_iso": "2025-03-24"
@@ -2147,7 +2147,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 3,
       "fecha_iso": "2025-03-28"
@@ -2190,7 +2190,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 4,
       "fecha_iso": "2025-04-01"
@@ -2262,7 +2262,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 4,
       "fecha_iso": "2025-04-03"
@@ -2305,7 +2305,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 4,
       "fecha_iso": "2025-04-03"
@@ -2535,7 +2535,7 @@
           "size": "0.13 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 4,
       "fecha_iso": "2025-04-11"
@@ -2607,7 +2607,7 @@
           "size": "0.04 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 4,
       "fecha_iso": "2025-04-16"
@@ -2715,7 +2715,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 4,
       "fecha_iso": "2025-04-25"
@@ -2794,7 +2794,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 4,
       "fecha_iso": "2025-04-28"
@@ -2902,7 +2902,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 5,
       "fecha_iso": "2025-05-02"
@@ -2945,7 +2945,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 5,
       "fecha_iso": "2025-05-06"
@@ -2988,7 +2988,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 5,
       "fecha_iso": "2025-05-06"
@@ -3218,7 +3218,7 @@
           "size": "0.13 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 5,
       "fecha_iso": "2025-05-12"
@@ -3290,7 +3290,7 @@
           "size": "0.04 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 5,
       "fecha_iso": "2025-05-15"
@@ -3427,7 +3427,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 5,
       "fecha_iso": "2025-05-22"
@@ -3506,7 +3506,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 5,
       "fecha_iso": "2025-05-27"
@@ -3578,7 +3578,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 5,
       "fecha_iso": "2025-05-30"
@@ -3621,7 +3621,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 6,
       "fecha_iso": "2025-06-02"
@@ -3693,7 +3693,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 6,
       "fecha_iso": "2025-06-04"
@@ -3736,7 +3736,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 6,
       "fecha_iso": "2025-06-04"
@@ -3966,7 +3966,7 @@
           "size": "0.14 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 6,
       "fecha_iso": "2025-06-11"
@@ -4009,7 +4009,7 @@
           "size": "0.04 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 6,
       "fecha_iso": "2025-06-16"
@@ -4117,7 +4117,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 6,
       "fecha_iso": "2025-06-23"
@@ -4254,7 +4254,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 6,
       "fecha_iso": "2025-06-27"
@@ -4297,7 +4297,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 7,
       "fecha_iso": "2025-07-01"
@@ -4369,7 +4369,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 7,
       "fecha_iso": "2025-07-03"
@@ -4412,7 +4412,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 7,
       "fecha_iso": "2025-07-03"
@@ -4642,7 +4642,7 @@
           "size": "0.14 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 7,
       "fecha_iso": "2025-07-11"
@@ -4714,7 +4714,7 @@
           "size": "0.04 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 7,
       "fecha_iso": "2025-07-16"
@@ -4793,7 +4793,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 7,
       "fecha_iso": "2025-07-22"
@@ -4901,7 +4901,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 7,
       "fecha_iso": "2025-07-28"
@@ -5009,7 +5009,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 8,
       "fecha_iso": "2025-08-01"
@@ -5095,7 +5095,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 8,
       "fecha_iso": "2025-08-05"
@@ -5138,7 +5138,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 8,
       "fecha_iso": "2025-08-05"
@@ -5354,7 +5354,7 @@
           "size": "0.14 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 8,
       "fecha_iso": "2025-08-11"
@@ -5426,7 +5426,7 @@
           "size": "0.04 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 8,
       "fecha_iso": "2025-08-18"
@@ -5534,7 +5534,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 8,
       "fecha_iso": "2025-08-22"
@@ -5577,7 +5577,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 8,
       "fecha_iso": "2025-08-26"
@@ -5685,7 +5685,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 8,
       "fecha_iso": "2025-08-28"
@@ -5728,7 +5728,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 9,
       "fecha_iso": "2025-09-01"
@@ -5800,7 +5800,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 9,
       "fecha_iso": "2025-09-04"
@@ -5843,7 +5843,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 9,
       "fecha_iso": "2025-09-04"
@@ -6001,7 +6001,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales.",
       "anio": 2025,
       "mes": 9,
       "fecha_iso": "2025-09-09"
@@ -6073,7 +6073,7 @@
           "size": "0.14 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 9,
       "fecha_iso": "2025-09-11"
@@ -6116,7 +6116,7 @@
           "size": "0.04 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 9,
       "fecha_iso": "2025-09-17"
@@ -6224,7 +6224,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 9,
       "fecha_iso": "2025-09-23"
@@ -6361,7 +6361,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 9,
       "fecha_iso": "2025-09-29"
@@ -6433,7 +6433,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 10,
       "fecha_iso": "2025-10-01"
@@ -6476,7 +6476,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 10,
       "fecha_iso": "2025-10-03"
@@ -6519,7 +6519,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 10,
       "fecha_iso": "2025-10-03"
@@ -6706,7 +6706,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales.",
       "anio": 2025,
       "mes": 10,
       "fecha_iso": "2025-10-09"
@@ -6749,7 +6749,7 @@
           "size": "0.14 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 10,
       "fecha_iso": "2025-10-10"
@@ -6821,7 +6821,7 @@
           "size": "0.04 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 10,
       "fecha_iso": "2025-10-16"
@@ -6929,7 +6929,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 10,
       "fecha_iso": "2025-10-22"
@@ -7008,7 +7008,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 10,
       "fecha_iso": "2025-10-28"
@@ -7116,7 +7116,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 11,
       "fecha_iso": "2025-11-03"
@@ -7231,7 +7231,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 11,
       "fecha_iso": "2025-11-05"
@@ -7274,7 +7274,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 11,
       "fecha_iso": "2025-11-05"
@@ -7389,7 +7389,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales.",
       "anio": 2025,
       "mes": 11,
       "fecha_iso": "2025-11-07"
@@ -7461,7 +7461,7 @@
           "size": "0.14 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 11,
       "fecha_iso": "2025-11-11"
@@ -7533,7 +7533,7 @@
           "size": "0.04 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 11,
       "fecha_iso": "2025-11-18"
@@ -7641,7 +7641,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 11,
       "fecha_iso": "2025-11-21"
@@ -7713,7 +7713,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 11,
       "fecha_iso": "2025-11-26"
@@ -7792,7 +7792,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 11,
       "fecha_iso": "2025-11-28"
@@ -7835,7 +7835,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 12,
       "fecha_iso": "2025-12-02"
@@ -7907,7 +7907,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 12,
       "fecha_iso": "2025-12-03"
@@ -7950,7 +7950,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 12,
       "fecha_iso": "2025-12-03"
@@ -8108,7 +8108,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales.",
       "anio": 2025,
       "mes": 12,
       "fecha_iso": "2025-12-09"
@@ -8180,7 +8180,7 @@
           "size": "0.14 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 12,
       "fecha_iso": "2025-12-12"
@@ -8252,7 +8252,7 @@
           "size": "0.05 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 12,
       "fecha_iso": "2025-12-17"
@@ -8360,7 +8360,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 12,
       "fecha_iso": "2025-12-22"
@@ -8468,7 +8468,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 12,
       "fecha_iso": "2025-12-24"
@@ -8540,7 +8540,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 1,
       "fecha_iso": "2026-01-02"
@@ -8655,7 +8655,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales.",
       "anio": 2026,
       "mes": 1,
       "fecha_iso": "2026-01-08"
@@ -8770,7 +8770,7 @@
           "size": "0.14 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 1,
       "fecha_iso": "2026-01-09"
@@ -8842,7 +8842,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 1,
       "fecha_iso": "2026-01-15"
@@ -8885,7 +8885,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 1,
       "fecha_iso": "2026-01-15"
@@ -8928,7 +8928,7 @@
           "size": "0.05 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 1,
       "fecha_iso": "2026-01-16"
@@ -9065,7 +9065,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 1,
       "fecha_iso": "2026-01-23"
@@ -9108,7 +9108,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 1,
       "fecha_iso": "2026-01-26"
@@ -9252,7 +9252,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 2,
       "fecha_iso": "2026-02-03"
@@ -9324,7 +9324,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 2,
       "fecha_iso": "2026-02-05"
@@ -9367,7 +9367,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 2,
       "fecha_iso": "2026-02-05"
@@ -9554,7 +9554,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales.",
       "anio": 2026,
       "mes": 2,
       "fecha_iso": "2026-02-09"
@@ -9626,7 +9626,7 @@
           "size": "0.15 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 2,
       "fecha_iso": "2026-02-11"
@@ -9669,7 +9669,7 @@
           "size": "0.05 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 2,
       "fecha_iso": "2026-02-16"
@@ -9835,7 +9835,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 2,
       "fecha_iso": "2026-02-23"
@@ -9878,7 +9878,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 2,
       "fecha_iso": "2026-02-24"
@@ -9950,7 +9950,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 2,
       "fecha_iso": "2026-02-26"
@@ -10029,7 +10029,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 3,
       "fecha_iso": "2026-03-02"
@@ -10144,7 +10144,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 3,
       "fecha_iso": "2026-03-05"
@@ -10187,7 +10187,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 3,
       "fecha_iso": "2026-03-05"
@@ -10302,7 +10302,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales.",
       "anio": 2026,
       "mes": 3,
       "fecha_iso": "2026-03-09"
@@ -10374,7 +10374,7 @@
           "size": "0.15 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 3,
       "fecha_iso": "2026-03-13"
@@ -10417,7 +10417,7 @@
           "size": "0.04 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 3,
       "fecha_iso": "2026-03-17"
@@ -10554,7 +10554,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 3,
       "fecha_iso": "2026-03-24"
@@ -10691,7 +10691,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 3,
       "fecha_iso": "2026-03-27"
@@ -10763,7 +10763,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 4,
       "fecha_iso": "2026-04-01"
@@ -10806,7 +10806,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 4,
       "fecha_iso": "2026-04-06"
@@ -10849,7 +10849,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 4,
       "fecha_iso": "2026-04-06"
@@ -11007,7 +11007,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales.",
       "anio": 2026,
       "mes": 4,
       "fecha_iso": "2026-04-09"
@@ -11079,7 +11079,7 @@
           "size": "0.15 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 4,
       "fecha_iso": "2026-04-10"
@@ -11151,7 +11151,7 @@
           "size": "0.04 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 4,
       "fecha_iso": "2026-04-16"
@@ -11288,7 +11288,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 4,
       "fecha_iso": "2026-04-24"
@@ -11331,7 +11331,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 4,
       "fecha_iso": "2026-04-24"
@@ -11475,7 +11475,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 5,
       "fecha_iso": "2026-05-04"
@@ -11547,7 +11547,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 5,
       "fecha_iso": "2026-05-06"
@@ -11590,7 +11590,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 5,
       "fecha_iso": "2026-05-06"
@@ -11719,7 +11719,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales.",
       "anio": 2026,
       "mes": 5,
       "fecha_iso": "2026-05-07"
@@ -11820,7 +11820,7 @@
           "size": "0.15 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 5,
       "fecha_iso": "2026-05-12"
@@ -11892,7 +11892,7 @@
           "size": "0.04 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 5,
       "fecha_iso": "2026-05-15"
@@ -12029,7 +12029,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 5,
       "fecha_iso": "2026-05-22"
@@ -12108,7 +12108,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 5,
       "fecha_iso": "2026-05-26"
@@ -12209,7 +12209,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 5,
       "fecha_iso": "2026-05-28"
@@ -12252,7 +12252,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 6,
       "fecha_iso": "2026-06-01"
@@ -12367,7 +12367,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 6,
       "fecha_iso": "2026-06-04"
@@ -12410,7 +12410,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 6,
       "fecha_iso": "2026-06-04"
@@ -12496,7 +12496,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales.",
       "anio": 2026,
       "mes": 6,
       "fecha_iso": "2026-06-09"
@@ -12597,7 +12597,7 @@
           "size": "0.15 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 6,
       "fecha_iso": "2026-06-11"
@@ -12640,7 +12640,7 @@
           "size": "0.04 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 6,
       "fecha_iso": "2026-06-16"
@@ -12748,7 +12748,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 6,
       "fecha_iso": "2026-06-23"
@@ -12849,7 +12849,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 6,
       "fecha_iso": "2026-06-25"
@@ -12986,7 +12986,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 7,
       "fecha_iso": "2026-07-01"
@@ -13072,7 +13072,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 7,
       "fecha_iso": "2026-07-06"
@@ -13115,7 +13115,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 7,
       "fecha_iso": "2026-07-06"
@@ -13230,7 +13230,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales.",
       "anio": 2026,
       "mes": 7,
       "fecha_iso": "2026-07-09"
@@ -13302,7 +13302,7 @@
           "size": "0.15 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 7,
       "fecha_iso": "2026-07-10"
@@ -13374,7 +13374,7 @@
           "size": "0.04 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 7,
       "fecha_iso": "2026-07-16"
@@ -13482,7 +13482,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 7,
       "fecha_iso": "2026-07-23"
@@ -13554,7 +13554,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 7,
       "fecha_iso": "2026-07-24"
@@ -13698,7 +13698,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 8,
       "fecha_iso": "2026-08-03"
@@ -13813,7 +13813,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 8,
       "fecha_iso": "2026-08-05"
@@ -13856,7 +13856,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 8,
       "fecha_iso": "2026-08-05"
@@ -13971,7 +13971,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales.",
       "anio": 2026,
       "mes": 8,
       "fecha_iso": "2026-08-07"
@@ -14043,7 +14043,7 @@
           "size": "0.15 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 8,
       "fecha_iso": "2026-08-11"
@@ -14115,7 +14115,7 @@
           "size": "0.04 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 8,
       "fecha_iso": "2026-08-17"
@@ -14281,7 +14281,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 8,
       "fecha_iso": "2026-08-24"
@@ -14353,7 +14353,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 8,
       "fecha_iso": "2026-08-25"
@@ -14461,7 +14461,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 8,
       "fecha_iso": "2026-08-27"
@@ -14504,7 +14504,7 @@
           "size": "0.02 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 9,
       "fecha_iso": "2026-09-01"
@@ -14576,7 +14576,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 9,
       "fecha_iso": "2026-09-04"
@@ -14619,7 +14619,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 9,
       "fecha_iso": "2026-09-04"
@@ -14777,7 +14777,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales.",
       "anio": 2026,
       "mes": 9,
       "fecha_iso": "2026-09-09"
@@ -14849,7 +14849,7 @@
           "size": "0.15 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 9,
       "fecha_iso": "2026-09-11"
@@ -14921,7 +14921,7 @@
           "size": "0.04 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 9,
       "fecha_iso": "2026-09-17"
@@ -15058,7 +15058,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 9,
       "fecha_iso": "2026-09-24"
@@ -15130,7 +15130,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 9,
       "fecha_iso": "2026-09-25"
@@ -15238,7 +15238,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 10,
       "fecha_iso": "2026-10-01"
@@ -15324,7 +15324,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 10,
       "fecha_iso": "2026-10-05"
@@ -15367,7 +15367,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 10,
       "fecha_iso": "2026-10-05"
@@ -15482,7 +15482,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales.",
       "anio": 2026,
       "mes": 10,
       "fecha_iso": "2026-10-08"
@@ -15554,7 +15554,7 @@
           "size": "0.15 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 10,
       "fecha_iso": "2026-10-12"
@@ -15626,7 +15626,7 @@
           "size": "0.04 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 10,
       "fecha_iso": "2026-10-16"
@@ -15734,7 +15734,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 10,
       "fecha_iso": "2026-10-22"
@@ -15777,7 +15777,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 10,
       "fecha_iso": "2026-10-23"
@@ -15950,7 +15950,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-03"
@@ -16065,7 +16065,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-05"
@@ -16108,7 +16108,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-05"
@@ -16150,18 +16150,18 @@
       "publication_date_display": "9 de noviembre de 2026",
       "reference_period": "Septiembre de 2026",
       "frequency": "Mensual",
-      "status": "próximo",
+      "status": "publicado",
       "source": "INEGI Sala de Prensa",
       "institution": "INEGI",
       "category": "Sector externo",
       "sigla": "BCMM",
       "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "url": "https://www.inegi.org.mx/app/tabulados/?nc=452",
       "deliverables": [
         {
           "type": "comunicado",
           "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "url": "https://www.inegi.org.mx/app/tabulados/?nc=452",
           "label": "Boletín / página oficial",
           "size": null
         }
@@ -16179,20 +16179,34 @@
       "publication_date_display": "9 de noviembre de 2026",
       "reference_period": "Octubre de 2026",
       "frequency": "Mensual",
-      "status": "próximo",
+      "status": "publicado",
       "source": "INEGI Sala de Prensa",
       "institution": "INEGI",
       "category": "Precios",
       "sigla": "INPC",
       "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_11.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_11.pdf",
+          "label": "Boletín PDF",
+          "size": "0.28 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_11.docx",
+          "label": "Boletín Word",
+          "size": "0.32 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_11.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.03 MB"
         }
       ],
       "comentario": "Información de Interés Nacional. Incluye boletín de indicador.",
@@ -16208,23 +16222,37 @@
       "publication_date_display": "9 de noviembre de 2026",
       "reference_period": "Octubre de 2026",
       "frequency": "Mensual",
-      "status": "próximo",
+      "status": "publicado",
       "source": "INEGI Sala de Prensa",
       "institution": "INEGI",
       "category": "Precios",
       "sigla": "INPP",
       "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_11.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_11.pdf",
+          "label": "Boletín PDF",
+          "size": "0.34 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_11.docx",
+          "label": "Boletín Word",
+          "size": "0.33 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_11.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales.",
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-09"
@@ -16282,7 +16310,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-11"
@@ -16311,7 +16339,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-17"
@@ -16398,7 +16426,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-23"
@@ -16485,7 +16513,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-25"
@@ -16514,7 +16542,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-26"
@@ -16572,7 +16600,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 12,
       "fecha_iso": "2026-12-01"
@@ -16659,7 +16687,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 12,
       "fecha_iso": "2026-12-04"
@@ -16688,7 +16716,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 12,
       "fecha_iso": "2026-12-04"
@@ -16804,7 +16832,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales.",
       "anio": 2026,
       "mes": 12,
       "fecha_iso": "2026-12-09"
@@ -16833,7 +16861,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 12,
       "fecha_iso": "2026-12-11"
@@ -16891,7 +16919,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 12,
       "fecha_iso": "2026-12-16"
@@ -17036,7 +17064,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 12,
       "fecha_iso": "2026-12-23"
@@ -17065,7 +17093,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 12,
       "fecha_iso": "2026-12-24"
@@ -17123,7 +17151,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 1,
       "fecha_iso": "2027-01-04"
@@ -17210,7 +17238,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales.",
       "anio": 2027,
       "mes": 1,
       "fecha_iso": "2027-01-07"
@@ -17297,7 +17325,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 1,
       "fecha_iso": "2027-01-11"
@@ -17355,7 +17383,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 1,
       "fecha_iso": "2027-01-14"
@@ -17384,7 +17412,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 1,
       "fecha_iso": "2027-01-14"
@@ -17413,7 +17441,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 1,
       "fecha_iso": "2027-01-18"
@@ -17500,7 +17528,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 1,
       "fecha_iso": "2027-01-21"
@@ -17529,7 +17557,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 1,
       "fecha_iso": "2027-01-25"
@@ -17645,7 +17673,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 2,
       "fecha_iso": "2027-02-02"
@@ -17732,7 +17760,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 2,
       "fecha_iso": "2027-02-05"
@@ -17761,7 +17789,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 2,
       "fecha_iso": "2027-02-05"
@@ -17848,7 +17876,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales.",
       "anio": 2027,
       "mes": 2,
       "fecha_iso": "2027-02-09"
@@ -17906,7 +17934,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 2,
       "fecha_iso": "2027-02-11"
@@ -17964,7 +17992,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 2,
       "fecha_iso": "2027-02-16"
@@ -18080,7 +18108,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 2,
       "fecha_iso": "2027-02-24"
@@ -18109,7 +18137,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 2,
       "fecha_iso": "2027-02-25"
@@ -18167,7 +18195,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 3,
       "fecha_iso": "2027-03-01"
@@ -18254,7 +18282,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 3,
       "fecha_iso": "2027-03-04"
@@ -18283,7 +18311,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 3,
       "fecha_iso": "2027-03-05"
@@ -18312,7 +18340,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 3,
       "fecha_iso": "2027-03-05"
@@ -18399,7 +18427,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales.",
       "anio": 2027,
       "mes": 3,
       "fecha_iso": "2027-03-09"
@@ -18457,7 +18485,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 3,
       "fecha_iso": "2027-03-12"
@@ -18486,7 +18514,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 3,
       "fecha_iso": "2027-03-17"
@@ -18660,7 +18688,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 3,
       "fecha_iso": "2027-03-24"
@@ -18718,7 +18746,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 4,
       "fecha_iso": "2027-04-01"
@@ -18776,7 +18804,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 4,
       "fecha_iso": "2027-04-06"
@@ -18805,7 +18833,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 4,
       "fecha_iso": "2027-04-06"
@@ -18834,7 +18862,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 4,
       "fecha_iso": "2027-04-06"
@@ -18921,7 +18949,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales.",
       "anio": 2027,
       "mes": 4,
       "fecha_iso": "2027-04-08"
@@ -18979,7 +19007,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 4,
       "fecha_iso": "2027-04-09"
@@ -19037,7 +19065,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 4,
       "fecha_iso": "2027-04-16"
@@ -19124,7 +19152,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 4,
       "fecha_iso": "2027-04-23"
@@ -19211,7 +19239,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 4,
       "fecha_iso": "2027-04-29"
@@ -19269,7 +19297,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 5,
       "fecha_iso": "2027-05-03"
@@ -19356,7 +19384,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 5,
       "fecha_iso": "2027-05-06"
@@ -19385,7 +19413,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 5,
       "fecha_iso": "2027-05-06"
@@ -19472,7 +19500,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales.",
       "anio": 2027,
       "mes": 5,
       "fecha_iso": "2027-05-07"
@@ -19559,7 +19587,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 5,
       "fecha_iso": "2027-05-12"
@@ -19588,7 +19616,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 5,
       "fecha_iso": "2027-05-17"
@@ -19675,7 +19703,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 5,
       "fecha_iso": "2027-05-24"
@@ -19762,7 +19790,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 5,
       "fecha_iso": "2027-05-27"
@@ -19791,7 +19819,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 6,
       "fecha_iso": "2027-06-01"
@@ -19849,7 +19877,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 6,
       "fecha_iso": "2027-06-03"
@@ -19907,7 +19935,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 6,
       "fecha_iso": "2027-06-04"
@@ -19936,7 +19964,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 6,
       "fecha_iso": "2027-06-04"
@@ -20052,7 +20080,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales.",
       "anio": 2027,
       "mes": 6,
       "fecha_iso": "2027-06-09"
@@ -20081,7 +20109,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 6,
       "fecha_iso": "2027-06-11"
@@ -20139,7 +20167,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 6,
       "fecha_iso": "2027-06-16"
@@ -20226,7 +20254,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2027,
       "mes": 6,
       "fecha_iso": "2027-06-24"
@@ -21248,93 +21276,6 @@
   ],
   "upcoming": [
     {
-      "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México",
-      "product": "BCMM · Difusión de datos sin boletín",
-      "publication_date": "2026-11-09",
-      "publication_date_display": "9 de noviembre de 2026",
-      "reference_period": "Septiembre de 2026",
-      "frequency": "Mensual",
-      "status": "próximo",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Sector externo",
-      "sigla": "BCMM",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
-      "anio": 2026,
-      "mes": 11,
-      "fecha_iso": "2026-11-09"
-    },
-    {
-      "indicator": "INPC",
-      "program": "Índice Nacional de Precios al Consumidor (INPC). Base 2ª Quincena Julio 2018. Actualización de Canasta y Ponderadores 2024. Mensual. Cifras definitivas",
-      "product": "Índice Nacional de Precios al Consumidor",
-      "publication_date": "2026-11-09",
-      "publication_date_display": "9 de noviembre de 2026",
-      "reference_period": "Octubre de 2026",
-      "frequency": "Mensual",
-      "status": "próximo",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Precios",
-      "sigla": "INPC",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": "Información de Interés Nacional. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 11,
-      "fecha_iso": "2026-11-09"
-    },
-    {
-      "indicator": "INPP",
-      "program": "Índice Nacional de Precios Productor (INPP). Año base julio 2019. Actualización 2025. Cifras definitivas",
-      "product": "Índice Nacional de Precios Productor",
-      "publication_date": "2026-11-09",
-      "publication_date_display": "9 de noviembre de 2026",
-      "reference_period": "Octubre de 2026",
-      "frequency": "Mensual",
-      "status": "próximo",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Precios",
-      "sigla": "INPP",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 11,
-      "fecha_iso": "2026-11-09"
-    },
-    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México",
       "product": "Estado de cuenta del Banco de México",
@@ -21387,7 +21328,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-11"
@@ -21416,7 +21357,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-17"
@@ -21503,7 +21444,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-23"
@@ -21590,7 +21531,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-25"
@@ -21619,7 +21560,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-26"
@@ -21677,7 +21618,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 12,
       "fecha_iso": "2026-12-01"
@@ -21764,7 +21705,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 12,
       "fecha_iso": "2026-12-04"
@@ -21793,7 +21734,7 @@
           "size": null
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 12,
       "fecha_iso": "2026-12-04"
@@ -21826,9 +21767,211 @@
       "anio": 2026,
       "mes": 12,
       "fecha_iso": "2026-12-08"
+    },
+    {
+      "indicator": "BCMM",
+      "program": "Balanza Comercial de Mercancías de México",
+      "product": "BCMM · Difusión de datos sin boletín",
+      "publication_date": "2026-12-09",
+      "publication_date_display": "9 de diciembre de 2026",
+      "reference_period": "Octubre de 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Sector externo",
+      "sigla": "BCMM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
+      "anio": 2026,
+      "mes": 12,
+      "fecha_iso": "2026-12-09"
+    },
+    {
+      "indicator": "INPC",
+      "program": "Índice Nacional de Precios al Consumidor (INPC). Base 2ª Quincena Julio 2018. Actualización de Canasta y Ponderadores 2024. Mensual. Cifras definitivas",
+      "product": "Índice Nacional de Precios al Consumidor",
+      "publication_date": "2026-12-09",
+      "publication_date_display": "9 de diciembre de 2026",
+      "reference_period": "Noviembre de 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Precios",
+      "sigla": "INPC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 12,
+      "fecha_iso": "2026-12-09"
+    },
+    {
+      "indicator": "INPP",
+      "program": "Índice Nacional de Precios Productor (INPP). Año base julio 2019. Actualización 2025. Cifras definitivas",
+      "product": "Índice Nacional de Precios Productor",
+      "publication_date": "2026-12-09",
+      "publication_date_display": "9 de diciembre de 2026",
+      "reference_period": "Noviembre de 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Precios",
+      "sigla": "INPP",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales.",
+      "anio": 2026,
+      "mes": 12,
+      "fecha_iso": "2026-12-09"
     }
   ],
   "recent": [
+    {
+      "indicator": "INPP",
+      "program": "Índice Nacional de Precios Productor (INPP). Año base julio 2019. Actualización 2025. Cifras definitivas",
+      "product": "Índice Nacional de Precios Productor",
+      "publication_date": "2026-11-09",
+      "publication_date_display": "9 de noviembre de 2026",
+      "reference_period": "Octubre de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Precios",
+      "sigla": "INPP",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_11.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_11.pdf",
+          "label": "Boletín PDF",
+          "size": "0.34 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_11.docx",
+          "label": "Boletín Word",
+          "size": "0.33 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_11.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.03 MB"
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador. Incluye cuadro de estadísticas generales.",
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-09"
+    },
+    {
+      "indicator": "INPC",
+      "program": "Índice Nacional de Precios al Consumidor (INPC). Base 2ª Quincena Julio 2018. Actualización de Canasta y Ponderadores 2024. Mensual. Cifras definitivas",
+      "product": "Índice Nacional de Precios al Consumidor",
+      "publication_date": "2026-11-09",
+      "publication_date_display": "9 de noviembre de 2026",
+      "reference_period": "Octubre de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Precios",
+      "sigla": "INPC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_11.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_11.pdf",
+          "label": "Boletín PDF",
+          "size": "0.28 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_11.docx",
+          "label": "Boletín Word",
+          "size": "0.32 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_11.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.03 MB"
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-09"
+    },
+    {
+      "indicator": "BCMM",
+      "program": "Balanza Comercial de Mercancías de México",
+      "product": "BCMM · Difusión de datos sin boletín",
+      "publication_date": "2026-11-09",
+      "publication_date_display": "9 de noviembre de 2026",
+      "reference_period": "Septiembre de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Sector externo",
+      "sigla": "BCMM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/tabulados/?nc=452",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/tabulados/?nc=452",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-09"
+    },
     {
       "indicator": "TASA",
       "program": "El objetivo para la Tasa de Interés Interbancaria a 1 día (tasa objetivo) disminuye en 25 puntos base",
@@ -21896,7 +22039,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-05"
@@ -21939,7 +22082,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-05"
@@ -22054,7 +22197,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-03"
@@ -22227,7 +22370,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 10,
       "fecha_iso": "2026-10-23"
@@ -22270,7 +22413,7 @@
           "size": "0.03 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 10,
       "fecha_iso": "2026-10-22"
@@ -22378,7 +22521,7 @@
           "size": "0.04 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 10,
       "fecha_iso": "2026-10-16"
@@ -22450,125 +22593,10 @@
           "size": "0.15 MB"
         }
       ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 10,
       "fecha_iso": "2026-10-12"
-    },
-    {
-      "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México",
-      "product": "BCMM · Difusión de datos sin boletín",
-      "publication_date": "2026-10-09",
-      "publication_date_display": "9 de octubre de 2026",
-      "reference_period": "Agosto de 2026",
-      "frequency": "Mensual",
-      "status": "publicado",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Sector externo",
-      "sigla": "BCMM",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/tabulados/?nc=452",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/tabulados/?nc=452",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, reporte de resultados ni boletín de indicadores.",
-      "anio": 2026,
-      "mes": 10,
-      "fecha_iso": "2026-10-09"
-    },
-    {
-      "indicator": "INPP",
-      "program": "Índice Nacional de Precios Productor (INPP). Año base julio 2019. Actualización 2025. Cifras definitivas",
-      "product": "Índice Nacional de Precios Productor",
-      "publication_date": "2026-10-08",
-      "publication_date_display": "8 de octubre de 2026",
-      "reference_period": "Septiembre de 2026",
-      "frequency": "Mensual",
-      "status": "publicado",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Precios",
-      "sigla": "INPP",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.pdf",
-          "label": "Boletín PDF",
-          "size": "0.34 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "word",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.docx",
-          "label": "Boletín Word",
-          "size": "0.33 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "excel",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_10.xlsx",
-          "label": "Boletín Excel",
-          "size": "0.03 MB"
-        }
-      ],
-      "comentario": "Incluye cuadro de estadísticas generales. Información de Interés Nacional. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 10,
-      "fecha_iso": "2026-10-08"
-    },
-    {
-      "indicator": "INPC",
-      "program": "Índice Nacional de Precios al Consumidor (INPC). Base 2ª Quincena Julio 2018. Actualización de Canasta y Ponderadores 2024. Mensual. Cifras definitivas",
-      "product": "Índice Nacional de Precios al Consumidor",
-      "publication_date": "2026-10-08",
-      "publication_date_display": "8 de octubre de 2026",
-      "reference_period": "Septiembre de 2026",
-      "frequency": "Mensual",
-      "status": "publicado",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Precios",
-      "sigla": "INPC",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf",
-          "label": "Boletín PDF",
-          "size": "0.28 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "word",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.docx",
-          "label": "Boletín Word",
-          "size": "0.32 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "excel",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.xlsx",
-          "label": "Boletín Excel",
-          "size": "0.03 MB"
-        }
-      ],
-      "comentario": "Información de Interés Nacional. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 10,
-      "fecha_iso": "2026-10-08"
     }
   ],
   "categories": {
