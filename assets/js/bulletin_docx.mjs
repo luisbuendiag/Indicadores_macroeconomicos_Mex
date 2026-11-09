@@ -1,9 +1,11 @@
+import {FINAL_PRODUCTS} from './bulletin_final.mjs';
+import {finalBody} from './bulletin_final_content.mjs';
 import {cycleBody} from './bulletin_cycle_content.mjs';
 import {gdpOriginalCore,selectedGdp} from './bulletin_gdp.mjs';
 import {priceCore,selectedPrices} from './bulletin_prices.mjs';
 import {demandCore} from './bulletin_demand.mjs';
 import {unzipSync,zipSync,strFromU8,strToU8} from '../vendor/fflate/fflate.mjs';
-import {selectedSectors} from './bulletin_parsers.mjs?v=cycles-20261109';
+import {selectedSectors} from './bulletin_parsers.mjs?v=final-three-20261109';
 import {narrative} from './bulletin_imai.mjs';
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
 const r=(s,{size=22,bold=false,color='000000',italic=false}={})=>`<w:r><w:rPr><w:rFonts w:ascii="Noto Sans" w:hAnsi="Noto Sans" w:cs="Noto Sans"/><w:sz w:val="${size}"/><w:szCs w:val="${size}"/><w:color w:val="${color}"/>${bold?'<w:b/>':''}${italic?'<w:i/>':''}</w:rPr><w:t xml:space="preserve">${esc(s)}</w:t></w:r>`;
@@ -25,7 +27,8 @@ export function buildDocx(f,template,pngs){
  const section=xml.match(/<w:sectPr\b[\s\S]*?<\/w:sectPr>/)?.[0];
  if(!section||!files['word/header1.xml']||!pngs.mom||!pngs.yoy)throw new Error('No se pudo preparar el formato institucional.');
  let body;
- if(f.indicator==='SIC'||f.indicator==='IOAE')body=cycleBody(f,{title,table,h,p,note,image,gap,source});
+ if(Object.hasOwn(FINAL_PRODUCTS,f.indicator))body=finalBody(f,{title,table,h,p,note,image,gap,source});
+ else if(f.indicator==='SIC'||f.indicator==='IOAE')body=cycleBody(f,{title,table,h,p,note,image,gap,source});
  else if(f.indicator==='PIB'||f.indicator==='PIBSEC')body=gdpBody(f);
  else if(f.indicator==='INPC'||f.indicator==='INPP')body=priceBody(f);
  else if(f.indicator==='CONSUMO'||f.indicator==='IMFBCF')body=demandBody(f);

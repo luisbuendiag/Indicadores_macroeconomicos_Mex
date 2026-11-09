@@ -323,3 +323,17 @@ Entorno financiero contiene la inversión externa reportada por la **Secretaría
 - `tests/bulletin_cycles.test.mjs` cubre ambas lecturas, controles, unidades y
   Word. Cotejar PDFs reales y renderizar las dos páginas de cada salida al
   cambiar composición. Membrete y machotes permanecen intactos.
+
+## Carga local EMOE, ENOE y BCMM
+
+- Los 15 indicadores de Panorama admiten PDF recibido en el navegador.
+  `bulletin_final.mjs` comparte validación de edición, fecha y paginación;
+  parsers separados: `bulletin_emoe.mjs`, `bulletin_labor.mjs` y `bulletin_trade.mjs`.
+- EMOE: solo ICE/IGOEC, siete páginas, cuatro sectores y veinte componentes.
+  Ajustes por componente; puntos, no porcentajes. ENOE: mensual, quince páginas,
+  cuadros 1, 2, 4 y 7; no reconstruir diferencias de tasas redondeadas.
+- BCMM: nueve páginas, tres cuadros completos y tasas/saldos ajustados del texto.
+  Historia por geometría, preservando millares y superíndices; S.S. nulo.
+- Los tres generan Word de dos páginas con tablas nativas y dos gráficas.
+  Probar `tests/bulletin_final.test.mjs`, PDF.js real y render DOCX al cambiar
+  composición. El PDF y el Word recibido nunca actualizan la capa oficial.

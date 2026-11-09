@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: "24"
       - name: Calendario y notas Word locales
-        run: node --test tests/calendar_ui.test.mjs tests/bulletin_upload.test.mjs tests/bulletin_products.test.mjs tests/update_health.test.mjs tests/bulletin_cycles.test.mjs
+        run: node --test tests/calendar_ui.test.mjs tests/bulletin_upload.test.mjs tests/bulletin_products.test.mjs tests/update_health.test.mjs tests/bulletin_cycles.test.mjs tests/bulletin_final.test.mjs
       - name: Validación de datos
         run: python scripts/validate.py
       - name: Pruebas unitarias

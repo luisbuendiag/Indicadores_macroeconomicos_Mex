@@ -1,8 +1,10 @@
+import {FINAL_PRODUCTS} from './bulletin_final.mjs';
+import {finalChart} from './bulletin_final_content.mjs';
 import {drawCycleChart} from './bulletin_cycle_charts.mjs';
 import {gdpOriginalCore,selectedGdp} from './bulletin_gdp.mjs';
 import {selectedPrices} from './bulletin_prices.mjs';
 import {demandPair} from './bulletin_demand.mjs';
-import {selectedSectors} from './bulletin_parsers.mjs?v=cycles-20261109';
+import {selectedSectors} from './bulletin_parsers.mjs?v=final-three-20261109';
 // Gráficas locales; ninguna imagen ni cifra se envía a servicios externos.
 export function drawComponentChart(canvas,facts,field){
  const digits=facts.chartDigits??1,suffix=facts.chartSuffix??'%',rows=facts.chartRows||facts.rows.slice(1),ctx=canvas.getContext('2d');canvas.width=1840;canvas.height=590;
@@ -28,6 +30,7 @@ export function drawComponentChart(canvas,facts,field){
 export async function chartBytes(canvas){const b=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));if(!b)throw new Error('No se pudo generar la gráfica.');return new Uint8Array(await b.arrayBuffer());}
 
 export function drawNoteChart(canvas,f,field){
+ if(Object.hasOwn(FINAL_PRODUCTS,f.indicator)){const c=finalChart(f,field);return drawComponentChart(canvas,{...f,...c.options,chartRows:c.rows},c.field);}
  if(f.indicator==='SIC'||f.indicator==='IOAE')return drawCycleChart(canvas,f,field);
  if(f.indicator==='PIB'||f.indicator==='PIBSEC'){
   const current=field==='mom',rows=current?f.rows.slice(1):f.indicator==='PIB'?gdpOriginalCore(f).slice(1):selectedGdp(f);

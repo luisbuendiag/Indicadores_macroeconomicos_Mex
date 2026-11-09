@@ -1,11 +1,12 @@
+import {FINAL_PRODUCTS,finalPreview} from './bulletin_final.mjs';
 import {cyclePreview} from './bulletin_cycles.mjs';
 import {priceCore} from './bulletin_prices.mjs';
 import {demandCore} from './bulletin_demand.mjs';
 import {pdfFromFiles} from './bulletin_files.mjs';
 import {getDocument,GlobalWorkerOptions} from '../vendor/pdfjs/pdf.min.mjs';
-import {parseBulletin,PRODUCTS} from './bulletin_parsers.mjs?v=cycles-20261109';
-import {buildDocx} from './bulletin_docx.mjs?v=cycles-20261109';
-import {drawNoteChart,chartBytes} from './bulletin_charts.mjs?v=cycles-20261109';
+import {parseBulletin,PRODUCTS} from './bulletin_parsers.mjs?v=final-three-20261109';
+import {buildDocx} from './bulletin_docx.mjs?v=final-three-20261109';
+import {drawNoteChart,chartBytes} from './bulletin_charts.mjs?v=final-three-20261109';
 GlobalWorkerOptions.workerSrc=new URL('../vendor/pdfjs/pdf.worker.min.mjs',import.meta.url).href;
 const $=id=>document.getElementById(id),fileInput=$('bulletin-file'),status=$('upload-status');
 let template,facts=null,task=null,version=0;const urls=new Set();
@@ -29,8 +30,8 @@ function lines(items){
  return rows.sort((a,b)=>b.y-a.y).map(r=>r.items.sort((a,b)=>a.x-b.x).map(x=>x.text).join(' ')).join('\n');
 }
 function show(f){
- if(f.indicator==='SIC'||f.indicator==='IOAE'){
-  const view=cyclePreview(f);$('facts-meta').replaceChildren();
+ if(Object.hasOwn(FINAL_PRODUCTS,f.indicator)||f.indicator==='SIC'||f.indicator==='IOAE'){
+  const view=Object.hasOwn(FINAL_PRODUCTS,f.indicator)?finalPreview(f):cyclePreview(f);$('facts-meta').replaceChildren();
   for(const [label,value] of [['Periodo',f.period],['Fecha del boletín',f.publicationDate],view.meta]){const div=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=value;div.append(dt,dd);$('facts-meta').append(div);}
   $('preview-caption').textContent=view.caption;$('preview-head').replaceChildren();$('facts-rows').replaceChildren();
   for(const label of view.head){const th=document.createElement('th');th.scope='col';th.textContent=label;$('preview-head').append(th);}
@@ -63,7 +64,7 @@ async function receiveFiles(files){
   if(run!==version)return;
   task=getDocument({data:bytes,isEvalSupported:false,disableFontFace:true,useSystemFonts:false,disableAutoFetch:true,disableStream:true,useWorkerFetch:false});
   const parsingTask=task;const timer=setTimeout(()=>parsingTask.destroy(),30000);let pages,layout;
-  try{const pdf=await task.promise;if(pdf.numPages!==product.pages)throw new Error(`El boletín ${key} requiere ${product.pages} páginas.`);pages=[];for(let i=1;i<=product.pages;i++){const page=await pdf.getPage(i);const content=await page.getTextContent();if(content.items.length>50000)throw new Error('El documento es demasiado complejo.');pages.push(lines(content.items));if((key==='INPC'&&i===4)||(key==='INPP'&&i===5)){const v=page.getViewport({scale:1});layout={width:v.width,items:content.items.filter(i=>i.str?.trim()).map(i=>({text:i.str,x0:i.transform[4],x1:i.transform[4]+i.width,top:v.height-i.transform[5]}))};}}}finally{clearTimeout(timer);}
+  try{const pdf=await task.promise;if(pdf.numPages!==product.pages)throw new Error(`El boletín ${key} requiere ${product.pages} páginas.`);pages=[];for(let i=1;i<=product.pages;i++){const page=await pdf.getPage(i);const content=await page.getTextContent();if(content.items.length>50000)throw new Error('El documento es demasiado complejo.');pages.push(lines(content.items));if((key==='INPC'&&i===4)||(key==='INPP'&&i===5)||(key==='BCMM'&&i===2)){const v=page.getViewport({scale:1});layout={width:v.width,items:content.items.filter(i=>i.str?.trim()).map(i=>({text:i.str,x0:i.transform[4],x1:i.transform[4]+i.width,top:v.height-i.transform[5]}))};}}}finally{clearTimeout(timer);}
   if(run!==version)return;facts=parseBulletin(key,pages,layout);show(facts);message('Preparando tablas y gráficas del Word…');await prepareNote(facts,run);if(run===version){dropZone.hidden=true;message('Nota preparada. Revisa el periodo y las cifras antes de descargarla.');const title=$('facts-title');title.tabIndex=-1;title.focus();}
  }catch(error){if(run===version){facts=null;$('facts-panel').hidden=true;message(error.name==='PasswordException'?'El PDF está protegido. Utiliza una copia sin contraseña.':error.message||'No se pudo leer el PDF. No se generó la nota.',true);}}
  finally{if(run===version){await task?.destroy();task=null;}}

@@ -1,9 +1,11 @@
+import {FINAL_PRODUCTS,parseFinal} from './bulletin_final.mjs';
 import {parseCycles} from './bulletin_cycles.mjs';
 import {parseGdp} from './bulletin_gdp.mjs';
 import {parsePrices} from './bulletin_prices.mjs';
 import {parseDemand} from './bulletin_demand.mjs';
 import {parseImai,MONTHS} from './bulletin_imai.mjs';
 export const PRODUCTS={
+ ...FINAL_PRODUCTS,
  SIC:{name:'Sistema de Indicadores Cíclicos',pages:13},
  IOAE:{name:'Indicador Oportuno de la Actividad Económica',pages:6},
  IMAI:{name:'Indicador Mensual de la Actividad Industrial',pages:5},
@@ -70,5 +72,5 @@ export function parseImoam(pages){
  if(!cov||!win||!ahead||!['RENEM','CFE','CENACE','confidencialidad'].every(x=>f.pages[3].includes(x)))fail('Cambió el bloque de evaluación o metodología del IMOAM.');
  f.coverage=Number(cov[1].replace(',','.'));if(f.coverage<0||f.coverage>100)fail('La evaluación histórica es inválida.');f.evaluation=`${win[1]} de ${win[2]} a ${win[3]} de ${win[4]}`;f.daysAhead=+ahead[1];return f;
 }
-export function parseBulletin(key,pages,layout){if(key==='SIC'||key==='IOAE')return parseCycles(key,pages);if(key==='PIB'||key==='PIBSEC')return parseGdp(key,pages);if(key==='INPC'||key==='INPP')return parsePrices(key,pages,layout);if(key==='CONSUMO'||key==='IMFBCF')return parseDemand(context(key,pages));if(key==='IMAI')return {...parseImai(pages),name:PRODUCTS.IMAI.name};if(key==='IGAE')return parseIgae(pages);if(key==='EMIM')return parseEmim(pages);if(key==='IMOAM')return parseImoam(pages);fail('Indicador no disponible.');}
+export function parseBulletin(key,pages,layout){if(Object.hasOwn(FINAL_PRODUCTS,key))return parseFinal(key,pages,layout);if(key==='SIC'||key==='IOAE')return parseCycles(key,pages);if(key==='PIB'||key==='PIBSEC')return parseGdp(key,pages);if(key==='INPC'||key==='INPP')return parsePrices(key,pages,layout);if(key==='CONSUMO'||key==='IMFBCF')return parseDemand(context(key,pages));if(key==='IMAI')return {...parseImai(pages),name:PRODUCTS.IMAI.name};if(key==='IGAE')return parseIgae(pages);if(key==='EMIM')return parseEmim(pages);if(key==='IMOAM')return parseImoam(pages);fail('Indicador no disponible.');}
 export function selectedSectors(f){return [...f.sectors].sort((a,b)=>b.production-a.production||a.code.localeCompare(b.code)).filter((_,i,a)=>i<3||i>=a.length-3);}
