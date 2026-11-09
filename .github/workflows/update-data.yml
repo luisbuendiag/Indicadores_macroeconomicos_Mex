@@ -4,9 +4,11 @@ name: Actualizar datos (pipeline)
 # falla, el workflow se detiene y no se despliega.
 #
 # Horarios (UTC -> America/Mexico_City, UTC-6):
-#   07:00 UTC  = 01:00 hora Ciudad de México (madrugada, boletines medianoche)
-#   13:00 UTC  = 07:00 hora Ciudad de México (matutino, inicio de jornada)
-#   19:00 UTC  = 13:00 hora Ciudad de México (mediodía, publicaciones de la mañana)
+#   07:17 UTC  = 01:17 hora Ciudad de México (madrugada, boletines medianoche)
+#   13:17 UTC  = 07:17 hora Ciudad de México (matutino, inicio de jornada)
+#   19:17 UTC  = 13:17 hora Ciudad de México (mediodía, publicaciones de la mañana)
+#   15:17 UTC  = 09:17 hora Ciudad de México (después de publicaciones matutinas)
+# Minuto 17 reduce la exposición a la congestión de inicio de hora de GitHub.
 # INEGI publica normalmente antes de las 08:00-09:00 CT; Banxico lo hace en
 # días hábiles por la mañana. Las corridas adicionales capturan retrasos ocasionales.
 #
@@ -17,9 +19,7 @@ name: Actualizar datos (pipeline)
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: "0 7 * * 1-5"
-    - cron: "0 13 * * 1-5"
-    - cron: "0 19 * * 1-5"
+    - cron: "17 7,13,15,19 * * 1-5"
   push:
     branches:
       - main
