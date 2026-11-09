@@ -1,4 +1,5 @@
 name: Actualizar datos (pipeline)
+run-name: ${{ inputs.recovery_slot && format('Recuperación {0}', inputs.recovery_slot) || 'Actualización de datos' }}
 
 # Actualiza la capa de datos y regenera productos. Si la validación crítica
 # falla, el workflow se detiene y no se despliega.
@@ -17,7 +18,12 @@ name: Actualizar datos (pipeline)
 # dato aparece más tarde ese mismo día, la siguiente ejecución programada lo
 # captura; no se hace polling continuo.
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      recovery_slot:
+        description: Corte recuperado por la vigilancia automática
+        type: string
+        default: ''
   schedule:
     - cron: "17 7,13,15,19 * * 1-5"
   push:
@@ -29,14 +35,14 @@ permissions:
   pages: write
   id-token: write
 
-# Un push nuevo vuelve obsoleta una corrida anterior; las corridas programadas
-# se conservan. [notes-only] usa la ficha vigente y omite solo las tareas de datos.
+# Las corridas se serializan; un push no cancela la actualización en curso. [notes-only] usa la ficha vigente y omite solo las tareas de datos.
 concurrency:
   group: update-data-${{ github.ref }}
-  cancel-in-progress: ${{ github.event_name == 'push' }}
+  cancel-in-progress: false
 
 jobs:
   update:
+    timeout-minutes: 90
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -168,13 +174,16 @@ jobs:
         if: ${{ always() && vars.NOTES_PILOT_ENABLED != 'false' }}
         uses: actions/upload-artifact@v4
         with:
-          name: notas-imoam-qa
+          name: notas-qa-${{ github.run_attempt }}
           path: ${{ runner.temp }}/notas-imoam
           if-no-files-found: ignore
           retention-days: 7
 
       - name: Validar (estricto para el reporte de CI)
         run: python scripts/validate.py
+
+      - name: Registrar estado de consulta y productos
+        run: python scripts/build_update_health.py
 
       - name: Commit de artefactos actualizados
         run: |
@@ -200,8 +209,13 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: "."
+          name: github-pages-${{ github.run_attempt }}
 
   deploy:
+    timeout-minutes: 15
+    concurrency:
+      group: pages
+      cancel-in-progress: false
     needs: update
     environment:
       name: github-pages
@@ -210,3 +224,5 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-${{ github.run_attempt }}

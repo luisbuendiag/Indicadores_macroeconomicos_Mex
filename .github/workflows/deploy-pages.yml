@@ -1,4 +1,5 @@
 name: Desplegar a GitHub Pages
+run-name: ${{ inputs.recovery_slot && format('Recuperación {0}', inputs.recovery_slot) || 'Publicación del dashboard' }}
 
 # Publica el sitio estático (dashboard V2) en GitHub Pages.
 on:
@@ -10,7 +11,12 @@ on:
       - "data/**"
       - "downloads/**"
       - "legacy/**"
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      recovery_slot:
+        description: Corte recuperado por la vigilancia automática
+        type: string
+        default: ''
 
 permissions:
   contents: read
@@ -19,10 +25,11 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   deploy:
+    timeout-minutes: 15
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

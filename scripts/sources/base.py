@@ -1,31 +1,41 @@
-"""Base para conectores de fuentes oficiales.
-
-Cada conector implementa fetch() y devuelve un dict {clave_indicador: {...}}
-compatible con el esquema de data/indicadores.json, o None si no puede operar
-(por ejemplo, falta de token). El pipeline NUNCA borra datos cuando un conector
-devuelve None: conserva la última versión válida.
-"""
+"""Conectores oficiales: conservar la última versión válida ante fallos de fuente."""
 from __future__ import annotations
 
+import http.client
 import json
+import socket
+import time
 import urllib.error
 import urllib.request
 
 USER_AGENT = "IndicadoresMacroMX/2.0 (+https://github.com/luisbuendiag/Indicadores_macroeconomicos_Mex)"
+RETRY_STATUS = {408, 429, 500, 502, 503, 504}
+
+
+def http_get_bytes(url: str, timeout: int = 60, *, accept: str = '*/*') -> bytes:
+    """Tres intentos solo ante fallos transitorios; 404 y errores de contenido no se repiten."""
+    request = urllib.request.Request(url, headers={'User-Agent': USER_AGENT, 'Accept': accept})
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(request, timeout=timeout) as response:
+                return response.read()
+        except (urllib.error.URLError, TimeoutError, socket.timeout,
+                ConnectionError, http.client.IncompleteRead) as error:
+            if isinstance(error, urllib.error.HTTPError) and error.code not in RETRY_STATUS:
+                raise
+            if attempt == 2:
+                raise
+            delay = 2 ** (attempt + 1)
+            if isinstance(error, urllib.error.HTTPError):
+                retry_after = error.headers.get('Retry-After', '') if error.headers else ''
+                if retry_after.isdigit():
+                    delay = max(delay, min(int(retry_after), 60))
+            time.sleep(delay)
+    raise RuntimeError('No se pudo completar la consulta')
 
 
 def http_get_json(url: str, timeout: int = 60) -> dict | list:
-    """Obtiene JSON de una URL con timeout extendido y un reintento."""
-    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"})
-    for attempt in range(2):
-        try:
-            with urllib.request.urlopen(req, timeout=timeout) as r:
-                return json.loads(r.read().decode("utf-8"))
-        except urllib.error.URLError as e:
-            if attempt == 0 and "timed out" in str(e).lower():
-                continue
-            raise
-    raise urllib.error.URLError("timed out after retry")
+    return json.loads(http_get_bytes(url, timeout, accept='application/json').decode('utf-8'))
 
 
 class SourceResult:

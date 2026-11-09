@@ -41,7 +41,7 @@ from pathlib import Path
 from typing import Any
 
 from . import inegi
-from .base import USER_AGENT, SourceResult
+from .base import USER_AGENT, SourceResult, http_get_bytes
 
 try:
     import pdfplumber
@@ -132,9 +132,7 @@ MESES_NOMBRE = [
 
 
 def _req(url: str, timeout: int = 60) -> bytes:
-    request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    with urllib.request.urlopen(request, timeout=timeout) as r:
-        return r.read()
+    return http_get_bytes(url, timeout=timeout)
 
 
 def _head_size(url: str, timeout: int = 15) -> int:

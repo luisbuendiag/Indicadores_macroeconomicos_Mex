@@ -1,0 +1,8 @@
+{
+  "timezone": "America/Mexico_City",
+  "utc_hours": [7, 13, 15, 19],
+  "minute": 17,
+  "grace_minutes": 60,
+  "max_run_minutes": 90,
+  "max_recoveries_per_slot": 2
+}

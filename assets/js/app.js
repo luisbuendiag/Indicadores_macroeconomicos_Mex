@@ -5,8 +5,10 @@ import { buildOption, rangeStats, applyWindow, buildPibsecLevels, buildPibsecVar
 import { fmtVal, perLong, perShort } from "./format.js";
 import * as cal from "./calendar.js?v=editorial-20261106";
 
+import { assessHealth } from "./update_health.mjs";
+
 const state = {
-  data: null, manifest: null, noticias: null, calendario: null,
+  health: null, updatePolicy: null, data: null, manifest: null, noticias: null, calendario: null,
   active: "panorama", windows: {}, charts: {}, openTables: {},
 };
 
@@ -2000,6 +2002,7 @@ function updatePrintFooter() {
 async function init() {
   try {
     state.data = await loadJSON("data/indicadores.json");
+    [state.health, state.updatePolicy] = await Promise.all([loadJSON("data/update_health.json", true), loadJSON("config/update_policy.json", true)]);
     state.manifest = await loadJSON("data/manifest.json", true);
     state.noticias = await loadJSON("data/noticias.json", true);
     state.calendario = await loadJSON("data/calendario.json", true) || await loadJSON("data/calendario_publicaciones.json", true);
@@ -2009,6 +2012,15 @@ async function init() {
   }
   $("#status").style.display = "none";
   renderHeader();
+  const healthPanel = document.getElementById('update-health');
+  const renderHealth = () => {
+    if (!healthPanel || !state.updatePolicy) return;
+    const check = assessHealth(state.health, state.updatePolicy);
+    healthPanel.hidden = !check.message;
+    healthPanel.textContent = check.message;
+  };
+  renderHealth();
+  setInterval(renderHealth, 60000);
   renderNav();
   buildViewShells();
   renderAll();
