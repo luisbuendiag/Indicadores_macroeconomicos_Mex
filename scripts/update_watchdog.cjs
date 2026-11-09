@@ -3,6 +3,16 @@ const fs = require('node:fs');
 const {pathToFileURL} = require('node:url');
 const path = require('node:path');
 
+async function retryRead(read, wait = ms => new Promise(resolve => setTimeout(resolve, ms))) {
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try { return await read(); }
+    catch (error) {
+      if (attempt === 2 || ![408,429,500,502,503,504].includes(error.status)) throw error;
+      await wait(2000 * (attempt + 1));
+    }
+  }
+}
+
 async function readPublic(url) {
   for (let attempt = 0; attempt < 3; attempt++) {
     try {
@@ -29,7 +39,7 @@ async function watchdog({github, context, core}) {
   const source = assessHealth(repoHealth, policy, now);
   const summary = core.summary.addHeading('Vigilancia de actualizaciones');
   const runLists = await Promise.all(['update-data.yml', 'deploy-pages.yml'].map(workflow_id =>
-    github.rest.actions.listWorkflowRuns({...context.repo, workflow_id, branch: 'main', per_page: 100})));
+    retryRead(() => github.rest.actions.listWorkflowRuns({...context.repo, workflow_id, branch: 'main', per_page: 100}))));
   const runs = runLists.flatMap(r => r.data.workflow_runs);
   const active = runs.filter(r => r.status !== 'completed');
   // No competir con una corrida válida ni publicar encima de otra.
@@ -66,4 +76,4 @@ async function watchdog({github, context, core}) {
   }
   await summary.addRaw(body).write();
 }
-module.exports = {watchdog};
+module.exports = {watchdog, retryRead};

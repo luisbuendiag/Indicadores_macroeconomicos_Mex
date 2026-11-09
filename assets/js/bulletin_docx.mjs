@@ -1,8 +1,9 @@
+import {cycleBody} from './bulletin_cycle_content.mjs';
 import {gdpOriginalCore,selectedGdp} from './bulletin_gdp.mjs';
 import {priceCore,selectedPrices} from './bulletin_prices.mjs';
 import {demandCore} from './bulletin_demand.mjs';
 import {unzipSync,zipSync,strFromU8,strToU8} from '../vendor/fflate/fflate.mjs';
-import {selectedSectors} from './bulletin_parsers.mjs?v=pib-20261107';
+import {selectedSectors} from './bulletin_parsers.mjs?v=cycles-20261109';
 import {narrative} from './bulletin_imai.mjs';
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
 const r=(s,{size=22,bold=false,color='000000',italic=false}={})=>`<w:r><w:rPr><w:rFonts w:ascii="Noto Sans" w:hAnsi="Noto Sans" w:cs="Noto Sans"/><w:sz w:val="${size}"/><w:szCs w:val="${size}"/><w:color w:val="${color}"/>${bold?'<w:b/>':''}${italic?'<w:i/>':''}</w:rPr><w:t xml:space="preserve">${esc(s)}</w:t></w:r>`;
@@ -15,8 +16,8 @@ function table(rows,widths){
  const edges=['top','left','bottom','right','insideH','insideV'].map(x=>`<w:${x} w:val="single" w:sz="4" w:color="D9D9D9"/>`).join('');
  return `<w:tbl><w:tblPr><w:tblW w:w="${widths.reduce((a,b)=>a+b,0)}" w:type="dxa"/><w:tblLayout w:type="fixed"/><w:tblBorders>${edges}</w:tblBorders><w:tblCellMar><w:top w:w="65" w:type="dxa"/><w:left w:w="85" w:type="dxa"/><w:bottom w:w="65" w:type="dxa"/><w:right w:w="85" w:type="dxa"/></w:tblCellMar></w:tblPr><w:tblGrid>${widths.map(w=>`<w:gridCol w:w="${w}"/>`).join('')}</w:tblGrid>${rows.map((row,i)=>`<w:tr><w:trPr><w:cantSplit/>${i===0?'<w:tblHeader/>':''}</w:trPr>${row.map((v,j)=>cell(v,i,j)).join('')}</w:tr>`).join('')}</w:tbl>`;
 }
-function image(id,n){
- const cx=5610000,cy=1800000;
+function image(id,n,height=1800000){
+ const cx=5610000,cy=height;
  return `<w:p><w:pPr><w:spacing w:before="0" w:after="0"/><w:jc w:val="center"/></w:pPr><w:r><w:drawing><wp:inline distT="0" distB="0" distL="0" distR="0"><wp:extent cx="${cx}" cy="${cy}"/><wp:docPr id="${n}" name="Gráfica ${n}" descr="Comparación de las cifras publicadas en el boletín"/><wp:cNvGraphicFramePr/><a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:nvPicPr><pic:cNvPr id="0" name="${id}.png"/><pic:cNvPicPr/></pic:nvPicPr><pic:blipFill><a:blip r:embed="${id}"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill><pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="${cx}" cy="${cy}"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr></pic:pic></a:graphicData></a:graphic></wp:inline></w:drawing></w:r></w:p>`;
 }
 export function buildDocx(f,template,pngs){
@@ -24,7 +25,8 @@ export function buildDocx(f,template,pngs){
  const section=xml.match(/<w:sectPr\b[\s\S]*?<\/w:sectPr>/)?.[0];
  if(!section||!files['word/header1.xml']||!pngs.mom||!pngs.yoy)throw new Error('No se pudo preparar el formato institucional.');
  let body;
- if(f.indicator==='PIB'||f.indicator==='PIBSEC')body=gdpBody(f);
+ if(f.indicator==='SIC'||f.indicator==='IOAE')body=cycleBody(f,{title,table,h,p,note,image,gap,source});
+ else if(f.indicator==='PIB'||f.indicator==='PIBSEC')body=gdpBody(f);
  else if(f.indicator==='INPC'||f.indicator==='INPP')body=priceBody(f);
  else if(f.indicator==='CONSUMO'||f.indicator==='IMFBCF')body=demandBody(f);
  else if(f.indicator==='EMIM')body=emimBody(f);

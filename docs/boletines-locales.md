@@ -1,6 +1,6 @@
 # Notas desde boletines recibidos
 
-Disponible en IMAI, IGAE, IMOAM, EMIM, IMCP (CONSUMO), IMFBCF, INPC, INPP, PIB oportuno y PIB trimestral mediante **Cargar boletín**. La selección y el arrastre de un único PDF se procesan dentro de la ficha, en un lector aislado del mismo sitio. Cuando la nota está lista se oculta la zona de carga; **Borrar archivo** restablece la selección y revoca la descarga temporal.
+Disponible en IMAI, IGAE, IMOAM, EMIM, IMCP (CONSUMO), IMFBCF, INPC, INPP, PIB oportuno, PIB trimestral, SIC e IOAE mediante **Cargar boletín**. La selección y el arrastre de un único PDF se procesan dentro de la ficha, en un lector aislado del mismo sitio. Cuando la nota está lista se oculta la zona de carga; **Borrar archivo** restablece la selección y revoca la descarga temporal.
 
 El archivo permanece en memoria del navegador. No hay cargas al servidor, almacenamiento, analítica ni llamadas a IA. No se alteran las cifras o notas oficiales del dashboard. Los PDF preliminares conservan su fecha declarada, incluso futura, y el Word identifica la versión recibida.
 
@@ -12,6 +12,10 @@ INPC e INPP separan variaciones (%) e incidencias (pp, tres decimales). INPC adm
 
 PIB oportuno (PIB, cuatro páginas) y PIB trimestral (PIBSEC, cinco) conservan tasas trimestrales, anuales y acumuladas por separado. Se cotejan encabezados, portada, las siete columnas originales y el universo completo de 20 sectores del PIBT. No se reconstruyen niveles desde gráficas ni se equipara la estimación oportuna con un resultado definitivo.
 
-Se admiten archivos de hasta 20 MB con texto seleccionable: cinco páginas para IMAI, IGAE y EMIM; cuatro para IMOAM, IMCP e IMFBCF. INPC mensual requiere seis páginas e INPP ocho. El membrete vigente es de 2026. Cambios de estructura, datos ambiguos o controles fallidos detienen la generación. No se admite OCR.
+SIC lee las trece páginas: dos cuadros de doce meses con siete columnas, periodos separados para Coincidente y Adelantado, cambios en puntos y relaciones inversas. Las dos gráficas utilizan las diferencias publicadas; no reconstruyen niveles ni declaran recesión por un cruce de 100.
 
-Pruebas: `node --test tests/bulletin_upload.test.mjs tests/bulletin_products.test.mjs`. La ampliación requiere reglas y ejemplos propios de cada indicador. El flujo Python de publicación oficial permanece separado.
+IOAE lee seis páginas y los tres cuadros de dos meses por tres actividades. Distingue estimaciones e intervalos al 95% del dato previo observado del IMAI, cuyo intervalo sigue siendo nulo. Las gráficas muestran los rangos anual y mensual; el índice conserva unidades propias.
+
+Se admiten archivos de hasta 20 MB con texto seleccionable: cinco páginas para IMAI, IGAE y EMIM; cuatro para IMOAM, IMCP e IMFBCF. INPC mensual requiere seis páginas e INPP ocho; SIC trece e IOAE seis. El membrete vigente es de 2026. Cambios de estructura, datos ambiguos o controles fallidos detienen la generación. No se admite OCR.
+
+Pruebas: `node --test tests/bulletin_upload.test.mjs tests/bulletin_products.test.mjs tests/bulletin_cycles.test.mjs`. La ampliación requiere reglas y ejemplos propios de cada indicador. El flujo Python de publicación oficial permanece separado.

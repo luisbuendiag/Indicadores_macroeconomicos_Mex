@@ -310,3 +310,16 @@ Entorno financiero contiene la inversión externa reportada por la **Secretaría
   de ensamblado IED usan un XLSX temporal con el esquema oficial sin depender de red.
 - Consultar la historia completa SIE de cada clave confirmada. No empalmar CR362
   (mercado interior) con IMCP actual sin verificar cobertura y metodología.
+
+## Carga local SIC e IOAE
+
+- Doce indicadores admiten PDF recibido. SIC (13 páginas) e IOAE (6) usan
+  `bulletin_cycles.mjs`, con contenido y gráficas propios. No publicar el PDF
+  ni su nota local en la capa oficial; todo permanece en memoria del navegador.
+- SIC: doce cambios mensuales por siete columnas en cada compuesto, meses
+  diferenciados, puntos y relaciones inversas. No reconstruir niveles históricos.
+- IOAE: tres cuadros íntegros y seis filas por cuadro; conservar observados IMAI
+  sin intervalos. Validar superíndices separados por PDF.js, edición y método.
+- `tests/bulletin_cycles.test.mjs` cubre ambas lecturas, controles, unidades y
+  Word. Cotejar PDFs reales y renderizar las dos páginas de cada salida al
+  cambiar composición. Membrete y machotes permanecen intactos.

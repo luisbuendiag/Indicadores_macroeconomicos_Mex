@@ -1,10 +1,11 @@
+import {cyclePreview} from './bulletin_cycles.mjs';
 import {priceCore} from './bulletin_prices.mjs';
 import {demandCore} from './bulletin_demand.mjs';
 import {pdfFromFiles} from './bulletin_files.mjs';
 import {getDocument,GlobalWorkerOptions} from '../vendor/pdfjs/pdf.min.mjs';
-import {parseBulletin,PRODUCTS} from './bulletin_parsers.mjs?v=pib-20261107';
-import {buildDocx} from './bulletin_docx.mjs?v=pib-20261107';
-import {drawNoteChart,chartBytes} from './bulletin_charts.mjs?v=pib-20261107';
+import {parseBulletin,PRODUCTS} from './bulletin_parsers.mjs?v=cycles-20261109';
+import {buildDocx} from './bulletin_docx.mjs?v=cycles-20261109';
+import {drawNoteChart,chartBytes} from './bulletin_charts.mjs?v=cycles-20261109';
 GlobalWorkerOptions.workerSrc=new URL('../vendor/pdfjs/pdf.worker.min.mjs',import.meta.url).href;
 const $=id=>document.getElementById(id),fileInput=$('bulletin-file'),status=$('upload-status');
 let template,facts=null,task=null,version=0;const urls=new Set();
@@ -28,6 +29,15 @@ function lines(items){
  return rows.sort((a,b)=>b.y-a.y).map(r=>r.items.sort((a,b)=>a.x-b.x).map(x=>x.text).join(' ')).join('\n');
 }
 function show(f){
+ if(f.indicator==='SIC'||f.indicator==='IOAE'){
+  const view=cyclePreview(f);$('facts-meta').replaceChildren();
+  for(const [label,value] of [['Periodo',f.period],['Fecha del boletín',f.publicationDate],view.meta]){const div=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=value;div.append(dt,dd);$('facts-meta').append(div);}
+  $('preview-caption').textContent=view.caption;$('preview-head').replaceChildren();$('facts-rows').replaceChildren();
+  for(const label of view.head){const th=document.createElement('th');th.scope='col';th.textContent=label;$('preview-head').append(th);}
+  for(const row of view.rows){const tr=document.createElement('tr');for(const value of row){const td=document.createElement('td');td.textContent=value;tr.append(td);}$('facts-rows').append(tr);}
+  $('facts-panel').hidden=false;return;
+ }
+
  $('facts-meta').replaceChildren();
  const gdp=f.indicator==='PIB'||f.indicator==='PIBSEC';
  const meta=[['Periodo',f.period],['Fecha del boletín',f.publicationDate]];if(f.index!=null)meta.push([f.indicator==='INPC'?f.base:(f.base?'Índice base '+f.base+'=100':'Índice estimado'),f.index.toFixed(f.indicator==='INPC'?3:1)+' puntos']);else meta.push(gdp?['Carácter',f.status]:f.indicator==='INPP'?['Cobertura','Total incluido petróleo']:['Variables','Producción, empleo, horas y remuneraciones']);

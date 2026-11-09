@@ -4,7 +4,7 @@ import {expectedSlot, assessHealth} from '../assets/js/update_health.mjs';
 import {createRequire} from 'node:module';
 import fs from 'node:fs';
 const require = createRequire(import.meta.url);
-const {watchdog} = require('../scripts/update_watchdog.cjs');
+const {watchdog, retryRead} = require('../scripts/update_watchdog.cjs');
 const policy = JSON.parse(fs.readFileSync(new URL('../config/update_policy.json', import.meta.url)));
 const date = s => new Date(s);
 
@@ -64,4 +64,10 @@ test('Word con cambio de estructura no provoca bucle de reintentos', async t => 
 test('una consulta al corriente termina sin alertas', async t => {
   const calls = await runWatchdog(t, {health:fresh()});
   assert.equal(calls.length,0);
+});
+
+test('la vigilancia reintenta lecturas de GitHub con error 500, sin repetir escrituras', async()=>{
+ let calls=0;const result=await retryRead(async()=>{if(++calls===1)throw Object.assign(new Error('Server Error'),{status:500});return 'ok';},async()=>{});
+ assert.equal(result,'ok');assert.equal(calls,2);
+ calls=0;await assert.rejects(retryRead(async()=>{calls++;throw Object.assign(new Error('Forbidden'),{status:403});},async()=>{}));assert.equal(calls,1);
 });
