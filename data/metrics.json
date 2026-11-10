@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-10T09:10:51+00:00",
-  "last_update_ct": "2026-11-09T18:03:23-06:00",
+  "generated_at": "2026-11-10T15:36:44+00:00",
+  "last_update_ct": "2026-11-10T03:11:22-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -22826,24 +22826,24 @@
     },
     "RESERVAS": {
       "kpi": {
-        "ultimoP": "Semana al 30 Oct 26",
-        "ultimoRaw": 257166.1,
-        "ultimoFmt": "257,166 mdd",
-        "varText": "+151 mdd",
-        "varMag": 150.5,
+        "ultimoP": "Semana al 6 Nov 26",
+        "ultimoRaw": 257904.7,
+        "ultimoFmt": "257,905 mdd",
+        "varText": "+739 mdd",
+        "varMag": 738.6,
         "varLabel": "Cambio semanal",
         "pos": true,
         "varColor": "#1e5b4f",
-        "yoyText": "+3.3%",
+        "yoyText": "+3.6%",
         "yoyLabel": "Variación anual",
-        "yoyRaw": 0.03341,
-        "yoyMag": 0.03341,
+        "yoyRaw": 0.036367,
+        "yoyMag": 0.036367,
         "yoyPos": true,
         "yoyColor": "#1e5b4f",
-        "acumText": "+5,037 mdd",
-        "acumPctText": "+2.0%",
+        "acumText": "+5,775 mdd",
+        "acumPctText": "+2.3%",
         "acumLabel": "Cambio YTD",
-        "lastI": 1609,
+        "lastI": 1610,
         "series": [
           15741.0,
           15671.9,
@@ -24454,7 +24454,8 @@
           256344.4,
           257076.5,
           257015.6,
-          257166.1
+          257166.1,
+          257904.7
         ],
         "periods": [
           "1995-12-29",
@@ -26066,29 +26067,30 @@
           "2026-10-09",
           "2026-10-16",
           "2026-10-23",
-          "2026-10-30"
+          "2026-10-30",
+          "2026-11-06"
         ],
         "assessment": "neutral",
         "dir": "up",
         "semaforo": "estable"
       },
       "yoy": {
-        "mag": 0.03341,
+        "mag": 0.036367,
         "pos": true,
-        "text": "+3.3%",
+        "text": "+3.6%",
         "label": "Variación anual"
       },
       "annualVar": {
-        "mag": 0.03341,
+        "mag": 0.036367,
         "pos": true,
-        "text": "+3.3%",
+        "text": "+3.6%",
         "label": "Variación anual"
       },
       "resumen": [
-        "Al 30 de octubre de 2026, la reserva internacional se ubicó en 257,166 mdd.",
-        "La variación semanal fue de +151 mdd respecto a la semana previa.",
-        "A tasa anual, la reserva varió +3.3%.",
-        "En lo que va del año, el cambio acumulado fue de +5,037 mdd (+2.0%) respecto al cierre del año previo."
+        "Al 6 de noviembre de 2026, la reserva internacional se ubicó en 257,905 mdd.",
+        "La variación semanal fue de +739 mdd respecto a la semana previa.",
+        "A tasa anual, la reserva varió +3.6%.",
+        "En lo que va del año, el cambio acumulado fue de +5,775 mdd (+2.3%) respecto al cierre del año previo."
       ],
       "analysis": []
     },
