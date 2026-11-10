@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-11-10T21:15:16+00:00",
+  "started_at": "2026-11-10T22:14:36+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -296,8 +296,8 @@
     "imoam: actualizado IMOAM (última obs Sep 26, sin cambio de periodo)",
     "imoam: actualizado IMOAM (última obs Sep 26, sin cambio de periodo)",
     "imoam: actualizado IMOAM (última obs Sep 26, sin cambio de periodo)",
-    "banxico: actualizado TIPOCAMBIO (última obs 2026-11-10, dato nuevo)",
-    "banxico: actualizado TASA (última obs 2026-11-11, dato nuevo)",
+    "banxico: actualizado TIPOCAMBIO (última obs 2026-11-10, sin cambio de periodo)",
+    "banxico: actualizado TASA (última obs 2026-11-11, sin cambio de periodo)",
     "banxico: actualizado RESERVAS (última obs 2026-11-06, sin cambio de periodo)",
     "inegi: actualizado PIB (última obs 2T-26, dato nuevo)",
     "inegi: actualizado PIBSEC (última obs 2T-26, sin cambio de periodo)",
@@ -481,7 +481,7 @@
     "frescura: INPP -> ACTUALIZADO",
     "frescura: SIC -> ACTUALIZADO",
     "frescura: IMOAM -> ACTUALIZADO",
-    "meta: last_update_ct=2026-11-10T15:30:07-06:00",
+    "meta: last_update_ct=2026-11-10T16:29:18-06:00",
     "notas: 15 vigentes (0 provisionadas desde machote)"
   ],
   "consultas": [
@@ -2424,9 +2424,9 @@
       "observaciones": 8796,
       "ultima_observacion": "2026-11-10",
       "ultimo_valor": 18.6678,
-      "observacion_previa": "2026-11-09",
+      "observacion_previa": "2026-11-10",
       "actualizacion_fuente": null,
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -2436,9 +2436,9 @@
       "observaciones": 6774,
       "ultima_observacion": "2026-11-11",
       "ultimo_valor": 6.25,
-      "observacion_previa": "2026-11-10",
+      "observacion_previa": "2026-11-11",
       "actualizacion_fuente": null,
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -3968,5 +3968,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-11-10T21:30:17+00:00"
+  "finished_at": "2026-11-10T22:29:29+00:00"
 }

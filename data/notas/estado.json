@@ -133,14 +133,14 @@
     "target_period": "Oct 26",
     "published": {
       "periodo": "Oct 26",
-      "generated_at": "2026-11-09T14:37:05+00:00",
+      "generated_at": "2026-11-10T22:33:40+00:00",
       "source_sha256": "68366413ebfc12da992cb89ce472a2cfab6196667974d52fd394af685b7a55b4",
-      "fingerprint": "799e54d34ddd12858c06c8943da7eef3b6b97d5c7be696c189422684ad6fd8b9",
-      "docx_sha256": "4fdfa0f295f493184e15fb66b3e29b04070d6d6a4fd0f2b519ace8e6cf09171e",
+      "fingerprint": "69297682dae488c9e39dc2df5c00493a4e541e77a6399dc990209a003e4aaf74",
+      "docx_sha256": "e26cbbee4456b0511fa22d3272073a3bff8e5682893bb370df1e48d09d4a4a14",
       "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_11.pdf",
       "review_model": "precios-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/INPP/799e54d34ddd12858c06c8943da7eef3b6b97d5c7be696c189422684ad6fd8b9-4fdfa0f295f4"
+      "archive": "data/notas/INPP/69297682dae488c9e39dc2df5c00493a4e541e77a6399dc990209a003e4aaf74-e26cbbee4456"
     }
   },
   "PIB": {
