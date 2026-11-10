@@ -10,7 +10,7 @@ import { searchIndicators } from "./indicator-search.mjs";
 import { assessHealth } from "./update_health.mjs";
 
 const state = {
-  health: null, updatePolicy: null, data: null, manifest: null, noticias: null, calendario: null,
+  iedStates: null, health: null, updatePolicy: null, data: null, manifest: null, noticias: null, calendario: null,
   active: "panorama", windows: {}, charts: {}, openTables: {},
 };
 
@@ -109,6 +109,25 @@ function productBtn(label, icon, enabled, title, onClick, kind) {
     attrs.onclick = (e) => onClick(e);
   }
   return el("button", attrs, el("span", { "aria-hidden": "true" }, icon), label);
+}
+
+function buildIedRanking(data) {
+  const r=data?.ranking;
+  if (!r || r.rows?.length!==32) return null;
+  const block=el("div",{class:"pibsec-section"});
+  block.append(el("h3",{class:"block-sub"},`IED por entidad federativa · ${r.label}`));
+  block.append(el("p",{class:"section-sub"},`Último desglose estatal disponible. ${r.comparison ? "Cambio de posición frente a "+r.comparison+"." : "Sin comparación anual disponible."} Subir en el ranking no implica recibir más inversión.`));
+  const table=(rows)=>{
+    const t=el("table",{class:"data-table ied-state-ranking"});
+    t.append(el("thead",{},el("tr",{},...["Posición","Entidad","IED (mdd)","Participación","Cambio de posición"].map(x=>el("th",{scope:"col"},x)))));
+    const body=el("tbody");
+    for (const row of rows) body.append(el("tr",{},el("td",{},row.rank),el("td",{},row.state),el("td",{},row.amount.toLocaleString("es-MX",{minimumFractionDigits:1,maximumFractionDigits:1})),el("td",{},row.share==null?"—":(row.share*100).toFixed(1)+"%"),el("td",{title:r.comparison?"Frente a "+r.comparison:"Sin comparación"},row.change==null?"—":row.change>0?"↑ "+row.change:row.change<0?"↓ "+Math.abs(row.change):"—")));
+    t.append(body);return el("div",{class:"table-wrap"},t);
+  };
+  block.append(table(r.rows.slice(0,10)));
+  const more=el("details",{},el("summary",{},"Ver las 32 entidades"),table(r.rows));block.append(more);
+  block.append(el("p",{class:"source-note"},el("a",{href:data.source_url,target:"_blank",rel:"noopener noreferrer"},"Fuente: Secretaría de Economía / RNIE. Cifras actualizadas; acumulado desde enero.")));
+  return block;
 }
 
 function productToolbar(ind) {
@@ -863,6 +882,8 @@ function renderIndicatorView(key) {
     chartMain.append(el("div", { class: "range-wrap", id: `range-${ind.key}` }));
   } else if (ind.key === "IED") {
     chartMain.classList.add("pibsec-charts");
+    const ranking = buildIedRanking(state.iedStates);
+    if (ranking) chartMain.append(ranking);
     const ac = el("div", { class: "pibsec-section" });
     ac.append(el("h3", { class: "block-sub" }, `IED acumulada al mismo corte de cada año (${ind.metrics?.acumulado?.corte?.toLowerCase() || "ene-jun"})`));
     ac.append(buildWinToggleForObservations(ind, winId, "acumulado"));
@@ -2022,6 +2043,7 @@ async function init() {
   try {
     state.data = await loadJSON("data/indicadores.json");
     [state.health, state.updatePolicy] = await Promise.all([loadJSON("data/update_health.json", true), loadJSON("config/update_policy.json", true)]);
+    state.iedStates = await loadJSON("data/ied_estatal.json", true);
     state.manifest = await loadJSON("data/manifest.json", true);
     state.noticias = await loadJSON("data/noticias.json", true);
     state.calendario = await loadJSON("data/calendario.json", true) || await loadJSON("data/calendario_publicaciones.json", true);

@@ -413,6 +413,9 @@ def build_workbook(indicators,general=False):
             numeric_indices=[c['index'] for c in columns if c['fmt']!='text']
             model.chart_plans.append((alias,ws,frequency,numeric_indices,['H7','H30']))
     model.finish_formulas();model.finish_charts()
+    if any(i["key"]=="IED" for i in indicators) and (ROOT/"data/ied_estatal.json").exists():
+        from ied_estatal import add_excel_sheets
+        add_excel_sheets(model.wb,json.loads((ROOT/"data/ied_estatal.json").read_text()),general)
     return model
 
 
@@ -500,6 +503,11 @@ def generate(payload,out_dir=None):
         source_fields=('columns','observations','observations_acumulado','policy_decisions')
         snapshot={i['key']:{f:i.get(f) for f in source_fields} for i in indicators}
         report['general']['input_sha256']=hashlib.sha256(json.dumps(snapshot,sort_keys=True,ensure_ascii=False).encode()).hexdigest()
+        if (ROOT/'data/ied_estatal.json').exists():
+            states=json.loads((ROOT/'data/ied_estatal.json').read_text())
+            for k in ('IED','general'):
+                report[k]['state_source_sha256']=states['source_sha256']
+                report[k]['state_period']=states['ranking']['period']
         staged.append((path,out_dir/path.name))
         for source,target in staged:
             validate_workbook(source)

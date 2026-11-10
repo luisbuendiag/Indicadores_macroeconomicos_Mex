@@ -373,3 +373,15 @@ multiplican por cien. Se excluyen observaciones diarias futuras del Word.
 aprovisionamiento solo habilita un archivo coincidente. Pruebas:
 `tests/test_financial_notes.py`. INPC admite ediciones de seis o siete páginas,
 conservando cotejo de portada, cuadros, fechas y metodología de cada página.
+
+## IED por entidad federativa
+
+`ied_estatal.py` obtiene los enlaces EF_AC actualizados del portal de Economía,
+valida encabezados internos, 32 entidades y conciliación nacional en cada corte,
+y conserva el último histórico ante 403, datos incompletos o retroceso de cobertura.
+`data/ied_estatal.json` contiene acumulados desde 2006 y el ranking del último
+corte estatal, que puede diferir del nacional. No convertir C en cero. Posiciones
+con empate y flechas contra el mismo acumulado del año anterior; sin colores que
+impliquen mejora de montos. Excel general e IED incluyen historia íntegra y ranking
+con fórmulas nativas. No confundir fecha de edición ni nombre 2T con trimestre
+real de los encabezados. Pruebas: `tests/test_ied_estatal.py`.

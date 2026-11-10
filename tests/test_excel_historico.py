@@ -125,7 +125,8 @@ def test_chart_refs_and_same_period_lengths(payload,tmp_path):
 def test_master_and_individual_have_identical_sources_and_formulas(payload):
     inds=[payload['indicators'][k] for k in payload['order']]
     master=X.build_workbook(inds,True)
-    assert len(master.wb.sheetnames)==22
+    assert len(master.wb.sheetnames)==24
+    assert {"IED Historia estatal","IED Ranking estatal"}.issubset(master.wb.sheetnames)
     assert not any(name in master.wb.sheetnames for name in ['Resumen','Síntesis de coyuntura','Metodología y fuentes','Control de actualizaciones'])
     for ind in inds:
         one=X.build_workbook([ind])

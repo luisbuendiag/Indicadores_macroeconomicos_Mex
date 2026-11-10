@@ -1140,3 +1140,5 @@ th.sortable:hover { background: var(--line); }
 @keyframes search-found{from{box-shadow:0 0 0 3px #a57f2c55}to{box-shadow:0 0 0 0 transparent}}
 .view.search-found{animation:search-found 1.5s ease-out;border-radius:12px}
 @media(prefers-reduced-motion:reduce){.view.search-found{animation:none}}
+
+.ied-state-ranking td:nth-child(2), .ied-state-ranking th:nth-child(2) { text-align: left; }
