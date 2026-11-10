@@ -1,10 +1,10 @@
 {
-  "checked_at": "2026-11-10T00:08:21+00:00",
-  "data_checked_at": "2026-11-10T00:03:34+00:00",
+  "checked_at": "2026-11-10T09:23:27+00:00",
+  "data_checked_at": "2026-11-10T09:11:30+00:00",
   "data_error": false,
   "pending_data": [],
   "pending_notes": [
     "INPC"
   ],
-  "run_url": "https://github.com/luisbuendiag/Indicadores_macroeconomicos_Mex/actions/runs/42723336805"
+  "run_url": "https://github.com/luisbuendiag/Indicadores_macroeconomicos_Mex/actions/runs/42786534455"
 }
