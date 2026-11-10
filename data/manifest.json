@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-10T16:43:17+00:00",
+  "generated_at": "2026-11-10T21:30:17+00:00",
   "indicadores": [
     {
       "indicador": "Estimación Oportuna del Producto Interno Bruto Trimestral",
@@ -394,8 +394,8 @@
       "frecuencia": "Diaria",
       "unidad": "Pesos por dólar",
       "ajuste_estacional": "No aplica",
-      "ultima_observacion": "2026-11-09",
-      "periodo_referencia": "2026-11-09",
+      "ultima_observacion": "2026-11-10",
+      "periodo_referencia": "2026-11-10",
       "fecha_publicacion": "Días hábiles",
       "fecha_consulta": "2026-11-10",
       "fecha_actualizacion_archivo": "2026-11-10",
@@ -418,8 +418,8 @@
       "frecuencia": "Diaria",
       "unidad": "Porcentaje anual",
       "ajuste_estacional": "No aplica; se publica diariamente pero solo cambia en fechas de decisión de política monetaria",
-      "ultima_observacion": "2026-11-10",
-      "periodo_referencia": "2026-11-10",
+      "ultima_observacion": "2026-11-11",
+      "periodo_referencia": "2026-11-11",
       "fecha_publicacion": "Días de anuncio de política monetaria",
       "fecha_consulta": "2026-11-10",
       "fecha_actualizacion_archivo": "2026-11-10",
