@@ -170,6 +170,9 @@ jobs:
           NOTES_WORK_DIR: ${{ runner.temp }}/notas-imoam
         run: python scripts/build_trade_notes.py --publish
 
+      - name: Generar notas individuales de Banxico e IED
+        run: python scripts/build_financial_notes.py
+
       - name: Conservar revisión del piloto de notas
         if: ${{ always() && vars.NOTES_PILOT_ENABLED != 'false' }}
         uses: actions/upload-artifact@v4

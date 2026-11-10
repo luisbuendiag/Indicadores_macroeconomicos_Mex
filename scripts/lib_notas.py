@@ -106,6 +106,10 @@ def provision_notes(payload: dict) -> dict[str, Any]:
     for key, ind in payload.get("indicators", {}).items():
         entry = notes_map.get(key)
         dest = nota_vigente_path(key)
+        if key in ("TIPOCAMBIO", "TASA", "RESERVAS", "IED"):
+            from build_financial_notes import decorate
+            decorate(ind, ROOT)
+            continue
         if not entry:
             ind["nota"] = {"available": False, "format": "docx", "automatic": False}
             ind["nota_disponible"] = False

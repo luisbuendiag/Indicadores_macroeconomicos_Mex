@@ -47,7 +47,7 @@ def extract(pdf,key):
     if key not in NAMES:raise ValueError('Producto no soportado')
     with pdfplumber.open(io.BytesIO(pdf)) as d:
         pages=[p.extract_text() or '' for p in d.pages]
-        if len(pages)!=NAMES[key] or any(not p.strip() for p in pages):raise ValueError('Cambió la estructura del boletín')
+        if len(pages) not in ((6,7) if key=='INPC' else (NAMES[key],)) or any(not p.strip() for p in pages):raise ValueError('Cambió la estructura del boletín')
         products=generics(d.pages[3 if key=='INPC' else 4],key)
     pub=B._extract_pub_date(pages[0]);ref=B._extract_data_month(pages[0]);number=B._extract_bulletin_number(pages[0])
     if not pub or not ref or not number or date(*pub)>date.today() or tuple(ref)>=tuple(pub[:2]):raise ValueError('Fechas incompatibles')

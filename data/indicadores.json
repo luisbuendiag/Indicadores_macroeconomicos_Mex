@@ -26501,9 +26501,9 @@
       "xlsx_disponible": true,
       "xlsx_causa": null,
       "url_excel_individual": "downloads/indicadores/IED/IED_datos.xlsx",
-      "nota_disponible": false,
-      "nota_causa": "Nota institucional en preparación",
-      "url_nota_individual": null,
+      "nota_disponible": true,
+      "nota_causa": null,
+      "url_nota_individual": "downloads/indicadores/IED/nota/IED_nota.docx",
       "url_fuente_oficial": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa",
       "fecha_ultima_publicacion": "24 de agosto de 2026",
       "regla_publicacion": null,
@@ -26892,9 +26892,13 @@
         "ultimo_valor": 34968
       },
       "nota": {
-        "available": false,
+        "available": true,
         "format": "docx",
-        "automatic": false
+        "automatic": false,
+        "generated_from": "snapshot_oficial",
+        "periodo": "2T-26",
+        "path": "downloads/indicadores/IED/nota/IED_nota.docx",
+        "status": "vigente"
       }
     },
     "DESOCUP": {
@@ -31391,15 +31395,15 @@
         "available": true,
         "format": "docx",
         "path": "downloads/indicadores/INPC/nota/INPC_nota.docx",
-        "periodo": "Sep 26",
+        "periodo": "Oct 26",
         "generated_from": "boletin_validado",
         "automatic": true,
-        "generated_at": "2026-11-05T02:54:51+00:00",
-        "source_sha256": "9c72b5e957b9f68f49a05c3efb4cffd1b40eca9f0647d27c61529c7e8ead6e84",
-        "fingerprint": "794bfd6a55c59a6c3f8982cfe62252aaf5977354c618610d26ef96df96dcee5a",
-        "status": "error",
+        "generated_at": "2026-11-10T22:07:37+00:00",
+        "source_sha256": "7e7991be791fb3c78c1df5ad29ffe02379f2a5dca8a0b6913d4429715e9e8c50",
+        "fingerprint": "eddc3d85877cdd245def07373496cea47ec189915d86884984debfe9d9d0c0ae",
+        "status": "vigente",
         "target_period": "Oct 26",
-        "message": "No se publicó la candidata: Cambió la estructura del boletín"
+        "message": "Nota generada y validada por reglas Python"
       },
       "boletin_validado": true
     },
@@ -129328,9 +129332,9 @@
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/TIPOCAMBIO/TIPOCAMBIO_datos.xlsx",
       "xlsx_causa": null,
-      "nota_disponible": false,
-      "nota_causa": "Nota institucional en preparación",
-      "url_nota_individual": null,
+      "nota_disponible": true,
+      "nota_causa": null,
+      "url_nota_individual": "downloads/indicadores/TIPOCAMBIO/nota/TIPOCAMBIO_nota.docx",
       "frecuencia_original": "Diaria",
       "observations_original": [
         {
@@ -144967,9 +144971,13 @@
         }
       ],
       "nota": {
-        "available": false,
+        "available": true,
         "format": "docx",
-        "automatic": false
+        "automatic": false,
+        "generated_from": "snapshot_oficial",
+        "periodo": "2026-11-10",
+        "path": "downloads/indicadores/TIPOCAMBIO/nota/TIPOCAMBIO_nota.docx",
+        "status": "vigente"
       }
     },
     "TASA": {
@@ -185736,9 +185744,9 @@
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/TASA/TASA_datos.xlsx",
       "xlsx_causa": null,
-      "nota_disponible": false,
-      "nota_causa": "Nota institucional en preparación",
-      "url_nota_individual": null,
+      "nota_disponible": true,
+      "nota_causa": null,
+      "url_nota_individual": "downloads/indicadores/TASA/nota/TASA_nota.docx",
       "frecuencia_original": "Diaria",
       "observations_original": [
         {
@@ -207378,9 +207386,13 @@
       },
       "boletin_label": "Comunicado",
       "nota": {
-        "available": false,
+        "available": true,
         "format": "docx",
-        "automatic": false
+        "automatic": false,
+        "generated_from": "snapshot_oficial",
+        "periodo": "2026-11-11",
+        "path": "downloads/indicadores/TASA/nota/TASA_nota.docx",
+        "status": "vigente"
       }
     },
     "RESERVAS": {
@@ -225205,9 +225217,9 @@
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/RESERVAS/RESERVAS_datos.xlsx",
       "xlsx_causa": null,
-      "nota_disponible": false,
-      "nota_causa": "Nota institucional en preparación",
-      "url_nota_individual": null,
+      "nota_disponible": true,
+      "nota_causa": null,
+      "url_nota_individual": "downloads/indicadores/RESERVAS/nota/RESERVAS_nota.docx",
       "frecuencia_original": "Semanal",
       "observations_original": [
         {
@@ -230184,9 +230196,13 @@
       ],
       "boletin_label": "ESTADO DE CUENTA",
       "nota": {
-        "available": false,
+        "available": true,
         "format": "docx",
-        "automatic": false
+        "automatic": false,
+        "generated_from": "snapshot_oficial",
+        "periodo": "2026-11-06",
+        "path": "downloads/indicadores/RESERVAS/nota/RESERVAS_nota.docx",
+        "status": "vigente"
       }
     },
     "EMOE": {

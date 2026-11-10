@@ -1,0 +1,26 @@
+{
+  "TIPOCAMBIO": {
+    "period": "2026-11-10",
+    "docx_sha256": "7dd6e3c0693a0d68fe08efb0882442813b733d71456c9a82fb3ebec149a52d5d",
+    "source": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
+    "generated_at": "2026-11-10T22:08:22.235713+00:00"
+  },
+  "TASA": {
+    "period": "2026-11-11",
+    "docx_sha256": "bd511499b7368c3077ef973ab74149c987c404f1ac4f65e972ade23d3764120f",
+    "source": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
+    "generated_at": "2026-11-10T22:08:23.307859+00:00"
+  },
+  "RESERVAS": {
+    "period": "2026-11-06",
+    "docx_sha256": "dae08adfd4173fbf19ddf72e4489c64701fb29e92b7fd8e3eb0fea9681914800",
+    "source": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/estado-cuenta-semanal-reserva.html",
+    "generated_at": "2026-11-10T22:08:24.270424+00:00"
+  },
+  "IED": {
+    "period": "2T-26",
+    "docx_sha256": "926efa275fc9a65487e598a9d55cd3c6c86ec0d86da8b5d07ffec34a943ba2f7",
+    "source": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa",
+    "generated_at": "2026-11-10T22:08:25.169496+00:00"
+  }
+}

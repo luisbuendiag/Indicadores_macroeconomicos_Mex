@@ -91,15 +91,11 @@ def test_nota_vigente_existe_y_es_docx_real(key):
 
 
 @pytest.mark.parametrize("key", SIN_NOTA)
-def test_indicadores_sin_nota_quedan_deshabilitados(key):
+def test_notas_financieras_desde_snapshot_disponibles(key):
     ind = PAYLOAD["indicators"][key]
-    nota = ind.get("nota") or {}
-    assert ind.get("nota_disponible") is not True
-    assert nota.get("available") is not True
-    assert ind.get("url_nota_individual") is None
-    assert ind.get("nota_causa"), f"{key}: falta causa de nota no disponible"
-    path = ROOT / "downloads" / "indicadores" / key / "nota" / f"{key}_nota.docx"
-    assert not path.exists(), f"{key} no debería tener nota vigente: {path}"
+    assert ind["nota_disponible"] is True
+    assert ind["nota"]["generated_from"] == "snapshot_oficial"
+    assert _docx_ok(ROOT / ind["url_nota_individual"])
 
 
 def test_plantilla_maestra_existe():
@@ -152,7 +148,7 @@ def test_boton_nota_descarga_docx_en_frontend():
     directa vía atributo download (sin preview ni visor externo)."""
     src = (ROOT / "assets" / "js" / "app.js").read_text(encoding="utf-8")
     assert "notaReady = !!ind.nota_disponible" in src
-    assert 'productBtn("Descargar nota Word"' in src
+    assert 'productBtn("Nota Análisis Indicador"' in src
     assert "a.download = fallbackName" in src
     assert "downloads/indicadores/${ind.key}/nota/${ind.key}_nota.docx" in src
     # El boletín y la nota son productos distintos: rutas separadas.

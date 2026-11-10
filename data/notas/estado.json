@@ -112,20 +112,20 @@
     }
   },
   "INPC": {
-    "status": "error",
+    "status": "vigente",
+    "message": "Nota generada y validada por reglas Python",
     "target_period": "Oct 26",
     "published": {
-      "periodo": "Sep 26",
-      "generated_at": "2026-11-05T02:54:51+00:00",
-      "source_sha256": "9c72b5e957b9f68f49a05c3efb4cffd1b40eca9f0647d27c61529c7e8ead6e84",
-      "fingerprint": "794bfd6a55c59a6c3f8982cfe62252aaf5977354c618610d26ef96df96dcee5a",
-      "docx_sha256": "a438a55dc43f215baf25c81ea6bfc5632c371c9b99ec0e17d532c04f57388715",
-      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_10.pdf",
+      "periodo": "Oct 26",
+      "generated_at": "2026-11-10T22:07:37+00:00",
+      "source_sha256": "7e7991be791fb3c78c1df5ad29ffe02379f2a5dca8a0b6913d4429715e9e8c50",
+      "fingerprint": "eddc3d85877cdd245def07373496cea47ec189915d86884984debfe9d9d0c0ae",
+      "docx_sha256": "329ac4a020c45eac7579b7b1c77fe630832d350fd0c43aaa25b119948b4d2f4c",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_11.pdf",
       "review_model": "precios-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/INPC/794bfd6a55c59a6c3f8982cfe62252aaf5977354c618610d26ef96df96dcee5a-a438a55dc43f"
-    },
-    "message": "No se publicó la candidata: Cambió la estructura del boletín"
+      "archive": "data/notas/INPC/eddc3d85877cdd245def07373496cea47ec189915d86884984debfe9d9d0c0ae-329ac4a020c4"
+    }
   },
   "INPP": {
     "status": "vigente",

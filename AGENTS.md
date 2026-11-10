@@ -361,3 +361,15 @@ porcentual del saldo comercial. Notas de fichas: Nota Análisis Indicador.
 Probar `tests/source_navigation.test.mjs` y revisar el render del Word al cambiar
 el compositor. No presentar las cinco entidades del complemento manual de IED
 como ranking nacional ni completar estados/posiciones sin la fuente oficial.
+
+## Notas individuales de Banxico e IED
+
+`build_financial_notes.py` genera FIX, tasa objetivo, reservas e IED después de
+los generadores de INEGI. Usa el snapshot oficial, tabla Word nativa y gráfica,
+con render de una o dos páginas. IED utiliza `observations_acumulado`, comparando
+el mismo acumulado por año; no sustituirlo por el flujo trimestral. Tasas no se
+multiplican por cien. Se excluyen observaciones diarias futuras del Word.
+`data/notas/financieras.json` conserva periodo y hash del documento; el
+aprovisionamiento solo habilita un archivo coincidente. Pruebas:
+`tests/test_financial_notes.py`. INPC admite ediciones de seis o siete páginas,
+conservando cotejo de portada, cuadros, fechas y metodología de cada página.
