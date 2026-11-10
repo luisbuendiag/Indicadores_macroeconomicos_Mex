@@ -337,3 +337,27 @@ Entorno financiero contiene la inversión externa reportada por la **Secretaría
 - Los tres generan Word de dos páginas con tablas nativas y dos gráficas.
   Probar `tests/bulletin_final.test.mjs`, PDF.js real y render DOCX al cambiar
   composición. El PDF y el Word recibido nunca actualizan la capa oficial.
+
+## Navegación por fuentes y nota general — 10 de noviembre de 2026
+
+Por instrucción del usuario esta organización sustituye las pestañas de Panorama
+macroeconómico y Entorno financiero: Resumen general, INEGI, Banco de México,
+Secretaría de Economía y Calendario. Fuentes/metodología y descargas siguen en
+el pie. Conservar las claves internas y URLs de las 19 fichas. El hash antiguo
+`entorno` redirige a Banco de México.
+
+`SOURCE_GROUPS` asigna cada indicador a su institución productora. El buscador
+local utiliza `indicator-search.mjs`; inversión distingue IMFBCF e IED y las
+siglas IMCP/ENOE/PIBT no sustituyen claves internas.
+
+El botón Nota Panorama General genera un Word desde el mismo snapshot visible,
+filtrado por fuente cuando se está en su pestaña. `panorama-note.mjs` conserva
+periodos/unidades y utiliza los KPI validados del pipeline antes del fallback.
+No utilizar el análisis genérico de una ficha para inferir causas. Comparar
+solo tasas mensuales desestacionalizadas en la gráfica y fechar cada barra.
+Conservar la precisión de tasa objetivo e inflación; no exportar crecimiento
+porcentual del saldo comercial. Notas de fichas: Nota Análisis Indicador.
+
+Probar `tests/source_navigation.test.mjs` y revisar el render del Word al cambiar
+el compositor. No presentar las cinco entidades del complemento manual de IED
+como ranking nacional ni completar estados/posiciones sin la fuente oficial.

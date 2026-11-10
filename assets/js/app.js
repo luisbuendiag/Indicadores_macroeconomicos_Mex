@@ -1,10 +1,12 @@
 // Orquestador del tablero macroeconómico V3 (navegación por indicador).
-import { ORDER, PRINCIPAL, COMPLEMENTARIOS, LABELS, SIGLA, CAPTIONS, WINDOWS, IED_WINDOWS, IED_WINDOWS_FLUJO, COLORS, KPICFG, VIEWS, ESTADOS } from "./config.js";
+import { SOURCE_GROUPS, sourceView, ORDER, PRINCIPAL, COMPLEMENTARIOS, LABELS, SIGLA, CAPTIONS, WINDOWS, IED_WINDOWS, IED_WINDOWS_FLUJO, COLORS, KPICFG, VIEWS, ESTADOS } from "./config.js?v=sources-20261110";
 import { computeKPI, analysis, annualVar } from "./metrics.js";
 import { buildOption, rangeStats, applyWindow, buildPibsecLevels, buildPibsecVariations, buildIgaeLevels, buildIgaeVariations, buildImaiLevels, buildImaiVariations, buildEmimLevels, buildEmimVariations, buildBcmmLevels, buildBcmmVariations, buildImfbcfLevels, buildImfbcfVariations, buildDesocupRates, buildDesocupPoblacion, buildEmoeSectors, buildSicComponents, buildReservasLevel, buildReservasChange } from "./charts.js";
 import { fmtVal, perLong, perShort } from "./format.js";
-import * as cal from "./calendar.js?v=editorial-20261106";
+import * as cal from "./calendar.js?v=sources-20261110";
 
+import { downloadPanorama } from "./panorama-note.mjs";
+import { searchIndicators } from "./indicator-search.mjs";
 import { assessHealth } from "./update_health.mjs";
 
 const state = {
@@ -137,7 +139,7 @@ function productToolbar(ind) {
   // Nota institucional: habilitada sólo cuando existe el .docx vigente.
   const notaReady = !!ind.nota_disponible;
   const notaTitle = notaReady
-    ? `Descargar nota Word · ${ind.nota?.periodo || ind.periodo_referencia || ""}`
+    ? `Nota Análisis Indicador · ${ind.nota?.periodo || ind.periodo_referencia || ""}`
     : (ind.nota_causa || "Nota institucional en preparación");
 
   // Excel: activo si se generó el archivo individual.
@@ -148,7 +150,7 @@ function productToolbar(ind) {
 
   bar.append(
     productBtn(ind.boletin_label || "Boletín oficial", "", boletinEnabled, boletinTitle, () => openBoletin(boletinUrl), "boletin"),
-    productBtn("Descargar nota Word", "↓", notaReady, notaTitle, () => downloadProduct(notaUrl(ind), `${ind.key}_nota.docx`), "nota"),
+    productBtn("Nota Análisis Indicador", "↓", notaReady, notaTitle, () => downloadProduct(notaUrl(ind), `${ind.key}_nota.docx`), "nota"),
     productBtn("Excel", "↓", xlsxReady, xlsxTitle, () => downloadProduct(xlsxUrl(ind), `${ind.key}_datos.xlsx`), "excel")
   );
   if (["IMAI", "IGAE", "IMOAM", "EMIM", "CONSUMO", "IMFBCF", "INPC", "INPP", "PIB", "PIBSEC", "SIC", "IOAE", "EMOE", "DESOCUP", "BCMM"].includes(ind.key)) {
@@ -242,8 +244,9 @@ function renderNav() {
 }
 
 function setView(id) {
+  if(id === "entorno") id="banxico";
   state.active = id;
-  const section=PRINCIPAL.includes(id) ? "panorama" : COMPLEMENTARIOS.includes(id) ? "entorno" : id;
+  const section=sourceView(id);
   document.querySelectorAll(".tab").forEach(t=>{
     const selected=t.id === `tab-${section}`;
     t.setAttribute("aria-selected",String(selected));
@@ -354,7 +357,7 @@ function classifyPanorama() {
 function renderPanorama() {
   const sec = $("#view-panorama");
   sec.innerHTML = "";
-  sec.append(el("div", { class: "section-title" }, "Panorama macroeconómico"));
+  sec.append(el("div", { class: "section-title" }, "Resumen general"));
 
 
   // Alerta discreta de estado global (rezagos y errores de fuente).
@@ -371,7 +374,7 @@ function renderPanorama() {
 
   // Matriz de 12 indicadores principales.
   const grid = el("div", { class: "matrix" });
-  principalInds().forEach((ind) => grid.append(panoramaCard(ind)));
+  ORDER.map(getInd).filter(Boolean).forEach((ind) => grid.append(panoramaCard(ind)));
   sec.append(grid);
 
   // Paneles laterales: movimientos y próximos datos.
@@ -1464,14 +1467,32 @@ function historyControls(wrap,table,key) {
 }
 
 // ---------------- Entorno financiero (complementarios) ----------------
-function renderEntorno() {
-  const sec = $("#view-entorno");
-  sec.innerHTML = "";
-  sec.append(el("div", { class: "section-title" }, "Entorno financiero"));
-
-  const grid = el("div", { class: "matrix" });
-  COMPLEMENTARIOS.map(getInd).filter(Boolean).forEach((ind) => grid.append(panoramaCard(ind)));
-  sec.append(grid);
+function renderSources() {
+  SOURCE_GROUPS.forEach(group=>{
+    const sec=$("#view-"+group.id);sec.replaceChildren();
+    sec.append(el("div",{class:"section-title"},group.label));
+    const grid=el("div",{class:"matrix"});
+    group.indicators.map(getInd).filter(Boolean).forEach(ind=>grid.append(panoramaCard(ind)));
+    sec.append(grid);
+  });
+}
+function renderSearch() {
+ const host=document.getElementById("indicator-search");
+ const input=el("input",{type:"search",placeholder:"Buscar indicador o tema…","aria-label":"Buscar indicador o tema",autocomplete:"off","aria-controls":"search-results"});
+ const results=el("div",{id:"search-results",class:"search-results"});results.hidden=true;
+ const close=()=>{results.hidden=true;input.setAttribute("aria-expanded","false");};
+ const update=()=>{results.replaceChildren();const query=input.value.trim();
+   if(!query){close();return;}
+   const found=searchIndicators(query,ORDER.map(getInd).filter(Boolean));
+   found.forEach(ind=>results.append(el("button",{type:"button",class:"search-result",onclick:()=>{setView(ind.key);close();input.value="";const target=document.getElementById("view-"+ind.key);target?.classList.add("search-found");setTimeout(()=>target?.classList.remove("search-found"),1600);const heading=target?.querySelector("h1,h2,h3");if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}}},
+     el("span",{},SIGLA[ind.key]+" · "+LABELS[ind.key]),el("small",{},SOURCE_GROUPS.find(g=>g.id===sourceView(ind.key))?.label))));
+   if(!found.length)results.append(el("p",{class:"search-empty"},"Sin coincidencias"));
+   results.hidden=false;input.setAttribute("aria-expanded","true");
+ };
+ input.addEventListener("input",update);
+ host.addEventListener("keydown",e=>{if(e.key==="Escape"){close();input.focus();} if(e.key==="ArrowDown"){e.preventDefault();const buttons=[...results.querySelectorAll("button")];buttons[(buttons.indexOf(document.activeElement)+1)%buttons.length]?.focus();} if(e.key==="ArrowUp"){e.preventDefault();const buttons=[...results.querySelectorAll("button")];buttons[(buttons.indexOf(document.activeElement)-1+buttons.length)%buttons.length]?.focus();} if(e.key==="Enter"&&document.activeElement===input){results.querySelector("button")?.click();}});
+ document.addEventListener("click",e=>{if(!host.contains(e.target))close();});
+ host.replaceChildren(input,results);
 }
 
 // ---------------- Calendar (logica en calendar.js) ----------------
@@ -1961,13 +1982,14 @@ function resizeVisibleCharts() { Object.entries(state.charts).forEach(([key, c])
 function buildViewShells() {
   const host = $("#sections");
   host.innerHTML = "";
-  VIEWS.forEach((v) => host.append(el("section", { class: `view${v.id === state.active ? " active" : ""}`, id: `view-${v.id}`, role: "tabpanel", "aria-labelledby": `tab-${PRINCIPAL.includes(v.id) ? "panorama" : COMPLEMENTARIOS.includes(v.id) ? "entorno" : v.id}` })));
+  VIEWS.forEach((v) => host.append(el("section", { class: `view${v.id === state.active ? " active" : ""}`, id: `view-${v.id}`, role: "tabpanel", "aria-labelledby": `tab-${sourceView(v.id)}` })));
 }
 
 function renderAll() {
   renderPanorama();
   VIEWS.filter((v) => v.type === "indicator").forEach((v) => renderIndicatorView(v.key));
-  renderEntorno();
+  renderSources();
+  renderSearch();
   renderCalendar();
   renderMethodology();
   renderDownloads();
@@ -2029,6 +2051,7 @@ async function init() {
   window.addEventListener("hashchange", () => { const h = (window.location.hash || "").replace(/^#/, ""); if (validView(h) && h !== state.active) setView(h); });
   window.addEventListener("beforeprint", updatePrintFooter);
   window.addEventListener("resize", () => resizeVisibleCharts());
+  $("#btn-panorama").addEventListener("click", async ()=>{const btn=$("#btn-panorama");btn.disabled=true;try{await downloadPanorama(state.data,SOURCE_GROUPS.some(g=>g.id===state.active)?state.active:"panorama");}catch(e){openModal("No se pudo preparar la nota",el("p",{},e.message));}finally{btn.disabled=false;}});
   $("#btn-excel").addEventListener("click", downloadExcel);
 }
 

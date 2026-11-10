@@ -1025,7 +1025,7 @@ function openCalEvent(ctx, ev) {
   const sameEdition = ind && ev.fecha_publicacion === (ind.fecha_publicacion_oficial || ind.fecha_publicacion)
     && ev.periodo_referencia === ind.periodo_referencia_oficial;
   if (sameEdition && ind.nota?.available && ind.nota?.status === "vigente" && ind.url_nota_individual) {
-    wrap.append(el("a", {class:"btn btn-ghost", href:ind.url_nota_individual, download:""}, "Descargar nota Word"));
+    wrap.append(el("a", {class:"btn btn-ghost", href:ind.url_nota_individual, download:""}, "Nota Análisis Indicador"));
   }
   if (ind) {
     wrap.append(el("button", {

@@ -90,14 +90,22 @@ export const CAPTIONS = {
   BCMM: "Exportaciones, importaciones y saldo comercial de mercancías de México (millones de dólares). Incluye desglose petrolero/no petrolero, por tipo de bien importado y composición de las exportaciones no petroleras, además de sus variaciones anuales y acumulados ene-mes."
 };
 
+export const SOURCE_GROUPS = [
+  {id:"inegi", label:"INEGI", indicators:PRINCIPAL},
+  {id:"banxico", label:"Banco de México", indicators:["TIPOCAMBIO","TASA","RESERVAS"]},
+  {id:"economia", label:"Secretaría de Economía", indicators:["IED"]},
+];
+export const sourceView = key => SOURCE_GROUPS.find(g=>g.indicators.includes(key))?.id || key;
+
 // Vistas de navegación. type: "home" | "indicator" | "group" | "page".
 export const VIEWS = [
-  { id: "panorama", type: "home", label: "Panorama macroeconómico" },
+  { id: "panorama", type: "home", label: "Resumen general" },
   ...ORDER.map((k) => ({ id: k, type: "indicator", key: k, label: LABELS[k] })),
-  { id: "entorno", type: "page", label: "Entorno financiero", indicators: COMPLEMENTARIOS, secondary: true },
+  ...SOURCE_GROUPS.map(g=>({...g,type:"page"})),
+  { id: "entorno", type: "legacy", label: "Entorno financiero" },
   { id: "calendario", type: "page", label: "Calendario de publicaciones", secondary: true },
-  { id: "metodologia", type: "page", label: "Fuentes y metodología", secondary: true },
-  { id: "descargas", type: "page", label: "Descargas", secondary: true },
+  { id: "metodologia", type: "secondary", label: "Fuentes y metodología", secondary: true },
+  { id: "descargas", type: "secondary", label: "Descargas", secondary: true },
 ];
 
 // Ventanas temporales de visualización.
