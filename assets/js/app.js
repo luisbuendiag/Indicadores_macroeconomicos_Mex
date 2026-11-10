@@ -412,9 +412,7 @@ function renderPanorama() {
 
 // ---------------- Indicator view ----------------
 function indicatorSection(key) {
-  if (PRINCIPAL.includes(key)) return PRINCIPAL;
-  if (COMPLEMENTARIOS.includes(key)) return COMPLEMENTARIOS;
-  return ORDER;
+  return SOURCE_GROUPS.find(g=>g.indicators.includes(key))?.indicators || ORDER;
 }
 
 function indicatorToolbar(key) {
@@ -422,9 +420,8 @@ function indicatorToolbar(key) {
   const idx = section.indexOf(key);
   const prev = idx > 0 ? section[idx - 1] : null;
   const next = idx >= 0 && idx < section.length - 1 ? section[idx + 1] : null;
-  const isFinancial = COMPLEMENTARIOS.includes(key);
-  const backTarget = isFinancial ? "entorno" : "panorama";
-  const backLabel = isFinancial ? "← Volver al entorno" : "← Volver al panorama";
+  const backTarget = sourceView(key);
+  const backLabel = "← "+(SOURCE_GROUPS.find(g=>g.id===backTarget)?.label || "Resumen general");
   const ind = getInd(key);
   const wrap = el("div", { class: "ind-toolbar-wrap" });
   const nav = el("div", { class: "ind-nav" });
