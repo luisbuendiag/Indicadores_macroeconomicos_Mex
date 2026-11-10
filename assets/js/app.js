@@ -114,19 +114,29 @@ function productBtn(label, icon, enabled, title, onClick, kind) {
 function buildIedRanking(data) {
   const r=data?.ranking;
   if (!r || r.rows?.length!==32) return null;
-  const block=el("div",{class:"pibsec-section"});
-  block.append(el("h3",{class:"block-sub"},`IED por entidad federativa · ${r.label}`));
-  block.append(el("p",{class:"section-sub"},`Último desglose estatal disponible. ${r.comparison ? "Cambio de posición frente a "+r.comparison+"." : "Sin comparación anual disponible."} Subir en el ranking no implica recibir más inversión.`));
-  const table=(rows)=>{
-    const t=el("table",{class:"data-table ied-state-ranking"});
-    t.append(el("thead",{},el("tr",{},...["Posición","Entidad","IED (mdd)","Participación","Cambio de posición"].map(x=>el("th",{scope:"col"},x)))));
-    const body=el("tbody");
-    for (const row of rows) body.append(el("tr",{},el("td",{},row.rank),el("td",{},row.state),el("td",{},row.amount.toLocaleString("es-MX",{minimumFractionDigits:1,maximumFractionDigits:1})),el("td",{},row.share==null?"—":(row.share*100).toFixed(1)+"%"),el("td",{title:r.comparison?"Frente a "+r.comparison:"Sin comparación"},row.change==null?"—":row.change>0?"↑ "+row.change:row.change<0?"↓ "+Math.abs(row.change):"—")));
-    t.append(body);return el("div",{class:"table-wrap"},t);
-  };
-  block.append(table(r.rows.slice(0,10)));
-  const more=el("details",{},el("summary",{},"Ver las 32 entidades"),table(r.rows));block.append(more);
-  block.append(el("p",{class:"source-note"},el("a",{href:data.source_url,target:"_blank",rel:"noopener noreferrer"},"Fuente: Secretaría de Economía / RNIE. Cifras actualizadas; acumulado desde enero.")));
+  const block=el("div",{class:"pibsec-section ied-ranking-block"});
+  block.append(el("h3",{class:"block-sub"},"IED por entidad federativa"));
+  block.append(el("p",{class:"ied-ranking-period"},`${r.label}${r.comparison ? " · frente a "+r.comparison : ""} · Último desglose estatal disponible`));
+  const table=el("table",{class:"data-table ied-state-ranking","aria-label":"Ranking estatal de IED"});
+  table.append(el("colgroup",{},...["7%","40%","20%","17%","16%"].map(width=>el("col",{style:`width:${width}`}))));
+  table.append(el("thead",{},el("tr",{},...["Pos.","Entidad","IED (mdd)","Participación","Cambio anual"].map(x=>el("th",{scope:"col"},x)))));
+  const body=el("tbody"),extra=[];
+  for (const [i,row] of r.rows.entries()) {
+    const change=row.change,trend=change==null||change===0?"flat":change>0?"up":"down";
+    const text=change==null||change===0?"—":change>0?"↑ "+change:"↓ "+Math.abs(change);
+    const tr=el("tr",i>=10?{hidden:""}:{},el("td",{},row.rank),el("td",{},row.state),el("td",{},row.amount.toLocaleString("es-MX",{minimumFractionDigits:1,maximumFractionDigits:1})),el("td",{},row.share==null?"—":(row.share*100).toFixed(1)+"%"),el("td",{},el("span",{class:`ied-rank-change ${trend}`,title:r.comparison?"Frente a "+r.comparison:"Sin comparación","aria-label":change==null?"Sin comparación":change===0?"Sin cambio":`${change>0?"Sube":"Baja"} ${Math.abs(change)} posiciones`},text)));
+    body.append(tr);if(i>=10)extra.push(tr);
+  }
+  table.append(body);
+  const wrap=el("div",{class:"table-wrap ied-ranking-wrap"});wrap.append(table);block.append(wrap);
+  let expanded=false;
+  const more=el("button",{type:"button",class:"ied-ranking-toggle","aria-expanded":"false",onclick:()=>{
+    expanded=!expanded;
+    for(const tr of extra) { if(expanded)tr.removeAttribute("hidden");else tr.setAttribute("hidden",""); }
+    more.textContent=expanded?"Mostrar solo 10":"Ver las 32 entidades";
+    more.setAttribute("aria-expanded",String(expanded));
+  }},"Ver las 32 entidades");block.append(more);
+  block.append(el("p",{class:"ied-ranking-source"},"Fuente: ",el("a",{href:data.source_url,target:"_blank",rel:"noopener noreferrer"},"Secretaría de Economía / RNIE"),". Cifras actualizadas. El cambio corresponde a posiciones, no a la variación del monto de IED."));
   return block;
 }
 

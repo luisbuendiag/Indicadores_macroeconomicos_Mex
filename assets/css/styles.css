@@ -1142,3 +1142,25 @@ th.sortable:hover { background: var(--line); }
 @media(prefers-reduced-motion:reduce){.view.search-found{animation:none}}
 
 .ied-state-ranking td:nth-child(2), .ied-state-ranking th:nth-child(2) { text-align: left; }
+
+/* Ranking estatal: densidad y color solo para movimientos de posición. */
+.ied-ranking-block { max-width: 1080px; }
+.ied-ranking-block .block-sub { margin-bottom: 5px; }
+.ied-ranking-period { margin: 0 0 12px; font-size: 13px; color: var(--muted); }
+.ied-ranking-wrap { max-height: none; border-radius: 7px; }
+.ied-state-ranking { table-layout: fixed; min-width: 640px; }
+.ied-state-ranking th { padding: 8px 12px; font-family: var(--sans); font-size: 12px; letter-spacing: 0; text-transform: none; background: #f4f5f4; }
+.ied-state-ranking td { padding: 6px 12px; font-family: var(--sans); font-size: 13px; line-height: 1.45; font-variant-numeric: tabular-nums; }
+.ied-state-ranking td:first-child, .ied-state-ranking th:first-child { text-align: center; color: var(--muted); }
+.ied-state-ranking tbody tr:hover td { background: #f7f9f8; }
+.ied-state-ranking tr[hidden] { display: none; }
+.ied-rank-change { font-weight: 600; }
+.ied-rank-change.up { color: #23734d; }
+.ied-rank-change.down { color: #b23943; }
+.ied-rank-change.flat { color: #8a918d; font-weight: 400; }
+.ied-ranking-toggle { display: inline-block; margin: 10px 0 6px; padding: 4px 0; border: 0; background: transparent; color: var(--green); font: 600 13px var(--sans); cursor: pointer; }
+.ied-ranking-toggle:hover { text-decoration: underline; }
+.ied-ranking-toggle:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-radius: 2px; }
+.ied-ranking-source { margin: 0; font-size: 11px; color: var(--muted); line-height: 1.5; }
+.ied-ranking-source a { color: inherit; text-underline-offset: 2px; }
+@media(max-width:700px) { .ied-state-ranking td,.ied-state-ranking th { padding-left: 9px; padding-right: 9px; } }

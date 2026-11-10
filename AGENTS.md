@@ -381,7 +381,7 @@ valida encabezados internos, 32 entidades y conciliación nacional en cada corte
 y conserva el último histórico ante 403, datos incompletos o retroceso de cobertura.
 `data/ied_estatal.json` contiene acumulados desde 2006 y el ranking del último
 corte estatal, que puede diferir del nacional. No convertir C en cero. Posiciones
-con empate y flechas contra el mismo acumulado del año anterior; sin colores que
-impliquen mejora de montos. Excel general e IED incluyen historia íntegra y ranking
+con empate y flechas contra el mismo acumulado del año anterior; verde al subir, rojo al bajar y gris sin cambio por instrucción del usuario;
+el color indica solo posiciones y nunca implica mejora de montos. Excel general e IED incluyen historia íntegra y ranking
 con fórmulas nativas. No confundir fecha de edición ni nombre 2T con trimestre
 real de los encabezados. Pruebas: `tests/test_ied_estatal.py`.
