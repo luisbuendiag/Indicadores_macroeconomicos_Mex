@@ -136,7 +136,7 @@ function buildIedRanking(data) {
     more.textContent=expanded?"Mostrar solo 10":"Ver las 32 entidades";
     more.setAttribute("aria-expanded",String(expanded));
   }},"Ver las 32 entidades");block.append(more);
-  block.append(el("p",{class:"ied-ranking-source"},"Fuente: ",el("a",{href:data.source_url,target:"_blank",rel:"noopener noreferrer"},"Secretaría de Economía / RNIE"),". Cifras actualizadas. El cambio corresponde a posiciones, no a la variación del monto de IED."));
+  block.append(el("p",{class:"ied-ranking-source"},"Fuente: ",el("a",{href:data.source_url,target:"_blank",rel:"noopener noreferrer"},"Secretaría de Economía / RNIE"),". Cifras originalmente publicadas. El cambio corresponde a posiciones, no a la variación del monto de IED."));
   return block;
 }
 
@@ -1001,7 +1001,8 @@ function renderIndicatorView(key) {
 
   // Tabla
   const tbl = el("div", { class: "ficha-block" });
-  tbl.append(el("h3", { class: "block-sub" }, "Tabla de datos"));
+  tbl.append(el("h3", { class: "block-sub" }, ind.key === "IED" && state.iedStates?.variant === "originalmente_publicadas" ? "Tabla de datos · cifras originalmente publicadas" : "Tabla de datos"));
+  if(ind.key === "IED" && state.iedStates?.variant === "originalmente_publicadas") tbl.append(el("p",{class:"ied-ranking-period"},"Acumulados desde enero de cada año. Cada corte conserva la cifra de su publicación inicial; no son flujos exclusivos del trimestre."));
   tbl.append(renderTable(ind, k));
   page2.append(tbl);
 
@@ -1434,6 +1435,17 @@ function mountPibtChart(pibt) {
 function renderTable(ind, k) {
   const wrap = el("div", { class: "table-wrap" });
   const table = el("table");
+  if (ind.key === "IED" && state.iedStates?.variant === "originalmente_publicadas") {
+    const periods=state.iedStates.periods;
+    const observations=periods.map(p=>{
+      const prior=periods.find(v=>v.year===p.year-1 && v.quarter===p.quarter);
+      return {period:p.label,values:[p.total,p.components['Nuevas inversiones'],p.components['Reinversión de utilidades'],p.components['Cuentas entre compañías'],prior && prior.total>0 ? p.total/prior.total-1 : null]};
+    });
+    return renderTable({...ind,key:"IED_ORIGINAL",observations,columns:[
+      {label:"IED acumulada (mdd)",index:0,fmt:"usd"},{label:"Nuevas inversiones",index:1,fmt:"usd"},
+      {label:"Reinversión de utilidades",index:2,fmt:"usd"},{label:"Cuentas entre compañías",index:3,fmt:"usd"},
+      {label:"Variación anual del acumulado",index:4,fmt:"pct-frac"}]},null);
+  }
   // TASA: tabla de decisiones de política monetaria.
   if (ind.key === "TASA") {
     const decisions = ind.policy_decisions || [];

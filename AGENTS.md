@@ -374,14 +374,20 @@ aprovisionamiento solo habilita un archivo coincidente. Pruebas:
 `tests/test_financial_notes.py`. INPC admite ediciones de seis o siete páginas,
 conservando cotejo de portada, cuadros, fechas y metodología de cada página.
 
-## IED por entidad federativa
+## IED por entidad federativa y cifras originalmente publicadas
 
-`ied_estatal.py` obtiene los enlaces EF_AC actualizados del portal de Economía,
-valida encabezados internos, 32 entidades y conciliación nacional en cada corte,
-y conserva el último histórico ante 403, datos incompletos o retroceso de cobertura.
-`data/ied_estatal.json` contiene acumulados desde 2006 y el ranking del último
-corte estatal, que puede diferir del nacional. No convertir C en cero. Posiciones
-con empate y flechas contra el mismo acumulado del año anterior; verde al subir, rojo al bajar y gris sin cambio por instrucción del usuario;
-el color indica solo posiciones y nunca implica mejora de montos. Excel general e IED incluyen historia íntegra y ranking
-con fórmulas nativas. No confundir fecha de edición ni nombre 2T con trimestre
-real de los encabezados. Pruebas: `tests/test_ied_estatal.py`.
+Por instrucción del usuario, tabla principal y ranking estatal usan el archivo
+TI_OR (originalmente publicado), no EF_AC. `ied_estatal.py` valida las hojas
+Por Entidad Federativa y Por Tipo de Inversión, sus encabezados internos, las 32
+entidades y conciliación nacional/componentes en cada corte. La base original
+comienza en 2018 y llega a enero-junio de 2026. `data/ied_estatal_actualizada.json`
+conserva por separado los datos revisados desde 2006; nunca empalmar versiones.
+No obtener un flujo exclusivo trimestral restando cifras originalmente publicadas
+en diferentes ediciones. Los cortes del archivo TI_OR son acumulados desde enero.
+La tabla web original, sus componentes y variaciones anuales usan el mismo
+archivo; el ranking compara el mismo acumulado del año anterior. Verde al subir,
+rojo al bajar y gris sin cambio indican posiciones, no mejora de montos.
+Excel incluye hojas distintas para originales nacionales, originales estatales,
+ranking y estatal revisada. Se conserva el último archivo validado ante 403,
+datos incompletos o retroceso de cobertura de la MISMA versión.
+Pruebas: `tests/test_ied_estatal.py` y `tests/ied_ranking_ui.test.mjs`.

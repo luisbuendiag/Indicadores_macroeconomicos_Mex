@@ -2371,9 +2371,9 @@
     "sha256": "7c287699b13b91f34f519f5067e2b573ba5ba22c24f1e2f50f636fb206d5a7e9"
   },
   "IED": {
-    "sheets": 4,
+    "sheets": 6,
     "charts": 3,
-    "formulas": 160,
+    "formulas": 190,
     "coverage": [
       {
         "key": "IED",
@@ -2467,9 +2467,9 @@
       }
     ],
     "omitted_redundancy": {},
-    "state_source_sha256": "72235fbd4aaee146e73d9d5c1adfd853c1887d4514baa5b9af66ae992793b718",
-    "state_period": "1T-2026",
-    "sha256": "707199ef6d8bb7cd3edb0959e81f6f7a8ac5845eb401736365989fc7c5b88369"
+    "state_source_sha256": "237075853fe6b72b5ea5473dc53b5849bfe3220840de293a72c7e15053f283ce",
+    "state_period": "2T-2026",
+    "sha256": "60bcc3ab9e48816bb196c5a9fc7b42801b1cc316414f165ee514146c3e182e9c"
   },
   "TIPOCAMBIO": {
     "sheets": 1,
@@ -2598,12 +2598,12 @@
     "sha256": "c2896bc274ebe9f177910f6aa9f54edced2217fd4aa74be51e02db11514bfd26"
   },
   "general": {
-    "sheets": 24,
+    "sheets": 26,
     "charts": 38,
-    "formulas": 3410,
+    "formulas": 3440,
     "input_sha256": "4875c59f47f5f11849ffaba343eea9ae3e08ce2ebb06728a2fbe5102fffe7d18",
-    "state_source_sha256": "72235fbd4aaee146e73d9d5c1adfd853c1887d4514baa5b9af66ae992793b718",
-    "state_period": "1T-2026",
-    "sha256": "b4d3efc63018b1db6885dfa5a967ba22c816a381a4b0a8be5bcd1794914e4900"
+    "state_source_sha256": "237075853fe6b72b5ea5473dc53b5849bfe3220840de293a72c7e15053f283ce",
+    "state_period": "2T-2026",
+    "sha256": "ed7cfbbaf30bee741ad1e6fd5a8fbe525e3396f2e973fbc753be415ee9cea4af"
   }
 }

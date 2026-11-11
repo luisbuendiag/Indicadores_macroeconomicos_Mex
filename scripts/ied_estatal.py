@@ -7,17 +7,24 @@ from urllib.parse import urljoin,urlparse
 import openpyxl
 ROOT=Path(__file__).resolve().parents[1]
 PAGE='https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa'
-URL='https://www.gob.mx/cms/uploads/attachment/file/1100602/2026_2T_Flujos_EF_AC_5.xlsx'
+URL='https://www.gob.mx/cms/uploads/attachment/file/1100605/2026_2T_Flujos_TI_OR_2.xlsx'
 STATES=['Aguascalientes','Baja California','Baja California Sur','Campeche','Chiapas','Chihuahua','Ciudad de México','Coahuila de Zaragoza','Colima','Durango','Guanajuato','Guerrero','Hidalgo','Jalisco','Estado de México','Michoacán de Ocampo','Morelos','Nayarit','Nuevo León','Oaxaca','Puebla','Querétaro','Quintana Roo','San Luis Potosí','Sinaloa','Sonora','Tabasco','Tamaulipas','Tlaxcala','Veracruz de Ignacio de la Llave','Yucatán','Zacatecas']
 def num(x):return isinstance(x,(int,float)) and not isinstance(x,bool) and math.isfinite(x)
 def parse(content,url=URL):
  w=openpyxl.load_workbook(io.BytesIO(content),read_only=True,data_only=True)
  try:
-  s=w['EF por Tipo de Inversión'];rows=list(s.values)
-  if 'acumulados desde el inicio' not in str(rows[0][0]) or 'millones de dólares' not in str(rows[0][0]) or 'cifras actualizadas' not in str(rows[0][0]):raise ValueError('Concepto o unidad no reconocido')
+  s=w['Por Entidad Federativa']
+  header=next(s.iter_rows(min_row=4,max_row=4,max_col=min(s.max_column,512),values_only=True))
+  width=max(i for i,v in enumerate(header) if v in (1,2,3,4))+1
+  rows=list(s.iter_rows(max_col=width,values_only=True));national=list(w['Por Tipo de Inversión'].iter_rows(max_col=width,values_only=True))
+  if 'acumulados desde el inicio' not in str(rows[0][0]) or 'millones de dólares' not in str(rows[0][0]) or 'cifras originalmente publicadas' not in str(rows[0][0]) or 'cifras originalmente publicadas' not in str(national[0][0]):raise ValueError('Concepto o unidad no reconocido')
   found={str(r[0]).strip():r for r in rows[5:] if str(r[0]).strip() in STATES}
   if len(found)!=32:raise ValueError('Faltan entidades')
   if sum(str(r[0]).strip() in STATES for r in rows[5:])!=32:raise ValueError('Entidades duplicadas')
+  if rows[2][1:]!=national[2][1:] or rows[3][1:]!=national[3][1:]:raise ValueError('Encabezados nacional y estatal distintos')
+  components={str(r[0]).strip():r for r in national[5:8]}
+  names=['Nuevas inversiones','Reinversión de utilidades','Cuentas entre compañías']
+  if set(components)!=set(names):raise ValueError('Componentes nacionales no reconocidos')
   periods=[];year=None
   for c in range(1,len(rows[3])):
    if isinstance(rows[2][c],(int,float)):year=int(rows[2][c])
@@ -26,10 +33,12 @@ def parse(content,url=URL):
    values={state:found[state][c] for state in STATES};total=rows[4][c]
    if not num(total) or any(not num(v) for v in values.values()):raise ValueError('Totales estatales incompletos o confidenciales')
    if abs(sum(values.values())-total)>0.05:raise ValueError('Los estados no concilian con el total')
-   periods.append(dict(year=year,quarter=int(q),period=f'{int(q)}T-{year}',label=f'Ene-{["Mar","Jun","Sep","Dic"][int(q)-1]} {year}',total=total,values=values))
+   amounts={name:components[name][c] for name in names}
+   if any(not num(v) for v in amounts.values()) or abs(sum(amounts.values())-total)>.05 or abs(national[4][c]-total)>.05:raise ValueError('Componentes y entidades no concilian')
+   periods.append(dict(components=amounts,year=year,quarter=int(q),period=f'{int(q)}T-{year}',label=f'Ene-{["Mar","Jun","Sep","Dic"][int(q)-1]} {year}',total=total,values=values))
   keys=[(r['year'],r['quarter']) for r in periods]
   if keys!=sorted(set(keys)):raise ValueError('Periodos duplicados o desordenados')
-  return dict(source_url=url,source_page=PAGE,source_sha256=hashlib.sha256(content).hexdigest(),unit='Millones de dólares corrientes',basis='Acumulado desde enero, cifras actualizadas',periods=periods)
+  return dict(source_url=url,source_page=PAGE,source_sha256=hashlib.sha256(content).hexdigest(),unit='Millones de dólares corrientes',variant='originalmente_publicadas',basis='Acumulado desde enero, cifras originalmente publicadas',periods=periods)
  finally:w.close()
 def ranking(data):
  last=data['periods'][-1];prior=next((r for r in data['periods'] if r['year']==last['year']-1 and r['quarter']==last['quarter']),None)
@@ -37,7 +46,7 @@ def ranking(data):
  current=ranks(last);previous=ranks(prior) if prior else {}
  return dict(period=last['period'],label=last['label'],comparison=prior['label'] if prior else None,total=last['total'],rows=[dict(state=s,amount=v,share=v/last['total'] if last['total'] else None,rank=current[s],previous_rank=previous.get(s),change=previous[s]-current[s] if s in previous else None) for s,v in sorted(last['values'].items(),key=lambda r:(-r[1],r[0]))])
 def allowed(url):
- u=urlparse(url);return u.scheme=='https' and u.hostname=='www.gob.mx' and u.port in (None,443) and not u.username and not u.password and not u.query and not u.fragment and (u.path==urlparse(PAGE).path or bool(re.fullmatch(r'/cms/uploads/attachment/file/\d+/[^/]*Flujos_EF_AC[^/]*\.xlsx',u.path)))
+ u=urlparse(url);return u.scheme=='https' and u.hostname=='www.gob.mx' and u.port in (None,443) and not u.username and not u.password and not u.query and not u.fragment and (u.path==urlparse(PAGE).path or bool(re.fullmatch(r'/cms/uploads/attachment/file/\d+/[^/]*Flujos_TI_OR[^/]*\.xlsx',u.path)))
 def get(url):
  if not allowed(url):raise ValueError('Fuente no permitida')
  class Redirect(urllib.request.HTTPRedirectHandler):
@@ -70,6 +79,10 @@ def refresh(root=ROOT,local=None):
    except Exception as e:errors.append(type(e).__name__)
   if candidates:data=max(candidates,key=lambda d:(d['periods'][-1]['year'],d['periods'][-1]['quarter']))
   if old and data and (data['periods'][-1]['year'],data['periods'][-1]['quarter'])<(old['periods'][-1]['year'],old['periods'][-1]['quarter']):data=None;errors.append('Descarga anterior al histórico conservado')
+ if old and data and old.get('variant')!=data.get('variant'):
+  if not local:raise ValueError('No mezclar cifras originales con actualizadas')
+  (root/'data/ied_estatal_actualizada.json').write_text(json.dumps(old,ensure_ascii=False,indent=2)+'\n')
+  old=None
  if old and data:
   old_keys={(r['year'],r['quarter']) for r in old['periods']}
   new_keys={(r['year'],r['quarter']) for r in data['periods']}
@@ -90,14 +103,14 @@ def add_excel_sheets(wb,data,general=False):
     from openpyxl.chart import BarChart,Reference
     prefix='IED ' if general else ''
     history=wb.create_sheet(prefix+'Historia estatal');rank=wb.create_sheet(prefix+'Ranking estatal')
-    history.append(['IED estatal acumulada · millones de dólares corrientes'])
+    history.append(['IED estatal acumulada · cifras originalmente publicadas · mdd'])
     history.append(['Fuente: Secretaría de Economía / RNIE · '+data['source_url']])
     history.merge_cells('A1:AH1');history.merge_cells('A2:AH2')
     history.append(['Periodo','Total nacional']+STATES)
     for p in data['periods']:history.append([p['label'],p['total']]+[p['values'][s] for s in STATES])
     last=data['periods'][-1];last_row=len(data['periods'])+3
     prior=next((i+4 for i,p in enumerate(data['periods']) if (p['year'],p['quarter'])==(last['year']-1,last['quarter'])),None)
-    rank.append(['IED por entidad federativa · '+last['label']]);rank.append(['Comparación: mismo acumulado del año anterior; cifras actualizadas'])
+    rank.append(['IED por entidad federativa · '+last['label']]);rank.append(['Comparación: mismo acumulado del año anterior; cifras originalmente publicadas'])
     rank.merge_cells('A1:F1');rank.merge_cells('A2:F2')
     rank.append(['Entidad','IED (mdd)','Participación','Posición','Posición anterior','Cambio de posición'])
     ordered=data['ranking']['rows']
@@ -116,3 +129,27 @@ def add_excel_sheets(wb,data,general=False):
         ws.row_dimensions[1].height=30;ws.row_dimensions[3].height=35
         ws.auto_filter.ref=f'A3:{col(ws.max_column)}{ws.max_row}'
     chart=BarChart();chart.type='bar';chart.title='Primeras diez entidades · '+last['label'];chart.x_axis.title='Millones de dólares';chart.x_axis.scaling.min=0;chart.y_axis.reverseOrder=True;chart.add_data(Reference(rank,min_col=2,min_row=3,max_row=13),titles_from_data=True);chart.set_categories(Reference(rank,min_col=1,min_row=4,max_row=13));chart.height=11;chart.width=22;chart.legend=None;rank.add_chart(chart,'H4')
+
+    original=wb.create_sheet(prefix+'Cifras originales')
+    original.append(['IED nacional acumulada · cifras originalmente publicadas · mdd'])
+    original.append(['Fuente: Secretaría de Economía / RNIE · '+data['source_url']]);original.merge_cells('A1:F1');original.merge_cells('A2:F2')
+    names=['Nuevas inversiones','Reinversión de utilidades','Cuentas entre compañías']
+    original.append(['Periodo','IED acumulada (mdd)']+names+['Variación anual'])
+    for i,p in enumerate(data['periods'],4):
+        previous=next((j+4 for j,v in enumerate(data['periods']) if (v['year'],v['quarter'])==(p['year']-1,p['quarter'])),None)
+        original.append([p['label'],p['total']]+[p['components'][n] for n in names]+[f'=B{i}/B{previous}-1' if previous else None])
+    revised_path=ROOT/'data/ied_estatal_actualizada.json'
+    extras=[original]
+    if revised_path.exists():
+        revised=json.loads(revised_path.read_text());old=wb.create_sheet(prefix+'Estatal revisada');extras.append(old)
+        old.append(['IED estatal acumulada · cifras actualizadas · mdd']);old.append(['Fuente: Secretaría de Economía / RNIE · '+revised['source_url']]);old.merge_cells('A1:AH1');old.merge_cells('A2:AH2');old.append(['Periodo','Total nacional']+STATES)
+        for p in revised['periods']:old.append([p['label'],p['total']]+[p['values'][n] for n in STATES])
+    for ws in extras:
+        ws.sheet_view.showGridLines=False;ws.column_dimensions['A'].width=23
+        for c in range(2,ws.max_column+1):ws.column_dimensions[col(c)].width=25
+        for row in ws:
+            for cell in row:
+                cell.font=Font(name='Noto Sans',size=10,bold=cell.row in (1,3));cell.alignment=Alignment(vertical='center',wrap_text=cell.row in (1,3))
+                if cell.row==3:cell.fill=PatternFill('solid',fgColor='EEEEEE')
+                if cell.row>=4 and cell.column>1:cell.number_format='0.0%' if ws==original and cell.column==6 else '#,##0.00'
+        ws.row_dimensions[1].height=30;ws.row_dimensions[3].height=35;ws.auto_filter.ref=f'A3:{col(ws.max_column)}{ws.max_row}'
