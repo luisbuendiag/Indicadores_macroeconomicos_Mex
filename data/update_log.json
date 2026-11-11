@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-11-11T00:04:57+00:00",
+  "started_at": "2026-11-11T02:21:22+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -481,7 +481,7 @@
     "frescura: INPP -> ACTUALIZADO",
     "frescura: SIC -> ACTUALIZADO",
     "frescura: IMOAM -> ACTUALIZADO",
-    "meta: last_update_ct=2026-11-10T18:19:43-06:00",
+    "meta: last_update_ct=2026-11-10T20:36:02-06:00",
     "notas: 15 vigentes (0 provisionadas desde machote)"
   ],
   "consultas": [
@@ -3968,5 +3968,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-11-11T00:19:54+00:00"
+  "finished_at": "2026-11-11T02:36:10+00:00"
 }
