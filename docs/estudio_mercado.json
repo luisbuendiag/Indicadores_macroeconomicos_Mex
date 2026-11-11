@@ -1,0 +1,99 @@
+{
+  "project": {
+    "name": "Indicadores macroeconómicos de México",
+    "repository": "luisbuendiag/Indicadores_macroeconomicos_Mex",
+    "stage": "beta",
+    "constraints": [
+      "consulta pública",
+      "sin APIs ni campañas de pago autorizadas",
+      "sin entrevistas obligatorias"
+    ],
+    "artifact": "docs/estudio_mercado.md"
+  },
+  "updated_at": "2026-11-11",
+  "evidence": [
+    {
+      "id": "own-ui",
+      "tipo": "observado",
+      "source": "index.html; assets/js/app.js; assets/css/styles.css; AGENTS.md",
+      "retrieved_at": "2026-11-11",
+      "limitation": "Revisión de código, sin render visual ni telemetría"
+    },
+    {
+      "id": "free-data",
+      "tipo": "observado",
+      "url": "https://www.inegi.org.mx/app/indicadores/?tm=0",
+      "retrieved_at": "2026-11-11",
+      "claim": "Histórico y exportación XLS/CSV"
+    },
+    {
+      "id": "free-analysis",
+      "tipo": "observado",
+      "url": "https://es.cialdnb.com/productos/monitor-economico-mexico",
+      "retrieved_at": "2026-11-11",
+      "claim": "Monitor gratuito semanal"
+    },
+    {
+      "id": "workflow",
+      "tipo": "observado",
+      "url": "https://www.macrobond.com/offerings",
+      "retrieved_at": "2026-11-11",
+      "claim": "Análisis y gráficos actualizables"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H1",
+      "segmento": "Consultores y analistas de equipos pequeños",
+      "trabajo": "Preparar reportes recurrentes",
+      "oferta": "Excel y Word propios editables",
+      "estado": "untested",
+      "evidence_ids": [
+        "own-ui",
+        "free-data",
+        "free-analysis",
+        "workflow"
+      ],
+      "confianza": "Baja respecto de disposición de pago",
+      "contraevidencia": "Existen datos y análisis gratuitos; no hay uso o pago medido"
+    }
+  ],
+  "experiments": [
+    {
+      "id": "E1",
+      "hypothesis_id": "H1",
+      "variable": "Presentación agrupada de productos",
+      "primary_metric": "Clic en producto por sesión expuesta, condicionado a medición válida",
+      "denominator": null,
+      "start": null,
+      "end": null,
+      "stop_rule": "Falla de medición, exactitud o descargas",
+      "cost_cap": {
+        "amount": 0,
+        "currency": "MXN",
+        "scope": "Gasto adicional del experimento"
+      },
+      "status": "proposed",
+      "results": null,
+      "limits": "Sin causalidad ni prueba comercial por clics"
+    }
+  ],
+  "decisions": [
+    {
+      "fecha": "2026-11-11",
+      "acción": "Mantener consulta pública y productos editables como hipótesis de monetización; mejorar descubrimiento antes de cobros",
+      "evidence_ids": [
+        "own-ui",
+        "free-data",
+        "free-analysis",
+        "workflow"
+      ],
+      "condition": "Revisar con uso, pago o evidencia nueva"
+    }
+  ],
+  "metrics": {
+    "periodo": null,
+    "conteos": null,
+    "quality": "No hay métricas aportadas ni verificadas"
+  }
+}
