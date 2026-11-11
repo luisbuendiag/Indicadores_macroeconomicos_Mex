@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "kind": "reglas_python",
+  "model": "actividad-python-1",
+  "result": {
+    "datos": true,
+    "logica": true,
+    "estructura": true,
+    "render": true,
+    "issues": []
+  },
+  "limits": [
+    "Controles locales; no equivalen a revisión visual humana."
+  ]
+}

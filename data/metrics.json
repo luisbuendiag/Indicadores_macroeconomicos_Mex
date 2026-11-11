@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-11T08:35:54+00:00",
-  "last_update_ct": "2026-11-10T20:36:02-06:00",
+  "generated_at": "2026-11-11T16:43:44+00:00",
+  "last_update_ct": "2026-11-11T02:36:20-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -1376,15 +1376,15 @@
     },
     "IMAI": {
       "kpi": {
-        "assessment": "favorable",
-        "dir": "up",
-        "ultimoFmt": "103.4",
-        "ultimoRaw": 103.385275,
-        "ultimoP": "Ago 26",
-        "varText": "+0.6%",
-        "varMag": 0.6066,
-        "pos": true,
-        "varColor": "#1e5b4f",
+        "assessment": "adverso",
+        "dir": "down",
+        "ultimoFmt": "101.5",
+        "ultimoRaw": 101.5,
+        "ultimoP": "Sep 26",
+        "varText": "-1.4%",
+        "varMag": -1.4000000000000001,
+        "pos": false,
+        "varColor": "#9b2247",
         "varLabel": "Var. mensual desest.",
         "maxFmt": "104.8",
         "maxRaw": 104.796037,
@@ -1392,7 +1392,7 @@
         "minFmt": "58.6",
         "minRaw": 58.56122,
         "minP": "Oct 95",
-        "lastI": 403,
+        "lastI": 404,
         "series": [
           63.27743,
           65.755185,
@@ -1797,7 +1797,8 @@
           101.943247,
           102.233191,
           102.761932,
-          103.385275
+          103.385275,
+          101.5
         ],
         "periods": [
           "Ene 93",
@@ -2203,70 +2204,71 @@
           "May 26",
           "Jun 26",
           "Jul 26",
-          "Ago 26"
+          "Ago 26",
+          "Sep 26"
         ],
-        "semaforo": "bueno",
-        "yoyText": "+3.6%",
+        "semaforo": "malo",
+        "yoyText": "+1.4%",
         "yoyLabel": "Var. anual desest.",
-        "acumRaw": 0.008,
-        "acumText": "+0.8%",
+        "acumRaw": 0.011,
+        "acumText": "+1.1%",
         "acumLabel": "Acumulado ene-mes",
         "cards": [
           {
             "name": "Minería",
-            "nivelRaw": 87.653085,
-            "nivelText": "87.7",
-            "momRaw": -0.015715,
-            "momText": "-1.6%",
-            "yoyRaw": -0.008279,
-            "yoyText": "-0.8%"
+            "nivelRaw": null,
+            "nivelText": "—",
+            "momRaw": 0.004,
+            "momText": "0.4%",
+            "yoyRaw": -0.015,
+            "yoyText": "-1.5%"
           },
           {
             "name": "Energía, agua y gas",
-            "nivelRaw": 67.773586,
-            "nivelText": "67.8",
-            "momRaw": 0.012089,
-            "momText": "1.2%",
-            "yoyRaw": 0.01441,
-            "yoyText": "1.4%"
+            "nivelRaw": null,
+            "nivelText": "—",
+            "momRaw": 0.014,
+            "momText": "1.4%",
+            "yoyRaw": 0.034,
+            "yoyText": "3.4%"
           },
           {
             "name": "Construcción",
-            "nivelRaw": 109.224359,
-            "nivelText": "109.2",
-            "momRaw": -0.000308,
-            "momText": "0.0%",
-            "yoyRaw": 0.079372,
-            "yoyText": "7.9%"
+            "nivelRaw": null,
+            "nivelText": "—",
+            "momRaw": -0.02,
+            "momText": "-2.0%",
+            "yoyRaw": 0.064,
+            "yoyText": "6.4%"
           },
           {
             "name": "Industrias manufactureras",
-            "nivelRaw": 108.179685,
-            "nivelText": "108.2",
-            "momRaw": 0.012413,
-            "momText": "1.2%",
-            "yoyRaw": 0.032308,
-            "yoyText": "3.2%"
+            "nivelRaw": null,
+            "nivelText": "—",
+            "momRaw": -0.017,
+            "momText": "-1.7%",
+            "yoyRaw": 0.005,
+            "yoyText": "0.5%"
           }
         ]
       },
       "yoy": {
-        "mag": 3.5523,
+        "mag": 1.4000000000000001,
         "pos": true,
-        "text": "+3.6%",
+        "text": "+1.4%",
         "label": "Var. anual desest."
       },
       "annualVar": {
-        "mag": 3.5523,
+        "mag": 1.4000000000000001,
         "pos": true,
-        "text": "+3.6%",
+        "text": "+1.4%",
         "label": "Var. anual desest."
       },
       "resumen": [
-        "En agosto de 2026, el IMAI se ubicó en 103.4 puntos (índice base 2018=100). La variación mensual desestacionalizada fue de +0.6% respecto al mes previo, por lo que el indicador avanzó.",
-        "A tasa anual, el IMAI avanzó +3.6%.",
-        "El acumulado ene-ago, en cifras originales, fue de +0.8%.",
-        "A tasa anual, Construcción (7.9%) y Industrias manufactureras (3.2%) avanzaron, mientras que Minería (-0.8%) retrocedieron."
+        "En septiembre de 2026, el IMAI se ubicó en 101.5 puntos (índice base 2018=100). La variación mensual desestacionalizada fue de -1.4% respecto al mes previo, por lo que el indicador retrocedió.",
+        "A tasa anual, el IMAI avanzó +1.4%.",
+        "El acumulado ene-sep, en cifras originales, fue de +1.1%.",
+        "A tasa anual, Construcción (6.4%) y Energía, agua y gas (3.4%) avanzaron, mientras que Minería (-1.5%) retrocedieron."
       ],
       "analysis": []
     },

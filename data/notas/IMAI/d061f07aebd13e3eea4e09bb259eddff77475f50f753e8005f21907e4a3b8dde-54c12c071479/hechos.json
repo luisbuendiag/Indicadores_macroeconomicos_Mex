@@ -1,0 +1,69 @@
+{
+  "indicator": "IMAI",
+  "ym": "2026-09",
+  "period": "Sep 26",
+  "publication_date": "2026-11-11",
+  "bulletin": "688/26",
+  "base": "2018",
+  "rows": [
+    {
+      "label": "Actividad industrial",
+      "index": 101.5,
+      "mom": -1.4,
+      "yoy": 1.4,
+      "original": 1.3,
+      "ytd": 1.1,
+      "evidence_adjusted": "Actividad industrial -1.4 1.4",
+      "evidence_original": "Actividad industrial 1.3 1.1"
+    },
+    {
+      "label": "Minería",
+      "index": null,
+      "mom": 0.4,
+      "yoy": -1.5,
+      "original": -1.4,
+      "ytd": 2.6,
+      "evidence_adjusted": "Minería 0.4 -1.5",
+      "evidence_original": "Minería -1.4 2.6"
+    },
+    {
+      "label": "Generación, transmisión",
+      "index": null,
+      "mom": 1.4,
+      "yoy": 3.4,
+      "original": 3.4,
+      "ytd": 0.9,
+      "evidence_adjusted": "Generación, transmisión, distribución y\ncomercialización de energía eléctrica, suministro de 1.4 3.4",
+      "evidence_original": "Generación, transmisión, distribución y comercialización de energía\n22 eléctrica, suministro de agua y de gas natural por ductos al 3.4 0.9"
+    },
+    {
+      "label": "Construcción",
+      "index": null,
+      "mom": -2.0,
+      "yoy": 6.4,
+      "original": 4.9,
+      "ytd": 3.8,
+      "evidence_adjusted": "Construcción -2.0 6.4",
+      "evidence_original": "Construcción 4.9 3.8"
+    },
+    {
+      "label": "Industrias manufactureras",
+      "index": null,
+      "mom": -1.7,
+      "yoy": 0.5,
+      "original": 0.6,
+      "ytd": 0.1,
+      "evidence_adjusted": "Industrias manufactureras -1.7 0.5",
+      "evidence_original": "Industrias manufactureras 0.6 0.1"
+    }
+  ],
+  "pages": [
+    "BOLETÍN DE INDICADOR 688/26\nINDICADOR MENSUAL DE LA\nACTIVIDAD INDUSTRIAL (IMAI)\n11 de noviembre de 2026\nPágina 1/5\nPróxima publicación: 11 de diciembre de 2026\nActividad\nVariación Variación\nindustrial\nmensual anual\níndice 2018=100\nseptiembre septiembre septiembre\n101.5 ▼ -1.4 % ▲ 1.4 %\nDisminuyó 1.4 % la actividad industrial\nen septiembre de 2026, a tasa mensual\nEl Indicador Mensual de la Actividad Industrial (IMAI) permite conocer y dar seguimiento a la\nevolución de la actividad industrial en México.\nI. CIFRAS DESESTACIONALIZADAS\nEn septiembre de 2026, con cifras desestacionalizadas,1 la actividad industrial descendió 1.4 %\nrespecto al mes previo, en términos reales (ver gráfica 1). A tasa anual, incrementó\n1.4 por ciento.\nGráfica 1\nVariación de la actividad industrial\ncifras desestacionalizadas\nseptiembre de 2024–septiembre de 2026\n(variación porcentual real mensual)\n2.1\n2.0 1.7\n0.9 0.9\n1.0 0.6 0.5 0.7 0.5 0.5\n0.1 0.2 0.2\n0.0\n-0.1\n-1.0 -0.3 -0.4 -0.4 -0.4 -0.5 -0.5 -0.7\n-1.0 -1.0\n-1.2\n-1.4\n-2.0 -1.6\nS O N D E F M A M J J A S O N D E F M A M J J A S\n2024 2025 2026\nNota: Serie elaborada mediante métodos econométricos.\nFuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Indicador Mensual de la Actividad Industrial (IMAI), 2026.\n1 La mayoría de las series económicas se ve afectada por factores estacionales y de calendario. El ajuste de los datos por dichos factores\npermite obtener las cifras desestacionalizadas.\nLa tendencia-ciclo es la combinación de los componentes de tendencia y ciclo. La tendencia se refiere a la evolución de largo plazo de la\nserie de tiempo, y el ciclo, a las desviaciones alrededor de la tendencia. Así, el análisis de las series ajustadas ayuda a realizar un mejor\ndiagnóstico de la evolución de las variables.",
+    "BOLETÍN DE INDICADOR 688/26\nINDICADOR MENSUAL DE LA\nACTIVIDAD INDUSTRIAL (IMAI)\n11 de noviembre de 2026\nPágina 2/5\nSegún componentes, la variación mensual de la producción industrial fue la siguiente:\nConstrucción disminuyó 2.0 % e Industrias manufactureras, 1.7 por ciento. Minería aumentó\n0.4 % y Generación, transmisión, distribución y comercialización de energía eléctrica,\nsuministro de agua y de gas natural por ductos al consumidor final, 1.4 %, en el mes de\nreferencia.\nEn su comparación anual, en septiembre de 2026, el sector Construcción creció 6.4 %;\nGeneración, transmisión, distribución y comercialización de energía eléctrica, suministro de\nagua y de gas natural por ductos al consumidor final, 3.4 %; e Industrias manufactureras,\n0.5 por ciento. Minería descendió 1.5 % (ver cuadro 1 y las gráficas 2 y 3).\nCuadro 1\nVariación del Indicador Mensual de la Actividad Industrial\ncifras desestacionalizadas\nseptiembre de 2026\n(variación porcentual mensual y anual)\nVariación porcentual real respecto a:\nActividad industrial y sectores de actividad agosto septiembre\nde 2026 de 2025\nActividad industrial -1.4 1.4\nMinería 0.4 -1.5\nGeneración, transmisión, distribución y\ncomercialización de energía eléctrica, suministro de 1.4 3.4\nagua y de gas natural por ductos al consumidor final\nConstrucción -2.0 6.4\nIndustrias manufactureras -1.7 0.5\nNota: Cifras elaboradas mediante métodos econométricos.\nLas series desestacionalizadas del IMAI se calculan de manera independiente de las de sus\ncomponentes.\nFuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Indicador Mensual de la Actividad Industrial\n(IMAI), 2026.\nGráfica 2\nSerie desestacionalizada y de tendencia-ciclo de la actividad industrial\nenero de 2022–septiembre de 2026\n(índice 2018=100)\n106.0\n103.0\n100.0\n97.0\n2022 2023 2024 2025 2026\nSerie desestacionalizada Serie tendencia-ciclo\nNota: Series elaboradas mediante métodos econométricos.\nFuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Indicador Mensual de la Actividad Industrial (IMAI), 2026.",
+    "BOLETÍN DE INDICADOR 688/26\nINDICADOR MENSUAL DE LA\nACTIVIDAD INDUSTRIAL (IMAI)\n11 de noviembre de 2026\nPágina 3/5\nGráfica 3\nSerie desestacionalizada y de tendencia-ciclo\nde los componentes de la actividad industrial\nenero de 2022–septiembre de 2026\n(índice 2018=100)\nGeneración, transmisión, distribución y comercialización\nMinería de energía eléctrica, suministro de agua y de gas\nnatural por ductos al consumidor final\n105.0 73.0\n100.0\n70.0\n95.0\n90.0\n67.0\n85.0\n80.0 64.0\n2022 2023 2024 2025 2026 2022 2023 2024 2025 2026\nConstrucción Industrias manufactureras\n110.0\n108.0\n105.0\n106.0\n100.0\n104.0\n95.0\n102.0\n90.0\n85.0 100.0\n2022 2023 2024 2025 2026 2022 2023 2024 2025 2026\nSerie desestacionalizada Serie tendencia-ciclo\nNota: Series elaboradas mediante métodos econométricos.\nFuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Indicador Mensual de la Actividad Industrial (IMAI), 2026.",
+    "BOLETÍN DE INDICADOR 688/26\nINDICADOR MENSUAL DE LA\nACTIVIDAD INDUSTRIAL (IMAI)\n11 de noviembre de 2026\nPágina 4/5\nII. CIFRAS ORIGINALES\nCuadro 2\nVariación del Indicador Mensual de la Actividad Industrial\nsegún sector y subsector de actividad\na septiembre de 20261/\n(variación porcentual real anual)\nVariación porcentual anual\nrespecto a:\nActividad industrial, sectores y subsectores de actividad\nseptiembre ene.–sep.\nde 2025 de 2025\nActividad industrial 1.3 1.1\n21 Minería -1.4 2.6\n211 Extracción de petróleo y gas -1.8 2.1\n212 Minería de minerales metálicos y no metálicos, excepto petróleo y gas -1.8 -0.5\n213 Servicios relacionados con la minería 5.2 22.1\nGeneración, transmisión, distribución y comercialización de energía\n22 eléctrica, suministro de agua y de gas natural por ductos al 3.4 0.9\nconsumidor final\nGeneración, transmisión, distribución y comercialización de energía\n221 3.4 0.9\neléctrica, suministro de agua y de gas natural por ductos al consumidor final\n23 Construcción 4.9 3.8\n236 Edificación 2.1 3.0\n237 Construcción de obras de ingeniería civil 29.2 10.4\n238 Trabajos especializados para la construcción -7.8 1.1\n31-33 Industrias manufactureras 0.6 0.1\n311 Industria alimentaria -1.5 0.0\n312 Industria de las bebidas y del tabaco -0.1 -0.3\n313 Fabricación de insumos textiles y acabado de textiles -6.4 -5.0\n314 Fabricación de productos textiles, excepto prendas de vestir -3.2 -3.6\n315 Fabricación de prendas de vestir -6.6 -4.5\nCurtido y acabado de cuero y piel, y fabricación de productos de cuero, piel\n316 -1.4 -3.7\ny materiales sucedáneos\n321 Industria de la madera 4.7 -3.6\n322 Industria del papel 1.2 -2.5\n323 Impresión e industrias conexas -5.5 -3.2\n324 Fabricación de productos derivados del petróleo y del carbón 0.4 13.2\n325 Industria química 1.3 0.3\n326 Industria del plástico y del hule -0.5 -2.8\n327 Fabricación de productos a base de minerales no metálicos -0.5 -0.5\n331 Industrias metálicas básicas -4.8 -1.7\n332 Fabricación de productos metálicos -1.2 -2.5\n333 Fabricación de maquinaria y equipo 7.3 3.5\nFabricación de equipo de computación, comunicación, medición y de otros\n334 4.9 4.3\nequipos, componentes y accesorios electrónicos\nFabricación de accesorios, aparatos eléctricos y equipo de generación de\n335 1.4 -5.1\nenergía eléctrica\n336 Fabricación de equipo de transporte 0.7 -1.4\n337 Fabricación de muebles, colchones y persianas -6.8 -8.1\n339 Otras industrias manufactureras 7.4 -1.3\n1/ Cifras preliminares.\nFuente: INEGI. Sistema de Cuentas Nacionales de México (SCNM). Indicador Mensual de la Actividad Industrial (IMAI), 2026.",
+    "BOLETÍN DE INDICADOR 688/26\nINDICADOR MENSUAL DE LA\nACTIVIDAD INDUSTRIAL (IMAI)\n11 de noviembre de 2026\nPágina 5/5\nIII. FICHA METODOLÓGICA\nEl Indicador Mensual de la Actividad Industrial (IMAI) proporciona información estadística\nAntecedentes oportuna que permite conocer y dar seguimiento a la evolución mensual de las actividades\neconómicas del sector industrial del país.\nLos datos mensuales del IMAI están disponibles desde enero de 1993 y se expresan en índices\nAño base\nde volumen físico, de tipo Laspeyres, con base fija en el año 2018.\nLas principales fuentes de información son las encuestas en establecimientos y en hogares,\ntales como: Encuesta Mensual de la Industria Manufacturera (EMIM), Encuesta Nacional de\nEmpresas Constructoras (ENEC), estadística de la Industria Minerometalúrgica (EIMM) y\nFuentes\nEncuesta Nacional de Ocupación y Empleo (ENOE). Los índices nacionales de precios y los\nregistros administrativos, así como las estadísticas económicas y sociales que compila el\nInstituto.\nCobertura geográfica Nacional\nPeriodicidad Mensual\nPara la elaboración del IMAI se siguen los conceptos, criterios metodológicos, clasificadores y\ndatos fuente que se emplean en los cálculos anuales y trimestrales del Producto Interno Bruto\n(PIB), en la medida en que la información estadística lo permita. Se calculan índices de\nvolumen físico para 346 clases de actividad económica del Sistema de Clasificación Industrial\nde América del Norte (SCIAN) 2018. Al interior de las clases se realizan mediciones específicas\nCálculo del IMAI para la actividad formal, informal, artesanado formal e informal y bienes para procesamiento.\nSe elaboran índices del volumen de producción por clase de actividad económica, mismos\nque se utilizan para extrapolar el valor agregado bruto registrado por cada clase de actividad\nen el año base 2018. Los anteriores se ajustan a los valores nacionales anuales con la técnica\nproporcional Denton y, por agregación de las actividades económicas, se obtienen los\n28 subsectores y cuatro sectores de actividad económica y el total del indicador.\nLas series originales se ajustan estacionalmente mediante el paquete estadístico\nX-13ARIMA-SEATS. Para conocer la metodología, consúltese la siguiente liga:\nhttps://www.inegi.org.mx/app/biblioteca/ficha.html?upc=702825099060\nAjuste estacional y\nLas especificaciones de los modelos están disponibles en el Banco de Información Económica\nmodelos\n(BIE). Seleccione «Indicadores económicos de coyuntura, Indicador mensual de la actividad\nindustrial» y vaya al icono de información correspondiente a las «series desestacionalizadas\ny tendencia-ciclo».\nPublicación de El IMAI se publica 42 días naturales después de concluido el mes de referencia, conforme al\nresultados Calendario de Difusión de Información Estadística y Geográfica y de Interés Nacional.\nEste indicador se actualiza una vez que se dispone de la información estadística más reciente\nde las Cuentas de Bienes y Servicios 2025 versión preliminar, de las encuestas, de los\nregistros administrativos y de los datos primarios de los años 2024, 2025 y 2026.\nComo resultado de incorporar esta información, se identifican diferencias en los niveles de los\níndices y variaciones que se publicaron oportunamente.\nEn la integración del IMAI, de septiembre de 2026, se consideró la información estadística de\nNota al público las encuestas económicas (ENEC y EMIM), de la ENOE, de la EIMM, de los registros\nusuario administrativos y de los datos primarios que divulga el Instituto. Para las actividades\npetroleras, de energía, gas y agua, se incluyeron los registros administrativos provenientes\nde las empresas y Unidades del Estado que se recibieron oportunamente vía correo\nelectrónico e internet. Esto permitió la generación de estadísticas con niveles altos de\ncobertura.\nEl INEGI invita a conocer con mayor detalle la metodología del IMAI en la siguiente liga:\nhttps://www.inegi.org.mx/programas/imai/2018/\nLa información estadística y geográfica que genera el INEGI es un bien público y nos permite\na todas y a todos tomar mejores decisiones. ¡Conócela, úsala y compártela!"
+  ],
+  "source_sha256": "752a376f185b405fa393dcd359c8375c38098f8681a593a5768787b8bc40efe4",
+  "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_11.pdf"
+}

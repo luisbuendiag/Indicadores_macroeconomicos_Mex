@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-11T08:36:39+00:00",
+  "generated_at": "2026-11-11T16:44:44+00:00",
   "as_of": "2026-11-11",
   "fuente": "Calendario oficial de difusión",
   "sources": {
@@ -16300,14 +16300,28 @@
       "category": "Actividad económica",
       "sigla": "IMAI",
       "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_11.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_11.pdf",
+          "label": "Boletín PDF",
+          "size": "0.26 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_11.docx",
+          "label": "Boletín Word",
+          "size": "0.24 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_11.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.16 MB"
         }
       ],
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
@@ -21871,14 +21885,28 @@
       "category": "Actividad económica",
       "sigla": "IMAI",
       "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_11.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_11.pdf",
+          "label": "Boletín PDF",
+          "size": "0.26 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_11.docx",
+          "label": "Boletín Word",
+          "size": "0.24 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_11.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.16 MB"
         }
       ],
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",

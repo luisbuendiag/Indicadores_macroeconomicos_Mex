@@ -18,17 +18,17 @@
   "IMAI": {
     "status": "vigente",
     "message": "Nota generada y validada por reglas Python",
-    "target_period": "Ago 26",
+    "target_period": "Sep 26",
     "published": {
-      "periodo": "Ago 26",
-      "generated_at": "2026-10-29T15:51:59+00:00",
-      "source_sha256": "218b52f8b323957f1e9fa9a641bdcb03700c34d692367953e6e758acf5b50d57",
-      "fingerprint": "e9001317f5a233bc9af1dad97431dc6211de4462fe913a607a2935b9a3eb41ec",
-      "docx_sha256": "c9b60a8faaae5208c27438f98364b1a5693647445672c0f31d426c9eb5b53dba",
-      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_10.pdf",
+      "periodo": "Sep 26",
+      "generated_at": "2026-11-11T16:55:25+00:00",
+      "source_sha256": "752a376f185b405fa393dcd359c8375c38098f8681a593a5768787b8bc40efe4",
+      "fingerprint": "d061f07aebd13e3eea4e09bb259eddff77475f50f753e8005f21907e4a3b8dde",
+      "docx_sha256": "54c12c071479e3c4abf9f8c3a1632e7c9166a447fa6187e5f0441713427e7c0c",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_11.pdf",
       "review_model": "actividad-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/IMAI/e9001317f5a233bc9af1dad97431dc6211de4462fe913a607a2935b9a3eb41ec-c9b60a8faaae"
+      "archive": "data/notas/IMAI/d061f07aebd13e3eea4e09bb259eddff77475f50f753e8005f21907e4a3b8dde-54c12c071479"
     }
   },
   "IGAE": {
