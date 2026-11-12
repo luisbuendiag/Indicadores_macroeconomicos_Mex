@@ -61,6 +61,37 @@ test('Word con cambio de estructura no provoca bucle de reintentos', async t => 
   assert.equal(calls.some(x=>x[0]==='dispatch'), false);
   assert.equal(calls.some(x=>x[0]==='warning'), true);
 });
+test('cola vieja supersedida por ejecución nueva y exitosa no bloquea vigilancia', async t => {
+  const now = Date.now();
+  const old = new Date(now - 180 * 60_000).toISOString();
+  const recent = new Date(now - 25 * 60_000).toISOString();
+  const finished = new Date(now - 12 * 60_000).toISOString();
+  const calls = await runWatchdog(t, {health:fresh(), runs:[
+    {id:10,status:'queued',created_at:old,event:'push'},
+    {id:11,status:'completed',conclusion:'success',created_at:recent,updated_at:finished,event:'schedule'}
+  ]});
+  assert.equal(calls.length,0);
+});
+
+test('corrida verdaderamente atascada sin éxito posterior mantiene alerta', async t => {
+  const old = new Date(Date.now() - 180 * 60_000).toISOString();
+  const calls = await runWatchdog(t, {health:fresh(), runs:[
+    {id:21,status:'in_progress',created_at:old,event:'schedule'}
+  ]});
+  assert.equal(calls.filter(x=>x[0]==='failure').length,1);
+  assert.match(calls.find(x=>x[0]==='warning')[1], /excedió el tiempo/);
+});
+
+test('éxito anterior no exonera una cola nueva estancada', async t => {
+  const old = new Date(Date.now() - 240 * 60_000).toISOString();
+  const queued = new Date(Date.now() - 180 * 60_000).toISOString();
+  const calls = await runWatchdog(t, {health:fresh(), runs:[
+    {id:30,status:'completed',conclusion:'success',created_at:old,updated_at:old,event:'schedule'},
+    {id:31,status:'queued',created_at:queued,event:'push'}
+  ]});
+  assert.equal(calls.filter(x=>x[0]==='failure').length,1);
+});
+
 test('una consulta al corriente termina sin alertas', async t => {
   const calls = await runWatchdog(t, {health:fresh()});
   assert.equal(calls.length,0);
