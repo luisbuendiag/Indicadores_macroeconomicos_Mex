@@ -66,6 +66,28 @@ test('una consulta al corriente termina sin alertas', async t => {
   assert.equal(calls.length,0);
 });
 
+test('cola antigua superada por ejecución exitosa no genera alarma falsa', async t => {
+  const now = Date.now();
+  const runs = [
+    {id: 1, workflow_id: 100, status:'queued',
+      created_at:new Date(now-3*3600000).toISOString()},
+    {id: 2, workflow_id: 100, status:'completed', conclusion:'success',
+      created_at:new Date(now-40*60000).toISOString(),
+      updated_at:new Date(now-10*60000).toISOString()},
+  ];
+  const calls = await runWatchdog(t, {health:fresh(),runs});
+  assert.deepEqual(calls, []);
+});
+
+test('cola antigua sin éxito posterior sí requiere atención', async t => {
+  const now = Date.now();
+  const runs = [{id: 9, workflow_id:100, status:'queued',
+    created_at:new Date(now-3*3600000).toISOString()}];
+  const calls = await runWatchdog(t, {health:fresh(),runs});
+  assert.equal(calls.some(row=>row[0] === 'failure'),true);
+  assert.equal(calls.some(row=>row[0] === 'dispatch'),false);
+});
+
 test('la vigilancia reintenta lecturas de GitHub con error 500, sin repetir escrituras', async()=>{
  let calls=0;const result=await retryRead(async()=>{if(++calls===1)throw Object.assign(new Error('Server Error'),{status:500});return 'ok';},async()=>{});
  assert.equal(result,'ok');assert.equal(calls,2);
