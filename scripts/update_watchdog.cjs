@@ -26,6 +26,26 @@ async function readPublic(url) {
   }
 }
 
+// Una ejecución en cola puede quedar huérfana aunque otra ejecución del mismo
+// workflow ya haya terminado correctamente. No bloquear recuperaciones por colas
+// superadas; sí vigilar ejecuciones en progreso y colas sin sucesor exitoso.
+function relevantActiveRuns(runs) {
+  const key = run => run.workflow_id ?? run.path ?? null;
+  return runs.filter(run => {
+    if (run.status === 'completed') return false;
+    if (!['queued', 'waiting', 'pending'].includes(run.status)) return true;
+    const created = Date.parse(run.created_at);
+    const identity = key(run);
+    if (!identity || !Number.isFinite(created)) return true;
+    const superseded = runs.some(other => {
+      if (key(other) !== identity || other.conclusion !== 'success') return false;
+      const done = Date.parse(other.updated_at);
+      return Number.isFinite(done) && done > created;
+    });
+    return !superseded;
+  });
+}
+
 async function watchdog({github, context, core}) {
   const policy = JSON.parse(fs.readFileSync('config/update_policy.json', 'utf8'));
   const {assessHealth} = await import(pathToFileURL(path.resolve('assets/js/update_health.mjs')));
@@ -41,7 +61,7 @@ async function watchdog({github, context, core}) {
   const runLists = await Promise.all(['update-data.yml', 'deploy-pages.yml'].map(workflow_id =>
     retryRead(() => github.rest.actions.listWorkflowRuns({...context.repo, workflow_id, branch: 'main', per_page: 100}))));
   const runs = runLists.flatMap(r => r.data.workflow_runs);
-  const active = runs.filter(r => r.status !== 'completed');
+  const active = relevantActiveRuns(runs);
   // No competir con una corrida válida ni publicar encima de otra.
   const running = active.some(r => now - new Date(r.created_at) < policy.max_run_minutes * 60000);
   const stuck = active.some(r => now - new Date(r.created_at) >= policy.max_run_minutes * 60000);
@@ -76,4 +96,4 @@ async function watchdog({github, context, core}) {
   }
   await summary.addRaw(body).write();
 }
-module.exports = {watchdog, retryRead};
+module.exports = {watchdog, retryRead, relevantActiveRuns};
