@@ -38,10 +38,23 @@ async function watchdog({github, context, core}) {
   const check = assessHealth(publicHealth, policy, now);
   const source = assessHealth(repoHealth, policy, now);
   const summary = core.summary.addHeading('Vigilancia de actualizaciones');
-  const runLists = await Promise.all(['update-data.yml', 'deploy-pages.yml'].map(workflow_id =>
+  const workflows = ['update-data.yml', 'deploy-pages.yml'];
+  const runLists = await Promise.all(workflows.map(workflow_id =>
     retryRead(() => github.rest.actions.listWorkflowRuns({...context.repo, workflow_id, branch: 'main', per_page: 100}))));
-  const runs = runLists.flatMap(r => r.data.workflow_runs);
-  const active = runs.filter(r => r.status !== 'completed');
+  // Conservar el origen: la comparación de corridas supersedidas debe ser
+  // dentro del MISMO workflow, no entre un deploy y una actualización.
+  const runs = runLists.flatMap((result, index) =>
+    (result.data.workflow_runs || []).map(run => ({...run, monitored_workflow: workflows[index]})));
+  const supersededQueued = run => run.status === 'queued' &&
+    Number.isFinite(new Date(run.created_at).getTime()) &&
+    runs.some(later => later.monitored_workflow === run.monitored_workflow &&
+      later.conclusion === 'success' && later.status === 'completed' &&
+      new Date(later.created_at).getTime() > new Date(run.created_at).getTime() &&
+      Number.isFinite(new Date(later.updated_at).getTime()));
+  // GitHub puede conservar entradas queued antiguas aunque una nueva corrida
+  // de ese mismo workflow ya haya concluido con éxito. No marcar como "atasco"
+  // ese trabajo supersedido; sí vigilar colas nuevas y trabajos in_progress.
+  const active = runs.filter(r => r.status !== 'completed' && !supersededQueued(r));
   // No competir con una corrida válida ni publicar encima de otra.
   const running = active.some(r => now - new Date(r.created_at) < policy.max_run_minutes * 60000);
   const stuck = active.some(r => now - new Date(r.created_at) >= policy.max_run_minutes * 60000);
