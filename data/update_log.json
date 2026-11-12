@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-11-12T02:23:42+00:00",
+  "started_at": "2026-11-12T16:00:46+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -24,7 +24,7 @@
     "INEGI SIC: 562 observaciones (serie 214309, base BIE-BISE); última Oct 26 = 100.517374; actualización BIE 06/11/2026 12:00:00 a. m..",
     "INEGI SIC: 274 observaciones (serie 214311, base BIE-BISE); última Oct 26 = 99.434514; actualización BIE 03/11/2026 12:00:00 a. m..",
     "INEGI SIC: 550 observaciones (serie 214313, base BIE-BISE); última Oct 26 = 100.355287; actualización BIE 10/11/2026 12:00:00 a. m..",
-    "INEGI SIC: 561 observaciones (serie 214315, base BIE-BISE); última Sep 26 = 99.721377; actualización BIE 16/10/2026 12:00:00 a. m..",
+    "INEGI SIC: 562 observaciones (serie 214315, base BIE-BISE); última Oct 26 = 100.229716; actualización BIE 12/11/2026 12:00:00 a. m..",
     "INEGI SIC: 562 observaciones (serie 214317, base BIE-BISE); última Oct 26 = 98.776853; actualización BIE 04/11/2026 12:00:00 a. m..",
     "INEGI SIC: 562 observaciones (serie 214319, base BIE-BISE); última Oct 26 = 100.636749; actualización BIE 04/11/2026 12:00:00 a. m..",
     "INEGI IGAE: 404 observaciones (serie 737121, base BIE-BISE); última Ago 26 = 108.317094; actualización BIE 23/10/2026 12:00:00 a. m..",
@@ -481,7 +481,7 @@
     "frescura: INPP -> ACTUALIZADO",
     "frescura: SIC -> ACTUALIZADO",
     "frescura: IMOAM -> ACTUALIZADO",
-    "meta: last_update_ct=2026-11-11T20:37:39-06:00",
+    "meta: last_update_ct=2026-11-12T10:17:49-06:00",
     "notas: 15 vigentes (0 provisionadas desde machote)"
   ],
   "consultas": [
@@ -2697,11 +2697,11 @@
       "fuente": "inegi",
       "indicador": "SIC",
       "serie": "214315",
-      "observaciones": 561,
+      "observaciones": 562,
       "ultima_observacion": "Oct 26",
-      "ultimo_valor": 99.721377,
+      "ultimo_valor": 100.229716,
       "observacion_previa": "Ago 26",
-      "actualizacion_fuente": "16/10/2026 12:00:00 a. m.",
+      "actualizacion_fuente": "12/11/2026 12:00:00 a. m.",
       "dato_nuevo": true,
       "resultado": "consulta válida"
     },
@@ -3968,5 +3968,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-11-12T02:37:45+00:00"
+  "finished_at": "2026-11-12T16:17:57+00:00"
 }
