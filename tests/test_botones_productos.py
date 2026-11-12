@@ -77,7 +77,11 @@ def test_excel_files_exist_for_all_available():
 
 def test_nota_disabled_cause():
     src = product_toolbar_source()
-    assert 'productBtn("Descargar nota Word"' in src
+    # El texto visible cambió; preservar el contrato del archivo DOCX y la
+    # habilitación independiente, no forzar una etiqueta comercial antigua.
+    assert 'productBtn("Nota Análisis Indicador"' in src
+    assert '${ind.key}_nota.docx' in src
+    assert "downloadProduct(notaUrl(ind)" in src
     assert "Nota institucional en preparación" in src
     assert "notaReady = !!ind.nota_disponible" in src
 
