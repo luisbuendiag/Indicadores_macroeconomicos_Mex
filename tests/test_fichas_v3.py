@@ -125,10 +125,17 @@ def test_all_indicators_have_indicator_view():
 
 def test_financial_cards_open_individual_view():
     """Las tarjetas del Entorno financiero usan setView(clave)."""
-    entorno_render = re.search(r"function renderEntorno\(\).*?(?=\nfunction |\Z)", APP, re.S)
-    assert entorno_render
-    assert "panoramaCard(ind)" in entorno_render.group(0)
-    # Los 4 complementarios aparecen en la sección financiera.
+    # La interfaz ya separa Economía (IED) y Banxico en páginas por fuente.
+    # Sus tarjetas siguen abriendo la ficha individual con setView(ind.key).
+    grupos = re.search(r"function renderSources\(\).*?(?=\nfunction |\Z)", APP, re.S)
+    assert grupos
+    assert "SOURCE_GROUPS.forEach(group" in grupos.group(0)
+    assert "group.indicators.map(getInd).filter(Boolean).forEach(ind=>grid.append(panoramaCard(ind)))" in grupos.group(0)
+    tarjetas = re.search(r"function panoramaCard\(ind\).*?(?=\nfunction |\Z)", APP, re.S)
+    assert tarjetas and "onclick: () => setView(ind.key)" in tarjetas.group(0)
+    assert 'id:"economia", label:"Secretaría de Economía", indicators:["IED"]' in CONFIG
+    assert 'id:"banxico", label:"Banco de México", indicators:["TIPOCAMBIO","TASA","RESERVAS"]' in CONFIG
+    # Los 4 complementarios aparecen en páginas financieras según fuente.
     for k in ["IED", "TIPOCAMBIO", "TASA", "RESERVAS"]:
         assert f'"{k}"' in CONFIG
     # IED es complementario (Entorno financiero); EMOE y SIC son principales.
@@ -177,8 +184,10 @@ def test_individual_excel_routes():
 def test_navegacion_prev_next_por_seccion():
     """indicatorToolbar usa la sección correcta (PRINCIPAL o COMPLEMENTARIOS)."""
     assert "function indicatorSection(key)" in APP
-    assert "if (PRINCIPAL.includes(key)) return PRINCIPAL" in APP
-    assert "if (COMPLEMENTARIOS.includes(key)) return COMPLEMENTARIOS" in APP
+    assert "SOURCE_GROUPS.find(g=>g.indicators.includes(key))?.indicators || ORDER" in APP
+    assert "const backTarget = sourceView(key)" in APP
+    assert "const prev = idx > 0 ? section[idx - 1] : null" in APP
+    assert "const next = idx >= 0 && idx < section.length - 1 ? section[idx + 1] : null" in APP
 
     # Reproduce el cálculo de prev/next usando las listas de config.js.
     def nav(section, key):
@@ -192,10 +201,12 @@ def test_navegacion_prev_next_por_seccion():
     assert nav(EXPECTED_PRINCIPAL, "IMFBCF") == ("CONSUMO", "BCMM")
     assert nav(EXPECTED_PRINCIPAL, "SIC") == ("PIBSEC", "IOAE")
     assert nav(EXPECTED_PRINCIPAL, "BCMM") == ("IMFBCF", None)
-    assert nav(EXPECTED_COMPLEMENTARIOS, "IED") == (None, "TIPOCAMBIO")
-    assert nav(EXPECTED_COMPLEMENTARIOS, "TIPOCAMBIO") == ("IED", "TASA")
-    assert nav(EXPECTED_COMPLEMENTARIOS, "TASA") == ("TIPOCAMBIO", "RESERVAS")
-    assert nav(EXPECTED_COMPLEMENTARIOS, "RESERVAS") == ("TASA", None)
+    # IED pertenece a Economía, nunca salta accidentalmente a Banxico.
+    assert nav(["IED"], "IED") == (None, None)
+    banxico = ["TIPOCAMBIO", "TASA", "RESERVAS"]
+    assert nav(banxico, "TIPOCAMBIO") == (None, "TASA")
+    assert nav(banxico, "TASA") == ("TIPOCAMBIO", "RESERVAS")
+    assert nav(banxico, "RESERVAS") == ("TASA", None)
 
 
 def test_calendario_filtrado_por_indicador():
