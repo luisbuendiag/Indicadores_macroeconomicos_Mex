@@ -42,7 +42,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "a5f6c688ecb3025e6ad979b8af6130d734587f7071a447a40ac914d17ef6b7db"
+    "sha256": "c6066dbc2be3afdd583c38ba30f86123351d56d70a84c3c8777164c7648d5fbf"
   },
   "PIBSEC": {
     "sheets": 2,
@@ -159,7 +159,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "845c248aaec80c75aeb3010fd08c16dd170e124f7d7290754ede7df976c863a9"
+    "sha256": "c4906d216774881c16bcd959b16cdb17c73e4e8cd8deb7600b4744c73811ca48"
   },
   "SIC": {
     "sheets": 1,
@@ -330,7 +330,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "ec61b79c25d761d89ad3e135a329a1245d26a9646f416de7ae7fb6c4d3136d7b"
+    "sha256": "e13c9b9419568cebb0d7fa41ac622cf9aba79c185aed5ea0f0d4224c24e0e9bb"
   },
   "IOAE": {
     "sheets": 1,
@@ -456,7 +456,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "91c09e5fa357e7cd891ad7d8a65daa4da083743b7527df327ec5f9a197c36760"
+    "sha256": "baf98616f8383f32442ad952760f31c4a4b2d5fdfb167f7f9567e42f6c8220fa"
   },
   "IGAE": {
     "sheets": 1,
@@ -546,7 +546,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "581098ddc3e1a243f7ead7f1e4ae30f69c88c8b7055defb2567700f6535a7102"
+    "sha256": "1e9e3002224e191b4274a743dcbbc4718e215076274f45a271625a6fdabaa0d2"
   },
   "IMAI": {
     "sheets": 3,
@@ -717,7 +717,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "aba66a546359a1283bb6534486e7571c94a1414feeeb64672a281885e7fa17e2"
+    "sha256": "586d2197d4ea9b9f0f97a8d3018bc1ed63465c8e6df3632e415ce329b4df1b65"
   },
   "IMOAM": {
     "sheets": 1,
@@ -780,7 +780,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "e0fb134be050182bc97dc7d793106e4a746488bca18cdd5fc5e9388b2f84c999"
+    "sha256": "2280ba048f0d6bb1c71f1c8be5f70115a369f31187a6e7a4f45799368d34c12c"
   },
   "EMIM": {
     "sheets": 2,
@@ -951,7 +951,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "de6ead96237bcea823b0792fb6af923329c3852cd0d49ec5e1adf4cd735e5ea8"
+    "sha256": "ad6733eb67e00ba7dd237278543f1c3b48fdbe97f7ad3b5b2eeb69a837d59a98"
   },
   "EMOE": {
     "sheets": 1,
@@ -1023,7 +1023,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "2bb6c224ba376b3497504de388fb96cec9d6c4ab41e85a757297752ea53f80fe"
+    "sha256": "4d6b2876917100aa3c6e43b311d2be645ed3a9358536bb47e95c404c8e9026f4"
   },
   "DESOCUP": {
     "sheets": 2,
@@ -1079,7 +1079,7 @@
     "omitted_redundancy": {
       "4": "Misma población expresada en millones; se conserva la serie en personas."
     },
-    "sha256": "2a579dd51eeeb1a040406c302f3c820ff7e135dcc092e1f640a3d170e4a8a895"
+    "sha256": "a1626277a177716d0e36cdf36da25afff66d0126a34fcb9e0b2098d2d5b0baba"
   },
   "INPC": {
     "sheets": 1,
@@ -1250,7 +1250,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "f8a7c06c45c63f0570fd883b659449107d2f21d2928bbb318cafdda00108f1f4"
+    "sha256": "93c7f5bdf5a0551bb2e08bc7469acb0f2ae27d992b5a812689fddf73c85900bb"
   },
   "INPP": {
     "sheets": 1,
@@ -1394,7 +1394,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "dc0bbc14b40d149235eb624c03973770cb82fdd125579ee7d302c77d106417a9"
+    "sha256": "68a8a9fcae03fcecc746e8ef3e6fba164de279cb87c141152035ae145edaec24"
   },
   "CONSUMO": {
     "sheets": 2,
@@ -1736,7 +1736,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "738f89e5bf9bae1663bf4b05af9272d2a1cd237fa46d039aad58434df4d3742d"
+    "sha256": "62d16d2738bde1ea6391e08e21741930cf2a11ff3f73f0091f5c2a5d7f48cab4"
   },
   "IMFBCF": {
     "sheets": 3,
@@ -2105,7 +2105,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "a93472ea56f9956f39e65e41416b9472439d99489fad2fe161debd5d91c24495"
+    "sha256": "4b8859ee3b187e2b82fc8386abf1a1c928f5bc9edf06a815e793e52b610a80ea"
   },
   "BCMM": {
     "sheets": 3,
@@ -2368,7 +2368,7 @@
     "omitted_redundancy": {
       "5": "Se evita la tasa porcentual del saldo; no es interpretable al cambiar de signo."
     },
-    "sha256": "2d2a6a474a37867154ba9e85e22e29449bdda8addbe73946ec8856817ede2272"
+    "sha256": "3a0e15891c4ac647d22497999b84f3fee6ea6e96cb840a484041569cad35a8a6"
   },
   "IED": {
     "sheets": 6,
@@ -2469,7 +2469,7 @@
     "omitted_redundancy": {},
     "state_source_sha256": "237075853fe6b72b5ea5473dc53b5849bfe3220840de293a72c7e15053f283ce",
     "state_period": "2T-2026",
-    "sha256": "e65080bca696767223b1c637da2957837937effa8fe3612de49be38c3f4bf774"
+    "sha256": "7e4948cbb241398ef92e8df5f4b3e38a1c6148cc068d07a6a561a77afb9ff352"
   },
   "TIPOCAMBIO": {
     "sheets": 1,
@@ -2482,12 +2482,12 @@
         "column": 0,
         "label": "Tipo de cambio FIX",
         "first": "1991-11-12",
-        "last": "2026-11-12",
-        "count": 8798
+        "last": "2026-11-13",
+        "count": 8799
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "e7ae29bf12ede3c2d7e69d662fe3aeecde68b8391c521b8f5fbf26f13f7b85ec"
+    "sha256": "bf5c64b33d336de52767835768ede9c51c119937fa62c06424878efc19748199"
   },
   "TASA": {
     "sheets": 2,
@@ -2500,8 +2500,8 @@
         "column": 0,
         "label": "Tasa objetivo (%)",
         "first": "2008-01-21",
-        "last": "2026-11-13",
-        "count": 6776
+        "last": "2026-11-14",
+        "count": 6777
       },
       {
         "key": "TASA_Decisiones",
@@ -2550,7 +2550,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "a285780050cfbbf67274456f61788af2cc771468c816394df29deeb45c8de0e4"
+    "sha256": "24f7ca4b5d926620e62cc9e8ab8485483a0af42a84005f074643891d5885f68c"
   },
   "RESERVAS": {
     "sheets": 1,
@@ -2595,15 +2595,15 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "bd2bfcbc2a394e49612528afc16a609121d30204c60ec41596f4aa0e1ecdf739"
+    "sha256": "fd46a9a9327dae3f80bbe8755f5d3723ab6c451624833baa862c397c6e3c9db6"
   },
   "general": {
     "sheets": 26,
     "charts": 38,
     "formulas": 3440,
-    "input_sha256": "804b74800c455757f3526d306f9bd43536041df319ca7644f5f1511b4f0d4b35",
+    "input_sha256": "7945b026a12bf3082a2853a465ccb72268e20057f77c7218f58fd12cb5c57448",
     "state_source_sha256": "237075853fe6b72b5ea5473dc53b5849bfe3220840de293a72c7e15053f283ce",
     "state_period": "2T-2026",
-    "sha256": "735db83c7056440fc5f6104a3dc472d99b1feaf30b913f71072f33c0cc7e98dd"
+    "sha256": "941826dc3283252df68a8914db7228e873c7613a025ce2bd4c0062c4810bed66"
   }
 }
