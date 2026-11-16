@@ -25,17 +25,6 @@ jobs:
           python-version: '3.11'
       - name: Verificar recolector offline con datos sintéticos
         run: python -m unittest discover -s tests -p test_actions_metrics_readonly.py -v
-      - name: Validación única read-only API Economía desde rama QA
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        run: python -m scripts.audit_actions_metrics --limit 8 --output artifacts/economia_actions_metadata.json
-      - name: Archivar prueba real QA (temporal)
-        uses: actions/upload-artifact@v4
-        with:
-          name: economia-actions-qa-one-shot
-          path: artifacts/economia_actions_metadata.json
-          if-no-files-found: error
-          retention-days: 3
 
   collect-manual:
     if: github.event_name == 'workflow_dispatch'
