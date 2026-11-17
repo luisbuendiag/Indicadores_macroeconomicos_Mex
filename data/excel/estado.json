@@ -42,7 +42,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "0875e4f86db2de7d761d60bb29be9b10a057c67fac3ee1a9e6b051d7b9d6c8ee"
+    "sha256": "aaa9fbb35a6c802f37600266de68399a4d4327f31506def6e4fcb299718601a8"
   },
   "PIBSEC": {
     "sheets": 2,
@@ -159,7 +159,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "a7a1d1cf6b6264b501c0e507abce8dd76e24135b14ad8fe88bd5dfe0bfeb5bb5"
+    "sha256": "e60f6cb58761569fddcce824abbf2172eab3afb43da613995bb3188e61a3edba"
   },
   "SIC": {
     "sheets": 1,
@@ -330,7 +330,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "7a1463d21962ac7069a8b8171b28d7960ef54595b80f446728f4bad0e355591f"
+    "sha256": "287bb2e6328736234a7e3e8df9c9661473ae11c4c4d458b5867ebe00f14ad690"
   },
   "IOAE": {
     "sheets": 1,
@@ -456,7 +456,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "1f2005ea8c5f0cc9a6094ebf37c6f565ee4250c10cf7073713d46a489fcfdaed"
+    "sha256": "88ae0b5c58a7cf4b611772069b46586fe9f81748512c8ce5b559a1b7a0d66a29"
   },
   "IGAE": {
     "sheets": 1,
@@ -546,7 +546,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "5c0797c8862e8b05bb7339656a4917bd951d0cf6ec2240c663ac8d95309c2f33"
+    "sha256": "5ebfcb4691674f6b26d7efff95ab261437cd79c189943c7212084071a59e9d8b"
   },
   "IMAI": {
     "sheets": 3,
@@ -717,7 +717,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "6e4ebcb4a5185df7c1f550655084793361f021230ebdb0af74038a4cd566fb65"
+    "sha256": "96dbf979d73e1a0f66caf20360b4463a08b73948ae38254b477a5d22f432d883"
   },
   "IMOAM": {
     "sheets": 1,
@@ -780,7 +780,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "847bc4cb438e7f9499b876d05eb5038fb395967fe625bf647a961bd2dd61acfb"
+    "sha256": "a7fad9c8a24be118faec18e9627eb0ec6cd0e08506e126370eff87a58dc2822f"
   },
   "EMIM": {
     "sheets": 2,
@@ -793,8 +793,8 @@
         "column": 0,
         "label": "Producción (índice)",
         "first": "2007-01-01",
-        "last": "2026-08-01",
-        "count": 236
+        "last": "2026-09-01",
+        "count": 237
       },
       {
         "key": "EMIM",
@@ -802,8 +802,8 @@
         "column": 1,
         "label": "Producción var. mensual original (%)",
         "first": "2007-02-01",
-        "last": "2026-08-01",
-        "count": 235
+        "last": "2026-09-01",
+        "count": 236
       },
       {
         "key": "EMIM",
@@ -811,8 +811,8 @@
         "column": 2,
         "label": "Producción var. anual original (%)",
         "first": "2008-01-01",
-        "last": "2026-08-01",
-        "count": 224
+        "last": "2026-09-01",
+        "count": 225
       },
       {
         "key": "EMIM",
@@ -820,8 +820,8 @@
         "column": 5,
         "label": "Personal ocupado (índice)",
         "first": "2007-01-01",
-        "last": "2026-08-01",
-        "count": 236
+        "last": "2026-09-01",
+        "count": 237
       },
       {
         "key": "EMIM",
@@ -829,8 +829,8 @@
         "column": 6,
         "label": "Personal var. mensual original (%)",
         "first": "2007-02-01",
-        "last": "2026-08-01",
-        "count": 235
+        "last": "2026-09-01",
+        "count": 236
       },
       {
         "key": "EMIM",
@@ -838,8 +838,8 @@
         "column": 7,
         "label": "Personal var. anual original (%)",
         "first": "2008-01-01",
-        "last": "2026-08-01",
-        "count": 224
+        "last": "2026-09-01",
+        "count": 225
       },
       {
         "key": "EMIM",
@@ -847,8 +847,8 @@
         "column": 10,
         "label": "Horas trabajadas (índice)",
         "first": "2007-01-01",
-        "last": "2026-08-01",
-        "count": 236
+        "last": "2026-09-01",
+        "count": 237
       },
       {
         "key": "EMIM",
@@ -856,8 +856,8 @@
         "column": 11,
         "label": "Horas var. mensual original (%)",
         "first": "2007-02-01",
-        "last": "2026-08-01",
-        "count": 235
+        "last": "2026-09-01",
+        "count": 236
       },
       {
         "key": "EMIM",
@@ -865,8 +865,8 @@
         "column": 12,
         "label": "Horas var. anual original (%)",
         "first": "2008-01-01",
-        "last": "2026-08-01",
-        "count": 224
+        "last": "2026-09-01",
+        "count": 225
       },
       {
         "key": "EMIM",
@@ -874,8 +874,8 @@
         "column": 15,
         "label": "Remuneraciones medias reales (índice)",
         "first": "2024-11-01",
-        "last": "2026-08-01",
-        "count": 22
+        "last": "2026-09-01",
+        "count": 23
       },
       {
         "key": "EMIM",
@@ -883,8 +883,8 @@
         "column": 3,
         "label": "Producción var. mensual desest. (%)",
         "first": "2024-11-01",
-        "last": "2026-08-01",
-        "count": 22
+        "last": "2026-09-01",
+        "count": 23
       },
       {
         "key": "EMIM",
@@ -892,8 +892,8 @@
         "column": 4,
         "label": "Producción var. anual desest. (%)",
         "first": "2024-11-01",
-        "last": "2026-08-01",
-        "count": 22
+        "last": "2026-09-01",
+        "count": 23
       },
       {
         "key": "EMIM",
@@ -901,8 +901,8 @@
         "column": 8,
         "label": "Personal var. mensual desest. (%)",
         "first": "2024-11-01",
-        "last": "2026-08-01",
-        "count": 22
+        "last": "2026-09-01",
+        "count": 23
       },
       {
         "key": "EMIM",
@@ -910,8 +910,8 @@
         "column": 9,
         "label": "Personal var. anual desest. (%)",
         "first": "2024-11-01",
-        "last": "2026-08-01",
-        "count": 22
+        "last": "2026-09-01",
+        "count": 23
       },
       {
         "key": "EMIM",
@@ -919,8 +919,8 @@
         "column": 13,
         "label": "Horas var. mensual desest. (%)",
         "first": "2024-11-01",
-        "last": "2026-08-01",
-        "count": 22
+        "last": "2026-09-01",
+        "count": 23
       },
       {
         "key": "EMIM",
@@ -928,8 +928,8 @@
         "column": 14,
         "label": "Horas var. anual desest. (%)",
         "first": "2024-11-01",
-        "last": "2026-08-01",
-        "count": 22
+        "last": "2026-09-01",
+        "count": 23
       },
       {
         "key": "EMIM",
@@ -937,8 +937,8 @@
         "column": 16,
         "label": "Remuneraciones var. mensual desest. (%)",
         "first": "2024-11-01",
-        "last": "2026-08-01",
-        "count": 22
+        "last": "2026-09-01",
+        "count": 23
       },
       {
         "key": "EMIM",
@@ -946,12 +946,12 @@
         "column": 17,
         "label": "Remuneraciones var. anual desest. (%)",
         "first": "2024-11-01",
-        "last": "2026-08-01",
-        "count": 22
+        "last": "2026-09-01",
+        "count": 23
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "31127bfa16573a86dd06b557f43f248db395842d805102704749a339554fde13"
+    "sha256": "0b64a52288a52bd69475ce471a84316be949fc53da2b86a3b86401e81ea80dfe"
   },
   "EMOE": {
     "sheets": 1,
@@ -1023,7 +1023,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "1abffe136330b0ee6480fc96a584b70beac32ed81bd2dd0f56f675f060f09a66"
+    "sha256": "02ae7818b122feac760db8b2695b89ec197fdd990f9832806829329f93238506"
   },
   "DESOCUP": {
     "sheets": 2,
@@ -1079,7 +1079,7 @@
     "omitted_redundancy": {
       "4": "Misma población expresada en millones; se conserva la serie en personas."
     },
-    "sha256": "22e33ad5625494aa54c42bbb17fb3bf56a42e467299a19037c3a186755f7ff23"
+    "sha256": "90b3ae686215fb3c6d41bdad0b597523ad30b7eb4e6f06b1f45fb72d699e6a66"
   },
   "INPC": {
     "sheets": 1,
@@ -1250,7 +1250,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "267ea8ee2ce6f6858b27c3fd25866b57c60e772f8568f20b5a0feb56c49913e9"
+    "sha256": "a2433b93926e4b62fc63f9852f24979970453e60959669234fe6b9ca6a835583"
   },
   "INPP": {
     "sheets": 1,
@@ -1394,7 +1394,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "194ddf339decc6fe63d4ae044a4b43f4858fa9ce98807ee0a0e963bcfac594b9"
+    "sha256": "60fcaa5d4a8b684797e6212c59443a3323e80bacd2c762a50430334bab425635"
   },
   "CONSUMO": {
     "sheets": 2,
@@ -1736,7 +1736,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "995490bfeb7737674e91af73a759ec804d7e196da1f9ba51aa0dd6a02c3f6eea"
+    "sha256": "83e54c6947c5fc52cd22d13d3c944cd14299c8c25adcb3decdcc5874a158969f"
   },
   "IMFBCF": {
     "sheets": 3,
@@ -2105,7 +2105,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "c072c9efbdd799aac460f11de1f06dd6c2eea32880fe3e6280ff95fd91b4b040"
+    "sha256": "2ce48a9c493d098a0b9dd7947b791b425ae400ac979731d4c5dc3fbd8adb83c9"
   },
   "BCMM": {
     "sheets": 3,
@@ -2368,7 +2368,7 @@
     "omitted_redundancy": {
       "5": "Se evita la tasa porcentual del saldo; no es interpretable al cambiar de signo."
     },
-    "sha256": "6104b36e1d03998c9ea4129ed8e35edb360573c92349ba59c8ae2936485c70bd"
+    "sha256": "9b0f9725d31a5bef66eba7de49a4caeab1b7b4fb5a756ff4bedeac6901508184"
   },
   "IED": {
     "sheets": 6,
@@ -2469,7 +2469,7 @@
     "omitted_redundancy": {},
     "state_source_sha256": "237075853fe6b72b5ea5473dc53b5849bfe3220840de293a72c7e15053f283ce",
     "state_period": "2T-2026",
-    "sha256": "01b7c9b528ab632d3be0b352437137321cd4ddec418b39eda75a4d461822cc68"
+    "sha256": "12613f135e5df10d9a73028306dfff37358756416228191a7a628343f74a1821"
   },
   "TIPOCAMBIO": {
     "sheets": 1,
@@ -2487,7 +2487,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "a058189ce99def57b621023362502639f46b0b897d7dcde9acda7f4cffa7d5a0"
+    "sha256": "893bd8a89fc85fb54e483b5ac7e77966bb7cd03617265ac14e8d5b539afd58da"
   },
   "TASA": {
     "sheets": 2,
@@ -2550,7 +2550,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "249011b1140a7c8ae3936c021902b8ea1f80eeab04266026e3887891c37567e6"
+    "sha256": "10430cb4135dd4ac5173d7b737391811b2a26b16f57908b43f608a0391a2ed49"
   },
   "RESERVAS": {
     "sheets": 1,
@@ -2595,15 +2595,15 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "fac5265113eb1bdc2b5c959ce5ab0e8851360f751bf8f88c9c77a7f59970a871"
+    "sha256": "ec8e1fbb7bae889848351a09cb5b4ffbb077acdfd9cc114e71a39e9b6e0ec639"
   },
   "general": {
     "sheets": 26,
     "charts": 38,
     "formulas": 3440,
-    "input_sha256": "61299f1d33cae8614ab49dc5f56e0ff9ef8715a74d82587dbf8e14e977fd688c",
+    "input_sha256": "452772f1e442580bcec1bf6194936d197d76e30949c27e6b12bd9c4a367bf08f",
     "state_source_sha256": "237075853fe6b72b5ea5473dc53b5849bfe3220840de293a72c7e15053f283ce",
     "state_period": "2T-2026",
-    "sha256": "e205584e3b4ddaf5c2b628365348d5c49cc56ebf439b7506b32266fc55d7dc3b"
+    "sha256": "43273a9d3ffe8dc38321f85cb130bae33ec687e67810c8190c216c7d78d7fccc"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-17T09:23:35+00:00",
+  "generated_at": "2026-11-17T15:32:56+00:00",
   "indicadores": [
     {
       "indicador": "Estimación Oportuna del Producto Interno Bruto Trimestral",
@@ -178,9 +178,9 @@
       "frecuencia": "Mensual",
       "unidad": "Índice base 2018=100",
       "ajuste_estacional": "Cifras originales y desestacionalizadas",
-      "ultima_observacion": "Ago 26",
-      "periodo_referencia": "Ago 26",
-      "fecha_publicacion": "16 de octubre de 2026",
+      "ultima_observacion": "Sep 26",
+      "periodo_referencia": "Sep 26",
+      "fecha_publicacion": "17 de noviembre de 2026",
       "fecha_consulta": "2026-11-17",
       "fecha_actualizacion_archivo": "2026-11-17",
       "metodo_actualizacion": "INEGI BIE API / boletín PDF",

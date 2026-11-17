@@ -50,17 +50,17 @@
   "EMIM": {
     "status": "vigente",
     "message": "Nota generada y validada por reglas Python",
-    "target_period": "Ago 26",
+    "target_period": "Sep 26",
     "published": {
-      "periodo": "Ago 26",
-      "generated_at": "2026-10-29T16:48:21+00:00",
-      "source_sha256": "86d30223c1e309b04e3af442fa978bea3747299d008433c5e930a3d0614e8241",
-      "fingerprint": "8904c20c925522fd32526a258fa10b0dbd413f6cf482055e0a6f4da21a674ec3",
-      "docx_sha256": "ff0380edeb31e28f6b2553145fc34d08b860d22300f4b236a77e072a0c6bf3e5",
-      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf",
+      "periodo": "Sep 26",
+      "generated_at": "2026-11-17T15:36:36+00:00",
+      "source_sha256": "139d2c819be4c71b573885f05438f753ff4365cf39dd1761a4a7ac1409adafd8",
+      "fingerprint": "496f9e6d9bcd263479caaa29ecedfe8dc9ee96761a7230557962c9c4c99aa3ff",
+      "docx_sha256": "e53dad974341a9cb58cb792f9bc2ffe25edb60c56bb21a66bfaa5cb95b68ec21",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_11.pdf",
       "review_model": "encuestas-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/EMIM/8904c20c925522fd32526a258fa10b0dbd413f6cf482055e0a6f4da21a674ec3-ff0380edeb31"
+      "archive": "data/notas/EMIM/496f9e6d9bcd263479caaa29ecedfe8dc9ee96761a7230557962c9c4c99aa3ff-e53dad974341"
     }
   },
   "EMOE": {

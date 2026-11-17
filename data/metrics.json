@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-17T09:22:58+00:00",
-  "last_update_ct": "2026-11-16T20:44:52-06:00",
+  "generated_at": "2026-11-17T15:32:23+00:00",
+  "last_update_ct": "2026-11-17T03:23:24-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -4343,15 +4343,15 @@
     },
     "EMIM": {
       "kpi": {
-        "assessment": "favorable",
-        "dir": "up",
-        "ultimoFmt": "113.7",
-        "ultimoRaw": 113.7,
-        "ultimoP": "Ago 26",
-        "varText": "+1.7%",
-        "varMag": 1.7000000000000002,
-        "pos": true,
-        "varColor": "#1e5b4f",
+        "assessment": "adverso",
+        "dir": "down",
+        "ultimoFmt": "107.5",
+        "ultimoRaw": 107.5,
+        "ultimoP": "Sep 26",
+        "varText": "-4.8%",
+        "varMag": -4.8,
+        "pos": false,
+        "varColor": "#9b2247",
         "varLabel": "Var. mensual desest.",
         "maxFmt": "115.5",
         "maxRaw": 115.5,
@@ -4359,7 +4359,7 @@
         "minFmt": "64.0",
         "minRaw": 64.0,
         "minP": "Abr 20",
-        "lastI": 235,
+        "lastI": 236,
         "series": [
           90.3,
           85.6,
@@ -4596,7 +4596,8 @@
           110.4,
           110.8,
           112.2,
-          113.7
+          113.7,
+          107.5
         ],
         "periods": [
           "Ene 07",
@@ -4834,29 +4835,30 @@
           "May 26",
           "Jun 26",
           "Jul 26",
-          "Ago 26"
+          "Ago 26",
+          "Sep 26"
         ],
-        "semaforo": "bueno",
-        "yoyText": "+4.1%",
+        "semaforo": "malo",
+        "yoyText": "-1.6%",
         "yoyLabel": "Var. anual desest.",
         "cards": [
           {
             "name": "Producción",
             "idxCol": 0,
-            "idxRaw": 113.7,
-            "idxText": "113.7",
+            "idxRaw": 107.5,
+            "idxText": "107.5",
             "origMomCol": 1,
-            "origMomRaw": 0.013369,
-            "origMomText": "+1.3%",
+            "origMomRaw": -0.054529,
+            "origMomText": "-5.5%",
             "origYoyCol": 2,
-            "origYoyRaw": 0.040256,
-            "origYoyText": "+4.0%",
+            "origYoyRaw": -0.013761,
+            "origYoyText": "-1.4%",
             "desestMomCol": 3,
-            "desestMomRaw": 0.017,
-            "desestMomText": "+1.7%",
+            "desestMomRaw": -0.048,
+            "desestMomText": "-4.8%",
             "desestYoyCol": 4,
-            "desestYoyRaw": 0.041,
-            "desestYoyText": "+4.1%"
+            "desestYoyRaw": -0.016,
+            "desestYoyText": "-1.6%"
           },
           {
             "name": "Personal ocupado",
@@ -4864,41 +4866,41 @@
             "idxRaw": 98.2,
             "idxText": "98.2",
             "origMomCol": 6,
-            "origMomRaw": -0.002033,
-            "origMomText": "-0.2%",
+            "origMomRaw": 0.0,
+            "origMomText": "0.0%",
             "origYoyCol": 7,
-            "origYoyRaw": -0.010081,
-            "origYoyText": "-1.0%",
+            "origYoyRaw": -0.009082,
+            "origYoyText": "-0.9%",
             "desestMomCol": 8,
             "desestMomRaw": -0.001,
             "desestMomText": "-0.1%",
             "desestYoyCol": 9,
-            "desestYoyRaw": -0.01,
-            "desestYoyText": "-1.0%"
+            "desestYoyRaw": -0.009,
+            "desestYoyText": "-0.9%"
           },
           {
             "name": "Horas trabajadas",
             "idxCol": 10,
-            "idxRaw": 97.5,
-            "idxText": "97.5",
+            "idxRaw": 96.6,
+            "idxText": "96.6",
             "origMomCol": 11,
-            "origMomRaw": -0.029851,
-            "origMomText": "-3.0%",
+            "origMomRaw": -0.009231,
+            "origMomText": "-0.9%",
             "origYoyCol": 12,
-            "origYoyRaw": -0.010152,
-            "origYoyText": "-1.0%",
+            "origYoyRaw": -0.002066,
+            "origYoyText": "-0.2%",
             "desestMomCol": 13,
-            "desestMomRaw": 0.0,
-            "desestMomText": "0.0%",
+            "desestMomRaw": -0.002,
+            "desestMomText": "-0.2%",
             "desestYoyCol": 14,
-            "desestYoyRaw": -0.006,
-            "desestYoyText": "-0.6%"
+            "desestYoyRaw": -0.004,
+            "desestYoyText": "-0.4%"
           },
           {
             "name": "Remuneraciones medias reales",
             "idxCol": 15,
-            "idxRaw": 119.1,
-            "idxText": "119.1",
+            "idxRaw": 117.2,
+            "idxText": "117.2",
             "origMomCol": null,
             "origMomRaw": null,
             "origMomText": "—",
@@ -4906,35 +4908,35 @@
             "origYoyRaw": null,
             "origYoyText": "—",
             "desestMomCol": 16,
-            "desestMomRaw": -0.002,
-            "desestMomText": "-0.2%",
+            "desestMomRaw": -0.001,
+            "desestMomText": "-0.1%",
             "desestYoyCol": 17,
-            "desestYoyRaw": 0.027,
-            "desestYoyText": "+2.7%"
+            "desestYoyRaw": 0.037,
+            "desestYoyText": "+3.7%"
           }
         ]
       },
       "yoy": {
-        "mag": 4.1000000000000005,
-        "pos": true,
-        "text": "+4.1%",
+        "mag": -1.6,
+        "pos": false,
+        "text": "-1.6%",
         "label": "Var. anual desest."
       },
       "annualVar": {
-        "mag": 4.1000000000000005,
-        "pos": true,
-        "text": "+4.1%",
+        "mag": -1.6,
+        "pos": false,
+        "text": "-1.6%",
         "label": "Var. anual desest."
       },
       "resumen": [
-        "En agosto de 2026, el índice de producción se ubicó en 113.7 puntos. La variación mensual desestacionalizada fue +1.7% y la anual desestacionalizada +4.1% (anual original: +4.0%).",
-        "En el lado laboral, el personal ocupado 98.2 puntos (-1.0% anual original, -1.0% desest.) y las horas trabajadas 97.5 puntos (-1.0% anual original, -0.6% desest.).",
-        "Las remuneraciones medias reales se ubicaron en 119.1 puntos, con variación anual desestacionalizada de +2.7%.",
-        "A nivel subsectorial, los mayores dinamismos anuales fueron Fabricación de productos derivados del petróleo (+23.5%), Fabricación de equipo de computación (+5.8%), Fabricación de maquinaria (+4.0%); los mayores retrocesos: Fabricación de muebles (-8.5%), Fabricación de prendas de vestir (-3.9%), Otras industrias manufactureras (-3.8%)."
+        "En septiembre de 2026, el índice de producción se ubicó en 107.5 puntos. La variación mensual desestacionalizada fue -4.8% y la anual desestacionalizada -1.6% (anual original: -1.4%).",
+        "En el lado laboral, el personal ocupado 98.2 puntos (-0.9% anual original, -0.9% desest.) y las horas trabajadas 96.6 puntos (-0.2% anual original, -0.4% desest.).",
+        "Las remuneraciones medias reales se ubicaron en 117.2 puntos, con variación anual desestacionalizada de +3.7%.",
+        "A nivel subsectorial, los mayores dinamismos anuales fueron Fabricación de equipo de computación (+7.0%), Industria de la madera (+5.5%), Fabricación de maquinaria (+5.0%); los mayores retrocesos: Fabricación de prendas de vestir (-5.5%), Fabricación de equipo de transporte (-4.9%), Fabricación de muebles (-4.7%)."
       ],
       "analysis": [
-        "En agosto de 2026, la Encuesta Mensual de la Industria Manufacturera se ubicó en 113.7 puntos (índice base 2018=100), con una variación mensual desestacionalizada de +1.70% frente al mes previo. La variación mensual publicada por el INEGI muestra que el indicador aumentó respecto del mes previo. El nivel mostrado es la serie original; la variación mensual se calcula sobre cifras desestacionalizadas.",
-        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 115.5 puntos (marzo de 2023) y un mínimo de 64.0 puntos (abril de 2020). El resultado más reciente se ubicó por encima del promedio del periodo mostrado. El último dato fue superior al del inicio del periodo mostrado. Esta comparación se realiza sobre la serie original, que incorpora efectos estacionales."
+        "En septiembre de 2026, la Encuesta Mensual de la Industria Manufacturera se ubicó en 107.5 puntos (índice base 2018=100), con una variación mensual desestacionalizada de -4.80% frente al mes previo. La variación mensual publicada por el INEGI muestra que el indicador disminuyó respecto del mes previo. El nivel mostrado es la serie original; la variación mensual se calcula sobre cifras desestacionalizadas.",
+        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 115.5 puntos (marzo de 2023) y un mínimo de 64.0 puntos (abril de 2020). El resultado más reciente se ubicó por encima del promedio del periodo mostrado. El último dato fue inferior al del inicio del periodo mostrado. Esta comparación se realiza sobre la serie original, que incorpora efectos estacionales."
       ]
     },
     "TIPOCAMBIO": {
