@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-11-17T16:56:11+00:00",
+  "started_at": "2026-11-17T20:56:34+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -296,8 +296,8 @@
     "imoam: actualizado IMOAM (última obs Sep 26, sin cambio de periodo)",
     "imoam: actualizado IMOAM (última obs Sep 26, sin cambio de periodo)",
     "imoam: actualizado IMOAM (última obs Sep 26, sin cambio de periodo)",
-    "banxico: actualizado TIPOCAMBIO (última obs 2026-11-13, sin cambio de periodo)",
-    "banxico: actualizado TASA (última obs 2026-11-17, sin cambio de periodo)",
+    "banxico: actualizado TIPOCAMBIO (última obs 2026-11-17, dato nuevo)",
+    "banxico: actualizado TASA (última obs 2026-11-18, dato nuevo)",
     "banxico: actualizado RESERVAS (última obs 2026-11-06, sin cambio de periodo)",
     "inegi: actualizado PIB (última obs 2T-26, dato nuevo)",
     "inegi: actualizado PIBSEC (última obs 2T-26, sin cambio de periodo)",
@@ -481,7 +481,7 @@
     "frescura: INPP -> ACTUALIZADO",
     "frescura: SIC -> ACTUALIZADO",
     "frescura: IMOAM -> ACTUALIZADO",
-    "meta: last_update_ct=2026-11-17T11:10:03-06:00",
+    "meta: last_update_ct=2026-11-17T15:11:13-06:00",
     "notas: 15 vigentes (0 provisionadas desde machote)"
   ],
   "consultas": [
@@ -2421,24 +2421,24 @@
       "fuente": "banxico",
       "indicador": "TIPOCAMBIO",
       "serie": "SF43718",
-      "observaciones": 8799,
-      "ultima_observacion": "2026-11-13",
-      "ultimo_valor": 18.5525,
+      "observaciones": 8800,
+      "ultima_observacion": "2026-11-17",
+      "ultimo_valor": 18.4677,
       "observacion_previa": "2026-11-13",
       "actualizacion_fuente": null,
-      "dato_nuevo": false,
+      "dato_nuevo": true,
       "resultado": "consulta válida"
     },
     {
       "fuente": "banxico",
       "indicador": "TASA",
       "serie": "SF61745",
-      "observaciones": 6780,
-      "ultima_observacion": "2026-11-17",
+      "observaciones": 6781,
+      "ultima_observacion": "2026-11-18",
       "ultimo_valor": 6.25,
       "observacion_previa": "2026-11-17",
       "actualizacion_fuente": null,
-      "dato_nuevo": false,
+      "dato_nuevo": true,
       "resultado": "consulta válida"
     },
     {
@@ -3968,5 +3968,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-11-17T17:10:09+00:00"
+  "finished_at": "2026-11-17T21:11:20+00:00"
 }
