@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-17T02:45:13+00:00",
+  "generated_at": "2026-11-17T09:23:48+00:00",
   "as_of": "2026-11-17",
   "fuente": "Calendario oficial de difusión",
   "sources": {
@@ -16343,12 +16343,12 @@
       "category": "Actividad económica",
       "sigla": "EMIM",
       "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "url": "https://www.inegi.org.mx/programas/emim/2018/",
       "deliverables": [
         {
           "type": "comunicado",
           "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "url": "https://www.inegi.org.mx/programas/emim/2018/",
           "label": "Boletín / página oficial",
           "size": null
         }
@@ -21885,12 +21885,12 @@
       "category": "Actividad económica",
       "sigla": "EMIM",
       "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "url": "https://www.inegi.org.mx/programas/emim/2018/",
       "deliverables": [
         {
           "type": "comunicado",
           "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "url": "https://www.inegi.org.mx/programas/emim/2018/",
           "label": "Boletín / página oficial",
           "size": null
         }
