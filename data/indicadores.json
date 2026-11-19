@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-11-19T01:32:11+00:00",
+    "generated_at": "2026-11-19T16:54:07+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-11-18T19:32:11-06:00",
+    "last_update_ct": "2026-11-19T10:54:07-06:00",
     "periodo_referencia_reciente": {
       "period": "Oct 26",
       "period_long": "Oct 26"
@@ -52271,9 +52271,27 @@
             "estimado",
             null
           ]
+        },
+        {
+          "period": "Oct 26",
+          "values": [
+            0.023,
+            0.014,
+            0.032,
+            0.002,
+            0.012,
+            -0.01,
+            0.035,
+            0.025,
+            0.014,
+            0.037,
+            "19 nov 2026",
+            "estimado",
+            null
+          ]
         }
       ],
-      "last_observation": "Sep 26",
+      "last_observation": "Oct 26",
       "last_updated": "2026-11-19",
       "last_checked": "2026-11-19",
       "requiere_token": null,
@@ -52281,19 +52299,19 @@
       "clasificacion": "principal",
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
-      "fecha_publicacion": "20 de octubre de 2026",
-      "periodo_referencia": "Sep 26",
+      "fecha_publicacion": "19 de noviembre de 2026",
+      "periodo_referencia": "Oct 26",
       "fecha_consulta": "2026-11-19",
       "source_origin": "api",
       "metrics": {
         "kpi": {
           "assessment": "favorable",
           "dir": "up",
-          "ultimoFmt": "3.7%",
-          "ultimoRaw": 0.037,
-          "ultimoP": "Sep 26",
-          "varText": "+0.1%",
-          "varMag": 0.1,
+          "ultimoFmt": "2.3%",
+          "ultimoRaw": 0.023,
+          "ultimoP": "Oct 26",
+          "varText": "+0.2%",
+          "varMag": 0.2,
           "pos": true,
           "varColor": "#1e5b4f",
           "varLabel": "Var. mensual estimada",
@@ -52303,7 +52321,7 @@
           "minFmt": "-4.0%",
           "minRaw": -0.04,
           "minP": "Ene 21",
-          "lastI": 68,
+          "lastI": 69,
           "series": [
             -0.04,
             -0.04,
@@ -52373,7 +52391,8 @@
             0.017,
             0.027,
             0.025,
-            0.037
+            0.037,
+            0.023
           ],
           "periods": [
             "Ene 21",
@@ -52444,12 +52463,13 @@
             "Jun 26",
             "Jul 26",
             "Ago 26",
-            "Sep 26"
+            "Sep 26",
+            "Oct 26"
           ],
           "semaforo": "bueno",
-          "icWidth": 2.3000000000000003,
-          "icWidthText": "±2.30 pp",
-          "monthlyText": "+0.1%",
+          "icWidth": 1.8000000000000003,
+          "icWidthText": "±1.80 pp",
+          "monthlyText": "+0.2%",
           "latestObservedP": "Ago 26",
           "latestObservedText": "+3.3%",
           "latestErrorPP": 0.8334999999999995,
@@ -52461,20 +52481,20 @@
         },
         "yoy": null,
         "resumen": [
-          "En septiembre de 2026, el indicador oportuno de la actividad económica se ubicó en 3.7% (variación anual estimada con intervalo de confianza al 95%). El valor de var. mensual estimada fue de +0.1% frente al mes previo.",
+          "En octubre de 2026, el indicador oportuno de la actividad económica se ubicó en 2.3% (variación anual estimada con intervalo de confianza al 95%). El valor de var. mensual estimada fue de +0.2% frente al mes previo.",
           "En la serie mostrada, el indicador oscila entre un máximo de 24.8% (mayo de 2021) y un mínimo de -4.0% (enero de 2021). El último dato se ubica dentro del rango observado en el periodo mostrado.",
           "La variación se clasifica como favorable según la lectura económica del indicador."
         ]
       },
-      "periodo_referencia_oficial": "Septiembre de 2026",
-      "fecha_publicacion_oficial": "20 de octubre de 2026",
+      "periodo_referencia_oficial": "Octubre de 2026",
+      "fecha_publicacion_oficial": "19 de noviembre de 2026",
       "proxima_publicacion": {
-        "fecha_publicacion": "19 de noviembre de 2026",
-        "periodo_referencia": "Octubre de 2026",
+        "fecha_publicacion": "18 de diciembre de 2026",
+        "periodo_referencia": "Noviembre de 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (Sep 26) coincide con el último periodo esperado (Septiembre de 2026).",
-      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf",
+      "motivo_frescura": "El periodo cargado (Oct 26) coincide con el último periodo esperado (Octubre de 2026).",
+      "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_11.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/IOAE/IOAE_datos.xlsx",
       "xlsx_causa": null,
@@ -52482,10 +52502,10 @@
       "nota_causa": null,
       "url_nota_individual": "downloads/indicadores/IOAE/nota/IOAE_nota.docx",
       "url_fuente_oficial": "https://www.inegi.org.mx/investigacion/ioae/",
-      "fecha_ultima_publicacion": "20 de octubre de 2026",
+      "fecha_ultima_publicacion": "19 de noviembre de 2026",
       "regla_publicacion": null,
-      "periodo_boletin": "Sep 26",
-      "numero_boletin": "629/26",
+      "periodo_boletin": "Oct 26",
+      "numero_boletin": "695/26",
       "tipo_documento": "PDF",
       "producto_boletin": "Indicador Oportuno de la Actividad Económica",
       "windows": [
@@ -52520,14 +52540,14 @@
         "available": true,
         "format": "docx",
         "path": "downloads/indicadores/IOAE/nota/IOAE_nota.docx",
-        "periodo": "Sep 26",
+        "periodo": "Oct 26",
         "generated_from": "boletin_validado",
         "automatic": true,
-        "generated_at": "2026-11-05T02:55:19+00:00",
-        "source_sha256": "923e6de1a9af5d03eb871b99801f2fd989b84ce1e90383ef6c6f129be40be863",
-        "fingerprint": "123a5f4821b80b3166a86f50af8ef170387d750ffccc2591e9e289e5026ac04d",
+        "generated_at": "2026-11-19T16:58:57+00:00",
+        "source_sha256": "9e6dd7896be4c705008e680c359c31b5f8288e809bbc57cbb0721e3d900d1cad",
+        "fingerprint": "093ebc89f7425e7c1b0f08d948aa3b7d3dc3508b15619a7d50ab99a9535c2d77",
         "status": "vigente",
-        "target_period": "Sep 26",
+        "target_period": "Oct 26",
         "message": "Nota generada y validada por reglas Python"
       },
       "boletin_validado": true

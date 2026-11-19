@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-19T01:31:43+00:00",
-  "last_update_ct": "2026-11-18T10:44:34-06:00",
+  "generated_at": "2026-11-19T16:53:36+00:00",
+  "last_update_ct": "2026-11-18T19:32:11-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -4160,11 +4160,11 @@
       "kpi": {
         "assessment": "favorable",
         "dir": "up",
-        "ultimoFmt": "3.7%",
-        "ultimoRaw": 0.037,
-        "ultimoP": "Sep 26",
-        "varText": "+0.1%",
-        "varMag": 0.1,
+        "ultimoFmt": "2.3%",
+        "ultimoRaw": 0.023,
+        "ultimoP": "Oct 26",
+        "varText": "+0.2%",
+        "varMag": 0.2,
         "pos": true,
         "varColor": "#1e5b4f",
         "varLabel": "Var. mensual estimada",
@@ -4174,7 +4174,7 @@
         "minFmt": "-4.0%",
         "minRaw": -0.04,
         "minP": "Ene 21",
-        "lastI": 68,
+        "lastI": 69,
         "series": [
           -0.04,
           -0.04,
@@ -4244,7 +4244,8 @@
           0.017,
           0.027,
           0.025,
-          0.037
+          0.037,
+          0.023
         ],
         "periods": [
           "Ene 21",
@@ -4315,12 +4316,13 @@
           "Jun 26",
           "Jul 26",
           "Ago 26",
-          "Sep 26"
+          "Sep 26",
+          "Oct 26"
         ],
         "semaforo": "bueno",
-        "icWidth": 2.3000000000000003,
-        "icWidthText": "±2.30 pp",
-        "monthlyText": "+0.1%",
+        "icWidth": 1.8000000000000003,
+        "icWidthText": "±1.80 pp",
+        "monthlyText": "+0.2%",
         "latestObservedP": "Ago 26",
         "latestObservedText": "+3.3%",
         "latestErrorPP": 0.8334999999999995,
@@ -4331,11 +4333,11 @@
         "yoyLabel": "—"
       },
       "analysis": [
-        "En septiembre de 2026, el indicador oportuno de la actividad económica se ubicó en 3.7% (variación anual estimada con intervalo de confianza al 95%), con un variación mensual estimada marginal de +0.10% frente al mes previo. Este resultado refleja un ritmo de expansión estable respecto a agosto de 2026 (+0.10%), y deja al indicador por encima del promedio del periodo mostrado de 2.6%.",
-        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 24.8% (mayo de 2021) y un mínimo de -4.0% (enero de 2021). El resultado más reciente se ubicó por encima del promedio del periodo mostrado. El último dato fue superior al del inicio del periodo mostrado."
+        "En octubre de 2026, el indicador oportuno de la actividad económica se ubicó en 2.3% (variación anual estimada con intervalo de confianza al 95%), con un variación mensual estimada marginal de +0.20% frente al mes previo. Este resultado refleja una ligera aceleración respecto a septiembre de 2026 (+0.10%), y deja al indicador por debajo del promedio del periodo mostrado de 2.6%.",
+        "A lo largo de la serie mostrada, el indicador osciló entre un máximo de 24.8% (mayo de 2021) y un mínimo de -4.0% (enero de 2021). El resultado más reciente se ubicó por debajo del promedio del periodo mostrado. El último dato fue inferior al del inicio del periodo mostrado."
       ],
       "resumen": [
-        "En septiembre de 2026, el indicador oportuno de la actividad económica se ubicó en 3.7% (variación anual estimada con intervalo de confianza al 95%). El valor de var. mensual estimada fue de +0.1% frente al mes previo.",
+        "En octubre de 2026, el indicador oportuno de la actividad económica se ubicó en 2.3% (variación anual estimada con intervalo de confianza al 95%). El valor de var. mensual estimada fue de +0.2% frente al mes previo.",
         "En la serie mostrada, el indicador oscila entre un máximo de 24.8% (mayo de 2021) y un mínimo de -4.0% (enero de 2021). El último dato se ubica dentro del rango observado en el periodo mostrado.",
         "La variación se clasifica como favorable según la lectura económica del indicador."
       ],
