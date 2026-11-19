@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-11-18T16:44:52+00:00",
-  "as_of": "2026-11-18",
+  "generated_at": "2026-11-19T01:32:36+00:00",
+  "as_of": "2026-11-19",
   "fuente": "Calendario oficial de difusión",
   "sources": {
     "INEGI Sala de Prensa": {
       "status": "ok",
       "count": 1488,
       "message": "1488 eventos consultados del INEGI",
-      "consulted_at": "2026-11-18",
+      "consulted_at": "2026-11-19",
       "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/"
     },
     "Banco de México calendario": {
       "status": "ok",
       "count": 180,
       "message": "180 eventos consultados de Banxico",
-      "consulted_at": "2026-11-18",
+      "consulted_at": "2026-11-19",
       "url": "https://www.banxico.org.mx/publicaciones-y-prensa/calendario-de-publicaciones-banco-de-mexico/"
     },
     "Secretaría de Economía (manual)": {
@@ -16409,7 +16409,7 @@
       "publication_date_display": "19 de noviembre de 2026",
       "reference_period": "Octubre de 2026",
       "frequency": "Mensual",
-      "status": "próximo",
+      "status": "publicado",
       "source": "INEGI Sala de Prensa",
       "institution": "INEGI",
       "category": "Actividad económica",
@@ -21304,35 +21304,6 @@
   ],
   "upcoming": [
     {
-      "indicator": "IOAE",
-      "program": "Indicador Oportuno de la Actividad Económica. Cifras preliminares",
-      "product": "Indicador Oportuno de la Actividad Económica",
-      "publication_date": "2026-11-19",
-      "publication_date_display": "19 de noviembre de 2026",
-      "reference_period": "Octubre de 2026",
-      "frequency": "Mensual",
-      "status": "próximo",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Actividad económica",
-      "sigla": "IOAE",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": "Incluye boletín de indicador. Estas fechas son preliminares, están sujetas al indicador de la actividad industrial de los Estados Unidos cuyo calendario de publicación para 2026 aún no está disponible.",
-      "anio": 2026,
-      "mes": 11,
-      "fecha_iso": "2026-11-19"
-    },
-    {
       "indicator": "IGAE",
       "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018. Cifras preliminares",
       "product": "Indicador Global de la Actividad Económica",
@@ -21882,9 +21853,67 @@
       "anio": 2026,
       "mes": 12,
       "fecha_iso": "2026-12-17"
+    },
+    {
+      "indicator": "IOAE",
+      "program": "Indicador Oportuno de la Actividad Económica. Cifras preliminares",
+      "product": "Indicador Oportuno de la Actividad Económica",
+      "publication_date": "2026-12-18",
+      "publication_date_display": "18 de diciembre de 2026",
+      "reference_period": "Noviembre de 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IOAE",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Incluye boletín de indicador. Estas fechas son preliminares, están sujetas al indicador de la actividad industrial de los Estados Unidos cuyo calendario de publicación para 2026 aún no está disponible.",
+      "anio": 2026,
+      "mes": 12,
+      "fecha_iso": "2026-12-18"
     }
   ],
   "recent": [
+    {
+      "indicator": "IOAE",
+      "program": "Indicador Oportuno de la Actividad Económica. Cifras preliminares",
+      "product": "Indicador Oportuno de la Actividad Económica",
+      "publication_date": "2026-11-19",
+      "publication_date_display": "19 de noviembre de 2026",
+      "reference_period": "Octubre de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IOAE",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Incluye boletín de indicador. Estas fechas son preliminares, están sujetas al indicador de la actividad industrial de los Estados Unidos cuyo calendario de publicación para 2026 aún no está disponible.",
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-19"
+    },
     {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México de la semana al 13 de noviembre de 2026",
@@ -22589,35 +22618,6 @@
       "anio": 2026,
       "mes": 10,
       "fecha_iso": "2026-10-22"
-    },
-    {
-      "indicator": "RESERVAS",
-      "program": "Estado de cuenta del Banco de México de la semana al 16 de octubre de 2026",
-      "product": "Estado de cuenta del Banco de México",
-      "publication_date": "2026-10-20",
-      "publication_date_display": "20 de octubre de 2026",
-      "reference_period": "16 de octubre de 2026",
-      "frequency": "Semanal",
-      "status": "publicado",
-      "source": "Banco de México calendario",
-      "institution": "Banco de México",
-      "category": "Financiero",
-      "sigla": "RESERVAS",
-      "type": "event",
-      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{7F146D64-5720-22DA-22F6-758DA3A53C11}.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{7F146D64-5720-22DA-22F6-758DA3A53C11}.pdf",
-          "label": "Estado de cuenta del Banco de México de la semana al 16 de octubre de 2026",
-          "size": null
-        }
-      ],
-      "comentario": null,
-      "anio": 2026,
-      "mes": 10,
-      "fecha_iso": "2026-10-20"
     }
   ],
   "categories": {
