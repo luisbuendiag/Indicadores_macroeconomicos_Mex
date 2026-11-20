@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-11-20T01:19:35+00:00",
+  "started_at": "2026-11-20T16:12:42+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -17,7 +17,7 @@
     "INEGI SIC: 549 observaciones (serie 214307, base BIE-BISE); última Sep 26 = 0.71979; actualización BIE 04/11/2026 12:00:00 a. m..",
     "INEGI SIC: 560 observaciones (serie 214295, base BIE-BISE); última Ago 26 = 100.692757; actualización BIE 23/10/2026 12:00:00 a. m..",
     "INEGI SIC: 561 observaciones (serie 214297, base BIE-BISE); última Sep 26 = 100.029259; actualización BIE 11/11/2026 12:00:00 a. m..",
-    "INEGI SIC: 488 observaciones (serie 214299, base BIE-BISE); última Ago 26 = 99.843235; actualización BIE 21/10/2026 12:00:00 a. m..",
+    "INEGI SIC: 489 observaciones (serie 214299, base BIE-BISE); última Sep 26 = 99.856005; actualización BIE 20/11/2026 12:00:00 a. m..",
     "INEGI SIC: 562 observaciones (serie 214301, base BIE-BISE); última Oct 26 = 99.49879; actualización BIE 11/11/2026 12:00:00 a. m..",
     "INEGI SIC: 477 observaciones (serie 214303, base BIE-BISE); última Sep 26 = 100.434894; actualización BIE 22/10/2026 12:00:00 a. m..",
     "INEGI SIC: 561 observaciones (serie 214305, base BIE-BISE); última Sep 26 = 101.618013; actualización BIE 27/10/2026 12:00:00 a. m..",
@@ -296,8 +296,8 @@
     "imoam: actualizado IMOAM (última obs Sep 26, sin cambio de periodo)",
     "imoam: actualizado IMOAM (última obs Sep 26, sin cambio de periodo)",
     "imoam: actualizado IMOAM (última obs Sep 26, sin cambio de periodo)",
-    "banxico: actualizado TIPOCAMBIO (última obs 2026-11-19, dato nuevo)",
-    "banxico: actualizado TASA (última obs 2026-11-20, dato nuevo)",
+    "banxico: actualizado TIPOCAMBIO (última obs 2026-11-19, sin cambio de periodo)",
+    "banxico: actualizado TASA (última obs 2026-11-20, sin cambio de periodo)",
     "banxico: actualizado RESERVAS (última obs 2026-11-13, sin cambio de periodo)",
     "inegi: actualizado PIB (última obs 2T-26, dato nuevo)",
     "inegi: actualizado PIBSEC (última obs 2T-26, sin cambio de periodo)",
@@ -481,7 +481,7 @@
     "frescura: INPP -> ACTUALIZADO",
     "frescura: SIC -> ACTUALIZADO",
     "frescura: IMOAM -> ACTUALIZADO",
-    "meta: last_update_ct=2026-11-19T19:34:37-06:00",
+    "meta: last_update_ct=2026-11-20T10:29:13-06:00",
     "notas: 15 vigentes (0 provisionadas desde machote)"
   ],
   "consultas": [
@@ -2424,9 +2424,9 @@
       "observaciones": 8802,
       "ultima_observacion": "2026-11-19",
       "ultimo_valor": 19.027,
-      "observacion_previa": "2026-11-18",
+      "observacion_previa": "2026-11-19",
       "actualizacion_fuente": null,
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -2436,9 +2436,9 @@
       "observaciones": 6783,
       "ultima_observacion": "2026-11-20",
       "ultimo_valor": 6.25,
-      "observacion_previa": "2026-11-19",
+      "observacion_previa": "2026-11-20",
       "actualizacion_fuente": null,
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -2613,11 +2613,11 @@
       "fuente": "inegi",
       "indicador": "SIC",
       "serie": "214299",
-      "observaciones": 488,
+      "observaciones": 489,
       "ultima_observacion": "Sep 26",
-      "ultimo_valor": 99.843235,
+      "ultimo_valor": 99.856005,
       "observacion_previa": "Ago 26",
-      "actualizacion_fuente": "21/10/2026 12:00:00 a. m.",
+      "actualizacion_fuente": "20/11/2026 12:00:00 a. m.",
       "dato_nuevo": true,
       "resultado": "consulta válida"
     },
@@ -3968,5 +3968,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-11-20T01:34:45+00:00"
+  "finished_at": "2026-11-20T16:29:24+00:00"
 }
