@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-11-20T16:29:13+00:00",
+    "generated_at": "2026-11-21T01:06:17+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-11-20T10:29:13-06:00",
+    "last_update_ct": "2026-11-20T19:06:17-06:00",
     "periodo_referencia_reciente": {
       "period": "Oct 26",
       "period_long": "Oct 26"
@@ -506,8 +506,8 @@
         }
       ],
       "last_observation": "3T-26 P",
-      "last_updated": "2026-11-20",
-      "last_checked": "2026-11-20",
+      "last_updated": "2026-11-21",
+      "last_checked": "2026-11-21",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -516,7 +516,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "30 de octubre de 2026",
       "periodo_referencia": "3T-26 P",
-      "fecha_consulta": "2026-11-20",
+      "fecha_consulta": "2026-11-21",
       "periodo_referencia_oficial": "2T-26",
       "fecha_publicacion_oficial": null,
       "proxima_publicacion": {
@@ -3931,8 +3931,8 @@
         }
       ],
       "last_observation": "2T-26",
-      "last_updated": "2026-11-20",
-      "last_checked": "2026-11-20",
+      "last_updated": "2026-11-21",
+      "last_checked": "2026-11-21",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -3941,7 +3941,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "24 de agosto de 2026",
       "periodo_referencia": "2T-26",
-      "fecha_consulta": "2026-11-20",
+      "fecha_consulta": "2026-11-21",
       "metrics": {
         "kpi": {
           "assessment": "favorable",
@@ -10111,8 +10111,8 @@
         }
       ],
       "last_observation": "Ago 26",
-      "last_updated": "2026-11-20",
-      "last_checked": "2026-11-20",
+      "last_updated": "2026-11-21",
+      "last_checked": "2026-11-21",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -10121,7 +10121,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "23 de octubre de 2026",
       "periodo_referencia": "Ago 26",
-      "fecha_consulta": "2026-11-20",
+      "fecha_consulta": "2026-11-21",
       "metrics": {
         "kpi": {
           "assessment": "favorable",
@@ -20666,8 +20666,8 @@
         }
       ],
       "last_observation": "Sep 26",
-      "last_updated": "2026-11-20",
-      "last_checked": "2026-11-20",
+      "last_updated": "2026-11-21",
+      "last_checked": "2026-11-21",
       "source_origin": "api",
       "data_quality": [],
       "requiere_token": "INEGI",
@@ -20677,7 +20677,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "11 de noviembre de 2026",
       "periodo_referencia": "Sep 26",
-      "fecha_consulta": "2026-11-20",
+      "fecha_consulta": "2026-11-21",
       "metrics": {
         "kpi": {
           "assessment": "adverso",
@@ -24925,8 +24925,8 @@
         }
       ],
       "last_observation": "Ago 26",
-      "last_updated": "2026-11-20",
-      "last_checked": "2026-11-20",
+      "last_updated": "2026-11-21",
+      "last_checked": "2026-11-21",
       "source_origin": "api",
       "data_quality": [],
       "requiere_token": "INEGI",
@@ -24936,7 +24936,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "5 de noviembre de 2026",
       "periodo_referencia": "Ago 26",
-      "fecha_consulta": "2026-11-20",
+      "fecha_consulta": "2026-11-21",
       "metrics": {
         "kpi": {
           "assessment": "favorable",
@@ -26337,8 +26337,8 @@
         }
       ],
       "last_observation": "2T-26",
-      "last_updated": "2026-11-20",
-      "last_checked": "2026-11-20",
+      "last_updated": "2026-11-21",
+      "last_checked": "2026-11-21",
       "source_origin": "api",
       "requiere_token": null,
       "serie_confirmada": false,
@@ -26347,7 +26347,7 @@
       "origen_dato": "respaldo",
       "fecha_publicacion": "24 de agosto de 2026",
       "periodo_referencia": "2T-26",
-      "fecha_consulta": "2026-11-20",
+      "fecha_consulta": "2026-11-21",
       "metrics": {
         "kpi": {
           "assessment": "favorable",
@@ -28262,8 +28262,8 @@
         }
       ],
       "last_observation": "Sep 26",
-      "last_updated": "2026-11-20",
-      "last_checked": "2026-11-20",
+      "last_updated": "2026-11-21",
+      "last_checked": "2026-11-21",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -28272,7 +28272,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "22 de octubre de 2026",
       "periodo_referencia": "Sep 26",
-      "fecha_consulta": "2026-11-20",
+      "fecha_consulta": "2026-11-21",
       "metrics": {
         "kpi": {
           "ultimoP": "Sep 26",
@@ -31202,8 +31202,8 @@
         }
       ],
       "last_observation": "Oct 26",
-      "last_updated": "2026-11-20",
-      "last_checked": "2026-11-20",
+      "last_updated": "2026-11-21",
+      "last_checked": "2026-11-21",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -31212,7 +31212,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "9 de noviembre de 2026",
       "periodo_referencia": "Oct 26",
-      "fecha_consulta": "2026-11-20",
+      "fecha_consulta": "2026-11-21",
       "metrics": {
         "kpi": {
           "assessment": "neutral",
@@ -49926,8 +49926,8 @@
         }
       ],
       "last_observation": "Ago 26",
-      "last_updated": "2026-11-20",
-      "last_checked": "2026-11-20",
+      "last_updated": "2026-11-21",
+      "last_checked": "2026-11-21",
       "requiere_token": null,
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -49935,7 +49935,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "5 de noviembre de 2026",
       "periodo_referencia": "Ago 26",
-      "fecha_consulta": "2026-11-20",
+      "fecha_consulta": "2026-11-21",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -52292,8 +52292,8 @@
         }
       ],
       "last_observation": "Oct 26",
-      "last_updated": "2026-11-20",
-      "last_checked": "2026-11-20",
+      "last_updated": "2026-11-21",
+      "last_checked": "2026-11-21",
       "requiere_token": null,
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -52301,7 +52301,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "19 de noviembre de 2026",
       "periodo_referencia": "Oct 26",
-      "fecha_consulta": "2026-11-20",
+      "fecha_consulta": "2026-11-21",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -58113,8 +58113,8 @@
         }
       ],
       "last_observation": "Sep 26",
-      "last_updated": "2026-11-20",
-      "last_checked": "2026-11-20",
+      "last_updated": "2026-11-21",
+      "last_checked": "2026-11-21",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -58122,7 +58122,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "17 de noviembre de 2026",
       "periodo_referencia": "Sep 26",
-      "fecha_consulta": "2026-11-20",
+      "fecha_consulta": "2026-11-21",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -111869,36 +111869,42 @@
           "values": [
             19.027
           ]
+        },
+        {
+          "period": "2026-11-20",
+          "values": [
+            19.0228
+          ]
         }
       ],
-      "last_observation": "2026-11-19",
-      "last_updated": "2026-11-20",
-      "last_checked": "2026-11-20",
+      "last_observation": "2026-11-20",
+      "last_updated": "2026-11-21",
+      "last_checked": "2026-11-21",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
       "fecha_publicacion": null,
-      "periodo_referencia": "2026-11-19",
-      "fecha_consulta": "2026-11-20",
+      "periodo_referencia": "2026-11-20",
+      "fecha_consulta": "2026-11-21",
       "source_origin": "api",
       "metrics": {
         "kpi": {
-          "ultimoP": "19 Nov 26",
-          "ultimoRaw": 19.027,
-          "ultimoFmt": "$19.03",
-          "varText": "+1.90%",
-          "varMag": 0.018996,
+          "ultimoP": "20 Nov 26",
+          "ultimoRaw": 19.0228,
+          "ultimoFmt": "$19.02",
+          "varText": "-0.02%",
+          "varMag": -0.000221,
           "varLabel": "Cambio diario",
-          "pos": true,
-          "varColor": "#1e5b4f",
-          "monthlyText": "+1.23%",
+          "pos": false,
+          "varColor": "#9b2247",
+          "monthlyText": "+1.21%",
           "monthlyLabel": "Cambio mensual",
-          "yoyText": "+3.74%",
+          "yoyText": "+3.64%",
           "yoyLabel": "Cambio anual",
-          "yoyRaw": 0.037403,
-          "yoyMag": 0.037403,
+          "yoyRaw": 0.036382,
+          "yoyMag": 0.036382,
           "yoyPos": true,
           "yoyColor": "#1e5b4f",
           "range12mText": "$16.87 — $19.03",
@@ -111909,7 +111915,7 @@
           "minP": "4 Mar 92",
           "maxFmt": "$25.12",
           "minFmt": "$3.06",
-          "lastI": 8801,
+          "lastI": 8802,
           "series": [
             3.0735,
             3.0712,
@@ -120712,7 +120718,8 @@
             18.5525,
             18.4677,
             18.6723,
-            19.027
+            19.027,
+            19.0228
           ],
           "periods": [
             "1991-11-12",
@@ -129516,29 +129523,30 @@
             "2026-11-13",
             "2026-11-17",
             "2026-11-18",
-            "2026-11-19"
+            "2026-11-19",
+            "2026-11-20"
           ],
           "assessment": "neutral",
-          "dir": "up",
+          "dir": "flat",
           "semaforo": "estable"
         },
         "yoy": {
-          "mag": 0.037403,
+          "mag": 0.036382,
           "pos": true,
-          "text": "+3.74%",
+          "text": "+3.64%",
           "label": "Cambio anual"
         },
         "resumen": [
-          "En 19 de noviembre de 2026, el tipo de cambio FIX se ubicó en $19.03 (pesos por dólar).",
-          "El cambio diario fue de +1.90% respecto al día hábil previo.",
-          "Respecto al último día hábil del mes previo, el FIX registró un cambio mensual de +1.23%.",
-          "A tasa anual, el FIX varió +3.74%; en los últimos 12 meses osciló entre $16.87 — $19.03."
+          "En 20 de noviembre de 2026, el tipo de cambio FIX se ubicó en $19.02 (pesos por dólar).",
+          "El cambio diario fue de -0.02% respecto al día hábil previo.",
+          "Respecto al último día hábil del mes previo, el FIX registró un cambio mensual de +1.21%.",
+          "A tasa anual, el FIX varió +3.64%; en los últimos 12 meses osciló entre $16.87 — $19.03."
         ]
       },
       "periodo_referencia_oficial": "Nov 26",
       "fecha_publicacion_oficial": null,
       "proxima_publicacion": null,
-      "motivo_frescura": "El periodo cargado (2026-11-19) coincide con el último periodo esperado (Nov 26).",
+      "motivo_frescura": "El periodo cargado (2026-11-20) coincide con el último periodo esperado (Nov 26).",
       "url_boletin_oficial": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/TIPOCAMBIO/TIPOCAMBIO_datos.xlsx",
@@ -142617,7 +142625,7 @@
           ]
         }
       ],
-      "fecha_ultima_observacion": "2026-11-19",
+      "fecha_ultima_observacion": "2026-11-20",
       "url_fuente_oficial": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
       "fecha_ultima_publicacion": null,
       "regla_publicacion": null,
@@ -145177,7 +145185,7 @@
         {
           "period": "Nov 26",
           "values": [
-            19.027
+            19.0228
           ]
         }
       ],
@@ -145186,7 +145194,7 @@
         "format": "docx",
         "automatic": false,
         "generated_from": "snapshot_oficial",
-        "periodo": "2026-11-19",
+        "periodo": "2026-11-20",
         "path": "downloads/indicadores/TIPOCAMBIO/nota/TIPOCAMBIO_nota.docx",
         "status": "vigente"
       }
@@ -185912,19 +185920,25 @@
           "values": [
             6.25
           ]
+        },
+        {
+          "period": "2026-11-21",
+          "values": [
+            6.25
+          ]
         }
       ],
-      "last_observation": "2026-11-20",
-      "last_updated": "2026-11-20",
-      "last_checked": "2026-11-20",
+      "last_observation": "2026-11-21",
+      "last_updated": "2026-11-21",
+      "last_checked": "2026-11-21",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
       "fecha_publicacion": null,
-      "periodo_referencia": "2026-11-20",
-      "fecha_consulta": "2026-11-20",
+      "periodo_referencia": "2026-11-21",
+      "fecha_consulta": "2026-11-21",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -186004,7 +186018,7 @@
       "periodo_referencia_oficial": "Nov 26",
       "fecha_publicacion_oficial": null,
       "proxima_publicacion": null,
-      "motivo_frescura": "El periodo cargado (2026-11-20) coincide con el último periodo esperado (Nov 26).",
+      "motivo_frescura": "El periodo cargado (2026-11-21) coincide con el último periodo esperado (Nov 26).",
       "url_boletin_oficial": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/{43236252-D06E-5231-27E8-058810A86A52}.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/TASA/TASA_datos.xlsx",
@@ -204933,7 +204947,7 @@
           ]
         }
       ],
-      "fecha_ultima_observacion": "2026-11-20",
+      "fecha_ultima_observacion": "2026-11-21",
       "url_fuente_oficial": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
       "fecha_ultima_publicacion": null,
       "regla_publicacion": null,
@@ -207655,7 +207669,7 @@
         "format": "docx",
         "automatic": false,
         "generated_from": "snapshot_oficial",
-        "periodo": "2026-11-20",
+        "periodo": "2026-11-21",
         "path": "downloads/indicadores/TASA/nota/TASA_nota.docx",
         "status": "vigente"
       }
@@ -222209,8 +222223,8 @@
         }
       ],
       "last_observation": "2026-11-13",
-      "last_updated": "2026-11-20",
-      "last_checked": "2026-11-20",
+      "last_updated": "2026-11-21",
+      "last_checked": "2026-11-21",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
@@ -222218,7 +222232,7 @@
       "origen_dato": "api",
       "fecha_publicacion": null,
       "periodo_referencia": "Semana al 13 Nov 26",
-      "fecha_consulta": "2026-11-20",
+      "fecha_consulta": "2026-11-21",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -231809,8 +231823,8 @@
         }
       ],
       "last_observation": "Oct 26",
-      "last_updated": "2026-11-20",
-      "last_checked": "2026-11-20",
+      "last_updated": "2026-11-21",
+      "last_checked": "2026-11-21",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -231818,7 +231832,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "3 de noviembre de 2026",
       "periodo_referencia": "Oct 26",
-      "fecha_consulta": "2026-11-20",
+      "fecha_consulta": "2026-11-21",
       "metrics": {
         "kpi": {
           "assessment": "neutral",
@@ -251354,8 +251368,8 @@
         }
       ],
       "last_observation": "Sep 26",
-      "last_updated": "2026-11-20",
-      "last_checked": "2026-11-20",
+      "last_updated": "2026-11-21",
+      "last_checked": "2026-11-21",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -251363,7 +251377,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "27 de octubre de 2026",
       "periodo_referencia": "Sep 26",
-      "fecha_consulta": "2026-11-20",
+      "fecha_consulta": "2026-11-21",
       "metrics": {
         "kpi": {
           "ultimoRaw": -606.078,
@@ -254841,8 +254855,8 @@
         }
       ],
       "last_observation": "Oct 26",
-      "last_updated": "2026-11-20",
-      "last_checked": "2026-11-20",
+      "last_updated": "2026-11-21",
+      "last_checked": "2026-11-21",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -254877,7 +254891,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "07 de agosto de 2026",
       "periodo_referencia": "Oct 26",
-      "fecha_consulta": "2026-11-20",
+      "fecha_consulta": "2026-11-21",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -268183,8 +268197,8 @@
         }
       ],
       "last_observation": "Ago 26",
-      "last_updated": "2026-11-20",
-      "last_checked": "2026-11-20",
+      "last_updated": "2026-11-21",
+      "last_checked": "2026-11-21",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -268219,7 +268233,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "2026-11-04",
       "periodo_referencia": "Oct 26",
-      "fecha_consulta": "2026-11-20",
+      "fecha_consulta": "2026-11-21",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -269771,8 +269785,8 @@
         }
       ],
       "last_observation": "Sep 26",
-      "last_updated": "2026-11-20",
-      "last_checked": "2026-11-20",
+      "last_updated": "2026-11-21",
+      "last_checked": "2026-11-21",
       "requiere_token": null,
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -269781,7 +269795,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "28 de octubre de 2026",
       "periodo_referencia": "Sep 26",
-      "fecha_consulta": "2026-11-20",
+      "fecha_consulta": "2026-11-21",
       "source_origin": "api",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_10.pdf",
       "periodo_boletin": "Sep 26",
