@@ -42,7 +42,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "c8749b2be33ab7cb299c2b32dd1d96ff1b3c5df8c8c4d8feaec6e8dabedd0712"
+    "sha256": "03a273ef5dfdc51a8b5756363895cbeee9db90a79cae5950b4c8568366d22f45"
   },
   "PIBSEC": {
     "sheets": 2,
@@ -64,8 +64,8 @@
         "column": 0,
         "label": "Primarias",
         "first": "1993-01-01",
-        "last": "2026-04-01",
-        "count": 134
+        "last": "2026-07-01",
+        "count": 135
       },
       {
         "key": "PIBSEC",
@@ -73,8 +73,8 @@
         "column": 1,
         "label": "Secundarias",
         "first": "1993-01-01",
-        "last": "2026-04-01",
-        "count": 134
+        "last": "2026-07-01",
+        "count": 135
       },
       {
         "key": "PIBSEC",
@@ -82,8 +82,8 @@
         "column": 2,
         "label": "Terciarias",
         "first": "1993-01-01",
-        "last": "2026-04-01",
-        "count": 134
+        "last": "2026-07-01",
+        "count": 135
       },
       {
         "key": "PIBSEC",
@@ -91,8 +91,8 @@
         "column": 6,
         "label": "Var. trim. PIB (%)",
         "first": "1993-04-01",
-        "last": "2026-04-01",
-        "count": 133
+        "last": "2026-07-01",
+        "count": 134
       },
       {
         "key": "PIBSEC",
@@ -100,8 +100,8 @@
         "column": 8,
         "label": "Var. trim. Primarias (%)",
         "first": "1993-04-01",
-        "last": "2026-04-01",
-        "count": 133
+        "last": "2026-07-01",
+        "count": 134
       },
       {
         "key": "PIBSEC",
@@ -109,8 +109,8 @@
         "column": 10,
         "label": "Var. trim. Secundarias (%)",
         "first": "1993-04-01",
-        "last": "2026-04-01",
-        "count": 133
+        "last": "2026-07-01",
+        "count": 134
       },
       {
         "key": "PIBSEC",
@@ -118,8 +118,8 @@
         "column": 3,
         "label": "Var. trim. Terciarias (%)",
         "first": "1993-04-01",
-        "last": "2026-04-01",
-        "count": 133
+        "last": "2026-07-01",
+        "count": 134
       },
       {
         "key": "PIBSEC",
@@ -127,8 +127,8 @@
         "column": 7,
         "label": "Var. anual PIB (%)",
         "first": "1994-01-01",
-        "last": "2026-04-01",
-        "count": 130
+        "last": "2026-07-01",
+        "count": 131
       },
       {
         "key": "PIBSEC",
@@ -136,8 +136,8 @@
         "column": 9,
         "label": "Var. anual Primarias (%)",
         "first": "1994-01-01",
-        "last": "2026-04-01",
-        "count": 130
+        "last": "2026-07-01",
+        "count": 131
       },
       {
         "key": "PIBSEC",
@@ -145,8 +145,8 @@
         "column": 11,
         "label": "Var. anual Secundarias (%)",
         "first": "1994-01-01",
-        "last": "2026-04-01",
-        "count": 130
+        "last": "2026-07-01",
+        "count": 131
       },
       {
         "key": "PIBSEC",
@@ -154,12 +154,12 @@
         "column": 4,
         "label": "Var. anual Terciarias (%)",
         "first": "1994-01-01",
-        "last": "2026-04-01",
-        "count": 130
+        "last": "2026-07-01",
+        "count": 131
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "2df556674a56223b3984579e976256f827139a03a06250d17be0f011c11cb193"
+    "sha256": "baeda996438f053113f943b47188dc7174c1b43a960abea1659d8e1841045461"
   },
   "SIC": {
     "sheets": 1,
@@ -199,8 +199,8 @@
         "column": 6,
         "label": "Comp. Coincidente: IGAE (puntos)",
         "first": "1980-01-01",
-        "last": "2026-08-01",
-        "count": 560
+        "last": "2026-09-01",
+        "count": 561
       },
       {
         "key": "SIC",
@@ -330,7 +330,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "8b4ffcb5df76d5a5a2f30d2071fcc57c454167fc22a6c923b85995ccfa514869"
+    "sha256": "f7505819ec026c3fd6f65955c03ba044986f7abc6bfde49c8ca313e7e9ea6fe3"
   },
   "IOAE": {
     "sheets": 1,
@@ -433,8 +433,8 @@
         "column": 12,
         "label": "IGAE observado anual (%)",
         "first": "2021-01-01",
-        "last": "2026-08-01",
-        "count": 68
+        "last": "2026-09-01",
+        "count": 69
       },
       {
         "key": "IOAE",
@@ -456,7 +456,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "4f40e545fac412531b994497911e1c193f0e0a4c05fd23662a40a3863e7ae558"
+    "sha256": "a02791e2c831196d3b2ee1fed834cb0e1f3f5b9074c7c250de2a7b93bd2ecaf2"
   },
   "IGAE": {
     "sheets": 1,
@@ -469,8 +469,8 @@
         "column": 0,
         "label": "IGAE (índice)",
         "first": "1993-01-01",
-        "last": "2026-08-01",
-        "count": 404
+        "last": "2026-09-01",
+        "count": 405
       },
       {
         "key": "IGAE",
@@ -478,8 +478,8 @@
         "column": 3,
         "label": "Act. primarias (índice)",
         "first": "1993-01-01",
-        "last": "2026-08-01",
-        "count": 404
+        "last": "2026-09-01",
+        "count": 405
       },
       {
         "key": "IGAE",
@@ -487,8 +487,8 @@
         "column": 5,
         "label": "Act. secundarias (índice)",
         "first": "1993-01-01",
-        "last": "2026-08-01",
-        "count": 404
+        "last": "2026-09-01",
+        "count": 405
       },
       {
         "key": "IGAE",
@@ -496,8 +496,8 @@
         "column": 7,
         "label": "Act. terciarias (índice)",
         "first": "1993-01-01",
-        "last": "2026-08-01",
-        "count": 404
+        "last": "2026-09-01",
+        "count": 405
       },
       {
         "key": "IGAE",
@@ -505,8 +505,8 @@
         "column": 2,
         "label": "Var. anual original (%)",
         "first": "1994-01-01",
-        "last": "2026-08-01",
-        "count": 392
+        "last": "2026-09-01",
+        "count": 393
       },
       {
         "key": "IGAE",
@@ -514,8 +514,8 @@
         "column": 4,
         "label": "Var. anual act. primarias (%)",
         "first": "1994-01-01",
-        "last": "2026-08-01",
-        "count": 392
+        "last": "2026-09-01",
+        "count": 393
       },
       {
         "key": "IGAE",
@@ -523,8 +523,8 @@
         "column": 6,
         "label": "Var. anual act. secundarias (%)",
         "first": "1994-01-01",
-        "last": "2026-08-01",
-        "count": 392
+        "last": "2026-09-01",
+        "count": 393
       },
       {
         "key": "IGAE",
@@ -532,8 +532,8 @@
         "column": 8,
         "label": "Var. anual act. terciarias (%)",
         "first": "1994-01-01",
-        "last": "2026-08-01",
-        "count": 392
+        "last": "2026-09-01",
+        "count": 393
       },
       {
         "key": "IGAE",
@@ -541,12 +541,12 @@
         "column": 1,
         "label": "Var. mensual desest. (%)",
         "first": "2024-11-01",
-        "last": "2026-08-01",
-        "count": 22
+        "last": "2026-09-01",
+        "count": 23
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "ebed90633c5673bc011212837d93a7eb6cd47b546931964511dd451dbf8f0de8"
+    "sha256": "8493820f71114f510c7c827ef5ea8a01c28ddda543eba3b3188ec7b65f22dad1"
   },
   "IMAI": {
     "sheets": 3,
@@ -568,8 +568,8 @@
         "column": 6,
         "label": "Minería (índice desest.)",
         "first": "1993-01-01",
-        "last": "2026-08-01",
-        "count": 404
+        "last": "2026-09-01",
+        "count": 405
       },
       {
         "key": "IMAI",
@@ -577,8 +577,8 @@
         "column": 7,
         "label": "Energía, agua y gas (índice desest.)",
         "first": "1993-01-01",
-        "last": "2026-08-01",
-        "count": 404
+        "last": "2026-09-01",
+        "count": 405
       },
       {
         "key": "IMAI",
@@ -586,8 +586,8 @@
         "column": 8,
         "label": "Construcción (índice desest.)",
         "first": "1993-01-01",
-        "last": "2026-08-01",
-        "count": 404
+        "last": "2026-09-01",
+        "count": 405
       },
       {
         "key": "IMAI",
@@ -595,8 +595,8 @@
         "column": 9,
         "label": "Industrias manufactureras (índice desest.)",
         "first": "1993-01-01",
-        "last": "2026-08-01",
-        "count": 404
+        "last": "2026-09-01",
+        "count": 405
       },
       {
         "key": "IMAI",
@@ -694,8 +694,8 @@
         "column": 3,
         "label": "IMAI (índice original)",
         "first": "1993-01-01",
-        "last": "2026-08-01",
-        "count": 404
+        "last": "2026-09-01",
+        "count": 405
       },
       {
         "key": "IMAI",
@@ -717,7 +717,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "be84fc114a1631a1f50f544492ce9f8f283f311a36b364e7b15736030e41b020"
+    "sha256": "3ddc245d5769d73d8137c814ef3241cbfdbc1a5ca12f7ea8eb033ab248c97885"
   },
   "IMOAM": {
     "sheets": 1,
@@ -780,7 +780,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "30e455e3712d9acc2aeb200386be9fe90c39d22282536fc5d3ce548a123de1a3"
+    "sha256": "79879f4041929d43b645b9fffb7aa6ab5fc464775a9dd4474f146fea9903d091"
   },
   "EMIM": {
     "sheets": 2,
@@ -951,7 +951,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "a964ba96ba21955e6d9f71c9edf00cb00280d1d5f6f1db22783908338e56d076"
+    "sha256": "fdf0e9fb3d200b7f87c5859e11703c7ab8f5d2b7aa868d56a6407470ee467fcb"
   },
   "EMOE": {
     "sheets": 1,
@@ -1023,7 +1023,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "d2424356a30a7fc5191560b9f017cafb38069f3b0b7645386d25e50d6026e4aa"
+    "sha256": "0f87ba42ee21ce9d8b1539aa2481dd2dcab511cff030dd4af127607666595be4"
   },
   "DESOCUP": {
     "sheets": 2,
@@ -1079,7 +1079,7 @@
     "omitted_redundancy": {
       "4": "Misma población expresada en millones; se conserva la serie en personas."
     },
-    "sha256": "90e75bc815dd7b181f8247be2c0cf11e4f04eb32872f895235bab7e68fec7c65"
+    "sha256": "0bcc0d507cba2f94c17cf5bac6537b71d5fa1af739d610d705b959663b777c0f"
   },
   "INPC": {
     "sheets": 1,
@@ -1250,7 +1250,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "46f3436c3accd1ec3e3a02bbef7eeb3d2716b2f7b547d67237c6adbe04b78368"
+    "sha256": "0e782ca925b070b804b9b89e9189c30fbb1094e180d154aa1eb2075b1a3b8d9e"
   },
   "INPP": {
     "sheets": 1,
@@ -1394,7 +1394,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "be67509c7913fcf887c8f450583946a02ca77101791d79e05008145f3f058568"
+    "sha256": "6f2b5c97ad7d7821484753d1fa764d1a28ec8ec5d92d28857781cfd48416ef34"
   },
   "CONSUMO": {
     "sheets": 2,
@@ -1736,7 +1736,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "09ec78d76dab39a30398e86b8f4a954d410b3cac8bd88036cb6865867781e3ca"
+    "sha256": "eb05842dff41ee49888cad758ee1ec38eccc43beac4d2c26b940f37397c57259"
   },
   "IMFBCF": {
     "sheets": 3,
@@ -2105,7 +2105,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "582c07825e0044c9a3d5fa5ce47afcde52d4534ddca82ba5b3574eeb8abb58e9"
+    "sha256": "a3aa5a8381e3a7a2b3f8617008335da645b70b73ced96fda9ac53b63250dac46"
   },
   "BCMM": {
     "sheets": 3,
@@ -2368,7 +2368,7 @@
     "omitted_redundancy": {
       "5": "Se evita la tasa porcentual del saldo; no es interpretable al cambiar de signo."
     },
-    "sha256": "57d2eb3a8302978b32f0e4ac933153b086ca896783b592e7f1b8e891fa0effb7"
+    "sha256": "9ce1a95362700267e8c84e272bf8286479c3a4804d1a0bd925ddc75b50cb5357"
   },
   "IED": {
     "sheets": 6,
@@ -2469,7 +2469,7 @@
     "omitted_redundancy": {},
     "state_source_sha256": "237075853fe6b72b5ea5473dc53b5849bfe3220840de293a72c7e15053f283ce",
     "state_period": "2T-2026",
-    "sha256": "3732ad9d7895541f762f03543e49d3e3f951c306c707d830c746ceafd5adcc02"
+    "sha256": "1ad2ce2cbbf9452667e12c4153ff58566da8590c874dbd6f6fdd5bf3e342edf7"
   },
   "TIPOCAMBIO": {
     "sheets": 1,
@@ -2482,12 +2482,12 @@
         "column": 0,
         "label": "Tipo de cambio FIX",
         "first": "1991-11-12",
-        "last": "2026-11-20",
-        "count": 8803
+        "last": "2026-11-23",
+        "count": 8804
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "7288eed19b388e0e913359b3eb9db1725cf3157f0bfff81330e375e5eff9ed7a"
+    "sha256": "4268f2fb337ca991c5e58cd516b1c94e777b7b792c8931bdf064c767f36fd30f"
   },
   "TASA": {
     "sheets": 2,
@@ -2500,8 +2500,8 @@
         "column": 0,
         "label": "Tasa objetivo (%)",
         "first": "2008-01-21",
-        "last": "2026-11-21",
-        "count": 6784
+        "last": "2026-11-23",
+        "count": 6786
       },
       {
         "key": "TASA_Decisiones",
@@ -2550,7 +2550,7 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "35f7255462d5f74b453343a32096fe2032f498c8e45f22a2cee64f31eac78d67"
+    "sha256": "984db8b52f83875bb5f5ab4c17c076181a952947c90359ede88a405f8062ab95"
   },
   "RESERVAS": {
     "sheets": 1,
@@ -2595,15 +2595,15 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "9901e5587c3bc7c1d2888a3930667233e6702e4e80f4a698e188c8d16b1575d0"
+    "sha256": "ddf2785839ac089056a224057373c43ce1c5434a0ab22c7e16bfe6250a6ffd2a"
   },
   "general": {
     "sheets": 26,
     "charts": 38,
     "formulas": 3440,
-    "input_sha256": "8727a77fce9fc21522cd40314f5de032d01380779c9bdf4aac3c61ab1c267dc0",
+    "input_sha256": "65ed5710447136eb19c429e42010f3427d3a7c4718e9da09bb85cfbeaf2fdb4a",
     "state_source_sha256": "237075853fe6b72b5ea5473dc53b5849bfe3220840de293a72c7e15053f283ce",
     "state_period": "2T-2026",
-    "sha256": "5574065a5f4c457ba0af84612f70bbc3783c3d16cb2a5beb69e61785024cbe39"
+    "sha256": "c432b5857d42942bc45e666b9478f9dc44d69064586c0910419f996904720388"
   }
 }

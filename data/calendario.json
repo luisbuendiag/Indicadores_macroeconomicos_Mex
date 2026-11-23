@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-11-21T01:06:42+00:00",
-  "as_of": "2026-11-21",
+  "generated_at": "2026-11-23T19:33:47+00:00",
+  "as_of": "2026-11-23",
   "fuente": "Calendario oficial de difusión",
   "sources": {
     "INEGI Sala de Prensa": {
       "status": "ok",
       "count": 1488,
       "message": "1488 eventos consultados del INEGI",
-      "consulted_at": "2026-11-21",
+      "consulted_at": "2026-11-23",
       "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/"
     },
     "Banco de México calendario": {
       "status": "ok",
       "count": 180,
       "message": "180 eventos consultados de Banxico",
-      "consulted_at": "2026-11-21",
+      "consulted_at": "2026-11-23",
       "url": "https://www.banxico.org.mx/publicaciones-y-prensa/calendario-de-publicaciones-banco-de-mexico/"
     },
     "Secretaría de Economía (manual)": {
@@ -16445,20 +16445,34 @@
       "publication_date_display": "23 de noviembre de 2026",
       "reference_period": "Septiembre de 2026",
       "frequency": "Mensual",
-      "status": "próximo",
+      "status": "publicado",
       "source": "INEGI Sala de Prensa",
       "institution": "INEGI",
       "category": "Actividad económica",
       "sigla": "IGAE",
       "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_11.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_11.pdf",
+          "label": "Boletín PDF",
+          "size": "0.27 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_11.docx",
+          "label": "Boletín Word",
+          "size": "0.17 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_11.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.03 MB"
         }
       ],
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
@@ -16474,7 +16488,7 @@
       "publication_date_display": "23 de noviembre de 2026",
       "reference_period": "3er trimestre 2026",
       "frequency": "Trimestral",
-      "status": "próximo",
+      "status": "publicado",
       "source": "INEGI Sala de Prensa",
       "institution": "INEGI",
       "category": "Actividad económica",
@@ -21311,64 +21325,6 @@
   ],
   "upcoming": [
     {
-      "indicator": "IGAE",
-      "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018. Cifras preliminares",
-      "product": "Indicador Global de la Actividad Económica",
-      "publication_date": "2026-11-23",
-      "publication_date_display": "23 de noviembre de 2026",
-      "reference_period": "Septiembre de 2026",
-      "frequency": "Mensual",
-      "status": "próximo",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Actividad económica",
-      "sigla": "IGAE",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 11,
-      "fecha_iso": "2026-11-23"
-    },
-    {
-      "indicator": "PIBSEC",
-      "program": "PIB trimestral por actividad económica, precios constantes",
-      "product": "PIB trimestral por actividad económica, precios constantes",
-      "publication_date": "2026-11-23",
-      "publication_date_display": "23 de noviembre de 2026",
-      "reference_period": "3er trimestre 2026",
-      "frequency": "Trimestral",
-      "status": "próximo",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Actividad económica",
-      "sigla": "PIBSEC",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": null,
-      "anio": 2026,
-      "mes": 11,
-      "fecha_iso": "2026-11-23"
-    },
-    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México",
       "product": "Estado de cuenta del Banco de México",
@@ -21889,9 +21845,139 @@
       "anio": 2026,
       "mes": 12,
       "fecha_iso": "2026-12-18"
+    },
+    {
+      "indicator": "RESERVAS",
+      "program": "Estado de cuenta del Banco de México",
+      "product": "Estado de cuenta del Banco de México",
+      "publication_date": "2026-12-22",
+      "publication_date_display": "22 de diciembre de 2026",
+      "reference_period": "18 de diciembre de 2026",
+      "frequency": "Semanal",
+      "status": "próximo",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Financiero",
+      "sigla": "RESERVAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 12,
+      "fecha_iso": "2026-12-22"
+    },
+    {
+      "indicator": "BCMM",
+      "program": "Balanza Comercial de Mercancías de México. Información oportuna. Cifras preliminares",
+      "product": "Balanza Comercial de Mercancías de México",
+      "publication_date": "2026-12-23",
+      "publication_date_display": "23 de diciembre de 2026",
+      "reference_period": "Noviembre de 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Sector externo",
+      "sigla": "BCMM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 12,
+      "fecha_iso": "2026-12-23"
     }
   ],
   "recent": [
+    {
+      "indicator": "PIBSEC",
+      "program": "PIB trimestral por actividad económica, precios constantes",
+      "product": "PIB trimestral por actividad económica, precios constantes",
+      "publication_date": "2026-11-23",
+      "publication_date_display": "23 de noviembre de 2026",
+      "reference_period": "3er trimestre 2026",
+      "frequency": "Trimestral",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "PIBSEC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-23"
+    },
+    {
+      "indicator": "IGAE",
+      "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018. Cifras preliminares",
+      "product": "Indicador Global de la Actividad Económica",
+      "publication_date": "2026-11-23",
+      "publication_date_display": "23 de noviembre de 2026",
+      "reference_period": "Septiembre de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IGAE",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_11.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_11.pdf",
+          "label": "Boletín PDF",
+          "size": "0.27 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_11.docx",
+          "label": "Boletín Word",
+          "size": "0.17 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_11.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.03 MB"
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-23"
+    },
     {
       "indicator": "IOAE",
       "program": "Indicador Oportuno de la Actividad Económica. Cifras preliminares",
@@ -22546,92 +22632,6 @@
       "anio": 2026,
       "mes": 10,
       "fecha_iso": "2026-10-27"
-    },
-    {
-      "indicator": "IGAE",
-      "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018. Cifras preliminares",
-      "product": "Indicador Global de la Actividad Económica",
-      "publication_date": "2026-10-23",
-      "publication_date_display": "23 de octubre de 2026",
-      "reference_period": "Agosto de 2026",
-      "frequency": "Mensual",
-      "status": "publicado",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Actividad económica",
-      "sigla": "IGAE",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
-          "label": "Boletín PDF",
-          "size": "0.27 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "word",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.docx",
-          "label": "Boletín Word",
-          "size": "0.17 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "excel",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.xlsx",
-          "label": "Boletín Excel",
-          "size": "0.03 MB"
-        }
-      ],
-      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 10,
-      "fecha_iso": "2026-10-23"
-    },
-    {
-      "indicator": "DESOCUP",
-      "program": "Encuesta Nacional de Ocupación y Empleo (ENOE), población de 15 años y más de edad. Indicadores de Ocupación y Empleo. Cifras definitivas",
-      "product": "ENOE · Indicadores mensuales de ocupación y empleo",
-      "publication_date": "2026-10-22",
-      "publication_date_display": "22 de octubre de 2026",
-      "reference_period": "Septiembre de 2026",
-      "frequency": "Mensual",
-      "status": "publicado",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Mercado laboral",
-      "sigla": "ENOE",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_10.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_10.pdf",
-          "label": "Boletín PDF",
-          "size": "0.42 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "word",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_10.docx",
-          "label": "Boletín Word",
-          "size": "0.39 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "excel",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_10.xlsx",
-          "label": "Boletín Excel",
-          "size": "0.03 MB"
-        }
-      ],
-      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 10,
-      "fecha_iso": "2026-10-22"
     }
   ],
   "categories": {

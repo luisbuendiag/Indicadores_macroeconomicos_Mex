@@ -34,17 +34,17 @@
   "IGAE": {
     "status": "vigente",
     "message": "Nota generada y validada por reglas Python",
-    "target_period": "Ago 26",
+    "target_period": "Sep 26",
     "published": {
-      "periodo": "Ago 26",
-      "generated_at": "2026-10-29T15:52:06+00:00",
-      "source_sha256": "3632ec20e073674e8f854b434428ad79a135528a6741c23acb007ed04908c416",
-      "fingerprint": "0c31236228883c6ba80004d32cb859f53bb692a2370f7592d39a81444d1ece57",
-      "docx_sha256": "c87fc19bdc68417a123258ac547524cc3e2164a332074a0f4b1fd6704c1cea15",
-      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+      "periodo": "Sep 26",
+      "generated_at": "2026-11-23T19:37:53+00:00",
+      "source_sha256": "6671e3597476ce0b31f74bae97d98f896e8941d571f1d7c50d6b3fad3b7dcf7a",
+      "fingerprint": "0afe532dcbba81089f341e469ff3cee3f91949b1b80ba4adc1faf72e0f3e0618",
+      "docx_sha256": "4a8e37c95d04200ceffa57349a771ce44266551838cfd3cbf953452024c50381",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_11.pdf",
       "review_model": "actividad-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/IGAE/0c31236228883c6ba80004d32cb859f53bb692a2370f7592d39a81444d1ece57-c87fc19bdc68"
+      "archive": "data/notas/IGAE/0afe532dcbba81089f341e469ff3cee3f91949b1b80ba4adc1faf72e0f3e0618-4a8e37c95d04"
     }
   },
   "EMIM": {
@@ -162,17 +162,17 @@
   "PIBSEC": {
     "status": "vigente",
     "message": "Nota generada y validada por reglas Python",
-    "target_period": "2T-26",
+    "target_period": "3T-26",
     "published": {
-      "periodo": "2T-26",
-      "generated_at": "2026-11-05T02:55:07+00:00",
-      "source_sha256": "c0ae1673e9347a4e31d4cd2fde974b19e6293560c15b419c3656fbe85e987337",
-      "fingerprint": "7b3dca2aa78e404eea5c14d2cadfdd6d235523a201442dce494c38ae6f211c87",
-      "docx_sha256": "d461729e20c80125405cc40e2bc44c9370a1ba90921e22b1bbd998ad79427324",
-      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_08.pdf",
+      "periodo": "3T-26",
+      "generated_at": "2026-11-23T19:38:13+00:00",
+      "source_sha256": "8ba02b658dd8ef132d0c0da7d4a62a13eba421514861402986012bf4a107b4f9",
+      "fingerprint": "2626a5211f6b6ffda72ef249dff1a5cdab6b040ad3d4d587e72f4dcefdbe028e",
+      "docx_sha256": "97cd625dc5e31b23f3a2da118a04233c2db3f253a63a889daed2978e5949cc7e",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_11.pdf",
       "review_model": "pib-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/PIBSEC/7b3dca2aa78e404eea5c14d2cadfdd6d235523a201442dce494c38ae6f211c87-d461729e20c8"
+      "archive": "data/notas/PIBSEC/2626a5211f6b6ffda72ef249dff1a5cdab6b040ad3d4d587e72f4dcefdbe028e-97cd625dc5e3"
     }
   },
   "SIC": {
