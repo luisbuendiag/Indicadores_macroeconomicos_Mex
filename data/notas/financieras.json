@@ -1,26 +1,26 @@
 {
   "TIPOCAMBIO": {
     "period": "2026-11-24",
-    "docx_sha256": "a6586247334e8807beec65821c77c31ac94a65d6d00a1c96819886f227475b52",
+    "docx_sha256": "7892223f5be8128ae13e8f7661f2b13ad6331c17796c00a616a9acabd521f3bc",
     "source": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
-    "generated_at": "2026-11-24T19:15:28.083589+00:00"
+    "generated_at": "2026-11-25T03:23:33.388075+00:00"
   },
   "TASA": {
-    "period": "2026-11-24",
-    "docx_sha256": "80c76edba2bf0ed54b5fc3d7e040faf4518fc4ee0ccbfa21bfc4f538fe982356",
+    "period": "2026-11-25",
+    "docx_sha256": "cb457477538215d238b9b41c5ba1bb2c7bd94c1d872b535e9ebd07ee10d8cb1e",
     "source": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
-    "generated_at": "2026-11-24T19:15:28.959921+00:00"
+    "generated_at": "2026-11-25T03:23:34.440271+00:00"
   },
   "RESERVAS": {
     "period": "2026-11-20",
-    "docx_sha256": "bf678aff2523fa3ee7b879747402c0a8c1a5ffc71ecdb5d91ccb5b2380b9ebdf",
+    "docx_sha256": "59cc63e0627573b65dc12f85e5c07c6e927b4094d0a182c2908bc1f08dee0e52",
     "source": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/estado-cuenta-semanal-reserva.html",
-    "generated_at": "2026-11-24T19:15:29.940793+00:00"
+    "generated_at": "2026-11-25T03:23:35.521479+00:00"
   },
   "IED": {
     "period": "2T-26",
-    "docx_sha256": "8d9588ac67f7c0cf9bcc8189baabe895d25952b1435ce3743e0a5c1522d48cad",
+    "docx_sha256": "17747c56ee60f5add6d5954da0cce0dbf94a224cdb99f4e1606da28a9109aa01",
     "source": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa",
-    "generated_at": "2026-11-24T19:15:30.846523+00:00"
+    "generated_at": "2026-11-25T03:23:36.621331+00:00"
   }
 }

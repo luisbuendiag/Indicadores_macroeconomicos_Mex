@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-24T19:11:08+00:00",
-  "last_update_ct": "2026-11-23T13:33:23-06:00",
+  "generated_at": "2026-11-25T03:18:27+00:00",
+  "last_update_ct": "2026-11-24T13:11:37-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -2929,22 +2929,22 @@
           }
         ],
         "poblacion": {
-          "periodo": "2T-26",
-          "personas": 60040094.0,
-          "millones": 60.040094,
-          "textMillones": "60.0 millones de personas"
+          "periodo": "3T-26",
+          "personas": 60162442.0,
+          "millones": 60.162442,
+          "textMillones": "60.2 millones de personas"
         }
       },
       "analysis": [
         "En septiembre de 2026, la tasa de desocupación fue 2.8% (-0.2 p.p. respecto al mes anterior; -0.1 p.p. respecto al mismo mes del año previo).",
         "Las demás tasas laborales se ubicaron: participación 58.5% (-0.8 p.p.), informalidad 54.3% (-0.8 p.p.), subocupación 6.7% (-0.3 p.p.).",
-        "La población ocupada se ubicó en 60.0 millones de personas en el segundo trimestre de 2026 (dato trimestral).",
+        "La población ocupada se ubicó en 60.2 millones de personas en el tercer trimestre de 2026 (dato trimestral).",
         "Respecto al mismo mes del año previo, la participación cambió -1.1 p.p. y la informalidad -0.6 p.p.."
       ],
       "resumen": [
         "En septiembre de 2026, la tasa de desocupación fue 2.8% (-0.2 p.p. respecto al mes anterior; -0.1 p.p. respecto al mismo mes del año previo).",
         "Las demás tasas laborales se ubicaron: participación 58.5% (-0.8 p.p.), informalidad 54.3% (-0.8 p.p.), subocupación 6.7% (-0.3 p.p.).",
-        "La población ocupada se ubicó en 60.0 millones de personas en el segundo trimestre de 2026 (dato trimestral).",
+        "La población ocupada se ubicó en 60.2 millones de personas en el tercer trimestre de 2026 (dato trimestral).",
         "Respecto al mismo mes del año previo, la participación cambió -1.1 p.p. y la informalidad -0.6 p.p.."
       ],
       "annualVar": {
