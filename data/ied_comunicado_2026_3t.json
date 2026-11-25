@@ -1,0 +1,70 @@
+{
+  "year": 2026,
+  "end_month": 9,
+  "fecha_publicacion": "24 de noviembre de 2026",
+  "acumulado": 43090,
+  "acumulado_previo_original": 40906,
+  "variacion_anual_acumulada_pct": 0.053,
+  "url_boletin": "https://www.gob.mx/se/prensa/mexico-alcanza-un-maximo-historico-de-inversion-extranjera-directa-ied-entre-enero-y-septiembre-de-2026-43-mil-090-millones-de-dolares?idiom=es",
+  "tipo_de_inversion": [
+    {
+      "concepto": "Reinversión de utilidades",
+      "mdd": 34975,
+      "participacion_pct": 81.2
+    },
+    {
+      "concepto": "Cuentas entre compañías",
+      "mdd": 4315,
+      "participacion_pct": 10
+    },
+    {
+      "concepto": "Nuevas inversiones",
+      "mdd": 3800,
+      "participacion_pct": 8.8
+    }
+  ],
+  "pais_origen": [
+    {
+      "pais": "Estados Unidos",
+      "mdd": 19334,
+      "participacion_pct": 44.9
+    },
+    {
+      "pais": "España",
+      "mdd": 6208,
+      "participacion_pct": 14.4
+    },
+    {
+      "pais": "Alemania",
+      "mdd": 2895,
+      "participacion_pct": 6.7
+    },
+    {
+      "pais": "Reino Unido",
+      "mdd": 2586,
+      "participacion_pct": 6
+    },
+    {
+      "pais": "Canadá",
+      "mdd": 2447,
+      "participacion_pct": 5.7
+    }
+  ],
+  "sector_economico": [
+    {
+      "sector": "Manufacturas",
+      "mdd": 19231,
+      "participacion_pct": 44.6
+    },
+    {
+      "sector": "Servicios financieros y de seguros",
+      "mdd": 10635,
+      "participacion_pct": 24.7
+    },
+    {
+      "sector": "Transportes, correos y almacenamiento",
+      "mdd": 3099,
+      "participacion_pct": 7.2
+    }
+  ]
+}

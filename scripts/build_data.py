@@ -1435,7 +1435,9 @@ def apply_freshness_and_meta(payload: dict, log: dict, as_of: date | None = None
         encoding="utf-8",
     )
     for key, m in metrics.items():
-        payload["indicators"][key]["metrics"] = {
+        ind = payload["indicators"][key]
+        ind["metrics"] = {
+            **((ind.get("metrics") or {}) if key == "IED" else {}),
             "kpi": m["kpi"],
             "yoy": m["annualVar"],
             "resumen": m["resumen"],

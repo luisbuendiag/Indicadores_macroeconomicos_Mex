@@ -37,14 +37,16 @@ def facts(ind):
         if len(last['values'])>1 and valid(last['values'][1]):extra.append(f'El cambio semanal publicado fue {last["values"][1]:+,.1f} millones de dólares.')
         extra.append('El saldo de reservas es una variable de balance. Su cambio no identifica por sí solo operaciones de intervención cambiaria.')
     else:
-        extra=[f'El dato principal corresponde al acumulado {last["period_acumulado"]}; se distingue del flujo trimestral.']
+        extra=[f'El dato principal corresponde al acumulado {last["period_acumulado"]}.']
+        if ind.get('corte_de_comunicado'):
+            extra.append('Cifra preliminar del comunicado 114 de la Secretaría de Economía, publicado el 24 de noviembre de 2026.')
         if len(last['values'])>=4 and all(valid(x) for x in last['values'][1:4]):
             amounts=last['values'][1:4]
             if abs(sum(amounts)-v)>2:raise ValueError('Los componentes de IED no concilian')
             extra.append('Del total acumulado, '+', '.join(f'{name}: {n:,.0f} millones de dólares ({n/v*100:.1f}%)' for name,n in zip(['nuevas inversiones','reinversión de utilidades','cuentas entre compañías'],amounts))+'.')
         extra.append('Los flujos registrados son revisables. La IED no representa anuncios de inversión ni el total de la formación bruta de capital fijo.')
     recent=series[-6:]
-    return dict(key=key,period=ind['last_observation'],label=k['ultimoP'],value=v,reading=reading,extra=extra,series=series,table=[['Periodo',UNITS[key]]]+[[r.get('period_acumulado',r['period']),fmt(r['values'][0])] for r in recent],source=ind['fuente']['link'],source_name=ind['fuente']['nombre'])
+    return dict(key=key,period=ind['last_observation'],label=k['ultimoP'],value=v,reading=reading,extra=extra,series=series,table=[['Periodo',UNITS[key]]]+[[r.get('period_acumulado',r['period']),fmt(r['values'][0])] for r in recent],source=ind['url_boletin_oficial'] if ind.get('corte_de_comunicado') else ind['fuente']['link'],source_name=ind['fuente']['nombre'])
 def build(f,template,out):
     x=Layout(template,out);key=f['key'];x.p(TITLES[key],bold=True,size=14);x.p('Corte '+f['label'],size=10)
     x.h('Lectura del indicador');x.p(f['reading'])

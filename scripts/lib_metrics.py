@@ -2322,11 +2322,13 @@ def _ied_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     corte_text = " y ".join(meses) if len(meses) > 1 else meses[0]
     flujo_periodo = fl.get("periodo") or "2T-26"
 
-    bullets = [
-        f"Entre {corte_text} de {anio}, México recibió {prose_val('IED', acum_val)} de IED"
-        + (f", {'una variación anual del ' if (acum_var or 0) >= 0 else 'una caída anual del '}{F._to_fixed(abs(acum_var or 0) * 100, 1, 1)}%" if acum_var is not None else "")
-        + (" más que en el mismo periodo del año previo." if (acum_var or 0) >= 0 else " respecto al mismo periodo del año previo."),
-    ]
+    lectura = f"Entre {corte_text} de {anio}, México recibió {prose_val('IED', acum_val)} de IED"
+    if acum_var is not None:
+        signo = "+" if acum_var >= 0 else "−"
+        tasa = F._to_fixed(abs(acum_var) * 100, 1, 1)
+        base = "la cifra originalmente publicada para el mismo periodo del año anterior"
+        lectura += f" ({signo}{tasa}% frente a {base})"
+    bullets = [lectura + "."]
     if flujo_val is not None:
         q_raw = flujo_periodo or "2T-26"
         q_num = q_raw.split("-")[0] if "-" in q_raw else q_raw[:2]
@@ -2650,7 +2652,7 @@ def compute_all_metrics(payload: dict | None = None, kpicfg: dict | None = None,
             if sic:
                 out[key] = sic
                 continue
-        if key == "IED" and ind.get("metrics", {}).get("acumulado"):
+        if key == "IED":
             ied = _ied_metrics(ind, kpicfg)
             if ied:
                 out[key] = ied
