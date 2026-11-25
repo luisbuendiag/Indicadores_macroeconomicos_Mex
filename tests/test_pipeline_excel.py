@@ -69,7 +69,13 @@ def test_excel_has_historical_sheets_only(tmp_path):
     } <= set(wb.sheetnames)
     assert not {"Resumen ejecutivo","Síntesis de coyuntura","Metodología y fuentes","Control de actualizaciones"}.intersection(wb.sheetnames)
     assert {"PIB","PIBT","SIC","IGAE","BCMM","INPC","INPP","ENOE","Población ocupada","IMFBCF","IOAE","EMIM","EMOE","IED","FIX","TASA","RESERVAS"} <= set(wb.sheetnames)
-    assert all(ws._charts for ws in wb)
+    # El ranking de IED conserva su gráfica. Las tres vistas de datos
+    # nacionales/estatales son tablas filtrables, no duplicados del ranking.
+    table_only = {'IED Historia estatal', 'IED Cifras originales', 'IED Estatal revisada'}
+    assert {ws.title for ws in wb if not ws._charts} == table_only
+    for name in table_only:
+        assert wb[name].auto_filter.ref and wb[name].max_row > 4
+    assert len(wb['IED Ranking estatal']._charts) == 1
 
 
 def test_calendar_build_and_schema():
