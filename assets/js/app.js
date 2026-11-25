@@ -372,8 +372,8 @@ function panoramaCard(ind) {
   const yoy = ind.key === "BCMM" ? null : (metrics.yoy || annualVar(ind, k));
   const deltaCls = k.varMag > 0 ? "up" : (k.varMag < 0 ? "down" : "flat");
   const showYoy = ind.key !== "IED" && ind.key !== "TASA" && yoy && (yoy.mag === null || Math.abs((yoy.mag ?? 0) - (k.ultimoRaw ?? 0)) > 1e-9);
-  const flowKpi = ind.key === "IED" && k.flujoText ? { text: k.flujoText, label: cfg.flowLabel || "Flujo del 2T" } : null;
-  const yoyKpi = ind.key === "IED" && yoy ? { text: yoy.text, label: yoy.label || "Var. anual flujo" } : null;
+  const flowKpi = ind.key === "IED" && k.flujoRaw != null ? { text: k.flujoText, label: `Flujo ${k.flujoP}` } : null;
+  const yoyKpi = ind.key === "IED" && yoy?.text ? { text: yoy.text, label: yoy.label || "Var. anual flujo" } : null;
 
   const decisionKpi = ind.key === "TASA" && k.decisionDisplay
     ? { text: k.decisionDisplay, label: `${k.decisionLabel} · ${k.decisionText}` }
@@ -828,8 +828,8 @@ function renderIndicatorView(key) {
     mini = el("div", { class: "mini-kpis" },
       el("div", { class: "mini dark" }, el("div", { class: "lbl" }, "IED acumulada"), el("div", { class: "num" }, k.ultimoFmt), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),
       el("div", { class: "mini" }, el("div", { class: "lbl" }, "Var. anual del acumulado"), el("div", { class: "num", style: `color:${acColor}` }, k.varText), el("div", { class: "sub" }, cfg.comp)),
-      ind.data_variant !== "originalmente_publicadas" ? el("div", { class: "mini" }, el("div", { class: "lbl" }, `Flujo ${k.flujoP || "del 2T"}`), el("div", { class: "num" }, k.flujoText || "—"), el("div", { class: "sub" }, ind.metrics?.flujo_trimestral?.periodo || "—")) : null,
-      ind.data_variant !== "originalmente_publicadas" ? el("div", { class: "mini" }, el("div", { class: "lbl" }, "Var. anual del flujo"), el("div", { class: "num", style: `color:${flColor}` }, (k.yoy && k.yoy.text) ? k.yoy.text : ((ind.metrics?.flujo_trimestral?.variacion_anual_pct != null ? (ind.metrics.flujo_trimestral.variacion_anual_pct >= 0 ? "+" : "") + (ind.metrics.flujo_trimestral.variacion_anual_pct * 100).toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%" : "—"))), el("div", { class: "sub" }, "Frente al mismo trimestre del año previo")) : null,
+      el("div", { class: "mini" }, el("div", { class: "lbl" }, `Flujo ${k.flujoP || "trimestral"}`), el("div", { class: "num" }, k.flujoText || "—"), el("div", { class: "sub" }, ind.metrics?.flujo_trimestral?.periodo || "—")),
+      el("div", { class: "mini" }, el("div", { class: "lbl" }, "Var. anual del flujo"), el("div", { class: "num", style: `color:${flColor}` }, (k.yoy && k.yoy.text) ? k.yoy.text : ((ind.metrics?.flujo_trimestral?.variacion_anual_pct != null ? (ind.metrics.flujo_trimestral.variacion_anual_pct >= 0 ? "+" : "") + (ind.metrics.flujo_trimestral.variacion_anual_pct * 100).toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%" : "—"))), el("div", { class: "sub" }, "Frente al mismo trimestre del año previo")),
     );
   } else if (ind.key === "TASA") {
     const decisionColor = k.decisionRaw === "sin cambio" ? COLORS.INK : (k.varMag >= 0 ? COLORS.GREEN : COLORS.CRIMSON);
@@ -929,6 +929,10 @@ function renderIndicatorView(key) {
     chartMain.append(el("div", { class: "range-wrap", id: `range-${ind.key}` }));
   } else if (ind.key === "IED") {
     chartMain.classList.add("pibsec-charts");
+    if (ind.corte_de_comunicado) {
+      chartMain.append(el("p", { class: "prose" },
+        "Cifra nacional preliminar del comunicado del 24 de noviembre de 2026. El ranking y la tabla de cifras originales muestran el corte indicado en sus propias series."));
+    }
     const ranking = buildIedRanking(state.iedStates);
     if (ranking) chartMain.append(ranking);
     const ac = el("div", { class: "pibsec-section" });
@@ -1273,7 +1277,7 @@ function breakdown(ind, k) {
       const flujo = m.flujo_trimestral && m.flujo_trimestral.valor != null ? m.flujo_trimestral.valor : null;
       return [
         ["IED acumulada", lastAc[0], "usd"],
-        ...(ind.data_variant === "originalmente_publicadas" ? [] : [["Flujo del 2T", flujo, "usd"]]),
+        ["Flujo trimestral", flujo, "usd"],
         ["Nuevas inversiones", lastAc[1], "usd"],
         ["Reinversión de utilidades", lastAc[2], "usd"],
         ["Cuentas entre compañías", lastAc[3], "usd"],

@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-25T17:16:02+00:00",
-  "last_update_ct": "2026-11-24T21:18:51-06:00",
+  "generated_at": "2026-11-25T17:57:55+00:00",
+  "last_update_ct": "2026-11-25T11:16:28-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -2370,11 +2370,11 @@
       "kpi": {
         "assessment": "favorable",
         "dir": "up",
-        "ultimoFmt": "34,968",
-        "ultimoRaw": 34968,
-        "ultimoP": "Ene-Jun 26",
-        "varText": "+2.1%",
-        "varMag": 2.1,
+        "ultimoFmt": "43,090",
+        "ultimoRaw": 43090,
+        "ultimoP": "Ene-Sep 26",
+        "varText": "+5.3%",
+        "varMag": 5.3,
         "pos": true,
         "varColor": "#1e5b4f",
         "varLabel": "Var. anual del acumulado",
@@ -2608,33 +2608,31 @@
           "2T-26"
         ],
         "semaforo": "bueno",
-        "flujoRaw": 10464.95,
-        "flujoText": "10,465",
-        "flujoP": "2T-26"
+        "flujoRaw": null,
+        "flujoText": "—",
+        "flujoP": "3T-26"
       },
       "yoy": {
-        "mag": -3.5000000000000004,
-        "pos": false,
-        "text": "-3.5%",
+        "mag": 0,
+        "pos": true,
+        "text": "",
         "label": "Var. anual del flujo"
       },
       "annualVar": {
-        "mag": -3.5000000000000004,
-        "pos": false,
-        "text": "-3.5%",
+        "mag": 0,
+        "pos": true,
+        "text": "",
         "label": "Var. anual del flujo"
       },
       "resumen": [
-        "Entre enero y junio de 2026, México recibió $34,968 millones de dólares de IED, una variación anual del 2.1% más que en el mismo periodo del año previo.",
-        "Durante el segundo trimestre de 2026, el flujo exclusivo fue de aproximadamente $10,465 millones de dólares.",
-        "La IED acumulada se compone de Reinversión de utilidades 88.5%, Nuevas inversiones 7.8% y Cuentas entre compañías 3.7% del acumulado.",
-        "Manufacturas concentró 38.6% de la IED acumulada."
+        "Entre enero y septiembre de 2026, México recibió $43,090 millones de dólares de IED (+5.3% frente a la cifra originalmente publicada para el mismo periodo del año anterior).",
+        "La IED acumulada se compone de Reinversión de utilidades 81.2%, Cuentas entre compañías 10.0% y Nuevas inversiones 8.8% del acumulado.",
+        "Manufacturas concentró 44.6% de la IED acumulada."
       ],
       "analysis": [
-        "Entre enero y junio de 2026, México recibió $34,968 millones de dólares de IED, una variación anual del 2.1% más que en el mismo periodo del año previo.",
-        "Durante el segundo trimestre de 2026, el flujo exclusivo fue de aproximadamente $10,465 millones de dólares.",
-        "La IED acumulada se compone de Reinversión de utilidades 88.5%, Nuevas inversiones 7.8% y Cuentas entre compañías 3.7% del acumulado.",
-        "Manufacturas concentró 38.6% de la IED acumulada."
+        "Entre enero y septiembre de 2026, México recibió $43,090 millones de dólares de IED (+5.3% frente a la cifra originalmente publicada para el mismo periodo del año anterior).",
+        "La IED acumulada se compone de Reinversión de utilidades 81.2%, Cuentas entre compañías 10.0% y Nuevas inversiones 8.8% del acumulado.",
+        "Manufacturas concentró 44.6% de la IED acumulada."
       ]
     },
     "DESOCUP": {

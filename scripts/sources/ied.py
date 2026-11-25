@@ -1,8 +1,20 @@
-"""IED oficial: acumulados desde enero y cifras originalmente publicadas TI_OR.
+"""Conector de Inversión Extranjera Directa (IED) — Secretaría de Economía.
 
-fetch usa el archivo validado por ied_estatal. observations conserva cada corte
-original y observations_acumulado compara el mismo corte entre años. Los
-parsers anteriores se mantienen para reproducir el legado, no alimentan fetch.
+Fuente primaria:
+  - Resumen histórico (cifras originalmente publicadas y actualizadas):
+    https://www.gob.mx/cms/uploads/attachment/file/1100772/Datos_originales_y_actualizacion__1_.xlsx
+  - Desglose por tipo, entidad federativa, país de origen y actividad económica:
+    https://www.gob.mx/cms/uploads/attachment/file/1100604/2026_2T_Flujos_TI_AC_3.xlsx
+
+El conector descarga los archivos de gob.mx, los parsea y construye el
+indicador IED con dos series conceptuales:
+
+  - observations: flujo trimestral (IED del trimestre exclusivo), con
+    componentes por tipo de inversión.
+  - metrics.acumulado: serie acumulada al corte (ENE-MAR, ENE-JUN, ...).
+
+Para el 2T-2026 se combina con data/ied_manual_2026_2t.json mientras la
+Secretaría de Economía actualice el XLSX estructurado.
 """
 from __future__ import annotations
 
@@ -255,10 +267,13 @@ def _componentes_flujo_from_manual(manual: dict, ti_1t: dict | None = None) -> d
     }
 
 
-def _build_indicator(resumen: list[dict], manual: dict | None, ti_1t: dict | None, warnings: list[str]) -> dict:
+def _build_indicator(
+    resumen: Path, manual: dict | None, ti_1t: dict | None, warnings: list[str],
+    comunicado: dict | None = None,
+) -> dict:
     """Construye el objeto indicador IED."""
     # Serie acumulada histórica
-    acum = _parse_resumen(Path(resumen) if isinstance(resumen, (str, Path)) else Path(resumen), warnings)
+    acum = _parse_resumen(Path(resumen), warnings)
 
     # Si hay manual 2T, inyectar/actualizar observación 2T-2026
     if manual:
@@ -280,8 +295,23 @@ def _build_indicator(resumen: list[dict], manual: dict | None, ti_1t: dict | Non
                 "acumulado": manual["acumulado"],
             })
 
-    # Calcular flujos trimestrales
+    # El comunicado publica acumulados. Mantener el flujo trimestral en su
+    # serie histórica hasta tener una edición estructurada con el nuevo corte.
+    corte_comunicado = (comunicado["year"], comunicado["end_month"]) if comunicado else None
+    if not acum or corte_comunicado is None or max((a["year"], a["end_month"]) for a in acum) >= corte_comunicado:
+        comunicado = None
     flows = _historical_flows(acum)
+    if comunicado:
+        year, end_month = corte_comunicado
+        acum.append({
+            "year": year,
+            "end_month": end_month,
+            "period_acum": _accum_label(year, end_month),
+            "quarter": _quarter_label(year, end_month),
+            "valor_publicado": comunicado["acumulado"],
+            "valor_actualizado": None,
+            "acumulado": comunicado["acumulado"],
+        })
     flow_by_ym = {(f["year"], f["end_month"]): f["flujo"] for f in flows}
     for a in acum:
         a["flujo"] = flow_by_ym.get((a["year"], a["end_month"]))
@@ -290,12 +320,15 @@ def _build_indicator(resumen: list[dict], manual: dict | None, ti_1t: dict | Non
     # Último periodo
     last = acum_sorted[-1]
 
+    manual_vigente = manual if (last["year"], last["end_month"]) == (2026, 6) else None
+    complemento = comunicado or manual_vigente
+
     # Componentes del flujo del último periodo.
     # Si tenemos 2T manual, calculamos flujo de componentes manualmente.
     comp_flujo: dict[str, float | None] = {"Nuevas inversiones": None, "Reinversión de utilidades": None, "Cuentas entre compañías": None}
     if manual and manual.get("tipo_de_inversion"):
         comp_flujo = _componentes_flujo_from_manual(manual, ti_1t)
-    elif ti_1t:
+    elif ti_1t and (last["year"], last["end_month"]) == (2026, 3):
         # solo tenemos 1T, el flujo = acumulado 1T
         comp_flujo = {
             "Nuevas inversiones": ti_1t.get("nuevas"),
@@ -305,9 +338,9 @@ def _build_indicator(resumen: list[dict], manual: dict | None, ti_1t: dict | Non
 
     # Componentes acumulados del último periodo
     comp_acum: dict[str, float | None] = {}
-    if manual and manual.get("tipo_de_inversion"):
-        comp_acum = {c["concepto"]: c["mdd"] for c in manual["tipo_de_inversion"]}
-    elif ti_1t:
+    if complemento and complemento.get("tipo_de_inversion"):
+        comp_acum = {c["concepto"]: c["mdd"] for c in complemento["tipo_de_inversion"]}
+    elif ti_1t and (last["year"], last["end_month"]) == (2026, 3):
         comp_acum = {
             "Nuevas inversiones": ti_1t.get("nuevas"),
             "Reinversión de utilidades": ti_1t.get("reinversion"),
@@ -318,8 +351,8 @@ def _build_indicator(resumen: list[dict], manual: dict | None, ti_1t: dict | Non
     # contra el mismo corte del año anterior (publicado original).
     last_year, last_end = last["year"], last["end_month"]
     var_acum_pct = None
-    if manual and manual.get("variacion_anual_acumulada_pct") is not None:
-        var_acum_pct = float(manual["variacion_anual_acumulada_pct"])
+    if complemento and complemento.get("variacion_anual_acumulada_pct") is not None:
+        var_acum_pct = float(complemento["variacion_anual_acumulada_pct"])
     else:
         prev = [a for a in acum if a["year"] == last_year - 1 and a["end_month"] == last_end]
         if prev:
@@ -330,8 +363,8 @@ def _build_indicator(resumen: list[dict], manual: dict | None, ti_1t: dict | Non
     # Variación anual del flujo trimestral: preferir la del manual o calcular
     # contra el mismo trimestre del año anterior.
     var_flujo_pct = None
-    if manual and manual.get("variacion_anual_trimestral_pct") is not None:
-        var_flujo_pct = float(manual["variacion_anual_trimestral_pct"])
+    if manual_vigente and manual_vigente.get("variacion_anual_trimestral_pct") is not None:
+        var_flujo_pct = float(manual_vigente["variacion_anual_trimestral_pct"])
     else:
         prev_flow = [f for f in flows if f["year"] == last_year - 1 and f["end_month"] == last_end]
         if prev_flow and prev_flow[0].get("flujo") and last["flujo"]:
@@ -341,6 +374,9 @@ def _build_indicator(resumen: list[dict], manual: dict | None, ti_1t: dict | Non
 
     # Mapa de acumulados publicados originales para variaciones
     publicado_by_ym = {(a["year"], a["end_month"]): a["valor_publicado"] for a in acum}
+
+    if comunicado:
+        publicado_by_ym[(last_year - 1, last_end)] = comunicado["acumulado_previo_original"]
 
     # Variación anual acumulada por corte
     def var_acum_para(a: dict) -> float | None:
@@ -362,6 +398,8 @@ def _build_indicator(resumen: list[dict], manual: dict | None, ti_1t: dict | Non
     # --- Serie 1: flujo trimestral (usado en sparkline y gráfica de flujo) ---
     observations = []
     for a in acum_sorted:
+        if comunicado and a is last:
+            continue
         # componentes del flujo trimestral
         comp_flow = {}
         if a["year"] == 2026 and a["end_month"] == 6:
@@ -386,15 +424,28 @@ def _build_indicator(resumen: list[dict], manual: dict | None, ti_1t: dict | Non
     corte_end = last["end_month"]
     corte_label = last["period_acum"].split()[0]  # "Ene" o "Ene-Mar" etc. simplificado
     observations_acumulado = []
-    for a in acum_sorted:
+    comparables = acum_sorted
+    if comunicado and not any(a["year"] == last_year - 1 and a["end_month"] == corte_end for a in acum_sorted):
+        year = last_year - 1
+        prior = {"year": year, "end_month": corte_end, "period_acum": _accum_label(year, corte_end),
+                 "quarter": _quarter_label(year, corte_end), "acumulado": comunicado["acumulado_previo_original"]}
+        comparables = sorted([*acum_sorted, prior], key=lambda a: (a["year"], a["end_month"]))
+    for a in comparables:
         if a["end_month"] != corte_end:
             continue
         var_a = var_acum_para(a)
         if a["year"] == 2026 and a["end_month"] == 6 and manual and manual.get("variacion_anual_acumulada_pct") is not None:
             var_a = float(manual["variacion_anual_acumulada_pct"])
-        vals = [a["acumulado"], None, None, None, var_a]
-        if a["year"] == 2026 and a["end_month"] == 6 and comp_acum:
-            vals = [a["acumulado"]] + [comp_acum.get(k) for k in comp_keys] + [var_a]
+        valor = a["acumulado"]
+        if comunicado:
+            valor = publicado_by_ym.get((a["year"], a["end_month"]))
+            if valor is None:
+                continue
+            previo = publicado_by_ym.get((a["year"] - 1, a["end_month"]))
+            var_a = var_acum_pct if a is last else round(valor / previo - 1, 6) if previo else None
+        vals = [valor, None, None, None, var_a]
+        if a is last and comp_acum and complemento:
+            vals = [valor] + [comp_acum.get(k) for k in comp_keys] + [var_a]
         elif a["year"] == 2026 and a["end_month"] == 3 and ti_1t:
             vals = [a["acumulado"], ti_1t.get("nuevas"), ti_1t.get("reinversion"), ti_1t.get("cuentas"), var_a]
         observations_acumulado.append({
@@ -408,7 +459,7 @@ def _build_indicator(resumen: list[dict], manual: dict | None, ti_1t: dict | Non
     # de lo contrario "manual_fallback".  Se considera estructurado cuando el
     # resumen ya traía el dato del mismo corte que el manual.
     tiene_corte_xls = any(a["year"] == last_year and a["end_month"] == last_end and a.get("valor_publicado") for a in acum)
-    source_mode = "structured" if tiene_corte_xls else "manual_fallback"
+    source_mode = "manual_fallback" if comunicado or not tiene_corte_xls else "structured"
 
     # KPIs / métricas
     metrics = {
@@ -425,12 +476,12 @@ def _build_indicator(resumen: list[dict], manual: dict | None, ti_1t: dict | Non
             "unidad": "mdd",
             "variacion_anual_pct": var_flujo_pct,
         },
-        "composicion_tipo": _pct_to_frac(manual.get("tipo_de_inversion")) if manual else [],
-        "composicion_pais": _pct_to_frac(manual.get("pais_origen")) if manual else [],
-        "composicion_sector": _pct_to_frac(manual.get("sector_economico")) if manual else [],
-        "composicion_entidad": _pct_to_frac(manual.get("entidad_federativa")) if manual else [],
+        "composicion_tipo": _pct_to_frac(complemento.get("tipo_de_inversion")) if complemento else [],
+        "composicion_pais": _pct_to_frac(complemento.get("pais_origen")) if complemento else [],
+        "composicion_sector": _pct_to_frac(complemento.get("sector_economico")) if complemento else [],
+        "composicion_entidad": _pct_to_frac(complemento.get("entidad_federativa")) if complemento else [],
         "componentes_acumulado": {k: comp_acum.get(k) for k in comp_keys},
-        "componentes_flujo": {k: comp_flujo.get(k) for k in comp_keys},
+        "componentes_flujo": {k: comp_flujo.get(k) if last_end in (3, 6) and last_year == 2026 else None for k in comp_keys},
         "corte_referencia": corte_label,
         "source_mode": source_mode,
     }
@@ -440,7 +491,7 @@ def _build_indicator(resumen: list[dict], manual: dict | None, ti_1t: dict | Non
         (2025, 12): ("23 de febrero de 2026", "1° trimestre 2026"),
         (2026, 3): ("26 de mayo de 2026", "2° trimestre 2026"),
         (2026, 6): ("24 de agosto de 2026", "3° trimestre 2026"),
-        (2026, 9): ("Por anunciar", "4° trimestre 2026"),
+        (2026, 9): ("24 de noviembre de 2026", "4° trimestre 2026"),
     }
     pub_key = (last_year, last_end)
     fecha_publicacion, periodo_proximo = pub_fechas.get(
@@ -449,7 +500,7 @@ def _build_indicator(resumen: list[dict], manual: dict | None, ti_1t: dict | Non
     )
     # Fecha de la siguiente publicación futura (trimestre siguiente)
     next_q_map = {3: ((2026, 6), "24 de agosto de 2026", "3° trimestre 2026"),
-                  6: ((2026, 9), "Por anunciar", "4° trimestre 2026"),
+                  6: ((2026, 9), "24 de noviembre de 2026", "3° trimestre 2026"),
                   9: ((2026, 12), "Por anunciar", "4° trimestre 2026"),
                   12: ((2027, 3), "Por anunciar", "1° trimestre 2027")}
     _, prox_fecha, prox_periodo = next_q_map.get(last_end, (None, "Por anunciar", "periodo siguiente"))
@@ -458,8 +509,7 @@ def _build_indicator(resumen: list[dict], manual: dict | None, ti_1t: dict | Non
         "key": "IED",
         "nombre": "Inversión Extranjera Directa (IED)",
         "descripcion": "Flujo trimestral y acumulado anual de inversión extranjera directa en México. "
-                       "El valor principal muestra el acumulado ene-jun 2026. "
-                       "Incluye desgloses por tipo de inversión, país de origen, sector económico y entidad federativa.",
+                       "El valor principal muestra el acumulado desde enero hasta el último corte nacional publicado.",
         "frecuencia": "Trimestral",
         "unidad": "Millones de dólares",
         "ajuste_estacional": "No aplica",
@@ -481,10 +531,12 @@ def _build_indicator(resumen: list[dict], manual: dict | None, ti_1t: dict | Non
         "observations_acumulado": observations_acumulado,
         "last_observation": last["quarter"],
         "periodo_referencia": last["period_acum"],
-        "url_boletin_oficial": (manual or {}).get("url_boletin", URL_RESUMEN),
+        "url_boletin_oficial": (complemento or {}).get("url_boletin", URL_RESUMEN),
+        "corte_de_comunicado": comunicado is not None,
         "fuente": {
             "nombre": "Secretaría de Economía — Dirección General de Inversión Extranjera / RNIE",
-            "metodo": "Descarga y parseo de archivos XLSX oficiales",
+            "metodo": ("Comunicado 114 para el corte nacional; XLSX oficiales para la serie histórica"
+                       if comunicado else "Descarga y parseo de archivos XLSX oficiales"),
             "link": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa",
             "serie": None,
         },
@@ -511,21 +563,35 @@ def _build_indicator(resumen: list[dict], manual: dict | None, ti_1t: dict | Non
 
 
 def fetch(config: dict | None = None) -> SourceResult:
-    """Consultar TI_OR; nunca mezclar revisiones ni restar ediciones originales."""
-    import json
-    from ied_estatal import refresh
-    from ied_original import build_indicator
-    try:
-        refresh(root=ROOT)
-        data = json.loads((DATA_DIR / 'ied_estatal.json').read_text())
-        if data.get('download_status') == 'conservado':
-            return SourceResult(False, warnings=['IED: consulta no recuperada; se conserva la última edición TI_OR validada sin adelantar la fecha de consulta'])
-        previous = json.loads((DATA_DIR / 'indicadores.json').read_text())['indicators'].get('IED')
-        ind = build_indicator(data, previous)
-        warnings = ['IED: se conserva la última edición TI_OR validada'] if data.get('download_status') == 'conservado' else []
-        return SourceResult(True, data={'IED': ind}, warnings=warnings)
-    except (OSError, ValueError, KeyError) as error:
-        return SourceResult(False, warnings=['IED: TI_OR no validado; conservar edición previa: ' + str(error)])
+    """Consulta los XLSX oficiales de la Secretaría de Economía y construye IED."""
+    warnings: list[str] = []
+    DOWNLOADS_DIR.mkdir(parents=True, exist_ok=True)
+
+    resumen_path = DOWNLOADS_DIR / "Datos_originales_y_actualizacion.xlsx"
+    flujos_path = DOWNLOADS_DIR / "2026_2T_Flujos_TI_AC.xlsx"
+
+    ok = _download(URL_RESUMEN, resumen_path)
+    if not ok:
+        warnings.append("ied: no se pudo descargar el resumen histórico")
+    _download(URL_FlUJOS_TI_AC, flujos_path)
+
+    manual = _load_manual_2t()
+    if not manual:
+        warnings.append("ied: no existe data/ied_manual_2026_2t.json")
+
+    ti_1t = None
+    if flujos_path.exists():
+        ti_1t = _parse_flujos_ti(flujos_path, warnings)
+
+    if not resumen_path.exists():
+        # Un manual puntual no sustituye una serie histórica ni sus denominadores.
+        warnings.append('ied: sin resumen histórico; se conserva el indicador previo')
+        return SourceResult(False, warnings=warnings)
+
+    comunicado_path = DATA_DIR / "ied_comunicado_2026_3t.json"
+    comunicado = json.loads(comunicado_path.read_text(encoding="utf-8")) if comunicado_path.exists() else None
+    ind = _build_indicator(resumen_path, manual, ti_1t, warnings, comunicado)
+    return SourceResult(True, data={"IED": ind}, warnings=warnings)
 
 
 if __name__ == "__main__":

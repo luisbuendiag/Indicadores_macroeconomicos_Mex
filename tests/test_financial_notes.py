@@ -5,9 +5,6 @@ import pytest
 import build_financial_notes as F
 ROOT=Path(__file__).resolve().parents[1]
 DATA=json.loads((ROOT/'data/indicadores.json').read_text())['indicators']
-from ied_original import build_indicator
-ORIGINAL=json.loads((ROOT/'data/ied_estatal.json').read_text())
-DATA['IED']=build_indicator(ORIGINAL,DATA['IED'])
 @pytest.mark.parametrize('key',F.KEYS)
 def test_notes_reconcile_with_snapshot_and_native_tables(key):
     if key == 'REMESAS' and key not in DATA:
@@ -18,8 +15,13 @@ def test_notes_reconcile_with_snapshot_and_native_tables(key):
     ind=copy.deepcopy(DATA[key]);F.decorate(ind);assert ind['nota_disponible']
     ind['last_observation']='invalid';F.decorate(ind);assert not ind['nota_disponible']
 def test_ied_is_accumulated_not_quarter_flow():
-    f=F.facts(DATA['IED']);assert f['value']==ORIGINAL['periods'][-1]['total'];assert f['value']==DATA['IED']['observations'][-1]['values'][0]
-    assert all(r['quarter']==ORIGINAL['periods'][-1]['quarter'] for r in f['series'])
+    ind = DATA['IED']
+    f = F.facts(ind)
+    latest = ind['observations_acumulado'][-1]
+    span = latest['period_acumulado'].rsplit(' ', 1)[0]
+    assert f['value'] == latest['values'][0]
+    assert f['value'] != ind['observations'][-1]['values'][0]
+    assert all(r['period_acumulado'].rsplit(' ', 1)[0] == span for r in f['series'])
 def test_corrupt_kpi_and_components_fail_closed():
     ind=copy.deepcopy(DATA['IED']);ind['metrics']['kpi']['ultimoRaw']+=100
     with pytest.raises(ValueError):F.facts(ind)
