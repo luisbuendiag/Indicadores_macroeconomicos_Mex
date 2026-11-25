@@ -25,6 +25,8 @@ def official_layout_fixture(monkeypatch,tmp_path):
     """Caso fechado 2T-26: prueba el parser y el ensamblado sin depender de red."""
     import openpyxl
     monkeypatch.setattr(ied,'DOWNLOADS_DIR',tmp_path)
+    monkeypatch.setattr(ied,'DATA_DIR',tmp_path)
+    (tmp_path / 'ied_manual_2026_2t.json').write_text(json.dumps(_sample_manual()))
     wb=openpyxl.Workbook();ws=wb.active
     for r,row in enumerate([(2025,'Enero - marzo',23416.57,23416.57),
                             (2025,'Enero - junio',34264.57,34264.57),
@@ -241,3 +243,44 @@ def test_missing_history_preserves_previous_indicator(monkeypatch,tmp_path):
     result=ied.fetch()
     assert not result.ok and not result.data
     assert any('se conserva el indicador previo' in warning for warning in result.warnings)
+
+
+def test_3t_communicado_updates_national_accumulated_only(tmp_path):
+    """El respaldo aporta acumulado y tipos; el flujo exclusivo queda pendiente."""
+    import openpyxl
+    path = tmp_path / "Datos_originales_y_actualizacion.xlsx"
+    wb = openpyxl.load_workbook(path)
+    ws = wb.active
+    for column, value in enumerate((2025, "Enero - septiembre", 40906, 45906), 1):
+        ws.cell(8, column, value)
+    wb.save(path)
+    wb.close()
+    import shutil
+    shutil.copyfile(DATA_DIR / "ied_comunicado_2026_3t.json", tmp_path / "ied_comunicado_2026_3t.json")
+
+    ind = ied.fetch().data["IED"]
+    assert ind["corte_de_comunicado"]
+    assert ind["source_mode"] == "manual_fallback"
+    assert ind["last_observation"] == "3T-26"
+    assert ind["fecha_publicacion"] == "24 de noviembre de 2026"
+    assert ind["observations"][-1]["period"] == "2T-26"
+    assert ind["observations"][-1]["values"][0] == 10464.95
+    previous, current = ind["observations_acumulado"][-2:]
+    assert previous["values"][0] == 40906
+    assert current["period_acumulado"] == "Ene-Sep 26"
+    assert current["values"][:4] == [43090, 3800, 34975, 4315]
+    assert ind["metrics"]["acumulado"]["variacion_anual_pct"] == .053
+    assert ind["metrics"]["flujo_trimestral"]["valor"] is None
+    assert not ind["metrics"]["composicion_entidad"]
+
+    wb = openpyxl.load_workbook(path)
+    ws = wb.active
+    for column, value in enumerate((2026, "Enero - septiembre", 43090, 43092), 1):
+        ws.cell(9, column, value)
+    wb.save(path)
+    wb.close()
+    structured = ied.fetch().data["IED"]
+    assert structured["source_mode"] == "structured"
+    assert not structured["corte_de_comunicado"]
+    assert structured["metrics"]["acumulado"]["valor"] == 43092
+    assert not structured["metrics"]["composicion_tipo"]
