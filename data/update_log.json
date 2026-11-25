@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-11-25T18:30:41+00:00",
+  "started_at": "2026-11-25T21:38:44+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -119,28 +119,19 @@
     "INEGI INPP: 106 observaciones (serie 1801009, base BIE-BISE); última Oct 26 = 8.072716; actualización BIE 09/11/2026 12:00:00 a. m.."
   ],
   "changes": [
-    "PIBSEC: tasas heredadas descartadas antes de fusionar las series ajustadas",
     "IGAE: fuente normalizada a serie total 737121",
-    "TIPOCAMBIO: retirada la copia histórica; la serie principal ya tiene fechas oficiales",
     "TIPOCAMBIO: actualizado nombre",
     "TIPOCAMBIO: actualizado fuente",
-    "TASA: retirada la copia histórica; la serie principal ya tiene fechas oficiales",
-    "TASA: actualizado nombre",
     "TASA: actualizado descripcion",
     "TASA: actualizado fuente",
-    "RESERVAS: retirada la copia histórica; la serie principal ya tiene fechas oficiales",
     "RESERVAS: actualizado fuente",
-    "indicador creado desde perfil: REMESAS",
     "columnas override REMESAS: 4 columnas",
     "columnas override PIB: 5 columnas",
-    "columnas padding PIB: 1 columnas nuevas",
     "columnas override PIBSEC: 16 columnas",
-    "columnas padding PIBSEC: 4 columnas nuevas",
     "columnas override SIC: 18 columnas",
     "columnas override IGAE: 10 columnas",
     "columnas override IMAI: 18 columnas",
     "columnas override DESOCUP: 6 columnas",
-    "nombre override INPC: Índice de Precios al Consumidor -> Índice Nacional de Precios al Consumidor",
     "columnas override INPC: 18 columnas",
     "columnas override INPP: 15 columnas",
     "columnas override CONSUMO: 37 columnas",
@@ -331,10 +322,10 @@
     "imoam: actualizado IMOAM (última obs Sep 26, sin cambio de periodo)",
     "imoam: actualizado IMOAM (última obs Sep 26, sin cambio de periodo)",
     "imoam: actualizado IMOAM (última obs Sep 26, sin cambio de periodo)",
-    "banxico: actualizado TIPOCAMBIO (última obs 2026-11-25, dato nuevo)",
-    "banxico: actualizado TASA (última obs 2026-11-25, sin cambio de periodo)",
+    "banxico: actualizado TIPOCAMBIO (última obs 2026-11-25, sin cambio de periodo)",
+    "banxico: actualizado TASA (última obs 2026-11-26, dato nuevo)",
     "banxico: actualizado RESERVAS (última obs 2026-11-20, sin cambio de periodo)",
-    "banxico: actualizado REMESAS (última obs Sep 26, dato nuevo)",
+    "banxico: actualizado REMESAS (última obs Sep 26, sin cambio de periodo)",
     "inegi: actualizado PIB (última obs 3T-26, dato nuevo)",
     "inegi: actualizado PIBSEC (última obs 3T-26, sin cambio de periodo)",
     "inegi: actualizado PIBSEC (última obs 3T-26, sin cambio de periodo)",
@@ -515,7 +506,6 @@
     "columna label TIPOCAMBIO col0: Tipo de cambio FIX -> Tipo de cambio FIX",
     "columna label TASA col0: Tasa objetivo (%) -> Tasa objetivo (%)",
     "PIBSEC: se conservan las tasas del último boletín PIBT",
-    "PIBSEC: 524 tasas anuales originales actualizadas",
     "IGAE: variaciones anuales calculadas para 1572 celdas",
     "IMAI: esquema de 14 columnas aplicado; acumulado calculado para 0 periodos",
     "EMIM: 21 subsectores normalizados",
@@ -554,9 +544,8 @@
     "frescura: SIC -> ACTUALIZADO",
     "frescura: IMOAM -> ACTUALIZADO",
     "frescura: REMESAS -> ACTUALIZADO",
-    "DESOCUP: población mensual y tasas ajustadas del boletín",
     "métricas: data/metrics.json regenerado",
-    "meta: last_update_ct=2026-11-25T12:46:07-06:00",
+    "meta: last_update_ct=2026-11-25T15:55:05-06:00",
     "notas: 15 vigentes (0 provisionadas desde machote)"
   ],
   "consultas": [
@@ -2427,21 +2416,21 @@
       "observaciones": 8806,
       "ultima_observacion": "2026-11-25",
       "ultimo_valor": 19.704,
-      "observacion_previa": "2026-11-24",
+      "observacion_previa": "2026-11-25",
       "actualizacion_fuente": null,
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
       "fuente": "banxico",
       "indicador": "TASA",
       "serie": "SF61745",
-      "observaciones": 6788,
-      "ultima_observacion": "2026-11-25",
+      "observaciones": 6789,
+      "ultima_observacion": "2026-11-26",
       "ultimo_valor": 6.25,
       "observacion_previa": "2026-11-25",
       "actualizacion_fuente": null,
-      "dato_nuevo": false,
+      "dato_nuevo": true,
       "resultado": "consulta válida"
     },
     {
@@ -2463,9 +2452,9 @@
       "observaciones": 381,
       "ultima_observacion": "Sep 26",
       "ultimo_valor": 5362.191882,
-      "observacion_previa": null,
+      "observacion_previa": "Sep 26",
       "actualizacion_fuente": null,
-      "dato_nuevo": true,
+      "dato_nuevo": false,
       "resultado": "consulta válida"
     },
     {
@@ -4175,5 +4164,5 @@
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-11-25T18:46:13+00:00"
+  "finished_at": "2026-11-25T21:55:16+00:00"
 }
