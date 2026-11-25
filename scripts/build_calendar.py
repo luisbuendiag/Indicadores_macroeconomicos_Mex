@@ -224,7 +224,8 @@ def _map_se_events(raw_events: list[dict], cfg: dict) -> list[dict]:
         else:
             events.append({
                 **ev,
-                "product": meta.get("product", ev.get("program", "IED")),
+                "product": (ev.get("program") if ev.get("alcance") == "acumulado_nacional"
+                            else meta.get("product", ev.get("program", "IED"))),
                 "frequency": meta.get("frequency", "Trimestral"),
                 "category": meta.get("category", "Sector externo"),
                 "institution": meta.get("institution", "Secretaría de Economía"),
@@ -629,6 +630,8 @@ def _to_legacy_item(ev: dict, as_of: date) -> dict:
         "estatus": status,
         "url_boletin": ev.get("url") or _sala_prensa_url(ev.get("indicator")),
     }
+    if ev.get("alcance"):
+        item["alcance"] = ev["alcance"]
     if ev.get("comentario"):
         item["comentario"] = ev["comentario"]
     return item
