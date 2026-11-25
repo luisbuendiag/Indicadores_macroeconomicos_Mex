@@ -1836,7 +1836,10 @@
     ]
   },
   "validated_at": "2026-11-25T17:16:57.839790+00:00",
-  "last_checked": "2026-11-25T17:16:57.839790+00:00",
-  "download_status": "ok",
-  "download_errors": []
+  "last_checked": "2026-11-25T17:47:54.964629+00:00",
+  "download_status": "conservado",
+  "download_errors": [
+    "URLError",
+    "URLError"
+  ]
 }

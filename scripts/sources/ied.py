@@ -1,20 +1,8 @@
-"""Conector de Inversión Extranjera Directa (IED) — Secretaría de Economía.
+"""IED oficial: acumulados desde enero y cifras originalmente publicadas TI_OR.
 
-Fuente primaria:
-  - Resumen histórico (cifras originalmente publicadas y actualizadas):
-    https://www.gob.mx/cms/uploads/attachment/file/1100772/Datos_originales_y_actualizacion__1_.xlsx
-  - Desglose por tipo, entidad federativa, país de origen y actividad económica:
-    https://www.gob.mx/cms/uploads/attachment/file/1100604/2026_2T_Flujos_TI_AC_3.xlsx
-
-El conector descarga los archivos de gob.mx, los parsea y construye el
-indicador IED con dos series conceptuales:
-
-  - observations: flujo trimestral (IED del trimestre exclusivo), con
-    componentes por tipo de inversión.
-  - metrics.acumulado: serie acumulada al corte (ENE-MAR, ENE-JUN, ...).
-
-Para el 2T-2026 se combina con data/ied_manual_2026_2t.json mientras la
-Secretaría de Economía actualice el XLSX estructurado.
+fetch usa el archivo validado por ied_estatal. observations conserva cada corte
+original y observations_acumulado compara el mismo corte entre años. Los
+parsers anteriores se mantienen para reproducir el legado, no alimentan fetch.
 """
 from __future__ import annotations
 
@@ -523,33 +511,21 @@ def _build_indicator(resumen: list[dict], manual: dict | None, ti_1t: dict | Non
 
 
 def fetch(config: dict | None = None) -> SourceResult:
-    """Consulta los XLSX oficiales de la Secretaría de Economía y construye IED."""
-    warnings: list[str] = []
-    DOWNLOADS_DIR.mkdir(parents=True, exist_ok=True)
-
-    resumen_path = DOWNLOADS_DIR / "Datos_originales_y_actualizacion.xlsx"
-    flujos_path = DOWNLOADS_DIR / "2026_2T_Flujos_TI_AC.xlsx"
-
-    ok = _download(URL_RESUMEN, resumen_path)
-    if not ok:
-        warnings.append("ied: no se pudo descargar el resumen histórico")
-    _download(URL_FlUJOS_TI_AC, flujos_path)
-
-    manual = _load_manual_2t()
-    if not manual:
-        warnings.append("ied: no existe data/ied_manual_2026_2t.json")
-
-    ti_1t = None
-    if flujos_path.exists():
-        ti_1t = _parse_flujos_ti(flujos_path, warnings)
-
-    if not resumen_path.exists():
-        # Un manual puntual no sustituye una serie histórica ni sus denominadores.
-        warnings.append('ied: sin resumen histórico; se conserva el indicador previo')
-        return SourceResult(False, warnings=warnings)
-
-    ind = _build_indicator(resumen_path, manual, ti_1t, warnings)
-    return SourceResult(True, data={"IED": ind}, warnings=warnings)
+    """Consultar TI_OR; nunca mezclar revisiones ni restar ediciones originales."""
+    import json
+    from ied_estatal import refresh
+    from ied_original import build_indicator
+    try:
+        refresh(root=ROOT)
+        data = json.loads((DATA_DIR / 'ied_estatal.json').read_text())
+        if data.get('download_status') == 'conservado':
+            return SourceResult(False, warnings=['IED: consulta no recuperada; se conserva la última edición TI_OR validada sin adelantar la fecha de consulta'])
+        previous = json.loads((DATA_DIR / 'indicadores.json').read_text())['indicators'].get('IED')
+        ind = build_indicator(data, previous)
+        warnings = ['IED: se conserva la última edición TI_OR validada'] if data.get('download_status') == 'conservado' else []
+        return SourceResult(True, data={'IED': ind}, warnings=warnings)
+    except (OSError, ValueError, KeyError) as error:
+        return SourceResult(False, warnings=['IED: TI_OR no validado; conservar edición previa: ' + str(error)])
 
 
 if __name__ == "__main__":

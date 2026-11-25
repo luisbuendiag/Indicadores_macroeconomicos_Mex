@@ -24,6 +24,7 @@ from pathlib import Path
 from typing import Any
 
 import lib_data as L
+from lib_freshness import period_to_ym
 from sources import calendar_banxico, calendar_inegi, calendar_se
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -108,6 +109,13 @@ def _program_includes(program: str, patterns: list[str]) -> bool:
     return any(p.lower() in low for p in patterns)
 
 
+def _program_allowed(program: str, meta: dict) -> bool:
+    required = meta.get("program_require", [])
+    return all(part.lower() in program.lower() for part in required) and not _program_excluded(
+        program, meta.get("program_exclude", [])
+    )
+
+
 def _score_program(program: str, preferred: list[str]) -> int:
     if not preferred:
         return 0
@@ -123,11 +131,11 @@ def _match_inegi_indicator(program: str, cfg: dict) -> str | None:
     for key, meta in ind_cfg.items():
         for ac in acronyms:
             if ac.upper() in [a.upper() for a in meta.get("acronyms", [])] or ac.upper() == key:
-                if not _program_excluded(program, meta.get("program_exclude", [])):
+                if _program_allowed(program, meta):
                     return key
     # 2) por subcadena
     for key, meta in ind_cfg.items():
-        if _program_excluded(program, meta.get("program_exclude", [])):
+        if not _program_allowed(program, meta):
             continue
         if _program_includes(program, meta.get("program_contains", [])):
             return key
@@ -143,8 +151,6 @@ def _map_inegi_events(raw_events: list[dict], cfg: dict, warnings: list[str]) ->
         if not key:
             continue
         meta = ind_cfg.get(key, {})
-        if _program_excluded(ev["program"], meta.get("program_exclude", [])):
-            continue
         if _program_excluded(ev["program"], cfg.get("inegi", {}).get("exclude_substrings", [])):
             continue
         d = ev["date"]
@@ -440,24 +446,24 @@ def _build_events(as_of: date, offline: bool) -> tuple[list[dict], list[dict], d
     events.extend(_map_banxico_events(banxico_events, cfg))
     events.extend(_map_se_events(se_events, cfg))
 
-    # Si faltan claves, rellenar con respaldo
-    present = set(ev.get("indicator") for ev in events if ev.get("indicator"))
+    # Rellenar los indicadores ausentes y los trimestres PIBT que falten.
+    present = {ev.get("indicator") for ev in events}
     meta = _load_meta()
     target_keys = set(meta.get("principal", [])) | set(meta.get("complementario", []))
     missing_keys = target_keys - present
-    if missing_keys or not events:
-        fallback = _load_fallback_events(target_years)
-        for ev in fallback:
-            if not missing_keys and ev.get("indicator") not in present:
-                continue
-            if ev.get("indicator") in missing_keys or (not events and ev.get("indicator") in target_keys):
+    pibt_periods = {
+        period_to_ym(ev["period"]) or ev["period"]
+        for ev in events if ev.get("indicator") == "PIBSEC"
+    }
+    for ev in _load_fallback_events(target_years):
+        key = ev.get("indicator")
+        if key == "PIBSEC":
+            period = period_to_ym(ev["period"]) or ev["period"]
+            if period not in pibt_periods:
                 events.append(ev)
-
-    # Asegurar PIBSEC aunque no venga del INEGI
-    if "PIBSEC" not in present:
-        for ev in _load_fallback_events(target_years):
-            if ev.get("indicator") == "PIBSEC":
-                events.append(ev)
+                pibt_periods.add(period)
+        elif key in missing_keys:
+            events.append(ev)
 
     events = [_precise_event(e) for e in _dedup_events(events)]
 

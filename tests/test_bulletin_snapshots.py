@@ -18,3 +18,26 @@ def test_preserve_bulletin_edition_when_bie_revises(key,column,value):
     assert payload['indicators'][key]['boletin_cifras']==snapshot
     assert snapshot['2026-08'][str(column)]['value']==value
     assert payload['indicators'][key]['observations'][-1]['values'][column]==pytest.approx(value+.001)
+
+
+@pytest.mark.parametrize(
+    "quarter, header, acumulado, expected",
+    [
+        (1, "", None, (3.2, 3.2)),
+        (2, "62/\nmeses", "1.2", (3.2, 1.2)),
+        (3, "92/\nmeses", "1.8", (3.2, 1.8)),
+        (3, "6 meses", "1.2", (3.2, None)),
+        (4, "2/\nAnual", "0.5", (3.2, 0.5)),
+    ],
+)
+def test_eopibt_acumulado_original_del_cuadro_2(quarter, header, acumulado, expected):
+    from sources.inegi_bulletin import _parse_eopibt_original
+
+    ordinal = ("1.er", "2.o", "3.er", "4.o")[quarter - 1]
+    table = [
+        ["", "20251/", "20261/", None],
+        ["PIB y actividades económicas", "", ordinal, header],
+        ["", "Anual", "trimestre", None],
+        ["PIB", "0.7", "3.2", acumulado],
+    ]
+    assert _parse_eopibt_original([table], 2026, quarter) == expected

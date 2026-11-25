@@ -166,6 +166,28 @@ def _normalize_reservas(res: dict) -> dict | None:
     }
 
 
+def _remesas_events(data: dict):
+    for section in ("webResources", "webFutureResources"):
+        for res in _flatten(data.get(section, {}), "23", "37"):
+            title = res.get("title") or res.get("linkText") or ""
+            match = re.search(r", (\w+) (\d{4})$", title.strip(), re.IGNORECASE)
+            published = _parse_ddmmyyyy(res.get("referenceDate") or res.get("firstPublishingDate"))
+            if not match or match[1].lower() not in MESES_ES or not published:
+                continue
+            deliverable = _deliverable_for(res)
+            yield {
+                "source": "Banco de México calendario",
+                "institution": "Banco de México",
+                "program": title,
+                "period": f"{match[1].capitalize()} {match[2]}",
+                "date": published,
+                "url": deliverable["url"] if deliverable else
+                       BANXICO_PREFIX + "/publicaciones-y-prensa/remesas/",
+                "deliverables": [deliverable] if deliverable else [],
+                "indicator": "REMESAS",
+            }
+
+
 def _cache_path(year: int, month: int, cache_dir: Path) -> Path:
     return cache_dir / f"banxico_{year}_{month:02d}.json"
 
@@ -189,7 +211,7 @@ def _fetch_month(year: int, month: int, cache_dir: Path, offline: bool) -> dict 
 
 
 def fetch(years: list[int], cache_dir: Path, offline: bool = False) -> tuple[list[dict], dict]:
-    """Consulta el calendario mensual de Banxico para TASA y RESERVAS.
+    """Consulta el calendario mensual de Banxico para TASA, RESERVAS y REMESAS.
 
     Devuelve (eventos, info_status).
     """
@@ -206,6 +228,7 @@ def fetch(years: list[int], cache_dir: Path, offline: bool = False) -> tuple[lis
             for month in range(1, 13):
                 data = _fetch_month(year, month, cache_dir, offline=True)
                 if data:
+                    events.extend(_remesas_events(data))
                     for res in _flatten(data.get("webResources", {}), "1", "3"):
                         ev = _normalize_tasa(res)
                         if ev:
@@ -236,6 +259,7 @@ def fetch(years: list[int], cache_dir: Path, offline: bool = False) -> tuple[lis
                 continue
             if not data:
                 continue
+            events.extend(_remesas_events(data))
             for res in _flatten(data.get("webResources", {}), "1", "3"):
                 ev = _normalize_tasa(res)
                 if ev:

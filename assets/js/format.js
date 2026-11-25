@@ -30,6 +30,8 @@ export function fmtVal(v, fmt) {
       return "$" + v.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     case "pct-frac":
       return (v * 100).toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
+    case "pct-rate":
+      return v.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + "%";
     case "pct-raw":
       return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
     case "pp":
@@ -56,6 +58,8 @@ const MESES_CORTO = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Se
 
 export function perShort(p) {
   if (!p) return "";
+  const month = p.match(/^(\d{4})-(0[1-9]|1[0-2])$/);
+  if (month) return `${MESES_CORTO[Number(month[2]) - 1]} ${month[1]}`;
   const iso = p.match(/^(\d{4})-(\d{2})-(\d{2})$/);
   if (iso) {
     const d = new Date(parseInt(iso[1], 10), parseInt(iso[2], 10) - 1, parseInt(iso[3], 10));
@@ -73,6 +77,8 @@ export function perShort(p) {
 
 export function perLong(p) {
   if (!p) return "";
+  const month = p.match(/^(\d{4})-(0[1-9]|1[0-2])$/);
+  if (month) return `${Object.values(MESES)[Number(month[2]) - 1]} de ${month[1]}`;
   // Fechas ISO: 2026-08-07 -> 7 de agosto de 2026
   const iso = p.match(/^(\d{4})-(\d{2})-(\d{2})$/);
   if (iso) {
@@ -92,6 +98,8 @@ export function respFrase(p) { return (isTrim(p) ? "al " : "a ") + perLong(p); }
 // Convierte un periodo a una fecha aproximada (para filtrar ventanas temporales).
 export function periodToDate(p) {
   if (!p) return null;
+  const month = p.match(/^(\d{4})-(0[1-9]|1[0-2])$/);
+  if (month) return new Date(Number(month[1]), Number(month[2]) - 1, 1);
   // Fechas ISO (diarias/semanales) de series originales de Banxico.
   const iso = p.match(/^(\d{4})-(\d{2})-(\d{2})$/);
   if (iso) return new Date(parseInt(iso[1], 10), parseInt(iso[2], 10) - 1, parseInt(iso[3], 10));

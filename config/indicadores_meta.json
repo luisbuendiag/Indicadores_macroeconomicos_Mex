@@ -21,9 +21,49 @@
     "IED",
     "TIPOCAMBIO",
     "TASA",
-    "RESERVAS"
+    "RESERVAS",
+    "REMESAS"
   ],
   "profile": {
+    "REMESAS": {
+      "requiere_token": "BANXICO",
+      "serie_confirmada": true,
+      "clasificacion": "complementario",
+      "nombre": "Ingresos por remesas",
+      "sigla": "Remesas",
+      "descripcion": "Ingresos mensuales por remesas recibidas en México, en millones de dólares corrientes. Las comparaciones anuales se calculan con cifras originales.",
+      "frecuencia": "Mensual",
+      "unidad": "Millones de dólares",
+      "ajuste_estacional": "Cifras originales",
+      "grupo": "financiero",
+      "fuente": {
+        "nombre": "Banco de México (SIE)",
+        "serie": "SE27803",
+        "link": "https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?accion=consultarCuadro&idCuadro=CE81"
+      },
+      "columns": [
+        {
+          "label": "Remesas totales (mdd)",
+          "index": 0,
+          "fmt": "mdd"
+        },
+        {
+          "label": "Variación anual original (%)",
+          "index": 1,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado enero–mes (mdd)",
+          "index": 2,
+          "fmt": "mdd"
+        },
+        {
+          "label": "Variación anual del acumulado (%)",
+          "index": 3,
+          "fmt": "pct-frac"
+        }
+      ]
+    },
     "PIB": {
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -38,7 +78,7 @@
       "publicacion": "30 días después del cierre del trimestre",
       "columns": [
         {
-          "label": "Var. trimestral (%)",
+          "label": "Var. trimestral desest. (%)",
           "index": 0,
           "fmt": "pct-frac"
         },
@@ -53,8 +93,13 @@
           "fmt": "pct-frac"
         },
         {
-          "label": "Acumulado (%)",
+          "label": "Acumulado desest. (%)",
           "index": 3,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Acumulado original (%)",
+          "index": 4,
           "fmt": "pct-frac"
         }
       ],
@@ -100,63 +145,83 @@
       "publicacion": "30 días después del cierre del trimestre",
       "columns": [
         {
-          "label": "Primarias",
+          "label": "Primarias (original)",
           "index": 0,
           "fmt": "num"
         },
         {
-          "label": "Secundarias",
+          "label": "Secundarias (original)",
           "index": 1,
           "fmt": "num"
         },
         {
-          "label": "Terciarias",
+          "label": "Terciarias (original)",
           "index": 2,
           "fmt": "num"
         },
         {
-          "label": "Var. trim. Terciarias (%)",
+          "label": "Var. trim. Terciarias desest. (%)",
           "index": 3,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. anual Terciarias (%)",
+          "label": "Var. anual Terciarias desest. (%)",
           "index": 4,
           "fmt": "pct-frac"
         },
         {
-          "label": "PIB",
+          "label": "PIB (original)",
           "index": 5,
           "fmt": "num"
         },
         {
-          "label": "Var. trim. PIB (%)",
+          "label": "Var. trim. PIB desest. (%)",
           "index": 6,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. anual PIB (%)",
+          "label": "Var. anual PIB desest. (%)",
           "index": 7,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. trim. Primarias (%)",
+          "label": "Var. trim. Primarias desest. (%)",
           "index": 8,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. anual Primarias (%)",
+          "label": "Var. anual Primarias desest. (%)",
           "index": 9,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. trim. Secundarias (%)",
+          "label": "Var. trim. Secundarias desest. (%)",
           "index": 10,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. anual Secundarias (%)",
+          "label": "Var. anual Secundarias desest. (%)",
           "index": 11,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual PIB original (%)",
+          "index": 12,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual Primarias original (%)",
+          "index": 13,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual Secundarias original (%)",
+          "index": 14,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual Terciarias original (%)",
+          "index": 15,
           "fmt": "pct-frac"
         }
       ],
@@ -336,7 +401,7 @@
       "descripcion": "Aproximación mensual de la evolución real de la economía nacional. Publica un índice de volumen físico (base 2018=100) para el agregado y las actividades primarias, secundarias y terciarias, además de su variación mensual desestacionalizada y variación anual original.",
       "frecuencia": "Mensual",
       "unidad": "Índice base 2018=100",
-      "ajuste_estacional": "Serie original",
+      "ajuste_estacional": "Niveles y tasas anuales originales; tasas mensual y anual desestacionalizadas identificadas por columna",
       "grupo": "growth",
       "publicacion": "Aproximadamente 30 días después del cierre del mes",
       "columns": [
@@ -361,7 +426,7 @@
           "fmt": "idx"
         },
         {
-          "label": "Var. anual act. primarias (%)",
+          "label": "Var. anual original act. primarias (%)",
           "index": 4,
           "fmt": "pct-frac"
         },
@@ -371,7 +436,7 @@
           "fmt": "idx"
         },
         {
-          "label": "Var. anual act. secundarias (%)",
+          "label": "Var. anual original act. secundarias (%)",
           "index": 6,
           "fmt": "pct-frac"
         },
@@ -381,8 +446,13 @@
           "fmt": "idx"
         },
         {
-          "label": "Var. anual act. terciarias (%)",
+          "label": "Var. anual original act. terciarias (%)",
           "index": 8,
+          "fmt": "pct-frac"
+        },
+        {
+          "label": "Var. anual desest. (%)",
+          "index": 9,
           "fmt": "pct-frac"
         }
       ],
@@ -478,42 +548,42 @@
           "fmt": "idx"
         },
         {
-          "label": "Var. anual Minería (%)",
+          "label": "Var. anual desest. Minería (%)",
           "index": 10,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. anual Energía (%)",
+          "label": "Var. anual desest. Energía (%)",
           "index": 11,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. anual Construcción (%)",
+          "label": "Var. anual desest. Construcción (%)",
           "index": 12,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. anual Manufacturas (%)",
+          "label": "Var. anual desest. Manufacturas (%)",
           "index": 13,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. mensual Minería (%)",
+          "label": "Var. mensual desest. Minería (%)",
           "index": 14,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. mensual Energía (%)",
+          "label": "Var. mensual desest. Energía (%)",
           "index": 15,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. mensual Construcción (%)",
+          "label": "Var. mensual desest. Construcción (%)",
           "index": 16,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. mensual Manufacturas (%)",
+          "label": "Var. mensual desest. Manufacturas (%)",
           "index": 17,
           "fmt": "pct-frac"
         }
@@ -622,7 +692,7 @@
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
-      "nombre": "Índice de Precios al Consumidor",
+      "nombre": "Índice Nacional de Precios al Consumidor",
       "sigla": "INPC",
       "descripcion": "Mide la evolución de los precios de una canasta representativa de bienes y servicios consumidos por los hogares en México. Incluye el índice general, la inflación subyacente y no subyacente, sus componentes (mercancías, servicios, agropecuarios, energéticos y tarifas) y las incidencias mensuales de subyacente y no subyacente.",
       "frecuencia": "Mensual",
@@ -899,17 +969,17 @@
       },
       "columns": [
         {
-          "label": "Índice de volumen físico",
+          "label": "Índice de volumen físico (desest.)",
           "index": 0,
           "fmt": "idx"
         },
         {
-          "label": "Var. mensual total (%)",
+          "label": "Var. mensual desest. total (%)",
           "index": 1,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. anual total (%)",
+          "label": "Var. anual desest. total (%)",
           "index": 2,
           "fmt": "pct-frac"
         },
@@ -924,52 +994,52 @@
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. mensual nacional (%)",
+          "label": "Var. mensual desest. nacional (%)",
           "index": 5,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. anual nacional (%)",
+          "label": "Var. anual desest. nacional (%)",
           "index": 6,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. mensual bienes nacionales (%)",
+          "label": "Var. mensual desest. bienes nacionales (%)",
           "index": 7,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. anual bienes nacionales (%)",
+          "label": "Var. anual desest. bienes nacionales (%)",
           "index": 8,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. mensual servicios nacionales (%)",
+          "label": "Var. mensual desest. servicios nacionales (%)",
           "index": 9,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. anual servicios nacionales (%)",
+          "label": "Var. anual desest. servicios nacionales (%)",
           "index": 10,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. mensual importado (%)",
+          "label": "Var. mensual desest. importado (%)",
           "index": 11,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. anual importado (%)",
+          "label": "Var. anual desest. importado (%)",
           "index": 12,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. mensual bienes importados (%)",
+          "label": "Var. mensual desest. bienes importados (%)",
           "index": 13,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. anual bienes importados (%)",
+          "label": "Var. anual desest. bienes importados (%)",
           "index": 14,
           "fmt": "pct-frac"
         },
@@ -1137,12 +1207,12 @@
           "fmt": "idx"
         },
         {
-          "label": "Var. mensual total (%)",
+          "label": "Var. mensual desest. total (%)",
           "index": 1,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. anual total (%)",
+          "label": "Var. anual desest. total (%)",
           "index": 2,
           "fmt": "pct-frac"
         },
@@ -1152,12 +1222,12 @@
           "fmt": "idx"
         },
         {
-          "label": "Var. mensual construcción (%)",
+          "label": "Var. mensual desest. construcción (%)",
           "index": 4,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. anual construcción (%)",
+          "label": "Var. anual desest. construcción (%)",
           "index": 5,
           "fmt": "pct-frac"
         },
@@ -1167,12 +1237,12 @@
           "fmt": "idx"
         },
         {
-          "label": "Var. mensual maquinaria y equipo (%)",
+          "label": "Var. mensual desest. maquinaria y equipo (%)",
           "index": 7,
           "fmt": "pct-frac"
         },
         {
-          "label": "Var. anual maquinaria y equipo (%)",
+          "label": "Var. anual desest. maquinaria y equipo (%)",
           "index": 8,
           "fmt": "pct-frac"
         },
@@ -1182,7 +1252,7 @@
           "fmt": "idx"
         },
         {
-          "label": "Var. anual residencial (%)",
+          "label": "Var. anual desest. residencial (%)",
           "index": 10,
           "fmt": "pct-frac"
         },
@@ -1192,7 +1262,7 @@
           "fmt": "idx"
         },
         {
-          "label": "Var. anual no residencial (%)",
+          "label": "Var. anual desest. no residencial (%)",
           "index": 12,
           "fmt": "pct-frac"
         },
@@ -1202,7 +1272,7 @@
           "fmt": "idx"
         },
         {
-          "label": "Var. anual maquinaria y equipo nacional (%)",
+          "label": "Var. anual desest. maquinaria y equipo nacional (%)",
           "index": 14,
           "fmt": "pct-frac"
         },
@@ -1212,7 +1282,7 @@
           "fmt": "idx"
         },
         {
-          "label": "Var. anual equipo de transporte nacional (%)",
+          "label": "Var. anual desest. equipo de transporte nacional (%)",
           "index": 16,
           "fmt": "pct-frac"
         },
@@ -1222,7 +1292,7 @@
           "fmt": "idx"
         },
         {
-          "label": "Var. anual maquinaria, equipo y otros bienes nacionales (%)",
+          "label": "Var. anual desest. maquinaria, equipo y otros bienes nacionales (%)",
           "index": 18,
           "fmt": "pct-frac"
         },
@@ -1232,7 +1302,7 @@
           "fmt": "idx"
         },
         {
-          "label": "Var. anual maquinaria y equipo importado (%)",
+          "label": "Var. anual desest. maquinaria y equipo importado (%)",
           "index": 20,
           "fmt": "pct-frac"
         },
@@ -1242,7 +1312,7 @@
           "fmt": "idx"
         },
         {
-          "label": "Var. anual equipo de transporte importado (%)",
+          "label": "Var. anual desest. equipo de transporte importado (%)",
           "index": 22,
           "fmt": "pct-frac"
         },
@@ -1252,7 +1322,7 @@
           "fmt": "idx"
         },
         {
-          "label": "Var. anual maquinaria, equipo y otros bienes importados (%)",
+          "label": "Var. anual desest. maquinaria, equipo y otros bienes importados (%)",
           "index": 24,
           "fmt": "pct-frac"
         },
@@ -1380,52 +1450,52 @@
       },
       "columns": [
         {
-          "label": "IGAE var. anual nowcast (%)",
+          "label": "IGAE var. anual nowcast desest. (%)",
           "index": 0,
           "fmt": "pct-frac"
         },
         {
-          "label": "IC95 inferior IGAE (%)",
+          "label": "IC95 inferior IGAE desest. (%)",
           "index": 1,
           "fmt": "pct-frac"
         },
         {
-          "label": "IC95 superior IGAE (%)",
+          "label": "IC95 superior IGAE desest. (%)",
           "index": 2,
           "fmt": "pct-frac"
         },
         {
-          "label": "IGAE var. mensual nowcast (%)",
+          "label": "IGAE var. mensual nowcast desest. (%)",
           "index": 3,
           "fmt": "pct-frac"
         },
         {
-          "label": "Actividades secundarias var. anual nowcast (%)",
+          "label": "Actividades secundarias var. anual nowcast desest. (%)",
           "index": 4,
           "fmt": "pct-frac"
         },
         {
-          "label": "IC95 inferior secundarias (%)",
+          "label": "IC95 inferior secundarias desest. (%)",
           "index": 5,
           "fmt": "pct-frac"
         },
         {
-          "label": "IC95 superior secundarias (%)",
+          "label": "IC95 superior secundarias desest. (%)",
           "index": 6,
           "fmt": "pct-frac"
         },
         {
-          "label": "Actividades terciarias var. anual nowcast (%)",
+          "label": "Actividades terciarias var. anual nowcast desest. (%)",
           "index": 7,
           "fmt": "pct-frac"
         },
         {
-          "label": "IC95 inferior terciarias (%)",
+          "label": "IC95 inferior terciarias desest. (%)",
           "index": 8,
           "fmt": "pct-frac"
         },
         {
-          "label": "IC95 superior terciarias (%)",
+          "label": "IC95 superior terciarias desest. (%)",
           "index": 9,
           "fmt": "pct-frac"
         },
@@ -1440,7 +1510,7 @@
           "fmt": "text"
         },
         {
-          "label": "IGAE observado anual (%)",
+          "label": "IGAE observado anual desest. (%)",
           "index": 12,
           "fmt": "pct-frac"
         }
@@ -1689,37 +1759,37 @@
       },
       "columns": [
         {
-          "label": "IGOEC",
+          "label": "IGOEC (desest.)",
           "index": 0,
           "fmt": "idx"
         },
         {
-          "label": "Cambio mensual IGOEC (puntos)",
+          "label": "Cambio mensual IGOEC desest. (puntos)",
           "index": 1,
           "fmt": "emoe"
         },
         {
-          "label": "Cambio anual IGOEC (puntos)",
+          "label": "Cambio anual IGOEC desest. (puntos)",
           "index": 2,
           "fmt": "emoe"
         },
         {
-          "label": "Manufacturas",
+          "label": "Manufacturas (desest.)",
           "index": 3,
           "fmt": "idx"
         },
         {
-          "label": "Construcción",
+          "label": "Construcción (original)",
           "index": 4,
           "fmt": "idx"
         },
         {
-          "label": "Comercio",
+          "label": "Comercio (original)",
           "index": 5,
           "fmt": "idx"
         },
         {
-          "label": "Servicios privados no financieros",
+          "label": "Servicios privados no financieros (original)",
           "index": 6,
           "fmt": "idx"
         }
@@ -2499,7 +2569,7 @@
       ]
     },
     "TASA": {
-      "nombre": "Tasa de interés objetivo",
+      "nombre": "Objetivo para la Tasa de Interés Interbancaria a un día",
       "descripcion": "Objetivo para la Tasa de Interés Interbancaria a un día fijado por la Junta de Gobierno del Banco de México como principal instrumento de política monetaria.",
       "frecuencia": "Diaria (cambios discretos)",
       "unidad": "Porcentaje anual",

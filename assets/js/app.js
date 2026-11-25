@@ -8,6 +8,7 @@ import * as cal from "./calendar.js?v=sources-20261110";
 import { downloadPanorama } from "./panorama-note.mjs";
 import { searchIndicators } from "./indicator-search.mjs";
 import { assessHealth } from "./update_health.mjs";
+import { renderResumen } from "./resumen-general.mjs";
 
 const state = {
   iedStates: null, health: null, updatePolicy: null, data: null, manifest: null, noticias: null, calendario: null,
@@ -265,23 +266,31 @@ function renderNav() {
   const row = el("div", { class: "nav-row" });
   // Navegación discreta por secciones; las fichas se abren desde las tarjetas
   // del panorama, no desde una barra de indicadores duplicada.
+  // N-040: Panorama Estatal va antes del Calendario (aprobado por el usuario el 24-nov-2026).
+  const estatalTab = () => el("button", { class: "tab", role: "tab", id: "tab-estatal", "aria-selected": String(/^estatal/.test(state.active)), "aria-controls": "view-estatal", onclick: () => setView("estatal") }, "Panorama Estatal");
   VIEWS.filter((v) => v.type === "home" || v.type === "page").forEach((v) => {
+    if (v.id === "calendario") row.append(estatalTab());
     const btn = el("button", { class: "tab", role: "tab", id: `tab-${v.id}`, "aria-selected": String(v.id === state.active), "aria-controls": `view-${v.id}`, onclick: () => setView(v.id) }, v.label);
     row.append(btn);
   });
+  if (!row.querySelector("#tab-estatal")) row.append(estatalTab());
   nav.append(row);
 }
 
 function setView(id) {
   if(id === "entorno") id="banxico";
   state.active = id;
-  const section=sourceView(id);
+  // N-040: Panorama Estatal (#estatal y #estatal-14), con su pestaña en la navegación.
+  const estatalMatch = /^estatal(?:-(\d\d))?$/.exec(id);
+  if (estatalMatch) ensureEstatal(estatalMatch[1] || null);
+  const section=estatalMatch ? "estatal" : sourceView(id);
   document.querySelectorAll(".tab").forEach(t=>{
     const selected=t.id === `tab-${section}`;
     t.setAttribute("aria-selected",String(selected));
     t.setAttribute("aria-controls",selected ? `view-${id}` : `view-${t.id.slice(4)}`);
   });
-  document.querySelectorAll(".view").forEach((s) => s.classList.toggle("active", s.id === `view-${id}`));
+  const viewId = estatalMatch ? "estatal" : id;
+  document.querySelectorAll(".view").forEach((s) => s.classList.toggle("active", s.id === `view-${viewId}`));
   document.body.setAttribute("data-view", id);
   if (`#${id}` !== window.location.hash) { try { history.replaceState(null, "", `#${id}`); } catch (e) { /* file:// */ } }
   requestAnimationFrame(() => {
@@ -291,7 +300,31 @@ function setView(id) {
   });
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
-const validView = (id) => VIEWS.some((v) => v.id === id);
+const validView = (id) => VIEWS.some((v) => v.id === id) || /^estatal(-\d\d)?$/.test(id);
+
+// ---------------- Panorama Estatal (N-040) ----------------
+// Se carga solo al abrir la vista: módulo, datos de los 32 estados y geometría.
+let estatalApi = null, estatalLoading = null;
+async function ensureEstatal(clave) {
+  if (estatalApi) { clave ? estatalApi.open(clave) : estatalApi.close(); return; }
+  if (estatalLoading) return estatalLoading;
+  estatalLoading = (async () => {
+    const root = document.getElementById("view-estatal");
+    if (!root) return;
+    if (!document.querySelector('link[data-estatal]')) {
+      const l = document.createElement("link"); l.rel = "stylesheet"; l.href = "assets/css/estatal.css?v=n040"; l.setAttribute("data-estatal", ""); document.head.append(l);
+    }
+    try {
+      const [{ renderEstatal }, data, geo] = await Promise.all([
+        import("./estatal.mjs?v=n040"), loadJSON("data/estados.json"), loadJSON("assets/geo/mexico_estados.json"),
+      ]);
+      estatalApi = renderEstatal(root, data, geo, { clave, onRoute: (c) => { const h = c ? `estatal-${c}` : "estatal"; state.active = h; try { history.replaceState(null, "", `#${h}`); } catch (e) { /* file:// */ } } });
+    } catch (e) {
+      root.replaceChildren(el("p", { class: "muted" }, "El Panorama Estatal todavía no tiene datos publicados."));
+    }
+  })();
+  return estatalLoading;
+}
 
 // ---------------- Panorama (home) ----------------
 function sparkline(k) {
@@ -336,8 +369,8 @@ function panoramaCard(ind) {
       el("div", { class: "mc-sub" }, "Se activará al cargar la fuente oficial."));
   }
 
-  const yoy = metrics.yoy || annualVar(ind, k);
-  const deltaCls = k.assessment === "favorable" ? "up" : (k.assessment === "adverso" ? "down" : "flat");
+  const yoy = ind.key === "BCMM" ? null : (metrics.yoy || annualVar(ind, k));
+  const deltaCls = k.varMag > 0 ? "up" : (k.varMag < 0 ? "down" : "flat");
   const showYoy = ind.key !== "IED" && ind.key !== "TASA" && yoy && (yoy.mag === null || Math.abs((yoy.mag ?? 0) - (k.ultimoRaw ?? 0)) > 1e-9);
   const flowKpi = ind.key === "IED" && k.flujoText ? { text: k.flujoText, label: cfg.flowLabel || "Flujo del 2T" } : null;
   const yoyKpi = ind.key === "IED" && yoy ? { text: yoy.text, label: yoy.label || "Var. anual flujo" } : null;
@@ -366,29 +399,9 @@ function panoramaCard(ind) {
   return card;
 }
 
-function classifyPanorama() {
-  const avances = [], retrocesos = [], senales = [];
-  principalInds().forEach((ind) => {
-    const k = computeKPI(ind);
-    if (!hasData(ind)) { senales.push(`${LABELS[ind.key]}: sin datos cargados (${ESTADOS[ind.estado]?.short || ind.estado}).`); return; }
-    if (ind.origen_dato === "respaldo") { /* alerta global de respaldo, no por indicador */ }
-    if (!k) return;
-    const label = `${LABELS[ind.key]} (${k.varText}, ${k.ultimoP})`;
-    if (k.assessment === "favorable") avances.push(label);
-    else if (k.assessment === "adverso") retrocesos.push(label);
-    if (ind.key === "INPC" && k.ultimoRaw > 4) senales.push(`Inflación general en ${fmtVal(k.ultimoRaw, "pct-raw")}: por encima del límite superior del objetivo del Banco de México (3% ±1 pp).`);
-    if (ind.key === "BALANZA" && k.ultimoRaw < 0) senales.push(`Balanza comercial en déficit (${fmtVal(k.ultimoRaw, "usd")} mdd) en ${k.ultimoP}.`);
-    if (k.assessment === "neutral" && ind.key === "BALANZA") { /* saldo se comenta en señales solo si déficit */ }
-  });
-  return { avances, retrocesos, senales };
-}
-
 function renderPanorama() {
   const sec = $("#view-panorama");
   sec.innerHTML = "";
-  sec.append(el("div", { class: "section-title" }, "Resumen general"));
-
-
   // Alerta discreta de estado global (rezagos y errores de fuente).
   const rezagados = principalInds().filter((i) => i.estado === "REZAGADO");
   const errores = principalInds().filter((i) => i.estado === "ERROR DE FUENTE");
@@ -401,33 +414,28 @@ function renderPanorama() {
     sec.append(el("div", { class: "alert-discreet" }, el("span", { class: "ad-dot" }), `Estado de los datos: ${parts.join("; ")}. Detalle en “Fuentes y metodología”.`));
   }
 
-  // Matriz de 12 indicadores principales.
-  const grid = el("div", { class: "matrix" });
-  ORDER.map(getInd).filter(Boolean).forEach((ind) => grid.append(panoramaCard(ind)));
-  sec.append(grid);
-
-  // Paneles laterales: movimientos y próximos datos.
-  const cols = el("div", { class: "panorama-cols" });
-
-  const { avances, retrocesos, senales } = classifyPanorama();
-  const movBox = el("div", { class: "panel" });
-  movBox.append(el("h3", {}, "Balance de movimientos"));
-  const counts = el("div", {class:"movement-counts"});
-  [["Favorables",avances.length,"up"],["Adversos",retrocesos.length,"down"],["Sin clasificación",principalInds().filter(hasData).length-avances.length-retrocesos.length,"neutral"]].forEach(([label,count,cls])=>
-    counts.append(el("div",{class:`movement-count ${cls}`},el("strong",{},String(count)),el("span",{},label))));
-  movBox.append(counts,el("p",{class:"caption"},"Según la comparación propia de cada indicador; los periodos de referencia pueden diferir."));
-  if(senales.length) movBox.append(el("ul",{class:"attention-list"},...senales.slice(0,2).map(text=>el("li",{},text))));
-  movBox.append(el("a",{class:"acceso-link",href:"#metodologia"},"Criterios de interpretación →"));
-  cols.append(movBox);
-
-  const next = el("div", { class: "panel" });
-  next.append(el("h3", {}, "Próximos datos por publicarse"));
+  const next = el("div", { class: "rg-panel upcoming-panel" });
+  next.append(el("h3", {}, "Próximas publicaciones"));
   const nlist = el("div", {});
-  const upcoming = upcomingPublications(3);
+  const upcoming = upcomingPublications(4);
   if (upcoming.length) {
     upcoming.forEach((c) => {
-      const row = el("div", { class: "cal-item" }, el("span", { class: "date" }, c.fecha_publicacion || "—"), el("span", {}, `${c.indicador} · ${c.periodo_referencia || ""}`));
-      if (c.clave && getInd(c.clave)) { row.classList.add("clickable"); row.setAttribute("role", "link"); row.addEventListener("click", () => setView(c.clave)); }
+      const linked = c.clave && getInd(c.clave);
+      const attrs = { class: "cal-item publication-row" };
+      if (linked) {
+        attrs.href = `#${c.clave}`;
+        attrs.onclick = (event) => {
+          if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+          event.preventDefault(); setView(c.clave);
+        };
+      }
+      const row = el(linked ? "a" : "div", attrs,
+        el("span", { class: "date" }, c.fecha_publicacion || "—"),
+        el("span", { class: "publication-info" },
+          el("span", { class: "publication-name" }, c.indicador),
+          c.periodo_referencia ? el("span", { class: "publication-period" }, `Referencia: ${c.periodo_referencia}`) : null
+        )
+      );
       nlist.append(row);
     });
   } else {
@@ -435,8 +443,7 @@ function renderPanorama() {
     if (!nlist.children.length) nlist.append(el("div", { class: "muted" }, "Sin fechas confirmadas. Ver Calendario de publicaciones."));
   }
   next.append(nlist,el("a",{class:"acceso-link",href:"#calendario"},"Ver calendario completo →"));
-  cols.append(next);
-  sec.append(cols);
+  sec.append(renderResumen(el, state.data.indicators, next));
 }
 
 // ---------------- Indicator view ----------------
@@ -483,6 +490,30 @@ function componentStatusTable(title, components) {
   return box;
 }
 
+// D-037 · Cifras ya publicadas que la fuente revisó en las últimas semanas (data/revisiones.json).
+function revisionReciente(ind) {
+  const r = state.revisiones?.ultimas?.[ind.key];
+  if (!r || !r.n) return null;
+  const cuando = r.fecha ? new Date(r.fecha).toLocaleDateString("es-MX", { day: "numeric", month: "long", timeZone: "America/Mexico_City" }) : "";
+  const fuente = sourceInstitution(ind.fuente?.nombre || "la fuente");
+  const resumen = r.recalculo
+    ? `${fuente} recalculó la serie${cuando ? ` (${cuando})` : ""}`
+    : `${fuente} revisó ${r.n} ${r.n === 1 ? "cifra" : "cifras"}${cuando ? ` el ${cuando}` : ""}`;
+  const box = el("details", { class: "fh-revision" }, el("summary", {}, el("span", { class: "fh-date-label" }, "Revisión"), el("span", {}, resumen)));
+  if (r.cambios?.length) {
+    const lista = el("ul", {});
+    r.cambios.forEach((c) => {
+      const f = (v) => typeof v === "number" ? fmtVal(v, c.formato || "") : String(v);
+      lista.append(el("li", {}, `${c.periodo} · ${c.columna}: ${f(c.antes)} → ${f(c.despues)}`));
+    });
+    if (r.n > r.cambios.length) lista.append(el("li", {}, `y ${r.n - r.cambios.length} más`));
+    box.append(lista);
+  } else if (r.recalculo) {
+    box.append(el("p", {}, `Cambiaron ${r.n} cifras ya publicadas: suele ser un cambio de año base o de método. Las gráficas y descargas ya usan la serie nueva.`));
+  }
+  return box;
+}
+
 function fichaHeader(ind) {
   const head = el("div", { class: "ficha-head" });
   const period=ind.periodo_referencia || ind.last_observation || "—";
@@ -501,6 +532,8 @@ function fichaHeader(ind) {
   if(np) dates.append(el("div",{},el("span",{class:"fh-date-label"},ind.key==="TASA" ? "Próxima decisión" : "Próxima publicación"),
     el("span",{},np.fecha_publicacion || "Por anunciar")));
   if(calendarioDisponible(ind)) dates.append(productBtn("Ver calendario","",true,"Consultar calendario del indicador",()=>openCalendarioFiltro(ind),"calendario"));
+  const revision=revisionReciente(ind);
+  if(revision) dates.append(revision);
   const details=el("details",{class:"fh-details"},el("summary",{},"Acerca del indicador y la fuente"));
   if(ind.descripcion) details.append(el("p",{class:"fh-desc"},ind.descripcion));
   const rows=[
@@ -558,7 +591,7 @@ function refineMetricCards(mini, ind, k) {
 const arrow = (mag) => (mag == null ? "■" : (mag > 0.0001 ? "▲" : (mag < -0.0001 ? "▼" : "■")));
 // Color por evaluación económica (no clasifica dirección como buena/mala salvo lectura clara).
 function assessColor(assessment) {
-  return assessment === "favorable" ? "#1e5b4f" : (assessment === "adverso" ? "#9b2247" : "#6b6f68");
+  return assessment === "favorable" ? COLORS.GREEN : (assessment === "adverso" ? COLORS.CRIMSON : COLORS.GRAY);
 }
 
 // Encabezado institucional de la ficha para impresión (solo print).
@@ -586,14 +619,14 @@ function fichaPrintHead(ind, k) {
 function fichaVarBlocks(ind, k, cfg, yoy) {
   const wrap = el("div", { class: "print-varblocks print-only" });
   const block = (lbl, text, mag, note, assessment) => {
-    const color = assessment != null ? assessColor(assessment) : (mag == null ? "#6b6f68" : (mag >= 0 ? "#1e5b4f" : "#9b2247"));
+    const color = assessment != null ? assessColor(assessment) : (mag == null ? "#6b6f68" : (mag >= 0 ? "#1E5B4F" : "#9B2247"));
     return el("div", { class: "pvb" },
       el("div", { class: "pvb-lbl" }, lbl),
       el("div", { class: "pvb-val", style: `color:${color}` }, `${arrow(mag)} ${text}`),
       el("div", { class: "pvb-note" }, note));
   };
   wrap.append(block(cfg.varLabel, k.varText, k.varMag, cfg.comp || "", k.assessment));
-  const yoyLbl = ind.key === "SIC" ? (yoy && yoy.label) || "Dif. a 12 meses" : "Variación anual";
+  const yoyLbl = yoy?.label || (ind.key === "SIC" ? "Dif. a 12 meses" : "Variación anual");
   const yoyNota = ind.key === "SIC" ? "Diferencia en puntos frente al mismo mes del año previo" : "Frente al mismo periodo del año previo";
   if (yoy) wrap.append(block(yoyLbl, yoy.text, yoy.mag, yoyNota, null));
   wrap.append(block("Cifra actual", k.ultimoFmt, null, `Periodo: ${k.ultimoP}`, null));
@@ -608,7 +641,7 @@ function fichaCompareTable(ind, k, cfg, yoy) {
     ["Cifra actual", k.ultimoP, k.ultimoFmt],
     [cfg.varLabel, cfg.comp || "—", k.varText],
   ];
-  if (yoy) rows.push([ind.key === "SIC" ? "Dif. a 12 meses" : "Variación anual", "Año previo", yoy.text]);
+  if (yoy) rows.push([yoy.label || (ind.key === "SIC" ? "Dif. a 12 meses" : "Variación anual"), "Año previo", yoy.text]);
   if (ind.key !== "TASA" && ind.key !== "RESERVAS") {
     rows.push(["Máximo de la serie", k.maxP, k.maxFmt]);
     rows.push(["Mínimo de la serie", k.minP, k.minFmt]);
@@ -698,6 +731,8 @@ function renderIndicatorView(key) {
   const sec = document.getElementById(`view-${key}`);
   const ind = getInd(key);
   sec.innerHTML = "";
+  // Un indicador nuevo puede no tener datos hasta su primera actualización: no detiene el tablero.
+  if (!ind) { sec.append(el("div", { class: "panel ficha" }, el("p", { class: "muted" }, `${LABELS[key] || key}: datos en preparación; se publicarán con la próxima actualización.`))); return; }
   sec.append(indicatorToolbar(key));
   const panel = el("div", { class: "panel ficha" });
   panel.append(fichaHeader(ind));
@@ -732,9 +767,9 @@ function renderIndicatorView(key) {
   if (ind.key === "PIB") {
     mini = el("div", { class: "mini-kpis" },
       el("div", { class: "mini dark" }, el("div", { class: "lbl" }, k.qoqLabel), el("div", { class: "num" }, k.qoqText), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),
-      el("div", { class: "mini" }, el("div", { class: "lbl" }, k.yoyDesestLabel), el("div", { class: "num", style: `color:${k.yoyDesestRaw >= 0 ? COLORS.GREEN : COLORS.CRIMSON}` }, k.yoyDesestText), el("div", { class: "sub" }, "Frente al mismo trimestre del año previo")),
       el("div", { class: "mini" }, el("div", { class: "lbl" }, k.yoyOrigLabel), el("div", { class: "num", style: `color:${k.yoyOrigRaw >= 0 ? COLORS.GREEN : COLORS.CRIMSON}` }, k.yoyOrigText), el("div", { class: "sub" }, "Cifras originales")),
-      k.ytdRaw != null ? el("div", { class: "mini" }, el("div", { class: "lbl" }, k.ytdLabel), el("div", { class: "num", style: `color:${k.ytdRaw >= 0 ? COLORS.GREEN : COLORS.CRIMSON}` }, k.ytdText), el("div", { class: "sub" }, "Variación acumulada")) : null,
+      el("div", { class: "mini" }, el("div", { class: "lbl" }, k.yoyDesestLabel), el("div", { class: "num", style: `color:${k.yoyDesestRaw >= 0 ? COLORS.GREEN : COLORS.CRIMSON}` }, k.yoyDesestText), el("div", { class: "sub" }, "Frente al mismo trimestre del año previo")),
+      k.ytdRaw != null ? el("div", { class: "mini" }, el("div", { class: "lbl" }, k.ytdLabel), el("div", { class: "num", style: `color:${k.ytdRaw >= 0 ? COLORS.GREEN : COLORS.CRIMSON}` }, k.ytdText), el("div", { class: "sub" }, k.ytdBasis || "Variación acumulada")) : null,
       ind.proxima_publicacion && typeof ind.proxima_publicacion === "object"
         ? el("div", { class: "mini" }, el("div", { class: "lbl" }, "Próxima publicación"), el("div", { class: "num" }, ind.proxima_publicacion.fecha_publicacion), el("div", { class: "sub" }, ind.proxima_publicacion.periodo_referencia))
         : null,
@@ -744,7 +779,8 @@ function renderIndicatorView(key) {
       ...k.cards.map((c, i) => el("div", { class: `mini${i === 0 ? " dark" : ""}` },
         el("div", { class: "lbl" }, c.name),
         el("div", { class: "num" }, c.nivelText),
-        el("div", { class: "sub" }, `${c.qoqText} trim. · ${c.yoyText} anual`)
+        el("div", { class: "sub" }, `${c.qoqText} trim. desest. · ${c.yoyText} anual original`),
+        c.yoyDesestRaw != null ? el("div", { class: "sub" }, `${c.yoyDesestText} anual desest.`) : null
       ))
     );
   } else if (ind.key === "EMIM" && k.cards) {
@@ -752,8 +788,8 @@ function renderIndicatorView(key) {
       ...k.cards.map((c, i) => el("div", { class: `mini${i === 0 ? " dark" : ""}` },
         el("div", { class: "lbl" }, c.name),
         el("div", { class: "num" }, c.idxText),
-        el("div", { class: "sub" }, [c.origMomText, c.desestMomText].filter(Boolean).join(" · ")),
-        el("div", { class: "sub" }, [c.origYoyText, c.desestYoyText].filter(Boolean).join(" · "))
+        el("div", { class: "sub" }, c.desestMomRaw != null ? `${c.desestMomText} mensual desest.` : "Mensual desest.: —"),
+        el("div", { class: "sub" }, [c.origYoyRaw != null ? `${c.origYoyText} anual original` : null, c.desestYoyRaw != null ? `${c.desestYoyText} anual desest.` : null].filter(Boolean).join(" · "))
       ))
     );
   } else if (ind.key === "IMAI" && k.cards) {
@@ -776,13 +812,14 @@ function renderIndicatorView(key) {
       ...k.cards.map((c, i) => el("div", { class: `mini${i === 0 ? " dark" : ""}` },
         el("div", { class: "lbl" }, c.name),
         el("div", { class: "num" }, c.nivelText),
-        el("div", { class: "sub" }, `${c.momText} mensual · ${c.yoyText} anual`),
+        el("div", { class: "sub" }, `${c.yoyText} anual · cifras originales`),
+        c.momRaw == null ? null : el("div", { class: "sub" }, `${c.momText} mensual desest.`),
         el("div", { class: "sub" }, `Periodo: ${c.ultimoP}`)
       )),
       k.poblacion ? el("div", { class: "mini" },
         el("div", { class: "lbl" }, "Población ocupada"),
         el("div", { class: "num" }, k.poblacion.textMillones),
-        el("div", { class: "sub" }, `Periodo: ${k.poblacion.periodo} (trimestral)`),
+        el("div", { class: "sub" }, `Periodo: ${k.poblacion.periodo} (${k.poblacion.frecuencia})`),
       ) : null,
     );
   } else if (ind.key === "IED") {
@@ -791,8 +828,8 @@ function renderIndicatorView(key) {
     mini = el("div", { class: "mini-kpis" },
       el("div", { class: "mini dark" }, el("div", { class: "lbl" }, "IED acumulada"), el("div", { class: "num" }, k.ultimoFmt), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),
       el("div", { class: "mini" }, el("div", { class: "lbl" }, "Var. anual del acumulado"), el("div", { class: "num", style: `color:${acColor}` }, k.varText), el("div", { class: "sub" }, cfg.comp)),
-      el("div", { class: "mini" }, el("div", { class: "lbl" }, `Flujo ${k.flujoP || "del 2T"}`), el("div", { class: "num" }, k.flujoText || "—"), el("div", { class: "sub" }, ind.metrics?.flujo_trimestral?.periodo || "—")),
-      el("div", { class: "mini" }, el("div", { class: "lbl" }, "Var. anual del flujo"), el("div", { class: "num", style: `color:${flColor}` }, (k.yoy && k.yoy.text) ? k.yoy.text : ((ind.metrics?.flujo_trimestral?.variacion_anual_pct != null ? (ind.metrics.flujo_trimestral.variacion_anual_pct >= 0 ? "+" : "") + (ind.metrics.flujo_trimestral.variacion_anual_pct * 100).toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%" : "—"))), el("div", { class: "sub" }, "Frente al mismo trimestre del año previo")),
+      ind.data_variant !== "originalmente_publicadas" ? el("div", { class: "mini" }, el("div", { class: "lbl" }, `Flujo ${k.flujoP || "del 2T"}`), el("div", { class: "num" }, k.flujoText || "—"), el("div", { class: "sub" }, ind.metrics?.flujo_trimestral?.periodo || "—")) : null,
+      ind.data_variant !== "originalmente_publicadas" ? el("div", { class: "mini" }, el("div", { class: "lbl" }, "Var. anual del flujo"), el("div", { class: "num", style: `color:${flColor}` }, (k.yoy && k.yoy.text) ? k.yoy.text : ((ind.metrics?.flujo_trimestral?.variacion_anual_pct != null ? (ind.metrics.flujo_trimestral.variacion_anual_pct >= 0 ? "+" : "") + (ind.metrics.flujo_trimestral.variacion_anual_pct * 100).toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%" : "—"))), el("div", { class: "sub" }, "Frente al mismo trimestre del año previo")) : null,
     );
   } else if (ind.key === "TASA") {
     const decisionColor = k.decisionRaw === "sin cambio" ? COLORS.INK : (k.varMag >= 0 ? COLORS.GREEN : COLORS.CRIMSON);
@@ -836,12 +873,12 @@ function renderIndicatorView(key) {
     const monthlyColor = k.varColor;
     const errorColor = (k.latestErrorPP == null || Math.abs(k.latestErrorPP) <= 0.5) ? COLORS.GREEN : (Math.abs(k.latestErrorPP) <= 1.5 ? COLORS.GOLD : COLORS.CRIMSON);
     mini = el("div", { class: "mini-kpis" },
-      el("div", { class: "mini dark" }, el("div", { class: "lbl" }, "Nowcast anual del IGAE"), el("div", { class: "num" }, k.ultimoFmt), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),
+      el("div", { class: "mini dark" }, el("div", { class: "lbl" }, "Nowcast anual del IGAE (desest.)"), el("div", { class: "num" }, k.ultimoFmt), el("div", { class: "sub" }, `Periodo: ${k.ultimoP}`)),
       el("div", { class: "mini" }, el("div", { class: "lbl" }, cfg.varLabel), el("div", { class: "num", style: `color:${monthlyColor}` }, k.varText), el("div", { class: "sub" }, cfg.comp)),
       k.icWidthText ? el("div", { class: "mini" }, el("div", { class: "lbl" }, "Amplitud del IC 95%"), el("div", { class: "num" }, k.icWidthText), el("div", { class: "sub" }, `Límite inferior · superior`)) : null,
-      k.latestObservedText ? el("div", { class: "mini" }, el("div", { class: "lbl" }, "IGAE observado"), el("div", { class: "num" }, k.latestObservedText), el("div", { class: "sub" }, `Publicado: ${k.latestObservedP}`)) : null,
-      k.latestErrorText ? el("div", { class: "mini" }, el("div", { class: "lbl" }, "Error vs. observado"), el("div", { class: "num", style: `color:${errorColor}` }, k.latestErrorText), el("div", { class: "sub" }, `Diferencia en puntos porcentuales`)) : null,
-      k.rmseText ? el("div", { class: "mini" }, el("div", { class: "lbl" }, "RMSE"), el("div", { class: "num" }, k.rmseText), el("div", { class: "sub" }, `${k.rmseN} meses con observado`)) : null,
+      k.latestObservedText ? el("div", { class: "mini" }, el("div", { class: "lbl" }, "IGAE observado desest."), el("div", { class: "num" }, k.latestObservedText), el("div", { class: "sub" }, `Publicado: ${k.latestObservedP}`)) : null,
+      k.latestErrorText ? el("div", { class: "mini" }, el("div", { class: "lbl" }, "Error vs. observado"), el("div", { class: "num", style: `color:${errorColor}` }, k.latestErrorText), el("div", { class: "sub" }, `Observado − estimado; mismo mes, cifras desestacionalizadas`)) : null,
+      k.rmseText ? el("div", { class: "mini" }, el("div", { class: "lbl" }, "RMSE"), el("div", { class: "num" }, k.rmseText), el("div", { class: "sub" }, `${k.rmseN} meses comparables; cifras sujetas a revisión`)) : null,
     );
   } else {
     mini = el("div", { class: "mini-kpis" },
@@ -872,7 +909,7 @@ function renderIndicatorView(key) {
     levels.append(el("div", { class: `chart-box ${ind.key === "IMAI" ? "imai-levels" : ind.key === "EMIM" ? "emim-levels" : ind.key === "BCMM" ? "bcmm-levels" : ind.key === "IMFBCF" ? "imfbcf-levels" : "pibsec-levels"}`, id: `chart-${ind.key}-levels`, role: "img", "aria-label": "Niveles del indicador y actividades económicas" }));
     chartMain.append(levels);
     const vars = el("div", { class: "pibsec-section" });
-    vars.append(el("h3", { class: "block-sub" }, ind.key === "IGAE" ? "Variación anual del IGAE y actividades económicas" : ind.key === "IMAI" ? "Variaciones mensuales y anuales del IMAI y sectores industriales" : ind.key === "EMIM" ? "Variaciones anuales originales" : ind.key === "BCMM" ? "Variaciones anuales del comercio exterior" : ind.key === "IMFBCF" ? "Variaciones mensuales y anuales desestacionalizadas" : "Variación trimestral y anual del PIB y actividades económicas"));
+    vars.append(el("h3", { class: "block-sub" }, ind.key === "IGAE" ? "Variación anual del IGAE y actividades económicas" : ind.key === "IMAI" ? "Variaciones mensuales y anuales del IMAI y sectores industriales" : ind.key === "EMIM" ? "Variaciones anuales originales" : ind.key === "BCMM" ? "Variaciones anuales del comercio exterior" : ind.key === "IMFBCF" ? "Variaciones mensuales y anuales desestacionalizadas" : "Variaciones del PIB y actividades económicas"));
     vars.append(buildWinToggle(ind, winId));
     vars.append(el("div", { class: `chart-box pibsec-variation ${ind.key === "EMIM" ? "emim-variation" : ""} ${ind.key === "BCMM" ? "bcmm-variation" : ""} ${ind.key === "IMFBCF" ? "imfbcf-variation" : ""}`, id: `chart-${ind.key}-variation`, role: "img", "aria-label": "Variaciones del indicador y actividades económicas" }));
     chartMain.append(vars);
@@ -885,7 +922,7 @@ function renderIndicatorView(key) {
     rates.append(el("div", { class: "chart-box desocup-rates", id: `chart-${ind.key}-rates`, role: "img", "aria-label": "Tasas laborales" }));
     chartMain.append(rates);
     const pob = el("div", { class: "pibsec-section" });
-    pob.append(el("h3", { class: "block-sub" }, "Población ocupada"));
+    pob.append(el("h3", { class: "block-sub" }, "Población ocupada trimestral"));
     pob.append(buildPobWinToggle(ind));
     pob.append(el("div", { class: "chart-box desocup-pob", id: `chart-${ind.key}-pob`, role: "img", "aria-label": "Población ocupada" }));
     chartMain.append(pob);
@@ -899,11 +936,13 @@ function renderIndicatorView(key) {
     ac.append(buildWinToggleForObservations(ind, winId, "acumulado"));
     ac.append(el("div", { class: "chart-box ied-acumulado", id: `chart-${ind.key}-acumulado`, role: "img", "aria-label": "IED acumulada comparable por año" }));
     chartMain.append(ac);
+    if (ind.data_variant !== "originalmente_publicadas") {
     const fl = el("div", { class: "pibsec-section" });
     fl.append(el("h3", { class: "block-sub" }, "Flujo trimestral de IED"));
     fl.append(buildWinToggleForObservations(ind, state.windows[`${ind.key}_flujo`] || "max", "flujo"));
     fl.append(el("div", { class: "chart-box ied-flujo", id: `chart-${ind.key}-flujo`, role: "img", "aria-label": "Flujo trimestral de IED" }));
     chartMain.append(fl);
+    }
     chartMain.append(el("div", { class: "range-wrap", id: `range-${ind.key}` }));
   } else if (ind.key === "EMOE") {
     chartMain.classList.add("pibsec-charts");
@@ -974,8 +1013,8 @@ function renderIndicatorView(key) {
       const annual=[...sectors].sort((a,b)=>b.yoyRaw-a.yoyRaw)[0];
       const box=el("div",{class:"ficha-block indicator-reading"},el("h3",{class:"block-sub"},"Lectura del indicador"));
       const reading=el("p",{class:"prose"},"Las ",el("strong",{},quarterly.full.toLowerCase()));
-      if(quarterly === annual) reading.append(" registran la mayor variación trimestral y anual entre las grandes actividades.");
-      else reading.append(" registran la mayor variación trimestral; las ",el("strong",{},annual.full.toLowerCase()),", la mayor variación anual.");
+      if(quarterly === annual) reading.append(" registran la mayor variación trimestral desestacionalizada y anual original entre las grandes actividades.");
+      else reading.append(" registran la mayor variación trimestral desest.; las ",el("strong",{},annual.full.toLowerCase()),", la mayor variación anual original");
       box.append(reading);
       page2.append(box);
     }
@@ -1194,15 +1233,15 @@ function breakdown(ind, k) {
     const color = diff == null ? COLORS.GRAY : (diff > 0 ? COLORS.GREEN : (diff < 0 ? COLORS.CRIMSON : COLORS.INK));
     const grid = el("div", { class: "breakdown" });
     grid.append(el("div", { class: "bd-item" },
-      el("div", { class: "bd-lbl" }, "IGOEC"),
+      el("div", { class: "bd-lbl" }, "IGOEC (desest.)"),
       el("div", { class: "bd-val" }, `${fmtVal(nivel, "idx")} puntos`),
       el("div", { class: "bd-sub" }, `Umbral: ${umbral} puntos · diferencia: `, el("span", { style: `color:${color}` }, diff != null ? (diff > 0 ? "+" : "") + diff.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " puntos" : "—"), ` · sesgo: ${sentido}`)
     ));
     const sectores = [
-      { col: 3, label: "Manufacturas" },
-      { col: 4, label: "Construcción" },
-      { col: 5, label: "Comercio" },
-      { col: 6, label: "Servicios privados no financieros" },
+      { col: 3, label: "Manufacturas (desest.)" },
+      { col: 4, label: "Construcción (original)" },
+      { col: 5, label: "Comercio (original)" },
+      { col: 6, label: "Servicios privados no financieros (original)" },
     ];
     const haySectores = sectores.some((s) => last.values[s.col] != null);
     if (haySectores) {
@@ -1234,13 +1273,13 @@ function breakdown(ind, k) {
       const flujo = m.flujo_trimestral && m.flujo_trimestral.valor != null ? m.flujo_trimestral.valor : null;
       return [
         ["IED acumulada", lastAc[0], "usd"],
-        ["Flujo del 2T", flujo, "usd"],
+        ...(ind.data_variant === "originalmente_publicadas" ? [] : [["Flujo del 2T", flujo, "usd"]]),
         ["Nuevas inversiones", lastAc[1], "usd"],
         ["Reinversión de utilidades", lastAc[2], "usd"],
         ["Cuentas entre compañías", lastAc[3], "usd"],
       ];
     }
-    if (ind.key === "INPC") return [["General", last.values[2], "pct-raw"], ["Subyacente", last.values[5], "pct-raw"], ["No subyacente", last.values[11], "pct-raw"]];
+    if (ind.key === "INPC") return [["General", last.values[2], "pct-rate"], ["Subyacente", last.values[5], "pct-rate"], ["No subyacente", last.values[11], "pct-rate"]];
     if (ind.key === "INPP") return [["INPP con petróleo", last.values[2], "pct-raw"], ["INPP sin petróleo", last.values[6], "pct-raw"], ["Bienes intermedios", last.values[8], "pct-raw"]];
     if (ind.key === "BALANZA") return [["Exportaciones", last.values[0], "usd"], ["Importaciones", last.values[1], "usd"], ["Saldo (X − M)", (last.values[0] != null && last.values[1] != null) ? last.values[0] - last.values[1] : null, "usd"]];
     return null;
@@ -1260,7 +1299,7 @@ function pibsecActivityBlock(ind, k) {
   const box = el("div", { class: "ficha-block pibsec-activity" });
   const subsectores = ind.subsectores || {};
   const hasSubs = Object.keys(subsectores).some((s) => !s.toLowerCase().startsWith("pib") && !s.toLowerCase().includes("actividades"));
-  box.append(el("h3", { class: "block-sub" }, hasSubs ? "Variación anual por subsector" : "Desempeño por actividad"));
+  box.append(el("h3", { class: "block-sub" }, hasSubs ? "Variación anual original por subsector" : "Desempeño por actividad"));
 
   if (hasSubs) {
     const entries = Object.entries(subsectores)
@@ -1292,8 +1331,8 @@ function pibsecActivityBlock(ind, k) {
     grid.append(el("div", { class: "bd-item" },
       el("div", { class: "bd-lbl" }, c.full),
       el("div", { class: "bd-val" }, c.nivelText),
-      el("div", { class: "bd-sub" }, `Trim. `, el("span", { style: `color:${qoqColor}` }, c.qoqText)),
-      el("div", { class: "bd-sub" }, `Anual `, el("span", { style: `color:${yoyColor}` }, c.yoyText))
+      el("div", { class: "bd-sub" }, `Trim. desest. `, el("span", { style: `color:${qoqColor}` }, c.qoqText)),
+      el("div", { class: "bd-sub" }, `Anual original `, el("span", { style: `color:${yoyColor}` }, c.yoyText))
     ));
   });
   box.append(grid);
@@ -1390,20 +1429,20 @@ function mountPibtChart(pibt) {
         if (!params || !params.length) return "";
         const p = params[0];
         return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
-          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">Nivel del PIB</span>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#4d4d4d;font-size:11px">Nivel del PIB</span>`
           + `<span style="font-family:'Noto Sans',sans-serif;font-weight:600">${fmtVal(p.value, "bill")}</span></div>`;
       },
     },
     toolbox: {
       right: 4, top: 2, itemSize: 14,
       feature: { saveAsImage: { title: "Guardar imagen", name: "PIBT", pixelRatio: 2, backgroundColor: "#fff" } },
-      iconStyle: { borderColor: "#8a8d86" },
+      iconStyle: { borderColor: "#7a7a7a" },
     },
     xAxis: {
       type: "category",
       data: periods,
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: periods.length > 16 ? 9 : 10, rotate: periods.length > 16 ? 42 : 0, interval: periods.length > 24 ? "auto" : 0 },
-      axisLine: { lineStyle: { color: "#c9c2b2" } },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: periods.length > 16 ? 9 : 10, rotate: periods.length > 16 ? 42 : 0, interval: periods.length > 24 ? "auto" : 0 },
+      axisLine: { lineStyle: { color: "#cfcfcf" } },
       axisTick: { show: false },
     },
     yAxis: {
@@ -1412,7 +1451,7 @@ function mountPibtChart(pibt) {
       nameLocation: "middle",
       nameGap: 42,
       nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 11, fontWeight: 500 },
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 11, formatter: (v) => (v / 1e6).toLocaleString("es-MX", { notation: "compact", maximumFractionDigits: 1 }) },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: 11, formatter: (v) => (v / 1e6).toLocaleString("es-MX", { notation: "compact", maximumFractionDigits: 1 }) },
       splitLine: { lineStyle: { color: "#ece7da" } },
       axisLine: { show: false },
       axisTick: { show: false },
@@ -1460,8 +1499,8 @@ function renderTable(ind, k) {
         el("td", {}, perShort(d.effective_date)),
         el("td", {}, decisionText),
         el("td", {}, changeText),
-        el("td", {}, d.previous_rate != null ? fmtVal(d.previous_rate, "pct-raw") : "—"),
-        el("td", {}, fmtVal(d.new_rate, "pct-raw")),
+        el("td", {}, d.previous_rate != null ? fmtVal(d.previous_rate, "pct-rate") : "—"),
+        el("td", {}, fmtVal(d.new_rate, "pct-rate")),
         el("td", {}, link)
       ));
     });
@@ -1521,9 +1560,11 @@ function renderSearch() {
  const input=el("input",{type:"search",placeholder:"Buscar indicador o tema…","aria-label":"Buscar indicador o tema",autocomplete:"off","aria-controls":"search-results"});
  const results=el("div",{id:"search-results",class:"search-results"});results.hidden=true;
  const close=()=>{results.hidden=true;input.setAttribute("aria-expanded","false");};
- const update=()=>{results.replaceChildren();const query=input.value.trim();
+ let searchTimer;
+ const update=()=>{clearTimeout(searchTimer);results.replaceChildren();const query=input.value.trim();
    if(!query){close();return;}
    const found=searchIndicators(query,ORDER.map(getInd).filter(Boolean));
+   
    found.forEach(ind=>results.append(el("button",{type:"button",class:"search-result",onclick:()=>{setView(ind.key);close();input.value="";const target=document.getElementById("view-"+ind.key);target?.classList.add("search-found");setTimeout(()=>target?.classList.remove("search-found"),1600);const heading=target?.querySelector("h1,h2,h3");if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}}},
      el("span",{},SIGLA[ind.key]+" · "+LABELS[ind.key]),el("small",{},SOURCE_GROUPS.find(g=>g.id===sourceView(ind.key))?.label))));
    if(!found.length)results.append(el("p",{class:"search-empty"},"Sin coincidencias"));
@@ -1974,7 +2015,9 @@ function mountIedCharts(ind) {
   const cap = document.getElementById(`caption-${ind.key}`);
   if (cap) {
     const lastAc = acObs.length ? acObs[acObs.length - 1].period : (ind.last_observation || "—");
-    cap.textContent = `${CAPTIONS[ind.key] || ""} Acumulado comparable hasta ${lastAc}; flujo hasta ${flObs.length ? flObs[flObs.length - 1].period : ind.last_observation || "—"}.`.trim();
+    cap.textContent = ind.data_variant === "originalmente_publicadas"
+      ? `IED acumulada desde enero. Cifras originalmente publicadas; comparación al mismo corte de cada año hasta ${ind.periodo_referencia}.`
+      : `${CAPTIONS[ind.key] || ""} Acumulado comparable hasta ${lastAc}; flujo hasta ${flObs.length ? flObs[flObs.length - 1].period : ind.last_observation || "—"}.`.trim();
   }
 }
 
@@ -1997,7 +2040,11 @@ function mountChart(ind) {
   let chart = state.charts[ind.key];
   if (!chart) { chart = echarts.init(dom, null, { renderer: "canvas" }); state.charts[ind.key] = chart; }
   const winId = state.windows[ind.key] || state.data.meta?.default_window || "5a";
-  chart.setOption(buildOption(ind, winId), true);
+  const history = ind.key === "CONSUMO" ? ind.imcp_history : null;
+  const chartInd = history?.observations?.length
+    ? { ...ind, observations: history.observations, _useOriginal: false }
+    : ind;
+  chart.setOption(buildOption(chartInd, winId), true);
 
   // Gráfica independiente del nivel tradicional del PIB (PIBT).
   if (ind.key === "PIB" && ind.pibt) mountPibtChart(ind.pibt);
@@ -2006,13 +2053,15 @@ function mountChart(ind) {
   const rangeCard = document.getElementById(`range-${ind.key}`);
   if (rangeCard) {
     rangeCard.innerHTML = "";
-    rangeCard.append(buildRangeCard(ind, winId));
+    rangeCard.append(buildRangeCard(chartInd, winId));
   }
   const cap = document.getElementById(`caption-${ind.key}`);
   if (cap) {
-    const obs = applyWindow(ind, winId);
+    const obs = applyWindow(chartInd, winId);
     const last = obs.length ? obs[obs.length - 1].period : (ind.last_observation || "—");
-    cap.textContent = indicatorCaption(ind, last);
+    cap.textContent = history?.observations?.length
+      ? `Serie revisada del IMCP · al ${perLong(last)} · INEGI vía Banxico (SIE CR362)`
+      : indicatorCaption(ind, last);
   }
 }
 function mountAllCharts() { ORDER.map(getInd).filter(Boolean).forEach((ind) => { if (KPICFG[ind.key] && hasData(ind)) mountChart(ind); }); }
@@ -2023,6 +2072,7 @@ function buildViewShells() {
   const host = $("#sections");
   host.innerHTML = "";
   VIEWS.forEach((v) => host.append(el("section", { class: `view${v.id === state.active ? " active" : ""}`, id: `view-${v.id}`, role: "tabpanel", "aria-labelledby": `tab-${sourceView(v.id)}` })));
+  host.append(el("section", { class: "view", id: "view-estatal", role: "tabpanel", "aria-label": "Panorama Estatal" }));
 }
 
 function renderAll() {
@@ -2037,7 +2087,7 @@ function renderAll() {
   resizeVisibleCharts();
 }
 
-function downloadExcel() { window.location.href = "downloads/Indicadores_Macroeconomicos_Mexico_Actualizado.xlsx"; }
+function downloadExcel() {  window.location.href = "downloads/Indicadores_Macroeconomicos_Mexico_Actualizado.xlsx"; }
 
 // Pie de página institucional dinámico para impresión de fichas.
 function updatePrintFooter() {
@@ -2064,7 +2114,7 @@ function updatePrintFooter() {
 async function init() {
   try {
     state.data = await loadJSON("data/indicadores.json");
-    [state.health, state.updatePolicy] = await Promise.all([loadJSON("data/update_health.json", true), loadJSON("config/update_policy.json", true)]);
+    [state.health, state.updatePolicy, state.revisiones] = await Promise.all([loadJSON("data/update_health.json", true), loadJSON("config/update_policy.json", true), loadJSON("data/revisiones.json", true)]);
     state.iedStates = await loadJSON("data/ied_estatal.json", true);
     state.manifest = await loadJSON("data/manifest.json", true);
     state.noticias = await loadJSON("data/noticias.json", true);

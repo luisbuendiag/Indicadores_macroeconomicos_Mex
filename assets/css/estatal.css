@@ -1,0 +1,86 @@
+/* N-040 · Panorama Estatal. Mismos colores y tipografía que F-013. */
+.pe-root { --pe-cafe:#10312B; --pe-ink:#161A1D; --pe-muted:#545454; --pe-line:#DCE4E0; --pe-soft:#F4F4F2; color:var(--pe-ink); font-family:var(--sans, 'Noto Sans', system-ui, sans-serif); }
+.pe-head { display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 16px; margin:4px 0 10px; }
+.pe-title { font-size:32px; color:var(--pe-cafe); margin:0; font-weight:700; }
+.pe-caption { margin:0; color:var(--pe-muted); font-size:14px; }
+.pe-aviso { margin:0 0 12px; padding:8px 12px; border:1px solid var(--pe-line); border-left:3px solid var(--pe-cafe); border-radius:6px; font-size:13px; color:var(--pe-muted); }
+.pe-aviso strong { color:var(--pe-ink); }
+
+.pe-selector { display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin:0 0 12px; }
+.pe-chip { font:inherit; font-size:13px; padding:6px 12px; border:1px solid var(--pe-line); border-radius:6px; background:#fff; color:var(--pe-ink); cursor:pointer; }
+.pe-chip:hover { background:var(--pe-soft); }
+.pe-chip[aria-checked="true"] { background:var(--pe-cafe); border-color:var(--pe-cafe); color:#fff; }
+.pe-pend { font-size:12px; color:var(--pe-muted); margin-left:6px; }
+
+.pe-grid { display:grid; grid-template-columns:minmax(0,1.7fr) minmax(260px,1fr); gap:16px; align-items:start; }
+.pe-mapwrap, .pe-tablewrap { background:#fff; border:1px solid var(--pe-line); border-top:3px solid var(--pe-cafe); border-radius:6px; padding:12px; }
+.pe-map { width:100%; height:auto; display:block; }
+.pe-state { stroke:#fff; stroke-width:0.8; cursor:pointer; transition:opacity .12s; outline:none; }
+.pe-map:hover .pe-state { opacity:.85; }
+.pe-map .pe-state:hover, .pe-state:focus-visible { opacity:1; stroke:var(--pe-ink); stroke-width:1.6; }
+
+.pe-legend { margin-top:8px; font-size:12px; color:var(--pe-muted); }
+.pe-leg-t { display:block; margin-bottom:4px; }
+.pe-leg-row { display:flex; flex-wrap:wrap; gap:4px 12px; }
+.pe-leg-i { display:inline-flex; align-items:center; gap:5px; font-variant-numeric:tabular-nums; }
+.pe-leg-i i { width:14px; height:10px; border-radius:2px; display:inline-block; border:1px solid rgba(0,0,0,.06); }
+.pe-src { font-size:11.5px; color:var(--pe-muted); margin:8px 0 0; }
+
+.pe-tablewrap { max-height:620px; overflow:auto; padding:0; }
+.pe-table { width:100%; border-collapse:collapse; font-size:13px; font-variant-numeric:tabular-nums; }
+.pe-table caption { text-align:left; font-weight:600; padding:10px 12px 6px; color:var(--pe-cafe); }
+.pe-table th, .pe-table td { padding:5px 10px; border-bottom:1px solid #E6ECE9; text-align:left; }
+.pe-table thead th { position:sticky; top:0; background:#fff; font-size:12px; color:var(--pe-muted); font-weight:600; }
+.pe-table .num { text-align:right; }
+.pe-table tbody tr { cursor:pointer; }
+.pe-table tbody tr:hover, .pe-table tbody tr:focus { background:var(--pe-soft); outline:none; }
+.pe-table tfoot td { font-weight:600; border-top:1px solid var(--pe-line); }
+.pe-sort { font:inherit; font-size:12px; color:var(--pe-muted); background:none; border:0; padding:0; cursor:pointer; }
+
+.pe-tip { position:absolute; z-index:60; min-width:250px; max-width:320px; background:#fff; border:1px solid var(--pe-line, #DCE4E0); border-top:3px solid #10312B; border-radius:6px; padding:10px 12px; box-shadow:0 6px 18px rgba(43,36,32,.12); font-size:12.5px; color:#161A1D; pointer-events:none; font-family:'Noto Sans',system-ui,sans-serif; }
+.pe-tip-name { font-weight:700; font-size:15px; color:#10312B; margin-bottom:6px; }
+.pe-tip-row { display:flex; justify-content:space-between; gap:12px; padding:2px 0; font-variant-numeric:tabular-nums; }
+.pe-tip-row .per { color:#545454; font-size:11px; }
+.pe-tip-row .v { font-weight:600; white-space:nowrap; }
+.pe-tip-row.sel .k { font-weight:700; }
+.pe-tip-row.pend { color:#98989A; }
+.pe-tip-row.pend .v { font-weight:400; font-style:italic; }
+.pe-tip-foot { margin-top:6px; padding-top:6px; border-top:1px solid #E6ECE9; color:#545454; font-size:11px; }
+
+.pe-sheet { position:fixed; left:0; right:0; bottom:0; z-index:70; background:#fff; border-top:3px solid #10312B; border-radius:10px 10px 0 0; padding:14px 16px 18px; box-shadow:0 -6px 20px rgba(43,36,32,.15); font-size:13px; }
+.pe-sheet-btns { display:flex; gap:8px; margin-top:10px; }
+.pe-btn { font:inherit; padding:8px 14px; border-radius:6px; border:1px solid #10312B; background:#10312B; color:#fff; }
+.pe-btn.ghost { background:#fff; color:#10312B; }
+
+.pe-f-top { display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom:8px; }
+.pe-f-nav { display:flex; gap:6px; }
+.pe-back { font:inherit; font-size:13px; background:#fff; border:1px solid var(--pe-line); border-radius:6px; padding:5px 10px; color:var(--pe-cafe); cursor:pointer; }
+.pe-back:hover { background:var(--pe-soft); }
+.pe-f-head { border-top:3px solid var(--pe-cafe); padding-top:10px; margin-bottom:10px; }
+.pe-f-name { font-size:28px; margin:0; color:var(--pe-cafe); }
+.pe-f-sub { margin:4px 0 0; color:var(--pe-muted); font-size:14px; }
+.pe-ftable { width:100%; border-collapse:collapse; font-size:14px; font-variant-numeric:tabular-nums; }
+.pe-ftable thead th { background:var(--pe-cafe); color:#fff; font-weight:600; font-size:12.5px; text-align:left; padding:7px 10px; }
+.pe-ftable th[scope="row"] { font-weight:600; text-align:left; padding:8px 10px; border-bottom:1px solid #E6ECE9; width:34%; }
+.pe-ftable th .per { display:block; font-weight:400; font-size:11.5px; color:var(--pe-muted); }
+.pe-ftable td { padding:8px 10px; border-bottom:1px solid #E6ECE9; }
+.pe-ftable .num { text-align:right; }
+.pe-ftable .strong { font-weight:700; }
+.pe-ftable tr.pend th, .pe-ftable tr.pend td { color:#98989A; }
+.pe-ftable tr.pend td { font-style:italic; }
+.pe-f-h4 { margin:18px 0 6px; font-size:15px; color:var(--pe-cafe); }
+.pe-bars { width:100%; max-width:720px; height:auto; display:block; }
+.pe-bars rect:hover { opacity:.8; }
+.pe-bar-x { font-size:10px; fill:#545454; }
+.pe-bar-v { font-size:11px; fill:#161A1D; font-weight:600; }
+
+@media (max-width: 900px) {
+  .pe-grid { grid-template-columns:1fr; }
+  .pe-tablewrap { max-height:420px; }
+  .pe-title { font-size:26px; }
+  .pe-ftable { font-size:13px; }
+  .pe-ftable th[scope="row"] { width:auto; }
+}
+
+.pe-downloads { margin: 0 0 14px; flex-wrap: wrap; }
+.pe-downloads a { display: inline-block; text-decoration: none; }

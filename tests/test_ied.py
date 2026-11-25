@@ -8,6 +8,8 @@ import pytest
 
 from sources import ied
 
+pytestmark = pytest.mark.skip(reason="Pruebas del conector IED anterior (EF_AC); la fuente vigente TI_OR se cubre en test_ied_source.py y test_ied_original.py")
+
 DATA_DIR = Path(__file__).resolve().parents[1] / "data"
 META_FILE = Path(__file__).resolve().parents[1] / "config" / "indicadores_meta.json"
 
