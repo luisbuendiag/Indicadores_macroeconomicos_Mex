@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-11-25T18:46:07+00:00",
+    "generated_at": "2026-11-25T21:55:05+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-11-25T12:46:07-06:00",
+    "last_update_ct": "2026-11-25T15:55:05-06:00",
     "periodo_referencia_reciente": {
       "period": "Oct 26",
       "period_long": "Oct 26"
@@ -1625,12 +1625,12 @@
         "target_period": "3T-26 P",
         "message": "Nota generada y validada por reglas Python"
       },
-      "boletin_validado": true,
       "proxima_publicacion_boletin": {
         "fecha_publicacion": "29 de enero de 2027",
         "fecha_iso": "2027-01-29",
         "periodo_base": "3T-26 P"
-      }
+      },
+      "boletin_validado": true
     },
     "PIBSEC": {
       "key": "PIBSEC",
@@ -29984,7 +29984,6 @@
         "target_period": "Sep 26",
         "message": "Nota generada y validada por reglas Python"
       },
-      "boletin_validado": true,
       "enoe_mensual": {
         "periodo": "Sep 26",
         "fuente": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_10.pdf",
@@ -30015,7 +30014,8 @@
             "mensual_desest_pp": -0.4
           }
         }
-      }
+      },
+      "boletin_validado": true
     },
     "INPC": {
       "key": "INPC",
@@ -53917,7 +53917,6 @@
         "target_period": "Oct 26",
         "message": "Nota generada y validada por reglas Python"
       },
-      "boletin_validado": true,
       "observed_basis": "annual_seasonally_adjusted",
       "observed_sources": {
         "2024-11": {
@@ -54035,7 +54034,8 @@
           "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_11.pdf",
           "publication_date": "2026-11-23"
         }
-      }
+      },
+      "boletin_validado": true
     },
     "EMIM": {
       "key": "EMIM",
@@ -174389,9 +174389,15 @@
           "values": [
             6.25
           ]
+        },
+        {
+          "period": "2026-11-26",
+          "values": [
+            6.25
+          ]
         }
       ],
-      "last_observation": "2026-11-25",
+      "last_observation": "2026-11-26",
       "last_updated": "2026-11-25",
       "last_checked": "2026-11-25",
       "requiere_token": "BANXICO",
@@ -174400,7 +174406,7 @@
       "estado": "ACTUALIZADO",
       "origen_dato": "api",
       "fecha_publicacion": null,
-      "periodo_referencia": "2026-11-25",
+      "periodo_referencia": "2026-11-26",
       "fecha_consulta": "2026-11-25",
       "source_origin": "api",
       "metrics": {
@@ -174481,7 +174487,7 @@
       "periodo_referencia_oficial": "Nov 26",
       "fecha_publicacion_oficial": null,
       "proxima_publicacion": null,
-      "motivo_frescura": "El periodo cargado (2026-11-25) coincide con el último periodo esperado (Nov 26).",
+      "motivo_frescura": "El periodo cargado (2026-11-26) coincide con el último periodo esperado (Nov 26).",
       "url_boletin_oficial": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/{43236252-D06E-5231-27E8-058810A86A52}.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/TASA/TASA_datos.xlsx",
@@ -174490,7 +174496,7 @@
       "nota_causa": null,
       "url_nota_individual": "downloads/indicadores/TASA/nota/TASA_nota.docx",
       "frecuencia_original": "Diaria",
-      "fecha_ultima_observacion": "2026-11-25",
+      "fecha_ultima_observacion": "2026-11-26",
       "url_fuente_oficial": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
       "fecha_ultima_publicacion": null,
       "regla_publicacion": null,
@@ -177212,7 +177218,7 @@
         "format": "docx",
         "automatic": false,
         "generated_from": "snapshot_oficial",
-        "periodo": "2026-11-25",
+        "periodo": "2026-11-26",
         "path": "downloads/indicadores/TASA/nota/TASA_nota.docx",
         "status": "vigente"
       }

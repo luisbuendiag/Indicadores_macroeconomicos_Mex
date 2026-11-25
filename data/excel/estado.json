@@ -52,23 +52,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "b81d00b599c28065227df7f305acb1347b361856ca821eac58607ccd58c25f19",
-    "redefined_series": [
-      {
-        "column": 0,
-        "before": "Var. trimestral (%)",
-        "after": "Var. trimestral desest. (%)",
-        "before_count": 44,
-        "after_count": 44
-      },
-      {
-        "column": 3,
-        "before": "Acumulado (%)",
-        "after": "Acumulado desest. (%)",
-        "before_count": 23,
-        "after_count": 23
-      }
-    ]
+    "sha256": "3e59c36002a0dd5fc7f7c71eabca01875b4b5ebcd018cd21e6cdd61c615497af"
   },
   "PIBSEC": {
     "sheets": 2,
@@ -222,93 +206,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "9b90013aacec5da689b12900ad6d9ec8774e5ed4035ec897f365edcd9ce242a7",
-    "redefined_series": [
-      {
-        "column": 5,
-        "before": "PIB",
-        "after": "PIB (original)",
-        "before_count": 134,
-        "after_count": 135
-      },
-      {
-        "column": 0,
-        "before": "Primarias",
-        "after": "Primarias (original)",
-        "before_count": 135,
-        "after_count": 135
-      },
-      {
-        "column": 1,
-        "before": "Secundarias",
-        "after": "Secundarias (original)",
-        "before_count": 135,
-        "after_count": 135
-      },
-      {
-        "column": 2,
-        "before": "Terciarias",
-        "after": "Terciarias (original)",
-        "before_count": 135,
-        "after_count": 135
-      },
-      {
-        "column": 6,
-        "before": "Var. trim. PIB (%)",
-        "after": "Var. trim. PIB desest. (%)",
-        "before_count": 134,
-        "after_count": 135
-      },
-      {
-        "column": 8,
-        "before": "Var. trim. Primarias (%)",
-        "after": "Var. trim. Primarias desest. (%)",
-        "before_count": 134,
-        "after_count": 135
-      },
-      {
-        "column": 10,
-        "before": "Var. trim. Secundarias (%)",
-        "after": "Var. trim. Secundarias desest. (%)",
-        "before_count": 134,
-        "after_count": 135
-      },
-      {
-        "column": 3,
-        "before": "Var. trim. Terciarias (%)",
-        "after": "Var. trim. Terciarias desest. (%)",
-        "before_count": 134,
-        "after_count": 135
-      },
-      {
-        "column": 7,
-        "before": "Var. anual PIB (%)",
-        "after": "Var. anual PIB desest. (%)",
-        "before_count": 131,
-        "after_count": 135
-      },
-      {
-        "column": 9,
-        "before": "Var. anual Primarias (%)",
-        "after": "Var. anual Primarias desest. (%)",
-        "before_count": 131,
-        "after_count": 135
-      },
-      {
-        "column": 11,
-        "before": "Var. anual Secundarias (%)",
-        "after": "Var. anual Secundarias desest. (%)",
-        "before_count": 131,
-        "after_count": 135
-      },
-      {
-        "column": 4,
-        "before": "Var. anual Terciarias (%)",
-        "after": "Var. anual Terciarias desest. (%)",
-        "before_count": 131,
-        "after_count": 135
-      }
-    ]
+    "sha256": "88f89a40e0677e646d8f3bfe94e236c17c9b416b7fae11fb78b2f5ba7fc410c8"
   },
   "SIC": {
     "sheets": 1,
@@ -480,7 +378,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "e9bc4e98ab46ff15e6b986ce668cc21b24b4880e1b6d15e091fcebba50d3d0a5"
+    "sha256": "e055accf28745771cf3ce22044a84ddf0269bd2e6780aa58b7ccc1066ca64cbf"
   },
   "IOAE": {
     "sheets": 1,
@@ -607,86 +505,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "35b3469e72cd2ea0b6502ddcb45057202c5b7462b57d9c3c78174cbee6c27eb9",
-    "redefined_series": [
-      {
-        "column": 0,
-        "before": "IGAE var. anual nowcast (%)",
-        "after": "IGAE var. anual nowcast desest. (%)",
-        "before_count": 70,
-        "after_count": 70
-      },
-      {
-        "column": 1,
-        "before": "IC95 inferior IGAE (%)",
-        "after": "IC95 inferior IGAE desest. (%)",
-        "before_count": 70,
-        "after_count": 70
-      },
-      {
-        "column": 2,
-        "before": "IC95 superior IGAE (%)",
-        "after": "IC95 superior IGAE desest. (%)",
-        "before_count": 70,
-        "after_count": 70
-      },
-      {
-        "column": 3,
-        "before": "IGAE var. mensual nowcast (%)",
-        "after": "IGAE var. mensual nowcast desest. (%)",
-        "before_count": 67,
-        "after_count": 67
-      },
-      {
-        "column": 4,
-        "before": "Actividades secundarias var. anual nowcast (%)",
-        "after": "Actividades secundarias var. anual nowcast desest. (%)",
-        "before_count": 70,
-        "after_count": 70
-      },
-      {
-        "column": 5,
-        "before": "IC95 inferior secundarias (%)",
-        "after": "IC95 inferior secundarias desest. (%)",
-        "before_count": 68,
-        "after_count": 68
-      },
-      {
-        "column": 6,
-        "before": "IC95 superior secundarias (%)",
-        "after": "IC95 superior secundarias desest. (%)",
-        "before_count": 68,
-        "after_count": 68
-      },
-      {
-        "column": 7,
-        "before": "Actividades terciarias var. anual nowcast (%)",
-        "after": "Actividades terciarias var. anual nowcast desest. (%)",
-        "before_count": 70,
-        "after_count": 70
-      },
-      {
-        "column": 8,
-        "before": "IC95 inferior terciarias (%)",
-        "after": "IC95 inferior terciarias desest. (%)",
-        "before_count": 70,
-        "after_count": 70
-      },
-      {
-        "column": 9,
-        "before": "IC95 superior terciarias (%)",
-        "after": "IC95 superior terciarias desest. (%)",
-        "before_count": 70,
-        "after_count": 70
-      },
-      {
-        "column": 12,
-        "before": "IGAE observado anual (%)",
-        "after": "IGAE observado anual desest. (%)",
-        "before_count": 69,
-        "after_count": 23
-      }
-    ]
+    "sha256": "d101e47d5e22dd81258353ad18fef1a7ec4dcc687a571c028023fdf63d46a15c"
   },
   "IGAE": {
     "sheets": 1,
@@ -786,30 +605,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "81d6a4f1b05460e058a95822e22c6b04498e3daf80232e624e3fdc1ec8b2c321",
-    "redefined_series": [
-      {
-        "column": 4,
-        "before": "Var. anual act. primarias (%)",
-        "after": "Var. anual original act. primarias (%)",
-        "before_count": 393,
-        "after_count": 393
-      },
-      {
-        "column": 6,
-        "before": "Var. anual act. secundarias (%)",
-        "after": "Var. anual original act. secundarias (%)",
-        "before_count": 393,
-        "after_count": 393
-      },
-      {
-        "column": 8,
-        "before": "Var. anual act. terciarias (%)",
-        "after": "Var. anual original act. terciarias (%)",
-        "before_count": 393,
-        "after_count": 393
-      }
-    ]
+    "sha256": "12892e4cb1c7a1f76f690b3030edd3e94270758e49114673391e86900c6192ea"
   },
   "IMAI": {
     "sheets": 3,
@@ -981,65 +777,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "7b7e1691c3ba5295f87e5ce6d5216790427d5a67af5c587e7d8e4a8d813a9d52",
-    "redefined_series": [
-      {
-        "column": 14,
-        "before": "Var. mensual Minería (%)",
-        "after": "Var. mensual desest. Minería (%)",
-        "before_count": 105,
-        "after_count": 105
-      },
-      {
-        "column": 15,
-        "before": "Var. mensual Energía (%)",
-        "after": "Var. mensual desest. Energía (%)",
-        "before_count": 105,
-        "after_count": 105
-      },
-      {
-        "column": 16,
-        "before": "Var. mensual Construcción (%)",
-        "after": "Var. mensual desest. Construcción (%)",
-        "before_count": 105,
-        "after_count": 105
-      },
-      {
-        "column": 17,
-        "before": "Var. mensual Manufacturas (%)",
-        "after": "Var. mensual desest. Manufacturas (%)",
-        "before_count": 105,
-        "after_count": 105
-      },
-      {
-        "column": 10,
-        "before": "Var. anual Minería (%)",
-        "after": "Var. anual desest. Minería (%)",
-        "before_count": 105,
-        "after_count": 105
-      },
-      {
-        "column": 11,
-        "before": "Var. anual Energía (%)",
-        "after": "Var. anual desest. Energía (%)",
-        "before_count": 105,
-        "after_count": 105
-      },
-      {
-        "column": 12,
-        "before": "Var. anual Construcción (%)",
-        "after": "Var. anual desest. Construcción (%)",
-        "before_count": 105,
-        "after_count": 105
-      },
-      {
-        "column": 13,
-        "before": "Var. anual Manufacturas (%)",
-        "after": "Var. anual desest. Manufacturas (%)",
-        "before_count": 105,
-        "after_count": 105
-      }
-    ]
+    "sha256": "4fae7870298fcc1cd8b5360f814d3c513ca2d91af5e304aea561faf3fef570b6"
   },
   "IMOAM": {
     "sheets": 1,
@@ -1103,7 +841,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "76ed86f5bba3b8492bb46b232427c01643fc636ef15a714c7fa9c8c0506547b0"
+    "sha256": "bcc5d7a56a92d43149a90c5bffa1473e29ea5835376cf62d95c9c313d2fba47f"
   },
   "EMIM": {
     "sheets": 2,
@@ -1275,7 +1013,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "780f3c64de58c24c0a8d6343ba9750f26383d9ef83cabc0d9d972f6e1e788c22"
+    "sha256": "ca454ccff8972d00ad9e06d3781cea264eade3fd38ad775683010d1324f5f6b5"
   },
   "EMOE": {
     "sheets": 1,
@@ -1348,58 +1086,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "e25a64968d493a065ddf53c6f05811ee6c463486f204cccab2580b22a4807e9f",
-    "redefined_series": [
-      {
-        "column": 0,
-        "before": "IGOEC",
-        "after": "IGOEC (desest.)",
-        "before_count": 106,
-        "after_count": 106
-      },
-      {
-        "column": 1,
-        "before": "Cambio mensual IGOEC (puntos)",
-        "after": "Cambio mensual IGOEC desest. (puntos)",
-        "before_count": 106,
-        "after_count": 106
-      },
-      {
-        "column": 2,
-        "before": "Cambio anual IGOEC (puntos)",
-        "after": "Cambio anual IGOEC desest. (puntos)",
-        "before_count": 94,
-        "after_count": 106
-      },
-      {
-        "column": 3,
-        "before": "Manufacturas",
-        "after": "Manufacturas (desest.)",
-        "before_count": 106,
-        "after_count": 106
-      },
-      {
-        "column": 4,
-        "before": "Construcción",
-        "after": "Construcción (original)",
-        "before_count": 106,
-        "after_count": 106
-      },
-      {
-        "column": 5,
-        "before": "Comercio",
-        "after": "Comercio (original)",
-        "before_count": 106,
-        "after_count": 106
-      },
-      {
-        "column": 6,
-        "before": "Servicios privados no financieros",
-        "after": "Servicios privados no financieros (original)",
-        "before_count": 106,
-        "after_count": 106
-      }
-    ]
+    "sha256": "ca5f22eddce3a1595acefe70f4f159f9a236a38903ffdba01f4c81b5b2f2dca0"
   },
   "DESOCUP": {
     "sheets": 2,
@@ -1456,7 +1143,7 @@
       "4": "Misma población expresada en millones; se conserva la serie en personas."
     },
     "data_variant": null,
-    "sha256": "af157cab9dd843579a6e5d56e3bbd1523cb0b66236586b9216b21d025debdc30"
+    "sha256": "b022ba78fddb0dbe2f66ac52aedd784e21c23f7f4fd85947b62fa5e10977d9dd"
   },
   "INPC": {
     "sheets": 1,
@@ -1628,7 +1315,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "5d5905a5aa40676e347fe87ba8a3d7a12fc51abf223648fa82aba5f796b97f39"
+    "sha256": "6c965c0ae4d2641e2a47546b74ee827a77806f91723d4647a2ebf64ad4c9e31a"
   },
   "INPP": {
     "sheets": 1,
@@ -1773,7 +1460,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "546baef2ee7395fdb2ff6764e9614c342d422d92ff0d12e7151819ffeda48e4f"
+    "sha256": "97e7a9b32f0bbcbd14bd62c8470435bfec1d61ccee1e1725c9f867f8250d406b"
   },
   "CONSUMO": {
     "sheets": 2,
@@ -2116,100 +1803,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "158a77443dcc2e79eaa73df4f4bf05918ef3329eea84d4abfca40438dd91ffc7",
-    "redefined_series": [
-      {
-        "column": 0,
-        "before": "Índice de volumen físico",
-        "after": "Índice de volumen físico (desest.)",
-        "before_count": 23,
-        "after_count": 23
-      },
-      {
-        "column": 1,
-        "before": "Var. mensual total (%)",
-        "after": "Var. mensual desest. total (%)",
-        "before_count": 23,
-        "after_count": 23
-      },
-      {
-        "column": 2,
-        "before": "Var. anual total (%)",
-        "after": "Var. anual desest. total (%)",
-        "before_count": 23,
-        "after_count": 23
-      },
-      {
-        "column": 5,
-        "before": "Var. mensual nacional (%)",
-        "after": "Var. mensual desest. nacional (%)",
-        "before_count": 23,
-        "after_count": 23
-      },
-      {
-        "column": 6,
-        "before": "Var. anual nacional (%)",
-        "after": "Var. anual desest. nacional (%)",
-        "before_count": 23,
-        "after_count": 23
-      },
-      {
-        "column": 11,
-        "before": "Var. mensual importado (%)",
-        "after": "Var. mensual desest. importado (%)",
-        "before_count": 23,
-        "after_count": 23
-      },
-      {
-        "column": 12,
-        "before": "Var. anual importado (%)",
-        "after": "Var. anual desest. importado (%)",
-        "before_count": 23,
-        "after_count": 23
-      },
-      {
-        "column": 7,
-        "before": "Var. mensual bienes nacionales (%)",
-        "after": "Var. mensual desest. bienes nacionales (%)",
-        "before_count": 23,
-        "after_count": 23
-      },
-      {
-        "column": 8,
-        "before": "Var. anual bienes nacionales (%)",
-        "after": "Var. anual desest. bienes nacionales (%)",
-        "before_count": 23,
-        "after_count": 23
-      },
-      {
-        "column": 9,
-        "before": "Var. mensual servicios nacionales (%)",
-        "after": "Var. mensual desest. servicios nacionales (%)",
-        "before_count": 23,
-        "after_count": 23
-      },
-      {
-        "column": 10,
-        "before": "Var. anual servicios nacionales (%)",
-        "after": "Var. anual desest. servicios nacionales (%)",
-        "before_count": 23,
-        "after_count": 23
-      },
-      {
-        "column": 13,
-        "before": "Var. mensual bienes importados (%)",
-        "after": "Var. mensual desest. bienes importados (%)",
-        "before_count": 23,
-        "after_count": 23
-      },
-      {
-        "column": 14,
-        "before": "Var. anual bienes importados (%)",
-        "after": "Var. anual desest. bienes importados (%)",
-        "before_count": 23,
-        "after_count": 23
-      }
-    ]
+    "sha256": "32f7db07275799329f6915612655d186f278b724f5fb6e2fc444abbe15f6a8d8"
   },
   "IMFBCF": {
     "sheets": 3,
@@ -2579,7 +2173,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "453e88ebb128499ee19c7b6e0392c64a709b5fafc84643d21c5689efddc941f2"
+    "sha256": "394236026da1705267a6fb97ca8dab252a9e44406e7f2e913b2153c848d98d79"
   },
   "BCMM": {
     "sheets": 3,
@@ -2843,7 +2437,7 @@
       "5": "Se evita la tasa porcentual del saldo; no es interpretable al cambiar de signo."
     },
     "data_variant": null,
-    "sha256": "a41cb476ea30f7882d1c51d814899229e35caf89bcc8275bcebb41143507834d"
+    "sha256": "5abedfab6fc14352273df5926aabaa05dc17a33dcadd97fd7e88afe3841a6abb"
   },
   "IED": {
     "sheets": 6,
@@ -2945,7 +2539,7 @@
     "data_variant": null,
     "state_source_sha256": "237075853fe6b72b5ea5473dc53b5849bfe3220840de293a72c7e15053f283ce",
     "state_period": "2T-2026",
-    "sha256": "d95bc27b23c46b27377bb526ee2133ac8a1c80ee16dbc07ea14c9530f4a8dc1e"
+    "sha256": "dd5a186afa6d8891a4704f622d2eaa902fd356788a5de99de73e87d74d767ff9"
   },
   "TIPOCAMBIO": {
     "sheets": 1,
@@ -2964,7 +2558,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "646e3de7d48333cc5df2ad2b7f044836c7d2ff905fdcc025204bd72391c11470"
+    "sha256": "f5a672ea1977064ff941ab8c400ae25138810ae5325e107a40262feff4efa8df"
   },
   "TASA": {
     "sheets": 2,
@@ -2977,8 +2571,8 @@
         "column": 0,
         "label": "Tasa objetivo (%)",
         "first": "2008-01-21",
-        "last": "2026-11-25",
-        "count": 6788
+        "last": "2026-11-26",
+        "count": 6789
       },
       {
         "key": "TASA_Decisiones",
@@ -3028,7 +2622,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "fbc31f67c5c47969b54925f0cde160ddb6eef8700362cf77549354a3e17d2972"
+    "sha256": "b15eeb7a012add034042fd9f7ce45d699ad9160aa84718b2d4bf6b24ed56acf7"
   },
   "RESERVAS": {
     "sheets": 1,
@@ -3074,7 +2668,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "d299c3e1762985b219d533ede6fb93ff5ee59f2dc838c3a934062e2bcee27ca0"
+    "sha256": "e1b8e5fe41fae8e396cdd3c9c0e85d8d13fdf9500fce70fc4da19baa6c99c923"
   },
   "REMESAS": {
     "sheets": 1,
@@ -3120,15 +2714,15 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "fd2f5141316ba5467895b12a3bdc3bffe5baed87e3b65ce2962318c01e9f7288"
+    "sha256": "91274bb72c4e5373089a96bb0ee8f6668d0e30e78a99e6d31b6e22ebaed28320"
   },
   "general": {
     "sheets": 27,
     "charts": 40,
     "formulas": 3440,
-    "input_sha256": "1bf7a66ec573f322b6de7cbd2c0a867ac78bb6154e074c62dcf3f122e8c75183",
+    "input_sha256": "bdb999f512ecc32a319e58b5d32a3c59f3e6ad761734acd35839a2739aa93bd8",
     "state_source_sha256": "237075853fe6b72b5ea5473dc53b5849bfe3220840de293a72c7e15053f283ce",
     "state_period": "2T-2026",
-    "sha256": "8953238287665dd648b710c9c6d11c80e944eb3beb98ff7436ed2ab41e6a69a5"
+    "sha256": "a4fbec55d049ba20c75293195b06c0911d720a25326f8a70e52d58c98c55f99d"
   }
 }
