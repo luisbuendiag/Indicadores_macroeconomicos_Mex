@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-11-25T17:16:28+00:00",
+    "generated_at": "2026-11-25T17:58:28+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-11-25T11:16:28-06:00",
+    "last_update_ct": "2026-11-25T11:58:28-06:00",
     "periodo_referencia_reciente": {
       "period": "Oct 26",
       "period_long": "Oct 26"
@@ -26380,7 +26380,7 @@
           ]
         }
       ],
-      "last_observation": "2T-26",
+      "last_observation": "3T-26",
       "last_updated": "2026-11-25",
       "last_checked": "2026-11-25",
       "source_origin": "api",
@@ -26389,18 +26389,105 @@
       "clasificacion": "complementario",
       "estado": "ACTUALIZADO",
       "origen_dato": "respaldo",
-      "fecha_publicacion": "24 de agosto de 2026",
-      "periodo_referencia": "2T-26",
+      "fecha_publicacion": "24 de noviembre de 2026",
+      "periodo_referencia": "3T-26",
       "fecha_consulta": "2026-11-25",
       "metrics": {
+        "acumulado": {
+          "periodo": "Ene-Sep 26",
+          "valor": 43090,
+          "unidad": "mdd",
+          "variacion_anual_pct": 0.053,
+          "corte": "Ene-Sep"
+        },
+        "flujo_trimestral": {
+          "periodo": "3T-26",
+          "valor": null,
+          "unidad": "mdd",
+          "variacion_anual_pct": null
+        },
+        "composicion_tipo": [
+          {
+            "concepto": "Reinversión de utilidades",
+            "mdd": 34975,
+            "participacion_pct": 0.812
+          },
+          {
+            "concepto": "Cuentas entre compañías",
+            "mdd": 4315,
+            "participacion_pct": 0.1
+          },
+          {
+            "concepto": "Nuevas inversiones",
+            "mdd": 3800,
+            "participacion_pct": 0.088
+          }
+        ],
+        "composicion_pais": [
+          {
+            "pais": "Estados Unidos",
+            "mdd": 19334,
+            "participacion_pct": 0.449
+          },
+          {
+            "pais": "España",
+            "mdd": 6208,
+            "participacion_pct": 0.144
+          },
+          {
+            "pais": "Alemania",
+            "mdd": 2895,
+            "participacion_pct": 0.067
+          },
+          {
+            "pais": "Reino Unido",
+            "mdd": 2586,
+            "participacion_pct": 0.06
+          },
+          {
+            "pais": "Canadá",
+            "mdd": 2447,
+            "participacion_pct": 0.057
+          }
+        ],
+        "composicion_sector": [
+          {
+            "sector": "Manufacturas",
+            "mdd": 19231,
+            "participacion_pct": 0.446
+          },
+          {
+            "sector": "Servicios financieros y de seguros",
+            "mdd": 10635,
+            "participacion_pct": 0.247
+          },
+          {
+            "sector": "Transportes, correos y almacenamiento",
+            "mdd": 3099,
+            "participacion_pct": 0.072
+          }
+        ],
+        "composicion_entidad": [],
+        "componentes_acumulado": {
+          "Nuevas inversiones": 3800,
+          "Reinversión de utilidades": 34975,
+          "Cuentas entre compañías": 4315
+        },
+        "componentes_flujo": {
+          "Nuevas inversiones": null,
+          "Reinversión de utilidades": null,
+          "Cuentas entre compañías": null
+        },
+        "corte_referencia": "Ene-Sep",
+        "source_mode": "manual_fallback",
         "kpi": {
           "assessment": "favorable",
           "dir": "up",
-          "ultimoFmt": "34,968",
-          "ultimoRaw": 34968,
-          "ultimoP": "Ene-Jun 26",
-          "varText": "+2.1%",
-          "varMag": 2.1,
+          "ultimoFmt": "43,090",
+          "ultimoRaw": 43090,
+          "ultimoP": "Ene-Sep 26",
+          "varText": "+5.3%",
+          "varMag": 5.3,
           "pos": true,
           "varColor": "#1e5b4f",
           "varLabel": "Var. anual del acumulado",
@@ -26634,21 +26721,20 @@
             "2T-26"
           ],
           "semaforo": "bueno",
-          "flujoRaw": 10464.95,
-          "flujoText": "10,465",
-          "flujoP": "2T-26"
+          "flujoRaw": null,
+          "flujoText": "—",
+          "flujoP": "3T-26"
         },
         "yoy": {
-          "mag": -3.5000000000000004,
-          "pos": false,
-          "text": "-3.5%",
+          "mag": 0,
+          "pos": true,
+          "text": "",
           "label": "Var. anual del flujo"
         },
         "resumen": [
-          "Entre enero y junio de 2026, México recibió $34,968 millones de dólares de IED, una variación anual del 2.1% más que en el mismo periodo del año previo.",
-          "Durante el segundo trimestre de 2026, el flujo exclusivo fue de aproximadamente $10,465 millones de dólares.",
-          "La IED acumulada se compone de Reinversión de utilidades 88.5%, Nuevas inversiones 7.8% y Cuentas entre compañías 3.7% del acumulado.",
-          "Manufacturas concentró 38.6% de la IED acumulada."
+          "Entre enero y septiembre de 2026, México recibió $43,090 millones de dólares de IED (+5.3% frente a la cifra originalmente publicada para el mismo periodo del año anterior).",
+          "La IED acumulada se compone de Reinversión de utilidades 81.2%, Cuentas entre compañías 10.0% y Nuevas inversiones 8.8% del acumulado.",
+          "Manufacturas concentró 44.6% de la IED acumulada."
         ]
       },
       "periodo_referencia_oficial": "2° trimestre 2026",
@@ -26658,8 +26744,8 @@
         "periodo_referencia": "3° trimestre 2026",
         "tipo": "no_anunciada"
       },
-      "motivo_frescura": "El periodo cargado (2T-26) coincide con el último periodo esperado (2° trimestre 2026).",
-      "url_boletin_oficial": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa",
+      "motivo_frescura": "El dashboard tiene 3T-26, que está adelantado al periodo esperado (2° trimestre 2026); se recomienda revisar el calendario.",
+      "url_boletin_oficial": "https://www.gob.mx/se/prensa/mexico-alcanza-un-maximo-historico-de-inversion-extranjera-directa-ied-entre-enero-y-septiembre-de-2026-43-mil-090-millones-de-dolares?idiom=es",
       "xlsx_disponible": true,
       "xlsx_causa": null,
       "url_excel_individual": "downloads/indicadores/IED/IED_datos.xlsx",
@@ -26689,10 +26775,10 @@
       "observations_acumulado": [
         {
           "period": "1999",
-          "period_acumulado": "Ene-Jun 99",
-          "quarter": "2T-99",
+          "period_acumulado": "Ene-Sep 99",
+          "quarter": "3T-99",
           "values": [
-            6991.97,
+            7386.4,
             null,
             null,
             null,
@@ -26701,310 +26787,82 @@
         },
         {
           "period": "2000",
-          "period_acumulado": "Ene-Jun 00",
-          "quarter": "2T-00",
+          "period_acumulado": "Ene-Sep 00",
+          "quarter": "3T-00",
           "values": [
-            9458.06,
+            8756.9,
             null,
             null,
             null,
-            1.26
+            0.19
           ]
         },
         {
           "period": "2001",
-          "period_acumulado": "Ene-Jun 01",
-          "quarter": "2T-01",
+          "period_acumulado": "Ene-Sep 01",
+          "quarter": "3T-01",
           "values": [
-            8817.51,
+            18902.9,
             null,
             null,
             null,
-            0.24
+            1.16
           ]
         },
         {
           "period": "2002",
-          "period_acumulado": "Ene-Jun 02",
-          "quarter": "2T-02",
+          "period_acumulado": "Ene-Sep 02",
+          "quarter": "3T-02",
           "values": [
-            11326.5,
+            7781.3,
             null,
             null,
             null,
-            2.01
+            -0.59
           ]
         },
         {
           "period": "2003",
-          "period_acumulado": "Ene-Jun 03",
-          "quarter": "2T-03",
+          "period_acumulado": "Ene-Sep 03",
+          "quarter": "3T-03",
           "values": [
-            9511.02,
+            7043.0,
             null,
             null,
             null,
-            1.04
+            -0.09
           ]
         },
         {
           "period": "2004",
-          "period_acumulado": "Ene-Jun 04",
-          "quarter": "2T-04",
+          "period_acumulado": "Ene-Sep 04",
+          "quarter": "3T-04",
           "values": [
-            13714.95,
+            12976.2,
             null,
             null,
             null,
-            2.3
+            0.84
           ]
         },
         {
           "period": "2005",
-          "period_acumulado": "Ene-Jun 05",
-          "quarter": "2T-05",
+          "period_acumulado": "Ene-Sep 05",
+          "quarter": "3T-05",
           "values": [
-            13535.24,
+            8896.6,
             null,
             null,
             null,
-            0.41
+            -0.31
           ]
         },
         {
           "period": "2006",
-          "period_acumulado": "Ene-Jun 06",
-          "quarter": "2T-06",
+          "period_acumulado": "Ene-Sep 06",
+          "quarter": "3T-06",
           "values": [
-            14072.17,
-            null,
-            null,
-            null,
-            1.36
-          ]
-        },
-        {
-          "period": "2007",
-          "period_acumulado": "Ene-Jun 07",
-          "quarter": "2T-07",
-          "values": [
-            16953.42,
-            null,
-            null,
-            null,
-            1.44
-          ]
-        },
-        {
-          "period": "2008",
-          "period_acumulado": "Ene-Jun 08",
-          "quarter": "2T-08",
-          "values": [
-            16932.4,
-            null,
-            null,
-            null,
-            0.79
-          ]
-        },
-        {
-          "period": "2009",
-          "period_acumulado": "Ene-Jun 09",
-          "quarter": "2T-09",
-          "values": [
-            12199.79,
-            null,
-            null,
-            null,
-            0.28
-          ]
-        },
-        {
-          "period": "2010",
-          "period_acumulado": "Ene-Jun 10",
-          "quarter": "2T-10",
-          "values": [
-            18024.41,
-            null,
-            null,
-            null,
-            0.81
-          ]
-        },
-        {
-          "period": "2011",
-          "period_acumulado": "Ene-Jun 11",
-          "quarter": "2T-11",
-          "values": [
-            15128.67,
-            null,
-            null,
-            null,
-            0.24
-          ]
-        },
-        {
-          "period": "2012",
-          "period_acumulado": "Ene-Jun 12",
-          "quarter": "2T-12",
-          "values": [
-            13515.32,
-            null,
-            null,
-            null,
-            0.27
-          ]
-        },
-        {
-          "period": "2013",
-          "period_acumulado": "Ene-Jun 13",
-          "quarter": "2T-13",
-          "values": [
-            31590.73,
-            null,
-            null,
-            null,
-            2.28
-          ]
-        },
-        {
-          "period": "2014",
-          "period_acumulado": "Ene-Jun 14",
-          "quarter": "2T-14",
-          "values": [
-            19307.83,
-            null,
-            null,
-            null,
-            -0.19
-          ]
-        },
-        {
-          "period": "2015",
-          "period_acumulado": "Ene-Jun 15",
-          "quarter": "2T-15",
-          "values": [
-            18793.31,
-            null,
-            null,
-            null,
-            0.93
-          ]
-        },
-        {
-          "period": "2016",
-          "period_acumulado": "Ene-Jun 16",
-          "quarter": "2T-16",
-          "values": [
-            19016.48,
-            null,
-            null,
-            null,
-            0.38
-          ]
-        },
-        {
-          "period": "2017",
-          "period_acumulado": "Ene-Jun 17",
-          "quarter": "2T-17",
-          "values": [
-            20634.18,
-            null,
-            null,
-            null,
-            0.43
-          ]
-        },
-        {
-          "period": "2018",
-          "period_acumulado": "Ene-Jun 18",
-          "quarter": "2T-18",
-          "values": [
-            23655.16,
-            null,
-            null,
-            null,
-            0.51
-          ]
-        },
-        {
-          "period": "2019",
-          "period_acumulado": "Ene-Jun 19",
-          "quarter": "2T-19",
-          "values": [
-            21894.73,
-            null,
-            null,
-            null,
-            0.23
-          ]
-        },
-        {
-          "period": "2020",
-          "period_acumulado": "Ene-Jun 20",
-          "quarter": "2T-20",
-          "values": [
-            24161.35,
-            null,
-            null,
-            null,
-            0.33
-          ]
-        },
-        {
-          "period": "2021",
-          "period_acumulado": "Ene-Jun 21",
-          "quarter": "2T-21",
-          "values": [
-            22430.74,
-            null,
-            null,
-            null,
-            0.25
-          ]
-        },
-        {
-          "period": "2022",
-          "period_acumulado": "Ene-Jun 22",
-          "quarter": "2T-22",
-          "values": [
-            31165.38,
-            null,
-            null,
-            null,
-            0.69
-          ]
-        },
-        {
-          "period": "2023",
-          "period_acumulado": "Ene-Jun 23",
-          "quarter": "2T-23",
-          "values": [
-            32171.33,
-            null,
-            null,
-            null,
-            0.17
-          ]
-        },
-        {
-          "period": "2024",
-          "period_acumulado": "Ene-Jun 24",
-          "quarter": "2T-24",
-          "values": [
-            33709.33,
-            null,
-            null,
-            null,
-            0.16
-          ]
-        },
-        {
-          "period": "2025",
-          "period_acumulado": "Ene-Jun 25",
-          "quarter": "2T-25",
-          "values": [
-            38019.72,
+            10864.2,
             null,
             null,
             null,
@@ -27012,19 +26870,247 @@
           ]
         },
         {
-          "period": "2026",
-          "period_acumulado": "Ene-Jun 26",
-          "quarter": "2T-26",
+          "period": "2007",
+          "period_acumulado": "Ene-Sep 07",
+          "quarter": "3T-07",
           "values": [
-            34968,
-            2726,
-            30957,
-            1285,
+            15096.9,
+            null,
+            null,
+            null,
+            0.39
+          ]
+        },
+        {
+          "period": "2008",
+          "period_acumulado": "Ene-Sep 08",
+          "quarter": "3T-08",
+          "values": [
+            15560.1,
+            null,
+            null,
+            null,
+            0.03
+          ]
+        },
+        {
+          "period": "2009",
+          "period_acumulado": "Ene-Sep 09",
+          "quarter": "3T-09",
+          "values": [
+            9750.0,
+            null,
+            null,
+            null,
+            -0.37
+          ]
+        },
+        {
+          "period": "2010",
+          "period_acumulado": "Ene-Sep 10",
+          "quarter": "3T-10",
+          "values": [
+            14362.0,
+            null,
+            null,
+            null,
+            0.47
+          ]
+        },
+        {
+          "period": "2011",
+          "period_acumulado": "Ene-Sep 11",
+          "quarter": "3T-11",
+          "values": [
+            13429.7,
+            null,
+            null,
+            null,
+            -0.06
+          ]
+        },
+        {
+          "period": "2012",
+          "period_acumulado": "Ene-Sep 12",
+          "quarter": "3T-12",
+          "values": [
+            13045.0,
+            null,
+            null,
+            null,
+            -0.03
+          ]
+        },
+        {
+          "period": "2013",
+          "period_acumulado": "Ene-Sep 13",
+          "quarter": "3T-13",
+          "values": [
+            28233.8,
+            null,
+            null,
+            null,
+            1.16
+          ]
+        },
+        {
+          "period": "2014",
+          "period_acumulado": "Ene-Sep 14",
+          "quarter": "3T-14",
+          "values": [
+            15310.0,
+            null,
+            null,
+            null,
+            -0.46
+          ]
+        },
+        {
+          "period": "2015",
+          "period_acumulado": "Ene-Sep 15",
+          "quarter": "3T-15",
+          "values": [
+            21585.6,
+            null,
+            null,
+            null,
+            0.41
+          ]
+        },
+        {
+          "period": "2016",
+          "period_acumulado": "Ene-Sep 16",
+          "quarter": "3T-16",
+          "values": [
+            19772.6,
+            null,
+            null,
+            null,
+            -0.08
+          ]
+        },
+        {
+          "period": "2017",
+          "period_acumulado": "Ene-Sep 17",
+          "quarter": "3T-17",
+          "values": [
+            21754.8,
+            null,
+            null,
+            null,
+            0.1
+          ]
+        },
+        {
+          "period": "2018",
+          "period_acumulado": "Ene-Sep 18",
+          "quarter": "3T-18",
+          "values": [
+            24133.98,
+            null,
+            null,
+            null,
+            0.11
+          ]
+        },
+        {
+          "period": "2019",
+          "period_acumulado": "Ene-Sep 19",
+          "quarter": "3T-19",
+          "values": [
+            26055.61,
+            null,
+            null,
+            null,
+            0.08
+          ]
+        },
+        {
+          "period": "2020",
+          "period_acumulado": "Ene-Sep 20",
+          "quarter": "3T-20",
+          "values": [
+            23482.32,
+            null,
+            null,
+            null,
+            -0.1
+          ]
+        },
+        {
+          "period": "2021",
+          "period_acumulado": "Ene-Sep 21",
+          "quarter": "3T-21",
+          "values": [
+            24831.72,
+            null,
+            null,
+            null,
+            0.06
+          ]
+        },
+        {
+          "period": "2022",
+          "period_acumulado": "Ene-Sep 22",
+          "quarter": "3T-22",
+          "values": [
+            32147.39,
+            null,
+            null,
+            null,
+            0.29
+          ]
+        },
+        {
+          "period": "2023",
+          "period_acumulado": "Ene-Sep 23",
+          "quarter": "3T-23",
+          "values": [
+            32926.44,
+            null,
+            null,
+            null,
             0.02
+          ]
+        },
+        {
+          "period": "2024",
+          "period_acumulado": "Ene-Sep 24",
+          "quarter": "3T-24",
+          "values": [
+            35737.49,
+            null,
+            null,
+            null,
+            0.09
+          ]
+        },
+        {
+          "period": "2025",
+          "period_acumulado": "Ene-Sep 25",
+          "quarter": "3T-25",
+          "values": [
+            40906,
+            null,
+            null,
+            null,
+            0.14
+          ]
+        },
+        {
+          "period": "2026",
+          "period_acumulado": "Ene-Sep 26",
+          "quarter": "3T-26",
+          "values": [
+            43090,
+            3800,
+            34975,
+            4315,
+            0.05
           ]
         }
       ],
-      "source_mode": "structured",
+      "source_mode": "manual_fallback",
       "windows_flujo": [
         {
           "id": "1a",
@@ -27058,10 +27144,11 @@
         "format": "docx",
         "automatic": false,
         "generated_from": "snapshot_oficial",
-        "periodo": "2T-26",
+        "periodo": "3T-26",
         "path": "downloads/indicadores/IED/nota/IED_nota.docx",
         "status": "vigente"
-      }
+      },
+      "corte_de_comunicado": true
     },
     "DESOCUP": {
       "key": "DESOCUP",

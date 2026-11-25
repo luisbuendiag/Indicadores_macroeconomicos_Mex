@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-25T17:16:39+00:00",
+  "generated_at": "2026-11-25T17:58:36+00:00",
   "indicadores": [
     {
       "indicador": "Estimación Oportuna del Producto Interno Bruto Trimestral",
@@ -370,9 +370,9 @@
       "frecuencia": "Trimestral",
       "unidad": "Millones de dólares",
       "ajuste_estacional": "No aplica",
-      "ultima_observacion": "2T-26",
-      "periodo_referencia": "2T-26",
-      "fecha_publicacion": "24 de agosto de 2026",
+      "ultima_observacion": "3T-26",
+      "periodo_referencia": "3T-26",
+      "fecha_publicacion": "24 de noviembre de 2026",
       "fecha_consulta": "2026-11-25",
       "fecha_actualizacion_archivo": "2026-11-25",
       "metodo_actualizacion": "Descarga y parseo de XLSX oficiales (resumen histórico + desgloses 2T-2026)",

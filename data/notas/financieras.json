@@ -1,26 +1,26 @@
 {
   "TIPOCAMBIO": {
     "period": "2026-11-24",
-    "docx_sha256": "55831201c504660aa1e0e132d998bd9178044779f620a3ec2e00ecddcf2cfc67",
+    "docx_sha256": "83364b838fe2fc73a308a1884ba05301501afe0a6a0db3356d327d24ad84596a",
     "source": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
-    "generated_at": "2026-11-25T17:21:29.439819+00:00"
+    "generated_at": "2026-11-25T18:02:37.048209+00:00"
   },
   "TASA": {
     "period": "2026-11-25",
-    "docx_sha256": "e9cba2af567a5611db678a031bc714337503a3960f10d0a21cb9e62c91079c2d",
+    "docx_sha256": "392ffd1a5d61372156aa9bf7adde71974e73ad843334e8a506475a6fd1efff6f",
     "source": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
-    "generated_at": "2026-11-25T17:21:30.513112+00:00"
+    "generated_at": "2026-11-25T18:02:38.047126+00:00"
   },
   "RESERVAS": {
     "period": "2026-11-20",
-    "docx_sha256": "2c956c2a4beab0de5fa02a296af422224d07b4497cf1c5576fb6f787de208fc0",
+    "docx_sha256": "afa26da8729eaf2154513e68fca9b9970353d7722f4277c4518c2160236d6ba6",
     "source": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/estado-cuenta-semanal-reserva.html",
-    "generated_at": "2026-11-25T17:21:31.607467+00:00"
+    "generated_at": "2026-11-25T18:02:39.083172+00:00"
   },
   "IED": {
-    "period": "2T-26",
-    "docx_sha256": "225cd71590837b59eee7536ba9f2e5868d88531027a77ddf8890de109380dce0",
-    "source": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa",
-    "generated_at": "2026-11-25T17:21:32.728038+00:00"
+    "period": "3T-26",
+    "docx_sha256": "436ca06a97037b92ceedb5180310a56239af40dbd34adafa4f7d327829fb1ee2",
+    "source": "https://www.gob.mx/se/prensa/mexico-alcanza-un-maximo-historico-de-inversion-extranjera-directa-ied-entre-enero-y-septiembre-de-2026-43-mil-090-millones-de-dolares?idiom=es",
+    "generated_at": "2026-11-25T18:02:40.140661+00:00"
   }
 }

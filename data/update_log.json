@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-11-25T17:00:41+00:00",
+  "started_at": "2026-11-25T17:41:57+00:00",
   "mode": "online",
   "network_calls": true,
   "warnings": [
@@ -424,7 +424,7 @@
     "inegi_inpp: actualizado INPP (última obs Oct 26, sin cambio de periodo)",
     "inegi_inpp: actualizado INPP (última obs Oct 26, sin cambio de periodo)",
     "inegi_inpp: actualizado INPP (última obs Oct 26, sin cambio de periodo)",
-    "ied: actualizado IED (última obs 2T-26, sin cambio de periodo)",
+    "ied: actualizado IED (última obs 3T-26, dato nuevo)",
     "columnas override PIB: 4 columnas",
     "columnas override PIBSEC: 12 columnas",
     "columnas override SIC: 18 columnas",
@@ -481,7 +481,7 @@
     "frescura: INPP -> ACTUALIZADO",
     "frescura: SIC -> ACTUALIZADO",
     "frescura: IMOAM -> ACTUALIZADO",
-    "meta: last_update_ct=2026-11-25T11:16:28-06:00",
+    "meta: last_update_ct=2026-11-25T11:58:28-06:00",
     "notas: 15 vigentes (0 provisionadas desde machote)"
   ],
   "consultas": [
@@ -3958,15 +3958,15 @@
       "indicador": "IED",
       "serie": null,
       "observaciones": 109,
-      "ultima_observacion": "2T-26",
-      "ultimo_valor": 34968,
+      "ultima_observacion": "3T-26",
+      "ultimo_valor": 43090,
       "observacion_previa": "2T-26",
       "actualizacion_fuente": null,
-      "dato_nuevo": false,
+      "dato_nuevo": true,
       "resultado": "consulta válida"
     }
   ],
   "critical": [],
   "result": "OK",
-  "finished_at": "2026-11-25T17:16:39+00:00"
+  "finished_at": "2026-11-25T17:58:36+00:00"
 }
