@@ -93,17 +93,26 @@ def test_bulletin_variations_monthly_and_annual(payload,key,monthly_col,annual_c
 
 
 def test_pib_bulletin_variations(payload):
-    # Regresión fechada del boletín 470/26: no confundirla con el último corte.
-    obs={o['period']:o['values'] for o in payload['indicators']['PIB']['observations']}
-    assert obs['2T-26 P']==pytest.approx([.015,.021,.022,.012],abs=1e-4)
-    assert obs['1T-26 P']==pytest.approx([-.008,.002,.001,.004],abs=1e-4)
+    # Contrato del corte vivo. Las cifras por edición se verifican en test_gdp_notes.py.
+    pib = payload['indicators']['PIB']
+    assert len(pib['columns']) == 5
+    for i, basis in enumerate(('desest.', 'desest.', 'original', 'desest.', 'original')):
+        assert pib['columns'][i]['fmt'] == 'pct-frac'
+        assert basis in pib['columns'][i]['label'].lower()
+        value = pib['observations'][-1]['values'][i]
+        assert isinstance(value, (float, int)) and -1 < value < 1
 
 
 def test_pibsec_terciarias_bulletin_variations(payload):
-    pibsec = payload["indicators"]["PIBSEC"]
-    last = pibsec["observations"][-1]
-    assert last["values"][3] == pytest.approx(0.014, abs=1e-4)
-    assert last["values"][4] == pytest.approx(0.023, abs=1e-4)
+    pibsec = payload['indicators']['PIBSEC']
+    last = pibsec['observations'][-1]
+    card = next(c for c in pibsec['metrics']['kpi']['cards'] if c['name'] == 'terciarias')
+    for i, term, field in [(3, 'trim.', 'qoqRaw'), (4, 'anual', 'yoyDesestRaw')]:
+        assert pibsec['columns'][i]['fmt'] == 'pct-frac'
+        assert term in pibsec['columns'][i]['label'] and 'desest.' in pibsec['columns'][i]['label']
+        value = last['values'][i]
+        assert isinstance(value, (float, int)) and -1 < value < 1
+        assert card[field] == value
 
 
 def test_ioae_jun_2026_and_no_secondary_total(payload):
@@ -137,9 +146,11 @@ def test_pib_eopibt_dashboard(payload):
 
     last=pib['observations'][-1]
     assert kpi['ultimoP']==last['period']
-    for col,field in enumerate(['qoqText','yoyDesestText','yoyOrigText','ytdText']):
-        value=last['values'][col]
-        assert kpi[field]==(('+' if value>0 else '')+f'{value*100:.1f}%')
+    for col, field in [(0, 'qoq'), (1, 'yoyDesest'), (2, 'yoyOrig'), (4, 'ytd')]:
+        value = last['values'][col]
+        assert kpi[field + 'Raw'] == value
+        assert kpi[field + 'Text'] == (('+' if value > 0 else '') + f'{value*100:.1f}%')
+    assert kpi['ytdBasis'] == 'Cifras originales'
 
     # No se muestra un nivel en billones como cifra actual
     assert "billones" not in kpi["ultimoFmt"]

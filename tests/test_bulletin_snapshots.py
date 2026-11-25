@@ -41,3 +41,20 @@ def test_eopibt_acumulado_original_del_cuadro_2(quarter, header, acumulado, expe
         ["PIB", "0.7", "3.2", acumulado],
     ]
     assert _parse_eopibt_original([table], 2026, quarter) == expected
+
+
+def test_eopibt_edicion_470_26_conserva_series(monkeypatch):
+    import json
+    from pathlib import Path
+    from sources import inegi_bulletin as source
+
+    snapshot = json.loads((Path(__file__).parent / "fixtures/eopibt_470_26.json").read_text())
+    monkeypatch.setattr(source, "_pdf_text_first_page", lambda _: (snapshot["header"], None))
+    monkeypatch.setattr(source, "_pdf_page_text", lambda *_: "")
+    monkeypatch.setattr(source, "_pdf_page_tables", lambda _, page: snapshot["tables"][page])
+    parsed = source._parse_eopibt(b"fixture", (2026, 7, 30))
+    expected = {"qoq": .015, "yoy": .021, "yoy_orig": .022, "ytd": .012, "ytd_orig": .012}
+    for key, value in expected.items():
+        assert parsed[key]["PIB"]["period"] == "2T-26 P"
+        assert parsed[key]["PIB"]["value"] == pytest.approx(value)
+    assert parsed["proxima_publicacion_boletin"]["fecha_iso"] == "2026-10-30"

@@ -78,6 +78,14 @@ def test_configuration_pause_preserves_served_word(monkeypatch,tmp_path,flag):
         assert R.run('EMIM',tmp_path,True)['status']=='deshabilitada'
     else:
         fixture(monkeypatch,'EMIM');monkeypatch.setattr(R,'download',lambda *a:b'fixture')
+        # Emparejar el PDF fijo de octubre con una ficha de esa edición, no con el corte vivo.
+        snapshot = tmp_path / 'data/indicadores.json'
+        payload = json.loads(snapshot.read_text())
+        payload['indicators']['EMIM'].update(
+            last_observation='Ago 26',
+            url_boletin_oficial='https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf',
+        )
+        snapshot.write_text(json.dumps(payload), encoding='utf-8')
         template=cfg['template'];p=tmp_path/template;p.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(ROOT/template,p)
         for name in ['build_survey_notes.py','notas_encuestas.py','notas_encuestas_word.py','notas_word.py','build_auto_notes.py']:
             p=tmp_path/'scripts'/name;p.parent.mkdir(exist_ok=True);shutil.copyfile(ROOT/'scripts'/name,p)
