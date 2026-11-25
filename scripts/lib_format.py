@@ -178,6 +178,8 @@ def fmt_val(v: float | int | None, fmt: str) -> str:
         return "$" + _to_fixed(v, 2, 2)
     if fmt == "pct-frac":
         return _to_fixed(v * 100, 1, 1) + "%"
+    if fmt == "pct-rate":
+        return _to_fixed(v, 2, 2) + "%"
     if fmt == "pct-raw":
         return _to_fixed(v, 1, 1) + "%"
     if fmt == "pp":

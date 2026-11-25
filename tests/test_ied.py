@@ -8,6 +8,7 @@ import pytest
 
 from sources import ied
 
+
 DATA_DIR = Path(__file__).resolve().parents[1] / "data"
 META_FILE = Path(__file__).resolve().parents[1] / "config" / "indicadores_meta.json"
 

@@ -26,6 +26,18 @@
         "sigla": "PIB",
         "usar_para_frescura": true
       },
+      "PIBSEC": {
+        "acronyms": ["PIBT"],
+        "program_contains": ["Producto Interno Bruto Trimestral", "PIB trimestral por actividad económica"],
+        "program_require": ["Precios Constantes"],
+        "program_exclude": ["Estimación Oportuna", "Entidad Federativa", "Precios Corrientes", "Método del Ingreso", "Método del Gasto"],
+        "product": "PIB trimestral por actividad económica, precios constantes",
+        "frequency": "Trimestral",
+        "category": "Actividad económica",
+        "institution": "INEGI",
+        "sigla": "PIBSEC",
+        "usar_para_frescura": true
+      },
       "IGAE": {
         "acronyms": ["IGAE"],
         "program_contains": ["Indicador Global de la Actividad Económica"],
@@ -179,6 +191,16 @@
   "banxico": {
     "base_url": "https://www.banxico.org.mx/canales/canal_1_{MM}{YYYY}_es.json",
     "indicators": {
+      "REMESAS": {
+        "parent_id": "23",
+        "category_id": "37",
+        "product": "Remesas con el exterior",
+        "frequency": "Mensual",
+        "category": "Sector externo",
+        "institution": "Banco de México",
+        "sigla": "REMESAS",
+        "usar_para_frescura": true
+      },
       "TASA": {
         "parent_id": "1",
         "category_id": "3",

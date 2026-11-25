@@ -85,7 +85,9 @@ def prose_val(key: str, v: float | int | None) -> str:
         return F._to_fixed(v, 1, 1) + " puntos"
     if key == "DESOCUP":
         return F._to_fixed(v, 1, 1) + "%"
-    if key in ("INPC", "INPP", "TASA"):
+    if key == "INPC":
+        return F.fmt_val(v, "pct-rate")
+    if key in ("INPP", "TASA"):
         return F._to_fixed(v, 1, 1) + "%"
     if key == "IOAE":
         return F._to_fixed(v * 100, 1, 1) + "%"
@@ -286,12 +288,13 @@ def compute_kpi(ind: dict, kpicfg: dict | None = None) -> dict[str, Any] | None:
 
     # Métricas adicionales del IOAE: intervalo de confianza, observado y error.
     if ind["key"] == "IOAE":
+        comparable = ind.get("observed_basis") == "annual_seasonally_adjusted"
         last_obs = ind["observations"][last_i]
         if last_obs:
             v = last_obs.get("values", [])
             lower = v[1] if len(v) > 1 and v[1] is not None else None
             upper = v[2] if len(v) > 2 and v[2] is not None else None
-            observed = v[12] if len(v) > 12 and v[12] is not None else None
+            observed = v[12] if comparable and len(v) > 12 and v[12] is not None else None
             monthly = v[3] if len(v) > 3 and v[3] is not None else None
             if lower is not None and upper is not None:
                 w = (upper - lower) * 100
@@ -309,7 +312,7 @@ def compute_kpi(ind: dict, kpicfg: dict | None = None) -> dict[str, Any] | None:
         # IGAE observado más reciente (puede ser dos meses atrás).
         for i in range(last_i, -1, -1):
             v = ind["observations"][i].get("values", [])
-            if len(v) > 12 and v[12] is not None:
+            if comparable and len(v) > 12 and v[12] is not None:
                 observed = v[12]
                 now = v[0]
                 out["latestObservedP"] = ind["observations"][i]["period"]
@@ -323,7 +326,7 @@ def compute_kpi(ind: dict, kpicfg: dict | None = None) -> dict[str, Any] | None:
         sse = 0.0
         for o in ind.get("observations", []):
             v = o.get("values", [])
-            if len(v) > 12 and v[0] is not None and v[12] is not None:
+            if comparable and len(v) > 12 and v[0] is not None and v[12] is not None:
                 e = v[12] - v[0]
                 sse += e * e
                 n += 1
@@ -458,7 +461,7 @@ def analysis(ind: dict, kpi: dict, kpicfg: dict | None = None) -> list[str]:
     else:
         mag_adj = "elevado" if g == "m" else "elevada"
 
-    ORIG = ("PIB", "PIBSEC", "IGAE", "IMAI", "CONSUMO", "EMIM")
+    ORIG = ("PIB", "PIBSEC", "IGAE", "EMIM")
     big = abs(cur_var - prev_var) if (cur_var is not None and prev_var is not None) else a_mag
 
     trend = ""
@@ -710,7 +713,7 @@ def _eopibt_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     """KPI y resumen específico para el PIB oportuno (EOPIBT).
 
     El PIB oportuno publica variaciones, no nivel. Se exponen cuatro KPIs:
-    variación trimestral, anual desestacionalizada, anual original y acumulado,
+    variación trimestral, anual desestacionalizada, anual original y acumulado original,
     junto con un resumen ejecutivo que evita repetir las mismas cifras.
     """
     cfg = kpicfg.get(ind["key"])
@@ -729,7 +732,7 @@ def _eopibt_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     qoq = _val_at(ind, last_i, 0)
     yoy_desest = _val_at(ind, last_i, 1)
     yoy_orig = _val_at(ind, last_i, 2)
-    ytd = _val_at(ind, last_i, 3)
+    ytd = _val_at(ind, last_i, 4)
     prev_qoq = _val_at(ind, prev_i, 0) if prev_i is not None else None
     prev_yoy_desest = _val_at(ind, prev_i, 1) if prev_i is not None else None
 
@@ -757,7 +760,7 @@ def _eopibt_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     # Campos amigables para el frontend.
     kpi["qoqRaw"] = qoq
     kpi["qoqText"] = _pct(qoq)
-    kpi["qoqLabel"] = "Var. trimestral"
+    kpi["qoqLabel"] = "Var. trimestral desest."
     kpi["yoyDesestRaw"] = yoy_desest
     kpi["yoyDesestText"] = _pct(yoy_desest)
     kpi["yoyDesestLabel"] = "Var. anual desest."
@@ -767,14 +770,15 @@ def _eopibt_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     kpi["ytdRaw"] = ytd
     kpi["ytdText"] = _pct(ytd)
     kpi["ytdLabel"] = "Acumulado"
+    kpi["ytdBasis"] = "Cifras originales"
 
     # Usar variación trimestral como "cifra actual" en tarjetas y matriz.
     kpi["ultimoFmt"] = kpi["qoqText"]
-    kpi["varText"] = kpi["yoyDesestText"]
-    kpi["varLabel"] = kpi["yoyDesestLabel"]
+    kpi["varText"] = kpi["yoyOrigText"]
+    kpi["varLabel"] = kpi["yoyOrigLabel"]
     if yoy:
-        kpi["yoyText"] = kpi["yoyOrigText"]
-        kpi["yoyLabel"] = kpi["yoyOrigLabel"]
+        kpi["yoyText"] = kpi["yoyDesestText"]
+        kpi["yoyLabel"] = kpi["yoyDesestLabel"]
 
     per = kpi["ultimoP"] or ""
     m = re.match(r"(\d)T-(\d{2})", per)
@@ -813,19 +817,20 @@ def _eopibt_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
 
     # 1. Aceleración trimestral.
     if qoq is not None:
-        b1 = f"En {per_long}, el PIB oportuno {_trend_verb(qoq)} {kpi['qoqText']} respecto a {prev_q_long}"
+        b1 = f"En {per_long}, el PIB oportuno {_trend_verb(qoq)} {kpi['qoqText']} respecto a {prev_q_long}, con cifras desestacionalizadas"
         if prev_qoq is not None:
             b1 += f"; {_delta_text(qoq, prev_qoq)} respecto al trimestre previo"
         b1 += "."
         bullets.append(b1)
 
     # 2. Crecimiento anual.
-    if yoy_desest is not None:
-        b2 = f"La variación anual desestacionalizada fue {kpi['yoyDesestText']}"
-        if yoy_orig is not None:
-            b2 += f" y la anual original {kpi['yoyOrigText']}"
-        b2 += f" respecto a {same_q_long}."
-        bullets.append(b2)
+    if yoy_orig is not None:
+        b2 = f"La variación anual con cifras originales fue {kpi['yoyOrigText']}"
+        if yoy_desest is not None:
+            b2 += f" (desestacionalizada: {kpi['yoyDesestText']})"
+        bullets.append(b2 + f" respecto a {same_q_long}.")
+    elif yoy_desest is not None:
+        bullets.append(f"La variación anual desestacionalizada fue {kpi['yoyDesestText']} respecto a {same_q_long}.")
 
     # 3. Avance generalizado.
     sectores = ind.get("sectores")
@@ -844,7 +849,7 @@ def _eopibt_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
 
     # 4. Balance acumulado.
     if ytd is not None and same_q_prev_year:
-        bullets.append(f"El {kpi['ytdLabel'].lower()} de {year} {_trend_verb(ytd)} {kpi['ytdText']} frente al mismo periodo de {year - 1}.")
+        bullets.append(f"El {kpi['ytdLabel'].lower()} de {year} {_trend_verb(ytd)} {kpi['ytdText']} frente al mismo periodo de {year - 1}, con cifras originales.")
 
     return {
         "kpi": kpi,
@@ -885,16 +890,17 @@ def _pibsec_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
         return F.fmt_val(v, "bill")
 
     col_cards = [
-        ("PIB total", 5, 6, 7),
-        ("Actividades primarias", 0, 8, 9),
-        ("Actividades secundarias", 1, 10, 11),
-        ("Actividades terciarias", 2, 3, 4),
+        ("PIB total", 5, 6, 7, 12),
+        ("Actividades primarias", 0, 8, 9, 13),
+        ("Actividades secundarias", 1, 10, 11, 14),
+        ("Actividades terciarias", 2, 3, 4, 15),
     ]
     cards = []
-    for name, nivel_col, qoq_col, yoy_col in col_cards:
+    for name, nivel_col, qoq_col, yoy_col, orig_col in col_cards:
         nivel = _val_at(ind, last_i, nivel_col)
         qoq = _val_at(ind, last_i, qoq_col)
         y = _val_at(ind, last_i, yoy_col)
+        original = _val_at(ind, last_i, orig_col)
         short = "PIB" if name == "PIB total" else name.split()[-1]
         cards.append({
             "name": short,
@@ -903,8 +909,10 @@ def _pibsec_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
             "nivelText": _nivel(nivel),
             "qoqRaw": qoq,
             "qoqText": _pct(qoq),
-            "yoyRaw": y,
-            "yoyText": _pct(y),
+            "yoyRaw": original,
+            "yoyText": _pct(original),
+            "yoyDesestRaw": y,
+            "yoyDesestText": _pct(y),
         })
 
     pib_card = cards[0]
@@ -915,7 +923,7 @@ def _pibsec_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     bullets = []
     bullets.append(
         f"En {per_long}, el {ind.get('nombre')} se ubicó en {pib_card['nivelText']}. "
-        f"La variación trimestral fue {pib_card['qoqText']} y la anual {pib_card['yoyText']} "
+        f"La variación trimestral desestacionalizada fue {pib_card['qoqText']} y la anual original {pib_card['yoyText']} "
         "frente al mismo trimestre del año previo."
     )
 
@@ -924,7 +932,7 @@ def _pibsec_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     ]
     if qoq_parts:
         bullets.append(
-            f"El desempeño por actividad a tasa trimestral fue: {', '.join(qoq_parts)}."
+            f"El desempeño por actividad a tasa trimestral desestacionalizada fue: {', '.join(qoq_parts)}."
         )
 
     yoy_parts = [
@@ -942,7 +950,7 @@ def _pibsec_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
             parts.append(f"{c['name']} {verb} {c['yoyText']}")
         if parts:
             bullets.append(
-                "A tasa anual, " + ", ".join(parts[:-1]) +
+                "A tasa anual con cifras originales, " + ", ".join(parts[:-1]) +
                 (f" y {parts[-1]}" if len(parts) > 1 else parts[0]) + "."
             )
 
@@ -969,7 +977,7 @@ def _pibsec_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
         top_txt = ", ".join(f"{_short_sector(k)} ({_pct(v)})" for k, v in top)
         bot_txt = ", ".join(f"{_short_sector(k)} ({_pct(v)})" for k, v in bottom)
         bullets.append(
-            f"A nivel subsectorial, los mayores dinamismos anuales fueron {top_txt}; "
+            f"A nivel subsectorial, con cifras originales, los mayores dinamismos anuales fueron {top_txt}; "
             f"los mayores retrocesos: {bot_txt}."
         )
 
@@ -1059,9 +1067,9 @@ def _imai_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     cfg["varCol"] = 1
     cfg["varFmt"] = "pct-frac"
     cfg["varLabel"] = "Var. mensual desest."
-    cfg["yoyCol"] = 2
+    cfg["yoyCol"] = 4
     cfg["yoyFmt"] = "pct-frac"
-    cfg["yoyLabel"] = "Var. anual desest."
+    cfg["yoyLabel"] = "Var. anual original"
     cfg["acumCol"] = 5
     cfg["acumFmt"] = "pct-frac"
     cfg["acumLabel"] = "Acumulado ene-mes"
@@ -1137,16 +1145,16 @@ def _imai_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
             bottom = neg[-2:][::-1]
             top_txt = " y ".join(f"{c['name']} ({c['yoyText']})" for c in top)
             bot_txt = " y ".join(f"{c['name']} ({c['yoyText']})" for c in bottom)
-            return f"A tasa anual, {top_txt} avanzaron, mientras que {bot_txt} retrocedieron."
+            return f"A tasa anual desestacionalizada, {top_txt} avanzaron, mientras que {bot_txt} retrocedieron."
         if pos:
             top = pos[:2]
             top_txt = " y ".join(f"{c['name']} ({c['yoyText']})" for c in top)
-            return f"A tasa anual, todos los componentes avanzaron; destacaron {top_txt}."
+            return f"A tasa anual desestacionalizada, todos los componentes avanzaron; destacaron {top_txt}."
         if neg:
             bottom = neg[:2]
             bot_txt = " y ".join(f"{c['name']} ({c['yoyText']})" for c in bottom)
-            return f"A tasa anual, todos los componentes retrocedieron; la caída más contenida fue en {bot_txt}."
-        return "A tasa anual, los componentes se mantuvieron sin cambio significativo."
+            return f"A tasa anual desestacionalizada, todos los componentes retrocedieron; la caída más contenida fue en {bot_txt}."
+        return "A tasa anual desestacionalizada, los componentes se mantuvieron sin cambio significativo."
 
     period = per_long(kpi["ultimoP"])
     mes = (kpi["ultimoP"] or "").split()[0].lower() if (kpi["ultimoP"] or "").split() else "mes"
@@ -1155,7 +1163,7 @@ def _imai_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
         f"La variación mensual desestacionalizada fue de {kpi['varText']} respecto al mes previo, por lo que el indicador {_verb(kpi['varMag'])}."
     ]
     if yoy:
-        bullets.append(f"A tasa anual, el IMAI {_verb(yoy['mag'])} {kpi['yoyText']}.")
+        bullets.append(f"A tasa anual con cifras originales, el IMAI {_verb(yoy['mag'])} {kpi['yoyText']}.")
     if kpi.get("acumText") and kpi["acumText"] != "—":
         bullets.append(f"El acumulado ene-{mes}, en cifras originales, fue de {kpi['acumText']}.")
     comp_text = _composition(cards)
@@ -1192,9 +1200,9 @@ def _imfbcf_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     cfg["varCol"] = 1
     cfg["varFmt"] = "pct-frac"
     cfg["varLabel"] = "Var. mensual desest."
-    cfg["yoyCol"] = 2
+    cfg["yoyCol"] = 26
     cfg["yoyFmt"] = "pct-frac"
-    cfg["yoyLabel"] = "Var. anual desest."
+    cfg["yoyLabel"] = "Var. anual original"
     cfg["acumCol"] = 27
     cfg["acumFmt"] = "pct-frac"
     cfg["acumLabel"] = "Acumulado ene-mes"
@@ -1276,16 +1284,16 @@ def _imfbcf_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
             bottom = neg[-2:][::-1]
             top_txt = " y ".join(f"{c['name']} ({c['yoyText']})" for c in top)
             bot_txt = " y ".join(f"{c['name']} ({c['yoyText']})" for c in bottom)
-            return f"A tasa anual, {top_txt} avanzaron, mientras que {bot_txt} retrocedieron."
+            return f"A tasa anual desestacionalizada, {top_txt} avanzaron, mientras que {bot_txt} retrocedieron."
         if pos:
             top = pos[:2]
             top_txt = " y ".join(f"{c['name']} ({c['yoyText']})" for c in top)
-            return f"A tasa anual, todos los componentes avanzaron; destacaron {top_txt}."
+            return f"A tasa anual desestacionalizada, todos los componentes avanzaron; destacaron {top_txt}."
         if neg:
             bottom = neg[:2]
             bot_txt = " y ".join(f"{c['name']} ({c['yoyText']})" for c in bottom)
-            return f"A tasa anual, todos los componentes retrocedieron; la caída más contenida fue en {bot_txt}."
-        return "A tasa anual, los componentes se mantuvieron sin cambio significativo."
+            return f"A tasa anual desestacionalizada, todos los componentes retrocedieron; la caída más contenida fue en {bot_txt}."
+        return "A tasa anual desestacionalizada, los componentes se mantuvieron sin cambio significativo."
 
     period = per_long(kpi["ultimoP"])
     mes = (kpi["ultimoP"] or "").split()[0].lower() if (kpi["ultimoP"] or "").split() else "mes"
@@ -1294,7 +1302,7 @@ def _imfbcf_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
         f"La variación mensual desestacionalizada fue de {kpi['varText']} respecto al mes previo, por lo que el indicador {_verb(kpi['varMag'])}."
     ]
     if yoy:
-        bullets.append(f"A tasa anual, el IMFBCF {_verb(yoy['mag'])} {kpi['yoyText']}.")
+        bullets.append(f"A tasa anual con cifras originales, el IMFBCF {_verb(yoy['mag'])} {kpi['yoyText']}.")
     if kpi.get("acumText") and kpi["acumText"] != "—":
         bullets.append(f"El acumulado ene-{mes}, en cifras originales, fue de {kpi['acumText']}.")
     comp_text = _composition(cards)
@@ -1323,17 +1331,15 @@ def _emim_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     if not cfg:
         return None
 
-    # Forzar el uso del esquema 18-columnas. La lectura coyuntural prioriza las
-    # cifras desestacionalizadas del boletín oficial; la variación anual original
-    # se conserva como referencia histórica comparable.
+    # La tarjeta combina la variación mensual ajustada y la anual original.
     cfg["valCol"] = 0
     cfg["valFmt"] = "idx"
     cfg["varCol"] = 3
     cfg["varFmt"] = "pct-frac"
     cfg["varLabel"] = "Var. mensual desest."
-    cfg["yoyCol"] = 4
+    cfg["yoyCol"] = 2
     cfg["yoyFmt"] = "pct-frac"
-    cfg["yoyLabel"] = "Var. anual desest."
+    cfg["yoyLabel"] = "Var. anual original"
     cfg["ctx"] = " (índice base 2018=100)"
     cfg["comp"] = "frente al mes previo"
     cfg["vw"] = "variación mensual desestacionalizada"
@@ -1419,10 +1425,10 @@ def _emim_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
         f"En {per_long}, el índice de producción se ubicó en {prod['idxText']} puntos. "
         f"La variación mensual desestacionalizada fue {prod['desestMomText']}"
     )
-    if prod["desestYoyRaw"] is not None:
-        b1 += f" y la anual desestacionalizada {prod['desestYoyText']}"
     if prod["origYoyRaw"] is not None:
-        b1 += f" (anual original: {prod['origYoyText']})"
+        b1 += f" y la anual original {prod['origYoyText']}"
+    if prod["desestYoyRaw"] is not None:
+        b1 += f" (anual desest.: {prod['desestYoyText']})"
     b1 += "."
     bullets.append(b1)
 
@@ -1673,8 +1679,8 @@ def _desocup_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
 
     El KPI principal es la tasa de desocupación. Las variaciones se expresan en
     puntos porcentuales (p.p.) para evitar confundir con variaciones relativas.
-    La población ocupada se presenta como dato trimestral oficial, sin derivar
-    una serie mensual.
+    La población mensual original y los cambios ajustados provienen del boletín.
+    La evaluación usa el cambio anual original, comparable en todo el histórico.
     """
 
     _, colors = _kpicfg_and_colors()
@@ -1703,27 +1709,33 @@ def _desocup_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     if not obs:
         return None
 
+    official = ind.get("enoe_mensual") or {}
+    rows_by_period = {row["period"]: row["values"] for row in obs}
     # --- Tarjetas de las cuatro tasas laborales ---
     rate_cols = [
-        (0, "Desocupación", "la"),
-        (1, "Participación", "la"),
-        (2, "Informalidad", "la"),
-        (3, "Subocupación", "la"),
+        (0, "Desocupación", "la", "unemployment"),
+        (1, "Participación", "la", "participation"),
+        (2, "Informalidad", "la", "informality"),
+        (3, "Subocupación", "la", "underemployment"),
     ]
     cards: list[dict[str, Any]] = []
-    for col, name, art in rate_cols:
+    for col, name, art, key in rate_cols:
         last_i = _last_not_null(col)
         if last_i is None:
             continue
         cur = _val_at(col, last_i)
-        prev = _val_at(col, last_i - 1)
-        yoy = _val_at(col, last_i - 12)
-        mom = None
-        if cur is not None and prev is not None:
-            mom = round(cur - prev, 6)
-        yoy_pp = None
-        if cur is not None and yoy is not None:
-            yoy_pp = round(cur - yoy, 6)
+        period = obs[last_i].get("period", "")
+        ym = inegi.label_to_ym(period)
+        previous = None
+        if ym:
+            previous_period = inegi.ym_to_label(f"{int(ym[:4]) - 1}-{ym[5:]}", 8)
+            previous_values = rows_by_period.get(previous_period, [])
+            previous = previous_values[col] if col < len(previous_values) else None
+        published_rates = (official.get("tasas", {}).get(key, {}) if official.get("periodo") == period else {})
+        mom = published_rates.get("mensual_desest_pp")
+        yoy_pp = published_rates.get("anual_original_pp")
+        if yoy_pp is None and previous is not None:
+            yoy_pp = round(cur - previous, 6)
         cards.append({
             "name": name,
             "art": art,
@@ -1734,7 +1746,8 @@ def _desocup_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
             "momText": _pp_text(mom),
             "yoyRaw": yoy_pp,
             "yoyText": _pp_text(yoy_pp),
-            "ultimoP": obs[last_i].get("period", ""),
+            "ultimoP": period,
+            "nivelDesest": published_rates.get("nivel_desest"),
         })
 
     if not cards:
@@ -1750,50 +1763,41 @@ def _desocup_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
         max_i = series.index(max(valid))
         min_i = series.index(min(valid))
 
-    # --- Población ocupada trimestral (col 4 millones / col 5 personas) ---
-    pop_last_i = _last_not_null(5)
+    # La cabecera mensual solo usa población del boletín del mismo mes.
+    # Las columnas trimestrales se conservan para su gráfica y descarga.
     poblacion = None
-    if pop_last_i is not None:
-        personas = _val_at(5, pop_last_i)
-        millones = _val_at(4, pop_last_i)
-        p_period = obs[pop_last_i].get("period", "")
-        # Convertir la etiqueta del mes a trimestre (1T-26, etc.)
-        q_period = inegi.ym_to_label(inegi.label_to_ym(p_period) or "", 4) or p_period
-        poblacion = {
-            "periodo": q_period,
-            "personas": personas,
-            "millones": millones,
-            "textMillones": (F._to_fixed(millones, 1, 1) + " millones de personas") if millones is not None else "—",
-        }
+    if official.get("periodo") == main_card["ultimoP"] and type(official.get("ocupados")) is int:
+        personas = official["ocupados"]
+        millones = personas / 1e6
+        poblacion = {"periodo": official["periodo"], "personas": personas, "millones": millones,
+                     "frecuencia": "mensual", "textMillones": F._to_fixed(millones, 1, 1) + " millones de personas"}
 
     # --- KPI principal (desocupación) ---
-    mom = main_card["momRaw"]
     yoy_pp = main_card["yoyRaw"]
     good_sign = cfg.get("goodSign", -1)
     assess = cfg.get("assess", "unemployment")
-    a_mag = abs(mom) if mom is not None else 0.0
-    dir = "flat" if mom is None else ("up" if mom > 0.05 else ("down" if mom < -0.05 else "flat"))
+    dir = "flat" if yoy_pp is None else ("up" if yoy_pp > 0.05 else ("down" if yoy_pp < -0.05 else "flat"))
     assessment = "neutral"
-    if mom is not None and assess == "unemployment":
-        assessment = "favorable" if mom < -0.05 else ("adverso" if mom > 0.05 else "neutral")
-    elif mom is not None:
-        assessment = "favorable" if (mom > 0.05 and good_sign > 0) or (mom < -0.05 and good_sign < 0) else (
-            "adverso" if (mom > 0.05 and good_sign < 0) or (mom < -0.05 and good_sign > 0) else "neutral"
+    if yoy_pp is not None and assess == "unemployment":
+        assessment = "favorable" if yoy_pp < -0.05 else ("adverso" if yoy_pp > 0.05 else "neutral")
+    elif yoy_pp is not None:
+        assessment = "favorable" if (yoy_pp > 0.05 and good_sign > 0) or (yoy_pp < -0.05 and good_sign < 0) else (
+            "adverso" if (yoy_pp > 0.05 and good_sign < 0) or (yoy_pp < -0.05 and good_sign > 0) else "neutral"
         )
     semaforo = "bueno" if assessment == "favorable" else ("malo" if assessment == "adverso" else (
-        "neutral" if mom is None else "estable"
+        "neutral" if yoy_pp is None else "estable"
     ))
 
     kpi = {
         "ultimoP": main_card["ultimoP"],
         "ultimoRaw": main_card["nivelRaw"],
         "ultimoFmt": main_card["nivelText"],
-        "varText": main_card["momText"],
-        "varRaw": mom,
-        "varMag": mom,
-        "pos": mom is not None and mom >= 0,
-        "varColor": colors.get("GREEN") if mom is not None and mom >= 0 else colors.get("CRIMSON"),
-        "varLabel": cfg.get("varLabel", "Cambio mensual"),
+        "varText": main_card["yoyText"],
+        "varRaw": yoy_pp,
+        "varMag": yoy_pp,
+        "pos": yoy_pp is not None and yoy_pp >= 0,
+        "varColor": colors.get("GREEN") if yoy_pp is not None and yoy_pp >= 0 else colors.get("CRIMSON"),
+        "varLabel": "Cambio anual original",
         "yoyText": main_card["yoyText"],
         "yoyRaw": yoy_pp,
         "yoyMag": yoy_pp,
@@ -1819,37 +1823,23 @@ def _desocup_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
     # --- Análisis / resumen (máximo 4 bullets) ---
     bullets: list[str] = []
     p = main_card["ultimoP"]
-    q_period = poblacion["periodo"] if poblacion else "—"
-    q_text = poblacion["textMillones"] if poblacion else "—"
 
-    b1 = (
-        f"En {F.en_frase(p)}, la tasa de desocupación fue {main_card['nivelText']} "
-        f"({main_card['momText']} respecto al mes anterior; {main_card['yoyText']} respecto al mismo mes del año previo)."
-    )
-    bullets.append(b1)
-
-    parts = []
-    for c in cards[1:]:
-        parts.append(f"{c['name'].lower()} {c['nivelText']} ({c['momText']})")
-    if parts:
-        bullets.append(f"Las demás tasas laborales se ubicaron: {', '.join(parts)}.")
-
+    annual = "." if main_card["yoyRaw"] is None else f" ({main_card['yoyText']} anual)."
+    bullets.append(f"En {F.en_frase(p)}, la tasa de desocupación fue {main_card['nivelText']} en cifras originales" + annual)
+    if main_card["momRaw"] is not None:
+        adjusted = F.fmt_val(main_card["nivelDesest"], "pct-raw")
+        bullets.append(f"En cifras desestacionalizadas, la desocupación se ubicó en {adjusted} ({main_card['momText']} mensual).")
+    other = ", ".join(f"{card['name'].lower()} {card['nivelText']}" for card in cards[1:])
+    if other:
+        bullets.append(f"Las demás tasas laborales originales se ubicaron en {other}.")
     if poblacion:
-        bullets.append(
-            f"La población ocupada se ubicó en {q_text} en {F.en_frase(q_period)} (dato trimestral)."
-        )
-
-    if len(cards) > 2 and cards[1]["yoyText"] != "—" and cards[2]["yoyText"] != "—":
-        bullets.append(
-            f"Respecto al mismo mes del año previo, la participación cambió {cards[1]['yoyText']} "
-            f"y la informalidad {cards[2]['yoyText']}."
-        )
+        bullets.append(f"La población ocupada se ubicó en {poblacion['textMillones']} en {F.en_frase(p)} (dato mensual original).")
 
     return {
         "kpi": kpi,
         "analysis": bullets[:4],
         "resumen": bullets[:4],
-        "annualVar": {"mag": yoy_pp, "pos": yoy_pp is not None and yoy_pp >= 0, "text": _pp_text(yoy_pp), "label": "Cambio anual"} if yoy_pp is not None else None,
+        "annualVar": None,
         "yoy": {"mag": yoy_pp, "pos": yoy_pp is not None and yoy_pp >= 0, "text": _pp_text(yoy_pp), "label": "Cambio anual"} if yoy_pp is not None else None,
     }
 
@@ -2267,6 +2257,9 @@ def _reservas_metrics(ind: dict, kpicfg: dict, offline: bool = False) -> dict[st
     }
 
 def _ied_metrics(ind: dict, kpicfg: dict) -> dict[str, Any] | None:
+    if ind.get('data_variant') == 'originalmente_publicadas':
+        from ied_original import metrics
+        return metrics(ind)
     """KPI y resumen específico para IED: acumulado comparable como principal.
 
     Si metrics no está completo (p. ej. build_data no ejecutó el conector),

@@ -1,0 +1,34 @@
+# Estilo común de las gráficas de las notas de MacroMéxico.
+# Matplotlib lee este archivo cuando el proceso corre desde la raíz del repositorio
+# (así corren todos los generadores de notas). Los parámetros que un generador fija
+# explícitamente siguen mandando sobre estos valores.
+figure.facecolor    : white
+savefig.facecolor   : white
+savefig.dpi         : 300
+axes.facecolor      : white
+axes.edgecolor      : 9A948E
+axes.linewidth      : 0.6
+axes.spines.top     : False
+axes.spines.right   : False
+axes.titlesize      : 11
+axes.titleweight    : bold
+axes.titlecolor     : 49372D
+axes.titlepad       : 9
+axes.labelcolor     : 4A4541
+axes.labelsize      : 8.5
+axes.grid           : False
+axes.axisbelow      : True
+grid.color          : ECE8E3
+grid.linewidth      : 0.6
+xtick.color         : 4A4541
+ytick.color         : 4A4541
+xtick.labelsize     : 8.5
+ytick.labelsize     : 8.5
+xtick.major.size    : 0
+ytick.major.size    : 0
+xtick.major.pad     : 5
+ytick.major.pad     : 5
+legend.frameon      : False
+legend.fontsize     : 8.5
+lines.linewidth     : 1.8
+lines.solid_capstyle: round

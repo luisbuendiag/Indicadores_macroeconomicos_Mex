@@ -3,15 +3,18 @@ from __future__ import annotations
 
 # (nombre de hoja, [(bloque, índices de columnas)])
 SHEETS = {
-    'PIB': [('PIB oportuno', [('Variaciones del PIB oportuno', [0,1,2,3])])],
+    'PIB': [('PIB oportuno', [('Variaciones del PIB oportuno', [0,1,2]),
+                              ('Variaciones acumuladas en el año (%)', [4,3])])],
     'PIBSEC': [('Niveles', [('Niveles originales (millones de pesos de 2018)', [5,0,1,2])]),
-               ('Variaciones', [('Variaciones trimestrales (%)', [6,8,10,3]), ('Variaciones anuales (%)', [7,9,11,4])])],
+               ('Variaciones', [('Variaciones trimestrales desestacionalizadas (%)', [6,8,10,3]),
+                               ('Variaciones anuales desestacionalizadas (%)', [7,9,11,4]),
+                               ('Variaciones anuales originales (%)', [12,13,14,15])])],
     'SIC': [('SIC', [('Indicador Coincidente (puntos)', [0,2,3]), ('Componentes del Coincidente (puntos)', list(range(6,12))),
                       ('Indicador Adelantado (puntos)', [1,4,5]), ('Componentes del Adelantado (puntos)', list(range(12,18)))])],
     'IOAE': [('IOAE', [('IGAE estimado e intervalo al 95% (%)', [0,1,2,3]), ('Secundarias e intervalo al 95% (%)', [4,5,6]),
                         ('Terciarias e intervalo al 95% (%)', [7,8,9]), ('Edición y contraste observado', [12,10,11])])],
     'IGAE': [('IGAE', [('Niveles originales (índice 2018=100)', [0,3,5,7]), ('Variaciones anuales originales (%)', [2,4,6,8]),
-                        ('Variación mensual desestacionalizada (%)', [1])])],
+                        ('Variaciones desestacionalizadas (%)', [1,9])])],
     'IMAI': [('Niveles', [('Índices desestacionalizados (2018=100)', [0,6,7,8,9])]),
              ('Variaciones', [('Variaciones mensuales desestacionalizadas (%)', [1,14,15,16,17]),
                               ('Variaciones anuales desestacionalizadas (%)', [2,10,11,12,13])]),
@@ -45,7 +48,7 @@ SHEETS = {
                                 ('Variaciones anuales de exportaciones (%)', [10,12,23,24,25])]),
              ('Importaciones', [('Importaciones por origen y uso (millones de dólares)', [7,9,14,15,16]),
                                 ('Variaciones anuales de importaciones (%)', [11,13,17,18,19])])],
-    'IED': [('Flujo trimestral', [('Inversión extranjera directa (millones de dólares y %)', [0,1,2,3,4])]),
+    'IED': [('Acumulado por corte', [('IED acumulada desde enero, cifras originalmente publicadas (millones de dólares y %)', [0,1,2,3,4])]),
             ('Acumulado comparable', [])],
     'TIPOCAMBIO': [('Tipo de cambio FIX', [('Tipo de cambio FIX diario (pesos por dólar)', [0])])],
     'TASA': [('Serie diaria', [('Tasa objetivo por fecha de vigencia (%)', [0])]), ('Decisiones', [])],
@@ -69,7 +72,7 @@ DERIVED = {
                35:(34,12,'pct'),38:(37,12,'pct')},
     'INPC': {1:(0,1,'pct-raw'),2:(0,12,'pct-raw'),4:(3,1,'pct-raw'),5:(3,12,'pct-raw')},
     'INPP': {1:(0,1,'pct-raw'),2:(0,12,'pct-raw'),5:(4,1,'pct-raw'),6:(4,12,'pct-raw')},
-    'IED': {4:(0,12,'pct')},
+    'IED': {4:(0,4,'pct')},
     'BCMM': {3:(0,12,'pct'),4:(1,12,'pct'),10:(6,12,'pct'),11:(7,12,'pct'),12:(8,12,'pct'),13:(9,12,'pct'),
              17:(14,12,'pct'),18:(15,12,'pct'),19:(16,12,'pct'),23:(20,12,'pct'),24:(21,12,'pct'),25:(22,12,'pct')},
 }
@@ -78,7 +81,7 @@ EXCLUDED = {'DESOCUP': {4:'Misma población expresada en millones; se conserva l
 
 NOTES = {
     'PIB': 'Estimación oportuna. P: preliminar; R: revisado, únicamente cuando la fuente lo indica.',
-    'PIBSEC': 'Los niveles son series originales; las tasas conservan el ajuste de su fuente. Millones de pesos de 2018.',
+    'PIBSEC': 'Niveles originales en millones de pesos de 2018. Las tasas ajustadas provienen de niveles desestacionalizados del BIE y del último boletín PIBT. Las tasas anuales originales se calculan por separado.',
     'IGAE': 'Los niveles y tasas anuales son originales; la tasa mensual es desestacionalizada. No se deriva una de la otra.',
     'SIC': 'Tendencia de largo plazo = 100. TDU urbana, tipo de cambio real y TIIE son componentes inversos a la actividad.',
     'IMOAM': 'Estimación experimental con cifras originales e intervalos de confianza al 95%.',
@@ -86,6 +89,6 @@ NOTES = {
     'DESOCUP': 'Desocupación y subocupación: % de la PEA; participación: % de población de 15 años y más; TIL1: % de ocupados.',
     'EMOE': 'Niveles y cambios en puntos, no porcentajes. Referencia de confianza: 50 puntos.',
     'BCMM': 'Dólares corrientes. Mes y acumulado se presentan por separado; no son volúmenes de comercio.',
-    'IED': 'Flujo exclusivo del trimestre y acumulados al mismo corte anual; no comparar cortes distintos.',
+    'IED': 'Cifras originalmente publicadas, acumuladas desde enero. Comparar el mismo corte entre años; no restar ediciones para inferir flujos trimestrales.',
     'TASA': 'La fecha de anuncio puede diferir de la entrada en vigor. La serie diaria refleja la vigencia.',
 }

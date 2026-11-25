@@ -35,7 +35,7 @@ def test_emoe_name_and_main_indicator():
 
 def test_emoe_columns_are_points_not_pct():
     cols = [c["label"] for c in DATA["indicators"]["EMOE"]["columns"]]
-    assert cols[0] == "IGOEC"
+    assert cols[0] == "IGOEC (desest.)"
     assert "puntos" in cols[1].lower()
     assert "puntos" in cols[2].lower()
     # El IGOEC se formatea como índice; los cambios mensual/anual usan el formato emoe (puntos).
@@ -57,15 +57,15 @@ def test_emoe_yoy_in_points():
     m = METRICS["EMOE"]
     yoy = m.get("yoy") or m.get("annualVar")
     if yoy:
-        assert yoy.get("label") == "Cambio anual"
+        assert yoy.get("label") == "Cambio anual desest."
         # La variación anual del IGOEC se presenta en puntos, no porcentaje.
         assert "%" not in yoy.get("text", "")
 
 
 def test_emoe_metrics_kpi():
     k = METRICS["EMOE"]["kpi"]
-    assert k["varLabel"] == "Cambio mensual"
-    assert k["yoyLabel"] == "Cambio anual"
+    assert k["varLabel"] == "Cambio mensual desest."
+    assert k["yoyLabel"] == "Cambio anual desest."
 
 
 def test_emoe_config_js_kpicfg():
@@ -111,3 +111,26 @@ def test_emoe_confirmed_series_ids():
     serie_str = DATA["indicators"]["EMOE"].get("fuente", {}).get("serie", "")
     for sid in expected:
         assert sid in serie_str, f"Fuente no menciona serie {sid}: {serie_str}"
+
+
+def test_emoe_annual_change_is_level_difference():
+    """T-003: el cambio anual del IGOEC es nivel(t) - nivel(t-12) en puntos.
+
+    No debe usarse diff_yoy_pp (cambio de la variación porcentual anual respecto
+    al mes previo, propio de inflación). Cifras del boletín ice2026_11
+    (3-nov-2026): IGOEC oct-2026 = 48.2 puntos, diferencia anual = -0.3 puntos.
+    """
+    spec = next(s for s in SERIES["inegi"]["EMOE"] if s.get("columna_objetivo") == 2)
+    assert spec.get("transform") == "yoy_abs"
+
+    from sources import inegi
+
+    obs = [
+        {"ym": "2025-09", "value": 49.319399},
+        {"ym": "2025-10", "value": 48.512276},
+        {"ym": "2026-09", "value": 48.332538},
+        {"ym": "2026-10", "value": 48.182472},
+    ]
+    out = {o["ym"]: o["value"] for o in inegi._transform_observations(obs, spec["transform"])}
+    assert round(out["2026-10"], 1) == -0.3
+    assert abs(out["2026-10"] - (48.182472 - 48.512276)) < 1e-9

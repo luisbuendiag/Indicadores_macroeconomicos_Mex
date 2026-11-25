@@ -85,19 +85,19 @@ def test_ioae_excel_individual_hoja(tmp_path):
 
 
 def test_ioae_igae_observado_copia_cuando_existe():
-    ind = _ioae()
-    igae = json.loads(DATA.read_text(encoding="utf-8"))["indicators"].get("IGAE")
-    if not igae or not igae.get("observations"):
-        pytest.skip("IGAE sin observaciones")
-    igae_ym = {inegi_label_to_ym(o["period"]): o["values"][2] for o in igae["observations"] if len(o["values"]) > 2}
-    coinciden = 0
-    for o in ind["observations"]:
-        ym = inegi_label_to_ym(o["period"])
-        if ym in igae_ym and o["values"][12] == igae_ym[ym]:
-            coinciden += 1
-    if not igae_ym:
-        pytest.skip("IGAE no tiene variaciones anuales para contrastar")
-    assert coinciden > 0, "Debe haber al menos un IOAE con IGAE observado copiado"
+    import copy
+    import sys
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from ioae_comparison import align_igae_observed
+    payload = json.loads(DATA.read_text(encoding="utf-8"))
+    ind = copy.deepcopy(payload["indicators"]["IOAE"])
+    igae = payload["indicators"].get("IGAE")
+    align_igae_observed(ind, igae)
+    for row in ind["observations"]:
+        ym = inegi_label_to_ym(row["period"])
+        source = ind["observed_sources"].get(ym)
+        assert row["values"][12] == (source["value"] if source else None)
+    assert ind["observed_basis"] == "annual_seasonally_adjusted"
 
 
 def inegi_label_to_ym(label: str) -> str:

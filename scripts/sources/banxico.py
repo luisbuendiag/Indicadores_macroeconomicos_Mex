@@ -7,6 +7,7 @@ agregación mensual como serie principal.
 - FIX: diaria, días hábiles bancarios.
 - TASA: diaria, con cambios discretos en fechas de decisión.
 - RESERVAS: semanal.
+- REMESAS: flujos mensuales en millones de dólares.
 
 Si no hay token, devuelve SourceResult(ok=False) y el pipeline conserva los datos
 existentes.
@@ -15,8 +16,10 @@ from __future__ import annotations
 
 import os
 from datetime import datetime
+from math import isfinite
 
 from .base import SourceResult, http_get_json
+from .inegi import ym_to_label
 
 BASE = ("https://www.banxico.org.mx/SieAPIRest/service/v1/series/{series}/"
         "datos/{start}/{end}?token={token}")
@@ -28,6 +31,7 @@ FMT = {
     "TIPOCAMBIO": "fx",
     "TASA": "pct-raw",
     "RESERVAS": "usd",
+    "REMESAS": "mdd",
 }
 
 
@@ -66,6 +70,27 @@ def _monthly_last(datos, factor: float = 1.0) -> list[dict]:
     return obs
 
 
+def _remesas_monthly(obs: list[dict]) -> list[dict]:
+    """Compara el mismo mes y acumula únicamente tramos completos desde enero."""
+    by_month = {row["period"][:7]: row["values"][0] for row in obs
+                if isfinite(row["values"][0]) and row["values"][0] >= 0}
+    rows = []
+    for ym, value in sorted(by_month.items()):
+        year, month = map(int, ym.split("-"))
+        previous = by_month.get(f"{year - 1}-{month:02d}")
+        months = [by_month.get(f"{year}-{m:02d}") for m in range(1, month + 1)]
+        prior_months = [by_month.get(f"{year - 1}-{m:02d}") for m in range(1, month + 1)]
+        total = sum(months) if None not in months else None
+        prior_total = sum(prior_months) if None not in prior_months else None
+        rows.append({
+            "period": ym_to_label(ym),
+            "values": [value, round(value / previous - 1, 6) if previous else None,
+                       round(total, 6) if total is not None else None,
+                       round(total / prior_total - 1, 6) if total is not None and prior_total else None],
+        })
+    return rows
+
+
 def _infer_frecuencia(meta: dict, key: str) -> str:
     frec = (meta.get("frecuencia") or "").lower().replace("-", " ")
     if "semanal" in frec:
@@ -81,7 +106,7 @@ def fetch(config: dict, start: str | None = None, end: str | None = None) -> Sou
     token = os.environ.get("BANXICO_TOKEN")
     if not token:
         return SourceResult(False, warnings=[
-            "BANXICO_TOKEN ausente: se omiten tipo de cambio, tasa objetivo y reservas; "
+            "BANXICO_TOKEN ausente: se omiten las series del SIE; "
             "se conservan datos previos."])
     end = end or datetime.today().strftime("%Y-%m-%d")
     out, warns = {}, []
@@ -106,12 +131,14 @@ def fetch(config: dict, start: str | None = None, end: str | None = None) -> Sou
 
         factor = float(meta.get("factor", 1.0))
         obs = _raw_observations(datos, factor)
+        if key == "REMESAS":
+            obs = _remesas_monthly(obs)
         if not obs:
             warns.append(f"Banxico {key}: sin observaciones originales.")
             continue
 
         # Serie auxiliar mensual, claramente diferenciada.
-        mensual = _monthly_last(datos, factor)
+        mensual = _monthly_last(datos, factor) if key != "REMESAS" else []
 
         frecuencia = _infer_frecuencia(meta, key)
         last = obs[-1]

@@ -51,7 +51,7 @@ def primary_series(ind):
     return [o["values"][0] if o["values"] else None for o in obs]
 
 
-def validate(payload: dict):
+def validate(payload: dict, *, validate_products: bool = True):
     errors, warnings = [], []
     inds = payload["indicators"]
 

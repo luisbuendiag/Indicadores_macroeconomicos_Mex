@@ -76,6 +76,9 @@ jobs:
       - name: Actualizar histórico y ranking estatal de IED
         run: python scripts/ied_estatal.py
 
+      - name: Actualizar Panorama Estatal (no detiene la edición nacional)
+        run: python scripts/refresh_estados.py --root . || echo "::warning::Panorama Estatal sin actualizar; se conserva la edición publicada"
+
       - name: Regenerar Excel
         if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[notes-only]') }}
         run: python scripts/build_excel.py

@@ -20,7 +20,7 @@ def test_file_exists():
 
 
 def test_meta_counts_match_new_classification():
-    """El perfil V3 tiene 15 principales (con SIC) y 4 complementarios (con IED)."""
+    """El perfil V3 tiene 15 principales (con SIC) y 5 complementarios (con IED y Remesas)."""
     meta_path = ROOT / "config" / "indicadores_meta.json"
     meta = json.loads(meta_path.read_text(encoding="utf-8"))
     assert len(meta["principal"]) == 15, f"Se esperaban 15 principales, hay {len(meta['principal'])}"
@@ -28,8 +28,8 @@ def test_meta_counts_match_new_classification():
         "PIB", "PIBSEC", "SIC", "IOAE", "IGAE", "IMAI", "IMOAM", "EMIM", "EMOE", "DESOCUP",
         "INPC", "INPP", "CONSUMO", "IMFBCF", "BCMM",
     ]
-    assert len(meta["complementario"]) == 4, f"Se esperaban 4 complementarios, hay {len(meta['complementario'])}"
-    assert meta["complementario"] == ["IED", "TIPOCAMBIO", "TASA", "RESERVAS"]
+    assert len(meta["complementario"]) == 5, f"Se esperaban 5 complementarios, hay {len(meta['complementario'])}"
+    assert meta["complementario"] == ["IED", "TIPOCAMBIO", "TASA", "RESERVAS", "REMESAS"]
 
 
 def test_meta_and_order(payload):

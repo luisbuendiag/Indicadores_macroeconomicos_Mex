@@ -45,12 +45,13 @@ INK = '161A1D'
 GREEN = '1E5B4F'
 SIGLA = {'PIBSEC':'PIBT', 'DESOCUP':'ENOE', 'CONSUMO':'IMCP', 'TIPOCAMBIO':'FIX'}
 CHARTS = {
+ 'IMCP_revisado': [[0],[1,2]],
  'PIB': [[0],[1,2]], 'PIBSEC': [[5],[6,7]], 'SIC': [[0],[1]], 'IGAE': [[0],[1,2]],
  'IMAI': [[0],[1,2]], 'IMOAM': [[0,1,2],[3,4,5]], 'IOAE': [[0,1,2],[3]],
  'EMIM': [[0],[3,4]], 'EMOE': [[0],[3,4,5,6]], 'DESOCUP': [[0,3],[5]],
  'INPC': [[2,5],[16,17]], 'INPP': [[0,4],[2,6]], 'CONSUMO': [[0],[1,2]],
  'IMFBCF': [[0,3,6],[1,2]], 'BCMM': [[0,1],[2]], 'IED': [[0],[1,2,3]],
- 'TIPOCAMBIO': [[0]], 'TASA': [[0]], 'RESERVAS': [[0],[1]],
+ 'TIPOCAMBIO': [[0]], 'TASA': [[0]], 'RESERVAS': [[0],[1]], 'REMESAS': [[0],[1]],
 }
 
 
@@ -58,6 +59,8 @@ def _period_date(value: str | date) -> date:
     if isinstance(value, datetime): return value.date()
     if isinstance(value, date): return value
     text = str(value).strip()
+    if re.fullmatch(r'\d{4}-\d{2}', text):
+        return date.fromisoformat(text+'-01')
     try: return date.fromisoformat(text[:10])
     except ValueError: pass
     q = re.match(r'([1-4])T[- ](\d{2}|\d{4})(?:\s|$)', text)
@@ -412,6 +415,18 @@ def build_workbook(indicators,general=False):
             model.block(ws,special_ind,title,list(range(len(columns))),7,records,columns)
             numeric_indices=[c['index'] for c in columns if c['fmt']!='text']
             model.chart_plans.append((alias,ws,frequency,numeric_indices,['H7','H30']))
+        history=ind.get('imcp_history') if key=='CONSUMO' else None
+        if history and history.get('observations'):
+            revised={**ind,'key':'IMCP_revisado','observations':history['observations'],
+                     'columns':[*ind['columns'][:5],{'index':5,'label':'Índice original (2018=100)','fmt':'idx'}],
+                     'fuente':{'nombre':'INEGI vía Banxico (SIE CR362)','link':history['fuente']},
+                     'fecha_publicacion':None,'fecha_publicacion_oficial':None,'fecha_consulta':history['consultado_en']}
+            model._indicators[revised['key']]=revised
+            ws=model.sheet('IMCP revisado',revised,'Mensual')
+            ws['A5']='Serie revisada de una misma edición. Las cifras de los boletines se conservan en las hojas anteriores.'
+            ws.row_dimensions[5].height=30
+            model.block(ws,revised,'IMCP revisado',list(range(6)),7)
+            model.chart_plans.append((revised['key'],ws,'Mensual',list(range(6)),['H7','H30']))
     model.finish_formulas();model.finish_charts()
     if any(i["key"]=="IED" for i in indicators) and (ROOT/"data/ied_estatal.json").exists():
         from ied_estatal import add_excel_sheets
@@ -496,7 +511,7 @@ def generate(payload,out_dir=None):
         stage=Path(tmp)
         for ind in indicators:
             key=ind['key'];model=build_workbook([ind]);path=stage/f'{key}_datos.xlsx';_save_staged(model.wb,path)
-            report[key]={**validate_workbook(path),'coverage':model.coverage,'omitted_redundancy':EXCLUDED.get(key,{})}
+            report[key]={**validate_workbook(path),'coverage':model.coverage,'omitted_redundancy':EXCLUDED.get(key,{}),'data_variant':ind.get('data_variant')}
             staged.append((path,out_dir/'indicadores'/key/path.name))
         master=build_workbook(indicators,general=True);path=stage/OUT_XLSX.name;_save_staged(master.wb,path)
         report['general']=validate_workbook(path)
@@ -517,10 +532,21 @@ def generate(payload,out_dir=None):
         if out_dir==OUT_DIR and previous_path.exists():
             previous=json.loads(previous_path.read_text())
             for key,item in report.items():
+                if key=='IED':
+                    from ied_original import original_transition
+                    if original_transition(payload['indicators']['IED'],previous.get(key,{}),ROOT):
+                        item['previous_variant_archive']='data/ied_nacional_legado.json'
+                        continue
                 old={(c['key'],c['column']):c for c in previous.get(key,{}).get('coverage',[])}
                 for c in item.get('coverage',[]):
                     if (c['key'],c['column']) in old:
                         was=old[c['key'],c['column']]
+                        # Una etiqueta distinta indica una serie redefinida (p. ej. de original a desestacionalizada):
+                        # no es la misma historia, así que se documenta en el reporte en lugar de compararla.
+                        if was.get('label') is not None and was.get('label')!=c['label']:
+                            item.setdefault('redefined_series',[]).append({'column':c['column'],'before':was.get('label'),'after':c['label'],
+                                                                           'before_count':was.get('count'),'after_count':c['count']})
+                            continue
                         if c['first']>was['first'] or c['last']<was['last'] or c['count']<was['count']:
                             raise ValueError(f'{key}: se acortó la historia de {c["label"]}; se conserva la publicación anterior')
         # Ningún archivo se sustituye si falló alguna generación o validación anterior.
