@@ -117,14 +117,14 @@
     "target_period": "Oct 26",
     "published": {
       "periodo": "Oct 26",
-      "generated_at": "2026-11-10T22:07:37+00:00",
+      "generated_at": "2026-11-25T18:49:24+00:00",
       "source_sha256": "7e7991be791fb3c78c1df5ad29ffe02379f2a5dca8a0b6913d4429715e9e8c50",
-      "fingerprint": "eddc3d85877cdd245def07373496cea47ec189915d86884984debfe9d9d0c0ae",
-      "docx_sha256": "329ac4a020c45eac7579b7b1c77fe630832d350fd0c43aaa25b119948b4d2f4c",
+      "fingerprint": "96f97e0e709d25bee2a408e98c30e33570a7fc82ad4dec49c174107b9128b022",
+      "docx_sha256": "ff02360a8b729e132cdf343a8c9d3070b17e693da00bd0596c0c5b068e2a218d",
       "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_11.pdf",
       "review_model": "precios-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/INPC/eddc3d85877cdd245def07373496cea47ec189915d86884984debfe9d9d0c0ae-329ac4a020c4"
+      "archive": "data/notas/INPC/96f97e0e709d25bee2a408e98c30e33570a7fc82ad4dec49c174107b9128b022-ff02360a8b72"
     }
   },
   "INPP": {
@@ -133,14 +133,14 @@
     "target_period": "Oct 26",
     "published": {
       "periodo": "Oct 26",
-      "generated_at": "2026-11-10T22:33:40+00:00",
+      "generated_at": "2026-11-25T18:49:30+00:00",
       "source_sha256": "68366413ebfc12da992cb89ce472a2cfab6196667974d52fd394af685b7a55b4",
-      "fingerprint": "69297682dae488c9e39dc2df5c00493a4e541e77a6399dc990209a003e4aaf74",
-      "docx_sha256": "e26cbbee4456b0511fa22d3272073a3bff8e5682893bb370df1e48d09d4a4a14",
+      "fingerprint": "6cb8b559351544259181054ffcdbd351871a9a5bb94f215ddf8dfb39800844d7",
+      "docx_sha256": "66e1ab740b43d09654851a57555b2571eec218b5e784276bc12cdb2081518904",
       "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_11.pdf",
       "review_model": "precios-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/INPP/69297682dae488c9e39dc2df5c00493a4e541e77a6399dc990209a003e4aaf74-e26cbbee4456"
+      "archive": "data/notas/INPP/6cb8b559351544259181054ffcdbd351871a9a5bb94f215ddf8dfb39800844d7-66e1ab740b43"
     }
   },
   "PIB": {

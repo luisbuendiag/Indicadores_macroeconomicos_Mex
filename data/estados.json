@@ -1,7 +1,7 @@
 {
   "version": 1,
   "estado": "oficial",
-  "actualizado": "2026-11-24T18:29:40+00:00",
+  "actualizado": "2026-11-25T18:46:28+00:00",
   "indicadores": [
     {
       "clave": "ITAEE",
@@ -83,12 +83,12 @@
       "sigla": "ENOE",
       "fuente": "INEGI (ENOE, cuadro estatal)",
       "medida": "Tasa de desocupación como porcentaje de la PEA",
-      "periodo": "2T-2026",
+      "periodo": "3T-2026",
       "formato": "pct",
       "escala": "secuencial",
       "lugar_por": "tasa",
       "estatus": "oficial",
-      "url_fuente": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/enoe/enoe2026_08.pdf"
+      "url_fuente": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/enoe/enoe2026_11.pdf"
     },
     {
       "clave": "REMESAS",
@@ -287,20 +287,20 @@
       "part": 100.0
     },
     "ENOE": {
-      "valor": 2.7,
-      "ocupados": 60040094,
+      "valor": 2.9,
+      "ocupados": 60162442,
       "tasas": {
         "Participación": [
-          59.1,
-          59.1
+          59.0,
+          59.0
         ],
         "Desocupación": [
-          2.7,
-          2.7
+          2.9,
+          2.9
         ],
         "Informalidad laboral (TIL1)": [
-          55.1,
-          55.1
+          55.0,
+          55.0
         ]
       }
     },
@@ -889,23 +889,23 @@
           "lugar": 19
         },
         "ENOE": {
-          "valor": 2.6,
-          "ocupados": 711129,
+          "valor": 2.8,
+          "ocupados": 711879,
           "tasas": {
             "Participación": [
-              59.7,
-              59.1
+              59.8,
+              59.0
             ],
             "Desocupación": [
-              2.6,
-              2.7
+              2.8,
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              42.5,
-              55.1
+              42.0,
+              55.0
             ]
           },
-          "lugar": 15
+          "lugar": 16
         },
         "REMESAS": {
           "valor": 246.059489,
@@ -1494,20 +1494,20 @@
           "lugar": 6
         },
         "ENOE": {
-          "valor": 2.9,
-          "ocupados": 1798778,
+          "valor": 3.3,
+          "ocupados": 1838142,
           "tasas": {
             "Participación": [
-              59.4,
-              59.1
+              59.2,
+              59.0
             ],
             "Desocupación": [
-              2.9,
-              2.7
+              3.3,
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              36.2,
-              55.1
+              36.0,
+              55.0
             ]
           },
           "lugar": 10
@@ -2099,23 +2099,23 @@
           "lugar": 24
         },
         "ENOE": {
-          "valor": 2.3,
-          "ocupados": 500048,
+          "valor": 2.8,
+          "ocupados": 498956,
           "tasas": {
             "Participación": [
-              66.7,
-              59.1
+              66.3,
+              59.0
             ],
             "Desocupación": [
-              2.3,
-              2.7
+              2.8,
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              39.6,
-              55.1
+              38.7,
+              55.0
             ]
           },
-          "lugar": 21
+          "lugar": 16
         },
         "REMESAS": {
           "valor": 38.724872,
@@ -2704,23 +2704,23 @@
           "lugar": 31
         },
         "ENOE": {
-          "valor": 2.7,
-          "ocupados": 434186,
+          "valor": 2.8,
+          "ocupados": 440239,
           "tasas": {
             "Participación": [
-              59.7,
-              59.1
+              58.8,
+              59.0
             ],
             "Desocupación": [
-              2.7,
-              2.7
+              2.8,
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              61.4,
-              55.1
+              60.9,
+              55.0
             ]
           },
-          "lugar": 13
+          "lugar": 16
         },
         "REMESAS": {
           "valor": 48.209749,
@@ -3309,23 +3309,23 @@
           "lugar": 8
         },
         "ENOE": {
-          "valor": 3.7,
-          "ocupados": 1572870,
+          "valor": 3.4,
+          "ocupados": 1532908,
           "tasas": {
             "Participación": [
-              60.2,
-              59.1
+              58.7,
+              59.0
             ],
             "Desocupación": [
-              3.7,
-              2.7
+              3.4,
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              35.5,
-              55.1
+              34.8,
+              55.0
             ]
           },
-          "lugar": 3
+          "lugar": 9
         },
         "REMESAS": {
           "valor": 215.933816,
@@ -3915,22 +3915,22 @@
         },
         "ENOE": {
           "valor": 1.6,
-          "ocupados": 398610,
+          "ocupados": 406087,
           "tasas": {
             "Participación": [
-              65.5,
-              59.1
+              65.7,
+              59.0
             ],
             "Desocupación": [
               1.6,
-              2.7
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              46.2,
-              55.1
+              48.0,
+              55.0
             ]
           },
-          "lugar": 30
+          "lugar": 29
         },
         "REMESAS": {
           "valor": 100.832958,
@@ -4519,20 +4519,20 @@
           "lugar": 20
         },
         "ENOE": {
-          "valor": 2.2,
-          "ocupados": 2218580,
+          "valor": 2.3,
+          "ocupados": 2255582,
           "tasas": {
             "Participación": [
-              54.1,
-              59.1
+              54.7,
+              59.0
             ],
             "Desocupación": [
-              2.2,
-              2.7
+              2.3,
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              76.9,
-              55.1
+              77.4,
+              55.0
             ]
           },
           "lugar": 23
@@ -5124,23 +5124,23 @@
           "lugar": 7
         },
         "ENOE": {
-          "valor": 2.7,
-          "ocupados": 1851002,
+          "valor": 2.4,
+          "ocupados": 1868968,
           "tasas": {
             "Participación": [
-              60.3,
-              59.1
+              60.5,
+              59.0
             ],
             "Desocupación": [
-              2.7,
-              2.7
+              2.4,
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              35.1,
-              55.1
+              35.9,
+              55.0
             ]
           },
-          "lugar": 13
+          "lugar": 20
         },
         "REMESAS": {
           "valor": 354.165802,
@@ -5729,20 +5729,20 @@
           "lugar": 1
         },
         "ENOE": {
-          "valor": 4.2,
-          "ocupados": 4873434,
+          "valor": 4.3,
+          "ocupados": 4965998,
           "tasas": {
             "Participación": [
-              62.9,
-              59.1
+              63.9,
+              59.0
             ],
             "Desocupación": [
-              4.2,
-              2.7
+              4.3,
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              45.3,
-              55.1
+              44.6,
+              55.0
             ]
           },
           "lugar": 1
@@ -6334,23 +6334,23 @@
           "lugar": 22
         },
         "ENOE": {
-          "valor": 2.9,
-          "ocupados": 878505,
+          "valor": 3.8,
+          "ocupados": 854704,
           "tasas": {
             "Participación": [
-              60.7,
-              59.1
+              60.2,
+              59.0
             ],
             "Desocupación": [
-              2.9,
-              2.7
+              3.8,
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              55.5,
-              55.1
+              55.9,
+              55.0
             ]
           },
-          "lugar": 10
+          "lugar": 4
         },
         "REMESAS": {
           "valor": 346.585055,
@@ -6939,20 +6939,20 @@
           "lugar": 5
         },
         "ENOE": {
-          "valor": 3.2,
-          "ocupados": 2936908,
+          "valor": 3.6,
+          "ocupados": 2997021,
           "tasas": {
             "Participación": [
-              60.7,
-              59.1
+              61.6,
+              59.0
             ],
             "Desocupación": [
-              3.2,
-              2.7
+              3.6,
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              54.8,
-              55.1
+              53.6,
+              55.0
             ]
           },
           "lugar": 5
@@ -7545,22 +7545,22 @@
         },
         "ENOE": {
           "valor": 1.1,
-          "ocupados": 1542295,
+          "ocupados": 1600589,
           "tasas": {
             "Participación": [
-              58.1,
-              59.1
+              61.2,
+              59.0
             ],
             "Desocupación": [
               1.1,
-              2.7
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              77.6,
-              55.1
+              79.1,
+              55.0
             ]
           },
-          "lugar": 31
+          "lugar": 32
         },
         "REMESAS": {
           "valor": 877.933631,
@@ -8149,20 +8149,20 @@
           "lugar": 21
         },
         "ENOE": {
-          "valor": 2.2,
-          "ocupados": 1476369,
+          "valor": 2.3,
+          "ocupados": 1528737,
           "tasas": {
             "Participación": [
-              58.9,
-              59.1
+              59.9,
+              59.0
             ],
             "Desocupación": [
-              2.2,
-              2.7
+              2.3,
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              72.0,
-              55.1
+              71.7,
+              55.0
             ]
           },
           "lugar": 23
@@ -8755,22 +8755,22 @@
         },
         "ENOE": {
           "valor": 2.4,
-          "ocupados": 3822914,
+          "ocupados": 3743373,
           "tasas": {
             "Participación": [
-              56.4,
-              59.1
+              55.1,
+              59.0
             ],
             "Desocupación": [
               2.4,
-              2.7
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              46.5,
-              55.1
+              48.5,
+              55.0
             ]
           },
-          "lugar": 17
+          "lugar": 20
         },
         "REMESAS": {
           "valor": 1310.064456,
@@ -9359,23 +9359,23 @@
           "lugar": 3
         },
         "ENOE": {
-          "valor": 3.1,
-          "ocupados": 8102275,
+          "valor": 3.2,
+          "ocupados": 8109802,
           "tasas": {
             "Participación": [
-              57.4,
-              59.1
+              57.3,
+              59.0
             ],
             "Desocupación": [
-              3.1,
-              2.7
+              3.2,
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
               55.3,
-              55.1
+              55.0
             ]
           },
-          "lugar": 8
+          "lugar": 11
         },
         "REMESAS": {
           "valor": 964.635618,
@@ -9965,22 +9965,22 @@
         },
         "ENOE": {
           "valor": 1.8,
-          "ocupados": 2218946,
+          "ocupados": 2212568,
           "tasas": {
             "Participación": [
-              59.4,
-              59.1
+              59.3,
+              59.0
             ],
             "Desocupación": [
               1.8,
-              2.7
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              71.3,
-              55.1
+              70.6,
+              55.0
             ]
           },
-          "lugar": 26
+          "lugar": 28
         },
         "REMESAS": {
           "valor": 1374.739533,
@@ -10569,23 +10569,23 @@
           "lugar": 25
         },
         "ENOE": {
-          "valor": 1.7,
-          "ocupados": 920190,
+          "valor": 1.4,
+          "ocupados": 910412,
           "tasas": {
             "Participación": [
-              57.6,
-              59.1
+              56.6,
+              59.0
             ],
             "Desocupación": [
-              1.7,
-              2.7
+              1.4,
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              67.2,
-              55.1
+              65.8,
+              55.0
             ]
           },
-          "lugar": 28
+          "lugar": 30
         },
         "REMESAS": {
           "valor": 311.504417,
@@ -11174,23 +11174,23 @@
           "lugar": 28
         },
         "ENOE": {
-          "valor": 2.4,
-          "ocupados": 668986,
+          "valor": 3.2,
+          "ocupados": 670017,
           "tasas": {
             "Participación": [
-              66.7,
-              59.1
+              66.5,
+              59.0
             ],
             "Desocupación": [
-              2.4,
-              2.7
+              3.2,
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              58.9,
-              55.1
+              60.0,
+              55.0
             ]
           },
-          "lugar": 17
+          "lugar": 11
         },
         "REMESAS": {
           "valor": 199.489387,
@@ -11779,23 +11779,23 @@
           "lugar": 4
         },
         "ENOE": {
-          "valor": 2.5,
-          "ocupados": 2966006,
+          "valor": 2.9,
+          "ocupados": 3017879,
           "tasas": {
             "Participación": [
-              60.7,
-              59.1
+              61.1,
+              59.0
             ],
             "Desocupación": [
-              2.5,
-              2.7
+              2.9,
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              34.8,
-              55.1
+              35.0,
+              55.0
             ]
           },
-          "lugar": 16
+          "lugar": 15
         },
         "REMESAS": {
           "valor": 329.941029,
@@ -12384,23 +12384,23 @@
           "lugar": 23
         },
         "ENOE": {
-          "valor": 0.8,
-          "ocupados": 1936523,
+          "valor": 1.4,
+          "ocupados": 1841735,
           "tasas": {
             "Participación": [
-              61.2,
-              59.1
+              58.2,
+              59.0
             ],
             "Desocupación": [
-              0.8,
-              2.7
+              1.4,
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              80.1,
-              55.1
+              80.6,
+              55.0
             ]
           },
-          "lugar": 32
+          "lugar": 30
         },
         "REMESAS": {
           "valor": 957.696332,
@@ -12989,20 +12989,20 @@
           "lugar": 13
         },
         "ENOE": {
-          "valor": 1.8,
-          "ocupados": 3111161,
+          "valor": 2.1,
+          "ocupados": 3147325,
           "tasas": {
             "Participación": [
-              61.2,
-              59.1
+              61.4,
+              59.0
             ],
             "Desocupación": [
-              1.8,
-              2.7
+              2.1,
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              70.3,
-              55.1
+              69.7,
+              55.0
             ]
           },
           "lugar": 26
@@ -13594,23 +13594,23 @@
           "lugar": 10
         },
         "ENOE": {
-          "valor": 2.3,
-          "ocupados": 1217940,
+          "valor": 2.2,
+          "ocupados": 1276356,
           "tasas": {
             "Participación": [
-              60.8,
-              59.1
+              62.1,
+              59.0
             ],
             "Desocupación": [
-              2.3,
-              2.7
+              2.2,
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              39.2,
-              55.1
+              39.1,
+              55.0
             ]
           },
-          "lugar": 21
+          "lugar": 25
         },
         "REMESAS": {
           "valor": 318.966239,
@@ -14199,23 +14199,23 @@
           "lugar": 15
         },
         "ENOE": {
-          "valor": 2.4,
-          "ocupados": 1025532,
+          "valor": 3.5,
+          "ocupados": 1051532,
           "tasas": {
             "Participación": [
-              66.4,
-              59.1
+              66.8,
+              59.0
             ],
             "Desocupación": [
-              2.4,
-              2.7
+              3.5,
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              45.0,
-              55.1
+              44.0,
+              55.0
             ]
           },
-          "lugar": 17
+          "lugar": 8
         },
         "REMESAS": {
           "valor": 105.547369,
@@ -14805,22 +14805,22 @@
         },
         "ENOE": {
           "valor": 3.2,
-          "ocupados": 1329458,
+          "ocupados": 1339344,
           "tasas": {
             "Participación": [
-              60.0,
-              59.1
+              60.6,
+              59.0
             ],
             "Desocupación": [
               3.2,
-              2.7
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              54.9,
-              55.1
+              55.7,
+              55.0
             ]
           },
-          "lugar": 5
+          "lugar": 11
         },
         "REMESAS": {
           "valor": 554.751558,
@@ -15409,23 +15409,23 @@
           "lugar": 14
         },
         "ENOE": {
-          "valor": 3.1,
-          "ocupados": 1405556,
+          "valor": 3.6,
+          "ocupados": 1365381,
           "tasas": {
             "Participación": [
-              57.8,
-              59.1
+              55.7,
+              59.0
             ],
             "Desocupación": [
-              3.1,
-              2.7
+              3.6,
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              49.0,
-              55.1
+              47.6,
+              55.0
             ]
           },
-          "lugar": 8
+          "lugar": 5
         },
         "REMESAS": {
           "valor": 204.569334,
@@ -16014,23 +16014,23 @@
           "lugar": 12
         },
         "ENOE": {
-          "valor": 2.8,
-          "ocupados": 1469932,
+          "valor": 4.3,
+          "ocupados": 1428558,
           "tasas": {
             "Participación": [
-              62.7,
-              59.1
+              61.1,
+              59.0
             ],
             "Desocupación": [
-              2.8,
-              2.7
+              4.3,
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              43.9,
-              55.1
+              44.0,
+              55.0
             ]
           },
-          "lugar": 12
+          "lugar": 1
         },
         "REMESAS": {
           "valor": 183.112179,
@@ -16619,23 +16619,23 @@
           "lugar": 26
         },
         "ENOE": {
-          "valor": 4.0,
-          "ocupados": 1085768,
+          "valor": 4.2,
+          "ocupados": 1090987,
           "tasas": {
             "Participación": [
-              57.5,
-              59.1
+              57.9,
+              59.0
             ],
             "Desocupación": [
-              4.0,
-              2.7
+              4.2,
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              66.2,
-              55.1
+              66.1,
+              55.0
             ]
           },
-          "lugar": 2
+          "lugar": 3
         },
         "REMESAS": {
           "valor": 86.010447,
@@ -17224,23 +17224,23 @@
           "lugar": 11
         },
         "ENOE": {
-          "valor": 3.2,
-          "ocupados": 1648786,
+          "valor": 2.8,
+          "ocupados": 1607560,
           "tasas": {
             "Participación": [
-              58.4,
-              59.1
+              56.3,
+              59.0
             ],
             "Desocupación": [
-              3.2,
-              2.7
+              2.8,
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              44.4,
-              55.1
+              43.2,
+              55.0
             ]
           },
-          "lugar": 5
+          "lugar": 16
         },
         "REMESAS": {
           "valor": 275.804735,
@@ -17829,23 +17829,23 @@
           "lugar": 32
         },
         "ENOE": {
-          "valor": 3.4,
-          "ocupados": 670569,
+          "valor": 3.6,
+          "ocupados": 662643,
           "tasas": {
             "Participación": [
-              61.8,
-              59.1
+              60.3,
+              59.0
             ],
             "Desocupación": [
-              3.4,
-              2.7
+              3.6,
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              72.0,
-              55.1
+              69.1,
+              55.0
             ]
           },
-          "lugar": 4
+          "lugar": 5
         },
         "REMESAS": {
           "valor": 116.41277,
@@ -18434,23 +18434,23 @@
           "lugar": 9
         },
         "ENOE": {
-          "valor": 1.9,
-          "ocupados": 3310652,
+          "valor": 3.0,
+          "ocupados": 3227555,
           "tasas": {
             "Participación": [
-              52.2,
-              59.1
+              52.0,
+              59.0
             ],
             "Desocupación": [
-              1.9,
-              2.7
+              3.0,
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              69.1,
-              55.1
+              70.1,
+              55.0
             ]
           },
-          "lugar": 25
+          "lugar": 14
         },
         "REMESAS": {
           "valor": 714.256217,
@@ -19039,23 +19039,23 @@
           "lugar": 18
         },
         "ENOE": {
-          "valor": 1.7,
-          "ocupados": 1255687,
+          "valor": 2.0,
+          "ocupados": 1272007,
           "tasas": {
             "Participación": [
-              64.1,
-              59.1
+              63.9,
+              59.0
             ],
             "Desocupación": [
-              1.7,
-              2.7
+              2.0,
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              59.1,
-              55.1
+              59.0,
+              55.0
             ]
           },
-          "lugar": 28
+          "lugar": 27
         },
         "REMESAS": {
           "valor": 121.971415,
@@ -19645,22 +19645,22 @@
         },
         "ENOE": {
           "valor": 2.4,
-          "ocupados": 680499,
+          "ocupados": 687598,
           "tasas": {
             "Participación": [
-              54.0,
-              59.1
+              53.9,
+              59.0
             ],
             "Desocupación": [
               2.4,
-              2.7
+              2.9
             ],
             "Informalidad laboral (TIL1)": [
-              61.2,
-              55.1
+              60.4,
+              55.0
             ]
           },
-          "lugar": 17
+          "lugar": 20
         },
         "REMESAS": {
           "valor": 536.452368,

@@ -8,7 +8,7 @@
         "key": "PIB",
         "sheet": "PIB oportuno",
         "column": 0,
-        "label": "Var. trimestral (%)",
+        "label": "Var. trimestral desest. (%)",
         "first": "2015-10-01",
         "last": "2026-07-01",
         "count": 44
@@ -34,15 +34,41 @@
       {
         "key": "PIB",
         "sheet": "PIB oportuno",
+        "column": 4,
+        "label": "Acumulado original (%)",
+        "first": "2024-10-01",
+        "last": "2026-07-01",
+        "count": 7
+      },
+      {
+        "key": "PIB",
+        "sheet": "PIB oportuno",
         "column": 3,
-        "label": "Acumulado (%)",
+        "label": "Acumulado desest. (%)",
         "first": "2019-04-01",
         "last": "2026-07-01",
         "count": 23
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "4d00381ed13bb1262b67ec25b0e18abbed3ba886ac632ebd9b5522c2215ad2b6"
+    "data_variant": null,
+    "sha256": "b81d00b599c28065227df7f305acb1347b361856ca821eac58607ccd58c25f19",
+    "redefined_series": [
+      {
+        "column": 0,
+        "before": "Var. trimestral (%)",
+        "after": "Var. trimestral desest. (%)",
+        "before_count": 44,
+        "after_count": 44
+      },
+      {
+        "column": 3,
+        "before": "Acumulado (%)",
+        "after": "Acumulado desest. (%)",
+        "before_count": 23,
+        "after_count": 23
+      }
+    ]
   },
   "PIBSEC": {
     "sheets": 2,
@@ -53,16 +79,16 @@
         "key": "PIBSEC",
         "sheet": "Niveles",
         "column": 5,
-        "label": "PIB",
+        "label": "PIB (original)",
         "first": "1993-01-01",
-        "last": "2026-04-01",
-        "count": 134
+        "last": "2026-07-01",
+        "count": 135
       },
       {
         "key": "PIBSEC",
         "sheet": "Niveles",
         "column": 0,
-        "label": "Primarias",
+        "label": "Primarias (original)",
         "first": "1993-01-01",
         "last": "2026-07-01",
         "count": 135
@@ -71,7 +97,7 @@
         "key": "PIBSEC",
         "sheet": "Niveles",
         "column": 1,
-        "label": "Secundarias",
+        "label": "Secundarias (original)",
         "first": "1993-01-01",
         "last": "2026-07-01",
         "count": 135
@@ -80,7 +106,7 @@
         "key": "PIBSEC",
         "sheet": "Niveles",
         "column": 2,
-        "label": "Terciarias",
+        "label": "Terciarias (original)",
         "first": "1993-01-01",
         "last": "2026-07-01",
         "count": 135
@@ -89,61 +115,79 @@
         "key": "PIBSEC",
         "sheet": "Variaciones",
         "column": 6,
-        "label": "Var. trim. PIB (%)",
-        "first": "1993-04-01",
+        "label": "Var. trim. PIB desest. (%)",
+        "first": "1993-01-01",
         "last": "2026-07-01",
-        "count": 134
+        "count": 135
       },
       {
         "key": "PIBSEC",
         "sheet": "Variaciones",
         "column": 8,
-        "label": "Var. trim. Primarias (%)",
-        "first": "1993-04-01",
+        "label": "Var. trim. Primarias desest. (%)",
+        "first": "1993-01-01",
         "last": "2026-07-01",
-        "count": 134
+        "count": 135
       },
       {
         "key": "PIBSEC",
         "sheet": "Variaciones",
         "column": 10,
-        "label": "Var. trim. Secundarias (%)",
-        "first": "1993-04-01",
+        "label": "Var. trim. Secundarias desest. (%)",
+        "first": "1993-01-01",
         "last": "2026-07-01",
-        "count": 134
+        "count": 135
       },
       {
         "key": "PIBSEC",
         "sheet": "Variaciones",
         "column": 3,
-        "label": "Var. trim. Terciarias (%)",
-        "first": "1993-04-01",
+        "label": "Var. trim. Terciarias desest. (%)",
+        "first": "1993-01-01",
         "last": "2026-07-01",
-        "count": 134
+        "count": 135
       },
       {
         "key": "PIBSEC",
         "sheet": "Variaciones",
         "column": 7,
-        "label": "Var. anual PIB (%)",
-        "first": "1994-01-01",
+        "label": "Var. anual PIB desest. (%)",
+        "first": "1993-01-01",
         "last": "2026-07-01",
-        "count": 131
+        "count": 135
       },
       {
         "key": "PIBSEC",
         "sheet": "Variaciones",
         "column": 9,
-        "label": "Var. anual Primarias (%)",
-        "first": "1994-01-01",
+        "label": "Var. anual Primarias desest. (%)",
+        "first": "1993-01-01",
         "last": "2026-07-01",
-        "count": 131
+        "count": 135
       },
       {
         "key": "PIBSEC",
         "sheet": "Variaciones",
         "column": 11,
-        "label": "Var. anual Secundarias (%)",
+        "label": "Var. anual Secundarias desest. (%)",
+        "first": "1993-01-01",
+        "last": "2026-07-01",
+        "count": 135
+      },
+      {
+        "key": "PIBSEC",
+        "sheet": "Variaciones",
+        "column": 4,
+        "label": "Var. anual Terciarias desest. (%)",
+        "first": "1993-01-01",
+        "last": "2026-07-01",
+        "count": 135
+      },
+      {
+        "key": "PIBSEC",
+        "sheet": "Variaciones",
+        "column": 12,
+        "label": "Var. anual PIB original (%)",
         "first": "1994-01-01",
         "last": "2026-07-01",
         "count": 131
@@ -151,15 +195,120 @@
       {
         "key": "PIBSEC",
         "sheet": "Variaciones",
-        "column": 4,
-        "label": "Var. anual Terciarias (%)",
+        "column": 13,
+        "label": "Var. anual Primarias original (%)",
+        "first": "1994-01-01",
+        "last": "2026-07-01",
+        "count": 131
+      },
+      {
+        "key": "PIBSEC",
+        "sheet": "Variaciones",
+        "column": 14,
+        "label": "Var. anual Secundarias original (%)",
+        "first": "1994-01-01",
+        "last": "2026-07-01",
+        "count": 131
+      },
+      {
+        "key": "PIBSEC",
+        "sheet": "Variaciones",
+        "column": 15,
+        "label": "Var. anual Terciarias original (%)",
         "first": "1994-01-01",
         "last": "2026-07-01",
         "count": 131
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "f08c7a49bf0be1f2a690ceb0eced33ebc387b9e9f86ac732813c903692b19994"
+    "data_variant": null,
+    "sha256": "9b90013aacec5da689b12900ad6d9ec8774e5ed4035ec897f365edcd9ce242a7",
+    "redefined_series": [
+      {
+        "column": 5,
+        "before": "PIB",
+        "after": "PIB (original)",
+        "before_count": 134,
+        "after_count": 135
+      },
+      {
+        "column": 0,
+        "before": "Primarias",
+        "after": "Primarias (original)",
+        "before_count": 135,
+        "after_count": 135
+      },
+      {
+        "column": 1,
+        "before": "Secundarias",
+        "after": "Secundarias (original)",
+        "before_count": 135,
+        "after_count": 135
+      },
+      {
+        "column": 2,
+        "before": "Terciarias",
+        "after": "Terciarias (original)",
+        "before_count": 135,
+        "after_count": 135
+      },
+      {
+        "column": 6,
+        "before": "Var. trim. PIB (%)",
+        "after": "Var. trim. PIB desest. (%)",
+        "before_count": 134,
+        "after_count": 135
+      },
+      {
+        "column": 8,
+        "before": "Var. trim. Primarias (%)",
+        "after": "Var. trim. Primarias desest. (%)",
+        "before_count": 134,
+        "after_count": 135
+      },
+      {
+        "column": 10,
+        "before": "Var. trim. Secundarias (%)",
+        "after": "Var. trim. Secundarias desest. (%)",
+        "before_count": 134,
+        "after_count": 135
+      },
+      {
+        "column": 3,
+        "before": "Var. trim. Terciarias (%)",
+        "after": "Var. trim. Terciarias desest. (%)",
+        "before_count": 134,
+        "after_count": 135
+      },
+      {
+        "column": 7,
+        "before": "Var. anual PIB (%)",
+        "after": "Var. anual PIB desest. (%)",
+        "before_count": 131,
+        "after_count": 135
+      },
+      {
+        "column": 9,
+        "before": "Var. anual Primarias (%)",
+        "after": "Var. anual Primarias desest. (%)",
+        "before_count": 131,
+        "after_count": 135
+      },
+      {
+        "column": 11,
+        "before": "Var. anual Secundarias (%)",
+        "after": "Var. anual Secundarias desest. (%)",
+        "before_count": 131,
+        "after_count": 135
+      },
+      {
+        "column": 4,
+        "before": "Var. anual Terciarias (%)",
+        "after": "Var. anual Terciarias desest. (%)",
+        "before_count": 131,
+        "after_count": 135
+      }
+    ]
   },
   "SIC": {
     "sheets": 1,
@@ -330,7 +479,8 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "5f3034fee91cdeba588eb3f3d8eb3e7b2915edd7e95b8ee7761eef57796986da"
+    "data_variant": null,
+    "sha256": "e9bc4e98ab46ff15e6b986ce668cc21b24b4880e1b6d15e091fcebba50d3d0a5"
   },
   "IOAE": {
     "sheets": 1,
@@ -341,7 +491,7 @@
         "key": "IOAE",
         "sheet": "IOAE",
         "column": 0,
-        "label": "IGAE var. anual nowcast (%)",
+        "label": "IGAE var. anual nowcast desest. (%)",
         "first": "2021-01-01",
         "last": "2026-10-01",
         "count": 70
@@ -350,7 +500,7 @@
         "key": "IOAE",
         "sheet": "IOAE",
         "column": 1,
-        "label": "IC95 inferior IGAE (%)",
+        "label": "IC95 inferior IGAE desest. (%)",
         "first": "2021-01-01",
         "last": "2026-10-01",
         "count": 70
@@ -359,7 +509,7 @@
         "key": "IOAE",
         "sheet": "IOAE",
         "column": 2,
-        "label": "IC95 superior IGAE (%)",
+        "label": "IC95 superior IGAE desest. (%)",
         "first": "2021-01-01",
         "last": "2026-10-01",
         "count": 70
@@ -368,7 +518,7 @@
         "key": "IOAE",
         "sheet": "IOAE",
         "column": 3,
-        "label": "IGAE var. mensual nowcast (%)",
+        "label": "IGAE var. mensual nowcast desest. (%)",
         "first": "2021-04-01",
         "last": "2026-10-01",
         "count": 67
@@ -377,7 +527,7 @@
         "key": "IOAE",
         "sheet": "IOAE",
         "column": 4,
-        "label": "Actividades secundarias var. anual nowcast (%)",
+        "label": "Actividades secundarias var. anual nowcast desest. (%)",
         "first": "2021-01-01",
         "last": "2026-10-01",
         "count": 70
@@ -386,7 +536,7 @@
         "key": "IOAE",
         "sheet": "IOAE",
         "column": 5,
-        "label": "IC95 inferior secundarias (%)",
+        "label": "IC95 inferior secundarias desest. (%)",
         "first": "2021-02-01",
         "last": "2026-10-01",
         "count": 68
@@ -395,7 +545,7 @@
         "key": "IOAE",
         "sheet": "IOAE",
         "column": 6,
-        "label": "IC95 superior secundarias (%)",
+        "label": "IC95 superior secundarias desest. (%)",
         "first": "2021-02-01",
         "last": "2026-10-01",
         "count": 68
@@ -404,7 +554,7 @@
         "key": "IOAE",
         "sheet": "IOAE",
         "column": 7,
-        "label": "Actividades terciarias var. anual nowcast (%)",
+        "label": "Actividades terciarias var. anual nowcast desest. (%)",
         "first": "2021-01-01",
         "last": "2026-10-01",
         "count": 70
@@ -413,7 +563,7 @@
         "key": "IOAE",
         "sheet": "IOAE",
         "column": 8,
-        "label": "IC95 inferior terciarias (%)",
+        "label": "IC95 inferior terciarias desest. (%)",
         "first": "2021-01-01",
         "last": "2026-10-01",
         "count": 70
@@ -422,7 +572,7 @@
         "key": "IOAE",
         "sheet": "IOAE",
         "column": 9,
-        "label": "IC95 superior terciarias (%)",
+        "label": "IC95 superior terciarias desest. (%)",
         "first": "2021-01-01",
         "last": "2026-10-01",
         "count": 70
@@ -431,10 +581,10 @@
         "key": "IOAE",
         "sheet": "IOAE",
         "column": 12,
-        "label": "IGAE observado anual (%)",
-        "first": "2021-01-01",
+        "label": "IGAE observado anual desest. (%)",
+        "first": "2024-11-01",
         "last": "2026-09-01",
-        "count": 69
+        "count": 23
       },
       {
         "key": "IOAE",
@@ -456,7 +606,87 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "2d1a69fd02bbad03499e5fe1de8c18120fa59af870a92b8fcad7964e1ec1a4af"
+    "data_variant": null,
+    "sha256": "35b3469e72cd2ea0b6502ddcb45057202c5b7462b57d9c3c78174cbee6c27eb9",
+    "redefined_series": [
+      {
+        "column": 0,
+        "before": "IGAE var. anual nowcast (%)",
+        "after": "IGAE var. anual nowcast desest. (%)",
+        "before_count": 70,
+        "after_count": 70
+      },
+      {
+        "column": 1,
+        "before": "IC95 inferior IGAE (%)",
+        "after": "IC95 inferior IGAE desest. (%)",
+        "before_count": 70,
+        "after_count": 70
+      },
+      {
+        "column": 2,
+        "before": "IC95 superior IGAE (%)",
+        "after": "IC95 superior IGAE desest. (%)",
+        "before_count": 70,
+        "after_count": 70
+      },
+      {
+        "column": 3,
+        "before": "IGAE var. mensual nowcast (%)",
+        "after": "IGAE var. mensual nowcast desest. (%)",
+        "before_count": 67,
+        "after_count": 67
+      },
+      {
+        "column": 4,
+        "before": "Actividades secundarias var. anual nowcast (%)",
+        "after": "Actividades secundarias var. anual nowcast desest. (%)",
+        "before_count": 70,
+        "after_count": 70
+      },
+      {
+        "column": 5,
+        "before": "IC95 inferior secundarias (%)",
+        "after": "IC95 inferior secundarias desest. (%)",
+        "before_count": 68,
+        "after_count": 68
+      },
+      {
+        "column": 6,
+        "before": "IC95 superior secundarias (%)",
+        "after": "IC95 superior secundarias desest. (%)",
+        "before_count": 68,
+        "after_count": 68
+      },
+      {
+        "column": 7,
+        "before": "Actividades terciarias var. anual nowcast (%)",
+        "after": "Actividades terciarias var. anual nowcast desest. (%)",
+        "before_count": 70,
+        "after_count": 70
+      },
+      {
+        "column": 8,
+        "before": "IC95 inferior terciarias (%)",
+        "after": "IC95 inferior terciarias desest. (%)",
+        "before_count": 70,
+        "after_count": 70
+      },
+      {
+        "column": 9,
+        "before": "IC95 superior terciarias (%)",
+        "after": "IC95 superior terciarias desest. (%)",
+        "before_count": 70,
+        "after_count": 70
+      },
+      {
+        "column": 12,
+        "before": "IGAE observado anual (%)",
+        "after": "IGAE observado anual desest. (%)",
+        "before_count": 69,
+        "after_count": 23
+      }
+    ]
   },
   "IGAE": {
     "sheets": 1,
@@ -512,7 +742,7 @@
         "key": "IGAE",
         "sheet": "IGAE",
         "column": 4,
-        "label": "Var. anual act. primarias (%)",
+        "label": "Var. anual original act. primarias (%)",
         "first": "1994-01-01",
         "last": "2026-09-01",
         "count": 393
@@ -521,7 +751,7 @@
         "key": "IGAE",
         "sheet": "IGAE",
         "column": 6,
-        "label": "Var. anual act. secundarias (%)",
+        "label": "Var. anual original act. secundarias (%)",
         "first": "1994-01-01",
         "last": "2026-09-01",
         "count": 393
@@ -530,7 +760,7 @@
         "key": "IGAE",
         "sheet": "IGAE",
         "column": 8,
-        "label": "Var. anual act. terciarias (%)",
+        "label": "Var. anual original act. terciarias (%)",
         "first": "1994-01-01",
         "last": "2026-09-01",
         "count": 393
@@ -543,10 +773,43 @@
         "first": "2024-11-01",
         "last": "2026-09-01",
         "count": 23
+      },
+      {
+        "key": "IGAE",
+        "sheet": "IGAE",
+        "column": 9,
+        "label": "Var. anual desest. (%)",
+        "first": "2024-11-01",
+        "last": "2026-09-01",
+        "count": 23
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "0c30ae74a9e6c3805593a18265c6e3a61a2683d2b2ef723b5740675f0d5d9042"
+    "data_variant": null,
+    "sha256": "81d6a4f1b05460e058a95822e22c6b04498e3daf80232e624e3fdc1ec8b2c321",
+    "redefined_series": [
+      {
+        "column": 4,
+        "before": "Var. anual act. primarias (%)",
+        "after": "Var. anual original act. primarias (%)",
+        "before_count": 393,
+        "after_count": 393
+      },
+      {
+        "column": 6,
+        "before": "Var. anual act. secundarias (%)",
+        "after": "Var. anual original act. secundarias (%)",
+        "before_count": 393,
+        "after_count": 393
+      },
+      {
+        "column": 8,
+        "before": "Var. anual act. terciarias (%)",
+        "after": "Var. anual original act. terciarias (%)",
+        "before_count": 393,
+        "after_count": 393
+      }
+    ]
   },
   "IMAI": {
     "sheets": 3,
@@ -611,7 +874,7 @@
         "key": "IMAI",
         "sheet": "Variaciones",
         "column": 14,
-        "label": "Var. mensual Minería (%)",
+        "label": "Var. mensual desest. Minería (%)",
         "first": "2018-01-01",
         "last": "2026-09-01",
         "count": 105
@@ -620,7 +883,7 @@
         "key": "IMAI",
         "sheet": "Variaciones",
         "column": 15,
-        "label": "Var. mensual Energía (%)",
+        "label": "Var. mensual desest. Energía (%)",
         "first": "2018-01-01",
         "last": "2026-09-01",
         "count": 105
@@ -629,7 +892,7 @@
         "key": "IMAI",
         "sheet": "Variaciones",
         "column": 16,
-        "label": "Var. mensual Construcción (%)",
+        "label": "Var. mensual desest. Construcción (%)",
         "first": "2018-01-01",
         "last": "2026-09-01",
         "count": 105
@@ -638,7 +901,7 @@
         "key": "IMAI",
         "sheet": "Variaciones",
         "column": 17,
-        "label": "Var. mensual Manufacturas (%)",
+        "label": "Var. mensual desest. Manufacturas (%)",
         "first": "2018-01-01",
         "last": "2026-09-01",
         "count": 105
@@ -656,7 +919,7 @@
         "key": "IMAI",
         "sheet": "Variaciones",
         "column": 10,
-        "label": "Var. anual Minería (%)",
+        "label": "Var. anual desest. Minería (%)",
         "first": "2018-01-01",
         "last": "2026-09-01",
         "count": 105
@@ -665,7 +928,7 @@
         "key": "IMAI",
         "sheet": "Variaciones",
         "column": 11,
-        "label": "Var. anual Energía (%)",
+        "label": "Var. anual desest. Energía (%)",
         "first": "2018-01-01",
         "last": "2026-09-01",
         "count": 105
@@ -674,7 +937,7 @@
         "key": "IMAI",
         "sheet": "Variaciones",
         "column": 12,
-        "label": "Var. anual Construcción (%)",
+        "label": "Var. anual desest. Construcción (%)",
         "first": "2018-01-01",
         "last": "2026-09-01",
         "count": 105
@@ -683,7 +946,7 @@
         "key": "IMAI",
         "sheet": "Variaciones",
         "column": 13,
-        "label": "Var. anual Manufacturas (%)",
+        "label": "Var. anual desest. Manufacturas (%)",
         "first": "2018-01-01",
         "last": "2026-09-01",
         "count": 105
@@ -717,7 +980,66 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "ba18350e49b1f45b78e760d71dae8e690729af266372c5394b88c32e6fab891e"
+    "data_variant": null,
+    "sha256": "7b7e1691c3ba5295f87e5ce6d5216790427d5a67af5c587e7d8e4a8d813a9d52",
+    "redefined_series": [
+      {
+        "column": 14,
+        "before": "Var. mensual Minería (%)",
+        "after": "Var. mensual desest. Minería (%)",
+        "before_count": 105,
+        "after_count": 105
+      },
+      {
+        "column": 15,
+        "before": "Var. mensual Energía (%)",
+        "after": "Var. mensual desest. Energía (%)",
+        "before_count": 105,
+        "after_count": 105
+      },
+      {
+        "column": 16,
+        "before": "Var. mensual Construcción (%)",
+        "after": "Var. mensual desest. Construcción (%)",
+        "before_count": 105,
+        "after_count": 105
+      },
+      {
+        "column": 17,
+        "before": "Var. mensual Manufacturas (%)",
+        "after": "Var. mensual desest. Manufacturas (%)",
+        "before_count": 105,
+        "after_count": 105
+      },
+      {
+        "column": 10,
+        "before": "Var. anual Minería (%)",
+        "after": "Var. anual desest. Minería (%)",
+        "before_count": 105,
+        "after_count": 105
+      },
+      {
+        "column": 11,
+        "before": "Var. anual Energía (%)",
+        "after": "Var. anual desest. Energía (%)",
+        "before_count": 105,
+        "after_count": 105
+      },
+      {
+        "column": 12,
+        "before": "Var. anual Construcción (%)",
+        "after": "Var. anual desest. Construcción (%)",
+        "before_count": 105,
+        "after_count": 105
+      },
+      {
+        "column": 13,
+        "before": "Var. anual Manufacturas (%)",
+        "after": "Var. anual desest. Manufacturas (%)",
+        "before_count": 105,
+        "after_count": 105
+      }
+    ]
   },
   "IMOAM": {
     "sheets": 1,
@@ -729,58 +1051,59 @@
         "sheet": "IMOAM",
         "column": 0,
         "label": "Índice estimado (2018=100)",
-        "first": "2024-12-01",
+        "first": "2023-07-01",
         "last": "2026-09-01",
-        "count": 22
+        "count": 39
       },
       {
         "key": "IMOAM",
         "sheet": "IMOAM",
         "column": 1,
         "label": "IC95 inferior del índice",
-        "first": "2024-12-01",
+        "first": "2023-07-01",
         "last": "2026-09-01",
-        "count": 22
+        "count": 39
       },
       {
         "key": "IMOAM",
         "sheet": "IMOAM",
         "column": 2,
         "label": "IC95 superior del índice",
-        "first": "2024-12-01",
+        "first": "2023-07-01",
         "last": "2026-09-01",
-        "count": 22
+        "count": 39
       },
       {
         "key": "IMOAM",
         "sheet": "IMOAM",
         "column": 3,
         "label": "Variación anual estimada (%)",
-        "first": "2024-12-01",
+        "first": "2023-07-01",
         "last": "2026-09-01",
-        "count": 22
+        "count": 39
       },
       {
         "key": "IMOAM",
         "sheet": "IMOAM",
         "column": 4,
         "label": "IC95 inferior anual (%)",
-        "first": "2024-12-01",
+        "first": "2023-07-01",
         "last": "2026-09-01",
-        "count": 22
+        "count": 39
       },
       {
         "key": "IMOAM",
         "sheet": "IMOAM",
         "column": 5,
         "label": "IC95 superior anual (%)",
-        "first": "2024-12-01",
+        "first": "2023-07-01",
         "last": "2026-09-01",
-        "count": 22
+        "count": 39
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "2e9138ff98e05ffc6ac9d958d11a2dd0929c1f81ddfe445b4bf555c9c3aedc97"
+    "data_variant": null,
+    "sha256": "76ed86f5bba3b8492bb46b232427c01643fc636ef15a714c7fa9c8c0506547b0"
   },
   "EMIM": {
     "sheets": 2,
@@ -951,7 +1274,8 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "ee22520f852c9b399826f133b6bf0b4d9b8f174bb9b116d9e4123dacf53764e9"
+    "data_variant": null,
+    "sha256": "780f3c64de58c24c0a8d6343ba9750f26383d9ef83cabc0d9d972f6e1e788c22"
   },
   "EMOE": {
     "sheets": 1,
@@ -962,7 +1286,7 @@
         "key": "EMOE",
         "sheet": "EMOE",
         "column": 0,
-        "label": "IGOEC",
+        "label": "IGOEC (desest.)",
         "first": "2018-01-01",
         "last": "2026-10-01",
         "count": 106
@@ -971,7 +1295,7 @@
         "key": "EMOE",
         "sheet": "EMOE",
         "column": 1,
-        "label": "Cambio mensual IGOEC (puntos)",
+        "label": "Cambio mensual IGOEC desest. (puntos)",
         "first": "2018-01-01",
         "last": "2026-10-01",
         "count": 106
@@ -980,16 +1304,16 @@
         "key": "EMOE",
         "sheet": "EMOE",
         "column": 2,
-        "label": "Cambio anual IGOEC (puntos)",
-        "first": "2019-01-01",
+        "label": "Cambio anual IGOEC desest. (puntos)",
+        "first": "2018-01-01",
         "last": "2026-10-01",
-        "count": 94
+        "count": 106
       },
       {
         "key": "EMOE",
         "sheet": "EMOE",
         "column": 3,
-        "label": "Manufacturas",
+        "label": "Manufacturas (desest.)",
         "first": "2018-01-01",
         "last": "2026-10-01",
         "count": 106
@@ -998,7 +1322,7 @@
         "key": "EMOE",
         "sheet": "EMOE",
         "column": 4,
-        "label": "Construcción",
+        "label": "Construcción (original)",
         "first": "2018-01-01",
         "last": "2026-10-01",
         "count": 106
@@ -1007,7 +1331,7 @@
         "key": "EMOE",
         "sheet": "EMOE",
         "column": 5,
-        "label": "Comercio",
+        "label": "Comercio (original)",
         "first": "2018-01-01",
         "last": "2026-10-01",
         "count": 106
@@ -1016,14 +1340,66 @@
         "key": "EMOE",
         "sheet": "EMOE",
         "column": 6,
-        "label": "Servicios privados no financieros",
+        "label": "Servicios privados no financieros (original)",
         "first": "2018-01-01",
         "last": "2026-10-01",
         "count": 106
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "b2354af90fa96ba2200d97c7b5626056645014f923c1cf00f0d440171e909e03"
+    "data_variant": null,
+    "sha256": "e25a64968d493a065ddf53c6f05811ee6c463486f204cccab2580b22a4807e9f",
+    "redefined_series": [
+      {
+        "column": 0,
+        "before": "IGOEC",
+        "after": "IGOEC (desest.)",
+        "before_count": 106,
+        "after_count": 106
+      },
+      {
+        "column": 1,
+        "before": "Cambio mensual IGOEC (puntos)",
+        "after": "Cambio mensual IGOEC desest. (puntos)",
+        "before_count": 106,
+        "after_count": 106
+      },
+      {
+        "column": 2,
+        "before": "Cambio anual IGOEC (puntos)",
+        "after": "Cambio anual IGOEC desest. (puntos)",
+        "before_count": 94,
+        "after_count": 106
+      },
+      {
+        "column": 3,
+        "before": "Manufacturas",
+        "after": "Manufacturas (desest.)",
+        "before_count": 106,
+        "after_count": 106
+      },
+      {
+        "column": 4,
+        "before": "Construcción",
+        "after": "Construcción (original)",
+        "before_count": 106,
+        "after_count": 106
+      },
+      {
+        "column": 5,
+        "before": "Comercio",
+        "after": "Comercio (original)",
+        "before_count": 106,
+        "after_count": 106
+      },
+      {
+        "column": 6,
+        "before": "Servicios privados no financieros",
+        "after": "Servicios privados no financieros (original)",
+        "before_count": 106,
+        "after_count": 106
+      }
+    ]
   },
   "DESOCUP": {
     "sheets": 2,
@@ -1079,7 +1455,8 @@
     "omitted_redundancy": {
       "4": "Misma población expresada en millones; se conserva la serie en personas."
     },
-    "sha256": "6dc516c92dbf49b212797ba759b565ce6845f7887a4bc52d9c73e88b12e05de2"
+    "data_variant": null,
+    "sha256": "af157cab9dd843579a6e5d56e3bbd1523cb0b66236586b9216b21d025debdc30"
   },
   "INPC": {
     "sheets": 1,
@@ -1250,7 +1627,8 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "ef95bd411583636a78a9bd6bb90b7ea08557afdde148835860381c0b7b60d76c"
+    "data_variant": null,
+    "sha256": "5d5905a5aa40676e347fe87ba8a3d7a12fc51abf223648fa82aba5f796b97f39"
   },
   "INPP": {
     "sheets": 1,
@@ -1394,7 +1772,8 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "5a12ee1378558afaeb1dbda1d372fd61011d034280db56c9740841f41c06139c"
+    "data_variant": null,
+    "sha256": "546baef2ee7395fdb2ff6764e9614c342d422d92ff0d12e7151819ffeda48e4f"
   },
   "CONSUMO": {
     "sheets": 2,
@@ -1405,7 +1784,7 @@
         "key": "CONSUMO",
         "sheet": "Consumo Privado",
         "column": 0,
-        "label": "Índice de volumen físico",
+        "label": "Índice de volumen físico (desest.)",
         "first": "2024-10-01",
         "last": "2026-08-01",
         "count": 23
@@ -1414,7 +1793,7 @@
         "key": "CONSUMO",
         "sheet": "Consumo Privado",
         "column": 1,
-        "label": "Var. mensual total (%)",
+        "label": "Var. mensual desest. total (%)",
         "first": "2024-10-01",
         "last": "2026-08-01",
         "count": 23
@@ -1423,7 +1802,7 @@
         "key": "CONSUMO",
         "sheet": "Consumo Privado",
         "column": 2,
-        "label": "Var. anual total (%)",
+        "label": "Var. anual desest. total (%)",
         "first": "2024-10-01",
         "last": "2026-08-01",
         "count": 23
@@ -1432,7 +1811,7 @@
         "key": "CONSUMO",
         "sheet": "Consumo Privado",
         "column": 5,
-        "label": "Var. mensual nacional (%)",
+        "label": "Var. mensual desest. nacional (%)",
         "first": "2024-10-01",
         "last": "2026-08-01",
         "count": 23
@@ -1441,7 +1820,7 @@
         "key": "CONSUMO",
         "sheet": "Consumo Privado",
         "column": 6,
-        "label": "Var. anual nacional (%)",
+        "label": "Var. anual desest. nacional (%)",
         "first": "2024-10-01",
         "last": "2026-08-01",
         "count": 23
@@ -1450,7 +1829,7 @@
         "key": "CONSUMO",
         "sheet": "Consumo Privado",
         "column": 11,
-        "label": "Var. mensual importado (%)",
+        "label": "Var. mensual desest. importado (%)",
         "first": "2024-10-01",
         "last": "2026-08-01",
         "count": 23
@@ -1459,7 +1838,7 @@
         "key": "CONSUMO",
         "sheet": "Consumo Privado",
         "column": 12,
-        "label": "Var. anual importado (%)",
+        "label": "Var. anual desest. importado (%)",
         "first": "2024-10-01",
         "last": "2026-08-01",
         "count": 23
@@ -1468,7 +1847,7 @@
         "key": "CONSUMO",
         "sheet": "Consumo Privado",
         "column": 7,
-        "label": "Var. mensual bienes nacionales (%)",
+        "label": "Var. mensual desest. bienes nacionales (%)",
         "first": "2024-10-01",
         "last": "2026-08-01",
         "count": 23
@@ -1477,7 +1856,7 @@
         "key": "CONSUMO",
         "sheet": "Consumo Privado",
         "column": 8,
-        "label": "Var. anual bienes nacionales (%)",
+        "label": "Var. anual desest. bienes nacionales (%)",
         "first": "2024-10-01",
         "last": "2026-08-01",
         "count": 23
@@ -1486,7 +1865,7 @@
         "key": "CONSUMO",
         "sheet": "Consumo Privado",
         "column": 9,
-        "label": "Var. mensual servicios nacionales (%)",
+        "label": "Var. mensual desest. servicios nacionales (%)",
         "first": "2024-10-01",
         "last": "2026-08-01",
         "count": 23
@@ -1495,7 +1874,7 @@
         "key": "CONSUMO",
         "sheet": "Consumo Privado",
         "column": 10,
-        "label": "Var. anual servicios nacionales (%)",
+        "label": "Var. anual desest. servicios nacionales (%)",
         "first": "2024-10-01",
         "last": "2026-08-01",
         "count": 23
@@ -1504,7 +1883,7 @@
         "key": "CONSUMO",
         "sheet": "Consumo Privado",
         "column": 13,
-        "label": "Var. mensual bienes importados (%)",
+        "label": "Var. mensual desest. bienes importados (%)",
         "first": "2024-10-01",
         "last": "2026-08-01",
         "count": 23
@@ -1513,7 +1892,7 @@
         "key": "CONSUMO",
         "sheet": "Consumo Privado",
         "column": 14,
-        "label": "Var. anual bienes importados (%)",
+        "label": "Var. anual desest. bienes importados (%)",
         "first": "2024-10-01",
         "last": "2026-08-01",
         "count": 23
@@ -1736,7 +2115,101 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "9c758cb917634b919915abec94361ca307369bc198a70a7b41f849fb3333c19d"
+    "data_variant": null,
+    "sha256": "158a77443dcc2e79eaa73df4f4bf05918ef3329eea84d4abfca40438dd91ffc7",
+    "redefined_series": [
+      {
+        "column": 0,
+        "before": "Índice de volumen físico",
+        "after": "Índice de volumen físico (desest.)",
+        "before_count": 23,
+        "after_count": 23
+      },
+      {
+        "column": 1,
+        "before": "Var. mensual total (%)",
+        "after": "Var. mensual desest. total (%)",
+        "before_count": 23,
+        "after_count": 23
+      },
+      {
+        "column": 2,
+        "before": "Var. anual total (%)",
+        "after": "Var. anual desest. total (%)",
+        "before_count": 23,
+        "after_count": 23
+      },
+      {
+        "column": 5,
+        "before": "Var. mensual nacional (%)",
+        "after": "Var. mensual desest. nacional (%)",
+        "before_count": 23,
+        "after_count": 23
+      },
+      {
+        "column": 6,
+        "before": "Var. anual nacional (%)",
+        "after": "Var. anual desest. nacional (%)",
+        "before_count": 23,
+        "after_count": 23
+      },
+      {
+        "column": 11,
+        "before": "Var. mensual importado (%)",
+        "after": "Var. mensual desest. importado (%)",
+        "before_count": 23,
+        "after_count": 23
+      },
+      {
+        "column": 12,
+        "before": "Var. anual importado (%)",
+        "after": "Var. anual desest. importado (%)",
+        "before_count": 23,
+        "after_count": 23
+      },
+      {
+        "column": 7,
+        "before": "Var. mensual bienes nacionales (%)",
+        "after": "Var. mensual desest. bienes nacionales (%)",
+        "before_count": 23,
+        "after_count": 23
+      },
+      {
+        "column": 8,
+        "before": "Var. anual bienes nacionales (%)",
+        "after": "Var. anual desest. bienes nacionales (%)",
+        "before_count": 23,
+        "after_count": 23
+      },
+      {
+        "column": 9,
+        "before": "Var. mensual servicios nacionales (%)",
+        "after": "Var. mensual desest. servicios nacionales (%)",
+        "before_count": 23,
+        "after_count": 23
+      },
+      {
+        "column": 10,
+        "before": "Var. anual servicios nacionales (%)",
+        "after": "Var. anual desest. servicios nacionales (%)",
+        "before_count": 23,
+        "after_count": 23
+      },
+      {
+        "column": 13,
+        "before": "Var. mensual bienes importados (%)",
+        "after": "Var. mensual desest. bienes importados (%)",
+        "before_count": 23,
+        "after_count": 23
+      },
+      {
+        "column": 14,
+        "before": "Var. anual bienes importados (%)",
+        "after": "Var. anual desest. bienes importados (%)",
+        "before_count": 23,
+        "after_count": 23
+      }
+    ]
   },
   "IMFBCF": {
     "sheets": 3,
@@ -2105,7 +2578,8 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "01edd9493886da62dc41ea1f03b8ebdbc60771aec00f36513675c380e8aaf8b6"
+    "data_variant": null,
+    "sha256": "453e88ebb128499ee19c7b6e0392c64a709b5fafc84643d21c5689efddc941f2"
   },
   "BCMM": {
     "sheets": 3,
@@ -2368,7 +2842,8 @@
     "omitted_redundancy": {
       "5": "Se evita la tasa porcentual del saldo; no es interpretable al cambiar de signo."
     },
-    "sha256": "c251808a70a1f9470619d23306e27f7f4a385f1ab4fd1dd508ffbe5bf70bfcad"
+    "data_variant": null,
+    "sha256": "a41cb476ea30f7882d1c51d814899229e35caf89bcc8275bcebb41143507834d"
   },
   "IED": {
     "sheets": 6,
@@ -2377,7 +2852,7 @@
     "coverage": [
       {
         "key": "IED",
-        "sheet": "Flujo trimestral",
+        "sheet": "Acumulado por corte",
         "column": 0,
         "label": "Flujo trimestral",
         "first": "2000-01-01",
@@ -2386,7 +2861,7 @@
       },
       {
         "key": "IED",
-        "sheet": "Flujo trimestral",
+        "sheet": "Acumulado por corte",
         "column": 1,
         "label": "Nuevas inversiones",
         "first": "2026-04-01",
@@ -2395,7 +2870,7 @@
       },
       {
         "key": "IED",
-        "sheet": "Flujo trimestral",
+        "sheet": "Acumulado por corte",
         "column": 2,
         "label": "Reinversión de utilidades",
         "first": "2026-04-01",
@@ -2404,7 +2879,7 @@
       },
       {
         "key": "IED",
-        "sheet": "Flujo trimestral",
+        "sheet": "Acumulado por corte",
         "column": 3,
         "label": "Cuentas entre compañías",
         "first": "2026-04-01",
@@ -2413,7 +2888,7 @@
       },
       {
         "key": "IED",
-        "sheet": "Flujo trimestral",
+        "sheet": "Acumulado por corte",
         "column": 4,
         "label": "Var. anual flujo",
         "first": "2001-01-01",
@@ -2467,9 +2942,10 @@
       }
     ],
     "omitted_redundancy": {},
+    "data_variant": null,
     "state_source_sha256": "237075853fe6b72b5ea5473dc53b5849bfe3220840de293a72c7e15053f283ce",
     "state_period": "2T-2026",
-    "sha256": "4731347c02be6785d2387e8d79871ee3a31102a5c22e663cbcd2ca41b8677f17"
+    "sha256": "d95bc27b23c46b27377bb526ee2133ac8a1c80ee16dbc07ea14c9530f4a8dc1e"
   },
   "TIPOCAMBIO": {
     "sheets": 1,
@@ -2482,12 +2958,13 @@
         "column": 0,
         "label": "Tipo de cambio FIX",
         "first": "1991-11-12",
-        "last": "2026-11-24",
-        "count": 8805
+        "last": "2026-11-25",
+        "count": 8806
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "3ad7d1c3960d192b1286e6c7d2577ec6349d38ea66b74add17ba3b6d66bda59b"
+    "data_variant": null,
+    "sha256": "646e3de7d48333cc5df2ad2b7f044836c7d2ff905fdcc025204bd72391c11470"
   },
   "TASA": {
     "sheets": 2,
@@ -2550,7 +3027,8 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "4b0f4dc51fd80d9fdffb87aecaa87b48ac2114c8a684d74013c1bde2b4635dcc"
+    "data_variant": null,
+    "sha256": "fbc31f67c5c47969b54925f0cde160ddb6eef8700362cf77549354a3e17d2972"
   },
   "RESERVAS": {
     "sheets": 1,
@@ -2595,15 +3073,62 @@
       }
     ],
     "omitted_redundancy": {},
-    "sha256": "1894410d545664a5e8f9a629740fcf59577aea6509019074cf17a262957a9bb9"
+    "data_variant": null,
+    "sha256": "d299c3e1762985b219d533ede6fb93ff5ee59f2dc838c3a934062e2bcee27ca0"
+  },
+  "REMESAS": {
+    "sheets": 1,
+    "charts": 2,
+    "formulas": 0,
+    "coverage": [
+      {
+        "key": "REMESAS",
+        "sheet": "REMESAS",
+        "column": 0,
+        "label": "Remesas totales (mdd)",
+        "first": "1995-01-01",
+        "last": "2026-09-01",
+        "count": 381
+      },
+      {
+        "key": "REMESAS",
+        "sheet": "REMESAS",
+        "column": 1,
+        "label": "Variación anual original (%)",
+        "first": "1996-01-01",
+        "last": "2026-09-01",
+        "count": 369
+      },
+      {
+        "key": "REMESAS",
+        "sheet": "REMESAS",
+        "column": 2,
+        "label": "Acumulado enero–mes (mdd)",
+        "first": "1995-01-01",
+        "last": "2026-09-01",
+        "count": 381
+      },
+      {
+        "key": "REMESAS",
+        "sheet": "REMESAS",
+        "column": 3,
+        "label": "Variación anual del acumulado (%)",
+        "first": "1996-01-01",
+        "last": "2026-09-01",
+        "count": 369
+      }
+    ],
+    "omitted_redundancy": {},
+    "data_variant": null,
+    "sha256": "fd2f5141316ba5467895b12a3bdc3bffe5baed87e3b65ce2962318c01e9f7288"
   },
   "general": {
-    "sheets": 26,
-    "charts": 38,
+    "sheets": 27,
+    "charts": 40,
     "formulas": 3440,
-    "input_sha256": "959b4251c3b1e125dc4bf07d79c7eb2da988ef09d4b8aeee3bc152b18902eddf",
+    "input_sha256": "1bf7a66ec573f322b6de7cbd2c0a867ac78bb6154e074c62dcf3f122e8c75183",
     "state_source_sha256": "237075853fe6b72b5ea5473dc53b5849bfe3220840de293a72c7e15053f283ce",
     "state_period": "2T-2026",
-    "sha256": "75c06740fe00614a25bcc29d8a44bcdb89b4795897c600fb7337b3f5ff895c54"
+    "sha256": "8953238287665dd648b710c9c6d11c80e944eb3beb98ff7436ed2ab41e6a69a5"
   }
 }
