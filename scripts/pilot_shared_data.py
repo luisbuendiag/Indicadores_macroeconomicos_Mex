@@ -99,12 +99,22 @@ def checked_at(value):
     return result
 
 
-def indexed_rows(rows, width):
+def is_month_label(label):
+    return len(label) == 6 and label[:3].isalpha() and label[3] == " " and label[4:].isdigit()
+
+
+def indexed_rows(rows, width, edition_date):
     if not isinstance(rows, list) or not rows:
         raise ValueError("serie vacía")
     result = {}
     for row in rows:
-        period = period_to_date(row["period"])
+        label = row["period"]
+        period = period_to_date(label)
+        # Las etiquetas mensuales del FIX llegan hasta 1991 y solo traen dos dígitos.
+        if period and period.year - edition_date.year > 50 and is_month_label(label):
+            period = period.replace(year=period.year - 100)
+        if period and period > edition_date:
+            raise ValueError("observación posterior a la fecha de consulta")
         values = row["values"]
         if period is None or (result and period <= next(reversed(result))):
             raise ValueError("periodos inválidos, repetidos o fuera de orden")
@@ -117,10 +127,10 @@ def indexed_rows(rows, width):
     return result
 
 
-def compare_series(current, shared, field):
+def compare_series(current, shared, field, baseline, published):
     width = len(current["columns"]) if field == "observations" else 1
-    original = indexed_rows(current[field], width)
-    incoming = indexed_rows(shared[field], width)
+    original = indexed_rows(current[field], width, baseline)
+    incoming = indexed_rows(shared[field], width, published)
     if next(reversed(incoming)) < next(reversed(original)):
         raise ValueError(f"{field}: corte comercial atrasado")
     if original.keys() - incoming.keys():
@@ -154,7 +164,7 @@ def simulate(institutional, commercial, institutional_checked_at, commercial_che
                 last = indicator["observations"][-1]
                 if indicator["last_observation"] != last["period"] or last["values"][0] is None:
                     raise ValueError("último periodo incongruente con la serie")
-            series = {field: compare_series(current, shared, field) for field in fields}
+            series = {field: compare_series(current, shared, field, baseline.date(), published.date()) for field in fields}
             changed = any(counts["nuevos"] or counts["revisados"] for counts in series.values())
             if changed and published <= baseline:
                 raise ValueError("consulta comercial anterior o igual a la consulta institucional")

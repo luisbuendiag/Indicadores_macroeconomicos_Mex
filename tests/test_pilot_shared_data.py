@@ -97,7 +97,7 @@ class SharedDataSimulationTests(unittest.TestCase):
             self.current["indicators"][key] = ind
         self.shared = deepcopy(self.current)
 
-    def simulate(self, commercial_time="2026-11-26T20:00:00+00:00"):
+    def simulate(self, commercial_time="2026-12-01T20:00:00+00:00"):
         return pilot.simulate(self.current, self.shared, "2026-11-25T21:00:00+00:00", commercial_time)
 
     def test_new_period_and_same_cut_revision(self):
@@ -139,3 +139,9 @@ class SharedDataSimulationTests(unittest.TestCase):
         rows.insert(0, deepcopy(rows[0]))
         report = self.simulate()
         self.assertIn("repetidos", report["TIPOCAMBIO"]["motivo"])
+
+    def test_real_fix_monthly_history_from_1991_keeps_its_order(self):
+        rows = [{"period": label, "values": [10]} for label in ("Nov 91", "Dic 92", "Ene 93", "Nov 26")]
+        self.current["indicators"]["TIPOCAMBIO"]["observations_mensual"] = deepcopy(rows)
+        self.shared["indicators"]["TIPOCAMBIO"]["observations_mensual"] = deepcopy(rows)
+        self.assertEqual(self.simulate()["TIPOCAMBIO"]["decision"], "equivalente")
