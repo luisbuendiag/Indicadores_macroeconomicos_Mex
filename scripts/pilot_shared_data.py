@@ -2,10 +2,14 @@
 
 import argparse
 from copy import deepcopy
+from datetime import datetime
 import hashlib
 import json
+from math import isfinite
 from pathlib import Path
 from urllib.request import Request, urlopen
+
+from lib_format import period_to_date
 
 ORIGIN = "https://macromexico.com"
 RECEIPT = "data/release_receipt.json"
@@ -88,19 +92,106 @@ def stage(institutional, commercial):
     return candidate, results
 
 
+def checked_at(value):
+    result = datetime.fromisoformat(value)
+    if result.tzinfo is None:
+        raise ValueError("La fecha de consulta requiere zona horaria")
+    return result
+
+
+def indexed_rows(rows, width):
+    if not isinstance(rows, list) or not rows:
+        raise ValueError("serie vacía")
+    result = {}
+    for row in rows:
+        period = period_to_date(row["period"])
+        values = row["values"]
+        if period is None or (result and period <= next(reversed(result))):
+            raise ValueError("periodos inválidos, repetidos o fuera de orden")
+        if not isinstance(values, list) or len(values) != width or any(
+            v is not None and (type(v) not in (int, float) or not isfinite(v))
+            for v in values
+        ):
+            raise ValueError("observación incompatible con el esquema numérico")
+        result[period] = row
+    return result
+
+
+def compare_series(current, shared, field):
+    width = len(current["columns"]) if field == "observations" else 1
+    original = indexed_rows(current[field], width)
+    incoming = indexed_rows(shared[field], width)
+    if next(reversed(incoming)) < next(reversed(original)):
+        raise ValueError(f"{field}: corte comercial atrasado")
+    if original.keys() - incoming.keys():
+        raise ValueError(f"{field}: faltan periodos institucionales")
+    if any(
+        old is not None and new is None
+        for period, row in original.items()
+        for old, new in zip(row["values"], incoming[period]["values"])
+    ):
+        raise ValueError(f"{field}: se perderían valores publicados")
+    return {
+        "nuevos": len(incoming.keys() - original.keys()),
+        "revisados": sum(original[p] != incoming[p] for p in original),
+    }
+
+
+def simulate(institutional, commercial, institutional_checked_at, commercial_checked_at):
+    """Evalúa actualizaciones sin escribir datos ni productos institucionales."""
+    baseline = checked_at(institutional_checked_at)
+    published = checked_at(commercial_checked_at)
+    report = {}
+    for key, fields in SERIES_FIELDS.items():
+        current = institutional["indicators"][key]
+        existing_cut = current["last_observation"]
+        try:
+            shared = commercial["indicators"][key]
+            incoming_cut = shared["last_observation"]
+            if shared["key"] != key or any(current[f] != shared[f] for f in SCHEMA_FIELDS):
+                raise ValueError("esquema o fuente distintos")
+            for indicator in (current, shared):
+                last = indicator["observations"][-1]
+                if indicator["last_observation"] != last["period"] or last["values"][0] is None:
+                    raise ValueError("último periodo incongruente con la serie")
+            series = {field: compare_series(current, shared, field) for field in fields}
+            changed = any(counts["nuevos"] or counts["revisados"] for counts in series.values())
+            if changed and published <= baseline:
+                raise ValueError("consulta comercial anterior o igual a la consulta institucional")
+        except (KeyError, IndexError, TypeError, ValueError) as exc:
+            report[key] = {"decision": "conservar", "corte": existing_cut, "motivo": str(exc)}
+        else:
+            report[key] = {
+                "decision": "adoptar" if changed else "equivalente",
+                "corte": incoming_cut,
+                "series": series,
+            }
+    return report
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--institucional", type=Path, default=Path(DATA))
     parser.add_argument("--salida", type=Path, help="Archivo nuevo para la edición de prueba")
+    parser.add_argument("--estado-institucional", type=Path,
+                        help="Comprobante institucional para simular una actualización")
     args = parser.parse_args()
+    if args.estado_institucional and args.salida:
+        parser.error("La simulación emite un informe y no admite --salida")
     try:
         institutional = json.loads(args.institucional.read_bytes())
         commercial, receipt = load_release()
-        candidate, results = stage(institutional, commercial)
-        if args.salida:
-            with args.salida.open("x", encoding="utf-8") as output:
-                json.dump(candidate, output, ensure_ascii=False, indent=2, allow_nan=False)
-                output.write("\n")
+        if args.estado_institucional:
+            health = json.loads(args.estado_institucional.read_bytes())
+            if health.get("data_error") is not False:
+                raise ValueError("El estado institucional no acredita una consulta válida")
+            results = simulate(institutional, commercial, health["data_checked_at"], receipt["data_checked_at"])
+        else:
+            candidate, results = stage(institutional, commercial)
+            if args.salida:
+                content = json.dumps(candidate, ensure_ascii=False, indent=2, allow_nan=False)
+                with args.salida.open("x", encoding="utf-8") as output:
+                    output.write(content + "\n")
     except (OSError, ValueError, KeyError, TypeError) as exc:
         parser.exit(1, f"Piloto sin edición candidata: {exc}\n")
     print(json.dumps({
@@ -112,3 +203,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

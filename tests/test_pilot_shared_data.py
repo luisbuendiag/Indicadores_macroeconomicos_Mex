@@ -71,3 +71,71 @@ class SharedDataPilotTests(unittest.TestCase):
                 snapshot["indicators"]["REMESAS"][field] = value
                 with self.assertRaisesRegex(ValueError, "REMESAS"):
                     pilot.stage(self.current, snapshot)
+
+
+
+class SharedDataSimulationTests(unittest.TestCase):
+    def setUp(self):
+        reports = {
+            "PIBSEC": ("2T-26", "3T-26", "4T-26"),
+            "TIPOCAMBIO": ("2026-11-24", "2026-11-25", "2026-11-26"),
+            "REMESAS": ("Ago 26", "Sep 26", "Oct 26"),
+        }
+        self.series = reports
+        self.current = {"indicators": {}}
+        for key, (first, most_recent, _) in reports.items():
+            ind = {
+                "key": key, "last_observation": most_recent, "columns": [{"index": 0}],
+                "unidad": "mdd", "frecuencia": "Mensual", "ajuste_estacional": "Original",
+                "fuente": {"nombre": "Fuente oficial"},
+                "observations": [
+                    {"period": first, "values": [10]}, {"period": most_recent, "values": [20]},
+                ],
+            }
+            if key == "TIPOCAMBIO":
+                ind["observations_mensual"] = [{"period": "Nov 26", "values": [20]}]
+            self.current["indicators"][key] = ind
+        self.shared = deepcopy(self.current)
+
+    def simulate(self, commercial_time="2026-11-26T20:00:00+00:00"):
+        return pilot.simulate(self.current, self.shared, "2026-11-25T21:00:00+00:00", commercial_time)
+
+    def test_new_period_and_same_cut_revision(self):
+        key = "PIBSEC"
+        updated = self.shared["indicators"][key]
+        updated["observations"][-1]["values"] = [22]
+        updated["last_observation"] = self.series[key][2]
+        updated["observations"].append({"period": updated["last_observation"], "values": [30]})
+        self.shared["indicators"]["REMESAS"]["observations"][-1]["values"] = [25]
+
+        report = self.simulate()
+        self.assertEqual(report[key]["decision"], "adoptar")
+        self.assertEqual(report[key]["series"]["observations"], {"nuevos": 1, "revisados": 1})
+        self.assertEqual(report["REMESAS"]["decision"], "adoptar")
+        self.assertEqual(report["TIPOCAMBIO"]["decision"], "equivalente")
+        self.assertEqual(self.current["indicators"][key]["last_observation"], "3T-26")
+
+    def test_late_and_lower_coverage_releases_are_retained_independently(self):
+        old = self.shared["indicators"]["REMESAS"]
+        old["observations"].pop()
+        old["last_observation"] = old["observations"][-1]["period"]
+        self.shared["indicators"]["TIPOCAMBIO"]["observations_mensual"][0]["values"] = [None]
+        self.shared["indicators"]["PIBSEC"]["observations"].pop(0)
+        report = self.simulate()
+        for key, reason in (("PIBSEC", "faltan periodos"), ("TIPOCAMBIO", "perderían valores"),
+                            ("REMESAS", "atrasado")):
+            with self.subTest(key=key):
+                self.assertEqual(report[key]["decision"], "conservar")
+                self.assertIn(reason, report[key]["motivo"])
+
+    def test_old_edition_cannot_supersede_same_cut(self):
+        self.shared["indicators"]["REMESAS"]["observations"][-1]["values"] = [25]
+        report = self.simulate("2026-11-25T20:00:00+00:00")
+        self.assertEqual(report["REMESAS"]["decision"], "conservar")
+        self.assertEqual(report["TIPOCAMBIO"]["decision"], "equivalente")
+
+    def test_duplicate_period_is_kept_out(self):
+        rows = self.shared["indicators"]["TIPOCAMBIO"]["observations"]
+        rows.insert(0, deepcopy(rows[0]))
+        report = self.simulate()
+        self.assertIn("repetidos", report["TIPOCAMBIO"]["motivo"])
