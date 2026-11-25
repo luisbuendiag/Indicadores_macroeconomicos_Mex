@@ -61,8 +61,12 @@ def test_excel_has_historical_sheets_only(tmp_path):
     payload=json.loads((ROOT / "data/indicadores.json").read_text())
     report=build_excel.generate(payload,tmp_path)
     wb=openpyxl.load_workbook(tmp_path/build_excel.OUT_XLSX.name)
-    assert len(wb.sheetnames)==22
-    assert len(report)==20
+    assert set(report) == {*payload['order'], 'general'}
+    assert report['general']['sheets'] == len(wb.sheetnames)
+    assert {
+        'IED Historia estatal', 'IED Ranking estatal', 'IED Cifras originales',
+        'IED Estatal revisada', 'REMESAS',
+    } <= set(wb.sheetnames)
     assert not {"Resumen ejecutivo","Síntesis de coyuntura","Metodología y fuentes","Control de actualizaciones"}.intersection(wb.sheetnames)
     assert {"PIB","PIBT","SIC","IGAE","BCMM","INPC","INPP","ENOE","Población ocupada","IMFBCF","IOAE","EMIM","EMOE","IED","FIX","TASA","RESERVAS"} <= set(wb.sheetnames)
     assert all(ws._charts for ws in wb)

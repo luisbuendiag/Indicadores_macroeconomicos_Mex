@@ -13,7 +13,7 @@ def _load():
 
 def test_tasa_nombre_y_no_tiie():
     ind = _load()
-    assert "Tasa de Interes Interbancaria" in ind["nombre"]
+    assert "Tasa de Interés Interbancaria a un día" in ind["nombre"]
     assert "objetivo" in ind["nombre"].lower()
     assert "TIIE" not in ind["nombre"]
     assert "no confundir con la tiie" in ind["descripcion"].lower()
