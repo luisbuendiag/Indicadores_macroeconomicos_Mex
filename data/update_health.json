@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-11-26T02:34:48+00:00",
-  "data_checked_at": "2026-11-26T02:31:04+00:00",
+  "checked_at": "2026-11-26T16:21:29+00:00",
+  "data_checked_at": "2026-11-26T16:17:00+00:00",
   "data_error": false,
   "pending_data": [],
   "queried_indicators": [
@@ -26,9 +26,7 @@
     "TIPOCAMBIO"
   ],
   "query_coverage": "valid",
-  "pending_notes": [
-    "SIC"
-  ],
+  "pending_notes": [],
   "isolated_failures": {},
-  "run_url": "https://github.com/luisbuendiag/Indicadores_macroeconomicos_Mex/actions/runs/45741247678"
+  "run_url": "https://github.com/luisbuendiag/Indicadores_macroeconomicos_Mex/actions/runs/45854879704"
 }

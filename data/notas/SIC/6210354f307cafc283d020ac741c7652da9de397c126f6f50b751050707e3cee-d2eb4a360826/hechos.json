@@ -1,0 +1,457 @@
+{
+  "indicator": "SIC",
+  "ym": "2026-08",
+  "period": "Ago 26",
+  "publication_date": "2026-11-04",
+  "bulletin": "679/26",
+  "groups": [
+    {
+      "name": "Coincidente",
+      "ym": "2026-08",
+      "period": "Ago 26",
+      "level": 100.2,
+      "delta": 0.12,
+      "history": [
+        {
+          "ym": "2025-09",
+          "values": [
+            -0.02,
+            -0.03,
+            -0.04,
+            0.03,
+            -0.04,
+            0.14,
+            0.11
+          ],
+          "location": "p. 3, cuadro 1",
+          "evidence": "2025 Sep. -0.02 -0.03 -0.04 0.03 -0.04 0.14 0.11"
+        },
+        {
+          "ym": "2025-10",
+          "values": [
+            0.01,
+            -0.01,
+            0.01,
+            0.03,
+            -0.03,
+            0.08,
+            0.12
+          ],
+          "location": "p. 3, cuadro 1",
+          "evidence": "Oct. 0.01 -0.01 0.01 0.03 -0.03 0.08 0.12"
+        },
+        {
+          "ym": "2025-11",
+          "values": [
+            0.02,
+            0.0,
+            0.03,
+            0.03,
+            -0.03,
+            0.06,
+            0.13
+          ],
+          "location": "p. 3, cuadro 1",
+          "evidence": "Nov. 0.02 0.00 0.03 0.03 -0.03 0.06 0.13"
+        },
+        {
+          "ym": "2025-12",
+          "values": [
+            0.02,
+            0.0,
+            0.04,
+            0.01,
+            -0.02,
+            0.06,
+            0.14
+          ],
+          "location": "p. 3, cuadro 1",
+          "evidence": "Dic. 0.02 0.00 0.04 0.01 -0.02 0.06 0.14"
+        },
+        {
+          "ym": "2026-01",
+          "values": [
+            0.02,
+            0.02,
+            0.04,
+            -0.01,
+            -0.02,
+            0.1,
+            0.16
+          ],
+          "location": "p. 3, cuadro 1",
+          "evidence": "2026 Ene. 0.02 0.02 0.04 -0.01 -0.02 0.10 0.16"
+        },
+        {
+          "ym": "2026-02",
+          "values": [
+            0.03,
+            0.06,
+            0.07,
+            -0.02,
+            -0.02,
+            0.12,
+            0.19
+          ],
+          "location": "p. 3, cuadro 1",
+          "evidence": "Feb. 0.03 0.06 0.07 -0.02 -0.02 0.12 0.19"
+        },
+        {
+          "ym": "2026-03",
+          "values": [
+            0.05,
+            0.11,
+            0.11,
+            -0.02,
+            -0.02,
+            0.12,
+            0.22
+          ],
+          "location": "p. 3, cuadro 1",
+          "evidence": "Mar. 0.05 0.11 0.11 -0.02 -0.02 0.12 0.22"
+        },
+        {
+          "ym": "2026-04",
+          "values": [
+            0.07,
+            0.14,
+            0.14,
+            -0.02,
+            -0.02,
+            0.08,
+            0.24
+          ],
+          "location": "p. 3, cuadro 1",
+          "evidence": "Abr. 0.07 0.14 0.14 -0.02 -0.02 0.08 0.24"
+        },
+        {
+          "ym": "2026-05",
+          "values": [
+            0.08,
+            0.15,
+            0.15,
+            -0.02,
+            -0.02,
+            0.03,
+            0.25
+          ],
+          "location": "p. 3, cuadro 1",
+          "evidence": "May. 0.08 0.15 0.15 -0.02 -0.02 0.03 0.25"
+        },
+        {
+          "ym": "2026-06",
+          "values": [
+            0.1,
+            0.15,
+            0.17,
+            -0.02,
+            -0.01,
+            -0.02,
+            0.25
+          ],
+          "location": "p. 3, cuadro 1",
+          "evidence": "Jun. 0.10 0.15 0.17 -0.02 -0.01 -0.02 0.25"
+        },
+        {
+          "ym": "2026-07",
+          "values": [
+            0.12,
+            0.16,
+            0.18,
+            -0.01,
+            -0.01,
+            -0.07,
+            0.26
+          ],
+          "location": "p. 3, cuadro 1",
+          "evidence": "Jul. 0.12 0.16 0.18 -0.01 -0.01 -0.07 0.26"
+        },
+        {
+          "ym": "2026-08",
+          "values": [
+            0.12,
+            0.17,
+            0.18,
+            0.0,
+            -0.01,
+            -0.1,
+            0.22
+          ],
+          "location": "p. 3, cuadro 1",
+          "evidence": "Ago. 0.12 0.17 0.18 0.00 -0.01 -0.10 0.22\n"
+        }
+      ],
+      "components": [
+        {
+          "label": "IGAE",
+          "delta": 0.17,
+          "inverse": false,
+          "location": "p. 3, cuadro 1"
+        },
+        {
+          "label": "Actividad industrial",
+          "delta": 0.18,
+          "inverse": false,
+          "location": "p. 3, cuadro 1"
+        },
+        {
+          "label": "Ingresos al por menor",
+          "delta": 0.0,
+          "inverse": false,
+          "location": "p. 3, cuadro 1"
+        },
+        {
+          "label": "Asegurados permanentes IMSS",
+          "delta": -0.01,
+          "inverse": false,
+          "location": "p. 3, cuadro 1"
+        },
+        {
+          "label": "Desocupación urbana",
+          "delta": -0.1,
+          "inverse": true,
+          "location": "p. 3, cuadro 1"
+        },
+        {
+          "label": "Importaciones totales",
+          "delta": 0.22,
+          "inverse": false,
+          "location": "p. 3, cuadro 1"
+        }
+      ]
+    },
+    {
+      "name": "Adelantado",
+      "ym": "2026-09",
+      "period": "Sep 26",
+      "level": 100.8,
+      "delta": 0.01,
+      "history": [
+        {
+          "ym": "2025-10",
+          "values": [
+            0.12,
+            0.01,
+            -0.05,
+            0.13,
+            -0.16,
+            -0.11,
+            0.1
+          ],
+          "location": "p. 6, cuadro 2",
+          "evidence": "2025 Oct. 0.12 0.01 -0.05 0.13 -0.16 -0.11 0.10"
+        },
+        {
+          "ym": "2025-11",
+          "values": [
+            0.11,
+            0.04,
+            -0.06,
+            0.12,
+            -0.16,
+            -0.1,
+            0.04
+          ],
+          "location": "p. 6, cuadro 2",
+          "evidence": "Nov. 0.11 0.04 -0.06 0.12 -0.16 -0.10 0.04"
+        },
+        {
+          "ym": "2025-12",
+          "values": [
+            0.1,
+            0.08,
+            -0.06,
+            0.11,
+            -0.15,
+            -0.09,
+            -0.01
+          ],
+          "location": "p. 6, cuadro 2",
+          "evidence": "Dic. 0.10 0.08 -0.06 0.11 -0.15 -0.09 -0.01"
+        },
+        {
+          "ym": "2026-01",
+          "values": [
+            0.09,
+            0.13,
+            -0.06,
+            0.09,
+            -0.13,
+            -0.08,
+            -0.04
+          ],
+          "location": "p. 6, cuadro 2",
+          "evidence": "2026 Ene. 0.09 0.13 -0.06 0.09 -0.13 -0.08 -0.04"
+        },
+        {
+          "ym": "2026-02",
+          "values": [
+            0.07,
+            0.15,
+            -0.05,
+            0.05,
+            -0.08,
+            -0.07,
+            -0.04
+          ],
+          "location": "p. 6, cuadro 2",
+          "evidence": "Feb. 0.07 0.15 -0.05 0.05 -0.08 -0.07 -0.04"
+        },
+        {
+          "ym": "2026-03",
+          "values": [
+            0.05,
+            0.17,
+            -0.04,
+            0.0,
+            -0.03,
+            -0.07,
+            -0.02
+          ],
+          "location": "p. 6, cuadro 2",
+          "evidence": "Mar. 0.05 0.17 -0.04 0.00 -0.03 -0.07 -0.02"
+        },
+        {
+          "ym": "2026-04",
+          "values": [
+            0.05,
+            0.16,
+            -0.03,
+            -0.04,
+            0.01,
+            -0.06,
+            0.04
+          ],
+          "location": "p. 6, cuadro 2",
+          "evidence": "Abr. 0.05 0.16 -0.03 -0.04 0.01 -0.06 0.04"
+        },
+        {
+          "ym": "2026-05",
+          "values": [
+            0.05,
+            0.15,
+            -0.01,
+            -0.07,
+            0.03,
+            -0.06,
+            0.08
+          ],
+          "location": "p. 6, cuadro 2",
+          "evidence": "May. 0.05 0.15 -0.01 -0.07 0.03 -0.06 0.08"
+        },
+        {
+          "ym": "2026-06",
+          "values": [
+            0.04,
+            0.14,
+            0.01,
+            -0.09,
+            0.03,
+            -0.04,
+            0.08
+          ],
+          "location": "p. 6, cuadro 2",
+          "evidence": "Jun. 0.04 0.14 0.01 -0.09 0.03 -0.04 0.08"
+        },
+        {
+          "ym": "2026-07",
+          "values": [
+            0.03,
+            0.14,
+            0.02,
+            -0.11,
+            0.03,
+            -0.02,
+            0.06
+          ],
+          "location": "p. 6, cuadro 2",
+          "evidence": "Jul. 0.03 0.14 0.02 -0.11 0.03 -0.02 0.06"
+        },
+        {
+          "ym": "2026-08",
+          "values": [
+            0.02,
+            0.13,
+            0.04,
+            -0.13,
+            0.02,
+            -0.01,
+            0.04
+          ],
+          "location": "p. 6, cuadro 2",
+          "evidence": "Ago. 0.02 0.13 0.04 -0.13 0.02 -0.01 0.04"
+        },
+        {
+          "ym": "2026-09",
+          "values": [
+            0.01,
+            0.13,
+            0.04,
+            -0.13,
+            0.02,
+            0.0,
+            0.02
+          ],
+          "location": "p. 6, cuadro 2",
+          "evidence": "Sep. 0.01 0.13 0.04 -0.13 0.02 0.00 0.02\n"
+        }
+      ],
+      "components": [
+        {
+          "label": "Tendencia del empleo manufacturero",
+          "delta": 0.13,
+          "inverse": false,
+          "location": "p. 6, cuadro 2"
+        },
+        {
+          "label": "Momento adecuado para invertir",
+          "delta": 0.04,
+          "inverse": false,
+          "location": "p. 6, cuadro 2"
+        },
+        {
+          "label": "IPC de la BMV real",
+          "delta": -0.13,
+          "inverse": false,
+          "location": "p. 6, cuadro 2"
+        },
+        {
+          "label": "Tipo de cambio real México-EUA",
+          "delta": 0.02,
+          "inverse": true,
+          "location": "p. 6, cuadro 2"
+        },
+        {
+          "label": "TIIE",
+          "delta": 0.0,
+          "inverse": true,
+          "location": "p. 6, cuadro 2"
+        },
+        {
+          "label": "S&P 500 de EUA",
+          "delta": 0.02,
+          "inverse": false,
+          "location": "p. 6, cuadro 2"
+        }
+      ]
+    }
+  ],
+  "pages": [
+    "BOLETÍN DE INDICADOR 679/26\nSISTEMA DE INDICADORES\nCÍCLICOS (SIC)\n4 de noviembre de 2026\nPágina 1/13\nPróxima publicación: 3 de diciembre de 2026\nIndicador Coincidente Indicador Adelantado\nagosto septiembre\npuntos dif. mensual puntos dif. mensual\n100.2 ▲ 0.12 100.8 ▲ 0.01\nAumentó 0.12 puntos el Indicador Coincidente\nen agosto de 2026, respecto a julio pasado\nEl Sistema de Indicadores Cíclicos (SIC) da seguimiento oportuno al comportamiento de la\neconomía mexicana y aporta información para el análisis de los ciclos económicos.\nLo conforman dos indicadores compuestos: el Coincidente y el Adelantado.1 El Coincidente2\nrefleja el estado general de la economía y sus puntos de giro (picos y valles). El Adelantado\nbusca anticipar los puntos de giro del Indicador Coincidente.\nEl Indicador Coincidente se ubicó por arriba de su tendencia de largo plazo en agosto de 2026\ny registró un alza de 0.12 puntos respecto a julio.\nEn septiembre de 2026, el Indicador Adelantado se situó por arriba de su tendencia de largo\nplazo y presentó un incremento de 0.01 puntos en relación con agosto.\n1 Los Indicadores Coincidente y Adelantado se constituyen por los componentes cíclicos de sus variables y se referencian a sus respectivas\ntendencias de largo plazo, lo que se conoce como ciclo de crecimiento. Para contribuir al análisis de los ciclos económicos, el INEGI pone a\ndisposición de las y los usuarios, de manera gráfica, el Indicador Coincidente bajo el enfoque del ciclo de negocios o clásico\n(ver gráficas 8 y 9).\n2 El Indicador Coincidente muestra el impacto significativo que tuvo la pandemia por la COVID-19. Ahora bien, la magnitud de su caída o de\nsu recuperación no debe considerarse como una medida de la contracción o recuperación de la actividad económica, sino como una\nindicación del grado de certeza sobre el rumbo que presenta.",
+    "BOLETÍN DE INDICADOR 679/26\nSISTEMA DE INDICADORES\nCÍCLICOS (SIC)\n4 de noviembre de 2026\nPágina 2/13\nGráfica 1\nEnfoque del ciclo de crecimiento: indicadores Coincidente y Adelantado\nenero de 1980–agosto y septiembre de 2026\n(puntos)\n106\n1981.01\n(-10)\n104\n1985.02 1994.02 2000.03 2007.08\n(-3) 1987.07 (-5) (-5) (-9)\n102 1997.11\n2004.03\n100\n1990.11 2005.05\n98\n1998.11\n1986.07 2003.02\n96 (-5) (-7)\n1982.10\n94 (-6) 1995.04 2009.02\n(-4) (-4)\n92\n90\n1980 1985 1990 1995 2000 2005 2010 2015 2020 2025\nCoincidente Adelantado\nNotas: La tendencia de largo plazo del Indicador Coincidente y del Adelantado se representa por la línea ubicada en 100.\nLos números en la gráfica (por ejemplo, 1981.01) representan el año y el mes en los que ocurrió el punto de giro en el\nIndicador Adelantado: pico o valle.\nLos números entre paréntesis indican los meses que determinado punto de giro del Indicador Adelantado antecede al\npunto de giro del Indicador Coincidente. Dichos números pueden cambiar a lo largo del tiempo.\nEl área sombreada indica el periodo entre un pico y un valle en el Indicador Coincidente.\nSeries elaboradas mediante métodos econométricos.\nFuente: INEGI. Sistema de Indicadores Cíclicos (SIC), 2026.\nI. RESULTADOS DEL ENFOQUE DEL CICLO DE CRECIMIENTO: COMPONENTES CÍCLICOS\nIndicador Coincidente\nEl comportamiento del Indicador Coincidente, en el pasado mes de agosto, resultó de la\nevolución de los componentes cíclicos que lo integran. Estos se presentan en el cuadro y las\ngráficas siguientes:",
+    "BOLETÍN DE INDICADOR 679/26\nSISTEMA DE INDICADORES\nCÍCLICOS (SIC)\n4 de noviembre de 2026\nPágina 3/13\nCuadro 1\nDiferencias del Indicador Coincidente y de sus componentes\nseptiembre de 2025–agosto de 2026\n(diferencia en puntos respecto al mes inmediato anterior)\nÍndice de\nIndicador ingresos por Asegurados\nIndicador de Tasa de\nIndicador global de la suministro de trabajadores Importaciones\nAño Mes la actividad desocupación\nCoincidente actividad bienes y permanentes totales\nindustrial1/ urbana\neconómica1/ servicios al por en el IMSS\nmenor1/\n2025 Sep. -0.02 -0.03 -0.04 0.03 -0.04 0.14 0.11\nOct. 0.01 -0.01 0.01 0.03 -0.03 0.08 0.12\nNov. 0.02 0.00 0.03 0.03 -0.03 0.06 0.13\nDic. 0.02 0.00 0.04 0.01 -0.02 0.06 0.14\n2026 Ene. 0.02 0.02 0.04 -0.01 -0.02 0.10 0.16\nFeb. 0.03 0.06 0.07 -0.02 -0.02 0.12 0.19\nMar. 0.05 0.11 0.11 -0.02 -0.02 0.12 0.22\nAbr. 0.07 0.14 0.14 -0.02 -0.02 0.08 0.24\nMay. 0.08 0.15 0.15 -0.02 -0.02 0.03 0.25\nJun. 0.10 0.15 0.17 -0.02 -0.01 -0.02 0.25\nJul. 0.12 0.16 0.18 -0.01 -0.01 -0.07 0.26\nAgo. 0.12 0.17 0.18 0.00 -0.01 -0.10 0.22\nNota: Cifras elaboradas mediante métodos econométricos.\n1/ Componente cíclico de series año base 2018=100.\nFuente: INEGI. Sistema de Indicadores Cíclicos (SIC), 2026.\nGráfica 2\nEnfoque del ciclo de crecimiento: Indicador Coincidente\nenero de 1980–agosto de 2026\n(puntos)\n106\n1981.11\n104\n2000.08 2008.05\n1985.05 1994.07\n102\n100\n98\n1983.04 2003.09\n1986.12\n2009.06\n96\n1995.08\n94\n92\n90\n1980 1985 1990 1995 2000 2005 2010 2015 2020 2025\nNotas: La tendencia de largo plazo del Indicador Coincidente se representa por la línea ubicada en 100.\nLos números en la gráfica (por ejemplo, 1981.11) representan el año y el mes en los que ocurrió el punto de giro en la\nactividad económica: pico o valle.\nEl área sombreada indica el periodo entre un pico y un valle en el Indicador Coincidente.\nSerie elaborada mediante métodos econométricos.\nFuente: INEGI. Sistema de Indicadores Cíclicos (SIC), 2026.",
+    "BOLETÍN DE INDICADOR 679/26\nSISTEMA DE INDICADORES\nCÍCLICOS (SIC)\n4 de noviembre de 2026\nPágina 4/13\nGráfica 3\nCiclo de los componentes del Indicador Coincidente\nenero de 2022–agosto de 2026\n(puntos)\nIndicador global de la actividad económica Indicador de la actividad industrial\n103 103\n102 102\n101 101\n100 100\n99 99\n98 98\n97 97\n2022 2023 2024 2025 2026 2022 2023 2024 2025 2026\nÍndice de ingresos por suministro Asegurados trabajadores permanentes en el IMSS\nde bienes y servicios al por menor\n103 103\n102 102\n101 101\n100 100\n99 99\n98 98\n97 97\n2022 2023 2024 2025 2026 2022 2023 2024 2025 2026\nTasa de desocupación urbana1/ Importaciones totales\n103 103\n102 102\n101 101\n100 100\n99 99\n98 98\n97 97\n2022 2023 2024 2025 2026 2022 2023 2024 2025 2026\nNota: Series elaboradas mediante métodos econométricos.\n1/ Serie cuyo comportamiento es inverso al de la actividad económica.\nFuente: INEGI. Sistema de Indicadores Cíclicos (SIC), 2026.",
+    "BOLETÍN DE INDICADOR 679/26\nSISTEMA DE INDICADORES\nCÍCLICOS (SIC)\n4 de noviembre de 2026\nPágina 5/13\nAl incorporar la información de agosto de 2026, el Indicador Coincidente mantuvo la tendencia\nde crecimiento del mes precedente, como se aprecia en la siguiente gráfica:\nGráfica 4\nEnfoque del ciclo de crecimiento: Indicador Coincidente\nenero de 2020–julio y agosto de 2026\n(puntos)\n102\n100\n98\n96\n94\n92\n90\n2020 2021 2022 2023 2024 2025 2026\nCifras a julio de 2026 Cifras a agosto de 2026\nNota: Serie elaborada mediante métodos econométricos.\nFuente: INEGI. Sistema de Indicadores Cíclicos (SIC), 2026.",
+    "BOLETÍN DE INDICADOR 679/26\nSISTEMA DE INDICADORES\nCÍCLICOS (SIC)\n4 de noviembre de 2026\nPágina 6/13\nIndicador Adelantado\nEn septiembre, la evolución del Indicador Adelantado fue consecuencia del desempeño de los\ncomponentes que lo conforman. Sus resultados se muestran en el cuadro y gráficas siguientes:\nCuadro 2\nDiferencias del Indicador Adelantado y de sus componentes\noctubre de 2025–septiembre de 2026\n(diferencia en puntos respecto al mes inmediato anterior)\nIndicador de Índice de precios Índice\nconfianza y cotizaciones Tasa de Standard &\nTendencia del Tipo de cambio\nIndicador empresarial: de la Bolsa interés Poor’s 500\nAño Mes empleo en las real bilateral\nAdelantado momento Mexicana de interbancaria (índice\nmanufacturas México-EUA\nadecuado para Valores en de equilibrio bursátil de\ninvertir1/ términos reales EUA)\n2025 Oct. 0.12 0.01 -0.05 0.13 -0.16 -0.11 0.10\nNov. 0.11 0.04 -0.06 0.12 -0.16 -0.10 0.04\nDic. 0.10 0.08 -0.06 0.11 -0.15 -0.09 -0.01\n2026 Ene. 0.09 0.13 -0.06 0.09 -0.13 -0.08 -0.04\nFeb. 0.07 0.15 -0.05 0.05 -0.08 -0.07 -0.04\nMar. 0.05 0.17 -0.04 0.00 -0.03 -0.07 -0.02\nAbr. 0.05 0.16 -0.03 -0.04 0.01 -0.06 0.04\nMay. 0.05 0.15 -0.01 -0.07 0.03 -0.06 0.08\nJun. 0.04 0.14 0.01 -0.09 0.03 -0.04 0.08\nJul. 0.03 0.14 0.02 -0.11 0.03 -0.02 0.06\nAgo. 0.02 0.13 0.04 -0.13 0.02 -0.01 0.04\nSep. 0.01 0.13 0.04 -0.13 0.02 0.00 0.02\nNota: Cifras elaboradas mediante métodos econométricos.\n1/ Del sector manufacturero.\nFuente: INEGI. Sistema de Indicadores Cíclicos (SIC), 2026.",
+    "BOLETÍN DE INDICADOR 679/26\nSISTEMA DE INDICADORES\nCÍCLICOS (SIC)\n4 de noviembre de 2026\nPágina 7/13\nGráfica 5\nEnfoque del ciclo de crecimiento: Indicador Adelantado\nenero de 1980–septiembre de 2026\n(puntos)\n106\n1981.01\n104 (-10)\n2007.08\n1987.07 1994.02 2000.03 (-9)\n102 1985.02 (-5) 1997.11(-5)\n(-3)\n2004.03\n100\n2005.05\n1990.11\n98\n1998.11\n1986.07\n2003.02\n(-5)\n(-7)\n96\n1982.10\n1995.04 2009.02\n(-6)\n(-4) (-4)\n94\n1980 1985 1990 1995 2000 2005 2010 2015 2020 2025\nNotas: La tendencia de largo plazo del Indicador Adelantado se representa por la línea ubicada en 100.\nLos números en la gráfica (por ejemplo, 1981.01) representan el año y el mes en los que ocurrió el punto de giro en el\nIndicador Adelantado: pico o valle.\nLos números entre paréntesis indican el número de meses que determinado punto de giro del Indicador Adelantado\nantecede al punto de giro del Indicador Coincidente. Dichos números pueden cambiar a lo largo del tiempo.\nEl área sombreada indica el periodo entre un pico y un valle en el Indicador Coincidente.\nSerie elaborada mediante métodos econométricos.\nFuente: INEGI. Sistema de Indicadores Cíclicos (SIC), 2026.\nGráfica 6\nCiclo de los componentes del Indicador Adelantado\nenero de 2022–septiembre de 2026\n(puntos)\nTendencia del empleo en las manufacturas Indicador de confianza empresarial: momento\nadecuado para invertir1/\n103 103\n102 102\n101 101\n100 100\n99 99\n98 98\n97 97\n2022 2023 2024 2025 2026 2022 2023 2024 2025 2026\n(continúa)",
+    "BOLETÍN DE INDICADOR 679/26\nSISTEMA DE INDICADORES\nCÍCLICOS (SIC)\n4 de noviembre de 2026\nPágina 8/13\nÍndice de precios y cotizaciones de la Bolsa Mexicana Tipo de cambio real bilateral México-EUA2/\nde Valores en términos reales\n103 103\n102 102\n101 101\n100 100\n99 99\n98 98\n97 97\n2022 2023 2024 2025 2026 2022 2023 2024 2025 2026\nTasa de interés interbancaria de equilibrio2/ Índice Standard & Poor’s 500 (índice bursátil de EUA)\n103 103\n102 102\n101 101\n100 100\n99 99\n98 98\n97 97\n2022 2023 2024 2025 2026 2022 2023 2024 2025 2026\n(concluye)\nNota: Series elaboradas mediante métodos econométricos.\n1/ Del sector manufacturero.\n2/ Serie cuyo comportamiento es inverso al de la actividad económica.\nFuente: INEGI. Sistema de Indicadores Cíclicos (SIC), 2026.",
+    "BOLETÍN DE INDICADOR 679/26\nSISTEMA DE INDICADORES\nCÍCLICOS (SIC)\n4 de noviembre de 2026\nPágina 9/13\nAl incorporar la información de septiembre de 2026, el Indicador Adelantado presentó un\ncomportamiento similar al del mes anterior. Esto se puede apreciar en la siguiente gráfica:\nGráfica 7\nEnfoque del ciclo de crecimiento: Indicador Adelantado\nenero de 2020–agosto y septiembre de 2026\n(puntos)\n102\n101\n100\n99\n98\n97\n2020 2021 2022 2023 2024 2025 2026\nCifras a agosto de 2026 Cifras a septiembre de 2026\nNota: Serie elaborada mediante métodos econométricos.\nFuente: INEGI. Sistema de Indicadores Cíclicos (SIC), 2026.\nSe sugiere dar seguimiento a estos indicadores mediante el Reloj de los ciclos económicos de\nMéxico3 y las Series de los componentes cíclicos,4 así como en el Tablero de indicadores\neconómicos.5 Estas herramientas de visualización están disponibles en el portal del INEGI.\nINTERPRETACIÓN DE LOS INDICADORES CÍCLICOS CON ENFOQUE DEL CICLO DE CRECIMIENTO\nEl valor de los Indicadores Coincidente y Adelantado, así como su tendencia de largo plazo\n—representada por una línea horizontal igual a 100— permiten identificar cuatro fases del ciclo\neconómico.\nCuando el indicador (su componente cíclico) está creciendo y se ubica por arriba de su\ntendencia de largo plazo.\nCuando el componente cíclico del indicador está decreciendo y se ubica por arriba de su\ntendencia de largo plazo.\n3 https://www.inegi.org.mx/app/reloj/\n4 https://www.inegi.org.mx/app/reloj/tablero.html\n5 https://www.inegi.org.mx/app/tablero/default.html",
+    "BOLETÍN DE INDICADOR 679/26\nSISTEMA DE INDICADORES\nCÍCLICOS (SIC)\n4 de noviembre de 2026\nPágina 10/13\nCuando el componente cíclico del indicador está decreciendo y se ubica por debajo de\nsu tendencia de largo plazo.\nCuando el componente cíclico del indicador está creciendo y se ubica por debajo de su\ntendencia de largo plazo.\nCon estos elementos es posible distinguir la etapa del ciclo económico en la que se encuentra\nla economía del país. Sin embargo, no se establece la magnitud del cambio.\nII. INTERPRETACIÓN DEL INDICADOR COINCIDENTE CON ENFOQUE\nDEL CICLO DE NEGOCIOS O CLÁSICO\nEn la gráfica 8 se presenta la serie histórica del Indicador Coincidente desde 1980.\nEsta permite identificar los ciclos de negocios o clásicos de la historia económica reciente del\npaís. Bajo este enfoque, una recesión es un periodo entre un pico y un valle. Una expansión\nes un periodo entre un valle y un pico. Además, una recesión implica una caída significativa y\ngeneralizada de la actividad económica.",
+    "BOLETÍN DE INDICADOR 679/26\nSISTEMA DE INDICADORES\nCÍCLICOS (SIC)\n4 de noviembre de 2026\nPágina 11/13\nGráfica 8\nEnfoque del ciclo clásico: Indicador Coincidente\nenero de 1980–agosto de 2026\n(índice base 2018=100)\n110\n100\n2008.04\n2000.09\n90\n1994.07\n80\n2003.09\n2009.06\n70\n60\n1981.11\n1985.08 1995.08\n50\n1986.10\n40\n1983.04\n30\n1980 1985 1990 1995 2000 2005 2010 2015 2020 2025\nNotas: Los números en la gráfica (por ejemplo, 1981.11) representan el año y el mes en los que ocurrió el punto de giro en la\nactividad económica: pico o valle.\nEl área sombreada indica el periodo entre un pico y un valle en el Indicador Coincidente.\nSerie elaborada mediante métodos econométricos.\nFuente: INEGI. Sistema de Indicadores Cíclicos (SIC), 2026.\nEn la siguiente gráfica se presenta el Indicador Coincidente bajo los dos enfoques: ciclo clásico\no de negocios y ciclo de crecimiento.",
+    "BOLETÍN DE INDICADOR 679/26\nSISTEMA DE INDICADORES\nCÍCLICOS (SIC)\n4 de noviembre de 2026\nPágina 12/13\nGráfica 9\nComparación entre el ciclo clásico y el ciclo de crecimiento\nIndicador Coincidente\nenero de 2008–agosto de 20261/\nNota: Series elaboradas mediante métodos econométricos.\n1/ Por los distintos métodos de cálculo, la fecha en la que el Indicador Coincidente\nestá por arriba o por debajo de la tendencia puede diferir entre los dos enfoques.\nFuente: INEGI. Sistema de Indicadores Cíclicos (SIC), 2026.\nEn la gráfica anterior, tanto el Indicador Coincidente del ciclo clásico —que considera la\ntendencia de largo plazo y el componente cíclico en el mismo indicador— como el Indicador\nCoincidente del ciclo de crecimiento —que considera solamente el componente cíclico— se\nsitúan por arriba de su tendencia de largo plazo.",
+    "BOLETÍN DE INDICADOR 679/26\nSISTEMA DE INDICADORES\nCÍCLICOS (SIC)\n4 de noviembre de 2026\nPágina 13/13\nIII. FICHA METODOLÓGICA\nEl Sistema de Indicadores Cíclicos (SIC) inició su publicación en noviembre de 2010.\nSu propósito es dar seguimiento a los ciclos de la economía mexicana. Para este fin, adoptó\nla metodología que emplea la Organización para la Cooperación y Desarrollo Económicos\nAntecedentes (OCDE) en su sistema de Indicadores Compuestos Adelantados (CLI, por sus siglas en inglés).\nCon lo anterior, se buscó mantener la comparabilidad internacional y facilitar la consulta de\ninformación mediante herramientas de visualización, como el Reloj de los ciclos económicos\nde México y el Tablero de indicadores económicos.\nMonitorear los posibles puntos de giro de la economía mexicana y aportar información para\nObjetivo el análisis de los ciclos económicos mediante dos indicadores compuestos: el Coincidente y\nel Adelantado.\nLos componentes del Indicador Coincidente son los siguientes: el Indicador Global de la\nActividad Económica (IGAE), el Indicador de la Actividad Industrial, el Índice de Ingresos por\nSuministro de Bienes y Servicios al por menor, las y los Asegurados Trabajadores\nPermanentes en el Instituto Mexicano del Seguro Social, la Tasa de Desocupación (TD)\nUrbana y las Importaciones Totales.\nDatos El Indicador Adelantado se compone por la Tendencia del Empleo en las Manufacturas, el\nMomento adecuado para invertir del sector manufacturero (que se desprende del Indicador\nde Confianza Empresarial), el Índice de Precios y Cotizaciones de la Bolsa Mexicana de\nValores en términos reales, el Tipo de Cambio Real Bilateral México-EUA, la Tasa de Interés\nInterbancaria de Equilibrio y el Índice Standard & Poor’s 500 (índice bursátil de Estados\nUnidos de América).\nEl SIC usa el enfoque de ciclo de crecimiento. Este identifica las desviaciones de la economía\nrespecto a su tendencia de largo plazo. El ciclo de cada componente se obtiene mediante la\naplicación del filtro Hodrick-Prescott a partir de la serie desestacionalizada corregida por\nobservaciones atípicas. El filtro Hodrick-Prescott se aplica dos veces: en la primera, se calcula\nla tendencia de largo plazo para obtener el componente cíclico al comparar la serie\nCálculo de indicadores\ndesestacionalizada respecto a su tendencia. En la segunda, se elimina la variabilidad de corto\ncompuestos\nplazo en el componente cíclico previo. De este proceso resultan ciclos suavizados de las\nvariables que después se estandarizan para igualar la volatilidad entre estas, ya que algunas\npueden mostrar más volatilidad que otras. Por último, se obtiene el indicador compuesto\nmediante el promedio de los cambios mensuales de sus componentes (en términos de ciclos\nsuavizados estandarizados).\nPublicación de Los Indicadores Coincidente y Adelantado se actualizan mensualmente y se publican dos\nresultados meses y un mes después del periodo de referencia, respectivamente.\nPara más información sobre la metodología, consúltese:\nNota al https://www.inegi.org.mx/app/biblioteca/ficha.html?upc=702825073961\npúblico usuario Para dar seguimiento a los indicadores, consúltese:\nhttps://www.inegi.org.mx/app/indicadores/?tm=0\nLa información estadística y geográfica que genera el INEGI es un bien público y nos permite\na todas y a todos tomar mejores decisiones. ¡Conócela, úsala y compártela!"
+  ],
+  "source_sha256": "9cd66d06f78d8255e4f6bb3de4740b6adcacb6b8d927c5c108156bde7f6b3241",
+  "cover_evidence": "100.2 ▲ 0.12 100.8 ▲ 0.01",
+  "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_11.pdf"
+}

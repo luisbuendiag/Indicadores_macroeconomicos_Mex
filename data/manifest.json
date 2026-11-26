@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T02:31:04+00:00",
+  "generated_at": "2026-11-26T16:17:00+00:00",
   "indicadores": [
     {
       "indicador": "Estimación Oportuna del Producto Interno Bruto Trimestral",
@@ -154,9 +154,9 @@
       "frecuencia": "Mensual",
       "unidad": "Índice 2018=100 y variación anual",
       "ajuste_estacional": "Cifras originales; estimación experimental",
-      "ultima_observacion": "Sep 26",
-      "periodo_referencia": "Sep 26",
-      "fecha_publicacion": "28 de octubre de 2026",
+      "ultima_observacion": "Oct 26",
+      "periodo_referencia": "Oct 26",
+      "fecha_publicacion": "26 de noviembre de 2026",
       "fecha_consulta": "2026-11-26",
       "fecha_actualizacion_archivo": "2026-11-26",
       "metodo_actualizacion": "Boletines oficiales de prensa del INEGI (PDF)",
@@ -226,9 +226,9 @@
       "frecuencia": "Mensual (tasas) / Trimestral (población ocupada)",
       "unidad": "Porcentaje (tasas) / Millones de personas (población ocupada)",
       "ajuste_estacional": "Cifras originales",
-      "ultima_observacion": "Sep 26",
-      "periodo_referencia": "Sep 26",
-      "fecha_publicacion": "22 de octubre de 2026",
+      "ultima_observacion": "Oct 26",
+      "periodo_referencia": "Oct 26",
+      "fecha_publicacion": "26 de noviembre de 2026",
       "fecha_consulta": "2026-11-26",
       "fecha_actualizacion_archivo": "2026-11-26",
       "metodo_actualizacion": "INEGI BIE API",

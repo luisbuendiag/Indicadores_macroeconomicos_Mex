@@ -2,17 +2,17 @@
   "IMOAM": {
     "status": "vigente",
     "message": "Nota generada y validada por reglas Python",
-    "target_period": "Sep 26",
+    "target_period": "Oct 26",
     "published": {
-      "periodo": "Sep 26",
-      "generated_at": "2026-10-29T15:51:54+00:00",
-      "source_sha256": "3eb0f16b4520bfe26b9fbe5e9f61e18814d5c33de1e99b2a8d1c48ac2e5a89cd",
-      "fingerprint": "aa8a162e987a94a22d96a0b3f97f5b4e2dd353348f25ec5db71fe41c8aabdeae",
-      "docx_sha256": "5b8648be2d7a233fee14d4607337be5f5fd479724acb0fedf0ab077aff94d82d",
-      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_10.pdf",
+      "periodo": "Oct 26",
+      "generated_at": "2026-11-26T16:20:46+00:00",
+      "source_sha256": "eac28e595de45625b831e839e0b722aca380a4df9078513e37297d2d8175a78c",
+      "fingerprint": "5085ff7f6c7c214d3a785c7c55facd41efcccbcfa716ff4356b3328bf78eb605",
+      "docx_sha256": "69cd2121df6d861ff867934ea64bb549701da962c9ae2a7dad9ba391490b15e0",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_11.pdf",
       "review_model": "reglas-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/IMOAM/aa8a162e987a94a22d96a0b3f97f5b4e2dd353348f25ec5db71fe41c8aabdeae-5b8648be2d7a"
+      "archive": "data/notas/IMOAM/5085ff7f6c7c214d3a785c7c55facd41efcccbcfa716ff4356b3328bf78eb605-69cd2121df6d"
     }
   },
   "IMAI": {
@@ -176,20 +176,20 @@
     }
   },
   "SIC": {
-    "status": "error",
+    "status": "vigente",
+    "message": "Nota generada y validada por reglas Python",
     "target_period": "Ago 26",
     "published": {
       "periodo": "Ago 26",
-      "generated_at": "2026-11-05T02:55:14+00:00",
+      "generated_at": "2026-11-26T16:21:05+00:00",
       "source_sha256": "9cd66d06f78d8255e4f6bb3de4740b6adcacb6b8d927c5c108156bde7f6b3241",
-      "fingerprint": "4c6ed59785fd5ac19fd6ea8a4d6b6ee8ad9e8f14596ef8916b5ff16e2904a2c6",
-      "docx_sha256": "39b79b342b0fe3c70ff0ca011ccf2c012bab076dfee8a373261f9f5f009036c0",
+      "fingerprint": "6210354f307cafc283d020ac741c7652da9de397c126f6f50b751050707e3cee",
+      "docx_sha256": "d2eb4a36082616c88ab5f08c73de1c4064183c09cc25708a30a86d8e32c57e4e",
       "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_11.pdf",
       "review_model": "sic-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/SIC/4c6ed59785fd5ac19fd6ea8a4d6b6ee8ad9e8f14596ef8916b5ff16e2904a2c6-39b79b342b0f"
-    },
-    "message": "No se publicó la candidata: Faltan periodos del cuadro 1"
+      "archive": "data/notas/SIC/6210354f307cafc283d020ac741c7652da9de397c126f6f50b751050707e3cee-d2eb4a360826"
+    }
   },
   "IOAE": {
     "status": "vigente",
@@ -210,17 +210,17 @@
   "DESOCUP": {
     "status": "vigente",
     "message": "Nota generada y validada por reglas Python",
-    "target_period": "Sep 26",
+    "target_period": "Oct 26",
     "published": {
-      "periodo": "Sep 26",
-      "generated_at": "2026-11-05T02:55:28+00:00",
-      "source_sha256": "44727848a17ce04c95395b00f3634889a9129805d854dc5aee240aa7f9605b21",
-      "fingerprint": "42a8799483d5e936499afce2362c6ed815bd3df191719fa6ddd5901f8d8c004d",
-      "docx_sha256": "ec34ddb3f0a8c56dd786a6e0a4c72c9e1259abeb416526937f4173712474fe77",
-      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_10.pdf",
+      "periodo": "Oct 26",
+      "generated_at": "2026-11-26T16:21:13+00:00",
+      "source_sha256": "998a8835622fda6f22d7fdc75d6ffb3ca138f9776200a87f1b676b285c6db688",
+      "fingerprint": "8a5cf3b02dfa0bb3a3dc9b0be34708ff0ae40a36768d03536699baf63f8ad3eb",
+      "docx_sha256": "da5925bee8e89f0d86eb1b777b9bdc08a424ab708c262cb6929ebf0588cf2bec",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf",
       "review_model": "enoe-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/DESOCUP/42a8799483d5e936499afce2362c6ed815bd3df191719fa6ddd5901f8d8c004d-ec34ddb3f0a8"
+      "archive": "data/notas/DESOCUP/8a5cf3b02dfa0bb3a3dc9b0be34708ff0ae40a36768d03536699baf63f8ad3eb-da5925bee8e8"
     }
   },
   "BCMM": {
