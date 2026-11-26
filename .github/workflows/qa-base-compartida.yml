@@ -1,0 +1,36 @@
+name: QA base pública compartida
+on:
+  push:
+    branches: [codex/piloto-base-macromexico]
+    paths:
+      - '.github/workflows/qa-base-compartida.yml'
+      - 'scripts/benchmark_shared_data.py'
+
+permissions:
+  contents: read
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements.txt
+      - name: Comparar dos corridas institucionales aisladas
+        env:
+          BANXICO_TOKEN: ${{ secrets.BANXICO_TOKEN }}
+        run: |
+          set -euo pipefail
+          qa="$(mktemp -d)"
+          git worktree add --detach "$qa/directo" HEAD
+          git worktree add --detach "$qa/compartido" HEAD
+          (cd "$qa/directo" && python scripts/benchmark_shared_data.py directo --report "$qa/direct.json")
+          (cd "$qa/compartido" && python scripts/benchmark_shared_data.py compartido --report "$qa/shared.json")
+          python scripts/benchmark_shared_data.py comparar \
+            --direct "$qa/direct.json" --shared "$qa/shared.json" \
+            --data-direct "$qa/directo/data/indicadores.json" \
+            --data-shared "$qa/compartido/data/indicadores.json" \
+            | tee -a "$GITHUB_STEP_SUMMARY"
