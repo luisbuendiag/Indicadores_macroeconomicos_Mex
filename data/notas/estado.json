@@ -176,8 +176,7 @@
     }
   },
   "SIC": {
-    "status": "vigente",
-    "message": "Nota generada y validada por reglas Python",
+    "status": "error",
     "target_period": "Ago 26",
     "published": {
       "periodo": "Ago 26",
@@ -189,7 +188,8 @@
       "review_model": "sic-python-1",
       "review_kind": "reglas_python",
       "archive": "data/notas/SIC/4c6ed59785fd5ac19fd6ea8a4d6b6ee8ad9e8f14596ef8916b5ff16e2904a2c6-39b79b342b0f"
-    }
+    },
+    "message": "No se publicó la candidata: Faltan periodos del cuadro 1"
   },
   "IOAE": {
     "status": "vigente",

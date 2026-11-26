@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-11-25T21:55:05+00:00",
+    "generated_at": "2026-11-26T02:30:58+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-11-25T15:55:05-06:00",
+    "last_update_ct": "2026-11-25T20:30:58-06:00",
     "periodo_referencia_reciente": {
       "period": "Oct 26",
       "period_long": "Oct 26"
@@ -558,8 +558,8 @@
         }
       ],
       "last_observation": "3T-26 P",
-      "last_updated": "2026-11-25",
-      "last_checked": "2026-11-25",
+      "last_updated": "2026-11-26",
+      "last_checked": "2026-11-26",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -568,15 +568,15 @@
       "origen_dato": "api",
       "fecha_publicacion": "30 de octubre de 2026",
       "periodo_referencia": "3T-26 P",
-      "fecha_consulta": "2026-11-25",
-      "periodo_referencia_oficial": "Tercer trimestre de 2026",
-      "fecha_publicacion_oficial": "30 de octubre de 2026",
+      "fecha_consulta": "2026-11-26",
+      "periodo_referencia_oficial": "Tercer trimestre de 2025",
+      "fecha_publicacion_oficial": "30 de octubre de 2025",
       "proxima_publicacion": {
         "fecha_publicacion": "29 de enero de 2027",
         "periodo_referencia": "4T-26",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (3T-26) coincide con el último periodo esperado (Tercer trimestre de 2026).",
+      "motivo_frescura": "El dashboard tiene 3T-26, que está adelantado al periodo esperado (Tercer trimestre de 2025); se recomienda revisar el calendario.",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_10.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/PIB/PIB_datos.xlsx",
@@ -586,7 +586,7 @@
       "url_nota_individual": "downloads/indicadores/PIB/nota/PIB_nota.docx",
       "data_quality": [],
       "url_fuente_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_07.pdf",
-      "fecha_ultima_publicacion": "30 de octubre de 2026",
+      "fecha_ultima_publicacion": "30 de octubre de 2025",
       "regla_publicacion": null,
       "periodo_boletin": "3T-26 P",
       "numero_boletin": "673/26",
@@ -4572,8 +4572,8 @@
         }
       ],
       "last_observation": "3T-26",
-      "last_updated": "2026-11-25",
-      "last_checked": "2026-11-25",
+      "last_updated": "2026-11-26",
+      "last_checked": "2026-11-26",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -4582,7 +4582,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "23 de noviembre de 2026",
       "periodo_referencia": "3T-26",
-      "fecha_consulta": "2026-11-25",
+      "fecha_consulta": "2026-11-26",
       "metrics": {
         "kpi": {
           "assessment": "favorable",
@@ -4943,14 +4943,14 @@
           "A nivel subsectorial, con cifras originales, los mayores dinamismos anuales fueron Comercio al por mayor (+12.0%), de agua (+7.0%), Servicios de esparcimiento culturales y (+4.4%); los mayores retrocesos: deportivos (-2.2%), Servicios de apoyo a los negocios (-1.7%), muebles e intangibles 54 Servicios profesionales (-0.8%)."
         ]
       },
-      "periodo_referencia_oficial": "Tercer trimestre de 2026",
+      "periodo_referencia_oficial": "3er trimestre 2026",
       "fecha_publicacion_oficial": "23 de noviembre de 2026",
       "proxima_publicacion": {
         "fecha_publicacion": "24 de febrero de 2027",
-        "periodo_referencia": "Cuarto trimestre de 2026",
+        "periodo_referencia": "4° trimestre 2026",
         "tipo": "oficial"
       },
-      "motivo_frescura": "El periodo cargado (3T-26) coincide con el último periodo esperado (Tercer trimestre de 2026).",
+      "motivo_frescura": "El periodo cargado (3T-26) coincide con el último periodo esperado (3er trimestre 2026).",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_11.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/PIBSEC/PIBSEC_datos.xlsx",
@@ -11187,8 +11187,8 @@
         }
       ],
       "last_observation": "Sep 26",
-      "last_updated": "2026-11-25",
-      "last_checked": "2026-11-25",
+      "last_updated": "2026-11-26",
+      "last_checked": "2026-11-26",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -11197,7 +11197,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "23 de noviembre de 2026",
       "periodo_referencia": "Sep 26",
-      "fecha_consulta": "2026-11-25",
+      "fecha_consulta": "2026-11-26",
       "metrics": {
         "kpi": {
           "assessment": "adverso",
@@ -12048,14 +12048,10 @@
           "La variación se clasifica como adversa según la lectura económica del indicador."
         ]
       },
-      "periodo_referencia_oficial": "Septiembre de 2026",
-      "fecha_publicacion_oficial": "23 de noviembre de 2026",
-      "proxima_publicacion": {
-        "fecha_publicacion": "23 de diciembre de 2026",
-        "periodo_referencia": "Octubre de 2026",
-        "tipo": "oficial"
-      },
-      "motivo_frescura": "El periodo cargado (Sep 26) coincide con el último periodo esperado (Septiembre de 2026).",
+      "periodo_referencia_oficial": "Octubre de 2025",
+      "fecha_publicacion_oficial": "22 de diciembre de 2025",
+      "proxima_publicacion": null,
+      "motivo_frescura": "El dashboard tiene Sep 26, que está adelantado al periodo esperado (Octubre de 2025); se recomienda revisar el calendario.",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_11.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/IGAE/IGAE_datos.xlsx",
@@ -12064,7 +12060,7 @@
       "nota_causa": null,
       "url_nota_individual": "downloads/indicadores/IGAE/nota/IGAE_nota.docx",
       "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603589#D737121",
-      "fecha_ultima_publicacion": "23 de noviembre de 2026",
+      "fecha_ultima_publicacion": "22 de diciembre de 2025",
       "regla_publicacion": null,
       "periodo_boletin": "Sep 26",
       "numero_boletin": "698/26",
@@ -21914,8 +21910,8 @@
         }
       ],
       "last_observation": "Sep 26",
-      "last_updated": "2026-11-25",
-      "last_checked": "2026-11-25",
+      "last_updated": "2026-11-26",
+      "last_checked": "2026-11-26",
       "source_origin": "api",
       "data_quality": [],
       "requiere_token": "INEGI",
@@ -21925,7 +21921,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "11 de noviembre de 2026",
       "periodo_referencia": "Sep 26",
-      "fecha_consulta": "2026-11-25",
+      "fecha_consulta": "2026-11-26",
       "metrics": {
         "kpi": {
           "assessment": "adverso",
@@ -22817,14 +22813,10 @@
           "A tasa anual desestacionalizada, Construcción (6.4%) y Energía, agua y gas (3.4%) avanzaron, mientras que Minería (-1.5%) retrocedieron."
         ]
       },
-      "periodo_referencia_oficial": "Septiembre de 2026",
-      "fecha_publicacion_oficial": "11 de noviembre de 2026",
-      "proxima_publicacion": {
-        "fecha_publicacion": "11 de diciembre de 2026",
-        "periodo_referencia": "Octubre de 2026",
-        "tipo": "oficial"
-      },
-      "motivo_frescura": "El periodo cargado (Sep 26) coincide con el último periodo esperado (Septiembre de 2026).",
+      "periodo_referencia_oficial": "Octubre de 2025",
+      "fecha_publicacion_oficial": "12 de diciembre de 2025",
+      "proxima_publicacion": null,
+      "motivo_frescura": "El dashboard tiene Sep 26, que está adelantado al periodo esperado (Octubre de 2025); se recomienda revisar el calendario.",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imai/imai2026_11.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/IMAI/IMAI_datos.xlsx",
@@ -22833,7 +22825,7 @@
       "nota_causa": null,
       "url_nota_individual": "downloads/indicadores/IMAI/nota/IMAI_nota.docx",
       "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=603729#D737233",
-      "fecha_ultima_publicacion": "11 de noviembre de 2026",
+      "fecha_ultima_publicacion": "12 de diciembre de 2025",
       "regla_publicacion": null,
       "periodo_boletin": "Sep 26",
       "numero_boletin": "688/26",
@@ -26173,8 +26165,8 @@
         }
       ],
       "last_observation": "Ago 26",
-      "last_updated": "2026-11-25",
-      "last_checked": "2026-11-25",
+      "last_updated": "2026-11-26",
+      "last_checked": "2026-11-26",
       "source_origin": "api",
       "data_quality": [],
       "requiere_token": "INEGI",
@@ -26184,7 +26176,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "5 de noviembre de 2026",
       "periodo_referencia": "Ago 26",
-      "fecha_consulta": "2026-11-25",
+      "fecha_consulta": "2026-11-26",
       "metrics": {
         "kpi": {
           "assessment": "favorable",
@@ -26271,14 +26263,10 @@
           "La variación se clasifica como favorable según la lectura económica del indicador."
         ]
       },
-      "periodo_referencia_oficial": "Agosto de 2026",
-      "fecha_publicacion_oficial": "5 de noviembre de 2026",
-      "proxima_publicacion": {
-        "fecha_publicacion": "4 de diciembre de 2026",
-        "periodo_referencia": "Septiembre de 2026",
-        "tipo": "oficial"
-      },
-      "motivo_frescura": "El periodo cargado (Ago 26) coincide con el último periodo esperado (Agosto de 2026).",
+      "periodo_referencia_oficial": "Septiembre de 2025",
+      "fecha_publicacion_oficial": "3 de diciembre de 2025",
+      "proxima_publicacion": null,
+      "motivo_frescura": "El dashboard tiene Ago 26, que está adelantado al periodo esperado (Septiembre de 2025); se recomienda revisar el calendario.",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imcp/imcpmi2026_11.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/CONSUMO/CONSUMO_datos.xlsx",
@@ -26287,7 +26275,7 @@
       "nota_causa": null,
       "url_nota_individual": "downloads/indicadores/CONSUMO/nota/CONSUMO_nota.docx",
       "url_fuente_oficial": "https://www.inegi.org.mx/programas/imcp/",
-      "fecha_ultima_publicacion": "5 de noviembre de 2026",
+      "fecha_ultima_publicacion": "3 de diciembre de 2025",
       "regla_publicacion": null,
       "periodo_boletin": "Ago 26",
       "numero_boletin": "683/26",
@@ -27585,8 +27573,8 @@
         }
       ],
       "last_observation": "3T-26",
-      "last_updated": "2026-11-25",
-      "last_checked": "2026-11-25",
+      "last_updated": "2026-11-26",
+      "last_checked": "2026-11-26",
       "source_origin": "api",
       "requiere_token": null,
       "serie_confirmada": false,
@@ -27595,7 +27583,7 @@
       "origen_dato": "respaldo",
       "fecha_publicacion": "24 de noviembre de 2026",
       "periodo_referencia": "3T-26",
-      "fecha_consulta": "2026-11-25",
+      "fecha_consulta": "2026-11-26",
       "metrics": {
         "acumulado": {
           "periodo": "Ene-Sep 26",
@@ -29598,8 +29586,8 @@
         }
       ],
       "last_observation": "Sep 26",
-      "last_updated": "2026-11-25",
-      "last_checked": "2026-11-25",
+      "last_updated": "2026-11-26",
+      "last_checked": "2026-11-26",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -29608,7 +29596,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "22 de octubre de 2026",
       "periodo_referencia": "Sep 26",
-      "fecha_consulta": "2026-11-25",
+      "fecha_consulta": "2026-11-26",
       "metrics": {
         "kpi": {
           "ultimoP": "Sep 26",
@@ -29920,14 +29908,10 @@
           "La población ocupada se ubicó en 60.0 millones de personas en septiembre de 2026 (dato mensual original)."
         ]
       },
-      "periodo_referencia_oficial": "Septiembre de 2026",
-      "fecha_publicacion_oficial": "22 de octubre de 2026",
-      "proxima_publicacion": {
-        "fecha_publicacion": "26 de noviembre de 2026",
-        "periodo_referencia": "Octubre de 2026",
-        "tipo": "oficial"
-      },
-      "motivo_frescura": "El periodo cargado (Sep 26) coincide con el último periodo esperado (Septiembre de 2026).",
+      "periodo_referencia_oficial": "Noviembre de 2025",
+      "fecha_publicacion_oficial": "24 de diciembre de 2025",
+      "proxima_publicacion": null,
+      "motivo_frescura": "El dashboard tiene Sep 26, que está adelantado al periodo esperado (Noviembre de 2025); se recomienda revisar el calendario.",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_10.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/DESOCUP/DESOCUP_datos.xlsx",
@@ -29936,7 +29920,7 @@
       "nota_causa": null,
       "url_nota_individual": "downloads/indicadores/DESOCUP/nota/DESOCUP_nota.docx",
       "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=4#D444603",
-      "fecha_ultima_publicacion": "22 de octubre de 2026",
+      "fecha_ultima_publicacion": "24 de diciembre de 2025",
       "regla_publicacion": null,
       "periodo_boletin": "Sep 26",
       "numero_boletin": "634/26",
@@ -32569,8 +32553,8 @@
         }
       ],
       "last_observation": "Oct 26",
-      "last_updated": "2026-11-25",
-      "last_checked": "2026-11-25",
+      "last_updated": "2026-11-26",
+      "last_checked": "2026-11-26",
       "source_origin": "api",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
@@ -32579,7 +32563,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "9 de noviembre de 2026",
       "periodo_referencia": "Oct 26",
-      "fecha_consulta": "2026-11-25",
+      "fecha_consulta": "2026-11-26",
       "metrics": {
         "kpi": {
           "assessment": "neutral",
@@ -32826,14 +32810,10 @@
           "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
         ]
       },
-      "periodo_referencia_oficial": "Octubre de 2026",
-      "fecha_publicacion_oficial": "9 de noviembre de 2026",
-      "proxima_publicacion": {
-        "fecha_publicacion": "9 de diciembre de 2026",
-        "periodo_referencia": "Noviembre de 2026",
-        "tipo": "oficial"
-      },
-      "motivo_frescura": "El periodo cargado (Oct 26) coincide con el último periodo esperado (Octubre de 2026).",
+      "periodo_referencia_oficial": "Noviembre de 2025",
+      "fecha_publicacion_oficial": "9 de diciembre de 2025",
+      "proxima_publicacion": null,
+      "motivo_frescura": "El dashboard tiene Oct 26, que está adelantado al periodo esperado (Noviembre de 2025); se recomienda revisar el calendario.",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_11.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/INPC/INPC_datos.xlsx",
@@ -32842,7 +32822,7 @@
       "nota_causa": null,
       "url_nota_individual": "downloads/indicadores/INPC/nota/INPC_nota.docx",
       "url_fuente_oficial": "https://www.inegi.org.mx/app/tabulados/inp/default.aspx?nc=ca55_2018a",
-      "fecha_ultima_publicacion": "9 de noviembre de 2026",
+      "fecha_ultima_publicacion": "9 de diciembre de 2025",
       "regla_publicacion": null,
       "periodo_boletin": "Oct 26",
       "numero_boletin": "684/26",
@@ -51293,8 +51273,8 @@
         }
       ],
       "last_observation": "Ago 26",
-      "last_updated": "2026-11-25",
-      "last_checked": "2026-11-25",
+      "last_updated": "2026-11-26",
+      "last_checked": "2026-11-26",
       "requiere_token": null,
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -51302,7 +51282,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "5 de noviembre de 2026",
       "periodo_referencia": "Ago 26",
-      "fecha_consulta": "2026-11-25",
+      "fecha_consulta": "2026-11-26",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -52247,14 +52227,10 @@
           "A tasa anual desestacionalizada, Equipo de transporte importado (21.2%) y Residencial (8.6%) avanzaron, mientras que Maquinaria y equipo nacional (-0.5%) y Equipo de transporte nacional (-2.1%) retrocedieron."
         ]
       },
-      "periodo_referencia_oficial": "Agosto de 2026",
-      "fecha_publicacion_oficial": "5 de noviembre de 2026",
-      "proxima_publicacion": {
-        "fecha_publicacion": "4 de diciembre de 2026",
-        "periodo_referencia": "Septiembre de 2026",
-        "tipo": "oficial"
-      },
-      "motivo_frescura": "El periodo cargado (Ago 26) coincide con el último periodo esperado (Agosto de 2026).",
+      "periodo_referencia_oficial": "Septiembre de 2025",
+      "fecha_publicacion_oficial": "3 de diciembre de 2025",
+      "proxima_publicacion": null,
+      "motivo_frescura": "El dashboard tiene Ago 26, que está adelantado al periodo esperado (Septiembre de 2025); se recomienda revisar el calendario.",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ifb/imfbcf2026_11.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/IMFBCF/IMFBCF_datos.xlsx",
@@ -52263,7 +52239,7 @@
       "nota_causa": null,
       "url_nota_individual": "downloads/indicadores/IMFBCF/nota/IMFBCF_nota.docx",
       "url_fuente_oficial": "https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?accion=consultarCuadro&idCuadro=CR363",
-      "fecha_ultima_publicacion": "5 de noviembre de 2026",
+      "fecha_ultima_publicacion": "3 de diciembre de 2025",
       "regla_publicacion": null,
       "periodo_boletin": "Ago 26",
       "numero_boletin": "682/26",
@@ -53659,8 +53635,8 @@
         }
       ],
       "last_observation": "Oct 26",
-      "last_updated": "2026-11-25",
-      "last_checked": "2026-11-25",
+      "last_updated": "2026-11-26",
+      "last_checked": "2026-11-26",
       "requiere_token": null,
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -53668,7 +53644,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "19 de noviembre de 2026",
       "periodo_referencia": "Oct 26",
-      "fecha_consulta": "2026-11-25",
+      "fecha_consulta": "2026-11-26",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -53853,14 +53829,10 @@
           "La variación se clasifica como favorable según la lectura económica del indicador."
         ]
       },
-      "periodo_referencia_oficial": "Octubre de 2026",
-      "fecha_publicacion_oficial": "19 de noviembre de 2026",
-      "proxima_publicacion": {
-        "fecha_publicacion": "18 de diciembre de 2026",
-        "periodo_referencia": "Noviembre de 2026",
-        "tipo": "oficial"
-      },
-      "motivo_frescura": "El periodo cargado (Oct 26) coincide con el último periodo esperado (Octubre de 2026).",
+      "periodo_referencia_oficial": "Noviembre de 2025",
+      "fecha_publicacion_oficial": "18 de diciembre de 2025",
+      "proxima_publicacion": null,
+      "motivo_frescura": "El dashboard tiene Oct 26, que está adelantado al periodo esperado (Noviembre de 2025); se recomienda revisar el calendario.",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_11.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/IOAE/IOAE_datos.xlsx",
@@ -53869,7 +53841,7 @@
       "nota_causa": null,
       "url_nota_individual": "downloads/indicadores/IOAE/nota/IOAE_nota.docx",
       "url_fuente_oficial": "https://www.inegi.org.mx/investigacion/ioae/",
-      "fecha_ultima_publicacion": "19 de noviembre de 2026",
+      "fecha_ultima_publicacion": "18 de diciembre de 2025",
       "regla_publicacion": null,
       "periodo_boletin": "Oct 26",
       "numero_boletin": "695/26",
@@ -59598,8 +59570,8 @@
         }
       ],
       "last_observation": "Sep 26",
-      "last_updated": "2026-11-25",
-      "last_checked": "2026-11-25",
+      "last_updated": "2026-11-26",
+      "last_checked": "2026-11-26",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -59607,7 +59579,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "17 de noviembre de 2026",
       "periodo_referencia": "Sep 26",
-      "fecha_consulta": "2026-11-25",
+      "fecha_consulta": "2026-11-26",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -60197,14 +60169,10 @@
           "A nivel subsectorial, los mayores dinamismos anuales fueron Fabricación de equipo de computación (+7.0%), Industria de la madera (+5.5%), Fabricación de maquinaria (+5.0%); los mayores retrocesos: Fabricación de prendas de vestir (-5.5%), Fabricación de equipo de transporte (-4.9%), Fabricación de muebles (-4.7%)."
         ]
       },
-      "periodo_referencia_oficial": "Septiembre de 2026",
-      "fecha_publicacion_oficial": "17 de noviembre de 2026",
-      "proxima_publicacion": {
-        "fecha_publicacion": "16 de diciembre de 2026",
-        "periodo_referencia": "Octubre de 2026",
-        "tipo": "oficial"
-      },
-      "motivo_frescura": "El periodo cargado (Sep 26) coincide con el último periodo esperado (Septiembre de 2026).",
+      "periodo_referencia_oficial": "Octubre de 2025",
+      "fecha_publicacion_oficial": "17 de diciembre de 2025",
+      "proxima_publicacion": null,
+      "motivo_frescura": "El dashboard tiene Sep 26, que está adelantado al periodo esperado (Octubre de 2025); se recomienda revisar el calendario.",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_11.pdf",
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/EMIM/EMIM_datos.xlsx",
@@ -60213,7 +60181,7 @@
       "nota_causa": null,
       "url_nota_individual": "downloads/indicadores/EMIM/nota/EMIM_nota.docx",
       "url_fuente_oficial": "https://www.inegi.org.mx/programas/emim/",
-      "fecha_ultima_publicacion": "17 de noviembre de 2026",
+      "fecha_ultima_publicacion": "17 de diciembre de 2025",
       "regla_publicacion": null,
       "periodo_boletin": "Sep 26",
       "numero_boletin": "693/26",
@@ -113381,8 +113349,8 @@
         }
       ],
       "last_observation": "2026-11-25",
-      "last_updated": "2026-11-25",
-      "last_checked": "2026-11-25",
+      "last_updated": "2026-11-26",
+      "last_checked": "2026-11-26",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
@@ -113390,7 +113358,7 @@
       "origen_dato": "api",
       "fecha_publicacion": null,
       "periodo_referencia": "2026-11-25",
-      "fecha_consulta": "2026-11-25",
+      "fecha_consulta": "2026-11-26",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -174398,8 +174366,8 @@
         }
       ],
       "last_observation": "2026-11-26",
-      "last_updated": "2026-11-25",
-      "last_checked": "2026-11-25",
+      "last_updated": "2026-11-26",
+      "last_checked": "2026-11-26",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
@@ -174407,7 +174375,7 @@
       "origen_dato": "api",
       "fecha_publicacion": null,
       "periodo_referencia": "2026-11-26",
-      "fecha_consulta": "2026-11-25",
+      "fecha_consulta": "2026-11-26",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -191781,8 +191749,8 @@
         }
       ],
       "last_observation": "2026-11-20",
-      "last_updated": "2026-11-25",
-      "last_checked": "2026-11-25",
+      "last_updated": "2026-11-26",
+      "last_checked": "2026-11-26",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
@@ -191790,7 +191758,7 @@
       "origen_dato": "api",
       "fecha_publicacion": null,
       "periodo_referencia": "Semana al 20 Nov 26",
-      "fecha_consulta": "2026-11-25",
+      "fecha_consulta": "2026-11-26",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -198675,8 +198643,8 @@
         }
       ],
       "last_observation": "Oct 26",
-      "last_updated": "2026-11-25",
-      "last_checked": "2026-11-25",
+      "last_updated": "2026-11-26",
+      "last_checked": "2026-11-26",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -198684,7 +198652,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "3 de noviembre de 2026",
       "periodo_referencia": "Oct 26",
-      "fecha_consulta": "2026-11-25",
+      "fecha_consulta": "2026-11-26",
       "metrics": {
         "kpi": {
           "assessment": "neutral",
@@ -198937,14 +198905,10 @@
           "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
         ]
       },
-      "periodo_referencia_oficial": "Octubre de 2026",
-      "fecha_publicacion_oficial": "3 de noviembre de 2026",
-      "proxima_publicacion": {
-        "fecha_publicacion": "1 de diciembre de 2026",
-        "periodo_referencia": "Noviembre de 2026",
-        "tipo": "oficial"
-      },
-      "motivo_frescura": "El periodo cargado (Oct 26) coincide con el último periodo esperado (Octubre de 2026).",
+      "periodo_referencia_oficial": "Noviembre de 2025",
+      "fecha_publicacion_oficial": "2 de diciembre de 2025",
+      "proxima_publicacion": null,
+      "motivo_frescura": "El dashboard tiene Oct 26, que está adelantado al periodo esperado (Noviembre de 2025); se recomienda revisar el calendario.",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_11.pdf",
       "xlsx_disponible": true,
       "xlsx_causa": null,
@@ -198954,7 +198918,7 @@
       "url_nota_individual": "downloads/indicadores/EMOE/nota/EMOE_nota.docx",
       "source_origin": "api",
       "url_fuente_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_08.pdf",
-      "fecha_ultima_publicacion": "3 de noviembre de 2026",
+      "fecha_ultima_publicacion": "2 de diciembre de 2025",
       "regla_publicacion": null,
       "periodo_boletin": "Oct 26",
       "numero_boletin": "676/26",
@@ -218220,8 +218184,8 @@
         }
       ],
       "last_observation": "Sep 26",
-      "last_updated": "2026-11-25",
-      "last_checked": "2026-11-25",
+      "last_updated": "2026-11-26",
+      "last_checked": "2026-11-26",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -218229,7 +218193,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "27 de octubre de 2026",
       "periodo_referencia": "Sep 26",
-      "fecha_consulta": "2026-11-25",
+      "fecha_consulta": "2026-11-26",
       "metrics": {
         "kpi": {
           "ultimoRaw": -606.078,
@@ -219423,14 +219387,10 @@
           "Las importaciones por tipo de bien se componen de consumo +12.5%, intermedios +80.5% y capital +7.0%."
         ]
       },
-      "periodo_referencia_oficial": "Septiembre de 2026",
-      "fecha_publicacion_oficial": "27 de octubre de 2026",
-      "proxima_publicacion": {
-        "fecha_publicacion": "27 de noviembre de 2026",
-        "periodo_referencia": "Octubre de 2026",
-        "tipo": "oficial"
-      },
-      "motivo_frescura": "El periodo cargado (Sep 26) coincide con el último periodo esperado (Septiembre de 2026).",
+      "periodo_referencia_oficial": "Noviembre de 2025",
+      "fecha_publicacion_oficial": "23 de diciembre de 2025",
+      "proxima_publicacion": null,
+      "motivo_frescura": "El dashboard tiene Sep 26, que está adelantado al periodo esperado (Noviembre de 2025); se recomienda revisar el calendario.",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_10.pdf",
       "xlsx_disponible": true,
       "xlsx_causa": null,
@@ -219440,7 +219400,7 @@
       "url_nota_individual": "downloads/indicadores/BCMM/nota/BCMM_nota.docx",
       "source_origin": "api",
       "url_fuente_oficial": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=36695#D6204198547",
-      "fecha_ultima_publicacion": "27 de octubre de 2026",
+      "fecha_ultima_publicacion": "23 de diciembre de 2025",
       "regla_publicacion": null,
       "periodo_boletin": "Sep 26",
       "numero_boletin": "638/26",
@@ -221707,8 +221667,8 @@
         }
       ],
       "last_observation": "Oct 26",
-      "last_updated": "2026-11-25",
-      "last_checked": "2026-11-25",
+      "last_updated": "2026-11-26",
+      "last_checked": "2026-11-26",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -221743,7 +221703,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "9 de noviembre de 2026",
       "periodo_referencia": "Oct 26",
-      "fecha_consulta": "2026-11-25",
+      "fecha_consulta": "2026-11-26",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -221997,17 +221957,13 @@
           "La variación no tiene una clasificación clara de favorable/adversa sin contexto adicional."
         ]
       },
-      "periodo_referencia_oficial": "Octubre de 2026",
-      "fecha_publicacion_oficial": "9 de noviembre de 2026",
-      "proxima_publicacion": {
-        "fecha_publicacion": "9 de diciembre de 2026",
-        "periodo_referencia": "Noviembre de 2026",
-        "tipo": "oficial"
-      },
-      "motivo_frescura": "El periodo cargado (Oct 26) coincide con el último periodo esperado (Octubre de 2026).",
+      "periodo_referencia_oficial": "Noviembre de 2025",
+      "fecha_publicacion_oficial": "9 de diciembre de 2025",
+      "proxima_publicacion": null,
+      "motivo_frescura": "El dashboard tiene Oct 26, que está adelantado al periodo esperado (Noviembre de 2025); se recomienda revisar el calendario.",
       "url_fuente_oficial": "https://www.inegi.org.mx/programas/inpp/2019a/",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_11.pdf",
-      "fecha_ultima_publicacion": "9 de noviembre de 2026",
+      "fecha_ultima_publicacion": "9 de diciembre de 2025",
       "regla_publicacion": null,
       "periodo_boletin": "Oct 26",
       "tipo_documento": "PDF",
@@ -235049,8 +235005,8 @@
         }
       ],
       "last_observation": "Ago 26",
-      "last_updated": "2026-11-25",
-      "last_checked": "2026-11-25",
+      "last_updated": "2026-11-26",
+      "last_checked": "2026-11-26",
       "requiere_token": "INEGI",
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -235085,7 +235041,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "2026-11-04",
       "periodo_referencia": "Oct 26",
-      "fecha_consulta": "2026-11-25",
+      "fecha_consulta": "2026-11-26",
       "source_origin": "api",
       "metrics": {
         "kpi": {
@@ -236264,17 +236220,13 @@
           "Entre los componentes del Coincidente, las mayores alzas mensuales correspondieron a las importaciones totales (+0.19 puntos), y el mayor descenso fue el de la tasa de desocupación urbana (−0.09 puntos) (serie inversa a la actividad económica)."
         ]
       },
-      "periodo_referencia_oficial": "Agosto de 2026",
-      "fecha_publicacion_oficial": "4 de noviembre de 2026",
-      "proxima_publicacion": {
-        "fecha_publicacion": "3 de diciembre de 2026",
-        "periodo_referencia": "Septiembre de 2026",
-        "tipo": "oficial"
-      },
-      "motivo_frescura": "El periodo cargado (Ago 26) coincide con el último periodo esperado (Agosto de 2026).",
+      "periodo_referencia_oficial": "Septiembre de 2025",
+      "fecha_publicacion_oficial": "4 de diciembre de 2025",
+      "proxima_publicacion": null,
+      "motivo_frescura": "El dashboard tiene Ago 26, que está adelantado al periodo esperado (Septiembre de 2025); se recomienda revisar el calendario.",
       "url_fuente_oficial": "https://www.inegi.org.mx/app/relojcicloseconomicos/",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_11.pdf",
-      "fecha_ultima_publicacion": "4 de noviembre de 2026",
+      "fecha_ultima_publicacion": "4 de diciembre de 2025",
       "regla_publicacion": null,
       "xlsx_disponible": true,
       "url_excel_individual": "downloads/indicadores/SIC/SIC_datos.xlsx",
@@ -236292,9 +236244,9 @@
         "generated_at": "2026-11-05T02:55:14+00:00",
         "source_sha256": "9cd66d06f78d8255e4f6bb3de4740b6adcacb6b8d927c5c108156bde7f6b3241",
         "fingerprint": "4c6ed59785fd5ac19fd6ea8a4d6b6ee8ad9e8f14596ef8916b5ff16e2904a2c6",
-        "status": "vigente",
+        "status": "error",
         "target_period": "Ago 26",
-        "message": "Nota generada y validada por reglas Python"
+        "message": "No se publicó la candidata: Faltan periodos del cuadro 1"
       },
       "periodo_boletin": "Ago 26",
       "numero_boletin": "679/26",
@@ -236858,8 +236810,8 @@
         }
       ],
       "last_observation": "Sep 26",
-      "last_updated": "2026-11-25",
-      "last_checked": "2026-11-25",
+      "last_updated": "2026-11-26",
+      "last_checked": "2026-11-26",
       "requiere_token": null,
       "serie_confirmada": true,
       "clasificacion": "principal",
@@ -236868,7 +236820,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "28 de octubre de 2026",
       "periodo_referencia": "Sep 26",
-      "fecha_consulta": "2026-11-25",
+      "fecha_consulta": "2026-11-26",
       "source_origin": "api",
       "url_boletin_oficial": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_10.pdf",
       "periodo_boletin": "Sep 26",
@@ -240487,8 +240439,8 @@
         }
       ],
       "last_observation": "Sep 26",
-      "last_updated": "2026-11-25",
-      "last_checked": "2026-11-25",
+      "last_updated": "2026-11-26",
+      "last_checked": "2026-11-26",
       "requiere_token": "BANXICO",
       "serie_confirmada": true,
       "clasificacion": "complementario",
@@ -240496,7 +240448,7 @@
       "origen_dato": "api",
       "fecha_publicacion": "3 de noviembre de 2026",
       "periodo_referencia": "Sep 26",
-      "fecha_consulta": "2026-11-25",
+      "fecha_consulta": "2026-11-26",
       "observations_mensual": [],
       "fecha_ultima_observacion": "Sep 26",
       "source_origin": "api",
