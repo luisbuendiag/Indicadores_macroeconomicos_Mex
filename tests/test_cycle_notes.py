@@ -47,7 +47,11 @@ def test_changed_source_rejected(monkeypatch,case):
 def test_source_url_follows_official_publication_not_reference():
     ind={'fecha_publicacion_oficial':'4 de noviembre de 2026','last_observation':'Ago 26'}
     assert P.expected_bulletin_url(ind).endswith('/2026/sic_cya/sic2026_11.pdf')
-    ind['fecha_publicacion_oficial']='2026-01-08';assert P.expected_bulletin_url(ind).endswith('sic2026_01.pdf')
+    ind.update(fecha_publicacion_oficial='2026-01-08',last_observation='Nov 25')
+    assert P.expected_bulletin_url(ind).endswith('sic2026_01.pdf')
+    for impossible in ['2025-12-04','2026-08-31']:
+        with pytest.raises(ValueError,match='no es posterior'):
+            P.expected_bulletin_url({'fecha_publicacion_oficial':impossible,'last_observation':'Ago 26'})
     for value in ['x','1 de enero de 2099']:
         with pytest.raises(ValueError):P.expected_bulletin_url({'fecha_publicacion_oficial':value})
 
@@ -81,10 +85,10 @@ def test_strict_source_allowlist(key):
     for bad in [url+'?x=evil',url+'#x',url.replace('www.inegi.org.mx','example.com'),url.replace('https:','http:'),url.replace(name+'2026','otro2026')]:assert not R.allowed(bad,key)
     assert not R.allowed(url,'EMIM')
 
-@pytest.mark.parametrize('case',['disabled','source_error','local_pdf','calendar_mismatch','pause'])
+@pytest.mark.parametrize('case',['disabled','source_error','local_pdf','calendar_mismatch','invalid_calendar','pause'])
 def test_publication_preserves_previous_word(monkeypatch,tmp_path,case):
     # The PDF fixture is the fixed SIC 679/26 edition, not the moving daily JSON.
-    publication = '4 de diciembre de 2025' if case == 'calendar_mismatch' else '4 de noviembre de 2026'
+    publication = {'calendar_mismatch':'5 de noviembre de 2026','invalid_calendar':'4 de diciembre de 2025'}.get(case,'4 de noviembre de 2026')
     snapshot = {'indicators': {'SIC': {'key': 'SIC', 'last_observation': 'Ago 26',
                 'fecha_publicacion_oficial': publication,
                 'url_boletin_oficial': 'https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_11.pdf'}}}
@@ -109,6 +113,11 @@ def test_publication_preserves_previous_word(monkeypatch,tmp_path,case):
     elif case=='source_error':
         monkeypatch.setattr(R,'download',lambda *a:(_ for _ in ()).throw(ValueError('Fuente incorrecta')))
         assert R.run('SIC',tmp_path,True)['status']=='error'
+    elif case=='invalid_calendar':
+        monkeypatch.setattr(R,'download',lambda *a:pytest.fail('No descargar ante una fecha anterior al periodo'))
+        state=R.run('SIC',tmp_path,True)
+        assert state['status']=='error', state
+        assert 'no es posterior al mes de referencia' in state['message']
     elif case=='calendar_mismatch':
         fixture(monkeypatch,'SIC')
         monkeypatch.setattr(R,'download',lambda *a:b'fixture')

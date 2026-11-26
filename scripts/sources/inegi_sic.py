@@ -1,7 +1,7 @@
 """URL SIC por fecha oficial de publicación; el PDF confirma los periodos."""
 import re
 from datetime import date
-from sources import inegi_bulletin as B
+from sources import inegi_bulletin as B, inegi
 
 def publication_date(ind):
     text=ind.get('fecha_publicacion_oficial') or ind.get('fecha_ultima_publicacion')
@@ -12,6 +12,11 @@ def publication_date(ind):
         if not m or m[2] not in B.MESES_NOMBRE:raise ValueError('Fecha oficial SIC no reconocida')
         d=date(int(m[3]),B.MESES_NOMBRE.index(m[2])+1,int(m[1]))
     if d>date.today():raise ValueError('Publicación SIC futura')
+    ref=inegi.label_to_ym(ind.get('last_observation') or '')
+    if ref is None:
+        raise ValueError('Falta periodo mensual verificable del SIC')
+    if (d.year,d.month) <= tuple(map(int,ref.split('-'))):
+        raise ValueError('La fecha oficial del calendario SIC no es posterior al mes de referencia; conservar la nota anterior')
     return d.isoformat()
 
 def expected_bulletin_url(ind):
