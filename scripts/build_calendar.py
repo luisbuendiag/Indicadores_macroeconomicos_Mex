@@ -22,6 +22,7 @@ import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit
 from zoneinfo import ZoneInfo
 
 import lib_data as L
@@ -81,6 +82,41 @@ def data_as_of() -> date:
     except Exception:
         pass
     return local_today
+
+
+def _same_day_publication(ev: dict, as_of: date, indicators: dict) -> dict:
+    """Una fecha ya alcanzada no valida el boletín. No hace consultas de red."""
+    if ev.get("date") != as_of or ev.get("is_evento") or ev.get("no_anunciada") or ev.get("es_regla"):
+        return {}
+    result = {"publication_confirmed": False}
+    ind = indicators.get(ev.get("indicator")) or {}
+    if ind.get("boletin_validado") is not True:
+        return result
+    period = ev.get("period") or ""
+    source_period = ind.get("periodo_boletin") or ""
+    def is_quarter(label: str) -> bool:
+        return bool(re.search(r"trimestre|^[1-4]T(?:[- ]|\d)", label, re.IGNORECASE))
+
+    same_period = period_to_ym(period)
+    if not same_period or is_quarter(period) != is_quarter(source_period) or same_period != period_to_ym(source_period):
+        return result
+    official = ind.get("url_boletin_oficial") or ""
+    try:
+        proof = urlsplit(official)
+    except (ValueError, TypeError):
+        return result
+    if (proof.scheme, proof.netloc) != ("https", "www.inegi.org.mx") or proof.query or proof.fragment:
+        return result
+    if not re.fullmatch(r"/contenidos/saladeprensa/boletines/(?:[A-Za-z0-9_-]+/)+[A-Za-z0-9_.-]+[.]pdf", proof.path, re.I):
+        return result
+    stamp = ind.get("fecha_publicacion") or ""
+    try:
+        official_date = date.fromisoformat(stamp) if re.fullmatch(r"\d{4}-\d{2}-\d{2}", stamp) else parse_fecha(stamp.lower())
+    except (ValueError, IndexError, KeyError):
+        return result
+    if official_date != as_of:
+        return result
+    return {"publication_confirmed": True, "publication_evidence_url": official}
 
 
 def _load_map() -> dict:
@@ -593,6 +629,7 @@ def _to_new_event(ev: dict, as_of: date) -> dict:
         "anio": d.year if d else None,
         "mes": d.month if d else None,
         "fecha_iso": d.isoformat() if d else None,
+        **ev.get("verification", {}),
     }
 
 
@@ -634,6 +671,7 @@ def _to_legacy_item(ev: dict, as_of: date) -> dict:
         "mes": mes,
         "periodo_referencia": ev.get("period") or ("Por determinar" if ev.get("es_regla") else ("Próximo periodo" if ev.get("no_anunciada") else "")),
         "estatus": status,
+        **ev.get("verification", {}),
         "url_boletin": ev.get("url") or _sala_prensa_url(ev.get("indicator")),
     }
     if ev.get("comentario"):
@@ -672,7 +710,7 @@ def _build_new_payload(events: list[dict], rules: list[dict], sources_status: di
         key=lambda x: (x["publication_date"] or "9999-12-31", x["indicator"]),
     )[:20]
     recent = sorted(
-        [e for e in new_events if e["status"] == "publicado"],
+        [e for e in new_events if e["status"] == "publicado" and e.get("publication_confirmed") is not False],
         key=lambda x: (x["publication_date"] or "", x["indicator"]),
         reverse=True,
     )[:20]
@@ -727,7 +765,7 @@ def _build_legacy_payload(events: list[dict], rules: list[dict], as_of: date, so
     }
 
 
-def build(as_of: date | None = None, offline: bool | None = None) -> dict:
+def build(as_of: date | None = None, offline: bool | None = None, *, indicators: dict | None = None) -> dict:
     """Construye el calendario legacy y, como efecto colateral, escribe ambos JSON.
 
     Devuelve el diccionario legacy para mantener compatibilidad con build_data.py.
@@ -738,6 +776,13 @@ def build(as_of: date | None = None, offline: bool | None = None) -> dict:
         offline = _under_pytest()
 
     events, rules, sources_status = _build_events(as_of, offline)
+    if indicators is None:
+        try:
+            indicators = json.loads((DATA_DIR / "indicadores.json").read_text("utf-8")).get("indicators", {})
+        except (OSError, ValueError):
+            indicators = {}
+    for event in events:
+        event["verification"] = _same_day_publication(event, as_of, indicators)
 
     new_payload = _build_new_payload(events, rules, sources_status, as_of)
     legacy_payload = _build_legacy_payload(events, rules, as_of, sources_status)

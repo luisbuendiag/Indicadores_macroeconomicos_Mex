@@ -64,3 +64,38 @@ def test_runner_utc_does_not_publish_tomorrows_enoe_in_mexico(monkeypatch, tmp_p
     changes = build_data.apply_freshness_and_meta({"indicators": {}}, {"warnings": []}, offline=True)
     assert "calendario: regenerado con as_of=2026-11-25" in changes
     assert json.loads(b.LEGACY_OUT.read_text(encoding="utf-8"))["items"][0]["estatus"] == "próximo"
+
+
+def test_same_day_date_is_not_bulletin_confirmation(monkeypatch, tmp_path):
+    import json
+
+    today = date(2026, 11, 26)
+    official = "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf"
+    generic = "https://www.inegi.org.mx/app/saladeprensa/calendario/"
+    event = {"indicator": "DESOCUP", "date": today, "period": "Octubre de 2026", "url": generic}
+    matching = {"boletin_validado": True, "periodo_boletin": "Oct 26",
+                "url_boletin_oficial": official, "fecha_publicacion": "26 de noviembre de 2026"}
+    monkeypatch.setattr(b, "DATA_DIR", tmp_path)
+    monkeypatch.setattr(b, "NEW_OUT", tmp_path / "calendario.json")
+    monkeypatch.setattr(b, "LEGACY_OUT", tmp_path / "calendario_publicaciones.json")
+    monkeypatch.setattr(b, "_build_events", lambda *args: ([dict(event)], [], {}))
+
+    for fields, confirmed in (
+        ({}, False),
+        ({"url_boletin_oficial": generic}, False),
+        ({"url_boletin_oficial": "https://example.org/same.pdf"}, False),
+        ({"periodo_boletin": "Sep 26"}, False),
+        ({"periodo_boletin": "4T-26"}, False),
+        ({"fecha_publicacion": "2026-11-25", "fecha_publicacion_oficial": "2026-11-26"}, False),
+        ({"boletin_validado": False}, False),
+        ({"fecha_publicacion": "2026-11-26"}, True),
+    ):
+        evidence = dict(matching, **fields) if fields else {}
+        legacy = b.build(as_of=today, offline=True, indicators={"DESOCUP": evidence})
+        modern = json.loads(b.NEW_OUT.read_text(encoding="utf-8"))
+        # Mantener el estado operativo que consume frescura; la interfaz usa la prueba separada.
+        assert legacy["items"][0]["estatus"] == "publicado"
+        assert legacy["items"][0]["publication_confirmed"] is confirmed
+        assert modern["events"][0]["publication_confirmed"] is confirmed
+        assert bool(modern["recent"]) is confirmed
+        assert modern["events"][0].get("publication_evidence_url") == (official if confirmed else None)

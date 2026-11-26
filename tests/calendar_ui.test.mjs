@@ -49,3 +49,16 @@ test('Un periodo futuro incompatible con la publicación no se presenta como con
   assert.equal(referenceLabel({publication_date:'2027-01-08',reference_period:'Octubre de 2027'}),'Periodo por confirmar');
   assert.equal(referenceLabel({publication_date:'2027-01-08',reference_period:'Octubre de 2026'}),'Octubre de 2026');
 });
+
+test('La fecha oficial sin evidencia no se presenta como un boletín publicado', () => {
+  const e = {indicator:'DESOCUP', publication_date:'2026-11-26', status:'publicado',
+    url:'https://www.inegi.org.mx/app/saladeprensa/calendario/'};
+  const pending = normalizeEvent({...e, publication_confirmed:false});
+  assert.equal(pending.estatus, 'sin_confirmar');
+  assert.match(pending.situacion, /boletín aún sin confirmar/);
+  const proof = 'https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf';
+  const confirmed = normalizeEvent({...e, publication_confirmed:true, publication_evidence_url:proof});
+  assert.equal(confirmed.estatus, 'publicado');
+  assert.equal(confirmed.situacion, 'Publicación confirmada');
+  assert.equal(confirmed.url_boletin, proof);
+});
