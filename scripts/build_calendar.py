@@ -28,6 +28,7 @@ from zoneinfo import ZoneInfo
 import lib_data as L
 from lib_freshness import period_to_ym
 from sources import calendar_banxico, calendar_inegi, calendar_se
+from sources.inegi_bulletin import BULLETIN_URLS
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
@@ -188,6 +189,58 @@ def _publication_evidence(ev: dict, as_of: date, indicators: dict, prior: dict) 
         return result
     return {"publication_confirmed": True, "publication_evidence_url": official,
             "publication_evidence_date": official_date.isoformat()}
+
+
+
+def _supplement_current_imoam(events: list[dict], as_of: date, indicators: dict) -> None:
+    """Si falta el periodo en Sala de Prensa, recuperar solo el boletín IMOAM ya validado."""
+    ind = indicators.get("IMOAM") or {}
+    if ind.get("key") != "IMOAM" or ind.get("boletin_validado") is not True:
+        return
+    if ind.get("tipo_documento") != "PDF" or (ind.get("fuente") or {}).get("nombre") != "INEGI":
+        return
+    period = ind.get("periodo_boletin")
+    if not isinstance(period, str) or not re.fullmatch(r"(?:Ene|Feb|Mar|Abr|May|Jun|Jul|Ago|Sep|Oct|Nov|Dic) [0-9]{2}", period):
+        return
+    reference = period_to_ym(period)
+    if not reference or ind.get("last_observation") != period:
+        # La ficha IMOAM usa la etiqueta mensual canónica; 4T-26 también
+        # normaliza a octubre, pero no es la observación acreditada por el PDF.
+        return
+    stamp = ind.get("fecha_publicacion")
+    if not isinstance(stamp, str):
+        return
+    try:
+        announced = date.fromisoformat(stamp) if re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}", stamp) else parse_fecha(stamp.lower())
+    except (ValueError, IndexError, KeyError):
+        return
+    number = ind.get("numero_boletin")
+    if (not isinstance(number, str)
+        or not re.fullmatch(r"[0-9]{1,4}/" + str(announced.year)[-2:], number)
+        or not date.fromisoformat(reference + "-01") < announced.replace(day=1)
+        or announced > as_of):
+        return
+    official = BULLETIN_URLS["IMOAM"].format(year=announced.year, mm=f"{announced.month:02d}")
+    if ind.get("url_boletin_oficial") != official:
+        return
+    if any(
+        row.get("indicator") == "IMOAM" and row.get("institution") == "INEGI"
+        and row.get("date") and row.get("usar_para_frescura", True)
+        and row.get("frequency") == "Mensual"
+        and isinstance(row.get("period"), str)
+        and not re.search(r"trimestre|^\s*[1-4]\s*T", row["period"], re.I)
+        and period_to_ym(row["period"]) == reference
+        for row in events
+    ):
+        return
+    title = "Indicador Mensual Oportuno de la Actividad Manufacturera"
+    events.append({
+        "indicator": "IMOAM", "program": title, "product": title, "frequency": "Mensual",
+        "period": period, "date": announced, "institution": "INEGI",
+        "source": "INEGI · Boletín de indicador validado", "url": official, "usar_para_frescura": True,
+        "deliverables": [{"type": "comunicado", "format": "pdf", "url": official,
+                          "label": "Boletín de indicador", "size": None}],
+    })
 
 
 def _load_map() -> dict:
@@ -855,6 +908,7 @@ def build(as_of: date | None = None, offline: bool | None = None, *, indicators:
             indicators = json.loads((DATA_DIR / "indicadores.json").read_text("utf-8")).get("indicators", {})
         except (OSError, ValueError):
             indicators = {}
+    _supplement_current_imoam(events, as_of, indicators)
     prior = _prior_publication_evidence(NEW_OUT)
     for event in events:
         event["verification"] = _publication_evidence(event, as_of, indicators, prior)

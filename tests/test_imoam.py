@@ -1,4 +1,5 @@
 """Regresión de IMOAM: escala, incertidumbre y recuperación defensiva."""
+import csv
 import json
 from pathlib import Path
 from types import SimpleNamespace
@@ -41,6 +42,11 @@ def test_published_metrics_and_products():
     assert ind['nota_disponible'] and ind['xlsx_disponible']
     assert (ROOT / ind['url_nota_individual']).exists()
     metrics = lib_metrics.compute_all_metrics(p)['IMOAM']
-    assert metrics['kpi']['varMag'] == pytest.approx(1.9)
+    with (ROOT / 'data/csv/IMOAM.csv').open(encoding='utf-8-sig', newline='') as series:
+        latest = list(csv.DictReader(series))[-1]
+    annual_fraction = float(latest['Variación anual estimada (%)'])
+    assert latest['periodo'] == ind['last_observation'] == metrics['kpi']['ultimoP']
+    assert ind['observations'][-1]['values'][3] == pytest.approx(annual_fraction)
+    assert metrics['kpi']['varMag'] == pytest.approx(annual_fraction * 100)
     assert metrics['annualVar'] is None
     assert any('experimental' in line for line in metrics['analysis'])
