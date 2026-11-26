@@ -170,3 +170,68 @@ def test_external_official_report_stays_visible_without_claiming_pdf_verificatio
         assert remesas["deliverables"][0]["url"] == official
     assert b._publication_evidence({**events[0], "date": date(2026, 11, 10)},
                                    due, {}, {}) == {}
+
+
+def test_calendar_keeps_bcmm_data_release_separate_without_borrowing_pdf(monkeypatch, tmp_path):
+    import json
+    # El calendario oficial del corte registra dos productos para octubre:
+    # el oportuno del 27 de noviembre y la difusión sin boletín del 9 de diciembre.
+    due = date(2026, 11, 27)
+    revision = date(2026, 12, 9)
+    pdf = "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/balcom_o/balcom_o2026_11.pdf"
+    period = "Octubre de 2026"
+    booklet = dict(indicator="BCMM", institution="INEGI", period=period, date=due,
+                    product="Balanza Comercial de Mercancías de México", url=pdf)
+    data_only = b._precise_event({**booklet, "date": revision,
+        "comentario":"No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
+        "url":"https://www.inegi.org.mx/app/saladeprensa/calendario/"})
+    monkeypatch.setattr(b, "DATA_DIR", tmp_path)
+    monkeypatch.setattr(b, "NEW_OUT", tmp_path / "calendario.json")
+    monkeypatch.setattr(b, "LEGACY_OUT", tmp_path / "calendario_publicaciones.json")
+    monkeypatch.setattr(b, "_build_events", lambda *args: ([dict(booklet), dict(data_only)], [], {}))
+
+    def snapshot(day):
+        return {"BCMM": {"boletin_validado":True, "periodo_boletin":"Oct 26",
+                         "url_boletin_oficial":pdf, "fecha_publicacion":day.isoformat()}}
+
+    first = b.build(as_of=due, offline=True, indicators=snapshot(due))
+    assert first["items"][0]["publication_confirmed"] is True
+    assert first["items"][1]["estatus"] == "próximo"
+    modern = json.loads(b.NEW_OUT.read_text())
+    modern["events"][1].update(publication_confirmed=True, publication_evidence_url=pdf,
+                               publication_evidence_date=revision.isoformat())
+    b.NEW_OUT.write_text(json.dumps(modern))
+
+    second = b.build(as_of=revision, offline=True, indicators=snapshot(revision))
+    modern = json.loads(b.NEW_OUT.read_text())
+    for group, stamp in [(second["items"], "fecha_iso"), (modern["events"], "publication_date"),
+                         (modern["recent"], "publication_date")]:
+        preliminary = next(x for x in group if x[stamp]==due.isoformat())
+        revised = next(x for x in group if x[stamp]==revision.isoformat())
+        assert preliminary["publication_confirmed"] is True
+        assert preliminary["publication_evidence_url"] == pdf
+        assert revised.get("status", revised.get("estatus")) == "publicado"
+        assert revised.get("product", revised.get("producto")) == "BCMM · Difusión de datos sin boletín"
+        assert revised["publication_verification"] == "fuera_de_alcance"
+        assert "publication_evidence_url" not in revised and "publication_confirmed" not in revised
+
+
+def test_calendar_requires_matching_explicit_pdf_and_discards_incompatible_old_proof():
+    scheduled = date(2026, 11, 26)
+    root = "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/"
+    correct = root + "IOE2026_11.pdf"
+    wrong = root + "another_october_product.pdf"
+    event = dict(indicator="DESOCUP", institution="INEGI", date=scheduled,
+                 period="Octubre de 2026", product="ENOE mensual", url=correct)
+    key = b._calendar_identity("DESOCUP", "2026-11-26", "Octubre de 2026", "ENOE mensual", "INEGI")
+    prior = {key: {"publication_confirmed":True, "publication_evidence_url":wrong,
+                   "publication_evidence_date":scheduled.isoformat()}}
+    metadata = {"boletin_validado":True, "periodo_boletin":"Oct 26",
+                "fecha_publicacion":scheduled.isoformat()}
+    for evidence in [{}, {"DESOCUP":{**metadata, "url_boletin_oficial":wrong}}]:
+        result = b._publication_evidence(event, scheduled, evidence, prior)
+        assert result == {"publication_confirmed":False}
+    result = b._publication_evidence(event, scheduled,
+             {"DESOCUP":{**metadata, "url_boletin_oficial":correct}}, prior)
+    assert result == {"publication_confirmed":True, "publication_evidence_url":correct,
+                      "publication_evidence_date":"2026-11-26"}

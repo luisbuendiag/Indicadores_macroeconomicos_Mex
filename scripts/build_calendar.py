@@ -145,15 +145,25 @@ def _publication_evidence(ev: dict, as_of: date, indicators: dict, prior: dict) 
         return {"publication_verification": "fuera_de_alcance"} if institution in (
             "Banco de México", "Secretaría de Economía"
         ) else {}
+    # La ficha acredita el producto principal. Una difusión de datos sin
+    # boletín o un producto secundario conserva su fecha propia de calendario,
+    # pero no puede heredar el PDF de la ficha, ni una prueba persistida.
+    if ev.get("usar_para_frescura") is False:
+        return {"publication_verification": "fuera_de_alcance"}
     key = _calendar_identity(ev.get("indicator"), scheduled.isoformat(), ev.get("period"),
                              ev.get("product"), ev.get("institution"))
     old = prior.get(key)
+    event_url = ev.get("url")
+    explicit_pdf = event_url if _direct_inegi_pdf(event_url) else None
     # Evaluar el día y el siguiente incluso si se omitió una corrida. Las filas ya
     # observadas conservan su verificación sin reclasificar todo el histórico.
     if (as_of - scheduled).days > 1 and old is None:
         return {}
     result = old or {"publication_confirmed": False}
-    if result["publication_confirmed"] and date.fromisoformat(result["publication_evidence_date"]) > as_of:
+    if result["publication_confirmed"] and (
+        date.fromisoformat(result["publication_evidence_date"]) > as_of
+        or (explicit_pdf and result["publication_evidence_url"] != explicit_pdf)
+    ):
         result = {"publication_confirmed": False}
     ind = indicators.get(ev.get("indicator")) or {}
     if ind.get("boletin_validado") is not True:
@@ -167,7 +177,7 @@ def _publication_evidence(ev: dict, as_of: date, indicators: dict, prior: dict) 
     if not same_period or is_quarter(period) != is_quarter(source_period) or same_period != period_to_ym(source_period):
         return result
     official = ind.get("url_boletin_oficial")
-    if not _direct_inegi_pdf(official):
+    if not _direct_inegi_pdf(official) or (explicit_pdf and official != explicit_pdf):
         return result
     stamp = ind.get("fecha_publicacion") or ""
     try:
