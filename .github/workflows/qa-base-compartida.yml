@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/qa-base-compartida.yml'
       - 'scripts/benchmark_shared_data.py'
+      - 'scripts/benchmark_shared_pibt.py'
 
 permissions:
   contents: read
@@ -27,6 +28,7 @@ jobs:
           qa="$(mktemp -d)"
           git worktree add --detach "$qa/directo" HEAD
           git worktree add --detach "$qa/compartido" HEAD
+          git worktree add --detach "$qa/atrasada" HEAD
           (cd "$qa/directo" && python scripts/benchmark_shared_data.py directo --report "$qa/direct.json")
           (cd "$qa/compartido" && python scripts/benchmark_shared_data.py compartido --report "$qa/shared.json")
           python scripts/benchmark_shared_data.py comparar \
@@ -34,3 +36,27 @@ jobs:
             --data-direct "$qa/directo/data/indicadores.json" \
             --data-shared "$qa/compartido/data/indicadores.json" \
             | tee -a "$GITHUB_STEP_SUMMARY"
+
+          (cd "$qa/atrasada" && python scripts/benchmark_shared_data.py compartido --simular-atraso-fix --report "$qa/late.json")
+          echo 'Atraso simulado del FIX en el historial comercial:' | tee -a "$GITHUB_STEP_SUMMARY"
+          python scripts/benchmark_shared_data.py comparar \
+            --direct "$qa/direct.json" --shared "$qa/late.json" \
+            --data-direct "$qa/directo/data/indicadores.json" \
+            --data-shared "$qa/atrasada/data/indicadores.json" \
+            | tee -a "$GITHUB_STEP_SUMMARY"
+
+  pibt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements.txt
+      - name: Medir fuentes directas de PIBT frente a la edición pública
+        env:
+          INEGI_TOKEN: ${{ secrets.INEGI_TOKEN }}
+        run: |
+          set -o pipefail
+          python scripts/benchmark_shared_pibt.py | tee -a "$GITHUB_STEP_SUMMARY"

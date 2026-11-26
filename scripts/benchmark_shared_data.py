@@ -18,7 +18,7 @@ KEYS = ("TIPOCAMBIO", "REMESAS")
 LOG = Path("data/update_log.json")
 
 
-def measure(mode):
+def measure(mode, *, retrasar_fix=False):
     initial = json.loads(Path(DATA).read_bytes())
     report = {"modo": mode}
     counts = Counter()
@@ -40,6 +40,12 @@ def measure(mode):
                 raise ValueError("La consulta directa no devolvió FIX y remesas")
         else:
             commercial, receipt = load_release()
+            if retrasar_fix:
+                fix = commercial["indicators"]["TIPOCAMBIO"]
+                local_cut = initial["indicators"]["TIPOCAMBIO"]["last_observation"]
+                fix["observations"] = [row for row in fix["observations"] if row["period"] < local_cut]
+                fix["last_observation"] = fix["observations"][-1]["period"]
+                report["atraso_simulado"] = "TIPOCAMBIO"
             health = json.loads(Path(HEALTH).read_bytes())
             if health.get("data_error") is not False:
                 raise ValueError("El comprobante institucional no acredita una consulta válida")
@@ -103,14 +109,27 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
     for cmd in ("directo", "compartido"):
-        sub.add_parser(cmd).add_argument("--report", type=Path, required=True)
+        cmd_parser = sub.add_parser(cmd)
+        cmd_parser.add_argument("--report", type=Path, required=True)
+        if cmd == "compartido":
+            cmd_parser.add_argument("--simular-atraso-fix", action="store_true")
     diff = sub.add_parser("comparar")
     for field in ("direct", "shared", "data-direct", "data-shared"):
         diff.add_argument(f"--{field}", type=Path, required=True)
     args = parser.parse_args()
     if args.command == "comparar":
         return compare(args)
-    args.report.write_text(json.dumps(measure(args.command), ensure_ascii=False) + "\n", encoding="utf-8")
+    report = measure(args.command, retrasar_fix=getattr(args, "simular_atraso_fix", False))
+    if report.get("atraso_simulado"):
+        decisions = report["decisiones"]
+        if (
+            decisions["TIPOCAMBIO"]["decision"] != "conservar"
+            or "atrasado" not in decisions["TIPOCAMBIO"]["motivo"]
+            or decisions["REMESAS"]["decision"] not in ("equivalente", "adoptar")
+            or report["solicitudes"].get("www.banxico.org.mx") != 1
+        ):
+            raise SystemExit("El respaldo no aisló correctamente el atraso del FIX")
+    args.report.write_text(json.dumps(report, ensure_ascii=False) + "\n", encoding="utf-8")
     return 0
 
 
