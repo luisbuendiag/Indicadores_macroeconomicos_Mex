@@ -71,3 +71,78 @@ test("Banxico fuera del verificador INEGI no equivale a un boletín confirmado o
   assert.equal(parsed.estatus, "publicado");
   assert.equal(parsed.situacion, "Fecha de calendario · consultar fuente");
 });
+
+// ENOE: la ficha no debe enlazar un boletín de un periodo distinto.
+import {readFileSync} from "node:fs";
+import vm from "node:vm";
+
+const app=readFileSync(new URL("../assets/js/app.js", import.meta.url),"utf8");
+function part(name) {
+  const i=app.indexOf("function " + name + "(");
+  if(i<0) return "";
+  return app.slice(i,app.indexOf("\n}",i)+2);
+}
+const CAL="https://www.inegi.org.mx/app/saladeprensa/calendario/";
+const SEP="https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_10.pdf";
+function ofSept() {
+  return {key:"DESOCUP",fuente:{nombre:"INEGI"},last_observation:"Sep 26",periodo_referencia:"Sep 26",
+    fecha_publicacion:"22-oct-2026",url_boletin_oficial:SEP,periodo_boletin:"Sep 26",
+    boletin_validado:true,
+    enoe_mensual:{periodo:"Sep 26",fuente:SEP,boletin:"634/26",publicado_en:"2026-10-22"}};
+}
+function replay(ind) {
+  let opened;
+  const context={
+    ind, el:()=>({children:[],querySelector(){return null;},append(...nodes){this.children.push(...nodes);}}),
+    productBtn:(label,icon,enabled,title,click)=>({label,enabled,title,click,setAttribute(){}}),
+    openBoletin:url=>{opened=url;},
+    document:{},
+  };
+  const result=vm.runInNewContext(["verifiedMonthlyEnoe","productToolbar","fechaPubDato"].map(part).join("\n")
+    + "\n[productToolbar(ind).children[0],fechaPubDato(ind)]",context);
+  result[0].click();
+  return {label:result[0].label,title:result[0].title,date:result[1],opened};
+}
+test("September authentic monthly bulletin remains accessible with its publication day",()=>{
+  const r=replay(ofSept());
+  assert.equal(r.opened,SEP); assert.equal(r.label,"Boletín oficial");
+  assert.match(r.date,/\b22\b.*oct.*2026/i);
+});
+test("October observation + September PDF and day render neither as current",()=>{
+  const r=replay({...ofSept(),last_observation:"Oct 26",periodo_referencia:"Oct 26",boletin_validado:false});
+  assert.equal(r.opened,CAL); assert.equal(r.label,"Calendario INEGI"); assert.equal(r.date,null);
+});
+test("Even a discovery flag cannot override a conflicting monthly parser",()=>{
+  const r=replay({...ofSept(),last_observation:"Oct 26",periodo_referencia:"Oct 26",periodo_boletin:"Oct 26",boletin_validado:true});
+  assert.equal(r.opened,CAL); assert.equal(r.date,null);
+});
+test("Missing supplement and conflicting URLs degrade to listing",()=>{
+  for(const changes of [{enoe_mensual:undefined},{url_boletin_oficial:SEP.replace("_10","_11")}]){
+    const r=replay({...ofSept(),...changes});
+    assert.equal(r.opened,CAL); assert.equal(r.date,null);
+  }
+});
+test("Quarterly, external, query-string and invalid calendar-date data do not qualify",()=>{
+  const q=SEP.replace("/iooe/IOE2026_10","/enoe/enoe2026_11");
+  for(const fuente of [q,SEP.replace("www.inegi.org.mx","otra.example"),SEP+"?x=1"]){
+    const r=replay({...ofSept(),url_boletin_oficial:fuente,enoe_mensual:{...ofSept().enoe_mensual,fuente}});
+    assert.equal(r.opened,CAL); assert.equal(r.date,null);
+  }
+  const r=replay({...ofSept(),enoe_mensual:{...ofSept().enoe_mensual,publicado_en:"2026-02-30"}});
+  assert.equal(r.opened,CAL); assert.equal(r.date,null);
+});
+test("Non-ENOE source and release-date behavior unchanged",()=>{
+  const url="https://www.banxico.org.mx/";
+  const r=replay({key:"FIX",fuente:{nombre:"Banco de México"},url_fuente_oficial:url,fecha_publicacion:"25-nov-2026"});
+  assert.equal(r.opened,url);assert.equal(r.date,"25-nov-2026");
+  const inegi=replay({key:"IMAI",fuente:{nombre:"INEGI"},url_boletin_oficial:SEP,fecha_publicacion:"22-oct-2026"});
+  assert.equal(inegi.opened,SEP);assert.equal(inegi.date,"22-oct-2026");
+});
+
+test("October using its verified bulletin restores document link and correct local calendar day",()=>{
+ const url=SEP.replace("_10.pdf","_11.pdf");
+ const r=replay({...ofSept(),last_observation:"Oct 26",periodo_referencia:"Oct 26",
+     url_boletin_oficial:url,boletin_validado:true,
+     enoe_mensual:{periodo:"Oct 26",fuente:url,boletin:"738/26",publicado_en:"2026-11-26"}});
+ assert.equal(r.opened,url); assert.equal(r.label,"Boletín oficial");assert.match(r.date,/\b26\b.*nov.*2026/i);
+});

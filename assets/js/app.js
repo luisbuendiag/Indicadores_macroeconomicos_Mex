@@ -141,6 +141,26 @@ function buildIedRanking(data) {
   return block;
 }
 
+// La ficha ENOE mensual usa el metadato del parser del documento, no la
+// fecha o el enlace que el descubridor pudo heredar de otra observación.
+function verifiedMonthlyEnoe(ind) {
+  const m = ind.enoe_mensual;
+  if (!m || !ind.last_observation || m.periodo !== ind.last_observation ||
+      m.fuente !== ind.url_boletin_oficial || typeof m.fuente !== "string" ||
+      !/^https:\/\/www\.inegi\.org\.mx\/contenidos\/saladeprensa\/boletines\/(\d{4})\/iooe\/IOE\1_(0[1-9]|1[0-2])\.pdf$/i.test(m.fuente) ||
+      !/^\d+\/\d{2}$/.test(m.boletin || "") ||
+      !/^\d{4}-\d{2}-\d{2}$/.test(m.publicado_en || "")) return null;
+  const date = new Date(m.publicado_en + "T00:00:00Z");
+  if (!Number.isFinite(+date) || date.toISOString().slice(0, 10) !== m.publicado_en) return null;
+  return {
+    url: m.fuente,
+    // Evita que la zona local convierta medianoche UTC en el día anterior.
+    date: new Intl.DateTimeFormat("es-MX", {
+      day: "numeric", month: "short", year: "numeric", timeZone: "UTC",
+    }).format(date),
+  };
+}
+
 function productToolbar(ind) {
   const bar = el("div", { class: "product-bar", "data-key": ind.key });
 
@@ -151,7 +171,14 @@ function productToolbar(ind) {
   const CALENDARIO_PRENSA = "https://www.inegi.org.mx/app/saladeprensa/calendario/";
   let boletinUrl = null;
   let boletinTitle = "Abrir último boletín oficial";
-  if (esInegi) {
+  let boletinLabel = ind.boletin_label || "Boletín oficial";
+  if (ind.key === "DESOCUP") {
+    const verified = verifiedMonthlyEnoe(ind);
+    boletinUrl = verified?.url || CALENDARIO_PRENSA;
+    boletinLabel = verified ? "Boletín oficial" : "Calendario INEGI";
+    boletinTitle = verified ? "Abrir boletín mensual verificado del INEGI"
+      : "Boletín mensual de este periodo aún no verificado; abrir calendario oficial del INEGI";
+  } else if (esInegi) {
     boletinUrl = ind.url_boletin_oficial || CALENDARIO_PRENSA || ind.url_fuente_oficial || (ind.fuente && ind.fuente.link) || null;
     if (boletinUrl === CALENDARIO_PRENSA) {
       boletinTitle = "Abrir publicaciones oficiales del INEGI";
@@ -179,7 +206,7 @@ function productToolbar(ind) {
     : (ind.xlsx_causa || "Excel individual no generado");
 
   bar.append(
-    productBtn(ind.boletin_label || "Boletín oficial", "", boletinEnabled, boletinTitle, () => openBoletin(boletinUrl), "boletin"),
+    productBtn(boletinLabel, "", boletinEnabled, boletinTitle, () => openBoletin(boletinUrl), "boletin"),
     productBtn("Nota Análisis Indicador", "↓", notaReady, notaTitle, () => downloadProduct(notaUrl(ind), `${ind.key}_nota.docx`), "nota"),
     productBtn("Excel", "↓", xlsxReady, xlsxTitle, () => downloadProduct(xlsxUrl(ind), `${ind.key}_datos.xlsx`), "excel")
   );
@@ -471,6 +498,7 @@ function indicatorToolbar(key) {
 
 // Fecha exacta de publicación del dato (solo si no es una descripción de rezago).
 function fechaPubDato(ind) {
+  if (ind.key === "DESOCUP") return verifiedMonthlyEnoe(ind)?.date || null;
   const v = ind.fecha_publicacion || "";
   return (v && !/aproximad/i.test(v)) ? v : null;
 }
