@@ -18,11 +18,14 @@ export function integers(text){
  if(found.length!==1)fail('Enteros ambiguos o diferencia poblacional incompatible.');return found[0];
 }
 function population(b,labels,ids,groups=false){
- const ms=[...b.matchAll(/^(.+?)\s+((?:-?\d+\s+)+)(\d+\.\d)\s+(\d+\.\d)(?:\s+(-?\d+\.\d))?\s*$/gm)],expected=groups?Array.from({length:3},(_,g)=>labels.map((l,i)=>g&&i===0?(g===1?'Mujeres':'Hombres'):l)).flat():labels;
+ const ms=[...b.matchAll(/^(.+?)\s+((?:-?\d+\s+)+)(\d+\.\d)\s+(100\.00|\d+\.\d)(?:\s+(-?\d+\.\d))?\s*$/gm)],expected=groups?Array.from({length:3},(_,g)=>labels.map((l,i)=>g&&i===0?(g===1?'Mujeres':'Hombres'):l)).flat():labels;
  if(ms.length!==expected.length)fail('Número de filas poblacionales incompatible.');
  return ms.map((m,i)=>{
   if(m[1].replace(/\d+\//g,'').trim()!==expected[i])fail('Identidad u orden poblacional incompatible: '+expected[i]);
-  const v=integers(m[2]),r={id:ids[i%ids.length],group:groups?['total','women','men'][Math.floor(i/ids.length)]:'total',label:expected[i],previous:v[0],current:v[1],difference:v[2],relative_previous:+m[3],relative_current:+m[4],relative_difference:m[5]==null?null:+m[5],series:'original'};
+  const id=ids[i%ids.length];
+  // Octubre 2026, cuadro 2: sólo el total de ingresos imprime 100.00.
+  if(m[4]==='100.00'&&(groups||id!=='income_total'||m[3]!=='100.0'||m[5]!=null))fail('Precisión relativa inesperada: '+id);
+  const v=integers(m[2]),r={id,group:groups?['total','women','men'][Math.floor(i/ids.length)]:'total',label:expected[i],previous:v[0],current:v[1],difference:v[2],relative_previous:+m[3],relative_current:+m[4],relative_difference:m[5]==null?null:+m[5],series:'original'};
   if([r.relative_previous,r.relative_current].some(v=>v<0||v>100))fail('Porcentaje poblacional inválido.');return r;
  });
 }
