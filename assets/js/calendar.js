@@ -145,11 +145,12 @@ export function normalizeEvent(e) {
     nombre_corto: (e.producto || e.product || "").includes("trimestrales") ? "Resultados trimestrales" :
       (e.producto || e.product || "").includes("sin boletín") ? "Datos sin boletín" : (SHORT_LABELS[clave] || LABELS[clave] || clave),
     situacion: publicationSituation(e),
-    estatus: e.estatus || e.status || "",
+    estatus: e.publication_confirmed === false && (e.estatus || e.status) === "publicado"
+      ? "sin_confirmar" : (e.estatus || e.status || ""),
     source: src,
     institucion: e.institucion || e.institution || src,
     categoria: cat,
-    url_boletin: e.url_boletin || e.url || "",
+    url_boletin: e.publication_evidence_url || e.url_boletin || e.url || "",
     comentario: e.comentario || e.notes || "",
     deliverables: Array.isArray(e.deliverables) ? e.deliverables : [],
     type: isRule ? "rule" : (e.type || "event"),
@@ -207,6 +208,7 @@ export function statusLabel(st) {
   if (st === "publicado") return "Publicado";
   if (st === "proximo" || st === "próximo") return "Próxima publicación";
   if (st === "pendiente") return "Pendiente";
+  if (st === "sin_confirmar") return "Publicación sin confirmar";
   if (st === "no_anunciada") return "Fecha oficial no anunciada";
   if (st === "evento") return "Decisión / anuncio";
   if (st === "reprogramado") return "Reprogramado";
@@ -217,7 +219,7 @@ export function statusLabel(st) {
 export function statusClass(st) {
   const s = (st || "").toString().toLowerCase().trim();
   if (["publicado"].includes(s)) return "publicado";
-  if (["proximo", "próximo", "pendiente"].includes(s)) return "próximo";
+  if (["proximo", "próximo", "pendiente", "sin_confirmar"].includes(s)) return "próximo";
   if (["no_anunciada"].includes(s)) return "no_anunciada";
   if (["evento"].includes(s)) return "evento";
   if (["reprogramado"].includes(s)) return "reprogramado";
@@ -496,7 +498,9 @@ function renderHighlights(ctx) {
         el("span", { class: "cal-row-date" }, shortDate(c.fecha_iso)),
         el("div", { class: "cal-row-main" },
           el("span", { class: "cal-row-title" }, c.indicador),
-          c.periodo_referencia ? el("span", { class: "cal-row-period" }, c.periodo_referencia) : null
+          c.periodo_referencia ? el("span", { class: "cal-row-period" }, c.periodo_referencia) : null,
+          c.raw.publication_verification === "fuera_de_alcance"
+            ? el("span", { class: "cal-row-period" }, "Fecha de calendario · consultar fuente") : null
         ),
         actions
       );
@@ -792,6 +796,8 @@ export function publicationSituation(e) {
   const d = e.fecha_iso || e.publication_date || "";
   const today = new Date().toLocaleDateString("en-CA", {timeZone:"America/Mexico_City"});
   if (confirmed) return "Publicación confirmada";
+  if (e.publication_confirmed === false) return "Fecha oficial · boletín aún sin confirmar";
+  if (e.publication_verification === "fuera_de_alcance") return "Fecha de calendario · consultar fuente";
   if (!d || d === "9999-12-31") return "Fecha por anunciar";
   return d < today ? "Fecha transcurrida · consultar fuente" : "Programada";
 }

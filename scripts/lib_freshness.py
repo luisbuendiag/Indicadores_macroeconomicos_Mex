@@ -17,6 +17,7 @@ import calendar
 import json
 import re
 from datetime import date, datetime, time, timedelta
+from math import isfinite
 from pathlib import Path
 from typing import Any
 
@@ -530,6 +531,28 @@ def _resolve_pub_prox(
 
     items = [i for i in items if i.get("usar_para_frescura", True)]
 
+    if key == "IED" and ind and ind.get("corte_de_comunicado"):
+        # El acumulado nacional tiene su propia serie. Reconocer el periodo
+        # del comunicado sólo cuando el expediente de calendario concuerda.
+        ultimo = (ind.get("observations_acumulado") or [{}])[-1]
+        values = ultimo.get("values") or []
+        corte_ym = _period_to_ym_flexible(ultimo.get("quarter"))
+        total = values[0] if values else None
+        dashboard_ym = _period_to_ym_flexible(ind.get("last_observation"))
+        if (
+            type(total) in (int, float) and isfinite(total)
+            and corte_ym and corte_ym == dashboard_ym
+            and any(
+                i.get("estatus") == "publicado"
+                and i.get("alcance") == "acumulado_nacional"
+                and i.get("url_boletin") == ind.get("url_boletin_oficial")
+                and _period_to_ym_flexible(i.get("periodo_referencia")) == corte_ym
+                and i.get("fecha_iso") and date.fromisoformat(i["fecha_iso"]) <= as_of
+                for i in items
+            )
+        ):
+            obs_yms.add(corte_ym)
+
     pub = None
     if obs_yms:
         for it in reversed(items):
@@ -684,6 +707,16 @@ def compute_state(
         motivo = (
             f"El periodo esperado es {expected_period}, "
             f"pero el dashboard aún muestra {dashboard_period_clean}."
+        )
+    elif (compara == 0 and key == "IED" and (ind or {}).get("corte_de_comunicado")
+          and (pub or {}).get("alcance") == "acumulado_nacional"):
+        estado = ESTADOS["ACTUALIZADO"]
+        periodo_acumulado = (ind.get("observations_acumulado") or [{}])[-1].get("period_acumulado")
+        motivo = (
+            f"Acumulado nacional {periodo_acumulado} vigente según el comunicado de la "
+            f"Secretaría de Economía del {pub['fecha_publicacion']}. La comparación anual "
+            "usa la cifra originalmente publicada. El flujo trimestral exclusivo y el "
+            "ranking estatal de este corte no están disponibles en la fuente estructurada."
         )
     elif compara == 0:
         estado = ESTADOS["ACTUALIZADO"]
