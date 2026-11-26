@@ -148,7 +148,8 @@ def test_boton_nota_descarga_docx_en_frontend():
     directa vía atributo download (sin preview ni visor externo)."""
     src = (ROOT / "assets" / "js" / "app.js").read_text(encoding="utf-8")
     assert "notaReady = !!ind.nota_disponible" in src
-    assert 'productBtn("Nota Análisis Indicador"' in src
+    assert 'let notaLabel = "Nota Análisis Indicador"' in src
+    assert 'productBtn(notaLabel, "↓", notaReady, notaTitle' in src
     assert "a.download = fallbackName" in src
     assert "downloads/indicadores/${ind.key}/nota/${ind.key}_nota.docx" in src
     # El boletín y la nota son productos distintos: rutas separadas.
