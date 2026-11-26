@@ -45,6 +45,8 @@ def test_conserva_evento_oficial_existente_no_duplica():
     (PUB,{"numero_boletin":"739/25"}),
     (PUB,{"periodo_boletin":"4T-26"}),
     (PUB,{"last_observation":"Sep 26"}),
+    (PUB,{"last_observation":"4T-26"}),
+    (PUB,{"last_observation":"Cuarto trimestre de 2026"}),
     (PUB,{"fecha_publicacion":"28 de octubre de 2026"}),
     (PUB,{"fecha_publicacion":"fecha no verificable"}),
     (PUB,{"url_boletin_oficial":GENERIC}),
@@ -55,3 +57,17 @@ def test_no_crea_evento_si_fecha_pdf_o_periodo_no_corresponden(as_of,invalid):
     found=[dict(SEP)]
     b._supplement_current_imoam(found,as_of,{"IMOAM":{**SNAPSHOT,**invalid}})
     assert found==[SEP]
+
+@pytest.mark.parametrize(("frequency","period"),[
+    ("Trimestral","Octubre de 2026"),
+    ("Trimestral","4T-26"),
+    ("Mensual","4T-26"),
+    ("Mensual","Cuarto trimestre de 2026"),
+])
+def test_producto_de_otra_frecuencia_no_suprime_evento_mensual(frequency,period):
+    conflicting={**SEP,"date":PUB,"period":period,"frequency":frequency}
+    found=[dict(SEP),conflicting]
+    b._supplement_current_imoam(found,PUB,{"IMOAM":SNAPSHOT})
+    assert len(found)==3
+    assert found[1]==conflicting and found[2]["period"]=="Oct 26"
+    assert found[2]["frequency"]=="Mensual" and found[2]["url"]==PDF

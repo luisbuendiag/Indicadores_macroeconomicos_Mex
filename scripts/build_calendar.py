@@ -203,7 +203,9 @@ def _supplement_current_imoam(events: list[dict], as_of: date, indicators: dict)
     if not isinstance(period, str) or not re.fullmatch(r"(?:Ene|Feb|Mar|Abr|May|Jun|Jul|Ago|Sep|Oct|Nov|Dic) [0-9]{2}", period):
         return
     reference = period_to_ym(period)
-    if not reference or reference != period_to_ym(ind.get("last_observation")):
+    if not reference or ind.get("last_observation") != period:
+        # La ficha IMOAM usa la etiqueta mensual canónica; 4T-26 también
+        # normaliza a octubre, pero no es la observación acreditada por el PDF.
         return
     stamp = ind.get("fecha_publicacion")
     if not isinstance(stamp, str):
@@ -224,7 +226,10 @@ def _supplement_current_imoam(events: list[dict], as_of: date, indicators: dict)
     if any(
         row.get("indicator") == "IMOAM" and row.get("institution") == "INEGI"
         and row.get("date") and row.get("usar_para_frescura", True)
-        and period_to_ym(row.get("period")) == reference
+        and row.get("frequency") == "Mensual"
+        and isinstance(row.get("period"), str)
+        and not re.search(r"trimestre|^\s*[1-4]\s*T", row["period"], re.I)
+        and period_to_ym(row["period"]) == reference
         for row in events
     ):
         return
