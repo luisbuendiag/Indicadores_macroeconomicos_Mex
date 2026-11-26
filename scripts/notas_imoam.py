@@ -60,7 +60,8 @@ def context_from_pages(pages: list[str]) -> dict:
         return m
     coverage = required(r'En\s+(\d+(?:[.,]\d+)?)\s*%\s+de las ocasiones', history)
     start = required(r'comenzó a calcularse en\s+(\w+) de (\d{4})', history)
-    window = required(r'entre\s+(\w+) de (\d{4}) y\s+(\w+) de (\d{4})', history)
+    # La fecha final puede quedar partida entre dos líneas del boletín.
+    window = required(r'entre\s+(\w+)\s+de\s+(\d{4})\s+y\s+(\w+)\s+de\s+(\d{4})', history)
     ahead = required(r'alrededor de\s+(\d+)\s+días antes', method)
     lag = required(r'alrededor de\s+(\d+)\s+días después', method)
     unit = required(r'Unidad de observación\s+(Empresa formal[^\n]+)', method)

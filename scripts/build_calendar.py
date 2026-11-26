@@ -22,6 +22,8 @@ import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit
+from zoneinfo import ZoneInfo
 
 import lib_data as L
 from lib_freshness import period_to_ym
@@ -60,8 +62,14 @@ def parse_fecha(txt: str) -> date:
     return date(year, month, day)
 
 
+def mexico_calendar_date() -> date:
+    """Día civil de la publicación oficial, independientemente del runner."""
+    return datetime.now(ZoneInfo("America/Mexico_City")).date()
+
+
 def data_as_of() -> date:
-    """Fecha de referencia: última actualización de los datos publicados."""
+    """Fecha de los datos, sin anticipar el día civil de México."""
+    local_today = mexico_calendar_date()
     try:
         payload = json.loads((DATA_DIR / "indicadores.json").read_text("utf-8"))
         dates = [
@@ -70,10 +78,106 @@ def data_as_of() -> date:
             if ind.get("last_updated")
         ]
         if dates:
-            return date.fromisoformat(max(dates))
+            return min(date.fromisoformat(max(dates)), local_today)
     except Exception:
         pass
-    return date.today()
+    return local_today
+
+
+def _calendar_identity(indicator, date_iso, period, product, institution):
+    return (indicator, date_iso, period or "", product or "", institution or "")
+
+
+def _prior_publication_evidence(path: Path) -> dict:
+    try:
+        rows = json.loads(path.read_text(encoding="utf-8")).get("events", [])
+    except (OSError, ValueError, AttributeError):
+        return {}
+    if not isinstance(rows, list):
+        return {}
+    out = {}
+    for row in rows:
+        if not isinstance(row, dict) or type(row.get("publication_confirmed")) is not bool:
+            continue
+        k = _calendar_identity(row.get("indicator"), row.get("publication_date"),
+                               row.get("reference_period"), row.get("product"), row.get("institution"))
+        if any(not isinstance(v, (str, type(None))) for v in k):
+            continue
+        info = {"publication_confirmed": row["publication_confirmed"]}
+        if info["publication_confirmed"]:
+            url = row.get("publication_evidence_url")
+            if not _direct_inegi_pdf(url):
+                continue
+            try:
+                scheduled = date.fromisoformat(row["publication_date"])
+                corroborated = date.fromisoformat(row.get("publication_evidence_date") or row["publication_date"])
+            except (TypeError, KeyError, ValueError):
+                continue
+            if corroborated < scheduled:
+                continue
+            info.update(publication_evidence_url=url, publication_evidence_date=corroborated.isoformat())
+        out[k] = info
+    return out
+
+
+def _direct_inegi_pdf(official) -> bool:
+    if not isinstance(official, str):
+        return False
+    try:
+        proof = urlsplit(official)
+    except ValueError:
+        return False
+    return bool((proof.scheme, proof.netloc) == ("https", "www.inegi.org.mx")
+                and not (proof.query or proof.fragment)
+                and re.fullmatch(r"/contenidos/saladeprensa/boletines/(?:[A-Za-z0-9_-]+/)+[A-Za-z0-9_.-]+[.]pdf", proof.path, re.I))
+
+
+def _publication_evidence(ev: dict, as_of: date, indicators: dict, prior: dict) -> dict:
+    """Conservar la verificación observada; una fecha transcurrida no confirma el archivo."""
+    scheduled = ev.get("date")
+    if not scheduled or scheduled > as_of or ev.get("is_evento") or ev.get("no_anunciada") or ev.get("es_regla"):
+        return {}
+    # Solo INEGI dispone aquí de una validación por indicador, fecha, periodo y
+    # PDF. Una fecha de Banxico/SE no es un fallo de esa validación ni un PDF
+    # en el calendario es, por sí solo, prueba de su fecha o referencia.
+    institution = ev.get("institution")
+    if institution != "INEGI":
+        return {"publication_verification": "fuera_de_alcance"} if institution in (
+            "Banco de México", "Secretaría de Economía"
+        ) else {}
+    key = _calendar_identity(ev.get("indicator"), scheduled.isoformat(), ev.get("period"),
+                             ev.get("product"), ev.get("institution"))
+    old = prior.get(key)
+    # Evaluar el día y el siguiente incluso si se omitió una corrida. Las filas ya
+    # observadas conservan su verificación sin reclasificar todo el histórico.
+    if (as_of - scheduled).days > 1 and old is None:
+        return {}
+    result = old or {"publication_confirmed": False}
+    if result["publication_confirmed"] and date.fromisoformat(result["publication_evidence_date"]) > as_of:
+        result = {"publication_confirmed": False}
+    ind = indicators.get(ev.get("indicator")) or {}
+    if ind.get("boletin_validado") is not True:
+        return result
+    period = ev.get("period") or ""
+    source_period = ind.get("periodo_boletin") or ""
+    def is_quarter(label: str) -> bool:
+        return bool(re.search(r"trimestre|^[1-4]T(?:[- ]|\d)", label, re.IGNORECASE))
+
+    same_period = period_to_ym(period)
+    if not same_period or is_quarter(period) != is_quarter(source_period) or same_period != period_to_ym(source_period):
+        return result
+    official = ind.get("url_boletin_oficial")
+    if not _direct_inegi_pdf(official):
+        return result
+    stamp = ind.get("fecha_publicacion") or ""
+    try:
+        official_date = date.fromisoformat(stamp) if re.fullmatch(r"\d{4}-\d{2}-\d{2}", stamp) else parse_fecha(stamp.lower())
+    except (ValueError, IndexError, KeyError):
+        return result
+    if not official_date or not scheduled <= official_date <= as_of:
+        return result
+    return {"publication_confirmed": True, "publication_evidence_url": official,
+            "publication_evidence_date": official_date.isoformat()}
 
 
 def _load_map() -> dict:
@@ -224,7 +328,8 @@ def _map_se_events(raw_events: list[dict], cfg: dict) -> list[dict]:
         else:
             events.append({
                 **ev,
-                "product": meta.get("product", ev.get("program", "IED")),
+                "product": (ev.get("program") if ev.get("alcance") == "acumulado_nacional"
+                            else meta.get("product", ev.get("program", "IED"))),
                 "frequency": meta.get("frequency", "Trimestral"),
                 "category": meta.get("category", "Sector externo"),
                 "institution": meta.get("institution", "Secretaría de Economía"),
@@ -586,6 +691,7 @@ def _to_new_event(ev: dict, as_of: date) -> dict:
         "anio": d.year if d else None,
         "mes": d.month if d else None,
         "fecha_iso": d.isoformat() if d else None,
+        **ev.get("verification", {}),
     }
 
 
@@ -627,8 +733,11 @@ def _to_legacy_item(ev: dict, as_of: date) -> dict:
         "mes": mes,
         "periodo_referencia": ev.get("period") or ("Por determinar" if ev.get("es_regla") else ("Próximo periodo" if ev.get("no_anunciada") else "")),
         "estatus": status,
+        **ev.get("verification", {}),
         "url_boletin": ev.get("url") or _sala_prensa_url(ev.get("indicator")),
     }
+    if ev.get("alcance"):
+        item["alcance"] = ev["alcance"]
     if ev.get("comentario"):
         item["comentario"] = ev["comentario"]
     return item
@@ -665,7 +774,7 @@ def _build_new_payload(events: list[dict], rules: list[dict], sources_status: di
         key=lambda x: (x["publication_date"] or "9999-12-31", x["indicator"]),
     )[:20]
     recent = sorted(
-        [e for e in new_events if e["status"] == "publicado"],
+        [e for e in new_events if e["status"] == "publicado" and e.get("publication_confirmed") is not False],
         key=lambda x: (x["publication_date"] or "", x["indicator"]),
         reverse=True,
     )[:20]
@@ -720,7 +829,7 @@ def _build_legacy_payload(events: list[dict], rules: list[dict], as_of: date, so
     }
 
 
-def build(as_of: date | None = None, offline: bool | None = None) -> dict:
+def build(as_of: date | None = None, offline: bool | None = None, *, indicators: dict | None = None) -> dict:
     """Construye el calendario legacy y, como efecto colateral, escribe ambos JSON.
 
     Devuelve el diccionario legacy para mantener compatibilidad con build_data.py.
@@ -731,6 +840,14 @@ def build(as_of: date | None = None, offline: bool | None = None) -> dict:
         offline = _under_pytest()
 
     events, rules, sources_status = _build_events(as_of, offline)
+    if indicators is None:
+        try:
+            indicators = json.loads((DATA_DIR / "indicadores.json").read_text("utf-8")).get("indicators", {})
+        except (OSError, ValueError):
+            indicators = {}
+    prior = _prior_publication_evidence(NEW_OUT)
+    for event in events:
+        event["verification"] = _publication_evidence(event, as_of, indicators, prior)
 
     new_payload = _build_new_payload(events, rules, sources_status, as_of)
     legacy_payload = _build_legacy_payload(events, rules, as_of, sources_status)

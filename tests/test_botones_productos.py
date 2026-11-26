@@ -79,7 +79,8 @@ def test_nota_disabled_cause():
     src = product_toolbar_source()
     # El texto visible cambió; preservar el contrato del archivo DOCX y la
     # habilitación independiente, no forzar una etiqueta comercial antigua.
-    assert 'productBtn("Nota Análisis Indicador"' in src
+    assert 'let notaLabel = "Nota Análisis Indicador"' in src
+    assert 'productBtn(notaLabel, "↓", notaReady, notaTitle' in src
     assert '${ind.key}_nota.docx' in src
     assert "downloadProduct(notaUrl(ind)" in src
     assert "Nota institucional en preparación" in src
