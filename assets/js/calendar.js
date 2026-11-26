@@ -498,7 +498,9 @@ function renderHighlights(ctx) {
         el("span", { class: "cal-row-date" }, shortDate(c.fecha_iso)),
         el("div", { class: "cal-row-main" },
           el("span", { class: "cal-row-title" }, c.indicador),
-          c.periodo_referencia ? el("span", { class: "cal-row-period" }, c.periodo_referencia) : null
+          c.periodo_referencia ? el("span", { class: "cal-row-period" }, c.periodo_referencia) : null,
+          c.raw.publication_verification === "fuera_de_alcance"
+            ? el("span", { class: "cal-row-period" }, "Fecha de calendario · consultar fuente") : null
         ),
         actions
       );
@@ -795,6 +797,7 @@ export function publicationSituation(e) {
   const today = new Date().toLocaleDateString("en-CA", {timeZone:"America/Mexico_City"});
   if (confirmed) return "Publicación confirmada";
   if (e.publication_confirmed === false) return "Fecha oficial · boletín aún sin confirmar";
+  if (e.publication_verification === "fuera_de_alcance") return "Fecha de calendario · consultar fuente";
   if (!d || d === "9999-12-31") return "Fecha por anunciar";
   return d < today ? "Fecha transcurrida · consultar fuente" : "Programada";
 }

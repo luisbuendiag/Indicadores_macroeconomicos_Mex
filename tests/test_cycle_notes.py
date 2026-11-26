@@ -1,4 +1,4 @@
-import ast,json,shutil
+import ast,hashlib,json,shutil
 from pathlib import Path
 from types import SimpleNamespace
 import pytest
@@ -81,11 +81,25 @@ def test_strict_source_allowlist(key):
     for bad in [url+'?x=evil',url+'#x',url.replace('www.inegi.org.mx','example.com'),url.replace('https:','http:'),url.replace(name+'2026','otro2026')]:assert not R.allowed(bad,key)
     assert not R.allowed(url,'EMIM')
 
-@pytest.mark.parametrize('case',['disabled','source_error','local_pdf','pause'])
+@pytest.mark.parametrize('case',['disabled','source_error','local_pdf','calendar_mismatch','pause'])
 def test_publication_preserves_previous_word(monkeypatch,tmp_path,case):
-    for name in ['data/indicadores.json','data/notas/estado.json','config/notas_automaticas.json']:
-        p=tmp_path/name;p.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(ROOT/name,p)
+    # The PDF fixture is the fixed SIC 679/26 edition, not the moving daily JSON.
+    publication = '4 de diciembre de 2025' if case == 'calendar_mismatch' else '4 de noviembre de 2026'
+    snapshot = {'indicators': {'SIC': {'key': 'SIC', 'last_observation': 'Ago 26',
+                'fecha_publicacion_oficial': publication,
+                'url_boletin_oficial': 'https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_11.pdf'}}}
+    (tmp_path/'data').mkdir()
+    config_path=tmp_path/'config/notas_automaticas.json'
+    config_path.parent.mkdir()
+    shutil.copyfile(ROOT/'config/notas_automaticas.json',config_path)
     dest=tmp_path/'downloads/indicadores/SIC/nota/SIC_nota.docx';dest.parent.mkdir(parents=True);dest.write_bytes(b'previous-word')
+    snapshot['indicators']['SIC']['nota']={'path':str(dest.relative_to(tmp_path))}
+    (tmp_path/'data/indicadores.json').write_text(json.dumps(snapshot))
+    notes_path=tmp_path/'data/notas/estado.json';notes_path.parent.mkdir()
+    previous={'periodo':'Jul 26','generated_at':'2026-10-01T12:00:00Z','source_sha256':'fixture',
+              'fingerprint':'previous-fixture','docx_sha256':hashlib.sha256(dest.read_bytes()).hexdigest()}
+    notes_path.write_text(json.dumps({'SIC':{'published':previous}}))
+    monkeypatch.setenv('NOTES_PILOT_ENABLED','true')
     cfg=json.loads((tmp_path/'config/notas_automaticas.json').read_text())
     if case=='disabled':
         cfg['enabled']=False;(tmp_path/'config/notas_automaticas.json').write_text(json.dumps(cfg))
@@ -95,7 +109,14 @@ def test_publication_preserves_previous_word(monkeypatch,tmp_path,case):
     elif case=='source_error':
         monkeypatch.setattr(R,'download',lambda *a:(_ for _ in ()).throw(ValueError('Fuente incorrecta')))
         assert R.run('SIC',tmp_path,True)['status']=='error'
+    elif case=='calendar_mismatch':
+        fixture(monkeypatch,'SIC')
+        monkeypatch.setattr(R,'download',lambda *a:b'fixture')
+        state=R.run('SIC',tmp_path,True)
+        assert state['status']=='error', state
+        assert 'Fecha del boletín distinta al calendario oficial' in state['message']
     else:
+        cfg['template_year']=2026
         cfg['auto_publish']=False;(tmp_path/'config/notas_automaticas.json').write_text(json.dumps(cfg))
         fixture(monkeypatch,'SIC');monkeypatch.setattr(R,'download',lambda *a:b'fixture')
         template=tmp_path/cfg['template'];template.parent.mkdir(parents=True);shutil.copyfile(ROOT/cfg['template'],template)
@@ -104,8 +125,10 @@ def test_publication_preserves_previous_word(monkeypatch,tmp_path,case):
         monkeypatch.setattr(R.V,'build',lambda *a:shutil.copyfile(template,a[-1]))
         monkeypatch.setattr(R.W,'render',lambda *a:(None,[1,2]));monkeypatch.setattr(R.V,'validate',lambda *a:None)
         monkeypatch.setattr(R.A,'publish',lambda *a:pytest.fail('Publicación deshabilitada'))
-        assert R.run('SIC',tmp_path,True)['status']=='validada_sin_publicar'
+        state=R.run('SIC',tmp_path,True)
+        assert state['status']=='validada_sin_publicar', state
     assert dest.read_bytes()==b'previous-word'
+    assert json.loads(notes_path.read_text())['SIC']['published']==previous
 
 def test_workflow_python_311_compatibility():
     for name in ['build_cycle_notes.py','notas_sic.py','notas_sic_word.py','notas_layout.py']:

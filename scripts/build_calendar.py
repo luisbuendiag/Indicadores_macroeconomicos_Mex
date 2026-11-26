@@ -137,6 +137,14 @@ def _publication_evidence(ev: dict, as_of: date, indicators: dict, prior: dict) 
     scheduled = ev.get("date")
     if not scheduled or scheduled > as_of or ev.get("is_evento") or ev.get("no_anunciada") or ev.get("es_regla"):
         return {}
+    # Solo INEGI dispone aquí de una validación por indicador, fecha, periodo y
+    # PDF. Una fecha de Banxico/SE no es un fallo de esa validación ni un PDF
+    # en el calendario es, por sí solo, prueba de su fecha o referencia.
+    institution = ev.get("institution")
+    if institution != "INEGI":
+        return {"publication_verification": "fuera_de_alcance"} if institution in (
+            "Banco de México", "Secretaría de Economía"
+        ) else {}
     key = _calendar_identity(ev.get("indicator"), scheduled.isoformat(), ev.get("period"),
                              ev.get("product"), ev.get("institution"))
     old = prior.get(key)

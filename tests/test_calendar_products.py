@@ -44,7 +44,7 @@ def test_runner_utc_does_not_publish_tomorrows_enoe_in_mexico(monkeypatch, tmp_p
     event = {
         "indicator": "DESOCUP", "date": date(2026, 11, 26), "period": "Octubre de 2026",
         "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-        "product": "ENOE · Indicadores mensuales de ocupación y empleo",
+        "product": "ENOE · Indicadores mensuales de ocupación y empleo", "institution": "INEGI",
     }
     monkeypatch.setattr(b, "_build_events", lambda *args: ([event], [], {}))
 
@@ -72,7 +72,7 @@ def test_same_day_date_is_not_bulletin_confirmation(monkeypatch, tmp_path):
     today = date(2026, 11, 26)
     official = "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf"
     generic = "https://www.inegi.org.mx/app/saladeprensa/calendario/"
-    event = {"indicator": "DESOCUP", "date": today, "period": "Octubre de 2026", "url": generic}
+    event = {"indicator": "DESOCUP", "date": today, "period": "Octubre de 2026", "url": generic, "institution": "INEGI"}
     matching = {"boletin_validado": True, "periodo_boletin": "Oct 26",
                 "url_boletin_oficial": official, "fecha_publicacion": "26 de noviembre de 2026"}
     monkeypatch.setattr(b, "DATA_DIR", tmp_path)
@@ -132,3 +132,41 @@ def test_pending_and_confirmed_publication_survive_later_build(monkeypatch, tmp_
     assert after["publication_evidence_url"]==pdf
     assert after["publication_evidence_date"]=="2026-11-29"
     check(date(2026,11,27), {}, False)
+
+
+def test_external_official_report_stays_visible_without_claiming_pdf_verification(monkeypatch, tmp_path):
+    import json
+
+    due = date(2026, 11, 3)
+    official = ("https://www.banxico.org.mx/publicaciones-y-prensa/remesas/"
+                "{29952C3D-1F6B-1CF3-9AD6-0DC1B3912796}.pdf")
+    events = [
+        dict(indicator="REMESAS", date=due, period="Septiembre de 2026",
+             product="Remesas", institution="Banco de México", url=official,
+             deliverables=[dict(format="pdf", url=official, type="comunicado")]),
+        dict(indicator="IED", date=due, period="Tercer trimestre de 2026",
+             product="IED", institution="Secretaría de Economía"),
+    ]
+    monkeypatch.setattr(b, "DATA_DIR", tmp_path)
+    monkeypatch.setattr(b, "NEW_OUT", tmp_path / "calendario.json")
+    monkeypatch.setattr(b, "LEGACY_OUT", tmp_path / "calendario_publicaciones.json")
+    monkeypatch.setattr(b, "_build_events", lambda *args: ([dict(x) for x in events], [], {}))
+    # Replicar un falso negativo persistido por la revisión anterior de #31.
+    b.NEW_OUT.write_text(json.dumps({"events": [
+        {"indicator": e["indicator"], "publication_date": due.isoformat(),
+         "reference_period": e["period"], "product": e["product"],
+         "institution": e["institution"], "publication_confirmed": False}
+        for e in events
+    ]}))
+    for day in [due, date(2026, 11, 4), date(2026, 11, 9)]:
+        legacy = b.build(as_of=day, offline=True, indicators={})
+        modern = json.loads(b.NEW_OUT.read_text())
+        assert {x["indicator"] for x in modern["recent"]} == {"REMESAS", "IED"}
+        for x in modern["events"] + modern["recent"] + legacy["items"]:
+            assert x["publication_verification"] == "fuera_de_alcance"
+            assert "publication_confirmed" not in x
+            assert x.get("status", x.get("estatus")) == "publicado"
+        remesas = next(x for x in modern["events"] if x["indicator"] == "REMESAS")
+        assert remesas["deliverables"][0]["url"] == official
+    assert b._publication_evidence({**events[0], "date": date(2026, 11, 10)},
+                                   due, {}, {}) == {}

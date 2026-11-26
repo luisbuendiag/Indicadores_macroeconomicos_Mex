@@ -62,3 +62,12 @@ test('La fecha oficial sin evidencia no se presenta como un boletín publicado',
   assert.equal(confirmed.situacion, 'Publicación confirmada');
   assert.equal(confirmed.url_boletin, proof);
 });
+
+test("Banxico fuera del verificador INEGI no equivale a un boletín confirmado o fallido", () => {
+  const parsed = normalizeEvent({
+    indicator: "REMESAS", status: "publicado", institution: "Banco de México",
+    publication_date: "2026-11-03", publication_verification: "fuera_de_alcance",
+  });
+  assert.equal(parsed.estatus, "publicado");
+  assert.equal(parsed.situacion, "Fecha de calendario · consultar fuente");
+});
