@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T16:17:11+00:00",
+  "generated_at": "2026-11-26T17:08:06+00:00",
   "as_of": "2026-11-26",
   "fuente": "Calendario oficial de difusión",
   "sources": {
@@ -17767,6 +17767,38 @@
       "publication_evidence_date": "2026-11-26"
     },
     {
+      "indicator": "IMOAM",
+      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "publication_date": "2026-11-26",
+      "publication_date_display": "26 de noviembre de 2026",
+      "reference_period": "Oct 26",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI · Boletín de indicador validado",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMOAM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_11.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_11.pdf",
+          "label": "Boletín de indicador",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-26",
+      "publication_confirmed": true,
+      "publication_evidence_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_11.pdf",
+      "publication_evidence_date": "2026-11-26"
+    },
+    {
       "indicator": "BCMM",
       "program": "Balanza Comercial de Mercancías de México. Información oportuna. Cifras preliminares",
       "product": "Balanza Comercial de Mercancías de México",
@@ -23512,6 +23544,38 @@
   ],
   "recent": [
     {
+      "indicator": "IMOAM",
+      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "publication_date": "2026-11-26",
+      "publication_date_display": "26 de noviembre de 2026",
+      "reference_period": "Oct 26",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI · Boletín de indicador validado",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMOAM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_11.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_11.pdf",
+          "label": "Boletín de indicador",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-26",
+      "publication_confirmed": true,
+      "publication_evidence_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_11.pdf",
+      "publication_evidence_date": "2026-11-26"
+    },
+    {
       "indicator": "DESOCUP",
       "program": "Encuesta Nacional de Ocupación y Empleo (ENOE), población de 15 años y más de edad. Indicadores de Ocupación y Empleo. Cifras definitivas",
       "product": "ENOE · Indicadores mensuales de ocupación y empleo",
@@ -24231,36 +24295,6 @@
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-04",
-      "publication_verification": "fuera_de_alcance"
-    },
-    {
-      "indicator": "REMESAS",
-      "program": "Remesas con el exterior, septiembre 2026",
-      "product": "Remesas con el exterior",
-      "publication_date": "2026-11-03",
-      "publication_date_display": "3 de noviembre de 2026",
-      "reference_period": "Septiembre 2026",
-      "frequency": "Mensual",
-      "status": "publicado",
-      "source": "Banco de México calendario",
-      "institution": "Banco de México",
-      "category": "Sector externo",
-      "sigla": "REMESAS",
-      "type": "event",
-      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{29952C3D-1F6B-1CF3-9AD6-0DC1B3912796}.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{29952C3D-1F6B-1CF3-9AD6-0DC1B3912796}.pdf",
-          "label": "Remesas con el exterior, septiembre 2026",
-          "size": null
-        }
-      ],
-      "comentario": null,
-      "anio": 2026,
-      "mes": 11,
-      "fecha_iso": "2026-11-03",
       "publication_verification": "fuera_de_alcance"
     }
   ],

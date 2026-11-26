@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-11-26T16:16:52+00:00",
+    "generated_at": "2026-11-26T17:07:44+00:00",
     "base_year": 2018,
     "default_window": "since_2018",
     "windows": [
@@ -10,7 +10,7 @@
       "max"
     ],
     "note": "Datos inicializados desde el dashboard legado; el pipeline los actualiza.",
-    "last_update_ct": "2026-11-26T10:16:52-06:00",
+    "last_update_ct": "2026-11-26T11:07:43-06:00",
     "periodo_referencia_reciente": {
       "period": "Oct 26",
       "period_long": "Oct 26"
@@ -236311,8 +236311,7 @@
       },
       "periodo_boletin": "Ago 26",
       "numero_boletin": "679/26",
-      "producto_boletin": "Sistema de Indicadores Cíclicos",
-      "boletin_validado": true
+      "producto_boletin": "Sistema de Indicadores Cíclicos"
     },
     "IMOAM": {
       "key": "IMOAM",
@@ -237016,12 +237015,12 @@
           "La variación se clasifica como favorable según la lectura económica del indicador."
         ]
       },
-      "periodo_referencia_oficial": "Sep 26",
-      "fecha_publicacion_oficial": "28 de octubre de 2026",
+      "periodo_referencia_oficial": "Oct 26",
+      "fecha_publicacion_oficial": "26 de noviembre de 2026",
       "proxima_publicacion": null,
-      "motivo_frescura": "El dashboard tiene Oct 26, que está adelantado al periodo esperado (Sep 26); se recomienda revisar el calendario.",
+      "motivo_frescura": "El periodo cargado (Oct 26) coincide con el último periodo esperado (Oct 26).",
       "url_fuente_oficial": "https://www.inegi.org.mx/investigacion/imoam/",
-      "fecha_ultima_publicacion": "28 de octubre de 2026",
+      "fecha_ultima_publicacion": "26 de noviembre de 2026",
       "regla_publicacion": null,
       "nota": {
         "available": true,
