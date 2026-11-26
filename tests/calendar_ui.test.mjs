@@ -94,14 +94,15 @@ function replay(ind) {
   let opened;
   const context={
     ind, el:()=>({children:[],querySelector(){return null;},append(...nodes){this.children.push(...nodes);}}),
-    productBtn:(label,icon,enabled,title,click)=>({label,enabled,title,click,setAttribute(){}}),
+    productBtn:(label,icon,enabled,title,click,kind)=>({label,enabled,title,click,kind,setAttribute(){}}),
     openBoletin:url=>{opened=url;},
     document:{},
   };
   const result=vm.runInNewContext(["verifiedMonthlyEnoe","productToolbar","fechaPubDato"].map(part).join("\n")
-    + "\n[productToolbar(ind).children[0],fechaPubDato(ind)]",context);
-  result[0].click();
-  return {label:result[0].label,title:result[0].title,date:result[1],opened};
+    + "\n[productToolbar(ind).children,fechaPubDato(ind)]",context);
+  const doc=result[0].find(n=>n.kind==="boletin"), note=result[0].find(n=>n.kind==="nota");
+  doc.click();
+  return {label:doc.label,title:doc.title,date:result[1],opened,note};
 }
 test("September authentic monthly bulletin remains accessible with its publication day",()=>{
   const r=replay(ofSept());
@@ -145,4 +146,22 @@ test("October using its verified bulletin restores document link and correct loc
      url_boletin_oficial:url,boletin_validado:true,
      enoe_mensual:{periodo:"Oct 26",fuente:url,boletin:"738/26",publicado_en:"2026-11-26"}});
  assert.equal(r.opened,url); assert.equal(r.label,"Boletín oficial");assert.match(r.date,/\b26\b.*nov.*2026/i);
+});
+
+
+test("ENOE labels a retained Word, unknown period, current Word and absent Word distinctly",()=>{
+ const split={...ofSept(),last_observation:"Oct 26",periodo_referencia:"Oct 26",nota_disponible:true};
+ const retained=replay({...split,nota:{periodo:"Sep 26"}}).note;
+ assert.equal(retained.label,"Nota anterior · Sep 26");
+ assert.equal(retained.enabled,true);
+ assert.match(retained.title,/nota de Oct 26 todavía no disponible/);
+ const unknown=replay(split).note;
+ assert.equal(unknown.label,"Nota · periodo sin verificar");
+ assert.doesNotMatch(unknown.title,/Oct 26/);
+ const current=replay({...split,nota:{periodo:"Oct 26"}}).note;
+ assert.equal(current.label,"Nota Análisis Indicador");
+ assert.match(current.title,/Oct 26/);
+ assert.equal(replay({...split,nota_disponible:false}).note.enabled,false);
+ const other=replay({...split,key:"IMOAM"}).note;
+ assert.equal(other.label,"Nota Análisis Indicador");
 });

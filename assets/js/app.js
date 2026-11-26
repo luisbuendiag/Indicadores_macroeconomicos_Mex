@@ -193,11 +193,29 @@ function productToolbar(ind) {
   }
   const boletinEnabled = !!boletinUrl;
 
-  // Nota institucional: habilitada sólo cuando existe el .docx vigente.
+  // La descarga anterior puede seguir disponible mientras se prepara la del periodo actual.
   const notaReady = !!ind.nota_disponible;
-  const notaTitle = notaReady
-    ? `Nota Análisis Indicador · ${ind.nota?.periodo || ind.periodo_referencia || ""}`
+  let notaLabel = "Nota Análisis Indicador";
+  let notaTitle = notaReady
+    ? "Descargar nota de análisis"
     : (ind.nota_causa || "Nota institucional en preparación");
+  if (notaReady) {
+    const notePeriod = ind.nota?.periodo || "";
+    if (ind.key === "DESOCUP") {
+      const verifiedPeriod = /^(Ene|Feb|Mar|Abr|May|Jun|Jul|Ago|Sep|Oct|Nov|Dic) \d{2}$/.test(notePeriod);
+      if (!verifiedPeriod || !ind.last_observation) {
+        notaLabel = "Nota · periodo sin verificar";
+        notaTitle = "Descargar nota disponible; su periodo no está verificado para esta ficha";
+      } else if (notePeriod !== ind.last_observation) {
+        notaLabel = "Nota anterior · " + notePeriod;
+        notaTitle = "Descargar nota anterior; nota de " + ind.last_observation + " todavía no disponible";
+      } else {
+        notaTitle += " · " + notePeriod;
+      }
+    } else {
+      notaTitle = "Nota Análisis Indicador · " + (notePeriod || ind.periodo_referencia || "");
+    }
+  }
 
   // Excel: activo si se generó el archivo individual.
   const xlsxReady = !!ind.xlsx_disponible;
@@ -207,7 +225,7 @@ function productToolbar(ind) {
 
   bar.append(
     productBtn(boletinLabel, "", boletinEnabled, boletinTitle, () => openBoletin(boletinUrl), "boletin"),
-    productBtn("Nota Análisis Indicador", "↓", notaReady, notaTitle, () => downloadProduct(notaUrl(ind), `${ind.key}_nota.docx`), "nota"),
+    productBtn(notaLabel, "↓", notaReady, notaTitle, () => downloadProduct(notaUrl(ind), `${ind.key}_nota.docx`), "nota"),
     productBtn("Excel", "↓", xlsxReady, xlsxTitle, () => downloadProduct(xlsxUrl(ind), `${ind.key}_datos.xlsx`), "excel")
   );
   if (["IMAI", "IGAE", "IMOAM", "EMIM", "CONSUMO", "IMFBCF", "INPC", "INPP", "PIB", "PIBSEC", "SIC", "IOAE", "EMOE", "DESOCUP", "BCMM"].includes(ind.key)) {
