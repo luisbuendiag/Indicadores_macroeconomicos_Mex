@@ -147,12 +147,13 @@ def compare_series(current, shared, field, baseline, published):
     }
 
 
-def simulate(institutional, commercial, institutional_checked_at, commercial_checked_at):
+def simulate(institutional, commercial, institutional_checked_at, commercial_checked_at, *, keys=SERIES_FIELDS):
     """Evalúa actualizaciones sin escribir datos ni productos institucionales."""
     baseline = checked_at(institutional_checked_at)
     published = checked_at(commercial_checked_at)
     report = {}
-    for key, fields in SERIES_FIELDS.items():
+    for key in keys:
+        fields = SERIES_FIELDS[key]
         current = institutional["indicators"][key]
         existing_cut = current["last_observation"]
         try:
@@ -213,4 +214,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 

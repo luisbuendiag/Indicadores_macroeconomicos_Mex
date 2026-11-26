@@ -22,7 +22,8 @@ def choose(payload, calendar, health_file=Path(HEALTH), *, now=None, loader=None
         checked = checked_at(receipt["data_checked_at"]).astimezone(ZONE)
         if checked.date() != now.date() or checked > now or checked.time() < time(12):
             raise ValueError("la consulta comercial no cubre el corte local del mediodía")
-        decision = simulate(payload, data, health["data_checked_at"], receipt["data_checked_at"])[KEY]
+        decision = simulate(payload, data, health["data_checked_at"], receipt["data_checked_at"],
+                            keys=(KEY,))[KEY]
         if decision["decision"] != "equivalente":
             raise ValueError(decision.get("motivo", "el corte o la revisión requiere confirmación directa"))
 
