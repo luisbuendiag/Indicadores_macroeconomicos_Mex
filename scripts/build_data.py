@@ -1499,7 +1499,7 @@ def apply_freshness_and_meta(payload: dict, log: dict, as_of: date | None = None
     calendario, calcula métricas y actualiza metadatos temporales."""
     changes: list[str] = []
     if as_of is None:
-        as_of = date.today()
+        as_of = build_calendar.mexico_calendar_date()
 
     # Calendario oficial con la fecha de referencia del pipeline.
     cal = build_calendar.build(as_of=as_of, offline=offline)

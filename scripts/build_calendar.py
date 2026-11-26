@@ -22,6 +22,7 @@ import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
+from zoneinfo import ZoneInfo
 
 import lib_data as L
 from lib_freshness import period_to_ym
@@ -60,8 +61,14 @@ def parse_fecha(txt: str) -> date:
     return date(year, month, day)
 
 
+def mexico_calendar_date() -> date:
+    """Día civil de la publicación oficial, independientemente del runner."""
+    return datetime.now(ZoneInfo("America/Mexico_City")).date()
+
+
 def data_as_of() -> date:
-    """Fecha de referencia: última actualización de los datos publicados."""
+    """Fecha de los datos, sin anticipar el día civil de México."""
+    local_today = mexico_calendar_date()
     try:
         payload = json.loads((DATA_DIR / "indicadores.json").read_text("utf-8"))
         dates = [
@@ -70,10 +77,10 @@ def data_as_of() -> date:
             if ind.get("last_updated")
         ]
         if dates:
-            return date.fromisoformat(max(dates))
+            return min(date.fromisoformat(max(dates)), local_today)
     except Exception:
         pass
-    return date.today()
+    return local_today
 
 
 def _load_map() -> dict:
