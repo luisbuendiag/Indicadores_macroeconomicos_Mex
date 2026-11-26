@@ -84,11 +84,69 @@ def data_as_of() -> date:
     return local_today
 
 
-def _same_day_publication(ev: dict, as_of: date, indicators: dict) -> dict:
-    """Una fecha ya alcanzada no valida el boletín. No hace consultas de red."""
-    if ev.get("date") != as_of or ev.get("is_evento") or ev.get("no_anunciada") or ev.get("es_regla"):
+def _calendar_identity(indicator, date_iso, period, product, institution):
+    return (indicator, date_iso, period or "", product or "", institution or "")
+
+
+def _prior_publication_evidence(path: Path) -> dict:
+    try:
+        rows = json.loads(path.read_text(encoding="utf-8")).get("events", [])
+    except (OSError, ValueError, AttributeError):
         return {}
-    result = {"publication_confirmed": False}
+    if not isinstance(rows, list):
+        return {}
+    out = {}
+    for row in rows:
+        if not isinstance(row, dict) or type(row.get("publication_confirmed")) is not bool:
+            continue
+        k = _calendar_identity(row.get("indicator"), row.get("publication_date"),
+                               row.get("reference_period"), row.get("product"), row.get("institution"))
+        if any(not isinstance(v, (str, type(None))) for v in k):
+            continue
+        info = {"publication_confirmed": row["publication_confirmed"]}
+        if info["publication_confirmed"]:
+            url = row.get("publication_evidence_url")
+            if not _direct_inegi_pdf(url):
+                continue
+            try:
+                scheduled = date.fromisoformat(row["publication_date"])
+                corroborated = date.fromisoformat(row.get("publication_evidence_date") or row["publication_date"])
+            except (TypeError, KeyError, ValueError):
+                continue
+            if corroborated < scheduled:
+                continue
+            info.update(publication_evidence_url=url, publication_evidence_date=corroborated.isoformat())
+        out[k] = info
+    return out
+
+
+def _direct_inegi_pdf(official) -> bool:
+    if not isinstance(official, str):
+        return False
+    try:
+        proof = urlsplit(official)
+    except ValueError:
+        return False
+    return bool((proof.scheme, proof.netloc) == ("https", "www.inegi.org.mx")
+                and not (proof.query or proof.fragment)
+                and re.fullmatch(r"/contenidos/saladeprensa/boletines/(?:[A-Za-z0-9_-]+/)+[A-Za-z0-9_.-]+[.]pdf", proof.path, re.I))
+
+
+def _publication_evidence(ev: dict, as_of: date, indicators: dict, prior: dict) -> dict:
+    """Conservar la verificación observada; una fecha transcurrida no confirma el archivo."""
+    scheduled = ev.get("date")
+    if not scheduled or scheduled > as_of or ev.get("is_evento") or ev.get("no_anunciada") or ev.get("es_regla"):
+        return {}
+    key = _calendar_identity(ev.get("indicator"), scheduled.isoformat(), ev.get("period"),
+                             ev.get("product"), ev.get("institution"))
+    old = prior.get(key)
+    # Evaluar el día y el siguiente incluso si se omitió una corrida. Las filas ya
+    # observadas conservan su verificación sin reclasificar todo el histórico.
+    if (as_of - scheduled).days > 1 and old is None:
+        return {}
+    result = old or {"publication_confirmed": False}
+    if result["publication_confirmed"] and date.fromisoformat(result["publication_evidence_date"]) > as_of:
+        result = {"publication_confirmed": False}
     ind = indicators.get(ev.get("indicator")) or {}
     if ind.get("boletin_validado") is not True:
         return result
@@ -100,23 +158,18 @@ def _same_day_publication(ev: dict, as_of: date, indicators: dict) -> dict:
     same_period = period_to_ym(period)
     if not same_period or is_quarter(period) != is_quarter(source_period) or same_period != period_to_ym(source_period):
         return result
-    official = ind.get("url_boletin_oficial") or ""
-    try:
-        proof = urlsplit(official)
-    except (ValueError, TypeError):
-        return result
-    if (proof.scheme, proof.netloc) != ("https", "www.inegi.org.mx") or proof.query or proof.fragment:
-        return result
-    if not re.fullmatch(r"/contenidos/saladeprensa/boletines/(?:[A-Za-z0-9_-]+/)+[A-Za-z0-9_.-]+[.]pdf", proof.path, re.I):
+    official = ind.get("url_boletin_oficial")
+    if not _direct_inegi_pdf(official):
         return result
     stamp = ind.get("fecha_publicacion") or ""
     try:
         official_date = date.fromisoformat(stamp) if re.fullmatch(r"\d{4}-\d{2}-\d{2}", stamp) else parse_fecha(stamp.lower())
     except (ValueError, IndexError, KeyError):
         return result
-    if official_date != as_of:
+    if not official_date or not scheduled <= official_date <= as_of:
         return result
-    return {"publication_confirmed": True, "publication_evidence_url": official}
+    return {"publication_confirmed": True, "publication_evidence_url": official,
+            "publication_evidence_date": official_date.isoformat()}
 
 
 def _load_map() -> dict:
@@ -781,8 +834,9 @@ def build(as_of: date | None = None, offline: bool | None = None, *, indicators:
             indicators = json.loads((DATA_DIR / "indicadores.json").read_text("utf-8")).get("indicators", {})
         except (OSError, ValueError):
             indicators = {}
+    prior = _prior_publication_evidence(NEW_OUT)
     for event in events:
-        event["verification"] = _same_day_publication(event, as_of, indicators)
+        event["verification"] = _publication_evidence(event, as_of, indicators, prior)
 
     new_payload = _build_new_payload(events, rules, sources_status, as_of)
     legacy_payload = _build_legacy_payload(events, rules, as_of, sources_status)
