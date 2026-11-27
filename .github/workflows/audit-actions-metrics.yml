@@ -1,0 +1,61 @@
+name: Auditor de métricas Actions — Economía (QA read-only)
+
+on:
+  workflow_dispatch: {}
+  pull_request:
+    paths:
+      - 'scripts/audit_actions_metrics.py'
+      - 'tests/test_actions_metrics_readonly.py'
+      - 'scripts/audit_actions_provenance.mjs'
+      - 'tests/audit_actions_provenance.test.mjs'
+      - 'assets/js/update_health.mjs'
+      - 'config/update_policy.json'
+      - '.github/workflows/audit-actions-metrics.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verificar recolector offline con datos sintéticos
+        run: python -m unittest discover -s tests -p test_actions_metrics_readonly.py -v
+      - name: Verificar el vínculo entre corrida y vigencia
+        run: node --test tests/audit_actions_provenance.test.mjs
+
+  collect-manual:
+    if: github.event_name == 'workflow_dispatch'
+    needs: test
+    permissions:
+      contents: read
+      actions: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Leer solo metadata GitHub Actions, sin iniciar pipelines
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.audit_actions_metrics --limit 8 --output artifacts/economia_actions_metadata.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: economia-actions-metadata-readonly
+          path: artifacts/economia_actions_metadata.json
+          if-no-files-found: error
+          retention-days: 3

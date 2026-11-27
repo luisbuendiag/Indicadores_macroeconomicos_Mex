@@ -25,7 +25,8 @@ on:
         type: string
         default: ''
   schedule:
-    - cron: "17 7,13,15,19 * * 1-5"
+    - cron: "17 7,13 * * 1-5"
+    - cron: "17 15,19 * * 1-5"
   push:
     branches:
       - main
@@ -56,10 +57,24 @@ jobs:
       - name: Instalar dependencias
         run: pip install -r requirements.txt
 
+      - name: Resolver uso de la caché histórica
+        id: boletines
+        if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[notes-only]') }}
+        env:
+          ARCHIVO_ACTIVO: ${{ vars.INEGI_BULLETIN_ARCHIVE_ENABLED == 'true' }}
+          CORTE_PRUEBA: ${{ github.event_name == 'schedule' && github.event.schedule == '17 7,13 * * 1-5' && github.run_attempt == 1 }}
+        run: |
+          enabled="$ARCHIVO_ACTIVO"
+          if [[ "$CORTE_PRUEBA" == true && "$(date -u +%F)" == 2026-11-30 ]]; then
+            enabled=true
+            echo "Prueba de caché histórica de los dos primeros cortes del 30 de noviembre."
+          fi
+          echo "enabled=$enabled" >> "$GITHUB_OUTPUT"
+
       # Cada corrida guarda con una llave nueva. La restauración usa la última
       # copia disponible; el conector verifica la vigencia de cada boletín.
       - name: Restaurar archivo de boletines históricos
-        if: ${{ vars.INEGI_BULLETIN_ARCHIVE_ENABLED == 'true' && (github.event_name != 'push' || !contains(github.event.head_commit.message, '[notes-only]')) }}
+        if: ${{ steps.boletines.outputs.enabled == 'true' }}
         uses: actions/cache@v4
         continue-on-error: true
         with:
@@ -72,7 +87,7 @@ jobs:
         env:
           INEGI_TOKEN: ${{ secrets.INEGI_TOKEN }}
           BANXICO_TOKEN: ${{ secrets.BANXICO_TOKEN }}
-          INEGI_BULLETIN_ARCHIVE_ENABLED: ${{ vars.INEGI_BULLETIN_ARCHIVE_ENABLED }}
+          INEGI_BULLETIN_ARCHIVE_ENABLED: ${{ steps.boletines.outputs.enabled }}
         run: |
           args=()
           if [[ "$INEGI_BULLETIN_ARCHIVE_ENABLED" == true ]]; then

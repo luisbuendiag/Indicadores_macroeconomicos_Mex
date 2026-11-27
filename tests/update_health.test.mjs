@@ -22,12 +22,12 @@ test('datos recientes no ocultan Word pendiente; fecha inválida nunca se consid
   assert.equal(assessHealth({}, policy, now).stale, true);
 });
 
-async function runWatchdog(t, {health, runs = [], repoHealth = health, conclusion = null}) {
+async function runWatchdog(t, {health, runs = [], deployRuns = [], repoHealth = health, conclusion = null}) {
   const calls = [];
   t.mock.method(fs, 'readFileSync', (original => (file, ...args) => file === 'data/update_health.json' ? JSON.stringify(repoHealth) : original(file, ...args))(fs.readFileSync));
   t.mock.method(globalThis, 'fetch', async () => ({ok:true, json:async () => health}));
   const github = {rest:{actions:{
-    listWorkflowRuns:async ({workflow_id}) => ({data:{workflow_runs:workflow_id === 'update-data.yml' ? runs : []}}),
+    listWorkflowRuns:async ({workflow_id}) => ({data:{workflow_runs:workflow_id === 'update-data.yml' ? runs : deployRuns}}),
     createWorkflowDispatch:async args => calls.push(['dispatch', args])},
     }};
   const summary = {addHeading(){return this;}, addRaw(){return this;}, async write(){}};
@@ -91,6 +91,41 @@ test('éxito anterior no exonera una cola nueva estancada', async t => {
   ]});
   assert.equal(calls.filter(x=>x[0]==='failure').length,1);
 });
+
+
+test('una cola superada permite recuperar un corte desactualizado', async t => {
+  const now = Date.now();
+  const calls = await runWatchdog(t, {health:{data_checked_at:'2020-01-01T00:00:00Z'}, runs:[
+    {id:41,status:'queued',created_at:new Date(now - 180 * 60_000).toISOString()},
+    {id:42,status:'completed',conclusion:'success',
+      created_at:new Date(now - 25 * 60_000).toISOString(),
+      updated_at:new Date(now - 15 * 60_000).toISOString()}
+  ]});
+  assert.equal(calls.filter(([kind])=>kind==='dispatch').length, 1);
+  assert.equal(calls.find(([kind])=>kind==='dispatch')[1].workflow_id, 'update-data.yml');
+  assert.equal(calls.some(([kind])=>kind==='failure'), false);
+});
+
+for (const [label, status, outcome, separateWorkflow] of [
+  ['éxito de otro workflow', 'queued', 'success', true],
+  ['fallo posterior', 'queued', 'failure', false],
+  ['estado waiting', 'waiting', 'success', false],
+  ['estado pending', 'pending', 'success', false],
+  ['corrida en progreso', 'in_progress', 'success', false],
+]) {
+  test(`el watchdog conserva la alerta ante ${label}`, async t => {
+    const now = Date.now();
+    const old = {id:51,status,created_at:new Date(now - 180 * 60_000).toISOString()};
+    const later = {id:52,status:'completed',conclusion:outcome,
+      created_at:new Date(now - 25 * 60_000).toISOString(),
+      updated_at:new Date(now - 15 * 60_000).toISOString()};
+    const calls = await runWatchdog(t, {health:fresh(),
+      runs:separateWorkflow ? [old] : [old,later], deployRuns:separateWorkflow ? [later] : []});
+    assert.match(calls.find(([kind])=>kind==='warning')[1], /excedió el tiempo/);
+    assert.equal(calls.filter(([kind])=>kind==='failure').length, 1);
+    assert.equal(calls.some(([kind])=>kind==='dispatch'), false);
+  });
+}
 
 test('una consulta al corriente termina sin alertas', async t => {
   const calls = await runWatchdog(t, {health:fresh()});
