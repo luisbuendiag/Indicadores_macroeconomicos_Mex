@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-27T19:21:14+00:00",
+  "generated_at": "2026-11-27T23:04:54+00:00",
   "indicadores": [
     {
       "indicador": "Estimación Oportuna del Producto Interno Bruto Trimestral",
@@ -418,8 +418,8 @@
       "frecuencia": "Diaria",
       "unidad": "Porcentaje anual",
       "ajuste_estacional": "No aplica; se publica diariamente pero solo cambia en fechas de decisión de política monetaria",
-      "ultima_observacion": "2026-11-27",
-      "periodo_referencia": "2026-11-27",
+      "ultima_observacion": "2026-11-28",
+      "periodo_referencia": "2026-11-28",
       "fecha_publicacion": "Días de anuncio de política monetaria",
       "fecha_consulta": "2026-11-27",
       "fecha_actualizacion_archivo": "2026-11-27",
