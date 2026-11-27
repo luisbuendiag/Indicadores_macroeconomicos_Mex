@@ -97,6 +97,13 @@ def test_publication_preserves_previous_word(monkeypatch,tmp_path,case):
     else:
         cfg['auto_publish']=False;(tmp_path/'config/notas_automaticas.json').write_text(json.dumps(cfg))
         fixture(monkeypatch,'BCMM');monkeypatch.setattr(R,'download',lambda *a:b'fixture')
+        data_file = tmp_path / 'data/indicadores.json'
+        payload = json.loads(data_file.read_text())
+        payload['indicators']['BCMM'].update(
+            last_observation='Sep 26',
+            url_boletin_oficial='https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_10.pdf',
+        )
+        data_file.write_text(json.dumps(payload))
         template=tmp_path/cfg['template'];template.parent.mkdir(parents=True);shutil.copyfile(ROOT/cfg['template'],template)
         for name in ['build_trade_notes.py','notas_bcmm.py','notas_bcmm_word.py','notas_layout.py','notas_word.py','build_auto_notes.py']:
             p=tmp_path/'scripts'/name;p.parent.mkdir(exist_ok=True);shutil.copyfile(ROOT/'scripts'/name,p)
@@ -109,3 +116,25 @@ def test_publication_preserves_previous_word(monkeypatch,tmp_path,case):
 def test_workflow_python_311_compatibility():
     for name in ['build_trade_notes.py','notas_bcmm.py','notas_bcmm_word.py','notas_layout.py']:
         ast.parse((ROOT/'scripts'/name).read_text(),feature_version=(3,11))
+
+
+def test_october_adjusted_narrative_and_signs():
+    source = json.loads((ROOT / 'tests/fixtures/bcmm2026_11_ajustadas.json').read_text())
+    pages = [''] * 7
+    pages[4], pages[6] = source['page_5'], source['page_7']
+    rates, balances, month = N.adjusted(pages)
+    assert {r['id']: r['value'] for r in rates} == {
+        'exports': 5.64, 'exports_non_oil': 5.88, 'exports_oil': -4.92,
+        'manufacturing': 6.68, 'automotive': 0.68, 'non_automotive': 8.45,
+        'imports': 4.05, 'imports_non_oil': 2.94, 'imports_oil': 20.33,
+        'consumption': 1.49, 'consumption_non_oil': -0.23,
+        'intermediate': 5.11, 'intermediate_non_oil': 3.94, 'capital': -3.46,
+    }
+    assert {r['id']: (r['previous'], r['current']) for r in balances} == {
+        'balance': (823, 2068), 'balance_non_oil': (3924, 6242),
+        'balance_oil': (-3100, -4174),
+    }
+    assert month == 'septiembre'
+    pages[6] = pages[6].replace('3.46 por ciento', 'sin dato')
+    with pytest.raises(ValueError, match='Falta tasa ajustada capital'):
+        N.adjusted(pages)
