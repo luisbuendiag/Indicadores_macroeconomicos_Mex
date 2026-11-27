@@ -900,6 +900,14 @@ def compute_bcmm_metrics(payload: dict) -> list[str]:
             by_ym[ym] = o
     yoy_map = {3: 0, 4: 1, 5: 2, 10: 6, 11: 7, 12: 8, 13: 9, 17: 14, 18: 15, 19: 16, 23: 20, 24: 21, 25: 22}
     yoy_updated = saldo_updated = acum_updated = 0
+    # Complete every monthly balance before any annual or year-to-date lookup;
+    # the newly merged month may not yet carry a balance in its source row.
+    for o in by_ym.values():
+        vals = list(o["values"])
+        if vals[0] is not None and vals[1] is not None:
+            vals[2] = round(vals[0] - vals[1], 6)
+            o["values"] = vals
+            saldo_updated += 1
     for o in ind.get("observations", []):
         vals = list(o.get("values", []))
         if len(vals) < 29:
@@ -907,9 +915,6 @@ def compute_bcmm_metrics(payload: dict) -> list[str]:
         ym = inegi.label_to_ym(o.get("period", ""))
         if not ym:
             continue
-        if vals[0] is not None and vals[1] is not None:
-            vals[2] = round(vals[0] - vals[1], 6)
-            saldo_updated += 1
         prev_ym = inegi._ym_minus_months(ym, 12)
         prev_o = by_ym.get(prev_ym)
         if prev_o:

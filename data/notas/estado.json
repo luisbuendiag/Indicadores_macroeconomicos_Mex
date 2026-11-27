@@ -226,17 +226,17 @@
   "BCMM": {
     "status": "vigente",
     "message": "Nota generada y validada por reglas Python",
-    "target_period": "Sep 26",
+    "target_period": "Oct 26",
     "published": {
-      "periodo": "Sep 26",
-      "generated_at": "2026-11-05T02:55:34+00:00",
-      "source_sha256": "2ae792cff7e9c0dfe45e3f70f06b9bc37ffb237d27539c2a3b89d29c4847df51",
-      "fingerprint": "f31dcc14b08d01e3394389701ba65ee14d542968c064583506e99223dec360e0",
-      "docx_sha256": "6d4afdcf6be15ea1dab64222771fcba6d07d8e4ba6b7b3b7e7074de4ca674548",
-      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_10.pdf",
+      "periodo": "Oct 26",
+      "generated_at": "2026-11-27T18:52:59+00:00",
+      "source_sha256": "a2176a50843df638944122c5da0029e0e1f05f680e045d527d272a35a6d5110e",
+      "fingerprint": "8befbeef9c9510dc68a624b414ea07a0dc0583909a5ad6be60c6a4ce160075a8",
+      "docx_sha256": "2ab1af4bb8f8abe0649e0aec763928effeb4efa7f7af577a724c5424532ba26e",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf",
       "review_model": "bcmm-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/BCMM/f31dcc14b08d01e3394389701ba65ee14d542968c064583506e99223dec360e0-6d4afdcf6be1"
+      "archive": "data/notas/BCMM/8befbeef9c9510dc68a624b414ea07a0dc0583909a5ad6be60c6a4ce160075a8-2ab1af4bb8f8"
     }
   }
 }

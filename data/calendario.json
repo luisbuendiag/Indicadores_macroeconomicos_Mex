@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-27T02:29:38+00:00",
-  "as_of": "2026-11-26",
+  "generated_at": "2026-11-27T19:21:30+00:00",
+  "as_of": "2026-11-27",
   "fuente": "Calendario oficial de difusión",
   "sources": {
     "INEGI Sala de Prensa": {
@@ -17806,26 +17806,36 @@
       "publication_date_display": "27 de noviembre de 2026",
       "reference_period": "Octubre de 2026",
       "frequency": "Mensual",
-      "status": "próximo",
+      "status": "publicado",
       "source": "INEGI Sala de Prensa",
       "institution": "INEGI",
       "category": "Sector externo",
       "sigla": "BCMM",
       "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf",
+          "label": "Boletín PDF",
+          "size": "0.37 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.docx",
+          "label": "Boletín Word",
+          "size": "0.29 MB"
         }
       ],
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 11,
-      "fecha_iso": "2026-11-27"
+      "fecha_iso": "2026-11-27",
+      "publication_confirmed": true,
+      "publication_evidence_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf",
+      "publication_evidence_date": "2026-11-27"
     },
     {
       "indicator": "EMOE",
@@ -22962,35 +22972,6 @@
   ],
   "upcoming": [
     {
-      "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Información oportuna. Cifras preliminares",
-      "product": "Balanza Comercial de Mercancías de México",
-      "publication_date": "2026-11-27",
-      "publication_date_display": "27 de noviembre de 2026",
-      "reference_period": "Octubre de 2026",
-      "frequency": "Mensual",
-      "status": "próximo",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Sector externo",
-      "sigla": "BCMM",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 11,
-      "fecha_iso": "2026-11-27"
-    },
-    {
       "indicator": "EMOE",
       "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
@@ -23540,9 +23521,77 @@
       "anio": 2026,
       "mes": 12,
       "fecha_iso": "2026-12-24"
+    },
+    {
+      "indicator": "RESERVAS",
+      "program": "Estado de cuenta del Banco de México",
+      "product": "Estado de cuenta del Banco de México",
+      "publication_date": "2026-12-29",
+      "publication_date_display": "29 de diciembre de 2026",
+      "reference_period": "25 de diciembre de 2026",
+      "frequency": "Semanal",
+      "status": "próximo",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Financiero",
+      "sigla": "RESERVAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 12,
+      "fecha_iso": "2026-12-29"
     }
   ],
   "recent": [
+    {
+      "indicator": "BCMM",
+      "program": "Balanza Comercial de Mercancías de México. Información oportuna. Cifras preliminares",
+      "product": "Balanza Comercial de Mercancías de México",
+      "publication_date": "2026-11-27",
+      "publication_date_display": "27 de noviembre de 2026",
+      "reference_period": "Octubre de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Sector externo",
+      "sigla": "BCMM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf",
+          "label": "Boletín PDF",
+          "size": "0.37 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.docx",
+          "label": "Boletín Word",
+          "size": "0.29 MB"
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-27",
+      "publication_confirmed": true,
+      "publication_evidence_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf",
+      "publication_evidence_date": "2026-11-27"
+    },
     {
       "indicator": "IMOAM",
       "program": "Indicador Mensual Oportuno de la Actividad Manufacturera",
@@ -24266,36 +24315,6 @@
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-04"
-    },
-    {
-      "indicator": "RESERVAS",
-      "program": "Estado de cuenta del Banco de México de la semana al 30 de octubre y del mes de octubre de 2026",
-      "product": "Estado de cuenta del Banco de México",
-      "publication_date": "2026-11-04",
-      "publication_date_display": "4 de noviembre de 2026",
-      "reference_period": "30 de octubre de 2026",
-      "frequency": "Semanal",
-      "status": "publicado",
-      "source": "Banco de México calendario",
-      "institution": "Banco de México",
-      "category": "Financiero",
-      "sigla": "RESERVAS",
-      "type": "event",
-      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{B670D47E-871B-57FB-8803-D0ACDC500753}.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{B670D47E-871B-57FB-8803-D0ACDC500753}.pdf",
-          "label": "Estado de cuenta del Banco de México de la semana al 30 de octubre y del mes de octubre de 2026",
-          "size": null
-        }
-      ],
-      "comentario": null,
-      "anio": 2026,
-      "mes": 11,
-      "fecha_iso": "2026-11-04",
-      "publication_verification": "fuera_de_alcance"
     }
   ],
   "categories": {

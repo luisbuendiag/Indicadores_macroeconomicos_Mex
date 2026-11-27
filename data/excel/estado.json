@@ -52,7 +52,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "0c2414803f6964f7807064a5dc62e5d94d5c99510d5ca38863afc36d6d6d23a7"
+    "sha256": "7c1c3c0d005fd27aefeb5bd58014776f815de89c8582cf82c2de57eb0cf9c4a1"
   },
   "PIBSEC": {
     "sheets": 2,
@@ -206,7 +206,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "451a7561158274041376f8d8348dcb7bc129d1f18f596899b678cd555ad7dea9"
+    "sha256": "4989b094527f72daa00608de43c3631688c069ab5855c235922cace00dae54f4"
   },
   "SIC": {
     "sheets": 1,
@@ -378,7 +378,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "f61c80d9ec9ea8f42bd8835dcf70cd158c8300873702286ff8ef17403b47e823"
+    "sha256": "79b022bfa70b3f2801764e372b474d2f394b4cee14be70bf3f06e26417e386d0"
   },
   "IOAE": {
     "sheets": 1,
@@ -505,7 +505,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "0e3ba24f496855ae243474db29a9faaa1e4c29534945e753217d7701c70eaabe"
+    "sha256": "de052efef80c13033231680dc327c0eff65c35141697881730e265560a4d2e1a"
   },
   "IGAE": {
     "sheets": 1,
@@ -605,7 +605,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "7e86612c81109005f2de3b2fcc992f4c81ea68f146b6503b482e23e5fe71c0db"
+    "sha256": "4e1e846424503f7435cf3636c2c80b8d7dd1d0dc0545573e3a767b56fad597ab"
   },
   "IMAI": {
     "sheets": 3,
@@ -777,7 +777,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "c742cb02cb69f2d412759e0cc447dc614067e7f8a816865b12c340147ea8607a"
+    "sha256": "1af89bcef4d989c83ec6e33e5bdfeae23af4fb97fa0c8364678cabb4e045c031"
   },
   "IMOAM": {
     "sheets": 1,
@@ -841,7 +841,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "a667cae9bdd2a66f10238c34a2d13a9bcd4dcdc5823d3eade2cab9c0f4979b79"
+    "sha256": "639464e9fe9dd17ac88996a2498d4e014e8db4f5104e4315bd87d44232f67481"
   },
   "EMIM": {
     "sheets": 2,
@@ -1013,7 +1013,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "4ea411cb027b9e57b40f77da5c5e01404c2cfe2e5bd4d3e35b909c8752486c89"
+    "sha256": "634a2e9fdfff0faf6915f03936755e0a14cef4b03e366db031420b467487a3f9"
   },
   "EMOE": {
     "sheets": 1,
@@ -1086,7 +1086,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "d6fd1fa9ab95b38da8dce0497dd3a297d008eb59a235030ddf2ea2389da94f08"
+    "sha256": "413a9ee0e9bde4d95e98c09c0978b5a5c817a969c913656cba447a863b92dc1f"
   },
   "DESOCUP": {
     "sheets": 2,
@@ -1143,7 +1143,7 @@
       "4": "Misma población expresada en millones; se conserva la serie en personas."
     },
     "data_variant": null,
-    "sha256": "622370fd15797ed5af1b8766ff726ca81ccb3c02bc617278b050318e21ef55b3"
+    "sha256": "3abb8c4d738927644264b554dcec4bbf195b06588e66fb0d095a66ba0a2a2fd1"
   },
   "INPC": {
     "sheets": 1,
@@ -1315,7 +1315,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "3c30b8c82b76281208e0f8096f497640a988639f1711950ebf3ad56a2ed5907c"
+    "sha256": "5bfc30fbffdc53411fab025cd704e934eb97e438831711b07c4df1c5125c0b6f"
   },
   "INPP": {
     "sheets": 1,
@@ -1460,7 +1460,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "05e54bc8367a1aedbb806b5b2a6d3bf05acdbd132827757a4a535fdd7a9f7199"
+    "sha256": "0e3e0a427b2830ffaff189c532bbfa2868091932064b59b591023a7f54e75503"
   },
   "CONSUMO": {
     "sheets": 2,
@@ -1803,7 +1803,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "7377b05122baaf7d4d3dbd776a29bf451a13b990535e20aa1b101a5a3cf32045"
+    "sha256": "7536a15d87f04dbc05da03469726ea5f77a862463864f2467e9dcf201cf07426"
   },
   "IMFBCF": {
     "sheets": 3,
@@ -2173,7 +2173,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "d06c849f04919b1bed4aa7f531edf350953b181641c987c956ceaf26957de8c3"
+    "sha256": "48f9554087773057658f5cb56a0d014b16a8a11f131b45c18362a3e06f5d58ca"
   },
   "BCMM": {
     "sheets": 3,
@@ -2186,8 +2186,8 @@
         "column": 0,
         "label": "Exportaciones",
         "first": "1980-01-01",
-        "last": "2026-09-01",
-        "count": 561
+        "last": "2026-10-01",
+        "count": 562
       },
       {
         "key": "BCMM",
@@ -2195,8 +2195,8 @@
         "column": 1,
         "label": "Importaciones",
         "first": "1980-01-01",
-        "last": "2026-09-01",
-        "count": 561
+        "last": "2026-10-01",
+        "count": 562
       },
       {
         "key": "BCMM",
@@ -2204,8 +2204,8 @@
         "column": 2,
         "label": "Saldo",
         "first": "1980-01-01",
-        "last": "2026-09-01",
-        "count": 561
+        "last": "2026-10-01",
+        "count": 562
       },
       {
         "key": "BCMM",
@@ -2213,8 +2213,8 @@
         "column": 3,
         "label": "Var. anual exportaciones",
         "first": "1981-01-01",
-        "last": "2026-09-01",
-        "count": 549
+        "last": "2026-10-01",
+        "count": 550
       },
       {
         "key": "BCMM",
@@ -2222,8 +2222,8 @@
         "column": 4,
         "label": "Var. anual importaciones",
         "first": "1981-01-01",
-        "last": "2026-09-01",
-        "count": 549
+        "last": "2026-10-01",
+        "count": 550
       },
       {
         "key": "BCMM",
@@ -2231,8 +2231,8 @@
         "column": 26,
         "label": "Acum ene-mes exportaciones",
         "first": "1980-01-01",
-        "last": "2026-09-01",
-        "count": 561
+        "last": "2026-10-01",
+        "count": 562
       },
       {
         "key": "BCMM",
@@ -2240,8 +2240,8 @@
         "column": 27,
         "label": "Acum ene-mes importaciones",
         "first": "1980-01-01",
-        "last": "2026-09-01",
-        "count": 561
+        "last": "2026-10-01",
+        "count": 562
       },
       {
         "key": "BCMM",
@@ -2249,8 +2249,8 @@
         "column": 28,
         "label": "Acum ene-mes saldo",
         "first": "1980-01-01",
-        "last": "2026-09-01",
-        "count": 561
+        "last": "2026-10-01",
+        "count": 562
       },
       {
         "key": "BCMM",
@@ -2258,8 +2258,8 @@
         "column": 6,
         "label": "Exportaciones petroleras",
         "first": "2009-01-01",
-        "last": "2026-09-01",
-        "count": 213
+        "last": "2026-10-01",
+        "count": 214
       },
       {
         "key": "BCMM",
@@ -2267,8 +2267,8 @@
         "column": 8,
         "label": "Exportaciones no petroleras",
         "first": "2009-01-01",
-        "last": "2026-09-01",
-        "count": 213
+        "last": "2026-10-01",
+        "count": 214
       },
       {
         "key": "BCMM",
@@ -2276,8 +2276,8 @@
         "column": 20,
         "label": "Exportaciones manufactureras",
         "first": "2009-01-01",
-        "last": "2026-09-01",
-        "count": 213
+        "last": "2026-10-01",
+        "count": 214
       },
       {
         "key": "BCMM",
@@ -2285,8 +2285,8 @@
         "column": 21,
         "label": "Exportaciones agropecuarias",
         "first": "2009-01-01",
-        "last": "2026-09-01",
-        "count": 213
+        "last": "2026-10-01",
+        "count": 214
       },
       {
         "key": "BCMM",
@@ -2294,8 +2294,8 @@
         "column": 22,
         "label": "Exportaciones extractivas",
         "first": "2009-01-01",
-        "last": "2026-09-01",
-        "count": 213
+        "last": "2026-10-01",
+        "count": 214
       },
       {
         "key": "BCMM",
@@ -2303,8 +2303,8 @@
         "column": 10,
         "label": "Var. anual exp. petroleras",
         "first": "2009-01-01",
-        "last": "2026-09-01",
-        "count": 213
+        "last": "2026-10-01",
+        "count": 214
       },
       {
         "key": "BCMM",
@@ -2312,8 +2312,8 @@
         "column": 12,
         "label": "Var. anual exp. no petroleras",
         "first": "2009-01-01",
-        "last": "2026-09-01",
-        "count": 213
+        "last": "2026-10-01",
+        "count": 214
       },
       {
         "key": "BCMM",
@@ -2321,8 +2321,8 @@
         "column": 23,
         "label": "Var. anual manufactureras",
         "first": "2009-01-01",
-        "last": "2026-09-01",
-        "count": 213
+        "last": "2026-10-01",
+        "count": 214
       },
       {
         "key": "BCMM",
@@ -2330,8 +2330,8 @@
         "column": 24,
         "label": "Var. anual agropecuarias",
         "first": "2009-01-01",
-        "last": "2026-09-01",
-        "count": 213
+        "last": "2026-10-01",
+        "count": 214
       },
       {
         "key": "BCMM",
@@ -2339,8 +2339,8 @@
         "column": 25,
         "label": "Var. anual extractivas",
         "first": "2009-01-01",
-        "last": "2026-09-01",
-        "count": 213
+        "last": "2026-10-01",
+        "count": 214
       },
       {
         "key": "BCMM",
@@ -2348,8 +2348,8 @@
         "column": 7,
         "label": "Importaciones petroleras",
         "first": "2009-01-01",
-        "last": "2026-09-01",
-        "count": 213
+        "last": "2026-10-01",
+        "count": 214
       },
       {
         "key": "BCMM",
@@ -2357,8 +2357,8 @@
         "column": 9,
         "label": "Importaciones no petroleras",
         "first": "2009-01-01",
-        "last": "2026-09-01",
-        "count": 213
+        "last": "2026-10-01",
+        "count": 214
       },
       {
         "key": "BCMM",
@@ -2366,8 +2366,8 @@
         "column": 14,
         "label": "Bienes de consumo",
         "first": "2009-01-01",
-        "last": "2026-09-01",
-        "count": 213
+        "last": "2026-10-01",
+        "count": 214
       },
       {
         "key": "BCMM",
@@ -2375,8 +2375,8 @@
         "column": 15,
         "label": "Bienes intermedios",
         "first": "2009-01-01",
-        "last": "2026-09-01",
-        "count": 213
+        "last": "2026-10-01",
+        "count": 214
       },
       {
         "key": "BCMM",
@@ -2384,8 +2384,8 @@
         "column": 16,
         "label": "Bienes de capital",
         "first": "2009-01-01",
-        "last": "2026-09-01",
-        "count": 213
+        "last": "2026-10-01",
+        "count": 214
       },
       {
         "key": "BCMM",
@@ -2393,8 +2393,8 @@
         "column": 11,
         "label": "Var. anual imp. petroleras",
         "first": "2009-01-01",
-        "last": "2026-09-01",
-        "count": 213
+        "last": "2026-10-01",
+        "count": 214
       },
       {
         "key": "BCMM",
@@ -2402,8 +2402,8 @@
         "column": 13,
         "label": "Var. anual imp. no petroleras",
         "first": "2009-01-01",
-        "last": "2026-09-01",
-        "count": 213
+        "last": "2026-10-01",
+        "count": 214
       },
       {
         "key": "BCMM",
@@ -2411,8 +2411,8 @@
         "column": 17,
         "label": "Var. anual consumo",
         "first": "2009-01-01",
-        "last": "2026-09-01",
-        "count": 213
+        "last": "2026-10-01",
+        "count": 214
       },
       {
         "key": "BCMM",
@@ -2420,8 +2420,8 @@
         "column": 18,
         "label": "Var. anual intermedios",
         "first": "2009-01-01",
-        "last": "2026-09-01",
-        "count": 213
+        "last": "2026-10-01",
+        "count": 214
       },
       {
         "key": "BCMM",
@@ -2429,15 +2429,15 @@
         "column": 19,
         "label": "Var. anual capital",
         "first": "2009-01-01",
-        "last": "2026-09-01",
-        "count": 213
+        "last": "2026-10-01",
+        "count": 214
       }
     ],
     "omitted_redundancy": {
       "5": "Se evita la tasa porcentual del saldo; no es interpretable al cambiar de signo."
     },
     "data_variant": null,
-    "sha256": "7c28cc6b782fd95a9f4ab4a35adf443551b97e1853ebeb9d32bd4850b5c8f686"
+    "sha256": "ed9e59c3d155c47a70990073f7faaa1cb2282d19960d40b3ed1a834f4b3f8b19"
   },
   "IED": {
     "sheets": 6,
@@ -2539,7 +2539,7 @@
     "data_variant": null,
     "state_source_sha256": "237075853fe6b72b5ea5473dc53b5849bfe3220840de293a72c7e15053f283ce",
     "state_period": "2T-2026",
-    "sha256": "5e61bec1e0ebf6fd9c79f17b9dd3d2e1eaa35c8916bf610296707117132b0f00"
+    "sha256": "59c8be81ade3b0fbd78939fde290837f0bf928015a041f1abf621943c62e64c3"
   },
   "TIPOCAMBIO": {
     "sheets": 1,
@@ -2552,13 +2552,13 @@
         "column": 0,
         "label": "Tipo de cambio FIX",
         "first": "1991-11-12",
-        "last": "2026-11-26",
-        "count": 8807
+        "last": "2026-11-27",
+        "count": 8808
       }
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "fb6d06c44d6d62bcb2f8da084d0dd8554d126226d42b07a1ce556717a696f2d8"
+    "sha256": "c7ea47717293c63dfba7cd44913c57dadc53aa63720ca29a897ada1d1d982f95"
   },
   "TASA": {
     "sheets": 2,
@@ -2622,7 +2622,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "4b75b5795b408e59d8ea35a3aeaf622acf9790e470603948c70c85c8051f76f1"
+    "sha256": "638cdcf8d251819f9ad4f4ef48d6462a2e5325f0f27537e5049691b891bc21a2"
   },
   "RESERVAS": {
     "sheets": 1,
@@ -2668,7 +2668,7 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "0eaa96d789af195d50d7cae90693a28c2bb0823f640429dd78fe829d34c83aa1"
+    "sha256": "dbdebe80d98c270a5832c3c38752e7c9e9c4785a05fe67c52f717295a293f3b1"
   },
   "REMESAS": {
     "sheets": 1,
@@ -2714,15 +2714,15 @@
     ],
     "omitted_redundancy": {},
     "data_variant": null,
-    "sha256": "12c33eb1adba2cc07df1e6f5e10f73df839fde7bd13958390aff85c5a793fb8e"
+    "sha256": "ebc4d659483b3868ef341b65156549182ef2ee4ec83033f8005967e80e3421fc"
   },
   "general": {
     "sheets": 27,
     "charts": 40,
     "formulas": 3440,
-    "input_sha256": "f7a79e955c8aba0e0a8507e37e4aea0aa2f2173170bc375d12d8bdee55fec6b6",
+    "input_sha256": "a9bc52bedda42d9f38de1b2675767b8444e4665d26f9f19666e6a0462005443e",
     "state_source_sha256": "237075853fe6b72b5ea5473dc53b5849bfe3220840de293a72c7e15053f283ce",
     "state_period": "2T-2026",
-    "sha256": "e375823a2662612a558b95113b59c99ef776099ce15338fe2b338137a1e908c5"
+    "sha256": "c5d11ceb1371aa9cd4879e3b4f4b07342e2c3b2f7306d6fd3e755e6c0fd184dc"
   }
 }

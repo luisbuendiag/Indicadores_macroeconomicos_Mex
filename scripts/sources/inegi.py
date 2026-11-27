@@ -204,16 +204,22 @@ def _parse_series(raw: dict) -> tuple[list[dict], dict] | None:
     return obs, meta
 
 
-def _fetch_one(spec: dict, token: str, start_year: int) -> dict | None:
+def _fetch_one(spec: dict, token: str, start_year: int, *,
+               responses: dict[str, dict] | None = None) -> dict | None:
     """Consulta y transforma una serie individual."""
     serie_id = str(spec["serie"])
     url = ENDPOINT.format(ids=serie_id, token=token,
                           db=spec.get("db", DEFAULT_DB),
                           geo=spec.get("geo", DEFAULT_GEO))
-    raw = http_get_json(url)
+    raw = responses.get(url) if responses is not None else None
+    if raw is None:
+        raw = http_get_json(url)
     parsed = _parse_series(raw)
     if not parsed or not parsed[0]:
         return None
+    if responses is not None:
+        # Cada columna vuelve a parsear la respuesta antes de transformarla.
+        responses[url] = raw
     obs, meta = parsed
 
     # Para transformaciones yoy/mom/qoq/mom_abs/yoy_abs necesitamos observaciones previas.
@@ -284,13 +290,14 @@ def fetch(config: dict, start_year: int = 2018) -> SourceResult:
 
     data: dict = {}
     warnings: list[str] = []
+    responses: dict[str, dict] = {}
     for key, specs in confirmed.items():
         items: list[dict] = []
         for spec in specs:
             serie_id = str(spec["serie"])
             spec_start = spec.get("start_year", start_year)
             try:
-                item = _fetch_one(spec, token, spec_start)
+                item = _fetch_one(spec, token, spec_start, responses=responses)
             except Exception as e:  # noqa: BLE001 - resiliencia del pipeline
                 warnings.append(f"INEGI {key}: error de consulta (serie {serie_id}): {e}")
                 continue
@@ -311,3 +318,4 @@ def fetch(config: dict, start_year: int = 2018) -> SourceResult:
 
 def today_iso() -> str:
     return datetime.now().astimezone().isoformat()
+
