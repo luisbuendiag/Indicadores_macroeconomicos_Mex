@@ -13,7 +13,7 @@ MARKET_LABELS=['Total','Estados Unidos','Automotriz','Otras','Resto del mundo','
 MARKET_IDS=['total','usa','usa_auto','usa_other','rest','rest_auto','rest_other']
 NUM=r'-?\d{1,3}(?: \d{3})*\.\d'
 PCT=r'(?:-?\d+\.\d|S\.S\.)'
-DIRS={'descenso':-1,'retroceso':-1,'caída':-1,'disminución':-1,'aumento':1,'avance':1,'alza':1,'crecimiento':1,'incremento':1}
+DIRS={'descenso':-1,'retroceso':-1,'caída':-1,'disminución':-1,'reducción':-1,'aumento':1,'avance':1,'alza':1,'crecimiento':1,'incremento':1}
 D='('+'|'.join(DIRS)+')'
 def flat(s):return re.sub(r'\s+',' ',s).strip()
 def value(s):return None if s=='S.S.' else float(s.replace(' ',''))
@@ -53,41 +53,106 @@ def history_rows(words,year):
         out.append(dict(id=ident,label=label,values=vals,location='p. 2, cuadro 2',series='original'))
     return out,[w['text'] for w in tail]
 
+def adjusted_record(ident, label, value, page, evidence):
+    return dict(id=ident, label=label, value=value, location=f'p. {page}, texto',
+                series='desestacionalizada', evidence=evidence)
+
 def rate(text,pattern,ident,label,page):
     m=re.search(pattern,text)
     if not m:raise ValueError('Falta tasa ajustada '+ident)
-    return dict(id=ident,label=label,value=DIRS[m[1]]*float(m[2]),location=f'p. {page}, texto',series='desestacionalizada',evidence=m[0])
+    return adjusted_record(ident, label, DIRS[m[1]] * float(m[2]), page, m[0])
 
 def adjusted(pages):
-    e=flat(pages[4]);i=flat(pages[6]);out=[]
-    for ident,label,pat in [
-      ('exports','Exportaciones totales',r'exportaciones totales registraron un '+D+r' mensual de (\d+\.\d+) por ciento'),
-      ('exports_non_oil','Exportaciones no petroleras',r'un '+D+r' de (\d+\.\d+) % en las exportaciones no petroleras'),
-      ('exports_oil','Exportaciones petroleras',r'un '+D+r' de (\d+\.\d+) % en las petroleras'),
-      ('manufacturing','Exportaciones manufactureras',r'las manufactureras presentaron una '+D+r' mensual de (\d+\.\d+) por ciento'),
-      ('non_automotive','Exportaciones no automotrices',r'una '+D+r' de (\d+\.\d+) % en las exportaciones manufactureras no automotrices'),
-      ('automotive','Exportaciones automotrices',r'un '+D+r' de (\d+\.\d+) % en las automotrices')]:out.append(rate(e,pat,ident,label,5))
-    for ident,label,pat in [
-      ('imports','Importaciones totales',r'importaciones totales de mercancías mostraron un '+D+r' mensual de (\d+\.\d+) %'),
-      ('imports_non_oil','Importaciones no petroleras',r'un '+D+r' de (\d+\.\d+) % en las importaciones no petroleras'),
-      ('imports_oil','Importaciones petroleras',r'una '+D+r' de (\d+\.\d+) % en las petroleras')]:out.append(rate(i,pat,ident,label,7))
-    pat=r'se observaron (incrementos|descensos) mensuales de (\d+\.\d+) % en las importaciones de bienes de consumo \('+D+r' de (\d+\.\d+) % en las de bienes de consumo no petroleros\), de (\d+\.\d+) % en las de bienes de uso intermedio \('+D+r' de (\d+\.\d+) % en las de bienes de uso intermedio no petroleros\) y de (\d+\.\d+) % en las de bienes de capital'
-    m=re.search(pat,i)
-    if not m:raise ValueError('Cambió la narrativa de importaciones por uso')
-    sign=1 if m[1]=='incrementos' else -1
-    for ident,label,v in [('consumption','Importaciones de consumo',sign*float(m[2])),('consumption_non_oil','Consumo no petrolero',DIRS[m[3]]*float(m[4])),('intermediate','Importaciones intermedias',sign*float(m[5])),('intermediate_non_oil','Intermedios no petroleros',DIRS[m[6]]*float(m[7])),('capital','Importaciones de capital',sign*float(m[8]))]:out.append(dict(id=ident,label=label,value=v,location='p. 7, texto',series='desestacionalizada',evidence=m[0]))
-    total=re.search(r'balanza comercial registró un (superávit|déficit) de ([\d ]+) mdd, monto que se compara con el de ([\d ]+) mdd de ([a-z]+)',e)
-    if not total:raise ValueError('Falta saldo ajustado o comparación')
-    sign=1 if total[1]=='superávit' else -1
-    balances=[dict(id='balance',current=sign*int(total[2].replace(' ','')),previous=sign*int(total[3].replace(' ','')),location='p. 5, texto')]
-    for ident,kind in [('balance_non_oil','no petroleros'),('balance_oil','petroleros')]:
-        m=re.search(r'un (?:menor|mayor) (superávit|déficit) de la balanza de productos '+kind+r'.*?pasó de ([\d ]+) mdd.*?a ([\d ]+) mdd',e)
-        if not m:raise ValueError('Falta saldo ajustado '+ident)
-        sign=1 if m[1]=='superávit' else -1
-        balances.append(dict(id=ident,previous=sign*int(m[2].replace(' ','')),current=sign*int(m[3].replace(' ','')),location='p. 5, texto'))
-    for col in ['previous','current']:
-        if not close(balances[0][col],balances[1][col]+balances[2][col],2):raise ValueError('Saldos ajustados incompatibles')
-    return out,balances,total[4]
+    exports, imports = flat(pages[4]), flat(pages[6])
+    out = []
+    number = r'(\d+\.\d+)'
+    for ident, label, pattern in [
+        ('exports', 'Exportaciones totales', r'exportaciones totales registraron un ' + D + r' mensual de ' + number + r' por ciento'),
+        ('exports_non_oil', 'Exportaciones no petroleras', r'un ' + D + r' de ' + number + r' % en las exportaciones no petroleras'),
+        ('exports_oil', 'Exportaciones petroleras', r'una? ' + D + r' de ' + number + r' % en las petroleras'),
+        ('manufacturing', 'Exportaciones manufactureras', r'las manufactureras presentaron una? ' + D + r' mensual de ' + number + r' por ciento'),
+    ]:
+        out.append(rate(exports, pattern, ident, label, 5))
+
+    auto = ('automotive', 'Exportaciones automotrices')
+    non_auto = ('non_automotive', 'Exportaciones no automotrices')
+    oil = ('imports_oil', 'Importaciones petroleras')
+    non_oil = ('imports_non_oil', 'Importaciones no petroleras')
+
+    def pair(text, grouped, first, second, individual, page):
+        match = re.search(grouped, text)
+        if match:
+            return [adjusted_record(*item, float(val), page, match[0])
+                    for item, val in zip((first, second), match.groups())]
+        return [rate(text, pattern, *item, page)
+                for item, pattern in zip((first, second), individual)]
+
+    out.extend(pair(
+        exports,
+        r'alzas de ' + number + r' % en las exportaciones automotrices y de ' + number + r' % en las manufactureras no automotrices',
+        auto, non_auto,
+        (r'una? ' + D + r' de ' + number + r' % en las automotrices',
+         r'una? ' + D + r' de ' + number + r' % en las exportaciones manufactureras no automotrices'),
+        5,
+    )[::-1])
+    out.append(rate(imports, r'importaciones totales de mercancías mostraron una? ' + D +
+                    r' mensual de ' + number + r' %', 'imports', 'Importaciones totales', 7))
+    out.extend(pair(
+        imports,
+        r'alzas de ' + number + r' % en las importaciones no petroleras y de ' + number + r' % en las petroleras',
+        non_oil, oil,
+        (r'una? ' + D + r' de ' + number + r' % en las importaciones no petroleras',
+         r'una? ' + D + r' de ' + number + r' % en las petroleras'),
+        7,
+    ))
+
+    uses = (
+        r'se observaron (incrementos|descensos) mensuales de ' + number +
+        r' % en las importaciones de bienes de consumo \(' + D + r' de ' + number +
+        r' % en las de bienes de consumo no petroleros\)(?:,| y) de ' + number +
+        r' % en las de bienes de uso intermedio \(' + D + r' de ' + number +
+        r' % en las de bienes de uso intermedio no petroleros\)'
+    )
+    match = re.search(uses, imports)
+    if not match:
+        raise ValueError('Cambió la narrativa de importaciones por uso')
+    sign = 1 if match[1] == 'incrementos' else -1
+    for ident, label, val in [
+        ('consumption', 'Importaciones de consumo', sign * float(match[2])),
+        ('consumption_non_oil', 'Consumo no petrolero', DIRS[match[3]] * float(match[4])),
+        ('intermediate', 'Importaciones intermedias', sign * float(match[5])),
+        ('intermediate_non_oil', 'Intermedios no petroleros', DIRS[match[6]] * float(match[7])),
+    ]:
+        out.append(adjusted_record(ident, label, val, 7, match[0]))
+    capital = re.match(r' y de ' + number + r' % en las de bienes de capital', imports[match.end():])
+    if capital:
+        out.append(adjusted_record('capital', 'Importaciones de capital', sign * float(capital[1]), 7,
+                                   match[0] + capital[0]))
+    else:
+        out.append(rate(imports, r'Las de bienes de capital registraron una? ' + D + r' de ' +
+                        number + r' (?:%|por ciento)', 'capital', 'Importaciones de capital', 7))
+
+    total = re.search(r'balanza comercial registró un (superávit|déficit) de ([\d ]+) mdd, '
+                      r'monto que se compara con el (?:de |(superávit|déficit) de )([\d ]+) mdd de ([a-z]+)', exports)
+    if not total:
+        raise ValueError('Falta saldo ajustado o comparación')
+
+    def balance_value(kind, amount):
+        return (1 if kind == 'superávit' else -1) * int(amount.replace(' ', ''))
+
+    balances = [dict(id='balance', current=balance_value(total[1], total[2]),
+                     previous=balance_value(total[3] or total[1], total[4]), location='p. 5, texto')]
+    for ident, kind in [('balance_non_oil', 'no petroleros'), ('balance_oil', 'petroleros')]:
+        match = re.search(r'un (?:menor|mayor) (superávit|déficit) de la balanza de productos ' +
+                          kind + r'.*?pasó de ([\d ]+) mdd.*?a ([\d ]+) mdd', exports)
+        if not match:
+            raise ValueError('Falta saldo ajustado ' + ident)
+        balances.append(dict(id=ident, previous=balance_value(match[1], match[2]),
+                             current=balance_value(match[1], match[3]), location='p. 5, texto'))
+    for col in ['previous', 'current']:
+        if not close(balances[0][col], balances[1][col] + balances[2][col], 2):
+            raise ValueError('Saldos ajustados incompatibles')
+    return out, balances, total[5]
 
 def extract(pdf,key='BCMM'):
     if key!='BCMM':raise ValueError('Indicador no soportado')
