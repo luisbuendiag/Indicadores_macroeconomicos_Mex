@@ -1,32 +1,32 @@
 {
   "TIPOCAMBIO": {
-    "period": "2026-11-26",
-    "docx_sha256": "70dbcc39924975f6687908ef1ffb9b28e6f0c7524cd0cac2ad322550ce2dfe40",
+    "period": "2026-11-27",
+    "docx_sha256": "d2d6b1a7e080509eaf9dc39555497b9fed50c4c283b29e1a35366e1aa6dc1bc8",
     "source": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do",
-    "generated_at": "2026-11-27T17:51:38.647799+00:00"
+    "generated_at": "2026-11-27T18:53:01.268950+00:00"
   },
   "TASA": {
     "period": "2026-11-27",
-    "docx_sha256": "3a8640d4d5dd2f43913b511d3e86d34e05002bcf1576bee28c2d74164f688093",
+    "docx_sha256": "53043fda23f33b6daa1a3b792a21e1bee5e222c5b59af00a49ab84fe66dd092d",
     "source": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
-    "generated_at": "2026-11-27T17:51:39.691640+00:00"
+    "generated_at": "2026-11-27T18:53:02.327630+00:00"
   },
   "RESERVAS": {
     "period": "2026-11-20",
-    "docx_sha256": "2fd0411ae6b37a81aab8770d9630a73c2e79de3cf8346a992ff4b539f244be7e",
+    "docx_sha256": "40881439a33fd7e93d4fd2eade31a914618c253b229cbdb21f4ed06c00a5be80",
     "source": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/estado-cuenta-semanal-reserva.html",
-    "generated_at": "2026-11-27T17:51:40.768317+00:00"
+    "generated_at": "2026-11-27T18:53:03.425044+00:00"
   },
   "IED": {
     "period": "3T-26",
-    "docx_sha256": "76275a8a58a56a2b7b3b128d918560077e569c752b6719a76a897b0160d6f528",
+    "docx_sha256": "6353d5475164295c6b356a87aaf1834ded56893f723237c8aa8c58327fc98628",
     "source": "https://www.gob.mx/se/prensa/mexico-alcanza-un-maximo-historico-de-inversion-extranjera-directa-ied-entre-enero-y-septiembre-de-2026-43-mil-090-millones-de-dolares?idiom=es",
-    "generated_at": "2026-11-27T17:51:41.877187+00:00"
+    "generated_at": "2026-11-27T18:53:04.557301+00:00"
   },
   "REMESAS": {
     "period": "Sep 26",
-    "docx_sha256": "6365ad674404479ffec0b70ea6bac9061849557ffe616a592225225aa833d0dd",
+    "docx_sha256": "dab0e93368581c69627c1606b7d4a9250a7dec1631840ad598063ba52523f416",
     "source": "https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?accion=consultarCuadro&idCuadro=CE81",
-    "generated_at": "2026-11-27T17:51:42.948588+00:00"
+    "generated_at": "2026-11-27T18:53:05.656866+00:00"
   }
 }

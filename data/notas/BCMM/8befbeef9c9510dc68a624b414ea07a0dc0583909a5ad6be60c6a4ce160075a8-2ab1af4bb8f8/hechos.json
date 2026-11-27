@@ -1,0 +1,600 @@
+{
+  "indicator": "BCMM",
+  "ym": "2026-10",
+  "period": "Oct 26",
+  "publication_date": "2026-11-27",
+  "bulletin": "773/26",
+  "rows": [
+    {
+      "id": "exports",
+      "label": "Exportaciones totales",
+      "amount": 86008.7,
+      "yoy": 30.2,
+      "ytd": 713203.0,
+      "ytd_yoy": 30.3,
+      "location": "p. 1, cuadro 1",
+      "series": "original",
+      "evidence": "Exportaciones totales 86 008.7 30.2 713 203.0 30.3"
+    },
+    {
+      "id": "exports_oil",
+      "label": "Petroleras",
+      "amount": 1738.3,
+      "yoy": -3.4,
+      "ytd": 18089.4,
+      "ytd_yoy": -0.5,
+      "location": "p. 1, cuadro 1",
+      "series": "original",
+      "evidence": "Petroleras 1 738.3 -3.4 18 089.4 -0.5"
+    },
+    {
+      "id": "exports_non_oil",
+      "label": "No petroleras",
+      "amount": 84270.5,
+      "yoy": 31.2,
+      "ytd": 695113.6,
+      "ytd_yoy": 31.4,
+      "location": "p. 1, cuadro 1",
+      "series": "original",
+      "evidence": "No petroleras 84 270.5 31.2 695 113.6 31.4"
+    },
+    {
+      "id": "agriculture",
+      "label": "Agropecuarias",
+      "amount": 1425.1,
+      "yoy": 7.4,
+      "ytd": 17065.8,
+      "ytd_yoy": -1.6,
+      "location": "p. 1, cuadro 1",
+      "series": "original",
+      "evidence": "Agropecuarias 1 425.1 7.4 17 065.8 -1.6"
+    },
+    {
+      "id": "extractive",
+      "label": "Extractivas",
+      "amount": 1602.4,
+      "yoy": 24.7,
+      "ytd": 18208.1,
+      "ytd_yoy": 68.2,
+      "location": "p. 1, cuadro 1",
+      "series": "original",
+      "evidence": "Extractivas 1 602.4 24.7 18 208.1 68.2"
+    },
+    {
+      "id": "manufacturing",
+      "label": "Manufactureras",
+      "amount": 81243.1,
+      "yoy": 31.8,
+      "ytd": 659839.7,
+      "ytd_yoy": 31.7,
+      "location": "p. 1, cuadro 1",
+      "series": "original",
+      "evidence": "Manufactureras 81 243.1 31.8 659 839.7 31.7"
+    },
+    {
+      "id": "automotive",
+      "label": "Automotrices",
+      "amount": 17246.2,
+      "yoy": 5.6,
+      "ytd": 159204.9,
+      "ytd_yoy": 1.8,
+      "location": "p. 1, cuadro 1",
+      "series": "original",
+      "evidence": "Automotrices 17 246.2 5.6 159 204.9 1.8"
+    },
+    {
+      "id": "non_automotive",
+      "label": "No automotrices",
+      "amount": 63996.9,
+      "yoy": 41.3,
+      "ytd": 500634.8,
+      "ytd_yoy": 45.4,
+      "location": "p. 1, cuadro 1",
+      "series": "original",
+      "evidence": "No automotrices 63 996.9 41.3 500 634.8 45.4"
+    },
+    {
+      "id": "imports",
+      "label": "Importaciones totales",
+      "amount": 85710.5,
+      "yoy": 30.8,
+      "ytd": 703650.5,
+      "ytd_yoy": 27.9,
+      "location": "p. 1, cuadro 1",
+      "series": "original",
+      "evidence": "Importaciones totales 85 710.5 30.8 703 650.5 27.9"
+    },
+    {
+      "id": "imports_oil",
+      "label": "Petroleras",
+      "amount": 6031.2,
+      "yoy": 52.7,
+      "ytd": 48066.7,
+      "ytd_yoy": 22.8,
+      "location": "p. 1, cuadro 1",
+      "series": "original",
+      "evidence": "Petroleras 6 031.2 52.7 48 066.7 22.8"
+    },
+    {
+      "id": "imports_non_oil",
+      "label": "No petroleras",
+      "amount": 79679.3,
+      "yoy": 29.4,
+      "ytd": 655583.8,
+      "ytd_yoy": 28.3,
+      "location": "p. 1, cuadro 1",
+      "series": "original",
+      "evidence": "No petroleras 79 679.3 29.4 655 583.8 28.3"
+    },
+    {
+      "id": "consumption",
+      "label": "Bienes de consumo",
+      "amount": 10282.8,
+      "yoy": 4.3,
+      "ytd": 87424.0,
+      "ytd_yoy": 9.2,
+      "location": "p. 1, cuadro 1",
+      "series": "original",
+      "evidence": "Bienes de consumo 10 282.8 4.3 87 424.0 9.2"
+    },
+    {
+      "id": "consumption_oil",
+      "label": "Petroleras",
+      "amount": 1998.5,
+      "yoy": 37.6,
+      "ytd": 16044.5,
+      "ytd_yoy": 28.9,
+      "location": "p. 1, cuadro 1",
+      "series": "original",
+      "evidence": "Petroleras 1 998.5 37.6 16 044.5 28.9"
+    },
+    {
+      "id": "consumption_non_oil",
+      "label": "No petroleras",
+      "amount": 8284.2,
+      "yoy": -1.5,
+      "ytd": 71379.5,
+      "ytd_yoy": 5.6,
+      "location": "p. 1, cuadro 1",
+      "series": "original",
+      "evidence": "No petroleras 8 284.2 -1.5 71 379.5 5.6"
+    },
+    {
+      "id": "intermediate",
+      "label": "Bienes intermedios",
+      "amount": 69916.0,
+      "yoy": 38.1,
+      "ytd": 566954.3,
+      "ytd_yoy": 34.0,
+      "location": "p. 1, cuadro 1",
+      "series": "original",
+      "evidence": "Bienes intermedios 69 916.0 38.1 566 954.3 34.0"
+    },
+    {
+      "id": "intermediate_oil",
+      "label": "Petroleras",
+      "amount": 4032.7,
+      "yoy": 61.5,
+      "ytd": 32022.2,
+      "ytd_yoy": 19.9,
+      "location": "p. 1, cuadro 1",
+      "series": "original",
+      "evidence": "Petroleras 4 032.7 61.5 32 022.2 19.9"
+    },
+    {
+      "id": "intermediate_non_oil",
+      "label": "No petroleras",
+      "amount": 65883.3,
+      "yoy": 36.9,
+      "ytd": 534932.0,
+      "ytd_yoy": 34.9,
+      "location": "p. 1, cuadro 1",
+      "series": "original",
+      "evidence": "No petroleras 65 883.3 36.9 534 932.0 34.9"
+    },
+    {
+      "id": "capital",
+      "label": "Bienes de capital",
+      "amount": 5511.7,
+      "yoy": 9.4,
+      "ytd": 49272.2,
+      "ytd_yoy": 5.3,
+      "location": "p. 1, cuadro 1",
+      "series": "original",
+      "evidence": "Bienes de capital 5 511.7 9.4 49 272.2 5.3"
+    },
+    {
+      "id": "balance",
+      "label": "Saldo de la balanza comercial",
+      "amount": 298.2,
+      "yoy": -43.3,
+      "ytd": 9552.5,
+      "ytd_yoy": null,
+      "location": "p. 1, cuadro 1",
+      "series": "original",
+      "evidence": "Saldo de la balanza comercial 298.2 -43.3 9 552.5 S.S.\n"
+    }
+  ],
+  "history": [
+    {
+      "id": "exports",
+      "label": "Exportaciones totales",
+      "values": [
+        617771,
+        664267,
+        78010,
+        77797,
+        86009,
+        713203
+      ],
+      "location": "p. 2, cuadro 2",
+      "series": "original"
+    },
+    {
+      "id": "exports_oil",
+      "label": "Petroleras",
+      "values": [
+        28954,
+        21245,
+        1582,
+        1803,
+        1738,
+        18089
+      ],
+      "location": "p. 2, cuadro 2",
+      "series": "original"
+    },
+    {
+      "id": "exports_non_oil",
+      "label": "No petroleras",
+      "values": [
+        588817,
+        643022,
+        76429,
+        75993,
+        84270,
+        695114
+      ],
+      "location": "p. 2, cuadro 2",
+      "series": "original"
+    },
+    {
+      "id": "imports",
+      "label": "Importaciones totales",
+      "values": [
+        636218,
+        664057,
+        77405,
+        78403,
+        85711,
+        703650
+      ],
+      "location": "p. 2, cuadro 2",
+      "series": "original"
+    },
+    {
+      "id": "imports_oil",
+      "label": "Petroleras",
+      "values": [
+        50087,
+        46797,
+        5023,
+        5157,
+        6031,
+        48067
+      ],
+      "location": "p. 2, cuadro 2",
+      "series": "original"
+    },
+    {
+      "id": "imports_non_oil",
+      "label": "No petroleras",
+      "values": [
+        586131,
+        617260,
+        72382,
+        73245,
+        79679,
+        655584
+      ],
+      "location": "p. 2, cuadro 2",
+      "series": "original"
+    },
+    {
+      "id": "balance",
+      "label": "Balanza comercial total",
+      "values": [
+        -18447,
+        209,
+        605,
+        -606,
+        298,
+        9552
+      ],
+      "location": "p. 2, cuadro 2",
+      "series": "original"
+    },
+    {
+      "id": "balance_oil",
+      "label": "Petrolera",
+      "values": [
+        -21133,
+        -25553,
+        -3441,
+        -3354,
+        -4293,
+        -29977
+      ],
+      "location": "p. 2, cuadro 2",
+      "series": "original"
+    },
+    {
+      "id": "balance_non_oil",
+      "label": "No petrolera",
+      "values": [
+        2686,
+        25762,
+        4047,
+        2748,
+        4591,
+        39530
+      ],
+      "location": "p. 2, cuadro 2",
+      "series": "original"
+    }
+  ],
+  "markets": [
+    {
+      "id": "total",
+      "label": "Total",
+      "share": 100.0,
+      "values": [
+        9.2,
+        41.7,
+        38.8,
+        31.2,
+        31.4
+      ],
+      "location": "p. 3, cuadro 3",
+      "series": "original",
+      "evidence": "Total 100.00 9.2 41.7 38.8 31.2 31.4"
+    },
+    {
+      "id": "usa",
+      "label": "Estados Unidos",
+      "share": 85.18,
+      "values": [
+        8.7,
+        45.2,
+        43.5,
+        36.8,
+        33.4
+      ],
+      "location": "p. 3, cuadro 3",
+      "series": "original",
+      "evidence": "Estados Unidos 85.18 8.7 45.2 43.5 36.8 33.4"
+    },
+    {
+      "id": "usa_auto",
+      "label": "Automotriz",
+      "share": 19.16,
+      "values": [
+        -5.8,
+        -1.0,
+        8.5,
+        7.2,
+        0.2
+      ],
+      "location": "p. 3, cuadro 3",
+      "series": "original",
+      "evidence": "Automotriz 19.16 -5.8 -1.0 8.5 7.2 0.2"
+    },
+    {
+      "id": "usa_other",
+      "label": "Otras",
+      "share": 66.02,
+      "values": [
+        16.2,
+        64.8,
+        57.2,
+        46.9,
+        47.6
+      ],
+      "location": "p. 3, cuadro 3",
+      "series": "original",
+      "evidence": "Otras 66.02 16.2 64.8 57.2 46.9 47.6"
+    },
+    {
+      "id": "rest",
+      "label": "Resto del mundo",
+      "share": 14.82,
+      "values": [
+        11.7,
+        23.5,
+        16.4,
+        0.8,
+        20.9
+      ],
+      "location": "p. 3, cuadro 3",
+      "series": "original",
+      "evidence": "Resto del mundo 14.82 11.7 23.5 16.4 0.8 20.9"
+    },
+    {
+      "id": "rest_auto",
+      "label": "Automotriz",
+      "share": 3.74,
+      "values": [
+        4.3,
+        -7.8,
+        -7.4,
+        -3.3,
+        10.3
+      ],
+      "location": "p. 3, cuadro 3",
+      "series": "original",
+      "evidence": "Automotriz 3.74 4.3 -7.8 -7.4 -3.3 10.3"
+    },
+    {
+      "id": "rest_other",
+      "label": "Otras",
+      "share": 11.08,
+      "values": [
+        14.9,
+        38.6,
+        26.3,
+        2.1,
+        25.0
+      ],
+      "location": "p. 3, cuadro 3",
+      "series": "original",
+      "evidence": "Otras 11.08 14.9 38.6 26.3 2.1 25.0\n"
+    }
+  ],
+  "adjusted": [
+    {
+      "id": "exports",
+      "label": "Exportaciones totales",
+      "value": 5.64,
+      "location": "p. 5, texto",
+      "series": "desestacionalizada",
+      "evidence": "exportaciones totales registraron un incremento mensual de 5.64 por ciento"
+    },
+    {
+      "id": "exports_non_oil",
+      "label": "Exportaciones no petroleras",
+      "value": 5.88,
+      "location": "p. 5, texto",
+      "series": "desestacionalizada",
+      "evidence": "un aumento de 5.88 % en las exportaciones no petroleras"
+    },
+    {
+      "id": "exports_oil",
+      "label": "Exportaciones petroleras",
+      "value": -4.92,
+      "location": "p. 5, texto",
+      "series": "desestacionalizada",
+      "evidence": "una disminución de 4.92 % en las petroleras"
+    },
+    {
+      "id": "manufacturing",
+      "label": "Exportaciones manufactureras",
+      "value": 6.68,
+      "location": "p. 5, texto",
+      "series": "desestacionalizada",
+      "evidence": "las manufactureras presentaron un avance mensual de 6.68 por ciento"
+    },
+    {
+      "id": "non_automotive",
+      "label": "Exportaciones no automotrices",
+      "value": 8.45,
+      "location": "p. 5, texto",
+      "series": "desestacionalizada",
+      "evidence": "alzas de 0.68 % en las exportaciones automotrices y de 8.45 % en las manufactureras no automotrices"
+    },
+    {
+      "id": "automotive",
+      "label": "Exportaciones automotrices",
+      "value": 0.68,
+      "location": "p. 5, texto",
+      "series": "desestacionalizada",
+      "evidence": "alzas de 0.68 % en las exportaciones automotrices y de 8.45 % en las manufactureras no automotrices"
+    },
+    {
+      "id": "imports",
+      "label": "Importaciones totales",
+      "value": 4.05,
+      "location": "p. 7, texto",
+      "series": "desestacionalizada",
+      "evidence": "importaciones totales de mercancías mostraron un aumento mensual de 4.05 %"
+    },
+    {
+      "id": "imports_non_oil",
+      "label": "Importaciones no petroleras",
+      "value": 2.94,
+      "location": "p. 7, texto",
+      "series": "desestacionalizada",
+      "evidence": "alzas de 2.94 % en las importaciones no petroleras y de 20.33 % en las petroleras"
+    },
+    {
+      "id": "imports_oil",
+      "label": "Importaciones petroleras",
+      "value": 20.33,
+      "location": "p. 7, texto",
+      "series": "desestacionalizada",
+      "evidence": "alzas de 2.94 % en las importaciones no petroleras y de 20.33 % en las petroleras"
+    },
+    {
+      "id": "consumption",
+      "label": "Importaciones de consumo",
+      "value": 1.49,
+      "location": "p. 7, texto",
+      "series": "desestacionalizada",
+      "evidence": "se observaron incrementos mensuales de 1.49 % en las importaciones de bienes de consumo (disminución de 0.23 % en las de bienes de consumo no petroleros) y de 5.11 % en las de bienes de uso intermedio (avance de 3.94 % en las de bienes de uso intermedio no petroleros)"
+    },
+    {
+      "id": "consumption_non_oil",
+      "label": "Consumo no petrolero",
+      "value": -0.23,
+      "location": "p. 7, texto",
+      "series": "desestacionalizada",
+      "evidence": "se observaron incrementos mensuales de 1.49 % en las importaciones de bienes de consumo (disminución de 0.23 % en las de bienes de consumo no petroleros) y de 5.11 % en las de bienes de uso intermedio (avance de 3.94 % en las de bienes de uso intermedio no petroleros)"
+    },
+    {
+      "id": "intermediate",
+      "label": "Importaciones intermedias",
+      "value": 5.11,
+      "location": "p. 7, texto",
+      "series": "desestacionalizada",
+      "evidence": "se observaron incrementos mensuales de 1.49 % en las importaciones de bienes de consumo (disminución de 0.23 % en las de bienes de consumo no petroleros) y de 5.11 % en las de bienes de uso intermedio (avance de 3.94 % en las de bienes de uso intermedio no petroleros)"
+    },
+    {
+      "id": "intermediate_non_oil",
+      "label": "Intermedios no petroleros",
+      "value": 3.94,
+      "location": "p. 7, texto",
+      "series": "desestacionalizada",
+      "evidence": "se observaron incrementos mensuales de 1.49 % en las importaciones de bienes de consumo (disminución de 0.23 % en las de bienes de consumo no petroleros) y de 5.11 % en las de bienes de uso intermedio (avance de 3.94 % en las de bienes de uso intermedio no petroleros)"
+    },
+    {
+      "id": "capital",
+      "label": "Importaciones de capital",
+      "value": -3.46,
+      "location": "p. 7, texto",
+      "series": "desestacionalizada",
+      "evidence": "Las de bienes de capital registraron una reducción de 3.46 por ciento"
+    }
+  ],
+  "balances": [
+    {
+      "id": "balance",
+      "current": 2068,
+      "previous": 823,
+      "location": "p. 5, texto"
+    },
+    {
+      "id": "balance_non_oil",
+      "previous": 3924,
+      "current": 6242,
+      "location": "p. 5, texto"
+    },
+    {
+      "id": "balance_oil",
+      "previous": -3100,
+      "current": -4174,
+      "location": "p. 5, texto"
+    }
+  ],
+  "pages": [
+    "BOLETÍN DE INDICADOR 773/26\nBALANZA COMERCIAL DE\nMERCANCÍAS DE MÉXICO (BCMM)\n27 de noviembre de 2026\nPágina 1/9\nPróxima publicación: 23 de diciembre de 2026\nSaldo Exportaciones Importaciones\noctubre octubre octubre\nmillones de dólares (mdd) mdd variación anual mdd variación anual\n298 86 009 ▲ 30.2 % 85 711 ▲ 30.8 %\nAumentaron las exportaciones 30.2 %\ny las importaciones 30.8 %, a tasa anual, en octubre de 2026\nI. CIFRAS ORIGINALES\nCuadro 1\nBalanza Comercial de Mercancías de México\na octubre de 20261/\n(millones de dólares y variación porcentual anual)\nOctubre de 2026 Enero-octubre de 2026\nConcepto\nmillones variación millones variación\nde dólares % anual de dólares % anual\nExportaciones totales 86 008.7 30.2 713 203.0 30.3\nPetroleras 1 738.3 -3.4 18 089.4 -0.5\nNo petroleras 84 270.5 31.2 695 113.6 31.4\nAgropecuarias 1 425.1 7.4 17 065.8 -1.6\nExtractivas 1 602.4 24.7 18 208.1 68.2\nManufactureras 81 243.1 31.8 659 839.7 31.7\nAutomotrices 17 246.2 5.6 159 204.9 1.8\nNo automotrices 63 996.9 41.3 500 634.8 45.4\nImportaciones totales 85 710.5 30.8 703 650.5 27.9\nPetroleras 6 031.2 52.7 48 066.7 22.8\nNo petroleras 79 679.3 29.4 655 583.8 28.3\nBienes de consumo 10 282.8 4.3 87 424.0 9.2\nPetroleras 1 998.5 37.6 16 044.5 28.9\nNo petroleras 8 284.2 -1.5 71 379.5 5.6\nBienes intermedios 69 916.0 38.1 566 954.3 34.0\nPetroleras 4 032.7 61.5 32 022.2 19.9\nNo petroleras 65 883.3 36.9 534 932.0 34.9\nBienes de capital 5 511.7 9.4 49 272.2 5.3\nSaldo de la balanza comercial 298.2 -43.3 9 552.5 S.S.\nNota: Debido al redondeo de las cifras, las sumas de los parciales pueden no coincidir con los totales.\n1/ Cifras oportunas.\nS.S. Sin significado.\nFuente: Servicio de Administración Tributaria (SAT), Secretaría de Economía (SE), Banco de México e INEGI.\nBalanza Comercial de Mercancías de México (BCMM), 2026.",
+    "BOLETÍN DE INDICADOR 773/26\nBALANZA COMERCIAL DE\nMERCANCÍAS DE MÉXICO (BCMM)\n27 de noviembre de 2026\nPágina 2/9\nSaldo de la balanza comercial de mercancías\nEn octubre de 2026, la información oportuna de comercio exterior registró un superávit\ncomercial de 298 millones de dólares (mdd). Dicho superávit se compara con el déficit de\n606 mdd reportado en septiembre. La ampliación del saldo comercial, entre septiembre y\noctubre, resultó de un incremento del superávit de la balanza de productos no petroleros\n—que pasó de 2 748 mdd, en septiembre, a 4 591 mdd, en octubre— y de un mayor déficit\nde la balanza de productos petroleros —que pasó de 3 354 mdd a 4 293 mdd, en esa misma\ncomparación—.1\nPara los primeros diez meses de 2026, la balanza comercial presentó un superávit de\n9 552 mdd. En el mismo periodo de 2025, registró un déficit de 2 872 mdd.\nCuadro 2\nBalanza Comercial de Mercancías de México\na octubre de 2026\n(millones de dólares)\n2026\nConcepto 2024 2025\nago. sep. oct.1/ ene.-oct.1/\nExportaciones totales 617 771 664 267 78 010 77 797 86 009 713 203\nPetroleras 28 954 21 245 1 582 1 803 1 738 18 089\nNo petroleras 588 817 643 022 76 429 75 993 84 270 695 114\nImportaciones totales 636 218 664 057 77 405 78 403 85 711 703 650\nPetroleras 50 087 46 797 5 023 5 157 6 031 48 067\nNo petroleras 586 131 617 260 72 382 73 245 79 679 655 584\nBalanza comercial total -18 447 209 605 -606 298 9 552\nPetrolera -21 133 -25 553 -3 441 -3 354 -4 293 -29 977\nNo petrolera 2 686 25 762 4 047 2 748 4 591 39 530\n1/ Cifras oportunas.\nFuente: Servicio de Administración Tributaria (SAT), Secretaría de Economía (SE), Banco de México e INEGI.\nBalanza Comercial de Mercancías de México (BCMM), 2026.\nExportaciones totales de mercancías\nEn el décimo mes del año en curso, el valor de las exportaciones de mercancías fue de\n86 009 mdd, monto superior en 30.2 % al del mismo mes de 2025. Dicha tasa resultó de un\ncrecimiento de 31.2 % en las exportaciones no petroleras y de una caída de 3.4 % en las\npetroleras. Al interior de las exportaciones no petroleras, se presentaron incrementos\nanuales de 36.8 % en las dirigidas a Estados Unidos y de 0.8 % en las canalizadas al resto\ndel mundo (ver cuadros 2 y 3).\n1 Las sumas de los componentes que integran la estadística de la Balanza Comercial de Mercancías de México que se presentan en este\nboletín pueden no coincidir con los totales debido al redondeo de las cifras.",
+    "BOLETÍN DE INDICADOR 773/26\nBALANZA COMERCIAL DE\nMERCANCÍAS DE MÉXICO (BCMM)\n27 de noviembre de 2026\nPágina 3/9\nCuadro 3\nExportaciones no petroleras a distintos mercados\na octubre de 2026\n(participación y variación)\nParticipación Variación porcentual anual\nporcentual\nConcepto 2025 2026\nene.-oct.\nde 20261/ anual ago. sep. oct.1/ ene.-oct.1/\nTotal 100.00 9.2 41.7 38.8 31.2 31.4\nEstados Unidos 85.18 8.7 45.2 43.5 36.8 33.4\nAutomotriz 19.16 -5.8 -1.0 8.5 7.2 0.2\nOtras 66.02 16.2 64.8 57.2 46.9 47.6\nResto del mundo 14.82 11.7 23.5 16.4 0.8 20.9\nAutomotriz 3.74 4.3 -7.8 -7.4 -3.3 10.3\nOtras 11.08 14.9 38.6 26.3 2.1 25.0\n1/ Cifras oportunas.\nFuente: Servicio de Administración Tributaria (SAT), Secretaría de Economía (SE), Banco de México e INEGI.\nBalanza Comercial de Mercancías de México (BCMM), 2026.\nExportaciones según tipo de mercancía\nEn octubre de 2026, el valor de las exportaciones de productos manufacturados fue de\n81 243 mdd, lo que representó un alza de 31.8 % a tasa anual. Los crecimientos más\nsignificativos se observaron en las exportaciones de equipos y aparatos eléctricos y\nelectrónicos (73.6 %), de productos de la siderurgia (13.2 %), de maquinaria y equipo\nespecial para industrias diversas (7.7 %), de productos de la minerometalurgia (7.4 %) y de\nproductos automotrices (5.6 %). A su vez, el incremento anual de las exportaciones de\nproductos automotrices derivó de un aumento de 7.2 % en las ventas canalizadas a Estados\nUnidos y de una caída de 3.3% en las dirigidas a otros mercados (ver cuadro 3).\nEn el mes de referencia, el valor de las exportaciones petroleras fue de 1 738 mdd.\nEste monto se conformó de 1 231 mdd de ventas de petróleo crudo2 y de 507 mdd de\nexportaciones de otros productos petroleros. En ese mes, el precio promedio de la mezcla\nmexicana de crudo de exportación se situó en 97.45 dólares por barril, cifra mayor en\n5.45 dólares a la del mes previo y en 39.90 dólares a la de octubre de 2025. En cuanto al\nvolumen de crudo exportado, este se ubicó en 408 mil barriles diarios, nivel inferior al de\n466 mil barriles diarios de septiembre y al de 717 mil barriles diarios de octubre de 2025.\nEn el décimo mes de 2026, el valor de las exportaciones agropecuarias y pesqueras fue de\n1 425 mdd, monto que implicó un incremento anual de 7.4 por ciento. Los crecimientos más\nsobresalientes se registraron en las exportaciones de café crudo en grano (90.2 %),\nde cebollas y ajos (20.7 %), de pepino (20.2 %), de cítricos (16.8 %) y de jitomate (4.6 %).\nEn contraste, las reducciones anuales más relevantes se presentaron en las exportaciones\nde pescados, crustáceos y moluscos (22.1 %) y de melón, sandía y papaya (20.4 %).\n2 Información proporcionada, principalmente, por PMI Comercio Internacional, S. A. de C. V., que corresponde a sus cifras operativas y está\nsujeta a revisiones posteriores.",
+    "BOLETÍN DE INDICADOR 773/26\nBALANZA COMERCIAL DE\nMERCANCÍAS DE MÉXICO (BCMM)\n27 de noviembre de 2026\nPágina 4/9\nLas exportaciones extractivas se ubicaron en 1 602 mdd: mostraron un alza anual de\n24.7 por ciento.\nEn el periodo enero-octubre de 2026, el valor de las exportaciones totales sumó\n713 203 mdd, lo que significó un crecimiento anual de 30.3 por ciento. Dicha tasa fue reflejo\nde un aumento de 31.4 % en las exportaciones no petroleras y de un retroceso de 0.5 % en\nlas petroleras.\nEstructura de las exportaciones\nEn los diez primeros meses de este año, la estructura del valor de las exportaciones de\nmercancías fue la siguiente: bienes manufacturados, 92.5 %; productos extractivos no\npetroleros, 2.6 %; bienes petroleros, 2.5 %; y productos agropecuarios, 2.4 por ciento.\nImportaciones totales de mercancías\nEn octubre de 2026, el valor de las importaciones de mercancías fue de 85 711 mdd y\nrepresentó un incremento anual de 30.8 por ciento.\nImportaciones según tipo de bien\nEn el mes de referencia, las importaciones de bienes de consumo llegaron a 10 283 mdd,\ncifra que significó un ascenso anual de 4.3 por ciento. Dicha tasa resultó de un alza de 37.6 %\nen las de bienes de consumo petroleros (gasolina y gas butano y propano) y de un descenso\nde 1.5 % en las importaciones de bienes de consumo no petroleros.\nSe importaron bienes de uso intermedio por un valor de 69 916 mdd, nivel superior en 38.1 %\nal reportado en octubre de 2025. A su vez, esta cifra derivó de avances de 36.9 % en las\nimportaciones de productos no petroleros de uso intermedio y de 61.5 % en las de bienes\npetroleros de uso intermedio.\nPor su parte, las importaciones de bienes de capital alcanzaron 5 512 mdd, lo que implicó un\ncrecimiento anual de 9.4 por ciento.\nEn el periodo enero-octubre de 2026, el valor acumulado de las importaciones totales fue de\n703 650 mdd, monto 27.9 % mayor que el observado en igual lapso de 2025. A su interior,\nlas importaciones no petroleras subieron 28.3 % y las petroleras, 22.8 %, a tasa anual.\nEstructura de las importaciones\nEn el periodo enero-octubre de 2026, la estructura del valor de las importaciones fue la\nsiguiente: bienes de uso intermedio, 80.6 %; bienes de consumo, 12.4 %; y bienes de capital,\n7.0 por ciento.",
+    "BOLETÍN DE INDICADOR 773/26\nBALANZA COMERCIAL DE\nMERCANCÍAS DE MÉXICO (BCMM)\n27 de noviembre de 2026\nPágina 5/9\nII. CIFRAS DESESTACIONALIZADAS\nEn octubre de 2026 y con cifras desestacionalizadas,3 la balanza comercial registró un\nsuperávit de 2 068 mdd, monto que se compara con el superávit de 823 mdd de septiembre.\nEl aumento del superávit entre septiembre y octubre resultó de un mayor superávit de la\nbalanza de productos no petroleros —que pasó de 3 924 mdd, en septiembre, a 6 242 mdd,\nen octubre— y de un mayor déficit de la balanza de productos petroleros —que pasó de\n3 100 mdd a 4 174 mdd, en esa misma comparación—.\nGráfica 1\nSerie desestacionalizada y de tendencia-ciclo\ndel saldo de la Balanza Comercial de Mercancías de México\nenero de 2022–octubre de 20261/\n(millones de dólares)\n3 000\n1 500\n0\n-1 500\n-3 000\n-4 500\n-6 000\n2022 2023 2024 2025 2026\nSerie desestacionalizada Serie tendencia-ciclo\nNota: Series elaboradas mediante métodos econométricos.\n1/ Cifras oportunas para octubre de 2026.\nFuente: Servicio de Administración Tributaria (SAT), Secretaría de Economía (SE), Banco de México e INEGI.\nBalanza Comercial de Mercancías de México (BCMM), 2026.\nEn el mes que se reporta, en términos desestacionalizados, las exportaciones totales\nregistraron un incremento mensual de 5.64 por ciento. Este resultó de un aumento de 5.88 %\nen las exportaciones no petroleras y de una disminución de 4.92 % en las petroleras.\nAl interior de las exportaciones no petroleras, las manufactureras presentaron un avance\nmensual de 6.68 por ciento. A su vez, dicha tasa derivó de alzas de 0.68 % en las\nexportaciones automotrices y de 8.45 % en las manufactureras no automotrices.\n3 La mayoría de las series económicas se ve afectada por factores estacionales y de calendario. El ajuste de los datos por dichos factores\npermite obtener las cifras desestacionalizadas.\nLa tendencia-ciclo es la combinación de los componentes de tendencia y ciclo. La tendencia se refiere a la evolución de largo plazo de\nla serie de tiempo, y el ciclo, a las desviaciones alrededor de la tendencia. Su análisis ayuda a realizar un mejor diagnóstico de la\nevolución de las variables.",
+    "BOLETÍN DE INDICADOR 773/26\nBALANZA COMERCIAL DE\nMERCANCÍAS DE MÉXICO (BCMM)\n27 de noviembre de 2026\nPágina 6/9\nGráfica 2\nSerie desestacionalizada y de tendencia-ciclo de las Exportaciones de mercancías\nenero de 2022–octubre de 20261/\n(millones de dólares)\nTotales Petroleras\n80 000\n4 000\n70 000 3 400\n2 800\n60 000\n2 200\n50 000\n1 600\n40 000 1 000\n2022 2023 2024 2025 2026 2022 2023 2024 2025 2026\nNo petroleras Manufactureras\n76 000 75 000\n68 000\n65 000\n60 000\n55 000\n52 000\n45 000\n44 000\n36 000 35 000\n2022 2023 2024 2025 2026 2022 2023 2024 2025 2026\nAutomotrices Manufactureras no automotrices\n18 000\n56 000\n16 000\n48 000\n14 000\n40 000\n12 000 32 000\n10 000 24 000\n2022 2023 2024 2025 2026 2022 2023 2024 2025 2026\nSerie desestacionalizada Serie tendencia-ciclo\nNota: Series elaboradas mediante métodos econométricos.\n1/ Cifras oportunas para octubre de 2026.\nFuente: Servicio de Administración Tributaria (SAT), Secretaría de Economía (SE), Banco de México e INEGI.\nBalanza Comercial de Mercancías de México (BCMM), 2026.",
+    "BOLETÍN DE INDICADOR 773/26\nBALANZA COMERCIAL DE\nMERCANCÍAS DE MÉXICO (BCMM)\n27 de noviembre de 2026\nPágina 7/9\nEn octubre de 2026, con cifras ajustadas por estacionalidad, las importaciones totales de\nmercancías mostraron un aumento mensual de 4.05 %; producto de alzas de 2.94 % en las\nimportaciones no petroleras y de 20.33 % en las petroleras. Según el tipo de bien, se\nobservaron incrementos mensuales de 1.49 % en las importaciones de bienes de consumo\n(disminución de 0.23 % en las de bienes de consumo no petroleros) y de 5.11 % en las de\nbienes de uso intermedio (avance de 3.94 % en las de bienes de uso intermedio\nno petroleros). Las de bienes de capital registraron una reducción de 3.46 por ciento.\nGráfica 3\nSerie desestacionalizada y de tendencia-ciclo de las Importaciones de mercancías\nenero de 2022–octubre de 20261/\n(millones de dólares)\nTotales Petroleras\n8 500\n76 000\n68 000 6 500\n60 000\n4 500\n52 000\n44 000 2 500\n2022 2023 2024 2025 2026 2022 2023 2024 2025 2026\nNo petroleras Bienes de consumo\n9 300\n71 000\n63 000 8 000\n55 000\n6 700\n47 000\n39 000 5 400\n2022 2023 2024 2025 2026 2022 2023 2024 2025 2026\n(continúa)",
+    "BOLETÍN DE INDICADOR 773/26\nBALANZA COMERCIAL DE\nMERCANCÍAS DE MÉXICO (BCMM)\n27 de noviembre de 2026\nPágina 8/9\nBienes intermedios Bienes de capital\n5 500\n60 000\n5 000\n51 000\n4 500\n42 000\n4 000\n33 000 3 500\n2022 2023 2024 2025 2026 2022 2023 2024 2025 2026\nSerie desestacionalizada Serie tendencia-ciclo\n(concluye)\nNota: Series elaboradas mediante métodos econométricos.\n1/ Cifras oportunas para octubre de 2026.\nFuente: Servicio de Administración Tributaria (SAT), Secretaría de Economía (SE), Banco de México e INEGI.\nBalanza Comercial de Mercancías de México (BCMM), 2026.\nLa presente información oportuna de comercio exterior la elaboran: el Servicio de\nAdministración Tributaria, la Secretaría de Economía, el Banco de México y el Instituto\nNacional de Estadística y Geografía. Balanza Comercial de Mercancías de México.\nSistema Nacional de Información Estadística y Geográfica (SNIEG). Información de\nInterés Nacional.",
+    "BOLETÍN DE INDICADOR 773/26\nBALANZA COMERCIAL DE\nMERCANCÍAS DE MÉXICO (BCMM)\n27 de noviembre de 2026\nPágina 9/9\nIII. FICHA METODOLÓGICA\nLa Balanza Comercial de Mercancías de México (BCMM) es un programa estadístico\nque realizan el Servicio de Administración Tributaria (SAT), Secretaría de Economía\n(SE), Banco de México y el Instituto Nacional de Estadística y Geografía (INEGI). Su\nobjetivo es proporcionar información que permita conocer el intercambio comercial de\nmercancías que realiza México con el resto del mundo y que sirva como insumo para\nel Sistema de Cuentas Nacionales, los cálculos de la Balanza de Pagos y programas\nque se relacionan con la vinculación estadística. En 1980 se inició la utilización de la\nAntecedentes\nClasificación Industrial Internacional Uniforme (CIIU) para la presentación de resultados\nsegún la actividad económica de origen y principales productos. Asimismo, a partir del\nsegundo semestre de 1988, se instrumentó el Sistema Armonizado de Designación y\nCodificación de Mercancías (SA). Con este, se perfeccionó el empleo de la\nnomenclatura arancelaria y se avanzó en la presentación de cifras homogéneas entre\nlos países. A partir de mayo de 2005, se abandonó la difusión de información con base\nen la CIIU y entró en vigor la publicación de los Principales Productos del SA.\nUnidad de Cada una de las operaciones comerciales que realizan las personas físicas y morales\nobservación con el resto del mundo. Estas se asientan en las declaraciones de aduanas.\nFuentes Pedimento aduanal\nLa cobertura y desglose geográfico de la BCMM es nacional y considera los datos de\nCobertura geográfica\nlas 50 aduanas ubicadas en todo el territorio (incluye 128 secciones aduanales).\nPeriodicidad Mensual\nSe trata de una estadística cuya fuente principal son los registros administrativos. La\ninformación se obtiene mediante el pedimento aduanal; a través de este, se consignan\nMétodo para generar todas las operaciones de entrada y/o salida de mercancías del territorio nacional. La\nla estadística responsabilidad de proporcionar la base de datos con los registros administrativos\npara la generación de la BCMM recae en el Servicio de Administración Tributaria,\nórgano desconcentrado de la Secretaría de Hacienda y Crédito Público (SHCP).\nLas series originales se ajustan estacionalmente mediante el paquete estadístico\nX-13ARIMA-SEATS. Para conocer la metodología, consúltese la siguiente liga:\nhttps://www.inegi.org.mx/app/biblioteca/ficha.html?upc=702825099060\nAjuste estacional y\nLas especificaciones de los modelos están disponibles en el Banco de Información\nmodelos\nEconómica (BIE). Seleccione «Indicadores económicos de coyuntura, Balanza\ncomercial de mercancías de México» y vaya al icono de información correspondiente\na las «series desestacionalizadas y de tendencia-ciclo».\nPublicación de La BCMM se publica en el portal del INEGI (www.inegi.org.mx) conforme a las fechas del\nresultados Calendario de Difusión de Información Estadística y Geográfica y de Interés Nacional.\nNota al El INEGI invita a conocer a mayor detalle la síntesis metodológica de la BCMM en la\npúblico usuario siguiente liga: https://inegi.org.mx/programas/comext/\nLa información estadística y geográfica que genera el INEGI es un bien público y nos permite\na todas y a todos tomar mejores decisiones. ¡Conócela, úsala y compártela!"
+  ],
+  "source_sha256": "a2176a50843df638944122c5da0029e0e1f05f680e045d527d272a35a6d5110e",
+  "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf"
+}
