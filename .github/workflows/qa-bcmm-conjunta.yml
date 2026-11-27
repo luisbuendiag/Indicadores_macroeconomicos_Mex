@@ -1,0 +1,100 @@
+name: QA conjunta BCMM 37 y 38
+on:
+  push:
+    branches: [codex/qa-conjunta-bcmm-37-38]
+
+permissions:
+  contents: read
+
+jobs:
+  bcmm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: pip install -r requirements.txt
+      - name: Regenerar JSON y CSV con un saldo mensual recién recibido
+        env:
+          PYTHONPATH: scripts
+        run: |
+          set -o pipefail
+          python - <<'PY' | tee -a "$GITHUB_STEP_SUMMARY"
+          import csv
+          from copy import deepcopy
+          import build_data as build
+
+          payload = build.L.load_data()
+          before = deepcopy(payload)
+          latest = payload['indicators']['BCMM']['observations'][-1]
+          expected = [713202.966, 703650.49, 9552.476]
+          assert latest['period'] == 'Oct 26' and latest['values'][26:29] == [None] * 3
+          latest['values'][2] = None
+          build.compute_bcmm_metrics(payload)
+          assert latest['values'][26:29] == expected
+          before['indicators']['BCMM']['observations'][-1]['values'][26:29] = expected
+          assert before == payload, 'El corte debe cambiar solo en los tres acumulados'
+          build.L.save_data(payload)
+          build.L.write_csvs(payload)
+          assert build.L.load_data()['indicators']['BCMM']['observations'][-1]['values'][26:29] == expected
+          with (build.L.DATA_DIR / 'csv/BCMM.csv').open(newline='', encoding='utf-8') as file:
+              row = list(csv.reader(file))[-1]
+          assert row[0] == 'Oct 26' and [float(n) for n in row[27:30]] == expected
+          print('JSON y CSV coinciden en los tres acumulados:', expected)
+          PY
+      - name: Regenerar y cotejar los dos Excel
+        env:
+          PYTHONPATH: scripts
+        run: |
+          set -o pipefail
+          python scripts/build_excel.py
+          python - <<'PY' | tee -a "$GITHUB_STEP_SUMMARY"
+          from datetime import date
+          import openpyxl
+          import build_excel as excel
+
+          expected = [713202.966, 703650.49, 9552.476]
+          targets = [(excel.IND_DIR/'BCMM/BCMM_datos.xlsx', 'Comercio total'), (excel.OUT_XLSX, 'BCMM')]
+          for path, sheet in targets:
+              workbook = openpyxl.load_workbook(path, read_only=True, data_only=True)
+              rows = [row for row in workbook[sheet].values if len(row) >= 4 and
+                      isinstance(row[0], date) and (row[0].year, row[0].month) == (2026, 10)
+                      and list(row[1:4]) == expected]
+              workbook.close()
+              assert len(rows) == 1, str(path)
+              print(f'{path.name}: {expected}')
+          PY
+      - name: Validar datos
+        run: python scripts/validate.py
+      - name: Pruebas de interfaz
+        run: node --test tests/calendar_ui.test.mjs tests/bulletin_upload.test.mjs tests/bulletin_products.test.mjs tests/update_health.test.mjs tests/bulletin_cycles.test.mjs tests/bulletin_final.test.mjs
+      - name: Pruebas Python sobre el corte regenerado
+        run: python -m pytest -q
+      - name: Instalar herramientas del generador Word
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libreoffice-writer poppler-utils fonts-noto-core
+      - name: Validar nota de octubre con el PDF oficial
+        env:
+          NOTES_WORK_DIR: ${{ runner.temp }}/bcmm
+          PYTHONPATH: scripts
+        run: |
+          set -o pipefail
+          python - <<'PY' | tee -a "$GITHUB_STEP_SUMMARY"
+          from pathlib import Path
+          import build_trade_notes as notes
+
+          published = Path('downloads/indicadores/BCMM/nota/BCMM_nota.docx')
+          previous = published.read_bytes()
+          result = notes.run('BCMM')
+          assert result['status'] == 'validada_sin_publicar' and result['target_period'] == 'Oct 26', result
+          assert published.read_bytes() == previous
+          print('Nota Word de octubre validada; la descarga vigente quedó intacta.')
+          PY
