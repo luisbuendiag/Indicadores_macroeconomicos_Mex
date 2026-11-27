@@ -224,9 +224,8 @@
     }
   },
   "BCMM": {
-    "status": "vigente",
-    "message": "Nota generada y validada por reglas Python",
-    "target_period": "Sep 26",
+    "status": "error",
+    "target_period": "Oct 26",
     "published": {
       "periodo": "Sep 26",
       "generated_at": "2026-11-05T02:55:34+00:00",
@@ -237,6 +236,7 @@
       "review_model": "bcmm-python-1",
       "review_kind": "reglas_python",
       "archive": "data/notas/BCMM/f31dcc14b08d01e3394389701ba65ee14d542968c064583506e99223dec360e0-6d4afdcf6be1"
-    }
+    },
+    "message": "No se publicó la candidata: Falta tasa ajustada exports_oil"
   }
 }
