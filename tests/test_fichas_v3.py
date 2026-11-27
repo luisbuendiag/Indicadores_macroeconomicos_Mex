@@ -61,7 +61,7 @@ EXPECTED_PRINCIPAL = [
     "PIB", "PIBSEC", "SIC", "IOAE", "IGAE", "IMAI", "IMOAM", "EMIM", "EMOE", "DESOCUP",
     "INPC", "INPP", "CONSUMO", "IMFBCF", "BCMM",
 ]
-EXPECTED_COMPLEMENTARIOS = ["IED", "TIPOCAMBIO", "TASA", "RESERVAS"]
+EXPECTED_COMPLEMENTARIOS = ["IED", "TIPOCAMBIO", "TASA", "RESERVAS", "REMESAS"]
 
 
 def _parse_js_array(name):
@@ -95,7 +95,7 @@ def test_ioae_uses_mensual_and_anual_not_pp():
     m = re.search(r'IOAE:\s*\{[^}]*\}', CONFIG)
     assert m, "no se encontró la configuración de IOAE"
     ioae = m.group(0)
-    assert 'varLabel: "Var. mensual estimada"' in ioae
+    assert 'varLabel: "Var. mensual estimada (desest.)"' in ioae
     assert 'yoyLabel: "IGAE observado"' in ioae
     assert 'varMode:' not in ioae or 'varMode: ""' in ioae
     assert "pp-prev" not in ioae
@@ -124,8 +124,8 @@ def test_all_indicators_have_indicator_view():
 
 
 def test_financial_cards_open_individual_view():
-    """Las tarjetas del Entorno financiero usan setView(clave)."""
-    entorno_render = re.search(r"function renderEntorno\(\).*?(?=\nfunction |\Z)", APP, re.S)
+    """Las tarjetas de cada fuente abren su ficha individual."""
+    entorno_render = re.search(r"function renderSources\(\).*?(?=\nfunction |\Z)", APP, re.S)
     assert entorno_render
     assert "panoramaCard(ind)" in entorno_render.group(0)
     # Los 4 complementarios aparecen en la sección financiera.
@@ -175,10 +175,9 @@ def test_individual_excel_routes():
 
 
 def test_navegacion_prev_next_por_seccion():
-    """indicatorToolbar usa la sección correcta (PRINCIPAL o COMPLEMENTARIOS)."""
+    """La navegación respeta la institución productora del indicador."""
     assert "function indicatorSection(key)" in APP
-    assert "if (PRINCIPAL.includes(key)) return PRINCIPAL" in APP
-    assert "if (COMPLEMENTARIOS.includes(key)) return COMPLEMENTARIOS" in APP
+    assert 'SOURCE_GROUPS.find(g=>g.indicators.includes(key))?.indicators' in APP
 
     # Reproduce el cálculo de prev/next usando las listas de config.js.
     def nav(section, key):
@@ -192,10 +191,10 @@ def test_navegacion_prev_next_por_seccion():
     assert nav(EXPECTED_PRINCIPAL, "IMFBCF") == ("CONSUMO", "BCMM")
     assert nav(EXPECTED_PRINCIPAL, "SIC") == ("PIBSEC", "IOAE")
     assert nav(EXPECTED_PRINCIPAL, "BCMM") == ("IMFBCF", None)
-    assert nav(EXPECTED_COMPLEMENTARIOS, "IED") == (None, "TIPOCAMBIO")
-    assert nav(EXPECTED_COMPLEMENTARIOS, "TIPOCAMBIO") == ("IED", "TASA")
-    assert nav(EXPECTED_COMPLEMENTARIOS, "TASA") == ("TIPOCAMBIO", "RESERVAS")
-    assert nav(EXPECTED_COMPLEMENTARIOS, "RESERVAS") == ("TASA", None)
+    assert nav(["IED"], "IED") == (None, None)
+    assert nav(["TIPOCAMBIO", "TASA", "RESERVAS"], "TIPOCAMBIO") == (None, "TASA")
+    assert nav(["TIPOCAMBIO", "TASA", "RESERVAS"], "TASA") == ("TIPOCAMBIO", "RESERVAS")
+    assert nav(["TIPOCAMBIO", "TASA", "RESERVAS"], "RESERVAS") == ("TASA", None)
 
 
 def test_calendario_filtrado_por_indicador():

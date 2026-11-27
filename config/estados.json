@@ -1,0 +1,229 @@
+{
+ "descripcion": "N-039 · Catálogo de las 32 entidades federativas (clave INEGI del Marco Geoestadístico). 'svg' enlaza con assets/geo/mexico_estados.json. Mismo contenido que la tabla public.entidades de Supabase.",
+ "entidades": [
+  {
+   "clave": "01",
+   "nombre": "Aguascalientes",
+   "nombre_oficial": "Aguascalientes",
+   "capital": "Aguascalientes",
+   "svg": "agu"
+  },
+  {
+   "clave": "02",
+   "nombre": "Baja California",
+   "nombre_oficial": "Baja California",
+   "capital": "Mexicali",
+   "svg": "bcn"
+  },
+  {
+   "clave": "03",
+   "nombre": "Baja California Sur",
+   "nombre_oficial": "Baja California Sur",
+   "capital": "La Paz",
+   "svg": "bcs"
+  },
+  {
+   "clave": "04",
+   "nombre": "Campeche",
+   "nombre_oficial": "Campeche",
+   "capital": "San Francisco de Campeche",
+   "svg": "cam"
+  },
+  {
+   "clave": "05",
+   "nombre": "Coahuila",
+   "nombre_oficial": "Coahuila de Zaragoza",
+   "capital": "Saltillo",
+   "svg": "coa"
+  },
+  {
+   "clave": "06",
+   "nombre": "Colima",
+   "nombre_oficial": "Colima",
+   "capital": "Colima",
+   "svg": "col"
+  },
+  {
+   "clave": "07",
+   "nombre": "Chiapas",
+   "nombre_oficial": "Chiapas",
+   "capital": "Tuxtla Gutiérrez",
+   "svg": "chp"
+  },
+  {
+   "clave": "08",
+   "nombre": "Chihuahua",
+   "nombre_oficial": "Chihuahua",
+   "capital": "Chihuahua",
+   "svg": "chh"
+  },
+  {
+   "clave": "09",
+   "nombre": "Ciudad de México",
+   "nombre_oficial": "Ciudad de México",
+   "capital": "Ciudad de México",
+   "svg": "cmx"
+  },
+  {
+   "clave": "10",
+   "nombre": "Durango",
+   "nombre_oficial": "Durango",
+   "capital": "Victoria de Durango",
+   "svg": "dur"
+  },
+  {
+   "clave": "11",
+   "nombre": "Guanajuato",
+   "nombre_oficial": "Guanajuato",
+   "capital": "Guanajuato",
+   "svg": "gua"
+  },
+  {
+   "clave": "12",
+   "nombre": "Guerrero",
+   "nombre_oficial": "Guerrero",
+   "capital": "Chilpancingo de los Bravo",
+   "svg": "gro"
+  },
+  {
+   "clave": "13",
+   "nombre": "Hidalgo",
+   "nombre_oficial": "Hidalgo",
+   "capital": "Pachuca de Soto",
+   "svg": "hid"
+  },
+  {
+   "clave": "14",
+   "nombre": "Jalisco",
+   "nombre_oficial": "Jalisco",
+   "capital": "Guadalajara",
+   "svg": "jal"
+  },
+  {
+   "clave": "15",
+   "nombre": "Estado de México",
+   "nombre_oficial": "México",
+   "capital": "Toluca de Lerdo",
+   "svg": "mex"
+  },
+  {
+   "clave": "16",
+   "nombre": "Michoacán",
+   "nombre_oficial": "Michoacán de Ocampo",
+   "capital": "Morelia",
+   "svg": "mic"
+  },
+  {
+   "clave": "17",
+   "nombre": "Morelos",
+   "nombre_oficial": "Morelos",
+   "capital": "Cuernavaca",
+   "svg": "mor"
+  },
+  {
+   "clave": "18",
+   "nombre": "Nayarit",
+   "nombre_oficial": "Nayarit",
+   "capital": "Tepic",
+   "svg": "nay"
+  },
+  {
+   "clave": "19",
+   "nombre": "Nuevo León",
+   "nombre_oficial": "Nuevo León",
+   "capital": "Monterrey",
+   "svg": "nle"
+  },
+  {
+   "clave": "20",
+   "nombre": "Oaxaca",
+   "nombre_oficial": "Oaxaca",
+   "capital": "Oaxaca de Juárez",
+   "svg": "oax"
+  },
+  {
+   "clave": "21",
+   "nombre": "Puebla",
+   "nombre_oficial": "Puebla",
+   "capital": "Heroica Puebla de Zaragoza",
+   "svg": "pue"
+  },
+  {
+   "clave": "22",
+   "nombre": "Querétaro",
+   "nombre_oficial": "Querétaro",
+   "capital": "Santiago de Querétaro",
+   "svg": "que"
+  },
+  {
+   "clave": "23",
+   "nombre": "Quintana Roo",
+   "nombre_oficial": "Quintana Roo",
+   "capital": "Chetumal",
+   "svg": "roo"
+  },
+  {
+   "clave": "24",
+   "nombre": "San Luis Potosí",
+   "nombre_oficial": "San Luis Potosí",
+   "capital": "San Luis Potosí",
+   "svg": "slp"
+  },
+  {
+   "clave": "25",
+   "nombre": "Sinaloa",
+   "nombre_oficial": "Sinaloa",
+   "capital": "Culiacán Rosales",
+   "svg": "sin"
+  },
+  {
+   "clave": "26",
+   "nombre": "Sonora",
+   "nombre_oficial": "Sonora",
+   "capital": "Hermosillo",
+   "svg": "son"
+  },
+  {
+   "clave": "27",
+   "nombre": "Tabasco",
+   "nombre_oficial": "Tabasco",
+   "capital": "Villahermosa",
+   "svg": "tab"
+  },
+  {
+   "clave": "28",
+   "nombre": "Tamaulipas",
+   "nombre_oficial": "Tamaulipas",
+   "capital": "Ciudad Victoria",
+   "svg": "tam"
+  },
+  {
+   "clave": "29",
+   "nombre": "Tlaxcala",
+   "nombre_oficial": "Tlaxcala",
+   "capital": "Tlaxcala de Xicohténcatl",
+   "svg": "tla"
+  },
+  {
+   "clave": "30",
+   "nombre": "Veracruz",
+   "nombre_oficial": "Veracruz de Ignacio de la Llave",
+   "capital": "Xalapa-Enríquez",
+   "svg": "ver"
+  },
+  {
+   "clave": "31",
+   "nombre": "Yucatán",
+   "nombre_oficial": "Yucatán",
+   "capital": "Mérida",
+   "svg": "yuc"
+  },
+  {
+   "clave": "32",
+   "nombre": "Zacatecas",
+   "nombre_oficial": "Zacatecas",
+   "capital": "Zacatecas",
+   "svg": "zac"
+  }
+ ]
+}

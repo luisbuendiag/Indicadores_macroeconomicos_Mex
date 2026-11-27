@@ -31,12 +31,18 @@ def integers(text):
     return found[0]
 
 def population_rows(block,spec,ids,location,groups=False):
-    matches=list(re.finditer(r'^(.+?)\s+((?:-?\d+\s+)+)(\d+\.\d)\s+(\d+\.\d)(?:\s+(-?\d+\.\d))?\s*$',block,re.M))
+    matches=list(re.finditer(r'^(.+?)\s+((?:-?\d+\s+)+)(\d+\.\d)\s+(100\.00|\d+\.\d)(?:\s+(-?\d+\.\d))?\s*$',block,re.M))
     expected=spec if not groups else [label if n==0 else ('Mujeres' if n==1 else 'Hombres') if i==0 else label for n in range(3) for i,label in enumerate(spec)]
-    if len(matches)!=len(expected):raise ValueError('Número de filas poblacionales cambió')
+    if len(matches)!=len(expected):
+        raise ValueError(f'Número de filas poblacionales cambió ({location}: {len(matches)}/{len(expected)})')
     rows=[]
     for i,(m,label) in enumerate(zip(matches,expected)):
         if clean(m[1])!=label:raise ValueError('Orden o identidad poblacional cambió: '+label)
+        ident=ids[i%len(ids)]
+        # Octubre 2026, cuadro 2: el total de ingresos imprime 100.00 en
+        # la columna relativa actual. Conservar el texto y aceptar sólo ese total.
+        if m[4]=='100.00' and (groups or ident!='income_total' or m[3]!='100.0' or m[5] is not None):
+            raise ValueError('Precisión relativa inesperada: '+ident)
         vals=integers(m[2]);relative=[float(m[3]),float(m[4]),float(m[5]) if m[5] else None]
         if not all(0<=v<=100 for v in relative[:2]):raise ValueError('Porcentaje poblacional inválido')
         rows.append(dict(id=ids[i%len(ids)],group=['total','women','men'][i//len(ids)] if groups else 'total',label=label,previous=vals[0],current=vals[1],difference=vals[2],relative_previous=relative[0],relative_current=relative[1],relative_difference=relative[2],series='original',location=location,evidence=m[0]))

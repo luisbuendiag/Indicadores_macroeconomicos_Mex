@@ -81,8 +81,23 @@ El dashboard original queda intacto para revertir en cualquier momento:
 
 ## 6. Programación automática
 
-`update-data.yml` corre en días hábiles (13:00 UTC) y por `workflow_dispatch`.
+`update-data.yml` corre en días hábiles a la 01:17, 07:17, 09:17 y 13:17 (Ciudad de México) y por `workflow_dispatch`.
 `deploy-pages.yml` publica a GitHub Pages al hacer push a `main`.
+
+### Archivo histórico de IOAE y PIB Oportuno
+
+Para habilitarlo, crea la variable de repositorio `INEGI_BULLETIN_ARCHIVE_ENABLED`
+en **Settings → Secrets and variables → Actions → Variables** con valor `true`.
+Eliminarla o cambiarla a `false` devuelve la siguiente corrida a la consulta directa.
+
+GitHub Actions conserva las lecturas de boletines publicados hace al menos 180 días.
+Cada lectura debe tener menos de siete días desde su última consulta oficial. Al vencer,
+el conector vuelve a consultar al INEGI. Los boletines recientes se consultan en cada
+corrida. Si GitHub no restaura el archivo, el conector parte de la consulta directa.
+
+Después de habilitarlo, revisa dos cortes consecutivos en Actions. Confirma que se
+restauró el archivo en el segundo, que se actualizaron el tablero y sus productos
+y que el tiempo del paso de datos bajó frente a una corrida comparable.
 
 ## 7. Notas institucionales (botón NOTA)
 

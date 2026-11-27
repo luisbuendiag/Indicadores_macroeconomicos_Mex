@@ -1,7 +1,9 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import vm from 'node:vm';
 const src=fs.readFileSync(new URL('../assets/js/app.js',import.meta.url),'utf8');
 const el=(tag,attrs={},...kids)=>({tag,attrs,kids,append(...more){this.kids.push(...more)},setAttribute(k,v){this.attrs[k]=v},removeAttribute(k){delete this.attrs[k]}});
-const build=vm.runInNewContext('('+src.slice(src.indexOf('function buildIedRanking('),src.indexOf('function productToolbar(')).trim()+')',{el});
+const start=src.indexOf('function buildIedRanking(');
+const end=src.indexOf('\n}',start)+2;
+const build=vm.runInNewContext('('+src.slice(start,end)+')',{el});
 const data=JSON.parse(fs.readFileSync(new URL('../data/ied_estatal.json',import.meta.url)));
 function all(n,tag){return n&&typeof n==='object'?[...(n.tag===tag?[n]:[]),...n.kids.flatMap(x=>all(x,tag))]:[]}
 test('Una tabla con 10 filas visibles se amplía a 32 y vuelve a 10 sin duplicados',()=>{const node=build(data),tables=all(node,'table');assert.equal(tables.length,1);const rows=all(tables[0],'tbody')[0].kids;const visible=()=>rows.filter(r=>!('hidden' in r.attrs)).length;assert.equal(rows.length,32);assert.equal(visible(),10);const button=all(node,'button')[0];button.attrs.onclick();assert.equal(visible(),32);assert.equal(button.attrs['aria-expanded'],'true');assert.equal(button.textContent,'Mostrar solo 10');button.attrs.onclick();assert.equal(visible(),10);assert.equal(button.attrs['aria-expanded'],'false');assert.equal(all(node,'a')[0].attrs.href,data.source_url);assert.ok(all(node,'p')[0].kids[0].includes(data.ranking.label));});

@@ -45,3 +45,23 @@ for(const key of ['PIB','PIBSEC']){
 }
 test('PIBSEC coteja agregado primario y preserva negativos manufactureros',()=>{let p=gdpFixture('PIBSEC');p[3]=p[3].replace('-1.2 -0.7 6.8 2.4 -0.8 4.8 2.1\naprovechamiento','-1.2 -0.7 6.8 2.4 -0.8 4.9 2.1\naprovechamiento');assert.throws(()=>parseBulletin('PIBSEC',p),/primario/);const f=parseBulletin('PIBSEC',gdpFixture('PIBSEC'));assert.equal(f.originals.find(r=>r.id==='31-33').original,-.4);assert.equal(f.originals.find(r=>r.id==='31-33').ytd,-1.1);});
 test('el lector trimestral no rotula sus tasas como mensuales',()=>{const js=fs.readFileSync(new URL('../assets/js/upload_notes.mjs',import.meta.url),'utf8');assert.match(js,/gdp\?\['Actividad','Trimestral','Anual','Acumulado'\]/);assert.match(js,/\['Carácter',f.status\]/);});
+
+// Minimal strings exercising the line wrap and case seen in PDF.js, not the full bulletin.
+const imoamOctoberPages = () => [
+  'BOLETÍN DE INDICADOR 739/26\n26 de noviembre de 2026\n(IMOAM)\n110.6 ▲ 0.7 %\nEn octubre de 2026\nCifras originales\nCuadro 1\nOctubre de 2026 · confianza a 95 %\nÍndice 110.6 107.5 113.8\nVariación anual 0.7 % -2.1 % 3.6 %\nNota: estadística experimental',
+  'Estadística experimental',
+  'En 90 % de las ocasiones\nentre enero de 2019 y septiembre de\n2026',
+  'Alrededor de 18 días antes\nRENEM, CFE y Cenace; confidencialidad.',
+];
+test('IMOAM acepta año envuelto y Cenace sin cambiar datos', () => {
+  const f=parseBulletin('IMOAM',imoamOctoberPages());
+  assert.deepEqual(f.indexInterval,[110.6,107.5,113.8]);
+  assert.deepEqual(f.annualInterval,[.7,-2.1,3.6]);
+  assert.equal(f.evaluation,'enero de 2019 a septiembre de 2026');
+});
+test('IMOAM conserva rechazo si falta año o término metodológico exacto',() => {
+  for(const [i,a,b] of [[2,'\n2026',''],[3,'Cenace','Otro'],[3,'Cenace','OtroCenace'],[3,'confidencialidad','desconocido']]){
+    const p=imoamOctoberPages();p[i]=p[i].replace(a,b);
+    assert.throws(()=>parseBulletin('IMOAM',p),/Cambió el bloque de evaluación o metodología/);
+  }
+});

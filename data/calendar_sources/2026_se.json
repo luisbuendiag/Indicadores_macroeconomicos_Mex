@@ -1,7 +1,7 @@
 {
   "year": 2026,
   "fuente": "Secretaría de Economía / Dirección General de Inversión Extranjera",
-  "actualizado": "2026-08-24",
+  "actualizado": "2026-11-24",
   "entries": [
     {
       "clave": "IED",
@@ -25,9 +25,18 @@
           "fecha": "24 de agosto de 2026",
           "periodo": "2T 2026",
           "url": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa"
+        },
+        {
+          "fecha": "24 de noviembre de 2026",
+          "periodo": "3T 2026",
+          "url": "https://www.gob.mx/se/prensa/mexico-alcanza-un-maximo-historico-de-inversion-extranjera-directa-ied-entre-enero-y-septiembre-de-2026-43-mil-090-millones-de-dolares?idiom=es",
+          "formato": "html",
+          "alcance": "acumulado_nacional",
+          "producto": "IED · Comunicado de acumulado nacional (enero–septiembre)",
+          "comentario": "El comunicado no actualiza el archivo estructurado de flujos trimestrales ni el ranking estatal."
         }
       ],
-      "proxima_periodo": "3T 2026",
+      "proxima_periodo": "4T 2026",
       "proxima_no_anunciada": true,
       "proxima_comentario": "Próxima fecha oficial no anunciada"
     }

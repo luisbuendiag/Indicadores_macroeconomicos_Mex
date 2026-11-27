@@ -1,0 +1,217 @@
+{
+  "fuente": "INEGI, cuadro de estimaciones de cada boletín del IMOAM. Cifras originales, base 2018.",
+  "columnas": [
+    "Índice",
+    "Índice IC 95% inferior",
+    "Índice IC 95% superior",
+    "Variación anual (fracción)",
+    "Variación anual IC 95% inferior (fracción)",
+    "Variación anual IC 95% superior (fracción)"
+  ],
+  "observaciones": {
+    "2023-07": {
+      "publicado": "2023-09-05",
+      "boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2023/imoam/imoam2023_09.pdf",
+      "values": [
+        105.2,
+        102.2,
+        108.4,
+        0.002,
+        -0.027,
+        0.032
+      ]
+    },
+    "2023-08": {
+      "publicado": "2023-10-02",
+      "boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2023/imoam/imoam2023_10.pdf",
+      "values": [
+        110.5,
+        107.3,
+        113.8,
+        0.008,
+        -0.022,
+        0.038
+      ]
+    },
+    "2023-09": {
+      "publicado": "2023-11-01",
+      "boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2023/imoam/imoam2023_11.pdf",
+      "values": [
+        106.6,
+        103.5,
+        109.8,
+        0.011,
+        -0.019,
+        0.041
+      ]
+    },
+    "2023-10": {
+      "publicado": "2023-12-04",
+      "boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2023/imoam/imoam2023_12.pdf",
+      "values": [
+        111.3,
+        107.7,
+        115.0,
+        0.016,
+        -0.016,
+        0.05
+      ]
+    },
+    "2023-11": {
+      "publicado": "2024-01-05",
+      "boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2024/imoam/imoam2024_01.pdf",
+      "values": [
+        109.6,
+        106.2,
+        113.3,
+        0.012,
+        -0.02,
+        0.045
+      ]
+    },
+    "2023-12": {
+      "publicado": "2024-02-01",
+      "boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2024/imoam/imoam2024_02.pdf",
+      "values": [
+        102.5,
+        99.4,
+        105.7,
+        -0.01,
+        -0.04,
+        0.021
+      ]
+    },
+    "2024-01": {
+      "publicado": "2024-03-04",
+      "boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2024/imoam/imoam2024_03.pdf",
+      "values": [
+        105.7,
+        102.3,
+        109.3,
+        0.005,
+        -0.028,
+        0.038
+      ]
+    },
+    "2024-02": {
+      "publicado": "2024-04-03",
+      "boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2024/imoam/imoam2024_04.pdf",
+      "values": [
+        103.4,
+        100.3,
+        106.6,
+        0.014,
+        -0.016,
+        0.045
+      ]
+    },
+    "2024-03": {
+      "publicado": "2024-05-02",
+      "boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2024/imoam/imoam2024_05.pdf",
+      "values": [
+        108.3,
+        104.9,
+        111.9,
+        -0.039,
+        -0.069,
+        -0.007
+      ]
+    },
+    "2024-04": {
+      "publicado": "2024-05-29",
+      "boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2024/imoam/imoam2024_05_29.pdf",
+      "values": [
+        107.8,
+        104.8,
+        110.9,
+        0.031,
+        0.002,
+        0.06
+      ]
+    },
+    "2024-05": {
+      "publicado": "2024-07-01",
+      "boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2024/imoam/imoam2024_07.pdf",
+      "values": [
+        111.2,
+        108.0,
+        114.6,
+        0.021,
+        -0.008,
+        0.052
+      ]
+    },
+    "2024-06": {
+      "publicado": "2024-07-31",
+      "boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2024/imoam/imoam2024_07_31.pdf",
+      "values": [
+        106.0,
+        102.9,
+        109.1,
+        -0.016,
+        -0.044,
+        0.013
+      ]
+    },
+    "2024-07": {
+      "publicado": "2024-08-26",
+      "boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2024/imoam/imoam2024_08.pdf",
+      "values": [
+        106.7,
+        103.6,
+        109.8,
+        0.008,
+        -0.02,
+        0.038
+      ]
+    },
+    "2024-08": {
+      "publicado": "2024-10-03",
+      "boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2024/imoam/imoam2024_10.pdf",
+      "values": [
+        110.5,
+        107.4,
+        113.7,
+        0.014,
+        -0.015,
+        0.043
+      ]
+    },
+    "2024-09": {
+      "publicado": "2024-10-23",
+      "boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2024/imoam/imoam2024_10_23.pdf",
+      "values": [
+        105.1,
+        102.1,
+        108.1,
+        -0.011,
+        -0.039,
+        0.017
+      ]
+    },
+    "2024-10": {
+      "publicado": "2024-11-25",
+      "boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2024/imoam/imoam2024_11.pdf",
+      "values": [
+        110.0,
+        106.9,
+        113.1,
+        0.0,
+        -0.028,
+        0.029
+      ]
+    },
+    "2024-11": {
+      "publicado": "2024-12-20",
+      "boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2024/imoam/imoam2024_12.pdf",
+      "values": [
+        107.7,
+        104.6,
+        111.0,
+        0.006,
+        -0.024,
+        0.036
+      ]
+    }
+  }
+}

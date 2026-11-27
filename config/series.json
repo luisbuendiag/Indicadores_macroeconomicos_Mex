@@ -23,6 +23,13 @@
       "frecuencia": "Semanal",
       "unidad": "Millones de dólares",
       "link": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/"
+    },
+    "REMESAS": {
+      "serie": "SE27803",
+      "nombre": "Ingresos por remesas",
+      "frecuencia": "Mensual",
+      "unidad": "Millones de dólares",
+      "link": "https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?accion=consultarCuadro&idCuadro=CE81"
     }
   },
   "inegi": {
@@ -30,9 +37,9 @@
     "_nota": "La base de datos actualizada del BIE se consulta con db='BIE-BISE' y geografía nacional geo='00'. La clave de la versión actualizada del BIE se obtiene del Constructor de Consultas oficial (Conjunto de datos = BIE).",
     "PIB": [
       {
-        "_nota": "PIB total a precios constantes de 2018, serie original. Se conserva como objeto 'pibt' independiente, separado de las variaciones del PIB oportuno.",
+        "_nota": "PIB total a precios constantes de 2018, serie original del PIB trimestral (PIBT 2018), que se publica el mismo día que el boletín. No usar la 737372 de Oferta y demanda global: se publica unas cuatro semanas después y retrasa PIBSEC un trimestre. Se conserva como objeto 'pibt' independiente, separado de las variaciones del PIB oportuno.",
         "pibt": true,
-        "serie": "737372",
+        "serie": "735879",
         "confirmar": false,
         "nombre": "Producto Interno Bruto",
         "descripcion_serie": "Total, a precios de mercado, millones de pesos a precios constantes de 2018, serie original",
@@ -43,13 +50,13 @@
         "geo": "00",
         "columna_objetivo": 0,
         "start_year": 1993,
-        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=605594#D737372"
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3#D735879"
       }
     ],
     "PIBSEC": [
       {
-        "_nota": "Nivel del PIB total a precios de mercado, serie original. Se usa como referencia del PIB agregado, separado del valor agregado por actividad.",
-        "serie": "737372",
+        "_nota": "Nivel del PIB total a precios de mercado, serie original del PIBT 2018 (misma publicación que los sectores). Se usa como referencia del PIB agregado, separado del valor agregado por actividad.",
+        "serie": "735879",
         "confirmar": false,
         "nombre": "Producto Interno Bruto",
         "descripcion_serie": "Total, a precios de mercado, millones de pesos a precios constantes de 2018, serie original",
@@ -60,7 +67,7 @@
         "geo": "00",
         "columna_objetivo": 5,
         "start_year": 1993,
-        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=605594#D737372"
+        "link": "https://www.inegi.org.mx/app/indicadores/?tm=3#D735879"
       },
       {
         "_nota": "Desagregación sectorial del PIB a precios constantes de 2018, serie original (PIBT 2018).",
@@ -106,9 +113,132 @@
         "link": "https://www.inegi.org.mx/app/indicadores/?tm=3&t=600267#D735888"
       },
       {
-        "_nota": "Las variaciones trimestrales y anuales desestacionalizadas de PIB total y actividades NO están disponibles como series BIE independientes. Se completan desde el boletín PIBT (pib_Pconst) con el parser de inegi_bulletin.",
-        "serie": null,
-        "confirmar": true
+        "serie": "736181",
+        "confirmar": false,
+        "nombre": "PIB total",
+        "descripcion_serie": "Nivel a precios de 2018, serie desestacionalizada",
+        "frecuencia": "Trimestral",
+        "unidad": "Millones de pesos (a precios de 2018)",
+        "tipo_serie": "Serie desestacionalizada",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 6,
+        "start_year": 1993,
+        "transform": "qoq",
+        "factor": 0.01,
+        "link": "https://www.inegi.org.mx/app/indicadores/#D736181"
+      },
+      {
+        "serie": "736181",
+        "confirmar": false,
+        "nombre": "PIB total",
+        "descripcion_serie": "Nivel a precios de 2018, serie desestacionalizada",
+        "frecuencia": "Trimestral",
+        "unidad": "Millones de pesos (a precios de 2018)",
+        "tipo_serie": "Serie desestacionalizada",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 7,
+        "start_year": 1993,
+        "transform": "yoy",
+        "factor": 0.01,
+        "link": "https://www.inegi.org.mx/app/indicadores/#D736181"
+      },
+      {
+        "serie": "736195",
+        "confirmar": false,
+        "nombre": "Actividades primarias",
+        "descripcion_serie": "Nivel a precios de 2018, serie desestacionalizada",
+        "frecuencia": "Trimestral",
+        "unidad": "Millones de pesos (a precios de 2018)",
+        "tipo_serie": "Serie desestacionalizada",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 8,
+        "start_year": 1993,
+        "transform": "qoq",
+        "factor": 0.01,
+        "link": "https://www.inegi.org.mx/app/indicadores/#D736195"
+      },
+      {
+        "serie": "736195",
+        "confirmar": false,
+        "nombre": "Actividades primarias",
+        "descripcion_serie": "Nivel a precios de 2018, serie desestacionalizada",
+        "frecuencia": "Trimestral",
+        "unidad": "Millones de pesos (a precios de 2018)",
+        "tipo_serie": "Serie desestacionalizada",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 9,
+        "start_year": 1993,
+        "transform": "yoy",
+        "factor": 0.01,
+        "link": "https://www.inegi.org.mx/app/indicadores/#D736195"
+      },
+      {
+        "serie": "736202",
+        "confirmar": false,
+        "nombre": "Actividades secundarias",
+        "descripcion_serie": "Nivel a precios de 2018, serie desestacionalizada",
+        "frecuencia": "Trimestral",
+        "unidad": "Millones de pesos (a precios de 2018)",
+        "tipo_serie": "Serie desestacionalizada",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 10,
+        "start_year": 1993,
+        "transform": "qoq",
+        "factor": 0.01,
+        "link": "https://www.inegi.org.mx/app/indicadores/#D736202"
+      },
+      {
+        "serie": "736202",
+        "confirmar": false,
+        "nombre": "Actividades secundarias",
+        "descripcion_serie": "Nivel a precios de 2018, serie desestacionalizada",
+        "frecuencia": "Trimestral",
+        "unidad": "Millones de pesos (a precios de 2018)",
+        "tipo_serie": "Serie desestacionalizada",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 11,
+        "start_year": 1993,
+        "transform": "yoy",
+        "factor": 0.01,
+        "link": "https://www.inegi.org.mx/app/indicadores/#D736202"
+      },
+      {
+        "serie": "736237",
+        "confirmar": false,
+        "nombre": "Actividades terciarias",
+        "descripcion_serie": "Nivel a precios de 2018, serie desestacionalizada",
+        "frecuencia": "Trimestral",
+        "unidad": "Millones de pesos (a precios de 2018)",
+        "tipo_serie": "Serie desestacionalizada",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 3,
+        "start_year": 1993,
+        "transform": "qoq",
+        "factor": 0.01,
+        "link": "https://www.inegi.org.mx/app/indicadores/#D736237"
+      },
+      {
+        "serie": "736237",
+        "confirmar": false,
+        "nombre": "Actividades terciarias",
+        "descripcion_serie": "Nivel a precios de 2018, serie desestacionalizada",
+        "frecuencia": "Trimestral",
+        "unidad": "Millones de pesos (a precios de 2018)",
+        "tipo_serie": "Serie desestacionalizada",
+        "db": "BIE-BISE",
+        "geo": "00",
+        "columna_objetivo": 4,
+        "start_year": 1993,
+        "transform": "yoy",
+        "factor": 0.01,
+        "link": "https://www.inegi.org.mx/app/indicadores/#D736237"
       }
     ],
     "SIC": [
@@ -941,7 +1071,7 @@
         "descripcion_serie": "Indicador Global de Opinión Empresarial de Confianza (puntos, cifras desestacionalizadas)",
         "frecuencia": "Mensual",
         "unidad": "Puntos",
-        "tipo_serie": "Serie original",
+        "tipo_serie": "Serie desestacionalizada",
         "db": "BIE-BISE",
         "geo": "00",
         "columna_objetivo": 0,
@@ -974,7 +1104,7 @@
         "db": "BIE-BISE",
         "geo": "00",
         "columna_objetivo": 2,
-        "transform": "diff_yoy_pp",
+        "transform": "yoy_abs",
         "link": "https://www.inegi.org.mx/app/indicadores/?tm=0&t=682416#D701401"
       },
       {
@@ -985,7 +1115,7 @@
         "descripcion_serie": "ICE de Industrias manufactureras (puntos, cifras desestacionalizadas)",
         "frecuencia": "Mensual",
         "unidad": "Puntos",
-        "tipo_serie": "Serie original",
+        "tipo_serie": "Serie desestacionalizada",
         "db": "BIE-BISE",
         "geo": "00",
         "columna_objetivo": 3,

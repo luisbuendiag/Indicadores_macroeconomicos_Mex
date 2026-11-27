@@ -86,7 +86,10 @@ def _discover_bulletin(period: str | None) -> dict | None:
     try:
         text=_first_page(url);ref=B._extract_data_month(text)
         if '(INPP)' not in text or not ref or f'{ref[0]:04d}-{ref[1]:02d}'!=inegi.label_to_ym(period):return None
-        return dict(url=url,periodo_boletin=period,tipo_documento='PDF',producto_boletin='Índice Nacional de Precios Productor',metodo='INEGI boletín PDF')
+        metadata = B._extract_bulletin_meta(text, B._extract_pub_date(text))
+        return dict(url=url, periodo_boletin=period,
+                    producto_boletin='Índice Nacional de Precios Productor',
+                    metodo='INEGI boletín PDF', **metadata)
     except Exception:return None
 
 
@@ -124,6 +127,7 @@ def fetch(config: dict | None = None, start_year: int = 2018) -> SourceResult:
                 "link": bulletin["url"],
                 "periodo_boletin": bulletin["periodo_boletin"],
                 "tipo_documento": bulletin["tipo_documento"],
+                "fecha_publicacion": bulletin["fecha_publicacion"],
                 "producto_boletin": bulletin["producto_boletin"],
             })
 

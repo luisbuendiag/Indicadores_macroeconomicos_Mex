@@ -27,6 +27,7 @@ def test_quarter_edition_and_series(monkeypatch,key):
     else:
         assert f['period']=='2T-26' and f['quarter']==2 and f['bulletin']=='500/26'
         assert f['rows'][0]['yoy']==1.9 and f['originals'][0]['original']==2.1
+        assert (f['rows'][3]['mom'], f['rows'][3]['yoy']) == (1.4, 2.3)
         assert len(f['originals'])==24
         m=next(r for r in f['originals'] if r['id']=='31-33')
         assert m['original']==-.4 and m['ytd']==-1.1
@@ -88,6 +89,14 @@ def test_publication_preserves_previous_word(monkeypatch,tmp_path,case):
     else:
         cfg['auto_publish']=False;(tmp_path/'config/notas_automaticas.json').write_text(json.dumps(cfg))
         fixture(monkeypatch,'PIB');monkeypatch.setattr(R,'download',lambda *a:b'fixture')
+        # Emparejar el PDF fijo de octubre con una ficha de esa edición, no con el corte vivo.
+        snapshot = tmp_path / 'data/indicadores.json'
+        payload = json.loads(snapshot.read_text())
+        payload['indicators']['PIB'].update(
+            last_observation='3T-26 P',
+            url_boletin_oficial='https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_10.pdf',
+        )
+        snapshot.write_text(json.dumps(payload), encoding='utf-8')
         template=tmp_path/cfg['template'];template.parent.mkdir(parents=True);shutil.copyfile(ROOT/cfg['template'],template)
         for name in ['build_gdp_notes.py','notas_pib.py','notas_pib_word.py','notas_layout.py','notas_word.py','build_auto_notes.py']:
             p=tmp_path/'scripts'/name;p.parent.mkdir(exist_ok=True);shutil.copyfile(ROOT/'scripts'/name,p)

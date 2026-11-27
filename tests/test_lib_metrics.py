@@ -56,12 +56,22 @@ def test_inpc_kpi():
     d = vals[2] - prev[2]
     expected_var = ("+" if d >= 0 else "") + F._to_fixed(d, 1, 1) + " puntos porcentuales"
     assert kpi["ultimoP"] == inpc["observations"][-1]["period"]
-    assert kpi["ultimoFmt"] == F.fmt_val(vals[2], "pct-raw")
+    assert kpi["ultimoFmt"] == F.fmt_val(vals[2], "pct-rate")
     assert kpi["varText"] == expected_var
     assert round(kpi["varMag"], 4) == round(d, 4)
     assert kpi["yoyText"] == "—"
     assert kpi["assessment"] == "neutral"
     assert kpi["semaforo"] == "estable"
+
+
+def test_inpc_uses_official_two_decimal_precision():
+    ind = {"key": "INPC", "observations": [
+        {"period": "Sep 26", "values": [None, None, 3.64]},
+        {"period": "Oct 26", "values": [None, None, 3.75]},
+    ]}
+    assert M.compute_kpi(ind)["ultimoFmt"] == "3.75%"
+    assert F.fmt_val(3.80, "pct-rate") == "3.80%"
+    assert F.fmt_val(3.59, "pct-rate") == "3.59%"
 
 
 def test_inpc_analysis():
@@ -81,12 +91,27 @@ def test_inpc_analysis():
 
 def test_desocup_kpi():
     payload = _payload()
+    indicator = payload["indicators"]["DESOCUP"]
+    indicator["observations"] = [
+        {"period": "Sep 25", "values": [3.0]},
+        {"period": "Ago 26", "values": [3.1]},
+        {"period": "Sep 26", "values": [2.8]},
+    ]
+    indicator["last_observation"] = "Sep 26"
+    indicator["enoe_mensual"] = {
+        "periodo": "Sep 26",
+        "tasas": {"unemployment": {"anual_original_pp": -0.1, "mensual_desest_pp": -0.1}},
+    }
     metrics = M.compute_all_metrics(payload)
     kpi = metrics["DESOCUP"]["kpi"]
-    obs=payload['indicators']['DESOCUP']['observations']
-    last,previous=obs[-1]['values'][0],obs[-2]['values'][0]
-    assert kpi['ultimoFmt']==F.fmt_val(last,'pct-raw')
-    assert kpi['varMag']==pytest.approx(last-previous)
+    assert kpi["ultimoFmt"] == "2.8%"
+    assert kpi["varLabel"] == "Cambio anual original"
+    assert kpi["varMag"] == pytest.approx(-0.1)
+
+    indicator.pop("enoe_mensual")
+    kpi = M.compute_all_metrics(payload)["DESOCUP"]["kpi"]
+    assert kpi["varMag"] == pytest.approx(-0.2)
+    assert kpi["cards"][0]["momRaw"] is None
     assert kpi["assessment"] in ("favorable", "adverso", "neutral")
     assert kpi["semaforo"] in ("bueno", "malo", "estable")
 
@@ -114,15 +139,37 @@ def test_format_val():
     assert period_to_date("2T-25").month == 4
 
 
-def test_pib_yoy_trimestral():
+@pytest.mark.parametrize("accumulated_original", [None, 0.018])
+def test_pib_yoy_trimestral(accumulated_original):
     payload = _payload()
-    metrics = M.compute_all_metrics(payload)
-    kpi = metrics["PIB"]["kpi"]
-    values=payload['indicators']['PIB']['observations'][-1]['values']
-    def pct(v): return ('+' if v>0 else '')+F.fmt_val(v,'pct-frac')
-    assert kpi['ultimoFmt']==pct(values[0])
-    assert kpi['varText']==pct(values[1])
-    assert kpi['varLabel']=='Var. anual desest.'
-    assert kpi['yoyText']==pct(values[2])
-    assert kpi['yoyLabel']=='Var. anual original'
-    assert kpi['ytdText']==pct(values[3])
+    values = [0.009, 0.031, 0.032, 0.019]
+    if accumulated_original is not None:
+        values.append(accumulated_original)
+    pib = payload["indicators"]["PIB"]
+    pib["last_observation"] = "3T-26 P"
+    pib["observations"] = [{"period": "3T-26 P", "values": values}]
+    kpi = M.compute_all_metrics(payload, offline=True)["PIB"]["kpi"]
+    assert kpi["ultimoFmt"] == "+0.9%"
+    assert kpi["varText"] == "+3.2%"
+    assert kpi["varLabel"] == "Var. anual original"
+    assert kpi["yoyText"] == "+3.1%"
+    assert kpi["yoyLabel"] == "Var. anual desest."
+    assert kpi["qoqLabel"] == "Var. trimestral desest."
+    assert kpi["ytdRaw"] == accumulated_original
+    assert kpi["ytdText"] == ("+1.8%" if accumulated_original is not None else "—")
+    assert kpi["ytdLabel"] == "Acumulado enero–septiembre"
+    assert kpi["ytdBasis"] == "Cifras originales"
+
+
+def test_profile_annual_rates_use_original_series():
+    payload = _payload()
+    metrics = M.compute_all_metrics(payload, offline=True)
+    for key, monthly, annual in (
+        ("IMAI", 1, 4), ("CONSUMO", 1, 3), ("IMFBCF", 1, 26), ("EMIM", 3, 2)
+    ):
+        item = metrics[key]
+        kpi = item["kpi"]
+        values = payload["indicators"][key]["observations"][kpi["lastI"]]["values"]
+        assert item["annualVar"]["label"] == "Var. anual original"
+        assert item["annualVar"]["mag"] == values[annual] * 100
+        assert kpi["varMag"] == values[monthly] * 100

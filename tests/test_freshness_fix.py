@@ -174,3 +174,62 @@ def test_fix_hourly_state(hour, minute, expected):
         now=now,
     )
     assert result["estado"] == expected, (hour, minute, result["motivo"])
+
+
+@pytest.mark.parametrize("include_next", [True, False])
+def test_pib_oportuno_usa_su_calendario_y_el_aviso_del_boletin(include_next):
+    pib = {
+        "observations": [{"period": "2T-26 P"}, {"period": "3T-26 P"}],
+        "proxima_publicacion_boletin": {
+            "fecha_publicacion": "29 de enero de 2027",
+            "fecha_iso": "2027-01-29",
+            "periodo_base": "3T-26 P",
+        },
+    }
+    calendar = [
+        {"clave": "PIB", "estatus": "publicado", "fecha_iso": "2025-01-30",
+         "fecha_publicacion": "30 de enero de 2025", "periodo_referencia": "Cuarto trimestre de 2024"},
+        {"clave": "PIB", "estatus": "publicado", "fecha_iso": "2026-10-30",
+         "fecha_publicacion": "30 de octubre de 2026", "periodo_referencia": "Tercer trimestre de 2026"},
+        {"clave": "PIBSEC", "estatus": "próximo", "fecha_iso": "2026-11-23",
+         "fecha_publicacion": "23 de noviembre de 2026", "periodo_referencia": "Tercer trimestre de 2026"},
+    ]
+    if include_next:
+        calendar.append({"clave": "PIB", "estatus": "próximo", "fecha_iso": "2027-01-29",
+                         "periodo_referencia": "Cuarto trimestre de 2026"})
+
+    now = _dt(year=2026, month=11, day=18, hour=14, minute=0)
+    state = F.compute_state("PIB", "3T-26 P", _make_manifest("Trimestral"), {},
+                            calendar, ind=pib, now=now)
+    assert state["estado"] == F.ESTADOS["ACTUALIZADO"]
+    assert state["periodo_oficial"] == "Tercer trimestre de 2026"
+    assert state["fecha_publicacion_oficial"] == "30 de octubre de 2026"
+    assert state["proxima_publicacion"] == "29 de enero de 2027"
+    assert state["periodo_proximo"] == "4T-26"
+    assert state["proxima_publicacion_tipo"] == "oficial"
+
+    pib["proxima_publicacion_boletin"]["periodo_base"] = "2T-26 P"
+    _, prox = F._resolve_pub_prox(calendar, "PIB", pib, now.date())
+    assert (prox and prox["periodo_referencia"]) == ("Cuarto trimestre de 2026" if include_next else None)
+
+
+def test_pibsec_distingue_publicacion_oficial_y_nivel_cargado():
+    calendar = [
+        {"clave": "PIBSEC", "estatus": "publicado", "fecha_iso": "2026-08-24",
+         "periodo_referencia": "2° trimestre 2026", "url_boletin": "boletin-2t.pdf"},
+        {"clave": "PIBSEC", "estatus": "publicado", "fecha_iso": "2026-11-23",
+         "periodo_referencia": "3er trimestre 2026", "url_boletin": "boletin-3t.pdf"},
+    ]
+    ind = {"observations": [{"period": "2T-26"}]}
+    manifest = _make_manifest("Trimestral")
+    before = F.compute_state("PIBSEC", "2T-26", manifest, {}, calendar, date(2026, 11, 22), ind)
+    assert before["estado"] == "ACTUALIZADO"
+    lag = F.compute_state("PIBSEC", "2T-26", manifest, {}, calendar, date(2026, 11, 23), ind)
+    assert lag["estado"] == "REZAGADO"
+    assert "3er trimestre 2026" in lag["motivo"]
+    assert lag["periodo_oficial"] == "2° trimestre 2026"
+    assert lag["url_boletin"] == "boletin-2t.pdf"
+    ind["observations"].append({"period": "3T-26"})
+    updated = F.compute_state("PIBSEC", "3T-26", manifest, {}, calendar, date(2026, 11, 23), ind)
+    assert updated["estado"] == "ACTUALIZADO"
+    assert updated["url_boletin"] == "boletin-3t.pdf"

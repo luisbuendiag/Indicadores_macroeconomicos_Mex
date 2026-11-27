@@ -1,0 +1,376 @@
+﻿variable,valor,unidad,periodo,serie,ubicacion,fuente
+population total population previous,104370738,personas,2025-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total population current,105728893,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total population difference,1358155,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total population relative_previous,100.0,porcentaje,2025-10,original; denominador Población de 15 años y más; grupo total,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total population relative_current,100.0,porcentaje,2026-10,original; denominador Población de 15 años y más; grupo total,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total pea previous,62530986,personas,2025-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total pea current,62570942,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total pea difference,39956,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total pea relative_previous,59.9,porcentaje,2025-10,original; denominador Población de 15 años y más; grupo total,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total pea relative_current,59.2,porcentaje,2026-10,original; denominador Población de 15 años y más; grupo total,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total pea relative_difference,-0.7,puntos porcentuales,2026-10,original; denominador Población de 15 años y más; grupo total,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total occupied previous,60899893,personas,2025-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total occupied current,60715334,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total occupied difference,-184559,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total occupied relative_previous,97.4,porcentaje,2025-10,original; denominador PEA; grupo total,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total occupied relative_current,97.0,porcentaje,2026-10,original; denominador PEA; grupo total,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total occupied relative_difference,-0.4,puntos porcentuales,2026-10,original; denominador PEA; grupo total,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total unemployed previous,1631093,personas,2025-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total unemployed current,1855608,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total unemployed difference,224515,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total unemployed relative_previous,2.6,porcentaje,2025-10,original; denominador PEA; grupo total,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total unemployed relative_current,3.0,porcentaje,2026-10,original; denominador PEA; grupo total,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total unemployed relative_difference,0.4,puntos porcentuales,2026-10,original; denominador PEA; grupo total,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total pnea previous,41839752,personas,2025-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total pnea current,43157951,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total pnea difference,1318199,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total pnea relative_previous,40.1,porcentaje,2025-10,original; denominador Población de 15 años y más; grupo total,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total pnea relative_current,40.8,porcentaje,2026-10,original; denominador Población de 15 años y más; grupo total,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total pnea relative_difference,0.7,puntos porcentuales,2026-10,original; denominador Población de 15 años y más; grupo total,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total available previous,5180100,personas,2025-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total available current,4841900,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total available difference,-338200,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total available relative_previous,12.4,porcentaje,2025-10,original; denominador PNEA; grupo total,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total available relative_current,11.2,porcentaje,2026-10,original; denominador PNEA; grupo total,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total available relative_difference,-1.2,puntos porcentuales,2026-10,original; denominador PNEA; grupo total,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total unavailable previous,36659652,personas,2025-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total unavailable current,38316051,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total unavailable difference,1656399,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total unavailable relative_previous,87.6,porcentaje,2025-10,original; denominador PNEA; grupo total,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total unavailable relative_current,88.8,porcentaje,2026-10,original; denominador PNEA; grupo total,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population total unavailable relative_difference,1.2,puntos porcentuales,2026-10,original; denominador PNEA; grupo total,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women population previous,55532368,personas,2025-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women population current,55789604,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women population difference,257236,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women population relative_previous,100.0,porcentaje,2025-10,original; denominador Población de 15 años y más; grupo women,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women population relative_current,100.0,porcentaje,2026-10,original; denominador Población de 15 años y más; grupo women,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women pea previous,25932732,personas,2025-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women pea current,25733590,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women pea difference,-199142,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women pea relative_previous,46.7,porcentaje,2025-10,original; denominador Población de 15 años y más; grupo women,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women pea relative_current,46.1,porcentaje,2026-10,original; denominador Población de 15 años y más; grupo women,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women pea relative_difference,-0.6,puntos porcentuales,2026-10,original; denominador Población de 15 años y más; grupo women,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women occupied previous,25299081,personas,2025-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women occupied current,24981689,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women occupied difference,-317392,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women occupied relative_previous,97.6,porcentaje,2025-10,original; denominador PEA; grupo women,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women occupied relative_current,97.1,porcentaje,2026-10,original; denominador PEA; grupo women,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women occupied relative_difference,-0.5,puntos porcentuales,2026-10,original; denominador PEA; grupo women,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women unemployed previous,633651,personas,2025-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women unemployed current,751901,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women unemployed difference,118250,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women unemployed relative_previous,2.4,porcentaje,2025-10,original; denominador PEA; grupo women,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women unemployed relative_current,2.9,porcentaje,2026-10,original; denominador PEA; grupo women,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women unemployed relative_difference,0.5,puntos porcentuales,2026-10,original; denominador PEA; grupo women,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women pnea previous,29599636,personas,2025-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women pnea current,30056014,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women pnea difference,456378,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women pnea relative_previous,53.3,porcentaje,2025-10,original; denominador Población de 15 años y más; grupo women,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women pnea relative_current,53.9,porcentaje,2026-10,original; denominador Población de 15 años y más; grupo women,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women pnea relative_difference,0.6,puntos porcentuales,2026-10,original; denominador Población de 15 años y más; grupo women,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women available previous,3340589,personas,2025-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women available current,3086086,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women available difference,-254503,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women available relative_previous,11.3,porcentaje,2025-10,original; denominador PNEA; grupo women,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women available relative_current,10.3,porcentaje,2026-10,original; denominador PNEA; grupo women,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women available relative_difference,-1.0,puntos porcentuales,2026-10,original; denominador PNEA; grupo women,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women unavailable previous,26259047,personas,2025-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women unavailable current,26969928,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women unavailable difference,710881,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women unavailable relative_previous,88.7,porcentaje,2025-10,original; denominador PNEA; grupo women,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women unavailable relative_current,89.7,porcentaje,2026-10,original; denominador PNEA; grupo women,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population women unavailable relative_difference,1.0,puntos porcentuales,2026-10,original; denominador PNEA; grupo women,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men population previous,48838370,personas,2025-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men population current,49939289,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men population difference,1100919,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men population relative_previous,100.0,porcentaje,2025-10,original; denominador Población de 15 años y más; grupo men,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men population relative_current,100.0,porcentaje,2026-10,original; denominador Población de 15 años y más; grupo men,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men pea previous,36598254,personas,2025-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men pea current,36837352,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men pea difference,239098,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men pea relative_previous,74.9,porcentaje,2025-10,original; denominador Población de 15 años y más; grupo men,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men pea relative_current,73.8,porcentaje,2026-10,original; denominador Población de 15 años y más; grupo men,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men pea relative_difference,-1.2,puntos porcentuales,2026-10,original; denominador Población de 15 años y más; grupo men,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men occupied previous,35600812,personas,2025-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men occupied current,35733645,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men occupied difference,132833,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men occupied relative_previous,97.3,porcentaje,2025-10,original; denominador PEA; grupo men,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men occupied relative_current,97.0,porcentaje,2026-10,original; denominador PEA; grupo men,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men occupied relative_difference,-0.3,puntos porcentuales,2026-10,original; denominador PEA; grupo men,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men unemployed previous,997442,personas,2025-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men unemployed current,1103707,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men unemployed difference,106265,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men unemployed relative_previous,2.7,porcentaje,2025-10,original; denominador PEA; grupo men,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men unemployed relative_current,3.0,porcentaje,2026-10,original; denominador PEA; grupo men,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men unemployed relative_difference,0.3,puntos porcentuales,2026-10,original; denominador PEA; grupo men,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men pnea previous,12240116,personas,2025-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men pnea current,13101937,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men pnea difference,861821,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men pnea relative_previous,25.1,porcentaje,2025-10,original; denominador Población de 15 años y más; grupo men,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men pnea relative_current,26.2,porcentaje,2026-10,original; denominador Población de 15 años y más; grupo men,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men pnea relative_difference,1.2,puntos porcentuales,2026-10,original; denominador Población de 15 años y más; grupo men,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men available previous,1839511,personas,2025-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men available current,1755814,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men available difference,-83697,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men available relative_previous,15.0,porcentaje,2025-10,original; denominador PNEA; grupo men,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men available relative_current,13.4,porcentaje,2026-10,original; denominador PNEA; grupo men,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men available relative_difference,-1.6,puntos porcentuales,2026-10,original; denominador PNEA; grupo men,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men unavailable previous,10400605,personas,2025-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men unavailable current,11346123,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men unavailable difference,945518,personas,2026-10,original,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men unavailable relative_previous,85.0,porcentaje,2025-10,original; denominador PNEA; grupo men,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men unavailable relative_current,86.6,porcentaje,2026-10,original; denominador PNEA; grupo men,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+population men unavailable relative_difference,1.6,puntos porcentuales,2026-10,original; denominador PNEA; grupo men,"p. 4, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total position_total previous,60899893,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total position_total current,60715334,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total position_total difference,-184559,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total position_total relative_previous,100.0,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total position_total relative_current,100.0,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total salaried previous,41848760,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total salaried current,41682379,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total salaried difference,-166381,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total salaried relative_previous,68.7,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total salaried relative_current,68.7,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total salaried relative_difference,-0.1,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total employers previous,3602982,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total employers current,3784183,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total employers difference,181201,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total employers relative_previous,5.9,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total employers relative_current,6.2,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total employers relative_difference,0.3,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total self previous,13331865,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total self current,13369275,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total self difference,37410,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total self relative_previous,21.9,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total self relative_current,22.0,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total self relative_difference,0.1,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total unpaid previous,2116286,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total unpaid current,1879497,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total unpaid difference,-236789,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total unpaid relative_previous,3.5,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total unpaid relative_current,3.1,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total unpaid relative_difference,-0.4,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total sector_total previous,60899893,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total sector_total current,60715334,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total sector_total difference,-184559,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total sector_total relative_previous,100.0,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total sector_total relative_current,100.0,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total primary previous,6255478,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total primary current,6228172,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total primary difference,-27306,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total primary relative_previous,10.3,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total primary relative_current,10.3,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total primary relative_difference,0.0,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total agriculture previous,6255478,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total agriculture current,6228172,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total agriculture difference,-27306,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total agriculture relative_previous,10.3,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total agriculture relative_current,10.3,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total agriculture relative_difference,0.0,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total secondary previous,15008663,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total secondary current,15215182,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total secondary difference,206519,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total secondary relative_previous,24.6,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total secondary relative_current,25.1,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total secondary relative_difference,0.4,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total extractive previous,359191,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total extractive current,429093,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total extractive difference,69902,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total extractive relative_previous,0.6,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total extractive relative_current,0.7,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total extractive relative_difference,0.1,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total manufacturing previous,9825462,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total manufacturing current,9649021,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total manufacturing difference,-176441,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total manufacturing relative_previous,16.1,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total manufacturing relative_current,15.9,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total manufacturing relative_difference,-0.2,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total construction previous,4824010,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total construction current,5137068,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total construction difference,313058,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total construction relative_previous,7.9,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total construction relative_current,8.5,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total construction relative_difference,0.5,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total tertiary previous,39176295,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total tertiary current,38830335,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total tertiary difference,-345960,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total tertiary relative_previous,64.3,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total tertiary relative_current,64.0,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total tertiary relative_difference,-0.4,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total commerce previous,11987251,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total commerce current,11733423,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total commerce difference,-253828,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total commerce relative_previous,19.7,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total commerce relative_current,19.3,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total commerce relative_difference,-0.4,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total hospitality previous,5130454,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total hospitality current,5218210,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total hospitality difference,87756,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total hospitality relative_previous,8.4,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total hospitality relative_current,8.6,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total hospitality relative_difference,0.2,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total transport previous,3388841,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total transport current,3517997,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total transport difference,129156,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total transport relative_previous,5.6,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total transport relative_current,5.8,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total transport relative_difference,0.2,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total professional previous,4824731,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total professional current,4905915,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total professional difference,81184,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total professional relative_previous,7.9,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total professional relative_current,8.1,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total professional relative_difference,0.2,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total social previous,4955116,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total social current,4980635,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total social difference,25519,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total social relative_previous,8.1,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total social relative_current,8.2,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total social relative_difference,0.1,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total other_services previous,6608827,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total other_services current,6159973,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total other_services difference,-448854,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total other_services relative_previous,10.9,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total other_services relative_current,10.1,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total other_services relative_difference,-0.7,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total government previous,2281075,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total government current,2314182,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total government difference,33107,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total government relative_previous,3.7,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total government relative_current,3.8,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total government relative_difference,0.1,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total sector_unspecified previous,459457,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total sector_unspecified current,441645,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total sector_unspecified difference,-17812,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total sector_unspecified relative_previous,0.8,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total sector_unspecified relative_current,0.7,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total sector_unspecified relative_difference,0.0,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_total previous,60899893,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_total current,60715334,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_total difference,-184559,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_total relative_previous,100.0,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_total relative_current,100.0,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_1 previous,27757059,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_1 current,27653103,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_1 difference,-103956,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_1 relative_previous,45.6,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_1 relative_current,45.5,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_1 relative_difference,0.0,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_2 previous,16273193,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_2 current,19443689,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_2 difference,3170496,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_2 relative_previous,26.7,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_2 relative_current,32.0,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_2 relative_difference,5.3,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_3 previous,3046233,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_3 current,3364798,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_3 difference,318565,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_3 relative_previous,5.0,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_3 relative_current,5.5,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_3 relative_difference,0.5,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_5 previous,1242107,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_5 current,1481390,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_5 difference,239283,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_5 relative_previous,2.0,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_5 relative_current,2.4,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_5 relative_difference,0.4,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_over5 previous,440362,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_over5 current,369999,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_over5 difference,-70363,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_over5 relative_previous,0.7,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_over5 relative_current,0.6,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_over5 relative_difference,-0.1,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_none previous,2879752,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_none current,2597765,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_none difference,-281987,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_none relative_previous,4.7,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_none relative_current,4.3,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_none relative_difference,-0.5,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_unspecified previous,9261187,personas,2025-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_unspecified current,5804590,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_unspecified difference,-3456597,personas,2026-10,original,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_unspecified relative_previous,15.2,porcentaje,2025-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_unspecified relative_current,9.6,porcentaje,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+sectors total income_unspecified relative_difference,-5.6,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 6, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total participation previous,59.9,porcentaje,2025-10,original; denominador 15 años y más,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total participation current,59.2,porcentaje,2026-10,original; denominador 15 años y más,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total participation difference,-0.7,puntos porcentuales,2026-10,original; denominador 15 años y más,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total unemployment previous,2.6,porcentaje,2025-10,original; denominador PEA,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total unemployment current,3.0,porcentaje,2026-10,original; denominador PEA,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total unemployment difference,0.4,puntos porcentuales,2026-10,original; denominador PEA,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total unemployment_women previous,2.4,porcentaje,2025-10,original; denominador PEA,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total unemployment_women current,2.9,porcentaje,2026-10,original; denominador PEA,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total unemployment_women difference,0.5,puntos porcentuales,2026-10,original; denominador PEA,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total unemployment_men previous,2.7,porcentaje,2025-10,original; denominador PEA,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total unemployment_men current,3.0,porcentaje,2026-10,original; denominador PEA,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total unemployment_men difference,0.3,puntos porcentuales,2026-10,original; denominador PEA,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total partial previous,9.3,porcentaje,2025-10,original; denominador PEA,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total partial current,9.4,porcentaje,2026-10,original; denominador PEA,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total partial difference,0.1,puntos porcentuales,2026-10,original; denominador PEA,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total pressure previous,5.7,porcentaje,2025-10,original; denominador PEA,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total pressure current,5.9,porcentaje,2026-10,original; denominador PEA,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total pressure difference,0.3,puntos porcentuales,2026-10,original; denominador PEA,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total salary previous,65.9,porcentaje,2025-10,original; denominador Población ocupada,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total salary current,66.0,porcentaje,2026-10,original; denominador Población ocupada,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total salary difference,0.1,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total underemployment previous,7.5,porcentaje,2025-10,original; denominador Población ocupada,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total underemployment current,7.2,porcentaje,2026-10,original; denominador Población ocupada,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total underemployment difference,-0.3,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total critical previous,37.8,porcentaje,2025-10,original; denominador Población ocupada,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total critical current,38.6,porcentaje,2026-10,original; denominador Población ocupada,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total critical difference,0.8,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total informality previous,55.7,porcentaje,2025-10,original; denominador Población ocupada,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total informality current,55.7,porcentaje,2026-10,original; denominador Población ocupada,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total informality difference,0.0,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total informal_sector previous,29.6,porcentaje,2025-10,original; denominador Población ocupada,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total informal_sector current,30.4,porcentaje,2026-10,original; denominador Población ocupada,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+rates total informal_sector difference,0.8,puntos porcentuales,2026-10,original; denominador Población ocupada,"p. 9, cuadro 4",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+adjusted total participation current,58.8,porcentaje,2026-10,desestacionalizada; denominador 15 años y más,"p. 12, cuadro 7, nacional",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+adjusted total participation mom,0.3,puntos porcentuales,2026-10,desestacionalizada; denominador 15 años y más,"p. 12, cuadro 7, nacional",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+adjusted total participation yoy,-0.7,puntos porcentuales,2026-10,desestacionalizada; denominador 15 años y más,"p. 12, cuadro 7, nacional",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+adjusted total occupation current,97.0,porcentaje,2026-10,desestacionalizada; denominador PEA,"p. 12, cuadro 7, nacional",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+adjusted total occupation mom,-0.3,puntos porcentuales,2026-10,desestacionalizada; denominador PEA,"p. 12, cuadro 7, nacional",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+adjusted total occupation yoy,-0.4,puntos porcentuales,2026-10,desestacionalizada; denominador PEA,"p. 12, cuadro 7, nacional",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+adjusted total underemployment current,6.7,porcentaje,2026-10,desestacionalizada; denominador Población ocupada,"p. 12, cuadro 7, nacional",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+adjusted total underemployment mom,0.2,puntos porcentuales,2026-10,desestacionalizada; denominador Población ocupada,"p. 12, cuadro 7, nacional",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+adjusted total underemployment yoy,-0.4,puntos porcentuales,2026-10,desestacionalizada; denominador Población ocupada,"p. 12, cuadro 7, nacional",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+adjusted total unemployment current,3.0,porcentaje,2026-10,desestacionalizada; denominador PEA,"p. 12, cuadro 7, nacional",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+adjusted total unemployment mom,0.3,puntos porcentuales,2026-10,desestacionalizada; denominador PEA,"p. 12, cuadro 7, nacional",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+adjusted total unemployment yoy,0.4,puntos porcentuales,2026-10,desestacionalizada; denominador PEA,"p. 12, cuadro 7, nacional",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+adjusted total unemployment_women current,3.1,porcentaje,2026-10,desestacionalizada; denominador PEA,"p. 12, cuadro 7, nacional",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+adjusted total unemployment_women mom,0.6,puntos porcentuales,2026-10,desestacionalizada; denominador PEA,"p. 12, cuadro 7, nacional",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+adjusted total unemployment_women yoy,0.5,puntos porcentuales,2026-10,desestacionalizada; denominador PEA,"p. 12, cuadro 7, nacional",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+adjusted total unemployment_men current,2.8,porcentaje,2026-10,desestacionalizada; denominador PEA,"p. 12, cuadro 7, nacional",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+adjusted total unemployment_men mom,0.1,puntos porcentuales,2026-10,desestacionalizada; denominador PEA,"p. 12, cuadro 7, nacional",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+adjusted total unemployment_men yoy,0.3,puntos porcentuales,2026-10,desestacionalizada; denominador PEA,"p. 12, cuadro 7, nacional",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+adjusted total informality current,55.3,porcentaje,2026-10,desestacionalizada; denominador Población ocupada,"p. 12, cuadro 7, nacional",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+adjusted total informality mom,0.9,puntos porcentuales,2026-10,desestacionalizada; denominador Población ocupada,"p. 12, cuadro 7, nacional",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+adjusted total informality yoy,0.0,puntos porcentuales,2026-10,desestacionalizada; denominador Población ocupada,"p. 12, cuadro 7, nacional",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+adjusted total informal_sector current,30.2,porcentaje,2026-10,desestacionalizada; denominador Población ocupada,"p. 12, cuadro 7, nacional",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+adjusted total informal_sector mom,0.5,puntos porcentuales,2026-10,desestacionalizada; denominador Población ocupada,"p. 12, cuadro 7, nacional",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+adjusted total informal_sector yoy,0.8,puntos porcentuales,2026-10,desestacionalizada; denominador Población ocupada,"p. 12, cuadro 7, nacional",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+urban total participation current,59.8,porcentaje,2026-10,desestacionalizada; denominador 15 años y más,"p. 12, cuadro 7, 32 ciudades",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+urban total participation mom,-0.1,puntos porcentuales,2026-10,desestacionalizada; denominador 15 años y más,"p. 12, cuadro 7, 32 ciudades",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+urban total participation yoy,-1.0,puntos porcentuales,2026-10,desestacionalizada; denominador 15 años y más,"p. 12, cuadro 7, 32 ciudades",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+urban total occupation current,96.5,porcentaje,2026-10,desestacionalizada; denominador PEA,"p. 12, cuadro 7, 32 ciudades",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+urban total occupation mom,-0.4,puntos porcentuales,2026-10,desestacionalizada; denominador PEA,"p. 12, cuadro 7, 32 ciudades",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+urban total occupation yoy,-0.4,puntos porcentuales,2026-10,desestacionalizada; denominador PEA,"p. 12, cuadro 7, 32 ciudades",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+urban total underemployment current,5.8,porcentaje,2026-10,desestacionalizada; denominador Población ocupada,"p. 12, cuadro 7, 32 ciudades",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+urban total underemployment mom,0.4,puntos porcentuales,2026-10,desestacionalizada; denominador Población ocupada,"p. 12, cuadro 7, 32 ciudades",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+urban total underemployment yoy,-0.2,puntos porcentuales,2026-10,desestacionalizada; denominador Población ocupada,"p. 12, cuadro 7, 32 ciudades",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+urban total unemployment current,3.5,porcentaje,2026-10,desestacionalizada; denominador PEA,"p. 12, cuadro 7, 32 ciudades",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+urban total unemployment mom,0.4,puntos porcentuales,2026-10,desestacionalizada; denominador PEA,"p. 12, cuadro 7, 32 ciudades",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+urban total unemployment yoy,0.4,puntos porcentuales,2026-10,desestacionalizada; denominador PEA,"p. 12, cuadro 7, 32 ciudades",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+urban total unemployment_women current,3.3,porcentaje,2026-10,desestacionalizada; denominador PEA,"p. 12, cuadro 7, 32 ciudades",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+urban total unemployment_women mom,0.2,puntos porcentuales,2026-10,desestacionalizada; denominador PEA,"p. 12, cuadro 7, 32 ciudades",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+urban total unemployment_women yoy,0.4,puntos porcentuales,2026-10,desestacionalizada; denominador PEA,"p. 12, cuadro 7, 32 ciudades",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+urban total unemployment_men current,3.6,porcentaje,2026-10,desestacionalizada; denominador PEA,"p. 12, cuadro 7, 32 ciudades",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+urban total unemployment_men mom,0.5,puntos porcentuales,2026-10,desestacionalizada; denominador PEA,"p. 12, cuadro 7, 32 ciudades",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+urban total unemployment_men yoy,0.4,puntos porcentuales,2026-10,desestacionalizada; denominador PEA,"p. 12, cuadro 7, 32 ciudades",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+urban total informality current,44.5,porcentaje,2026-10,desestacionalizada; denominador Población ocupada,"p. 12, cuadro 7, 32 ciudades",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+urban total informality mom,1.5,puntos porcentuales,2026-10,desestacionalizada; denominador Población ocupada,"p. 12, cuadro 7, 32 ciudades",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+urban total informality yoy,-0.4,puntos porcentuales,2026-10,desestacionalizada; denominador Población ocupada,"p. 12, cuadro 7, 32 ciudades",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+urban total informal_sector current,27.6,porcentaje,2026-10,desestacionalizada; denominador Población ocupada,"p. 12, cuadro 7, 32 ciudades",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+urban total informal_sector mom,0.7,puntos porcentuales,2026-10,desestacionalizada; denominador Población ocupada,"p. 12, cuadro 7, 32 ciudades",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf
+urban total informal_sector yoy,0.7,puntos porcentuales,2026-10,desestacionalizada; denominador Población ocupada,"p. 12, cuadro 7, 32 ciudades",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf

@@ -2,17 +2,17 @@
   "IMOAM": {
     "status": "vigente",
     "message": "Nota generada y validada por reglas Python",
-    "target_period": "Sep 26",
+    "target_period": "Oct 26",
     "published": {
-      "periodo": "Sep 26",
-      "generated_at": "2026-10-29T15:51:54+00:00",
-      "source_sha256": "3eb0f16b4520bfe26b9fbe5e9f61e18814d5c33de1e99b2a8d1c48ac2e5a89cd",
-      "fingerprint": "aa8a162e987a94a22d96a0b3f97f5b4e2dd353348f25ec5db71fe41c8aabdeae",
-      "docx_sha256": "5b8648be2d7a233fee14d4607337be5f5fd479724acb0fedf0ab077aff94d82d",
-      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_10.pdf",
+      "periodo": "Oct 26",
+      "generated_at": "2026-11-26T16:20:46+00:00",
+      "source_sha256": "eac28e595de45625b831e839e0b722aca380a4df9078513e37297d2d8175a78c",
+      "fingerprint": "5085ff7f6c7c214d3a785c7c55facd41efcccbcfa716ff4356b3328bf78eb605",
+      "docx_sha256": "69cd2121df6d861ff867934ea64bb549701da962c9ae2a7dad9ba391490b15e0",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_11.pdf",
       "review_model": "reglas-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/IMOAM/aa8a162e987a94a22d96a0b3f97f5b4e2dd353348f25ec5db71fe41c8aabdeae-5b8648be2d7a"
+      "archive": "data/notas/IMOAM/5085ff7f6c7c214d3a785c7c55facd41efcccbcfa716ff4356b3328bf78eb605-69cd2121df6d"
     }
   },
   "IMAI": {
@@ -34,33 +34,33 @@
   "IGAE": {
     "status": "vigente",
     "message": "Nota generada y validada por reglas Python",
-    "target_period": "Ago 26",
+    "target_period": "Sep 26",
     "published": {
-      "periodo": "Ago 26",
-      "generated_at": "2026-10-29T15:52:06+00:00",
-      "source_sha256": "3632ec20e073674e8f854b434428ad79a135528a6741c23acb007ed04908c416",
-      "fingerprint": "0c31236228883c6ba80004d32cb859f53bb692a2370f7592d39a81444d1ece57",
-      "docx_sha256": "c87fc19bdc68417a123258ac547524cc3e2164a332074a0f4b1fd6704c1cea15",
-      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
+      "periodo": "Sep 26",
+      "generated_at": "2026-11-23T19:37:53+00:00",
+      "source_sha256": "6671e3597476ce0b31f74bae97d98f896e8941d571f1d7c50d6b3fad3b7dcf7a",
+      "fingerprint": "0afe532dcbba81089f341e469ff3cee3f91949b1b80ba4adc1faf72e0f3e0618",
+      "docx_sha256": "4a8e37c95d04200ceffa57349a771ce44266551838cfd3cbf953452024c50381",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_11.pdf",
       "review_model": "actividad-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/IGAE/0c31236228883c6ba80004d32cb859f53bb692a2370f7592d39a81444d1ece57-c87fc19bdc68"
+      "archive": "data/notas/IGAE/0afe532dcbba81089f341e469ff3cee3f91949b1b80ba4adc1faf72e0f3e0618-4a8e37c95d04"
     }
   },
   "EMIM": {
     "status": "vigente",
     "message": "Nota generada y validada por reglas Python",
-    "target_period": "Ago 26",
+    "target_period": "Sep 26",
     "published": {
-      "periodo": "Ago 26",
-      "generated_at": "2026-10-29T16:48:21+00:00",
-      "source_sha256": "86d30223c1e309b04e3af442fa978bea3747299d008433c5e930a3d0614e8241",
-      "fingerprint": "8904c20c925522fd32526a258fa10b0dbd413f6cf482055e0a6f4da21a674ec3",
-      "docx_sha256": "ff0380edeb31e28f6b2553145fc34d08b860d22300f4b236a77e072a0c6bf3e5",
-      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf",
+      "periodo": "Sep 26",
+      "generated_at": "2026-11-17T15:36:36+00:00",
+      "source_sha256": "139d2c819be4c71b573885f05438f753ff4365cf39dd1761a4a7ac1409adafd8",
+      "fingerprint": "496f9e6d9bcd263479caaa29ecedfe8dc9ee96761a7230557962c9c4c99aa3ff",
+      "docx_sha256": "e53dad974341a9cb58cb792f9bc2ffe25edb60c56bb21a66bfaa5cb95b68ec21",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_11.pdf",
       "review_model": "encuestas-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/EMIM/8904c20c925522fd32526a258fa10b0dbd413f6cf482055e0a6f4da21a674ec3-ff0380edeb31"
+      "archive": "data/notas/EMIM/496f9e6d9bcd263479caaa29ecedfe8dc9ee96761a7230557962c9c4c99aa3ff-e53dad974341"
     }
   },
   "EMOE": {
@@ -117,14 +117,14 @@
     "target_period": "Oct 26",
     "published": {
       "periodo": "Oct 26",
-      "generated_at": "2026-11-10T22:07:37+00:00",
+      "generated_at": "2026-11-25T18:49:24+00:00",
       "source_sha256": "7e7991be791fb3c78c1df5ad29ffe02379f2a5dca8a0b6913d4429715e9e8c50",
-      "fingerprint": "eddc3d85877cdd245def07373496cea47ec189915d86884984debfe9d9d0c0ae",
-      "docx_sha256": "329ac4a020c45eac7579b7b1c77fe630832d350fd0c43aaa25b119948b4d2f4c",
+      "fingerprint": "96f97e0e709d25bee2a408e98c30e33570a7fc82ad4dec49c174107b9128b022",
+      "docx_sha256": "ff02360a8b729e132cdf343a8c9d3070b17e693da00bd0596c0c5b068e2a218d",
       "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_2q2026_11.pdf",
       "review_model": "precios-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/INPC/eddc3d85877cdd245def07373496cea47ec189915d86884984debfe9d9d0c0ae-329ac4a020c4"
+      "archive": "data/notas/INPC/96f97e0e709d25bee2a408e98c30e33570a7fc82ad4dec49c174107b9128b022-ff02360a8b72"
     }
   },
   "INPP": {
@@ -133,14 +133,14 @@
     "target_period": "Oct 26",
     "published": {
       "periodo": "Oct 26",
-      "generated_at": "2026-11-10T22:33:40+00:00",
+      "generated_at": "2026-11-25T18:49:30+00:00",
       "source_sha256": "68366413ebfc12da992cb89ce472a2cfab6196667974d52fd394af685b7a55b4",
-      "fingerprint": "69297682dae488c9e39dc2df5c00493a4e541e77a6399dc990209a003e4aaf74",
-      "docx_sha256": "e26cbbee4456b0511fa22d3272073a3bff8e5682893bb370df1e48d09d4a4a14",
+      "fingerprint": "6cb8b559351544259181054ffcdbd351871a9a5bb94f215ddf8dfb39800844d7",
+      "docx_sha256": "66e1ab740b43d09654851a57555b2571eec218b5e784276bc12cdb2081518904",
       "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpp/inpp2026_11.pdf",
       "review_model": "precios-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/INPP/69297682dae488c9e39dc2df5c00493a4e541e77a6399dc990209a003e4aaf74-e26cbbee4456"
+      "archive": "data/notas/INPP/6cb8b559351544259181054ffcdbd351871a9a5bb94f215ddf8dfb39800844d7-66e1ab740b43"
     }
   },
   "PIB": {
@@ -162,17 +162,17 @@
   "PIBSEC": {
     "status": "vigente",
     "message": "Nota generada y validada por reglas Python",
-    "target_period": "2T-26",
+    "target_period": "3T-26",
     "published": {
-      "periodo": "2T-26",
-      "generated_at": "2026-11-05T02:55:07+00:00",
-      "source_sha256": "c0ae1673e9347a4e31d4cd2fde974b19e6293560c15b419c3656fbe85e987337",
-      "fingerprint": "7b3dca2aa78e404eea5c14d2cadfdd6d235523a201442dce494c38ae6f211c87",
-      "docx_sha256": "d461729e20c80125405cc40e2bc44c9370a1ba90921e22b1bbd998ad79427324",
-      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_08.pdf",
+      "periodo": "3T-26",
+      "generated_at": "2026-11-23T19:38:13+00:00",
+      "source_sha256": "8ba02b658dd8ef132d0c0da7d4a62a13eba421514861402986012bf4a107b4f9",
+      "fingerprint": "2626a5211f6b6ffda72ef249dff1a5cdab6b040ad3d4d587e72f4dcefdbe028e",
+      "docx_sha256": "97cd625dc5e31b23f3a2da118a04233c2db3f253a63a889daed2978e5949cc7e",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_11.pdf",
       "review_model": "pib-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/PIBSEC/7b3dca2aa78e404eea5c14d2cadfdd6d235523a201442dce494c38ae6f211c87-d461729e20c8"
+      "archive": "data/notas/PIBSEC/2626a5211f6b6ffda72ef249dff1a5cdab6b040ad3d4d587e72f4dcefdbe028e-97cd625dc5e3"
     }
   },
   "SIC": {
@@ -181,62 +181,62 @@
     "target_period": "Ago 26",
     "published": {
       "periodo": "Ago 26",
-      "generated_at": "2026-11-05T02:55:14+00:00",
+      "generated_at": "2026-11-26T16:21:05+00:00",
       "source_sha256": "9cd66d06f78d8255e4f6bb3de4740b6adcacb6b8d927c5c108156bde7f6b3241",
-      "fingerprint": "4c6ed59785fd5ac19fd6ea8a4d6b6ee8ad9e8f14596ef8916b5ff16e2904a2c6",
-      "docx_sha256": "39b79b342b0fe3c70ff0ca011ccf2c012bab076dfee8a373261f9f5f009036c0",
+      "fingerprint": "6210354f307cafc283d020ac741c7652da9de397c126f6f50b751050707e3cee",
+      "docx_sha256": "d2eb4a36082616c88ab5f08c73de1c4064183c09cc25708a30a86d8e32c57e4e",
       "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/sic_cya/sic2026_11.pdf",
       "review_model": "sic-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/SIC/4c6ed59785fd5ac19fd6ea8a4d6b6ee8ad9e8f14596ef8916b5ff16e2904a2c6-39b79b342b0f"
+      "archive": "data/notas/SIC/6210354f307cafc283d020ac741c7652da9de397c126f6f50b751050707e3cee-d2eb4a360826"
     }
   },
   "IOAE": {
     "status": "vigente",
     "message": "Nota generada y validada por reglas Python",
-    "target_period": "Sep 26",
+    "target_period": "Oct 26",
     "published": {
-      "periodo": "Sep 26",
-      "generated_at": "2026-11-05T02:55:19+00:00",
-      "source_sha256": "923e6de1a9af5d03eb871b99801f2fd989b84ce1e90383ef6c6f129be40be863",
-      "fingerprint": "123a5f4821b80b3166a86f50af8ef170387d750ffccc2591e9e289e5026ac04d",
-      "docx_sha256": "74a433b8cc4a059181444c7f1966a146e7968fbc99602e14cec28188d175aac9",
-      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf",
+      "periodo": "Oct 26",
+      "generated_at": "2026-11-19T16:58:57+00:00",
+      "source_sha256": "9e6dd7896be4c705008e680c359c31b5f8288e809bbc57cbb0721e3d900d1cad",
+      "fingerprint": "093ebc89f7425e7c1b0f08d948aa3b7d3dc3508b15619a7d50ab99a9535c2d77",
+      "docx_sha256": "018d3f4435d0ede6fbae106e7e48d9e607bdaf1134b0a5315a20858719add113",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_11.pdf",
       "review_model": "ioae-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/IOAE/123a5f4821b80b3166a86f50af8ef170387d750ffccc2591e9e289e5026ac04d-74a433b8cc4a"
+      "archive": "data/notas/IOAE/093ebc89f7425e7c1b0f08d948aa3b7d3dc3508b15619a7d50ab99a9535c2d77-018d3f4435d0"
     }
   },
   "DESOCUP": {
     "status": "vigente",
     "message": "Nota generada y validada por reglas Python",
-    "target_period": "Sep 26",
+    "target_period": "Oct 26",
     "published": {
-      "periodo": "Sep 26",
-      "generated_at": "2026-11-05T02:55:28+00:00",
-      "source_sha256": "44727848a17ce04c95395b00f3634889a9129805d854dc5aee240aa7f9605b21",
-      "fingerprint": "42a8799483d5e936499afce2362c6ed815bd3df191719fa6ddd5901f8d8c004d",
-      "docx_sha256": "ec34ddb3f0a8c56dd786a6e0a4c72c9e1259abeb416526937f4173712474fe77",
-      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_10.pdf",
+      "periodo": "Oct 26",
+      "generated_at": "2026-11-26T16:21:13+00:00",
+      "source_sha256": "998a8835622fda6f22d7fdc75d6ffb3ca138f9776200a87f1b676b285c6db688",
+      "fingerprint": "8a5cf3b02dfa0bb3a3dc9b0be34708ff0ae40a36768d03536699baf63f8ad3eb",
+      "docx_sha256": "da5925bee8e89f0d86eb1b777b9bdc08a424ab708c262cb6929ebf0588cf2bec",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf",
       "review_model": "enoe-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/DESOCUP/42a8799483d5e936499afce2362c6ed815bd3df191719fa6ddd5901f8d8c004d-ec34ddb3f0a8"
+      "archive": "data/notas/DESOCUP/8a5cf3b02dfa0bb3a3dc9b0be34708ff0ae40a36768d03536699baf63f8ad3eb-da5925bee8e8"
     }
   },
   "BCMM": {
     "status": "vigente",
     "message": "Nota generada y validada por reglas Python",
-    "target_period": "Sep 26",
+    "target_period": "Oct 26",
     "published": {
-      "periodo": "Sep 26",
-      "generated_at": "2026-11-05T02:55:34+00:00",
-      "source_sha256": "2ae792cff7e9c0dfe45e3f70f06b9bc37ffb237d27539c2a3b89d29c4847df51",
-      "fingerprint": "f31dcc14b08d01e3394389701ba65ee14d542968c064583506e99223dec360e0",
-      "docx_sha256": "6d4afdcf6be15ea1dab64222771fcba6d07d8e4ba6b7b3b7e7074de4ca674548",
-      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_10.pdf",
+      "periodo": "Oct 26",
+      "generated_at": "2026-11-27T18:52:59+00:00",
+      "source_sha256": "a2176a50843df638944122c5da0029e0e1f05f680e045d527d272a35a6d5110e",
+      "fingerprint": "8befbeef9c9510dc68a624b414ea07a0dc0583909a5ad6be60c6a4ce160075a8",
+      "docx_sha256": "2ab1af4bb8f8abe0649e0aec763928effeb4efa7f7af577a724c5424532ba26e",
+      "source_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf",
       "review_model": "bcmm-python-1",
       "review_kind": "reglas_python",
-      "archive": "data/notas/BCMM/f31dcc14b08d01e3394389701ba65ee14d542968c064583506e99223dec360e0-6d4afdcf6be1"
+      "archive": "data/notas/BCMM/8befbeef9c9510dc68a624b414ea07a0dc0583909a5ad6be60c6a4ce160075a8-2ab1af4bb8f8"
     }
   }
 }

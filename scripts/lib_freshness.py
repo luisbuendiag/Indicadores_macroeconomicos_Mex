@@ -17,6 +17,7 @@ import calendar
 import json
 import re
 from datetime import date, datetime, time, timedelta
+from math import isfinite
 from pathlib import Path
 from typing import Any
 
@@ -71,14 +72,20 @@ def _period_to_ym(period: str | None) -> str | None:
             if mi:
                 return f"{m.group(2)}-{mi:02d}"
 
-        # Trimestral completo: '2° trimestre de 2026', '2° trimestre 2026'
-        qm = re.match(r"^(\d)\s*°?\s*trimestre\s+(?:de\s+)?(\d{4})", p, re.IGNORECASE)
+        # Los calendarios oficiales también escriben el ordinal con letras.
+        named = re.fullmatch(r"(primer|segundo|tercer|cuarto) trimestre (?:de )?(\d{4})",
+                             p, re.IGNORECASE)
+        if named:
+            q = ("primer", "segundo", "tercer", "cuarto").index(named[1].lower())
+            return f"{named[2]}-{q * 3 + 1:02d}"
+
+        # Trimestral completo: '2° trimestre de 2026', '3er trimestre 2026'
+        qm = re.fullmatch(r"([1-4])\s*(?:°|er|ro|do|to)?\s*trimestre\s+(?:de\s+)?(\d{4})",
+                          p, re.IGNORECASE)
         if qm:
             q = int(qm.group(1))
             y = int(qm.group(2))
-            if 1 <= q <= 4:
-                month = (q - 1) * 3 + 1
-                return f"{y}-{month:02d}"
+            return f"{y}-{(q - 1) * 3 + 1:02d}"
 
         # Trimestral corto: '2T 2026', '4T-2025'
         qm2 = re.match(r"^(\d)T[-\s]?(\d{4})$", p, re.IGNORECASE)
@@ -91,6 +98,9 @@ def _period_to_ym(period: str | None) -> str | None:
 
     # Formatos del dashboard: 'May 26', 'May 26 P', '1T-26', '1T-26 R'
     return inegi.label_to_ym(p)
+
+
+period_to_ym = _period_to_ym
 
 
 def _period_to_ym_flexible(period: str | None) -> str | None:
@@ -514,14 +524,34 @@ def _resolve_pub_prox(
     """
     obs_yms = _obs_ym_set(ind)
     items = [i for i in calendar if i.get("clave") == key]
-    if not items:
-        return None, None
     items.sort(key=lambda i: i.get("fecha_iso") or "")
 
     # Estados con semántica de publicación real (no decisiones/eventos/reglas).
     data_statuses = {"publicado", "próximo", "no_anunciada"}
 
     items = [i for i in items if i.get("usar_para_frescura", True)]
+
+    if key == "IED" and ind and ind.get("corte_de_comunicado"):
+        # El acumulado nacional tiene su propia serie. Reconocer el periodo
+        # del comunicado sólo cuando el expediente de calendario concuerda.
+        ultimo = (ind.get("observations_acumulado") or [{}])[-1]
+        values = ultimo.get("values") or []
+        corte_ym = _period_to_ym_flexible(ultimo.get("quarter"))
+        total = values[0] if values else None
+        dashboard_ym = _period_to_ym_flexible(ind.get("last_observation"))
+        if (
+            type(total) in (int, float) and isfinite(total)
+            and corte_ym and corte_ym == dashboard_ym
+            and any(
+                i.get("estatus") == "publicado"
+                and i.get("alcance") == "acumulado_nacional"
+                and i.get("url_boletin") == ind.get("url_boletin_oficial")
+                and _period_to_ym_flexible(i.get("periodo_referencia")) == corte_ym
+                and i.get("fecha_iso") and date.fromisoformat(i["fecha_iso"]) <= as_of
+                for i in items
+            )
+        ):
+            obs_yms.add(corte_ym)
 
     pub = None
     if obs_yms:
@@ -543,6 +573,19 @@ def _resolve_pub_prox(
         if _period_to_ym_flexible(it.get("periodo_referencia")) not in obs_yms:
             prox = it
             break
+
+    if key == "PIB" and ind:
+        aviso = ind.get("proxima_publicacion_boletin") or {}
+        current_ym = _last_observation_ym(ind)
+        aviso_ym = _period_to_ym_flexible(_clean_period(aviso.get("periodo_base")))
+        if current_ym and current_ym == aviso_ym and aviso.get("fecha_iso"):
+            # El aviso del EOPIBT vigente anuncia la estimación del trimestre siguiente.
+            next_ym = _quarter_after(date.fromisoformat(current_ym + "-01"), 3).isoformat()[:7]
+            prox_ym = _period_to_ym_flexible(prox.get("periodo_referencia")) if prox else None
+            if not prox_ym or prox_ym <= current_ym or next_ym <= prox_ym:
+                prox = {**aviso, "periodo_referencia": inegi.ym_to_label(next_ym, 4),
+                        "estatus": "próximo"}
+
     return pub, prox
 
 
@@ -629,18 +672,28 @@ def compute_state(
             official_period = fallback_label
             used_fallback = True
 
-    # Calcular comparación cuando tenemos ambos periodos.
+    # El boletín trimestral puede salir antes de que el BIE entregue su nivel.
+    # Conservar el boletín confirmado de la ficha, pero detectar el rezago.
+    expected_ym, expected_period = official_ym, official_period
+    if key == "PIBSEC":
+        published = latest_published([item for item in calendar if item.get("usar_para_frescura", True)],
+                                     key, as_of)
+        published_period = published.get("periodo_referencia") if published else None
+        published_ym = _period_to_ym_flexible(published_period)
+        if published_ym and (expected_ym is None or published_ym > expected_ym):
+            expected_ym, expected_period = published_ym, published_period
+
     compara = None
-    if dashboard_ym and official_ym:
-        compara = (dashboard_ym > official_ym) - (dashboard_ym < official_ym)
+    if dashboard_ym and expected_ym:
+        compara = (dashboard_ym > expected_ym) - (dashboard_ym < expected_ym)
 
     if had_error:
         estado = ESTADOS["ERROR_FUENTE"]
         motivo = f"El pipeline reportó un error para {key} y el dato podría no estar actualizado."
-    elif not dashboard_ym and not official_ym:
+    elif not dashboard_ym and not expected_ym:
         estado = ESTADOS["ERROR_FUENTE"]
         motivo = "No se pudo determinar ni el periodo del dashboard ni el periodo oficial."
-    elif not official_ym:
+    elif not expected_ym:
         estado = ESTADOS["PUBLICACION_PENDIENTE"]
         motivo = "No hay publicación oficial registrada en el calendario aún."
     elif not dashboard_ym and not (manifest_row or {}).get("serie") and (manifest_row or {}).get("fuente"):
@@ -652,20 +705,30 @@ def compute_state(
     elif compara == -1:
         estado = ESTADOS["REZAGADO"]
         motivo = (
-            f"El periodo esperado es {official_period}, "
+            f"El periodo esperado es {expected_period}, "
             f"pero el dashboard aún muestra {dashboard_period_clean}."
+        )
+    elif (compara == 0 and key == "IED" and (ind or {}).get("corte_de_comunicado")
+          and (pub or {}).get("alcance") == "acumulado_nacional"):
+        estado = ESTADOS["ACTUALIZADO"]
+        periodo_acumulado = (ind.get("observations_acumulado") or [{}])[-1].get("period_acumulado")
+        motivo = (
+            f"Acumulado nacional {periodo_acumulado} vigente según el comunicado de la "
+            f"Secretaría de Economía del {pub['fecha_publicacion']}. La comparación anual "
+            "usa la cifra originalmente publicada. El flujo trimestral exclusivo y el "
+            "ranking estatal de este corte no están disponibles en la fuente estructurada."
         )
     elif compara == 0:
         estado = ESTADOS["ACTUALIZADO"]
         motivo = (
             f"El periodo cargado ({dashboard_period_clean}) coincide con el último "
-            f"periodo esperado ({official_period})."
+            f"periodo esperado ({expected_period})."
         )
     else:  # compara == 1: el dashboard está más adelantado que el esperado
         estado = ESTADOS["ACTUALIZADO"]
         motivo = (
             f"El dashboard tiene {dashboard_period_clean}, que está adelantado "
-            f"al periodo esperado ({official_period}); se recomienda revisar el calendario."
+            f"al periodo esperado ({expected_period}); se recomienda revisar el calendario."
         )
 
     # Si está actualizado pero no hay datos (observations vacío), pasa a pendiente/error.

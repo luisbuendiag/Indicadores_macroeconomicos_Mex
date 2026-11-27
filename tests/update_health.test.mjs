@@ -22,12 +22,12 @@ test('datos recientes no ocultan Word pendiente; fecha inválida nunca se consid
   assert.equal(assessHealth({}, policy, now).stale, true);
 });
 
-async function runWatchdog(t, {health, runs = [], repoHealth = health, conclusion = null}) {
+async function runWatchdog(t, {health, runs = [], deployRuns = [], repoHealth = health, conclusion = null}) {
   const calls = [];
   t.mock.method(fs, 'readFileSync', (original => (file, ...args) => file === 'data/update_health.json' ? JSON.stringify(repoHealth) : original(file, ...args))(fs.readFileSync));
   t.mock.method(globalThis, 'fetch', async () => ({ok:true, json:async () => health}));
   const github = {rest:{actions:{
-    listWorkflowRuns:async ({workflow_id}) => ({data:{workflow_runs:workflow_id === 'update-data.yml' ? runs : []}}),
+    listWorkflowRuns:async ({workflow_id}) => ({data:{workflow_runs:workflow_id === 'update-data.yml' ? runs : deployRuns}}),
     createWorkflowDispatch:async args => calls.push(['dispatch', args])},
     }};
   const summary = {addHeading(){return this;}, addRaw(){return this;}, async write(){}};
@@ -61,31 +61,75 @@ test('Word con cambio de estructura no provoca bucle de reintentos', async t => 
   assert.equal(calls.some(x=>x[0]==='dispatch'), false);
   assert.equal(calls.some(x=>x[0]==='warning'), true);
 });
-test('una consulta al corriente termina sin alertas', async t => {
-  const calls = await runWatchdog(t, {health:fresh()});
+test('cola vieja supersedida por ejecución nueva y exitosa no bloquea vigilancia', async t => {
+  const now = Date.now();
+  const old = new Date(now - 180 * 60_000).toISOString();
+  const recent = new Date(now - 25 * 60_000).toISOString();
+  const finished = new Date(now - 12 * 60_000).toISOString();
+  const calls = await runWatchdog(t, {health:fresh(), runs:[
+    {id:10,status:'queued',created_at:old,event:'push'},
+    {id:11,status:'completed',conclusion:'success',created_at:recent,updated_at:finished,event:'schedule'}
+  ]});
   assert.equal(calls.length,0);
 });
 
-test('cola antigua superada por ejecución exitosa no genera alarma falsa', async t => {
-  const now = Date.now();
-  const runs = [
-    {id: 1, workflow_id: 100, status:'queued',
-      created_at:new Date(now-3*3600000).toISOString()},
-    {id: 2, workflow_id: 100, status:'completed', conclusion:'success',
-      created_at:new Date(now-40*60000).toISOString(),
-      updated_at:new Date(now-10*60000).toISOString()},
-  ];
-  const calls = await runWatchdog(t, {health:fresh(),runs});
-  assert.deepEqual(calls, []);
+test('corrida verdaderamente atascada sin éxito posterior mantiene alerta', async t => {
+  const old = new Date(Date.now() - 180 * 60_000).toISOString();
+  const calls = await runWatchdog(t, {health:fresh(), runs:[
+    {id:21,status:'in_progress',created_at:old,event:'schedule'}
+  ]});
+  assert.equal(calls.filter(x=>x[0]==='failure').length,1);
+  assert.match(calls.find(x=>x[0]==='warning')[1], /excedió el tiempo/);
 });
 
-test('cola antigua sin éxito posterior sí requiere atención', async t => {
+test('éxito anterior no exonera una cola nueva estancada', async t => {
+  const old = new Date(Date.now() - 240 * 60_000).toISOString();
+  const queued = new Date(Date.now() - 180 * 60_000).toISOString();
+  const calls = await runWatchdog(t, {health:fresh(), runs:[
+    {id:30,status:'completed',conclusion:'success',created_at:old,updated_at:old,event:'schedule'},
+    {id:31,status:'queued',created_at:queued,event:'push'}
+  ]});
+  assert.equal(calls.filter(x=>x[0]==='failure').length,1);
+});
+
+
+test('una cola superada permite recuperar un corte desactualizado', async t => {
   const now = Date.now();
-  const runs = [{id: 9, workflow_id:100, status:'queued',
-    created_at:new Date(now-3*3600000).toISOString()}];
-  const calls = await runWatchdog(t, {health:fresh(),runs});
-  assert.equal(calls.some(row=>row[0] === 'failure'),true);
-  assert.equal(calls.some(row=>row[0] === 'dispatch'),false);
+  const calls = await runWatchdog(t, {health:{data_checked_at:'2020-01-01T00:00:00Z'}, runs:[
+    {id:41,status:'queued',created_at:new Date(now - 180 * 60_000).toISOString()},
+    {id:42,status:'completed',conclusion:'success',
+      created_at:new Date(now - 25 * 60_000).toISOString(),
+      updated_at:new Date(now - 15 * 60_000).toISOString()}
+  ]});
+  assert.equal(calls.filter(([kind])=>kind==='dispatch').length, 1);
+  assert.equal(calls.find(([kind])=>kind==='dispatch')[1].workflow_id, 'update-data.yml');
+  assert.equal(calls.some(([kind])=>kind==='failure'), false);
+});
+
+for (const [label, status, outcome, separateWorkflow] of [
+  ['éxito de otro workflow', 'queued', 'success', true],
+  ['fallo posterior', 'queued', 'failure', false],
+  ['estado waiting', 'waiting', 'success', false],
+  ['estado pending', 'pending', 'success', false],
+  ['corrida en progreso', 'in_progress', 'success', false],
+]) {
+  test(`el watchdog conserva la alerta ante ${label}`, async t => {
+    const now = Date.now();
+    const old = {id:51,status,created_at:new Date(now - 180 * 60_000).toISOString()};
+    const later = {id:52,status:'completed',conclusion:outcome,
+      created_at:new Date(now - 25 * 60_000).toISOString(),
+      updated_at:new Date(now - 15 * 60_000).toISOString()};
+    const calls = await runWatchdog(t, {health:fresh(),
+      runs:separateWorkflow ? [old] : [old,later], deployRuns:separateWorkflow ? [later] : []});
+    assert.match(calls.find(([kind])=>kind==='warning')[1], /excedió el tiempo/);
+    assert.equal(calls.filter(([kind])=>kind==='failure').length, 1);
+    assert.equal(calls.some(([kind])=>kind==='dispatch'), false);
+  });
+}
+
+test('una consulta al corriente termina sin alertas', async t => {
+  const calls = await runWatchdog(t, {health:fresh()});
+  assert.equal(calls.length,0);
 });
 
 test('la vigilancia reintenta lecturas de GitHub con error 500, sin repetir escrituras', async()=>{

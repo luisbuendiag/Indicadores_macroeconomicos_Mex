@@ -1,4 +1,4 @@
-import ast,json,shutil
+import ast,hashlib,json,shutil
 from pathlib import Path
 from types import SimpleNamespace
 import pytest
@@ -74,12 +74,25 @@ def test_strict_source_allowlist(key):
 
 @pytest.mark.parametrize('case',['disabled','source_error','local_pdf','pause'])
 def test_publication_preserves_previous_word(monkeypatch,tmp_path,case):
-    for name in ['data/indicadores.json','data/notas/estado.json','config/notas_automaticas.json']:
-        p=tmp_path/name;p.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(ROOT/name,p)
-    dest=tmp_path/'downloads/indicadores/DESOCUP/nota/DESOCUP_nota.docx';dest.parent.mkdir(parents=True);dest.write_bytes(b'previous-word')
-    cfg=json.loads((tmp_path/'config/notas_automaticas.json').read_text())
+    # La evidencia 634/26 en tests/fixtures pertenece a septiembre, no a
+    # la observación de una edición viva. Modelar también la publicación anterior.
+    url='https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_10.pdf'
+    path='downloads/indicadores/DESOCUP/nota/DESOCUP_nota.docx'
+    memory={'indicators': {'DESOCUP': {'key':'DESOCUP','last_observation':'Sep 26',
+             'url_boletin_oficial':url,'nota':{'path':path}}}}
+    before={'periodo':'Ago 26','generated_at':'2026-09-30T12:00:00Z',
+            'source_sha256':'fixture-agosto','fingerprint':'fixture-anterior',
+            'docx_sha256':hashlib.sha256(b'previous-word').hexdigest()}
+    cfg=json.loads((ROOT/'config/notas_automaticas.json').read_text())
+    cfg.update(enabled=case!='disabled',template_year=2026)
+    contents={'data/indicadores.json':memory,'data/notas/estado.json':{'DESOCUP':{'published':before}},
+              'config/notas_automaticas.json':cfg}
+    for name,data in contents.items():
+        p=tmp_path/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(data))
+    dest=tmp_path/path;dest.parent.mkdir(parents=True);dest.write_bytes(b'previous-word')
+    monkeypatch.setenv('NOTES_PILOT_ENABLED','true')
+    monkeypatch.setenv('NOTES_WORK_DIR',str(tmp_path/'.notes-work'))
     if case=='disabled':
-        cfg['enabled']=False;(tmp_path/'config/notas_automaticas.json').write_text(json.dumps(cfg))
         monkeypatch.setattr(R,'download',lambda *a:pytest.fail('No descargar cuando está pausado'))
         assert R.run('DESOCUP',tmp_path,True)['status']=='deshabilitada'
     elif case=='local_pdf':assert R.run('DESOCUP',tmp_path,True,Path('/tmp/local.pdf'))['status']=='error'
@@ -88,7 +101,11 @@ def test_publication_preserves_previous_word(monkeypatch,tmp_path,case):
         assert R.run('DESOCUP',tmp_path,True)['status']=='error'
     else:
         cfg['auto_publish']=False;(tmp_path/'config/notas_automaticas.json').write_text(json.dumps(cfg))
-        fixture(monkeypatch,'DESOCUP');monkeypatch.setattr(R,'download',lambda *a:b'fixture')
+        fixture(monkeypatch,'DESOCUP')
+        def retrieve(candidate,key):
+            assert candidate==url and key=='DESOCUP'
+            return b'fixture'
+        monkeypatch.setattr(R,'download',retrieve)
         template=tmp_path/cfg['template'];template.parent.mkdir(parents=True);shutil.copyfile(ROOT/cfg['template'],template)
         for name in ['build_labor_notes.py','notas_enoe.py','notas_enoe_word.py','notas_layout.py','notas_word.py','build_auto_notes.py']:
             p=tmp_path/'scripts'/name;p.parent.mkdir(exist_ok=True);shutil.copyfile(ROOT/'scripts'/name,p)
@@ -97,6 +114,7 @@ def test_publication_preserves_previous_word(monkeypatch,tmp_path,case):
         monkeypatch.setattr(R.A,'publish',lambda *a:pytest.fail('Publicación deshabilitada'))
         assert R.run('DESOCUP',tmp_path,True)['status']=='validada_sin_publicar'
     assert dest.read_bytes()==b'previous-word'
+    assert json.loads((tmp_path/'data/notas/estado.json').read_text())['DESOCUP']['published']==before
 
 def test_workflow_python_311_compatibility():
     for name in ['build_labor_notes.py','notas_enoe.py','notas_enoe_word.py','notas_layout.py']:
