@@ -1,0 +1,31 @@
+name: QA histórico de IOAE y PIB Oportuno
+on:
+  push:
+    branches: [codex/qa-historico-ioae-pib-oportuno]
+    paths:
+      - '.github/workflows/qa-boletines-historicos.yml'
+      - 'scripts/qa_bulletin_history.py'
+
+permissions:
+  contents: read
+
+jobs:
+  benchmark:
+    strategy:
+      fail-fast: false
+      matrix:
+        indicador: [IOAE, EOPIBT]
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements.txt
+      - name: Comparar históricos con el conector institucional
+        env:
+          INDICADOR: ${{ matrix.indicador }}
+        run: |
+          set -o pipefail
+          python scripts/qa_bulletin_history.py "$INDICADOR" | tee -a "$GITHUB_STEP_SUMMARY"
