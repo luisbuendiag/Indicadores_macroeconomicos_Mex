@@ -56,12 +56,29 @@ jobs:
       - name: Instalar dependencias
         run: pip install -r requirements.txt
 
+      # Cada corrida guarda con una llave nueva. La restauración usa la última
+      # copia disponible; el conector verifica la vigencia de cada boletín.
+      - name: Restaurar archivo de boletines históricos
+        if: ${{ vars.INEGI_BULLETIN_ARCHIVE_ENABLED == 'true' && (github.event_name != 'push' || !contains(github.event.head_commit.message, '[notes-only]')) }}
+        uses: actions/cache@v4
+        continue-on-error: true
+        with:
+          path: ${{ runner.temp }}/inegi-bulletin-archive
+          key: inegi-bulletin-archive-v1-${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: inegi-bulletin-archive-v1-${{ runner.os }}-
+
       - name: Ejecutar pipeline de datos
         if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[notes-only]') }}
         env:
           INEGI_TOKEN: ${{ secrets.INEGI_TOKEN }}
           BANXICO_TOKEN: ${{ secrets.BANXICO_TOKEN }}
-        run: python scripts/build_data.py
+          INEGI_BULLETIN_ARCHIVE_ENABLED: ${{ vars.INEGI_BULLETIN_ARCHIVE_ENABLED }}
+        run: |
+          args=()
+          if [[ "$INEGI_BULLETIN_ARCHIVE_ENABLED" == true ]]; then
+            args+=(--bulletin-archive "$RUNNER_TEMP/inegi-bulletin-archive")
+          fi
+          python scripts/build_data.py "${args[@]}"
 
       - name: Regenerar calendario de publicaciones
         if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[notes-only]') }}

@@ -1,0 +1,102 @@
+name: QA de boletines entre corridas
+on:
+  push:
+    branches: [codex/qa-historico-ioae-pib-oportuno]
+
+permissions:
+  contents: read
+
+jobs:
+  consulta-directa:
+    if: contains(github.event.head_commit.message, '[qa-estado-archivo]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Confirmar el modo inicial de consulta directa
+        env:
+          ARCHIVO_ACTIVO: ${{ vars.INEGI_BULLETIN_ARCHIVE_ENABLED == 'true' }}
+        run: |
+          if [[ "$ARCHIVO_ACTIVO" == true ]]; then
+            echo "::error::La configuración del repositorio habilita la caché histórica."
+            exit 1
+          fi
+          echo "La configuración actual del repositorio conserva la consulta directa."
+
+  historia:
+    if: contains(github.event.head_commit.message, '[qa-archivo]')
+    strategy:
+      fail-fast: false
+      matrix:
+        indicador: [IOAE, EOPIBT]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      INDICADOR: ${{ matrix.indicador }}
+      REUTILIZAR: ${{ contains(github.event.head_commit.message, '[reusar-archivo]') }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements.txt
+      - run: python -m pytest -q tests/test_bulletin_archive.py
+      - uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/inegi-bulletin-archive
+          key: qa-inegi-bulletin-archive-v1-${{ runner.os }}-${{ matrix.indicador }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: qa-inegi-bulletin-archive-v1-${{ runner.os }}-${{ matrix.indicador }}-
+      - name: Cotejar el boletín desde otra corrida y con vigencia vencida
+        run: |
+          set -euo pipefail
+          export PYTHONPATH="$PWD/scripts"
+          python - <<'PY' | tee -a "$GITHUB_STEP_SUMMARY"
+          from datetime import date
+          import json
+          import os
+          from pathlib import Path
+          from unittest.mock import patch
+
+          from qa_bulletin_history import measure
+          from sources import inegi_bulletin as source
+          from sources.bulletin_archive import MAX_AGE, digest, encode
+
+          kind = os.environ["INDICADOR"]
+          run = os.environ["GITHUB_RUN_ID"]
+          root = Path(os.environ["RUNNER_TEMP"]) / "inegi-bulletin-archive"
+          baseline = root / "qa-baseline.json"
+          archive = source.open_archive(root, kind)
+
+          if os.environ["REUTILIZAR"] != "true":
+              result = measure(kind, root)
+              if not archive.records():
+                  raise SystemExit("La corrida inicial no archivó boletines reales")
+              baseline.write_bytes(encode({"run": run, **result}))
+              print("Corrida que preparó el histórico:", run)
+              raise SystemExit(0)
+
+          previous = json.loads(baseline.read_bytes())
+          records = archive.records()
+          if previous["run"] == run or not records:
+              raise SystemExit("Falta el archivo vigente de una corrida distinta")
+          print("Corridas de origen y lectura:", previous["run"], run)
+          fresh = measure(kind, root)
+          if fresh["sha256"] != previous["sha256"]:
+              raise SystemExit("La serie restaurada difiere de la corrida inicial")
+
+          url, record = next(iter(sorted(records.items())))
+          cache_file = archive.path / (digest(url.encode()) + ".json")
+          record["checked"] = (archive.today - MAX_AGE).isoformat()
+          cache_file.write_bytes(encode({"record": record, "sha256": digest(encode(record))}))
+          if url in archive.records():
+              raise SystemExit("Un boletín vencido pasó la validación")
+          year, month, _ = record["published"]
+          with patch.object(source, "_available_issues", return_value=[(year, month, url)]):
+              with patch.object(source, "_req", wraps=source._req) as download:
+                  if not source._fetch_kind(kind, start_year=year, archive=archive):
+                      raise SystemExit("Falló la reconsulta del boletín vencido")
+                  download.assert_any_call(url)
+          updated = archive.records()[url]
+          if updated["checked"] != date.today().isoformat():
+              raise SystemExit("La lectura oficial no renovó la vigencia del boletín")
+          print("Se descargó de nuevo el boletín oficial vencido:", url)
+          PY
