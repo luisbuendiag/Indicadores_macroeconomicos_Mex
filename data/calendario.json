@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T18:01:32+00:00",
+  "generated_at": "2026-11-27T02:29:38+00:00",
   "as_of": "2026-11-26",
   "fuente": "Calendario oficial de difusión",
   "sources": {
@@ -7,14 +7,14 @@
       "status": "ok",
       "count": 1488,
       "message": "1488 eventos consultados del INEGI",
-      "consulted_at": "2026-11-26",
+      "consulted_at": "2026-11-27",
       "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/"
     },
     "Banco de México calendario": {
       "status": "ok",
       "count": 216,
       "message": "216 eventos consultados de Banxico",
-      "consulted_at": "2026-11-26",
+      "consulted_at": "2026-11-27",
       "url": "https://www.banxico.org.mx/publicaciones-y-prensa/calendario-de-publicaciones-banco-de-mexico/"
     },
     "Secretaría de Economía (manual)": {
