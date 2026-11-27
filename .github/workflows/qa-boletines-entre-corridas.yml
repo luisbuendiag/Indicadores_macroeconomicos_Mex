@@ -7,6 +7,21 @@ permissions:
   contents: read
 
 jobs:
+  consulta-directa:
+    if: contains(github.event.head_commit.message, '[qa-estado-archivo]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Confirmar el modo inicial de consulta directa
+        env:
+          ARCHIVO_ACTIVO: ${{ vars.INEGI_BULLETIN_ARCHIVE_ENABLED == 'true' }}
+        run: |
+          if [[ "$ARCHIVO_ACTIVO" == true ]]; then
+            echo "::error::La configuración del repositorio habilita la caché histórica."
+            exit 1
+          fi
+          echo "La configuración actual del repositorio conserva la consulta directa."
+
   historia:
     if: contains(github.event.head_commit.message, '[qa-archivo]')
     strategy:
