@@ -43,6 +43,7 @@ from typing import Any
 
 from . import inegi
 from .base import USER_AGENT, SourceResult, http_get_bytes
+from .bulletin_archive import BulletinArchive, KINDS as ARCHIVED_KINDS, digest
 
 try:
     import pdfplumber
@@ -339,12 +340,19 @@ def _pdf_page_text(pdf_bytes: bytes, page_index: int) -> str:
 
 
 def _available_issues(kind: str, start_year: int, end_year: int, max_count: int = 200,
-                      months: tuple[int, ...] | None = None) -> list[tuple[int, int, str]]:
+                      months: tuple[int, ...] | None = None, *,
+                      cached_urls=()) -> list[tuple[int, int, str]]:
     """Descubre qué boletines existen en el rango de años, de los más recientes a los más antiguos.
 
     El parámetro `months` permite restringir la búsqueda a ciertos meses (útil para boletines
     trimestrales como PIBT: febrero, mayo, agosto, noviembre).
     """
+    def available(url):
+        if url in cached_urls:
+            return True
+        time.sleep(0.5)
+        return _head_ok(url)
+
     found = []
     templates = BULLETIN_URLS[kind]
     if isinstance(templates, str):
@@ -355,9 +363,8 @@ def _available_issues(kind: str, start_year: int, end_year: int, max_count: int 
             if len(found) >= max_count:
                 break
             for url_tmpl in templates:
-                time.sleep(0.5)
                 url = url_tmpl.format(year=year, mm=f"{mm:02d}")
-                if _head_ok(url):
+                if available(url):
                     found.append((year, mm, url))
                     break
             else:
@@ -365,9 +372,8 @@ def _available_issues(kind: str, start_year: int, end_year: int, max_count: int 
                 # de referencia en el nombre (pib_eo2022_01.pdf) en lugar del
                 # año de publicación.
                 if kind == "EOPIBT" and mm == 1:
-                    time.sleep(0.5)
                     url = f"https://www.inegi.org.mx/contenidos/saladeprensa/boletines/{year}/pib_eo/pib_eo{year - 1}_{mm:02d}.pdf"
-                    if _head_ok(url):
+                    if available(url):
                         found.append((year, mm, url))
         if months is not None:
             month_iter = reversed(months)
@@ -1941,7 +1947,8 @@ def _eopibt_opendata_rows() -> list[tuple[str, int, int, dict, str]]:
     return out
 
 
-def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dict]:
+def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30, *,
+                archive: BulletinArchive | None = None) -> list[dict]:
     """Descubre y parsea los últimos boletines de un indicador.
 
     Mapeo de columnas:
@@ -1971,7 +1978,9 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
         months = (1, 4, 7, 10)
     else:
         months = None
-    issues = _available_issues(kind, start_year, this_year, max_count=max_bulletins, months=months)
+    cached = archive.records() if archive is not None and kind in ARCHIVED_KINDS else {}
+    discovery = {"cached_urls": cached} if cached else {}
+    issues = _available_issues(kind, start_year, this_year, max_count=max_bulletins, months=months, **discovery)
     if not issues:
         return []
 
@@ -1982,19 +1991,26 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
     issue_iter = reversed(issues[:max_bulletins]) if kind == "IOAE" else issues[:max_bulletins]
     for year, mm, url in issue_iter:
         try:
-            pdf = _req(url)
-            text, _ = _pdf_text_first_page(pdf)
-            pub_date = _extract_pub_date(text)
-            if not pub_date:
-                continue
+            record = cached.get(url)
+            if record is not None:
+                text, pub_date = record["text"], tuple(record["published"])
+                pdf = b""
+            else:
+                pdf = _req(url)
+                text, _ = _pdf_text_first_page(pdf)
+                pub_date = _extract_pub_date(text)
+                if not pub_date:
+                    continue
             url_meta[url] = (text, pub_date)
         except Exception as e:  # noqa: BLE001
             continue
 
         if kind == "IOAE":
-            parsed = _parse_ioae(pdf, pub_date)
+            parsed = record["parsed"] if record is not None else _parse_ioae(pdf, pub_date)
             if not parsed:
                 continue
+            if archive is not None and record is None:
+                archive.store(url, pdf, text, pub_date, parsed)
             ioae_col_map = {
                 "igae_anual": 0,
                 "igae_anual_lower": 1,
@@ -2202,9 +2218,11 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
                 parsed_by_url[url] = {"subsectores": parsed["subsectores"]}
 
         elif kind == "EOPIBT":
-            parsed = _parse_eopibt(pdf, pub_date)
+            parsed = record["parsed"] if record is not None else _parse_eopibt(pdf, pub_date)
             if not parsed:
                 continue
+            if archive is not None and record is None:
+                archive.store(url, pdf, text, pub_date, parsed)
             # PIB oportuno:
             #   col 0 = variación trimestral desestacionalizada (qoq)
             #   col 1 = variación anual desestacionalizada (yoy)
@@ -2279,7 +2297,13 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
     return out
 
 
-def fetch(config: dict | None = None, start_year: int = 2021, max_bulletins: int = 30) -> SourceResult:
+def open_archive(root: Path, kind: str) -> BulletinArchive:
+    signature = digest(Path(__file__).read_bytes()) + ":" + getattr(pdfplumber, "__version__", "")
+    return BulletinArchive(root, kind, signature)
+
+
+def fetch(config: dict | None = None, start_year: int = 2021, max_bulletins: int = 30, *,
+          archive_dir: Path | None = None) -> SourceResult:
     """Consulta los boletines oficiales del INEGI y devuelve un SourceResult."""
     warnings: list[str] = []
     if pdfplumber is None:
@@ -2291,7 +2315,10 @@ def fetch(config: dict | None = None, start_year: int = 2021, max_bulletins: int
         # EOPIBT ahora conserva histórico disponible para una serie coherente
         # de variaciones (qoq, yoy, yoy_orig, acumulado).
         try:
-            items = _fetch_kind(kind, start_year, max_bulletins)
+            if archive_dir is not None and kind in ARCHIVED_KINDS:
+                items = _fetch_kind(kind, start_year, max_bulletins, archive=open_archive(archive_dir, kind))
+            else:
+                items = _fetch_kind(kind, start_year, max_bulletins)
             for it in (items or []):
                 key = it.get("key") or kind
                 data.setdefault(key, []).append(it)
@@ -2369,3 +2396,4 @@ def discover_bulletin_url(key: str, period: str | None, start_year: int = 2024,
                     "metodo": f"INEGI descubrimiento automático ({kind})",
                 }
     return None
+

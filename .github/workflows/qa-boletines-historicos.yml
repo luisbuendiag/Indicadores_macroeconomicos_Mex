@@ -5,12 +5,15 @@ on:
     paths:
       - '.github/workflows/qa-boletines-historicos.yml'
       - 'scripts/qa_bulletin_history.py'
+      - 'scripts/sources/bulletin_archive.py'
+      - 'scripts/sources/inegi_bulletin.py'
+      - 'tests/test_bulletin_archive.py'
 
 permissions:
   contents: read
 
 jobs:
-  benchmark:
+  historicos:
     strategy:
       fail-fast: false
       matrix:
@@ -23,9 +26,87 @@ jobs:
         with:
           python-version: '3.11'
       - run: python -m pip install -r requirements.txt
-      - name: Comparar históricos con el conector institucional
+      - run: python -m pytest -q tests/test_bulletin_archive.py
+      - name: Comparar dos procesos consecutivos por indicador
         env:
           INDICADOR: ${{ matrix.indicador }}
         run: |
+          set -euo pipefail
+          python scripts/qa_bulletin_history.py "$INDICADOR" --archivo "$RUNNER_TEMP/history" --informe frio.json | tee -a "$GITHUB_STEP_SUMMARY"
+          python scripts/qa_bulletin_history.py "$INDICADOR" --archivo "$RUNNER_TEMP/history" --informe caliente.json | tee -a "$GITHUB_STEP_SUMMARY"
+          python - <<'PY' | tee -a "$GITHUB_STEP_SUMMARY"
+          import json
+          from pathlib import Path
+
+          cold, warm = (json.loads(Path(path).read_bytes()) for path in ("frio.json", "caliente.json"))
+          if cold["sha256"] != warm["sha256"]:
+              raise SystemExit("El resultado del conector difiere")
+          print("Ahorro de segundos:", round(cold["segundos"] - warm["segundos"], 3))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: historico-${{ matrix.indicador }}
+          path: ${{ runner.temp }}/history
+          if-no-files-found: error
+          retention-days: 2
+
+  pipeline:
+    needs: historicos
+    strategy:
+      fail-fast: false
+      matrix:
+        modo: [directo, historico]
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        if: matrix.modo == 'historico'
+        with:
+          pattern: historico-*
+          path: ${{ runner.temp }}/history
+          merge-multiple: true
+      - name: Medir el paso institucional completo de datos
+        env:
+          INEGI_TOKEN: ${{ secrets.INEGI_TOKEN }}
+          BANXICO_TOKEN: ${{ secrets.BANXICO_TOKEN }}
+          MODO: ${{ matrix.modo }}
+        run: |
+          set -euo pipefail
+          args=()
+          if [[ "$MODO" == historico ]]; then
+            args+=(--archivo "$RUNNER_TEMP/history")
+          fi
+          python scripts/qa_bulletin_history.py pipeline "${args[@]}" --informe pipeline.json | tee -a "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pipeline-${{ matrix.modo }}
+          path: pipeline.json
+          retention-days: 2
+
+  comparar:
+    needs: pipeline
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: pipeline-*
+      - name: Cotejar series completas de IOAE y PIB Oportuno
+        run: |
           set -o pipefail
-          python scripts/qa_bulletin_history.py "$INDICADOR" | tee -a "$GITHUB_STEP_SUMMARY"
+          python - <<'PY' | tee -a "$GITHUB_STEP_SUMMARY"
+          import json
+          from pathlib import Path
+
+          records = {mode: json.loads(Path(f"pipeline-{mode}/pipeline.json").read_bytes())
+                     for mode in ("directo", "historico")}
+          print(json.dumps(records, indent=2))
+          if len({record["sha256"] for record in records.values()}) != 1:
+              raise SystemExit("Las series institucionales difieren")
+          print("Ahorro de segundos en el paso completo de datos:",
+                round(records["directo"]["segundos"] - records["historico"]["segundos"], 3))
+          PY

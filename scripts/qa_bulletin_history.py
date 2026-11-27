@@ -1,101 +1,57 @@
-"""Mide en QA la reutilización de boletines históricos de IOAE y PIB Oportuno."""
+"""Mide lecturas institucionales con un archivo de boletines entre procesos."""
 
 import argparse
-from collections import Counter
-from copy import deepcopy
-from datetime import date, timedelta
 import hashlib
 import json
+from pathlib import Path
 from time import perf_counter
 from unittest.mock import patch
 
 from sources import inegi_bulletin as source
 
-PARSERS = {"IOAE": "_parse_ioae", "EOPIBT": "_parse_eopibt"}
-HISTORICAL_AGE = timedelta(days=180)
+
+def summary(payload):
+    return hashlib.sha256(json.dumps(
+        payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"),
+    ).encode()).hexdigest()
 
 
-def measure(kind):
-    archive = {}
-    parser = getattr(source, PARSERS[kind])
-    fetch_pdf = source._req
-    probe_pdf = source._head_ok
-    read_page = source._pdf_text_first_page
-    cutoff = date.today() - HISTORICAL_AGE
+def measure(kind, root=None):
+    wall = perf_counter()
+    if kind == "pipeline":
+        import build_data
 
-    def run(reuse):
-        requests = Counter()
-        pending = {}
-        cached = {}
+        fetch = source.fetch
 
-        def probe(url, *args, **kwargs):
-            if reuse and url in archive:
-                return True
-            requests["comprobaciones_red"] += 1
-            return probe_pdf(url, *args, **kwargs)
-
-        def download(url, *args, **kwargs):
-            if reuse and url in archive:
-                pdf, page, published, parsed = archive[url]
-                cached[hashlib.sha256(pdf).digest()] = (page, published, parsed)
-                requests["boletines_reutilizados"] += 1
-                return pdf
-            requests["descargas_red"] += 1
-            pdf = fetch_pdf(url, *args, **kwargs)
-            pending[hashlib.sha256(pdf).digest()] = (url, None)
-            return pdf
-
-        def extract(pdf):
-            digest = hashlib.sha256(pdf).digest()
-            if digest in cached:
-                return cached[digest][0]
-            page = read_page(pdf)
-            if digest in pending:
-                pending[digest] = (pending[digest][0], page)
-            return page
-
-        def parse(pdf, published):
-            digest = hashlib.sha256(pdf).digest()
-            if digest in cached and cached[digest][1] == published:
-                return deepcopy(cached[digest][2])
-            result = parser(pdf, published)
-            if result and date(*published) <= cutoff and digest in pending:
-                url, page = pending[digest]
-                if page is not None:
-                    archive[url] = (pdf, page, published, deepcopy(result))
+        def with_archive(*args, **kwargs):
+            start = perf_counter()
+            result = fetch(*args, archive_dir=root, **kwargs)
+            print(f"Boletines INEGI: {perf_counter() - start:.3f} s")
             return result
 
-        start = perf_counter()
-        with (
-            patch.object(source, "_head_ok", probe),
-            patch.object(source, "_req", download),
-            patch.object(source, "_pdf_text_first_page", extract),
-            patch.object(source, PARSERS[kind], parse),
-        ):
-            items = source._fetch_kind(kind, start_year=2021)
-        return items, {
-            "segundos": round(perf_counter() - start, 3),
-            "columnas": len(items),
-            "observaciones": sum(len(item["api_total"]) for item in items),
-            "ultimo_ym": max((row["ym"] for item in items for row in item["api_total"]), default=None),
-            **dict(requests),
-        }
-
-    cold, first = run(False)
-    warm, second = run(True)
-    report = {
-        "indicador": kind,
-        "corte_historico": cutoff.isoformat(),
-        "sin_reuso": first,
-        "con_reuso": second,
-        "paridad_exacta": cold == warm,
-        "segundos_ahorrados": round(first["segundos"] - second["segundos"], 3),
-    }
-    print(json.dumps(report, indent=2, ensure_ascii=False))
-    return 0 if cold and cold == warm and second.get("boletines_reutilizados") else 1
+        with patch.object(source, "fetch", with_archive):
+            if build_data.run():
+                raise SystemExit("Falló la validación del flujo institucional de datos")
+        indicators = json.loads((build_data.L.DATA_DIR / "indicadores.json").read_bytes())["indicators"]
+        payload = {key: indicators[key]["observations"] for key in ("IOAE", "PIB")}
+    else:
+        archive = source.open_archive(root, kind)
+        pending = len(archive.records())
+        payload = source._fetch_kind(kind, start_year=2021, archive=archive)
+        print(f"Boletines históricos disponibles al iniciar: {pending}")
+    if not payload:
+        raise SystemExit("La consulta no produjo datos")
+    report = {"modo": kind, "segundos": round(perf_counter() - wall, 3), "sha256": summary(payload)}
+    print(json.dumps(report, indent=2))
+    return report
 
 
 if __name__ == "__main__":
     cli = argparse.ArgumentParser(description=__doc__)
-    cli.add_argument("kind", choices=PARSERS)
-    raise SystemExit(measure(cli.parse_args().kind))
+    cli.add_argument("kind", choices=(*source.ARCHIVED_KINDS, "pipeline"))
+    cli.add_argument("--archivo", type=Path)
+    cli.add_argument("--informe", type=Path, required=True)
+    args = cli.parse_args()
+    if args.kind != "pipeline" and args.archivo is None:
+        cli.error("La medición por indicador requiere --archivo")
+    args.informe.write_text(json.dumps(measure(args.kind, args.archivo)) + "\n", encoding="utf-8")
