@@ -2279,7 +2279,8 @@ def _fetch_kind(kind: str, start_year: int, max_bulletins: int = 30) -> list[dic
     return out
 
 
-def fetch(config: dict | None = None, start_year: int = 2021, max_bulletins: int = 30) -> SourceResult:
+def fetch(config: dict | None = None, start_year: int = 2021, max_bulletins: int = 30,
+          *, include_pibt: bool = True) -> SourceResult:
     """Consulta los boletines oficiales del INEGI y devuelve un SourceResult."""
     warnings: list[str] = []
     if pdfplumber is None:
@@ -2288,6 +2289,8 @@ def fetch(config: dict | None = None, start_year: int = 2021, max_bulletins: int
 
     data: dict[str, list[dict]] = {}
     for kind in ("IOAE", "IGAE", "CONSUMO", "IMFBCF", "IMAI", "EMIM", "PIBT", "EOPIBT"):
+        if kind == "PIBT" and not include_pibt:
+            continue
         # EOPIBT ahora conserva histórico disponible para una serie coherente
         # de variaciones (qoq, yoy, yoy_orig, acumulado).
         try:
@@ -2369,3 +2372,4 @@ def discover_bulletin_url(key: str, period: str | None, start_year: int = 2024,
                     "metodo": f"INEGI descubrimiento automático ({kind})",
                 }
     return None
+

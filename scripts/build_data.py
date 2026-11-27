@@ -28,6 +28,7 @@ import lib_freshness
 import lib_kpicfg
 import lib_metrics
 import lib_notas
+import shared_pibt
 from ioae_comparison import align_igae_observed
 from pilot_queries import PILOT_KEYS, pilot_selection
 from sources import (banxico, banxico_policy, banxico_sie, ied, inegi,
@@ -1276,7 +1277,7 @@ def compute_sic_metrics(payload: dict) -> list[str]:
     return changes
 
 
-def run(offline: bool = False, *, defer_product_validation: bool = False, pilot_keys=None) -> int:
+def run(offline: bool = False, *, defer_product_validation: bool = False, pilot_keys=None, reuse_pibt=False) -> int:
     log = {"started_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
            "mode": "offline" if offline else "online",
            "network_calls": False,
@@ -1293,10 +1294,22 @@ def run(offline: bool = False, *, defer_product_validation: bool = False, pilot_
         config = {**config, "banxico": {key: config["banxico"][key] for key in sorted(selected)}}
     prev_obs = {k: v.get("last_observation") for k, v in payload.get("indicators", {}).items()}
 
+    pibt_source = None
+    if reuse_pibt:
+        if offline or selected is not None:
+            raise ValueError("La base compartida se prueba únicamente en una corrida institucional completa")
+        pibt_source, provenance = shared_pibt.choose(payload, lib_freshness.load_calendar())
+        log["shared_pibt"] = {"used": pibt_source is not None, "provenance": provenance}
+        if pibt_source is not None:
+            payload["indicators"]["PIBSEC"]["observations"] = pibt_source["observations"]
+            config = shared_pibt.without_pibt(config)
+            log["changes"].append("PIBSEC: se reutilizó el histórico público validado de MacroMéxico")
+
     # Limpiar banderas de validación previas para permitir revalidar boletines
     # con el periodo actual en cada ejecución.
-    for ind in payload.get("indicators", {}).values():
-        ind.pop("boletin_validado", None)
+    for key, ind in payload.get("indicators", {}).items():
+        if key != "PIBSEC" or pibt_source is None:
+            ind.pop("boletin_validado", None)
 
     pibt_bulletins = []
     log["changes"].extend(prepare_pibsec_for_separated_rates(payload))
@@ -1326,7 +1339,10 @@ def run(offline: bool = False, *, defer_product_validation: bool = False, pilot_
         for name, mod in sources:
             log["network_calls"] = True
             try:
-                res = mod.fetch(config)
+                if pibt_source is not None and mod is inegi_bulletin:
+                    res = mod.fetch(config, include_pibt=False)
+                else:
+                    res = mod.fetch(config)
             except Exception as e:  # noqa: BLE001 - resiliencia total del pipeline
                 log["warnings"].append(f"{name}: excepción no fatal: {e}")
                 continue
@@ -1655,10 +1671,13 @@ def main():
     ap.add_argument("--defer-product-validation", action="store_true",
                     help="Validate data now; the isolated release must validate products after regeneration.")
     ap.add_argument("--pilot-key", choices=PILOT_KEYS, action="append")
+    ap.add_argument("--shared-pibt", action="store_true",
+                    help="Probar el histórico equivalente de MacroMéxico durante una corrida completa")
     args = ap.parse_args()
     raise SystemExit(run(offline=args.offline, defer_product_validation=args.defer_product_validation,
-                         pilot_keys=args.pilot_key))
+                         pilot_keys=args.pilot_key, reuse_pibt=args.shared_pibt))
 
 
 if __name__ == "__main__":
     main()
+

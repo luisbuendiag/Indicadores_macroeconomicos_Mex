@@ -1,0 +1,66 @@
+name: QA PIBT en corrida institucional completa
+on:
+  push:
+    branches: [codex/piloto-base-macromexico]
+    paths:
+      - '.github/workflows/qa-pibt-institucional.yml'
+      - 'scripts/qa_shared_pibt.py'
+      - 'scripts/shared_pibt.py'
+      - 'scripts/build_data.py'
+      - 'tests/test_shared_pibt.py'
+
+permissions:
+  contents: read
+
+jobs:
+  datos:
+    strategy:
+      fail-fast: false
+      matrix:
+        modo: [directo, compartido, atrasado]
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements.txt
+      - run: python -m pytest -q tests/test_shared_pibt.py
+      - name: Ejecutar el pipeline institucional de datos
+        env:
+          INEGI_TOKEN: ${{ secrets.INEGI_TOKEN }}
+          BANXICO_TOKEN: ${{ secrets.BANXICO_TOKEN }}
+          MODO: ${{ matrix.modo }}
+        run: |
+          set -o pipefail
+          python scripts/qa_shared_pibt.py "$MODO" | tee -a "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pibt-${{ matrix.modo }}
+          path: qa-pibt.json
+          retention-days: 3
+
+  comparar:
+    needs: datos
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: pibt-*
+      - name: Cotejar los historiales y reportar el tiempo
+        run: |
+          set -o pipefail
+          python - <<'PY' | tee -a "$GITHUB_STEP_SUMMARY"
+          import json
+          from pathlib import Path
+
+          records = {mode: json.loads(Path(f"pibt-{mode}/qa-pibt.json").read_bytes())
+                     for mode in ("directo", "compartido", "atrasado")}
+          print(json.dumps(records, indent=2))
+          if len({record["historico_sha256"] for record in records.values()}) != 1:
+              raise SystemExit("Los historiales de PIBT difieren")
+          print("Ahorro de segundos en una corrida completa de datos:",
+                round(records["directo"]["segundos"] - records["compartido"]["segundos"], 3))
+          PY
