@@ -2,10 +2,6 @@ name: QA optimización y perfil de datos
 on:
   push:
     branches: [codex/optimizar-consultas-bie]
-    paths:
-      - '.github/workflows/qa-perfil-datos.yml'
-      - 'scripts/qa_profile_data.py'
-      - 'scripts/sources/inegi.py'
 
 permissions:
   contents: read
@@ -15,7 +11,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        modo: [bie, pipeline]
+        # La comparación BIE se repite en cada sincronización. El perfil completo
+        # se solicita al incluir [perfil-completo] en el mensaje del commit.
+        modo: ${{ fromJSON(contains(github.event.head_commit.message, '[perfil-completo]') && '["bie","pipeline"]' || '["bie"]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:

@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-27T02:29:17+00:00",
-  "last_update_ct": "2026-11-26T12:01:10-06:00",
+  "generated_at": "2026-11-27T18:47:46+00:00",
+  "last_update_ct": "2026-11-27T11:46:23-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -4956,20 +4956,20 @@
     },
     "TIPOCAMBIO": {
       "kpi": {
-        "ultimoP": "26 Nov 26",
-        "ultimoRaw": 19.7203,
-        "ultimoFmt": "$19.72",
-        "varText": "+0.08%",
-        "varMag": 0.000827,
+        "ultimoP": "27 Nov 26",
+        "ultimoRaw": 19.6598,
+        "ultimoFmt": "$19.66",
+        "varText": "-0.31%",
+        "varMag": -0.003068,
         "varLabel": "Cambio diario",
-        "pos": true,
-        "varColor": "#1e5b4f",
-        "monthlyText": "+4.92%",
+        "pos": false,
+        "varColor": "#9b2247",
+        "monthlyText": "+4.59%",
         "monthlyLabel": "Cambio mensual",
-        "yoyText": "+7.43%",
+        "yoyText": "+7.16%",
         "yoyLabel": "Cambio anual",
-        "yoyRaw": 0.074324,
-        "yoyMag": 0.074324,
+        "yoyRaw": 0.071571,
+        "yoyMag": 0.071571,
         "yoyPos": true,
         "yoyColor": "#1e5b4f",
         "range12mText": "$16.87 — $19.72",
@@ -4980,7 +4980,7 @@
         "minP": "4 Mar 92",
         "maxFmt": "$25.12",
         "minFmt": "$3.06",
-        "lastI": 8806,
+        "lastI": 8807,
         "series": [
           3.0735,
           3.0712,
@@ -13788,7 +13788,8 @@
           19.1648,
           19.3668,
           19.704,
-          19.7203
+          19.7203,
+          19.6598
         ],
         "periods": [
           "1991-11-12",
@@ -22597,29 +22598,30 @@
           "2026-11-23",
           "2026-11-24",
           "2026-11-25",
-          "2026-11-26"
+          "2026-11-26",
+          "2026-11-27"
         ],
         "assessment": "neutral",
-        "dir": "up",
+        "dir": "down",
         "semaforo": "estable"
       },
       "yoy": {
-        "mag": 0.074324,
+        "mag": 0.071571,
         "pos": true,
-        "text": "+7.43%",
+        "text": "+7.16%",
         "label": "Cambio anual"
       },
       "annualVar": {
-        "mag": 0.074324,
+        "mag": 0.071571,
         "pos": true,
-        "text": "+7.43%",
+        "text": "+7.16%",
         "label": "Cambio anual"
       },
       "resumen": [
-        "En 26 de noviembre de 2026, el tipo de cambio FIX se ubicó en $19.72 (pesos por dólar).",
-        "El cambio diario fue de +0.08% respecto al día hábil previo.",
-        "Respecto al último día hábil del mes previo, el FIX registró un cambio mensual de +4.92%.",
-        "A tasa anual, el FIX varió +7.43%; en los últimos 12 meses osciló entre $16.87 — $19.72."
+        "En 27 de noviembre de 2026, el tipo de cambio FIX se ubicó en $19.66 (pesos por dólar).",
+        "El cambio diario fue de -0.31% respecto al día hábil previo.",
+        "Respecto al último día hábil del mes previo, el FIX registró un cambio mensual de +4.59%.",
+        "A tasa anual, el FIX varió +7.16%; en los últimos 12 meses osciló entre $16.87 — $19.72."
       ],
       "analysis": []
     },
@@ -26399,55 +26401,55 @@
     },
     "BCMM": {
       "kpi": {
-        "ultimoRaw": -606.078,
-        "ultimoFmt": "déficit de 606 mdd",
-        "ultimoP": "Sep 26",
-        "varText": "−$1,211 mdd",
-        "varMag": -1211.437,
+        "ultimoRaw": 298.238,
+        "ultimoFmt": "superávit de 298 mdd",
+        "ultimoP": "Oct 26",
+        "varText": "+$904 mdd",
+        "varMag": 904.316,
         "varLabel": "Variación mensual del saldo",
-        "pos": false,
-        "varColor": "#9b2247",
-        "yoyText": "+75.6%",
+        "pos": true,
+        "varColor": "#1e5b4f",
+        "yoyText": "-43.3%",
         "yoyLabel": "Var. anual saldo",
-        "yoyRaw": 0.756055,
-        "acumText": "$627,194 mdd",
+        "yoyRaw": -0.433436,
+        "acumText": "$713,203 mdd",
         "acumLabel": "Acum. ene-mes exportaciones",
-        "acumRaw": 627194.228,
+        "acumRaw": 713202.966,
         "cards": [
           {
             "name": "Exportaciones",
-            "raw": 77796.636,
-            "text": "$77,797 mdd",
-            "yoy": 0.3793,
-            "yoyText": "+37.9%",
+            "raw": 86008.738,
+            "text": "$86,009 mdd",
+            "yoy": 0.3021,
+            "yoyText": "+30.2%",
             "yoyColor": "#1e5b4f"
           },
           {
             "name": "Importaciones",
-            "raw": 78402.714,
-            "text": "$78,403 mdd",
-            "yoy": 0.3314,
-            "yoyText": "+33.1%",
+            "raw": 85710.5,
+            "text": "$85,711 mdd",
+            "yoy": 0.308,
+            "yoyText": "+30.8%",
             "yoyColor": "#1e5b4f"
           },
           {
             "name": "Saldo comercial",
-            "raw": -606.078,
-            "text": "déficit de 606 mdd",
-            "yoy": 0.756055,
-            "yoyText": "+75.6%",
-            "yoyColor": "#1e5b4f"
+            "raw": 298.238,
+            "text": "superávit de 298 mdd",
+            "yoy": -0.433436,
+            "yoyText": "-43.3%",
+            "yoyColor": "#9b2247"
           },
           {
             "name": "Var. anual exportaciones",
-            "raw": 0.3793,
-            "text": "+37.9%",
-            "yoy": 0.3793,
-            "yoyText": "+37.9%",
+            "raw": 0.3021,
+            "text": "+30.2%",
+            "yoy": 0.3021,
+            "yoyText": "+30.2%",
             "yoyColor": "#1e5b4f"
           }
         ],
-        "lastI": 560,
+        "lastI": 561,
         "series": [
           -62.4,
           -152.4,
@@ -27009,7 +27011,8 @@
           4059.527,
           -847.537,
           605.359,
-          -606.078
+          -606.078,
+          298.238
         ],
         "periods": [
           "Ene 80",
@@ -27572,31 +27575,32 @@
           "Jun 26",
           "Jul 26",
           "Ago 26",
-          "Sep 26"
+          "Sep 26",
+          "Oct 26"
         ],
         "assessment": "neutral",
         "semaforo": "estable"
       },
       "yoy": {
-        "mag": 0.756055,
-        "pos": true,
-        "text": "+75.6%",
+        "mag": -0.433436,
+        "pos": false,
+        "text": "-43.3%",
         "label": "Var. anual saldo"
       },
       "annualVar": {
-        "mag": 0.756055,
-        "pos": true,
-        "text": "+75.6%",
+        "mag": -0.433436,
+        "pos": false,
+        "text": "-43.3%",
         "label": "Var. anual saldo"
       },
       "resumen": [
-        "En septiembre de 2026, el saldo comercial registró un déficit de 606 mdd. La variación mensual del saldo fue de -1,211 mdd respecto al mes previo y la anual de +75.6%.",
-        "Las exportaciones se ubicaron en $77,797 mdd (+37.9%) y las importaciones en $78,403 mdd (+33.1%).",
-        "De las exportaciones totales, petroleras +2.3%, no petroleras +97.7% proviene del comercio exterior.",
-        "Las importaciones por tipo de bien se componen de consumo +12.5%, intermedios +80.5% y capital +7.0%."
+        "En octubre de 2026, el saldo comercial registró un superávit de 298 mdd. La variación mensual del saldo fue de +904 mdd respecto al mes previo y la anual de -43.3%.",
+        "Las exportaciones se ubicaron en $86,009 mdd (+30.2%) y las importaciones en $85,711 mdd (+30.8%).",
+        "De las exportaciones totales, petroleras +2.0%, no petroleras +98.0% proviene del comercio exterior.",
+        "Las importaciones por tipo de bien se componen de consumo +12.0%, intermedios +81.6% y capital +6.4%."
       ],
       "analysis": [
-        "En septiembre de 2026, el saldo comercial registró un déficit de 606 mdd. La variación mensual del saldo fue de -1,211 mdd respecto al mes previo y la anual de +75.6%."
+        "En octubre de 2026, el saldo comercial registró un superávit de 298 mdd. La variación mensual del saldo fue de +904 mdd respecto al mes previo y la anual de -43.3%."
       ]
     },
     "INPP": {
@@ -29035,12 +29039,12 @@
       "resumen": [
         "En agosto de 2026, el Indicador Coincidente se ubicó en 100.2 puntos, por encima de su tendencia de largo plazo (100 puntos), y registró un alza de 0.12 puntos respecto a julio de 2026.",
         "En septiembre de 2026, el Indicador Adelantado se ubicó en 100.8 puntos, por encima de su tendencia de largo plazo, con un alza de 0.01 puntos respecto a agosto de 2026; este indicador busca anticipar los puntos de giro del Coincidente.",
-        "Entre los componentes del Coincidente, las mayores alzas mensuales correspondieron a las importaciones totales (+0.19 puntos), y el mayor descenso fue el de el indicador de la actividad industrial (−0.04 puntos)."
+        "Entre los componentes del Coincidente, las mayores alzas mensuales correspondieron a las importaciones totales (+0.18 puntos), y el mayor descenso fue el de el indicador de la actividad industrial (−0.04 puntos)."
       ],
       "analysis": [
         "En agosto de 2026, el Indicador Coincidente se ubicó en 100.2 puntos, por encima de su tendencia de largo plazo (100 puntos), y registró un alza de 0.12 puntos respecto a julio de 2026.",
         "En septiembre de 2026, el Indicador Adelantado se ubicó en 100.8 puntos, por encima de su tendencia de largo plazo, con un alza de 0.01 puntos respecto a agosto de 2026; este indicador busca anticipar los puntos de giro del Coincidente.",
-        "Entre los componentes del Coincidente, las mayores alzas mensuales correspondieron a las importaciones totales (+0.19 puntos), y el mayor descenso fue el de el indicador de la actividad industrial (−0.04 puntos)."
+        "Entre los componentes del Coincidente, las mayores alzas mensuales correspondieron a las importaciones totales (+0.18 puntos), y el mayor descenso fue el de el indicador de la actividad industrial (−0.04 puntos)."
       ]
     },
     "IMOAM": {
