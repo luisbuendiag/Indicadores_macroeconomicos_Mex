@@ -86,3 +86,19 @@ def test_bcmm_excel_individual_hojas():
         "Exportaciones",
         "Importaciones",
     ]
+
+
+def test_bcmm_acumulados_incluyen_saldo_del_mes_recien_derivado():
+    from build_data import compute_bcmm_metrics
+
+    observations = [
+        {"period": "Ene 26", "values": [100, 90] + [None] * 27},
+        {"period": "Feb 26", "values": [120, 130] + [None] * 27},
+    ]
+    payload = {"indicators": {"BCMM": {"observations": observations}}}
+
+    compute_bcmm_metrics(payload)
+
+    assert observations[0]["values"][26:29] == [100, 90, 10]
+    assert observations[1]["values"][2] == -10
+    assert observations[1]["values"][26:29] == [220, 220, 0]

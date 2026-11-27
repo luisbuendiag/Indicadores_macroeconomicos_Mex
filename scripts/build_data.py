@@ -931,7 +931,7 @@ def compute_bcmm_metrics(payload: dict) -> list[str]:
             if not mo:
                 can = False
                 break
-            mvals = list(mo.get("values", []))
+            mvals = vals if key == ym else list(mo.get("values", []))
             while len(mvals) < 29:
                 mvals.append(None)
             for i, src in enumerate([0, 1, 2]):
