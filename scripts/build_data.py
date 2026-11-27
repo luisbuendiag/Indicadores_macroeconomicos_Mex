@@ -1271,7 +1271,13 @@ def compute_sic_metrics(payload: dict) -> list[str]:
     return changes
 
 
-def run(offline: bool = False, *, defer_product_validation: bool = False, pilot_keys=None) -> int:
+def run(
+    offline: bool = False,
+    *,
+    defer_product_validation: bool = False,
+    pilot_keys=None,
+    bulletin_archive: Path | None = None,
+) -> int:
     log = {"started_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
            "mode": "offline" if offline else "online",
            "network_calls": False,
@@ -1321,7 +1327,10 @@ def run(offline: bool = False, *, defer_product_validation: bool = False, pilot_
         for name, mod in sources:
             log["network_calls"] = True
             try:
-                res = mod.fetch(config)
+                if name == "inegi_bulletin" and bulletin_archive is not None:
+                    res = mod.fetch(config, archive_dir=bulletin_archive)
+                else:
+                    res = mod.fetch(config)
             except Exception as e:  # noqa: BLE001 - resiliencia total del pipeline
                 log["warnings"].append(f"{name}: excepción no fatal: {e}")
                 continue
@@ -1650,9 +1659,11 @@ def main():
     ap.add_argument("--defer-product-validation", action="store_true",
                     help="Validate data now; the isolated release must validate products after regeneration.")
     ap.add_argument("--pilot-key", choices=PILOT_KEYS, action="append")
+    ap.add_argument("--bulletin-archive", type=Path,
+                    help="Reuse validated historical IOAE and EOPIBT readings in this directory.")
     args = ap.parse_args()
     raise SystemExit(run(offline=args.offline, defer_product_validation=args.defer_product_validation,
-                         pilot_keys=args.pilot_key))
+                         pilot_keys=args.pilot_key, bulletin_archive=args.bulletin_archive))
 
 
 if __name__ == "__main__":
