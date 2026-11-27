@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-26T02:30:58+00:00",
-  "last_update_ct": "2026-11-25T15:55:05-06:00",
+  "generated_at": "2026-11-27T02:29:17+00:00",
+  "last_update_ct": "2026-11-26T12:01:10-06:00",
   "indicators": {
     "PIB": {
       "kpi": {
@@ -2646,31 +2646,31 @@
     },
     "DESOCUP": {
       "kpi": {
-        "ultimoP": "Sep 26",
-        "ultimoRaw": 2.847999,
-        "ultimoFmt": "2.8%",
-        "varText": "-0.1 p.p.",
-        "varRaw": -0.1,
-        "varMag": -0.1,
-        "pos": false,
-        "varColor": "#9b2247",
+        "ultimoP": "Oct 26",
+        "ultimoRaw": 2.965607,
+        "ultimoFmt": "3.0%",
+        "varText": "+0.4 p.p.",
+        "varRaw": 0.4,
+        "varMag": 0.4,
+        "pos": true,
+        "varColor": "#1e5b4f",
         "varLabel": "Cambio anual original",
-        "yoyText": "-0.1 p.p.",
-        "yoyRaw": -0.1,
-        "yoyMag": -0.1,
-        "yoyPos": false,
-        "yoyColor": "#9b2247",
+        "yoyText": "+0.4 p.p.",
+        "yoyRaw": 0.4,
+        "yoyMag": 0.4,
+        "yoyPos": true,
+        "yoyColor": "#1e5b4f",
         "yoyLabel": "Cambio anual",
-        "assessment": "favorable",
-        "dir": "down",
-        "semaforo": "bueno",
+        "assessment": "adverso",
+        "dir": "up",
+        "semaforo": "malo",
         "maxRaw": 5.492159,
         "maxP": "Jun 20",
         "minRaw": 2.222196,
         "minP": "Mar 25",
         "maxFmt": "5.5%",
         "minFmt": "2.2%",
-        "lastI": 104,
+        "lastI": 105,
         "series": [
           3.364517,
           3.173574,
@@ -2776,7 +2776,8 @@
           2.898523,
           2.898233,
           3.010724,
-          2.847999
+          2.847999,
+          2.965607
         ],
         "periods": [
           "Ene 18",
@@ -2883,87 +2884,88 @@
           "Jun 26",
           "Jul 26",
           "Ago 26",
-          "Sep 26"
+          "Sep 26",
+          "Oct 26"
         ],
         "cards": [
           {
             "name": "Desocupación",
             "art": "la",
             "col": 0,
-            "nivelRaw": 2.847999,
-            "nivelText": "2.8%",
-            "momRaw": -0.1,
-            "momText": "-0.1 p.p.",
-            "yoyRaw": -0.1,
-            "yoyText": "-0.1 p.p.",
-            "ultimoP": "Sep 26",
-            "nivelDesest": 2.6
+            "nivelRaw": 2.965607,
+            "nivelText": "3.0%",
+            "momRaw": 0.3,
+            "momText": "+0.3 p.p.",
+            "yoyRaw": 0.4,
+            "yoyText": "+0.4 p.p.",
+            "ultimoP": "Oct 26",
+            "nivelDesest": 3.0
           },
           {
             "name": "Participación",
             "art": "la",
             "col": 1,
-            "nivelRaw": 58.451886,
-            "nivelText": "58.5%",
-            "momRaw": -0.8,
-            "momText": "-0.8 p.p.",
-            "yoyRaw": -1.1,
-            "yoyText": "-1.1 p.p.",
-            "ultimoP": "Sep 26",
-            "nivelDesest": 58.4
+            "nivelRaw": 59.180552,
+            "nivelText": "59.2%",
+            "momRaw": 0.3,
+            "momText": "+0.3 p.p.",
+            "yoyRaw": -0.7,
+            "yoyText": "-0.7 p.p.",
+            "ultimoP": "Oct 26",
+            "nivelDesest": 58.8
           },
           {
             "name": "Informalidad",
             "art": "la",
             "col": 2,
-            "nivelRaw": 54.290482,
-            "nivelText": "54.3%",
-            "momRaw": -0.7,
-            "momText": "-0.7 p.p.",
-            "yoyRaw": -0.6,
-            "yoyText": "-0.6 p.p.",
-            "ultimoP": "Sep 26",
-            "nivelDesest": 54.3
+            "nivelRaw": 55.682831,
+            "nivelText": "55.7%",
+            "momRaw": 0.9,
+            "momText": "+0.9 p.p.",
+            "yoyRaw": 0.0,
+            "yoyText": "0.0 p.p.",
+            "ultimoP": "Oct 26",
+            "nivelDesest": 55.3
           },
           {
             "name": "Subocupación",
             "art": "la",
             "col": 3,
-            "nivelRaw": 6.70592,
-            "nivelText": "6.7%",
-            "momRaw": -0.4,
-            "momText": "-0.4 p.p.",
-            "yoyRaw": -0.6,
-            "yoyText": "-0.6 p.p.",
-            "ultimoP": "Sep 26",
-            "nivelDesest": 6.4
+            "nivelRaw": 7.18716,
+            "nivelText": "7.2%",
+            "momRaw": 0.2,
+            "momText": "+0.2 p.p.",
+            "yoyRaw": -0.3,
+            "yoyText": "-0.3 p.p.",
+            "ultimoP": "Oct 26",
+            "nivelDesest": 6.7
           }
         ],
         "poblacion": {
-          "periodo": "Sep 26",
-          "personas": 59977049,
-          "millones": 59.977049,
+          "periodo": "Oct 26",
+          "personas": 60715334,
+          "millones": 60.715334,
           "frecuencia": "mensual",
-          "textMillones": "60.0 millones de personas"
+          "textMillones": "60.7 millones de personas"
         }
       },
       "analysis": [
-        "En septiembre de 2026, la tasa de desocupación fue 2.8% en cifras originales (-0.1 p.p. anual).",
-        "En cifras desestacionalizadas, la desocupación se ubicó en 2.6% (-0.1 p.p. mensual).",
-        "Las demás tasas laborales originales se ubicaron en participación 58.5%, informalidad 54.3%, subocupación 6.7%.",
-        "La población ocupada se ubicó en 60.0 millones de personas en septiembre de 2026 (dato mensual original)."
+        "En octubre de 2026, la tasa de desocupación fue 3.0% en cifras originales (+0.4 p.p. anual).",
+        "En cifras desestacionalizadas, la desocupación se ubicó en 3.0% (+0.3 p.p. mensual).",
+        "Las demás tasas laborales originales se ubicaron en participación 59.2%, informalidad 55.7%, subocupación 7.2%.",
+        "La población ocupada se ubicó en 60.7 millones de personas en octubre de 2026 (dato mensual original)."
       ],
       "resumen": [
-        "En septiembre de 2026, la tasa de desocupación fue 2.8% en cifras originales (-0.1 p.p. anual).",
-        "En cifras desestacionalizadas, la desocupación se ubicó en 2.6% (-0.1 p.p. mensual).",
-        "Las demás tasas laborales originales se ubicaron en participación 58.5%, informalidad 54.3%, subocupación 6.7%.",
-        "La población ocupada se ubicó en 60.0 millones de personas en septiembre de 2026 (dato mensual original)."
+        "En octubre de 2026, la tasa de desocupación fue 3.0% en cifras originales (+0.4 p.p. anual).",
+        "En cifras desestacionalizadas, la desocupación se ubicó en 3.0% (+0.3 p.p. mensual).",
+        "Las demás tasas laborales originales se ubicaron en participación 59.2%, informalidad 55.7%, subocupación 7.2%.",
+        "La población ocupada se ubicó en 60.7 millones de personas en octubre de 2026 (dato mensual original)."
       ],
       "annualVar": null,
       "yoy": {
-        "mag": -0.1,
-        "pos": false,
-        "text": "-0.1 p.p.",
+        "mag": 0.4,
+        "pos": true,
+        "text": "+0.4 p.p.",
         "label": "Cambio anual"
       }
     },
@@ -4954,23 +4956,23 @@
     },
     "TIPOCAMBIO": {
       "kpi": {
-        "ultimoP": "25 Nov 26",
-        "ultimoRaw": 19.704,
-        "ultimoFmt": "$19.70",
-        "varText": "+1.74%",
-        "varMag": 0.017411,
+        "ultimoP": "26 Nov 26",
+        "ultimoRaw": 19.7203,
+        "ultimoFmt": "$19.72",
+        "varText": "+0.08%",
+        "varMag": 0.000827,
         "varLabel": "Cambio diario",
         "pos": true,
         "varColor": "#1e5b4f",
-        "monthlyText": "+4.83%",
+        "monthlyText": "+4.92%",
         "monthlyLabel": "Cambio mensual",
-        "yoyText": "+6.91%",
+        "yoyText": "+7.43%",
         "yoyLabel": "Cambio anual",
-        "yoyRaw": 0.06908,
-        "yoyMag": 0.06908,
+        "yoyRaw": 0.074324,
+        "yoyMag": 0.074324,
         "yoyPos": true,
         "yoyColor": "#1e5b4f",
-        "range12mText": "$16.87 — $19.70",
+        "range12mText": "$16.87 — $19.72",
         "range12mLabel": "Rango 12 meses mínimo — máximo",
         "maxRaw": 25.1185,
         "minRaw": 3.0606,
@@ -4978,7 +4980,7 @@
         "minP": "4 Mar 92",
         "maxFmt": "$25.12",
         "minFmt": "$3.06",
-        "lastI": 8805,
+        "lastI": 8806,
         "series": [
           3.0735,
           3.0712,
@@ -13785,7 +13787,8 @@
           19.0228,
           19.1648,
           19.3668,
-          19.704
+          19.704,
+          19.7203
         ],
         "periods": [
           "1991-11-12",
@@ -22593,29 +22596,30 @@
           "2026-11-20",
           "2026-11-23",
           "2026-11-24",
-          "2026-11-25"
+          "2026-11-25",
+          "2026-11-26"
         ],
         "assessment": "neutral",
         "dir": "up",
         "semaforo": "estable"
       },
       "yoy": {
-        "mag": 0.06908,
+        "mag": 0.074324,
         "pos": true,
-        "text": "+6.91%",
+        "text": "+7.43%",
         "label": "Cambio anual"
       },
       "annualVar": {
-        "mag": 0.06908,
+        "mag": 0.074324,
         "pos": true,
-        "text": "+6.91%",
+        "text": "+7.43%",
         "label": "Cambio anual"
       },
       "resumen": [
-        "En 25 de noviembre de 2026, el tipo de cambio FIX se ubicó en $19.70 (pesos por dólar).",
-        "El cambio diario fue de +1.74% respecto al día hábil previo.",
-        "Respecto al último día hábil del mes previo, el FIX registró un cambio mensual de +4.83%.",
-        "A tasa anual, el FIX varió +6.91%; en los últimos 12 meses osciló entre $16.87 — $19.70."
+        "En 26 de noviembre de 2026, el tipo de cambio FIX se ubicó en $19.72 (pesos por dólar).",
+        "El cambio diario fue de +0.08% respecto al día hábil previo.",
+        "Respecto al último día hábil del mes previo, el FIX registró un cambio mensual de +4.92%.",
+        "A tasa anual, el FIX varió +7.43%; en los últimos 12 meses osciló entre $16.87 — $19.72."
       ],
       "analysis": []
     },
@@ -29031,23 +29035,23 @@
       "resumen": [
         "En agosto de 2026, el Indicador Coincidente se ubicó en 100.2 puntos, por encima de su tendencia de largo plazo (100 puntos), y registró un alza de 0.12 puntos respecto a julio de 2026.",
         "En septiembre de 2026, el Indicador Adelantado se ubicó en 100.8 puntos, por encima de su tendencia de largo plazo, con un alza de 0.01 puntos respecto a agosto de 2026; este indicador busca anticipar los puntos de giro del Coincidente.",
-        "Entre los componentes del Coincidente, las mayores alzas mensuales correspondieron a las importaciones totales (+0.19 puntos), y el mayor descenso fue el de la tasa de desocupación urbana (−0.09 puntos) (serie inversa a la actividad económica)."
+        "Entre los componentes del Coincidente, las mayores alzas mensuales correspondieron a las importaciones totales (+0.19 puntos), y el mayor descenso fue el de el indicador de la actividad industrial (−0.04 puntos)."
       ],
       "analysis": [
         "En agosto de 2026, el Indicador Coincidente se ubicó en 100.2 puntos, por encima de su tendencia de largo plazo (100 puntos), y registró un alza de 0.12 puntos respecto a julio de 2026.",
         "En septiembre de 2026, el Indicador Adelantado se ubicó en 100.8 puntos, por encima de su tendencia de largo plazo, con un alza de 0.01 puntos respecto a agosto de 2026; este indicador busca anticipar los puntos de giro del Coincidente.",
-        "Entre los componentes del Coincidente, las mayores alzas mensuales correspondieron a las importaciones totales (+0.19 puntos), y el mayor descenso fue el de la tasa de desocupación urbana (−0.09 puntos) (serie inversa a la actividad económica)."
+        "Entre los componentes del Coincidente, las mayores alzas mensuales correspondieron a las importaciones totales (+0.19 puntos), y el mayor descenso fue el de el indicador de la actividad industrial (−0.04 puntos)."
       ]
     },
     "IMOAM": {
       "kpi": {
         "assessment": "favorable",
         "dir": "up",
-        "ultimoFmt": "108.0",
-        "ultimoRaw": 108.0,
-        "ultimoP": "Sep 26",
-        "varText": "+1.9%",
-        "varMag": 1.9,
+        "ultimoFmt": "110.6",
+        "ultimoRaw": 110.6,
+        "ultimoP": "Oct 26",
+        "varText": "+0.7%",
+        "varMag": 0.7000000000000001,
         "pos": true,
         "varColor": "#1e5b4f",
         "varLabel": "Var. anual estimada",
@@ -29057,7 +29061,7 @@
         "minFmt": "97.2",
         "minRaw": 97.2,
         "minP": "Dic 25",
-        "lastI": 38,
+        "lastI": 39,
         "series": [
           105.2,
           110.5,
@@ -29097,7 +29101,8 @@
           107.1,
           108.2,
           108.0,
-          108.0
+          108.0,
+          110.6
         ],
         "periods": [
           "Jul 23",
@@ -29138,19 +29143,20 @@
           "Jun 26",
           "Jul 26",
           "Ago 26",
-          "Sep 26"
+          "Sep 26",
+          "Oct 26"
         ],
         "semaforo": "bueno",
         "yoyText": "—",
         "yoyLabel": "—"
       },
       "analysis": [
-        "En septiembre de 2026, el IMOAM estima un índice de 108.0 puntos y una variación anual de 1.9%.",
-        "El intervalo de confianza al 95% de la variación anual va de -0.9% a 4.7%.",
+        "En octubre de 2026, el IMOAM estima un índice de 110.6 puntos y una variación anual de 0.7%.",
+        "El intervalo de confianza al 95% de la variación anual va de -2.1% a 3.6%.",
         "Estimación experimental con cifras originales; anticipa el IMAI manufacturero y está sujeta a incertidumbre. No representa crecimiento mensual desestacionalizado."
       ],
       "resumen": [
-        "En septiembre de 2026, el IMOAM se ubicó en 108.0 puntos (índice base 2018=100, estimación experimental, cifras originales). El valor de var. anual estimada fue de +1.9% frente al mismo mes del año anterior.",
+        "En octubre de 2026, el IMOAM se ubicó en 110.6 puntos (índice base 2018=100, estimación experimental, cifras originales). El valor de var. anual estimada fue de +0.7% frente al mismo mes del año anterior.",
         "En la serie mostrada, el indicador oscila entre un máximo de 112.0 puntos (marzo de 2026) y un mínimo de 97.2 puntos (diciembre de 2025). El último dato se ubica dentro del rango observado en el periodo mostrado.",
         "La variación se clasifica como favorable según la lectura económica del indicador."
       ],

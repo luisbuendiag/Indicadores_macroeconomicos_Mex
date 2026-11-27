@@ -70,15 +70,20 @@ def fetch(year: int, src_dir: Path) -> tuple[list[dict], dict]:
             d = _parse_fecha(pub.get("fecha"))
             if not d:
                 continue
+            url = pub.get("url")
+            formato = pub.get("formato")
+            if formato not in ("html", "pdf"):
+                formato = "pdf" if (url or "").split("?", 1)[0].lower().endswith(".pdf") else "html"
             events.append({
                 "source": "Secretaría de Economía (manual)",
                 "institution": "Secretaría de Economía",
-                "program": producto,
+                "program": pub.get("producto") or producto,
                 "period": _normalize_period(pub.get("periodo")),
                 "date": d,
-                "url": pub.get("url") or "https://www.gob.mx/se",
-                "deliverables": [{"type": "comunicado", "format": "pdf", "url": pub.get("url") or "", "label": "Comunicado", "size": None}] if pub.get("url") else [],
-                "comentario": None,
+                "url": url or "https://www.gob.mx/se",
+                "deliverables": [{"type": "comunicado", "format": formato, "url": url, "label": "Comunicado", "size": None}] if url else [],
+                "alcance": pub.get("alcance"),
+                "comentario": pub.get("comentario"),
                 "indicator": clave,
             })
         if entry.get("proxima_no_anunciada"):

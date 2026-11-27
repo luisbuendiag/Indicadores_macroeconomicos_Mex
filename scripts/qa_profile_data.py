@@ -46,8 +46,11 @@ def benchmark_bie():
                    if not key.startswith("_"))
     report["paridad_exacta"] = results["directo"].data == results["reutilizado"].data
     report["cobertura_esperada"] = expected
+    report["solicitudes_evitadas"] = (
+        report["directo"]["solicitudes_logicas"] - report["reutilizado"]["solicitudes_logicas"]
+    )
     print(json.dumps(report, indent=2, ensure_ascii=False))
-    return 0 if report["paridad_exacta"] and all(
+    return 0 if report["paridad_exacta"] and report["solicitudes_evitadas"] > 0 and all(
         report[mode]["columnas_recibidas"] == expected for mode in ("directo", "reutilizado")
     ) else 1
 
