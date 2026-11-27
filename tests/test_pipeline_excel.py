@@ -61,27 +61,21 @@ def test_excel_has_historical_sheets_only(tmp_path):
     payload=json.loads((ROOT / "data/indicadores.json").read_text())
     report=build_excel.generate(payload,tmp_path)
     wb=openpyxl.load_workbook(tmp_path/build_excel.OUT_XLSX.name)
-    # 22 hojas históricas tradicionales + anexos genuinos de IED estatal.
-    # No eliminar los anexos para satisfacer un conteo de la versión anterior.
-    has_ied = (ROOT / "data/ied_estatal.json").is_file()
-    has_revised = (ROOT / "data/ied_estatal_actualizada.json").is_file()
-    extras = ({"IED Historia estatal", "IED Ranking estatal", "IED Cifras originales"}
-              if has_ied else set())
-    if has_ied and has_revised:
-        extras.add("IED Estatal revisada")
-    assert len(wb.sheetnames) == 22 + len(extras)
-    assert len(report) == 20
+    assert set(report) == {*payload['order'], 'general'}
+    assert report['general']['sheets'] == len(wb.sheetnames)
+    assert {
+        'IED Historia estatal', 'IED Ranking estatal', 'IED Cifras originales',
+        'IED Estatal revisada', 'REMESAS',
+    } <= set(wb.sheetnames)
     assert not {"Resumen ejecutivo","Síntesis de coyuntura","Metodología y fuentes","Control de actualizaciones"}.intersection(wb.sheetnames)
     assert {"PIB","PIBT","SIC","IGAE","BCMM","INPC","INPP","ENOE","Población ocupada","IMFBCF","IOAE","EMIM","EMOE","IED","FIX","TASA","RESERVAS"} <= set(wb.sheetnames)
-    assert extras <= set(wb.sheetnames)
-    # Hojas de series se grafican; la historia y originales estatales son bases
-    # tabulares auditables (el ranking sí debe conservar su gráfica).
-    source_tables = {"IED Historia estatal", "IED Cifras originales", "IED Estatal revisada"}
-    assert all(ws._charts for ws in wb if ws.title not in source_tables)
-    if has_ied:
-        rank = wb["IED Ranking estatal"]
-        assert rank._charts
-        assert isinstance(rank["B4"].value, str) and rank["B4"].value.startswith("=")
+    # El ranking de IED conserva su gráfica. Las tres vistas de datos
+    # nacionales/estatales son tablas filtrables, no duplicados del ranking.
+    table_only = {'IED Historia estatal', 'IED Cifras originales', 'IED Estatal revisada'}
+    assert {ws.title for ws in wb if not ws._charts} == table_only
+    for name in table_only:
+        assert wb[name].auto_filter.ref and wb[name].max_row > 4
+    assert len(wb['IED Ranking estatal']._charts) == 1
 
 
 def test_calendar_build_and_schema():

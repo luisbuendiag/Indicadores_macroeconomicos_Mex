@@ -1,8 +1,8 @@
 {
   "_comment": "Generado por scripts/build_calendar.py a partir de fuentes oficiales y respaldos. No editar a mano.",
   "fuente": "INEGI Sala de Prensa | Banco de México calendario | Secretaría de Economía (manual)",
-  "actualizado": "2026-11-16",
-  "as_of": "2026-11-16",
+  "actualizado": "2026-11-27",
+  "as_of": "2026-11-27",
   "anios": [
     2025,
     2026,
@@ -40,6 +40,23 @@
       "periodo_referencia": "Por determinar",
       "estatus": "regla",
       "url_boletin": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html"
+    },
+    {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "2 de enero de 2025",
+      "fecha_iso": "2025-01-02",
+      "anio": 2025,
+      "mes": 1,
+      "periodo_referencia": "Noviembre 2024",
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{67C0EFD7-BC00-9E66-5001-D706B12021D8}.pdf"
     },
     {
       "clave": "EMOE",
@@ -89,6 +106,7 @@
       "mes": 1,
       "periodo_referencia": "3 de enero de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{E6BF6565-74A8-3303-183E-C31D6698AA05}.pdf"
     },
     {
@@ -127,7 +145,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -156,6 +174,7 @@
       "mes": 1,
       "periodo_referencia": "Noviembre de 2024",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/app/tabulados/?nc=452",
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados."
     },
@@ -190,6 +209,7 @@
       "mes": 1,
       "periodo_referencia": "10 de enero de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{0A0FFE58-DB92-B9F5-A9FC-C5DBCAD2CCB5}.pdf"
     },
     {
@@ -274,6 +294,7 @@
       "mes": 1,
       "periodo_referencia": "17 de enero de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{1B1706E3-B48F-A22D-CA75-747D3B21A569}.pdf"
     },
     {
@@ -324,6 +345,7 @@
       "mes": 1,
       "periodo_referencia": "24 de enero de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{5BD33443-4AD4-6B05-C023-57FDFE38C60B}.pdf"
     },
     {
@@ -378,6 +400,23 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "4 de febrero de 2025",
+      "fecha_iso": "2025-02-04",
+      "anio": 2025,
+      "mes": 2,
+      "periodo_referencia": "Diciembre 2024",
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{D08E80AC-6031-C7CF-D792-28CBEF70658F}.pdf"
+    },
+    {
       "clave": "IMFBCF",
       "indicador": "Indicador Mensual de la Formación Bruta de Capital Fijo",
       "producto": "Indicador Mensual de la Formación Bruta de Capital Fijo",
@@ -425,6 +464,7 @@
       "mes": 2,
       "periodo_referencia": "31 de enero de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{6DBE6E61-6D68-0B26-08E5-4F1227EBB7BC}.pdf"
     },
     {
@@ -446,7 +486,7 @@
     },
     {
       "clave": "TASA",
-      "indicador": "Tasa de interés objetivo",
+      "indicador": "Objetivo para la Tasa de Interés Interbancaria a un día",
       "producto": "Anuncio de la Decisión de Política Monetaria",
       "institucion": "Banco de México",
       "frecuencia": "Decisiones de política monetaria",
@@ -479,7 +519,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -508,6 +548,7 @@
       "mes": 2,
       "periodo_referencia": "Diciembre de 2024",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/app/tabulados/?nc=452",
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados."
     },
@@ -542,6 +583,7 @@
       "mes": 2,
       "periodo_referencia": "7 de febrero de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{A2178A30-79C4-DA50-75EA-FB96391D42A8}.pdf"
     },
     {
@@ -592,6 +634,7 @@
       "mes": 2,
       "periodo_referencia": "14 de febrero de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{A9FFBC81-6DD9-5CFB-1207-7E25AAAF8A5E}.pdf"
     },
     {
@@ -612,6 +655,23 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "PIBSEC",
+      "indicador": "PIB trimestral a precios constantes",
+      "producto": "PIB trimestral por actividad económica, precios constantes",
+      "institucion": "INEGI",
+      "frecuencia": "Trimestral",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "21 de febrero de 2025",
+      "fecha_iso": "2025-02-21",
+      "anio": 2025,
+      "mes": 2,
+      "periodo_referencia": "Cuarto trimestre de 2024",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/pibt/pib_Pconst2025_02.pdf",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
       "clave": "DESOCUP",
       "indicador": "Indicadores de ocupación y empleo",
       "producto": "ENOE · Resultados trimestrales",
@@ -625,6 +685,7 @@
       "mes": 2,
       "periodo_referencia": "Cuarto trimestre de 2024",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/enoe/enoe2025_02.pdf",
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
@@ -642,6 +703,7 @@
       "mes": 2,
       "periodo_referencia": "21 de febrero de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{E5CC6AC7-8994-B34F-3ED4-2E981B0A21B4}.pdf"
     },
     {
@@ -696,6 +758,23 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "3 de marzo de 2025",
+      "fecha_iso": "2025-03-03",
+      "anio": 2025,
+      "mes": 3,
+      "periodo_referencia": "Enero 2025",
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{1F11368F-407C-3336-B0B4-7955B9774B1F}.pdf"
+    },
+    {
       "clave": "RESERVAS",
       "indicador": "Reservas internacionales",
       "producto": "Estado de cuenta del Banco de México",
@@ -709,6 +788,7 @@
       "mes": 3,
       "periodo_referencia": "28 de febrero de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{9D50F81C-B35D-6E3D-03DA-BB400FF44E08}.pdf"
     },
     {
@@ -781,7 +861,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -810,6 +890,7 @@
       "mes": 3,
       "periodo_referencia": "Enero de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/app/tabulados/?nc=452",
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados."
     },
@@ -827,6 +908,7 @@
       "mes": 3,
       "periodo_referencia": "7 de marzo de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{357E19B1-98BC-6A0D-17F6-14DC0A2EFEFE}.pdf"
     },
     {
@@ -877,6 +959,7 @@
       "mes": 3,
       "periodo_referencia": "14 de marzo de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{378CF3DA-5611-9F5C-6AB9-2401608E8191}.pdf"
     },
     {
@@ -927,6 +1010,7 @@
       "mes": 3,
       "periodo_referencia": "21 de marzo de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{41DFD7E0-E33E-A516-EA55-BF667826FAB3}.pdf"
     },
     {
@@ -948,7 +1032,7 @@
     },
     {
       "clave": "TASA",
-      "indicador": "Tasa de interés objetivo",
+      "indicador": "Objetivo para la Tasa de Interés Interbancaria a un día",
       "producto": "Anuncio de la Decisión de Política Monetaria",
       "institucion": "Banco de México",
       "frecuencia": "Decisiones de política monetaria",
@@ -997,6 +1081,23 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "1 de abril de 2025",
+      "fecha_iso": "2025-04-01",
+      "anio": 2025,
+      "mes": 4,
+      "periodo_referencia": "Febrero 2025",
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{55678D70-8D8F-232C-8AF1-1A8EC989D1C4}.pdf"
+    },
+    {
       "clave": "RESERVAS",
       "indicador": "Reservas internacionales",
       "producto": "Estado de cuenta del Banco de México",
@@ -1010,6 +1111,7 @@
       "mes": 4,
       "periodo_referencia": "28 de marzo de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{3778A1AF-7492-4FE4-09ED-67ECF4C77DC5}.pdf"
     },
     {
@@ -1077,6 +1179,7 @@
       "mes": 4,
       "periodo_referencia": "4 de abril de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{6F02928A-84AE-D43F-F60F-60B8472E1088}.pdf"
     },
     {
@@ -1093,6 +1196,7 @@
       "mes": 4,
       "periodo_referencia": "Febrero de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/app/tabulados/?nc=452",
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados."
     },
@@ -1115,7 +1219,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -1161,6 +1265,7 @@
       "mes": 4,
       "periodo_referencia": "11 de abril de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{4BA3D7D8-D060-F95E-523A-C672FDCA9E7F}.pdf"
     },
     {
@@ -1211,6 +1316,7 @@
       "mes": 4,
       "periodo_referencia": "16 de abril de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{A2B7FE97-32D2-3A3A-B4DD-75F5019677A8}.pdf"
     },
     {
@@ -1278,6 +1384,7 @@
       "mes": 4,
       "periodo_referencia": "25 de abril de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{8F747B15-312F-0C29-5653-44F24CBF03BA}.pdf"
     },
     {
@@ -1313,6 +1420,23 @@
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ice/ice2025_05.pdf",
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "2 de mayo de 2025",
+      "fecha_iso": "2025-05-02",
+      "anio": 2025,
+      "mes": 5,
+      "periodo_referencia": "Marzo 2025",
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{5E3E6C69-505F-440A-D866-62CBF1A2AA9F}.pdf"
     },
     {
       "clave": "IMFBCF",
@@ -1362,6 +1486,7 @@
       "mes": 5,
       "periodo_referencia": "2 de mayo de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{E51F57FA-2D6F-A527-96E1-E2F774B87B7E}.pdf"
     },
     {
@@ -1400,7 +1525,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -1429,6 +1554,7 @@
       "mes": 5,
       "periodo_referencia": "Marzo de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/app/tabulados/?nc=452",
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados."
     },
@@ -1463,6 +1589,7 @@
       "mes": 5,
       "periodo_referencia": "9 de mayo de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{B3F58A5E-65EC-C7E4-2AEA-7C07F713C65E}.pdf"
     },
     {
@@ -1484,7 +1611,7 @@
     },
     {
       "clave": "TASA",
-      "indicador": "Tasa de interés objetivo",
+      "indicador": "Objetivo para la Tasa de Interés Interbancaria a un día",
       "producto": "Anuncio de la Decisión de Política Monetaria",
       "institucion": "Banco de México",
       "frecuencia": "Decisiones de política monetaria",
@@ -1529,6 +1656,7 @@
       "mes": 5,
       "periodo_referencia": "16 de mayo de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{22E4DB5B-ADA9-2E5F-D310-21146C1CA9DB}.pdf"
     },
     {
@@ -1546,6 +1674,23 @@
       "periodo_referencia": "Marzo de 2025",
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/igae/igae2025_05.pdf",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
+      "clave": "PIBSEC",
+      "indicador": "PIB trimestral a precios constantes",
+      "producto": "PIB trimestral por actividad económica, precios constantes",
+      "institucion": "INEGI",
+      "frecuencia": "Trimestral",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "22 de mayo de 2025",
+      "fecha_iso": "2025-05-22",
+      "anio": 2025,
+      "mes": 5,
+      "periodo_referencia": "Primer trimestre de 2025",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/pibt/pib_Pconst2025_05.pdf",
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
@@ -1579,6 +1724,7 @@
       "mes": 5,
       "periodo_referencia": "Primer trimestre de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/enoe/enoe2025_05.pdf",
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
@@ -1596,6 +1742,7 @@
       "mes": 5,
       "periodo_referencia": "23 de mayo de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{5DCFD5ED-E1A9-D49A-DBFC-D83083150827}.pdf"
     },
     {
@@ -1633,6 +1780,23 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "2 de junio de 2025",
+      "fecha_iso": "2025-06-02",
+      "anio": 2025,
+      "mes": 6,
+      "periodo_referencia": "Abril 2025",
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{AD5FB79F-B898-DA2B-4015-E2F3E1FAB11D}.pdf"
+    },
+    {
       "clave": "RESERVAS",
       "indicador": "Reservas internacionales",
       "producto": "Estado de cuenta del Banco de México",
@@ -1646,6 +1810,7 @@
       "mes": 6,
       "periodo_referencia": "30 de mayo de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{AB0F2E39-7E59-C9D7-41A7-71B1EF884484}.pdf"
     },
     {
@@ -1718,7 +1883,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -1747,6 +1912,7 @@
       "mes": 6,
       "periodo_referencia": "Abril de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/app/tabulados/?nc=452",
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados."
     },
@@ -1764,6 +1930,7 @@
       "mes": 6,
       "periodo_referencia": "6 de junio de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{986601B4-4DAF-C066-E491-85B19908DE3A}.pdf"
     },
     {
@@ -1814,6 +1981,7 @@
       "mes": 6,
       "periodo_referencia": "13 de junio de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{14FBD824-83CE-B5B0-F87C-CDE57A412909}.pdf"
     },
     {
@@ -1864,6 +2032,7 @@
       "mes": 6,
       "periodo_referencia": "20 de junio de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{8C30D762-8307-5447-9915-CA448DBCA04F}.pdf"
     },
     {
@@ -1885,7 +2054,7 @@
     },
     {
       "clave": "TASA",
-      "indicador": "Tasa de interés objetivo",
+      "indicador": "Objetivo para la Tasa de Interés Interbancaria a un día",
       "producto": "Anuncio de la Decisión de Política Monetaria",
       "institucion": "Banco de México",
       "frecuencia": "Decisiones de política monetaria",
@@ -1934,6 +2103,23 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "1 de julio de 2025",
+      "fecha_iso": "2025-07-01",
+      "anio": 2025,
+      "mes": 7,
+      "periodo_referencia": "Mayo 2025",
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{DFFBF147-8A01-3B7C-313F-B8CEDC89BB1E}.pdf"
+    },
+    {
       "clave": "RESERVAS",
       "indicador": "Reservas internacionales",
       "producto": "Estado de cuenta del Banco de México",
@@ -1947,6 +2133,7 @@
       "mes": 7,
       "periodo_referencia": "27 de junio de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{1418EC01-D71A-E605-4A5E-E9CD4E227794}.pdf"
     },
     {
@@ -2014,6 +2201,7 @@
       "mes": 7,
       "periodo_referencia": "4 de julio de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{4DE445DA-3C39-8DAB-1101-0970986438B5}.pdf"
     },
     {
@@ -2035,7 +2223,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -2064,6 +2252,7 @@
       "mes": 7,
       "periodo_referencia": "Mayo de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/app/tabulados/?nc=452",
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados."
     },
@@ -2098,6 +2287,7 @@
       "mes": 7,
       "periodo_referencia": "11 de julio de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{40E5FC53-E914-9B19-7F09-9D726F8DEEA1}.pdf"
     },
     {
@@ -2165,6 +2355,7 @@
       "mes": 7,
       "periodo_referencia": "18 de julio de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{009B6DBA-5CFE-8AB3-F800-E033484D0BE7}.pdf"
     },
     {
@@ -2215,6 +2406,7 @@
       "mes": 7,
       "periodo_referencia": "25 de julio de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{87999030-8519-EF3C-9495-0513797C3B74}.pdf"
     },
     {
@@ -2250,6 +2442,23 @@
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ice/ice2025_08.pdf",
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "1 de agosto de 2025",
+      "fecha_iso": "2025-08-01",
+      "anio": 2025,
+      "mes": 8,
+      "periodo_referencia": "Junio 2025",
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{1A95D882-1CCD-05DC-5FFD-06D272079C34}.pdf"
     },
     {
       "clave": "SIC",
@@ -2316,11 +2525,12 @@
       "mes": 8,
       "periodo_referencia": "1 de agosto de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{F7CC4AFF-04D9-11F9-8E81-8902AA2FC667}.pdf"
     },
     {
       "clave": "TASA",
-      "indicador": "Tasa de interés objetivo",
+      "indicador": "Objetivo para la Tasa de Interés Interbancaria a un día",
       "producto": "Anuncio de la Decisión de Política Monetaria",
       "institucion": "Banco de México",
       "frecuencia": "Decisiones de política monetaria",
@@ -2353,7 +2563,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -2382,6 +2592,7 @@
       "mes": 8,
       "periodo_referencia": "Junio de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/app/tabulados/?nc=452",
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados."
     },
@@ -2416,6 +2627,7 @@
       "mes": 8,
       "periodo_referencia": "8 de agosto de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{6AD7B9E2-DBC9-C4B3-0966-F77D376B7E04}.pdf"
     },
     {
@@ -2466,6 +2678,7 @@
       "mes": 8,
       "periodo_referencia": "15 de agosto de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{A2C645B5-31B0-9712-C1D0-53D7990BA2BF}.pdf"
     },
     {
@@ -2486,6 +2699,23 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "PIBSEC",
+      "indicador": "PIB trimestral a precios constantes",
+      "producto": "PIB trimestral por actividad económica, precios constantes",
+      "institucion": "INEGI",
+      "frecuencia": "Trimestral",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "22 de agosto de 2025",
+      "fecha_iso": "2025-08-22",
+      "anio": 2025,
+      "mes": 8,
+      "periodo_referencia": "Segundo trimestre de 2025",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/pibt/pib_Pconst2025_08.pdf",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
       "clave": "DESOCUP",
       "indicador": "Indicadores de ocupación y empleo",
       "producto": "ENOE · Resultados trimestrales",
@@ -2499,6 +2729,7 @@
       "mes": 8,
       "periodo_referencia": "Segundo trimestre de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/enoe/enoe2025_08.pdf",
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
@@ -2516,6 +2747,7 @@
       "mes": 8,
       "periodo_referencia": "22 de agosto de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{D2ED0660-25F8-42DD-4CA7-87A592DAE587}.pdf"
     },
     {
@@ -2570,6 +2802,23 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "1 de septiembre de 2025",
+      "fecha_iso": "2025-09-01",
+      "anio": 2025,
+      "mes": 9,
+      "periodo_referencia": "Julio 2025",
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{6CE66A79-06E3-4894-B7DA-0C57C8577FB8}.pdf"
+    },
+    {
       "clave": "RESERVAS",
       "indicador": "Reservas internacionales",
       "producto": "Estado de cuenta del Banco de México",
@@ -2583,6 +2832,7 @@
       "mes": 9,
       "periodo_referencia": "29 de agosto de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{F5BCB280-AAC2-2FFF-1822-C3E8CBEC3292}.pdf"
     },
     {
@@ -2650,6 +2900,7 @@
       "mes": 9,
       "periodo_referencia": "Julio de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/app/tabulados/?nc=452",
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados."
     },
@@ -2667,6 +2918,7 @@
       "mes": 9,
       "periodo_referencia": "5 de septiembre de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{A4E2AE62-17CD-F082-C2F9-DCE2FB8A5429}.pdf"
     },
     {
@@ -2688,7 +2940,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -2751,6 +3003,7 @@
       "mes": 9,
       "periodo_referencia": "12 de septiembre de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{D08D15FF-EEF0-4965-47B0-6827BD3869A9}.pdf"
     },
     {
@@ -2801,11 +3054,12 @@
       "mes": 9,
       "periodo_referencia": "19 de septiembre de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{9EB4448B-DF55-8850-7946-910FF0F3F5DF}.pdf"
     },
     {
       "clave": "TASA",
-      "indicador": "Tasa de interés objetivo",
+      "indicador": "Objetivo para la Tasa de Interés Interbancaria a un día",
       "producto": "Anuncio de la Decisión de Política Monetaria",
       "institucion": "Banco de México",
       "frecuencia": "Decisiones de política monetaria",
@@ -2867,6 +3121,7 @@
       "mes": 9,
       "periodo_referencia": "26 de septiembre de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{541883ED-7B68-B9B7-4FC7-4D8AB5148B93}.pdf"
     },
     {
@@ -2885,6 +3140,23 @@
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/ice/ice2025_10.pdf",
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "1 de octubre de 2025",
+      "fecha_iso": "2025-10-01",
+      "anio": 2025,
+      "mes": 10,
+      "periodo_referencia": "Agosto 2025",
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{D6112E5A-7966-7E49-C350-D0487A0C29AA}.pdf"
     },
     {
       "clave": "IMFBCF",
@@ -2951,6 +3223,7 @@
       "mes": 10,
       "periodo_referencia": "3 de octubre de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{D5275938-24BC-C77D-C600-DC41A5E9E1BA}.pdf"
     },
     {
@@ -2967,6 +3240,7 @@
       "mes": 10,
       "periodo_referencia": "Agosto de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/app/tabulados/?nc=452",
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados."
     },
@@ -2989,7 +3263,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -3035,6 +3309,7 @@
       "mes": 10,
       "periodo_referencia": "10 de octubre de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{C4ED119D-903C-4CEE-F612-2398CD3C8821}.pdf"
     },
     {
@@ -3085,6 +3360,7 @@
       "mes": 10,
       "periodo_referencia": "17 de octubre de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{833DB628-88B1-5966-3482-2EDC8A967446}.pdf"
     },
     {
@@ -3152,6 +3428,7 @@
       "mes": 10,
       "periodo_referencia": "24 de octubre de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{0ABE9B33-1592-8925-742F-0B964AAD6554}.pdf"
     },
     {
@@ -3189,6 +3466,23 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "3 de noviembre de 2025",
+      "fecha_iso": "2025-11-03",
+      "anio": 2025,
+      "mes": 11,
+      "periodo_referencia": "Septiembre 2025",
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{4D682E2D-D29E-68D7-48B4-FD38AB38E1D0}.pdf"
+    },
+    {
       "clave": "RESERVAS",
       "indicador": "Reservas internacionales",
       "producto": "Estado de cuenta del Banco de México",
@@ -3202,6 +3496,7 @@
       "mes": 11,
       "periodo_referencia": "31 de octubre de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{DDF3D92F-ECF5-A085-97F6-0993778BCE02}.pdf"
     },
     {
@@ -3257,7 +3552,7 @@
     },
     {
       "clave": "TASA",
-      "indicador": "Tasa de interés objetivo",
+      "indicador": "Objetivo para la Tasa de Interés Interbancaria a un día",
       "producto": "Anuncio de la Decisión de Política Monetaria",
       "institucion": "Banco de México",
       "frecuencia": "Decisiones de política monetaria",
@@ -3290,7 +3585,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -3319,6 +3614,7 @@
       "mes": 11,
       "periodo_referencia": "Septiembre de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/app/tabulados/?nc=452",
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados."
     },
@@ -3353,6 +3649,7 @@
       "mes": 11,
       "periodo_referencia": "7 de noviembre de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{776F5E2D-003F-A90F-DB0F-BBAB25B3C0E5}.pdf"
     },
     {
@@ -3386,6 +3683,7 @@
       "mes": 11,
       "periodo_referencia": "14 de noviembre de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{BD6409A4-88BC-9289-5D0D-2A6FE50A9A12}.pdf"
     },
     {
@@ -3423,6 +3721,23 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "PIBSEC",
+      "indicador": "PIB trimestral a precios constantes",
+      "producto": "PIB trimestral por actividad económica, precios constantes",
+      "institucion": "INEGI",
+      "frecuencia": "Trimestral",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "21 de noviembre de 2025",
+      "fecha_iso": "2025-11-21",
+      "anio": 2025,
+      "mes": 11,
+      "periodo_referencia": "Tercer trimestre de 2025",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/pibt/pib_Pconst2025_11.pdf",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
       "clave": "RESERVAS",
       "indicador": "Reservas internacionales",
       "producto": "Estado de cuenta del Banco de México",
@@ -3436,6 +3751,7 @@
       "mes": 11,
       "periodo_referencia": "21 de noviembre de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{137A49B9-736B-EE10-40BE-E44FCA612BF1}.pdf"
     },
     {
@@ -3452,6 +3768,7 @@
       "mes": 11,
       "periodo_referencia": "Tercer trimestre de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/enoe/enoe2025_11.pdf",
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
@@ -3490,6 +3807,23 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "1 de diciembre de 2025",
+      "fecha_iso": "2025-12-01",
+      "anio": 2025,
+      "mes": 12,
+      "periodo_referencia": "Octubre 2025",
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{AC35CC79-5BF5-A58F-52D3-E76C81EAD309}.pdf"
+    },
+    {
       "clave": "EMOE",
       "indicador": "Encuesta Mensual de Opinión Empresarial",
       "producto": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
@@ -3520,6 +3854,7 @@
       "mes": 12,
       "periodo_referencia": "28 de noviembre de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{DDE76F5A-F538-9C75-A5FE-04C0F33F0E0E}.pdf"
     },
     {
@@ -3587,6 +3922,7 @@
       "mes": 12,
       "periodo_referencia": "Octubre de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/app/tabulados/?nc=452",
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados."
     },
@@ -3604,6 +3940,7 @@
       "mes": 12,
       "periodo_referencia": "5 de diciembre de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{51B75B37-FC9E-DCF0-A2A0-D69EAAB60821}.pdf"
     },
     {
@@ -3625,7 +3962,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -3671,6 +4008,7 @@
       "mes": 12,
       "periodo_referencia": "11 de diciembre de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{E797B9C7-B079-64F1-7506-757EF8FD5ACF}.pdf"
     },
     {
@@ -3709,7 +4047,7 @@
     },
     {
       "clave": "TASA",
-      "indicador": "Tasa de interés objetivo",
+      "indicador": "Objetivo para la Tasa de Interés Interbancaria a un día",
       "producto": "Anuncio de la Decisión de Política Monetaria",
       "institucion": "Banco de México",
       "frecuencia": "Decisiones de política monetaria",
@@ -3771,6 +4109,7 @@
       "mes": 12,
       "periodo_referencia": "19 de diciembre de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{226C89A9-CA3D-FF40-A8F8-93D91A623EA1}.pdf"
     },
     {
@@ -3804,6 +4143,7 @@
       "mes": 12,
       "periodo_referencia": "26 de diciembre de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{E0194A33-8EDC-41E3-E756-50EE34D79A1C}.pdf"
     },
     {
@@ -3824,6 +4164,23 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "2 de enero de 2026",
+      "fecha_iso": "2026-01-02",
+      "anio": 2026,
+      "mes": 1,
+      "periodo_referencia": "Noviembre 2025",
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{267D04BF-63B3-09BE-6F2F-C70902998E48}.pdf"
+    },
+    {
       "clave": "RESERVAS",
       "indicador": "Reservas internacionales",
       "producto": "Estado de cuenta del Banco de México",
@@ -3837,6 +4194,7 @@
       "mes": 1,
       "periodo_referencia": "2 de enero de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{38B252E7-1BB5-5478-202B-7CF6F0C834DB}.pdf"
     },
     {
@@ -3875,7 +4233,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -3904,6 +4262,7 @@
       "mes": 1,
       "periodo_referencia": "Noviembre de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/app/tabulados/?nc=452",
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados."
     },
@@ -3938,6 +4297,7 @@
       "mes": 1,
       "periodo_referencia": "9 de enero de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{7BC5E3EF-4BA0-B5F6-572B-4D5D7CC8192B}.pdf"
     },
     {
@@ -4005,6 +4365,7 @@
       "mes": 1,
       "periodo_referencia": "16 de enero de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{8DF279EA-3DEC-1023-7217-267B7F439BFF}.pdf"
     },
     {
@@ -4105,6 +4466,7 @@
       "mes": 1,
       "periodo_referencia": "23 de enero de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{E84CEFAD-2652-09F9-D25F-C89A1D72169D}.pdf"
     },
     {
@@ -4142,6 +4504,23 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "3 de febrero de 2026",
+      "fecha_iso": "2026-02-03",
+      "anio": 2026,
+      "mes": 2,
+      "periodo_referencia": "Diciembre 2025",
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{ED06F2CB-06BA-2EC6-D145-73FF4579BADA}.pdf"
+    },
+    {
       "clave": "RESERVAS",
       "indicador": "Reservas internacionales",
       "producto": "Estado de cuenta del Banco de México",
@@ -4155,6 +4534,7 @@
       "mes": 2,
       "periodo_referencia": "30 de enero de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{82A99AA0-FC7A-29C6-1ABE-E11F5341D86E}.pdf"
     },
     {
@@ -4192,6 +4572,22 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "TASA",
+      "indicador": "Objetivo para la Tasa de Interés Interbancaria a un día",
+      "producto": "Anuncio de la Decisión de Política Monetaria",
+      "institucion": "Banco de México",
+      "frecuencia": "Decisiones de política monetaria",
+      "regla_publicacion": null,
+      "usar_para_frescura": false,
+      "fecha_publicacion": "5 de febrero de 2026",
+      "fecha_iso": "2026-02-05",
+      "anio": 2026,
+      "mes": 2,
+      "periodo_referencia": "5 de febrero de 2026",
+      "estatus": "evento",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/{318D71D0-F37D-869C-E8B4-8E58FD9D3648}.pdf"
+    },
+    {
       "clave": "SIC",
       "indicador": "Sistema de Indicadores Cíclicos",
       "producto": "Sistema de Indicadores Cíclicos",
@@ -4209,22 +4605,6 @@
       "comentario": "Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
-      "clave": "TASA",
-      "indicador": "Tasa de interés objetivo",
-      "producto": "Anuncio de la Decisión de Política Monetaria",
-      "institucion": "Banco de México",
-      "frecuencia": "Decisiones de política monetaria",
-      "regla_publicacion": null,
-      "usar_para_frescura": false,
-      "fecha_publicacion": "5 de febrero de 2026",
-      "fecha_iso": "2026-02-05",
-      "anio": 2026,
-      "mes": 2,
-      "periodo_referencia": "5 de febrero de 2026",
-      "estatus": "evento",
-      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/{318D71D0-F37D-869C-E8B4-8E58FD9D3648}.pdf"
-    },
-    {
       "clave": "BCMM",
       "indicador": "Balanza Comercial de Mercancías de México",
       "producto": "BCMM · Difusión de datos sin boletín",
@@ -4238,6 +4618,7 @@
       "mes": 2,
       "periodo_referencia": "Diciembre de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/app/tabulados/?nc=452",
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados."
     },
@@ -4260,7 +4641,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -4289,6 +4670,7 @@
       "mes": 2,
       "periodo_referencia": "6 de febrero de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{D7C0367F-DC27-020B-E22E-7ABA27841772}.pdf"
     },
     {
@@ -4339,6 +4721,7 @@
       "mes": 2,
       "periodo_referencia": "13 de febrero de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{A676DA7F-EEDA-D3FE-8EC3-E3108426D617}.pdf"
     },
     {
@@ -4388,6 +4771,7 @@
       "mes": 2,
       "periodo_referencia": "4° trimestre 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://ventanillaunica.economia.gob.mx/media/20260223_IED_4T%202025.pdf"
     },
     {
@@ -4408,6 +4792,23 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "PIBSEC",
+      "indicador": "PIB trimestral a precios constantes",
+      "producto": "PIB trimestral por actividad económica, precios constantes",
+      "institucion": "INEGI",
+      "frecuencia": "Trimestral",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "23 de febrero de 2026",
+      "fecha_iso": "2026-02-23",
+      "anio": 2026,
+      "mes": 2,
+      "periodo_referencia": "Cuarto trimestre de 2025",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_02.pdf",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
       "clave": "DESOCUP",
       "indicador": "Indicadores de ocupación y empleo",
       "producto": "ENOE · Resultados trimestrales",
@@ -4421,6 +4822,7 @@
       "mes": 2,
       "periodo_referencia": "Cuarto trimestre de 2025",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/enoe/enoe2026_02.pdf",
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
@@ -4438,6 +4840,7 @@
       "mes": 2,
       "periodo_referencia": "20 de febrero de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{D4D6569D-3FD0-B302-877A-78996924D206}.pdf"
     },
     {
@@ -4492,6 +4895,23 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "2 de marzo de 2026",
+      "fecha_iso": "2026-03-02",
+      "anio": 2026,
+      "mes": 3,
+      "periodo_referencia": "Enero 2026",
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{7C3CBA00-F1FB-1DF5-1CC5-F806710BF82D}.pdf"
+    },
+    {
       "clave": "RESERVAS",
       "indicador": "Reservas internacionales",
       "producto": "Estado de cuenta del Banco de México",
@@ -4505,6 +4925,7 @@
       "mes": 3,
       "periodo_referencia": "27 de febrero de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{5E716F8C-2B55-CAD5-9C2C-1FC936E50D13}.pdf"
     },
     {
@@ -4572,6 +4993,7 @@
       "mes": 3,
       "periodo_referencia": "Enero de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/app/tabulados/?nc=452",
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados."
     },
@@ -4594,7 +5016,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -4623,6 +5045,7 @@
       "mes": 3,
       "periodo_referencia": "6 de marzo de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{BFCD6B03-02F6-9CD7-B35F-8E53C1B4E4DD}.pdf"
     },
     {
@@ -4673,6 +5096,7 @@
       "mes": 3,
       "periodo_referencia": "13 de marzo de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{AB1C7470-DB44-B923-2EB1-0400DC8BDB01}.pdf"
     },
     {
@@ -4739,11 +5163,12 @@
       "mes": 3,
       "periodo_referencia": "20 de marzo de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{7348AD89-2237-02E5-5A21-3BB07032E2C3}.pdf"
     },
     {
       "clave": "TASA",
-      "indicador": "Tasa de interés objetivo",
+      "indicador": "Objetivo para la Tasa de Interés Interbancaria a un día",
       "producto": "Anuncio de la Decisión de Política Monetaria",
       "institucion": "Banco de México",
       "frecuencia": "Decisiones de política monetaria",
@@ -4805,6 +5230,7 @@
       "mes": 3,
       "periodo_referencia": "27 de marzo de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{49C76A31-4366-4E7C-B7F8-C0D0766CB64C}.pdf"
     },
     {
@@ -4823,6 +5249,23 @@
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_04.pdf",
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "1 de abril de 2026",
+      "fecha_iso": "2026-04-01",
+      "anio": 2026,
+      "mes": 4,
+      "periodo_referencia": "Febrero 2026",
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{821CC839-639C-B027-5491-4E6CA5B7CE78}.pdf"
     },
     {
       "clave": "IMFBCF",
@@ -4889,6 +5332,7 @@
       "mes": 4,
       "periodo_referencia": "1 de abril de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{5C31705A-194E-5770-9ADF-0B4393B85973}.pdf"
     },
     {
@@ -4910,7 +5354,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -4939,6 +5383,7 @@
       "mes": 4,
       "periodo_referencia": "Febrero de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/app/tabulados/?nc=452",
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados."
     },
@@ -4973,6 +5418,7 @@
       "mes": 4,
       "periodo_referencia": "10 de abril de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{08BD155E-16FD-15CC-7D60-69A2BDB51B79}.pdf"
     },
     {
@@ -5023,6 +5469,7 @@
       "mes": 4,
       "periodo_referencia": "17 de abril de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{BCC7C724-20CF-7E65-3B92-0452EE80C964}.pdf"
     },
     {
@@ -5106,6 +5553,7 @@
       "mes": 4,
       "periodo_referencia": "24 de abril de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{12FA347E-6FAB-465C-889C-CBB4BEF469AD}.pdf"
     },
     {
@@ -5143,6 +5591,23 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "4 de mayo de 2026",
+      "fecha_iso": "2026-05-04",
+      "anio": 2026,
+      "mes": 5,
+      "periodo_referencia": "Marzo 2026",
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{0800CDC2-6DA8-AE35-9E14-1682468DDA44}.pdf"
+    },
+    {
       "clave": "RESERVAS",
       "indicador": "Reservas internacionales",
       "producto": "Estado de cuenta del Banco de México",
@@ -5156,6 +5621,7 @@
       "mes": 5,
       "periodo_referencia": "30 de abril de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{FF2E4416-CAD3-DEA9-8054-B0012C118E2A}.pdf"
     },
     {
@@ -5211,7 +5677,7 @@
     },
     {
       "clave": "TASA",
-      "indicador": "Tasa de interés objetivo",
+      "indicador": "Objetivo para la Tasa de Interés Interbancaria a un día",
       "producto": "Anuncio de la Decisión de Política Monetaria",
       "institucion": "Banco de México",
       "frecuencia": "Decisiones de política monetaria",
@@ -5244,7 +5710,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -5273,6 +5739,7 @@
       "mes": 5,
       "periodo_referencia": "Marzo de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/app/tabulados/?nc=452",
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados."
     },
@@ -5307,6 +5774,7 @@
       "mes": 5,
       "periodo_referencia": "8 de mayo de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{5DFB782F-9806-033C-26B0-42D082B90C28}.pdf"
     },
     {
@@ -5357,6 +5825,7 @@
       "mes": 5,
       "periodo_referencia": "15 de mayo de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{21E29F60-0274-8F57-0D53-E850FB7966B1}.pdf"
     },
     {
@@ -5393,6 +5862,23 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "PIBSEC",
+      "indicador": "PIB trimestral a precios constantes",
+      "producto": "PIB trimestral por actividad económica, precios constantes",
+      "institucion": "INEGI",
+      "frecuencia": "Trimestral",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "22 de mayo de 2026",
+      "fecha_iso": "2026-05-22",
+      "anio": 2026,
+      "mes": 5,
+      "periodo_referencia": "Primer trimestre de 2026",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_05.pdf",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
       "clave": "BCMM",
       "indicador": "Balanza Comercial de Mercancías de México",
       "producto": "Balanza Comercial de Mercancías de México",
@@ -5423,6 +5909,7 @@
       "mes": 5,
       "periodo_referencia": "1° trimestre 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.presidenta.gob.mx/boletines/inversion-extranjera-aumenta-10-4-por-ciento-en-primer-trimestre-2026-presidenta-sheinbaum"
     },
     {
@@ -5439,6 +5926,7 @@
       "mes": 5,
       "periodo_referencia": "Primer trimestre de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/enoe/enoe2026_05.pdf",
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
@@ -5456,6 +5944,7 @@
       "mes": 5,
       "periodo_referencia": "22 de mayo de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{E7427BE3-BE8D-EEDD-2667-7E3E498D3985}.pdf"
     },
     {
@@ -5493,6 +5982,23 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "1 de junio de 2026",
+      "fecha_iso": "2026-06-01",
+      "anio": 2026,
+      "mes": 6,
+      "periodo_referencia": "Abril 2026",
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{F57AED8C-3670-D392-6CA1-5C9B874D7FFB}.pdf"
+    },
+    {
       "clave": "RESERVAS",
       "indicador": "Reservas internacionales",
       "producto": "Estado de cuenta del Banco de México",
@@ -5506,6 +6012,7 @@
       "mes": 6,
       "periodo_referencia": "29 de mayo de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{6B8E611D-17BB-DCA9-304E-8456C55920C0}.pdf"
     },
     {
@@ -5573,6 +6080,7 @@
       "mes": 6,
       "periodo_referencia": "5 de junio de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{CE0E8042-A629-8138-5926-93463374B7FF}.pdf"
     },
     {
@@ -5594,7 +6102,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -5623,6 +6131,7 @@
       "mes": 6,
       "periodo_referencia": "Abril de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/app/tabulados/?nc=452",
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados."
     },
@@ -5674,6 +6183,7 @@
       "mes": 6,
       "periodo_referencia": "12 de junio de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{E5DBEF3C-06B9-704C-9B22-A03AE1D767C8}.pdf"
     },
     {
@@ -5740,6 +6250,7 @@
       "mes": 6,
       "periodo_referencia": "19 de junio de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{BB2AE00C-AE3D-BB5A-CAFB-74699876EEB2}.pdf"
     },
     {
@@ -5761,7 +6272,7 @@
     },
     {
       "clave": "TASA",
-      "indicador": "Tasa de interés objetivo",
+      "indicador": "Objetivo para la Tasa de Interés Interbancaria a un día",
       "producto": "Anuncio de la Decisión de Política Monetaria",
       "institucion": "Banco de México",
       "frecuencia": "Decisiones de política monetaria",
@@ -5806,6 +6317,7 @@
       "mes": 6,
       "periodo_referencia": "26 de junio de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{CB309F4F-DD80-90C7-C177-F06B1B3A2897}.pdf"
     },
     {
@@ -5824,6 +6336,23 @@
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_07.pdf",
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "1 de julio de 2026",
+      "fecha_iso": "2026-07-01",
+      "anio": 2026,
+      "mes": 7,
+      "periodo_referencia": "Mayo 2026",
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{E6E1BCB1-13FA-E401-41CA-0A7B7AD51C15}.pdf"
     },
     {
       "clave": "SIC",
@@ -5890,6 +6419,7 @@
       "mes": 7,
       "periodo_referencia": "3 de julio de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{1269000F-24CC-B1D2-1254-72B1BFF5369D}.pdf"
     },
     {
@@ -5911,7 +6441,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -5940,6 +6470,7 @@
       "mes": 7,
       "periodo_referencia": "Mayo de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/app/tabulados/?nc=452",
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados."
     },
@@ -5974,6 +6505,7 @@
       "mes": 7,
       "periodo_referencia": "10 de julio de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{B8A7041C-1A36-D179-84F2-4127A5997747}.pdf"
     },
     {
@@ -6024,6 +6556,7 @@
       "mes": 7,
       "periodo_referencia": "17 de julio de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{BEB9C01D-F578-BC1B-C9A9-B10FEA23054B}.pdf"
     },
     {
@@ -6107,6 +6640,7 @@
       "mes": 7,
       "periodo_referencia": "24 de julio de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{BDD0E4BA-AA63-0A36-D9C6-8D7DB63A566F}.pdf"
     },
     {
@@ -6144,6 +6678,23 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "3 de agosto de 2026",
+      "fecha_iso": "2026-08-03",
+      "anio": 2026,
+      "mes": 8,
+      "periodo_referencia": "Junio 2026",
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{D61BA269-E1F5-F27F-B347-CE8949A9C573}.pdf"
+    },
+    {
       "clave": "RESERVAS",
       "indicador": "Reservas internacionales",
       "producto": "Estado de cuenta del Banco de México",
@@ -6157,6 +6708,7 @@
       "mes": 8,
       "periodo_referencia": "31 de julio de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{053FE157-1460-9BD6-9381-7516FE09F083}.pdf"
     },
     {
@@ -6212,7 +6764,7 @@
     },
     {
       "clave": "TASA",
-      "indicador": "Tasa de interés objetivo",
+      "indicador": "Objetivo para la Tasa de Interés Interbancaria a un día",
       "producto": "Anuncio de la Decisión de Política Monetaria",
       "institucion": "Banco de México",
       "frecuencia": "Decisiones de política monetaria",
@@ -6245,7 +6797,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -6274,6 +6826,7 @@
       "mes": 8,
       "periodo_referencia": "Junio de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/app/tabulados/?nc=452",
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados."
     },
@@ -6308,6 +6861,7 @@
       "mes": 8,
       "periodo_referencia": "7 de agosto de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{7F402CA5-65AA-7F3E-00E8-C56E2E3FEFFC}.pdf"
     },
     {
@@ -6341,6 +6895,7 @@
       "mes": 8,
       "periodo_referencia": "14 de agosto de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{46E6C07E-ABF1-410A-6FE5-D0F3CA488B56}.pdf"
     },
     {
@@ -6390,6 +6945,7 @@
       "mes": 8,
       "periodo_referencia": "2° trimestre 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa"
     },
     {
@@ -6421,9 +6977,10 @@
       "fecha_iso": "2026-08-24",
       "anio": 2026,
       "mes": 8,
-      "periodo_referencia": "2° trimestre 2026",
+      "periodo_referencia": "Segundo trimestre de 2026",
       "estatus": "publicado",
-      "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/"
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_08.pdf",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
       "clave": "DESOCUP",
@@ -6439,6 +6996,7 @@
       "mes": 8,
       "periodo_referencia": "Segundo trimestre de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/enoe/enoe2026_08.pdf",
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
@@ -6456,6 +7014,7 @@
       "mes": 8,
       "periodo_referencia": "21 de agosto de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{3C466B8E-460E-8C28-882B-926C5A8149A1}.pdf"
     },
     {
@@ -6510,6 +7069,23 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "1 de septiembre de 2026",
+      "fecha_iso": "2026-09-01",
+      "anio": 2026,
+      "mes": 9,
+      "periodo_referencia": "Julio 2026",
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{626A49AF-D316-BBF0-D62D-8A7783EDA277}.pdf"
+    },
+    {
       "clave": "RESERVAS",
       "indicador": "Reservas internacionales",
       "producto": "Estado de cuenta del Banco de México",
@@ -6523,6 +7099,7 @@
       "mes": 9,
       "periodo_referencia": "28 de agosto de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{CCBFCEE4-FB9B-F179-93C3-F376FBE5491F}.pdf"
     },
     {
@@ -6590,6 +7167,7 @@
       "mes": 9,
       "periodo_referencia": "4 de septiembre de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{1726A33D-73DE-54CE-8DA7-75D8F31FCA13}.pdf"
     },
     {
@@ -6611,7 +7189,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -6640,6 +7218,7 @@
       "mes": 9,
       "periodo_referencia": "Julio de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/app/tabulados/?nc=452",
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados."
     },
@@ -6674,6 +7253,7 @@
       "mes": 9,
       "periodo_referencia": "11 de septiembre de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{0A084B57-7353-86BF-61F8-DEFDB2F0C3EA}.pdf"
     },
     {
@@ -6724,6 +7304,7 @@
       "mes": 9,
       "periodo_referencia": "18 de septiembre de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{E5B01EDB-929C-C7EC-4698-597F375834BB}.pdf"
     },
     {
@@ -6761,7 +7342,7 @@
     },
     {
       "clave": "TASA",
-      "indicador": "Tasa de interés objetivo",
+      "indicador": "Objetivo para la Tasa de Interés Interbancaria a un día",
       "producto": "Anuncio de la Decisión de Política Monetaria",
       "institucion": "Banco de México",
       "frecuencia": "Decisiones de política monetaria",
@@ -6823,6 +7404,7 @@
       "mes": 9,
       "periodo_referencia": "25 de septiembre de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{7B6BD6C7-6F8F-7291-C90D-FB075434CCCC}.pdf"
     },
     {
@@ -6841,6 +7423,23 @@
       "estatus": "publicado",
       "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_10.pdf",
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "1 de octubre de 2026",
+      "fecha_iso": "2026-10-01",
+      "anio": 2026,
+      "mes": 10,
+      "periodo_referencia": "Agosto 2026",
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{1647FC66-42BC-4533-14A3-1DDAB07E2637}.pdf"
     },
     {
       "clave": "SIC",
@@ -6907,6 +7506,7 @@
       "mes": 10,
       "periodo_referencia": "2 de octubre de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{BDD94BCE-FD53-0804-32DB-59A366881380}.pdf"
     },
     {
@@ -6928,7 +7528,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -6957,6 +7557,7 @@
       "mes": 10,
       "periodo_referencia": "Agosto de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/app/tabulados/?nc=452",
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, reporte de resultados ni boletín de indicadores."
     },
@@ -6991,6 +7592,7 @@
       "mes": 10,
       "periodo_referencia": "9 de octubre de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{74DFE1D6-B86A-529F-9203-C5305878295D}.pdf"
     },
     {
@@ -7041,6 +7643,7 @@
       "mes": 10,
       "periodo_referencia": "16 de octubre de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{7F146D64-5720-22DA-22F6-758DA3A53C11}.pdf"
     },
     {
@@ -7108,6 +7711,7 @@
       "mes": 10,
       "periodo_referencia": "23 de octubre de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{3E9FEF72-6DDE-B62D-1B6E-5A880B86F6DE}.pdf"
     },
     {
@@ -7161,6 +7765,23 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "3 de noviembre de 2026",
+      "fecha_iso": "2026-11-03",
+      "anio": 2026,
+      "mes": 11,
+      "periodo_referencia": "Septiembre 2026",
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{29952C3D-1F6B-1CF3-9AD6-0DC1B3912796}.pdf"
+    },
+    {
       "clave": "RESERVAS",
       "indicador": "Reservas internacionales",
       "producto": "Estado de cuenta del Banco de México",
@@ -7174,6 +7795,7 @@
       "mes": 11,
       "periodo_referencia": "30 de octubre de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{B670D47E-871B-57FB-8803-D0ACDC500753}.pdf"
     },
     {
@@ -7229,7 +7851,7 @@
     },
     {
       "clave": "TASA",
-      "indicador": "Tasa de interés objetivo",
+      "indicador": "Objetivo para la Tasa de Interés Interbancaria a un día",
       "producto": "Anuncio de la Decisión de Política Monetaria",
       "institucion": "Banco de México",
       "frecuencia": "Decisiones de política monetaria",
@@ -7257,6 +7879,7 @@
       "mes": 11,
       "periodo_referencia": "Septiembre de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.inegi.org.mx/app/tabulados/?nc=452",
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados."
     },
@@ -7279,7 +7902,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -7308,6 +7931,7 @@
       "mes": 11,
       "periodo_referencia": "6 de noviembre de 2026",
       "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{E96F58FB-4ED1-3296-BE68-8803340D5920}.pdf"
     },
     {
@@ -7340,8 +7964,8 @@
       "anio": 2026,
       "mes": 11,
       "periodo_referencia": "Septiembre de 2026",
-      "estatus": "próximo",
-      "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_11.pdf",
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
@@ -7357,8 +7981,9 @@
       "anio": 2026,
       "mes": 11,
       "periodo_referencia": "13 de noviembre de 2026",
-      "estatus": "próximo",
-      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/"
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{091A5E42-64D3-6A88-236C-180709FD3DA3}.pdf"
     },
     {
       "clave": "IOAE",
@@ -7373,8 +7998,8 @@
       "anio": 2026,
       "mes": 11,
       "periodo_referencia": "Octubre de 2026",
-      "estatus": "próximo",
-      "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_11.pdf",
       "comentario": "Incluye boletín de indicador. Estas fechas son preliminares, están sujetas al indicador de la actividad industrial de los Estados Unidos cuyo calendario de publicación para 2026 aún no está disponible."
     },
     {
@@ -7390,8 +8015,8 @@
       "anio": 2026,
       "mes": 11,
       "periodo_referencia": "Septiembre de 2026",
-      "estatus": "próximo",
-      "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_11.pdf",
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
@@ -7406,9 +8031,29 @@
       "fecha_iso": "2026-11-23",
       "anio": 2026,
       "mes": 11,
-      "periodo_referencia": "3er trimestre 2026",
-      "estatus": "próximo",
-      "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/"
+      "periodo_referencia": "Tercer trimestre de 2026",
+      "estatus": "publicado",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_11.pdf",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
+      "clave": "IED",
+      "indicador": "IED · Comunicado de acumulado nacional (enero–septiembre)",
+      "producto": "IED · Comunicado de acumulado nacional (enero–septiembre)",
+      "institucion": "Secretaría de Economía",
+      "frecuencia": "Trimestral",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "24 de noviembre de 2026",
+      "fecha_iso": "2026-11-24",
+      "anio": 2026,
+      "mes": 11,
+      "periodo_referencia": "3° trimestre 2026",
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.gob.mx/se/prensa/mexico-alcanza-un-maximo-historico-de-inversion-extranjera-directa-ied-entre-enero-y-septiembre-de-2026-43-mil-090-millones-de-dolares?idiom=es",
+      "alcance": "acumulado_nacional",
+      "comentario": "El comunicado no actualiza el archivo estructurado de flujos trimestrales ni el ranking estatal."
     },
     {
       "clave": "RESERVAS",
@@ -7423,8 +8068,9 @@
       "anio": 2026,
       "mes": 11,
       "periodo_referencia": "20 de noviembre de 2026",
-      "estatus": "próximo",
-      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/"
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{C7430299-00B5-E232-4BFE-4CC9BA59A560}.pdf"
     },
     {
       "clave": "DESOCUP",
@@ -7439,9 +8085,29 @@
       "anio": 2026,
       "mes": 11,
       "periodo_referencia": "Tercer trimestre de 2026",
-      "estatus": "próximo",
-      "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "estatus": "publicado",
+      "publication_verification": "fuera_de_alcance",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/enoe/enoe2026_11.pdf",
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
+      "clave": "IMOAM",
+      "indicador": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "producto": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "institucion": "INEGI",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "26 de noviembre de 2026",
+      "fecha_iso": "2026-11-26",
+      "anio": 2026,
+      "mes": 11,
+      "periodo_referencia": "Oct 26",
+      "estatus": "publicado",
+      "publication_confirmed": true,
+      "publication_evidence_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_11.pdf",
+      "publication_evidence_date": "2026-11-26",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_11.pdf"
     },
     {
       "clave": "DESOCUP",
@@ -7456,8 +8122,11 @@
       "anio": 2026,
       "mes": 11,
       "periodo_referencia": "Octubre de 2026",
-      "estatus": "próximo",
-      "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "estatus": "publicado",
+      "publication_confirmed": true,
+      "publication_evidence_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf",
+      "publication_evidence_date": "2026-11-26",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf",
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
@@ -7473,8 +8142,11 @@
       "anio": 2026,
       "mes": 11,
       "periodo_referencia": "Octubre de 2026",
-      "estatus": "próximo",
-      "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "estatus": "publicado",
+      "publication_confirmed": true,
+      "publication_evidence_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf",
+      "publication_evidence_date": "2026-11-27",
+      "url_boletin": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf",
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. Incluye boletín de indicador."
     },
     {
@@ -7493,6 +8165,22 @@
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "1 de diciembre de 2026",
+      "fecha_iso": "2026-12-01",
+      "anio": 2026,
+      "mes": 12,
+      "periodo_referencia": "Octubre 2026",
+      "estatus": "próximo",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/"
     },
     {
       "clave": "RESERVAS",
@@ -7613,7 +8301,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -7680,7 +8368,7 @@
     },
     {
       "clave": "TASA",
-      "indicador": "Tasa de interés objetivo",
+      "indicador": "Objetivo para la Tasa de Interés Interbancaria a un día",
       "producto": "Anuncio de la Decisión de Política Monetaria",
       "institucion": "Banco de México",
       "frecuencia": "Decisiones de política monetaria",
@@ -7812,6 +8500,22 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "4 de enero de 2027",
+      "fecha_iso": "2027-01-04",
+      "anio": 2027,
+      "mes": 1,
+      "periodo_referencia": "Noviembre 2026",
+      "estatus": "próximo",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/"
+    },
+    {
       "clave": "RESERVAS",
       "indicador": "Reservas internacionales",
       "producto": "Estado de cuenta del Banco de México",
@@ -7846,7 +8550,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -8114,6 +8818,22 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "2 de febrero de 2027",
+      "fecha_iso": "2027-02-02",
+      "anio": 2027,
+      "mes": 2,
+      "periodo_referencia": "Diciembre 2026",
+      "estatus": "próximo",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/"
+    },
+    {
       "clave": "RESERVAS",
       "indicador": "Reservas internacionales",
       "producto": "Estado de cuenta del Banco de México",
@@ -8232,7 +8952,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -8266,7 +8986,7 @@
     },
     {
       "clave": "TASA",
-      "indicador": "Tasa de interés objetivo",
+      "indicador": "Objetivo para la Tasa de Interés Interbancaria a un día",
       "producto": "Anuncio de la Decisión de Política Monetaria",
       "institucion": "Banco de México",
       "frecuencia": "Decisiones de política monetaria",
@@ -8364,6 +9084,23 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "PIBSEC",
+      "indicador": "PIB trimestral a precios constantes",
+      "producto": "PIB trimestral por actividad económica, precios constantes",
+      "institucion": "INEGI",
+      "frecuencia": "Trimestral",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "24 de febrero de 2027",
+      "fecha_iso": "2027-02-24",
+      "anio": 2027,
+      "mes": 2,
+      "periodo_referencia": "Cuarto trimestre de 2026",
+      "estatus": "próximo",
+      "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
       "clave": "DESOCUP",
       "indicador": "Indicadores de ocupación y empleo",
       "producto": "ENOE · Resultados trimestrales",
@@ -8413,6 +9150,22 @@
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "1 de marzo de 2027",
+      "fecha_iso": "2027-03-01",
+      "anio": 2027,
+      "mes": 3,
+      "periodo_referencia": "Enero 2027",
+      "estatus": "próximo",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/"
     },
     {
       "clave": "RESERVAS",
@@ -8550,7 +9303,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -8617,7 +9370,7 @@
     },
     {
       "clave": "TASA",
-      "indicador": "Tasa de interés objetivo",
+      "indicador": "Objetivo para la Tasa de Interés Interbancaria a un día",
       "producto": "Anuncio de la Decisión de Política Monetaria",
       "institucion": "Banco de México",
       "frecuencia": "Decisiones de política monetaria",
@@ -8732,6 +9485,22 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "1 de abril de 2027",
+      "fecha_iso": "2027-04-01",
+      "anio": 2027,
+      "mes": 4,
+      "periodo_referencia": "Febrero 2027",
+      "estatus": "próximo",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/"
+    },
+    {
       "clave": "SIC",
       "indicador": "Sistema de Indicadores Cíclicos",
       "producto": "Sistema de Indicadores Cíclicos",
@@ -8834,7 +9603,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -9051,6 +9820,22 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "3 de mayo de 2027",
+      "fecha_iso": "2027-05-03",
+      "anio": 2027,
+      "mes": 5,
+      "periodo_referencia": "Marzo 2027",
+      "estatus": "próximo",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/"
+    },
+    {
       "clave": "RESERVAS",
       "indicador": "Reservas internacionales",
       "producto": "Estado de cuenta del Banco de México",
@@ -9119,7 +9904,7 @@
     },
     {
       "clave": "TASA",
-      "indicador": "Tasa de interés objetivo",
+      "indicador": "Objetivo para la Tasa de Interés Interbancaria a un día",
       "producto": "Anuncio de la Decisión de Política Monetaria",
       "institucion": "Banco de México",
       "frecuencia": "Decisiones de política monetaria",
@@ -9152,7 +9937,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -9285,6 +10070,23 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
     },
     {
+      "clave": "PIBSEC",
+      "indicador": "PIB trimestral a precios constantes",
+      "producto": "PIB trimestral por actividad económica, precios constantes",
+      "institucion": "INEGI",
+      "frecuencia": "Trimestral",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "24 de mayo de 2027",
+      "fecha_iso": "2027-05-24",
+      "anio": 2027,
+      "mes": 5,
+      "periodo_referencia": "Primer trimestre de 2027",
+      "estatus": "próximo",
+      "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
       "clave": "BCMM",
       "indicador": "Balanza Comercial de Mercancías de México",
       "producto": "Balanza Comercial de Mercancías de México",
@@ -9350,6 +10152,22 @@
       "estatus": "próximo",
       "url_boletin": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador."
+    },
+    {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "1 de junio de 2027",
+      "fecha_iso": "2027-06-01",
+      "anio": 2027,
+      "mes": 6,
+      "periodo_referencia": "Abril 2027",
+      "estatus": "próximo",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/"
     },
     {
       "clave": "RESERVAS",
@@ -9487,7 +10305,7 @@
     },
     {
       "clave": "INPC",
-      "indicador": "Índice de Precios al Consumidor",
+      "indicador": "Índice Nacional de Precios al Consumidor",
       "producto": "Índice Nacional de Precios al Consumidor",
       "institucion": "INEGI",
       "frecuencia": "Mensual",
@@ -9604,7 +10422,7 @@
     },
     {
       "clave": "TASA",
-      "indicador": "Tasa de interés objetivo",
+      "indicador": "Objetivo para la Tasa de Interés Interbancaria a un día",
       "producto": "Anuncio de la Decisión de Política Monetaria",
       "institucion": "Banco de México",
       "frecuencia": "Decisiones de política monetaria",
@@ -9650,6 +10468,22 @@
       "periodo_referencia": "25 de junio de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/"
+    },
+    {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "1 de julio de 2027",
+      "fecha_iso": "2027-07-01",
+      "anio": 2027,
+      "mes": 7,
+      "periodo_referencia": "Mayo 2027",
+      "estatus": "próximo",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/"
     },
     {
       "clave": "RESERVAS",
@@ -9716,6 +10550,22 @@
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/"
     },
     {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "2 de agosto de 2027",
+      "fecha_iso": "2027-08-02",
+      "anio": 2027,
+      "mes": 8,
+      "periodo_referencia": "Junio 2027",
+      "estatus": "próximo",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/"
+    },
+    {
       "clave": "RESERVAS",
       "indicador": "Reservas internacionales",
       "producto": "Estado de cuenta del Banco de México",
@@ -9749,7 +10599,7 @@
     },
     {
       "clave": "TASA",
-      "indicador": "Tasa de interés objetivo",
+      "indicador": "Objetivo para la Tasa de Interés Interbancaria a un día",
       "producto": "Anuncio de la Decisión de Política Monetaria",
       "institucion": "Banco de México",
       "frecuencia": "Decisiones de política monetaria",
@@ -9812,6 +10662,22 @@
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/"
     },
     {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "1 de septiembre de 2027",
+      "fecha_iso": "2027-09-01",
+      "anio": 2027,
+      "mes": 9,
+      "periodo_referencia": "Julio 2027",
+      "estatus": "próximo",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/"
+    },
+    {
       "clave": "RESERVAS",
       "indicador": "Reservas internacionales",
       "producto": "Estado de cuenta del Banco de México",
@@ -9861,7 +10727,7 @@
     },
     {
       "clave": "TASA",
-      "indicador": "Tasa de interés objetivo",
+      "indicador": "Objetivo para la Tasa de Interés Interbancaria a un día",
       "producto": "Anuncio de la Decisión de Política Monetaria",
       "institucion": "Banco de México",
       "frecuencia": "Decisiones de política monetaria",
@@ -9890,6 +10756,22 @@
       "periodo_referencia": "24 de septiembre de 2027",
       "estatus": "próximo",
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/"
+    },
+    {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "1 de octubre de 2027",
+      "fecha_iso": "2027-10-01",
+      "anio": 2027,
+      "mes": 10,
+      "periodo_referencia": "Agosto 2027",
+      "estatus": "próximo",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/"
     },
     {
       "clave": "RESERVAS",
@@ -9956,6 +10838,22 @@
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/"
     },
     {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "1 de noviembre de 2027",
+      "fecha_iso": "2027-11-01",
+      "anio": 2027,
+      "mes": 11,
+      "periodo_referencia": "Septiembre 2027",
+      "estatus": "próximo",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/"
+    },
+    {
       "clave": "RESERVAS",
       "indicador": "Reservas internacionales",
       "producto": "Estado de cuenta del Banco de México",
@@ -9973,7 +10871,7 @@
     },
     {
       "clave": "TASA",
-      "indicador": "Tasa de interés objetivo",
+      "indicador": "Objetivo para la Tasa de Interés Interbancaria a un día",
       "producto": "Anuncio de la Decisión de Política Monetaria",
       "institucion": "Banco de México",
       "frecuencia": "Decisiones de política monetaria",
@@ -10052,6 +10950,22 @@
       "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/"
     },
     {
+      "clave": "REMESAS",
+      "indicador": "Ingresos por remesas",
+      "producto": "Remesas con el exterior",
+      "institucion": "Banco de México",
+      "frecuencia": "Mensual",
+      "regla_publicacion": null,
+      "usar_para_frescura": true,
+      "fecha_publicacion": "1 de diciembre de 2027",
+      "fecha_iso": "2027-12-01",
+      "anio": 2027,
+      "mes": 12,
+      "periodo_referencia": "Octubre 2027",
+      "estatus": "próximo",
+      "url_boletin": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/"
+    },
+    {
       "clave": "RESERVAS",
       "indicador": "Reservas internacionales",
       "producto": "Estado de cuenta del Banco de México",
@@ -10085,7 +10999,7 @@
     },
     {
       "clave": "TASA",
-      "indicador": "Tasa de interés objetivo",
+      "indicador": "Objetivo para la Tasa de Interés Interbancaria a un día",
       "producto": "Anuncio de la Decisión de Política Monetaria",
       "institucion": "Banco de México",
       "frecuencia": "Decisiones de política monetaria",
@@ -10143,7 +11057,7 @@
       "fecha_iso": "9999-12-31",
       "anio": null,
       "mes": null,
-      "periodo_referencia": "3° trimestre 2026",
+      "periodo_referencia": "4° trimestre 2026",
       "estatus": "no_anunciada",
       "url_boletin": "https://www.gob.mx/se",
       "comentario": "Próxima fecha oficial no anunciada"

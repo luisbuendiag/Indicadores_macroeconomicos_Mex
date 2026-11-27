@@ -1,0 +1,192 @@
+﻿variable,valor,unidad,periodo,serie,ubicacion,fuente
+exports amount,86008.7,millones de dólares,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports yoy,30.2,porcentaje,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports ytd,713203.0,millones de dólares,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports ytd_yoy,30.3,porcentaje,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports_oil amount,1738.3,millones de dólares,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports_oil yoy,-3.4,porcentaje,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports_oil ytd,18089.4,millones de dólares,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports_oil ytd_yoy,-0.5,porcentaje,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports_non_oil amount,84270.5,millones de dólares,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports_non_oil yoy,31.2,porcentaje,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports_non_oil ytd,695113.6,millones de dólares,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports_non_oil ytd_yoy,31.4,porcentaje,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+agriculture amount,1425.1,millones de dólares,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+agriculture yoy,7.4,porcentaje,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+agriculture ytd,17065.8,millones de dólares,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+agriculture ytd_yoy,-1.6,porcentaje,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+extractive amount,1602.4,millones de dólares,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+extractive yoy,24.7,porcentaje,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+extractive ytd,18208.1,millones de dólares,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+extractive ytd_yoy,68.2,porcentaje,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+manufacturing amount,81243.1,millones de dólares,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+manufacturing yoy,31.8,porcentaje,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+manufacturing ytd,659839.7,millones de dólares,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+manufacturing ytd_yoy,31.7,porcentaje,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+automotive amount,17246.2,millones de dólares,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+automotive yoy,5.6,porcentaje,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+automotive ytd,159204.9,millones de dólares,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+automotive ytd_yoy,1.8,porcentaje,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+non_automotive amount,63996.9,millones de dólares,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+non_automotive yoy,41.3,porcentaje,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+non_automotive ytd,500634.8,millones de dólares,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+non_automotive ytd_yoy,45.4,porcentaje,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports amount,85710.5,millones de dólares,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports yoy,30.8,porcentaje,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports ytd,703650.5,millones de dólares,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports ytd_yoy,27.9,porcentaje,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports_oil amount,6031.2,millones de dólares,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports_oil yoy,52.7,porcentaje,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports_oil ytd,48066.7,millones de dólares,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports_oil ytd_yoy,22.8,porcentaje,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports_non_oil amount,79679.3,millones de dólares,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports_non_oil yoy,29.4,porcentaje,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports_non_oil ytd,655583.8,millones de dólares,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports_non_oil ytd_yoy,28.3,porcentaje,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+consumption amount,10282.8,millones de dólares,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+consumption yoy,4.3,porcentaje,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+consumption ytd,87424.0,millones de dólares,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+consumption ytd_yoy,9.2,porcentaje,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+consumption_oil amount,1998.5,millones de dólares,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+consumption_oil yoy,37.6,porcentaje,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+consumption_oil ytd,16044.5,millones de dólares,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+consumption_oil ytd_yoy,28.9,porcentaje,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+consumption_non_oil amount,8284.2,millones de dólares,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+consumption_non_oil yoy,-1.5,porcentaje,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+consumption_non_oil ytd,71379.5,millones de dólares,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+consumption_non_oil ytd_yoy,5.6,porcentaje,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+intermediate amount,69916.0,millones de dólares,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+intermediate yoy,38.1,porcentaje,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+intermediate ytd,566954.3,millones de dólares,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+intermediate ytd_yoy,34.0,porcentaje,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+intermediate_oil amount,4032.7,millones de dólares,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+intermediate_oil yoy,61.5,porcentaje,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+intermediate_oil ytd,32022.2,millones de dólares,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+intermediate_oil ytd_yoy,19.9,porcentaje,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+intermediate_non_oil amount,65883.3,millones de dólares,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+intermediate_non_oil yoy,36.9,porcentaje,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+intermediate_non_oil ytd,534932.0,millones de dólares,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+intermediate_non_oil ytd_yoy,34.9,porcentaje,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+capital amount,5511.7,millones de dólares,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+capital yoy,9.4,porcentaje,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+capital ytd,49272.2,millones de dólares,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+capital ytd_yoy,5.3,porcentaje,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance amount,298.2,millones de dólares,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance yoy,-43.3,porcentaje,2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance ytd,9552.5,millones de dólares,enero a 2026-10,original,"p. 1, cuadro 1",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports,617771,millones de dólares,2024,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports,664267,millones de dólares,2025,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports,78010,millones de dólares,2026-08,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports,77797,millones de dólares,2026-09,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports,86009,millones de dólares,2026-10,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports,713203,millones de dólares,enero a 2026-10,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports_oil,28954,millones de dólares,2024,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports_oil,21245,millones de dólares,2025,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports_oil,1582,millones de dólares,2026-08,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports_oil,1803,millones de dólares,2026-09,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports_oil,1738,millones de dólares,2026-10,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports_oil,18089,millones de dólares,enero a 2026-10,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports_non_oil,588817,millones de dólares,2024,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports_non_oil,643022,millones de dólares,2025,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports_non_oil,76429,millones de dólares,2026-08,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports_non_oil,75993,millones de dólares,2026-09,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports_non_oil,84270,millones de dólares,2026-10,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports_non_oil,695114,millones de dólares,enero a 2026-10,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports,636218,millones de dólares,2024,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports,664057,millones de dólares,2025,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports,77405,millones de dólares,2026-08,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports,78403,millones de dólares,2026-09,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports,85711,millones de dólares,2026-10,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports,703650,millones de dólares,enero a 2026-10,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports_oil,50087,millones de dólares,2024,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports_oil,46797,millones de dólares,2025,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports_oil,5023,millones de dólares,2026-08,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports_oil,5157,millones de dólares,2026-09,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports_oil,6031,millones de dólares,2026-10,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports_oil,48067,millones de dólares,enero a 2026-10,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports_non_oil,586131,millones de dólares,2024,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports_non_oil,617260,millones de dólares,2025,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports_non_oil,72382,millones de dólares,2026-08,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports_non_oil,73245,millones de dólares,2026-09,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports_non_oil,79679,millones de dólares,2026-10,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports_non_oil,655584,millones de dólares,enero a 2026-10,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance,-18447,millones de dólares,2024,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance,209,millones de dólares,2025,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance,605,millones de dólares,2026-08,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance,-606,millones de dólares,2026-09,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance,298,millones de dólares,2026-10,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance,9552,millones de dólares,enero a 2026-10,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance_oil,-21133,millones de dólares,2024,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance_oil,-25553,millones de dólares,2025,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance_oil,-3441,millones de dólares,2026-08,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance_oil,-3354,millones de dólares,2026-09,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance_oil,-4293,millones de dólares,2026-10,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance_oil,-29977,millones de dólares,enero a 2026-10,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance_non_oil,2686,millones de dólares,2024,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance_non_oil,25762,millones de dólares,2025,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance_non_oil,4047,millones de dólares,2026-08,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance_non_oil,2748,millones de dólares,2026-09,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance_non_oil,4591,millones de dólares,2026-10,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance_non_oil,39530,millones de dólares,enero a 2026-10,original; enteros publicados,"p. 2, cuadro 2",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras total participación,100.0,porcentaje,enero a 2026-10,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras total variación anual,9.2,porcentaje,2025,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras total variación anual,41.7,porcentaje,2026-08,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras total variación anual,38.8,porcentaje,2026-09,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras total variación anual,31.2,porcentaje,2026-10,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras total variación anual,31.4,porcentaje,enero a 2026-10,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras usa participación,85.18,porcentaje,enero a 2026-10,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras usa variación anual,8.7,porcentaje,2025,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras usa variación anual,45.2,porcentaje,2026-08,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras usa variación anual,43.5,porcentaje,2026-09,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras usa variación anual,36.8,porcentaje,2026-10,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras usa variación anual,33.4,porcentaje,enero a 2026-10,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras usa_auto participación,19.16,porcentaje,enero a 2026-10,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras usa_auto variación anual,-5.8,porcentaje,2025,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras usa_auto variación anual,-1.0,porcentaje,2026-08,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras usa_auto variación anual,8.5,porcentaje,2026-09,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras usa_auto variación anual,7.2,porcentaje,2026-10,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras usa_auto variación anual,0.2,porcentaje,enero a 2026-10,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras usa_other participación,66.02,porcentaje,enero a 2026-10,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras usa_other variación anual,16.2,porcentaje,2025,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras usa_other variación anual,64.8,porcentaje,2026-08,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras usa_other variación anual,57.2,porcentaje,2026-09,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras usa_other variación anual,46.9,porcentaje,2026-10,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras usa_other variación anual,47.6,porcentaje,enero a 2026-10,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras rest participación,14.82,porcentaje,enero a 2026-10,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras rest variación anual,11.7,porcentaje,2025,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras rest variación anual,23.5,porcentaje,2026-08,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras rest variación anual,16.4,porcentaje,2026-09,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras rest variación anual,0.8,porcentaje,2026-10,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras rest variación anual,20.9,porcentaje,enero a 2026-10,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras rest_auto participación,3.74,porcentaje,enero a 2026-10,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras rest_auto variación anual,4.3,porcentaje,2025,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras rest_auto variación anual,-7.8,porcentaje,2026-08,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras rest_auto variación anual,-7.4,porcentaje,2026-09,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras rest_auto variación anual,-3.3,porcentaje,2026-10,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras rest_auto variación anual,10.3,porcentaje,enero a 2026-10,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras rest_other participación,11.08,porcentaje,enero a 2026-10,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras rest_other variación anual,14.9,porcentaje,2025,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras rest_other variación anual,38.6,porcentaje,2026-08,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras rest_other variación anual,26.3,porcentaje,2026-09,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras rest_other variación anual,2.1,porcentaje,2026-10,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+no petroleras rest_other variación anual,25.0,porcentaje,enero a 2026-10,original,"p. 3, cuadro 3",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports variación mensual,5.64,porcentaje,2026-10,desestacionalizada,"p. 5, texto",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports_non_oil variación mensual,5.88,porcentaje,2026-10,desestacionalizada,"p. 5, texto",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+exports_oil variación mensual,-4.92,porcentaje,2026-10,desestacionalizada,"p. 5, texto",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+manufacturing variación mensual,6.68,porcentaje,2026-10,desestacionalizada,"p. 5, texto",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+non_automotive variación mensual,8.45,porcentaje,2026-10,desestacionalizada,"p. 5, texto",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+automotive variación mensual,0.68,porcentaje,2026-10,desestacionalizada,"p. 5, texto",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports variación mensual,4.05,porcentaje,2026-10,desestacionalizada,"p. 7, texto",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports_non_oil variación mensual,2.94,porcentaje,2026-10,desestacionalizada,"p. 7, texto",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+imports_oil variación mensual,20.33,porcentaje,2026-10,desestacionalizada,"p. 7, texto",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+consumption variación mensual,1.49,porcentaje,2026-10,desestacionalizada,"p. 7, texto",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+consumption_non_oil variación mensual,-0.23,porcentaje,2026-10,desestacionalizada,"p. 7, texto",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+intermediate variación mensual,5.11,porcentaje,2026-10,desestacionalizada,"p. 7, texto",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+intermediate_non_oil variación mensual,3.94,porcentaje,2026-10,desestacionalizada,"p. 7, texto",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+capital variación mensual,-3.46,porcentaje,2026-10,desestacionalizada,"p. 7, texto",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance,823,millones de dólares,2026-09,desestacionalizada; enteros publicados,"p. 5, texto",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance,2068,millones de dólares,2026-10,desestacionalizada; enteros publicados,"p. 5, texto",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance_non_oil,3924,millones de dólares,2026-09,desestacionalizada; enteros publicados,"p. 5, texto",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance_non_oil,6242,millones de dólares,2026-10,desestacionalizada; enteros publicados,"p. 5, texto",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance_oil,-3100,millones de dólares,2026-09,desestacionalizada; enteros publicados,"p. 5, texto",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf
+balance_oil,-4174,millones de dólares,2026-10,desestacionalizada; enteros publicados,"p. 5, texto",https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf

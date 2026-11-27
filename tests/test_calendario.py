@@ -257,7 +257,7 @@ def _items_for(calendario_nuevo, clave):
            [r for r in calendario_nuevo["rules"] if r["indicator"] == clave]
 
 
-def test_categorias_y_filtros_indicadores_reclasificados(calendario_nuevo):
+def test_categorias_y_filtros_indicadores_reclasificados(calendario_nuevo, calendario_legacy):
     """Las categorías e instituciones reflejan la clasificación permanente V3.
 
     - EMOE: Panorama (confianza empresarial), INEGI, mensual.
@@ -285,12 +285,22 @@ def test_categorias_y_filtros_indicadores_reclasificados(calendario_nuevo):
     # IED es Entorno financiero (inversión), SE-RNIE, trimestral.
     ied = _items_for(calendario_nuevo, "IED")
     assert ied, "No hay eventos IED"
+    indicadores = json.loads((L.DATA_DIR / "indicadores.json").read_text(encoding="utf-8"))
+    assert "inversión extranjera directa" in indicadores["indicators"]["IED"]["nombre"].casefold()
     for e in ied:
         assert e["indicator"] in complementario, "IED debe ser indicador complementario/Entorno financiero"
         assert e["institution"] == "Secretaría de Economía", f"IED institución incorrecta: {e['institution']}"
         assert e["frequency"] == "Trimestral", f"IED frecuencia incorrecta: {e['frequency']}"
         text = f"{e.get('program', '')} {e.get('product', '')}".lower()
-        assert "inversión" in text, f"IED no refleja inversión: {text}"
+        if "inversión extranjera directa" not in text:
+            # El comunicado nacional puede usar la sigla en el título; debe
+            # conservar su alcance explícito y el mismo evento en ambos formatos.
+            assert e.get("product", "").casefold().startswith("ied · comunicado de acumulado nacional")
+            legacy = [r for r in calendario_legacy["items"]
+                      if r["clave"] == "IED" and r.get("fecha_iso") == e["publication_date"]
+                      and r.get("producto") == e["product"]]
+            assert len(legacy) == 1 and legacy[0].get("alcance") == "acumulado_nacional"
+            assert legacy[0]["url_boletin"] == e["url"]
 
     # FIX es Financiero, diario, regla.
     fix = _items_for(calendario_nuevo, "TIPOCAMBIO")

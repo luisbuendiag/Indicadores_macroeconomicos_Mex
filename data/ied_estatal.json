@@ -1,7 +1,7 @@
 {
-  "source_url": "https://www.gob.mx/cms/uploads/attachment/file/1100605/2026_2T_Flujos_TI_OR_2.xlsx",
+  "source_url": "https://www.gob.mx/cms/uploads/attachment/file/1118391/2026_3T_Flujos_TI_OR_2.xlsx",
   "source_page": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa",
-  "source_sha256": "237075853fe6b72b5ea5473dc53b5849bfe3220840de293a72c7e15053f283ce",
+  "source_sha256": "7db4a5ee6a470c62bf0b20ba12761fd422f2e32d9e244288f3461aadc3ed6bf2",
   "unit": "Millones de dólares corrientes",
   "variant": "originalmente_publicadas",
   "basis": "Acumulado desde enero, cifras originalmente publicadas",
@@ -1569,274 +1569,320 @@
         "Yucatán": 260.87092627,
         "Zacatecas": 349.71752385
       }
+    },
+    {
+      "components": {
+        "Nuevas inversiones": 3800.11049282,
+        "Reinversión de utilidades": 34974.88209013,
+        "Cuentas entre compañías": 4315.27849248
+      },
+      "year": 2026,
+      "quarter": 3,
+      "period": "3T-2026",
+      "label": "Ene-Sep 2026",
+      "total": 43090.27107543,
+      "values": {
+        "Aguascalientes": 531.37896444,
+        "Baja California": 2362.13394115,
+        "Baja California Sur": 827.04293405,
+        "Campeche": 30.47379542,
+        "Chiapas": 46.09000635,
+        "Chihuahua": 801.96944047,
+        "Ciudad de México": 19601.72592113,
+        "Coahuila de Zaragoza": 686.47339325,
+        "Colima": 46.26498556,
+        "Durango": 17.30127475,
+        "Guanajuato": 743.23401737,
+        "Guerrero": -205.82775812,
+        "Hidalgo": -134.09793258,
+        "Jalisco": 2707.40885127,
+        "Estado de México": 1483.62828201,
+        "Michoacán de Ocampo": 374.20196881,
+        "Morelos": 249.20275903,
+        "Nayarit": 222.67976756,
+        "Nuevo León": 4430.54683011,
+        "Oaxaca": 62.45998381,
+        "Puebla": 1752.51415943,
+        "Querétaro": 1141.28173407,
+        "Quintana Roo": 666.29279531,
+        "San Luis Potosí": 1495.10574125,
+        "Sinaloa": 168.54803042,
+        "Sonora": 294.10220544,
+        "Tabasco": 261.7882207,
+        "Tamaulipas": 1224.72021298,
+        "Tlaxcala": 109.8207125,
+        "Veracruz de Ignacio de la Llave": 480.03028291,
+        "Yucatán": 277.26471878,
+        "Zacatecas": 334.51083582
+      }
     }
   ],
   "ranking": {
-    "period": "2T-2026",
-    "label": "Ene-Jun 2026",
-    "comparison": "Ene-Jun 2025",
-    "total": 34967.54664001,
+    "period": "3T-2026",
+    "label": "Ene-Sep 2026",
+    "comparison": "Ene-Sep 2025",
+    "total": 43090.27107543,
     "rows": [
       {
         "state": "Ciudad de México",
-        "amount": 16861.98189335,
-        "share": 0.4822180425450968,
+        "amount": 19601.72592113,
+        "share": 0.45489910905450004,
         "rank": 1,
         "previous_rank": 1,
         "change": 0
       },
       {
         "state": "Nuevo León",
-        "amount": 3711.74039368,
-        "share": 0.10614815022318475,
+        "amount": 4430.54683011,
+        "share": 0.1028201197053107,
         "rank": 2,
         "previous_rank": 2,
         "change": 0
       },
       {
-        "state": "Estado de México",
-        "amount": 2114.16655434,
-        "share": 0.060460820317344274,
+        "state": "Jalisco",
+        "amount": 2707.40885127,
+        "share": 0.0628310935090348,
         "rank": 3,
-        "previous_rank": 3,
-        "change": 0
+        "previous_rank": 8,
+        "change": 5
       },
       {
         "state": "Baja California",
-        "amount": 1743.25310896,
-        "share": 0.04985345774774382,
+        "amount": 2362.13394115,
+        "share": 0.05481826598433456,
         "rank": 4,
         "previous_rank": 4,
         "change": 0
       },
       {
-        "state": "Jalisco",
-        "amount": 1406.48288868,
-        "share": 0.04022252127550456,
+        "state": "Puebla",
+        "amount": 1752.51415943,
+        "share": 0.04067076200013234,
         "rank": 5,
-        "previous_rank": 7,
-        "change": 2
+        "previous_rank": 13,
+        "change": 8
       },
       {
         "state": "San Luis Potosí",
-        "amount": 1375.19540578,
-        "share": 0.0393277635385062,
+        "amount": 1495.10574125,
+        "share": 0.034697060471789574,
         "rank": 6,
-        "previous_rank": 15,
-        "change": 9
+        "previous_rank": 14,
+        "change": 8
       },
       {
-        "state": "Puebla",
-        "amount": 998.2749981,
-        "share": 0.028548614187240976,
+        "state": "Estado de México",
+        "amount": 1483.62828201,
+        "share": 0.03443070198869003,
         "rank": 7,
-        "previous_rank": 21,
-        "change": 14
+        "previous_rank": 3,
+        "change": -4
+      },
+      {
+        "state": "Tamaulipas",
+        "amount": 1224.72021298,
+        "share": 0.028422197921106455,
+        "rank": 8,
+        "previous_rank": 12,
+        "change": 4
       },
       {
         "state": "Querétaro",
-        "amount": 863.42277187,
-        "share": 0.02469211754427371,
-        "rank": 8,
-        "previous_rank": 5,
-        "change": -3
-      },
-      {
-        "state": "Chihuahua",
-        "amount": 614.54154059,
-        "share": 0.01757462560690029,
+        "amount": 1141.28173407,
+        "share": 0.026485833242315272,
         "rank": 9,
-        "previous_rank": 6,
-        "change": -3
+        "previous_rank": 7,
+        "change": -2
       },
       {
         "state": "Baja California Sur",
-        "amount": 548.78186511,
-        "share": 0.015694033978411334,
+        "amount": 827.04293405,
+        "share": 0.019193263662747727,
         "rank": 10,
         "previous_rank": 10,
         "change": 0
       },
       {
-        "state": "Aguascalientes",
-        "amount": 520.15503073,
-        "share": 0.014875365323309148,
+        "state": "Chihuahua",
+        "amount": 801.96944047,
+        "share": 0.018611380723647424,
         "rank": 11,
-        "previous_rank": 13,
-        "change": 2
-      },
-      {
-        "state": "Quintana Roo",
-        "amount": 436.13589723,
-        "share": 0.012472590705891035,
-        "rank": 12,
-        "previous_rank": 11,
-        "change": -1
-      },
-      {
-        "state": "Tamaulipas",
-        "amount": 411.69482544,
-        "share": 0.011773626262041995,
-        "rank": 13,
-        "previous_rank": 12,
-        "change": -1
+        "previous_rank": 9,
+        "change": -2
       },
       {
         "state": "Guanajuato",
-        "amount": 411.1447958,
-        "share": 0.011757896544265036,
-        "rank": 14,
-        "previous_rank": 8,
+        "amount": 743.23401737,
+        "share": 0.01724830219956056,
+        "rank": 12,
+        "previous_rank": 6,
         "change": -6
       },
       {
-        "state": "Michoacán de Ocampo",
-        "amount": 409.37242045,
-        "share": 0.011707210250249428,
-        "rank": 15,
-        "previous_rank": 17,
-        "change": 2
-      },
-      {
         "state": "Coahuila de Zaragoza",
-        "amount": 379.97705564,
-        "share": 0.010866563203642913,
-        "rank": 16,
-        "previous_rank": 9,
-        "change": -7
+        "amount": 686.47339325,
+        "share": 0.01593105302234745,
+        "rank": 13,
+        "previous_rank": 5,
+        "change": -8
       },
       {
-        "state": "Zacatecas",
-        "amount": 349.71752385,
-        "share": 0.010001202756668433,
+        "state": "Quintana Roo",
+        "amount": 666.29279531,
+        "share": 0.015462719975551953,
+        "rank": 14,
+        "previous_rank": 11,
+        "change": -3
+      },
+      {
+        "state": "Aguascalientes",
+        "amount": 531.37896444,
+        "share": 0.01233176193089654,
+        "rank": 15,
+        "previous_rank": 16,
+        "change": 1
+      },
+      {
+        "state": "Veracruz de Ignacio de la Llave",
+        "amount": 480.03028291,
+        "share": 0.011140108217692611,
+        "rank": 16,
+        "previous_rank": 30,
+        "change": 14
+      },
+      {
+        "state": "Michoacán de Ocampo",
+        "amount": 374.20196881,
+        "share": 0.008684140514107123,
         "rank": 17,
         "previous_rank": 18,
         "change": 1
       },
       {
-        "state": "Veracruz de Ignacio de la Llave",
-        "amount": 270.38068677,
-        "share": 0.0077323321980109815,
+        "state": "Zacatecas",
+        "amount": 334.51083582,
+        "share": 0.0077630246334360505,
         "rank": 18,
-        "previous_rank": 23,
-        "change": 5
-      },
-      {
-        "state": "Yucatán",
-        "amount": 260.87092627,
-        "share": 0.007460372583631889,
-        "rank": 19,
-        "previous_rank": 25,
-        "change": 6
-      },
-      {
-        "state": "Tabasco",
-        "amount": 254.58648255,
-        "share": 0.007280650403385784,
-        "rank": 20,
         "previous_rank": 32,
-        "change": 12
+        "change": 14
       },
       {
         "state": "Sonora",
-        "amount": 227.39080248,
-        "share": 0.0065029098215263,
-        "rank": 21,
-        "previous_rank": 16,
-        "change": -5
-      },
-      {
-        "state": "Tlaxcala",
-        "amount": 182.84458071,
-        "share": 0.005228979390300964,
-        "rank": 22,
-        "previous_rank": 22,
-        "change": 0
-      },
-      {
-        "state": "Nayarit",
-        "amount": 179.21045768,
-        "share": 0.005125050937229514,
-        "rank": 23,
-        "previous_rank": 19,
-        "change": -4
-      },
-      {
-        "state": "Morelos",
-        "amount": 163.22649668,
-        "share": 0.004667942488514067,
-        "rank": 24,
-        "previous_rank": 20,
-        "change": -4
-      },
-      {
-        "state": "Sinaloa",
-        "amount": 120.05874602,
-        "share": 0.0034334334992386435,
-        "rank": 25,
-        "previous_rank": 27,
+        "amount": 294.10220544,
+        "share": 0.006825257722913156,
+        "rank": 19,
+        "previous_rank": 21,
         "change": 2
       },
       {
-        "state": "Colima",
-        "amount": 84.95588562,
-        "share": 0.0024295638036782702,
-        "rank": 26,
-        "previous_rank": 14,
-        "change": -12
-      },
-      {
-        "state": "Durango",
-        "amount": 79.09617473,
-        "share": 0.0022619881098406218,
-        "rank": 27,
-        "previous_rank": 31,
+        "state": "Yucatán",
+        "amount": 277.26471878,
+        "share": 0.006434508576069179,
+        "rank": 20,
+        "previous_rank": 24,
         "change": 4
       },
       {
-        "state": "Chiapas",
-        "amount": 77.71692777,
-        "share": 0.00222254448017454,
-        "rank": 28,
-        "previous_rank": 28,
-        "change": 0
-      },
-      {
-        "state": "Oaxaca",
-        "amount": 56.06510293,
-        "share": 0.0016033467691396485,
-        "rank": 29,
-        "previous_rank": 30,
+        "state": "Tabasco",
+        "amount": 261.7882207,
+        "share": 0.0060753440200396235,
+        "rank": 21,
+        "previous_rank": 22,
         "change": 1
       },
       {
-        "state": "Campeche",
-        "amount": 34.27068375,
-        "share": 0.0009800711529126085,
-        "rank": 30,
+        "state": "Morelos",
+        "amount": 249.20275903,
+        "share": 0.005783272019657704,
+        "rank": 22,
+        "previous_rank": 26,
+        "change": 4
+      },
+      {
+        "state": "Nayarit",
+        "amount": 222.67976756,
+        "share": 0.00516775044580705,
+        "rank": 23,
+        "previous_rank": 17,
+        "change": -6
+      },
+      {
+        "state": "Sinaloa",
+        "amount": 168.54803042,
+        "share": 0.003911510097603118,
+        "rank": 24,
+        "previous_rank": 28,
+        "change": 4
+      },
+      {
+        "state": "Tlaxcala",
+        "amount": 109.8207125,
+        "share": 0.002548619671195793,
+        "rank": 25,
+        "previous_rank": 19,
+        "change": -6
+      },
+      {
+        "state": "Oaxaca",
+        "amount": 62.45998381,
+        "share": 0.0014495147570704092,
+        "rank": 26,
         "previous_rank": 29,
+        "change": 3
+      },
+      {
+        "state": "Colima",
+        "amount": 46.26498556,
+        "share": 0.0010736758995786456,
+        "rank": 27,
+        "previous_rank": 15,
+        "change": -12
+      },
+      {
+        "state": "Chiapas",
+        "amount": 46.09000635,
+        "share": 0.00106961514048772,
+        "rank": 28,
+        "previous_rank": 27,
         "change": -1
       },
       {
+        "state": "Campeche",
+        "amount": 30.47379542,
+        "share": 0.000707208255122259,
+        "rank": 29,
+        "previous_rank": 23,
+        "change": -6
+      },
+      {
+        "state": "Durango",
+        "amount": 17.30127475,
+        "share": 0.00040151232095323624,
+        "rank": 30,
+        "previous_rank": 31,
+        "change": 1
+      },
+      {
         "state": "Hidalgo",
-        "amount": -61.12291128,
-        "share": -0.0017479896976833637,
+        "amount": -134.09793258,
+        "share": -0.0031120234158021442,
         "rank": 31,
-        "previous_rank": 24,
-        "change": -7
+        "previous_rank": 25,
+        "change": -6
       },
       {
         "state": "Guerrero",
-        "amount": -118.04337225,
-        "share": -0.0033757979496031997,
+        "amount": -205.82775812,
+        "share": -0.004776664267432809,
         "rank": 32,
-        "previous_rank": 26,
-        "change": -6
+        "previous_rank": 20,
+        "change": -12
       }
     ]
   },
-  "validated_at": "2026-11-16T20:45:35.898000+00:00",
-  "last_checked": "2026-11-16T20:45:35.898000+00:00",
+  "validated_at": "2026-11-27T23:05:13.878625+00:00",
+  "last_checked": "2026-11-27T23:05:13.878625+00:00",
   "download_status": "ok",
   "download_errors": []
 }

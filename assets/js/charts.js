@@ -13,12 +13,39 @@ function addMonths(d, n) {
   return new Date(d.getFullYear(), d.getMonth() + n, 1);
 }
 
+const tasaToday = new Intl.DateTimeFormat("sv-SE", { timeZone: "America/Mexico_City" });
+
+function tasaWindow(ind, win) {
+  const changes = ind.regimen;
+  const today = tasaToday.format();
+  const observedThrough = ind.last_observation || changes[changes.length - 1].period;
+  const end = observedThrough < today ? observedThrough : today;
+  const effective = changes.filter((o) => o.period <= end);
+  if (!effective.length) return [];
+
+  const years = /^(\d+)a$/.exec(win.id);
+  let visible = effective;
+  if (years) {
+    const [year, month, day] = end.split("-").map(Number);
+    const startYear = year - Number(years[1]);
+    const daysInMonth = new Date(Date.UTC(startYear, month, 0)).getUTCDate();
+    const start = new Date(Date.UTC(startYear, month - 1, Math.min(day, daysInMonth))).toISOString().slice(0, 10);
+    const firstVisible = effective.findIndex((o) => o.period >= start);
+    visible = firstVisible < 0 ? [] : effective.slice(firstVisible);
+    const prior = firstVisible < 0 ? effective[effective.length - 1] : effective[firstVisible - 1];
+    if (prior && visible[0]?.period !== start) visible.unshift({ ...prior, period: start });
+  }
+  const last = visible[visible.length - 1];
+  return last.period === end ? visible : [...visible, { ...last, period: end }];
+}
+
 export function applyWindow(ind, windowId) {
   const wins = ind.windows || WINDOWS;
   const win = wins.find((w) => w.id === windowId) || wins[wins.length - 1];
+  if (ind.key === "TASA" && ind.regimen?.length) return tasaWindow(ind, win);
   const base = ind._useOriginal && ind.observations_original?.length
     ? ind.observations_original
-    : (ind.key === "TASA" && ind.regimen?.length ? ind.regimen : (ind.observations || []));
+    : (ind.observations || []);
   let obs = base;
   if (!obs.length || win.id === "max") return obs;
   if (win.count != null) {
@@ -83,13 +110,13 @@ function chartSpec(ind, obs) {
       ],
       lines: [
         { name: "PIB total", values: col(5), color: INK },
-        { name: "Var. trim. PIB (%)", values: col(6).map((v) => v == null ? null : v * 100), color: INK, dash: true, axis: "right" },
-        { name: "Var. trim. Primarias (%)", values: col(8).map((v) => v == null ? null : v * 100), color: G, dash: true, axis: "right" },
-        { name: "Var. trim. Secundarias (%)", values: col(10).map((v) => v == null ? null : v * 100), color: SEC, dash: true, axis: "right" },
-        { name: "Var. trim. Terciarias (%)", values: col(3).map((v) => v == null ? null : v * 100), color: Go, dash: true, axis: "right" },
+        { name: "Var. trim. PIB desest. (%)", values: col(6).map((v) => v == null ? null : v * 100), color: INK, dash: true, axis: "right" },
+        { name: "Var. trim. Primarias desest. (%)", values: col(8).map((v) => v == null ? null : v * 100), color: G, dash: true, axis: "right" },
+        { name: "Var. trim. Secundarias desest. (%)", values: col(10).map((v) => v == null ? null : v * 100), color: SEC, dash: true, axis: "right" },
+        { name: "Var. trim. Terciarias desest. (%)", values: col(3).map((v) => v == null ? null : v * 100), color: Go, dash: true, axis: "right" },
       ],
       leftName: "Millones de pesos",
-      rightName: "Variación trimestral (%)",
+      rightName: "Variación trimestral desest. (%)",
       leftFmt: "compact",
       rightFmt: "pct",
     };
@@ -140,9 +167,10 @@ function chartSpec(ind, obs) {
       ],
       leftName: "Puntos (100 = tendencia de largo plazo)", leftFmt: "idx"
     };
+    case "REMESAS": return { periods: P, lines: [{ name: "Remesas mensuales", values: col(0), color: G }, { name: "Var. anual original (%)", values: col(1).map((v) => v == null ? null : v * 100), color: Go, axis: "right" }], leftName: "Millones de dólares", rightName: "Var. anual (%)", leftFmt: "compact", rightFmt: "pct" };
     case "RESERVAS": return { periods: P, lines: [{ name: "Reservas internacionales", values: col(0), color: G }], leftName: "Millones de dólares", leftFmt: "compact" };
     case "TIPOCAMBIO": return { periods: P, lines: [{ name: "Tipo de cambio FIX", values: col(0), color: G }], leftName: "Pesos por dólar", leftFmt: "idx" };
-    case "TASA": return { periods: P, lines: [{ name: "Tasa objetivo (%)", values: col(0), color: G, step: "start" }], leftName: "Porcentaje (%)", leftFmt: "pct" };
+    case "TASA": return { periods: P, lines: [{ name: "Tasa objetivo (%)", values: col(0), color: G, step: "end" }], leftName: "Porcentaje (%)", leftFmt: "pct-rate" };
     case "EMOE": return { periods: P, lines: [{ name: "IGOEC", values: col(0), color: G, refLine: 50 }], leftName: "Puntos", leftFmt: "idx" };
     case "BCMM": return { periods: P, bars: [{ name: "Exportaciones", values: col(0), color: G }, { name: "Importaciones", values: col(1), color: SEC }], lines: [{ name: "Saldo (X − M)", values: saldo, color: Go, axis: "right" }], leftName: "Millones de dólares", rightName: "Saldo (mdd)", leftFmt: "compact", rightFmt: "compact" };
     default: return { periods: P, lines: [{ name: ind.nombre, values: col(0), color: G }], leftName: "", leftFmt: "num" };
@@ -151,6 +179,7 @@ function chartSpec(ind, obs) {
 
 function axisFormatter(fmt) {
   return (v) => {
+    if (fmt === "pct-rate") return v.toLocaleString("es-MX", { maximumFractionDigits: 2 }) + "%";
     if (fmt === "pct") return (Math.round(v * 10) / 10).toLocaleString("es-MX") + "%";
     if (fmt === "idx") return (Math.round(v * 10) / 10).toLocaleString("es-MX");
     if (fmt === "compact") return v.toLocaleString("es-MX", { notation: "compact", maximumFractionDigits: 1 });
@@ -161,6 +190,7 @@ function axisFormatter(fmt) {
 function tipFormatter(specFmt) {
   return (v) => {
     if (v == null || isNaN(v)) return "—";
+    if (specFmt === "pct-rate") return fmtVal(v, "pct-rate");
     if (specFmt === "pct") return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
     if (specFmt === "idx") return v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
     return Math.round(v).toLocaleString("es-MX");
@@ -173,6 +203,7 @@ const FONT = "'Noto Sans', system-ui, sans-serif";
 export function buildOption(ind, windowId) {
   const obs = applyWindow(ind, windowId);
   const spec = chartSpec(ind, obs);
+  const tasaTimeAxis = ind.key === "TASA" && !!ind.regimen?.length;
   const bars = spec.bars || [];
   const lines = spec.lines || [];
   const hasRight = [...bars, ...lines].some((s) => s.axis === "right");
@@ -182,7 +213,7 @@ export function buildOption(ind, windowId) {
   const yAxis = [{
     type: "value", name: spec.leftName, nameLocation: "middle", nameGap: 52,
     nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 11, fontWeight: 500 },
-    axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 11, formatter: axisFormatter(spec.leftFmt) },
+    axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: 11, formatter: axisFormatter(spec.leftFmt) },
     splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false },
     scale: !leftHasBars,
   }];
@@ -190,7 +221,7 @@ export function buildOption(ind, windowId) {
     yAxis.push({
       type: "value", name: spec.rightName || "", nameLocation: "middle", nameGap: 48,
       nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 11, fontWeight: 500 },
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 11, formatter: axisFormatter(spec.rightFmt) },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: 11, formatter: axisFormatter(spec.rightFmt) },
       splitLine: { show: false }, axisLine: { show: false }, axisTick: { show: false },
       scale: !rightHasBars,
     });
@@ -221,7 +252,9 @@ export function buildOption(ind, windowId) {
     const fmt = l.axis === "right" ? rightFmt : leftFmt;
     const ref = refLine(fmt, l.refLine);
     const s = {
-      name: l.name, type: "line", data: l.values, yAxisIndex: l.axis === "right" ? 1 : 0,
+      name: l.name, type: "line",
+      data: tasaTimeAxis ? l.values.map((v, i) => [Date.parse(spec.periods[i]), v]) : l.values,
+      yAxisIndex: l.axis === "right" ? 1 : 0,
       smooth: false, symbol: "circle", symbolSize: 5, connectNulls: false,
       step: l.step || undefined,
       lineStyle: { color: l.color, width: 2.4, type: l.dash ? "dashed" : "solid" },
@@ -258,10 +291,11 @@ export function buildOption(ind, windowId) {
     if (yRange) { yAxis[1].min = yRange.min; yAxis[1].max = yRange.max; }
   }
 
-  const rotate = spec.periods.length > 12;
+  const rotate = !tasaTimeAxis && spec.periods.length > 12;
   return {
     color: [G, SEC, Go, REF, COLORS.DKGREEN, COLORS.WINE],
     animation: false,
+    useUTC: tasaTimeAxis,
     grid: { left: 66, right: hasRight ? 62 : 24, top: 52, bottom: rotate ? 64 : 44, containLabel: false },
     legend: {
       top: 6, left: "center", right: 8, itemWidth: 12, itemHeight: 12, icon: "roundRect",
@@ -275,11 +309,12 @@ export function buildOption(ind, windowId) {
       extraCssText: "box-shadow:0 5px 16px rgba(0,0,0,.13);border-radius:9px;",
       formatter: (params) => {
         if (!params || !params.length) return "";
-        let html = `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${params[0].axisValue}</div>`;
+        const period = tasaTimeAxis ? new Date(params[0].value[0]).toISOString().slice(0, 10) : params[0].axisValue;
+        let html = `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#10312B;margin-bottom:5px">${period}</div>`;
         params.forEach((p) => {
           const s = series.find((se) => se.name === p.seriesName);
           const fmt = s ? s._fmt : "num";
-          html += `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${tipFormatter(fmt)(p.value)}</span></div>`;
+          html += `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#4d4d4d;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${tipFormatter(fmt)(tasaTimeAxis ? p.value[1] : p.value)}</span></div>`;
         });
         return html;
       },
@@ -287,12 +322,16 @@ export function buildOption(ind, windowId) {
     toolbox: {
       right: 4, top: 2, itemSize: 14,
       feature: { saveAsImage: { title: "Guardar imagen", name: `${ind.key}`, pixelRatio: 2, backgroundColor: "#fff" } },
-      iconStyle: { borderColor: "#8a8d86" },
+      iconStyle: { borderColor: "#7a7a7a" },
     },
-    xAxis: {
+    xAxis: tasaTimeAxis ? {
+      type: "time", min: "dataMin", max: "dataMax", splitNumber: 5,
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: 10, hideOverlap: true },
+      axisLine: { lineStyle: { color: "#cfcfcf" } }, axisTick: { show: false },
+    } : {
       type: "category", data: spec.periods, boundaryGap: bars.length > 0,
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: rotate ? 9 : 10, rotate: rotate ? 42 : 0, interval: spec.periods.length > 16 ? "auto" : 0 },
-      axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: rotate ? 9 : 10, rotate: rotate ? 42 : 0, interval: spec.periods.length > 16 ? "auto" : 0 },
+      axisLine: { lineStyle: { color: "#cfcfcf" } }, axisTick: { show: false },
     },
     yAxis,
     series,
@@ -375,13 +414,13 @@ export function buildPibsecLevels(obs) {
     grids.push({ left, top, width, height, containLabel: false });
     xAxes.push({
       gridIndex: i, type: "category", data: periods, boundaryGap: false,
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: rotate ? 8 : 9, rotate: rotate ? 42 : 0, interval: periods.length > 16 ? "auto" : 0 },
-      axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: rotate ? 8 : 9, rotate: rotate ? 42 : 0, interval: periods.length > 16 ? "auto" : 0 },
+      axisLine: { lineStyle: { color: "#cfcfcf" } }, axisTick: { show: false },
     });
     yAxes.push({
       gridIndex: i, type: "value", name: "Billones de pesos (2018)", nameLocation: "middle", nameGap: 34,
       nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 10, fontWeight: 500 },
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => (v / 1e6).toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 2 }) },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: 10, formatter: (v) => (v / 1e6).toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 2 }) },
       splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
     });
     const values = obs.map((o) => o.values[cfg.col] ?? null);
@@ -410,26 +449,26 @@ export function buildPibsecLevels(obs) {
         const p = params[0];
         const v = p.value;
         const val = v == null ? "—" : (v / 1e6).toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " billones de pesos de 2018";
-        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
-          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
+        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#10312B;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#4d4d4d;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
       },
     },
-    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "PIBT-niveles", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "PIBT-niveles", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#7a7a7a" } },
   };
 }
 
 // ---------------- PIBT: variaciones agrupadas (qoq / yoy) ----------------
 const PIBSEC_VAR = [
-  { name: "PIB", qoq: 6, yoy: 7, color: COLORS.INK },
-  { name: "Primarias", qoq: 8, yoy: 9, color: G },
-  { name: "Secundarias", qoq: 10, yoy: 11, color: COLORS.CRIMSON },
-  { name: "Terciarias", qoq: 3, yoy: 4, color: Go },
+  { name: "PIB", qoq: 6, yoy: 12, color: COLORS.INK },
+  { name: "Primarias", qoq: 8, yoy: 13, color: G },
+  { name: "Secundarias", qoq: 10, yoy: 14, color: COLORS.CRIMSON },
+  { name: "Terciarias", qoq: 3, yoy: 15, color: Go },
 ];
 
 function pctTip(value, name, color) {
   if (value == null) return "";
   const s = value >= 0 ? "+" : "";
-  return `<div style="display:flex;align-items:center;gap:8px;margin:2px 0"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:${color}"></span><span style="flex:1;color:#5c5f5a;font-size:11px">${name}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${s}${value.toFixed(2)}%</span></div>`;
+  return `<div style="display:flex;align-items:center;gap:8px;margin:2px 0"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:${color}"></span><span style="flex:1;color:#4d4d4d;font-size:11px">${name}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${s}${value.toFixed(2)}%</span></div>`;
 }
 
 export function buildPibsecVariations(obs) {
@@ -440,8 +479,8 @@ export function buildPibsecVariations(obs) {
   ];
   const xAxis = grids.map((_, i) => ({
     gridIndex: i, type: "category", data: periods, boundaryGap: true,
-    axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: periods.length > 12 ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: periods.length > 16 ? 42 : 0 },
-    axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+    axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: periods.length > 12 ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: periods.length > 16 ? 42 : 0 },
+    axisLine: { lineStyle: { color: "#cfcfcf" } }, axisTick: { show: false },
   }));
   const qoqAll = [];
   const yoyAll = [];
@@ -469,9 +508,9 @@ export function buildPibsecVariations(obs) {
   const yAxis = grids.map((_, i) => {
     const range = i === 0 ? qoqRange : yoyRange;
     const ay = {
-      gridIndex: i, type: "value", name: i === 0 ? "Variación trimestral (%)" : "Variación anual (%)", nameLocation: "middle", nameGap: 40,
+      gridIndex: i, type: "value", name: i === 0 ? "Trimestral desest. (%)" : "Anual original (%)", nameLocation: "middle", nameGap: 40,
       nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 11, fontWeight: 500 },
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toFixed(1) + "%" },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toFixed(1) + "%" },
       splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
     };
     if (range) { ay.min = range.min; ay.max = range.max; }
@@ -487,7 +526,7 @@ export function buildPibsecVariations(obs) {
       formatter: (params) => {
         if (!params || !params.length) return "";
         const p0 = params[0];
-        let html = `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p0.axisValue}</div>`;
+        let html = `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#10312B;margin-bottom:5px">${p0.axisValue}</div>`;
         params.forEach((p) => {
           const cfg = PIBSEC_VAR.find((c) => c.name === p.seriesName);
           html += pctTip(p.value, p.seriesName, cfg ? cfg.color : COLORS.GRAY);
@@ -496,7 +535,7 @@ export function buildPibsecVariations(obs) {
       },
     },
     legend: { top: 10, left: "center", itemWidth: 12, itemHeight: 12, icon: "roundRect", textStyle: { color: "#3d403b", fontFamily: FONT, fontSize: 11 } },
-    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "PIBT-variaciones", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "PIBT-variaciones", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#7a7a7a" } },
   };
 }
 
@@ -523,13 +562,13 @@ export function buildEmoeSectors(obs) {
     grids.push({ left, top, width, height, containLabel: false });
     xAxes.push({
       gridIndex: i, type: "category", data: periods, boundaryGap: false,
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 },
-      axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 },
+      axisLine: { lineStyle: { color: "#cfcfcf" } }, axisTick: { show: false },
     });
     yAxes.push({
       gridIndex: i, type: "value", name: "Puntos", nameLocation: "middle", nameGap: 34,
       nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 10, fontWeight: 500 },
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) },
       splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
     });
     const values = obs.map((o) => o.values[cfg.col] ?? null);
@@ -559,11 +598,11 @@ export function buildEmoeSectors(obs) {
         const p = params[0];
         const v = p.value;
         const val = v == null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " puntos";
-        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
-          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
+        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#10312B;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#4d4d4d;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
       },
     },
-    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "EMOE-sectores", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "EMOE-sectores", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#7a7a7a" } },
   };
 }
 
@@ -606,13 +645,13 @@ export function buildSicComponents(obs, group) {
     grids.push({ left, top, width, height, containLabel: false });
     xAxes.push({
       gridIndex: i, type: "category", data: periods, boundaryGap: false,
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 },
-      axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 },
+      axisLine: { lineStyle: { color: "#cfcfcf" } }, axisTick: { show: false },
     });
     yAxes.push({
       gridIndex: i, type: "value", name: "Puntos", nameLocation: "middle", nameGap: 34,
       nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 10, fontWeight: 500 },
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) },
       splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
     });
     const values = obs.map((o) => (o.values && o.values.length > cfg.col ? o.values[cfg.col] : null) ?? null);
@@ -642,11 +681,11 @@ export function buildSicComponents(obs, group) {
         const p = params[0];
         const v = p.value;
         const val = v == null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " puntos";
-        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
-          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
+        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#10312B;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#4d4d4d;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
       },
     },
-    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "SIC-componentes-" + group, pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "SIC-componentes-" + group, pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#7a7a7a" } },
   };
 }
 
@@ -673,13 +712,13 @@ export function buildIgaeLevels(obs) {
     grids.push({ left, top, width, height, containLabel: false });
     xAxes.push({
       gridIndex: i, type: "category", data: periods, boundaryGap: false,
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 },
-      axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 },
+      axisLine: { lineStyle: { color: "#cfcfcf" } }, axisTick: { show: false },
     });
     yAxes.push({
       gridIndex: i, type: "value", name: "Índice (2018=100)", nameLocation: "middle", nameGap: 34,
       nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 10, fontWeight: 500 },
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) },
       splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
     });
     const values = obs.map((o) => o.values[cfg.col] ?? null);
@@ -708,11 +747,11 @@ export function buildIgaeLevels(obs) {
         const p = params[0];
         const v = p.value;
         const val = v == null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
-          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
+        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#10312B;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#4d4d4d;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
       },
     },
-    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "IGAE-niveles", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "IGAE-niveles", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#7a7a7a" } },
   };
 }
 
@@ -742,14 +781,14 @@ export function buildIgaeVariations(obs) {
   const yAxis = {
     type: "value", name: "Variación anual (%)", nameLocation: "middle", nameGap: 40,
     nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 11, fontWeight: 500 },
-    axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toFixed(1) + "%" },
+    axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toFixed(1) + "%" },
     splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
   };
   if (yoyRange) { yAxis.min = yoyRange.min; yAxis.max = yoyRange.max; }
   return {
     animation: false, color: [COLORS.INK, G, COLORS.CRIMSON, Go],
     grid: { left: "4%", right: "4%", top: 50, height: 240, containLabel: false },
-    xAxis: { type: "category", data: periods, boundaryGap: true, axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: periods.length > 12 ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: periods.length > 16 ? 42 : 0 }, axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false } },
+    xAxis: { type: "category", data: periods, boundaryGap: true, axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: periods.length > 12 ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: periods.length > 16 ? 42 : 0 }, axisLine: { lineStyle: { color: "#cfcfcf" } }, axisTick: { show: false } },
     yAxis,
     series,
     tooltip: {
@@ -759,7 +798,7 @@ export function buildIgaeVariations(obs) {
       formatter: (params) => {
         if (!params || !params.length) return "";
         const p0 = params[0];
-        let html = `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p0.axisValue}</div>`;
+        let html = `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#10312B;margin-bottom:5px">${p0.axisValue}</div>`;
         params.forEach((p) => {
           const cfg = IGAE_VAR.find((c) => c.name === p.seriesName);
           html += pctTip(p.value, p.seriesName, cfg ? cfg.color : COLORS.GRAY);
@@ -768,7 +807,7 @@ export function buildIgaeVariations(obs) {
       },
     },
     legend: { top: 10, left: "center", itemWidth: 12, itemHeight: 12, icon: "roundRect", textStyle: { color: "#3d403b", fontFamily: FONT, fontSize: 11 } },
-    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "IGAE-variaciones", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "IGAE-variaciones", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#7a7a7a" } },
   };
 }
 
@@ -796,13 +835,13 @@ export function buildImaiLevels(obs) {
     grids.push({ left, top, width, height, containLabel: false });
     xAxes.push({
       gridIndex: i, type: "category", data: periods, boundaryGap: false,
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 },
-      axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 },
+      axisLine: { lineStyle: { color: "#cfcfcf" } }, axisTick: { show: false },
     });
     yAxes.push({
       gridIndex: i, type: "value", name: "Índice (2018=100)", nameLocation: "middle", nameGap: 34,
       nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 10, fontWeight: 500 },
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) },
       splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
     });
     const values = obs.map((o) => (o.values && o.values.length > cfg.col ? o.values[cfg.col] : null));
@@ -831,11 +870,11 @@ export function buildImaiLevels(obs) {
         const p = params[0];
         const v = p.value;
         const val = v == null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
-          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
+        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#10312B;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#4d4d4d;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
       },
     },
-    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "IMAI-niveles", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "IMAI-niveles", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#7a7a7a" } },
   };
 }
 
@@ -856,8 +895,8 @@ export function buildImaiVariations(obs) {
   ];
   const xAxes = grids.map((_, i) => ({
     gridIndex: i, type: "category", data: periods, boundaryGap: true,
-    axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: periods.length > 12 ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: periods.length > 16 ? 42 : 0 },
-    axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+    axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: periods.length > 12 ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: periods.length > 16 ? 42 : 0 },
+    axisLine: { lineStyle: { color: "#cfcfcf" } }, axisTick: { show: false },
   }));
   const momAll = [];
   const yoyAll = [];
@@ -887,7 +926,7 @@ export function buildImaiVariations(obs) {
     const ay = {
       gridIndex: i, type: "value", name: i === 0 ? "Variación mensual (%)" : "Variación anual (%)", nameLocation: "middle", nameGap: 40,
       nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 11, fontWeight: 500 },
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toFixed(1) + "%" },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toFixed(1) + "%" },
       splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
     };
     if (range) { ay.min = range.min; ay.max = range.max; }
@@ -904,7 +943,7 @@ export function buildImaiVariations(obs) {
       formatter: (params) => {
         if (!params || !params.length) return "";
         const p0 = params[0];
-        let html = `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p0.axisValue}</div>`;
+        let html = `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#10312B;margin-bottom:5px">${p0.axisValue}</div>`;
         params.forEach((p) => {
           const cfg = IMAI_VAR.find((c) => c.name === p.seriesName);
           html += pctTip(p.value, p.seriesName, cfg ? cfg.color : COLORS.GRAY);
@@ -913,7 +952,7 @@ export function buildImaiVariations(obs) {
       },
     },
     legend: { top: 10, left: "center", itemWidth: 12, itemHeight: 12, icon: "roundRect", textStyle: { color: "#3d403b", fontFamily: FONT, fontSize: 11 } },
-    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "IMAI-variaciones", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "IMAI-variaciones", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#7a7a7a" } },
   };
 }
 
@@ -949,13 +988,13 @@ export function buildImfbcfLevels(obs) {
     grids.push({ left, top, width, height, containLabel: false });
     xAxes.push({
       gridIndex: i, type: "category", data: periods, boundaryGap: false,
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 },
-      axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 },
+      axisLine: { lineStyle: { color: "#cfcfcf" } }, axisTick: { show: false },
     });
     yAxes.push({
       gridIndex: i, type: "value", name: "Índice (2018=100)", nameLocation: "middle", nameGap: 34,
       nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 10, fontWeight: 500 },
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) },
       splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
     });
     const values = obs.map((o) => o.values[cfg.col] ?? null);
@@ -984,11 +1023,11 @@ export function buildImfbcfLevels(obs) {
         const p = params[0];
         const v = p.value;
         const val = v == null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
-          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
+        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#10312B;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#4d4d4d;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
       },
     },
-    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "IMFBCF-niveles", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "IMFBCF-niveles", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#7a7a7a" } },
   };
 }
 
@@ -1010,8 +1049,8 @@ export function buildImfbcfVariations(obs) {
   ];
   const xAxes = grids.map((_, i) => ({
     gridIndex: i, type: "category", data: periods, boundaryGap: true,
-    axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: periods.length > 12 ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: periods.length > 16 ? 42 : 0 },
-    axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+    axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: periods.length > 12 ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: periods.length > 16 ? 42 : 0 },
+    axisLine: { lineStyle: { color: "#cfcfcf" } }, axisTick: { show: false },
   }));
   const momAll = [];
   const yoyAll = [];
@@ -1043,7 +1082,7 @@ export function buildImfbcfVariations(obs) {
     const ay = {
       gridIndex: i, type: "value", name: i === 0 ? "Variación mensual desest. (%)" : "Variación anual desest. (%)", nameLocation: "middle", nameGap: 40,
       nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 11, fontWeight: 500 },
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toFixed(1) + "%" },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toFixed(1) + "%" },
       splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
     };
     if (range) { ay.min = range.min; ay.max = range.max; }
@@ -1060,7 +1099,7 @@ export function buildImfbcfVariations(obs) {
       formatter: (params) => {
         if (!params || !params.length) return "";
         const p0 = params[0];
-        let html = `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p0.axisValue}</div>`;
+        let html = `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#10312B;margin-bottom:5px">${p0.axisValue}</div>`;
         params.forEach((p) => {
           const cfg = IMFBCF_VAR.find((c) => c.name === p.seriesName);
           html += pctTip(p.value, p.seriesName, cfg ? cfg.color : COLORS.GRAY);
@@ -1069,7 +1108,7 @@ export function buildImfbcfVariations(obs) {
       },
     },
     legend: { top: 10, left: "center", itemWidth: 12, itemHeight: 12, icon: "roundRect", textStyle: { color: "#3d403b", fontFamily: FONT, fontSize: 11 } },
-    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "IMFBCF-variaciones", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "IMFBCF-variaciones", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#7a7a7a" } },
   };
 }
 
@@ -1096,13 +1135,13 @@ export function buildEmimLevels(obs) {
     grids.push({ left, top, width, height, containLabel: false });
     xAxes.push({
       gridIndex: i, type: "category", data: periods, boundaryGap: false,
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 },
-      axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 },
+      axisLine: { lineStyle: { color: "#cfcfcf" } }, axisTick: { show: false },
     });
     yAxes.push({
       gridIndex: i, type: "value", name: "Índice (2018=100)", nameLocation: "middle", nameGap: 34,
       nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 10, fontWeight: 500 },
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) },
       splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
     });
     const values = obs.map((o) => (o.values && o.values.length > cfg.col ? o.values[cfg.col] : null));
@@ -1131,11 +1170,11 @@ export function buildEmimLevels(obs) {
         const p = params[0];
         const v = p.value;
         const val = v == null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
-          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
+        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#10312B;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#4d4d4d;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
       },
     },
-    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "EMIM-niveles", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "EMIM-niveles", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#7a7a7a" } },
   };
 }
 
@@ -1190,14 +1229,14 @@ export function buildEmimVariations(obs) {
   const yAxis = {
     type: "value", name: "Variación anual (%)", nameLocation: "middle", nameGap: 40,
     nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 11, fontWeight: 500 },
-    axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toFixed(1) + "%" },
+    axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toFixed(1) + "%" },
     splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
   };
   if (yoyRange) { yAxis.min = yoyRange.min; yAxis.max = yoyRange.max; }
   return {
     animation: false, color: [COLORS.INK, G, COLORS.CRIMSON, Go],
     grid: { left: "4%", right: "4%", top: 50, height: 240, containLabel: false },
-    xAxis: { type: "category", data: periods, boundaryGap: true, axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: periods.length > 12 ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: periods.length > 16 ? 42 : 0 }, axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false } },
+    xAxis: { type: "category", data: periods, boundaryGap: true, axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: periods.length > 12 ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: periods.length > 16 ? 42 : 0 }, axisLine: { lineStyle: { color: "#cfcfcf" } }, axisTick: { show: false } },
     yAxis,
     series,
     tooltip: {
@@ -1207,7 +1246,7 @@ export function buildEmimVariations(obs) {
       formatter: (params) => {
         if (!params || !params.length) return "";
         const p0 = params[0];
-        let html = `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p0.axisValue}</div>`;
+        let html = `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#10312B;margin-bottom:5px">${p0.axisValue}</div>`;
         params.forEach((p) => {
           const cfg = EMIM_VAR.find((c) => p.seriesName === c.name || p.seriesName === `${c.name} (desest.)`);
           html += pctTip(p.value, p.seriesName, cfg ? cfg.color : COLORS.GRAY);
@@ -1216,7 +1255,7 @@ export function buildEmimVariations(obs) {
       },
     },
     legend: { top: 10, left: "center", itemWidth: 12, itemHeight: 12, icon: "roundRect", textStyle: { color: "#3d403b", fontFamily: FONT, fontSize: 11 } },
-    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "EMIM-variaciones", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "EMIM-variaciones", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#7a7a7a" } },
   };
 }
 
@@ -1266,7 +1305,7 @@ function moneyTip(value, name, color) {
   if (value == null) return "";
   const s = value < 0 ? "−" : "";
   const txt = s + "$" + Math.abs(value).toLocaleString("es-MX", { maximumFractionDigits: 0 }) + " mdd";
-  return `<div style="display:flex;align-items:center;gap:8px;margin:2px 0"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:${color}"></span><span style="flex:1;color:#5c5f5a;font-size:11px">${name}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${txt}</span></div>`;
+  return `<div style="display:flex;align-items:center;gap:8px;margin:2px 0"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:${color}"></span><span style="flex:1;color:#4d4d4d;font-size:11px">${name}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${txt}</span></div>`;
 }
 
 export function buildBcmmLevels(obs) {
@@ -1283,13 +1322,13 @@ export function buildBcmmLevels(obs) {
     grids.push({ left, top, width, height, containLabel: false });
     xAxes.push({
       gridIndex: i, type: "category", data: periods, boundaryGap: false,
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 },
-      axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 },
+      axisLine: { lineStyle: { color: "#cfcfcf" } }, axisTick: { show: false },
     });
     yAxes.push({
       gridIndex: i, type: "value", name: cfg.yName, nameLocation: "middle", nameGap: 36,
       nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 10, fontWeight: 500 },
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toLocaleString("es-MX", { maximumFractionDigits: 0 }) },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toLocaleString("es-MX", { maximumFractionDigits: 0 }) },
       splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
     });
     let allValues = [];
@@ -1320,7 +1359,7 @@ export function buildBcmmLevels(obs) {
       formatter: (params) => {
         if (!params || !params.length) return "";
         const p0 = params[0];
-        let html = `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p0.axisValue}</div>`;
+        let html = `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#10312B;margin-bottom:5px">${p0.axisValue}</div>`;
         params.forEach((p) => {
           html += moneyTip(p.value, p.seriesName, p.color);
         });
@@ -1328,7 +1367,7 @@ export function buildBcmmLevels(obs) {
       },
     },
     legend: { top: 10, left: "center", itemWidth: 12, itemHeight: 12, icon: "roundRect", textStyle: { color: "#3d403b", fontFamily: FONT, fontSize: 11 } },
-    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "BCMM-niveles", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "BCMM-niveles", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#7a7a7a" } },
   };
 }
 
@@ -1373,13 +1412,13 @@ export function buildBcmmVariations(obs) {
     grids.push({ left, top, width, height, containLabel: false });
     xAxes.push({
       gridIndex: i, type: "category", data: periods, boundaryGap: true,
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 },
-      axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 },
+      axisLine: { lineStyle: { color: "#cfcfcf" } }, axisTick: { show: false },
     });
     yAxes.push({
       gridIndex: i, type: "value", name: "Variación anual (%)", nameLocation: "middle", nameGap: 34,
       nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 10, fontWeight: 500 },
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toFixed(1) + "%" },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toFixed(1) + "%" },
       splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
     });
     let allValues = [];
@@ -1412,7 +1451,7 @@ export function buildBcmmVariations(obs) {
       formatter: (params) => {
         if (!params || !params.length) return "";
         const p0 = params[0];
-        let html = `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p0.axisValue}</div>`;
+        let html = `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#10312B;margin-bottom:5px">${p0.axisValue}</div>`;
         params.forEach((p) => {
           html += pctTip(p.value, p.seriesName, p.color);
         });
@@ -1420,7 +1459,7 @@ export function buildBcmmVariations(obs) {
       },
     },
     legend: { top: 10, left: "center", itemWidth: 12, itemHeight: 12, icon: "roundRect", textStyle: { color: "#3d403b", fontFamily: FONT, fontSize: 11 } },
-    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "BCMM-variaciones", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "BCMM-variaciones", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#7a7a7a" } },
   };
 }
 
@@ -1446,13 +1485,13 @@ export function buildDesocupRates(ind, obs) {
     grids.push({ left, top, width, height, containLabel: false });
     xAxes.push({
       gridIndex: i, type: "category", data: periods, boundaryGap: false,
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 },
-      axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 },
+      axisLine: { lineStyle: { color: "#cfcfcf" } }, axisTick: { show: false },
     });
     yAxes.push({
       gridIndex: i, type: "value", name: "%", nameLocation: "middle", nameGap: 30,
       nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 10, fontWeight: 500 },
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toFixed(1) + "%" },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toFixed(1) + "%" },
       splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
     });
     const values = obs.map((o) => o.values[cfg.col] ?? null);
@@ -1481,11 +1520,11 @@ export function buildDesocupRates(ind, obs) {
         const p = params[0];
         const v = p.value;
         const val = v == null ? "—" : v.toFixed(1) + "%";
-        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
-          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
+        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#10312B;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#4d4d4d;font-size:11px">${p.seriesName}</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
       },
     },
-    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "desocup-rates", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "desocup-rates", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#7a7a7a" } },
   };
 }
 
@@ -1498,7 +1537,7 @@ export function buildDesocupPoblacion(ind, obs) {
   const yAxis = {
     type: "value", name: "Millones de personas", nameLocation: "middle", nameGap: 40,
     nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 11, fontWeight: 500 },
-    axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) },
+    axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: 10, formatter: (v) => v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) },
     splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
   };
   if (yRange) { yAxis.min = yRange.min; yAxis.max = yRange.max; yAxis.scale = true; }
@@ -1513,7 +1552,7 @@ export function buildDesocupPoblacion(ind, obs) {
   return {
     animation: false,
     grid: { left: "8%", right: "4%", top: 40, height: 220, containLabel: false },
-    xAxis: { type: "category", data: periods, boundaryGap: false, axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 }, axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false } },
+    xAxis: { type: "category", data: periods, boundaryGap: false, axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: rotate ? 8 : 9, interval: periods.length > 16 ? "auto" : 0, rotate: rotate ? 42 : 0 }, axisLine: { lineStyle: { color: "#cfcfcf" } }, axisTick: { show: false } },
     yAxis,
     series: [s],
     tooltip: {
@@ -1525,11 +1564,11 @@ export function buildDesocupPoblacion(ind, obs) {
         const p = params[0];
         const v = p.value;
         const val = v == null ? "—" : v.toLocaleString("es-MX", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + " millones de personas";
-        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
-          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">Población ocupada</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
+        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#10312B;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#4d4d4d;font-size:11px">Población ocupada</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
       },
     },
-    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "desocup-poblacion", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "desocup-poblacion", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#7a7a7a" } },
   };
 }
 
@@ -1552,20 +1591,20 @@ export function buildReservasLevel(obs) {
         const p = params[0];
         const v = p.value;
         const val = v == null ? "—" : fmtVal(v, "mdd");
-        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
-          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">Reserva internacional</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
+        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#10312B;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#4d4d4d;font-size:11px">Reserva internacional</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
       },
     },
-    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "reservas-nivel", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "reservas-nivel", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#7a7a7a" } },
     xAxis: {
       type: "category", data: periods, boundaryGap: false,
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: periods.length > 16 ? 9 : 10, rotate: periods.length > 16 ? 42 : 0, interval: periods.length > 24 ? "auto" : 0 },
-      axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: periods.length > 16 ? 9 : 10, rotate: periods.length > 16 ? 42 : 0, interval: periods.length > 24 ? "auto" : 0 },
+      axisLine: { lineStyle: { color: "#cfcfcf" } }, axisTick: { show: false },
     },
     yAxis: (() => {
       const ay = { type: "value", name: "Millones de dólares", nameLocation: "middle", nameGap: 52,
         nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 11, fontWeight: 500 },
-        axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 11, formatter: (v) => fmtVal(v, "mdd") },
+        axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: 11, formatter: (v) => fmtVal(v, "mdd") },
         splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: true,
       };
       if (yRange) { ay.min = yRange.min; ay.max = yRange.max; }
@@ -1599,20 +1638,20 @@ export function buildReservasChange(obs) {
         const p = params[0];
         const v = p.value;
         const val = v == null ? "—" : fmtVal(v, "mdd-signed");
-        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#002f2a;margin-bottom:5px">${p.axisValue}</div>`
-          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#5c5f5a;font-size:11px">Cambio semanal</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
+        return `<div style="font-family:'Noto Sans',sans-serif;font-weight:600;color:#10312B;margin-bottom:5px">${p.axisValue}</div>`
+          + `<div style="display:flex;align-items:center;gap:8px;margin:2px 0">${p.marker}<span style="flex:1;color:#4d4d4d;font-size:11px">Cambio semanal</span><span style="font-family:'Noto Sans',sans-serif;font-weight:600">${val}</span></div>`;
       },
     },
-    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "reservas-cambio", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#8a8d86" } },
+    toolbox: { right: 4, top: 2, itemSize: 14, feature: { saveAsImage: { title: "Guardar imagen", name: "reservas-cambio", pixelRatio: 2, backgroundColor: "#fff" } }, iconStyle: { borderColor: "#7a7a7a" } },
     xAxis: {
       type: "category", data: periods, boundaryGap: true,
-      axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: periods.length > 16 ? 9 : 10, rotate: periods.length > 16 ? 42 : 0, interval: periods.length > 24 ? "auto" : 0 },
-      axisLine: { lineStyle: { color: "#c9c2b2" } }, axisTick: { show: false },
+      axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: periods.length > 16 ? 9 : 10, rotate: periods.length > 16 ? 42 : 0, interval: periods.length > 24 ? "auto" : 0 },
+      axisLine: { lineStyle: { color: "#cfcfcf" } }, axisTick: { show: false },
     },
     yAxis: (() => {
       const ay = { type: "value", name: "Cambio semanal (mdd)", nameLocation: "middle", nameGap: 52,
         nameTextStyle: { color: "#6c6f6a", fontFamily: FONT, fontSize: 11, fontWeight: 500 },
-        axisLabel: { color: "#8a8d86", fontFamily: FONT, fontSize: 11, formatter: (v) => fmtVal(v, "mdd-signed") },
+        axisLabel: { color: "#7a7a7a", fontFamily: FONT, fontSize: 11, formatter: (v) => fmtVal(v, "mdd-signed") },
         splitLine: { lineStyle: { color: "#ece7da" } }, axisLine: { show: false }, axisTick: { show: false }, scale: false,
       };
       if (yRange) { ay.min = yRange.min; ay.max = yRange.max; }

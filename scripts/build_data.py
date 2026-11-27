@@ -28,6 +28,8 @@ import lib_freshness
 import lib_kpicfg
 import lib_metrics
 import lib_notas
+from ioae_comparison import align_igae_observed
+from pilot_queries import PILOT_KEYS, pilot_selection
 from sources import (banxico, banxico_policy, banxico_sie, ied, inegi,
                      inegi_bulletin, imoam, inegi_inpc, inegi_inpp, worldbank)
 import validate as V
@@ -112,99 +114,152 @@ def sync_pibsec_pibt(payload: dict) -> list[str]:
     for o in pibt["observations"]:
         v = o.get("values", [None])[0]
         if v is not None:
-            pibt_values[o["period"]] = v
+            ym = inegi.label_to_ym(o["period"])
+            if ym:
+                pibt_values[_quarter_start(ym)] = v
 
     if not pibt_values:
         return changes
 
-    by_period: dict[str, dict] = {o["period"]: o for o in pibsec.get("observations", [])}
+    observations = pibsec.setdefault("observations", [])
+    by_period = {_quarter_start(ym): o for o in observations
+                 if (ym := inegi.label_to_ym(o["period"]))}
     updated = 0
-    for period, value in pibt_values.items():
-        o = by_period.get(period)
-        if not o:
-            continue
-        vals = list(o.get("values", []))
+    for ym, value in pibt_values.items():
+        row = by_period.get(ym)
+        if row is None:
+            row = {"period": inegi.ym_to_label(ym, 4), "values": []}
+            observations.append(row)
+            by_period[ym] = row
+        vals = list(row.get("values", []))
         while len(vals) < 12:
             vals.append(None)
         if vals[5] != value:
             vals[5] = value
-            o["values"] = vals
+            row["values"] = vals
             updated += 1
     if updated:
+        observations.sort(key=lambda row: inegi.label_to_ym(row["period"]) or "")
         changes.append(f"pibsec: nivel PIB copiado desde PIB.pibt ({updated} observaciones)")
     return changes
 
 
-def compute_pibsec_variations(payload: dict) -> list[str]:
-    """Completa qoq/yoy de PIBSEC a partir de niveles.
+PIBSEC_RATES = {
+    5: (6, 7, 12),
+    0: (8, 9, 13),
+    1: (10, 11, 14),
+    2: (3, 4, 15),
+}
+PIBSEC_ADJUSTED = {col for qoq, yoy, _ in PIBSEC_RATES.values() for col in (qoq, yoy)}
 
-    Recalcula todas las variaciones trimestrales y anuales a partir de los
-    niveles oficiales del BIE, salvo el periodo más reciente, donde prevalecen
-    las cifras desestacionalizadas del boletín PIBT.
-    """
-    pibsec = payload["indicators"].get("PIBSEC")
-    if not pibsec:
+
+def prepare_pibsec_for_separated_rates(payload: dict) -> list[str]:
+    """Descarta las tasas heredadas cuyo ajuste no se puede identificar."""
+    ind = payload["indicators"].get("PIBSEC")
+    if not ind or ind.get("variation_basis") == "separated":
         return []
-    obs = pibsec.get("observations", [])
-    if not obs:
+    for row in ind.get("observations", []):
+        values = list(row["values"])
+        for col in PIBSEC_ADJUSTED:
+            if col < len(values):
+                values[col] = None
+        row["values"] = values
+    ind["variation_basis"] = "separated"
+    return ["PIBSEC: tasas heredadas descartadas antes de fusionar las series ajustadas"]
+
+
+def apply_latest_pibsec_bulletin(payload: dict, items: list[dict], prev_last: str | None) -> list[dict]:
+    """Da prioridad al boletín solo en el último trimestre con nivel del PIBT."""
+    ind = payload["indicators"].get("PIBSEC")
+    if not ind:
         return []
-    last_period = pibsec.get("last_observation")
-    def _official_range(period: str) -> bool:
-        """Periodos con boletín PIBT descargado (2021 en adelante)."""
-        ym = inegi.label_to_ym(period)
-        if not ym:
-            return False
-        return ym >= "2021-01"
-    # nivel_col -> (qoq_col, yoy_col)
-    maps = {
-        0: (8, 9),
-        1: (10, 11),
-        2: (3, 4),
-        5: (6, 7),
+    # Un valor de una tasa por sí solo no establece un nuevo trimestre del PIBT.
+    obs = ind.get("observations", [])
+    last_index = next((i for i in range(len(obs) - 1, -1, -1)
+                       if len(obs[i]["values"]) > 5 and obs[i]["values"][5] is not None), None)
+    if last_index is None:
+        return []
+    ind["observations"] = obs[:last_index + 1]
+    last_period = obs[last_index]["period"]
+    ind["last_observation"] = last_period
+    last_ym = _quarter_start(inegi.label_to_ym(last_period))
+    consultations = []
+    for item in items:
+        rows = [
+            row for row in item["api_total"]
+            if _quarter_start(row["ym"]) == last_ym and row.get("value") is not None
+        ]
+        if not rows:
+            continue
+        bulletin = {**item, "api_total": rows}
+        row = rows[-1]
+        source_url = row.get("source_url")
+        if source_url and source_url != item.get("link"):
+            for key in ("sectores", "subsectores"):
+                bulletin.pop(key, None)
+            bulletin.update(link=source_url, url_boletin_oficial=source_url,
+                            periodo_boletin=row.get("period", last_period),
+                            fecha_publicacion=row.get("source_publication_date"),
+                            numero_boletin=row.get("source_bulletin_number"))
+        elif not source_url and item.get("periodo_boletin") and (
+            inegi.label_to_ym(item["periodo_boletin"]) != last_ym
+        ):
+            # Aplicar la cifra histórica sin adjuntarle la URL de otro trimestre.
+            bulletin = {k: bulletin[k] for k in ("target_column", "freq", "serie", "api_total")}
+        consultations.append(apply_inegi_total(payload, "PIBSEC", bulletin, prev_last))
+    return consultations
+
+
+def compute_pibsec_variations(payload: dict) -> list[str]:
+    """Calcula exclusivamente tasas anuales originales por trimestre calendario."""
+    ind = payload["indicators"].get("PIBSEC")
+    if not ind:
+        return []
+    by_period = {
+        _quarter_start(ym): row for row in ind.get("observations", [])
+        if (ym := inegi.label_to_ym(row.get("period", "")))
     }
     updated = 0
-    for i, o in enumerate(obs):
-        vals = list(o.get("values", []))
-        while len(vals) < 12:
-            vals.append(None)
-        # Conservar el boletín oficial en el periodo más reciente.
-        is_last = (o.get("period") == last_period)
-        for lvl_col, (qoq_col, yoy_col) in maps.items():
-            cur = vals[lvl_col]
-            if cur is None:
+    for ym, row in by_period.items():
+        values = list(row["values"])
+        values.extend([None] * (16 - len(values)))
+        prior_ym = inegi._ym_minus_months(ym, 12)
+        prior = by_period.get(prior_ym, {}).get("values", [])
+        for level_col, (_, _, original_col) in PIBSEC_RATES.items():
+            base = prior[level_col] if level_col < len(prior) else None
+            current = values[level_col]
+            annual = round(current / base - 1, 6) if base and current is not None else None
+            if values[original_col] != annual:
+                values[original_col] = annual
+                updated += 1
+        row["values"] = values
+    return [f"PIBSEC: {updated} tasas anuales originales actualizadas"] if updated else []
+
+
+def validate_pibsec_adjusted_history(ind: dict) -> list[str]:
+    """Bloquea una migración parcial en vez de publicar huecos en el histórico."""
+    by_period = {
+        _quarter_start(ym): row["values"] for row in ind.get("observations", [])
+        if (ym := inegi.label_to_ym(row.get("period", "")))
+    }
+    missing = {col: [] for col in sorted(PIBSEC_ADJUSTED)}
+    for ym, values in by_period.items():
+        for level, (qoq, yoy, _) in PIBSEC_RATES.items():
+            if values[level] is None:
                 continue
-            use_official = is_last or _official_range(o.get("period", ""))
-            if not use_official:
-                if i > 0:
-                    prev = obs[i - 1].get("values", [])
-                    if lvl_col < len(prev) and prev[lvl_col] not in (None, 0):
-                        vals[qoq_col] = round((cur - prev[lvl_col]) / abs(prev[lvl_col]), 6)
-                        updated += 1
-                if i >= 4:
-                    yoy = obs[i - 4].get("values", [])
-                    if lvl_col < len(yoy) and yoy[lvl_col] not in (None, 0):
-                        vals[yoy_col] = round((cur - yoy[lvl_col]) / abs(yoy[lvl_col]), 6)
-                        updated += 1
-            else:
-                # Conservar el boletín oficial; rellenar sólo vacíos.
-                if i > 0:
-                    prev = obs[i - 1].get("values", [])
-                    if lvl_col < len(prev) and prev[lvl_col] not in (None, 0) and vals[qoq_col] is None:
-                        vals[qoq_col] = round((cur - prev[lvl_col]) / abs(prev[lvl_col]), 6)
-                        updated += 1
-                if i >= 4:
-                    yoy = obs[i - 4].get("values", [])
-                    if lvl_col < len(yoy) and yoy[lvl_col] not in (None, 0) and vals[yoy_col] is None:
-                        vals[yoy_col] = round((cur - yoy[lvl_col]) / abs(yoy[lvl_col]), 6)
-                        updated += 1
-        o["values"] = vals
-    if updated:
-        return [f"pibsec: variaciones calculadas desde niveles ({updated} celdas)"]
-    return []
+            for months, col in ((3, qoq), (12, yoy)):
+                prior = by_period.get(inegi._ym_minus_months(ym, months))
+                if prior and prior[level] is not None and values[col] is None:
+                    missing[col].append(ym)
+    return [
+        f"[PIBSEC] Histórico desestacionalizado incompleto en la columna {col}: "
+        f"{len(periods)} trimestres sin tasa (primero: {periods[0]})."
+        for col, periods in missing.items() if periods
+    ]
 
 
 def prepare_igae_for_v3(payload: dict) -> list[str]:
-    """Migra el indicador IGAE al esquema de 9 columnas antes de fusionar fuentes.
+    """Migra el indicador IGAE al esquema de 10 columnas antes de fusionar fuentes.
 
     El esquema anterior tenía 5 columnas: índice global, índices de actividades
     secundarias/terciarias y dos variaciones. El nuevo esquema separa los cuatro
@@ -221,7 +276,7 @@ def prepare_igae_for_v3(payload: dict) -> list[str]:
     meta = json.loads(L.META_FILE.read_text(encoding="utf-8"))
     igae_prof = meta.get("profile", {}).get("IGAE", {})
     new_cols = igae_prof.get("columns")
-    if not new_cols or len(new_cols) != 9:
+    if not new_cols or len(new_cols) != 10:
         return changes
 
     old_cols = ind.get("columns", [])
@@ -252,6 +307,8 @@ def prepare_igae_for_v3(payload: dict) -> list[str]:
         )
 
     ind["columns"] = new_cols
+    for row in ind.get("observations", []):
+        row["values"].extend([None] * max(0, 10 - len(row["values"])))
     if "windows" in igae_prof:
         ind["windows"] = igae_prof["windows"]
 
@@ -421,8 +478,8 @@ def prepare_financiero_for_v3(payload: dict) -> list[str]:
     """Migra los indicadores del Entorno financiero a su frecuencia oficial.
 
     FIX (TIPOCAMBIO) y TASA pasan a ser series diarias; RESERVAS, semanal.
-    Si el archivo local aún conserva agregaciones mensuales y las observaciones
-    originales, intercambia la serie principal. También normaliza metadatos.
+    Migra la copia histórica de frecuencia oficial si la serie principal aún
+    es mensual o está vacía. Tras la migración queda una sola serie canónica.
     """
     changes: list[str] = []
     try:
@@ -446,15 +503,23 @@ def prepare_financiero_for_v3(payload: dict) -> list[str]:
         original = ind.get("observations_original")
         current = ind.get("observations", [])
 
-        # Detectar si la serie principal aún es mensual.
-        current_is_monthly = current and not any(
-            re.match(r"^\d{4}-\d{2}-\d{2}$", str(o.get("period", "")))
-            for o in current
+        current_dated = [
+            o for o in current if re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(o.get("period", "")))
+        ]
+        current_is_dated = bool(current_dated) and len(current_dated) == len(current)
+        original_is_dated = bool(original) and all(
+            re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(o.get("period", "")))
+            for o in original
         )
 
-        if original and current_is_monthly:
+        if not current_dated and original_is_dated:
             ind["observations"] = list(original)
+            current_is_dated = True
             changes.append(f"{key}: migradas observaciones originales a la serie principal")
+
+        if current_is_dated and "observations_original" in ind:
+            del ind["observations_original"]
+            changes.append(f"{key}: retirada la copia histórica; la serie principal ya tiene fechas oficiales")
 
         obs = ind.get("observations", [])
         if obs:
@@ -704,8 +769,8 @@ def apply_inegi_total(payload: dict, key: str, item: dict, prev_last: str | None
                 continue
             edition = snapshots.setdefault(source_row['ym'], {})
             edition[str(item['target_column'])] = {
-                'value': source_row['value'], 'url': item['link'],
-                'publication_date': item.get('fecha_publicacion'),
+                'value': source_row['value'], 'url': source_row.get('source_url', item['link']),
+                'publication_date': source_row.get('source_publication_date', item.get('fecha_publicacion')),
                 'series': item.get('serie'), 'method': item.get('metodo'),
             }
 
@@ -786,6 +851,13 @@ def apply_inegi_total(payload: dict, key: str, item: dict, prev_last: str | None
                          "proxima_publicacion", "sectores", "subsectores"):
             if item.get(meta_key) is not None:
                 ind[meta_key] = item[meta_key]
+        if key == "PIB" and tcol == 0 and item.get("boletin_validado") and (
+            item.get("periodo_boletin") == ind["last_observation"]
+        ):
+            if item.get("proxima_publicacion_boletin"):
+                ind["proxima_publicacion_boletin"] = item["proxima_publicacion_boletin"]
+            else:
+                ind.pop("proxima_publicacion_boletin", None)
     ind["fuente"] = fuente
 
     meta = item.get("api_meta", {})
@@ -828,6 +900,14 @@ def compute_bcmm_metrics(payload: dict) -> list[str]:
             by_ym[ym] = o
     yoy_map = {3: 0, 4: 1, 5: 2, 10: 6, 11: 7, 12: 8, 13: 9, 17: 14, 18: 15, 19: 16, 23: 20, 24: 21, 25: 22}
     yoy_updated = saldo_updated = acum_updated = 0
+    # Complete every monthly balance before any annual or year-to-date lookup;
+    # the newly merged month may not yet carry a balance in its source row.
+    for o in by_ym.values():
+        vals = list(o["values"])
+        if vals[0] is not None and vals[1] is not None:
+            vals[2] = round(vals[0] - vals[1], 6)
+            o["values"] = vals
+            saldo_updated += 1
     for o in ind.get("observations", []):
         vals = list(o.get("values", []))
         if len(vals) < 29:
@@ -835,9 +915,6 @@ def compute_bcmm_metrics(payload: dict) -> list[str]:
         ym = inegi.label_to_ym(o.get("period", ""))
         if not ym:
             continue
-        if vals[0] is not None and vals[1] is not None:
-            vals[2] = round(vals[0] - vals[1], 6)
-            saldo_updated += 1
         prev_ym = inegi._ym_minus_months(ym, 12)
         prev_o = by_ym.get(prev_ym)
         if prev_o:
@@ -1000,7 +1077,7 @@ def compute_ioae_metrics(payload: dict) -> list[str]:
     - Cols 0-9: nowcasts e intervalos de confianza al 95% (del boletín).
     - Col 10: fecha de publicación del boletín (string).
     - Col 11: carácter de la estimación (string).
-    - Col 12: variación anual observada del IGAE (copia de IGAE col 2).
+    - Col 12: variación anual desestacionalizada del IGAE (col 9 documentada).
     """
     changes: list[str] = []
     ind = payload["indicators"].get("IOAE")
@@ -1016,7 +1093,7 @@ def compute_ioae_metrics(payload: dict) -> list[str]:
     if not new_cols or len(new_cols) != 13:
         return changes
 
-    if len(ind.get("columns", [])) != 13:
+    if ind.get("columns") != new_cols:
         ind["columns"] = new_cols
         changes.append("IOAE: esquema de 13 columnas aplicado")
 
@@ -1030,28 +1107,9 @@ def compute_ioae_metrics(payload: dict) -> list[str]:
     if fixed:
         changes.append(f"IOAE: {fixed} observaciones ajustadas a 13 columnas")
 
-    # Copiar IGAE observado anual (col 2) al IOAE (col 12).
-    igae = payload["indicators"].get("IGAE")
-    if igae:
-        igae_by_ym = {}
-        for o in igae.get("observations", []):
-            ym = inegi.label_to_ym(o.get("period", ""))
-            if ym:
-                igae_by_ym[ym] = o
-        updated = 0
-        for o in ind.get("observations", []):
-            ym = inegi.label_to_ym(o.get("period", ""))
-            if not ym:
-                continue
-            igae_o = igae_by_ym.get(ym)
-            if not igae_o:
-                continue
-            igae_vals = list(igae_o.get("values", []))
-            if len(igae_vals) > 2 and igae_vals[2] is not None:
-                o["values"][12] = round(igae_vals[2], 6)
-                updated += 1
-        if updated:
-            changes.append(f"IOAE: {updated} observaciones con IGAE observado anual")
+    # The observed rate must use the same adjustment and reference month as IOAE.
+    count = align_igae_observed(ind, payload["indicators"].get("IGAE"))
+    changes.append(f"IOAE: {count} meses con IGAE anual desestacionalizado documentado")
 
     # Sincroniza metadatos del perfil V3.
     for field in ("nombre", "sigla", "descripcion", "frecuencia", "unidad",
@@ -1144,13 +1202,13 @@ def compute_tasa_metrics(payload: dict) -> list[str]:
     ind["policy_decisions"] = decisions
     ind["regimen"] = banxico_policy.regimen_from_observations(obs)
     ind["frecuencia"] = "Diaria"
-    ind["frecuencia_naturaleza"] = "Cambios discretos por decision de politica monetaria"
-    ind["nombre"] = "Objetivo para la Tasa de Interes Interbancaria a un dia"
+    ind["frecuencia_naturaleza"] = "Cambios discretos por decisión de política monetaria"
+    ind["nombre"] = "Objetivo para la Tasa de Interés Interbancaria a un día"
     ind["descripcion"] = (
-        "Tasa objetivo de politica monetaria fijada por la Junta de Gobierno de Banco de Mexico "
-        "para las operaciones de fondeo interbancario a un dia. No confundir con la TIIE."
+        "Tasa objetivo de política monetaria fijada por la Junta de Gobierno del Banco de México "
+        "para las operaciones de fondeo interbancario a un día. No confundir con la TIIE."
     )
-    ind["nombre_corto"] = "Tasa objetivo de Banco de Mexico"
+    ind["nombre_corto"] = "Tasa objetivo de Banco de México"
     cal_tasa = [e for e in (cal.get("events", []) if isinstance(cal, dict) else cal)
                 if e.get("indicator") == "TASA" or e.get("sigla") == "TASA"]
     if cal_tasa:
@@ -1218,7 +1276,13 @@ def compute_sic_metrics(payload: dict) -> list[str]:
     return changes
 
 
-def run(offline: bool = False) -> int:
+def run(
+    offline: bool = False,
+    *,
+    defer_product_validation: bool = False,
+    pilot_keys=None,
+    bulletin_archive: Path | None = None,
+) -> int:
     log = {"started_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
            "mode": "offline" if offline else "online",
            "network_calls": False,
@@ -1227,6 +1291,12 @@ def run(offline: bool = False) -> int:
     L.load_env()
     config = json.loads(CONFIG.read_text(encoding="utf-8"))
     payload = L.load_data()
+    selected = pilot_selection(pilot_keys, payload["indicators"])
+    if selected is not None:
+        if offline or not defer_product_validation:
+            raise ValueError("Pilot queries require an online staged release")
+        log["planned_indicators"] = sorted(selected)
+        config = {**config, "banxico": {key: config["banxico"][key] for key in sorted(selected)}}
     prev_obs = {k: v.get("last_observation") for k, v in payload.get("indicators", {}).items()}
 
     # Limpiar banderas de validación previas para permitir revalidar boletines
@@ -1234,7 +1304,10 @@ def run(offline: bool = False) -> int:
     for ind in payload.get("indicators", {}).values():
         ind.pop("boletin_validado", None)
 
-    # Migrar IGAE al esquema de 9 columnas antes de fusionar fuentes.
+    pibt_bulletins = []
+    log["changes"].extend(prepare_pibsec_for_separated_rates(payload))
+
+    # Migrar IGAE al esquema de 10 columnas antes de fusionar fuentes.
     log["changes"].extend(prepare_igae_for_v3(payload))
 
     # Migrar IMFBCF al esquema de 40 columnas antes de fusionar fuentes.
@@ -1253,10 +1326,16 @@ def run(offline: bool = False) -> int:
 
         # inegi_bulletin se ejecuta primero para evitar throttling del sitio de prensa
         # después de las llamadas masivas al BIE.
-        for name, mod in (("banxico_sie", banxico_sie), ("inegi_bulletin", inegi_bulletin), ("imoam", imoam), ("banxico", banxico), ("inegi", inegi), ("inegi_inpc", inegi_inpc), ("inegi_inpp", inegi_inpp), ("ied", ied), ("worldbank", worldbank)):
+        sources = (("banxico_sie", banxico_sie), ("inegi_bulletin", inegi_bulletin), ("imoam", imoam), ("banxico", banxico), ("inegi", inegi), ("inegi_inpc", inegi_inpc), ("inegi_inpp", inegi_inpp), ("ied", ied), ("worldbank", worldbank))
+        if selected is not None:
+            sources = (("banxico", banxico),)
+        for name, mod in sources:
             log["network_calls"] = True
             try:
-                res = mod.fetch(config)
+                if name == "inegi_bulletin" and bulletin_archive is not None:
+                    res = mod.fetch(config, archive_dir=bulletin_archive)
+                else:
+                    res = mod.fetch(config)
             except Exception as e:  # noqa: BLE001 - resiliencia total del pipeline
                 log["warnings"].append(f"{name}: excepción no fatal: {e}")
                 continue
@@ -1272,6 +1351,9 @@ def run(offline: bool = False) -> int:
                         items = ind if isinstance(ind, list) else [ind]
                         consultas = []
                         for it in items:
+                            if name == "inegi_bulletin" and key == "PIBSEC":
+                                pibt_bulletins.append(it)
+                                continue
                             consulta = apply_inegi_total(payload, key, it, prev_obs.get(key))
                             if consulta is None:
                                 log["warnings"].append(
@@ -1312,7 +1394,11 @@ def run(offline: bool = False) -> int:
     # Nivel del PIB total en PIBSEC (desde el objeto 'pibt' del PIB).
     log["changes"].extend(sync_pibsec_pibt(payload))
 
-    # Variaciones calculadas desde niveles para periodos sin boletín oficial.
+    # El boletín prevalece sobre el BIE exclusivamente en el último trimestre del PIBT.
+    pibt_consultas = apply_latest_pibsec_bulletin(payload, pibt_bulletins, prev_obs.get("PIBSEC"))
+    log["consultas"].extend(pibt_consultas)
+    if pibt_consultas:
+        log["changes"].append("PIBSEC: se conservan las tasas del último boletín PIBT")
     log["changes"].extend(compute_pibsec_variations(payload))
 
     # Variaciones anuales originales de IGAE (a partir de los índices BIE).
@@ -1344,7 +1430,7 @@ def run(offline: bool = False) -> int:
     log["changes"].extend(compute_sic_metrics(payload))
 
     # Frescura, calendario, métricas compartidas y metadatos temporales.
-    log["changes"].extend(apply_freshness_and_meta(payload, log, offline=offline))
+    log["changes"].extend(apply_freshness_and_meta(payload, log, offline=offline or selected is not None))
 
     # Notas institucionales: aprovisiona los .docx vigentes (copiando desde el
     # machote sólo cuando falten) y estampa los metadatos de descarga.
@@ -1363,8 +1449,21 @@ def run(offline: bool = False) -> int:
     # Validación con datos candidatos en memoria (archivo temporal)
     tmp = L.DATA_DIR / "_candidate.json"
     L.save_data(payload, tmp)
-    errors, warnings = V.validate(payload)
+    errors, warnings = V.validate(payload, validate_products=not defer_product_validation)
     log["warnings"].extend(warnings)
+    errors.extend(validate_pibsec_adjusted_history(payload["indicators"].get("PIBSEC", {})))
+    if defer_product_validation:
+        # The isolated release will roll these indicators back before final validation.
+        rejected = {}
+        global_errors = []
+        for error in errors:
+            match = re.match(r"^\[([A-Z0-9_]+)\]", error)
+            if match and match[1] in payload["indicators"]:
+                rejected.setdefault(match[1], []).append(error)
+            else:
+                global_errors.append(error)
+        log["rejected_indicators"] = rejected
+        errors = global_errors
 
     if errors:
         log["critical"].extend(errors)
@@ -1414,33 +1513,14 @@ def apply_freshness_and_meta(payload: dict, log: dict, as_of: date | None = None
     calendario, calcula métricas y actualiza metadatos temporales."""
     changes: list[str] = []
     if as_of is None:
-        as_of = date.today()
+        as_of = build_calendar.mexico_calendar_date()
 
     # Calendario oficial con la fecha de referencia del pipeline.
-    cal = build_calendar.build(as_of=as_of, offline=offline)
+    cal = build_calendar.build(as_of=as_of, offline=offline, indicators=payload["indicators"])
     (L.DATA_DIR / "calendario_publicaciones.json").write_text(
         json.dumps(cal, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
     changes.append(f"calendario: regenerado con as_of={as_of.isoformat()}")
-
-    # Métricas compartidas para dashboard, Excel, Word, JSON y CSV.
-    lib_kpicfg.build_cfg(force=True)
-    metrics = lib_metrics.compute_all_metrics(payload)
-    (L.DATA_DIR / "metrics.json").write_text(
-        json.dumps({
-            "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-            "last_update_ct": payload.get("meta", {}).get("last_update_ct") or payload.get("meta", {}).get("generated_at"),
-            "indicators": metrics,
-        }, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
-    )
-    for key, m in metrics.items():
-        payload["indicators"][key]["metrics"] = {
-            "kpi": m["kpi"],
-            "yoy": m["annualVar"],
-            "resumen": m["resumen"],
-        }
-    changes.append("métricas: data/metrics.json regenerado")
 
     # Rellenar columnas derivadas (saldo, total) en las observaciones para que
     # Excel, CSV y el frontend compartan el mismo valor sin recalcularlo.
@@ -1473,6 +1553,8 @@ def apply_freshness_and_meta(payload: dict, log: dict, as_of: date | None = None
         ind["estado"] = info["estado"]
         ind["periodo_referencia_oficial"] = info["periodo_oficial"]
         ind["fecha_publicacion_oficial"] = info["fecha_publicacion_oficial"]
+        if key == "PIB":
+            ind.pop("proximo", None)
         ind["proxima_publicacion"] = info["proxima_publicacion"] and {
             "fecha_publicacion": info["proxima_publicacion"],
             "periodo_referencia": info["periodo_proximo"],
@@ -1523,6 +1605,36 @@ def apply_freshness_and_meta(payload: dict, log: dict, as_of: date | None = None
         if info["estado"] == lib_freshness.ESTADOS["ERROR_FUENTE"]:
             log["warnings"].append(f"{key}: ERROR DE FUENTE – {info['motivo']}")
 
+    # ENOE original y desestacionalizada del mismo boletín, fuera de las columnas trimestrales.
+    if not offline and any(row.get("indicador") == "DESOCUP" for row in log.get("consultas", [])):
+        from enoe_mensual import refresh
+        try:
+            if refresh(payload["indicators"]["DESOCUP"]):
+                changes.append("DESOCUP: población mensual y tasas ajustadas del boletín")
+        except Exception as error:  # El complemento no detiene la edición de ENOE.
+            log["warnings"].append(f"DESOCUP: complemento del boletín conservado: {error}")
+
+    # Métricas compartidas para dashboard, Excel, Word, JSON y CSV.
+    lib_kpicfg.build_cfg(force=True)
+    metrics = lib_metrics.compute_all_metrics(payload)
+    (L.DATA_DIR / "metrics.json").write_text(
+        json.dumps({
+            "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            "last_update_ct": payload.get("meta", {}).get("last_update_ct") or payload.get("meta", {}).get("generated_at"),
+            "indicators": metrics,
+        }, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    for key, m in metrics.items():
+        ind = payload["indicators"][key]
+        ind["metrics"] = {
+            **((ind.get("metrics") or {}) if key == "IED" else {}),
+            "kpi": m["kpi"],
+            "yoy": m["annualVar"],
+            "resumen": m["resumen"],
+        }
+    changes.append("métricas: data/metrics.json regenerado")
+
     # Metadatos temporales y de referencia.
     now_ct = datetime.now(ZoneInfo("America/Mexico_City"))
     payload["meta"] = payload.get("meta", {})
@@ -1549,8 +1661,14 @@ def _write_log(log: dict) -> None:
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--offline", action="store_true")
+    ap.add_argument("--defer-product-validation", action="store_true",
+                    help="Validate data now; the isolated release must validate products after regeneration.")
+    ap.add_argument("--pilot-key", choices=PILOT_KEYS, action="append")
+    ap.add_argument("--bulletin-archive", type=Path,
+                    help="Reuse validated historical IOAE and EOPIBT readings in this directory.")
     args = ap.parse_args()
-    raise SystemExit(run(offline=args.offline))
+    raise SystemExit(run(offline=args.offline, defer_product_validation=args.defer_product_validation,
+                         pilot_keys=args.pilot_key, bulletin_archive=args.bulletin_archive))
 
 
 if __name__ == "__main__":

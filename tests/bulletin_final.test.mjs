@@ -25,3 +25,12 @@ test('BCMM exige posiciones y verifica historia, sin partir millares a ciegas',(
 
 test('BCMM mantiene el signo de las tasas ajustadas leído del texto',()=>{const {pages,layout}=fixture('BCMM');const changed=pages.map(s=>s.replace(/descenso mensual de\s+2\.45/,'aumento mensual de 2.45'));assert.notDeepEqual(changed,pages);assert.equal(get(parseBulletin('BCMM',changed,layout),'exports','adjusted').value,2.45);});
 for(const [key,file] of [['EMOE','emoe2026_11_pdfjs'],['DESOCUP','enoe2026_10_pdfjs'],['BCMM','bcmm2026_10_pdfjs']])test(key+' procesa la extracción PDF.js real con superíndices separados',()=>{const data=JSON.parse(fs.readFileSync(new URL('fixtures/'+file+'.json',import.meta.url))),f=parseBulletin(key,data.pages,data.layout);assert.equal(f.ym,key==='EMOE'?'2026-10':'2026-09');if(key==='EMOE'){assert.equal(f.globalrow.level,48.2);assert.equal(f.components.length,20);}if(key==='DESOCUP'){assert.equal(f.population.length,21);assert.equal(f.rates.length,11);}if(key==='BCMM'){assert.equal(f.history.length,9);assert.equal(get(f,'balance').ytd_yoy,null);}});
+
+test('ENOE acepta dos decimales únicamente en el total relativo actual de ingresos',()=>{
+ const edit=(label)=>{const {pages}=fixture('DESOCUP');const lines=pages[5].split('\n');
+  const at=lines.findIndex(line=>line.trimStart().startsWith(label)&&/100\.0\s+100\.0\s*$/.test(line));
+  assert.ok(at>=0);lines[at]=lines[at].replace(/100\.0(\s*)$/,'100.00$1');pages[5]=lines.join('\n');return pages;};
+ const f=parseBulletin('DESOCUP',edit('Nivel de ingresos'));
+ assert.equal(get(f,'income_total','sectors').relative_current,100);
+ assert.throws(()=>parseBulletin('DESOCUP',edit('Posición en la ocupación')),/Precisión relativa inesperada/);
+});

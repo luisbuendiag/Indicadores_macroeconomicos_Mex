@@ -1,0 +1,134 @@
+{
+  "source": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_07.pdf",
+  "header": "BOLETÍN DE INDICADOR 470/26\nESTIMACIÓN OPORTUNA DEL PRODUCTO\nINTERNO BRUTO TRIMESTRAL (EOPIBT)\n30 de julio de 2026\nPágina 1/4\nPróxima publicación: 30 de octubre de 2026\nsegundo trimestre de 2026",
+  "tables": [
+    [],
+    [
+      [
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          null,
+          "Variación porcentual real respecto a:",
+          null,
+          null
+        ],
+        [
+          "PIB y actividades económicas",
+          "1.er trimestre",
+          "2.° trimestre",
+          "6 meses"
+        ],
+        [
+          "",
+          "de 2026",
+          "de 2025",
+          "de 2025"
+        ],
+        [
+          "Producto Interno Bruto Oportuno",
+          "1.5",
+          "2.1",
+          "1.2"
+        ],
+        [
+          "Actividades primarias",
+          "3.3",
+          "7.3",
+          "3.8"
+        ],
+        [
+          "Actividades secundarias",
+          "1.6",
+          "0.8",
+          "-0.2"
+        ],
+        [
+          "Actividades terciarias",
+          "1.5",
+          "2.5",
+          "1.8"
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          "",
+          "20251/",
+          null,
+          null,
+          null,
+          "2026",
+          null,
+          null
+        ],
+        [
+          "PIB y actividades\neconómicas",
+          "2.°",
+          "3.er",
+          "4.°",
+          "",
+          "1.er",
+          "2.°2/",
+          "62/"
+        ],
+        [
+          "",
+          "trimestre",
+          null,
+          null,
+          "Anual",
+          "trimestre",
+          null,
+          "meses"
+        ],
+        [
+          "PIB",
+          "-0.1",
+          "-0.2",
+          "1.7",
+          "0.5",
+          "0.2",
+          "2.2",
+          "1.2"
+        ],
+        [
+          "Actividades primarias",
+          "-1.2",
+          "-0.7",
+          "6.8",
+          "2.4",
+          "0.4",
+          "7.6",
+          "4.1"
+        ],
+        [
+          "Actividades secundarias",
+          "-1.5",
+          "-2.6",
+          "0.4",
+          "-1.2",
+          "-1.2",
+          "0.9",
+          "-0.1"
+        ],
+        [
+          "Actividades terciarias",
+          "0.6",
+          "1.1",
+          "2.0",
+          "1.2",
+          "1.0",
+          "2.6",
+          "1.8"
+        ]
+      ]
+    ],
+    []
+  ]
+}

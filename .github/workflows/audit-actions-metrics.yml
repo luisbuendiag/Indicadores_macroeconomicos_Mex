@@ -6,11 +6,14 @@ on:
     paths:
       - 'scripts/audit_actions_metrics.py'
       - 'tests/test_actions_metrics_readonly.py'
+      - 'scripts/audit_actions_provenance.mjs'
+      - 'tests/audit_actions_provenance.test.mjs'
+      - 'assets/js/update_health.mjs'
+      - 'config/update_policy.json'
       - '.github/workflows/audit-actions-metrics.yml'
 
 permissions:
   contents: read
-  actions: read
 
 jobs:
   test:
@@ -23,12 +26,20 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
       - name: Verificar recolector offline con datos sintéticos
         run: python -m unittest discover -s tests -p test_actions_metrics_readonly.py -v
+      - name: Verificar el vínculo entre corrida y vigencia
+        run: node --test tests/audit_actions_provenance.test.mjs
 
   collect-manual:
     if: github.event_name == 'workflow_dispatch'
     needs: test
+    permissions:
+      contents: read
+      actions: read
     runs-on: ubuntu-latest
     timeout-minutes: 4
     steps:

@@ -125,9 +125,17 @@ def test_chart_refs_and_same_period_lengths(payload,tmp_path):
 def test_master_and_individual_have_identical_sources_and_formulas(payload):
     inds=[payload['indicators'][k] for k in payload['order']]
     master=X.build_workbook(inds,True)
-    assert len(master.wb.sheetnames)==26
-    assert {"IED Historia estatal","IED Ranking estatal"}.issubset(master.wb.sheetnames)
-    assert not any(name in master.wb.sheetnames for name in ['Resumen','Síntesis de coyuntura','Metodología y fuentes','Control de actualizaciones'])
+    expected = {X.SIGLA.get(ind['key'], ind['key']) for ind in inds}
+    expected.update({
+        'Población ocupada', 'TASA Decisiones', 'IED Acumulado comparable',
+        'IED Historia estatal', 'IED Ranking estatal', 'IED Cifras originales',
+        'IED Estatal revisada',
+    })
+    # El exportador agrega la serie revisada solo si el snapshot trae observaciones CR362.
+    history = payload['indicators']['CONSUMO'].get('imcp_history') or {}
+    if history.get('observations'):
+        expected.add('IMCP revisado')
+    assert set(master.wb.sheetnames) == expected
     for ind in inds:
         one=X.build_workbook([ind])
         for key,coord in one.coords.items():

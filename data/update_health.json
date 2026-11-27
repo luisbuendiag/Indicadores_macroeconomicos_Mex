@@ -1,8 +1,32 @@
 {
-  "checked_at": "2026-11-16T20:49:58+00:00",
-  "data_checked_at": "2026-11-16T20:45:22+00:00",
+  "checked_at": "2026-11-27T23:09:10+00:00",
+  "data_checked_at": "2026-11-27T23:04:54+00:00",
   "data_error": false,
   "pending_data": [],
+  "queried_indicators": [
+    "BCMM",
+    "CONSUMO",
+    "DESOCUP",
+    "EMIM",
+    "EMOE",
+    "IED",
+    "IGAE",
+    "IMAI",
+    "IMFBCF",
+    "IMOAM",
+    "INPC",
+    "INPP",
+    "IOAE",
+    "PIB",
+    "PIBSEC",
+    "REMESAS",
+    "RESERVAS",
+    "SIC",
+    "TASA",
+    "TIPOCAMBIO"
+  ],
+  "query_coverage": "valid",
   "pending_notes": [],
-  "run_url": "https://github.com/luisbuendiag/Indicadores_macroeconomicos_Mex/actions/runs/43950528662"
+  "isolated_failures": {},
+  "run_url": "https://github.com/luisbuendiag/Indicadores_macroeconomicos_Mex/actions/runs/46078957486"
 }

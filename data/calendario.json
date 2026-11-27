@@ -1,27 +1,27 @@
 {
-  "generated_at": "2026-11-16T20:45:34+00:00",
-  "as_of": "2026-11-16",
+  "generated_at": "2026-11-27T23:05:12+00:00",
+  "as_of": "2026-11-27",
   "fuente": "Calendario oficial de difusión",
   "sources": {
     "INEGI Sala de Prensa": {
       "status": "ok",
       "count": 1488,
       "message": "1488 eventos consultados del INEGI",
-      "consulted_at": "2026-11-16",
+      "consulted_at": "2026-11-27",
       "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/"
     },
     "Banco de México calendario": {
       "status": "ok",
-      "count": 180,
-      "message": "180 eventos consultados de Banxico",
-      "consulted_at": "2026-11-16",
+      "count": 216,
+      "message": "216 eventos consultados de Banxico",
+      "consulted_at": "2026-11-27",
       "url": "https://www.banxico.org.mx/publicaciones-y-prensa/calendario-de-publicaciones-banco-de-mexico/"
     },
     "Secretaría de Economía (manual)": {
       "status": "ok",
-      "count": 4,
-      "message": "4 eventos cargados desde 2026_se.json",
-      "consulted_at": "2026-08-24",
+      "count": 5,
+      "message": "5 eventos cargados desde 2026_se.json",
+      "consulted_at": "2026-11-24",
       "url": "https://www.gob.mx/se"
     }
   },
@@ -31,6 +31,36 @@
     2027
   ],
   "events": [
+    {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, noviembre 2024",
+      "product": "Remesas con el exterior",
+      "publication_date": "2025-01-02",
+      "publication_date_display": "2 de enero de 2025",
+      "reference_period": "Noviembre 2024",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{67C0EFD7-BC00-9E66-5001-D706B12021D8}.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{67C0EFD7-BC00-9E66-5001-D706B12021D8}.pdf",
+          "label": "Remesas con el exterior, noviembre 2024",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2025,
+      "mes": 1,
+      "fecha_iso": "2025-01-02",
+      "publication_verification": "fuera_de_alcance"
+    },
     {
       "indicator": "DESOCUP",
       "program": "Encuesta Nacional de Ocupación y Empleo (ENOE), población de 15 años y más de edad. Indicadores de Ocupación y Empleo. Cifras definitivas",
@@ -144,7 +174,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 1,
-      "fecha_iso": "2025-01-07"
+      "fecha_iso": "2025-01-07",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "INPC",
@@ -302,7 +333,8 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2025,
       "mes": 1,
-      "fecha_iso": "2025-01-10"
+      "fecha_iso": "2025-01-10",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IMAI",
@@ -374,7 +406,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 1,
-      "fecha_iso": "2025-01-14"
+      "fecha_iso": "2025-01-14",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "CONSUMO",
@@ -568,7 +601,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 1,
-      "fecha_iso": "2025-01-21"
+      "fecha_iso": "2025-01-21",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IGAE",
@@ -676,7 +710,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 1,
-      "fecha_iso": "2025-01-28"
+      "fecha_iso": "2025-01-28",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "DESOCUP",
@@ -801,6 +836,36 @@
       "fecha_iso": "2025-02-04"
     },
     {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, diciembre 2024",
+      "product": "Remesas con el exterior",
+      "publication_date": "2025-02-04",
+      "publication_date_display": "4 de febrero de 2025",
+      "reference_period": "Diciembre 2024",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{D08E80AC-6031-C7CF-D792-28CBEF70658F}.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{D08E80AC-6031-C7CF-D792-28CBEF70658F}.pdf",
+          "label": "Remesas con el exterior, diciembre de 2024",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2025,
+      "mes": 2,
+      "fecha_iso": "2025-02-04",
+      "publication_verification": "fuera_de_alcance"
+    },
+    {
       "indicator": "CONSUMO",
       "program": "Indicador Mensual del Consumo Privado (IMCP). Año base 2018. Cifras preliminares",
       "product": "Indicador Mensual del Consumo Privado",
@@ -913,7 +978,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 2,
-      "fecha_iso": "2025-02-05"
+      "fecha_iso": "2025-02-05",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "SIC",
@@ -1100,7 +1166,8 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2025,
       "mes": 2,
-      "fecha_iso": "2025-02-10"
+      "fecha_iso": "2025-02-10",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IMAI",
@@ -1172,7 +1239,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 2,
-      "fecha_iso": "2025-02-11"
+      "fecha_iso": "2025-02-11",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "EMIM",
@@ -1280,7 +1348,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 2,
-      "fecha_iso": "2025-02-18"
+      "fecha_iso": "2025-02-18",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IGAE",
@@ -1318,6 +1387,49 @@
           "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/igae/igae2025_02.xlsx",
           "label": "Boletín Excel",
           "size": "0.03 MB"
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2025,
+      "mes": 2,
+      "fecha_iso": "2025-02-21"
+    },
+    {
+      "indicator": "PIBSEC",
+      "program": "Producto Interno Bruto Trimestral (PIBT). Año base 2018. Precios Constantes. Cifras preliminares",
+      "product": "PIB trimestral por actividad económica, precios constantes",
+      "publication_date": "2025-02-21",
+      "publication_date_display": "21 de febrero de 2025",
+      "reference_period": "Cuarto trimestre de 2024",
+      "frequency": "Trimestral",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "PIBSEC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/pibt/pib_Pconst2025_02.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/pibt/pib_Pconst2025_02.pdf",
+          "label": "Boletín PDF",
+          "size": "0.24 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/pibt/pib_Pconst2025_02.docx",
+          "label": "Boletín Word",
+          "size": "0.23 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/pibt/pib_Pconst2025_02.xlsx",
+          "label": "Boletín Excel",
+          "size": "1.26 MB"
         }
       ],
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
@@ -1366,7 +1478,8 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 2,
-      "fecha_iso": "2025-02-25"
+      "fecha_iso": "2025-02-25",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "RESERVAS",
@@ -1395,7 +1508,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 2,
-      "fecha_iso": "2025-02-25"
+      "fecha_iso": "2025-02-25",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "BCMM",
@@ -1520,6 +1634,36 @@
       "fecha_iso": "2025-03-03"
     },
     {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, enero 2025",
+      "product": "Remesas con el exterior",
+      "publication_date": "2025-03-03",
+      "publication_date_display": "3 de marzo de 2025",
+      "reference_period": "Enero 2025",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{1F11368F-407C-3336-B0B4-7955B9774B1F}.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{1F11368F-407C-3336-B0B4-7955B9774B1F}.pdf",
+          "label": "Remesas con el exterior, enero 2025",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2025,
+      "mes": 3,
+      "fecha_iso": "2025-03-03",
+      "publication_verification": "fuera_de_alcance"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México de la semana al 28 de febrero y del mes de febrero de 2025",
       "product": "Estado de cuenta del Banco de México",
@@ -1546,7 +1690,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 3,
-      "fecha_iso": "2025-03-04"
+      "fecha_iso": "2025-03-04",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "CONSUMO",
@@ -1790,7 +1935,8 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2025,
       "mes": 3,
-      "fecha_iso": "2025-03-10"
+      "fecha_iso": "2025-03-10",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "RESERVAS",
@@ -1819,7 +1965,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 3,
-      "fecha_iso": "2025-03-11"
+      "fecha_iso": "2025-03-11",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IMAI",
@@ -1934,7 +2081,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 3,
-      "fecha_iso": "2025-03-19"
+      "fecha_iso": "2025-03-19",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IOAE",
@@ -2042,7 +2190,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 3,
-      "fecha_iso": "2025-03-25"
+      "fecha_iso": "2025-03-25",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "BCMM",
@@ -2196,6 +2345,36 @@
       "fecha_iso": "2025-04-01"
     },
     {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, febrero 2025",
+      "product": "Remesas con el exterior",
+      "publication_date": "2025-04-01",
+      "publication_date_display": "1 de abril de 2025",
+      "reference_period": "Febrero 2025",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{55678D70-8D8F-232C-8AF1-1A8EC989D1C4}.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{55678D70-8D8F-232C-8AF1-1A8EC989D1C4}.pdf",
+          "label": "Remesas con el exterior, febrero 2025",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2025,
+      "mes": 4,
+      "fecha_iso": "2025-04-01",
+      "publication_verification": "fuera_de_alcance"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México de la semana al 28 de marzo de 2025",
       "product": "Estado de cuenta del Banco de México",
@@ -2222,7 +2401,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 4,
-      "fecha_iso": "2025-04-01"
+      "fecha_iso": "2025-04-01",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "CONSUMO",
@@ -2380,7 +2560,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 4,
-      "fecha_iso": "2025-04-08"
+      "fecha_iso": "2025-04-08",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "BCMM",
@@ -2409,7 +2590,8 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2025,
       "mes": 4,
-      "fecha_iso": "2025-04-09"
+      "fecha_iso": "2025-04-09",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "INPC",
@@ -2567,7 +2749,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 4,
-      "fecha_iso": "2025-04-15"
+      "fecha_iso": "2025-04-15",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "EMIM",
@@ -2675,7 +2858,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 4,
-      "fecha_iso": "2025-04-22"
+      "fecha_iso": "2025-04-22",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IGAE",
@@ -2826,7 +3010,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 4,
-      "fecha_iso": "2025-04-29"
+      "fecha_iso": "2025-04-29",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "PIB",
@@ -2906,6 +3091,36 @@
       "anio": 2025,
       "mes": 5,
       "fecha_iso": "2025-05-02"
+    },
+    {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, marzo 2025",
+      "product": "Remesas con el exterior",
+      "publication_date": "2025-05-02",
+      "publication_date_display": "2 de mayo de 2025",
+      "reference_period": "Marzo 2025",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{5E3E6C69-505F-440A-D866-62CBF1A2AA9F}.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{5E3E6C69-505F-440A-D866-62CBF1A2AA9F}.pdf",
+          "label": "Remesas con el exterior, marzo 2025",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2025,
+      "mes": 5,
+      "fecha_iso": "2025-05-02",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "CONSUMO",
@@ -3020,7 +3235,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 5,
-      "fecha_iso": "2025-05-06"
+      "fecha_iso": "2025-05-06",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "SIC",
@@ -3178,7 +3394,8 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2025,
       "mes": 5,
-      "fecha_iso": "2025-05-09"
+      "fecha_iso": "2025-05-09",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IMAI",
@@ -3250,7 +3467,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 5,
-      "fecha_iso": "2025-05-13"
+      "fecha_iso": "2025-05-13",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "EMIM",
@@ -3387,7 +3605,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 5,
-      "fecha_iso": "2025-05-20"
+      "fecha_iso": "2025-05-20",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IGAE",
@@ -3423,6 +3642,49 @@
           "type": "comunicado",
           "format": "excel",
           "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/igae/igae2025_05.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.03 MB"
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2025,
+      "mes": 5,
+      "fecha_iso": "2025-05-22"
+    },
+    {
+      "indicator": "PIBSEC",
+      "program": "Producto Interno Bruto Trimestral (PIBT). Año base 2018. Precios Constantes. Cifras preliminares",
+      "product": "PIB trimestral por actividad económica, precios constantes",
+      "publication_date": "2025-05-22",
+      "publication_date_display": "22 de mayo de 2025",
+      "reference_period": "Primer trimestre de 2025",
+      "frequency": "Trimestral",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "PIBSEC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/pibt/pib_Pconst2025_05.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/pibt/pib_Pconst2025_05.pdf",
+          "label": "Boletín PDF",
+          "size": "0.23 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/pibt/pib_Pconst2025_05.docx",
+          "label": "Boletín Word",
+          "size": "0.22 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/pibt/pib_Pconst2025_05.xlsx",
           "label": "Boletín Excel",
           "size": "0.03 MB"
         }
@@ -3509,7 +3771,8 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 5,
-      "fecha_iso": "2025-05-27"
+      "fecha_iso": "2025-05-27",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "RESERVAS",
@@ -3538,7 +3801,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 5,
-      "fecha_iso": "2025-05-27"
+      "fecha_iso": "2025-05-27",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "DESOCUP",
@@ -3627,6 +3891,36 @@
       "fecha_iso": "2025-06-02"
     },
     {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, abril 2025",
+      "product": "Remesas con el exterior",
+      "publication_date": "2025-06-02",
+      "publication_date_display": "2 de junio de 2025",
+      "reference_period": "Abril 2025",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{AD5FB79F-B898-DA2B-4015-E2F3E1FAB11D}.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{AD5FB79F-B898-DA2B-4015-E2F3E1FAB11D}.pdf",
+          "label": "Remesas con el exterior, abril 2025",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2025,
+      "mes": 6,
+      "fecha_iso": "2025-06-02",
+      "publication_verification": "fuera_de_alcance"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México de la semana al 30 de mayo y del mes de mayo de 2025",
       "product": "Estado de cuenta del Banco de México",
@@ -3653,7 +3947,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 6,
-      "fecha_iso": "2025-06-03"
+      "fecha_iso": "2025-06-03",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "CONSUMO",
@@ -3897,7 +4192,8 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2025,
       "mes": 6,
-      "fecha_iso": "2025-06-10"
+      "fecha_iso": "2025-06-10",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "RESERVAS",
@@ -3926,7 +4222,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 6,
-      "fecha_iso": "2025-06-10"
+      "fecha_iso": "2025-06-10",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IMAI",
@@ -4041,7 +4338,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 6,
-      "fecha_iso": "2025-06-17"
+      "fecha_iso": "2025-06-17",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IOAE",
@@ -4149,7 +4447,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 6,
-      "fecha_iso": "2025-06-24"
+      "fecha_iso": "2025-06-24",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "BCMM",
@@ -4303,6 +4602,36 @@
       "fecha_iso": "2025-07-01"
     },
     {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, mayo 2025",
+      "product": "Remesas con el exterior",
+      "publication_date": "2025-07-01",
+      "publication_date_display": "1 de julio de 2025",
+      "reference_period": "Mayo 2025",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{DFFBF147-8A01-3B7C-313F-B8CEDC89BB1E}.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{DFFBF147-8A01-3B7C-313F-B8CEDC89BB1E}.pdf",
+          "label": "Remesas con el exterior, mayo 2025",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2025,
+      "mes": 7,
+      "fecha_iso": "2025-07-01",
+      "publication_verification": "fuera_de_alcance"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México de la semana al 27 de junio de 2025",
       "product": "Estado de cuenta del Banco de México",
@@ -4329,7 +4658,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 7,
-      "fecha_iso": "2025-07-01"
+      "fecha_iso": "2025-07-01",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "CONSUMO",
@@ -4487,7 +4817,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 7,
-      "fecha_iso": "2025-07-08"
+      "fecha_iso": "2025-07-08",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "INPC",
@@ -4602,7 +4933,8 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2025,
       "mes": 7,
-      "fecha_iso": "2025-07-10"
+      "fecha_iso": "2025-07-10",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IMAI",
@@ -4674,7 +5006,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 7,
-      "fecha_iso": "2025-07-15"
+      "fecha_iso": "2025-07-15",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "EMIM",
@@ -4825,7 +5158,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 7,
-      "fecha_iso": "2025-07-22"
+      "fecha_iso": "2025-07-22",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "BCMM",
@@ -4933,7 +5267,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 7,
-      "fecha_iso": "2025-07-29"
+      "fecha_iso": "2025-07-29",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "PIB",
@@ -5013,6 +5348,36 @@
       "anio": 2025,
       "mes": 8,
       "fecha_iso": "2025-08-01"
+    },
+    {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, junio 2025",
+      "product": "Remesas con el exterior",
+      "publication_date": "2025-08-01",
+      "publication_date_display": "1 de agosto de 2025",
+      "reference_period": "Junio 2025",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{1A95D882-1CCD-05DC-5FFD-06D272079C34}.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{1A95D882-1CCD-05DC-5FFD-06D272079C34}.pdf",
+          "label": "Remesas con el exterior, junio 2025",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2025,
+      "mes": 8,
+      "fecha_iso": "2025-08-01",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "SIC",
@@ -5170,7 +5535,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 8,
-      "fecha_iso": "2025-08-05"
+      "fecha_iso": "2025-08-05",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "INPC",
@@ -5314,7 +5680,8 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2025,
       "mes": 8,
-      "fecha_iso": "2025-08-08"
+      "fecha_iso": "2025-08-08",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IMAI",
@@ -5386,7 +5753,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 8,
-      "fecha_iso": "2025-08-12"
+      "fecha_iso": "2025-08-12",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "EMIM",
@@ -5494,7 +5862,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 8,
-      "fecha_iso": "2025-08-19"
+      "fecha_iso": "2025-08-19",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IGAE",
@@ -5530,6 +5899,49 @@
           "type": "comunicado",
           "format": "excel",
           "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/igae/igae2025_08.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.03 MB"
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2025,
+      "mes": 8,
+      "fecha_iso": "2025-08-22"
+    },
+    {
+      "indicator": "PIBSEC",
+      "program": "Producto Interno Bruto Trimestral (PIBT). Año base 2018. Precios Constantes. Cifras preliminares",
+      "product": "PIB trimestral por actividad económica, precios constantes",
+      "publication_date": "2025-08-22",
+      "publication_date_display": "22 de agosto de 2025",
+      "reference_period": "Segundo trimestre de 2025",
+      "frequency": "Trimestral",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "PIBSEC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/pibt/pib_Pconst2025_08.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/pibt/pib_Pconst2025_08.pdf",
+          "label": "Boletín PDF",
+          "size": "0.34 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/pibt/pib_Pconst2025_08.docx",
+          "label": "Boletín Word",
+          "size": "0.22 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/pibt/pib_Pconst2025_08.xlsx",
           "label": "Boletín Excel",
           "size": "0.03 MB"
         }
@@ -5580,7 +5992,8 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 8,
-      "fecha_iso": "2025-08-26"
+      "fecha_iso": "2025-08-26",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "RESERVAS",
@@ -5609,7 +6022,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 8,
-      "fecha_iso": "2025-08-26"
+      "fecha_iso": "2025-08-26",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "BCMM",
@@ -5734,6 +6148,36 @@
       "fecha_iso": "2025-09-01"
     },
     {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, julio 2025",
+      "product": "Remesas con el exterior",
+      "publication_date": "2025-09-01",
+      "publication_date_display": "1 de septiembre de 2025",
+      "reference_period": "Julio 2025",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{6CE66A79-06E3-4894-B7DA-0C57C8577FB8}.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{6CE66A79-06E3-4894-B7DA-0C57C8577FB8}.pdf",
+          "label": "Remesas con el exterior, julio 2025",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2025,
+      "mes": 9,
+      "fecha_iso": "2025-09-01",
+      "publication_verification": "fuera_de_alcance"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México de la semana al 29 de agosto y del mes de agosto de 2025",
       "product": "Estado de cuenta del Banco de México",
@@ -5760,7 +6204,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 9,
-      "fecha_iso": "2025-09-02"
+      "fecha_iso": "2025-09-02",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "CONSUMO",
@@ -5918,7 +6363,8 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2025,
       "mes": 9,
-      "fecha_iso": "2025-09-09"
+      "fecha_iso": "2025-09-09",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "INPC",
@@ -6033,7 +6479,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 9,
-      "fecha_iso": "2025-09-09"
+      "fecha_iso": "2025-09-09",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IMAI",
@@ -6148,7 +6595,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 9,
-      "fecha_iso": "2025-09-17"
+      "fecha_iso": "2025-09-17",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IOAE",
@@ -6256,7 +6704,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 9,
-      "fecha_iso": "2025-09-23"
+      "fecha_iso": "2025-09-23",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "TASA",
@@ -6393,7 +6842,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 9,
-      "fecha_iso": "2025-09-30"
+      "fecha_iso": "2025-09-30",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "EMOE",
@@ -6437,6 +6887,36 @@
       "anio": 2025,
       "mes": 10,
       "fecha_iso": "2025-10-01"
+    },
+    {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, agosto 2025",
+      "product": "Remesas con el exterior",
+      "publication_date": "2025-10-01",
+      "publication_date_display": "1 de octubre de 2025",
+      "reference_period": "Agosto 2025",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{D6112E5A-7966-7E49-C350-D0487A0C29AA}.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{D6112E5A-7966-7E49-C350-D0487A0C29AA}.pdf",
+          "label": "Remesas con el exterior, agosto 2025",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2025,
+      "mes": 10,
+      "fecha_iso": "2025-10-01",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "CONSUMO",
@@ -6594,7 +7074,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 10,
-      "fecha_iso": "2025-10-07"
+      "fecha_iso": "2025-10-07",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "BCMM",
@@ -6623,7 +7104,8 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2025,
       "mes": 10,
-      "fecha_iso": "2025-10-09"
+      "fecha_iso": "2025-10-09",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "INPC",
@@ -6781,7 +7263,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 10,
-      "fecha_iso": "2025-10-14"
+      "fecha_iso": "2025-10-14",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "EMIM",
@@ -6889,7 +7372,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 10,
-      "fecha_iso": "2025-10-21"
+      "fecha_iso": "2025-10-21",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IGAE",
@@ -7040,7 +7524,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 10,
-      "fecha_iso": "2025-10-28"
+      "fecha_iso": "2025-10-28",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "PIB",
@@ -7122,6 +7607,36 @@
       "fecha_iso": "2025-11-03"
     },
     {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, septiembre 2025",
+      "product": "Remesas con el exterior",
+      "publication_date": "2025-11-03",
+      "publication_date_display": "3 de noviembre de 2025",
+      "reference_period": "Septiembre 2025",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{4D682E2D-D29E-68D7-48B4-FD38AB38E1D0}.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{4D682E2D-D29E-68D7-48B4-FD38AB38E1D0}.pdf",
+          "label": "Remesas con el exterior, septiembre 2025",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2025,
+      "mes": 11,
+      "fecha_iso": "2025-11-03",
+      "publication_verification": "fuera_de_alcance"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México de la semana al 31 de octubre y del mes de octubre de 2025",
       "product": "Estado de cuenta del Banco de México",
@@ -7148,7 +7663,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 11,
-      "fecha_iso": "2025-11-04"
+      "fecha_iso": "2025-11-04",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "SIC",
@@ -7421,7 +7937,8 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2025,
       "mes": 11,
-      "fecha_iso": "2025-11-10"
+      "fecha_iso": "2025-11-10",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IMAI",
@@ -7493,7 +8010,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 11,
-      "fecha_iso": "2025-11-11"
+      "fecha_iso": "2025-11-11",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "EMIM",
@@ -7565,7 +8083,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 11,
-      "fecha_iso": "2025-11-19"
+      "fecha_iso": "2025-11-19",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IOAE",
@@ -7647,6 +8166,49 @@
       "fecha_iso": "2025-11-21"
     },
     {
+      "indicator": "PIBSEC",
+      "program": "Producto Interno Bruto Trimestral (PIBT). Año base 2018. Precios Constantes. Cifras preliminares",
+      "product": "PIB trimestral por actividad económica, precios constantes",
+      "publication_date": "2025-11-21",
+      "publication_date_display": "21 de noviembre de 2025",
+      "reference_period": "Tercer trimestre de 2025",
+      "frequency": "Trimestral",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "PIBSEC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/pibt/pib_Pconst2025_11.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/pibt/pib_Pconst2025_11.pdf",
+          "label": "Boletín PDF",
+          "size": "0.35 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/pibt/pib_Pconst2025_11.docx",
+          "label": "Boletín Word",
+          "size": "0.22 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2025/pibt/pib_Pconst2025_11.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.03 MB"
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2025,
+      "mes": 11,
+      "fecha_iso": "2025-11-21"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México de la semana al 21 de noviembre de 2025",
       "product": "Estado de cuenta del Banco de México",
@@ -7673,7 +8235,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 11,
-      "fecha_iso": "2025-11-25"
+      "fecha_iso": "2025-11-25",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "DESOCUP",
@@ -7716,7 +8279,8 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2025,
       "mes": 11,
-      "fecha_iso": "2025-11-26"
+      "fecha_iso": "2025-11-26",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "BCMM",
@@ -7798,6 +8362,36 @@
       "fecha_iso": "2025-11-28"
     },
     {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, octubre 2025",
+      "product": "Remesas con el exterior",
+      "publication_date": "2025-12-01",
+      "publication_date_display": "1 de diciembre de 2025",
+      "reference_period": "Octubre 2025",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{AC35CC79-5BF5-A58F-52D3-E76C81EAD309}.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{AC35CC79-5BF5-A58F-52D3-E76C81EAD309}.pdf",
+          "label": "Remesas con el exterior, octubre 2025",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2025,
+      "mes": 12,
+      "fecha_iso": "2025-12-01",
+      "publication_verification": "fuera_de_alcance"
+    },
+    {
       "indicator": "EMOE",
       "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
@@ -7867,7 +8461,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 12,
-      "fecha_iso": "2025-12-02"
+      "fecha_iso": "2025-12-02",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "CONSUMO",
@@ -8025,7 +8620,8 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2025,
       "mes": 12,
-      "fecha_iso": "2025-12-09"
+      "fecha_iso": "2025-12-09",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "INPC",
@@ -8140,7 +8736,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 12,
-      "fecha_iso": "2025-12-09"
+      "fecha_iso": "2025-12-09",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IMAI",
@@ -8212,7 +8809,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 12,
-      "fecha_iso": "2025-12-16"
+      "fecha_iso": "2025-12-16",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "EMIM",
@@ -8428,7 +9026,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 12,
-      "fecha_iso": "2025-12-23"
+      "fecha_iso": "2025-12-23",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "DESOCUP",
@@ -8500,7 +9099,8 @@
       "comentario": null,
       "anio": 2025,
       "mes": 12,
-      "fecha_iso": "2025-12-30"
+      "fecha_iso": "2025-12-30",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "EMOE",
@@ -8546,6 +9146,36 @@
       "fecha_iso": "2026-01-02"
     },
     {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, noviembre 2025",
+      "product": "Remesas con el exterior",
+      "publication_date": "2026-01-02",
+      "publication_date_display": "2 de enero de 2026",
+      "reference_period": "Noviembre 2025",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{267D04BF-63B3-09BE-6F2F-C70902998E48}.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{267D04BF-63B3-09BE-6F2F-C70902998E48}.pdf",
+          "label": "Remesas con el exterior, noviembre 2025",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 1,
+      "fecha_iso": "2026-01-02",
+      "publication_verification": "fuera_de_alcance"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México de la semana al 2 de enero de 2026 y del mes de diciembre de 2025",
       "product": "Estado de cuenta del Banco de México",
@@ -8572,7 +9202,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 1,
-      "fecha_iso": "2026-01-06"
+      "fecha_iso": "2026-01-06",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "INPC",
@@ -8730,7 +9361,8 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2026,
       "mes": 1,
-      "fecha_iso": "2026-01-09"
+      "fecha_iso": "2026-01-09",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IMAI",
@@ -8802,7 +9434,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 1,
-      "fecha_iso": "2026-01-13"
+      "fecha_iso": "2026-01-13",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "CONSUMO",
@@ -8960,7 +9593,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 1,
-      "fecha_iso": "2026-01-20"
+      "fecha_iso": "2026-01-20",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IOAE",
@@ -9176,7 +9810,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 1,
-      "fecha_iso": "2026-01-27"
+      "fecha_iso": "2026-01-27",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "PIB",
@@ -9258,6 +9893,36 @@
       "fecha_iso": "2026-02-03"
     },
     {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, diciembre 2025",
+      "product": "Remesas con el exterior",
+      "publication_date": "2026-02-03",
+      "publication_date_display": "3 de febrero de 2026",
+      "reference_period": "Diciembre 2025",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{ED06F2CB-06BA-2EC6-D145-73FF4579BADA}.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{ED06F2CB-06BA-2EC6-D145-73FF4579BADA}.pdf",
+          "label": "Remesas con el exterior, diciembre 2025",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 2,
+      "fecha_iso": "2026-02-03",
+      "publication_verification": "fuera_de_alcance"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México de la semana al 30 de enero y del mes de enero de 2026",
       "product": "Estado de cuenta del Banco de México",
@@ -9284,7 +9949,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 2,
-      "fecha_iso": "2026-02-04"
+      "fecha_iso": "2026-02-04",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "CONSUMO",
@@ -9471,7 +10137,8 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2026,
       "mes": 2,
-      "fecha_iso": "2026-02-09"
+      "fecha_iso": "2026-02-09",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "INPC",
@@ -9586,7 +10253,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 2,
-      "fecha_iso": "2026-02-10"
+      "fecha_iso": "2026-02-10",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IMAI",
@@ -9701,7 +10369,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 2,
-      "fecha_iso": "2026-02-17"
+      "fecha_iso": "2026-02-17",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IMOAM",
@@ -9795,7 +10464,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 2,
-      "fecha_iso": "2026-02-23"
+      "fecha_iso": "2026-02-23",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IGAE",
@@ -9831,6 +10501,49 @@
           "type": "comunicado",
           "format": "excel",
           "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_02.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.03 MB"
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 2,
+      "fecha_iso": "2026-02-23"
+    },
+    {
+      "indicator": "PIBSEC",
+      "program": "Producto Interno Bruto Trimestral (PIBT). Año base 2018. Precios Constantes. Cifras preliminares",
+      "product": "PIB trimestral por actividad económica, precios constantes",
+      "publication_date": "2026-02-23",
+      "publication_date_display": "23 de febrero de 2026",
+      "reference_period": "Cuarto trimestre de 2025",
+      "frequency": "Trimestral",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "PIBSEC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_02.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_02.pdf",
+          "label": "Boletín PDF",
+          "size": "0.35 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_02.docx",
+          "label": "Boletín Word",
+          "size": "0.23 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_02.xlsx",
           "label": "Boletín Excel",
           "size": "0.03 MB"
         }
@@ -9881,7 +10594,8 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 2,
-      "fecha_iso": "2026-02-24"
+      "fecha_iso": "2026-02-24",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "RESERVAS",
@@ -9910,7 +10624,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 2,
-      "fecha_iso": "2026-02-24"
+      "fecha_iso": "2026-02-24",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "DESOCUP",
@@ -10035,6 +10750,36 @@
       "fecha_iso": "2026-03-02"
     },
     {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, enero 2026",
+      "product": "Remesas con el exterior",
+      "publication_date": "2026-03-02",
+      "publication_date_display": "2 de marzo de 2026",
+      "reference_period": "Enero 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{7C3CBA00-F1FB-1DF5-1CC5-F806710BF82D}.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{7C3CBA00-F1FB-1DF5-1CC5-F806710BF82D}.pdf",
+          "label": "Remesas con el exterior, enero 2026",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 3,
+      "fecha_iso": "2026-03-02",
+      "publication_verification": "fuera_de_alcance"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México de la semana al 27 de febrero y del mes de febrero de 2026",
       "product": "Estado de cuenta del Banco de México",
@@ -10061,7 +10806,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 3,
-      "fecha_iso": "2026-03-03"
+      "fecha_iso": "2026-03-03",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "SIC",
@@ -10219,7 +10965,8 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2026,
       "mes": 3,
-      "fecha_iso": "2026-03-09"
+      "fecha_iso": "2026-03-09",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "INPC",
@@ -10334,7 +11081,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 3,
-      "fecha_iso": "2026-03-10"
+      "fecha_iso": "2026-03-10",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IMAI",
@@ -10449,7 +11197,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 3,
-      "fecha_iso": "2026-03-18"
+      "fecha_iso": "2026-03-18",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IOAE",
@@ -10586,7 +11335,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 3,
-      "fecha_iso": "2026-03-24"
+      "fecha_iso": "2026-03-24",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "TASA",
@@ -10723,7 +11473,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 3,
-      "fecha_iso": "2026-03-31"
+      "fecha_iso": "2026-03-31",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "EMOE",
@@ -10767,6 +11518,36 @@
       "anio": 2026,
       "mes": 4,
       "fecha_iso": "2026-04-01"
+    },
+    {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, febrero 2026",
+      "product": "Remesas con el exterior",
+      "publication_date": "2026-04-01",
+      "publication_date_display": "1 de abril de 2026",
+      "reference_period": "Febrero 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{821CC839-639C-B027-5491-4E6CA5B7CE78}.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{821CC839-639C-B027-5491-4E6CA5B7CE78}.pdf",
+          "label": "Remesas con el exterior, febrero 2026",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 4,
+      "fecha_iso": "2026-04-01",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "CONSUMO",
@@ -10924,7 +11705,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 4,
-      "fecha_iso": "2026-04-07"
+      "fecha_iso": "2026-04-07",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "INPC",
@@ -11039,7 +11821,8 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2026,
       "mes": 4,
-      "fecha_iso": "2026-04-10"
+      "fecha_iso": "2026-04-10",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IMAI",
@@ -11111,7 +11894,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 4,
-      "fecha_iso": "2026-04-14"
+      "fecha_iso": "2026-04-14",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "EMIM",
@@ -11219,7 +12003,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 4,
-      "fecha_iso": "2026-04-21"
+      "fecha_iso": "2026-04-21",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IMOAM",
@@ -11399,7 +12184,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 4,
-      "fecha_iso": "2026-04-28"
+      "fecha_iso": "2026-04-28",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "PIB",
@@ -11481,6 +12267,36 @@
       "fecha_iso": "2026-05-04"
     },
     {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, marzo 2026",
+      "product": "Remesas con el exterior",
+      "publication_date": "2026-05-04",
+      "publication_date_display": "4 de mayo de 2026",
+      "reference_period": "Marzo 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{0800CDC2-6DA8-AE35-9E14-1682468DDA44}.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{0800CDC2-6DA8-AE35-9E14-1682468DDA44}.pdf",
+          "label": "Remesas con el exterior, marzo 2026",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 5,
+      "fecha_iso": "2026-05-04",
+      "publication_verification": "fuera_de_alcance"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México de la semana al 30 de abril y del mes de abril de 2026",
       "product": "Estado de cuenta del Banco de México",
@@ -11507,7 +12323,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 5,
-      "fecha_iso": "2026-05-05"
+      "fecha_iso": "2026-05-05",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "CONSUMO",
@@ -11780,7 +12597,8 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2026,
       "mes": 5,
-      "fecha_iso": "2026-05-11"
+      "fecha_iso": "2026-05-11",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IMAI",
@@ -11852,7 +12670,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 5,
-      "fecha_iso": "2026-05-12"
+      "fecha_iso": "2026-05-12",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "EMIM",
@@ -11960,7 +12779,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 5,
-      "fecha_iso": "2026-05-19"
+      "fecha_iso": "2026-05-19",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IMOAM",
@@ -12025,6 +12845,49 @@
           "type": "comunicado",
           "format": "excel",
           "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_05.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.03 MB"
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 5,
+      "fecha_iso": "2026-05-22"
+    },
+    {
+      "indicator": "PIBSEC",
+      "program": "Producto Interno Bruto Trimestral (PIBT). Año base 2018. Precios Constantes. Cifras preliminares",
+      "product": "PIB trimestral por actividad económica, precios constantes",
+      "publication_date": "2026-05-22",
+      "publication_date_display": "22 de mayo de 2026",
+      "reference_period": "Primer trimestre de 2026",
+      "frequency": "Trimestral",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "PIBSEC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_05.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_05.pdf",
+          "label": "Boletín PDF",
+          "size": "0.28 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_05.docx",
+          "label": "Boletín Word",
+          "size": "0.23 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_05.xlsx",
           "label": "Boletín Excel",
           "size": "0.03 MB"
         }
@@ -12111,7 +12974,8 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 5,
-      "fecha_iso": "2026-05-26"
+      "fecha_iso": "2026-05-26",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IED",
@@ -12131,7 +12995,7 @@
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "pdf",
+          "format": "html",
           "url": "https://www.presidenta.gob.mx/boletines/inversion-extranjera-aumenta-10-4-por-ciento-en-primer-trimestre-2026-presidenta-sheinbaum",
           "label": "Comunicado",
           "size": null
@@ -12140,7 +13004,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 5,
-      "fecha_iso": "2026-05-26"
+      "fecha_iso": "2026-05-26",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "RESERVAS",
@@ -12169,7 +13034,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 5,
-      "fecha_iso": "2026-05-26"
+      "fecha_iso": "2026-05-26",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "DESOCUP",
@@ -12258,6 +13124,36 @@
       "fecha_iso": "2026-06-01"
     },
     {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, abril 2026",
+      "product": "Remesas con el exterior",
+      "publication_date": "2026-06-01",
+      "publication_date_display": "1 de junio de 2026",
+      "reference_period": "Abril 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{F57AED8C-3670-D392-6CA1-5C9B874D7FFB}.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{F57AED8C-3670-D392-6CA1-5C9B874D7FFB}.pdf",
+          "label": "Remesas con el exterior, abril 2026",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 6,
+      "fecha_iso": "2026-06-01",
+      "publication_verification": "fuera_de_alcance"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México de la semana al 29 de mayo y del mes de mayo de 2026",
       "product": "Estado de cuenta del Banco de México",
@@ -12284,7 +13180,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 6,
-      "fecha_iso": "2026-06-02"
+      "fecha_iso": "2026-06-02",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "SIC",
@@ -12528,7 +13425,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 6,
-      "fecha_iso": "2026-06-09"
+      "fecha_iso": "2026-06-09",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "BCMM",
@@ -12557,7 +13455,8 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2026,
       "mes": 6,
-      "fecha_iso": "2026-06-10"
+      "fecha_iso": "2026-06-10",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IMAI",
@@ -12672,7 +13571,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 6,
-      "fecha_iso": "2026-06-16"
+      "fecha_iso": "2026-06-16",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IOAE",
@@ -12809,7 +13709,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 6,
-      "fecha_iso": "2026-06-23"
+      "fecha_iso": "2026-06-23",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "DESOCUP",
@@ -12946,7 +13847,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 6,
-      "fecha_iso": "2026-06-30"
+      "fecha_iso": "2026-06-30",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "EMOE",
@@ -12990,6 +13892,36 @@
       "anio": 2026,
       "mes": 7,
       "fecha_iso": "2026-07-01"
+    },
+    {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, mayo 2026",
+      "product": "Remesas con el exterior",
+      "publication_date": "2026-07-01",
+      "publication_date_display": "1 de julio de 2026",
+      "reference_period": "Mayo 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{E6E1BCB1-13FA-E401-41CA-0A7B7AD51C15}.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{E6E1BCB1-13FA-E401-41CA-0A7B7AD51C15}.pdf",
+          "label": "Remesas con el exterior, mayo 2026",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 7,
+      "fecha_iso": "2026-07-01",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "SIC",
@@ -13147,7 +14079,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 7,
-      "fecha_iso": "2026-07-07"
+      "fecha_iso": "2026-07-07",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "INPC",
@@ -13262,7 +14195,8 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2026,
       "mes": 7,
-      "fecha_iso": "2026-07-10"
+      "fecha_iso": "2026-07-10",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IMAI",
@@ -13334,7 +14268,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 7,
-      "fecha_iso": "2026-07-14"
+      "fecha_iso": "2026-07-14",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "EMIM",
@@ -13442,7 +14377,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 7,
-      "fecha_iso": "2026-07-21"
+      "fecha_iso": "2026-07-21",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IGAE",
@@ -13622,7 +14558,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 7,
-      "fecha_iso": "2026-07-28"
+      "fecha_iso": "2026-07-28",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "PIB",
@@ -13704,6 +14641,36 @@
       "fecha_iso": "2026-08-03"
     },
     {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, junio 2026",
+      "product": "Remesas con el exterior",
+      "publication_date": "2026-08-03",
+      "publication_date_display": "3 de agosto de 2026",
+      "reference_period": "Junio 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{D61BA269-E1F5-F27F-B347-CE8949A9C573}.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{D61BA269-E1F5-F27F-B347-CE8949A9C573}.pdf",
+          "label": "Remesas con el exterior, junio 2026",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 8,
+      "fecha_iso": "2026-08-03",
+      "publication_verification": "fuera_de_alcance"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México de la semana al 31 de julio y del mes de julio de 2026",
       "product": "Estado de cuenta del Banco de México",
@@ -13730,7 +14697,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 8,
-      "fecha_iso": "2026-08-04"
+      "fecha_iso": "2026-08-04",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "SIC",
@@ -14003,7 +14971,8 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2026,
       "mes": 8,
-      "fecha_iso": "2026-08-10"
+      "fecha_iso": "2026-08-10",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IMAI",
@@ -14075,7 +15044,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 8,
-      "fecha_iso": "2026-08-11"
+      "fecha_iso": "2026-08-11",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "EMIM",
@@ -14147,7 +15117,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 8,
-      "fecha_iso": "2026-08-18"
+      "fecha_iso": "2026-08-18",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IOAE",
@@ -14232,7 +15203,7 @@
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "pdf",
+          "format": "html",
           "url": "https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa",
           "label": "Comunicado",
           "size": null
@@ -14241,7 +15212,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 8,
-      "fecha_iso": "2026-08-24"
+      "fecha_iso": "2026-08-24",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IGAE",
@@ -14288,11 +15260,11 @@
     },
     {
       "indicator": "PIBSEC",
-      "program": "PIB trimestral por actividad económica, precios constantes",
+      "program": "Producto Interno Bruto Trimestral (PIBT). Año base 2018. Precios Constantes. Cifras preliminares",
       "product": "PIB trimestral por actividad económica, precios constantes",
       "publication_date": "2026-08-24",
       "publication_date_display": "24 de agosto de 2026",
-      "reference_period": "2° trimestre 2026",
+      "reference_period": "Segundo trimestre de 2026",
       "frequency": "Trimestral",
       "status": "publicado",
       "source": "INEGI Sala de Prensa",
@@ -14300,17 +15272,31 @@
       "category": "Actividad económica",
       "sigla": "PIBSEC",
       "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_08.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_08.pdf",
+          "label": "Boletín PDF",
+          "size": "0.27 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_08.docx",
+          "label": "Boletín Word",
+          "size": "0.23 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_08.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.03 MB"
         }
       ],
-      "comentario": null,
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 8,
       "fecha_iso": "2026-08-24"
@@ -14356,7 +15342,8 @@
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 8,
-      "fecha_iso": "2026-08-25"
+      "fecha_iso": "2026-08-25",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "RESERVAS",
@@ -14385,7 +15372,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 8,
-      "fecha_iso": "2026-08-25"
+      "fecha_iso": "2026-08-25",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "BCMM",
@@ -14510,6 +15498,36 @@
       "fecha_iso": "2026-09-01"
     },
     {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, julio 2026",
+      "product": "Remesas con el exterior",
+      "publication_date": "2026-09-01",
+      "publication_date_display": "1 de septiembre de 2026",
+      "reference_period": "Julio 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{626A49AF-D316-BBF0-D62D-8A7783EDA277}.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{626A49AF-D316-BBF0-D62D-8A7783EDA277}.pdf",
+          "label": "Remesas con el exterior, julio 2026",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 9,
+      "fecha_iso": "2026-09-01",
+      "publication_verification": "fuera_de_alcance"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México de la semana al 28 de agosto de 2026",
       "product": "Estado de cuenta del Banco de México",
@@ -14536,7 +15554,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 9,
-      "fecha_iso": "2026-09-01"
+      "fecha_iso": "2026-09-01",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "CONSUMO",
@@ -14694,7 +15713,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 9,
-      "fecha_iso": "2026-09-08"
+      "fecha_iso": "2026-09-08",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "INPC",
@@ -14809,7 +15829,8 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2026,
       "mes": 9,
-      "fecha_iso": "2026-09-10"
+      "fecha_iso": "2026-09-10",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IMAI",
@@ -14881,7 +15902,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 9,
-      "fecha_iso": "2026-09-15"
+      "fecha_iso": "2026-09-15",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "EMIM",
@@ -14989,7 +16011,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 9,
-      "fecha_iso": "2026-09-22"
+      "fecha_iso": "2026-09-22",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IMOAM",
@@ -15198,7 +16221,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 9,
-      "fecha_iso": "2026-09-29"
+      "fecha_iso": "2026-09-29",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "EMOE",
@@ -15242,6 +16266,36 @@
       "anio": 2026,
       "mes": 10,
       "fecha_iso": "2026-10-01"
+    },
+    {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, agosto 2026",
+      "product": "Remesas con el exterior",
+      "publication_date": "2026-10-01",
+      "publication_date_display": "1 de octubre de 2026",
+      "reference_period": "Agosto 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{1647FC66-42BC-4533-14A3-1DDAB07E2637}.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{1647FC66-42BC-4533-14A3-1DDAB07E2637}.pdf",
+          "label": "Remesas con el exterior, agosto 2026",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 10,
+      "fecha_iso": "2026-10-01",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "SIC",
@@ -15399,7 +16453,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 10,
-      "fecha_iso": "2026-10-06"
+      "fecha_iso": "2026-10-06",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "INPC",
@@ -15514,7 +16569,8 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, reporte de resultados ni boletín de indicadores.",
       "anio": 2026,
       "mes": 10,
-      "fecha_iso": "2026-10-09"
+      "fecha_iso": "2026-10-09",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IMAI",
@@ -15586,7 +16642,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 10,
-      "fecha_iso": "2026-10-13"
+      "fecha_iso": "2026-10-13",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "EMIM",
@@ -15694,7 +16751,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 10,
-      "fecha_iso": "2026-10-20"
+      "fecha_iso": "2026-10-20",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "DESOCUP",
@@ -15845,7 +16903,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 10,
-      "fecha_iso": "2026-10-27"
+      "fecha_iso": "2026-10-27",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IMOAM",
@@ -15956,6 +17015,36 @@
       "fecha_iso": "2026-11-03"
     },
     {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, septiembre 2026",
+      "product": "Remesas con el exterior",
+      "publication_date": "2026-11-03",
+      "publication_date_display": "3 de noviembre de 2026",
+      "reference_period": "Septiembre 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{29952C3D-1F6B-1CF3-9AD6-0DC1B3912796}.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/{29952C3D-1F6B-1CF3-9AD6-0DC1B3912796}.pdf",
+          "label": "Remesas con el exterior, septiembre 2026",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-03",
+      "publication_verification": "fuera_de_alcance"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México de la semana al 30 de octubre y del mes de octubre de 2026",
       "product": "Estado de cuenta del Banco de México",
@@ -15982,7 +17071,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 11,
-      "fecha_iso": "2026-11-04"
+      "fecha_iso": "2026-11-04",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "SIC",
@@ -16169,7 +17259,8 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2026,
       "mes": 11,
-      "fecha_iso": "2026-11-09"
+      "fecha_iso": "2026-11-09",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "INPC",
@@ -16284,7 +17375,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 11,
-      "fecha_iso": "2026-11-10"
+      "fecha_iso": "2026-11-10",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IMAI",
@@ -16337,20 +17429,34 @@
       "publication_date_display": "17 de noviembre de 2026",
       "reference_period": "Septiembre de 2026",
       "frequency": "Mensual",
-      "status": "próximo",
+      "status": "publicado",
       "source": "INEGI Sala de Prensa",
       "institution": "INEGI",
       "category": "Actividad económica",
       "sigla": "EMIM",
       "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_11.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_11.pdf",
+          "label": "Boletín PDF",
+          "size": "0.24 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_11.docx",
+          "label": "Boletín Word",
+          "size": "0.16 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_11.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.05 MB"
         }
       ],
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
@@ -16360,32 +17466,33 @@
     },
     {
       "indicator": "RESERVAS",
-      "program": "Estado de cuenta del Banco de México",
+      "program": "Estado de cuenta del Banco de México de la semana al 13 de noviembre de 2026",
       "product": "Estado de cuenta del Banco de México",
       "publication_date": "2026-11-18",
       "publication_date_display": "18 de noviembre de 2026",
       "reference_period": "13 de noviembre de 2026",
       "frequency": "Semanal",
-      "status": "próximo",
+      "status": "publicado",
       "source": "Banco de México calendario",
       "institution": "Banco de México",
       "category": "Financiero",
       "sigla": "RESERVAS",
       "type": "event",
-      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{091A5E42-64D3-6A88-236C-180709FD3DA3}.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
-          "label": "Boletín / página oficial",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{091A5E42-64D3-6A88-236C-180709FD3DA3}.pdf",
+          "label": "Estado de cuenta del Banco de México de la semana al 13 de noviembre de 2026",
           "size": null
         }
       ],
       "comentario": null,
       "anio": 2026,
       "mes": 11,
-      "fecha_iso": "2026-11-18"
+      "fecha_iso": "2026-11-18",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "IOAE",
@@ -16395,20 +17502,27 @@
       "publication_date_display": "19 de noviembre de 2026",
       "reference_period": "Octubre de 2026",
       "frequency": "Mensual",
-      "status": "próximo",
+      "status": "publicado",
       "source": "INEGI Sala de Prensa",
       "institution": "INEGI",
       "category": "Actividad económica",
       "sigla": "IOAE",
       "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_11.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_11.pdf",
+          "label": "Boletín PDF",
+          "size": "0.25 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_11.docx",
+          "label": "Boletín Word",
+          "size": "0.24 MB"
         }
       ],
       "comentario": "Incluye boletín de indicador. Estas fechas son preliminares, están sujetas al indicador de la actividad industrial de los Estados Unidos cuyo calendario de publicación para 2026 aún no está disponible.",
@@ -16424,20 +17538,34 @@
       "publication_date_display": "23 de noviembre de 2026",
       "reference_period": "Septiembre de 2026",
       "frequency": "Mensual",
-      "status": "próximo",
+      "status": "publicado",
       "source": "INEGI Sala de Prensa",
       "institution": "INEGI",
       "category": "Actividad económica",
       "sigla": "IGAE",
       "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_11.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_11.pdf",
+          "label": "Boletín PDF",
+          "size": "0.27 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_11.docx",
+          "label": "Boletín Word",
+          "size": "0.17 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_11.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.03 MB"
         }
       ],
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
@@ -16447,61 +17575,106 @@
     },
     {
       "indicator": "PIBSEC",
-      "program": "PIB trimestral por actividad económica, precios constantes",
+      "program": "Producto Interno Bruto Trimestral (PIBT). Año base 2018. Precios Constantes. Cifras preliminares",
       "product": "PIB trimestral por actividad económica, precios constantes",
       "publication_date": "2026-11-23",
       "publication_date_display": "23 de noviembre de 2026",
-      "reference_period": "3er trimestre 2026",
+      "reference_period": "Tercer trimestre de 2026",
       "frequency": "Trimestral",
-      "status": "próximo",
+      "status": "publicado",
       "source": "INEGI Sala de Prensa",
       "institution": "INEGI",
       "category": "Actividad económica",
       "sigla": "PIBSEC",
       "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_11.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_11.pdf",
+          "label": "Boletín PDF",
+          "size": "0.28 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_11.docx",
+          "label": "Boletín Word",
+          "size": "0.23 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_11.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.03 MB"
         }
       ],
-      "comentario": null,
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-23"
     },
     {
+      "indicator": "IED",
+      "program": "IED · Comunicado de acumulado nacional (enero–septiembre)",
+      "product": "IED · Comunicado de acumulado nacional (enero–septiembre)",
+      "publication_date": "2026-11-24",
+      "publication_date_display": "24 de noviembre de 2026",
+      "reference_period": "3° trimestre 2026",
+      "frequency": "Trimestral",
+      "status": "publicado",
+      "source": "Secretaría de Economía (manual)",
+      "institution": "Secretaría de Economía",
+      "category": "Inversión",
+      "sigla": "IED",
+      "type": "event",
+      "url": "https://www.gob.mx/se/prensa/mexico-alcanza-un-maximo-historico-de-inversion-extranjera-directa-ied-entre-enero-y-septiembre-de-2026-43-mil-090-millones-de-dolares?idiom=es",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.gob.mx/se/prensa/mexico-alcanza-un-maximo-historico-de-inversion-extranjera-directa-ied-entre-enero-y-septiembre-de-2026-43-mil-090-millones-de-dolares?idiom=es",
+          "label": "Comunicado",
+          "size": null
+        }
+      ],
+      "comentario": "El comunicado no actualiza el archivo estructurado de flujos trimestrales ni el ranking estatal.",
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-24",
+      "publication_verification": "fuera_de_alcance"
+    },
+    {
       "indicator": "RESERVAS",
-      "program": "Estado de cuenta del Banco de México",
+      "program": "Estado de cuenta del Banco de México de la semana al 20 de noviembre de 2026",
       "product": "Estado de cuenta del Banco de México",
       "publication_date": "2026-11-24",
       "publication_date_display": "24 de noviembre de 2026",
       "reference_period": "20 de noviembre de 2026",
       "frequency": "Semanal",
-      "status": "próximo",
+      "status": "publicado",
       "source": "Banco de México calendario",
       "institution": "Banco de México",
       "category": "Financiero",
       "sigla": "RESERVAS",
       "type": "event",
-      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{C7430299-00B5-E232-4BFE-4CC9BA59A560}.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
-          "label": "Boletín / página oficial",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{C7430299-00B5-E232-4BFE-4CC9BA59A560}.pdf",
+          "label": "Estado de cuenta del Banco de México de la semana al 20 de noviembre de 2026",
           "size": null
         }
       ],
       "comentario": null,
       "anio": 2026,
       "mes": 11,
-      "fecha_iso": "2026-11-24"
+      "fecha_iso": "2026-11-24",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "DESOCUP",
@@ -16511,26 +17684,41 @@
       "publication_date_display": "25 de noviembre de 2026",
       "reference_period": "Tercer trimestre de 2026",
       "frequency": "Trimestral",
-      "status": "próximo",
+      "status": "publicado",
       "source": "INEGI Sala de Prensa",
       "institution": "INEGI",
       "category": "Mercado laboral",
       "sigla": "ENOE",
       "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/enoe/enoe2026_11.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/enoe/enoe2026_11.pdf",
+          "label": "Boletín PDF",
+          "size": "0.52 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/enoe/enoe2026_11.docx",
+          "label": "Boletín Word",
+          "size": "0.37 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/enoe/enoe2026_11.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.03 MB"
         }
       ],
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 11,
-      "fecha_iso": "2026-11-25"
+      "fecha_iso": "2026-11-25",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "DESOCUP",
@@ -16540,26 +17728,75 @@
       "publication_date_display": "26 de noviembre de 2026",
       "reference_period": "Octubre de 2026",
       "frequency": "Mensual",
-      "status": "próximo",
+      "status": "publicado",
       "source": "INEGI Sala de Prensa",
       "institution": "INEGI",
       "category": "Mercado laboral",
       "sigla": "ENOE",
       "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf",
+          "label": "Boletín PDF",
+          "size": "0.42 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.docx",
+          "label": "Boletín Word",
+          "size": "0.39 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.03 MB"
         }
       ],
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 11,
-      "fecha_iso": "2026-11-26"
+      "fecha_iso": "2026-11-26",
+      "publication_confirmed": true,
+      "publication_evidence_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf",
+      "publication_evidence_date": "2026-11-26"
+    },
+    {
+      "indicator": "IMOAM",
+      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "publication_date": "2026-11-26",
+      "publication_date_display": "26 de noviembre de 2026",
+      "reference_period": "Oct 26",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI · Boletín de indicador validado",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMOAM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_11.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_11.pdf",
+          "label": "Boletín de indicador",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-26",
+      "publication_confirmed": true,
+      "publication_evidence_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_11.pdf",
+      "publication_evidence_date": "2026-11-26"
     },
     {
       "indicator": "BCMM",
@@ -16569,26 +17806,36 @@
       "publication_date_display": "27 de noviembre de 2026",
       "reference_period": "Octubre de 2026",
       "frequency": "Mensual",
-      "status": "próximo",
+      "status": "publicado",
       "source": "INEGI Sala de Prensa",
       "institution": "INEGI",
       "category": "Sector externo",
       "sigla": "BCMM",
       "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf",
       "deliverables": [
         {
           "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf",
+          "label": "Boletín PDF",
+          "size": "0.37 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.docx",
+          "label": "Boletín Word",
+          "size": "0.29 MB"
         }
       ],
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. Incluye boletín de indicador.",
       "anio": 2026,
       "mes": 11,
-      "fecha_iso": "2026-11-27"
+      "fecha_iso": "2026-11-27",
+      "publication_confirmed": true,
+      "publication_evidence_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf",
+      "publication_evidence_date": "2026-11-27"
     },
     {
       "indicator": "EMOE",
@@ -16615,6 +17862,35 @@
         }
       ],
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 12,
+      "fecha_iso": "2026-12-01"
+    },
+    {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, octubre 2026",
+      "product": "Remesas con el exterior",
+      "publication_date": "2026-12-01",
+      "publication_date_display": "1 de diciembre de 2026",
+      "reference_period": "Octubre 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
       "anio": 2026,
       "mes": 12,
       "fecha_iso": "2026-12-01"
@@ -17171,6 +18447,35 @@
       "fecha_iso": "2027-01-04"
     },
     {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, noviembre 2026",
+      "product": "Remesas con el exterior",
+      "publication_date": "2027-01-04",
+      "publication_date_display": "4 de enero de 2027",
+      "reference_period": "Noviembre 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2027,
+      "mes": 1,
+      "fecha_iso": "2027-01-04"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México",
       "product": "Estado de cuenta del Banco de México",
@@ -17693,6 +18998,35 @@
       "fecha_iso": "2027-02-02"
     },
     {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, diciembre 2026",
+      "product": "Remesas con el exterior",
+      "publication_date": "2027-02-02",
+      "publication_date_display": "2 de febrero de 2027",
+      "reference_period": "Diciembre 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2027,
+      "mes": 2,
+      "fecha_iso": "2027-02-02"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México",
       "product": "Estado de cuenta del Banco de México",
@@ -18128,6 +19462,35 @@
       "fecha_iso": "2027-02-24"
     },
     {
+      "indicator": "PIBSEC",
+      "program": "Producto Interno Bruto Trimestral (PIBT). Año base 2018. Precios Constantes. Cifras preliminares",
+      "product": "PIB trimestral por actividad económica, precios constantes",
+      "publication_date": "2027-02-24",
+      "publication_date_display": "24 de febrero de 2027",
+      "reference_period": "Cuarto trimestre de 2026",
+      "frequency": "Trimestral",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "PIBSEC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2027,
+      "mes": 2,
+      "fecha_iso": "2027-02-24"
+    },
+    {
       "indicator": "DESOCUP",
       "program": "Encuesta Nacional de Ocupación y Empleo (ENOE), población de 15 años y más de edad. Cifras definitivas",
       "product": "ENOE · Resultados trimestrales",
@@ -18210,6 +19573,35 @@
         }
       ],
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2027,
+      "mes": 3,
+      "fecha_iso": "2027-03-01"
+    },
+    {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, enero 2027",
+      "product": "Remesas con el exterior",
+      "publication_date": "2027-03-01",
+      "publication_date_display": "1 de marzo de 2027",
+      "reference_period": "Enero 2027",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
       "anio": 2027,
       "mes": 3,
       "fecha_iso": "2027-03-01"
@@ -18766,6 +20158,35 @@
       "fecha_iso": "2027-04-01"
     },
     {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, febrero 2027",
+      "product": "Remesas con el exterior",
+      "publication_date": "2027-04-01",
+      "publication_date_display": "1 de abril de 2027",
+      "reference_period": "Febrero 2027",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2027,
+      "mes": 4,
+      "fecha_iso": "2027-04-01"
+    },
+    {
       "indicator": "SIC",
       "program": "Sistema de Indicadores Cíclicos. Cifras preliminares",
       "product": "Sistema de Indicadores Cíclicos",
@@ -19317,6 +20738,35 @@
       "fecha_iso": "2027-05-03"
     },
     {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, marzo 2027",
+      "product": "Remesas con el exterior",
+      "publication_date": "2027-05-03",
+      "publication_date_display": "3 de mayo de 2027",
+      "reference_period": "Marzo 2027",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2027,
+      "mes": 5,
+      "fecha_iso": "2027-05-03"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México",
       "product": "Estado de cuenta del Banco de México",
@@ -19723,6 +21173,35 @@
       "fecha_iso": "2027-05-24"
     },
     {
+      "indicator": "PIBSEC",
+      "program": "Producto Interno Bruto Trimestral (PIBT). Año base 2018. Precios Constantes. Cifras preliminares",
+      "product": "PIB trimestral por actividad económica, precios constantes",
+      "publication_date": "2027-05-24",
+      "publication_date_display": "24 de mayo de 2027",
+      "reference_period": "Primer trimestre de 2027",
+      "frequency": "Trimestral",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "PIBSEC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2027,
+      "mes": 5,
+      "fecha_iso": "2027-05-24"
+    },
+    {
       "indicator": "BCMM",
       "program": "Balanza Comercial de Mercancías de México. Información oportuna. Cifras preliminares",
       "product": "Balanza Comercial de Mercancías de México",
@@ -19834,6 +21313,35 @@
         }
       ],
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2027,
+      "mes": 6,
+      "fecha_iso": "2027-06-01"
+    },
+    {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, abril 2027",
+      "product": "Remesas con el exterior",
+      "publication_date": "2027-06-01",
+      "publication_date_display": "1 de junio de 2027",
+      "reference_period": "Abril 2027",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
       "anio": 2027,
       "mes": 6,
       "fecha_iso": "2027-06-01"
@@ -20361,6 +21869,35 @@
       "fecha_iso": "2027-06-29"
     },
     {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, mayo 2027",
+      "product": "Remesas con el exterior",
+      "publication_date": "2027-07-01",
+      "publication_date_display": "1 de julio de 2027",
+      "reference_period": "Mayo 2027",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2027,
+      "mes": 7,
+      "fecha_iso": "2027-07-01"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México",
       "product": "Estado de cuenta del Banco de México",
@@ -20475,6 +22012,35 @@
       "anio": 2027,
       "mes": 7,
       "fecha_iso": "2027-07-27"
+    },
+    {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, junio 2027",
+      "product": "Remesas con el exterior",
+      "publication_date": "2027-08-02",
+      "publication_date_display": "2 de agosto de 2027",
+      "reference_period": "Junio 2027",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2027,
+      "mes": 8,
+      "fecha_iso": "2027-08-02"
     },
     {
       "indicator": "RESERVAS",
@@ -20651,6 +22217,35 @@
       "fecha_iso": "2027-08-31"
     },
     {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, julio 2027",
+      "product": "Remesas con el exterior",
+      "publication_date": "2027-09-01",
+      "publication_date_display": "1 de septiembre de 2027",
+      "reference_period": "Julio 2027",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2027,
+      "mes": 9,
+      "fecha_iso": "2027-09-01"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México",
       "product": "Estado de cuenta del Banco de México",
@@ -20796,6 +22391,35 @@
       "fecha_iso": "2027-09-28"
     },
     {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, agosto 2027",
+      "product": "Remesas con el exterior",
+      "publication_date": "2027-10-01",
+      "publication_date_display": "1 de octubre de 2027",
+      "reference_period": "Agosto 2027",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2027,
+      "mes": 10,
+      "fecha_iso": "2027-10-01"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México",
       "product": "Estado de cuenta del Banco de México",
@@ -20910,6 +22534,35 @@
       "anio": 2027,
       "mes": 10,
       "fecha_iso": "2027-10-26"
+    },
+    {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, septiembre 2027",
+      "product": "Remesas con el exterior",
+      "publication_date": "2027-11-01",
+      "publication_date_display": "1 de noviembre de 2027",
+      "reference_period": "Septiembre 2027",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2027,
+      "mes": 11,
+      "fecha_iso": "2027-11-01"
     },
     {
       "indicator": "RESERVAS",
@@ -21086,6 +22739,35 @@
       "fecha_iso": "2027-11-30"
     },
     {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, octubre 2027",
+      "product": "Remesas con el exterior",
+      "publication_date": "2027-12-01",
+      "publication_date_display": "1 de diciembre de 2027",
+      "reference_period": "Octubre 2027",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2027,
+      "mes": 12,
+      "fecha_iso": "2027-12-01"
+    },
+    {
       "indicator": "RESERVAS",
       "program": "Estado de cuenta del Banco de México",
       "product": "Estado de cuenta del Banco de México",
@@ -21236,7 +22918,7 @@
       "product": "Flujos de inversión extranjera directa",
       "publication_date": null,
       "publication_date_display": "Por anunciar",
-      "reference_period": "3° trimestre 2026",
+      "reference_period": "4° trimestre 2026",
       "frequency": "Trimestral",
       "status": "próximo",
       "source": "Secretaría de Economía (manual)",
@@ -21290,267 +22972,6 @@
   ],
   "upcoming": [
     {
-      "indicator": "EMIM",
-      "program": "Encuesta Mensual de la Industria Manufacturera (EMIM). Serie 2018. Cifras preliminares",
-      "product": "Encuesta Mensual de la Industria Manufacturera",
-      "publication_date": "2026-11-17",
-      "publication_date_display": "17 de noviembre de 2026",
-      "reference_period": "Septiembre de 2026",
-      "frequency": "Mensual",
-      "status": "próximo",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Actividad económica",
-      "sigla": "EMIM",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 11,
-      "fecha_iso": "2026-11-17"
-    },
-    {
-      "indicator": "RESERVAS",
-      "program": "Estado de cuenta del Banco de México",
-      "product": "Estado de cuenta del Banco de México",
-      "publication_date": "2026-11-18",
-      "publication_date_display": "18 de noviembre de 2026",
-      "reference_period": "13 de noviembre de 2026",
-      "frequency": "Semanal",
-      "status": "próximo",
-      "source": "Banco de México calendario",
-      "institution": "Banco de México",
-      "category": "Financiero",
-      "sigla": "RESERVAS",
-      "type": "event",
-      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": null,
-      "anio": 2026,
-      "mes": 11,
-      "fecha_iso": "2026-11-18"
-    },
-    {
-      "indicator": "IOAE",
-      "program": "Indicador Oportuno de la Actividad Económica. Cifras preliminares",
-      "product": "Indicador Oportuno de la Actividad Económica",
-      "publication_date": "2026-11-19",
-      "publication_date_display": "19 de noviembre de 2026",
-      "reference_period": "Octubre de 2026",
-      "frequency": "Mensual",
-      "status": "próximo",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Actividad económica",
-      "sigla": "IOAE",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": "Incluye boletín de indicador. Estas fechas son preliminares, están sujetas al indicador de la actividad industrial de los Estados Unidos cuyo calendario de publicación para 2026 aún no está disponible.",
-      "anio": 2026,
-      "mes": 11,
-      "fecha_iso": "2026-11-19"
-    },
-    {
-      "indicator": "IGAE",
-      "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018. Cifras preliminares",
-      "product": "Indicador Global de la Actividad Económica",
-      "publication_date": "2026-11-23",
-      "publication_date_display": "23 de noviembre de 2026",
-      "reference_period": "Septiembre de 2026",
-      "frequency": "Mensual",
-      "status": "próximo",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Actividad económica",
-      "sigla": "IGAE",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 11,
-      "fecha_iso": "2026-11-23"
-    },
-    {
-      "indicator": "PIBSEC",
-      "program": "PIB trimestral por actividad económica, precios constantes",
-      "product": "PIB trimestral por actividad económica, precios constantes",
-      "publication_date": "2026-11-23",
-      "publication_date_display": "23 de noviembre de 2026",
-      "reference_period": "3er trimestre 2026",
-      "frequency": "Trimestral",
-      "status": "próximo",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Actividad económica",
-      "sigla": "PIBSEC",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": null,
-      "anio": 2026,
-      "mes": 11,
-      "fecha_iso": "2026-11-23"
-    },
-    {
-      "indicator": "RESERVAS",
-      "program": "Estado de cuenta del Banco de México",
-      "product": "Estado de cuenta del Banco de México",
-      "publication_date": "2026-11-24",
-      "publication_date_display": "24 de noviembre de 2026",
-      "reference_period": "20 de noviembre de 2026",
-      "frequency": "Semanal",
-      "status": "próximo",
-      "source": "Banco de México calendario",
-      "institution": "Banco de México",
-      "category": "Financiero",
-      "sigla": "RESERVAS",
-      "type": "event",
-      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": null,
-      "anio": 2026,
-      "mes": 11,
-      "fecha_iso": "2026-11-24"
-    },
-    {
-      "indicator": "DESOCUP",
-      "program": "Encuesta Nacional de Ocupación y Empleo (ENOE), población de 15 años y más de edad. Cifras definitivas",
-      "product": "ENOE · Resultados trimestrales",
-      "publication_date": "2026-11-25",
-      "publication_date_display": "25 de noviembre de 2026",
-      "reference_period": "Tercer trimestre de 2026",
-      "frequency": "Trimestral",
-      "status": "próximo",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Mercado laboral",
-      "sigla": "ENOE",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 11,
-      "fecha_iso": "2026-11-25"
-    },
-    {
-      "indicator": "DESOCUP",
-      "program": "Encuesta Nacional de Ocupación y Empleo (ENOE), población de 15 años y más de edad. Indicadores de Ocupación y Empleo. Cifras definitivas",
-      "product": "ENOE · Indicadores mensuales de ocupación y empleo",
-      "publication_date": "2026-11-26",
-      "publication_date_display": "26 de noviembre de 2026",
-      "reference_period": "Octubre de 2026",
-      "frequency": "Mensual",
-      "status": "próximo",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Mercado laboral",
-      "sigla": "ENOE",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 11,
-      "fecha_iso": "2026-11-26"
-    },
-    {
-      "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Información oportuna. Cifras preliminares",
-      "product": "Balanza Comercial de Mercancías de México",
-      "publication_date": "2026-11-27",
-      "publication_date_display": "27 de noviembre de 2026",
-      "reference_period": "Octubre de 2026",
-      "frequency": "Mensual",
-      "status": "próximo",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Sector externo",
-      "sigla": "BCMM",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 11,
-      "fecha_iso": "2026-11-27"
-    },
-    {
       "indicator": "EMOE",
       "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
       "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
@@ -21575,6 +22996,35 @@
         }
       ],
       "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 12,
+      "fecha_iso": "2026-12-01"
+    },
+    {
+      "indicator": "REMESAS",
+      "program": "Remesas con el exterior, octubre 2026",
+      "product": "Remesas con el exterior",
+      "publication_date": "2026-12-01",
+      "publication_date_display": "1 de diciembre de 2026",
+      "reference_period": "Octubre 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Sector externo",
+      "sigla": "REMESAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/remesas/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
       "anio": 2026,
       "mes": 12,
       "fecha_iso": "2026-12-01"
@@ -21868,9 +23318,657 @@
       "anio": 2026,
       "mes": 12,
       "fecha_iso": "2026-12-15"
+    },
+    {
+      "indicator": "EMIM",
+      "program": "Encuesta Mensual de la Industria Manufacturera (EMIM). Serie 2018. Cifras preliminares",
+      "product": "Encuesta Mensual de la Industria Manufacturera",
+      "publication_date": "2026-12-16",
+      "publication_date_display": "16 de diciembre de 2026",
+      "reference_period": "Octubre de 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "EMIM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 12,
+      "fecha_iso": "2026-12-16"
+    },
+    {
+      "indicator": "TASA",
+      "program": "Anuncio de la Decisión de Política Monetaria",
+      "product": "Anuncio de la Decisión de Política Monetaria",
+      "publication_date": "2026-12-17",
+      "publication_date_display": "17 de diciembre de 2026",
+      "reference_period": "17 de diciembre de 2026",
+      "frequency": "Decisiones de política monetaria",
+      "status": "próximo",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Financiero",
+      "sigla": "TASA",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.banxico.org.mx/mercados/tasas-de-referencia.html",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 12,
+      "fecha_iso": "2026-12-17"
+    },
+    {
+      "indicator": "IOAE",
+      "program": "Indicador Oportuno de la Actividad Económica. Cifras preliminares",
+      "product": "Indicador Oportuno de la Actividad Económica",
+      "publication_date": "2026-12-18",
+      "publication_date_display": "18 de diciembre de 2026",
+      "reference_period": "Noviembre de 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IOAE",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Incluye boletín de indicador. Estas fechas son preliminares, están sujetas al indicador de la actividad industrial de los Estados Unidos cuyo calendario de publicación para 2026 aún no está disponible.",
+      "anio": 2026,
+      "mes": 12,
+      "fecha_iso": "2026-12-18"
+    },
+    {
+      "indicator": "RESERVAS",
+      "program": "Estado de cuenta del Banco de México",
+      "product": "Estado de cuenta del Banco de México",
+      "publication_date": "2026-12-22",
+      "publication_date_display": "22 de diciembre de 2026",
+      "reference_period": "18 de diciembre de 2026",
+      "frequency": "Semanal",
+      "status": "próximo",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Financiero",
+      "sigla": "RESERVAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 12,
+      "fecha_iso": "2026-12-22"
+    },
+    {
+      "indicator": "BCMM",
+      "program": "Balanza Comercial de Mercancías de México. Información oportuna. Cifras preliminares",
+      "product": "Balanza Comercial de Mercancías de México",
+      "publication_date": "2026-12-23",
+      "publication_date_display": "23 de diciembre de 2026",
+      "reference_period": "Noviembre de 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Sector externo",
+      "sigla": "BCMM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 12,
+      "fecha_iso": "2026-12-23"
+    },
+    {
+      "indicator": "IGAE",
+      "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018. Cifras preliminares",
+      "product": "Indicador Global de la Actividad Económica",
+      "publication_date": "2026-12-23",
+      "publication_date_display": "23 de diciembre de 2026",
+      "reference_period": "Octubre de 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IGAE",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 12,
+      "fecha_iso": "2026-12-23"
+    },
+    {
+      "indicator": "DESOCUP",
+      "program": "Encuesta Nacional de Ocupación y Empleo (ENOE), población de 15 años y más de edad. Indicadores de Ocupación y Empleo. Cifras definitivas",
+      "product": "ENOE · Indicadores mensuales de ocupación y empleo",
+      "publication_date": "2026-12-24",
+      "publication_date_display": "24 de diciembre de 2026",
+      "reference_period": "Noviembre de 2026",
+      "frequency": "Mensual",
+      "status": "próximo",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Mercado laboral",
+      "sigla": "ENOE",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 12,
+      "fecha_iso": "2026-12-24"
+    },
+    {
+      "indicator": "RESERVAS",
+      "program": "Estado de cuenta del Banco de México",
+      "product": "Estado de cuenta del Banco de México",
+      "publication_date": "2026-12-29",
+      "publication_date_display": "29 de diciembre de 2026",
+      "reference_period": "25 de diciembre de 2026",
+      "frequency": "Semanal",
+      "status": "próximo",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Financiero",
+      "sigla": "RESERVAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/reservas-internacionales/",
+          "label": "Boletín / página oficial",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 12,
+      "fecha_iso": "2026-12-29"
     }
   ],
   "recent": [
+    {
+      "indicator": "BCMM",
+      "program": "Balanza Comercial de Mercancías de México. Información oportuna. Cifras preliminares",
+      "product": "Balanza Comercial de Mercancías de México",
+      "publication_date": "2026-11-27",
+      "publication_date_display": "27 de noviembre de 2026",
+      "reference_period": "Octubre de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Sector externo",
+      "sigla": "BCMM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf",
+          "label": "Boletín PDF",
+          "size": "0.37 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.docx",
+          "label": "Boletín Word",
+          "size": "0.29 MB"
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-27",
+      "publication_confirmed": true,
+      "publication_evidence_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_11.pdf",
+      "publication_evidence_date": "2026-11-27"
+    },
+    {
+      "indicator": "IMOAM",
+      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
+      "publication_date": "2026-11-26",
+      "publication_date_display": "26 de noviembre de 2026",
+      "reference_period": "Oct 26",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI · Boletín de indicador validado",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IMOAM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_11.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_11.pdf",
+          "label": "Boletín de indicador",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-26",
+      "publication_confirmed": true,
+      "publication_evidence_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/imoam/imoam2026_11.pdf",
+      "publication_evidence_date": "2026-11-26"
+    },
+    {
+      "indicator": "DESOCUP",
+      "program": "Encuesta Nacional de Ocupación y Empleo (ENOE), población de 15 años y más de edad. Indicadores de Ocupación y Empleo. Cifras definitivas",
+      "product": "ENOE · Indicadores mensuales de ocupación y empleo",
+      "publication_date": "2026-11-26",
+      "publication_date_display": "26 de noviembre de 2026",
+      "reference_period": "Octubre de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Mercado laboral",
+      "sigla": "ENOE",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf",
+          "label": "Boletín PDF",
+          "size": "0.42 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.docx",
+          "label": "Boletín Word",
+          "size": "0.39 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.03 MB"
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-26",
+      "publication_confirmed": true,
+      "publication_evidence_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_11.pdf",
+      "publication_evidence_date": "2026-11-26"
+    },
+    {
+      "indicator": "DESOCUP",
+      "program": "Encuesta Nacional de Ocupación y Empleo (ENOE), población de 15 años y más de edad. Cifras definitivas",
+      "product": "ENOE · Resultados trimestrales",
+      "publication_date": "2026-11-25",
+      "publication_date_display": "25 de noviembre de 2026",
+      "reference_period": "Tercer trimestre de 2026",
+      "frequency": "Trimestral",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Mercado laboral",
+      "sigla": "ENOE",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/enoe/enoe2026_11.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/enoe/enoe2026_11.pdf",
+          "label": "Boletín PDF",
+          "size": "0.52 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/enoe/enoe2026_11.docx",
+          "label": "Boletín Word",
+          "size": "0.37 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/enoe/enoe2026_11.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.03 MB"
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-25",
+      "publication_verification": "fuera_de_alcance"
+    },
+    {
+      "indicator": "RESERVAS",
+      "program": "Estado de cuenta del Banco de México de la semana al 20 de noviembre de 2026",
+      "product": "Estado de cuenta del Banco de México",
+      "publication_date": "2026-11-24",
+      "publication_date_display": "24 de noviembre de 2026",
+      "reference_period": "20 de noviembre de 2026",
+      "frequency": "Semanal",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Financiero",
+      "sigla": "RESERVAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{C7430299-00B5-E232-4BFE-4CC9BA59A560}.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{C7430299-00B5-E232-4BFE-4CC9BA59A560}.pdf",
+          "label": "Estado de cuenta del Banco de México de la semana al 20 de noviembre de 2026",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-24",
+      "publication_verification": "fuera_de_alcance"
+    },
+    {
+      "indicator": "IED",
+      "program": "IED · Comunicado de acumulado nacional (enero–septiembre)",
+      "product": "IED · Comunicado de acumulado nacional (enero–septiembre)",
+      "publication_date": "2026-11-24",
+      "publication_date_display": "24 de noviembre de 2026",
+      "reference_period": "3° trimestre 2026",
+      "frequency": "Trimestral",
+      "status": "publicado",
+      "source": "Secretaría de Economía (manual)",
+      "institution": "Secretaría de Economía",
+      "category": "Inversión",
+      "sigla": "IED",
+      "type": "event",
+      "url": "https://www.gob.mx/se/prensa/mexico-alcanza-un-maximo-historico-de-inversion-extranjera-directa-ied-entre-enero-y-septiembre-de-2026-43-mil-090-millones-de-dolares?idiom=es",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "html",
+          "url": "https://www.gob.mx/se/prensa/mexico-alcanza-un-maximo-historico-de-inversion-extranjera-directa-ied-entre-enero-y-septiembre-de-2026-43-mil-090-millones-de-dolares?idiom=es",
+          "label": "Comunicado",
+          "size": null
+        }
+      ],
+      "comentario": "El comunicado no actualiza el archivo estructurado de flujos trimestrales ni el ranking estatal.",
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-24",
+      "publication_verification": "fuera_de_alcance"
+    },
+    {
+      "indicator": "PIBSEC",
+      "program": "Producto Interno Bruto Trimestral (PIBT). Año base 2018. Precios Constantes. Cifras preliminares",
+      "product": "PIB trimestral por actividad económica, precios constantes",
+      "publication_date": "2026-11-23",
+      "publication_date_display": "23 de noviembre de 2026",
+      "reference_period": "Tercer trimestre de 2026",
+      "frequency": "Trimestral",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "PIBSEC",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_11.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_11.pdf",
+          "label": "Boletín PDF",
+          "size": "0.28 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_11.docx",
+          "label": "Boletín Word",
+          "size": "0.23 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibt/pib_Pconst2026_11.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.03 MB"
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-23"
+    },
+    {
+      "indicator": "IGAE",
+      "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018. Cifras preliminares",
+      "product": "Indicador Global de la Actividad Económica",
+      "publication_date": "2026-11-23",
+      "publication_date_display": "23 de noviembre de 2026",
+      "reference_period": "Septiembre de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IGAE",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_11.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_11.pdf",
+          "label": "Boletín PDF",
+          "size": "0.27 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_11.docx",
+          "label": "Boletín Word",
+          "size": "0.17 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_11.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.03 MB"
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-23"
+    },
+    {
+      "indicator": "IOAE",
+      "program": "Indicador Oportuno de la Actividad Económica. Cifras preliminares",
+      "product": "Indicador Oportuno de la Actividad Económica",
+      "publication_date": "2026-11-19",
+      "publication_date_display": "19 de noviembre de 2026",
+      "reference_period": "Octubre de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "IOAE",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_11.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_11.pdf",
+          "label": "Boletín PDF",
+          "size": "0.25 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_11.docx",
+          "label": "Boletín Word",
+          "size": "0.24 MB"
+        }
+      ],
+      "comentario": "Incluye boletín de indicador. Estas fechas son preliminares, están sujetas al indicador de la actividad industrial de los Estados Unidos cuyo calendario de publicación para 2026 aún no está disponible.",
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-19"
+    },
+    {
+      "indicator": "RESERVAS",
+      "program": "Estado de cuenta del Banco de México de la semana al 13 de noviembre de 2026",
+      "product": "Estado de cuenta del Banco de México",
+      "publication_date": "2026-11-18",
+      "publication_date_display": "18 de noviembre de 2026",
+      "reference_period": "13 de noviembre de 2026",
+      "frequency": "Semanal",
+      "status": "publicado",
+      "source": "Banco de México calendario",
+      "institution": "Banco de México",
+      "category": "Financiero",
+      "sigla": "RESERVAS",
+      "type": "event",
+      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{091A5E42-64D3-6A88-236C-180709FD3DA3}.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{091A5E42-64D3-6A88-236C-180709FD3DA3}.pdf",
+          "label": "Estado de cuenta del Banco de México de la semana al 13 de noviembre de 2026",
+          "size": null
+        }
+      ],
+      "comentario": null,
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-18",
+      "publication_verification": "fuera_de_alcance"
+    },
+    {
+      "indicator": "EMIM",
+      "program": "Encuesta Mensual de la Industria Manufacturera (EMIM). Serie 2018. Cifras preliminares",
+      "product": "Encuesta Mensual de la Industria Manufacturera",
+      "publication_date": "2026-11-17",
+      "publication_date_display": "17 de noviembre de 2026",
+      "reference_period": "Septiembre de 2026",
+      "frequency": "Mensual",
+      "status": "publicado",
+      "source": "INEGI Sala de Prensa",
+      "institution": "INEGI",
+      "category": "Actividad económica",
+      "sigla": "EMIM",
+      "type": "event",
+      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_11.pdf",
+      "deliverables": [
+        {
+          "type": "comunicado",
+          "format": "pdf",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_11.pdf",
+          "label": "Boletín PDF",
+          "size": "0.24 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "word",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_11.docx",
+          "label": "Boletín Word",
+          "size": "0.16 MB"
+        },
+        {
+          "type": "comunicado",
+          "format": "excel",
+          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_11.xlsx",
+          "label": "Boletín Excel",
+          "size": "0.05 MB"
+        }
+      ],
+      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
+      "anio": 2026,
+      "mes": 11,
+      "fecha_iso": "2026-11-17"
+    },
     {
       "indicator": "IMAI",
       "program": "Indicador Mensual de la Actividad Industrial (IMAI). Año base 2018. Cifras preliminares",
@@ -21941,7 +24039,8 @@
       "comentario": null,
       "anio": 2026,
       "mes": 11,
-      "fecha_iso": "2026-11-10"
+      "fecha_iso": "2026-11-10",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "INPP",
@@ -22056,7 +24155,8 @@
       "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. No se elabora comunicado de prensa, boletín de indicador ni reporte de resultados.",
       "anio": 2026,
       "mes": 11,
-      "fecha_iso": "2026-11-09"
+      "fecha_iso": "2026-11-09",
+      "publication_verification": "fuera_de_alcance"
     },
     {
       "indicator": "TASA",
@@ -22215,402 +24315,6 @@
       "anio": 2026,
       "mes": 11,
       "fecha_iso": "2026-11-04"
-    },
-    {
-      "indicator": "RESERVAS",
-      "program": "Estado de cuenta del Banco de México de la semana al 30 de octubre y del mes de octubre de 2026",
-      "product": "Estado de cuenta del Banco de México",
-      "publication_date": "2026-11-04",
-      "publication_date_display": "4 de noviembre de 2026",
-      "reference_period": "30 de octubre de 2026",
-      "frequency": "Semanal",
-      "status": "publicado",
-      "source": "Banco de México calendario",
-      "institution": "Banco de México",
-      "category": "Financiero",
-      "sigla": "RESERVAS",
-      "type": "event",
-      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{B670D47E-871B-57FB-8803-D0ACDC500753}.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{B670D47E-871B-57FB-8803-D0ACDC500753}.pdf",
-          "label": "Estado de cuenta del Banco de México de la semana al 30 de octubre y del mes de octubre de 2026",
-          "size": null
-        }
-      ],
-      "comentario": null,
-      "anio": 2026,
-      "mes": 11,
-      "fecha_iso": "2026-11-04"
-    },
-    {
-      "indicator": "EMOE",
-      "program": "Encuesta Mensual de Opinión Empresarial (EMOE). Serie 2018. Indicadores de Confianza Empresarial",
-      "product": "Encuesta Mensual de Opinión Empresarial / Indicadores de Confianza Empresarial",
-      "publication_date": "2026-11-03",
-      "publication_date_display": "3 de noviembre de 2026",
-      "reference_period": "Octubre de 2026",
-      "frequency": "Mensual",
-      "status": "publicado",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Confianza empresarial",
-      "sigla": "EMOE",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_11.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_11.pdf",
-          "label": "Boletín PDF",
-          "size": "0.27 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "word",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_11.docx",
-          "label": "Boletín Word",
-          "size": "0.27 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "excel",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ice/ice2026_11.xlsx",
-          "label": "Boletín Excel",
-          "size": "0.03 MB"
-        }
-      ],
-      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 11,
-      "fecha_iso": "2026-11-03"
-    },
-    {
-      "indicator": "PIB",
-      "program": "Estimación Oportuna del PIB Trimestral. Base 2018",
-      "product": "Estimación Oportuna del Producto Interno Bruto Trimestral",
-      "publication_date": "2026-10-30",
-      "publication_date_display": "30 de octubre de 2026",
-      "reference_period": "Tercer trimestre de 2026",
-      "frequency": "Trimestral",
-      "status": "publicado",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Actividad económica",
-      "sigla": "PIB",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_10.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_10.pdf",
-          "label": "Boletín PDF",
-          "size": "0.25 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "word",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/pibo/pib_eo2026_10.docx",
-          "label": "Boletín Word",
-          "size": "0.21 MB"
-        }
-      ],
-      "comentario": "Información de Interés Nacional. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 10,
-      "fecha_iso": "2026-10-30"
-    },
-    {
-      "indicator": "IMOAM",
-      "program": "Indicador Mensual Oportuno de la Actividad Manufacturera",
-      "product": "Indicador Mensual Oportuno de la Actividad Manufacturera",
-      "publication_date": "2026-10-28",
-      "publication_date_display": "28 de octubre de 2026",
-      "reference_period": "Sep 26",
-      "frequency": "Mensual",
-      "status": "publicado",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Actividad económica",
-      "sigla": "IMOAM",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "html",
-          "url": "https://www.inegi.org.mx/app/saladeprensa/calendario/",
-          "label": "Boletín / página oficial",
-          "size": null
-        }
-      ],
-      "comentario": null,
-      "anio": 2026,
-      "mes": 10,
-      "fecha_iso": "2026-10-28"
-    },
-    {
-      "indicator": "RESERVAS",
-      "program": "Estado de cuenta del Banco de México de la semana al 23 de octubre de 2026",
-      "product": "Estado de cuenta del Banco de México",
-      "publication_date": "2026-10-27",
-      "publication_date_display": "27 de octubre de 2026",
-      "reference_period": "23 de octubre de 2026",
-      "frequency": "Semanal",
-      "status": "publicado",
-      "source": "Banco de México calendario",
-      "institution": "Banco de México",
-      "category": "Financiero",
-      "sigla": "RESERVAS",
-      "type": "event",
-      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{3E9FEF72-6DDE-B62D-1B6E-5A880B86F6DE}.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{3E9FEF72-6DDE-B62D-1B6E-5A880B86F6DE}.pdf",
-          "label": "Estado de cuenta del Banco de México de la semana al 23 de octubre de 2026",
-          "size": null
-        }
-      ],
-      "comentario": null,
-      "anio": 2026,
-      "mes": 10,
-      "fecha_iso": "2026-10-27"
-    },
-    {
-      "indicator": "BCMM",
-      "program": "Balanza Comercial de Mercancías de México. Información oportuna. Cifras preliminares",
-      "product": "Balanza Comercial de Mercancías de México",
-      "publication_date": "2026-10-27",
-      "publication_date_display": "27 de octubre de 2026",
-      "reference_period": "Septiembre de 2026",
-      "frequency": "Mensual",
-      "status": "publicado",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Sector externo",
-      "sigla": "BCMM",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_10.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_10.pdf",
-          "label": "Boletín PDF",
-          "size": "0.38 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "word",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/comext_o/balcom_o2026_10.docx",
-          "label": "Boletín Word",
-          "size": "0.29 MB"
-        }
-      ],
-      "comentario": "Información de Interés Nacional. Las fechas de publicación son preliminares, por lo que pueden presentar modificaciones. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 10,
-      "fecha_iso": "2026-10-27"
-    },
-    {
-      "indicator": "IGAE",
-      "program": "Indicador Global de la Actividad Económica (IGAE). Año base 2018. Cifras preliminares",
-      "product": "Indicador Global de la Actividad Económica",
-      "publication_date": "2026-10-23",
-      "publication_date_display": "23 de octubre de 2026",
-      "reference_period": "Agosto de 2026",
-      "frequency": "Mensual",
-      "status": "publicado",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Actividad económica",
-      "sigla": "IGAE",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.pdf",
-          "label": "Boletín PDF",
-          "size": "0.27 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "word",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.docx",
-          "label": "Boletín Word",
-          "size": "0.17 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "excel",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/igae/igae2026_10.xlsx",
-          "label": "Boletín Excel",
-          "size": "0.03 MB"
-        }
-      ],
-      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 10,
-      "fecha_iso": "2026-10-23"
-    },
-    {
-      "indicator": "DESOCUP",
-      "program": "Encuesta Nacional de Ocupación y Empleo (ENOE), población de 15 años y más de edad. Indicadores de Ocupación y Empleo. Cifras definitivas",
-      "product": "ENOE · Indicadores mensuales de ocupación y empleo",
-      "publication_date": "2026-10-22",
-      "publication_date_display": "22 de octubre de 2026",
-      "reference_period": "Septiembre de 2026",
-      "frequency": "Mensual",
-      "status": "publicado",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Mercado laboral",
-      "sigla": "ENOE",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_10.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_10.pdf",
-          "label": "Boletín PDF",
-          "size": "0.42 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "word",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_10.docx",
-          "label": "Boletín Word",
-          "size": "0.39 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "excel",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/iooe/IOE2026_10.xlsx",
-          "label": "Boletín Excel",
-          "size": "0.03 MB"
-        }
-      ],
-      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 10,
-      "fecha_iso": "2026-10-22"
-    },
-    {
-      "indicator": "RESERVAS",
-      "program": "Estado de cuenta del Banco de México de la semana al 16 de octubre de 2026",
-      "product": "Estado de cuenta del Banco de México",
-      "publication_date": "2026-10-20",
-      "publication_date_display": "20 de octubre de 2026",
-      "reference_period": "16 de octubre de 2026",
-      "frequency": "Semanal",
-      "status": "publicado",
-      "source": "Banco de México calendario",
-      "institution": "Banco de México",
-      "category": "Financiero",
-      "sigla": "RESERVAS",
-      "type": "event",
-      "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{7F146D64-5720-22DA-22F6-758DA3A53C11}.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.banxico.org.mx/publicaciones-y-prensa/estado-de-cuenta-semanal/{7F146D64-5720-22DA-22F6-758DA3A53C11}.pdf",
-          "label": "Estado de cuenta del Banco de México de la semana al 16 de octubre de 2026",
-          "size": null
-        }
-      ],
-      "comentario": null,
-      "anio": 2026,
-      "mes": 10,
-      "fecha_iso": "2026-10-20"
-    },
-    {
-      "indicator": "IOAE",
-      "program": "Indicador Oportuno de la Actividad Económica. Cifras preliminares",
-      "product": "Indicador Oportuno de la Actividad Económica",
-      "publication_date": "2026-10-20",
-      "publication_date_display": "20 de octubre de 2026",
-      "reference_period": "Septiembre de 2026",
-      "frequency": "Mensual",
-      "status": "publicado",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Actividad económica",
-      "sigla": "IOAE",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.pdf",
-          "label": "Boletín PDF",
-          "size": "0.25 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "word",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/ioae/ioae2026_10.docx",
-          "label": "Boletín Word",
-          "size": "0.24 MB"
-        }
-      ],
-      "comentario": "Incluye boletín de indicador. Estas fechas son preliminares, están sujetas al indicador de la actividad industrial de los Estados Unidos cuyo calendario de publicación para 2026 aún no está disponible.",
-      "anio": 2026,
-      "mes": 10,
-      "fecha_iso": "2026-10-20"
-    },
-    {
-      "indicator": "EMIM",
-      "program": "Encuesta Mensual de la Industria Manufacturera (EMIM). Serie 2018. Cifras preliminares",
-      "product": "Encuesta Mensual de la Industria Manufacturera",
-      "publication_date": "2026-10-16",
-      "publication_date_display": "16 de octubre de 2026",
-      "reference_period": "Agosto de 2026",
-      "frequency": "Mensual",
-      "status": "publicado",
-      "source": "INEGI Sala de Prensa",
-      "institution": "INEGI",
-      "category": "Actividad económica",
-      "sigla": "EMIM",
-      "type": "event",
-      "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf",
-      "deliverables": [
-        {
-          "type": "comunicado",
-          "format": "pdf",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.pdf",
-          "label": "Boletín PDF",
-          "size": "0.24 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "word",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.docx",
-          "label": "Boletín Word",
-          "size": "0.16 MB"
-        },
-        {
-          "type": "comunicado",
-          "format": "excel",
-          "url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/emim/emim2026_10.xlsx",
-          "label": "Boletín Excel",
-          "size": "0.04 MB"
-        }
-      ],
-      "comentario": "Información de Interés Nacional. Incluye cuadro de estadísticas generales. Incluye boletín de indicador.",
-      "anio": 2026,
-      "mes": 10,
-      "fecha_iso": "2026-10-16"
     }
   ],
   "categories": {

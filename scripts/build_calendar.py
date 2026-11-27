@@ -22,9 +22,13 @@ import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit
+from zoneinfo import ZoneInfo
 
 import lib_data as L
+from lib_freshness import period_to_ym
 from sources import calendar_banxico, calendar_inegi, calendar_se
+from sources.inegi_bulletin import BULLETIN_URLS
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
@@ -59,8 +63,14 @@ def parse_fecha(txt: str) -> date:
     return date(year, month, day)
 
 
+def mexico_calendar_date() -> date:
+    """Día civil de la publicación oficial, independientemente del runner."""
+    return datetime.now(ZoneInfo("America/Mexico_City")).date()
+
+
 def data_as_of() -> date:
-    """Fecha de referencia: última actualización de los datos publicados."""
+    """Fecha de los datos, sin anticipar el día civil de México."""
+    local_today = mexico_calendar_date()
     try:
         payload = json.loads((DATA_DIR / "indicadores.json").read_text("utf-8"))
         dates = [
@@ -69,10 +79,168 @@ def data_as_of() -> date:
             if ind.get("last_updated")
         ]
         if dates:
-            return date.fromisoformat(max(dates))
+            return min(date.fromisoformat(max(dates)), local_today)
     except Exception:
         pass
-    return date.today()
+    return local_today
+
+
+def _calendar_identity(indicator, date_iso, period, product, institution):
+    return (indicator, date_iso, period or "", product or "", institution or "")
+
+
+def _prior_publication_evidence(path: Path) -> dict:
+    try:
+        rows = json.loads(path.read_text(encoding="utf-8")).get("events", [])
+    except (OSError, ValueError, AttributeError):
+        return {}
+    if not isinstance(rows, list):
+        return {}
+    out = {}
+    for row in rows:
+        if not isinstance(row, dict) or type(row.get("publication_confirmed")) is not bool:
+            continue
+        k = _calendar_identity(row.get("indicator"), row.get("publication_date"),
+                               row.get("reference_period"), row.get("product"), row.get("institution"))
+        if any(not isinstance(v, (str, type(None))) for v in k):
+            continue
+        info = {"publication_confirmed": row["publication_confirmed"]}
+        if info["publication_confirmed"]:
+            url = row.get("publication_evidence_url")
+            if not _direct_inegi_pdf(url):
+                continue
+            try:
+                scheduled = date.fromisoformat(row["publication_date"])
+                corroborated = date.fromisoformat(row.get("publication_evidence_date") or row["publication_date"])
+            except (TypeError, KeyError, ValueError):
+                continue
+            if corroborated < scheduled:
+                continue
+            info.update(publication_evidence_url=url, publication_evidence_date=corroborated.isoformat())
+        out[k] = info
+    return out
+
+
+def _direct_inegi_pdf(official) -> bool:
+    if not isinstance(official, str):
+        return False
+    try:
+        proof = urlsplit(official)
+    except ValueError:
+        return False
+    return bool((proof.scheme, proof.netloc) == ("https", "www.inegi.org.mx")
+                and not (proof.query or proof.fragment)
+                and re.fullmatch(r"/contenidos/saladeprensa/boletines/(?:[A-Za-z0-9_-]+/)+[A-Za-z0-9_.-]+[.]pdf", proof.path, re.I))
+
+
+def _publication_evidence(ev: dict, as_of: date, indicators: dict, prior: dict) -> dict:
+    """Conservar la verificación observada; una fecha transcurrida no confirma el archivo."""
+    scheduled = ev.get("date")
+    if not scheduled or scheduled > as_of or ev.get("is_evento") or ev.get("no_anunciada") or ev.get("es_regla"):
+        return {}
+    # Solo INEGI dispone aquí de una validación por indicador, fecha, periodo y
+    # PDF. Una fecha de Banxico/SE no es un fallo de esa validación ni un PDF
+    # en el calendario es, por sí solo, prueba de su fecha o referencia.
+    institution = ev.get("institution")
+    if institution != "INEGI":
+        return {"publication_verification": "fuera_de_alcance"} if institution in (
+            "Banco de México", "Secretaría de Economía"
+        ) else {}
+    # La ficha acredita el producto principal. Una difusión de datos sin
+    # boletín o un producto secundario conserva su fecha propia de calendario,
+    # pero no puede heredar el PDF de la ficha, ni una prueba persistida.
+    if ev.get("usar_para_frescura") is False:
+        return {"publication_verification": "fuera_de_alcance"}
+    key = _calendar_identity(ev.get("indicator"), scheduled.isoformat(), ev.get("period"),
+                             ev.get("product"), ev.get("institution"))
+    old = prior.get(key)
+    event_url = ev.get("url")
+    explicit_pdf = event_url if _direct_inegi_pdf(event_url) else None
+    # Evaluar el día y el siguiente incluso si se omitió una corrida. Las filas ya
+    # observadas conservan su verificación sin reclasificar todo el histórico.
+    if (as_of - scheduled).days > 1 and old is None:
+        return {}
+    result = old or {"publication_confirmed": False}
+    if result["publication_confirmed"] and (
+        date.fromisoformat(result["publication_evidence_date"]) > as_of
+        or (explicit_pdf and result["publication_evidence_url"] != explicit_pdf)
+    ):
+        result = {"publication_confirmed": False}
+    ind = indicators.get(ev.get("indicator")) or {}
+    if ind.get("boletin_validado") is not True:
+        return result
+    period = ev.get("period") or ""
+    source_period = ind.get("periodo_boletin") or ""
+    def is_quarter(label: str) -> bool:
+        return bool(re.search(r"trimestre|^[1-4]T(?:[- ]|\d)", label, re.IGNORECASE))
+
+    same_period = period_to_ym(period)
+    if not same_period or is_quarter(period) != is_quarter(source_period) or same_period != period_to_ym(source_period):
+        return result
+    official = ind.get("url_boletin_oficial")
+    if not _direct_inegi_pdf(official) or (explicit_pdf and official != explicit_pdf):
+        return result
+    stamp = ind.get("fecha_publicacion") or ""
+    try:
+        official_date = date.fromisoformat(stamp) if re.fullmatch(r"\d{4}-\d{2}-\d{2}", stamp) else parse_fecha(stamp.lower())
+    except (ValueError, IndexError, KeyError):
+        return result
+    if not official_date or not scheduled <= official_date <= as_of:
+        return result
+    return {"publication_confirmed": True, "publication_evidence_url": official,
+            "publication_evidence_date": official_date.isoformat()}
+
+
+
+def _supplement_current_imoam(events: list[dict], as_of: date, indicators: dict) -> None:
+    """Si falta el periodo en Sala de Prensa, recuperar solo el boletín IMOAM ya validado."""
+    ind = indicators.get("IMOAM") or {}
+    if ind.get("key") != "IMOAM" or ind.get("boletin_validado") is not True:
+        return
+    if ind.get("tipo_documento") != "PDF" or (ind.get("fuente") or {}).get("nombre") != "INEGI":
+        return
+    period = ind.get("periodo_boletin")
+    if not isinstance(period, str) or not re.fullmatch(r"(?:Ene|Feb|Mar|Abr|May|Jun|Jul|Ago|Sep|Oct|Nov|Dic) [0-9]{2}", period):
+        return
+    reference = period_to_ym(period)
+    if not reference or ind.get("last_observation") != period:
+        # La ficha IMOAM usa la etiqueta mensual canónica; 4T-26 también
+        # normaliza a octubre, pero no es la observación acreditada por el PDF.
+        return
+    stamp = ind.get("fecha_publicacion")
+    if not isinstance(stamp, str):
+        return
+    try:
+        announced = date.fromisoformat(stamp) if re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}", stamp) else parse_fecha(stamp.lower())
+    except (ValueError, IndexError, KeyError):
+        return
+    number = ind.get("numero_boletin")
+    if (not isinstance(number, str)
+        or not re.fullmatch(r"[0-9]{1,4}/" + str(announced.year)[-2:], number)
+        or not date.fromisoformat(reference + "-01") < announced.replace(day=1)
+        or announced > as_of):
+        return
+    official = BULLETIN_URLS["IMOAM"].format(year=announced.year, mm=f"{announced.month:02d}")
+    if ind.get("url_boletin_oficial") != official:
+        return
+    if any(
+        row.get("indicator") == "IMOAM" and row.get("institution") == "INEGI"
+        and row.get("date") and row.get("usar_para_frescura", True)
+        and row.get("frequency") == "Mensual"
+        and isinstance(row.get("period"), str)
+        and not re.search(r"trimestre|^\s*[1-4]\s*T", row["period"], re.I)
+        and period_to_ym(row["period"]) == reference
+        for row in events
+    ):
+        return
+    title = "Indicador Mensual Oportuno de la Actividad Manufacturera"
+    events.append({
+        "indicator": "IMOAM", "program": title, "product": title, "frequency": "Mensual",
+        "period": period, "date": announced, "institution": "INEGI",
+        "source": "INEGI · Boletín de indicador validado", "url": official, "usar_para_frescura": True,
+        "deliverables": [{"type": "comunicado", "format": "pdf", "url": official,
+                          "label": "Boletín de indicador", "size": None}],
+    })
 
 
 def _load_map() -> dict:
@@ -108,6 +276,13 @@ def _program_includes(program: str, patterns: list[str]) -> bool:
     return any(p.lower() in low for p in patterns)
 
 
+def _program_allowed(program: str, meta: dict) -> bool:
+    required = meta.get("program_require", [])
+    return all(part.lower() in program.lower() for part in required) and not _program_excluded(
+        program, meta.get("program_exclude", [])
+    )
+
+
 def _score_program(program: str, preferred: list[str]) -> int:
     if not preferred:
         return 0
@@ -123,11 +298,11 @@ def _match_inegi_indicator(program: str, cfg: dict) -> str | None:
     for key, meta in ind_cfg.items():
         for ac in acronyms:
             if ac.upper() in [a.upper() for a in meta.get("acronyms", [])] or ac.upper() == key:
-                if not _program_excluded(program, meta.get("program_exclude", [])):
+                if _program_allowed(program, meta):
                     return key
     # 2) por subcadena
     for key, meta in ind_cfg.items():
-        if _program_excluded(program, meta.get("program_exclude", [])):
+        if not _program_allowed(program, meta):
             continue
         if _program_includes(program, meta.get("program_contains", [])):
             return key
@@ -143,8 +318,6 @@ def _map_inegi_events(raw_events: list[dict], cfg: dict, warnings: list[str]) ->
         if not key:
             continue
         meta = ind_cfg.get(key, {})
-        if _program_excluded(ev["program"], meta.get("program_exclude", [])):
-            continue
         if _program_excluded(ev["program"], cfg.get("inegi", {}).get("exclude_substrings", [])):
             continue
         d = ev["date"]
@@ -218,7 +391,8 @@ def _map_se_events(raw_events: list[dict], cfg: dict) -> list[dict]:
         else:
             events.append({
                 **ev,
-                "product": meta.get("product", ev.get("program", "IED")),
+                "product": (ev.get("program") if ev.get("alcance") == "acumulado_nacional"
+                            else meta.get("product", ev.get("program", "IED"))),
                 "frequency": meta.get("frequency", "Trimestral"),
                 "category": meta.get("category", "Sector externo"),
                 "institution": meta.get("institution", "Secretaría de Economía"),
@@ -440,24 +614,24 @@ def _build_events(as_of: date, offline: bool) -> tuple[list[dict], list[dict], d
     events.extend(_map_banxico_events(banxico_events, cfg))
     events.extend(_map_se_events(se_events, cfg))
 
-    # Si faltan claves, rellenar con respaldo
-    present = set(ev.get("indicator") for ev in events if ev.get("indicator"))
+    # Rellenar los indicadores ausentes y los trimestres PIBT que falten.
+    present = {ev.get("indicator") for ev in events}
     meta = _load_meta()
     target_keys = set(meta.get("principal", [])) | set(meta.get("complementario", []))
     missing_keys = target_keys - present
-    if missing_keys or not events:
-        fallback = _load_fallback_events(target_years)
-        for ev in fallback:
-            if not missing_keys and ev.get("indicator") not in present:
-                continue
-            if ev.get("indicator") in missing_keys or (not events and ev.get("indicator") in target_keys):
+    pibt_periods = {
+        period_to_ym(ev["period"]) or ev["period"]
+        for ev in events if ev.get("indicator") == "PIBSEC"
+    }
+    for ev in _load_fallback_events(target_years):
+        key = ev.get("indicator")
+        if key == "PIBSEC":
+            period = period_to_ym(ev["period"]) or ev["period"]
+            if period not in pibt_periods:
                 events.append(ev)
-
-    # Asegurar PIBSEC aunque no venga del INEGI
-    if "PIBSEC" not in present:
-        for ev in _load_fallback_events(target_years):
-            if ev.get("indicator") == "PIBSEC":
-                events.append(ev)
+                pibt_periods.add(period)
+        elif key in missing_keys:
+            events.append(ev)
 
     events = [_precise_event(e) for e in _dedup_events(events)]
 
@@ -580,6 +754,7 @@ def _to_new_event(ev: dict, as_of: date) -> dict:
         "anio": d.year if d else None,
         "mes": d.month if d else None,
         "fecha_iso": d.isoformat() if d else None,
+        **ev.get("verification", {}),
     }
 
 
@@ -621,8 +796,11 @@ def _to_legacy_item(ev: dict, as_of: date) -> dict:
         "mes": mes,
         "periodo_referencia": ev.get("period") or ("Por determinar" if ev.get("es_regla") else ("Próximo periodo" if ev.get("no_anunciada") else "")),
         "estatus": status,
+        **ev.get("verification", {}),
         "url_boletin": ev.get("url") or _sala_prensa_url(ev.get("indicator")),
     }
+    if ev.get("alcance"):
+        item["alcance"] = ev["alcance"]
     if ev.get("comentario"):
         item["comentario"] = ev["comentario"]
     return item
@@ -659,7 +837,7 @@ def _build_new_payload(events: list[dict], rules: list[dict], sources_status: di
         key=lambda x: (x["publication_date"] or "9999-12-31", x["indicator"]),
     )[:20]
     recent = sorted(
-        [e for e in new_events if e["status"] == "publicado"],
+        [e for e in new_events if e["status"] == "publicado" and e.get("publication_confirmed") is not False],
         key=lambda x: (x["publication_date"] or "", x["indicator"]),
         reverse=True,
     )[:20]
@@ -714,7 +892,7 @@ def _build_legacy_payload(events: list[dict], rules: list[dict], as_of: date, so
     }
 
 
-def build(as_of: date | None = None, offline: bool | None = None) -> dict:
+def build(as_of: date | None = None, offline: bool | None = None, *, indicators: dict | None = None) -> dict:
     """Construye el calendario legacy y, como efecto colateral, escribe ambos JSON.
 
     Devuelve el diccionario legacy para mantener compatibilidad con build_data.py.
@@ -725,6 +903,15 @@ def build(as_of: date | None = None, offline: bool | None = None) -> dict:
         offline = _under_pytest()
 
     events, rules, sources_status = _build_events(as_of, offline)
+    if indicators is None:
+        try:
+            indicators = json.loads((DATA_DIR / "indicadores.json").read_text("utf-8")).get("indicators", {})
+        except (OSError, ValueError):
+            indicators = {}
+    _supplement_current_imoam(events, as_of, indicators)
+    prior = _prior_publication_evidence(NEW_OUT)
+    for event in events:
+        event["verification"] = _publication_evidence(event, as_of, indicators, prior)
 
     new_payload = _build_new_payload(events, rules, sources_status, as_of)
     legacy_payload = _build_legacy_payload(events, rules, as_of, sources_status)

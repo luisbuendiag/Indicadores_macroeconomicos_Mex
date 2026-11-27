@@ -1,5 +1,6 @@
 """Notas de SIC desde boletines completos; sin servicios de IA."""
 import argparse,csv,hashlib,json,os,re,urllib.request
+from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
 from docx import Document
@@ -8,7 +9,8 @@ import notas_sic_word as V
 import notas_word as W
 import build_auto_notes as A
 import lib_notes_state as S
-from sources import inegi_sic as P
+from lib_freshness import period_to_ym
+from sources import inegi_sic as P, inegi_bulletin as B
 
 ROOT=Path(__file__).resolve().parents[1]
 VERSION='sic-python-1'
@@ -34,11 +36,63 @@ def download(url,key):
     return data
 
 
-def publish(root,work,f,fp,url,result,previous,old_url,old_date):
+def bulletin_candidate(root, ind, key):
+    """Recover a lagged ficha date only from an unambiguous same-period INEGI calendar row."""
+    try:
+        return P.publication_date(ind), P.expected_bulletin_url(ind), False
+    except ValueError as exc:
+        failure = exc
+    try:
+        calendar = json.loads((root/'data/calendario_publicaciones.json').read_text())
+        items = calendar.get('items', [])
+    except (OSError, ValueError, AttributeError):
+        raise failure
+    ym = period_to_ym(ind.get('last_observation'))
+    if not ym or not isinstance(items, list):
+        raise failure
+    found = set()
+    for row in items:
+        if not isinstance(row, dict) or not (
+            row.get('clave') == key and row.get('institucion') == 'INEGI'
+            and row.get('frecuencia') == 'Mensual' and row.get('usar_para_frescura') is True
+            and row.get('estatus') == 'publicado'
+            and isinstance(row.get('periodo_referencia'), str)
+            and period_to_ym(row['periodo_referencia']) == ym
+            and isinstance(row.get('fecha_iso'), str)
+            and isinstance(row.get('url_boletin'), str)
+        ):
+            continue
+        candidate = {**ind, 'fecha_publicacion_oficial': row['fecha_iso']}
+        try:
+            date = P.publication_date(candidate)
+            url = P.expected_bulletin_url(candidate)
+        except ValueError:
+            continue
+        if row['url_boletin'] == url and allowed(url, key):
+            found.add((date, url))
+    if len(found) == 1:
+        date, url = found.pop()
+        return date, url, True
+    raise failure
+
+
+def publish(root,work,f,fp,url,result,previous,old_url,old_date,calendar_repair=False):
     path=root/'data/indicadores.json';before=path.read_bytes();payload=json.loads(before)
     ind=payload['indicators']['SIC']
     current_date=ind.get('fecha_publicacion_oficial') or ind.get('fecha_ultima_publicacion')
     if ind.get('url_boletin_oficial')!=old_url or ind['last_observation']!=f['period'] or current_date!=old_date:raise ValueError('La ficha SIC cambió durante la revisión')
+    if calendar_repair:
+        repaired = bulletin_candidate(root, ind, 'SIC')
+        if repaired != (f['publication_date'], url, True):
+            raise ValueError('El calendario SIC cambió durante la revisión')
+        stamp = date.fromisoformat(f['publication_date'])
+        date_label = f"{stamp.day} de {B.MESES_NOMBRE[stamp.month-1]} de {stamp.year}"
+        ref_year, ref_month = map(int, period_to_ym(f['period']).split('-'))
+        period_label = f"{B.MESES_NOMBRE[ref_month-1].capitalize()} de {ref_year}"
+        ind.update(fecha_publicacion_oficial=date_label, fecha_ultima_publicacion=date_label,
+                   periodo_referencia_oficial=period_label)
+        if ind.get('estado') == 'ACTUALIZADO':
+            ind['motivo_frescura'] = f"El boletín oficial del SIC confirma el periodo cargado ({f['period']})."
     ind.update(url_boletin_oficial=url,fecha_publicacion=f['publication_date'],periodo_boletin=f['period'],numero_boletin=f['bulletin'],boletin_validado=True,producto_boletin='Sistema de Indicadores Cíclicos')
     try:
         A.write_json(path,payload)
@@ -58,11 +112,11 @@ def run(key,root=ROOT,publish_requested=False,pdf_path=None):
         if cfg.get('enabled') is False or os.environ.get('NOTES_PILOT_ENABLED')=='false':return {**state,'status':'deshabilitada'}
         if pdf_path and publish_requested:raise ValueError('No publicar desde un PDF local')
         old_url=ind['url_boletin_oficial']
-        url=P.expected_bulletin_url(ind)
+        source_date,url,calendar_repair=bulletin_candidate(root,ind,key)
         if not allowed(url,key):raise ValueError('Boletín no oficial')
         pdf=pdf_path.read_bytes() if pdf_path else download(url,key)
         f=N.extract(pdf,key)
-        if f['publication_date']!=P.publication_date(ind):raise ValueError('Fecha del boletín distinta al calendario oficial')
+        if f['publication_date']!=source_date:raise ValueError('Fecha del boletín distinta al calendario oficial')
         if f['period']!=ind['last_observation']:raise ValueError('Periodo distinto al de la ficha')
         if int(f['publication_date'][:4])!=cfg['template_year']:raise ValueError('Actualizar el membrete institucional')
         h=hashlib.sha256(pdf+(root/cfg['template']).read_bytes()+VERSION.encode())
@@ -70,7 +124,7 @@ def run(key,root=ROOT,publish_requested=False,pdf_path=None):
         for name in ('build_cycle_notes.py','notas_sic.py','notas_sic_word.py','notas_layout.py','notas_word.py','build_auto_notes.py','sources/inegi_sic.py'):h.update((root/'scripts'/name).read_bytes())
         fp=h.hexdigest();state['candidate_fingerprint']=fp
         dest=root/f'downloads/indicadores/{key}/nota/{key}_nota.docx';pub=previous.get('published',{})
-        if ind.get('url_boletin_oficial')==url and pub.get('source_url')==url and pub.get('fingerprint')==fp and dest.exists() and S.digest(dest)==pub.get('docx_sha256'):return {**previous,'unchanged':True}
+        if not calendar_repair and ind.get('url_boletin_oficial')==url and pub.get('source_url')==url and pub.get('fingerprint')==fp and dest.exists() and S.digest(dest)==pub.get('docx_sha256'):return {**previous,'unchanged':True}
         work=Path(os.environ.get('NOTES_WORK_DIR',str(root/'.notes-work')))/key/fp
         work.mkdir(parents=True,exist_ok=True)
         (work/'boletin.pdf').write_bytes(pdf);(work/'boletin.txt').write_text('\n\n'.join(f['pages']))
@@ -90,7 +144,7 @@ def run(key,root=ROOT,publish_requested=False,pdf_path=None):
         V.validate(N.extract((work/'boletin.pdf').read_bytes(),key),Document(out))
         result=dict(passed=True,kind='reglas_python',model=VERSION,result=dict(datos=True,logica=True,estructura=True,render=True,issues=[]),limits=['Controles locales; no equivalen a revisión visual humana.'])
         A.write_json(work/'revision.json',result)
-        if publish_requested and cfg.get('auto_publish') is True and os.environ.get('NOTES_AUTO_PUBLISH','true')=='true':return publish(root,work,f,fp,url,result,previous,old_url,ind['fecha_publicacion_oficial'] if 'fecha_publicacion_oficial' in ind else ind.get('fecha_ultima_publicacion'))
+        if publish_requested and cfg.get('auto_publish') is True and os.environ.get('NOTES_AUTO_PUBLISH','true')=='true':return publish(root,work,f,fp,url,result,previous,old_url,ind.get('fecha_publicacion_oficial') or ind.get('fecha_ultima_publicacion'),calendar_repair)
         state.update(status='validada_sin_publicar',message='Nota validada por reglas Python; publicación deshabilitada')
     except Exception as e:state.update(status='error',message='No se publicó la candidata: '+(str(e)[:180] if isinstance(e,(ValueError,RuntimeError)) else type(e).__name__))
     if work:A.write_json(work/'estado.json',state)
